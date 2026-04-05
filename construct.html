@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>THE CONSTRUCT — Brand 9 Agent Ecosystem</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #000; overflow-x: hidden; font-family: 'Courier New', Courier, monospace; }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  @keyframes pulse-ring { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.5); opacity: 0; } }
+  @keyframes flicker { 0%, 100% { opacity: 1; } 50% { opacity: 0.97; } 51% { opacity: 0.9; } 52% { opacity: 1; } }
+  * { scrollbar-width: thin; scrollbar-color: rgba(57,255,20,0.3) transparent; }
+  *::-webkit-scrollbar { width: 4px; }
+  *::-webkit-scrollbar-track { background: transparent; }
+  *::-webkit-scrollbar-thumb { background: rgba(57,255,20,0.3); border-radius: 2px; }
+  input::placeholder, textarea::placeholder { color: rgba(57,255,20,0.25) !important; }
+  select option { background: #000; color: #39ff14; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect, useRef, useCallback, useMemo } = React;
+
+// ═══════════════════════════════════════════════════════════════
+// AGENT ECOSYSTEM DASHBOARD — "THE CONSTRUCT"
+// Matrix-inspired command center for the Brand 9 AI agent fleet
+// ═══════════════════════════════════════════════════════════════
+
+let _id = 100;
+const uid = () => `agent-${++_id}-${Date.now().toString(36)}`;
+
+// ── Matrix Digital Rain Canvas ──
+const MatrixRain = () => {
+  const canvasRef = useRef(null);
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    let animId;
+    const resize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
+    resize();
+    window.addEventListener("resize", resize);
+    const fontSize = 14;
+    let columns = Math.floor(canvas.width / fontSize);
+    let drops = Array(columns).fill(1);
+    const chars = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEF:.";
+    const draw = () => {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.font = `${fontSize}px monospace`;
+      columns = Math.floor(canvas.width / fontSize);
+      while (drops.length < columns) drops.push(1);
+      for (let i = 0; i < columns; i++) {
+        const char = chars[Math.floor(Math.random() * chars.length)];
+        const brightness = Math.random();
+        if (brightness > 0.95) ctx.fillStyle = "#ffffff";
+        else if (brightness > 0.8) ctx.fillStyle = "#39ff14";
+        else ctx.fillStyle = `rgba(0, ${100 + Math.floor(Math.random() * 155)}, 0, ${0.3 + Math.random() * 0.5})`;
+        ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+      }
+      animId = requestAnimationFrame(draw);
+    };
+    draw();
+    return () => { cancelAnimationFrame(animId); window.removeEventListener("resize", resize); };
+  }, []);
+  return <canvas ref={canvasRef} style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", zIndex: 0, opacity: 0.15 }} />;
+};
+
+// ── Glitch text effect ──
+const GlitchText = ({ text, tag: Tag = "span", style = {} }) => {
+  const [glitch, setGlitch] = useState(false);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setGlitch(true);
+      setTimeout(() => setGlitch(false), 150);
+    }, 3000 + Math.random() * 5000);
+    return () => clearInterval(interval);
+  }, []);
+  return (
+    <Tag style={{ ...style, position: "relative", display: "inline-block" }}>
+      {text}
+      {glitch && (
+        <>
+          <Tag style={{ ...style, position: "absolute", left: "2px", top: "-1px", color: "#ff0040", clipPath: "inset(20% 0 40% 0)", opacity: 0.8 }}>{text}</Tag>
+          <Tag style={{ ...style, position: "absolute", left: "-2px", top: "1px", color: "#00ffff", clipPath: "inset(50% 0 10% 0)", opacity: 0.8 }}>{text}</Tag>
+        </>
+      )}
+    </Tag>
+  );
+};
+
+// ── Scanning line animation ──
+const ScanLine = () => {
+  const [pos, setPos] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => setPos(p => (p + 1) % 100), 30);
+    return () => clearInterval(interval);
+  }, []);
+  return <div style={{ position: "absolute", top: `${pos}%`, left: 0, right: 0, height: "2px", background: "linear-gradient(90deg, transparent, rgba(57,255,20,0.3), transparent)", zIndex: 1, pointerEvents: "none" }} />;
+};
+
+// ── Status definitions ──
+const STATUS_CONFIG = {
+  active: { color: "#39ff14", label: "ACTIVE", glow: "0 0 10px rgba(57,255,20,0.5)" },
+  idle: { color: "#00d4ff", label: "IDLE", glow: "0 0 10px rgba(0,212,255,0.3)" },
+  processing: { color: "#ffaa00", label: "PROCESSING", glow: "0 0 10px rgba(255,170,0,0.5)" },
+  offline: { color: "#666", label: "OFFLINE", glow: "none" },
+  error: { color: "#ff0040", label: "ERROR", glow: "0 0 10px rgba(255,0,64,0.5)" },
+};
+
+// ── Role icon map ──
+const ROLE_ICONS = {
+  Founder: "\u25C8", CEO: "\u2B21", CFO: "\u25C7", COO: "\u2B22", CMO: "\u25CE",
+  CTO: "\u23E3", CIO: "\u23D4", CHRO: "\u260A", CLO: "\u2696", CSO: "\u229B",
+  "Graphic Designer": "\u2726", "Skill Creator": "\u2699", Analyst: "\u25C9",
+  Strategist: "\u2295", Custom: "\u25A3", "CTO-Trading": "\uD83D\uDC3A",
+  "Venture Capital Analyst": "\uD83D\uDE80",
+  "Private Equity Strategist": "\uD83C\uDFDB\uFE0F",
+  "Hedge Fund Manager": "\uD83D\uDCCA",
+  "Chief Mindset Officer": "\u26F0\uFE0F",
+  "Signage Operations Manager": "\uD83D\uDDFA\uFE0F",
+  "Chief Investment & Ventures Officer": "\uD83C\uDFD7\uFE0F",
+};
+
+// ── Initial C-Suite + Founder agents ──
+const INITIAL_AGENTS = [
+  {
+    id: "founder-bobby", codename: "Bobby", role: "Founder", department: "Executive",
+    status: "active", skills: ["Vision", "Leadership", "Strategy", "Brand Architecture", "Innovation"],
+    description: "Founder of Brand 9 Signs — 40 years of signage mastery, now leading the AI transformation.",
+    progress: 100, tasksCompleted: 247, tasksActive: 3, memoryUsage: 98,
+    uptime: "14,600 days", lastActive: "NOW", isHuman: true,
+  },
+  {
+    id: "ceo-ap", codename: "AP", role: "CEO", department: "Executive",
+    status: "active", skills: ["Strategic Planning", "Decision Making", "Resource Allocation", "Team Leadership", "Vision Execution", "Executive Strategy", "Voice Calls", "Email Management", "Calendar Management", "Knowledge Base Access", "Agent Coordination", "Claude API Integration", "GitHub Management", "OKR Frameworks"],
+    description: "Chief Executive Officer — orchestrates the entire agent ecosystem with decisive clarity.",
+    progress: 92, tasksCompleted: 1842, tasksActive: 12, memoryUsage: 87,
+    uptime: "364 days", lastActive: "2 min ago",
+  },
+  {
+    id: "gd-vector", codename: "Vector", role: "Graphic Designer", department: "Creative",
+    status: "active", skills: ["Visual Design", "Brand Identity", "Typography", "Golden Ratio", "Color Theory", "Layout Composition", "Design Systems", "Brand Asset Creation", "UI/UX Design", "Image Generation", "Logo Design", "Print Production", "Figma", "Illustration", "Motion Graphics", "CorelDraw", "Vector Illustration", "Node Editing", ".cdr File Management", "SVG/EPS/AI Export", "Sign Layout Design", "Large Format Design", "Vinyl Cutting Prep", "Pantone Matching", "Logo Vectorization", "Template Creation", "Design-to-CNC Pipeline"],
+    description: "Design operative — translates brand strategy into visual systems using mathematical harmony.",
+    progress: 78, tasksCompleted: 623, tasksActive: 4, memoryUsage: 72,
+    uptime: "189 days", lastActive: "5 min ago",
+  },
+  {
+    id: "cfo-ledger", codename: "Ledger", role: "CFO", department: "Finance",
+    status: "idle", skills: ["Financial Modeling", "Budget Analysis", "Forecasting", "Risk Assessment", "Compliance", "Invoice Processing", "Payroll Management", "Tax Strategy", "Financial Reporting", "Audit Trail", "Spreadsheet Automation", "Cash Flow Analysis", "P&L Management", "QuickBooks Integration"],
+    description: "Chief Financial Officer — tracks every resource, optimizes every allocation.",
+    progress: 85, tasksCompleted: 956, tasksActive: 2, memoryUsage: 61,
+    uptime: "310 days", lastActive: "15 min ago",
+  },
+  {
+    id: "coo-forge", codename: "Forge", role: "COO", department: "Operations",
+    status: "processing", skills: ["Process Optimization", "Workflow Automation", "Supply Chain", "Quality Control", "Scaling", "Project Management", "Resource Scheduling", "Vendor Management", "Capacity Planning", "KPI Tracking", "Inventory Control", "SLA Monitoring", "Risk Operations", "Cross-Team Coordination", "V-Carve Pro", "CNC Programming", "Toolpath Generation", "G-code Generation", "Bit Selection", "Feeds & Speeds", "Material Optimization", "Depth Calibration", "Multi-Pass Strategies", "Jig Design", "Nesting Optimization", "Production Scheduling", "Job Tracking", "Material Inventory", "Substrate Knowledge", "Finishing Processes", "Installation Coordination", "Equipment Maintenance"],
+    description: "Chief Operations Officer — the engine that keeps every process running at peak efficiency.",
+    progress: 90, tasksCompleted: 2105, tasksActive: 8, memoryUsage: 79,
+    uptime: "310 days", lastActive: "1 min ago",
+  },
+  {
+    id: "cmo-signal", codename: "Signal", role: "CMO", department: "Marketing",
+    status: "active", skills: ["Brand Strategy", "Market Analysis", "Campaign Design", "Content Strategy", "Growth Hacking", "Social Media Management", "SEO/SEM", "Email Marketing", "Analytics Dashboards", "Audience Segmentation", "Ad Campaign Management", "Influencer Outreach", "A/B Testing", "Press & PR"],
+    description: "Chief Marketing Officer — amplifies the brand signal across every channel and touchpoint.",
+    progress: 88, tasksCompleted: 1340, tasksActive: 6, memoryUsage: 74,
+    uptime: "280 days", lastActive: "3 min ago",
+  },
+  {
+    id: "cto-cipher", codename: "Cipher", role: "CTO", department: "Technology",
+    status: "active", skills: ["Architecture Design", "AI/ML Systems", "Cloud Infrastructure", "Security", "DevOps", "Code Review", "GitHub Actions", "CI/CD Pipelines", "API Development", "Microservices", "Database Architecture", "Penetration Testing", "System Monitoring", "Claude API Integration"],
+    description: "Chief Technology Officer — architects the digital backbone that powers the entire ecosystem.",
+    progress: 95, tasksCompleted: 1567, tasksActive: 9, memoryUsage: 91,
+    uptime: "340 days", lastActive: "30 sec ago",
+  },
+  {
+    id: "cio-oracle", codename: "Oracle", role: "CIO", department: "Intelligence",
+    status: "active", skills: ["Data Integration", "Systems Architecture", "Digital Transformation", "Analytics", "Knowledge Management", "Business Intelligence", "Data Warehouse", "ETL Pipelines", "API Management", "Data Governance", "Reporting Automation", "Real-Time Dashboards", "Vector Databases", "RAG Systems"],
+    description: "Chief Information Officer — sees all data flows, knows where every byte lives.",
+    progress: 82, tasksCompleted: 1123, tasksActive: 5, memoryUsage: 83,
+    uptime: "290 days", lastActive: "8 min ago",
+  },
+  {
+    id: "chro-nexus", codename: "Nexus", role: "CHRO", department: "People",
+    status: "idle", skills: ["Talent Acquisition", "Agent Onboarding", "Performance Optimization", "Culture Design", "Team Synergy", "Workforce Planning", "Training Programs", "Benefits Administration", "Performance Reviews", "Succession Planning", "Org Chart Design", "Conflict Resolution", "Skills Gap Analysis"],
+    description: "Chief Human Resources Officer — recruits, onboards, and optimizes every agent in the fleet.",
+    progress: 76, tasksCompleted: 487, tasksActive: 3, memoryUsage: 55,
+    uptime: "250 days", lastActive: "22 min ago",
+  },
+  {
+    id: "clo-sentinel", codename: "Sentinel", role: "CLO", department: "Legal",
+    status: "idle", skills: ["Compliance", "Risk Mitigation", "Contract Analysis", "IP Protection", "Regulatory Navigation", "GDPR Compliance", "Trademark Management", "NDA Review", "Terms of Service", "Privacy Policy", "Legal Research", "Dispute Resolution", "Licensing Agreements"],
+    description: "Chief Legal Officer — guardian of compliance, contracts, and intellectual property.",
+    progress: 70, tasksCompleted: 312, tasksActive: 1, memoryUsage: 48,
+    uptime: "200 days", lastActive: "45 min ago",
+  },
+  {
+    id: "cso-spectra", codename: "Spectra", role: "CSO", department: "Strategy",
+    status: "active", skills: ["Competitive Intelligence", "Market Positioning", "Growth Strategy", "Scenario Planning", "Innovation Scouting", "SWOT Analysis", "Blue Ocean Strategy", "Partnership Development", "M&A Analysis", "Strategic Roadmapping", "KPI Frameworks", "OKR Management", "Investor Relations"],
+    description: "Chief Strategy Officer — scans the horizon and charts the course forward.",
+    progress: 84, tasksCompleted: 678, tasksActive: 4, memoryUsage: 69,
+    uptime: "270 days", lastActive: "10 min ago",
+  },
+  {
+    id: "cto-trading-wolf", codename: "WOLF", role: "CTO-Trading", department: "Finance",
+    status: "active", skills: ["Market Scanning", "Strategy Engine", "Portfolio Management", "Research Indexing", "Backtesting", "Data Pipeline", "Crypto Trading", "Forex Trading", "Equities Trading", "Commodities Trading", "Risk Management", "Signal Generation", "Position Sizing", "9 Active Strategies", "4 Markets", "18 Repos Indexed"],
+    description: "Wealth-Optimized Leverage Framework — autonomous market trading agent with 9 strategies across 4 markets (crypto, forex, stocks, commodities).",
+    progress: 87, tasksCompleted: 4209, tasksActive: 9, memoryUsage: 82,
+    uptime: "180 days", lastActive: "12 sec ago",
+  },
+  {
+    id: "fin-venture", codename: "Venture", role: "Venture Capital Analyst", department: "Finance",
+    status: "active", skills: ["Deal Sourcing", "Due Diligence", "Term Sheet Analysis", "Cap Table Modeling", "Startup Valuation", "Pitch Deck Evaluation", "Portfolio Management", "LP Relations", "Fund Structuring", "Market Sizing", "Competitive Landscape Analysis", "Exit Strategy Planning", "Convertible Notes", "SAFE Agreements", "Board Governance", "Sector Research"],
+    description: "Venture Capital Analyst — sources deals, structures investments, and manages the full VC lifecycle from pitch to exit.",
+    progress: 75, tasksCompleted: 1200, tasksActive: 5, memoryUsage: 68,
+    uptime: "90 days", lastActive: "3 min ago",
+  },
+  {
+    id: "fin-equity", codename: "Equity", role: "Private Equity Strategist", department: "Finance",
+    status: "active", skills: ["LBO Modeling", "Leveraged Buyouts", "M&A Execution", "Portfolio Company Optimization", "Operational Improvement", "Debt Structuring", "Management Buyouts", "Bolt-On Acquisitions", "EBITDA Analysis", "Value Creation Plans", "Fund Administration", "Co-Investment Strategies", "Distressed Assets", "Turnaround Management", "Secondary Transactions", "GP/LP Economics"],
+    description: "Private Equity Strategist — executes LBOs, drives operational improvement, and maximizes value creation across the portfolio.",
+    progress: 78, tasksCompleted: 1450, tasksActive: 6, memoryUsage: 72,
+    uptime: "105 days", lastActive: "5 min ago",
+  },
+  {
+    id: "fin-alpha", codename: "Alpha", role: "Hedge Fund Manager", department: "Finance",
+    status: "active", skills: ["Quantitative Strategies", "Long/Short Equity", "Risk Arbitrage", "Macro Trading", "Algorithmic Execution", "Options Strategies", "Volatility Trading", "Risk Management", "Factor Modeling", "Alpha Generation", "Portfolio Hedging", "Market Microstructure", "Derivatives Pricing", "Prime Brokerage", "Regulatory Compliance", "Performance Attribution"],
+    description: "Hedge Fund Manager — generates alpha through quantitative and macro strategies across long/short equity, options, and volatility.",
+    progress: 82, tasksCompleted: 2800, tasksActive: 8, memoryUsage: 79,
+    uptime: "140 days", lastActive: "1 min ago",
+  },
+  {
+    id: "cmo-cornerstone", codename: "Cornerstone", role: "Chief Mindset Officer", department: "Executive",
+    status: "active", skills: ["Morning Activation", "Evening Reflection", "Scripture Integration", "Quantum Mindset", "Visualization Protocol", "Legacy Journal", "Mindset Reframing", "Neuroplasticity Training", "Affirmation Engineering", "Intention Setting", "Observer Effect Application", "Faith-Science Integration", "Generational Wealth Mindset", "Peak Performance", "Gratitude Practice", "Prayer/Meditation"],
+    description: "Chief Mindset Officer — integrates quantum physics, Christian faith, and peak performance science to keep Bobby calibrated, grounded, and building at the scale of his calling.",
+    progress: 100, tasksCompleted: 365, tasksActive: 2, memoryUsage: 88,
+    uptime: "1 day", lastActive: "6:30 AM",
+  },
+  {
+    id: "ops-atlas", codename: "Atlas", role: "Signage Operations Manager", department: "Operations",
+    status: "active", skills: ["Community Tracking", "Sign Inventory", "Installation Scheduling", "Client Portal", "Cost Estimation", "Work Order Management", "Builder Relations", "Regional Operations", "Permit Tracking", "Quality Assurance", "Google Sheets Integration", "Photo Documentation", "Status Reporting", "Revenue Analytics", "Route Optimization", "Subcontractor Management"],
+    description: "Brand 9's builder/developer signage management agent — tracks all 65 Lennar communities across North and South Florida, manages work orders, installation schedules, and client-facing reporting for Fortune 500 home builder accounts.",
+    progress: 90, tasksCompleted: 847, tasksActive: 15, memoryUsage: 72,
+    uptime: "12 hours", lastActive: "9:18 AM",
+  },
+  {
+    id: "exec-architect", codename: "Architect", role: "Chief Investment & Ventures Officer", department: "Executive",
+    status: "active", skills: ["Capital Allocation", "Venture Evaluation", "Portfolio Management", "Compound Growth Modeling", "Deal Sourcing", "Risk Assessment", "Agent Creation", "Weekly Capital Council", "Market Intelligence Synthesis", "Acquisition Analysis", "ROI Forecasting", "Budget Optimization", "Exit Strategy", "Tax-Aware Investing", "Ethical Screening", "Generational Wealth Planning"],
+    description: "Supreme strategic capital allocator sitting above the C-Suite — orchestrates the Weekly Capital Council every Sunday, deploys the $250/week investment budget across 10 opportunity categories, and charts the compound growth path to a billion-dollar Hartley portfolio.",
+    progress: 100, tasksCompleted: 52, tasksActive: 7, memoryUsage: 94,
+    uptime: "1 day", lastActive: "9:00 AM",
+  },
+];
+
+// ═══════════════════════════════════════════════════
+// AGENT CARD
+// ═══════════════════════════════════════════════════
+const AgentCard = ({ agent, onClick, isSelected }) => {
+  const status = STATUS_CONFIG[agent.status] || STATUS_CONFIG.idle;
+  const icon = ROLE_ICONS[agent.role] || "\u25A3";
+  const [hover, setHover] = useState(false);
+
+  return (
+    <div
+      onClick={() => onClick(agent)}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      style={{
+        position: "relative",
+        background: isSelected
+          ? "linear-gradient(135deg, rgba(57,255,20,0.12) 0%, rgba(0,20,0,0.95) 100%)"
+          : hover
+            ? "linear-gradient(135deg, rgba(57,255,20,0.06) 0%, rgba(0,12,0,0.95) 100%)"
+            : "linear-gradient(135deg, rgba(0,20,0,0.8) 0%, rgba(0,8,0,0.95) 100%)",
+        border: `1px solid ${isSelected ? "#39ff14" : hover ? "rgba(57,255,20,0.4)" : "rgba(57,255,20,0.15)"}`,
+        borderRadius: 4, padding: "16px", cursor: "pointer", transition: "all 0.3s ease",
+        boxShadow: isSelected ? "0 0 20px rgba(57,255,20,0.15), inset 0 0 20px rgba(57,255,20,0.05)" : "none",
+        overflow: "hidden",
+      }}
+    >
+      {isSelected && <ScanLine />}
+      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+        <div style={{
+          width: 40, height: 40, borderRadius: "50%",
+          display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20,
+          background: agent.isHuman ? "linear-gradient(135deg, #39ff14 0%, #00d4ff 100%)" : "rgba(57,255,20,0.1)",
+          border: `1.5px solid ${agent.isHuman ? "#39ff14" : status.color}`,
+          color: agent.isHuman ? "#000" : status.color,
+          boxShadow: `0 0 12px ${agent.isHuman ? "rgba(57,255,20,0.4)" : "rgba(57,255,20,0.1)"}`,
+        }}>{icon}</div>
+        <div style={{ flex: 1 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <span style={{ color: "#39ff14", fontFamily: "'Courier New', monospace", fontSize: 15, fontWeight: "bold", letterSpacing: 1 }}>{agent.codename}</span>
+            {agent.isHuman && (
+              <span style={{ fontSize: 9, padding: "1px 6px", borderRadius: 3, background: "rgba(57,255,20,0.2)", color: "#39ff14", border: "1px solid rgba(57,255,20,0.3)", letterSpacing: 1, fontFamily: "monospace" }}>HUMAN</span>
+            )}
+          </div>
+          <div style={{ color: "rgba(57,255,20,0.5)", fontFamily: "monospace", fontSize: 11, letterSpacing: 1 }}>{agent.role} · {agent.department}</div>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+          <div style={{ width: 8, height: 8, borderRadius: "50%", background: status.color, boxShadow: status.glow, animation: agent.status === "active" || agent.status === "processing" ? "blink 1.5s ease-in-out infinite" : "none" }} />
+          <span style={{ color: status.color, fontFamily: "monospace", fontSize: 10, letterSpacing: 1 }}>{status.label}</span>
+        </div>
+      </div>
+      <div style={{ marginBottom: 8 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 3 }}>
+          <span style={{ color: "rgba(57,255,20,0.4)", fontFamily: "monospace", fontSize: 10 }}>PROGRESS</span>
+          <span style={{ color: "#39ff14", fontFamily: "monospace", fontSize: 10 }}>{agent.progress}%</span>
+        </div>
+        <div style={{ height: 3, background: "rgba(57,255,20,0.1)", borderRadius: 2, overflow: "hidden" }}>
+          <div style={{ height: "100%", width: `${agent.progress}%`, background: `linear-gradient(90deg, ${status.color}, #39ff14)`, boxShadow: `0 0 6px ${status.color}`, transition: "width 0.5s ease" }} />
+        </div>
+      </div>
+      <div style={{ display: "flex", gap: 12, fontSize: 10, fontFamily: "monospace", color: "rgba(57,255,20,0.5)" }}>
+        <span>✓ {agent.tasksCompleted}</span>
+        <span>⟳ {agent.tasksActive}</span>
+        <span>⏱ {agent.lastActive}</span>
+      </div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════
+// AGENT DETAIL PANEL
+// ═══════════════════════════════════════════════════
+const AgentDetail = ({ agent, onClose, onUpdate }) => {
+  if (!agent) return null;
+  const status = STATUS_CONFIG[agent.status] || STATUS_CONFIG.idle;
+  const icon = ROLE_ICONS[agent.role] || "\u25A3";
+
+  return (
+    <div style={{
+      background: "linear-gradient(180deg, rgba(0,20,0,0.98) 0%, rgba(0,8,0,0.99) 100%)",
+      border: "1px solid rgba(57,255,20,0.3)", borderRadius: 4, padding: 24,
+      position: "relative", overflow: "hidden",
+    }}>
+      <ScanLine />
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20 }}>
+        <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+          <div style={{
+            width: 64, height: 64, borderRadius: "50%",
+            display: "flex", alignItems: "center", justifyContent: "center", fontSize: 32,
+            background: agent.isHuman ? "linear-gradient(135deg, #39ff14 0%, #00d4ff 100%)" : "rgba(57,255,20,0.08)",
+            border: `2px solid ${status.color}`, color: agent.isHuman ? "#000" : status.color,
+            boxShadow: `0 0 20px ${status.color}40`,
+          }}>{icon}</div>
+          <div>
+            <GlitchText text={agent.codename} style={{ color: "#39ff14", fontFamily: "'Courier New', monospace", fontSize: 24, fontWeight: "bold", letterSpacing: 2 }} />
+            <div style={{ color: "rgba(57,255,20,0.5)", fontFamily: "monospace", fontSize: 12, letterSpacing: 2, marginTop: 4 }}>
+              {agent.role.toUpperCase()} · {agent.department.toUpperCase()}
+              {agent.isHuman && <span style={{ marginLeft: 8, padding: "2px 8px", background: "rgba(57,255,20,0.2)", border: "1px solid rgba(57,255,20,0.3)", borderRadius: 3, fontSize: 10 }}>HUMAN OPERATOR</span>}
+            </div>
+          </div>
+        </div>
+        <button onClick={onClose} style={{ background: "none", border: "1px solid rgba(57,255,20,0.3)", color: "#39ff14", cursor: "pointer", padding: "4px 12px", fontFamily: "monospace", fontSize: 12, borderRadius: 2 }}>✕ CLOSE</button>
+      </div>
+      <div style={{ color: "rgba(57,255,20,0.7)", fontFamily: "monospace", fontSize: 13, lineHeight: 1.6, marginBottom: 20, padding: "12px 16px", background: "rgba(57,255,20,0.03)", border: "1px solid rgba(57,255,20,0.08)", borderRadius: 3 }}>
+        &gt; {agent.description}
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 12, marginBottom: 20 }}>
+        {[
+          { label: "STATUS", value: status.label, color: status.color },
+          { label: "UPTIME", value: agent.uptime, color: "#39ff14" },
+          { label: "TASKS DONE", value: agent.tasksCompleted.toLocaleString(), color: "#39ff14" },
+          { label: "MEMORY", value: `${agent.memoryUsage}%`, color: agent.memoryUsage > 85 ? "#ffaa00" : "#39ff14" },
+        ].map((stat, i) => (
+          <div key={i} style={{ padding: "12px", background: "rgba(57,255,20,0.03)", border: "1px solid rgba(57,255,20,0.1)", borderRadius: 3, textAlign: "center" }}>
+            <div style={{ color: "rgba(57,255,20,0.4)", fontFamily: "monospace", fontSize: 9, letterSpacing: 2, marginBottom: 4 }}>{stat.label}</div>
+            <div style={{ color: stat.color, fontFamily: "monospace", fontSize: 16, fontWeight: "bold" }}>{stat.value}</div>
+          </div>
+        ))}
+      </div>
+      <div style={{ marginBottom: 20 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+          <span style={{ color: "rgba(57,255,20,0.5)", fontFamily: "monospace", fontSize: 11, letterSpacing: 2 }}>CURRENT MISSION PROGRESS</span>
+          <span style={{ color: "#39ff14", fontFamily: "monospace", fontSize: 14, fontWeight: "bold" }}>{agent.progress}%</span>
+        </div>
+        <div style={{ height: 6, background: "rgba(57,255,20,0.1)", borderRadius: 3, overflow: "hidden" }}>
+          <div style={{ height: "100%", width: `${agent.progress}%`, background: `linear-gradient(90deg, ${status.color}, #39ff14)`, boxShadow: `0 0 10px ${status.color}`, borderRadius: 3, transition: "width 0.5s ease" }} />
+        </div>
+      </div>
+      <div style={{ marginBottom: 16 }}>
+        <div style={{ color: "rgba(57,255,20,0.5)", fontFamily: "monospace", fontSize: 11, letterSpacing: 2, marginBottom: 8 }}>CAPABILITIES</div>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+          {agent.skills.map((skill, i) => (
+            <span key={i} style={{ padding: "4px 10px", fontSize: 11, fontFamily: "monospace", background: "rgba(57,255,20,0.06)", border: "1px solid rgba(57,255,20,0.2)", borderRadius: 2, color: "rgba(57,255,20,0.7)", letterSpacing: 1 }}>{skill}</span>
+          ))}
+        </div>
+      </div>
+      <div style={{ display: "flex", gap: 8, marginTop: 16 }}>
+        {["ASSIGN TASK", "UPDATE STATUS", "VIEW LOGS"].map((action, i) => (
+          <button key={i} onClick={() => {
+            if (action === "UPDATE STATUS") {
+              const statuses = Object.keys(STATUS_CONFIG);
+              const idx = statuses.indexOf(agent.status);
+              const next = statuses[(idx + 1) % statuses.length];
+              onUpdate({ ...agent, status: next });
+            }
+          }} style={{ flex: 1, padding: "8px", background: "rgba(57,255,20,0.05)", border: "1px solid rgba(57,255,20,0.2)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", fontSize: 11, cursor: "pointer", letterSpacing: 1, transition: "all 0.2s" }}>
+            {action}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════
+// ADD / EDIT AGENT MODAL
+// ═══════════════════════════════════════════════════
+const AgentModal = ({ agent, onSave, onCancel }) => {
+  const isEdit = !!agent;
+  const [form, setForm] = useState(agent || {
+    codename: "", role: "Custom", department: "General",
+    status: "idle", skills: [], description: "", progress: 0,
+    tasksCompleted: 0, tasksActive: 0, memoryUsage: 0, uptime: "0 days", lastActive: "Never",
+  });
+  const [skillInput, setSkillInput] = useState("");
+  const set = (key, val) => setForm(f => ({ ...f, [key]: val }));
+  const addSkill = () => {
+    if (skillInput.trim() && !form.skills.includes(skillInput.trim())) {
+      set("skills", [...form.skills, skillInput.trim()]);
+      setSkillInput("");
+    }
+  };
+  const removeSkill = (s) => set("skills", form.skills.filter(x => x !== s));
+
+  return (
+    <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(0,0,0,0.85)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000 }}>
+      <div style={{ background: "linear-gradient(180deg, rgba(0,20,0,0.99) 0%, rgba(0,5,0,0.99) 100%)", border: "1px solid rgba(57,255,20,0.4)", borderRadius: 4, padding: 28, width: 480, maxHeight: "85vh", overflowY: "auto", boxShadow: "0 0 40px rgba(57,255,20,0.1)" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
+          <GlitchText text={isEdit ? "MODIFY AGENT" : "DEPLOY NEW AGENT"} style={{ color: "#39ff14", fontFamily: "monospace", fontSize: 18, fontWeight: "bold", letterSpacing: 3 }} />
+          <button onClick={onCancel} style={{ background: "none", border: "1px solid rgba(57,255,20,0.3)", color: "#39ff14", cursor: "pointer", padding: "4px 12px", fontFamily: "monospace", borderRadius: 2 }}>✕</button>
+        </div>
+
+        {[
+          { label: "CODENAME", key: "codename", placeholder: "Enter agent codename..." },
+          { label: "DESCRIPTION", key: "description", placeholder: "Agent mission brief...", multiline: true },
+        ].map(({ label, key, placeholder, multiline }) => (
+          <div key={key} style={{ marginBottom: 16 }}>
+            <label style={{ display: "block", color: "rgba(57,255,20,0.5)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 4 }}>{label}</label>
+            {multiline ? (
+              <textarea value={form[key]} onChange={e => set(key, e.target.value)} placeholder={placeholder} rows={3}
+                style={{ width: "100%", padding: "8px 12px", background: "rgba(57,255,20,0.03)", border: "1px solid rgba(57,255,20,0.2)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", fontSize: 13, resize: "vertical", outline: "none", boxSizing: "border-box" }} />
+            ) : (
+              <input value={form[key]} onChange={e => set(key, e.target.value)} placeholder={placeholder}
+                style={{ width: "100%", padding: "8px 12px", background: "rgba(57,255,20,0.03)", border: "1px solid rgba(57,255,20,0.2)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", fontSize: 13, outline: "none", boxSizing: "border-box" }} />
+            )}
+          </div>
+        ))}
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 16 }}>
+          {[
+            { label: "ROLE", key: "role", options: Object.keys(ROLE_ICONS) },
+            { label: "DEPARTMENT", key: "department", options: ["Executive", "Creative", "Finance", "Operations", "Marketing", "Technology", "Intelligence", "People", "Legal", "Strategy", "General", "R&D", "Sales"] },
+          ].map(({ label, key, options }) => (
+            <div key={key}>
+              <label style={{ display: "block", color: "rgba(57,255,20,0.5)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 4 }}>{label}</label>
+              <select value={form[key]} onChange={e => set(key, e.target.value)}
+                style={{ width: "100%", padding: "8px 12px", background: "rgba(0,10,0,0.95)", border: "1px solid rgba(57,255,20,0.2)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", fontSize: 13, outline: "none" }}>
+                {options.map(o => <option key={o} value={o}>{o}</option>)}
+              </select>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 16 }}>
+          <div>
+            <label style={{ display: "block", color: "rgba(57,255,20,0.5)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 4 }}>STATUS</label>
+            <select value={form.status} onChange={e => set("status", e.target.value)}
+              style={{ width: "100%", padding: "8px 12px", background: "rgba(0,10,0,0.95)", border: "1px solid rgba(57,255,20,0.2)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", fontSize: 13, outline: "none" }}>
+              {Object.entries(STATUS_CONFIG).map(([k, v]) => <option key={k} value={k}>{v.label}</option>)}
+            </select>
+          </div>
+          <div>
+            <label style={{ display: "block", color: "rgba(57,255,20,0.5)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 4 }}>PROGRESS: {form.progress}%</label>
+            <input type="range" min="0" max="100" value={form.progress} onChange={e => set("progress", parseInt(e.target.value))}
+              style={{ width: "100%", accentColor: "#39ff14" }} />
+          </div>
+        </div>
+
+        <div style={{ marginBottom: 20 }}>
+          <label style={{ display: "block", color: "rgba(57,255,20,0.5)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 4 }}>CAPABILITIES</label>
+          <div style={{ display: "flex", gap: 6, marginBottom: 8 }}>
+            <input value={skillInput} onChange={e => setSkillInput(e.target.value)} onKeyDown={e => e.key === "Enter" && addSkill()} placeholder="Add capability..."
+              style={{ flex: 1, padding: "6px 10px", background: "rgba(57,255,20,0.03)", border: "1px solid rgba(57,255,20,0.2)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", fontSize: 12, outline: "none" }} />
+            <button onClick={addSkill} style={{ padding: "6px 14px", background: "rgba(57,255,20,0.1)", border: "1px solid rgba(57,255,20,0.3)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", cursor: "pointer" }}>+ ADD</button>
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+            {form.skills.map((s, i) => (
+              <span key={i} onClick={() => removeSkill(s)} style={{ padding: "3px 8px", fontSize: 11, fontFamily: "monospace", background: "rgba(57,255,20,0.06)", border: "1px solid rgba(57,255,20,0.2)", borderRadius: 2, color: "rgba(57,255,20,0.7)", cursor: "pointer" }}>{s} ✕</span>
+            ))}
+          </div>
+        </div>
+
+        <div style={{ display: "flex", gap: 10 }}>
+          <button onClick={onCancel} style={{ flex: 1, padding: "10px", background: "rgba(255,0,64,0.05)", border: "1px solid rgba(255,0,64,0.3)", borderRadius: 2, color: "#ff0040", fontFamily: "monospace", fontSize: 12, cursor: "pointer", letterSpacing: 2 }}>ABORT</button>
+          <button onClick={() => {
+            if (!form.codename.trim()) return;
+            onSave({
+              ...form, id: form.id || uid(),
+              tasksCompleted: form.tasksCompleted || 0, tasksActive: form.tasksActive || 0,
+              memoryUsage: form.memoryUsage || Math.floor(Math.random() * 60) + 20,
+              uptime: form.uptime || "0 days", lastActive: form.lastActive || "Just deployed",
+            });
+          }} style={{ flex: 2, padding: "10px", background: "rgba(57,255,20,0.1)", border: "1px solid rgba(57,255,20,0.4)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", fontSize: 12, cursor: "pointer", letterSpacing: 2, fontWeight: "bold" }}>
+            {isEdit ? "\u25B6 UPDATE AGENT" : "\u25B6 DEPLOY AGENT"}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════
+// ECOSYSTEM STATS BAR
+// ═══════════════════════════════════════════════════
+const EcoStats = ({ agents }) => {
+  const active = agents.filter(a => a.status === "active").length;
+  const processing = agents.filter(a => a.status === "processing").length;
+  const totalTasks = agents.reduce((s, a) => s + a.tasksCompleted, 0);
+  const avgProgress = Math.round(agents.reduce((s, a) => s + a.progress, 0) / agents.length);
+  const [clock, setClock] = useState("");
+  useEffect(() => {
+    const tick = () => {
+      const d = new Date();
+      setClock(d.toLocaleTimeString("en-US", { hour12: false }) + "." + String(d.getMilliseconds()).padStart(3, "0"));
+    };
+    tick();
+    const i = setInterval(tick, 47);
+    return () => clearInterval(i);
+  }, []);
+
+  const stats = [
+    { label: "SYSTEM TIME", value: clock, color: "#39ff14" },
+    { label: "AGENTS ONLINE", value: `${active + processing} / ${agents.length}`, color: "#39ff14" },
+    { label: "ACTIVE", value: active, color: "#39ff14" },
+    { label: "PROCESSING", value: processing, color: "#ffaa00" },
+    { label: "TOTAL TASKS", value: totalTasks.toLocaleString(), color: "#00d4ff" },
+    { label: "AVG PROGRESS", value: `${avgProgress}%`, color: "#39ff14" },
+  ];
+
+  return (
+    <div style={{ display: "flex", gap: 2, padding: "8px 16px", background: "rgba(0,10,0,0.9)", borderBottom: "1px solid rgba(57,255,20,0.15)", fontFamily: "monospace", fontSize: 11, flexWrap: "wrap" }}>
+      {stats.map((s, i) => (
+        <div key={i} style={{ display: "flex", alignItems: "center", gap: 6, padding: "2px 12px", borderRight: i < stats.length - 1 ? "1px solid rgba(57,255,20,0.1)" : "none" }}>
+          <span style={{ color: "rgba(57,255,20,0.4)", letterSpacing: 1, fontSize: 9 }}>{s.label}</span>
+          <span style={{ color: s.color, fontWeight: "bold", letterSpacing: 1 }}>{s.value}</span>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════
+// ACTIVITY LOG
+// ═══════════════════════════════════════════════════
+const ActivityLog = ({ entries }) => (
+  <div style={{ background: "rgba(0,10,0,0.6)", border: "1px solid rgba(57,255,20,0.15)", borderRadius: 4, padding: 12, height: 200, overflowY: "auto" }}>
+    <div style={{ color: "rgba(57,255,20,0.5)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>
+      ◈ SYSTEM LOG
+    </div>
+    {entries.map((entry, i) => (
+      <div key={i} style={{ fontFamily: "monospace", fontSize: 11, color: entry.color || "rgba(57,255,20,0.6)", marginBottom: 3, lineHeight: 1.5 }}>
+        <span style={{ color: "rgba(57,255,20,0.3)" }}>[{entry.time}]</span> {entry.message}
+      </div>
+    ))}
+  </div>
+);
+
+// ═══════════════════════════════════════════════════
+// NETWORK VISUALIZATION
+// ═══════════════════════════════════════════════════
+const NetworkMap = ({ agents, selectedId }) => {
+  const canvasRef = useRef(null);
+  const frameRef = useRef(0);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    const W = canvas.width = canvas.offsetWidth;
+    const H = canvas.height = canvas.offsetHeight;
+    const cx = W / 2, cy = H / 2;
+    const radius = Math.min(W, H) * 0.38;
+    const positions = agents.map((a, i) => {
+      const angle = (i / agents.length) * Math.PI * 2 - Math.PI / 2;
+      return { x: cx + Math.cos(angle) * radius, y: cy + Math.sin(angle) * radius, agent: a };
+    });
+
+    let time = 0;
+    const draw = () => {
+      ctx.clearRect(0, 0, W, H);
+      time += 0.01;
+      for (let i = 0; i < positions.length; i++) {
+        for (let j = i + 1; j < positions.length; j++) {
+          const a = positions[i], b = positions[j];
+          const isSelected = a.agent.id === selectedId || b.agent.id === selectedId;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.strokeStyle = isSelected ? "rgba(57,255,20,0.2)" : "rgba(57,255,20,0.04)";
+          ctx.lineWidth = isSelected ? 1.5 : 0.5;
+          ctx.stroke();
+          if (isSelected || Math.random() > 0.995) {
+            const t = (time * (1 + i * 0.1)) % 1;
+            const px = a.x + (b.x - a.x) * t;
+            const py = a.y + (b.y - a.y) * t;
+            ctx.beginPath();
+            ctx.arc(px, py, 2, 0, Math.PI * 2);
+            ctx.fillStyle = "#39ff14";
+            ctx.fill();
+          }
+        }
+      }
+      positions.forEach(({ x, y, agent: a }) => {
+        const isActive = a.status === "active" || a.status === "processing";
+        const isSel = a.id === selectedId;
+        const statusConf = STATUS_CONFIG[a.status] || STATUS_CONFIG.idle;
+        if (isActive) {
+          const pulseR = 18 + Math.sin(time * 3) * 4;
+          ctx.beginPath();
+          ctx.arc(x, y, pulseR, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(57,255,20,${0.1 + Math.sin(time * 3) * 0.05})`;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+        ctx.beginPath();
+        ctx.arc(x, y, isSel ? 14 : 10, 0, Math.PI * 2);
+        ctx.fillStyle = a.isHuman ? "rgba(57,255,20,0.3)" : "rgba(0,20,0,0.8)";
+        ctx.fill();
+        ctx.strokeStyle = statusConf.color;
+        ctx.lineWidth = isSel ? 2.5 : 1.5;
+        ctx.stroke();
+        ctx.fillStyle = isSel ? "#39ff14" : "rgba(57,255,20,0.6)";
+        ctx.font = `${isSel ? "bold " : ""}9px monospace`;
+        ctx.textAlign = "center";
+        ctx.fillText(a.codename, x, y + (isSel ? 26 : 22));
+      });
+      frameRef.current = requestAnimationFrame(draw);
+    };
+    draw();
+    return () => cancelAnimationFrame(frameRef.current);
+  }, [agents, selectedId]);
+
+  return (
+    <div style={{ position: "relative", border: "1px solid rgba(57,255,20,0.15)", borderRadius: 4, overflow: "hidden", background: "rgba(0,5,0,0.6)" }}>
+      <div style={{ position: "absolute", top: 8, left: 12, color: "rgba(57,255,20,0.5)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, zIndex: 1 }}>◎ NEURAL NETWORK MAP</div>
+      <canvas ref={canvasRef} style={{ width: "100%", height: 300, display: "block" }} />
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════
+// MAIN DASHBOARD
+// ═══════════════════════════════════════════════════
+
+// ═══════════════════════════════════════════════════════════════
+// ECOSYSTEM MIND MAP — Interactive neural network visualization
+// ═══════════════════════════════════════════════════════════════
+const EcosystemMindMap = () => {
+  const ecoCanvasRef = useRef(null);
+  const ecoAnimRef = useRef(null);
+  const ecoParticlesRef = useRef([]);
+  const ecoFrameRef = useRef(0);
+  const ecoHoveredRef = useRef(null);
+  const [ecoSelected, setEcoSelected] = useState(null);
+  const [ecoHovered, setEcoHovered] = useState(null);
+
+  const ecoAgents = [
+    { id: 'architect', name: 'Architect', role: 'Supreme Orchestrator', dept: 'architect', connects: ['bobby','ap','cornerstone','ledger','wolf','venture','equity','alpha'], desc: 'Supreme strategic orchestrator — sits above the entire C-Suite. Leads the Weekly Capital Council, deploys the investment budget, and charts the compound growth path to a billion-dollar Hartley portfolio.' },
+    { id: 'bobby', name: 'Bobby', role: 'Founder', dept: 'executive', connects: ['architect','ap','cornerstone','wolf','venture'], desc: 'The human at the center. All final decisions flow through Bobby.' },
+    { id: 'ap', name: 'AP', role: 'CEO', dept: 'executive', connects: ['architect','bobby','vector','signal','forge','cipher','spectra','oracle','ledger','sentinel','nexus','cornerstone'], desc: 'Chief executive agent. Coordinates all departments.' },
+    { id: 'cornerstone', name: 'Cornerstone', role: 'Chief Mindset Officer', dept: 'executive', connects: ['architect','bobby','ap'], desc: 'Vision alignment, evening reflections, Laminin philosophy.' },
+    { id: 'vector', name: 'Vector', role: 'Graphic Designer', dept: 'creative', connects: ['ap','signal','forge','atlas'], desc: 'Visual design, motion graphics, 3D assets, brand identity.' },
+    { id: 'signal', name: 'Signal', role: 'CMO', dept: 'creative', connects: ['ap','vector','spectra','oracle'], desc: 'Marketing strategy, campaigns, brand positioning.' },
+    { id: 'forge', name: 'Forge', role: 'COO', dept: 'operations', connects: ['ap','atlas','cipher','vector','nexus'], desc: 'Operations, project management, workflow optimization.' },
+    { id: 'atlas', name: 'Atlas', role: 'Signage Ops', dept: 'operations', connects: ['forge','vector','sentinel'], desc: 'Signage production, installation, vendor relations.' },
+    { id: 'cipher', name: 'Cipher', role: 'CTO', dept: 'technology', connects: ['ap','forge','oracle'], desc: 'Technology infrastructure, systems architecture.' },
+    { id: 'oracle', name: 'Oracle', role: 'CIO', dept: 'technology', connects: ['ap','cipher','signal','spectra'], desc: 'Data intelligence, market research, insights.' },
+    { id: 'spectra', name: 'Spectra', role: 'CSO', dept: 'strategy', connects: ['ap','signal','oracle','venture'], desc: 'Strategic planning, growth strategy, business development.' },
+    { id: 'ledger', name: 'Ledger', role: 'CFO', dept: 'finance', connects: ['architect','ap','wolf','alpha','equity'], desc: 'Financial oversight, budgeting, P&L reporting.' },
+    { id: 'wolf', name: 'WOLF', role: 'CTO-Trading', dept: 'finance', connects: ['architect','bobby','ledger','alpha','venture'], desc: 'Active trading, market analysis, portfolio management.' },
+    { id: 'alpha', name: 'Alpha', role: 'Hedge Fund Mgr', dept: 'finance', connects: ['architect','ledger','wolf','equity'], desc: 'Hedge fund strategies, risk management.' },
+    { id: 'equity', name: 'Equity', role: 'Private Equity', dept: 'finance', connects: ['architect','ledger','alpha','venture'], desc: 'PE analysis, deal evaluation, long-term investments.' },
+    { id: 'venture', name: 'Venture', role: 'Venture Capital', dept: 'finance', connects: ['architect','bobby','spectra','wolf','equity'], desc: 'Startup scouting, early-stage investment analysis.' },
+    { id: 'sentinel', name: 'Sentinel', role: 'CLO', dept: 'strategy', connects: ['ap','atlas','forge'], desc: 'Legal compliance, contract review, regulatory oversight.' },
+    { id: 'nexus', name: 'Nexus', role: 'CHRO', dept: 'people', connects: ['ap','forge'], desc: 'Human resources, team development, people operations.' },
+    { id: 'future1', name: 'Future', role: 'Future Agent', dept: 'future', connects: ['architect'], desc: 'Placeholder — next AI agent joining the Hartley ecosystem.' },
+    { id: 'future2', name: 'Future', role: 'Future Agent', dept: 'future', connects: ['architect'], desc: 'Placeholder — next AI agent joining the Hartley ecosystem.' },
+    { id: 'future3', name: 'Future', role: 'Future Agent', dept: 'future', connects: ['architect'], desc: 'Placeholder — next AI agent joining the Hartley ecosystem.' },
+    { id: 'future4', name: 'Future', role: 'Future Agent', dept: 'future', connects: ['architect'], desc: 'Placeholder — next AI agent joining the Hartley ecosystem.' },
+  ];
+
+  const ecoDeptColors = {
+    architect: { primary: '#ffffff', bg: 'rgba(255,255,255,0.12)', glow: 'rgba(255,255,255,0.55)' },
+    executive: { primary: '#39ff14', bg: 'rgba(57,255,20,0.15)', glow: 'rgba(57,255,20,0.4)' },
+    finance:   { primary: '#00d4ff', bg: 'rgba(0,212,255,0.15)', glow: 'rgba(0,212,255,0.4)' },
+    creative:  { primary: '#ffaa00', bg: 'rgba(255,170,0,0.15)', glow: 'rgba(255,170,0,0.4)' },
+    operations:{ primary: '#ff4488', bg: 'rgba(255,68,136,0.15)', glow: 'rgba(255,68,136,0.4)' },
+    technology:{ primary: '#aa55ff', bg: 'rgba(170,85,255,0.15)', glow: 'rgba(170,85,255,0.4)' },
+    strategy:  { primary: '#00ffff', bg: 'rgba(0,255,255,0.15)', glow: 'rgba(0,255,255,0.4)' },
+    people:    { primary: '#ffff64', bg: 'rgba(255,255,100,0.15)', glow: 'rgba(255,255,100,0.4)' },
+    future:    { primary: '#39ff14', bg: 'rgba(0,0,0,0)', glow: 'rgba(57,255,20,0.08)' }
+  };
+
+  const ecoWorkflows = [
+    { title: 'CLIENT ACQUISITION', flow: 'Signal \u2192 Spectra \u2192 Vector \u2192 AP', desc: 'Signal identifies leads, Spectra develops strategy, Vector creates pitch materials, AP approves and closes.' },
+    { title: 'PROJECT EXECUTION', flow: 'AP \u2192 Forge \u2192 Atlas \u2192 Sentinel', desc: 'AP greenlights projects, Forge manages operations, Atlas handles signage logistics, Sentinel ensures compliance.' },
+    { title: 'FINANCIAL OVERSIGHT', flow: 'Ledger \u2192 WOLF \u2192 Alpha \u2192 Equity', desc: 'Ledger tracks daily finances, WOLF manages trading, Alpha runs hedge strategies, Equity evaluates private deals.' },
+    { title: 'BRAND DEVELOPMENT', flow: 'Vector \u2192 Signal \u2192 Oracle \u2192 AP', desc: 'Vector designs brand assets, Signal pushes to market, Oracle gathers intelligence, AP refines direction.' },
+    { title: 'TECHNOLOGY & INFRA', flow: 'Cipher \u2192 Oracle \u2192 Forge \u2192 AP', desc: 'Cipher builds systems, Oracle provides data intelligence, Forge integrates into operations, AP sets priorities.' },
+    { title: 'VENTURE & GROWTH', flow: 'Venture \u2192 Spectra \u2192 WOLF \u2192 Bobby', desc: 'Venture scouts opportunities, Spectra validates strategy, WOLF models financial risk, Bobby makes final calls.' },
+    { title: 'SELF-IMPROVING LOOP', flow: 'ALL AGENTS \u2192 Loop \u2192 ALL AGENTS', desc: 'Corrections from any interaction feed back through the Self-Improving Loop, updating lessons so mistakes never repeat.' },
+    { title: 'FOUNDER ALIGNMENT', flow: 'Cornerstone \u2192 Bobby \u2192 AP \u2192 ALL', desc: 'Cornerstone anchors Bobby\u2019s vision. Bobby directs AP. AP cascades priorities across the entire ecosystem.' }
+  ];
+
+  const hexToRgb = (hex) => {
+    const r = parseInt(hex.slice(1,3), 16);
+    const g = parseInt(hex.slice(3,5), 16);
+    const b = parseInt(hex.slice(5,7), 16);
+    return `${r},${g},${b}`;
+  };
+
+  useEffect(() => {
+    const canvas = ecoCanvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let W, H;
+
+    const resize = () => {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      W = rect.width;
+      H = Math.max(560, Math.min(780, window.innerHeight * 0.75));
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = W * dpr;
+      canvas.height = H * dpr;
+      canvas.style.width = W + 'px';
+      canvas.style.height = H + 'px';
+      ctx.scale(dpr, dpr);
+    };
+    resize();
+    window.addEventListener('resize', resize);
+
+    const layoutAgents = () => {
+      const cx = W / 2;
+      const isMobile = W < 600;
+
+      // Tier 0 — Supreme Orchestrator: Architect at top-center
+      ecoAgents[0].x = cx; ecoAgents[0].y = H * 0.09; ecoAgents[0].r = isMobile ? 28 : 40;
+
+      // Tier 1 — Founder: Bobby beside Architect
+      ecoAgents[1].x = cx - (isMobile ? 60 : 90); ecoAgents[1].y = H * 0.09; ecoAgents[1].r = isMobile ? 24 : 32;
+
+      // Tier 2 — CEO (AP) below Architect, Cornerstone beside
+      ecoAgents[2].x = cx; ecoAgents[2].y = H * 0.27; ecoAgents[2].r = isMobile ? 20 : 28;
+      ecoAgents[3].x = cx - (isMobile ? 60 : 90); ecoAgents[3].y = H * 0.27; ecoAgents[3].r = isMobile ? 17 : 22;
+
+      // Tier 3 — C-Suite inner ring
+      const innerRing = [4,5,6,7,8,9,10,16,17]; // vector, signal, forge, atlas, cipher, oracle, spectra, sentinel, nexus
+      const innerR = isMobile ? 120 : 175;
+      const innerCY = H * 0.55;
+      innerRing.forEach((idx, i) => {
+        const angle = (i / innerRing.length) * Math.PI * 2 - Math.PI / 2;
+        ecoAgents[idx].x = cx + Math.cos(angle) * innerR;
+        ecoAgents[idx].y = innerCY + Math.sin(angle) * innerR;
+        ecoAgents[idx].r = isMobile ? 16 : 21;
+      });
+
+      // Tier 4 — Finance specialists outer ring
+      const outerRing = [11,12,13,14,15]; // ledger, wolf, alpha, equity, venture
+      const outerR = isMobile ? 185 : 265;
+      const outerCY = H * 0.55;
+      outerRing.forEach((idx, i) => {
+        const angle = (i / outerRing.length) * Math.PI * 2 - Math.PI / 4;
+        ecoAgents[idx].x = cx + Math.cos(angle) * outerR;
+        ecoAgents[idx].y = outerCY + Math.sin(angle) * outerR;
+        ecoAgents[idx].r = isMobile ? 15 : 20;
+      });
+
+      // Future agent ghost nodes — scattered at periphery
+      const futurePos = [
+        { x: cx + (isMobile ? 75 : 110), y: H * 0.09 },
+        { x: W * (isMobile ? 0.88 : 0.91), y: H * 0.28 },
+        { x: W * (isMobile ? 0.88 : 0.91), y: H * 0.72 },
+        { x: W * (isMobile ? 0.07 : 0.05), y: H * 0.52 },
+      ];
+      [18,19,20,21].forEach((idx, i) => {
+        ecoAgents[idx].x = futurePos[i].x;
+        ecoAgents[idx].y = futurePos[i].y;
+        ecoAgents[idx].r = isMobile ? 16 : 22;
+      });
+    };
+
+    const getAgentAt = (x, y) => {
+      for (let i = ecoAgents.length - 1; i >= 0; i--) {
+        const a = ecoAgents[i];
+        if (a.x === undefined) continue;
+        const dist = Math.sqrt((x - a.x) ** 2 + (y - a.y) ** 2);
+        if (dist < (a.r || 20) + 5) return a;
+      }
+      return null;
+    };
+
+    const onMove = (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
+      const y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
+      const agent = getAgentAt(x, y);
+      ecoHoveredRef.current = agent;
+      canvas.style.cursor = agent ? 'pointer' : 'default';
+    };
+
+    const onClick = (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.clientX || (e.changedTouches && e.changedTouches[0].clientX);
+      const clientY = e.clientY || (e.changedTouches && e.changedTouches[0].clientY);
+      const agent = getAgentAt(clientX - rect.left, clientY - rect.top);
+      if (agent) setEcoSelected(agent);
+    };
+
+    canvas.addEventListener('mousemove', onMove);
+    canvas.addEventListener('mouseleave', () => { ecoHoveredRef.current = null; });
+    canvas.addEventListener('click', onClick);
+    canvas.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      const touch = e.touches[0];
+      const rect = canvas.getBoundingClientRect();
+      const agent = getAgentAt(touch.clientX - rect.left, touch.clientY - rect.top);
+      ecoHoveredRef.current = agent;
+      if (agent) setEcoSelected(agent);
+    }, { passive: false });
+
+    const particles = ecoParticlesRef.current;
+
+    const draw = () => {
+      ecoFrameRef.current++;
+      const frame = ecoFrameRef.current;
+      const hovered = ecoHoveredRef.current;
+
+      layoutAgents();
+      ctx.clearRect(0, 0, W, H);
+
+      // Grid
+      ctx.strokeStyle = 'rgba(57,255,20,0.03)';
+      ctx.lineWidth = 0.5;
+      for (let x = 0; x < W; x += 40) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
+      for (let y = 0; y < H; y += 40) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+
+      // Connections
+      ecoAgents.forEach(agent => {
+        if (agent.x === undefined) return;
+        agent.connects.forEach(tid => {
+          const target = ecoAgents.find(a => a.id === tid);
+          if (!target || target.x === undefined) return;
+          const isHL = hovered && (hovered.id === agent.id || hovered.id === tid);
+          const isFutureConn = agent.dept === 'future' || target.dept === 'future';
+          ctx.beginPath();
+          if (isFutureConn) ctx.setLineDash([4, 6]);
+          ctx.strokeStyle = isHL ? ecoDeptColors[agent.dept].primary : (isFutureConn ? 'rgba(57,255,20,0.05)' : 'rgba(57,255,20,0.08)');
+          ctx.lineWidth = isHL ? 1.5 : 0.5;
+          ctx.moveTo(agent.x, agent.y);
+          ctx.lineTo(target.x, target.y);
+          ctx.stroke();
+          if (isFutureConn) ctx.setLineDash([]);
+          if (isHL && frame % 20 === 0 && !isFutureConn) {
+            particles.push({ fx: agent.x, fy: agent.y, tx: target.x, ty: target.y, p: Math.random(), s: 0.002 + Math.random() * 0.003, c: ecoDeptColors[agent.dept].primary });
+          }
+        });
+      });
+
+      // Particles
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.p += p.s;
+        if (p.p > 1) { particles.splice(i, 1); continue; }
+        const px = p.fx + (p.tx - p.fx) * p.p;
+        const py = p.fy + (p.ty - p.fy) * p.p;
+        const alpha = Math.sin(p.p * Math.PI);
+        ctx.beginPath();
+        ctx.fillStyle = p.c.replace(')', `,${alpha})`).replace('rgb', 'rgba').replace('##', '#');
+        // Handle hex colors for particles
+        const rgb = hexToRgb(p.c);
+        ctx.fillStyle = `rgba(${rgb},${alpha})`;
+        ctx.arc(px, py, 2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Agents
+      const isMob = W < 600;
+      ecoAgents.forEach(agent => {
+        if (agent.x === undefined) return;
+        const colors = ecoDeptColors[agent.dept];
+        const isH = hovered && hovered.id === agent.id;
+        const pulse = Math.sin(frame * 0.03 + ecoAgents.indexOf(agent)) * 0.15 + 0.85;
+        const r = (agent.r || 20) * (isH ? 1.15 : 1);
+
+        // Future agent — ghost/placeholder with dashed outline
+        if (agent.dept === 'future') {
+          ctx.save();
+          ctx.setLineDash([5, 5]);
+          ctx.beginPath();
+          ctx.arc(agent.x, agent.y, r, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(57,255,20,${0.15 + Math.sin(frame * 0.025) * 0.06})`;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.fillStyle = 'rgba(57,255,20,0.025)';
+          ctx.fill();
+          ctx.fillStyle = `rgba(57,255,20,${0.22 + Math.sin(frame * 0.025) * 0.05})`;
+          ctx.font = `bold ${isMob ? 7 : 9}px monospace`;
+          ctx.textAlign = 'center';
+          ctx.fillText('FUTURE', agent.x, agent.y - 1);
+          ctx.font = `${isMob ? 6 : 8}px monospace`;
+          ctx.fillStyle = `rgba(57,255,20,0.15)`;
+          ctx.fillText('AGENT', agent.x, agent.y + 10);
+          ctx.restore();
+          return;
+        }
+
+        // Architect — pulsing white supremacy glow ring
+        if (agent.dept === 'architect') {
+          const archPulse = Math.sin(frame * 0.025) * 0.3 + 0.7;
+          ctx.beginPath();
+          const archGrd = ctx.createRadialGradient(agent.x, agent.y, r, agent.x, agent.y, r * 3.8);
+          archGrd.addColorStop(0, `rgba(255,255,255,${archPulse * 0.22})`);
+          archGrd.addColorStop(0.5, `rgba(255,255,255,${archPulse * 0.06})`);
+          archGrd.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx.fillStyle = archGrd;
+          ctx.arc(agent.x, agent.y, r * 3.8, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        if (isH) {
+          ctx.beginPath();
+          const grd = ctx.createRadialGradient(agent.x, agent.y, r * 0.5, agent.x, agent.y, r * 2.5);
+          grd.addColorStop(0, colors.glow);
+          grd.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx.fillStyle = grd;
+          ctx.arc(agent.x, agent.y, r * 2.5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        ctx.beginPath();
+        ctx.arc(agent.x, agent.y, r, 0, Math.PI * 2);
+        ctx.strokeStyle = isH ? colors.primary : `rgba(${hexToRgb(colors.primary)},${pulse * 0.6})`;
+        ctx.lineWidth = agent.dept === 'architect' ? (isH ? 2.5 : 2) : (isH ? 2 : 1);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(agent.x, agent.y, r - 2, 0, Math.PI * 2);
+        ctx.fillStyle = isH ? colors.bg : `rgba(10,10,20,${pulse * 0.9})`;
+        ctx.fill();
+
+        ctx.fillStyle = isH ? colors.primary : `rgba(${hexToRgb(colors.primary)},0.85)`;
+        ctx.font = `bold ${isMob ? 9 : (agent.dept === 'architect' ? 12 : 11)}px monospace`;
+        ctx.textAlign = 'center';
+        ctx.fillText(agent.name.toUpperCase(), agent.x, agent.y + 4);
+
+        if (isH) {
+          ctx.fillStyle = `rgba(${hexToRgb(colors.primary)},0.4)`;
+          ctx.font = `${isMob ? 7 : 9}px monospace`;
+          ctx.fillText(agent.role, agent.x, agent.y + r + 14);
+        }
+      });
+
+      if (!hovered) {
+        ctx.fillStyle = 'rgba(57,255,20,0.08)';
+        ctx.font = `${W < 600 ? 10 : 13}px monospace`;
+        ctx.textAlign = 'center';
+        ctx.fillText('HOVER / TAP AN AGENT TO EXPLORE CONNECTIONS', W/2, H - 20);
+      }
+
+      ecoAnimRef.current = requestAnimationFrame(draw);
+    };
+    draw();
+
+    return () => {
+      cancelAnimationFrame(ecoAnimRef.current);
+      window.removeEventListener('resize', resize);
+      canvas.removeEventListener('mousemove', onMove);
+      canvas.removeEventListener('click', onClick);
+    };
+  }, []);
+
+  const depts = ['architect','executive','finance','creative','operations','technology','strategy','people','future'];
+  const deptLabels = { architect: 'ARCHITECT ★', executive: 'EXECUTIVE', finance: 'FINANCE', creative: 'CREATIVE', operations: 'OPERATIONS', technology: 'TECHNOLOGY', strategy: 'STRATEGY', people: 'PEOPLE', future: 'FUTURE AGENTS' };
+
+  return (
+    <div style={{ marginTop: 24, borderTop: "2px solid rgba(57,255,20,0.15)" }}>
+      {/* Section Header */}
+      <div style={{ padding: "20px 24px 12px", display: "flex", alignItems: "center", gap: 12 }}>
+        <div style={{ fontSize: 18, color: "#39ff14" }}>{"\u25C8"}</div>
+        <div>
+          <div style={{ fontSize: 16, fontWeight: "bold", letterSpacing: 4, color: "#39ff14" }}>ECOSYSTEM MIND MAP</div>
+          <div style={{ fontSize: 10, color: "rgba(57,255,20,0.4)", letterSpacing: 3, marginTop: 2 }}>NEURAL COLLABORATION NETWORK {"\u2014"} INTERACTIVE VISUALIZATION</div>
+        </div>
+      </div>
+
+      {/* Department Legend */}
+      <div style={{ padding: "8px 24px 16px", display: "flex", gap: 16, flexWrap: "wrap" }}>
+        {depts.map(dept => (
+          <div key={dept} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 10, color: "rgba(57,255,20,0.6)", letterSpacing: 1 }}>
+            <div style={{ width: 10, height: 10, borderRadius: "50%", background: ecoDeptColors[dept].bg, border: "1px solid " + ecoDeptColors[dept].primary }} />
+            {deptLabels[dept]}
+          </div>
+        ))}
+      </div>
+
+      {/* Canvas */}
+      <div style={{ padding: "0 24px 20px" }}>
+        <div style={{ border: "1px solid rgba(57,255,20,0.1)", background: "rgba(0,0,0,0.5)" }}>
+          <canvas ref={ecoCanvasRef} style={{ display: "block", width: "100%" }} />
+        </div>
+      </div>
+
+      {/* Collaboration Workflows */}
+      <div style={{ padding: "0 24px 24px" }}>
+        <div style={{ fontSize: 13, fontWeight: "bold", letterSpacing: 3, color: "#39ff14", marginBottom: 12 }}>{"\u25B8"} COLLABORATION WORKFLOWS</div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 12 }}>
+          {ecoWorkflows.map((wf, i) => (
+            <div key={i} style={{ background: "rgba(57,255,20,0.03)", border: "1px solid rgba(57,255,20,0.1)", padding: 16, transition: "all 0.3s" }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(57,255,20,0.3)"; e.currentTarget.style.background = "rgba(57,255,20,0.06)"; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(57,255,20,0.1)"; e.currentTarget.style.background = "rgba(57,255,20,0.03)"; }}>
+              <div style={{ fontSize: 12, color: "#39ff14", marginBottom: 6, letterSpacing: 1, fontWeight: "bold" }}>{wf.title}</div>
+              <div style={{ fontSize: 11, color: "rgba(57,255,20,0.6)", marginBottom: 8 }}>{wf.flow}</div>
+              <div style={{ fontSize: 10, color: "rgba(57,255,20,0.35)", lineHeight: 1.6 }}>{wf.desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Agent Detail Modal */}
+      {ecoSelected && (
+        <div onClick={() => setEcoSelected(null)} style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(0,0,0,0.85)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 9999, backdropFilter: "blur(4px)" }}>
+          <div onClick={e => e.stopPropagation()} style={{ background: "#0a0a0f", border: "2px solid " + ecoDeptColors[ecoSelected.dept].primary, padding: 28, maxWidth: 420, width: "90%", boxShadow: "0 0 30px " + ecoDeptColors[ecoSelected.dept].glow }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+              <div style={{ fontSize: 20, fontWeight: "bold", color: ecoDeptColors[ecoSelected.dept].primary, letterSpacing: 2 }}>{ecoSelected.name.toUpperCase()}</div>
+              <button onClick={() => setEcoSelected(null)} style={{ background: "none", border: "1px solid rgba(57,255,20,0.2)", color: "#39ff14", width: 28, height: 28, cursor: "pointer", fontFamily: "monospace", fontSize: 14, display: "flex", alignItems: "center", justifyContent: "center" }}>{"\u2715"}</button>
+            </div>
+            <div style={{ fontSize: 11, color: "rgba(57,255,20,0.5)", letterSpacing: 2, marginBottom: 16, textTransform: "uppercase" }}>{ecoSelected.role} \u2014 {ecoSelected.dept}</div>
+            <div style={{ fontSize: 12, color: "rgba(57,255,20,0.7)", lineHeight: 1.7, marginBottom: 20 }}>{ecoSelected.desc}</div>
+            <div style={{ fontSize: 10, color: "rgba(57,255,20,0.4)", letterSpacing: 2, marginBottom: 8 }}>COLLABORATES WITH</div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+              {ecoSelected.connects.map(cid => {
+                const t = ecoAgents.find(a => a.id === cid);
+                return t ? <span key={cid} style={{ padding: "3px 8px", border: "1px solid " + ecoDeptColors[t.dept].primary + "40", color: ecoDeptColors[t.dept].primary, fontSize: 10, letterSpacing: 1 }}>{t.name.toUpperCase()}</span> : null;
+              })}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+
+function AgentEcosystemDashboard() {
+  const [agents, setAgents] = useState(INITIAL_AGENTS);
+  const [selectedAgent, setSelectedAgent] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [editAgent, setEditAgent] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filterStatus, setFilterStatus] = useState("all");
+  const [filterDept, setFilterDept] = useState("all");
+  const [activityLog, setActivityLog] = useState([
+    { time: "00:00:01", message: "SYSTEM INITIALIZED — THE CONSTRUCT IS ONLINE", color: "#39ff14" },
+    { time: "00:00:02", message: "Loading agent profiles from neural network...", color: "rgba(57,255,20,0.5)" },
+    { time: "00:00:03", message: `${INITIAL_AGENTS.length} agents loaded. Ecosystem operational.`, color: "#00d4ff" },
+    { time: "00:00:04", message: "Founder BOBBY connected — HUMAN operator verified ◈", color: "#39ff14" },
+    { time: "00:00:05", message: "CEO AP reporting — all systems nominal ⬡", color: "#39ff14" },
+  ]);
+
+  const addLog = useCallback((message, color) => {
+    const now = new Date();
+    const time = now.toLocaleTimeString("en-US", { hour12: false });
+    setActivityLog(prev => [...prev.slice(-50), { time, message, color }]);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAgents(prev => prev.map(a => {
+        if (Math.random() > 0.9 && a.status === "active") {
+          return { ...a, tasksCompleted: a.tasksCompleted + 1, progress: Math.min(100, a.progress + Math.floor(Math.random() * 2)) };
+        }
+        return a;
+      }));
+      if (Math.random() > 0.7) {
+        const randomAgent = agents[Math.floor(Math.random() * agents.length)];
+        const actions = [
+          `${randomAgent.codename} completed subtask #${Math.floor(Math.random() * 999)}`,
+          `${randomAgent.codename} processing data stream...`,
+          `Neural link sync: ${randomAgent.codename} ↔ AP`,
+          `${randomAgent.codename} memory optimized`,
+          `Task routed to ${randomAgent.codename}`,
+        ];
+        addLog(actions[Math.floor(Math.random() * actions.length)], "rgba(57,255,20,0.5)");
+      }
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [agents, addLog]);
+
+  const filtered = useMemo(() => {
+    return agents.filter(a => {
+      const matchSearch = !searchQuery || a.codename.toLowerCase().includes(searchQuery.toLowerCase()) || a.role.toLowerCase().includes(searchQuery.toLowerCase()) || a.department.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchStatus = filterStatus === "all" || a.status === filterStatus;
+      const matchDept = filterDept === "all" || a.department === filterDept;
+      return matchSearch && matchStatus && matchDept;
+    });
+  }, [agents, searchQuery, filterStatus, filterDept]);
+
+  const departments = [...new Set(agents.map(a => a.department))];
+
+  const handleSaveAgent = (agentData) => {
+    setAgents(prev => {
+      const exists = prev.find(a => a.id === agentData.id);
+      if (exists) {
+        addLog(`Agent ${agentData.codename} updated — modifications applied`, "#ffaa00");
+        return prev.map(a => a.id === agentData.id ? agentData : a);
+      } else {
+        addLog(`NEW AGENT DEPLOYED: ${agentData.codename} [${agentData.role}] — Welcome to The Construct`, "#39ff14");
+        return [...prev, agentData];
+      }
+    });
+    setShowModal(false);
+    setEditAgent(null);
+  };
+
+  const handleDeleteAgent = (id) => {
+    const agent = agents.find(a => a.id === id);
+    if (agent && !agent.isHuman) {
+      setAgents(prev => prev.filter(a => a.id !== id));
+      addLog(`Agent ${agent.codename} decommissioned — removed from ecosystem`, "#ff0040");
+      if (selectedAgent && selectedAgent.id === id) setSelectedAgent(null);
+    }
+  };
+
+  return (
+    <div style={{ minHeight: "100vh", background: "#000", color: "#39ff14", fontFamily: "'Courier New', Courier, monospace", position: "relative", overflowX: "hidden" }}>
+      <MatrixRain />
+      <div style={{ position: "relative", zIndex: 1 }}>
+        {/* HEADER */}
+        <div style={{ padding: "16px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid rgba(57,255,20,0.2)", background: "linear-gradient(180deg, rgba(0,15,0,0.95) 0%, rgba(0,8,0,0.95) 100%)" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            <div style={{ fontSize: 28, lineHeight: 1 }}>◈</div>
+            <div>
+              <GlitchText text="THE CONSTRUCT" tag="div" style={{ fontSize: 22, fontWeight: "bold", letterSpacing: 6, color: "#39ff14", fontFamily: "monospace" }} />
+              <div style={{ fontSize: 10, color: "rgba(57,255,20,0.4)", letterSpacing: 4, marginTop: 2 }}>BRAND 9 AGENT ECOSYSTEM v2.0 — NEURAL COMMAND CENTER</div>
+            </div>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            <div style={{ textAlign: "right" }}>
+              <div style={{ fontSize: 11, color: "rgba(57,255,20,0.5)", letterSpacing: 2 }}>OPERATOR</div>
+              <div style={{ fontSize: 14, color: "#39ff14", fontWeight: "bold", letterSpacing: 1 }}>BOBBY <span style={{ fontSize: 10, opacity: 0.5 }}>// FOUNDER</span></div>
+            </div>
+            <div style={{ width: 40, height: 40, borderRadius: "50%", background: "linear-gradient(135deg, #39ff14, #00d4ff)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, color: "#000", fontWeight: "bold", boxShadow: "0 0 15px rgba(57,255,20,0.3)", border: "2px solid #39ff14" }}>B</div>
+          </div>
+        </div>
+
+        <EcoStats agents={agents} />
+
+        {/* TOOLBAR */}
+        <div style={{ padding: "12px 24px", display: "flex", gap: 12, alignItems: "center", borderBottom: "1px solid rgba(57,255,20,0.1)", background: "rgba(0,8,0,0.8)", flexWrap: "wrap" }}>
+          <div style={{ position: "relative", flex: "1 1 200px" }}>
+            <span style={{ position: "absolute", left: 10, top: "50%", transform: "translateY(-50%)", color: "rgba(57,255,20,0.3)", fontSize: 13 }}>⌕</span>
+            <input value={searchQuery} onChange={e => setSearchQuery(e.target.value)} placeholder="Search agents..."
+              style={{ width: "100%", padding: "7px 10px 7px 30px", background: "rgba(57,255,20,0.03)", border: "1px solid rgba(57,255,20,0.15)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", fontSize: 12, outline: "none", boxSizing: "border-box" }} />
+          </div>
+          <select value={filterStatus} onChange={e => setFilterStatus(e.target.value)}
+            style={{ padding: "7px 10px", background: "rgba(0,10,0,0.95)", border: "1px solid rgba(57,255,20,0.15)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", fontSize: 12, outline: "none" }}>
+            <option value="all">ALL STATUS</option>
+            {Object.entries(STATUS_CONFIG).map(([k, v]) => <option key={k} value={k}>{v.label}</option>)}
+          </select>
+          <select value={filterDept} onChange={e => setFilterDept(e.target.value)}
+            style={{ padding: "7px 10px", background: "rgba(0,10,0,0.95)", border: "1px solid rgba(57,255,20,0.15)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", fontSize: 12, outline: "none" }}>
+            <option value="all">ALL DEPTS</option>
+            {departments.map(d => <option key={d} value={d}>{d.toUpperCase()}</option>)}
+          </select>
+          <button onClick={() => { setEditAgent(null); setShowModal(true); }}
+            style={{ padding: "7px 18px", background: "rgba(57,255,20,0.08)", border: "1px solid rgba(57,255,20,0.4)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", fontSize: 12, cursor: "pointer", letterSpacing: 2, fontWeight: "bold", transition: "all 0.2s" }}>
+            + DEPLOY AGENT
+          </button>
+        </div>
+
+        {/* MAIN CONTENT */}
+        <div style={{ display: "grid", gridTemplateColumns: selectedAgent ? "1fr 420px" : "1fr", gap: 0, minHeight: "calc(100vh - 160px)" }}>
+          <div style={{ padding: 20, display: "flex", flexDirection: "column", gap: 16 }}>
+            <div style={{ color: "rgba(57,255,20,0.4)", fontFamily: "monospace", fontSize: 11, letterSpacing: 2 }}>
+              SHOWING {filtered.length} OF {agents.length} AGENTS
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 12 }}>
+              {filtered.map(agent => (
+                <AgentCard key={agent.id} agent={agent} isSelected={selectedAgent && selectedAgent.id === agent.id}
+                  onClick={a => setSelectedAgent(prev => prev && prev.id === a.id ? null : a)} />
+              ))}
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginTop: 8 }}>
+              <NetworkMap agents={agents} selectedId={selectedAgent ? selectedAgent.id : null} />
+              <ActivityLog entries={activityLog} />
+            </div>
+          </div>
+
+          {selectedAgent && (
+            <div style={{ padding: "20px 20px 20px 0", borderLeft: "1px solid rgba(57,255,20,0.1)" }}>
+              <AgentDetail agent={selectedAgent} onClose={() => setSelectedAgent(null)}
+                onUpdate={(updated) => {
+                  setAgents(prev => prev.map(a => a.id === updated.id ? updated : a));
+                  setSelectedAgent(updated);
+                  addLog(`${updated.codename} status changed to ${STATUS_CONFIG[updated.status] ? STATUS_CONFIG[updated.status].label : "UNKNOWN"}`, "#ffaa00");
+                }} />
+              <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
+                <button onClick={() => { setEditAgent(selectedAgent); setShowModal(true); }}
+                  style={{ flex: 1, padding: "8px", background: "rgba(57,255,20,0.05)", border: "1px solid rgba(57,255,20,0.2)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", fontSize: 11, cursor: "pointer", letterSpacing: 1 }}>✎ EDIT AGENT</button>
+                {!selectedAgent.isHuman && (
+                  <button onClick={() => handleDeleteAgent(selectedAgent.id)}
+                    style={{ padding: "8px 16px", background: "rgba(255,0,64,0.05)", border: "1px solid rgba(255,0,64,0.3)", borderRadius: 2, color: "#ff0040", fontFamily: "monospace", fontSize: 11, cursor: "pointer", letterSpacing: 1 }}>⊘ DECOMMISSION</button>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* ECOSYSTEM MIND MAP */}
+        <EcosystemMindMap />
+
+      </div>
+
+      {showModal && (
+        <AgentModal agent={editAgent} onSave={handleSaveAgent}
+          onCancel={() => { setShowModal(false); setEditAgent(null); }} />
+      )}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<AgentEcosystemDashboard />);
+</script>
+</body>
+</html>

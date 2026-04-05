@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WOLF Command Center</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace; background: #0a0a0f; color: #e0e0e0; min-height: 100vh; }
+
+  .header { background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%); border-bottom: 2px solid #ff6b35; padding: 20px 30px; display: flex; align-items: center; justify-content: space-between; }
+  .logo { font-size: 28px; font-weight: 900; color: #ff6b35; letter-spacing: 4px; }
+  .logo span { color: #888; font-size: 14px; letter-spacing: 1px; }
+  .status-badge { background: #1a3a1a; color: #4ade80; padding: 6px 14px; border-radius: 20px; font-size: 12px; border: 1px solid #4ade80; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; padding: 20px; }
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+  .full-width { grid-column: 1 / -1; }
+
+  .card { background: #12121f; border: 1px solid #2a2a3e; border-radius: 12px; padding: 20px; }
+  .card-header { color: #ff6b35; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; }
+  .card-header .badge { font-size: 10px; padding: 2px 8px; border-radius: 10px; }
+  .badge-green { background: #1a3a1a; color: #4ade80; border: 1px solid #2a5a2a; }
+  .badge-yellow { background: #3a3a1a; color: #facc15; border: 1px solid #5a5a2a; }
+  .badge-red { background: #3a1a1a; color: #f87171; border: 1px solid #5a2a2a; }
+  .badge-blue { background: #1a1a3a; color: #60a5fa; border: 1px solid #2a2a5a; }
+  .badge-purple { background: #2a1a3a; color: #c084fc; border: 1px solid #3a2a5a; }
+
+  .big-number { font-size: 36px; font-weight: 900; color: #fff; }
+  .big-number.green { color: #4ade80; }
+  .big-number.red { color: #f87171; }
+  .big-number.orange { color: #ff6b35; }
+  .sub-text { color: #666; font-size: 12px; margin-top: 4px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; padding: 8px 6px; border-bottom: 1px solid #2a2a3e; }
+  td { padding: 10px 6px; border-bottom: 1px solid #1a1a2e; }
+  tr:hover { background: #1a1a2e; }
+
+  .signal-row { display: flex; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid #1a1a2e; }
+  .signal-dir { font-weight: 700; font-size: 13px; padding: 3px 10px; border-radius: 6px; }
+  .signal-long { background: #1a3a1a; color: #4ade80; }
+  .signal-short { background: #3a1a1a; color: #f87171; }
+  .signal-ticker { font-weight: 700; color: #fff; font-size: 15px; min-width: 60px; }
+  .signal-strategy { color: #888; font-size: 12px; flex: 1; }
+  .signal-conf { color: #ff6b35; font-weight: 700; }
+
+  .signal-detail { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-top: 6px; }
+  .signal-detail-item { font-size: 10px; }
+  .sd-label { color: #555; text-transform: uppercase; letter-spacing: 0.5px; }
+  .sd-val { color: #ccc; font-weight: 700; }
+
+  .progress-bar { background: #1a1a2e; height: 8px; border-radius: 4px; margin-top: 8px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 4px; transition: width 0.5s; }
+  .fill-green { background: linear-gradient(90deg, #4ade80, #22c55e); }
+  .fill-orange { background: linear-gradient(90deg, #ff6b35, #ea580c); }
+  .fill-red { background: linear-gradient(90deg, #f87171, #dc2626); }
+
+  .strategy-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #1a1a2e; }
+  .strat-name { color: #ccc; font-size: 13px; }
+  .strat-grade { font-weight: 900; font-size: 14px; padding: 2px 10px; border-radius: 6px; }
+  .grade-a { background: #1a3a1a; color: #4ade80; }
+  .grade-b { background: #1a3a2e; color: #86efac; }
+  .grade-c { background: #3a3a1a; color: #facc15; }
+  .grade-d { background: #3a2a1a; color: #fb923c; }
+  .grade-f { background: #3a1a1a; color: #f87171; }
+
+  .repo-item { padding: 8px 0; border-bottom: 1px solid #1a1a2e; }
+  .repo-name { color: #60a5fa; font-size: 13px; text-decoration: none; }
+  .repo-name:hover { text-decoration: underline; }
+  .repo-stars { color: #facc15; font-size: 11px; }
+  .repo-desc { color: #666; font-size: 11px; margin-top: 2px; }
+  .repo-priority { font-size: 10px; padding: 1px 6px; border-radius: 4px; margin-left: 8px; }
+
+  .phase-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; }
+  .phase-dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot-active { background: #ff6b35; box-shadow: 0 0 8px #ff6b35; }
+  .dot-pending { background: #333; border: 1px solid #555; }
+  .dot-done { background: #4ade80; }
+  .phase-label { font-size: 13px; }
+  .phase-label.active { color: #ff6b35; font-weight: 700; }
+  .phase-label.pending { color: #555; }
+
+  .regime-bar { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #1a1a2e; }
+  .regime-label { font-size: 12px; color: #888; min-width: 90px; }
+  .regime-val { font-size: 13px; color: #fff; font-weight: 700; }
+  .regime-tag { font-size: 10px; padding: 2px 8px; border-radius: 8px; margin-left: auto; }
+
+  .congress-source { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid #1a1a2e; }
+  .congress-dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 4px #4ade80; flex-shrink: 0; }
+  .congress-name { font-size: 12px; color: #ccc; flex: 1; }
+  .congress-status { font-size: 10px; color: #4ade80; }
+
+  .footer { text-align: center; padding: 20px; color: #333; font-size: 11px; }
+
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+  .pulse { animation: pulse 2s infinite; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <div class="logo">WOLF <span>Wealth-Optimized Leverage Framework</span></div>
+  </div>
+  <div style="display:flex; gap:12px; align-items:center;">
+    <div class="status-badge pulse">&#9679; LIVE — PAPER TRADING</div>
+    <div style="color:#666; font-size:12px;">v1.2 | April 2026</div>
+  </div>
+</div>
+
+<!-- Portfolio Summary -->
+<div class="grid">
+  <div class="card">
+    <div class="card-header">Portfolio Value <span class="badge badge-green">ALPACA CONNECTED</span></div>
+    <div class="big-number green">$100,000</div>
+    <div class="sub-text">Cash available — Alpaca Paper Trading</div>
+    <div style="margin-top:10px; display:flex; gap:16px;">
+      <div>
+        <div style="color:#ff6b35; font-size:16px; font-weight:900;">$200,000</div>
+        <div style="color:#555; font-size:10px; text-transform:uppercase; letter-spacing:1px;">Buying Power</div>
+      </div>
+      <div>
+        <div style="color:#c084fc; font-size:16px; font-weight:900;">ENABLED</div>
+        <div style="color:#555; font-size:10px; text-transform:uppercase; letter-spacing:1px;">Shorting</div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">Today's Signals <span class="badge badge-green">3 IDENTIFIED</span></div>
+    <div class="big-number orange">3</div>
+    <div class="sub-text">TSLA SHORT &bull; NFLX LONG &bull; XLU LONG</div>
+    <div style="margin-top:8px; font-size:11px; color:#888;">Scan completed 8:30 AM &bull; Technical + Congressional overlay</div>
+  </div>
+  <div class="card">
+    <div class="card-header">Portfolio Heat <span class="badge badge-green">SAFE</span></div>
+    <div class="big-number green">0.0%</div>
+    <div class="sub-text">Max: 10% | Daily loss limit: 3%</div>
+    <div class="progress-bar"><div class="progress-fill fill-green" style="width: 0%;"></div></div>
+  </div>
+</div>
+
+<!-- Active Signals + Strategy Performance -->
+<div class="grid grid-2" style="padding: 0 20px 20px;">
+  <div class="card">
+    <div class="card-header">Active Signals — Today <span class="badge badge-green">3 LIVE</span></div>
+
+    <!-- TSLA SHORT -->
+    <div class="signal-row" style="flex-direction:column; align-items:flex-start;">
+      <div style="display:flex; gap:12px; align-items:center; width:100%;">
+        <span class="signal-dir signal-short">SHORT</span>
+        <span class="signal-ticker">TSLA</span>
+        <span class="signal-strategy">Breakdown</span>
+        <span class="signal-conf">R:R 2:1</span>
+      </div>
+      <div class="signal-detail" style="width:100%; margin-top:8px;">
+        <div class="signal-detail-item"><div class="sd-label">Entry</div><div class="sd-val">$360.47</div></div>
+        <div class="signal-detail-item"><div class="sd-label">Stop</div><div class="sd-val" style="color:#f87171;">$381.36</div></div>
+        <div class="signal-detail-item"><div class="sd-label">Target</div><div class="sd-val" style="color:#4ade80;">$318.70</div></div>
+      </div>
+    </div>
+
+    <!-- NFLX LONG -->
+    <div class="signal-row" style="flex-direction:column; align-items:flex-start;">
+      <div style="display:flex; gap:12px; align-items:center; width:100%;">
+        <span class="signal-dir signal-long">LONG</span>
+        <span class="signal-ticker">NFLX</span>
+        <span class="signal-strategy">Momentum Breakout</span>
+        <span class="signal-conf">R:R 2:1</span>
+      </div>
+      <div class="signal-detail" style="width:100%; margin-top:8px;">
+        <div class="signal-detail-item"><div class="sd-label">Entry</div><div class="sd-val">$98.69</div></div>
+        <div class="signal-detail-item"><div class="sd-label">Stop</div><div class="sd-val" style="color:#f87171;">$94.61</div></div>
+        <div class="signal-detail-item"><div class="sd-label">Target</div><div class="sd-val" style="color:#4ade80;">$106.84</div></div>
+      </div>
+    </div>
+
+    <!-- XLU LONG -->
+    <div class="signal-row" style="flex-direction:column; align-items:flex-start; border-bottom:none;">
+      <div style="display:flex; gap:12px; align-items:center; width:100%;">
+        <span class="signal-dir signal-long">LONG</span>
+        <span class="signal-ticker">XLU</span>
+        <span class="signal-strategy">MACD Bullish Cross</span>
+        <span class="signal-conf">R:R 2:1</span>
+      </div>
+      <div class="signal-detail" style="width:100%; margin-top:8px;">
+        <div class="signal-detail-item"><div class="sd-label">Entry</div><div class="sd-val">$46.36</div></div>
+        <div class="signal-detail-item"><div class="sd-label">Stop</div><div class="sd-val" style="color:#f87171;">$44.85</div></div>
+        <div class="signal-detail-item"><div class="sd-label">Target</div><div class="sd-val" style="color:#4ade80;">$49.38</div></div>
+      </div>
+    </div>
+
+    <div style="margin-top:14px; padding:10px; background:#1a1a2e; border-radius:8px; border-left:3px solid #ff6b35;">
+      <div style="font-size:11px; color:#888;">&#128200; Daily scan: <span style="color:#4ade80;">8:30 AM Mon–Fri</span> &bull; Technical + Congressional overlay &bull; Shorting enabled</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">Strategy Backtest Results <span class="badge badge-green">9 TESTED</span></div>
+    <div style="font-size:11px; color:#ff6b35; margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Advanced Strategies (4 market scenarios each)</div>
+    <div class="strategy-row">
+      <span class="strat-name">Enhanced Mean Reversion ★</span>
+      <div><span style="color:#888; font-size:11px; margin-right:8px;">82% WR | 6.1x PF | Sharpe 1.63</span><span class="strat-grade grade-b">B</span></div>
+    </div>
+    <div class="strategy-row">
+      <span class="strat-name">Volatility Breakout (Squeeze)</span>
+      <div><span style="color:#888; font-size:11px; margin-right:8px;">93% WR | 8.2x PF | Sharpe 1.53</span><span class="strat-grade grade-b">B</span></div>
+    </div>
+    <div class="strategy-row">
+      <span class="strat-name">Multi-Factor Momentum</span>
+      <div><span style="color:#888; font-size:11px; margin-right:8px;">+2.4% avg | Sharpe 0.20 | needs tuning</span><span class="strat-grade grade-d">D</span></div>
+    </div>
+    <div class="strategy-row">
+      <span class="strat-name">WOLF Composite (Master)</span>
+      <div><span style="color:#888; font-size:11px; margin-right:8px;">+1.7% avg | Sharpe 0.13 | needs tuning</span><span class="strat-grade grade-d">D</span></div>
+    </div>
+    <div style="font-size:11px; color:#555; margin-top:10px; text-transform:uppercase; letter-spacing:1px;">Basic Strategies</div>
+    <div class="strategy-row">
+      <span class="strat-name">SMA Crossover / WOLF Adaptive / MACD / BB / RSI</span>
+      <div><span style="color:#888; font-size:11px; margin-right:8px;">D-F grades</span><span class="strat-grade grade-d">D</span></div>
+    </div>
+    <div class="sub-text" style="margin-top:10px; text-align:center;">★ Mean Reversion: 82% WR, 6.1x PF in ranging markets. Volatility Breakout: 93% WR in choppy conditions. WOLF rotates strategies based on detected regime.</div>
+  </div>
+</div>
+
+<!-- Market Regime -->
+<div style="padding: 0 20px 20px;">
+  <div class="card">
+    <div class="card-header">Market Regime <span class="badge badge-yellow">CORRECTIVE PULLBACK</span></div>
+    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap:16px;">
+      <div>
+        <div class="regime-bar" style="flex-direction:column; align-items:flex-start; gap:6px; border-bottom:none;">
+          <div style="font-size:10px; color:#555; text-transform:uppercase; letter-spacing:1px;">SPY</div>
+          <div style="color:#f87171; font-size:14px; font-weight:900;">Below 50MA</div>
+          <div style="font-size:10px; color:#666;">Corrective phase</div>
+        </div>
+      </div>
+      <div>
+        <div class="regime-bar" style="flex-direction:column; align-items:flex-start; gap:6px; border-bottom:none;">
+          <div style="font-size:10px; color:#555; text-transform:uppercase; letter-spacing:1px;">QQQ</div>
+          <div style="color:#f87171; font-size:14px; font-weight:900;">Below 50MA</div>
+          <div style="font-size:10px; color:#666;">Tech under pressure</div>
+        </div>
+      </div>
+      <div>
+        <div class="regime-bar" style="flex-direction:column; align-items:flex-start; gap:6px; border-bottom:none;">
+          <div style="font-size:10px; color:#555; text-transform:uppercase; letter-spacing:1px;">IWM</div>
+          <div style="color:#f87171; font-size:14px; font-weight:900;">Below 50MA</div>
+          <div style="font-size:10px; color:#666;">Small caps weak</div>
+        </div>
+      </div>
+      <div>
+        <div class="regime-bar" style="flex-direction:column; align-items:flex-start; gap:6px; border-bottom:none;">
+          <div style="font-size:10px; color:#555; text-transform:uppercase; letter-spacing:1px;">RSI (SPY)</div>
+          <div style="color:#facc15; font-size:14px; font-weight:900;">~46</div>
+          <div style="font-size:10px; color:#666;">Neutral — transitional</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:12px; padding:10px; background:#1a1a2e; border-radius:8px; border-left:3px solid #facc15;">
+      <div style="font-size:12px; color:#facc15; font-weight:700; margin-bottom:4px;">&#9888; Regime Assessment: Transitional / Uncertain</div>
+      <div style="font-size:11px; color:#888;">SPY, QQQ, and IWM all trading below their 50-day moving averages. RSI ~46 suggests no immediate oversold bounce. Corrective pullback in progress — WOLF favoring shorts and defensive longs (XLU). High selectivity mode active.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Congressional Trading Intelligence -->
+<div style="padding: 0 20px 20px;">
+  <div class="card" style="border-color: #c084fc; box-shadow: 0 0 20px rgba(192,132,252,0.06);">
+    <div class="card-header" style="color: #c084fc;">Congressional Trading Intelligence <span class="badge badge-purple">NEW — ACTIVE</span></div>
+    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:16px;">
+
+      <!-- Sources -->
+      <div>
+        <div style="font-size:10px; color:#555; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px;">Data Sources</div>
+        <div class="congress-source">
+          <div class="congress-dot"></div>
+          <div class="congress-name">Unusual Whales MCP</div>
+          <div class="congress-status">LIVE</div>
+        </div>
+        <div class="congress-source">
+          <div class="congress-dot"></div>
+          <div class="congress-name">Quiver Quantitative API</div>
+          <div class="congress-status">ACTIVE</div>
+        </div>
+        <div class="congress-source" style="border-bottom:none;">
+          <div class="congress-dot"></div>
+          <div class="congress-name">House/Senate Stock Watcher</div>
+          <div class="congress-status">ACTIVE</div>
+        </div>
+      </div>
+
+      <!-- Capabilities -->
+      <div>
+        <div style="font-size:10px; color:#555; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px;">Capabilities</div>
+        <div style="font-size:12px; color:#888; line-height:1.9;">
+          <span style="color:#c084fc;">&#9654;</span> Track all congressional trades<br>
+          <span style="color:#c084fc;">&#9654;</span> Cross-reference with WOLF signals<br>
+          <span style="color:#c084fc;">&#9654;</span> Cluster buy detection (sector focus)<br>
+          <span style="color:#c084fc;">&#9654;</span> Unusual options activity overlay<br>
+          <span style="color:#c084fc;">&#9654;</span> Committee membership cross-check
+        </div>
+      </div>
+
+      <!-- Integration status -->
+      <div>
+        <div style="font-size:10px; color:#555; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px;">Integration</div>
+        <div style="padding:10px; background:#1a0d2a; border-radius:8px; border:1px solid #3a1a5a;">
+          <div style="color:#c084fc; font-size:13px; font-weight:700; margin-bottom:6px;">&#128202; Status: Active</div>
+          <div style="font-size:11px; color:#888; line-height:1.7;">
+            Integrated into daily 8:30 AM scan<br>
+            Congressional trades flagged on signals<br>
+            Skill: <code style="background:#0a0a14; color:#c084fc; padding:1px 4px; border-radius:3px; font-size:10px;">/wolf-congress-tracker</code>
+          </div>
+        </div>
+        <div style="margin-top:10px; font-size:11px; color:#555; text-align:center;">Last scan: Today 8:30 AM<br>Next scan: Tomorrow 8:30 AM</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Research + Growth Path -->
+<div class="grid grid-2" style="padding: 0 20px 20px;">
+  <div class="card">
+    <div class="card-header">Strategy Research Library <span class="badge badge-green">18 SOURCED</span></div>
+    <div class="repo-item">
+      <a class="repo-name" href="https://github.com/freqtrade/freqtrade" target="_blank">freqtrade/freqtrade</a>
+      <span class="repo-stars"> 48K</span>
+      <span class="repo-priority badge-green" style="font-size:10px; padding:1px 6px; border-radius:4px;">HIGH</span>
+      <div class="repo-desc">Crypto trading bot with backtesting, ML, Telegram</div>
+    </div>
+    <div class="repo-item">
+      <a class="repo-name" href="https://github.com/mementum/backtrader" target="_blank">mementum/backtrader</a>
+      <span class="repo-stars"> 21K</span>
+      <span class="repo-priority badge-green" style="font-size:10px; padding:1px 6px; border-radius:4px;">HIGH</span>
+      <div class="repo-desc">Python backtesting library for trading strategies</div>
+    </div>
+    <div class="repo-item">
+      <a class="repo-name" href="https://github.com/quantopian/zipline" target="_blank">quantopian/zipline</a>
+      <span class="repo-stars"> 20K</span>
+      <span class="repo-priority badge-yellow" style="font-size:10px; padding:1px 6px; border-radius:4px;">MED</span>
+      <div class="repo-desc">Pythonic Algorithmic Trading Library</div>
+    </div>
+    <div class="repo-item">
+      <a class="repo-name" href="https://github.com/QuantConnect/Lean" target="_blank">QuantConnect/Lean</a>
+      <span class="repo-stars"> 18K</span>
+      <span class="repo-priority badge-green" style="font-size:10px; padding:1px 6px; border-radius:4px;">HIGH</span>
+      <div class="repo-desc">Algorithmic Trading Engine - multi-asset</div>
+    </div>
+    <div class="repo-item">
+      <a class="repo-name" href="https://github.com/AI4Finance-Foundation/FinRL" target="_blank">AI4Finance-Foundation/FinRL</a>
+      <span class="repo-stars"> 12K</span>
+      <span class="repo-priority badge-green" style="font-size:10px; padding:1px 6px; border-radius:4px;">HIGH</span>
+      <div class="repo-desc">Deep Reinforcement Learning for trading</div>
+    </div>
+    <div class="repo-item">
+      <a class="repo-name" href="https://github.com/edtechre/pybroker" target="_blank">edtechre/pybroker</a>
+      <span class="repo-stars"> 5K</span>
+      <span class="repo-priority badge-green" style="font-size:10px; padding:1px 6px; border-radius:4px;">HIGH</span>
+      <div class="repo-desc">ML-powered algo trading with NumPy+Numba speed</div>
+    </div>
+    <div class="sub-text" style="margin-top:10px; text-align:center;">+ 12 more repos indexed. Run <code style="background:#1a1a2e; color:#ff6b35; padding:2px 4px; border-radius:3px;">research_agent.py --action full</code> to update.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">WOLF Growth Path</div>
+    <div class="phase-item">
+      <div class="phase-dot dot-done"></div>
+      <span class="phase-label" style="color:#4ade80;">Phase 1: Foundation — 7 scripts, 9 strategies, daily scan ✓</span>
+    </div>
+    <div class="phase-item">
+      <div class="phase-dot dot-active pulse"></div>
+      <span class="phase-label active">Phase 2: Intelligence — Alpaca connected, congressional tracking, live signals ← ACTIVE</span>
+    </div>
+    <div class="phase-item">
+      <div class="phase-dot dot-pending"></div>
+      <span class="phase-label pending">Phase 3: Advanced — Options, intermarket analysis, sentiment</span>
+    </div>
+    <div class="phase-item">
+      <div class="phase-dot dot-pending"></div>
+      <span class="phase-label pending">Phase 4: Autonomous — Self-optimizing, regime detection, auto-rotation</span>
+    </div>
+
+    <div style="margin-top:24px;">
+      <div class="card-header" style="color:#4ade80;">Alpaca Status <span class="badge badge-green">CONNECTED</span></div>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:8px;">
+        <div style="padding:10px; background:#1a1a2e; border-radius:8px; border:1px solid #2a4a2a;">
+          <div style="color:#4ade80; font-size:14px; font-weight:900;">$100,000</div>
+          <div style="color:#555; font-size:10px; text-transform:uppercase; letter-spacing:1px; margin-top:2px;">Cash Balance</div>
+        </div>
+        <div style="padding:10px; background:#1a1a2e; border-radius:8px; border:1px solid #2a4a2a;">
+          <div style="color:#ff6b35; font-size:14px; font-weight:900;">$200,000</div>
+          <div style="color:#555; font-size:10px; text-transform:uppercase; letter-spacing:1px; margin-top:2px;">Buying Power</div>
+        </div>
+        <div style="padding:10px; background:#1a1a2e; border-radius:8px; border:1px solid #2a4a2a;">
+          <div style="color:#c084fc; font-size:14px; font-weight:900;">ENABLED</div>
+          <div style="color:#555; font-size:10px; text-transform:uppercase; letter-spacing:1px; margin-top:2px;">Short Selling</div>
+        </div>
+        <div style="padding:10px; background:#1a1a2e; border-radius:8px; border:1px solid #2a4a2a;">
+          <div style="color:#60a5fa; font-size:14px; font-weight:900;">PAPER</div>
+          <div style="color:#555; font-size:10px; text-transform:uppercase; letter-spacing:1px; margin-top:2px;">Account Mode</div>
+        </div>
+      </div>
+      <div style="margin-top:10px; padding:8px 12px; background:#1a2a1a; border-radius:8px; border:1px solid #2a5a2a; font-size:11px; color:#4ade80; text-align:center;">
+        &#10003; Paper trading active — next step: execute first signals
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Market Coverage -->
+<div style="padding: 0 20px 20px;">
+  <div class="card full-width">
+    <div class="card-header">Market Coverage</div>
+    <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 8px;">
+      <div style="text-align:center; padding:16px; background:#1a1a2e; border-radius:8px; border:1px solid #2a2a3e;">
+        <div style="font-size:24px; margin-bottom:8px;">&#128200;</div>
+        <div style="color:#fff; font-weight:700; font-size:14px;">US Equities</div>
+        <div style="color:#888; font-size:11px; margin-top:4px;">Long & Short</div>
+        <div style="color:#4ade80; font-size:11px; margin-top:4px;">40+ stocks + ETFs</div>
+      </div>
+      <div style="text-align:center; padding:16px; background:#1a1a2e; border-radius:8px; border:1px solid #2a2a3e;">
+        <div style="font-size:24px; margin-bottom:8px;">&#128202;</div>
+        <div style="color:#fff; font-weight:700; font-size:14px;">Options</div>
+        <div style="color:#888; font-size:11px; margin-top:4px;">Calls, Puts, Spreads</div>
+        <div style="color:#facc15; font-size:11px; margin-top:4px;">Analysis + Signals</div>
+      </div>
+      <div style="text-align:center; padding:16px; background:#1a1a2e; border-radius:8px; border:1px solid #2a2a3e;">
+        <div style="font-size:24px; margin-bottom:8px;">&#127760;</div>
+        <div style="color:#fff; font-weight:700; font-size:14px;">Futures</div>
+        <div style="color:#888; font-size:11px; margin-top:4px;">Via ETF Proxies</div>
+        <div style="color:#facc15; font-size:11px; margin-top:4px;">15 futures mapped</div>
+      </div>
+      <div style="text-align:center; padding:16px; background:#1a1a2e; border-radius:8px; border:1px solid #2a2a3e;">
+        <div style="font-size:24px; margin-bottom:8px;">&#9939;</div>
+        <div style="color:#fff; font-weight:700; font-size:14px;">Crypto</div>
+        <div style="color:#888; font-size:11px; margin-top:4px;">BTC, ETH, SOL+</div>
+        <div style="color:#4ade80; font-size:11px; margin-top:4px;">24/7 via Alpaca</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Risk Rules -->
+<div style="padding: 0 20px 20px;">
+  <div class="card">
+    <div class="card-header">Risk Management Rules (Non-Negotiable)</div>
+    <div style="display:grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 8px;">
+      <div style="text-align:center; padding:12px; background:#1a1a2e; border-radius:8px;">
+        <div style="color:#ff6b35; font-size:20px; font-weight:900;">2%</div>
+        <div style="color:#666; font-size:10px; margin-top:4px;">MAX RISK PER TRADE</div>
+      </div>
+      <div style="text-align:center; padding:12px; background:#1a1a2e; border-radius:8px;">
+        <div style="color:#ff6b35; font-size:20px; font-weight:900;">10%</div>
+        <div style="color:#666; font-size:10px; margin-top:4px;">MAX PORTFOLIO HEAT</div>
+      </div>
+      <div style="text-align:center; padding:12px; background:#1a1a2e; border-radius:8px;">
+        <div style="color:#ff6b35; font-size:20px; font-weight:900;">20%</div>
+        <div style="color:#666; font-size:10px; margin-top:4px;">MAX SECTOR EXPOSURE</div>
+      </div>
+      <div style="text-align:center; padding:12px; background:#1a1a2e; border-radius:8px;">
+        <div style="color:#ff6b35; font-size:20px; font-weight:900;">3%</div>
+        <div style="color:#666; font-size:10px; margin-top:4px;">DAILY LOSS LIMIT</div>
+      </div>
+      <div style="text-align:center; padding:12px; background:#1a1a2e; border-radius:8px;">
+        <div style="color:#f87171; font-size:20px; font-weight:900;">10%</div>
+        <div style="color:#666; font-size:10px; margin-top:4px;">DRAWDOWN BREAKER</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">WOLF v1.2 | Wealth-Optimized Leverage Framework | Alpaca Connected | Congressional Intel Active | 3 Live Signals | Built for Bobby | One mission: earn money</div>
+
+</body>
+</html>

@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Wolf — Construct</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace; background: #08080d; color: #e0e0e0; min-height: 100vh; }
+
+  /* Header */
+  .construct-header {
+    background: linear-gradient(135deg, #0d0d1a 0%, #1a0d0d 50%, #0d0d1a 100%);
+    border-bottom: 2px solid #ff6b35;
+    padding: 24px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .construct-title { font-size: 32px; font-weight: 900; letter-spacing: 6px; }
+  .construct-title .agent { color: #888; }
+  .construct-title .wolf { color: #ff6b35; }
+  .construct-subtitle { color: #555; font-size: 12px; letter-spacing: 2px; margin-top: 4px; }
+  .construct-meta { text-align: right; }
+  .construct-meta div { color: #555; font-size: 11px; margin-bottom: 4px; }
+  .operator-name { color: #ff6b35; font-weight: 700; font-size: 13px; }
+
+  /* Grid */
+  .grid { display: grid; gap: 16px; padding: 20px; }
+  .g1 { grid-template-columns: 1fr; }
+  .g2 { grid-template-columns: 1fr 1fr; }
+  .g3 { grid-template-columns: 1fr 1fr 1fr; }
+  .g4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+
+  /* Cards */
+  .card { background: #10101c; border: 1px solid #1e1e30; border-radius: 12px; padding: 20px; }
+  .card.highlight { border-color: #ff6b35; box-shadow: 0 0 20px rgba(255,107,53,0.08); }
+  .card.congress { border-color: #c084fc; box-shadow: 0 0 20px rgba(192,132,252,0.06); }
+  .card-h { color: #ff6b35; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; }
+  .card-h.purple { color: #c084fc; }
+  .tag { font-size: 9px; padding: 2px 8px; border-radius: 10px; font-weight: 700; letter-spacing: 1px; }
+  .tag-green { background: #0d2d0d; color: #4ade80; border: 1px solid #1a4a1a; }
+  .tag-orange { background: #2d1a0d; color: #ff6b35; border: 1px solid #4a2a1a; }
+  .tag-blue { background: #0d1a2d; color: #60a5fa; border: 1px solid #1a2a4a; }
+  .tag-red { background: #2d0d0d; color: #f87171; border: 1px solid #4a1a1a; }
+  .tag-purple { background: #1a0d2d; color: #c084fc; border: 1px solid #2a1a4a; }
+  .tag-gray { background: #1a1a1a; color: #666; border: 1px solid #2a2a2a; }
+
+  .big { font-size: 32px; font-weight: 900; color: #fff; }
+  .big.green { color: #4ade80; }
+  .big.orange { color: #ff6b35; }
+  .sub { color: #555; font-size: 11px; margin-top: 4px; }
+
+  /* Agent Card */
+  .agent-card {
+    background: linear-gradient(135deg, #10101c 0%, #1a1020 100%);
+    border: 1px solid #2a1a3a;
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .agent-card::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(255,107,53,0.06) 0%, transparent 70%);
+  }
+  .agent-icon { font-size: 48px; margin-bottom: 12px; }
+  .agent-name { font-size: 24px; font-weight: 900; color: #ff6b35; letter-spacing: 3px; }
+  .agent-role { color: #888; font-size: 12px; margin-top: 4px; }
+  .agent-mission { color: #ccc; font-size: 13px; margin-top: 12px; padding: 10px; background: #0a0a14; border-radius: 8px; border-left: 3px solid #ff6b35; }
+  .agent-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 16px; }
+  .agent-stat { text-align: center; padding: 8px; background: #0a0a14; border-radius: 8px; }
+  .agent-stat-val { font-size: 18px; font-weight: 900; color: #ff6b35; }
+  .agent-stat-label { font-size: 9px; color: #555; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+  /* Status */
+  .status-row { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid #1a1a2a; }
+  .status-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .dot-live { background: #4ade80; box-shadow: 0 0 6px #4ade80; }
+  .dot-ready { background: #ff6b35; box-shadow: 0 0 6px #ff6b35; }
+  .dot-off { background: #333; }
+  .dot-purple { background: #c084fc; box-shadow: 0 0 6px #c084fc; }
+  .status-label { font-size: 12px; color: #ccc; flex: 1; }
+  .status-val { font-size: 11px; color: #888; }
+
+  /* Next steps */
+  .step-card {
+    background: #0a0a14;
+    border: 1px solid #1e1e30;
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    transition: border-color 0.2s;
+  }
+  .step-card:hover { border-color: #ff6b35; }
+  .step-card.active { border-color: #ff6b35; background: #12101e; }
+  .step-card.done { border-color: #1a4a1a; opacity: 0.7; }
+  .step-num {
+    width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 12px; flex-shrink: 0;
+  }
+  .num-active { background: #ff6b35; color: #000; }
+  .num-pending { background: #1e1e30; color: #555; border: 1px solid #2a2a3e; }
+  .num-done { background: #1a4a1a; color: #4ade80; }
+  .step-content { flex: 1; }
+  .step-title { font-size: 13px; font-weight: 700; color: #fff; }
+  .step-title.done-text { color: #4ade80; text-decoration: line-through; text-decoration-color: #2a5a2a; }
+  .step-desc { font-size: 11px; color: #666; margin-top: 4px; line-height: 1.5; }
+  .step-impact { font-size: 10px; color: #ff6b35; margin-top: 6px; }
+
+  /* Capabilities grid */
+  .cap-item {
+    text-align: center; padding: 14px 10px;
+    background: #0a0a14; border-radius: 10px;
+    border: 1px solid #1e1e30;
+  }
+  .cap-icon { font-size: 22px; margin-bottom: 6px; }
+  .cap-name { font-size: 11px; font-weight: 700; color: #fff; }
+  .cap-status { font-size: 9px; margin-top: 4px; }
+
+  /* Timeline */
+  .timeline { position: relative; padding-left: 24px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 8px; top: 0; bottom: 0;
+    width: 2px; background: linear-gradient(to bottom, #ff6b35, #333);
+  }
+  .tl-item { position: relative; margin-bottom: 16px; }
+  .tl-dot {
+    position: absolute; left: -20px; top: 4px;
+    width: 12px; height: 12px; border-radius: 50%;
+  }
+  .tl-done { background: #4ade80; }
+  .tl-now { background: #ff6b35; box-shadow: 0 0 8px #ff6b35; }
+  .tl-future { background: #222; border: 1px solid #444; }
+  .tl-label { font-size: 12px; color: #ccc; font-weight: 700; }
+  .tl-detail { font-size: 11px; color: #555; margin-top: 2px; }
+
+  /* Slot placeholders */
+  .agent-slot {
+    border: 2px dashed #1e1e30; border-radius: 16px;
+    padding: 24px; text-align: center;
+    min-height: 200px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    transition: border-color 0.2s;
+  }
+  .agent-slot:hover { border-color: #333; }
+  .slot-icon { font-size: 36px; color: #222; margin-bottom: 8px; }
+  .slot-label { font-size: 12px; color: #333; }
+  .slot-hint { font-size: 10px; color: #222; margin-top: 4px; }
+
+  /* Signal rows */
+  .signal-row { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid #1a1a2a; }
+  .sig-dir { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; flex-shrink: 0; }
+  .sig-long { background: #0d2d0d; color: #4ade80; }
+  .sig-short { background: #2d0d0d; color: #f87171; }
+  .sig-ticker { font-weight: 700; color: #fff; font-size: 14px; min-width: 50px; }
+  .sig-strat { color: #666; font-size: 11px; flex: 1; }
+  .sig-rr { color: #ff6b35; font-size: 11px; font-weight: 700; }
+
+  .footer { text-align: center; padding: 20px; color: #2a2a2a; font-size: 10px; letter-spacing: 2px; }
+
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+  .pulse { animation: pulse 2s infinite; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ HEADER ═══════════════════ -->
+<div class="construct-header">
+  <div>
+    <div class="construct-title">
+      <span class="agent">AGENT</span> <span class="wolf">WOLF</span>
+    </div>
+    <div class="construct-subtitle">AUTONOMOUS INTELLIGENCE CONSTRUCT</div>
+  </div>
+  <div class="construct-meta">
+    <div class="operator-name">OPERATOR: BOBBY</div>
+    <div>Construct v1.2 | April 2026</div>
+    <div>Directive: EARN MONEY</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ CONSTRUCT OVERVIEW ═══════════════════ -->
+<div class="grid g3" style="padding-bottom:0;">
+  <div class="card">
+    <div class="card-h">Agents Online</div>
+    <div class="big orange">1</div>
+    <div class="sub">WOLF active | 3 slots available</div>
+  </div>
+  <div class="card">
+    <div class="card-h">Total Capabilities</div>
+    <div class="big">28</div>
+    <div class="sub">8 scripts | 9 strategies | 5 modules | 4 markets | congressional intel</div>
+  </div>
+  <div class="card">
+    <div class="card-h">Construct Status</div>
+    <div class="big green pulse">LIVE</div>
+    <div class="sub">Alpaca connected | 3 signals today | Scan: 8:30 AM Mon-Fri</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ AGENT ROSTER ═══════════════════ -->
+<div class="grid g1" style="padding-bottom:0;">
+  <div style="padding: 0 4px;">
+    <div class="card-h" style="color:#555; margin-bottom:0;">AGENT ROSTER</div>
+  </div>
+</div>
+
+<div class="grid g2" style="padding-top: 8px;">
+  <!-- WOLF — Active Agent -->
+  <div class="agent-card">
+    <div class="agent-icon">&#128058;</div>
+    <div style="display:flex; align-items:center; gap:12px;">
+      <div class="agent-name">WOLF</div>
+      <span class="tag tag-green pulse">LIVE</span>
+    </div>
+    <div class="agent-role">Wealth-Optimized Leverage Framework — Market Trading Agent</div>
+    <div class="agent-mission">"I have one job: earn money. Every scan, every signal, every position serves that purpose."</div>
+
+    <div class="agent-stats">
+      <div class="agent-stat">
+        <div class="agent-stat-val">3</div>
+        <div class="agent-stat-label">Live Signals</div>
+      </div>
+      <div class="agent-stat">
+        <div class="agent-stat-val">$100K</div>
+        <div class="agent-stat-label">Cash</div>
+      </div>
+      <div class="agent-stat">
+        <div class="agent-stat-val">$200K</div>
+        <div class="agent-stat-label">Buying Power</div>
+      </div>
+      <div class="agent-stat">
+        <div class="agent-stat-val">B</div>
+        <div class="agent-stat-label">Best Grade</div>
+      </div>
+    </div>
+
+    <!-- Today's Signals -->
+    <div style="margin-top: 16px;">
+      <div style="font-size:10px; color:#555; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">Today's Signals — Apr 3, 2026</div>
+      <div class="signal-row">
+        <span class="sig-dir sig-short">SHORT</span>
+        <span class="sig-ticker">TSLA</span>
+        <span class="sig-strat">Breakdown — Entry $360.47</span>
+        <span class="sig-rr">2:1</span>
+      </div>
+      <div class="signal-row">
+        <span class="sig-dir sig-long">LONG</span>
+        <span class="sig-ticker">NFLX</span>
+        <span class="sig-strat">Momentum Breakout — Entry $98.69</span>
+        <span class="sig-rr">2:1</span>
+      </div>
+      <div class="signal-row" style="border:none;">
+        <span class="sig-dir sig-long">LONG</span>
+        <span class="sig-ticker">XLU</span>
+        <span class="sig-strat">MACD Bullish Cross — Entry $46.36</span>
+        <span class="sig-rr">2:1</span>
+      </div>
+    </div>
+
+    <!-- WOLF Subsystems -->
+    <div style="margin-top: 16px;">
+      <div style="font-size:10px; color:#555; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">Subsystems</div>
+      <div class="status-row">
+        <div class="status-dot dot-live pulse"></div>
+        <div class="status-label">Market Scanner</div>
+        <div class="status-val">50+ instruments | Daily 8:30 AM</div>
+      </div>
+      <div class="status-row">
+        <div class="status-dot dot-ready"></div>
+        <div class="status-label">Strategy Engine</div>
+        <div class="status-val">9 strategies | 4 advanced</div>
+      </div>
+      <div class="status-row">
+        <div class="status-dot dot-ready"></div>
+        <div class="status-label">Portfolio Manager</div>
+        <div class="status-val">Risk tracking + journal</div>
+      </div>
+      <div class="status-row">
+        <div class="status-dot dot-live"></div>
+        <div class="status-label">Alpaca Paper Trading</div>
+        <div class="status-val" style="color:#4ade80;">Connected | $100K | $200K BP | Shorting ON</div>
+      </div>
+      <div class="status-row">
+        <div class="status-dot dot-ready"></div>
+        <div class="status-label">Research Agent</div>
+        <div class="status-val">18 GitHub repos | 10 curated</div>
+      </div>
+      <div class="status-row">
+        <div class="status-dot dot-ready"></div>
+        <div class="status-label">Data Pipeline</div>
+        <div class="status-val">Multi-source w/ fallback</div>
+      </div>
+      <div class="status-row">
+        <div class="status-dot dot-ready"></div>
+        <div class="status-label">Backtesting Engine</div>
+        <div class="status-val">Tested across 4 regimes</div>
+      </div>
+      <div class="status-row" style="border:none;">
+        <div class="status-dot dot-purple pulse"></div>
+        <div class="status-label" style="color:#c084fc;">Congressional Intel</div>
+        <div class="status-val" style="color:#c084fc;">Unusual Whales + Quiver + HSSW</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty Agent Slots -->
+  <div style="display:flex; flex-direction:column; gap:16px;">
+    <div class="agent-slot">
+      <div class="slot-icon">&#128640;</div>
+      <div class="slot-label">Agent Slot 2 — Available</div>
+      <div class="slot-hint">Potential: Sentinel (Risk Monitor) | Hawk (News Intel) | Fox (Social Sentiment)</div>
+    </div>
+    <div class="agent-slot">
+      <div class="slot-icon">&#129302;</div>
+      <div class="slot-label">Agent Slot 3 — Available</div>
+      <div class="slot-hint">Potential: Oracle (Macro Forecasting) | Spider (Web Scraping) | Mule (Execution)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ CONGRESSIONAL INTELLIGENCE ═══════════════════ -->
+<div class="grid g1" style="padding-bottom:0;">
+  <div class="card congress">
+    <div class="card-h purple">Congressional Trading Intelligence <span class="tag tag-purple">NEW CAPABILITY — ACTIVE</span></div>
+    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap:16px;">
+      <div>
+        <div style="font-size:10px; color:#555; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">Data Sources</div>
+        <div style="font-size:12px; color:#888; line-height:2.0;">
+          <span style="color:#4ade80;">&#9679;</span> Unusual Whales MCP<br>
+          <span style="color:#4ade80;">&#9679;</span> Quiver Quantitative API<br>
+          <span style="color:#4ade80;">&#9679;</span> House Stock Watcher<br>
+          <span style="color:#4ade80;">&#9679;</span> Senate Stock Watcher
+        </div>
+      </div>
+      <div>
+        <div style="font-size:10px; color:#555; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">Capabilities</div>
+        <div style="font-size:12px; color:#888; line-height:2.0;">
+          <span style="color:#c084fc;">&#9654;</span> Track all congressional trades<br>
+          <span style="color:#c084fc;">&#9654;</span> Cross-reference with WOLF signals<br>
+          <span style="color:#c084fc;">&#9654;</span> Cluster buy detection<br>
+          <span style="color:#c084fc;">&#9654;</span> Committee membership overlay
+        </div>
+      </div>
+      <div>
+        <div style="font-size:10px; color:#555; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">Integration</div>
+        <div style="font-size:12px; color:#888; line-height:2.0;">
+          <span style="color:#ff6b35;">&#9656;</span> In daily 8:30 AM scan<br>
+          <span style="color:#ff6b35;">&#9656;</span> Skill: /wolf-congress-tracker<br>
+          <span style="color:#ff6b35;">&#9656;</span> Signal confirmation layer<br>
+          <span style="color:#ff6b35;">&#9656;</span> Unusual options cross-check
+        </div>
+      </div>
+      <div>
+        <div style="font-size:10px; color:#555; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">Status</div>
+        <div style="padding:12px; background:#1a0d2a; border-radius:8px; border:1px solid #3a1a5a; text-align:center;">
+          <div style="color:#c084fc; font-size:20px; font-weight:900; margin-bottom:4px;">ACTIVE</div>
+          <div style="font-size:10px; color:#666; line-height:1.6;">Integrated into<br>Phase 2 Intelligence<br>Last scan: Today 8:30 AM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ NEXT STEPS ═══════════════════ -->
+<div class="grid g2" style="padding-bottom: 0;">
+  <div class="card highlight">
+    <div class="card-h">Next Steps — Priority Queue <span class="tag tag-orange">IN PROGRESS</span></div>
+
+    <div class="step-card done">
+      <div class="step-num num-done">&#10003;</div>
+      <div class="step-content">
+        <div class="step-title done-text">Connect Alpaca Paper Trading</div>
+        <div class="step-desc" style="color:#2a5a2a;">Connected. $100K cash, $200K buying power, shorting enabled. Paper trading active.</div>
+        <div class="step-impact" style="color:#4ade80;">UNLOCKED: Live market scanning, real paper trades, position tracking, daily P&L</div>
+      </div>
+    </div>
+
+    <div class="step-card active">
+      <div class="step-num num-active">2</div>
+      <div class="step-content">
+        <div class="step-title">Execute First Signals — TSLA / NFLX / XLU</div>
+        <div class="step-desc">3 signals identified from today's 8:30 AM scan. TSLA SHORT (Breakdown), NFLX LONG (Momentum), XLU LONG (MACD). All at 2:1 R:R. Ready to execute on Alpaca paper account.</div>
+        <div class="step-impact">UNLOCKS: Real performance tracking, strategy validation with live data, P&L history</div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num num-pending">3</div>
+      <div class="step-content">
+        <div class="step-title">Optimize Strategies to A-Grade</div>
+        <div class="step-desc">Run Enhanced Mean Reversion + Volatility Breakout on live data. Tune parameters. Target: Sharpe >2.0, consistent across regimes.</div>
+        <div class="step-impact">UNLOCKS: Reliable edge, automated strategy rotation</div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num num-pending">4</div>
+      <div class="step-content">
+        <div class="step-title">Install ML Signal Layer (FinRL / PyBroker)</div>
+        <div class="step-desc">Integrate machine learning models from FinRL and PyBroker. Train on historical data. Use ML signals as confirmation filter on top of technical strategies.</div>
+        <div class="step-impact">UNLOCKS: Phase 3 capabilities, AI-enhanced signals, higher win rate</div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num num-pending">5</div>
+      <div class="step-content">
+        <div class="step-title">Deploy Companion Agents (Sentinel, Hawk)</div>
+        <div class="step-desc">Build Sentinel (real-time risk monitor + circuit breaker) and Hawk (news/events intelligence feed). Both feed signals to WOLF.</div>
+        <div class="step-impact">UNLOCKS: Multi-agent construct, 24/7 monitoring, event-driven trading</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Evolution Timeline -->
+  <div class="card">
+    <div class="card-h">WOLF Evolution Timeline</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot tl-done"></div>
+        <div class="tl-label" style="color:#4ade80;">Phase 1: Foundation ✓</div>
+        <div class="tl-detail">Skill built | 8 scripts | 5 market modules | Scanner + backtester operational</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot tl-done"></div>
+        <div class="tl-label" style="color:#4ade80;">Strategy Research ✓</div>
+        <div class="tl-detail">18 GitHub repos indexed | 9 strategies built | 4 advanced strategies backtested</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot tl-done"></div>
+        <div class="tl-label" style="color:#4ade80;">Alpaca Connected ✓</div>
+        <div class="tl-detail">Paper trading live | $100K cash | $200K buying power | Shorting enabled</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot tl-done"></div>
+        <div class="tl-label" style="color:#4ade80;">Congressional Intel ✓</div>
+        <div class="tl-detail">Unusual Whales MCP + Quiver + HSSW | Integrated into daily scan</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot tl-now pulse"></div>
+        <div class="tl-label" style="color:#ff6b35;">Phase 2: Intelligence ← YOU ARE HERE</div>
+        <div class="tl-detail">3 signals live | Execute first trades | Strategy optimization | Performance tracking</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot tl-future"></div>
+        <div class="tl-label">Phase 3: Advanced</div>
+        <div class="tl-detail">Options execution | ML signals (FinRL) | Intermarket analysis | Sentiment layer</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot tl-future"></div>
+        <div class="tl-label">Phase 4: Autonomous</div>
+        <div class="tl-detail">Self-optimizing | Auto regime detection | Strategy rotation | Multi-agent swarm</div>
+      </div>
+    </div>
+
+    <!-- Construct Capabilities -->
+    <div style="margin-top: 20px;">
+      <div class="card-h">Market Coverage</div>
+      <div style="display: grid; grid-template-columns: repeat(4,1fr); gap: 8px;">
+        <div class="cap-item">
+          <div class="cap-icon">&#128200;</div>
+          <div class="cap-name">Equities</div>
+          <div class="cap-status tag tag-green" style="display:inline-block;">READY</div>
+        </div>
+        <div class="cap-item">
+          <div class="cap-icon">&#128202;</div>
+          <div class="cap-name">Options</div>
+          <div class="cap-status tag tag-blue" style="display:inline-block;">ANALYSIS</div>
+        </div>
+        <div class="cap-item">
+          <div class="cap-icon">&#127760;</div>
+          <div class="cap-name">Futures</div>
+          <div class="cap-status tag tag-blue" style="display:inline-block;">VIA ETF</div>
+        </div>
+        <div class="cap-item">
+          <div class="cap-icon">&#9939;</div>
+          <div class="cap-name">Crypto</div>
+          <div class="cap-status tag tag-green" style="display:inline-block;">READY</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Strategies -->
+    <div style="margin-top: 20px;">
+      <div class="card-h">Top Performing Strategies</div>
+      <div class="status-row">
+        <div class="status-label" style="color:#fff; font-weight:700;">Enhanced Mean Reversion</div>
+        <span class="tag tag-green">B GRADE</span>
+        <div class="status-val">82% WR | 6.1x PF | Sharpe 1.63</div>
+      </div>
+      <div class="status-row">
+        <div class="status-label" style="color:#fff; font-weight:700;">Volatility Breakout</div>
+        <span class="tag tag-green">B GRADE</span>
+        <div class="status-val">93% WR | 8.2x PF | Sharpe 1.53</div>
+      </div>
+      <div class="status-row">
+        <div class="status-label" style="color:#ccc;">Multi-Factor Momentum</div>
+        <span class="tag tag-gray">D GRADE</span>
+        <div class="status-val">Needs filtering</div>
+      </div>
+      <div class="status-row" style="border:none;">
+        <div class="status-label" style="color:#ccc;">WOLF Composite</div>
+        <span class="tag tag-gray">D GRADE</span>
+        <div class="status-val">Needs tuning</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ CONSTRUCT FILES ═══════════════════ -->
+<div class="grid g1">
+  <div class="card">
+    <div class="card-h">Construct Architecture <span class="tag tag-blue">20 SOURCE FILES</span></div>
+    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px; font-size: 11px;">
+      <div>
+        <div style="color:#ff6b35; font-weight:700; margin-bottom:6px;">Core</div>
+        <div style="color:#888; line-height:1.8;">
+          SKILL.md — Identity + routing<br>
+          wolf_identity.md — Personality<br>
+          grader.md — Trade evaluation<br>
+        </div>
+        <div style="color:#c084fc; font-weight:700; margin-bottom:6px; margin-top:10px;">Intelligence</div>
+        <div style="color:#888; line-height:1.8;">
+          congressional_scan.py — Congress trades<br>
+          wolf-congress-tracker — Skill<br>
+        </div>
+      </div>
+      <div>
+        <div style="color:#ff6b35; font-weight:700; margin-bottom:6px;">Scripts (8)</div>
+        <div style="color:#888; line-height:1.8;">
+          alpaca_trader.py — Execution<br>
+          market_scanner.py — Signal detection<br>
+          portfolio_manager.py — Risk + P&L<br>
+          strategy_engine.py — Backtesting<br>
+          advanced_strategies.py — 4 advanced<br>
+          research_agent.py — GitHub mining<br>
+          market_data.py — Multi-source data<br>
+          wolf_setup.py — Auto-configuration<br>
+        </div>
+      </div>
+      <div>
+        <div style="color:#ff6b35; font-weight:700; margin-bottom:6px;">References (5) + Data (3)</div>
+        <div style="color:#888; line-height:1.8;">
+          equities.md — Long/short playbook<br>
+          options.md — Greeks + spreads<br>
+          futures.md — Macro + ETF proxies<br>
+          crypto.md — BTC/ETH/alts<br>
+          alpaca_setup.md — API guide<br>
+          strategies.json — 18 repos<br>
+          backtest_results.json — All tests<br>
+          spy_simulated.csv — Test data<br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">AGENT WOLF CONSTRUCT v1.2 | OPERATOR: BOBBY | DIRECTIVE: EARN MONEY | ALPACA CONNECTED | CONGRESSIONAL INTEL ACTIVE | 3 SIGNALS LIVE</div>
+
+</body>
+</html>

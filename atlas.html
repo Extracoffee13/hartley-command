@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATLAS — Brand 9 Signs | Signage Management Portal</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#0d2b4e;--navy2:#1a3f6f;
+  --blue:#1565c0;--blue-l:#e8f3ff;--blue-m:#1976d2;
+  --orange:#f97316;--orange-l:#fff4ed;
+  --gray-50:#f8fafc;--gray-100:#f1f5f9;--gray-200:#e2e8f0;
+  --gray-400:#94a3b8;--gray-600:#475569;--gray-800:#1e293b;
+  --white:#fff;
+  --green:#10b981;--green-l:#d1fae5;
+  --amber:#f59e0b;--amber-l:#fef3c7;
+  --red:#ef4444;--red-l:#fee2e2;
+  --purple:#8b5cf6;--purple-l:#ede9fe;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:0 4px 16px rgba(0,0,0,.1),0 2px 4px rgba(0,0,0,.06);
+  --shadow-lg:0 10px 40px rgba(0,0,0,.15),0 4px 8px rgba(0,0,0,.06);
+  --radius:10px;--radius-sm:6px;
+}
+body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);min-height:100vh;line-height:1.5;}
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:6px;height:6px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:var(--gray-200);border-radius:3px;}
+
+/* ══════════════════════════════════════
+   HEADER
+══════════════════════════════════════ */
+.hdr{
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);
+  height:64px;padding:0 28px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:200;
+  box-shadow:0 2px 12px rgba(0,0,0,.25);
+}
+.hdr-left{display:flex;align-items:center;gap:14px;}
+.logo-wrap{display:flex;align-items:center;gap:10px;}
+.logo-mark{
+  width:38px;height:38px;border-radius:8px;
+  background:var(--orange);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:15px;color:#fff;letter-spacing:-0.5px;
+  flex-shrink:0;box-shadow:0 2px 8px rgba(249,115,22,.4);
+}
+.brand-name{font-size:11px;color:rgba(255,255,255,.5);letter-spacing:2px;text-transform:uppercase;}
+.divider-v{width:1px;height:32px;background:rgba(255,255,255,.15);}
+.atlas-badge{display:flex;flex-direction:column;}
+.atlas-name{font-size:22px;font-weight:800;color:#fff;letter-spacing:4px;line-height:1;}
+.atlas-sub{font-size:10px;color:rgba(255,255,255,.45);letter-spacing:2.5px;text-transform:uppercase;margin-top:3px;}
+.hdr-center{
+  display:flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  border-radius:8px;padding:8px 16px;
+}
+.cl-label{font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1px;}
+.cl-select{
+  background:transparent;border:none;color:#fff;
+  font-size:14px;font-weight:700;cursor:pointer;outline:none;
+  font-family:var(--font);
+}
+.cl-select option{background:var(--navy);color:#fff;}
+.hdr-right{display:flex;align-items:center;gap:10px;}
+.live-badge{display:flex;align-items:center;gap:5px;font-size:11px;color:rgba(255,255,255,.6);}
+.live-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse-dot 2s infinite;}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.7;transform:scale(1.3);}}
+.hdr-btn{
+  padding:7px 14px;border-radius:6px;font-size:12px;font-weight:600;
+  cursor:pointer;border:none;transition:all .2s;font-family:var(--font);
+}
+.hdr-btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2);}
+.hdr-btn-ghost:hover{background:rgba(255,255,255,.18);}
+.hdr-btn-orange{background:var(--orange);color:#fff;box-shadow:0 2px 6px rgba(249,115,22,.35);}
+.hdr-btn-orange:hover{background:#ea6c0a;}
+
+/* ── REGION BAR ── */
+.region-bar{
+  background:#fff;border-bottom:1px solid var(--gray-200);
+  padding:0 28px;display:flex;align-items:center;
+  box-shadow:var(--shadow);
+}
+.r-tab{
+  padding:13px 18px;font-size:13px;font-weight:600;color:var(--gray-600);
+  cursor:pointer;border-bottom:2px solid transparent;
+  transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:6px;
+}
+.r-tab:hover{color:var(--blue);}
+.r-tab.active{color:var(--blue);border-bottom-color:var(--blue);}
+.r-count{
+  background:var(--blue-l);color:var(--blue);
+  font-size:10px;font-weight:800;padding:1px 6px;border-radius:10px;
+}
+.r-tab.dim{color:var(--gray-400);cursor:default;}
+.r-tab.dim:hover{color:var(--gray-400);}
+
+/* ── KPI BAR ── */
+.kpi-bar{
+  background:linear-gradient(135deg,var(--navy) 0%,#0f3460 100%);
+  padding:0 28px;display:grid;grid-template-columns:repeat(5,1fr);
+  border-bottom:3px solid var(--orange);
+}
+.kpi-card{
+  padding:18px 20px;position:relative;
+}
+.kpi-card:not(:last-child)::after{
+  content:'';position:absolute;right:0;top:18%;height:64%;
+  width:1px;background:rgba(255,255,255,.08);
+}
+.kpi-lbl{font-size:10px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:1.2px;font-weight:700;}
+.kpi-val{font-size:30px;font-weight:800;color:#fff;line-height:1.1;margin:4px 0 2px;}
+.kpi-sub{font-size:11px;color:rgba(255,255,255,.35);}
+.kpi-chg{font-size:11px;font-weight:700;display:flex;align-items:center;gap:3px;margin-top:4px;}
+.kpi-chg.up{color:#34d399;}.kpi-chg.dn{color:#f87171;}
+.kpi-icon{position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:28px;opacity:.12;}
+
+/* ── MAIN ── */
+.main{padding:24px 28px;max-width:1700px;margin:0 auto;}
+
+/* ── TOOLBAR ── */
+.toolbar{display:flex;gap:10px;align-items:center;margin-bottom:20px;flex-wrap:wrap;}
+.search-wrap{flex:1;min-width:220px;position:relative;}
+.search-input{
+  width:100%;padding:9px 14px 9px 38px;
+  border:1px solid var(--gray-200);border-radius:var(--radius-sm);
+  font-size:13px;background:#fff;color:var(--gray-800);outline:none;
+  transition:border-color .2s;font-family:var(--font);
+  box-shadow:var(--shadow);
+}
+.search-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(21,101,192,.1);}
+.search-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--gray-400);}
+.flt-sel{
+  padding:9px 32px 9px 12px;border:1px solid var(--gray-200);border-radius:var(--radius-sm);
+  font-size:13px;background:#fff;color:var(--gray-800);outline:none;cursor:pointer;
+  font-family:var(--font);font-weight:500;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 10px center;
+  box-shadow:var(--shadow);
+}
+.tb-actions{display:flex;gap:8px;}
+.btn-sec{
+  padding:9px 14px;background:#fff;border:1px solid var(--gray-200);
+  border-radius:var(--radius-sm);font-size:12px;font-weight:600;color:var(--gray-600);
+  cursor:pointer;transition:all .2s;font-family:var(--font);box-shadow:var(--shadow);
+}
+.btn-sec:hover{background:var(--gray-100);}
+.btn-pri{
+  padding:9px 16px;background:var(--blue);border:none;
+  border-radius:var(--radius-sm);font-size:12px;font-weight:700;color:#fff;
+  cursor:pointer;transition:all .2s;font-family:var(--font);
+  box-shadow:0 2px 6px rgba(21,101,192,.3);
+}
+.btn-pri:hover{background:var(--blue-m);}
+
+/* ── SECTION HEADER ── */
+.sec-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.sec-title{font-size:15px;font-weight:800;color:var(--gray-800);display:flex;align-items:center;gap:8px;}
+.sec-badge{background:var(--blue-l);color:var(--blue);font-size:11px;font-weight:800;padding:2px 8px;border-radius:10px;}
+.sec-badge-orange{background:var(--orange-l);color:var(--orange);}
+
+/* ── COMMUNITY GRID ── */
+.comm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:14px;margin-bottom:28px;}
+
+/* ── COMMUNITY CARD ── */
+.c-card{
+  background:#fff;border-radius:var(--radius);padding:16px;
+  border:1px solid var(--gray-200);cursor:pointer;
+  transition:all .2s;position:relative;overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.c-card:hover{border-color:var(--blue);box-shadow:var(--shadow-md);transform:translateY(-2px);}
+.c-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:var(--radius) 0 0 var(--radius);}
+.c-card.s-complete::before{background:var(--green);}
+.c-card.s-pending::before{background:var(--amber);}
+.c-card.s-in-progress::before{background:var(--blue);}
+.c-card.s-overdue::before{background:var(--red);}
+.c-card.s-new::before{background:var(--purple);}
+
+.c-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px;padding-left:10px;}
+.c-name{font-size:13px;font-weight:800;color:var(--gray-800);line-height:1.3;flex:1;}
+.c-city{font-size:11px;color:var(--gray-400);margin-top:1px;font-weight:500;}
+.s-badge{font-size:9px;font-weight:800;padding:3px 8px;border-radius:10px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;margin-left:8px;margin-top:1px;}
+.sb-complete{background:var(--green-l);color:#059669;}
+.sb-pending{background:var(--amber-l);color:#d97706;}
+.sb-in-progress{background:var(--blue-l);color:#1d4ed8;}
+.sb-overdue{background:var(--red-l);color:#dc2626;}
+.sb-new{background:var(--purple-l);color:#7c3aed;}
+
+.c-prog{padding-left:10px;margin-bottom:10px;}
+.prog-lbl{display:flex;justify-content:space-between;font-size:11px;color:var(--gray-600);margin-bottom:4px;font-weight:500;}
+.prog-bar{height:5px;background:var(--gray-100);border-radius:3px;overflow:hidden;}
+.prog-fill{height:100%;border-radius:3px;}
+.pf-complete{background:var(--green);}
+.pf-pending{background:var(--amber);}
+.pf-in-progress{background:linear-gradient(90deg,var(--blue),#42a5f5);}
+.pf-overdue{background:var(--red);}
+.pf-new{background:var(--purple);}
+
+.c-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding-left:10px;}
+.m-item{display:flex;flex-direction:column;gap:1px;}
+.m-lbl{font-size:9px;color:var(--gray-400);text-transform:uppercase;letter-spacing:.8px;font-weight:700;}
+.m-val{font-size:12px;color:var(--gray-800);font-weight:700;}
+.m-val.money{color:var(--blue);}
+.m-val.phase{font-size:10px;font-weight:600;color:var(--gray-600);}
+
+.c-footer{padding-left:10px;margin-top:10px;border-top:1px solid var(--gray-100);padding-top:8px;display:flex;justify-content:flex-end;}
+.c-detail-link{font-size:11px;color:var(--blue);font-weight:700;display:flex;align-items:center;gap:3px;opacity:.7;}
+.c-card:hover .c-detail-link{opacity:1;}
+
+/* ── BOTTOM PANELS ROW ── */
+.panels-row{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;margin-bottom:22px;}
+.panels-row2{display:grid;grid-template-columns:1.2fr 1fr;gap:18px;margin-bottom:28px;}
+
+/* ── PANEL ── */
+.panel{background:#fff;border-radius:var(--radius);border:1px solid var(--gray-200);overflow:hidden;box-shadow:var(--shadow);}
+.p-hdr{padding:14px 18px;border-bottom:1px solid var(--gray-100);display:flex;align-items:center;justify-content:space-between;background:var(--gray-50);}
+.p-title{font-size:13px;font-weight:800;color:var(--gray-800);display:flex;align-items:center;gap:7px;}
+.p-title-icon{font-size:16px;}
+.p-body{padding:0;}
+.p-body-pad{padding:18px;}
+
+/* ── WORK ORDERS TABLE ── */
+.wo-tbl{width:100%;border-collapse:collapse;}
+.wo-tbl th{
+  font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;
+  color:var(--gray-400);padding:10px 14px;text-align:left;
+  border-bottom:1px solid var(--gray-200);background:var(--gray-50);white-space:nowrap;
+}
+.wo-tbl td{
+  padding:11px 14px;border-bottom:1px solid var(--gray-100);
+  font-size:12px;color:var(--gray-800);vertical-align:middle;
+}
+.wo-tbl tr:last-child td{border-bottom:none;}
+.wo-tbl tr:hover td{background:var(--gray-50);}
+.wo-priority{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:5px;vertical-align:middle;}
+.wo-num{font-size:10px;font-weight:800;color:var(--gray-400);}
+.wo-comm{font-weight:700;color:var(--gray-800);}
+.wo-type{font-size:11px;color:var(--gray-600);}
+.wo-date{font-size:11px;font-weight:600;color:var(--gray-600);white-space:nowrap;}
+.wo-crew{font-size:11px;color:var(--gray-500);}
+
+/* ── ACTIVITY LOG ── */
+.act-list{list-style:none;}
+.act-item{display:flex;gap:12px;padding:12px 18px;border-bottom:1px solid var(--gray-100);}
+.act-item:last-child{border-bottom:none;}
+.act-ic{
+  width:30px;height:30px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;margin-top:1px;
+}
+.act-content{flex:1;min-width:0;}
+.act-text{font-size:12px;color:var(--gray-800);line-height:1.4;font-weight:500;}
+.act-time{font-size:10px;color:var(--gray-400);margin-top:2px;font-weight:600;}
+
+/* ── CHART ── */
+.chart-wrap{padding:18px;position:relative;}
+.chart-container{position:relative;height:200px;}
+
+/* ── FINANCIALS ── */
+.fin-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:18px 18px 0;}
+.fin-card{background:var(--gray-50);border-radius:8px;padding:14px;border:1px solid var(--gray-200);}
+.fin-lbl{font-size:10px;color:var(--gray-400);text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:3px;}
+.fin-val{font-size:20px;font-weight:900;color:var(--navy);}
+.fin-val.green{color:var(--green);}
+.fin-val.orange{color:var(--orange);}
+.fin-val.red{color:var(--red);}
+.fin-sub{font-size:11px;color:var(--gray-400);margin-top:3px;}
+.region-split{padding:18px;}
+.rs-label{font-size:11px;font-weight:700;color:var(--gray-600);margin-bottom:6px;}
+.rs-bar{display:flex;height:10px;border-radius:5px;overflow:hidden;gap:2px;}
+.rs-n{background:var(--blue);}
+.rs-s{background:var(--orange);}
+.rs-legend{display:flex;gap:16px;margin-top:8px;}
+.rs-leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gray-600);font-weight:600;}
+.rs-dot{width:8px;height:8px;border-radius:50%;}
+
+/* ── MODAL ── */
+.modal-ov{
+  display:none;position:fixed;inset:0;
+  background:rgba(13,43,78,.6);z-index:500;
+  align-items:center;justify-content:center;padding:20px;
+  backdrop-filter:blur(6px);
+}
+.modal-ov.open{display:flex;}
+.modal{
+  background:#fff;border-radius:16px;width:100%;max-width:780px;
+  max-height:88vh;overflow-y:auto;box-shadow:var(--shadow-lg);
+  animation:modal-in .25s ease;
+}
+@keyframes modal-in{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.m-hdr{
+  padding:24px 24px 16px;display:flex;align-items:flex-start;
+  justify-content:space-between;position:sticky;top:0;background:#fff;
+  border-bottom:1px solid var(--gray-200);z-index:1;
+}
+.m-close{
+  width:30px;height:30px;border-radius:50%;border:none;
+  background:var(--gray-100);cursor:pointer;font-size:16px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gray-600);flex-shrink:0;transition:background .2s;
+}
+.m-close:hover{background:var(--gray-200);}
+.m-body{padding:24px;}
+.m-region{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--blue-l);color:var(--blue);
+  font-size:11px;font-weight:800;padding:3px 10px;border-radius:12px;
+  text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px;
+}
+.m-comm-name{font-size:22px;font-weight:900;color:var(--navy);line-height:1.2;}
+.m-comm-city{font-size:13px;color:var(--gray-400);margin-top:2px;}
+.m-stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0;}
+.m-stat{background:var(--gray-50);border-radius:8px;padding:12px;border:1px solid var(--gray-200);text-align:center;}
+.m-stat-val{font-size:20px;font-weight:900;color:var(--navy);}
+.m-stat-lbl{font-size:10px;color:var(--gray-400);text-transform:uppercase;letter-spacing:.8px;font-weight:700;margin-top:2px;}
+.sign-section{margin-top:20px;}
+.sign-sec-title{font-size:13px;font-weight:800;color:var(--gray-800);margin-bottom:10px;}
+.sign-tbl{width:100%;border-collapse:collapse;}
+.sign-tbl th{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--gray-400);padding:8px 12px;text-align:left;border-bottom:1px solid var(--gray-200);background:var(--gray-50);}
+.sign-tbl td{padding:10px 12px;border-bottom:1px solid var(--gray-100);font-size:12px;color:var(--gray-800);}
+.sign-tbl tr:last-child td{border-bottom:none;}
+.sign-prog{width:80px;height:6px;background:var(--gray-100);border-radius:3px;overflow:hidden;display:inline-block;vertical-align:middle;}
+.sign-prog-fill{height:100%;background:var(--blue);border-radius:3px;}
+.m-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px;}
+.m-info-card{background:var(--gray-50);border-radius:8px;padding:14px;border:1px solid var(--gray-200);}
+.m-info-lbl{font-size:10px;color:var(--gray-400);text-transform:uppercase;letter-spacing:.8px;font-weight:700;margin-bottom:3px;}
+.m-info-val{font-size:13px;font-weight:700;color:var(--gray-800);}
+
+/* ── EMPTY STATE ── */
+.empty{padding:48px 20px;text-align:center;color:var(--gray-400);}
+.empty-icon{font-size:40px;margin-bottom:10px;}
+.empty-text{font-size:14px;font-weight:600;}
+
+/* ── FOOTER ── */
+.ftr{background:#fff;border-top:1px solid var(--gray-200);padding:14px 28px;display:flex;align-items:center;justify-content:space-between;margin-top:8px;}
+.ftr-brand{font-size:11px;color:var(--gray-400);}
+.ftr-brand strong{color:var(--navy);}
+.ftr-powered{font-size:10px;color:var(--gray-400);display:flex;align-items:center;gap:5px;}
+.atlas-dot{width:6px;height:6px;background:var(--orange);border-radius:50%;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hdr{padding:0 16px;}
+  .kpi-bar{grid-template-columns:repeat(3,1fr);}
+  .kpi-card:nth-child(4),.kpi-card:nth-child(5){grid-column:auto;}
+  .panels-row,.panels-row2{grid-template-columns:1fr;}
+  .main{padding:16px;}
+  .m-stats-row{grid-template-columns:repeat(2,1fr);}
+}
+
+/* ── PRINT ── */
+@media print{
+  .hdr{background:var(--navy)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .kpi-bar{background:var(--navy)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .modal-ov{display:none!important;}
+  .tb-actions,.hdr-btn{display:none!important;}
+}
+
+/* ── ANIMATIONS ── */
+@keyframes card-in{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.c-card{animation:card-in .3s ease both;}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════
+  HEADER
+══════════════════════════════════════ -->
+<header class="hdr">
+  <div class="hdr-left">
+    <div class="logo-wrap">
+      <div class="logo-mark">B9</div>
+      <div>
+        <div class="brand-name">Brand 9 Signs</div>
+      </div>
+    </div>
+    <div class="divider-v"></div>
+    <div class="atlas-badge">
+      <div class="atlas-name">ATLAS</div>
+      <div class="atlas-sub">Signage Management Portal</div>
+    </div>
+  </div>
+
+  <div class="hdr-center">
+    <div class="cl-label">Client</div>
+    <select class="cl-select" id="clientSelect">
+      <option value="lennar">Lennar Homes</option>
+      <option value="pulte" disabled>Pulte Group (Coming Soon)</option>
+      <option value="dr-horton" disabled>D.R. Horton (Coming Soon)</option>
+      <option value="kb" disabled>KB Homes (Coming Soon)</option>
+    </select>
+  </div>
+
+  <div class="hdr-right">
+    <div class="live-badge">
+      <div class="live-dot"></div>
+      Live · Updated Apr 3, 2026
+    </div>
+    <button class="hdr-btn hdr-btn-ghost" onclick="window.print()">⬇ Export</button>
+    <button class="hdr-btn hdr-btn-orange" onclick="showNewWO()">+ New Work Order</button>
+  </div>
+</header>
+
+<!-- ── REGION TABS ── -->
+<div class="region-bar">
+  <div class="r-tab active" data-region="all" onclick="setRegion('all',this)">All Florida <span class="r-count" id="cnt-all">65</span></div>
+  <div class="r-tab" data-region="north" onclick="setRegion('north',this)">North Florida <span class="r-count" id="cnt-north">25</span></div>
+  <div class="r-tab" data-region="south" onclick="setRegion('south',this)">South Florida <span class="r-count" id="cnt-south">40</span></div>
+  <div class="r-tab dim" title="Coming Soon">Southeast Region</div>
+  <div class="r-tab dim" title="Coming Soon">National</div>
+</div>
+
+<!-- ── KPI BAR ── -->
+<div class="kpi-bar">
+  <div class="kpi-card">
+    <div class="kpi-lbl">Total Communities</div>
+    <div class="kpi-val" id="kpi-communities">65</div>
+    <div class="kpi-sub">25 North · 40 South Florida</div>
+    <div class="kpi-chg up">▲ +40 South FL added Q1</div>
+    <div class="kpi-icon">🏘</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-lbl">Active Installations</div>
+    <div class="kpi-val" id="kpi-active">11</div>
+    <div class="kpi-sub">Communities in progress</div>
+    <div class="kpi-chg up">▲ 3 grand openings this week</div>
+    <div class="kpi-icon">🔧</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-lbl">Pending Orders</div>
+    <div class="kpi-val" id="kpi-pending">13</div>
+    <div class="kpi-sub">Awaiting installation</div>
+    <div class="kpi-chg dn">▼ 1 overdue — flagged</div>
+    <div class="kpi-icon">📋</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-lbl">Completed This Month</div>
+    <div class="kpi-val" id="kpi-completed">8</div>
+    <div class="kpi-sub">Communities finalized Mar 2026</div>
+    <div class="kpi-chg up">▲ +33% vs Feb</div>
+    <div class="kpi-icon">✅</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-lbl">Revenue This Month</div>
+    <div class="kpi-val" id="kpi-revenue">$186K</div>
+    <div class="kpi-sub">Mar 2026 · $2.72M total contract</div>
+    <div class="kpi-chg up">▲ +28% vs Mar 2025</div>
+    <div class="kpi-icon">💰</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+  MAIN
+══════════════════════════════════════ -->
+<main class="main">
+
+  <!-- ── TOOLBAR ── -->
+  <div class="toolbar">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" type="text" id="searchInput" placeholder="Search communities, cities, or phases…" oninput="applyFilters()">
+    </div>
+    <select class="flt-sel" id="statusFilter" onchange="applyFilters()">
+      <option value="">All Statuses</option>
+      <option value="complete">Complete</option>
+      <option value="in-progress">In Progress</option>
+      <option value="pending">Pending</option>
+      <option value="overdue">Overdue</option>
+      <option value="new">New</option>
+    </select>
+    <select class="flt-sel" id="phaseFilter" onchange="applyFilters()">
+      <option value="">All Phases</option>
+      <option value="Active Selling">Active Selling</option>
+      <option value="Grand Opening">Grand Opening</option>
+      <option value="Pre-Launch">Pre-Launch</option>
+      <option value="Pre-Development">Pre-Development</option>
+      <option value="Closeout">Closeout</option>
+    </select>
+    <div class="tb-actions">
+      <button class="btn-sec" onclick="clearFilters()">↺ Clear</button>
+      <button class="btn-pri" onclick="exportCSV()">⬇ Export CSV</button>
+    </div>
+  </div>
+
+  <!-- ── COMMUNITY GRID ── -->
+  <div class="sec-hdr">
+    <div class="sec-title">
+      🏘 Communities
+      <span class="sec-badge" id="gridCount">65</span>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <div style="display:flex;gap:10px;font-size:11px;font-weight:700;">
+        <span style="display:flex;align-items:center;gap:4px;color:#059669;"><span style="width:8px;height:8px;background:#10b981;border-radius:50%;display:inline-block;"></span>Complete</span>
+        <span style="display:flex;align-items:center;gap:4px;color:#1d4ed8;"><span style="width:8px;height:8px;background:#1565c0;border-radius:50%;display:inline-block;"></span>In Progress</span>
+        <span style="display:flex;align-items:center;gap:4px;color:#d97706;"><span style="width:8px;height:8px;background:#f59e0b;border-radius:50%;display:inline-block;"></span>Pending</span>
+        <span style="display:flex;align-items:center;gap:4px;color:#dc2626;"><span style="width:8px;height:8px;background:#ef4444;border-radius:50%;display:inline-block;"></span>Overdue</span>
+        <span style="display:flex;align-items:center;gap:4px;color:#7c3aed;"><span style="width:8px;height:8px;background:#8b5cf6;border-radius:50%;display:inline-block;"></span>New</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="comm-grid" id="communityGrid"></div>
+  <div id="emptyState" class="empty" style="display:none;">
+    <div class="empty-icon">🔍</div>
+    <div class="empty-text">No communities match your filters</div>
+  </div>
+
+  <!-- ── WORK ORDERS + ACTIVITY ── -->
+  <div class="panels-row">
+    <!-- Work Order Queue -->
+    <div class="panel">
+      <div class="p-hdr">
+        <div class="p-title"><span class="p-title-icon">📋</span> Upcoming Work Orders</div>
+        <span class="sec-badge">15 Scheduled</span>
+      </div>
+      <div class="p-body">
+        <table class="wo-tbl">
+          <thead>
+            <tr>
+              <th>Order</th><th>Community</th><th>Sign Type</th><th>Qty</th><th>Scheduled</th><th>Crew</th><th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="workOrdersBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Activity Log -->
+    <div class="panel">
+      <div class="p-hdr">
+        <div class="p-title"><span class="p-title-icon">⚡</span> Activity Log</div>
+        <span class="sec-badge sec-badge-orange">Live Feed</span>
+      </div>
+      <div class="p-body">
+        <ul class="act-list" id="activityLog"></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CHARTS + FINANCIALS ── -->
+  <div class="panels-row2">
+    <!-- Sign Inventory Chart -->
+    <div class="panel">
+      <div class="p-hdr">
+        <div class="p-title"><span class="p-title-icon">📊</span> Sign Inventory by Type</div>
+        <span class="sec-badge">All 65 Communities</span>
+      </div>
+      <div class="chart-wrap">
+        <div class="chart-container"><canvas id="signChart"></canvas></div>
+      </div>
+    </div>
+
+    <!-- Financial Summary -->
+    <div class="panel">
+      <div class="p-hdr">
+        <div class="p-title"><span class="p-title-icon">💰</span> Financial Summary</div>
+        <span class="sec-badge sec-badge-orange">Lennar Homes · 2026</span>
+      </div>
+      <div class="fin-grid">
+        <div class="fin-card">
+          <div class="fin-lbl">Total Contract Value</div>
+          <div class="fin-val">$2.72M</div>
+          <div class="fin-sub">65 communities · all sign types</div>
+        </div>
+        <div class="fin-card">
+          <div class="fin-lbl">Invoiced YTD</div>
+          <div class="fin-val green">$2.14M</div>
+          <div class="fin-sub">78.7% of total contract</div>
+        </div>
+        <div class="fin-card">
+          <div class="fin-lbl">Outstanding</div>
+          <div class="fin-val orange">$578K</div>
+          <div class="fin-sub">13 communities in progress</div>
+        </div>
+        <div class="fin-card">
+          <div class="fin-lbl">Revenue This Month</div>
+          <div class="fin-val">$186K</div>
+          <div class="fin-sub">Mar 2026 · ▲ 28% YoY</div>
+        </div>
+      </div>
+      <div class="region-split">
+        <div class="rs-label">Revenue by Region</div>
+        <div class="rs-bar">
+          <div class="rs-n" style="flex:956"></div>
+          <div class="rs-s" style="flex:1759"></div>
+        </div>
+        <div class="rs-legend">
+          <div class="rs-leg-item"><div class="rs-dot" style="background:var(--blue);"></div>North FL · $956K (35%)</div>
+          <div class="rs-leg-item"><div class="rs-dot" style="background:var(--orange);"></div>South FL · $1.76M (65%)</div>
+        </div>
+        <div style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div class="fin-card" style="padding:10px 12px;">
+            <div class="fin-lbl">Avg per Community</div>
+            <div style="font-size:16px;font-weight:900;color:var(--navy);">$41,850</div>
+          </div>
+          <div class="fin-card" style="padding:10px 12px;">
+            <div class="fin-lbl">Avg Signs per Community</div>
+            <div style="font-size:16px;font-weight:900;color:var(--navy);">22.4 signs</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer class="ftr">
+  <div class="ftr-brand"><strong>ATLAS</strong> · Brand 9 Signs Signage Management Portal · Lennar Homes Account</div>
+  <div class="ftr-powered"><div class="atlas-dot"></div> Powered by Brand 9 AI · Atlas Agent · Last sync: Apr 3, 2026 at 9:18 AM</div>
+</footer>
+
+<!-- ═══════════════════════════════════
+  COMMUNITY DETAIL MODAL
+══════════════════════════════════════ -->
+<div class="modal-ov" id="modalOv" onclick="closeModal(event)">
+  <div class="modal" id="modalBox">
+    <div class="m-hdr">
+      <div>
+        <div class="m-region" id="m-region">NORTH FLORIDA</div>
+        <div class="m-comm-name" id="m-name">Community Name</div>
+        <div class="m-comm-city" id="m-city">City, FL</div>
+      </div>
+      <button class="m-close" onclick="closeModalBtn()">✕</button>
+    </div>
+    <div class="m-body" id="m-body"></div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// COMMUNITY DATA — 65 Lennar Communities
+// ═══════════════════════════════════════════════════════
+
+const COMMUNITIES = [
+// ─── NORTH FLORIDA (25) ───
+{id:1,name:"Riverview Estates",city:"Jacksonville",region:"north",status:"complete",phase:"Active Selling",totalSigns:28,installedSigns:28,lastInstall:"Mar 10, 2026",nextInstall:null,contact:"Sarah Mitchell",cv:52400,inv:52400},
+{id:2,name:"Heritage Park",city:"Jacksonville",region:"north",status:"complete",phase:"Active Selling",totalSigns:22,installedSigns:22,lastInstall:"Mar 4, 2026",nextInstall:null,contact:"Tom Albright",cv:38800,inv:38800},
+{id:3,name:"Coastal Pines",city:"Fernandina Beach",region:"north",status:"pending",phase:"Pre-Launch",totalSigns:18,installedSigns:12,lastInstall:"Mar 18, 2026",nextInstall:"Apr 5, 2026",contact:"Janet Flores",cv:32600,inv:21200},
+{id:4,name:"The Preserve at St. Johns",city:"St. Augustine",region:"north",status:"in-progress",phase:"Grand Opening",totalSigns:32,installedSigns:24,lastInstall:"Apr 1, 2026",nextInstall:"Apr 9, 2026",contact:"Damon Reeves",cv:67200,inv:50400},
+{id:5,name:"Eagle Landing",city:"Orange Park",region:"north",status:"complete",phase:"Active Selling",totalSigns:26,installedSigns:26,lastInstall:"Feb 28, 2026",nextInstall:null,contact:"Lisa Cannon",cv:45100,inv:45100},
+{id:6,name:"Tributary",city:"Ponte Vedra",region:"north",status:"complete",phase:"Active Selling",totalSigns:30,installedSigns:30,lastInstall:"Mar 7, 2026",nextInstall:null,contact:"Brandon Holt",cv:72300,inv:72300},
+{id:7,name:"Nocatee West",city:"Ponte Vedra Beach",region:"north",status:"in-progress",phase:"Grand Opening",totalSigns:35,installedSigns:28,lastInstall:"Apr 1, 2026",nextInstall:"Apr 9, 2026",contact:"Brandon Holt",cv:84500,inv:67600},
+{id:8,name:"Oakleaf Plantation",city:"Orange Park",region:"north",status:"complete",phase:"Active Selling",totalSigns:24,installedSigns:24,lastInstall:"Feb 20, 2026",nextInstall:null,contact:"Natalie Greene",cv:41800,inv:41800},
+{id:9,name:"Palencia Reserve",city:"St. Augustine",region:"north",status:"pending",phase:"Pre-Launch",totalSigns:20,installedSigns:8,lastInstall:"Mar 22, 2026",nextInstall:"Apr 7, 2026",contact:"Damon Reeves",cv:35600,inv:14200},
+{id:10,name:"Silverleaf",city:"St. Augustine",region:"north",status:"new",phase:"Pre-Development",totalSigns:22,installedSigns:0,lastInstall:null,nextInstall:"May 2026",contact:"Janet Flores",cv:42200,inv:0},
+{id:11,name:"Pablo Bay",city:"Jacksonville Beach",region:"north",status:"complete",phase:"Closeout",totalSigns:18,installedSigns:18,lastInstall:"Feb 14, 2026",nextInstall:null,contact:"Tom Albright",cv:29400,inv:29400},
+{id:12,name:"Azalea Ridge",city:"Jacksonville",region:"north",status:"complete",phase:"Active Selling",totalSigns:20,installedSigns:20,lastInstall:"Mar 3, 2026",nextInstall:null,contact:"Sarah Mitchell",cv:34600,inv:34600},
+{id:13,name:"Wards Creek",city:"St. Augustine",region:"north",status:"pending",phase:"Pre-Launch",totalSigns:16,installedSigns:6,lastInstall:"Mar 25, 2026",nextInstall:"Apr 14, 2026",contact:"Lisa Cannon",cv:24800,inv:9300},
+{id:14,name:"Creekside at Twin Creeks",city:"St. Johns",region:"north",status:"in-progress",phase:"Grand Opening",totalSigns:28,installedSigns:18,lastInstall:"Apr 2, 2026",nextInstall:"Apr 21, 2026",contact:"Sarah Mitchell",cv:56900,inv:36600},
+{id:15,name:"The Outlook at Bartram Park",city:"Jacksonville",region:"north",status:"complete",phase:"Active Selling",totalSigns:22,installedSigns:22,lastInstall:"Mar 8, 2026",nextInstall:null,contact:"Tom Albright",cv:39500,inv:39500},
+{id:16,name:"Hidden Oaks",city:"Fleming Island",region:"north",status:"complete",phase:"Closeout",totalSigns:16,installedSigns:16,lastInstall:"Jan 30, 2026",nextInstall:null,contact:"Natalie Greene",cv:26800,inv:26800},
+{id:17,name:"River City Landing",city:"Jacksonville",region:"north",status:"pending",phase:"Pre-Launch",totalSigns:24,installedSigns:10,lastInstall:"Mar 28, 2026",nextInstall:"Apr 18, 2026",contact:"Brandon Holt",cv:44600,inv:18600},
+{id:18,name:"Twelve Bridges",city:"Green Cove Springs",region:"north",status:"new",phase:"Pre-Development",totalSigns:18,installedSigns:0,lastInstall:null,nextInstall:"Apr 16, 2026",contact:"Lisa Cannon",cv:32400,inv:0},
+{id:19,name:"Amelia National",city:"Fernandina Beach",region:"north",status:"complete",phase:"Active Selling",totalSigns:20,installedSigns:20,lastInstall:"Mar 6, 2026",nextInstall:null,contact:"Janet Flores",cv:44200,inv:44200},
+{id:20,name:"Ponte Vedra Reserve",city:"Ponte Vedra",region:"north",status:"overdue",phase:"Active Selling",totalSigns:26,installedSigns:20,lastInstall:"Mar 14, 2026",nextInstall:"OVERDUE",contact:"Brandon Holt",cv:58600,inv:45100},
+{id:21,name:"Fleming Island Preserve",city:"Fleming Island",region:"north",status:"complete",phase:"Closeout",totalSigns:14,installedSigns:14,lastInstall:"Feb 5, 2026",nextInstall:null,contact:"Natalie Greene",cv:23100,inv:23100},
+{id:22,name:"Julington Creek",city:"St. Johns",region:"north",status:"in-progress",phase:"Grand Opening",totalSigns:30,installedSigns:22,lastInstall:"Apr 1, 2026",nextInstall:"Apr 23, 2026",contact:"Sarah Mitchell",cv:54800,inv:40100},
+{id:23,name:"Pine Ridge Estates",city:"Jacksonville",region:"north",status:"complete",phase:"Active Selling",totalSigns:18,installedSigns:18,lastInstall:"Mar 12, 2026",nextInstall:null,contact:"Tom Albright",cv:31200,inv:31200},
+{id:24,name:"Crosswater at Pablo Bay",city:"Jacksonville",region:"north",status:"pending",phase:"Pre-Launch",totalSigns:22,installedSigns:12,lastInstall:"Mar 30, 2026",nextInstall:"Apr 11, 2026",contact:"Damon Reeves",cv:42600,inv:23200},
+{id:25,name:"Greenleaf Village",city:"Jacksonville",region:"north",status:"new",phase:"Pre-Development",totalSigns:16,installedSigns:0,lastInstall:null,nextInstall:"May 2026",contact:"Sarah Mitchell",cv:28800,inv:0},
+
+// ─── SOUTH FLORIDA (40) ───
+{id:26,name:"Coral Lakes",city:"Boynton Beach",region:"south",status:"complete",phase:"Active Selling",totalSigns:24,installedSigns:24,lastInstall:"Mar 11, 2026",nextInstall:null,contact:"Marcus Vega",cv:48600,inv:48600},
+{id:27,name:"Palm Vista",city:"Delray Beach",region:"south",status:"complete",phase:"Active Selling",totalSigns:28,installedSigns:28,lastInstall:"Mar 5, 2026",nextInstall:null,contact:"Angela Ruiz",cv:56200,inv:56200},
+{id:28,name:"Sunset Cove",city:"Boca Raton",region:"south",status:"in-progress",phase:"Grand Opening",totalSigns:30,installedSigns:22,lastInstall:"Apr 2, 2026",nextInstall:"Apr 8, 2026",contact:"Marcus Vega",cv:68400,inv:50100},
+{id:29,name:"The Estates at Boca",city:"Boca Raton",region:"south",status:"complete",phase:"Active Selling",totalSigns:32,installedSigns:32,lastInstall:"Feb 26, 2026",nextInstall:null,contact:"Angela Ruiz",cv:88500,inv:88500},
+{id:30,name:"Aventura Gardens",city:"Aventura",region:"south",status:"pending",phase:"Pre-Launch",totalSigns:22,installedSigns:10,lastInstall:"Mar 20, 2026",nextInstall:"Apr 10, 2026",contact:"Ramon Estrada",cv:42800,inv:19500},
+{id:31,name:"Miramar Lakes",city:"Miramar",region:"south",status:"complete",phase:"Active Selling",totalSigns:26,installedSigns:26,lastInstall:"Mar 9, 2026",nextInstall:null,contact:"Priya Sharma",cv:52100,inv:52100},
+{id:32,name:"Weston Preserve",city:"Weston",region:"south",status:"complete",phase:"Active Selling",totalSigns:30,installedSigns:30,lastInstall:"Mar 31, 2026",nextInstall:null,contact:"Angela Ruiz",cv:74600,inv:74600},
+{id:33,name:"Parkland Reserve",city:"Parkland",region:"south",status:"in-progress",phase:"Grand Opening",totalSigns:28,installedSigns:20,lastInstall:"Apr 3, 2026",nextInstall:"Apr 15, 2026",contact:"Marcus Vega",cv:64300,inv:45900},
+{id:34,name:"Davie Crossing",city:"Davie",region:"south",status:"complete",phase:"Active Selling",totalSigns:20,installedSigns:20,lastInstall:"Feb 22, 2026",nextInstall:null,contact:"Ramon Estrada",cv:38800,inv:38800},
+{id:35,name:"Pembroke Falls",city:"Pembroke Pines",region:"south",status:"complete",phase:"Active Selling",totalSigns:24,installedSigns:24,lastInstall:"Mar 16, 2026",nextInstall:null,contact:"Priya Sharma",cv:46200,inv:46200},
+{id:36,name:"Cooper City Commons",city:"Cooper City",region:"south",status:"pending",phase:"Pre-Launch",totalSigns:18,installedSigns:8,lastInstall:"Mar 24, 2026",nextInstall:"Apr 17, 2026",contact:"Ramon Estrada",cv:32400,inv:14400},
+{id:37,name:"Plantation Ridge",city:"Plantation",region:"south",status:"complete",phase:"Active Selling",totalSigns:22,installedSigns:22,lastInstall:"Mar 2, 2026",nextInstall:null,contact:"Angela Ruiz",cv:44800,inv:44800},
+{id:38,name:"Sunrise Gardens",city:"Sunrise",region:"south",status:"in-progress",phase:"Grand Opening",totalSigns:26,installedSigns:18,lastInstall:"Apr 1, 2026",nextInstall:"Apr 18, 2026",contact:"Marcus Vega",cv:52600,inv:36400},
+{id:39,name:"Doral Commons",city:"Doral",region:"south",status:"complete",phase:"Active Selling",totalSigns:28,installedSigns:28,lastInstall:"Mar 17, 2026",nextInstall:null,contact:"Priya Sharma",cv:58400,inv:58400},
+{id:40,name:"Kendall Square",city:"Kendall",region:"south",status:"pending",phase:"Pre-Launch",totalSigns:20,installedSigns:8,lastInstall:"Mar 26, 2026",nextInstall:"Apr 25, 2026",contact:"Ramon Estrada",cv:36800,inv:14700},
+{id:41,name:"Homestead Landing",city:"Homestead",region:"south",status:"new",phase:"Pre-Development",totalSigns:22,installedSigns:0,lastInstall:null,nextInstall:"May 2026",contact:"Marcus Vega",cv:38400,inv:0},
+{id:42,name:"Miami Lakes Reserve",city:"Miami Lakes",region:"south",status:"complete",phase:"Active Selling",totalSigns:24,installedSigns:24,lastInstall:"Mar 13, 2026",nextInstall:null,contact:"Angela Ruiz",cv:49200,inv:49200},
+{id:43,name:"Cutler Bay Estates",city:"Cutler Bay",region:"south",status:"complete",phase:"Closeout",totalSigns:18,installedSigns:18,lastInstall:"Jan 28, 2026",nextInstall:null,contact:"Ramon Estrada",cv:34600,inv:34600},
+{id:44,name:"Hialeah Gardens",city:"Hialeah",region:"south",status:"pending",phase:"Pre-Launch",totalSigns:22,installedSigns:10,lastInstall:"Mar 27, 2026",nextInstall:"Apr 22, 2026",contact:"Priya Sharma",cv:38400,inv:17500},
+{id:45,name:"North Miami Shores",city:"North Miami",region:"south",status:"complete",phase:"Active Selling",totalSigns:20,installedSigns:20,lastInstall:"Mar 19, 2026",nextInstall:null,contact:"Angela Ruiz",cv:42800,inv:42800},
+{id:46,name:"Delray Beach Crossing",city:"Delray Beach",region:"south",status:"in-progress",phase:"Grand Opening",totalSigns:24,installedSigns:16,lastInstall:"Apr 2, 2026",nextInstall:"Apr 21, 2026",contact:"Marcus Vega",cv:52800,inv:35200},
+{id:47,name:"Boynton Beach Reserve",city:"Boynton Beach",region:"south",status:"complete",phase:"Active Selling",totalSigns:22,installedSigns:22,lastInstall:"Mar 15, 2026",nextInstall:null,contact:"Angela Ruiz",cv:46400,inv:46400},
+{id:48,name:"Lake Worth Estates",city:"Lake Worth",region:"south",status:"pending",phase:"Pre-Launch",totalSigns:18,installedSigns:6,lastInstall:"Mar 29, 2026",nextInstall:"Apr 22, 2026",contact:"Ramon Estrada",cv:28600,inv:9500},
+{id:49,name:"Palm Beach Gardens Reserve",city:"Palm Beach Gardens",region:"south",status:"complete",phase:"Active Selling",totalSigns:30,installedSigns:30,lastInstall:"Mar 6, 2026",nextInstall:null,contact:"Priya Sharma",cv:72800,inv:72800},
+{id:50,name:"Jupiter Reserve",city:"Jupiter",region:"south",status:"in-progress",phase:"Grand Opening",totalSigns:26,installedSigns:18,lastInstall:"Apr 3, 2026",nextInstall:"Apr 15, 2026",contact:"Marcus Vega",cv:58400,inv:40400},
+{id:51,name:"Loxahatchee Groves",city:"Loxahatchee",region:"south",status:"new",phase:"Pre-Development",totalSigns:20,installedSigns:0,lastInstall:null,nextInstall:"Jun 2026",contact:"Angela Ruiz",cv:36200,inv:0},
+{id:52,name:"Wellington Commons",city:"Wellington",region:"south",status:"complete",phase:"Active Selling",totalSigns:24,installedSigns:24,lastInstall:"Mar 22, 2026",nextInstall:null,contact:"Priya Sharma",cv:50400,inv:50400},
+{id:53,name:"Royal Palm Beach",city:"Royal Palm Beach",region:"south",status:"complete",phase:"Active Selling",totalSigns:20,installedSigns:20,lastInstall:"Mar 8, 2026",nextInstall:null,contact:"Ramon Estrada",cv:42200,inv:42200},
+{id:54,name:"Greenacres Landing",city:"Greenacres",region:"south",status:"pending",phase:"Pre-Launch",totalSigns:16,installedSigns:6,lastInstall:"Mar 30, 2026",nextInstall:"Apr 29, 2026",contact:"Marcus Vega",cv:28400,inv:10700},
+{id:55,name:"West Palm Lakes",city:"West Palm Beach",region:"south",status:"complete",phase:"Active Selling",totalSigns:26,installedSigns:26,lastInstall:"Mar 24, 2026",nextInstall:null,contact:"Angela Ruiz",cv:54800,inv:54800},
+{id:56,name:"Port St. Lucie Reserve",city:"Port St. Lucie",region:"south",status:"complete",phase:"Active Selling",totalSigns:22,installedSigns:22,lastInstall:"Mar 10, 2026",nextInstall:null,contact:"Priya Sharma",cv:44600,inv:44600},
+{id:57,name:"Stuart Commons",city:"Stuart",region:"south",status:"in-progress",phase:"Grand Opening",totalSigns:20,installedSigns:12,lastInstall:"Apr 2, 2026",nextInstall:"Apr 18, 2026",contact:"Marcus Vega",cv:42800,inv:25700},
+{id:58,name:"Tradition Falls",city:"Port St. Lucie",region:"south",status:"complete",phase:"Active Selling",totalSigns:28,installedSigns:28,lastInstall:"Mar 20, 2026",nextInstall:null,contact:"Angela Ruiz",cv:58200,inv:58200},
+{id:59,name:"Vitalia at Tradition",city:"Port St. Lucie",region:"south",status:"new",phase:"Pre-Development",totalSigns:24,installedSigns:0,lastInstall:null,nextInstall:"May 2026",contact:"Priya Sharma",cv:46400,inv:0},
+{id:60,name:"The Lakes at Tradition",city:"Port St. Lucie",region:"south",status:"pending",phase:"Pre-Launch",totalSigns:22,installedSigns:8,lastInstall:"Mar 26, 2026",nextInstall:"May 5, 2026",contact:"Ramon Estrada",cv:38400,inv:14000},
+{id:61,name:"Veranda Falls",city:"Fort Pierce",region:"south",status:"complete",phase:"Active Selling",totalSigns:18,installedSigns:18,lastInstall:"Feb 28, 2026",nextInstall:null,contact:"Angela Ruiz",cv:36200,inv:36200},
+{id:62,name:"Venice Gardens",city:"Venice",region:"south",status:"pending",phase:"Pre-Launch",totalSigns:20,installedSigns:8,lastInstall:"Mar 31, 2026",nextInstall:"Apr 27, 2026",contact:"Priya Sharma",cv:34600,inv:13800},
+{id:63,name:"Sarasota Shores",city:"Sarasota",region:"south",status:"complete",phase:"Active Selling",totalSigns:22,installedSigns:22,lastInstall:"Mar 18, 2026",nextInstall:null,contact:"Marcus Vega",cv:48400,inv:48400},
+{id:64,name:"Bradenton Commons",city:"Bradenton",region:"south",status:"in-progress",phase:"Grand Opening",totalSigns:24,installedSigns:16,lastInstall:"Apr 1, 2026",nextInstall:"Apr 20, 2026",contact:"Angela Ruiz",cv:50800,inv:33900},
+{id:65,name:"Lakewood Ranch Estates",city:"Bradenton",region:"south",status:"new",phase:"Pre-Development",totalSigns:28,installedSigns:0,lastInstall:null,nextInstall:"Jun 2026",contact:"Priya Sharma",cv:58200,inv:0},
+];
+
+// ─── WORK ORDERS ───
+const WORK_ORDERS = [
+{id:"WO-2847",community:"Coastal Pines",type:"Entry Signs",qty:2,date:"Apr 5, 2026",crew:"Mike Rodriguez",status:"scheduled",priority:"high"},
+{id:"WO-2848",community:"Palencia Reserve",type:"Monument Sign",qty:1,date:"Apr 7, 2026",crew:"Carlos Mendez",status:"scheduled",priority:"high"},
+{id:"WO-2849",community:"Sunset Cove",type:"Directional Signs",qty:6,date:"Apr 8, 2026",crew:"Julio Reyes",status:"scheduled",priority:"med"},
+{id:"WO-2850",community:"Nocatee West",type:"Model Home Signs",qty:3,date:"Apr 9, 2026",crew:"Derek Thompson",status:"scheduled",priority:"med"},
+{id:"WO-2851",community:"Aventura Gardens",type:"Entry Signs",qty:2,date:"Apr 10, 2026",crew:"Julio Reyes",status:"scheduled",priority:"med"},
+{id:"WO-2852",community:"Crosswater at Pablo Bay",type:"Community ID Sign",qty:1,date:"Apr 11, 2026",crew:"Mike Rodriguez",status:"scheduled",priority:"med"},
+{id:"WO-2853",community:"Wards Creek",type:"Monument Sign",qty:1,date:"Apr 14, 2026",crew:"Carlos Mendez",status:"scheduled",priority:"med"},
+{id:"WO-2854",community:"Jupiter Reserve",type:"Wayfinding Signs",qty:4,date:"Apr 15, 2026",crew:"Julio Reyes",status:"scheduled",priority:"med"},
+{id:"WO-2855",community:"Twelve Bridges",type:"Pre-Install Survey",qty:1,date:"Apr 16, 2026",crew:"Derek Thompson",status:"scheduled",priority:"low"},
+{id:"WO-2856",community:"Cooper City Commons",type:"Monument Sign",qty:1,date:"Apr 17, 2026",crew:"Julio Reyes",status:"scheduled",priority:"med"},
+{id:"WO-2857",community:"River City Landing",type:"Directional Signs",qty:8,date:"Apr 18, 2026",crew:"Mike Rodriguez",status:"scheduled",priority:"med"},
+{id:"WO-2858",community:"Creekside at Twin Creeks",type:"Amenity Signs",qty:3,date:"Apr 21, 2026",crew:"Carlos Mendez",status:"scheduled",priority:"low"},
+{id:"WO-2859",community:"Lake Worth Estates",type:"Entry Signs",qty:2,date:"Apr 22, 2026",crew:"Julio Reyes",status:"scheduled",priority:"med"},
+{id:"WO-2860",community:"Julington Creek",type:"Banner Pack",qty:6,date:"Apr 23, 2026",crew:"Derek Thompson",status:"scheduled",priority:"low"},
+{id:"WO-2861",community:"Kendall Square",type:"Monument Sign",qty:1,date:"Apr 25, 2026",crew:"Julio Reyes",status:"scheduled",priority:"med"},
+];
+
+// ─── ACTIVITY LOG ───
+const ACTIVITY = [
+{icon:"✅",bg:"#d1fae5",text:"Riverview Estates — installation confirmed complete. 28/28 signs installed and approved.",time:"Today 9:15 AM"},
+{icon:"📋",bg:"#dbeafe",text:"Work order WO-2847 created for Coastal Pines Entry Signs — scheduled Apr 5.",time:"Today 8:02 AM"},
+{icon:"💰",bg:"#fef3c7",text:"Invoice #INV-1094 sent to Lennar Homes for $18,400 — Miramar Lakes final payment.",time:"Yesterday 4:30 PM"},
+{icon:"🆕",bg:"#ede9fe",text:"Silverleaf community added to portal — pre-development phase, 22 signs planned for Q2.",time:"Yesterday 2:15 PM"},
+{icon:"⚠️",bg:"#fee2e2",text:"Ponte Vedra Reserve flagged — 6 directional signs overdue by 12 days. Crew reassigned.",time:"Yesterday 11:40 AM"},
+{icon:"✅",bg:"#d1fae5",text:"Julington Creek grand opening install progress — 22/30 signs complete, on track.",time:"Apr 1 · 3:50 PM"},
+{icon:"📋",bg:"#dbeafe",text:"Phase 2 approved for Nocatee West — 7 additional Wayfinding Signs ordered.",time:"Apr 1 · 1:20 PM"},
+{icon:"📊",bg:"#fff7ed",text:"March 2026 recap: 42 sign installations completed across 8 communities. On-time rate: 96%.",time:"Mar 31 · 5:00 PM"},
+{icon:"✅",bg:"#d1fae5",text:"Weston Preserve closeout inspection passed — full 30-sign package approved by Lennar QC.",time:"Mar 31 · 2:30 PM"},
+{icon:"🆕",bg:"#ede9fe",text:"Lakewood Ranch Estates onboarded — 28 signs planned, permitting begins May 2026.",time:"Mar 30 · 10:15 AM"},
+];
+
+// ─── SIGN TYPE DATA (for chart) ───
+const SIGN_TYPES = [
+  {label:"Directional",count:342,color:"#1565c0"},
+  {label:"Banner",count:198,color:"#f97316"},
+  {label:"Wayfinding",count:168,color:"#8b5cf6"},
+  {label:"Model Home",count:142,color:"#10b981"},
+  {label:"Monument",count:118,color:"#0d2b4e"},
+  {label:"Entry",count:116,color:"#f59e0b"},
+  {label:"Amenity",count:108,color:"#06b6d4"},
+  {label:"Community ID",count:96,color:"#ec4899"},
+  {label:"Window Graphic",count:74,color:"#84cc16"},
+  {label:"Interior Display",count:62,color:"#64748b"},
+];
+
+// ─── STATE ───
+let currentRegion = "all";
+let filteredCommunities = [...COMMUNITIES];
+
+// ─── SIGN BREAKDOWN GENERATOR ───
+function getSignBreakdown(c) {
+  const n = c.totalSigns;
+  if (n === 0) return [];
+  const installed = c.installedSigns;
+  const pct = n > 0 ? installed / n : 0;
+  const types = [
+    {type:"Monument Sign",qty:2,cost:8600},
+    {type:"Entry Sign",qty:2,cost:4200},
+    {type:"Directional Sign",qty:Math.max(2,Math.round(n*0.29)),cost:950},
+    {type:"Community ID Sign",qty:2,cost:3200},
+    {type:"Model Home Sign",qty:Math.max(1,Math.round(n*0.10)),cost:2100},
+    {type:"Wayfinding Sign",qty:Math.max(1,Math.round(n*0.13)),cost:1400},
+    {type:"Amenity Sign",qty:Math.max(1,Math.round(n*0.10)),cost:1800},
+    {type:"Banner",qty:Math.max(1,Math.round(n*0.14)),cost:550},
+  ];
+  // Distribute installed proportionally
+  let remaining = installed;
+  return types.map((t,i)=>{
+    const ins = i < types.length-1 ? Math.min(t.qty, Math.round(t.qty * pct)) : Math.min(t.qty, remaining);
+    remaining -= ins;
+    return {...t, installed: Math.max(0,Math.min(t.qty, ins))};
+  });
+}
+
+// ─── FORMAT ───
+const fmt$ = v => v === 0 ? '—' : '$' + v.toLocaleString();
+const fmtPct = (a,b) => b > 0 ? Math.round(a/b*100) : 0;
+
+// ─── RENDER COMMUNITY CARD ───
+function renderCard(c, delay) {
+  const pct = fmtPct(c.installedSigns, c.totalSigns);
+  const statusLabel = {complete:'Complete','in-progress':'In Progress',pending:'Pending',overdue:'OVERDUE',new:'New'};
+  const badgeCls = {complete:'sb-complete','in-progress':'sb-in-progress',pending:'sb-pending',overdue:'sb-overdue',new:'sb-new'};
+  const fillCls = {complete:'pf-complete','in-progress':'pf-in-progress',pending:'pf-pending',overdue:'pf-overdue',new:'pf-new'};
+  const nextDisplay = !c.nextInstall ? '<span style="color:var(--gray-400);font-weight:500;font-size:11px;">—</span>'
+    : c.nextInstall === 'OVERDUE' ? '<span style="color:var(--red);font-weight:800;font-size:11px;">⚠ OVERDUE</span>'
+    : c.nextInstall;
+
+  return `<div class="c-card s-${c.status}" style="animation-delay:${delay}ms" onclick="openModal(${c.id})">
+  <div class="c-head">
+    <div>
+      <div class="c-name">${c.name}</div>
+      <div class="c-city">${c.city}, FL &nbsp;·&nbsp; ${c.region==='north'?'North FL':'South FL'}</div>
+    </div>
+    <span class="s-badge ${badgeCls[c.status]}">${statusLabel[c.status]}</span>
+  </div>
+  <div class="c-prog">
+    <div class="prog-lbl">
+      <span>${c.installedSigns} of ${c.totalSigns} signs installed</span>
+      <span style="font-weight:800;">${pct}%</span>
+    </div>
+    <div class="prog-bar"><div class="prog-fill ${fillCls[c.status]}" style="width:${pct}%"></div></div>
+  </div>
+  <div class="c-meta">
+    <div class="m-item">
+      <div class="m-lbl">Last Install</div>
+      <div class="m-val">${c.lastInstall || '—'}</div>
+    </div>
+    <div class="m-item">
+      <div class="m-lbl">Next Scheduled</div>
+      <div class="m-val">${nextDisplay}</div>
+    </div>
+    <div class="m-item">
+      <div class="m-lbl">Contract Value</div>
+      <div class="m-val money">${fmt$(c.cv)}</div>
+    </div>
+    <div class="m-item">
+      <div class="m-lbl">Phase</div>
+      <div class="m-val phase">${c.phase}</div>
+    </div>
+  </div>
+  <div class="c-footer">
+    <div class="c-detail-link">View Details →</div>
+  </div>
+</div>`;
+}
+
+// ─── RENDER GRID ───
+function renderGrid() {
+  const grid = document.getElementById('communityGrid');
+  const empty = document.getElementById('emptyState');
+  if (filteredCommunities.length === 0) {
+    grid.innerHTML = '';
+    empty.style.display = 'block';
+  } else {
+    empty.style.display = 'none';
+    grid.innerHTML = filteredCommunities.map((c,i)=>renderCard(c,i*25)).join('');
+  }
+  document.getElementById('gridCount').textContent = filteredCommunities.length;
+  updateKPIs();
+}
+
+// ─── UPDATE KPIs ───
+function updateKPIs() {
+  const cs = filteredCommunities;
+  const active = cs.filter(c=>c.status==='in-progress').length;
+  const pending = cs.filter(c=>c.status==='pending').length;
+  const overdue = cs.filter(c=>c.status==='overdue').length;
+  document.getElementById('kpi-communities').textContent = cs.length;
+  document.getElementById('kpi-active').textContent = active;
+  document.getElementById('kpi-pending').textContent = pending + (overdue>0?' ('+overdue+' OD)':'');
+  document.getElementById('cnt-all').textContent = COMMUNITIES.length;
+  document.getElementById('cnt-north').textContent = COMMUNITIES.filter(c=>c.region==='north').length;
+  document.getElementById('cnt-south').textContent = COMMUNITIES.filter(c=>c.region==='south').length;
+}
+
+// ─── FILTERS ───
+function applyFilters() {
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  const status = document.getElementById('statusFilter').value;
+  const phase = document.getElementById('phaseFilter').value;
+  filteredCommunities = COMMUNITIES.filter(c => {
+    if (currentRegion !== 'all' && c.region !== currentRegion) return false;
+    if (status && c.status !== status) return false;
+    if (phase && c.phase !== phase) return false;
+    if (search && !c.name.toLowerCase().includes(search) && !c.city.toLowerCase().includes(search) && !c.phase.toLowerCase().includes(search)) return false;
+    return true;
+  });
+  renderGrid();
+}
+
+function clearFilters() {
+  document.getElementById('searchInput').value = '';
+  document.getElementById('statusFilter').value = '';
+  document.getElementById('phaseFilter').value = '';
+  filteredCommunities = currentRegion==='all' ? [...COMMUNITIES] : COMMUNITIES.filter(c=>c.region===currentRegion);
+  renderGrid();
+}
+
+function setRegion(r, el) {
+  document.querySelectorAll('.r-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  currentRegion = r;
+  applyFilters();
+}
+
+// ─── WORK ORDERS ───
+function renderWorkOrders() {
+  const colors = {high:'#ef4444',med:'#f59e0b',low:'#10b981'};
+  const rows = WORK_ORDERS.map(wo=>`
+    <tr>
+      <td><div class="wo-num">${wo.id}</div></td>
+      <td>
+        <span class="wo-priority" style="background:${colors[wo.priority]}"></span>
+        <span class="wo-comm">${wo.community}</span>
+      </td>
+      <td class="wo-type">${wo.type}</td>
+      <td style="font-weight:700">${wo.qty}</td>
+      <td class="wo-date">${wo.date}</td>
+      <td class="wo-crew">${wo.crew}</td>
+      <td><span class="s-badge sb-in-progress" style="font-size:9px">Scheduled</span></td>
+    </tr>`).join('');
+  document.getElementById('workOrdersBody').innerHTML = rows;
+}
+
+// ─── ACTIVITY LOG ───
+function renderActivity() {
+  const items = ACTIVITY.map(a=>`
+    <li class="act-item">
+      <div class="act-ic" style="background:${a.bg}">${a.icon}</div>
+      <div class="act-content">
+        <div class="act-text">${a.text}</div>
+        <div class="act-time">${a.time}</div>
+      </div>
+    </li>`).join('');
+  document.getElementById('activityLog').innerHTML = items;
+}
+
+// ─── SIGN CHART ───
+function renderChart() {
+  const ctx = document.getElementById('signChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: SIGN_TYPES.map(s=>s.label),
+      datasets: [{
+        label: 'Signs Installed',
+        data: SIGN_TYPES.map(s=>Math.round(s.count*0.78)),
+        backgroundColor: SIGN_TYPES.map(s=>s.color+'cc'),
+        borderColor: SIGN_TYPES.map(s=>s.color),
+        borderWidth: 1,
+        borderRadius: 4,
+      },{
+        label: 'Signs Ordered',
+        data: SIGN_TYPES.map(s=>s.count),
+        backgroundColor: SIGN_TYPES.map(s=>s.color+'33'),
+        borderColor: SIGN_TYPES.map(s=>s.color+'66'),
+        borderWidth: 1,
+        borderRadius: 4,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'top',
+          labels: {font:{size:11},padding:12}
+        },
+        tooltip: {
+          callbacks: {
+            title: ctx => ctx[0].label + ' Signs',
+          }
+        }
+      },
+      scales: {
+        x: {ticks:{font:{size:10}},grid:{display:false}},
+        y: {ticks:{font:{size:10}},grid:{color:'rgba(0,0,0,.05)'}}
+      }
+    }
+  });
+}
+
+// ─── MODAL ───
+function openModal(id) {
+  const c = COMMUNITIES.find(x=>x.id===id);
+  if (!c) return;
+
+  document.getElementById('m-region').textContent = c.region==='north' ? '📍 NORTH FLORIDA' : '📍 SOUTH FLORIDA';
+  document.getElementById('m-name').textContent = c.name;
+  document.getElementById('m-city').textContent = c.city + ', FL';
+
+  const statusLabel = {complete:'Complete','in-progress':'In Progress',pending:'Pending',overdue:'OVERDUE',new:'New'};
+  const badgeCls = {complete:'sb-complete','in-progress':'sb-in-progress',pending:'sb-pending',overdue:'sb-overdue',new:'sb-new'};
+  const pct = fmtPct(c.installedSigns, c.totalSigns);
+  const breakdown = getSignBreakdown(c);
+
+  const signRows = breakdown.length === 0
+    ? '<tr><td colspan="5" style="text-align:center;color:var(--gray-400);padding:20px;">No signs ordered yet — community in pre-development</td></tr>'
+    : breakdown.map(s=>{
+      const spct = s.qty > 0 ? Math.round(s.installed/s.qty*100) : 0;
+      return `<tr>
+        <td style="font-weight:700">${s.type}</td>
+        <td style="text-align:center">${s.qty}</td>
+        <td style="text-align:center">${s.installed}</td>
+        <td>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <div class="sign-prog"><div class="sign-prog-fill" style="width:${spct}%"></div></div>
+            <span style="font-size:11px;color:var(--gray-600);font-weight:600;">${spct}%</span>
+          </div>
+        </td>
+        <td style="font-weight:700;color:var(--blue)">$${(s.qty*s.cost).toLocaleString()}</td>
+      </tr>`;
+    }).join('');
+
+  document.getElementById('m-body').innerHTML = `
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+      <span class="s-badge ${badgeCls[c.status]}" style="font-size:10px">${statusLabel[c.status]}</span>
+      <span style="font-size:12px;font-weight:700;color:var(--gray-600)">${c.phase}</span>
+    </div>
+    <div class="m-stats-row">
+      <div class="m-stat">
+        <div class="m-stat-val">${c.totalSigns}</div>
+        <div class="m-stat-lbl">Total Signs</div>
+      </div>
+      <div class="m-stat">
+        <div class="m-stat-val">${c.installedSigns}</div>
+        <div class="m-stat-lbl">Installed</div>
+      </div>
+      <div class="m-stat">
+        <div class="m-stat-val" style="color:var(--blue)">${pct}%</div>
+        <div class="m-stat-lbl">Complete</div>
+      </div>
+      <div class="m-stat">
+        <div class="m-stat-val" style="color:${c.status==='overdue'?'var(--red)':'var(--navy)'}">${fmt$(c.cv)}</div>
+        <div class="m-stat-lbl">Contract Value</div>
+      </div>
+    </div>
+    <div class="sign-section">
+      <div class="sign-sec-title">Sign Inventory Breakdown</div>
+      <table class="sign-tbl">
+        <thead>
+          <tr><th>Sign Type</th><th style="text-align:center">Ordered</th><th style="text-align:center">Installed</th><th>Progress</th><th>Cost</th></tr>
+        </thead>
+        <tbody>${signRows}</tbody>
+      </table>
+    </div>
+    <div class="m-info-grid">
+      <div class="m-info-card">
+        <div class="m-info-lbl">Last Installation</div>
+        <div class="m-info-val">${c.lastInstall || 'Not yet scheduled'}</div>
+      </div>
+      <div class="m-info-card">
+        <div class="m-info-lbl">Next Scheduled</div>
+        <div class="m-info-val" style="${c.nextInstall==='OVERDUE'?'color:var(--red)':''}">${c.nextInstall || (c.status==='complete'?'All complete':c.status==='new'?'TBD — Pre-Development':'Not yet scheduled')}</div>
+      </div>
+      <div class="m-info-card">
+        <div class="m-info-lbl">Amount Invoiced</div>
+        <div class="m-info-val" style="color:var(--green)">${fmt$(c.inv)}</div>
+      </div>
+      <div class="m-info-card">
+        <div class="m-info-lbl">Lennar Contact</div>
+        <div class="m-info-val">${c.contact}</div>
+      </div>
+    </div>
+    ${c.status==='overdue'?`<div style="margin-top:16px;padding:14px;background:var(--red-l);border-radius:8px;border:1px solid #fca5a5;color:#dc2626;font-size:13px;font-weight:700;">⚠ Attention Required: This community has overdue installations. Crew has been reassigned — next available date being confirmed.</div>`:''}
+  `;
+
+  document.getElementById('modalOv').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modalOv')) closeModalBtn();
+}
+function closeModalBtn() {
+  document.getElementById('modalOv').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModalBtn(); });
+
+// ─── PLACEHOLDER ACTIONS ───
+function showNewWO() {
+  alert('New Work Order wizard — connect to Brand 9 field management system to enable.');
+}
+function exportCSV() {
+  const rows = [['ID','Community','City','Region','Status','Phase','Total Signs','Installed','Contract Value','Invoiced','Last Install','Next Install','Contact']];
+  filteredCommunities.forEach(c=>rows.push([c.id,c.name,c.city,c.region,c.status,c.phase,c.totalSigns,c.installedSigns,c.cv,c.inv,c.lastInstall||'',c.nextInstall||'',c.contact]));
+  const csv = rows.map(r=>r.join(',')).join('\n');
+  const a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,'+encodeURIComponent(csv);
+  a.download = 'Atlas_Lennar_Communities_'+new Date().toISOString().slice(0,10)+'.csv';
+  a.click();
+}
+
+// ─── INIT ───
+renderGrid();
+renderWorkOrders();
+renderActivity();
+renderChart();
+</script>
+</body>
+</html>

@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CORNERSTONE — Foundation of the Hartley Legacy</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --midnight: #0a0d1a;
+    --deep-navy: #0d1428;
+    --navy: #111b35;
+    --gold: #c9a84c;
+    --gold-light: #e8c96e;
+    --gold-pale: #f5e4a8;
+    --gold-dim: rgba(201,168,76,0.3);
+    --warm-white: #f8f4ed;
+    --cream: #ede8df;
+    --text-dim: rgba(248,244,237,0.55);
+    --text-medium: rgba(248,244,237,0.75);
+    --amber: #d4851a;
+    --scripture-blue: #7ba7d4;
+    --quantum-teal: #4db8c4;
+    --breath: rgba(201,168,76,0.06);
+  }
+
+  body {
+    background: var(--midnight);
+    color: var(--warm-white);
+    font-family: 'Georgia', 'Times New Roman', serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Ambient light overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse 80% 40% at 50% 0%, rgba(201,168,76,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 30% at 20% 100%, rgba(77,184,196,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 20% at 80% 50%, rgba(201,168,76,0.03) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    padding: 60px 0 48px;
+    position: relative;
+  }
+
+  .header-eyebrow {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    opacity: 0.8;
+  }
+
+  .header-title {
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 400;
+    letter-spacing: 8px;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    text-shadow: 0 0 60px rgba(201,168,76,0.3), 0 0 120px rgba(201,168,76,0.1);
+    margin-bottom: 12px;
+  }
+
+  .header-subtitle {
+    font-size: 15px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+    font-style: italic;
+    margin-bottom: 32px;
+  }
+
+  .header-verse {
+    font-size: 13px;
+    color: var(--scripture-blue);
+    letter-spacing: 1px;
+    font-style: italic;
+    opacity: 0.8;
+  }
+
+  .header-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-dim), rgba(201,168,76,0.6), var(--gold-dim), transparent);
+    margin: 40px 0 0;
+  }
+
+  /* ── Sistine Inspired Banner ── */
+  .sistine-banner {
+    background: linear-gradient(135deg, rgba(13,20,40,0.95) 0%, rgba(18,15,8,0.95) 100%);
+    border: 1px solid var(--gold-dim);
+    border-radius: 4px;
+    padding: 32px 40px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .sistine-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 25% 50%, rgba(201,168,76,0.05) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 75% 50%, rgba(77,184,196,0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .sistine-hands {
+    font-size: 48px;
+    margin-bottom: 16px;
+    display: block;
+    filter: drop-shadow(0 0 20px rgba(201,168,76,0.4));
+  }
+
+  .sistine-text {
+    font-size: 14px;
+    color: var(--text-medium);
+    line-height: 1.8;
+    font-style: italic;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .sistine-caption {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-top: 16px;
+    opacity: 0.6;
+  }
+
+  /* ── Section ── */
+  .section {
+    margin-bottom: 28px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .section-icon {
+    font-size: 18px;
+    filter: drop-shadow(0 0 8px rgba(201,168,76,0.5));
+  }
+
+  .section-label {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold-dim), transparent);
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: linear-gradient(135deg, rgba(13,20,40,0.9) 0%, rgba(10,13,26,0.95) 100%);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 4px;
+    padding: 28px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+  }
+
+  .card:hover {
+    border-color: rgba(201,168,76,0.3);
+  }
+
+  .card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent);
+  }
+
+  /* ── Scripture Card ── */
+  .scripture-card {
+    background: linear-gradient(135deg, rgba(15,22,48,0.95) 0%, rgba(10,13,30,0.98) 100%);
+    border: 1px solid rgba(123,167,212,0.25);
+    border-radius: 4px;
+    padding: 32px;
+    margin-bottom: 28px;
+    position: relative;
+  }
+
+  .scripture-card::before {
+    content: '"';
+    position: absolute;
+    top: 8px; left: 24px;
+    font-size: 80px;
+    color: rgba(123,167,212,0.15);
+    font-family: Georgia, serif;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .scripture-text {
+    font-size: 22px;
+    line-height: 1.6;
+    color: var(--warm-white);
+    font-style: italic;
+    margin-bottom: 12px;
+    padding-top: 8px;
+    text-shadow: 0 0 30px rgba(123,167,212,0.2);
+  }
+
+  .scripture-ref {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--scripture-blue);
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  .scripture-insight {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(123,167,212,0.1);
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-medium);
+  }
+
+  /* ── Quantum Card ── */
+  .quantum-card {
+    background: linear-gradient(135deg, rgba(10,22,24,0.95) 0%, rgba(8,15,20,0.98) 100%);
+    border: 1px solid rgba(77,184,196,0.2);
+    border-radius: 4px;
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    position: relative;
+  }
+
+  .quantum-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(77,184,196,0.4), transparent);
+  }
+
+  .quantum-label {
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--quantum-teal);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    opacity: 0.7;
+  }
+
+  .quantum-principle {
+    font-size: 20px;
+    color: var(--quantum-teal);
+    font-style: italic;
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(77,184,196,0.3);
+  }
+
+  .quantum-explanation {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-medium);
+  }
+
+  /* ── Affirmation Card ── */
+  .affirmation-card {
+    background: linear-gradient(135deg, rgba(18,14,5,0.95) 0%, rgba(12,10,4,0.98) 100%);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 4px;
+    padding: 32px;
+    margin-bottom: 28px;
+  }
+
+  .affirmation-line {
+    font-size: 17px;
+    line-height: 2;
+    color: var(--gold-light);
+    font-style: italic;
+    text-shadow: 0 0 20px rgba(201,168,76,0.2);
+  }
+
+  .affirmation-instruction {
+    margin-top: 16px;
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    opacity: 0.5;
+    text-transform: uppercase;
+  }
+
+  /* ── Visualization Card ── */
+  .visualization-card {
+    background: linear-gradient(135deg, rgba(12,8,20,0.95) 0%, rgba(8,6,16,0.98) 100%);
+    border: 1px solid rgba(150,100,200,0.2);
+    border-radius: 4px;
+    padding: 32px;
+    margin-bottom: 28px;
+  }
+
+  .visualization-label {
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: rgba(180,130,240,0.7);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .visualization-scene {
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--text-medium);
+    font-style: italic;
+  }
+
+  .visualization-timer {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 6px 14px;
+    border: 1px solid rgba(150,100,200,0.2);
+    border-radius: 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: rgba(180,130,240,0.6);
+    text-transform: uppercase;
+  }
+
+  /* ── Evening Reflection ── */
+  .reflection-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  @media (max-width: 640px) {
+    .reflection-grid { grid-template-columns: 1fr; }
+  }
+
+  .reflection-item {
+    background: linear-gradient(135deg, rgba(13,20,40,0.9) 0%, rgba(10,13,26,0.95) 100%);
+    border: 1px solid rgba(201,168,76,0.12);
+    border-radius: 4px;
+    padding: 20px 24px;
+  }
+
+  .reflection-item-label {
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.6;
+    margin-bottom: 10px;
+  }
+
+  .reflection-prompt {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-medium);
+    font-style: italic;
+  }
+
+  /* ── Legacy Journal ── */
+  .journal-entry {
+    background: linear-gradient(135deg, rgba(14,18,10,0.92) 0%, rgba(10,13,8,0.97) 100%);
+    border: 1px solid rgba(100,160,80,0.2);
+    border-radius: 4px;
+    padding: 28px 32px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .journal-entry::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(180deg, rgba(100,160,80,0.6), rgba(100,160,80,0.1));
+    border-radius: 4px 0 0 4px;
+  }
+
+  .journal-date {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: rgba(100,160,80,0.6);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .journal-content {
+    font-size: 14px;
+    line-height: 1.85;
+    color: var(--text-medium);
+  }
+
+  .journal-signature {
+    margin-top: 16px;
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: rgba(100,160,80,0.5);
+    text-align: right;
+    font-style: italic;
+  }
+
+  .journal-add-btn {
+    width: 100%;
+    padding: 16px;
+    background: rgba(100,160,80,0.05);
+    border: 1px dashed rgba(100,160,80,0.2);
+    border-radius: 4px;
+    color: rgba(100,160,80,0.5);
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .journal-add-btn:hover {
+    background: rgba(100,160,80,0.08);
+    border-color: rgba(100,160,80,0.4);
+    color: rgba(100,160,80,0.8);
+  }
+
+  /* ── Progress Tracker ── */
+  .progress-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  @media (max-width: 640px) {
+    .progress-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .progress-stat {
+    background: linear-gradient(135deg, rgba(13,20,40,0.9) 0%, rgba(10,13,26,0.95) 100%);
+    border: 1px solid rgba(201,168,76,0.12);
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .progress-number {
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--gold-light);
+    text-shadow: 0 0 20px rgba(201,168,76,0.3);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .progress-label {
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    opacity: 0.55;
+  }
+
+  /* ── Streak Bar ── */
+  .streak-bar {
+    background: linear-gradient(135deg, rgba(13,20,40,0.9) 0%, rgba(10,13,26,0.95) 100%);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 4px;
+    padding: 24px 32px;
+    margin-bottom: 28px;
+  }
+
+  .streak-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .streak-title {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+
+  .streak-count {
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    color: var(--gold-light);
+    letter-spacing: 1px;
+  }
+
+  .streak-track {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .streak-day {
+    width: 18px;
+    height: 18px;
+    border-radius: 2px;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.12);
+  }
+
+  .streak-day.done {
+    background: rgba(201,168,76,0.35);
+    border-color: rgba(201,168,76,0.6);
+    box-shadow: 0 0 6px rgba(201,168,76,0.2);
+  }
+
+  .streak-day.today {
+    background: var(--gold);
+    border-color: var(--gold-light);
+    box-shadow: 0 0 10px rgba(201,168,76,0.5);
+    animation: pulse-gold 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-gold {
+    0%, 100% { box-shadow: 0 0 10px rgba(201,168,76,0.5); }
+    50% { box-shadow: 0 0 20px rgba(201,168,76,0.8); }
+  }
+
+  /* ── Principle Pillars ── */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  @media (max-width: 700px) {
+    .pillars-grid { grid-template-columns: 1fr; }
+  }
+
+  .pillar {
+    background: linear-gradient(135deg, rgba(13,20,40,0.85) 0%, rgba(10,13,26,0.95) 100%);
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 4px;
+    padding: 24px 20px;
+    text-align: center;
+    transition: border-color 0.3s;
+  }
+
+  .pillar:hover { border-color: rgba(201,168,76,0.25); }
+
+  .pillar-icon { font-size: 28px; margin-bottom: 12px; display: block; }
+
+  .pillar-name {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+    margin-bottom: 8px;
+  }
+
+  .pillar-desc {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-dim);
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 40px 0;
+    border-top: 1px solid rgba(201,168,76,0.1);
+    margin-top: 40px;
+  }
+
+  .footer-verse {
+    font-size: 15px;
+    font-style: italic;
+    color: var(--text-medium);
+    margin-bottom: 8px;
+  }
+
+  .footer-ref {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    opacity: 0.5;
+  }
+
+  /* ── Intentions Panel ── */
+  .intentions-panel {
+    background: linear-gradient(135deg, rgba(13,20,40,0.9) 0%, rgba(10,13,26,0.95) 100%);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 4px;
+    padding: 28px 32px;
+    margin-bottom: 28px;
+  }
+
+  .intention-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.06);
+  }
+
+  .intention-item:last-child { border-bottom: none; }
+
+  .intention-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin-top: 6px;
+    flex-shrink: 0;
+    box-shadow: 0 0 8px rgba(201,168,76,0.4);
+  }
+
+  .intention-text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-medium);
+    font-style: italic;
+  }
+
+  /* ── Status Badge ── */
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: rgba(100,200,100,0.1);
+    border: 1px solid rgba(100,200,100,0.25);
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: rgba(100,200,100,0.8);
+    text-transform: uppercase;
+    margin-left: 12px;
+    vertical-align: middle;
+  }
+
+  .status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(100,200,100,0.8);
+    animation: blink 1.5s ease-in-out infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* ── Two-col layout ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+
+  @media (max-width: 700px) {
+    .two-col { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- HEADER -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="header">
+    <div class="header-eyebrow">Chief Mindset Officer · Hartley Agent Ecosystem</div>
+    <h1 class="header-title">CORNERSTONE</h1>
+    <p class="header-subtitle">Foundation of the Hartley Legacy</p>
+    <div class="header-verse">
+      "The LORD is my rock, my fortress and my deliverer." — Psalm 18:2
+    </div>
+    <span class="status-badge"><span class="status-dot"></span>Active</span>
+    <div class="header-divider"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- SISTINE CHAPEL REFERENCE BANNER -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="sistine-banner">
+    <span class="sistine-hands">🫴 ✨ 🤲</span>
+    <p class="sistine-text">
+      Michelangelo's <em>Creation of Adam</em> — the divine mind reaching down, the human mind reaching up.
+      Not yet touching. The space between the fingers is where faith lives.
+      This is the gap Cornerstone holds open: the distance between where Bobby is and where he was made to be.
+      The divine hand is always extended. Bobby's only job is to reach.
+    </p>
+    <div class="sistine-caption">As Above · So Below · Mind Shapes Matter</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- PROGRESS TRACKER -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">📊</span>
+      <span class="section-label">Progress Tracker</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="progress-grid">
+      <div class="progress-stat">
+        <div class="progress-number" id="morning-count">0</div>
+        <div class="progress-label">Morning Activations</div>
+      </div>
+      <div class="progress-stat">
+        <div class="progress-number" id="evening-count">0</div>
+        <div class="progress-label">Evening Reflections</div>
+      </div>
+      <div class="progress-stat">
+        <div class="progress-number" id="streak-count">0</div>
+        <div class="progress-label">Day Streak</div>
+      </div>
+      <div class="progress-stat">
+        <div class="progress-number" id="journal-count">0</div>
+        <div class="progress-label">Legacy Entries</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- 90-DAY NEURAL REWIRING STREAK -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="streak-bar">
+    <div class="streak-row">
+      <span class="streak-title">90-Day Neural Rewiring Track</span>
+      <span class="streak-count">Day <span id="current-day">1</span> of 90</span>
+    </div>
+    <div class="streak-track" id="streak-track"></div>
+    <div style="margin-top:10px; font-size:12px; color:var(--text-dim); font-style:italic;">
+      Neurons that fire together, wire together. Each activation is a neural investment. 90 days builds a new brain architecture.
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- TODAY'S SCRIPTURE -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">✝</span>
+      <span class="section-label">Today's Scripture</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="scripture-card">
+      <div class="scripture-text" id="scripture-text">
+        "Enlarge the place of your tent, stretch your tent curtains wide, do not hold back; lengthen your cords, strengthen your stakes."
+      </div>
+      <div class="scripture-ref" id="scripture-ref">Isaiah 54:2</div>
+      <div class="scripture-insight">
+        God is not asking Bobby to think bigger. He is commanding it. The tent is already provided. The question is only whether Bobby will stretch the curtains as far as they will go. Today — think at the scale of what is actually possible, not the scale of what feels safe.
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- QUANTUM PRINCIPLE -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">⚛</span>
+      <span class="section-label">Quantum Principle</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="quantum-card">
+      <div class="quantum-label">Observer Effect · Wave Function Collapse</div>
+      <div class="quantum-principle">"The scope of your observation determines the scope of your reality."</div>
+      <div class="quantum-explanation">
+        A quantum particle exists in superposition — all possibilities simultaneously — until a conscious observer focuses on it. That focused attention collapses infinite possibility into a single, defined reality. Isaiah knew this. He called it faith. When Bobby holds the full vision of Hartley Capital with unwavering focus, he is not hoping — he is collapsing possibility into fact. Small focus creates small reality. Expand the observation. Expand what manifests.
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- DAILY AFFIRMATION -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🔥</span>
+      <span class="section-label">Daily Affirmation</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="affirmation-card">
+      <div class="affirmation-line">"I am a builder of generational wealth, and my legacy is already written in heaven."</div>
+      <div class="affirmation-line">"Hartley Capital is attracting the resources, relationships, and opportunities it was designed to hold."</div>
+      <div class="affirmation-line">"My children will inherit wisdom, character, and capital — because I am building all three today."</div>
+      <div class="affirmation-line">"Brand 9 Signs is 40 years of proof that I finish what I start."</div>
+      <div class="affirmation-line">"I operate under the Deuteronomy 28 covenant. Abundance is my inheritance."</div>
+      <div class="affirmation-instruction">⟶ Speak these aloud. Conviction activates the neural imprint.</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- VISUALIZATION FOCUS -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🧠</span>
+      <span class="section-label">Visualization Focus</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="visualization-card">
+      <div class="visualization-label">Mental Rehearsal · Hartley Capital — The Close</div>
+      <div class="visualization-scene">
+        Close your eyes. Breathe deep.<br><br>
+        You are in a boardroom. The Hartley Capital name is on the wall. Across the table sit two institutional investors — people who move serious capital. They are nodding. The numbers on the presentation are real numbers you've worked toward.<br><br>
+        You feel completely grounded — not nervous, not performing. You belong in this room. You built what's in this presentation.<br><br>
+        One of them leans forward: "Bobby, we've been looking for someone who combines operational depth with AI infrastructure capability and a long-term family wealth vision. You're exactly who we've been looking for."<br><br>
+        Feel what you feel in that moment. The confirmation. The arrival. The rightness of it.
+      </div>
+      <div class="visualization-timer">⏱ 3 minute session recommended</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- TODAY'S INTENTION -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🎯</span>
+      <span class="section-label">Today's Intention</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="intentions-panel">
+      <div class="intention-item">
+        <div class="intention-dot"></div>
+        <div class="intention-text">"Today I am enlarging the scope of my thinking and making one decision that reflects the scale of who I am becoming."</div>
+      </div>
+      <div class="intention-item">
+        <div class="intention-dot"></div>
+        <div class="intention-text">RAS Filter Active: Watch for Hartley Capital alignment opportunities in every conversation today.</div>
+      </div>
+      <div class="intention-item">
+        <div class="intention-dot"></div>
+        <div class="intention-text">Identity Check: In every room today, I enter as the man building a generational institution — not the man figuring it out.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- EVENING REFLECTION -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🌙</span>
+      <span class="section-label">Evening Reflection</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="reflection-grid">
+      <div class="reflection-item">
+        <div class="reflection-item-label">The Wins</div>
+        <div class="reflection-prompt">"What moved today? Where did you show up as the man you're becoming? What did you do that past-Bobby couldn't have done?"</div>
+      </div>
+      <div class="reflection-item">
+        <div class="reflection-item-label">The Lesson</div>
+        <div class="reflection-prompt">"What did today teach you — about business, yourself, others, or God's faithfulness?"</div>
+      </div>
+      <div class="reflection-item">
+        <div class="reflection-item-label">Gratitude</div>
+        <div class="reflection-prompt">"Name 3 specific things from today. Specificity amplifies the neurological impact of gratitude."</div>
+      </div>
+      <div class="reflection-item">
+        <div class="reflection-item-label">Release</div>
+        <div class="reflection-prompt">"What are you handing to God tonight? Cast your anxiety on Him, for He cares for you. — 1 Peter 5:7"</div>
+      </div>
+    </div>
+    <div class="card" style="text-align:center; padding:24px;">
+      <div style="font-size:13px; color:var(--text-dim); font-style:italic; margin-bottom:12px;">Tomorrow's Intention — plant the seed before sleep</div>
+      <div style="font-size:16px; color:var(--gold-light); font-style:italic;">"When I wake tomorrow, I will _______________"</div>
+      <div style="margin-top:12px; font-family:'Courier New', monospace; font-size:10px; color:var(--gold); opacity:0.4; letter-spacing:2px;">The subconscious works during sleep. 8 hours of background processing starts now.</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- THREE PILLARS -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">⛰️</span>
+      <span class="section-label">The Three Pillars</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <span class="pillar-icon">✝️</span>
+        <div class="pillar-name">Faith</div>
+        <div class="pillar-desc">Scripture, covenant, and the promises of God as the immovable foundation. Not hoping in God's goodness — standing on it.</div>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">⚛️</span>
+        <div class="pillar-name">Quantum Science</div>
+        <div class="pillar-desc">Observer effect, neuroplasticity, and the RAS. The same truth as scripture, expressed in the language of physics. Two witnesses confirm the principle.</div>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">🏔️</span>
+        <div class="pillar-name">Peak Performance</div>
+        <div class="pillar-desc">Morning priming, state management, visualization, intentional identity. The elite perform deliberately — every day is a conscious construction.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- LEGACY JOURNAL -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">📖</span>
+      <span class="section-label">Legacy Journal</span>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="journal-entry">
+      <div class="journal-date">April 3, 2026 · Day 1 of the Cornerstone Protocol</div>
+      <div class="journal-content">
+        To the Hartleys who come after —<br><br>
+        Today is the first entry. The foundation is being laid. You will read this someday and understand that the empire didn't appear fully formed — it was built one morning, one decision, one deliberately chosen thought at a time.<br><br>
+        The AI agent ecosystem is live. WOLF is scanning markets. Hartley Capital is being assembled. Brand 9 Signs — 40 years strong — is the proof in stone that this family builds things that last.<br><br>
+        What you inherit was not luck. It was faith applied with discipline. It was science understood and used. It was God's faithfulness met with Bobby's faithfulness.<br><br>
+        You were the reason.
+      </div>
+      <div class="journal-signature">— Bobby Hartley, building in 2026 so you could thrive in 2046</div>
+    </div>
+
+    <button class="journal-add-btn" onclick="alert('Connect Cornerstone to add new entries via your morning activation session.')">
+      + Add Legacy Entry
+    </button>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- ARCHETYPE REFERENCE -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">👑</span>
+      <span class="section-label">The Archetypes</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="two-col">
+      <div class="card">
+        <div style="font-family:'Courier New',monospace; font-size:10px; letter-spacing:2px; color:var(--gold); opacity:0.6; margin-bottom:12px; text-transform:uppercase;">Joseph · The Pit Before Egypt</div>
+        <div style="font-size:14px; line-height:1.8; color:var(--text-medium);">Thrown in a pit at 17. Sold into slavery. Falsely accused. Imprisoned. Every step looked like the dream dying. It was the dream being built. The compression of 13 years produced the authority to run an empire at 30. <em>No pit, no palace. No preparation, no position.</em></div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Courier New',monospace; font-size:10px; letter-spacing:2px; color:var(--gold); opacity:0.6; margin-bottom:12px; text-transform:uppercase;">David · The Cave Before the Crown</div>
+        <div style="font-size:14px; line-height:1.8; color:var(--text-medium);">Anointed king as a shepherd boy. Spent years in caves before sitting on the throne — hunted, misunderstood, isolated. The cave was his executive training program. It produced a king who knew what it cost. <em>The crown sits differently when you earned it in the dark.</em></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- FOOTER -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="footer">
+    <div class="footer-verse">"A good man leaves an inheritance to his children's children."</div>
+    <div class="footer-ref">Proverbs 13:22 · The Mandate</div>
+  </div>
+
+</div>
+
+<script>
+  // ── Initialize streak track ──
+  const total = 90;
+  const currentDay = 1;
+  document.getElementById('current-day').textContent = currentDay;
+
+  const track = document.getElementById('streak-track');
+  for (let i = 0; i < total; i++) {
+    const day = document.createElement('div');
+    day.className = 'streak-day' + (i < currentDay - 1 ? ' done' : i === currentDay - 1 ? ' today' : '');
+    track.appendChild(day);
+  }
+
+  // ── Load stats from localStorage ──
+  const stats = JSON.parse(localStorage.getItem('cornerstone-stats') || '{"morning":0,"evening":0,"streak":0,"journal":1}');
+  document.getElementById('morning-count').textContent = stats.morning || 0;
+  document.getElementById('evening-count').textContent = stats.evening || 0;
+  document.getElementById('streak-count').textContent = stats.streak || 0;
+  document.getElementById('journal-count').textContent = stats.journal || 1;
+
+  // ── Scripture rotation ──
+  const scriptures = [
+    { text: '"Enlarge the place of your tent, stretch your tent curtains wide, do not hold back; lengthen your cords, strengthen your stakes."', ref: 'Isaiah 54:2' },
+    { text: '"As a man thinketh in his heart, so is he."', ref: 'Proverbs 23:7' },
+    { text: '"Faith is the substance of things hoped for, the evidence of things not seen."', ref: 'Hebrews 11:1' },
+    { text: '"All things work together for good to those who love God, who are called according to His purpose."', ref: 'Romans 8:28' },
+    { text: '"A good man leaves an inheritance to his children\'s children."', ref: 'Proverbs 13:22' },
+    { text: '"For I know the plans I have for you — plans to prosper you and not to harm you, plans to give you hope and a future."', ref: 'Jeremiah 29:11' },
+    { text: '"I can do all things through Christ who strengthens me."', ref: 'Philippians 4:13' },
+    { text: '"Now to him who is able to do immeasurably more than all we ask or imagine, according to his power that is at work within us."', ref: 'Ephesians 3:20' },
+  ];
+
+  // Rotate based on day of year
+  const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
+  const todayScripture = scriptures[dayOfYear % scriptures.length];
+  document.getElementById('scripture-text').textContent = todayScripture.text;
+  document.getElementById('scripture-ref').textContent = todayScripture.ref;
+</script>
+</body>
+</html>

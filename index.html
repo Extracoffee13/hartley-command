@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hartley Command Center</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0a0e1a;
+      color: #e0e6f0;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      padding: 0 0 40px;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #0d1225 0%, #111827 100%);
+      border-bottom: 1px solid rgba(99, 179, 237, 0.15);
+      padding: 28px 20px 24px;
+      text-align: center;
+      position: relative;
+    }
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 80px; height: 2px;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      border-radius: 2px;
+    }
+    .header-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #3b82f6;
+      margin-bottom: 10px;
+    }
+    .header h1 {
+      font-size: clamp(22px, 6vw, 32px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #e0e6f0 0%, #93c5fd 60%, #c4b5fd 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .header-sub {
+      margin-top: 8px;
+      font-size: 13px;
+      color: #64748b;
+      letter-spacing: 0.3px;
+    }
+    .status-dot {
+      display: inline-block;
+      width: 7px; height: 7px;
+      background: #22c55e;
+      border-radius: 50%;
+      margin-right: 6px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* Stats bar */
+    .stats-bar {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      padding: 16px 20px;
+      background: #0d1225;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      flex-wrap: wrap;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-num {
+      font-size: 20px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-label {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #475569;
+      margin-top: 2px;
+    }
+
+    /* Section */
+    .section {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #475569;
+      margin: 28px 0 12px;
+      padding-left: 2px;
+    }
+
+    /* Dashboard cards */
+    .dashboards {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .card {
+      background: linear-gradient(135deg, #111827 0%, #0f172a 100%);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      padding: 18px 20px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent, rgba(255,255,255,0.02));
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .card:hover::before, .card:active::before { opacity: 1; }
+    .card:hover, .card:active {
+      border-color: rgba(99, 179, 237, 0.25);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+
+    .card-icon {
+      width: 46px; height: 46px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .card-body { flex: 1; min-width: 0; }
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #e0e6f0;
+      margin-bottom: 3px;
+    }
+    .card-desc {
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.4;
+    }
+    .card-arrow {
+      font-size: 16px;
+      color: #334155;
+      flex-shrink: 0;
+    }
+
+    /* Color variants */
+    .blue   { background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(37,99,235,0.1)); }
+    .purple { background: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(109,40,217,0.1)); }
+    .cyan   { background: linear-gradient(135deg, rgba(6,182,212,0.2), rgba(8,145,178,0.1)); }
+    .green  { background: linear-gradient(135deg, rgba(34,197,94,0.2), rgba(22,163,74,0.1)); }
+    .amber  { background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(217,119,6,0.1)); }
+    .rose   { background: linear-gradient(135deg, rgba(244,63,94,0.2), rgba(225,29,72,0.1)); }
+
+    /* Agent grid */
+    .agents-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+    .agent-chip {
+      background: #111827;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .agent-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .agent-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: #94a3b8;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 32px 20px 0;
+      font-size: 11px;
+      color: #1e293b;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-badge">Hartley Capital Group</div>
+    <h1>Command Center</h1>
+    <div class="header-sub">
+      <span class="status-dot"></span>All systems operational &nbsp;·&nbsp; 18 agents active
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-num">18</div>
+      <div class="stat-label">Agents</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">6</div>
+      <div class="stat-label">Dashboards</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">Operations</div>
+    </div>
+  </div>
+
+  <div class="section">
+
+    <div class="section-title">Dashboards</div>
+
+    <div class="dashboards">
+
+      <a class="card" href="construct.html">
+        <div class="card-icon blue">🌐</div>
+        <div class="card-body">
+          <div class="card-title">The Construct</div>
+          <div class="card-desc">Agent Ecosystem · Full system overview &amp; orchestration hub</div>
+        </div>
+        <div class="card-arrow">›</div>
+      </a>
+
+      <a class="card" href="wolf-command.html">
+        <div class="card-icon rose">🐺</div>
+        <div class="card-body">
+          <div class="card-title">WOLF Command Center</div>
+          <div class="card-desc">Agent Wolf · Intelligence, research &amp; competitive analysis</div>
+        </div>
+        <div class="card-arrow">›</div>
+      </a>
+
+      <a class="card" href="wolf-construct.html">
+        <div class="card-icon purple">🔮</div>
+        <div class="card-body">
+          <div class="card-title">WOLF Construct</div>
+          <div class="card-desc">Agent Wolf · Deep research environment &amp; knowledge synthesis</div>
+        </div>
+        <div class="card-arrow">›</div>
+      </a>
+
+      <a class="card" href="cornerstone.html">
+        <div class="card-icon green">🏛️</div>
+        <div class="card-body">
+          <div class="card-title">Cornerstone</div>
+          <div class="card-desc">Agent Cornerstone · Foundation, principles &amp; decision framework</div>
+        </div>
+        <div class="card-arrow">›</div>
+      </a>
+
+      <a class="card" href="atlas.html">
+        <div class="card-icon cyan">🗺️</div>
+        <div class="card-body">
+          <div class="card-title">Atlas</div>
+          <div class="card-desc">Agent Atlas · Strategic mapping, portfolio &amp; deal intelligence</div>
+        </div>
+        <div class="card-arrow">›</div>
+      </a>
+
+      <a class="card" href="architect.html">
+        <div class="card-icon amber">🏗️</div>
+        <div class="card-body">
+          <div class="card-title">Architect</div>
+          <div class="card-desc">Agent Architect · Systems design, build planning &amp; infrastructure</div>
+        </div>
+        <div class="card-arrow">›</div>
+      </a>
+
+    </div>
+
+    <div class="section-title" style="margin-top:32px">Active Agent Fleet</div>
+
+    <div class="agents-grid">
+      <div class="agent-chip"><div class="agent-dot" style="background:#3b82f6"></div><div class="agent-name">CEO</div></div>
+      <div class="agent-chip"><div class="agent-dot" style="background:#8b5cf6"></div><div class="agent-name">Wolf</div></div>
+      <div class="agent-chip"><div class="agent-dot" style="background:#22c55e"></div><div class="agent-name">Cornerstone</div></div>
+      <div class="agent-chip"><div class="agent-dot" style="background:#06b6d4"></div><div class="agent-name">Atlas</div></div>
+      <div class="agent-chip"><div class="agent-dot" style="background:#f59e0b"></div><div class="agent-name">Architect</div></div>
+      <div class="agent-chip"><div class="agent-dot" style="background:#f43f5e"></div><div class="agent-name">Sentinel</div></div>
+      <div class="agent-chip"><div class="agent-dot" style="background:#a78bfa"></div><div class="agent-name">Oracle</div></div>
+      <div class="agent-chip"><div class="agent-dot" style="background:#34d399"></div><div class="agent-name">Nexus</div></div>
+      <div class="agent-chip"><div class="agent-dot" style="background:#fb923c"></div><div class="agent-name">Equity</div></div>
+      <div class="agent-chip"><div class="agent-dot" style="background:#60a5fa"></div><div class="agent-name">Venture</div></div>
+      <div class="agent-chip"><div class="agent-dot" style="background:#e879f9"></div><div class="agent-name">Alpha</div></div>
+      <div class="agent-chip"><div class="agent-dot" style="background:#4ade80"></div><div class="agent-name">Cipher</div></div>
+      <div class="agent-chip"><div class="agent-dot" style="background:#fbbf24"></div><div class="agent-name">Brand Lab AI</div></div>
+      <div class="agent-chip"><div class="agent-dot" style="background:#38bdf8"></div><div class="agent-name">Spectra</div></div>
+      <div class="agent-chip"><div class="agent-dot" style="background:#f87171"></div><div class="agent-name">Ledger</div></div>
+      <div class="agent-chip"><div class="agent-dot" style="background:#c084fc"></div><div class="agent-name">Apex</div></div>
+      <div class="agent-chip"><div class="agent-dot" style="background:#2dd4bf"></div><div class="agent-name">Vanguard</div></div>
+      <div class="agent-chip"><div class="agent-dot" style="background:#fb7185"></div><div class="agent-name">Pulse</div></div>
+    </div>
+
+  </div>
+
+  <div class="footer">HARTLEY CAPITAL GROUP &nbsp;·&nbsp; CONFIDENTIAL</div>
+
+</body>
+</html>
