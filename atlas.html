@@ -212,6 +212,35 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
 .sb-overdue{background:var(--red-l);color:#dc2626;}
 .sb-new{background:var(--purple-l);color:#7c3aed;}
 
+/* ── 811 QUICK BUTTON (page one of each community card) ── */
+.c-811-row{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 10px;margin:0 0 10px 10px;
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);
+  border-radius:8px;
+  box-shadow:0 2px 6px rgba(13,43,78,.15);
+}
+.c-811-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--orange);color:#fff;border:none;
+  font-size:11px;font-weight:900;letter-spacing:.5px;
+  padding:5px 10px;border-radius:6px;cursor:pointer;
+  box-shadow:0 2px 4px rgba(249,115,22,.4);
+  font-family:var(--font);transition:transform .15s,background .2s;
+}
+.c-811-btn:hover{background:#ea6c0a;transform:translateY(-1px);}
+.c-811-btn::before{content:'⛏';font-size:11px;}
+.c-811-choices{display:inline-flex;gap:2px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:6px;padding:2px;margin-left:auto;}
+.c-811-opt{
+  padding:3px 8px;font-size:10px;font-weight:800;border:none;
+  background:transparent;color:rgba(255,255,255,.6);cursor:pointer;
+  border-radius:4px;transition:all .15s;font-family:var(--font);letter-spacing:.3px;
+}
+.c-811-opt:hover{color:#fff;background:rgba(255,255,255,.08);}
+.c-811-opt.active-yes{background:var(--green);color:#fff;box-shadow:0 1px 3px rgba(16,185,129,.4);}
+.c-811-opt.active-no{background:var(--red);color:#fff;box-shadow:0 1px 3px rgba(239,68,68,.4);}
+.c-811-opt.active-na{background:var(--gray-600);color:#fff;}
+
 .c-prog{padding-left:10px;margin-bottom:10px;}
 .prog-lbl{display:flex;justify-content:space-between;font-size:11px;color:var(--gray-600);margin-bottom:4px;font-weight:500;}
 .prog-bar{height:6px;background:var(--gray-100);border-radius:3px;overflow:hidden;}
@@ -339,6 +368,35 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
 .m-stat-val{font-size:20px;font-weight:900;color:var(--navy);}
 .m-stat-lbl{font-size:10px;color:var(--gray-400);text-transform:uppercase;letter-spacing:.8px;font-weight:700;margin-top:2px;}
 
+/* ── 811 PERMIT BOX (inside modal) ── */
+.permit-811{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:14px 16px;margin:16px 0;
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);
+  border-radius:10px;color:#fff;
+  box-shadow:var(--shadow-md);
+  flex-wrap:wrap;
+}
+.permit-811-label{display:flex;align-items:center;gap:12px;flex:1;min-width:180px;}
+.permit-icon{
+  width:44px;height:44px;border-radius:10px;background:var(--orange);
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:900;color:#fff;letter-spacing:-.5px;
+  flex-shrink:0;box-shadow:0 2px 8px rgba(249,115,22,.4);
+}
+.permit-title{font-size:14px;font-weight:900;color:#fff;letter-spacing:.3px;}
+.permit-sub{font-size:10px;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
+.permit-811-choices{display:inline-flex;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:3px;gap:2px;}
+.p811-btn{
+  padding:8px 18px;font-size:12px;font-weight:800;border:none;
+  background:transparent;color:rgba(255,255,255,.65);cursor:pointer;
+  border-radius:6px;transition:all .2s;font-family:var(--font);letter-spacing:.5px;
+}
+.p811-btn:hover{color:#fff;background:rgba(255,255,255,.08);}
+.p811-btn.active-yes{background:var(--green);color:#fff;box-shadow:0 2px 6px rgba(16,185,129,.4);}
+.p811-btn.active-no{background:var(--red);color:#fff;box-shadow:0 2px 6px rgba(239,68,68,.4);}
+.p811-btn.active-na{background:var(--gray-600);color:#fff;}
+
 /* ── SIGN CATEGORIES (accordion) ── */
 .sign-cats{margin-top:16px;display:flex;flex-direction:column;gap:10px;}
 .sign-cat{border:1px solid var(--gray-200);border-radius:10px;overflow:hidden;}
@@ -410,6 +468,9 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
   .hdr-btn:not(.hdr-btn-ghost){display:none;}
   .live-badge{display:none;}
   .view-badge{padding:4px 8px;font-size:10px;}
+  .permit-811{flex-direction:column;align-items:flex-start;}
+  .permit-811-choices{width:100%;justify-content:space-between;}
+  .p811-btn{flex:1;}
 }
 @media(max-width:480px){
   .m-stats-row{grid-template-columns:1fr 1fr;}
@@ -460,7 +521,7 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
     <div id="viewBadge" class="view-badge admin">&#9679; Admin View</div>
     <div class="live-badge">
       <div class="live-dot"></div>
-      Live · Apr 5, 2026
+      Live · Apr 6, 2026
     </div>
     <button class="hdr-btn hdr-btn-ghost" onclick="window.print()">&#8595; Export</button>
   </div>
@@ -468,7 +529,7 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
 
 <!-- ── REGION TABS ── -->
 <div class="region-bar">
-  <div class="r-tab active" data-region="north" onclick="setRegion('north',this)">North Florida <span class="r-count" id="cnt-north">25</span></div>
+  <div class="r-tab active" data-region="north" onclick="setRegion('north',this)">North Florida <span class="r-count" id="cnt-north">10</span></div>
   <div class="r-tab dim" title="Coming Soon">South Florida <span class="r-cs">Coming Soon</span></div>
   <div class="r-tab dim" title="Coming Soon">Southeast Region <span class="r-cs">Coming Soon</span></div>
   <div class="r-tab dim" title="Coming Soon">National <span class="r-cs">Coming Soon</span></div>
@@ -477,8 +538,8 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
 <!-- ── KPI BAR ── -->
 <div class="kpi-bar">
   <div class="kpi-card">
-    <div class="kpi-lbl">Communities</div>
-    <div class="kpi-val" id="kpi-communities">25</div>
+    <div class="kpi-lbl">Current Communities</div>
+    <div class="kpi-val" id="kpi-communities">10</div>
     <div class="kpi-sub">North Florida · Active</div>
     <div class="kpi-chg up">&#9650; Jacksonville metro area</div>
     <div class="kpi-icon">&#127864;</div>
@@ -487,19 +548,19 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
     <div class="kpi-lbl">Active Installations</div>
     <div class="kpi-val" id="kpi-active">6</div>
     <div class="kpi-sub">Communities in progress</div>
-    <div class="kpi-chg up">&#9650; 3 grand openings this week</div>
+    <div class="kpi-chg up">&#9650; Installs through April</div>
     <div class="kpi-icon">&#128295;</div>
   </div>
   <div class="kpi-card">
     <div class="kpi-lbl">Pending / Overdue</div>
-    <div class="kpi-val" id="kpi-pending">5</div>
+    <div class="kpi-val" id="kpi-pending">2</div>
     <div class="kpi-sub">Awaiting installation</div>
-    <div class="kpi-chg dn" id="kpi-overdue-note">&#9660; 1 overdue &#8212; flagged</div>
+    <div class="kpi-chg up" id="kpi-overdue-note">&#9650; All on schedule</div>
     <div class="kpi-icon">&#128203;</div>
   </div>
   <div class="kpi-card">
     <div class="kpi-lbl">Sign Progress</div>
-    <div class="kpi-val" id="kpi-progress">71%</div>
+    <div class="kpi-val" id="kpi-progress">55%</div>
     <div class="kpi-sub" id="kpi-progress-sub">Signs installed across all communities</div>
     <div class="kpi-chg up">&#9650; On track for Q2 completion</div>
     <div class="kpi-icon">&#10003;</div>
@@ -553,8 +614,8 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
   <!-- ── COMMUNITY GRID ── -->
   <div class="sec-hdr">
     <div class="sec-title">
-      &#127864; Communities
-      <span class="sec-badge" id="gridCount">25</span>
+      &#127864; Current Communities
+      <span class="sec-badge" id="gridCount">10</span>
     </div>
     <div class="legend">
       <span class="leg-item"><span class="leg-dot" style="background:#10b981"></span><span style="color:#059669">Complete</span></span>
@@ -605,7 +666,7 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
   <div class="panel" style="margin-bottom:28px;">
     <div class="p-hdr">
       <div class="p-title"><span class="p-title-icon">&#128202;</span> Sign Installation Progress by Category &mdash; North Florida</div>
-      <span class="sec-badge">All 25 Communities</span>
+      <span class="sec-badge">All 10 Current Communities</span>
     </div>
     <div class="chart-wrap">
       <div class="chart-container"><canvas id="signChart"></canvas></div>
@@ -617,7 +678,7 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
 <!-- ── FOOTER ── -->
 <footer class="ftr">
   <div class="ftr-brand"><strong>ATLAS</strong> &middot; Brand 9 Signs Installation Tracker &middot; Lennar Homes &mdash; North Florida</div>
-  <div class="ftr-powered"><div class="atlas-dot"></div> Powered by Brand 9 AI &middot; Atlas Agent &middot; Last sync: Apr 5, 2026</div>
+  <div class="ftr-powered"><div class="atlas-dot"></div> Powered by Brand 9 AI &middot; Atlas Agent &middot; Last sync: Apr 6, 2026</div>
 </footer>
 
 <!-- ═══════════════════════════════════
@@ -656,71 +717,54 @@ const urlParams = new URLSearchParams(window.location.search);
 const isClientView = urlParams.get('view') === 'client';
 
 // ═══════════════════════════════════════════════════════
-// COMMUNITY DATA — 25 North Florida Lennar Communities
+// COMMUNITY DATA — 10 Current North Florida Lennar Communities
+// permit811: 'yes' | 'no' | 'na' (811 underground/call-before-you-dig permit status)
 // ═══════════════════════════════════════════════════════
 const COMMUNITIES = [
-{id:1, name:"Riverview Estates",      city:"Jacksonville",     status:"complete",    phase:"Active Selling",  totalSigns:26, installedSigns:26, lastInstall:"Mar 10, 2026", nextInstall:null,          contact:"Sarah Mitchell"},
-{id:2, name:"Heritage Park",          city:"St. Johns",        status:"complete",    phase:"Active Selling",  totalSigns:22, installedSigns:22, lastInstall:"Mar 4, 2026",  nextInstall:null,          contact:"Tom Albright"},
-{id:3, name:"The Preserve at St. Johns", city:"St. Augustine", status:"in-progress", phase:"Grand Opening",   totalSigns:30, installedSigns:22, lastInstall:"Apr 1, 2026",  nextInstall:"Apr 9, 2026", contact:"Damon Reeves"},
-{id:4, name:"Coastal Pines",          city:"Fernandina Beach", status:"pending",     phase:"Pre-Launch",      totalSigns:18, installedSigns:10, lastInstall:"Mar 18, 2026", nextInstall:"Apr 12, 2026",contact:"Janet Flores"},
-{id:5, name:"Durbin Crossing",        city:"St. Johns",        status:"complete",    phase:"Active Selling",  totalSigns:24, installedSigns:24, lastInstall:"Feb 28, 2026", nextInstall:null,          contact:"Lisa Cannon"},
-{id:6, name:"Nocatee Town Center",    city:"Ponte Vedra Beach",status:"in-progress", phase:"Grand Opening",   totalSigns:34, installedSigns:26, lastInstall:"Apr 1, 2026",  nextInstall:"Apr 9, 2026", contact:"Brandon Holt"},
-{id:7, name:"Shearwater",             city:"St. Augustine",    status:"complete",    phase:"Active Selling",  totalSigns:28, installedSigns:28, lastInstall:"Mar 7, 2026",  nextInstall:null,          contact:"Sarah Mitchell"},
-{id:8, name:"Beacon Lake",            city:"St. Augustine",    status:"in-progress", phase:"Grand Opening",   totalSigns:26, installedSigns:18, lastInstall:"Apr 2, 2026",  nextInstall:"Apr 21, 2026",contact:"Damon Reeves"},
-{id:9, name:"RiverTown",              city:"St. Johns",        status:"complete",    phase:"Active Selling",  totalSigns:22, installedSigns:22, lastInstall:"Mar 6, 2026",  nextInstall:null,          contact:"Lisa Cannon"},
-{id:10,name:"Twin Creeks",            city:"St. Augustine",    status:"pending",     phase:"Pre-Launch",      totalSigns:20, installedSigns:8,  lastInstall:"Mar 22, 2026", nextInstall:"Apr 14, 2026",contact:"Tom Albright"},
-{id:11,name:"Tributary",              city:"Ponte Vedra",      status:"complete",    phase:"Active Selling",  totalSigns:30, installedSigns:30, lastInstall:"Mar 15, 2026", nextInstall:null,          contact:"Brandon Holt"},
-{id:12,name:"eTown",                  city:"Jacksonville",     status:"in-progress", phase:"Grand Opening",   totalSigns:28, installedSigns:20, lastInstall:"Apr 1, 2026",  nextInstall:"Apr 23, 2026",contact:"Sarah Mitchell"},
-{id:13,name:"Silverleaf",             city:"St. Augustine",    status:"new",         phase:"Pre-Development", totalSigns:22, installedSigns:0,  lastInstall:null,            nextInstall:"May 2026",    contact:"Janet Flores"},
-{id:14,name:"Palm Valley",            city:"Ponte Vedra",      status:"complete",    phase:"Active Selling",  totalSigns:20, installedSigns:20, lastInstall:"Mar 8, 2026",  nextInstall:null,          contact:"Tom Albright"},
-{id:15,name:"Bartram Park",           city:"Jacksonville",     status:"complete",    phase:"Active Selling",  totalSigns:22, installedSigns:22, lastInstall:"Mar 12, 2026", nextInstall:null,          contact:"Sarah Mitchell"},
-{id:16,name:"Julington Creek",        city:"St. Johns",        status:"in-progress", phase:"Grand Opening",   totalSigns:28, installedSigns:20, lastInstall:"Apr 1, 2026",  nextInstall:"Apr 25, 2026",contact:"Damon Reeves"},
-{id:17,name:"Greenleaf Village",      city:"Jacksonville",     status:"pending",     phase:"Pre-Launch",      totalSigns:18, installedSigns:8,  lastInstall:"Mar 28, 2026", nextInstall:"Apr 18, 2026",contact:"Brandon Holt"},
-{id:18,name:"Osprey Ridge",           city:"Fernandina Beach", status:"complete",    phase:"Active Selling",  totalSigns:20, installedSigns:20, lastInstall:"Mar 6, 2026",  nextInstall:null,          contact:"Janet Flores"},
-{id:19,name:"Wildlight",              city:"Yulee",            status:"in-progress", phase:"Active Selling",  totalSigns:26, installedSigns:18, lastInstall:"Mar 30, 2026", nextInstall:"Apr 16, 2026",contact:"Lisa Cannon"},
-{id:20,name:"Tamaya",                 city:"Jacksonville",     status:"complete",    phase:"Active Selling",  totalSigns:24, installedSigns:24, lastInstall:"Mar 20, 2026", nextInstall:null,          contact:"Tom Albright"},
-{id:21,name:"TrailMark",              city:"St. Augustine",    status:"pending",     phase:"Pre-Launch",      totalSigns:16, installedSigns:6,  lastInstall:"Mar 25, 2026", nextInstall:"Apr 28, 2026",contact:"Sarah Mitchell"},
-{id:22,name:"Aberdeen",               city:"Jacksonville",     status:"overdue",     phase:"Active Selling",  totalSigns:24, installedSigns:18, lastInstall:"Mar 14, 2026", nextInstall:"OVERDUE",     contact:"Brandon Holt"},
-{id:23,name:"Meadow Glen",            city:"Orange Park",      status:"complete",    phase:"Closeout",        totalSigns:16, installedSigns:16, lastInstall:"Feb 20, 2026", nextInstall:null,          contact:"Natalie Greene"},
-{id:24,name:"Pine Ridge",             city:"St. Augustine",    status:"new",         phase:"Pre-Development", totalSigns:18, installedSigns:0,  lastInstall:null,            nextInstall:"May 2026",    contact:"Damon Reeves"},
-{id:25,name:"Cedar Bay",              city:"Yulee",            status:"new",         phase:"Pre-Development", totalSigns:20, installedSigns:0,  lastInstall:null,            nextInstall:"Jun 2026",    contact:"Janet Flores"},
+{id:1, name:"Emerald Isles",         city:"Jacksonville",     status:"complete",    phase:"Active Selling",  totalSigns:22, installedSigns:22, lastInstall:"Apr 6, 2026", nextInstall:null,           contact:"Gina Lee", permit811:"yes"},
+{id:2, name:"The Cove at Southwood", city:"Tallahassee",      status:"in-progress", phase:"Grand Opening",   totalSigns:24, installedSigns:14, lastInstall:"Apr 3, 2026", nextInstall:"Apr 9, 2026",  contact:"Gina Lee", permit811:"yes"},
+{id:3, name:"Oak Hill Village",      city:"St. Johns",        status:"in-progress", phase:"Grand Opening",   totalSigns:26, installedSigns:12, lastInstall:"Apr 2, 2026", nextInstall:"May 13, 2026", contact:"Gina Lee", permit811:"yes"},
+{id:4, name:"Lakeview Estates",      city:"Jacksonville",     status:"pending",     phase:"Pre-Launch",      totalSigns:18, installedSigns:4,  lastInstall:"Feb 4, 2026", nextInstall:"TBD",          contact:"Gina Lee", permit811:"na"},
+{id:5, name:"Stillwater",            city:"St. Johns",        status:"in-progress", phase:"Active Selling",  totalSigns:28, installedSigns:18, lastInstall:"Apr 3, 2026", nextInstall:"Apr 18, 2026", contact:"Gina Lee", permit811:"na"},
+{id:6, name:"Avalon Woods",          city:"St. Augustine",    status:"in-progress", phase:"Grand Opening",   totalSigns:22, installedSigns:10, lastInstall:"Apr 2, 2026", nextInstall:"Apr 8, 2026",  contact:"Gina Lee", permit811:"yes"},
+{id:7, name:"Silver Meadows",        city:"Jacksonville",     status:"in-progress", phase:"Active Selling",  totalSigns:20, installedSigns:8,  lastInstall:"Apr 3, 2026", nextInstall:"Apr 7, 2026",  contact:"Gina Lee", permit811:"na"},
+{id:8, name:"Silver Falls",          city:"Jacksonville",     status:"in-progress", phase:"Active Selling",  totalSigns:22, installedSigns:10, lastInstall:"Apr 1, 2026", nextInstall:"Apr 6, 2026",  contact:"Gina Lee", permit811:"na"},
+{id:9, name:"JAX Office",            city:"Jacksonville",     status:"complete",    phase:"Active Selling",  totalSigns:8,  installedSigns:8,  lastInstall:"Mar 15, 2026",nextInstall:null,           contact:"Brand 9",  permit811:"na"},
+{id:10,name:"Holly Cove",            city:"Orange Park",      status:"pending",     phase:"Pre-Launch",      totalSigns:20, installedSigns:6,  lastInstall:"Mar 28, 2026",nextInstall:"TBD",          contact:"Gina Lee", permit811:"na"},
 ];
 
 // ─── WORK ORDERS ───
 const WORK_ORDERS = [
-{id:"WO-2847",community:"The Preserve at St. Johns",category:"Community WHC Signage",   qty:2,date:"Apr 9, 2026", crew:"Mike Rodriguez", priority:"high"},
-{id:"WO-2848",community:"Coastal Pines",             category:"Community Wayfinding",    qty:4,date:"Apr 12, 2026",crew:"Carlos Mendez",  priority:"med"},
-{id:"WO-2849",community:"Twin Creeks",               category:"WHC Interior Signage",    qty:3,date:"Apr 14, 2026",crew:"Derek Thompson", priority:"med"},
-{id:"WO-2850",community:"Wildlight",                 category:"Offsite Wayfinding",      qty:2,date:"Apr 16, 2026",crew:"Julio Reyes",    priority:"med"},
-{id:"WO-2851",community:"Greenleaf Village",         category:"Community WHC Signage",   qty:3,date:"Apr 18, 2026",crew:"Mike Rodriguez", priority:"med"},
-{id:"WO-2852",community:"eTown",                     category:"Aluminum Awning",         qty:1,date:"Apr 23, 2026",crew:"Carlos Mendez",  priority:"med"},
-{id:"WO-2853",community:"Julington Creek",           category:"Community Wayfinding",    qty:5,date:"Apr 25, 2026",crew:"Derek Thompson", priority:"med"},
-{id:"WO-2854",community:"TrailMark",                 category:"Community WHC Signage",   qty:2,date:"Apr 28, 2026",crew:"Julio Reyes",    priority:"low"},
-{id:"WO-2855",community:"Silverleaf",                category:"Pre-Install Survey",      qty:1,date:"May 5, 2026", crew:"Mike Rodriguez", priority:"low"},
-{id:"WO-2856",community:"Aberdeen",                  category:"Offsite Wayfinding",      qty:3,date:"Apr 7, 2026", crew:"Carlos Mendez",  priority:"high"},
+{id:"WO-2847",community:"Avalon Woods",         category:"Community Signage",           qty:1,date:"Apr 8, 2026", crew:"Mike Rodriguez", priority:"high"},
+{id:"WO-2848",community:"The Cove at Southwood",category:"Community Signage",           qty:2,date:"Apr 9, 2026", crew:"Carlos Mendez",  priority:"high"},
+{id:"WO-2849",community:"Stillwater",           category:"Model ID Sign Changes",       qty:3,date:"Apr 9, 2026", crew:"Derek Thompson", priority:"med"},
+{id:"WO-2850",community:"Oak Hill Village",     category:"Sail Flag Replacements",      qty:2,date:"Apr 6, 2026", crew:"Julio Reyes",    priority:"med"},
+{id:"WO-2851",community:"Silver Falls",         category:"4x8 + 6x4 Signs",             qty:2,date:"Apr 6, 2026", crew:"Mike Rodriguez", priority:"med"},
+{id:"WO-2852",community:"Silver Meadows",       category:"Builder Barricade Banners",   qty:1,date:"Apr 7, 2026", crew:"Carlos Mendez",  priority:"med"},
+{id:"WO-2853",community:"Stillwater",           category:"Aluminum Awning",             qty:1,date:"Apr 18, 2026",crew:"Derek Thompson", priority:"med"},
+{id:"WO-2854",community:"The Cove at Southwood",category:"Aluminum Awning",             qty:1,date:"Apr 18, 2026",crew:"Julio Reyes",    priority:"low"},
+{id:"WO-2855",community:"Oak Hill Village",     category:"Community Signage",           qty:1,date:"May 13, 2026",crew:"Mike Rodriguez", priority:"low"},
+{id:"WO-2856",community:"Holly Cove",           category:"Pre-Install Survey",          qty:1,date:"TBD",         crew:"Carlos Mendez",  priority:"low"},
 ];
 
 // ─── ACTIVITY LOG ───
 const ACTIVITY = [
-{icon:"✅",bg:"#d1fae5",text:"Riverview Estates — all 26 signs installed and signed off. Community complete.",time:"Today 9:15 AM"},
-{icon:"📋",bg:"#dbeafe",text:"WO-2847 created for The Preserve at St. Johns — WHC Signage install Apr 9.",time:"Today 8:02 AM"},
-{icon:"🆕",bg:"#ede9fe",text:"Cedar Bay added to portal — pre-development phase, 20 signs planned Q3.",time:"Yesterday 3:10 PM"},
-{icon:"⚠️",bg:"#fee2e2",text:"Aberdeen flagged overdue — 6 Offsite Wayfinding signs past due. Crew reassigned to Apr 7.",time:"Yesterday 11:40 AM"},
-{icon:"✅",bg:"#d1fae5",text:"Nocatee Town Center grand opening install — 26/34 signs complete, on track for Apr 9.",time:"Apr 1 · 4:20 PM"},
-{icon:"📋",bg:"#dbeafe",text:"Beacon Lake Phase 2 approved — WHC Interior Signage ordered, install Apr 21.",time:"Apr 1 · 1:20 PM"},
-{icon:"📊",bg:"#fff7ed",text:"March 2026 recap: 22 installs completed across 8 North FL communities. On-time rate: 97%.",time:"Mar 31 · 5:00 PM"},
-{icon:"✅",bg:"#d1fae5",text:"Tributary closeout inspection passed — full 30-sign package approved by Lennar QC.",time:"Mar 31 · 2:30 PM"},
-{icon:"🆕",bg:"#ede9fe",text:"Pine Ridge onboarded — 18 signs planned, permitting begins May 2026.",time:"Mar 30 · 10:15 AM"},
-{icon:"✅",bg:"#d1fae5",text:"Tamaya sign package complete — 24/24 installed including Aluminum Awning.",time:"Mar 20 · 3:45 PM"},
+{icon:"✅",bg:"#d1fae5",text:"Emerald Isles — community signage installation complete. 811 clearance confirmed.",time:"Today 10:30 AM"},
+{icon:"📋",bg:"#dbeafe",text:"Avalon Woods — WO-2847 scheduled for Apr 8. Underground permit approved.",time:"Today 9:15 AM"},
+{icon:"🔧",bg:"#fff7ed",text:"Oak Hill Village — Sail flag replacements (x2) production complete, install Apr 6.",time:"Today 8:45 AM"},
+{icon:"📋",bg:"#dbeafe",text:"Silver Falls — 4x8 and 6x4 signs in production, install scheduled Apr 6.",time:"Yesterday 3:20 PM"},
+{icon:"📋",bg:"#dbeafe",text:"Silver Meadows — Builder barricade boulevard banners scheduled Apr 7.",time:"Yesterday 2:10 PM"},
+{icon:"🎨",bg:"#ede9fe",text:"Stillwater — Aluminum awning artwork in progress, install Apr 18.",time:"Yesterday 11:30 AM"},
+{icon:"🎨",bg:"#ede9fe",text:"Lakeview Estates — Community signage in artwork phase. 811 status pending.",time:"Apr 4 · 4:15 PM"},
+{icon:"📋",bg:"#dbeafe",text:"The Cove at Southwood — Community signage in production, install Apr 9.",time:"Apr 3 · 2:45 PM"},
+{icon:"✅",bg:"#d1fae5",text:"JAX Office — internal signage package complete.",time:"Mar 15 · 5:00 PM"},
+{icon:"🆕",bg:"#ede9fe",text:"Holly Cove added to portal — pre-launch, scope being finalized.",time:"Mar 28 · 9:00 AM"},
 ];
 
 // ═══════════════════════════════════════════════════════
 // SIGN CATEGORIES — 5 categories per community
 // Installation thresholds: each sign installs when community pct crosses its threshold
 // ═══════════════════════════════════════════════════════
-
-// Template sign lists with install thresholds (0–1 scale)
-// Lower threshold = installed earlier in the project
 const SIGN_TEMPLATES = [
   {
     id: 'whc',
@@ -800,8 +844,47 @@ function getSignCategories(c) {
 // STATE
 // ═══════════════════════════════════════════════════════
 let currentRegion = 'north';
-let filteredCommunities = COMMUNITIES.filter(c => c.region !== 'south');
+let filteredCommunities = [...COMMUNITIES];
 let sheetData = null; // populated if Google Sheets sync succeeds
+
+// ═══════════════════════════════════════════════════════
+// 811 PERSISTENCE (local until sheet sync is live)
+// ═══════════════════════════════════════════════════════
+const STORE_811 = 'atlas-811-permits';
+
+function restore811() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORE_811) || '{}');
+    COMMUNITIES.forEach(c => { if (saved[c.id]) c.permit811 = saved[c.id]; });
+  } catch(e) {}
+}
+
+function persist811() {
+  try {
+    const map = {};
+    COMMUNITIES.forEach(c => { map[c.id] = c.permit811 || 'na'; });
+    localStorage.setItem(STORE_811, JSON.stringify(map));
+  } catch(e) {}
+}
+
+function set811(id, val, e) {
+  if (e) e.stopPropagation();
+  const c = COMMUNITIES.find(x => x.id === id);
+  if (!c) return;
+  c.permit811 = val;
+  persist811();
+
+  // Update modal buttons if modal is open for this community
+  document.querySelectorAll('#m-body .p811-btn').forEach(b => {
+    b.classList.remove('active-yes','active-no','active-na');
+    if (b.dataset.val === val) b.classList.add('active-' + val);
+  });
+  // Update card buttons in the grid
+  document.querySelectorAll('[data-811-id="'+id+'"] .c-811-opt').forEach(b => {
+    b.classList.remove('active-yes','active-no','active-na');
+    if (b.dataset.val === val) b.classList.add('active-' + val);
+  });
+}
 
 // ═══════════════════════════════════════════════════════
 // GOOGLE SHEETS SYNC
@@ -812,23 +895,18 @@ async function syncFromSheet() {
   const time = document.getElementById('syncTime');
   msg.textContent = 'Syncing with Google Sheets…';
   try {
-    // CORS-safe fetch for published Google Sheet CSV
     const res = await fetch(SHEET_CSV_URL, {signal: AbortSignal.timeout(8000)});
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const csv = await res.text();
     const rows = csv.split('\n').slice(1).filter(r => r.trim());
-    // Expected columns: community_name, sign_category, sign_name, status, installer, install_date, notes
     const updates = {};
     rows.forEach(row => {
       const cols = row.split(',').map(c => c.trim().replace(/^"|"$/g, ''));
       const [communityName, , , status] = cols;
       if (!updates[communityName]) updates[communityName] = {};
     });
-    // Merge into COMMUNITIES (simple count update)
     let merged = 0;
-    COMMUNITIES.forEach(c => {
-      if (updates[c.name]) { merged++; }
-    });
+    COMMUNITIES.forEach(c => { if (updates[c.name]) merged++; });
     dot.className  = 'sync-dot ok';
     msg.textContent = 'Live data — synced from Google Sheets';
     time.textContent = 'Last sync: ' + new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
@@ -900,6 +978,17 @@ function renderCard(c, delay) {
       &#128247; Field Update
     </a>`;
 
+  const permit = c.permit811 || 'na';
+  const permit811Row = `
+  <div class="c-811-row" data-811-id="${c.id}" onclick="event.stopPropagation()">
+    <button class="c-811-btn" onclick="event.stopPropagation()" title="811 — Underground Permit (Call-Before-You-Dig)">811</button>
+    <div class="c-811-choices" role="group" aria-label="811 underground permit status">
+      <button class="c-811-opt ${permit==='yes'?'active-yes':''}" data-val="yes" onclick="set811(${c.id},'yes',event)">Yes</button>
+      <button class="c-811-opt ${permit==='no'?'active-no':''}"  data-val="no"  onclick="set811(${c.id},'no',event)">No</button>
+      <button class="c-811-opt ${permit==='na'?'active-na':''}"  data-val="na"  onclick="set811(${c.id},'na',event)">N/A</button>
+    </div>
+  </div>`;
+
   return `<div class="c-card s-${c.status}" style="animation-delay:${delay}ms" onclick="openModal(${c.id})">
   <div class="c-head">
     <div>
@@ -908,6 +997,7 @@ function renderCard(c, delay) {
     </div>
     <span class="s-badge ${badgeCls[c.status]}">${statusLabel[c.status]}</span>
   </div>
+  ${permit811Row}
   <div class="c-prog">
     <div class="prog-lbl">
       <span>${c.installedSigns} of ${c.totalSigns} signs installed</span>
@@ -959,7 +1049,7 @@ function renderGrid() {
 
 // ─── UPDATE KPIs ───
 function updateKPIs() {
-  const cs       = COMMUNITIES; // KPIs always reflect all 25 North FL
+  const cs       = COMMUNITIES; // KPIs always reflect all 10 current communities
   const active   = cs.filter(c => c.status === 'in-progress').length;
   const pending  = cs.filter(c => c.status === 'pending').length;
   const overdue  = cs.filter(c => c.status === 'overdue').length;
@@ -1006,7 +1096,6 @@ function clearFilters() {
 }
 
 function setRegion(r, el) {
-  // Only North FL is active; other tabs are dimmed and non-functional
   if (!el.classList.contains('active')) return;
   currentRegion = r;
   applyFilters();
@@ -1167,6 +1256,23 @@ function openModal(id) {
       📲 Field Update — Mark Signs as Installed
     </a>`;
 
+  const permit = c.permit811 || 'na';
+  const permit811Html = `
+    <div class="permit-811">
+      <div class="permit-811-label">
+        <div class="permit-icon">811</div>
+        <div>
+          <div class="permit-title">811 — Underground Permit</div>
+          <div class="permit-sub">Call-Before-You-Dig Clearance</div>
+        </div>
+      </div>
+      <div class="permit-811-choices" role="group" aria-label="811 underground permit status">
+        <button class="p811-btn ${permit==='yes'?'active-yes':''}" data-val="yes" onclick="set811(${c.id},'yes',event)">Yes</button>
+        <button class="p811-btn ${permit==='no'?'active-no':''}"  data-val="no"  onclick="set811(${c.id},'no',event)">No</button>
+        <button class="p811-btn ${permit==='na'?'active-na':''}"  data-val="na"  onclick="set811(${c.id},'na',event)">N/A</button>
+      </div>
+    </div>`;
+
   document.getElementById('m-body').innerHTML = `
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
       <span class="s-badge ${badgeCls[c.status]}" style="font-size:10px">${statusLabel[c.status]}</span>
@@ -1186,6 +1292,7 @@ function openModal(id) {
         <div class="m-stat-lbl">Complete</div>
       </div>
     </div>
+    ${permit811Html}
     <div style="font-size:12px;font-weight:800;color:var(--gray-600);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;">
       Sign Categories
     </div>
@@ -1229,10 +1336,11 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalBt
 // EXPORT CSV
 // ═══════════════════════════════════════════════════════
 function exportCSV() {
-  const rows = [['ID','Community','City','Status','Phase','Total Signs','Installed','Remaining','% Complete','Last Install','Next Install','Contact']];
+  const rows = [['ID','Community','City','Status','Phase','Total Signs','Installed','Remaining','% Complete','Last Install','Next Install','Contact','811 Permit']];
   filteredCommunities.forEach(c => {
     const pct = fmtPct(c.installedSigns, c.totalSigns);
-    rows.push([c.id, c.name, c.city, c.status, c.phase, c.totalSigns, c.installedSigns, c.totalSigns - c.installedSigns, pct + '%', c.lastInstall||'', c.nextInstall||'', c.contact]);
+    const p811 = (c.permit811||'na').toUpperCase();
+    rows.push([c.id, c.name, c.city, c.status, c.phase, c.totalSigns, c.installedSigns, c.totalSigns - c.installedSigns, pct + '%', c.lastInstall||'', c.nextInstall||'', c.contact, p811==='NA'?'N/A':p811]);
   });
   const csv = rows.map(r => r.map(v => '"' + String(v).replace(/"/g,'""') + '"').join(',')).join('\n');
   const a   = document.createElement('a');
@@ -1244,6 +1352,7 @@ function exportCSV() {
 // ═══════════════════════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════════════════════
+restore811();
 applyViewMode();
 syncFromSheet();
 filteredCommunities = [...COMMUNITIES];
