@@ -101,6 +101,16 @@
 
   @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
   .pulse { animation: pulse 2s infinite; }
+
+  /* Live data styles */
+  .cb-green { background: #1a3a1a; color: #4ade80; border: 1px solid #2a5a2a; }
+  .cb-yellow { background: #3a3a1a; color: #facc15; border: 1px solid #5a5a2a; }
+  .cb-red { background: #3a1a1a; color: #f87171; border: 1px solid #5a2a2a; animation: pulse 1s infinite; }
+  .cb-badge { font-size: 13px; font-weight: 900; padding: 8px 18px; border-radius: 8px; display: inline-block; margin-top: 8px; }
+  .live-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 6px #4ade80; margin-right: 6px; animation: pulse 2s infinite; }
+  .pnl-pos { color: #4ade80; }
+  .pnl-neg { color: #f87171; }
+  .positions-empty { color: #555; font-size: 13px; padding: 16px 0; text-align: center; }
 </style>
 </head>
 <body>
@@ -115,39 +125,139 @@
   </div>
 </div>
 
-<!-- Mobile version confirmation banner -->
-<div style="background:#1a3a1a; color:#4ade80; border:1px solid #4ade80; padding:10px 16px; margin:12px 20px; border-radius:8px; font-size:13px; text-align:center;">
-  ✓ v1.5 MOBILE-SAFE — if you can read this on your iPhone, the new auto-fit layout is loaded. Scroll down to see <b>Consulting Intelligence Feed</b> and <b>AI Hedge Fund Committee</b>.
+<!-- Live data status bar -->
+<div style="background:#0f0f1a; border-bottom:1px solid #1a1a2e; padding:8px 20px; display:flex; align-items:center; gap:16px; font-size:11px;">
+  <span><span class="live-dot"></span><span id="live-status" style="color:#4ade80;">LIVE — Alpaca Paper</span></span>
+  <span style="color:#444;">|</span>
+  <span style="color:#666;">Last update: <span id="last-update" style="color:#888;">Loading...</span></span>
+  <span style="color:#444;">|</span>
+  <span style="color:#666;">Refresh: <span style="color:#888;">60s</span></span>
+  <span style="color:#444; margin-left:auto;">v2.0 — Project Ascension Phase 2</span>
 </div>
 
-<!-- Portfolio Summary -->
+<!-- Portfolio Summary (Live) -->
 <div class="grid">
   <div class="card">
-    <div class="card-header">Portfolio Value <span class="badge badge-green">ALPACA CONNECTED</span></div>
-    <div class="big-number green">$100,000</div>
-    <div class="sub-text">Cash available — Alpaca Paper Trading</div>
+    <div class="card-header">Portfolio Value <span class="badge badge-green" id="acct-status-badge">ALPACA CONNECTED</span></div>
+    <div class="big-number green" id="portfolio-value">$100,000</div>
+    <div class="sub-text" id="portfolio-cash">Cash: $100,000 — Alpaca Paper Trading</div>
     <div style="margin-top:10px; display:flex; gap:16px;">
       <div>
-        <div style="color:#ff6b35; font-size:16px; font-weight:900;">$200,000</div>
+        <div style="color:#ff6b35; font-size:16px; font-weight:900;" id="buying-power">$200,000</div>
         <div style="color:#555; font-size:10px; text-transform:uppercase; letter-spacing:1px;">Buying Power</div>
       </div>
       <div>
-        <div style="color:#c084fc; font-size:16px; font-weight:900;">ENABLED</div>
-        <div style="color:#555; font-size:10px; text-transform:uppercase; letter-spacing:1px;">Shorting</div>
+        <div id="unrealized-pl" style="color:#4ade80; font-size:16px; font-weight:900;">$0.00</div>
+        <div style="color:#555; font-size:10px; text-transform:uppercase; letter-spacing:1px;">Unrealized P&amp;L</div>
       </div>
     </div>
   </div>
+
   <div class="card">
-    <div class="card-header">Today's Signals <span class="badge badge-green">3 IDENTIFIED</span></div>
-    <div class="big-number orange">3</div>
-    <div class="sub-text">TSLA SHORT &bull; NFLX LONG &bull; XLU LONG</div>
-    <div style="margin-top:8px; font-size:11px; color:#888;">Scan completed 8:30 AM &bull; Technical + Congressional overlay</div>
+    <div class="card-header">Daily P&amp;L <span class="badge" id="daily-cb-badge" style="background:#1a3a1a;color:#4ade80;border:1px solid #2a5a2a;">CLEAR</span></div>
+    <div class="big-number" id="daily-pnl" style="color:#4ade80;">$0.00</div>
+    <div class="sub-text" id="daily-pnl-pct">0.00% today</div>
+    <div style="margin-top:8px; display:flex; gap:16px;">
+      <div>
+        <div id="weekly-pnl" style="color:#c084fc; font-size:16px; font-weight:900;">$0.00</div>
+        <div style="color:#555; font-size:10px; text-transform:uppercase; letter-spacing:1px;">Weekly P&amp;L</div>
+      </div>
+      <div>
+        <div id="weekly-pnl-pct" style="color:#888; font-size:14px; font-weight:700;">0.00%</div>
+        <div style="color:#555; font-size:10px; text-transform:uppercase; letter-spacing:1px;">Weekly %</div>
+      </div>
+    </div>
   </div>
+
   <div class="card">
-    <div class="card-header">Portfolio Heat <span class="badge badge-green">SAFE</span></div>
-    <div class="big-number green">0.0%</div>
-    <div class="sub-text">Max: 10% | Daily loss limit: 3%</div>
-    <div class="progress-bar"><div class="progress-fill fill-green" style="width: 0%;"></div></div>
+    <div class="card-header">Circuit Breaker <span class="badge" id="cb-badge" style="background:#1a3a1a;color:#4ade80;border:1px solid #2a5a2a;">GREEN</span></div>
+    <div class="cb-badge cb-green" id="cb-status-box">CLEAR</div>
+    <div style="margin-top:10px; font-size:11px; color:#888; line-height:1.7;" id="cb-message">All systems nominal. Ready for trading.</div>
+    <div style="margin-top:8px; font-size:10px; color:#555;">Daily limit: -3% | Weekly limit: -7%</div>
+  </div>
+</div>
+
+<!-- Live Positions -->
+<div style="padding: 0 20px 0;">
+  <div class="card full-width">
+    <div class="card-header">Open Positions <span class="badge badge-blue" id="positions-count">0 OPEN</span></div>
+    <div id="positions-table">
+      <div class="positions-empty">No open positions — cash fully deployed in buying power</div>
+    </div>
+  </div>
+</div>
+
+<!-- Today's Trades + Strategy Performance -->
+<div class="grid grid-2" style="padding: 20px 20px 0;">
+  <div class="card">
+    <div class="card-header">Today's Trades <span class="badge badge-blue" id="trades-count">0 TRADES</span></div>
+    <div id="todays-trades">
+      <div class="positions-empty">No trades today — market not yet open or no signals executed</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">Approved Strategy Performance <span class="badge badge-green">3 ACTIVE</span></div>
+    <div id="strategy-perf">
+      <div class="strategy-row">
+        <div>
+          <div class="strat-name">Small Cap Catalyst</div>
+          <div style="color:#555; font-size:10px;">Sharpe: 2.74 | DD: -2.6% | WR: 62.5%</div>
+        </div>
+        <div style="text-align:right;">
+          <span class="strat-grade grade-a">A</span>
+          <div style="color:#4ade80; font-size:11px; margin-top:2px;" id="scc-pnl">$0</div>
+        </div>
+      </div>
+      <div class="strategy-row">
+        <div>
+          <div class="strat-name">Volatility Play</div>
+          <div style="color:#555; font-size:10px;">Sharpe: 1.30 | DD: -13.2% | WR: 58.8%</div>
+        </div>
+        <div style="text-align:right;">
+          <span class="strat-grade grade-b">B+</span>
+          <div style="color:#4ade80; font-size:11px; margin-top:2px;" id="vp-pnl">$0</div>
+        </div>
+      </div>
+      <div class="strategy-row" style="border-bottom:none;">
+        <div>
+          <div class="strat-name">Macro Hedge</div>
+          <div style="color:#555; font-size:10px;">Sharpe: 1.11 | DD: -7.4% | WR: 53.7%</div>
+        </div>
+        <div style="text-align:right;">
+          <span class="strat-grade grade-b">B</span>
+          <div style="color:#4ade80; font-size:11px; margin-top:2px;" id="mh-pnl">$0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Backtest status bar -->
+<div style="padding: 16px 20px 0;">
+  <div class="card" style="border-color:#2a2a3e;">
+    <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+      <div>
+        <div style="font-size:10px; color:#666; text-transform:uppercase; letter-spacing:1px;">Last Backtest</div>
+        <div style="color:#fff; font-size:13px; font-weight:700;" id="backtest-date">2026-04-07</div>
+      </div>
+      <div>
+        <div style="font-size:10px; color:#666; text-transform:uppercase; letter-spacing:1px;">Data Source</div>
+        <div style="color:#facc15; font-size:13px; font-weight:700;" id="backtest-source">Synthetic → Real pending</div>
+      </div>
+      <div>
+        <div style="font-size:10px; color:#666; text-transform:uppercase; letter-spacing:1px;">Strategies Passed</div>
+        <div style="color:#4ade80; font-size:13px; font-weight:700;" id="backtest-passed">3 / 9</div>
+      </div>
+      <div>
+        <div style="font-size:10px; color:#666; text-transform:uppercase; letter-spacing:1px;">Best Strategy</div>
+        <div style="color:#ff6b35; font-size:13px; font-weight:700;" id="backtest-best">Small Cap Catalyst (Sharpe 2.74)</div>
+      </div>
+      <div style="margin-left:auto; display:flex; gap:8px;">
+        <a href="backtest/results/real_backtest_2026-04-07.md" style="color:#4ade80; font-size:12px; text-decoration:none; padding:6px 12px; border:1px solid #2a5a2a; border-radius:6px; background:#1a3a1a;">Real Data Report</a>
+        <a href="backtest/results/backtest_2026-04-07.md" style="color:#60a5fa; font-size:12px; text-decoration:none; padding:6px 12px; border:1px solid #2a2a5a; border-radius:6px; background:#1a1a3a;">Synthetic Report</a>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -642,7 +752,152 @@
   </div>
 </div>
 
-<div class="footer">WOLF v1.5 mobile-safe | Wealth-Optimized Leverage Framework | Alpaca Connected | Consulting Intel Active | AI Hedge Fund Committee LIVE | Congressional Intel Active | 3 Live Signals | Built for Bobby | One mission: earn money</div>
+<div class="footer">WOLF v2.0 | Wealth-Optimized Leverage Framework | Alpaca Paper Connected | AI Hedge Fund 18-Analyst Vote Active | Risk Management Protocol Enforced | Project Ascension Phase 2 | Built for Bobby | One mission: earn money</div>
+
+<script>
+// WOLF Live Data Loader
+// Reads wolf_live_data.json every 60 seconds and updates the dashboard
+
+const fmt$ = (n) => '$' + Number(n).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+const fmtPct = (n) => (n >= 0 ? '+' : '') + (Number(n) * 100).toFixed(2) + '%';
+const clr = (n) => n >= 0 ? '#4ade80' : '#f87171';
+
+function loadLiveData() {
+  fetch('wolf_live_data.json?' + Date.now())
+    .then(r => r.json())
+    .then(d => {
+      // Last updated
+      const ts = new Date(d.last_updated);
+      document.getElementById('last-update').textContent = ts.toLocaleTimeString();
+
+      // Account
+      if (d.account) {
+        const pv = d.account.portfolio_value || 100000;
+        document.getElementById('portfolio-value').textContent = fmt$(pv);
+        document.getElementById('portfolio-value').style.color = '#4ade80';
+        document.getElementById('portfolio-cash').textContent = 'Cash: ' + fmt$(d.account.cash || 0) + ' — Alpaca Paper Trading';
+        document.getElementById('buying-power').textContent = fmt$(d.account.buying_power || 0);
+        const upl = d.account.unrealized_pl || 0;
+        document.getElementById('unrealized-pl').textContent = fmt$(upl);
+        document.getElementById('unrealized-pl').style.color = clr(upl);
+      }
+
+      // Daily P&L
+      if (d.daily_pnl) {
+        const dp = d.daily_pnl.amount || 0;
+        document.getElementById('daily-pnl').textContent = fmt$(dp);
+        document.getElementById('daily-pnl').style.color = clr(dp);
+        document.getElementById('daily-pnl-pct').textContent = fmtPct(d.daily_pnl.pct || 0) + ' today';
+
+        // Daily CB badge
+        const cbStatus = d.daily_pnl.circuit_breaker_status || 'green';
+        const cbBadge = document.getElementById('daily-cb-badge');
+        if (cbStatus === 'red') { cbBadge.className='badge'; cbBadge.style.cssText='background:#3a1a1a;color:#f87171;border:1px solid #5a2a2a;'; cbBadge.textContent='HALTED'; }
+        else if (cbStatus === 'yellow') { cbBadge.className='badge'; cbBadge.style.cssText='background:#3a3a1a;color:#facc15;border:1px solid #5a5a2a;'; cbBadge.textContent='WARNING'; }
+        else { cbBadge.className='badge'; cbBadge.style.cssText='background:#1a3a1a;color:#4ade80;border:1px solid #2a5a2a;'; cbBadge.textContent='CLEAR'; }
+      }
+
+      // Weekly P&L
+      if (d.weekly_pnl) {
+        const wp = d.weekly_pnl.amount || 0;
+        document.getElementById('weekly-pnl').textContent = fmt$(wp);
+        document.getElementById('weekly-pnl').style.color = clr(wp);
+        document.getElementById('weekly-pnl-pct').textContent = fmtPct(d.weekly_pnl.pct || 0);
+        document.getElementById('weekly-pnl-pct').style.color = clr(wp);
+      }
+
+      // Circuit Breaker
+      if (d.circuit_breaker) {
+        const cb = d.circuit_breaker;
+        const statusBox = document.getElementById('cb-status-box');
+        const cbBadge2 = document.getElementById('cb-badge');
+        if (cb.weekly_triggered) {
+          statusBox.className='cb-badge cb-red'; statusBox.textContent='WEEKLY HALT';
+          cbBadge2.style.cssText='background:#3a1a1a;color:#f87171;border:1px solid #5a2a2a;animation:pulse 1s infinite;'; cbBadge2.textContent='RED';
+        } else if (cb.daily_triggered) {
+          statusBox.className='cb-badge cb-yellow'; statusBox.textContent='DAILY HALT';
+          cbBadge2.style.cssText='background:#3a3a1a;color:#facc15;border:1px solid #5a5a2a;'; cbBadge2.textContent='YELLOW';
+        } else {
+          statusBox.className='cb-badge cb-green'; statusBox.textContent='CLEAR';
+          cbBadge2.style.cssText='background:#1a3a1a;color:#4ade80;border:1px solid #2a5a2a;'; cbBadge2.textContent='GREEN';
+        }
+        document.getElementById('cb-message').textContent = cb.message || 'All systems nominal.';
+      }
+
+      // Positions
+      const posDiv = document.getElementById('positions-table');
+      const positions = d.positions || [];
+      document.getElementById('positions-count').textContent = positions.length + ' OPEN';
+      if (positions.length === 0) {
+        posDiv.innerHTML = '<div class="positions-empty">No open positions</div>';
+      } else {
+        let html = '<table><thead><tr><th>Ticker</th><th>Side</th><th>Qty</th><th>Avg Entry</th><th>Current</th><th>Mkt Value</th><th>Unreal P&L</th><th>P&L %</th></tr></thead><tbody>';
+        positions.forEach(p => {
+          const plColor = p.unrealized_pl >= 0 ? '#4ade80' : '#f87171';
+          html += `<tr>
+            <td style="font-weight:700;color:#fff;">${p.ticker}</td>
+            <td><span style="color:${p.side==='long'?'#4ade80':'#f87171'};font-weight:700;">${p.side.toUpperCase()}</span></td>
+            <td>${p.qty}</td>
+            <td>${fmt$(p.avg_entry)}</td>
+            <td>${fmt$(p.current_price)}</td>
+            <td>${fmt$(p.market_value)}</td>
+            <td style="color:${plColor};font-weight:700;">${fmt$(p.unrealized_pl)}</td>
+            <td style="color:${plColor};">${(p.unrealized_plpc*100).toFixed(2)}%</td>
+          </tr>`;
+        });
+        html += '</tbody></table>';
+        posDiv.innerHTML = html;
+      }
+
+      // Today's trades
+      const tradesDiv = document.getElementById('todays-trades');
+      const trades = d.todays_trades || [];
+      document.getElementById('trades-count').textContent = trades.length + ' TRADES';
+      if (trades.length === 0) {
+        tradesDiv.innerHTML = '<div class="positions-empty">No trades executed today</div>';
+      } else {
+        let html = '<table><thead><tr><th>Ticker</th><th>Side</th><th>Qty</th><th>Filled @</th><th>Status</th><th>Type</th></tr></thead><tbody>';
+        trades.forEach(t => {
+          html += `<tr>
+            <td style="font-weight:700;color:#fff;">${t.ticker}</td>
+            <td style="color:${t.side==='buy'?'#4ade80':'#f87171'};font-weight:700;">${t.side.toUpperCase()}</td>
+            <td>${t.qty}</td>
+            <td>${t.filled_price > 0 ? fmt$(t.filled_price) : '—'}</td>
+            <td style="color:#facc15;">${t.status}</td>
+            <td style="color:#888;">${t.order_class||'market'}</td>
+          </tr>`;
+        });
+        html += '</tbody></table>';
+        tradesDiv.innerHTML = html;
+      }
+
+      // Strategy P&L
+      if (d.strategy_performance) {
+        const sp = d.strategy_performance;
+        if (sp.small_cap_catalyst) document.getElementById('scc-pnl').textContent = fmt$(sp.small_cap_catalyst.pnl_today||0);
+        if (sp.volatility_play) document.getElementById('vp-pnl').textContent = fmt$(sp.volatility_play.pnl_today||0);
+        if (sp.macro_hedge) document.getElementById('mh-pnl').textContent = fmt$(sp.macro_hedge.pnl_today||0);
+      }
+
+      // Backtest info
+      if (d.backtest) {
+        document.getElementById('backtest-date').textContent = d.backtest.last_run_date || '—';
+        document.getElementById('backtest-source').textContent = d.backtest.data_source || '—';
+        document.getElementById('backtest-passed').textContent = (d.backtest.strategies_passed||0) + ' / 9';
+        document.getElementById('backtest-best').textContent = d.backtest.best_strategy + ' (Sharpe ' + d.backtest.best_sharpe + ')';
+      }
+
+    })
+    .catch(err => {
+      document.getElementById('live-status').textContent = 'OFFLINE — ' + err.message;
+      document.getElementById('live-status').style.color = '#f87171';
+    });
+}
+
+// Initial load + refresh every 60s
+loadLiveData();
+setInterval(loadLiveData, 60000);
+</script>
 
 </body>
 </html>
