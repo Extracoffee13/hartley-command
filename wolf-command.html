@@ -267,7 +267,7 @@
     <div class="card-header">Active Signals — Today <span class="badge badge-green">3 LIVE</span></div>
 
     <!-- TSLA SHORT -->
-    <div class="signal-row" style="flex-direction:column; align-items:flex-start;">
+    <div class="signal-row" style="flex-direction:column; align-items:flex-start; cursor:pointer;" onclick="switchChart('NASDAQ:TSLA'); window.scrollTo({top:document.getElementById('tv_main').getBoundingClientRect().top+scrollY-80,behavior:'smooth'});" title="View TSLA chart">
       <div style="display:flex; gap:12px; align-items:center; width:100%;">
         <span class="signal-dir signal-short">SHORT</span>
         <span class="signal-ticker">TSLA</span>
@@ -282,7 +282,7 @@
     </div>
 
     <!-- NFLX LONG -->
-    <div class="signal-row" style="flex-direction:column; align-items:flex-start;">
+    <div class="signal-row" style="flex-direction:column; align-items:flex-start; cursor:pointer;" onclick="switchChart('NASDAQ:NFLX'); window.scrollTo({top:document.getElementById('tv_main').getBoundingClientRect().top+scrollY-80,behavior:'smooth'});" title="View NFLX chart">
       <div style="display:flex; gap:12px; align-items:center; width:100%;">
         <span class="signal-dir signal-long">LONG</span>
         <span class="signal-ticker">NFLX</span>
@@ -297,7 +297,7 @@
     </div>
 
     <!-- XLU LONG -->
-    <div class="signal-row" style="flex-direction:column; align-items:flex-start; border-bottom:none;">
+    <div class="signal-row" style="flex-direction:column; align-items:flex-start; border-bottom:none; cursor:pointer;" onclick="switchChart('AMEX:XLU'); window.scrollTo({top:document.getElementById('tv_main').getBoundingClientRect().top+scrollY-80,behavior:'smooth'});" title="View XLU chart">
       <div style="display:flex; gap:12px; align-items:center; width:100%;">
         <span class="signal-dir signal-long">LONG</span>
         <span class="signal-ticker">XLU</span>
@@ -350,6 +350,100 @@
     <div class="sub-text" style="margin-top:10px; text-align:center;">★ Mean Reversion: 82% WR, 6.1x PF in ranging markets. Volatility Breakout: 93% WR in choppy conditions. WOLF rotates strategies based on detected regime.</div>
   </div>
 </div>
+
+<!-- ═══════════════════ LIVE MARKETS ═══════════════════ -->
+<div style="padding: 0 20px 20px;">
+  <div class="card">
+    <div class="card-header">📊 Live Markets <span class="badge badge-green">REAL-TIME</span></div>
+
+    <!-- Symbol switcher buttons -->
+    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px;">
+      <button onclick="switchChart('NASDAQ:QQQ')"   class="tv-btn" id="btn-QQQ">QQQ</button>
+      <button onclick="switchChart('AMEX:SPY')"     class="tv-btn" id="btn-SPY">SPY</button>
+      <button onclick="switchChart('AMEX:IWM')"     class="tv-btn" id="btn-IWM">IWM</button>
+      <button onclick="switchChart('NASDAQ:AAPL')"  class="tv-btn" id="btn-AAPL">AAPL</button>
+      <button onclick="switchChart('NASDAQ:NVDA')"  class="tv-btn" id="btn-NVDA">NVDA</button>
+      <button onclick="switchChart('NASDAQ:TSLA')"  class="tv-btn" id="btn-TSLA">TSLA</button>
+      <button onclick="switchChart('NASDAQ:NFLX')"  class="tv-btn" id="btn-NFLX">NFLX</button>
+      <input id="tv-custom-symbol" placeholder="Type ticker…" onkeydown="if(event.key==='Enter'){var s=this.value.toUpperCase();switchChart(s.includes(':')?s:'NASDAQ:'+s);}" style="background:#0a0a1a; border:1px solid #2a2a3e; color:#e0e0e0; padding:4px 10px; border-radius:6px; font-family:inherit; font-size:12px; width:120px;" />
+    </div>
+
+    <!-- Main chart -->
+    <div class="tradingview-widget-container" style="margin-bottom:16px;">
+      <div id="tv_main"></div>
+    </div>
+
+    <!-- Mini watchlist row -->
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin-top:4px;">
+      <div>
+        <div style="font-size:10px; color:#666; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">QQQ</div>
+        <div class="tradingview-widget-container"><div id="tv_QQQ"></div></div>
+      </div>
+      <div>
+        <div style="font-size:10px; color:#666; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">IWM</div>
+        <div class="tradingview-widget-container"><div id="tv_IWM"></div></div>
+      </div>
+      <div>
+        <div style="font-size:10px; color:#666; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">AAPL</div>
+        <div class="tradingview-widget-container"><div id="tv_AAPL"></div></div>
+      </div>
+      <div>
+        <div style="font-size:10px; color:#666; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">NVDA</div>
+        <div class="tradingview-widget-container"><div id="tv_NVDA"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .tv-btn { background:#12121f; border:1px solid #2a2a3e; color:#888; padding:4px 12px; border-radius:6px; font-family:inherit; font-size:12px; cursor:pointer; transition:all .15s; }
+  .tv-btn:hover, .tv-btn.active { background:#1a1a2e; border-color:#ff6b35; color:#ff6b35; }
+</style>
+
+<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+<script>
+var _tvMain = null;
+
+function buildWidget(containerId, symbol, height) {
+  return new TradingView.widget({
+    width: "100%",
+    height: height,
+    symbol: symbol,
+    interval: "D",
+    timezone: "America/New_York",
+    theme: "dark",
+    style: "1",
+    locale: "en",
+    toolbar_bg: "#1a1a2e",
+    enable_publishing: false,
+    allow_symbol_change: true,
+    hide_side_toolbar: false,
+    container_id: containerId
+  });
+}
+
+function switchChart(symbol) {
+  // Rebuild main chart with new symbol
+  document.getElementById('tv_main').innerHTML = '';
+  _tvMain = buildWidget('tv_main', symbol, 600);
+
+  // Update active button highlight
+  document.querySelectorAll('.tv-btn').forEach(function(b) { b.classList.remove('active'); });
+  var ticker = symbol.split(':').pop();
+  var btn = document.getElementById('btn-' + ticker);
+  if (btn) btn.classList.add('active');
+}
+
+// On load: build main (SPY) + 4 mini charts
+document.addEventListener('DOMContentLoaded', function() {
+  _tvMain = buildWidget('tv_main', 'AMEX:SPY', 600);
+  document.getElementById('btn-SPY').classList.add('active');
+  buildWidget('tv_QQQ',  'NASDAQ:QQQ',  300);
+  buildWidget('tv_IWM',  'AMEX:IWM',    300);
+  buildWidget('tv_AAPL', 'NASDAQ:AAPL', 300);
+  buildWidget('tv_NVDA', 'NASDAQ:NVDA', 300);
+});
+</script>
 
 <!-- Market Regime -->
 <div style="padding: 0 20px 20px;">

@@ -23,12 +23,15 @@
   .construct-meta div { color: #555; font-size: 11px; margin-bottom: 4px; }
   .operator-name { color: #ff6b35; font-weight: 700; font-size: 13px; }
 
-  /* Grid */
+  /* ─── AUTO-FIT GRIDS ─── no @media dependency. Cards naturally wrap at any
+     viewport (iPhone QuickLook, Safari, Chrome). Works in every renderer. */
+  html, body { overflow-x: hidden; }
   .grid { display: grid; gap: 16px; padding: 20px; }
   .g1 { grid-template-columns: 1fr; }
-  .g2 { grid-template-columns: 1fr 1fr; }
-  .g3 { grid-template-columns: 1fr 1fr 1fr; }
-  .g4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+  .g2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+  .g3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  .g4 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  code { word-break: break-all; }
 
   /* Cards */
   .card { background: #10101c; border: 1px solid #1e1e30; border-radius: 12px; padding: 20px; }
@@ -68,7 +71,7 @@
   .agent-name { font-size: 24px; font-weight: 900; color: #ff6b35; letter-spacing: 3px; }
   .agent-role { color: #888; font-size: 12px; margin-top: 4px; }
   .agent-mission { color: #ccc; font-size: 13px; margin-top: 12px; padding: 10px; background: #0a0a14; border-radius: 8px; border-left: 3px solid #ff6b35; }
-  .agent-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 16px; }
+  .agent-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 12px; margin-top: 16px; }
   .agent-stat { text-align: center; padding: 8px; background: #0a0a14; border-radius: 8px; }
   .agent-stat-val { font-size: 18px; font-weight: 900; color: #ff6b35; }
   .agent-stat-label { font-size: 9px; color: #555; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
@@ -179,9 +182,14 @@
   </div>
   <div class="construct-meta">
     <div class="operator-name">OPERATOR: BOBBY</div>
-    <div>Construct v1.2 | April 2026</div>
+    <div>Construct v1.5 mobile-safe | Apr 6 2026</div>
     <div>Directive: EARN MONEY</div>
   </div>
+</div>
+
+<!-- Mobile version confirmation banner -->
+<div style="background:#0d2d0d; color:#4ade80; border:1px solid #4ade80; padding:10px 16px; margin:12px 20px; border-radius:8px; font-size:13px; text-align:center;">
+  ✓ v1.5 MOBILE-SAFE — if you can read this on your iPhone, the new auto-fit layout is loaded. Scroll down to see <b>Consulting Intelligence Feed</b> and <b>AI Hedge Fund Committee</b>.
 </div>
 
 <!-- ═══════════════════ CONSTRUCT OVERVIEW ═══════════════════ -->
@@ -199,7 +207,7 @@
   <div class="card">
     <div class="card-h">Construct Status</div>
     <div class="big green pulse">LIVE</div>
-    <div class="sub">Alpaca connected | 3 signals today | Scan: 8:30 AM Mon-Fri</div>
+    <div class="sub">Alpaca paper connected | FULLY AUTOMATIC | 30-day gate: Day 0/30</div>
   </div>
 </div>
 
@@ -219,7 +227,7 @@
       <span class="tag tag-green pulse">LIVE</span>
     </div>
     <div class="agent-role">Wealth-Optimized Leverage Framework — Market Trading Agent</div>
-    <div class="agent-mission">"I have one job: earn money. Every scan, every signal, every position serves that purpose."</div>
+    <div class="agent-mission">"I have one job: earn money. Fully automatic. Committee votes route straight to Alpaca paper. Real money locked until Day 30 gate clears."</div>
 
     <div class="agent-stats">
       <div class="agent-stat">
@@ -269,7 +277,7 @@
       <div class="status-row">
         <div class="status-dot dot-live pulse"></div>
         <div class="status-label">Market Scanner</div>
-        <div class="status-val">50+ instruments | Daily 8:30 AM</div>
+        <div class="status-val">50+ instruments | Auto 6:33 AM + 9:30/12:30/4:15 ET</div>
       </div>
       <div class="status-row">
         <div class="status-dot dot-ready"></div>
@@ -284,7 +292,7 @@
       <div class="status-row">
         <div class="status-dot dot-live"></div>
         <div class="status-label">Alpaca Paper Trading</div>
-        <div class="status-val" style="color:#4ade80;">Connected | $100K | $200K BP | Shorting ON</div>
+        <div class="status-val" style="color:#4ade80;">Auto-routing ON | $100K | $200K BP | Day 0/30 gate</div>
       </div>
       <div class="status-row">
         <div class="status-dot dot-ready"></div>
@@ -301,20 +309,30 @@
         <div class="status-label">Backtesting Engine</div>
         <div class="status-val">Tested across 4 regimes</div>
       </div>
-      <div class="status-row" style="border:none;">
+      <div class="status-row">
         <div class="status-dot dot-purple pulse"></div>
         <div class="status-label" style="color:#c084fc;">Congressional Intel</div>
         <div class="status-val" style="color:#c084fc;">Unusual Whales + Quiver + HSSW</div>
+      </div>
+      <div class="status-row">
+        <div class="status-dot dot-ready"></div>
+        <div class="status-label" style="color:#4ade80;">Consulting Intel</div>
+        <div class="status-val" style="color:#4ade80;">10 firms · daily 7 AM · disruption hunt</div>
+      </div>
+      <div class="status-row" style="border:none;">
+        <div class="status-dot dot-ready"></div>
+        <div class="status-label" style="color:#ff6b35;">AI Hedge Fund Committee</div>
+        <div class="status-val" style="color:#ff6b35;">12 analysts · llama3.1:8b · auto-routes to paper</div>
       </div>
     </div>
   </div>
 
   <!-- Empty Agent Slots -->
   <div style="display:flex; flex-direction:column; gap:16px;">
-    <div class="agent-slot">
-      <div class="slot-icon">&#128640;</div>
-      <div class="slot-label">Agent Slot 2 — Available</div>
-      <div class="slot-hint">Potential: Sentinel (Risk Monitor) | Hawk (News Intel) | Fox (Social Sentiment)</div>
+    <div class="agent-slot" style="border-color:#ff6b35; background:rgba(255,107,53,0.06);">
+      <div class="slot-icon">&#127894;</div>
+      <div class="slot-label" style="color:#ff6b35;">Agent Slot 2 — AI Hedge Fund Committee (FILLED)</div>
+      <div class="slot-hint" style="color:#a84a1a;">12 analyst personas on Ollama llama3.1:8b · wolf_bridge.py · ~/.wolf-venv</div>
     </div>
     <div class="agent-slot">
       <div class="slot-icon">&#129302;</div>
@@ -328,7 +346,7 @@
 <div class="grid g1" style="padding-bottom:0;">
   <div class="card congress">
     <div class="card-h purple">Congressional Trading Intelligence <span class="tag tag-purple">NEW CAPABILITY — ACTIVE</span></div>
-    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap:16px;">
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:16px;">
       <div>
         <div style="font-size:10px; color:#555; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">Data Sources</div>
         <div style="font-size:12px; color:#888; line-height:2.0;">
@@ -350,7 +368,7 @@
       <div>
         <div style="font-size:10px; color:#555; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">Integration</div>
         <div style="font-size:12px; color:#888; line-height:2.0;">
-          <span style="color:#ff6b35;">&#9656;</span> In daily 8:30 AM scan<br>
+          <span style="color:#ff6b35;">&#9656;</span> In auto 6:33 AM scan<br>
           <span style="color:#ff6b35;">&#9656;</span> Skill: /wolf-congress-tracker<br>
           <span style="color:#ff6b35;">&#9656;</span> Signal confirmation layer<br>
           <span style="color:#ff6b35;">&#9656;</span> Unusual options cross-check
@@ -360,12 +378,148 @@
         <div style="font-size:10px; color:#555; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">Status</div>
         <div style="padding:12px; background:#1a0d2a; border-radius:8px; border:1px solid #3a1a5a; text-align:center;">
           <div style="color:#c084fc; font-size:20px; font-weight:900; margin-bottom:4px;">ACTIVE</div>
-          <div style="font-size:10px; color:#666; line-height:1.6;">Integrated into<br>Phase 2 Intelligence<br>Last scan: Today 8:30 AM</div>
+          <div style="font-size:10px; color:#666; line-height:1.6;">Integrated into<br>Phase 2 Intelligence<br>Auto-fires with scanner</div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- ═══════════════════ CONSULTING INTELLIGENCE ═══════════════════ -->
+<div class="grid g1" style="padding-bottom:0;">
+  <div class="card">
+    <div class="card-h">Consulting Intelligence Feed <span class="tag tag-green">NEW CAPABILITY — DAILY 7AM</span></div>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:16px;">
+      <div>
+        <div style="font-size:10px; color:#555; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">Firms Scanned</div>
+        <div style="font-size:12px; color:#888; line-height:1.9;">
+          <span style="color:#4ade80;">&#9679;</span> PwC · McKinsey<br>
+          <span style="color:#4ade80;">&#9679;</span> Deloitte · BCG<br>
+          <span style="color:#4ade80;">&#9679;</span> Bain · EY · KPMG<br>
+          <span style="color:#4ade80;">&#9679;</span> Accenture · Oliver Wyman · Gartner
+        </div>
+      </div>
+      <div>
+        <div style="font-size:10px; color:#555; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">What It Hunts</div>
+        <div style="font-size:12px; color:#888; line-height:1.9;">
+          <span style="color:#ff6b35;">&#9654;</span> White papers on disrupted markets<br>
+          <span style="color:#ff6b35;">&#9654;</span> Industry inflection signals<br>
+          <span style="color:#ff6b35;">&#9654;</span> Keyword-scored articles<br>
+          <span style="color:#ff6b35;">&#9654;</span> Ticker extraction &amp; tagging
+        </div>
+      </div>
+      <div>
+        <div style="font-size:10px; color:#555; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">Integration</div>
+        <div style="font-size:12px; color:#888; line-height:1.9;">
+          <span style="color:#c084fc;">&#9656;</span> Script: consulting_intel.py<br>
+          <span style="color:#c084fc;">&#9656;</span> Task: wolf-consulting-intel<br>
+          <span style="color:#c084fc;">&#9656;</span> Cron: 0 7 * * 1-5<br>
+          <span style="color:#c084fc;">&#9656;</span> SHA1 dedupe across days
+        </div>
+      </div>
+      <div>
+        <div style="font-size:10px; color:#555; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">Status</div>
+        <div style="padding:12px; background:#0d2a1a; border-radius:8px; border:1px solid #1a5a3a; text-align:center;">
+          <div style="color:#4ade80; font-size:20px; font-weight:900; margin-bottom:4px;">ACTIVE</div>
+          <div style="font-size:10px; color:#666; line-height:1.6;">Cross-referenced with<br>scanner watchlist<br>Scheduled daily 7 AM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ AI HEDGE FUND COMMITTEE ═══════════════════ -->
+<div class="grid g1" style="padding-bottom:0;">
+  <div class="card">
+    <div class="card-h">AI Hedge Fund Committee <span class="tag tag-orange">NEW CAPABILITY — LIVE</span></div>
+    <div style="font-size:12px; color:#888; margin-bottom:14px; line-height:1.6;">
+      virattt/ai-hedge-fund (50K&#11088;) wired into the C-Suite as WOLF's research bench. 12 analyst personas run locally through Ollama <code style="background:#0a0a1a; color:#ff6b35; padding:1px 4px; border-radius:2px;">llama3.1:8b</code> via a dedicated Python 3.12 venv and subprocess bridge. First live committee vote on NVDA completed 2026-04-06.
+    </div>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:16px;">
+      <div>
+        <div style="font-size:10px; color:#555; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">Analyst Bench (12)</div>
+        <div style="font-size:11px; color:#888; line-height:1.8;">
+          Damodaran · Graham<br>
+          Buffett · Munger<br>
+          Ackman · Cathie Wood<br>
+          Burry · Lynch · Fisher<br>
+          Druckenmiller<br>
+          Technicals · Sentiment
+        </div>
+      </div>
+      <div>
+        <div style="font-size:10px; color:#555; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">Stack</div>
+        <div style="font-size:11px; color:#888; line-height:1.8;">
+          <span style="color:#4ade80;">&#9679;</span> Ollama local (free)<br>
+          <span style="color:#4ade80;">&#9679;</span> LangChain + LangGraph<br>
+          <span style="color:#4ade80;">&#9679;</span> Python 3.12 venv<br>
+          <span style="color:#4ade80;">&#9679;</span> wolf_bridge.py subprocess<br>
+          <span style="color:#4ade80;">&#9679;</span> OpenAI fallback &gt;$5K
+        </div>
+      </div>
+      <div>
+        <div style="font-size:10px; color:#555; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">Risk Rails</div>
+        <div style="font-size:11px; color:#888; line-height:1.8;">
+          <span style="color:#ff6b35;">&#9656;</span> Paper-only<br>
+          <span style="color:#ff6b35;">&#9656;</span> ≤2% risk per trade<br>
+          <span style="color:#ff6b35;">&#9656;</span> ≤10% portfolio heat<br>
+          <span style="color:#ff6b35;">&#9656;</span> Committee is advisory<br>
+          <span style="color:#ff6b35;">&#9656;</span> 30-day grading period
+        </div>
+      </div>
+      <div>
+        <div style="font-size:10px; color:#555; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">Status</div>
+        <div style="padding:12px; background:#2a1a0d; border-radius:8px; border:1px solid #5a3a1a; text-align:center;">
+          <div style="color:#ff6b35; font-size:20px; font-weight:900; margin-bottom:4px;">ONLINE</div>
+          <div style="font-size:10px; color:#666; line-height:1.6;">First vote logged<br>NVDA · 2026-04-06<br>Split 6/6 bull/bear</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ MARKET PULSE ═══════════════════ -->
+<div class="grid g1" style="padding-bottom:0;">
+  <div class="card">
+    <div class="card-h">📊 Market Pulse <span class="tag tag-green">REAL-TIME</span></div>
+
+    <!-- Main SPY chart -->
+    <div style="margin-bottom:14px;">
+      <div style="font-size:10px; color:#666; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">SPY — S&amp;P 500</div>
+      <div class="tradingview-widget-container"><div id="awc_tv_SPY"></div></div>
+    </div>
+
+    <!-- QQQ + IWM side by side -->
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:12px;">
+      <div>
+        <div style="font-size:10px; color:#666; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">QQQ — Nasdaq</div>
+        <div class="tradingview-widget-container"><div id="awc_tv_QQQ"></div></div>
+      </div>
+      <div>
+        <div style="font-size:10px; color:#666; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">IWM — Small Cap</div>
+        <div class="tradingview-widget-container"><div id="awc_tv_IWM"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  function awcChart(id, symbol, h) {
+    new TradingView.widget({
+      width: "100%", height: h, symbol: symbol,
+      interval: "D", timezone: "America/New_York",
+      theme: "dark", style: "1", locale: "en",
+      toolbar_bg: "#1a1a2e", enable_publishing: false,
+      allow_symbol_change: true, container_id: id
+    });
+  }
+  awcChart('awc_tv_SPY', 'AMEX:SPY',    500);
+  awcChart('awc_tv_QQQ', 'NASDAQ:QQQ',  300);
+  awcChart('awc_tv_IWM', 'AMEX:IWM',    300);
+});
+</script>
 
 <!-- ═══════════════════ NEXT STEPS ═══════════════════ -->
 <div class="grid g2" style="padding-bottom: 0;">
@@ -462,7 +616,7 @@
     <!-- Construct Capabilities -->
     <div style="margin-top: 20px;">
       <div class="card-h">Market Coverage</div>
-      <div style="display: grid; grid-template-columns: repeat(4,1fr); gap: 8px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px;">
         <div class="cap-item">
           <div class="cap-icon">&#128200;</div>
           <div class="cap-name">Equities</div>
@@ -517,7 +671,7 @@
 <div class="grid g1">
   <div class="card">
     <div class="card-h">Construct Architecture <span class="tag tag-blue">20 SOURCE FILES</span></div>
-    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px; font-size: 11px;">
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; font-size: 11px;">
       <div>
         <div style="color:#ff6b35; font-weight:700; margin-bottom:6px;">Core</div>
         <div style="color:#888; line-height:1.8;">
@@ -561,7 +715,7 @@
   </div>
 </div>
 
-<div class="footer">AGENT WOLF CONSTRUCT v1.2 | OPERATOR: BOBBY | DIRECTIVE: EARN MONEY | ALPACA CONNECTED | CONGRESSIONAL INTEL ACTIVE | 3 SIGNALS LIVE</div>
+<div class="footer">AGENT WOLF CONSTRUCT v1.5 mobile-safe | OPERATOR: BOBBY | DIRECTIVE: EARN MONEY | ALPACA CONNECTED | CONGRESSIONAL INTEL ACTIVE | CONSULTING INTEL ACTIVE | AI HEDGE FUND COMMITTEE ONLINE | 3 SIGNALS LIVE</div>
 
 </body>
 </html>
