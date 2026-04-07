@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Project Ascension — Hartley Capital Group</title>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy:      #0a0e1a;
+    --navy-card: #0f1525;
+    --navy-mid:  #141c2e;
+    --navy-light:#1a2340;
+    --navy-border: #1e2d4a;
+    --gold:      #f59e0b;
+    --gold-dark: #d97706;
+    --gold-glow: rgba(245,158,11,0.15);
+    --gold-dim:  rgba(245,158,11,0.4);
+    --white:     #e0e6f0;
+    --white-dim: #8a9ab8;
+    --green:     #22c55e;
+    --green-glow:rgba(34,197,94,0.15);
+    --amber:     #f59e0b;
+    --red:       #ef4444;
+    --blue:      #3b82f6;
+    --blue-glow: rgba(59,130,246,0.15);
+    --teal:      #14b8a6;
+    --teal-glow: rgba(20,184,166,0.15);
+    --gray:      #475569;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.5;
+  }
+
+  /* ── SCROLLBAR ── */
+  * { scrollbar-width: thin; scrollbar-color: var(--navy-border) var(--navy); }
+  *::-webkit-scrollbar { width: 5px; height: 5px; }
+  *::-webkit-scrollbar-track { background: var(--navy); }
+  *::-webkit-scrollbar-thumb { background: var(--navy-border); border-radius: 3px; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(34,197,94,0.6); }
+    50% { opacity: 0.8; transform: scale(1.1); box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+  }
+  @keyframes pulse-gold {
+    0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(245,158,11,0.6); }
+    50% { opacity: 0.8; transform: scale(1.1); box-shadow: 0 0 0 6px rgba(245,158,11,0); }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+  @keyframes scan {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+  }
+  @keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(245,158,11,0.1); }
+    50% { box-shadow: 0 0 40px rgba(245,158,11,0.2); }
+  }
+  @keyframes bar-fill {
+    from { width: 0; }
+    to { width: var(--target-width); }
+  }
+  @keyframes counter-fade {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SCAN LINE OVERLAY ── */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(245,158,11,0.1), transparent);
+    animation: scan 8s linear infinite;
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  /* ── GRID PATTERN OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient(rgba(245,158,11,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245,158,11,0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── MAIN CONTAINER ── */
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px 60px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    padding: 40px 0 32px;
+    border-bottom: 1px solid var(--navy-border);
+    margin-bottom: 32px;
+    animation: fadeInUp 0.6s ease both;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .header-left {}
+
+  .header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold-glow);
+    border: 1px solid var(--gold-dim);
+    border-radius: 4px;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .header-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: pulse-gold 2s ease-in-out infinite;
+  }
+
+  .header-title {
+    font-size: clamp(22px, 4vw, 36px);
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    color: var(--white);
+    text-transform: uppercase;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #e0e6f0 0%, #f59e0b 50%, #e0e6f0 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 4s linear infinite;
+  }
+
+  .header-subtitle {
+    font-size: 13px;
+    color: var(--white-dim);
+    letter-spacing: 0.08em;
+    margin-top: 8px;
+    text-transform: uppercase;
+  }
+
+  .header-subtitle span {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .header-meta {
+    text-align: right;
+  }
+
+  .header-date {
+    font-size: 12px;
+    color: var(--white-dim);
+    letter-spacing: 0.05em;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+
+  .header-version {
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    margin-top: 4px;
+  }
+
+  /* ── SECTION TITLES ── */
+  .section {
+    margin-bottom: 32px;
+    animation: fadeInUp 0.6s ease both;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--navy-border), transparent);
+  }
+
+  .section-count {
+    font-size: 11px;
+    color: var(--white-dim);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── CARDS BASE ── */
+  .card {
+    background: var(--navy-card);
+    border: 1px solid var(--navy-border);
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(245,158,11,0.3), transparent);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .card:hover {
+    border-color: rgba(245,158,11,0.2);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+  }
+
+  .card:hover::before { opacity: 1; }
+
+  /* ── STATUS BAR ── */
+  .status-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+    animation: fadeInUp 0.6s ease 0.1s both;
+  }
+
+  .status-card {
+    background: var(--navy-card);
+    border: 1px solid var(--navy-border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s;
+  }
+
+  .status-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .status-card.green::after { background: var(--green-glow); }
+  .status-card.gold::after { background: var(--gold-glow); }
+
+  .status-card:hover::after { opacity: 1; }
+
+  .status-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .status-dot.green {
+    background: var(--green);
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  .status-dot.gold {
+    background: var(--gold);
+    animation: pulse-gold 2s ease-in-out infinite;
+  }
+
+  .status-info { flex: 1; min-width: 0; }
+
+  .status-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--white-dim);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .status-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 3px;
+  }
+
+  .status-sub {
+    font-size: 11px;
+    color: var(--white-dim);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+
+  .status-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 3px 8px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .status-badge.green {
+    background: rgba(34,197,94,0.15);
+    color: var(--green);
+    border: 1px solid rgba(34,197,94,0.3);
+  }
+
+  .status-badge.gold {
+    background: var(--gold-glow);
+    color: var(--gold);
+    border: 1px solid var(--gold-dim);
+  }
+
+  /* ── METRICS ROW ── */
+  .metrics-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+    animation: fadeInUp 0.6s ease 0.2s both;
+  }
+
+  .metric-card {
+    background: var(--navy-card);
+    border: 1px solid var(--navy-border);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .metric-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.4;
+  }
+
+  .metric-value {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    letter-spacing: -0.02em;
+  }
+
+  .metric-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--white-dim);
+    text-transform: uppercase;
+  }
+
+  .metric-sub {
+    font-size: 11px;
+    color: var(--white-dim);
+    margin-top: 4px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    opacity: 0.7;
+  }
+
+  /* ── AGENT GRID ── */
+  .agent-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    animation: fadeInUp 0.6s ease 0.15s both;
+  }
+
+  .agent-card {
+    background: var(--navy-card);
+    border: 1px solid var(--navy-border);
+    border-radius: 8px;
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.25s;
+    cursor: default;
+  }
+
+  .agent-card:hover {
+    border-color: rgba(245,158,11,0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4), 0 0 20px rgba(245,158,11,0.05);
+  }
+
+  .agent-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .agent-icon-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .agent-icon {
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .agent-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .agent-role {
+    font-size: 10px;
+    color: var(--white-dim);
+    letter-spacing: 0.08em;
+    line-height: 1.3;
+  }
+
+  .agent-memory-badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(245,158,11,0.08);
+    border: 1px solid rgba(245,158,11,0.15);
+    border-radius: 12px;
+    padding: 2px 7px;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--gold);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    white-space: nowrap;
+  }
+
+  .agent-score-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  .agent-score-label {
+    font-size: 10px;
+    color: var(--white-dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .agent-score-value {
+    font-size: 16px;
+    font-weight: 800;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    letter-spacing: -0.02em;
+  }
+
+  .score-bar-bg {
+    width: 100%;
+    height: 4px;
+    background: var(--navy-border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .score-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    --target-width: 0%;
+    width: 0%;
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* ── MODEL DISTRIBUTION ── */
+  .model-section {
+    animation: fadeInUp 0.6s ease 0.25s both;
+  }
+
+  .model-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .model-row {
+    display: grid;
+    grid-template-columns: 140px 1fr 60px;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .model-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.03em;
+  }
+
+  .model-sublabel {
+    font-size: 10px;
+    color: var(--white-dim);
+    letter-spacing: 0.06em;
+    margin-top: 2px;
+  }
+
+  .model-bar-bg {
+    background: var(--navy-light);
+    height: 28px;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--navy-border);
+  }
+
+  .model-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    --target-width: 0%;
+    width: 0%;
+    transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+  }
+
+  .model-bar-agents {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    opacity: 0.9;
+    white-space: nowrap;
+  }
+
+  .model-count {
+    font-size: 18px;
+    font-weight: 800;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    text-align: right;
+  }
+
+  .model-count-label {
+    font-size: 10px;
+    color: var(--white-dim);
+    text-align: right;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── WORKFLOWS ── */
+  .workflow-section {
+    animation: fadeInUp 0.6s ease 0.3s both;
+  }
+
+  .workflow-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .workflow-item {
+    background: var(--navy-card);
+    border: 1px solid var(--navy-border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .workflow-item:hover {
+    border-color: rgba(245,158,11,0.25);
+  }
+
+  .workflow-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--gold);
+    border-radius: 2px 0 0 2px;
+  }
+
+  .workflow-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .workflow-name {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .workflow-trigger {
+    font-size: 10px;
+    color: var(--white-dim);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    background: var(--navy-light);
+    padding: 2px 8px;
+    border-radius: 3px;
+    border: 1px solid var(--navy-border);
+  }
+
+  .workflow-flow {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .flow-node {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+  }
+
+  .flow-node.agent {
+    background: rgba(245,158,11,0.1);
+    border: 1px solid rgba(245,158,11,0.2);
+    color: var(--white);
+  }
+
+  .flow-node.bobby {
+    background: rgba(245,158,11,0.2);
+    border: 1px solid rgba(245,158,11,0.4);
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .flow-node.action {
+    background: rgba(34,197,94,0.1);
+    border: 1px solid rgba(34,197,94,0.25);
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  .flow-arrow {
+    color: var(--gold-dim);
+    font-size: 12px;
+    margin: 0 3px;
+    flex-shrink: 0;
+  }
+
+  /* ── PHASE TRACKER ── */
+  .phase-section {
+    animation: fadeInUp 0.6s ease 0.35s both;
+  }
+
+  .phase-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .phase-card {
+    background: var(--navy-card);
+    border: 1px solid var(--navy-border);
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .phase-card.complete {
+    border-color: rgba(34,197,94,0.25);
+  }
+
+  .phase-card.pending-amber {
+    border-color: rgba(245,158,11,0.25);
+  }
+
+  .phase-card.pending-gray {
+    border-color: rgba(71,85,105,0.4);
+  }
+
+  .phase-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+
+  .phase-number {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--white-dim);
+    text-transform: uppercase;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+
+  .phase-status-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 3px 9px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+
+  .phase-status-badge.complete {
+    background: rgba(34,197,94,0.15);
+    color: var(--green);
+    border: 1px solid rgba(34,197,94,0.3);
+  }
+
+  .phase-status-badge.amber {
+    background: rgba(245,158,11,0.12);
+    color: var(--gold);
+    border: 1px solid var(--gold-dim);
+  }
+
+  .phase-status-badge.gray {
+    background: rgba(71,85,105,0.15);
+    color: var(--gray);
+    border: 1px solid rgba(71,85,105,0.3);
+  }
+
+  .phase-check {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  .phase-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+    letter-spacing: 0.02em;
+  }
+
+  .phase-items {
+    list-style: none;
+    margin-bottom: 14px;
+  }
+
+  .phase-items li {
+    font-size: 12px;
+    color: var(--white-dim);
+    padding: 3px 0;
+    padding-left: 14px;
+    position: relative;
+    letter-spacing: 0.02em;
+  }
+
+  .phase-items li::before {
+    content: '·';
+    position: absolute;
+    left: 4px;
+    color: var(--gold);
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  .phase-footer {
+    font-size: 11px;
+    color: var(--white-dim);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    background: var(--navy-light);
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--navy-border);
+    letter-spacing: 0.04em;
+  }
+
+  .phase-footer.amber { color: var(--gold); border-color: rgba(245,158,11,0.15); }
+  .phase-footer.gray { color: var(--gray); }
+
+  /* ── IMPROVEMENTS LOG ── */
+  .log-section {
+    animation: fadeInUp 0.6s ease 0.4s both;
+  }
+
+  .log-terminal {
+    background: #070b14;
+    border: 1px solid var(--navy-border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .log-terminal-header {
+    background: var(--navy-mid);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--navy-border);
+  }
+
+  .terminal-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+  }
+
+  .terminal-dot.red { background: #ef4444; }
+  .terminal-dot.yellow { background: var(--gold); }
+  .terminal-dot.green { background: var(--green); }
+
+  .terminal-title {
+    font-size: 11px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    color: var(--white-dim);
+    letter-spacing: 0.08em;
+    margin-left: 8px;
+  }
+
+  .log-body {
+    max-height: 420px;
+    overflow-y: auto;
+    padding: 16px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+
+  .log-entry {
+    display: grid;
+    grid-template-columns: 120px 80px 1fr;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(30,45,74,0.6);
+    align-items: start;
+    animation: fadeInUp 0.4s ease both;
+  }
+
+  .log-entry:last-child { border-bottom: none; }
+
+  .log-timestamp {
+    font-size: 11px;
+    color: var(--white-dim);
+    opacity: 0.6;
+    letter-spacing: 0.04em;
+    padding-top: 1px;
+  }
+
+  .log-agent-tag {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 3px;
+    text-align: center;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    align-self: start;
+  }
+
+  .log-severity-critical .log-agent-tag { background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.25); }
+  .log-severity-high .log-agent-tag { background: rgba(245,158,11,0.12); color: var(--gold); border: 1px solid var(--gold-dim); }
+  .log-severity-medium .log-agent-tag { background: rgba(59,130,246,0.12); color: var(--blue); border: 1px solid rgba(59,130,246,0.25); }
+  .log-severity-system .log-agent-tag { background: rgba(34,197,94,0.12); color: var(--green); border: 1px solid rgba(34,197,94,0.25); }
+
+  .log-message {
+    font-size: 12px;
+    color: var(--white);
+    line-height: 1.5;
+  }
+
+  .log-message strong {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .log-prefix {
+    color: var(--green);
+    opacity: 0.7;
+    margin-right: 6px;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    border-top: 1px solid var(--navy-border);
+    padding: 24px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    animation: fadeInUp 0.6s ease 0.5s both;
+  }
+
+  .footer-text {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--white-dim);
+    text-transform: uppercase;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+
+  .footer-text span {
+    color: var(--gold);
+  }
+
+  .footer-confidential {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--white-dim);
+    text-transform: uppercase;
+    opacity: 0.5;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+
+  /* ── TWO-COL LAYOUT ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1100px) {
+    .phase-list { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 900px) {
+    .metrics-row { grid-template-columns: repeat(2, 1fr); }
+    .status-bar { grid-template-columns: 1fr; }
+    .model-row { grid-template-columns: 120px 1fr 50px; }
+  }
+
+  @media (max-width: 640px) {
+    .container { padding: 0 16px 40px; }
+    .metrics-row { grid-template-columns: repeat(2, 1fr); }
+    .agent-grid { grid-template-columns: repeat(2, 1fr); }
+    .log-entry { grid-template-columns: 1fr; gap: 4px; }
+    .header-meta { display: none; }
+    .phase-list { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- HEADER                                     -->
+  <!-- ══════════════════════════════════════════ -->
+  <header class="header">
+    <div class="header-top">
+      <div class="header-left">
+        <div class="header-badge">Hartley Capital Group</div>
+        <h1 class="header-title">Project Ascension</h1>
+        <p style="font-size:13px;color:#8a9ab8;letter-spacing:0.04em;margin-top:6px;">C-Suite Intelligence Evolution — 18-Agent AI Ecosystem</p>
+        <div class="header-subtitle" style="margin-top:10px;">
+          <span>Persistent Memory</span>
+          &nbsp;·&nbsp;
+          <span>Self-Improving Loop</span>
+          &nbsp;·&nbsp;
+          <span>Multi-Model Routing</span>
+        </div>
+      </div>
+      <div class="header-meta">
+        <div class="header-date" id="live-date">APRIL 7, 2026</div>
+        <div class="header-version">v2.0 — PHASE 1 COMPLETE</div>
+        <div style="margin-top:10px;text-align:right;">
+          <div style="font-size:10px;color:#475569;letter-spacing:0.1em;text-transform:uppercase;font-family:monospace;">System</div>
+          <div style="font-size:12px;color:#22c55e;font-weight:700;font-family:monospace;letter-spacing:0.06em;">OPERATIONAL</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- SYSTEM STATUS BAR                          -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="status-bar">
+    <div class="status-card green">
+      <div class="status-dot green"></div>
+      <div class="status-info">
+        <div class="status-label">Memory System</div>
+        <div class="status-title">Persistent Memory</div>
+        <div class="status-sub">17 agent namespaces live</div>
+      </div>
+      <div class="status-badge green">ACTIVE</div>
+    </div>
+    <div class="status-card green">
+      <div class="status-dot green"></div>
+      <div class="status-info">
+        <div class="status-label">Self-Improving Loop</div>
+        <div class="status-title">Learning Engine</div>
+        <div class="status-sub">8 lessons logged</div>
+      </div>
+      <div class="status-badge green">ACTIVE</div>
+    </div>
+    <div class="status-card gold">
+      <div class="status-dot gold"></div>
+      <div class="status-info">
+        <div class="status-label">Multi-Model Routing</div>
+        <div class="status-title">Intelligent Router</div>
+        <div class="status-sub">Opus 4.6 · Sonnet 4.6 · Haiku 4.5</div>
+      </div>
+      <div class="status-badge gold">ACTIVE</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- KEY METRICS                                -->
+  <!-- ══════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-label">Key Metrics</span>
+      <div class="section-line"></div>
+      <span class="section-count">PHASE 1</span>
+    </div>
+    <div class="metrics-row">
+      <div class="metric-card">
+        <div class="metric-value" data-target="8" data-counter>8</div>
+        <div class="metric-label">Total Lessons Learned</div>
+        <div class="metric-sub">Self-Improving Loop</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value" data-target="52" data-counter>52</div>
+        <div class="metric-label">Total Memories Stored</div>
+        <div class="metric-sub">Across 17 Namespaces</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value" data-target="52" data-counter>52</div>
+        <div class="metric-label">Memories This Week</div>
+        <div class="metric-sub">Initial Population</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value" style="font-size:28px;" data-counter-text>17/17</div>
+        <div class="metric-label">Agents Upgraded</div>
+        <div class="metric-sub" style="color:#22c55e;">100% Complete</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- AGENT INTELLIGENCE SCORES                  -->
+  <!-- ══════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-label">Agent Intelligence Scores</span>
+      <div class="section-line"></div>
+      <span class="section-count">17 AGENTS · AVG 7.6</span>
+    </div>
+    <div class="agent-grid" id="agent-grid"></div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- MODEL DISTRIBUTION + WORKFLOWS (2-col)     -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="two-col">
+
+    <!-- MODEL DISTRIBUTION -->
+    <section class="section model-section">
+      <div class="section-header">
+        <span class="section-label">Model Distribution</span>
+        <div class="section-line"></div>
+        <span class="section-count">17 AGENTS</span>
+      </div>
+      <div class="card" style="padding:24px;">
+        <div class="model-chart" id="model-chart"></div>
+        <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--navy-border);display:flex;gap:20px;flex-wrap:wrap;">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="width:10px;height:10px;border-radius:2px;background:var(--gold);"></div>
+            <span style="font-size:11px;color:var(--white-dim);letter-spacing:0.06em;">Opus 4.6 — Strategic / Complex Reasoning</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="width:10px;height:10px;border-radius:2px;background:var(--blue);"></div>
+            <span style="font-size:11px;color:var(--white-dim);letter-spacing:0.06em;">Sonnet 4.6 — Execution / Balanced</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="width:10px;height:10px;border-radius:2px;background:var(--teal);"></div>
+            <span style="font-size:11px;color:var(--white-dim);letter-spacing:0.06em;">Haiku 4.5 — High-Volume / Fast</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE STATUS -->
+    <section class="section phase-section">
+      <div class="section-header">
+        <span class="section-label">Phase Status</span>
+        <div class="section-line"></div>
+        <span class="section-count">3 PHASES</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+
+        <div class="phase-card complete">
+          <div class="phase-top">
+            <div>
+              <div class="phase-number">Phase 1</div>
+              <div class="phase-title" style="margin-top:4px;margin-bottom:0;">Foundation Complete</div>
+            </div>
+            <div class="phase-status-badge complete">✓ Complete</div>
+          </div>
+          <ul class="phase-items" style="margin-top:10px;">
+            <li>Persistent Memory (17 namespaces)</li>
+            <li>Self-Improving Loop active</li>
+            <li>Multi-Model Routing live</li>
+            <li>Backtesting framework</li>
+            <li>Coordination protocols</li>
+          </ul>
+          <div class="phase-footer">Built April 7, 2026 · All systems operational</div>
+        </div>
+
+        <div class="phase-card pending-amber">
+          <div class="phase-top">
+            <div>
+              <div class="phase-number">Phase 2</div>
+              <div class="phase-title" style="margin-top:4px;margin-bottom:0;">Live Integration</div>
+            </div>
+            <div class="phase-status-badge amber">⏳ Pending</div>
+          </div>
+          <ul class="phase-items" style="margin-top:10px;">
+            <li>Live trading integration</li>
+            <li>Real-time memory sync</li>
+            <li>Automated lesson capture</li>
+          </ul>
+          <div class="phase-footer amber">Requires: Alpaca live keys · Database setup</div>
+        </div>
+
+        <div class="phase-card pending-gray">
+          <div class="phase-top">
+            <div>
+              <div class="phase-number">Phase 3</div>
+              <div class="phase-title" style="margin-top:4px;margin-bottom:0;">Fund Launch</div>
+            </div>
+            <div class="phase-status-badge gray">◦ Pending</div>
+          </div>
+          <ul class="phase-items" style="margin-top:10px;">
+            <li>Hartley Capital fund launch</li>
+            <li>Full portfolio automation</li>
+            <li>External agent marketplace</li>
+          </ul>
+          <div class="phase-footer gray">Requires: $50K+ AUM threshold</div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- INTER-AGENT WORKFLOWS                      -->
+  <!-- ══════════════════════════════════════════ -->
+  <section class="section workflow-section">
+    <div class="section-header">
+      <span class="section-label">Inter-Agent Workflows</span>
+      <div class="section-line"></div>
+      <span class="section-count">5 PROTOCOLS</span>
+    </div>
+    <div class="workflow-list" id="workflow-list"></div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- IMPROVEMENTS LOG                           -->
+  <!-- ══════════════════════════════════════════ -->
+  <section class="section log-section">
+    <div class="section-header">
+      <span class="section-label">Recent Improvements Log</span>
+      <div class="section-line"></div>
+      <span class="section-count">10 ENTRIES</span>
+    </div>
+    <div class="log-terminal">
+      <div class="log-terminal-header">
+        <div class="terminal-dot red"></div>
+        <div class="terminal-dot yellow"></div>
+        <div class="terminal-dot green"></div>
+        <div class="terminal-title">self-improving-loop · lessons.json · v1.0 · 8 lessons · 2 system events</div>
+      </div>
+      <div class="log-body" id="log-body"></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- FOOTER                                     -->
+  <!-- ══════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-text">
+      <span>Project Ascension</span> — Phase 1 Complete &nbsp;·&nbsp; <span>Hartley Capital Group</span>
+    </div>
+    <div class="footer-confidential">Confidential &nbsp;·&nbsp; Internal Use Only &nbsp;·&nbsp; April 7, 2026</div>
+  </footer>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- JAVASCRIPT                                                -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  // ── DATA ──────────────────────────────────────────────────────
+
+  const AGENTS = [
+    { name: 'Architect', role: 'Chief Strategy Officer', icon: '🏛️', score: 9.2, memories: 4, model: 'opus',    color: '#f59e0b' },
+    { name: 'AP',        role: 'Chief of Staff',         icon: '⚡', score: 8.9, memories: 4, model: 'opus',    color: '#f59e0b' },
+    { name: 'Cornerstone',role: 'Executive Coach',       icon: '🎯', score: 8.8, memories: 3, model: 'opus',    color: '#f59e0b' },
+    { name: 'WOLF',      role: 'Trading Intelligence',   icon: '🐺', score: 8.5, memories: 4, model: 'opus',    color: '#f59e0b' },
+    { name: 'Sentinel',  role: 'Legal & Compliance',     icon: '⚖️', score: 8.3, memories: 4, model: 'opus',    color: '#f59e0b' },
+    { name: 'Alpha',     role: 'Capital Markets',        icon: '📈', score: 8.1, memories: 3, model: 'opus',    color: '#f59e0b' },
+    { name: 'Ledger',    role: 'CFO / Finance',          icon: '📒', score: 7.8, memories: 4, model: 'sonnet',  color: '#3b82f6' },
+    { name: 'Spectra',   role: 'Brand & Marketing',      icon: '✨', score: 7.9, memories: 3, model: 'sonnet',  color: '#3b82f6' },
+    { name: 'Oracle',    role: 'Data & Intelligence',    icon: '🔮', score: 7.5, memories: 3, model: 'sonnet',  color: '#3b82f6' },
+    { name: 'Equity',    role: 'Investment Analysis',    icon: '💹', score: 7.4, memories: 4, model: 'sonnet',  color: '#3b82f6' },
+    { name: 'Venture',   role: 'Deal Origination',       icon: '🚀', score: 7.6, memories: 3, model: 'sonnet',  color: '#3b82f6' },
+    { name: 'Nexus',     role: 'Partnerships',           icon: '🔗', score: 7.2, memories: 3, model: 'sonnet',  color: '#3b82f6' },
+    { name: 'Atlas',     role: 'Operations & Logistics', icon: '🗺️', score: 6.9, memories: 3, model: 'sonnet',  color: '#3b82f6' },
+    { name: 'Cipher',    role: 'Security & Data',        icon: '🔐', score: 7.1, memories: 3, model: 'haiku',   color: '#14b8a6' },
+    { name: 'Signal',    role: 'Content & Social',       icon: '📡', score: 6.8, memories: 4, model: 'haiku',   color: '#14b8a6' },
+    { name: 'Vector',    role: 'Research & Analysis',    icon: '📊', score: 6.5, memories: 3, model: 'haiku',   color: '#14b8a6' },
+    { name: 'Forge',     role: 'Build & Automation',     icon: '🔨', score: 6.3, memories: 3, model: 'haiku',   color: '#14b8a6' },
+  ];
+
+  const WORKFLOWS = [
+    {
+      name: 'WOLF Trade Execution',
+      trigger: 'High-conviction signal detected',
+      nodes: ['WOLF', 'Alpha', 'Ledger', 'Sentinel', 'Architect', 'Bobby', 'Execute'],
+      nodeTypes: ['agent','agent','agent','agent','agent','bobby','action']
+    },
+    {
+      name: 'New Venture Evaluation',
+      trigger: 'Acquisition / Investment opportunity',
+      nodes: ['Venture', 'Equity', 'Spectra', 'Sentinel', 'Alpha', 'Architect', 'Bobby'],
+      nodeTypes: ['agent','agent','agent','agent','agent','agent','bobby']
+    },
+    {
+      name: 'Brand 9 Lead Flow',
+      trigger: 'Inbound lead captured',
+      nodes: ['Signal', 'Atlas', 'Forge', 'Ledger', 'Vector', 'AP', 'Bobby'],
+      nodeTypes: ['agent','agent','agent','agent','agent','agent','bobby']
+    },
+    {
+      name: 'Capital Deployment',
+      trigger: 'Allocation decision required',
+      nodes: ['Ledger', 'Spectra', 'Sentinel', 'Architect', 'Bobby'],
+      nodeTypes: ['agent','agent','agent','agent','bobby']
+    },
+    {
+      name: 'Weekly Council',
+      trigger: 'Sunday 9:00 AM — Auto-trigger',
+      nodes: ['All Agents', 'Architect', 'Bobby'],
+      nodeTypes: ['agent','agent','bobby']
+    },
+  ];
+
+  const LESSONS = [
+    {
+      ts: '2026-04-07 09:14',
+      agent: 'SYSTEM',
+      severity: 'system',
+      msg: 'Memory system initialized. 17 agent namespaces created. 52 memories populated across C-Suite.'
+    },
+    {
+      ts: '2026-04-07 09:16',
+      agent: 'SYSTEM',
+      severity: 'system',
+      msg: 'Self-improving loop v1.0 active. lessons.json linked. All agents reading pre-flight lessons.'
+    },
+    {
+      ts: '2026-04-07 09:20',
+      agent: 'ARCHITECT',
+      severity: 'critical',
+      msg: '<strong>lesson-006</strong> — No deal advances past Architect without Sentinel sign-off. Tight deadlines are a red flag, not an accelerant.'
+    },
+    {
+      ts: '2026-04-07 09:21',
+      agent: 'CORNERSTONE',
+      severity: 'high',
+      msg: '<strong>lesson-008</strong> — Flag decision-quality risk explicitly when detecting high-stress signals. "Recommend 24-hour pause." Do not soften.'
+    },
+    {
+      ts: '2026-04-07 09:22',
+      agent: 'WOLF',
+      severity: 'high',
+      msg: '<strong>lesson-001</strong> — Always verify liquidity before sizing any position. Minimum 50× ADV required at entry. After-hours risk flag added.'
+    },
+    {
+      ts: '2026-04-07 09:23',
+      agent: 'LEDGER',
+      severity: 'high',
+      msg: '<strong>lesson-002</strong> — Reserve check required before EVERY payment. Sub-threshold breach triggers immediate hold + Bobby alert.'
+    },
+    {
+      ts: '2026-04-07 09:24',
+      agent: 'SENTINEL',
+      severity: 'high',
+      msg: '<strong>lesson-003</strong> — Full-text scan for auto-renew / evergreen / rollover clauses mandatory on all contracts before approval.'
+    },
+    {
+      ts: '2026-04-07 09:25',
+      agent: 'EQUITY',
+      severity: 'high',
+      msg: '<strong>lesson-005</strong> — Customer concentration >50% from ≤3 customers must be flagged as high risk in first-pass scoring.'
+    },
+    {
+      ts: '2026-04-07 09:26',
+      agent: 'AP',
+      severity: 'medium',
+      msg: '<strong>lesson-007</strong> — All agent briefings must include: objective, context, constraints, output format, and deadline. No exceptions.'
+    },
+    {
+      ts: '2026-04-07 09:27',
+      agent: 'SIGNAL',
+      severity: 'medium',
+      msg: '<strong>lesson-004</strong> — Brand 9 content must target local business owners, 1-20 employees, South Florida. Plain language. No enterprise jargon.'
+    },
+  ];
+
+  const MODELS = [
+    { name: 'Opus 4.6',   sub: 'Strategic · Complex Reasoning',       count: 7,  pct: 41, color: '#f59e0b', textColor: '#0a0e1a', agents: 'Architect · AP · Cornerstone · WOLF · Sentinel · Alpha · Ledger' },
+    { name: 'Sonnet 4.6', sub: 'Execution · Balanced Performance',    count: 7,  pct: 41, color: '#3b82f6', textColor: '#fff',    agents: 'Spectra · Oracle · Equity · Venture · Nexus · Atlas · (Ledger)' },
+    { name: 'Haiku 4.5',  sub: 'High-Volume · Fast Response',         count: 3,  pct: 18, color: '#14b8a6', textColor: '#fff',    agents: 'Cipher · Signal · Vector · Forge' },
+  ];
+
+  // ── RENDER: AGENT GRID ────────────────────────────────────────
+
+  function getScoreColor(score) {
+    if (score >= 9.0) return 'linear-gradient(90deg, #f59e0b, #fbbf24)';
+    if (score >= 8.0) return 'linear-gradient(90deg, #d97706, #f59e0b)';
+    if (score >= 7.0) return 'linear-gradient(90deg, #22c55e, #4ade80)';
+    return 'linear-gradient(90deg, #3b82f6, #60a5fa)';
+  }
+
+  function getScoreTextColor(score) {
+    if (score >= 8.0) return '#f59e0b';
+    if (score >= 7.0) return '#22c55e';
+    return '#3b82f6';
+  }
+
+  function renderAgentGrid() {
+    const grid = document.getElementById('agent-grid');
+    AGENTS.forEach((agent, i) => {
+      const pct = ((agent.score / 10) * 100).toFixed(1);
+      const card = document.createElement('div');
+      card.className = 'agent-card';
+      card.style.animationDelay = (i * 0.04) + 's';
+      card.innerHTML = `
+        <div class="agent-card-top">
+          <div class="agent-icon-wrap">
+            <div class="agent-icon">${agent.icon}</div>
+            <div class="agent-name">${agent.name}</div>
+            <div class="agent-role">${agent.role}</div>
+          </div>
+          <div class="agent-memory-badge">
+            <span>🧠</span>${agent.memories}
+          </div>
+        </div>
+        <div class="agent-score-row">
+          <div class="agent-score-label">IQ Score</div>
+          <div class="agent-score-value" style="color:${getScoreTextColor(agent.score)}">${agent.score}</div>
+        </div>
+        <div class="score-bar-bg">
+          <div class="score-bar-fill" data-pct="${pct}"
+               style="background:${getScoreColor(agent.score)};--target-width:${pct}%"></div>
+        </div>
+        <div style="margin-top:8px;display:flex;align-items:center;justify-content:space-between;">
+          <div style="font-size:9px;letter-spacing:0.08em;color:var(--white-dim);text-transform:uppercase;opacity:0.6;">${agent.model.toUpperCase()}</div>
+          <div style="width:6px;height:6px;border-radius:50%;background:${agent.color};opacity:0.7;"></div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  // ── RENDER: MODEL CHART ───────────────────────────────────────
+
+  function renderModelChart() {
+    const chart = document.getElementById('model-chart');
+    MODELS.forEach(m => {
+      const row = document.createElement('div');
+      row.className = 'model-row';
+      row.innerHTML = `
+        <div>
+          <div class="model-label" style="color:${m.color}">${m.name}</div>
+          <div class="model-sublabel">${m.sub}</div>
+        </div>
+        <div class="model-bar-bg">
+          <div class="model-bar-fill" data-pct="${m.pct}"
+               style="background:${m.color};color:${m.textColor};--target-width:${m.pct}%">
+            <span class="model-bar-agents" style="color:${m.textColor};opacity:0.85;font-size:9px;">${m.agents}</span>
+          </div>
+        </div>
+        <div>
+          <div class="model-count" style="color:${m.color}">${m.count}</div>
+          <div class="model-count-label">agents</div>
+        </div>
+      `;
+      chart.appendChild(row);
+    });
+  }
+
+  // ── RENDER: WORKFLOWS ─────────────────────────────────────────
+
+  function renderWorkflows() {
+    const list = document.getElementById('workflow-list');
+    WORKFLOWS.forEach(wf => {
+      const item = document.createElement('div');
+      item.className = 'workflow-item';
+
+      const flowHtml = wf.nodes.map((node, i) => {
+        const arrow = i < wf.nodes.length - 1 ? '<span class="flow-arrow">→</span>' : '';
+        const type = wf.nodeTypes[i] || 'agent';
+        return `<span class="flow-node ${type}">${node}</span>${arrow}`;
+      }).join('');
+
+      item.innerHTML = `
+        <div class="workflow-header">
+          <div class="workflow-name">${wf.name}</div>
+          <div class="workflow-trigger">${wf.trigger}</div>
+        </div>
+        <div class="workflow-flow">${flowHtml}</div>
+      `;
+      list.appendChild(item);
+    });
+  }
+
+  // ── RENDER: LOG ───────────────────────────────────────────────
+
+  function renderLog() {
+    const body = document.getElementById('log-body');
+    LESSONS.forEach((entry, i) => {
+      const row = document.createElement('div');
+      row.className = `log-entry log-severity-${entry.severity}`;
+      row.style.animationDelay = (i * 0.06) + 's';
+      row.innerHTML = `
+        <div class="log-timestamp">${entry.ts}</div>
+        <div class="log-agent-tag">${entry.agent}</div>
+        <div class="log-message"><span class="log-prefix">›</span>${entry.msg}</div>
+      `;
+      body.appendChild(row);
+    });
+  }
+
+  // ── ANIMATED COUNTERS ─────────────────────────────────────────
+
+  function animateCounters() {
+    const counters = document.querySelectorAll('[data-counter]');
+    counters.forEach(el => {
+      const target = parseInt(el.getAttribute('data-target'), 10);
+      const duration = 1400;
+      const start = performance.now();
+      function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target);
+        if (progress < 1) requestAnimationFrame(update);
+        else el.textContent = target;
+      }
+      requestAnimationFrame(update);
+    });
+  }
+
+  // ── ANIMATE BARS ──────────────────────────────────────────────
+
+  function animateBars() {
+    const fills = document.querySelectorAll('[data-pct]');
+    fills.forEach((el, i) => {
+      const pct = parseFloat(el.getAttribute('data-pct'));
+      setTimeout(() => {
+        el.style.width = pct + '%';
+      }, 200 + i * 30);
+    });
+  }
+
+  // ── INTERSECTION OBSERVER ─────────────────────────────────────
+
+  function initObserver() {
+    let animated = false;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !animated) {
+          animated = true;
+          animateCounters();
+          animateBars();
+        }
+      });
+    }, { threshold: 0.1 });
+
+    const target = document.getElementById('agent-grid');
+    if (target) observer.observe(target);
+  }
+
+  // ── LIVE DATE ─────────────────────────────────────────────────
+
+  function updateDate() {
+    const el = document.getElementById('live-date');
+    if (!el) return;
+    const now = new Date();
+    const opts = { month: 'long', day: 'numeric', year: 'numeric' };
+    el.textContent = now.toLocaleDateString('en-US', opts).toUpperCase();
+  }
+
+  // ── INIT ──────────────────────────────────────────────────────
+
+  function init() {
+    renderAgentGrid();
+    renderModelChart();
+    renderWorkflows();
+    renderLog();
+    updateDate();
+
+    // Kick off animations after a short delay (paint settles)
+    setTimeout(() => {
+      animateCounters();
+      animateBars();
+    }, 400);
+
+    initObserver();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+})();
+</script>
+</body>
+</html>

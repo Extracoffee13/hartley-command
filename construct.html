@@ -1166,6 +1166,34 @@ function AgentEcosystemDashboard() {
 
         <EcoStats agents={agents} />
 
+        {/* PROJECT ASCENSION STATUS */}
+        <div style={{ padding: "10px 24px", background: "rgba(245,158,11,0.05)", borderBottom: "1px solid rgba(245,158,11,0.2)", display: "flex", alignItems: "center", gap: 24, flexWrap: "wrap" }}>
+          <div style={{ fontSize: 9, fontWeight: "bold", letterSpacing: 3, color: "#f59e0b", textTransform: "uppercase", flexShrink: 0 }}>◈ Project Ascension</div>
+          <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#22c55e", boxShadow: "0 0 6px #22c55e", animation: "blink 2s infinite" }}></div>
+              <span style={{ fontSize: 10, color: "rgba(57,255,20,0.7)", letterSpacing: 1 }}>MEMORY</span>
+              <span style={{ fontSize: 10, color: "#39ff14", fontWeight: "bold" }}>17/17 AGENTS</span>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#22c55e", boxShadow: "0 0 6px #22c55e", animation: "blink 2s infinite" }}></div>
+              <span style={{ fontSize: 10, color: "rgba(57,255,20,0.7)", letterSpacing: 1 }}>LESSONS</span>
+              <span style={{ fontSize: 10, color: "#39ff14", fontWeight: "bold" }}>8 LOGGED</span>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#f59e0b", boxShadow: "0 0 6px #f59e0b", animation: "blink 2s infinite" }}></div>
+              <span style={{ fontSize: 10, color: "rgba(245,158,11,0.7)", letterSpacing: 1 }}>MODEL ROUTING</span>
+              <span style={{ fontSize: 10, color: "#f59e0b", fontWeight: "bold" }}>ACTIVE</span>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#f59e0b", boxShadow: "0 0 6px #f59e0b" }}></div>
+              <span style={{ fontSize: 10, color: "rgba(245,158,11,0.7)", letterSpacing: 1 }}>PHASE</span>
+              <span style={{ fontSize: 10, color: "#f59e0b", fontWeight: "bold" }}>1 OF 3</span>
+            </div>
+          </div>
+          <a href="ascension.html" style={{ marginLeft: "auto", fontSize: 9, color: "rgba(245,158,11,0.6)", letterSpacing: 2, textDecoration: "none", border: "1px solid rgba(245,158,11,0.3)", padding: "3px 10px", borderRadius: 2 }}>VIEW DASHBOARD ›</a>
+        </div>
+
         {/* TOOLBAR */}
         <div style={{ padding: "12px 24px", display: "flex", gap: 12, alignItems: "center", borderBottom: "1px solid rgba(57,255,20,0.1)", background: "rgba(0,8,0,0.8)", flexWrap: "wrap" }}>
           <div style={{ position: "relative", flex: "1 1 200px" }}>
