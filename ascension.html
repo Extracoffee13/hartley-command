@@ -1332,6 +1332,125 @@
   </section>
 
   <!-- ══════════════════════════════════════════ -->
+  <!-- WOLF STRATEGY VALIDATION                   -->
+  <!-- ══════════════════════════════════════════ -->
+  <section class="section" style="animation: fadeInUp 0.6s ease 0.42s both;">
+    <div class="section-header">
+      <span class="section-label">WOLF Strategy Validation</span>
+      <div class="section-line"></div>
+      <span class="section-count">BACKTEST 2026-04-07</span>
+    </div>
+
+    <!-- Summary bar -->
+    <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:12px; margin-bottom:20px;">
+      <div class="card" style="text-align:center; padding:16px; border-color:rgba(34,197,94,0.3);">
+        <div style="font-size:36px; font-weight:900; color:var(--green); font-family:'SF Mono','Fira Code',monospace;">3</div>
+        <div style="font-size:10px; font-weight:700; letter-spacing:0.15em; color:var(--green); text-transform:uppercase; margin-top:4px;">Approved</div>
+        <div style="font-size:10px; color:var(--white-dim); margin-top:2px;">Trade Enabled</div>
+      </div>
+      <div class="card" style="text-align:center; padding:16px; border-color:rgba(239,68,68,0.3);">
+        <div style="font-size:36px; font-weight:900; color:var(--red); font-family:'SF Mono','Fira Code',monospace;">6</div>
+        <div style="font-size:10px; font-weight:700; letter-spacing:0.15em; color:var(--red); text-transform:uppercase; margin-top:4px;">Disabled</div>
+        <div style="font-size:10px; color:var(--white-dim); margin-top:2px;">Do Not Trade</div>
+      </div>
+      <div class="card" style="text-align:center; padding:16px;">
+        <div style="font-size:22px; font-weight:900; color:var(--white); font-family:'SF Mono','Fira Code',monospace;">2yr</div>
+        <div style="font-size:10px; font-weight:700; letter-spacing:0.15em; color:var(--white-dim); text-transform:uppercase; margin-top:4px;">Test Period</div>
+        <div style="font-size:10px; color:var(--white-dim); margin-top:2px;">Apr 2024 → Apr 2026</div>
+      </div>
+      <div class="card" style="text-align:center; padding:16px;">
+        <div style="font-size:13px; font-weight:700; color:var(--gold); font-family:'SF Mono','Fira Code',monospace; line-height:1.4;">Sharpe &gt; 1.0<br>DD &lt; 25%</div>
+        <div style="font-size:10px; font-weight:700; letter-spacing:0.15em; color:var(--white-dim); text-transform:uppercase; margin-top:6px;">Pass Criteria</div>
+      </div>
+    </div>
+
+    <!-- Strategy table -->
+    <div class="card">
+      <div style="overflow-x:auto;">
+        <table style="width:100%; border-collapse:collapse; font-size:12px; font-family:'SF Mono','Fira Code',monospace;">
+          <thead>
+            <tr style="border-bottom:1px solid var(--navy-border);">
+              <th style="text-align:left; padding:8px 10px; color:var(--white-dim); font-size:10px; letter-spacing:0.12em; text-transform:uppercase;">Strategy</th>
+              <th style="text-align:center; padding:8px 10px; color:var(--white-dim); font-size:10px; letter-spacing:0.12em; text-transform:uppercase;">Sharpe</th>
+              <th style="text-align:center; padding:8px 10px; color:var(--white-dim); font-size:10px; letter-spacing:0.12em; text-transform:uppercase;">Max DD</th>
+              <th style="text-align:center; padding:8px 10px; color:var(--white-dim); font-size:10px; letter-spacing:0.12em; text-transform:uppercase;">Ann. Return</th>
+              <th style="text-align:center; padding:8px 10px; color:var(--white-dim); font-size:10px; letter-spacing:0.12em; text-transform:uppercase;">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--navy-border); background:rgba(34,197,94,0.04);">
+              <td style="padding:10px; color:var(--white); font-weight:700;">Small Cap Catalyst</td>
+              <td style="padding:10px; text-align:center; color:var(--green); font-weight:700;">2.74</td>
+              <td style="padding:10px; text-align:center; color:var(--green);">-2.6%</td>
+              <td style="padding:10px; text-align:center; color:var(--green);">+44.9%</td>
+              <td style="padding:10px; text-align:center;"><span style="background:rgba(34,197,94,0.15); color:var(--green); border:1px solid rgba(34,197,94,0.3); border-radius:4px; padding:2px 8px; font-size:10px; font-weight:700;">APPROVED</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--navy-border); background:rgba(34,197,94,0.04);">
+              <td style="padding:10px; color:var(--white); font-weight:700;">Volatility Play</td>
+              <td style="padding:10px; text-align:center; color:var(--green); font-weight:700;">1.30</td>
+              <td style="padding:10px; text-align:center; color:var(--amber);">-13.2%</td>
+              <td style="padding:10px; text-align:center; color:var(--green);">+42.9%</td>
+              <td style="padding:10px; text-align:center;"><span style="background:rgba(34,197,94,0.15); color:var(--green); border:1px solid rgba(34,197,94,0.3); border-radius:4px; padding:2px 8px; font-size:10px; font-weight:700;">APPROVED</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--navy-border); background:rgba(34,197,94,0.04);">
+              <td style="padding:10px; color:var(--white); font-weight:700;">Macro Hedge</td>
+              <td style="padding:10px; text-align:center; color:var(--green); font-weight:700;">1.11</td>
+              <td style="padding:10px; text-align:center; color:var(--green);">-7.4%</td>
+              <td style="padding:10px; text-align:center; color:var(--white);">+18.8%</td>
+              <td style="padding:10px; text-align:center;"><span style="background:rgba(34,197,94,0.15); color:var(--green); border:1px solid rgba(34,197,94,0.3); border-radius:4px; padding:2px 8px; font-size:10px; font-weight:700;">APPROVED</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--navy-border); opacity:0.65;">
+              <td style="padding:10px; color:var(--white-dim);">Crypto Momentum</td>
+              <td style="padding:10px; text-align:center; color:var(--white-dim);">2.67</td>
+              <td style="padding:10px; text-align:center; color:var(--red);">-28.8%</td>
+              <td style="padding:10px; text-align:center; color:var(--white-dim);">+444.9%</td>
+              <td style="padding:10px; text-align:center;"><span style="background:rgba(239,68,68,0.12); color:var(--red); border:1px solid rgba(239,68,68,0.2); border-radius:4px; padding:2px 8px; font-size:10px; font-weight:700;">DD FAIL</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--navy-border); opacity:0.55;">
+              <td style="padding:10px; color:var(--white-dim);">Momentum (SMA)</td>
+              <td style="padding:10px; text-align:center; color:var(--red);">0.67</td>
+              <td style="padding:10px; text-align:center; color:var(--white-dim);">-13.7%</td>
+              <td style="padding:10px; text-align:center; color:var(--white-dim);">+12.8%</td>
+              <td style="padding:10px; text-align:center;"><span style="background:rgba(239,68,68,0.12); color:var(--red); border:1px solid rgba(239,68,68,0.2); border-radius:4px; padding:2px 8px; font-size:10px; font-weight:700;">DISABLED</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--navy-border); opacity:0.55;">
+              <td style="padding:10px; color:var(--white-dim);">Sector Rotation</td>
+              <td style="padding:10px; text-align:center; color:var(--red);">0.35</td>
+              <td style="padding:10px; text-align:center; color:var(--white-dim);">-10.6%</td>
+              <td style="padding:10px; text-align:center; color:var(--white-dim);">+8.7%</td>
+              <td style="padding:10px; text-align:center;"><span style="background:rgba(239,68,68,0.12); color:var(--red); border:1px solid rgba(239,68,68,0.2); border-radius:4px; padding:2px 8px; font-size:10px; font-weight:700;">DISABLED</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--navy-border); opacity:0.55;">
+              <td style="padding:10px; color:var(--white-dim);">AI/Tech Theme</td>
+              <td style="padding:10px; text-align:center; color:var(--red);">0.32</td>
+              <td style="padding:10px; text-align:center; color:var(--red);">-22.3%</td>
+              <td style="padding:10px; text-align:center; color:var(--white-dim);">+9.6%</td>
+              <td style="padding:10px; text-align:center;"><span style="background:rgba(239,68,68,0.12); color:var(--red); border:1px solid rgba(239,68,68,0.2); border-radius:4px; padding:2px 8px; font-size:10px; font-weight:700;">DISABLED</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--navy-border); opacity:0.55;">
+              <td style="padding:10px; color:var(--white-dim);">Earnings Drift</td>
+              <td style="padding:10px; text-align:center; color:var(--red);">-0.55</td>
+              <td style="padding:10px; text-align:center; color:var(--white-dim);">-6.2%</td>
+              <td style="padding:10px; text-align:center; color:var(--white-dim);">+1.3%</td>
+              <td style="padding:10px; text-align:center;"><span style="background:rgba(239,68,68,0.12); color:var(--red); border:1px solid rgba(239,68,68,0.2); border-radius:4px; padding:2px 8px; font-size:10px; font-weight:700;">DISABLED</span></td>
+            </tr>
+            <tr style="opacity:0.55;">
+              <td style="padding:10px; color:var(--red); font-weight:700;">Mean Reversion &#9888;</td>
+              <td style="padding:10px; text-align:center; color:var(--red); font-weight:700;">-0.58</td>
+              <td style="padding:10px; text-align:center; color:var(--red); font-weight:700;">-35.9%</td>
+              <td style="padding:10px; text-align:center; color:var(--red);">-8.2%</td>
+              <td style="padding:10px; text-align:center;"><span style="background:rgba(239,68,68,0.2); color:var(--red); border:1px solid rgba(239,68,68,0.4); border-radius:4px; padding:2px 8px; font-size:10px; font-weight:700;">SUSPEND</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top:12px; padding:10px 14px; background:rgba(34,197,94,0.06); border:1px solid rgba(34,197,94,0.15); border-radius:6px; font-size:11px; color:var(--white-dim);">
+        <strong style="color:var(--green);">Safety lock active.</strong> WOLF may only generate signals from the 3 approved strategies. The 6 disabled strategies must not trade until rebuilt and re-validated. Crypto Momentum may return in Phase 3 with position sizing controls.
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
   <!-- INTER-AGENT WORKFLOWS                      -->
   <!-- ══════════════════════════════════════════ -->
   <section class="section workflow-section">

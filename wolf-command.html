@@ -13,9 +13,15 @@
   .logo span { color: #888; font-size: 14px; letter-spacing: 1px; }
   .status-badge { background: #1a3a1a; color: #4ade80; padding: 6px 14px; border-radius: 20px; font-size: 12px; border: 1px solid #4ade80; }
 
-  .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; padding: 20px; }
-  .grid-2 { grid-template-columns: 1fr 1fr; }
+  /* ─── AUTO-FIT GRIDS ─── no @media dependency. Cards naturally wrap at any
+     viewport (iPhone QuickLook, Safari, Chrome). A 390px iPhone shows 1 column;
+     a 1440px desktop shows 3-4. */
+  html, body { overflow-x: hidden; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; padding: 20px; }
+  .grid-2 { grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); }
   .full-width { grid-column: 1 / -1; }
+  .card { padding: 20px; word-wrap: break-word; }
+  code { word-break: break-all; }
 
   .card { background: #12121f; border: 1px solid #2a2a3e; border-radius: 12px; padding: 20px; }
   .card-header { color: #ff6b35; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; }
@@ -45,7 +51,7 @@
   .signal-strategy { color: #888; font-size: 12px; flex: 1; }
   .signal-conf { color: #ff6b35; font-weight: 700; }
 
-  .signal-detail { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-top: 6px; }
+  .signal-detail { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 4px; margin-top: 6px; }
   .signal-detail-item { font-size: 10px; }
   .sd-label { color: #555; text-transform: uppercase; letter-spacing: 0.5px; }
   .sd-val { color: #ccc; font-weight: 700; }
@@ -105,8 +111,13 @@
   </div>
   <div style="display:flex; gap:12px; align-items:center;">
     <div class="status-badge pulse">&#9679; LIVE — PAPER TRADING</div>
-    <div style="color:#666; font-size:12px;">v1.2 | April 2026</div>
+    <div style="color:#666; font-size:12px;">v1.5 mobile-safe | Apr 6 2026</div>
   </div>
+</div>
+
+<!-- Mobile version confirmation banner -->
+<div style="background:#1a3a1a; color:#4ade80; border:1px solid #4ade80; padding:10px 16px; margin:12px 20px; border-radius:8px; font-size:13px; text-align:center;">
+  ✓ v1.5 MOBILE-SAFE — if you can read this on your iPhone, the new auto-fit layout is loaded. Scroll down to see <b>Consulting Intelligence Feed</b> and <b>AI Hedge Fund Committee</b>.
 </div>
 
 <!-- Portfolio Summary -->
@@ -190,8 +201,15 @@
       </div>
     </div>
 
-    <div style="margin-top:14px; padding:10px; background:#1a1a2e; border-radius:8px; border-left:3px solid #ff6b35;">
-      <div style="font-size:11px; color:#888;">&#128200; Daily scan: <span style="color:#4ade80;">8:30 AM Mon–Fri</span> &bull; Technical + Congressional overlay &bull; Shorting enabled</div>
+    <div style="margin-top:14px; padding:10px; background:#1a1a2e; border-radius:8px; border-left:3px solid #4ade80;">
+      <div style="font-size:11px; color:#4ade80; font-weight:bold; text-transform:uppercase; letter-spacing:1px;">&#9889; FULLY AUTOMATIC &mdash; 30-DAY PAPER GATE ENFORCED</div>
+      <div style="font-size:11px; color:#888; margin-top:6px; line-height:1.7;">
+        &#128200; Pre-market scan: <span style="color:#4ade80;">6:33 AM</span> &bull; Consulting intel: <span style="color:#4ade80;">7:03 AM</span><br>
+        &#128640; Market-open exec: <span style="color:#4ade80;">9:30 AM ET</span> &bull; Midday rescan: <span style="color:#4ade80;">12:30 PM ET</span><br>
+        &#128202; EOD review: <span style="color:#4ade80;">4:15 PM ET</span> &bull; Gate status: <span style="color:#4ade80;">4:45 PM ET</span> &bull; Crypto 24/7: <span style="color:#4ade80;">every 6h</span><br>
+        &#128737; Auto-route: <span style="color:#4ade80;">ON (paper)</span> &bull; Committee: <span style="color:#4ade80;">executes</span> &bull; Risk caps: <span style="color:#4ade80;">2%/trade, 10% heat, 3% daily stop</span><br>
+        &#128274; Real-money gate: <span style="color:#ff6b35;">30 days + Sharpe&ge;1.5 + DD&le;15% + 40 trades + WR&ge;45% + PF&ge;1.5</span>
+      </div>
     </div>
   </div>
 
@@ -227,7 +245,7 @@
 <div style="padding: 0 20px 20px;">
   <div class="card">
     <div class="card-header">Market Regime <span class="badge badge-yellow">CORRECTIVE PULLBACK</span></div>
-    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap:16px;">
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:16px;">
       <div>
         <div class="regime-bar" style="flex-direction:column; align-items:flex-start; gap:6px; border-bottom:none;">
           <div style="font-size:10px; color:#555; text-transform:uppercase; letter-spacing:1px;">SPY</div>
@@ -268,7 +286,7 @@
 <div style="padding: 0 20px 20px;">
   <div class="card" style="border-color: #c084fc; box-shadow: 0 0 20px rgba(192,132,252,0.06);">
     <div class="card-header" style="color: #c084fc;">Congressional Trading Intelligence <span class="badge badge-purple">NEW — ACTIVE</span></div>
-    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:16px;">
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:16px;">
 
       <!-- Sources -->
       <div>
@@ -313,9 +331,51 @@
             Skill: <code style="background:#0a0a14; color:#c084fc; padding:1px 4px; border-radius:3px; font-size:10px;">/wolf-congress-tracker</code>
           </div>
         </div>
-        <div style="margin-top:10px; font-size:11px; color:#555; text-align:center;">Last scan: Today 8:30 AM<br>Next scan: Tomorrow 8:30 AM</div>
+        <div style="margin-top:10px; font-size:11px; color:#555; text-align:center;">Auto-runs weekdays 6:33 AM<br>No button required</div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- Intelligence Feeds -->
+<div class="grid grid-2" style="padding: 0 20px 20px;">
+  <div class="card">
+    <div class="card-header">Consulting Intelligence Feed <span class="badge badge-green">DAILY 7AM</span></div>
+    <div class="sub-text" style="margin-bottom:10px;">Autonomous scan of top global consulting firms for white papers on disrupted markets. Scored on disruption keywords, industries and named tickers.</div>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:6px; font-size:11px;">
+      <div style="padding:6px 10px; background:#1a1a2e; border-radius:6px;">🟠 PwC — Insights + CEO Survey</div>
+      <div style="padding:6px 10px; background:#1a1a2e; border-radius:6px;">🔵 McKinsey — Featured + Quarterly</div>
+      <div style="padding:6px 10px; background:#1a1a2e; border-radius:6px;">🟢 Deloitte — Insights</div>
+      <div style="padding:6px 10px; background:#1a1a2e; border-radius:6px;">🟣 BCG — Publications</div>
+      <div style="padding:6px 10px; background:#1a1a2e; border-radius:6px;">🔴 Bain — Insights</div>
+      <div style="padding:6px 10px; background:#1a1a2e; border-radius:6px;">🟡 EY — Insights</div>
+      <div style="padding:6px 10px; background:#1a1a2e; border-radius:6px;">🔷 KPMG — Our Insights</div>
+      <div style="padding:6px 10px; background:#1a1a2e; border-radius:6px;">🟪 Accenture — Insights Index</div>
+      <div style="padding:6px 10px; background:#1a1a2e; border-radius:6px;">⚫ Oliver Wyman</div>
+      <div style="padding:6px 10px; background:#1a1a2e; border-radius:6px;">⚪ Gartner — Research</div>
+    </div>
+    <div class="sub-text" style="margin-top:10px; text-align:center;">Scheduled task <code style="background:#1a1a2e; color:#ff6b35; padding:2px 4px; border-radius:3px;">wolf-consulting-intel</code> — weekdays 7:00 AM local. Output briefings saved to <code style="background:#1a1a2e; color:#ff6b35; padding:2px 4px; border-radius:3px;">data/briefings/</code>.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">AI Hedge Fund Committee <span class="badge badge-green">LIVE — ONLINE</span></div>
+    <div class="sub-text" style="margin-bottom:10px;">virattt/ai-hedge-fund — 50K⭐ multi-agent investment committee, wired into the C-Suite as WOLF's research bench. Running locally on Ollama (llama3.1:8b) through a dedicated Python 3.12 venv bridge. First live committee vote on NVDA completed 2026-04-06.</div>
+    <div style="font-size:11px; display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:4px;">
+      <div>🎯 Damodaran — Valuation</div>
+      <div>💎 Graham — Deep Value</div>
+      <div>🏰 Buffett / Munger — Quality</div>
+      <div>⚡ Ackman — Activist</div>
+      <div>🚀 Cathie Wood — Growth</div>
+      <div>🩸 Burry — Contrarian Short</div>
+      <div>🔍 Peter Lynch — GARP</div>
+      <div>📈 Druckenmiller — Macro</div>
+      <div>📊 Technicals Agent</div>
+      <div>📰 Sentiment Agent</div>
+      <div>⚖ Risk Manager</div>
+      <div>🎯 Portfolio Manager</div>
+    </div>
+    <div class="sub-text" style="margin-top:10px;">Stack: Ollama <code style="background:#1a1a2e; color:#ff6b35; padding:1px 3px; border-radius:2px;">llama3.1:8b</code> (free, local) with OpenAI fallback reserved for trades &gt;$5K notional. WOLF convenes the committee per-ticker via <code style="background:#1a1a2e; color:#ff6b35; padding:1px 3px; border-radius:2px;">run_committee.command</code>, the bridge subprocess (<code style="background:#1a1a2e; color:#ff6b35; padding:1px 3px; border-radius:2px;">~/.wolf-venv</code>) runs the full LangGraph pipeline, Portfolio Manager aggregates votes, and WOLF's hard risk rules (paper-only, ≤2%/trade, ≤10% portfolio heat) overrule. Committee outputs written to <code style="background:#1a1a2e; color:#ff6b35; padding:1px 3px; border-radius:2px;">data/committee/*.json</code> + daily briefing.</div>
+    <div class="sub-text" style="margin-top:8px; color:#4ade80;">✓ First vote (NVDA, 2026-04-06): committee split 6 bullish / 6 bearish — Buffett/Lynch/Ackman/Fisher/Munger/Wood conflicted with Damodaran/Graham/Burry/Druckenmiller/Sentiment/Technicals. Advisory only while 30-day grading period runs.</div>
   </div>
 </div>
 
@@ -383,7 +443,7 @@
 
     <div style="margin-top:24px;">
       <div class="card-header" style="color:#4ade80;">Alpaca Status <span class="badge badge-green">CONNECTED</span></div>
-      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:8px;">
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap:10px; margin-top:8px;">
         <div style="padding:10px; background:#1a1a2e; border-radius:8px; border:1px solid #2a4a2a;">
           <div style="color:#4ade80; font-size:14px; font-weight:900;">$100,000</div>
           <div style="color:#555; font-size:10px; text-transform:uppercase; letter-spacing:1px; margin-top:2px;">Cash Balance</div>
@@ -408,11 +468,123 @@
   </div>
 </div>
 
+<!-- Validated Strategies (post-backtest 2026-04-07) -->
+<div style="padding: 0 20px 20px;">
+  <div class="card full-width">
+    <div class="card-header">
+      Validated Strategies — Backtest 2026-04-07
+      <span class="badge badge-green">3 APPROVED</span>
+      <span class="badge badge-red" style="margin-left:6px;">6 DISABLED</span>
+    </div>
+    <div style="font-size:11px; color:#888; margin-bottom:14px;">
+      Backtest period: 2024-04-07 → 2026-04-07 &bull; Criteria: Sharpe &gt; 1.0 AND Max DD &lt; 25% &bull;
+      <a href="../Agent Wolf/backtest/results/backtest_2026-04-07.md" style="color:#ff6b35; text-decoration:none;">View Results</a>
+      &bull; Last run: <strong style="color:#4ade80;">April 7, 2026</strong>
+    </div>
+
+    <!-- APPROVED: 3 green cards -->
+    <div style="font-size:10px; color:#4ade80; text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; font-weight:700;">&#9989; Approved — Trade Enabled</div>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:12px; margin-bottom:20px;">
+
+      <div style="background:#0d1f0d; border:1px solid #2a5a2a; border-radius:10px; padding:16px; box-shadow:0 0 12px rgba(74,222,128,0.06);">
+        <div style="color:#4ade80; font-size:14px; font-weight:900; margin-bottom:6px;">Small Cap Catalyst</div>
+        <div style="display:flex; gap:16px; margin-bottom:8px;">
+          <div><div style="color:#888; font-size:10px; text-transform:uppercase; letter-spacing:1px;">Sharpe</div><div style="color:#4ade80; font-size:18px; font-weight:900;">2.74</div></div>
+          <div><div style="color:#888; font-size:10px; text-transform:uppercase; letter-spacing:1px;">Max DD</div><div style="color:#facc15; font-size:18px; font-weight:900;">-2.6%</div></div>
+          <div><div style="color:#888; font-size:10px; text-transform:uppercase; letter-spacing:1px;">Ann. Return</div><div style="color:#4ade80; font-size:18px; font-weight:900;">+44.9%</div></div>
+        </div>
+        <div style="font-size:11px; color:#666;">Best risk-adjusted returns. Minimal drawdown. Prioritize this strategy.</div>
+      </div>
+
+      <div style="background:#0d1f0d; border:1px solid #2a5a2a; border-radius:10px; padding:16px; box-shadow:0 0 12px rgba(74,222,128,0.06);">
+        <div style="color:#4ade80; font-size:14px; font-weight:900; margin-bottom:6px;">Volatility Play</div>
+        <div style="display:flex; gap:16px; margin-bottom:8px;">
+          <div><div style="color:#888; font-size:10px; text-transform:uppercase; letter-spacing:1px;">Sharpe</div><div style="color:#4ade80; font-size:18px; font-weight:900;">1.30</div></div>
+          <div><div style="color:#888; font-size:10px; text-transform:uppercase; letter-spacing:1px;">Max DD</div><div style="color:#facc15; font-size:18px; font-weight:900;">-13.2%</div></div>
+          <div><div style="color:#888; font-size:10px; text-transform:uppercase; letter-spacing:1px;">Ann. Return</div><div style="color:#4ade80; font-size:18px; font-weight:900;">+42.9%</div></div>
+        </div>
+        <div style="font-size:11px; color:#666;">Solid Sharpe, manageable drawdown. Good portfolio diversifier.</div>
+      </div>
+
+      <div style="background:#0d1f0d; border:1px solid #2a5a2a; border-radius:10px; padding:16px; box-shadow:0 0 12px rgba(74,222,128,0.06);">
+        <div style="color:#4ade80; font-size:14px; font-weight:900; margin-bottom:6px;">Macro Hedge</div>
+        <div style="display:flex; gap:16px; margin-bottom:8px;">
+          <div><div style="color:#888; font-size:10px; text-transform:uppercase; letter-spacing:1px;">Sharpe</div><div style="color:#4ade80; font-size:18px; font-weight:900;">1.11</div></div>
+          <div><div style="color:#888; font-size:10px; text-transform:uppercase; letter-spacing:1px;">Max DD</div><div style="color:#facc15; font-size:18px; font-weight:900;">-7.4%</div></div>
+          <div><div style="color:#888; font-size:10px; text-transform:uppercase; letter-spacing:1px;">Ann. Return</div><div style="color:#4ade80; font-size:18px; font-weight:900;">+18.8%</div></div>
+        </div>
+        <div style="font-size:11px; color:#666;">Low trade count (3 in 2yr). Reliable hedge. Conservative and steady.</div>
+      </div>
+
+    </div>
+
+    <!-- DISABLED: 6 red/dim cards -->
+    <div style="font-size:10px; color:#f87171; text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; font-weight:700;">&#10060; Disabled — Do Not Trade Until Rebuilt</div>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:10px;">
+
+      <div style="background:#1a0d0d; border:1px solid #4a1a1a; border-radius:10px; padding:14px; opacity:0.85;">
+        <div style="color:#f87171; font-size:13px; font-weight:700; margin-bottom:4px;">Crypto Momentum</div>
+        <div style="display:flex; gap:12px; margin-bottom:6px;">
+          <div><div style="color:#555; font-size:10px;">Sharpe</div><div style="color:#ccc; font-size:14px; font-weight:700;">2.67</div></div>
+          <div><div style="color:#555; font-size:10px;">Max DD</div><div style="color:#f87171; font-size:14px; font-weight:700;">-28.8%</div></div>
+        </div>
+        <div style="font-size:10px; color:#f87171; background:#2a0d0d; padding:4px 8px; border-radius:4px;">DD exceeds 25% limit. Needs position sizing controls.</div>
+      </div>
+
+      <div style="background:#1a0d0d; border:1px solid #4a1a1a; border-radius:10px; padding:14px; opacity:0.85;">
+        <div style="color:#f87171; font-size:13px; font-weight:700; margin-bottom:4px;">Momentum (SMA)</div>
+        <div style="display:flex; gap:12px; margin-bottom:6px;">
+          <div><div style="color:#555; font-size:10px;">Sharpe</div><div style="color:#f87171; font-size:14px; font-weight:700;">0.67</div></div>
+          <div><div style="color:#555; font-size:10px;">Max DD</div><div style="color:#ccc; font-size:14px; font-weight:700;">-13.7%</div></div>
+        </div>
+        <div style="font-size:10px; color:#f87171; background:#2a0d0d; padding:4px 8px; border-radius:4px;">Sharpe &lt; 1.0. Underperforming. Needs parameter tuning.</div>
+      </div>
+
+      <div style="background:#1a0d0d; border:1px solid #4a1a1a; border-radius:10px; padding:14px; opacity:0.85;">
+        <div style="color:#f87171; font-size:13px; font-weight:700; margin-bottom:4px;">Sector Rotation</div>
+        <div style="display:flex; gap:12px; margin-bottom:6px;">
+          <div><div style="color:#555; font-size:10px;">Sharpe</div><div style="color:#f87171; font-size:14px; font-weight:700;">0.35</div></div>
+          <div><div style="color:#555; font-size:10px;">Max DD</div><div style="color:#ccc; font-size:14px; font-weight:700;">-10.6%</div></div>
+        </div>
+        <div style="font-size:10px; color:#f87171; background:#2a0d0d; padding:4px 8px; border-radius:4px;">Sharpe &lt; 1.0. Low edge. Combine with macro signals.</div>
+      </div>
+
+      <div style="background:#1a0d0d; border:1px solid #4a1a1a; border-radius:10px; padding:14px; opacity:0.85;">
+        <div style="color:#f87171; font-size:13px; font-weight:700; margin-bottom:4px;">AI/Tech Theme</div>
+        <div style="display:flex; gap:12px; margin-bottom:6px;">
+          <div><div style="color:#555; font-size:10px;">Sharpe</div><div style="color:#f87171; font-size:14px; font-weight:700;">0.32</div></div>
+          <div><div style="color:#555; font-size:10px;">Max DD</div><div style="color:#f87171; font-size:14px; font-weight:700;">-22.3%</div></div>
+        </div>
+        <div style="font-size:10px; color:#f87171; background:#2a0d0d; padding:4px 8px; border-radius:4px;">Weak Sharpe, high drawdown. Needs significant refinement.</div>
+      </div>
+
+      <div style="background:#1a0d0d; border:1px solid #4a1a1a; border-radius:10px; padding:14px; opacity:0.85;">
+        <div style="color:#f87171; font-size:13px; font-weight:700; margin-bottom:4px;">Earnings Drift</div>
+        <div style="display:flex; gap:12px; margin-bottom:6px;">
+          <div><div style="color:#555; font-size:10px;">Sharpe</div><div style="color:#f87171; font-size:14px; font-weight:700;">-0.55</div></div>
+          <div><div style="color:#555; font-size:10px;">Max DD</div><div style="color:#ccc; font-size:14px; font-weight:700;">-6.2%</div></div>
+        </div>
+        <div style="font-size:10px; color:#f87171; background:#2a0d0d; padding:4px 8px; border-radius:4px;">Negative Sharpe — loses money. Fundamental revision required.</div>
+      </div>
+
+      <div style="background:#2a0505; border:2px solid #6a1a1a; border-radius:10px; padding:14px;">
+        <div style="color:#ff4444; font-size:13px; font-weight:900; margin-bottom:4px;">&#9888; Mean Reversion</div>
+        <div style="display:flex; gap:12px; margin-bottom:6px;">
+          <div><div style="color:#555; font-size:10px;">Sharpe</div><div style="color:#ff4444; font-size:14px; font-weight:700;">-0.58</div></div>
+          <div><div style="color:#555; font-size:10px;">Max DD</div><div style="color:#ff4444; font-size:14px; font-weight:700;">-35.9%</div></div>
+        </div>
+        <div style="font-size:10px; color:#ff4444; background:#3a0505; padding:4px 8px; border-radius:4px; font-weight:700;">SUSPEND IMMEDIATELY. Fails both Sharpe AND drawdown criteria.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <!-- Market Coverage -->
 <div style="padding: 0 20px 20px;">
   <div class="card full-width">
     <div class="card-header">Market Coverage</div>
-    <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 8px;">
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-top: 8px;">
       <div style="text-align:center; padding:16px; background:#1a1a2e; border-radius:8px; border:1px solid #2a2a3e;">
         <div style="font-size:24px; margin-bottom:8px;">&#128200;</div>
         <div style="color:#fff; font-weight:700; font-size:14px;">US Equities</div>
@@ -445,7 +617,7 @@
 <div style="padding: 0 20px 20px;">
   <div class="card">
     <div class="card-header">Risk Management Rules (Non-Negotiable)</div>
-    <div style="display:grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 8px;">
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin-top: 8px;">
       <div style="text-align:center; padding:12px; background:#1a1a2e; border-radius:8px;">
         <div style="color:#ff6b35; font-size:20px; font-weight:900;">2%</div>
         <div style="color:#666; font-size:10px; margin-top:4px;">MAX RISK PER TRADE</div>
@@ -470,7 +642,7 @@
   </div>
 </div>
 
-<div class="footer">WOLF v1.2 | Wealth-Optimized Leverage Framework | Alpaca Connected | Congressional Intel Active | 3 Live Signals | Built for Bobby | One mission: earn money</div>
+<div class="footer">WOLF v1.5 mobile-safe | Wealth-Optimized Leverage Framework | Alpaca Connected | Consulting Intel Active | AI Hedge Fund Committee LIVE | Congressional Intel Active | 3 Live Signals | Built for Bobby | One mission: earn money</div>
 
 </body>
 </html>
