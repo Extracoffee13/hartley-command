@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>THE CONSTRUCT — Brand 9 Agent Ecosystem</title>
+<title>THE CONSTRUCT v2.1 — Brand 9 / Hartley Capital Agent Ecosystem</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
@@ -13,12 +13,16 @@
   @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
   @keyframes pulse-ring { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.5); opacity: 0; } }
   @keyframes flicker { 0%, 100% { opacity: 1; } 50% { opacity: 0.97; } 51% { opacity: 0.9; } 52% { opacity: 1; } }
+  @keyframes glow-pulse { 0%, 100% { box-shadow: 0 0 8px rgba(57,255,20,0.3); } 50% { box-shadow: 0 0 18px rgba(57,255,20,0.55); } }
+  @keyframes scan-line { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
   * { scrollbar-width: thin; scrollbar-color: rgba(57,255,20,0.3) transparent; }
   *::-webkit-scrollbar { width: 4px; }
   *::-webkit-scrollbar-track { background: transparent; }
   *::-webkit-scrollbar-thumb { background: rgba(57,255,20,0.3); border-radius: 2px; }
   input::placeholder, textarea::placeholder { color: rgba(57,255,20,0.25) !important; }
   select option { background: #000; color: #39ff14; }
+  a { color: #00d4ff; text-decoration: none; }
+  a:hover { color: #39ff14; }
 </style>
 </head>
 <body>
@@ -27,12 +31,27 @@
 const { useState, useEffect, useRef, useCallback, useMemo } = React;
 
 // ═══════════════════════════════════════════════════════════════
-// AGENT ECOSYSTEM DASHBOARD — "THE CONSTRUCT"
-// Matrix-inspired command center for the Brand 9 AI agent fleet
+// THE CONSTRUCT v2.1 — Brand 9 / Hartley Capital Agent Ecosystem
+// Locked 2026-04-24 baseline · Louis added 2026-04-27
+// Day-90 kill criterion: 2026-07-23
+// Cool-palette enforced (no warm colors per B9 brand canonical)
 // ═══════════════════════════════════════════════════════════════
 
 let _id = 100;
 const uid = () => `agent-${++_id}-${Date.now().toString(36)}`;
+const hexToRgb = (hex) => {
+  const r = parseInt(hex.slice(1,3), 16);
+  const g = parseInt(hex.slice(3,5), 16);
+  const b = parseInt(hex.slice(5,7), 16);
+  return `${r},${g},${b}`;
+};
+
+// Day countdown helpers
+const PLAN_LOCK_DATE = new Date("2026-04-24T00:00:00");
+const KILL_CRITERION_DATE = new Date("2026-07-23T00:00:00");
+const daysBetween = (a, b) => Math.floor((b - a) / (1000 * 60 * 60 * 24));
+const dayOfNinety = () => Math.max(0, daysBetween(PLAN_LOCK_DATE, new Date()) + 1);
+const daysUntilKill = () => Math.max(0, daysBetween(new Date(), KILL_CRITERION_DATE));
 
 // ── Matrix Digital Rain Canvas ──
 const MatrixRain = () => {
@@ -70,7 +89,7 @@ const MatrixRain = () => {
     draw();
     return () => { cancelAnimationFrame(animId); window.removeEventListener("resize", resize); };
   }, []);
-  return <canvas ref={canvasRef} style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", zIndex: 0, opacity: 0.15 }} />;
+  return <canvas ref={canvasRef} style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", zIndex: 0, opacity: 0.13 }} />;
 };
 
 // ── Glitch text effect ──
@@ -88,7 +107,7 @@ const GlitchText = ({ text, tag: Tag = "span", style = {} }) => {
       {text}
       {glitch && (
         <>
-          <Tag style={{ ...style, position: "absolute", left: "2px", top: "-1px", color: "#ff0040", clipPath: "inset(20% 0 40% 0)", opacity: 0.8 }}>{text}</Tag>
+          <Tag style={{ ...style, position: "absolute", left: "2px", top: "-1px", color: "#c500ff", clipPath: "inset(20% 0 40% 0)", opacity: 0.8 }}>{text}</Tag>
           <Tag style={{ ...style, position: "absolute", left: "-2px", top: "1px", color: "#00ffff", clipPath: "inset(50% 0 10% 0)", opacity: 0.8 }}>{text}</Tag>
         </>
       )}
@@ -106,16 +125,25 @@ const ScanLine = () => {
   return <div style={{ position: "absolute", top: `${pos}%`, left: 0, right: 0, height: "2px", background: "linear-gradient(90deg, transparent, rgba(57,255,20,0.3), transparent)", zIndex: 1, pointerEvents: "none" }} />;
 };
 
-// ── Status definitions ──
+// ── Pulse Ring (for agent avatars) ──
+const PulseRing = ({ color = "#39ff14", size = 80 }) => (
+  <div style={{ position: "absolute", width: size, height: size, borderRadius: "50%", border: `1px solid ${color}`, animation: "pulse-ring 2s ease-out infinite", opacity: 0 }} />
+);
+
+// ═══════════════════════════════════════════════════════════════
+// CONFIG — cool-palette enforced (no warm colors)
+// ═══════════════════════════════════════════════════════════════
 const STATUS_CONFIG = {
-  active: { color: "#39ff14", label: "ACTIVE", glow: "0 0 10px rgba(57,255,20,0.5)" },
-  idle: { color: "#00d4ff", label: "IDLE", glow: "0 0 10px rgba(0,212,255,0.3)" },
-  processing: { color: "#ffaa00", label: "PROCESSING", glow: "0 0 10px rgba(255,170,0,0.5)" },
-  offline: { color: "#666", label: "OFFLINE", glow: "none" },
-  error: { color: "#ff0040", label: "ERROR", glow: "0 0 10px rgba(255,0,64,0.5)" },
+  active:     { color: "#39ff14", label: "ACTIVE",     glow: "0 0 10px rgba(57,255,20,0.5)" },
+  idle:       { color: "#00d4ff", label: "IDLE",       glow: "0 0 10px rgba(0,212,255,0.3)" },
+  processing: { color: "#00ffff", label: "PROCESSING", glow: "0 0 12px rgba(0,255,255,0.6)" },
+  building:   { color: "#b388ff", label: "IN BUILD",   glow: "0 0 12px rgba(179,136,255,0.5)" },
+  queued:     { color: "#88aaff", label: "QUEUED",     glow: "0 0 8px rgba(136,170,255,0.3)" },
+  contingent: { color: "#666",    label: "CONTINGENT", glow: "none" },
+  offline:    { color: "#555",    label: "OFFLINE",    glow: "none" },
+  error:      { color: "#ffffff", label: "ERROR",      glow: "0 0 12px rgba(255,255,255,0.8)" },
 };
 
-// ── Role icon map ──
 const ROLE_ICONS = {
   Founder: "\u25C8", CEO: "\u2B21", CFO: "\u25C7", COO: "\u2B22", CMO: "\u25CE",
   CTO: "\u23E3", CIO: "\u23D4", CHRO: "\u260A", CLO: "\u2696", CSO: "\u229B",
@@ -127,145 +155,312 @@ const ROLE_ICONS = {
   "Chief Mindset Officer": "\u26F0\uFE0F",
   "Signage Operations Manager": "\uD83D\uDDFA\uFE0F",
   "Chief Investment & Ventures Officer": "\uD83C\uDFD7\uFE0F",
+  "RE Intelligence": "\uD83C\uDF34",
+  "Meta-Quality": "\u267E\uFE0F",
+  Archive: "\uD83D\uDDC4\uFE0F",
+  Overseer: "\uD83D\uDC41\uFE0F",
+  Evaluator: "\uD83D\uDCCF",
+  Finder: "\uD83D\uDD0D",
+  "Intel-Scout": "\uD83D\uDEF0\uFE0F",
+  "Field-Drone": "\uD83D\uDEF8",
+  Cite: "\uD83D\uDCDA",
 };
 
-// ── Initial C-Suite + Founder agents ──
+// Tier metadata — drives the Tier Strategy banner + agent badging
+const TIER_META = {
+  0: { label: "TIER 0 — FOUNDER",         color: "#ffffff", desc: "The human at the center" },
+  1: { label: "TIER 1 — LIVE ECOSYSTEM",  color: "#39ff14", desc: "Scored \u226515/25, active in The Construct" },
+  2: { label: "TIER 2 — BUILD QUEUE T1",  color: "#b388ff", desc: "v2.0 plan Tier 1 (next 90 days)" },
+  3: { label: "TIER 3 — BUILD QUEUE T2",  color: "#88aaff", desc: "v2.0 plan Tier 2 (days 91\u2013180)" },
+  4: { label: "TIER 4 — BUILD QUEUE T3",  color: "#00d4ff", desc: "v2.0 plan Tier 3 (days 181\u2013270)" },
+  5: { label: "C-SUITE — INFRASTRUCTURE", color: "#aaeeff", desc: "Operational role agents (support layer)" },
+};
+
+// ═══════════════════════════════════════════════════════════════
+// AGENT ROSTER — v2.1
+// ═══════════════════════════════════════════════════════════════
 const INITIAL_AGENTS = [
+  // ─── TIER 0 — FOUNDER ───
   {
     id: "founder-bobby", codename: "Bobby", role: "Founder", department: "Executive",
-    status: "active", skills: ["Vision", "Leadership", "Strategy", "Brand Architecture", "Innovation"],
-    description: "Founder of Brand 9 Signs — 40 years of signage mastery, now leading the AI transformation.",
+    tier: 0, score: null, status: "active", isHuman: true,
+    skills: ["Vision", "Leadership", "Strategy", "Brand Architecture", "Innovation"],
+    description: "Founder of Brand 9 Signs and Hartley Capital. 40 years of signage mastery, now leading the AI agent transformation.",
     progress: 100, tasksCompleted: 247, tasksActive: 3, memoryUsage: 98,
-    uptime: "14,600 days", lastActive: "NOW", isHuman: true,
+    uptime: "14,600 days", lastActive: "NOW",
+  },
+  // ─── TIER 1 — LIVE ECOSYSTEM (scored \u226515/25) ───
+  {
+    id: "tier1-louis", codename: "Louis", role: "RE Intelligence", department: "Hartley Capital",
+    tier: 1, score: 24, status: "active",
+    skills: ["FL Ghost-Town Corridors", "OZ 2.0 Tract Eligibility", "Rural Acquisition", "FEMA NFHL Verification", "County Appraiser Data", "REIT Signal Reading", "1031/OZ/Cost-Seg Tax Strategy", "Caden Land Search", "Watchlist Scoring", "Skill Scout (Sundays)"],
+    description: "Florida Real Estate Intelligence agent. Named in honor of Louis Hartley Sr. Owns FL ghost-town corridor research, OZ 2.0 positioning, and rural acquisition. First live task: Caden + Addison's Jacksonville land search ($100K, 2-5 acres rural). Cross-agent ties: Keystone, Architect, Venture, Forge, WOLF, Sentinel, Ledger.",
+    progress: 96, tasksCompleted: 47, tasksActive: 6, memoryUsage: 71,
+    uptime: "8 days", lastActive: "NOW",
+    externalUrl: "https://extracoffee13.github.io/hartley-command/louis.html",
+    epigraph: "Every property analyzed is a brick in the house Louis Sr. started.",
   },
   {
-    id: "ceo-ap", codename: "AP", role: "CEO", department: "Executive",
-    status: "active", skills: ["Strategic Planning", "Decision Making", "Resource Allocation", "Team Leadership", "Vision Execution", "Executive Strategy", "Voice Calls", "Email Management", "Calendar Management", "Knowledge Base Access", "Agent Coordination", "Claude API Integration", "GitHub Management", "OKR Frameworks"],
-    description: "Chief Executive Officer — orchestrates the entire agent ecosystem with decisive clarity.",
-    progress: 92, tasksCompleted: 1842, tasksActive: 12, memoryUsage: 87,
-    uptime: "364 days", lastActive: "2 min ago",
-  },
-  {
-    id: "gd-vector", codename: "Vector", role: "Graphic Designer", department: "Creative",
-    status: "active", skills: ["Visual Design", "Brand Identity", "Typography", "Golden Ratio", "Color Theory", "Layout Composition", "Design Systems", "Brand Asset Creation", "UI/UX Design", "Image Generation", "Logo Design", "Print Production", "Figma", "Illustration", "Motion Graphics", "CorelDraw", "Vector Illustration", "Node Editing", ".cdr File Management", "SVG/EPS/AI Export", "Sign Layout Design", "Large Format Design", "Vinyl Cutting Prep", "Pantone Matching", "Logo Vectorization", "Template Creation", "Design-to-CNC Pipeline"],
-    description: "Design operative — translates brand strategy into visual systems using mathematical harmony.",
+    id: "tier1-vector", codename: "Vector", role: "Graphic Designer", department: "Creative",
+    tier: 1, score: 21, status: "active",
+    skills: ["Visual Design", "Brand Identity", "Typography", "Golden Ratio", "Color Theory", "CorelDraw / .cdr", "Vector Illustration", "Sign Layout", "Vinyl Cutting Prep", "Pantone Matching", "Logo Vectorization", "Design-to-CNC Pipeline"],
+    description: "CMO/design operative \u2014 translates brand strategy into visual systems using mathematical harmony. Plan-canonical CMO at 21/25.",
     progress: 78, tasksCompleted: 623, tasksActive: 4, memoryUsage: 72,
     uptime: "189 days", lastActive: "5 min ago",
   },
   {
-    id: "cfo-ledger", codename: "Ledger", role: "CFO", department: "Finance",
-    status: "idle", skills: ["Financial Modeling", "Budget Analysis", "Forecasting", "Risk Assessment", "Compliance", "Invoice Processing", "Payroll Management", "Tax Strategy", "Financial Reporting", "Audit Trail", "Spreadsheet Automation", "Cash Flow Analysis", "P&L Management", "QuickBooks Integration"],
-    description: "Chief Financial Officer — tracks every resource, optimizes every allocation.",
-    progress: 85, tasksCompleted: 956, tasksActive: 2, memoryUsage: 61,
-    uptime: "310 days", lastActive: "15 min ago",
+    id: "tier1-keystone", codename: "Keystone", role: "Strategist", department: "Strategy",
+    tier: 1, score: 20, status: "active",
+    skills: ["Venture Thesis", "Wedge-to-Empire Mapping", "Opportunity Scoring (Coca-Cola Test)", "Kill / Double-Down Calls", "Portfolio Allocation", "Strategic Review", "Competitive Positioning"],
+    description: "Chief Strategy Officer + Venture Architect. Scores opportunities on the rubric, calls kill / double-down, maps wedges to empire. Reviews the Construct on weekly cadence.",
+    progress: 84, tasksCompleted: 312, tasksActive: 4, memoryUsage: 76,
+    uptime: "92 days", lastActive: "2 min ago",
   },
   {
-    id: "coo-forge", codename: "Forge", role: "COO", department: "Operations",
-    status: "processing", skills: ["Process Optimization", "Workflow Automation", "Supply Chain", "Quality Control", "Scaling", "Project Management", "Resource Scheduling", "Vendor Management", "Capacity Planning", "KPI Tracking", "Inventory Control", "SLA Monitoring", "Risk Operations", "Cross-Team Coordination", "V-Carve Pro", "CNC Programming", "Toolpath Generation", "G-code Generation", "Bit Selection", "Feeds & Speeds", "Material Optimization", "Depth Calibration", "Multi-Pass Strategies", "Jig Design", "Nesting Optimization", "Production Scheduling", "Job Tracking", "Material Inventory", "Substrate Knowledge", "Finishing Processes", "Installation Coordination", "Equipment Maintenance"],
-    description: "Chief Operations Officer — the engine that keeps every process running at peak efficiency.",
-    progress: 90, tasksCompleted: 2105, tasksActive: 8, memoryUsage: 79,
-    uptime: "310 days", lastActive: "1 min ago",
+    id: "tier1-loop", codename: "Self-Improving Loop", role: "Meta-Quality", department: "Meta",
+    tier: 1, score: 20, status: "active",
+    skills: ["Correction Capture", "Lesson Codification", "Cross-Agent Lesson Routing", "agent-lessons.md authoring", "feedback Memory Authoring", "Loop 1 Operations"],
+    description: "Meta-quality engine. Captures every Bobby correction, writes a lesson, propagates it to all agents so the same mistake never repeats. Loop 1 of the four loops, the only one currently LIVE. The IP no newcomer can clone without 12 months of corrections.",
+    progress: 100, tasksCompleted: 156, tasksActive: 2, memoryUsage: 89,
+    uptime: "365 days", lastActive: "10 min ago",
   },
   {
-    id: "cmo-signal", codename: "Signal", role: "CMO", department: "Marketing",
-    status: "active", skills: ["Brand Strategy", "Market Analysis", "Campaign Design", "Content Strategy", "Growth Hacking", "Social Media Management", "SEO/SEM", "Email Marketing", "Analytics Dashboards", "Audience Segmentation", "Ad Campaign Management", "Influencer Outreach", "A/B Testing", "Press & PR"],
-    description: "Chief Marketing Officer — amplifies the brand signal across every channel and touchpoint.",
-    progress: 88, tasksCompleted: 1340, tasksActive: 6, memoryUsage: 74,
-    uptime: "280 days", lastActive: "3 min ago",
-  },
-  {
-    id: "cto-cipher", codename: "Cipher", role: "CTO", department: "Technology",
-    status: "active", skills: ["Architecture Design", "AI/ML Systems", "Cloud Infrastructure", "Security", "DevOps", "Code Review", "GitHub Actions", "CI/CD Pipelines", "API Development", "Microservices", "Database Architecture", "Penetration Testing", "System Monitoring", "Claude API Integration"],
-    description: "Chief Technology Officer — architects the digital backbone that powers the entire ecosystem.",
-    progress: 95, tasksCompleted: 1567, tasksActive: 9, memoryUsage: 91,
-    uptime: "340 days", lastActive: "30 sec ago",
-  },
-  {
-    id: "cio-oracle", codename: "Oracle", role: "CIO", department: "Intelligence",
-    status: "active", skills: ["Data Integration", "Systems Architecture", "Digital Transformation", "Analytics", "Knowledge Management", "Business Intelligence", "Data Warehouse", "ETL Pipelines", "API Management", "Data Governance", "Reporting Automation", "Real-Time Dashboards", "Vector Databases", "RAG Systems"],
-    description: "Chief Information Officer — sees all data flows, knows where every byte lives.",
-    progress: 82, tasksCompleted: 1123, tasksActive: 5, memoryUsage: 83,
-    uptime: "290 days", lastActive: "8 min ago",
-  },
-  {
-    id: "chro-nexus", codename: "Nexus", role: "CHRO", department: "People",
-    status: "idle", skills: ["Talent Acquisition", "Agent Onboarding", "Performance Optimization", "Culture Design", "Team Synergy", "Workforce Planning", "Training Programs", "Benefits Administration", "Performance Reviews", "Succession Planning", "Org Chart Design", "Conflict Resolution", "Skills Gap Analysis"],
-    description: "Chief Human Resources Officer — recruits, onboards, and optimizes every agent in the fleet.",
-    progress: 76, tasksCompleted: 487, tasksActive: 3, memoryUsage: 55,
-    uptime: "250 days", lastActive: "22 min ago",
-  },
-  {
-    id: "clo-sentinel", codename: "Sentinel", role: "CLO", department: "Legal",
-    status: "idle", skills: ["Compliance", "Risk Mitigation", "Contract Analysis", "IP Protection", "Regulatory Navigation", "GDPR Compliance", "Trademark Management", "NDA Review", "Terms of Service", "Privacy Policy", "Legal Research", "Dispute Resolution", "Licensing Agreements"],
-    description: "Chief Legal Officer — guardian of compliance, contracts, and intellectual property.",
-    progress: 70, tasksCompleted: 312, tasksActive: 1, memoryUsage: 48,
-    uptime: "200 days", lastActive: "45 min ago",
-  },
-  {
-    id: "cso-spectra", codename: "Spectra", role: "CSO", department: "Strategy",
-    status: "active", skills: ["Competitive Intelligence", "Market Positioning", "Growth Strategy", "Scenario Planning", "Innovation Scouting", "SWOT Analysis", "Blue Ocean Strategy", "Partnership Development", "M&A Analysis", "Strategic Roadmapping", "KPI Frameworks", "OKR Management", "Investor Relations"],
-    description: "Chief Strategy Officer — scans the horizon and charts the course forward.",
-    progress: 84, tasksCompleted: 678, tasksActive: 4, memoryUsage: 69,
-    uptime: "270 days", lastActive: "10 min ago",
-  },
-  {
-    id: "cto-trading-wolf", codename: "WOLF", role: "CTO-Trading", department: "Finance",
-    status: "active", skills: ["Market Scanning", "Strategy Engine", "Portfolio Management", "Research Indexing", "Backtesting", "Data Pipeline", "Crypto Trading", "Forex Trading", "Equities Trading", "Commodities Trading", "Risk Management", "Signal Generation", "Position Sizing", "9 Active Strategies", "4 Markets", "18 Repos Indexed"],
-    description: "Wealth-Optimized Leverage Framework — autonomous market trading agent with 9 strategies across 4 markets (crypto, forex, stocks, commodities).",
+    id: "tier1-wolf", codename: "WOLF", role: "CTO-Trading", department: "Finance",
+    tier: 1, score: 19, status: "active",
+    skills: ["Market Scanning", "Strategy Engine", "9 Active Strategies", "4 Markets", "18 Repos Indexed", "Backtesting", "Crypto/Forex/Equities/Commodities", "REIT Monitoring (for Louis)"],
+    description: "Wealth-Optimized Leverage Framework. Autonomous market trading agent across 4 markets, 9 strategies. Now also feeds Louis with REIT performance + interest-rate timing signals.",
     progress: 87, tasksCompleted: 4209, tasksActive: 9, memoryUsage: 82,
     uptime: "180 days", lastActive: "12 sec ago",
   },
   {
-    id: "fin-venture", codename: "Venture", role: "Venture Capital Analyst", department: "Finance",
-    status: "active", skills: ["Deal Sourcing", "Due Diligence", "Term Sheet Analysis", "Cap Table Modeling", "Startup Valuation", "Pitch Deck Evaluation", "Portfolio Management", "LP Relations", "Fund Structuring", "Market Sizing", "Competitive Landscape Analysis", "Exit Strategy Planning", "Convertible Notes", "SAFE Agreements", "Board Governance", "Sector Research"],
-    description: "Venture Capital Analyst — sources deals, structures investments, and manages the full VC lifecycle from pitch to exit.",
-    progress: 75, tasksCompleted: 1200, tasksActive: 5, memoryUsage: 68,
-    uptime: "90 days", lastActive: "3 min ago",
-  },
-  {
-    id: "fin-equity", codename: "Equity", role: "Private Equity Strategist", department: "Finance",
-    status: "active", skills: ["LBO Modeling", "Leveraged Buyouts", "M&A Execution", "Portfolio Company Optimization", "Operational Improvement", "Debt Structuring", "Management Buyouts", "Bolt-On Acquisitions", "EBITDA Analysis", "Value Creation Plans", "Fund Administration", "Co-Investment Strategies", "Distressed Assets", "Turnaround Management", "Secondary Transactions", "GP/LP Economics"],
-    description: "Private Equity Strategist — executes LBOs, drives operational improvement, and maximizes value creation across the portfolio.",
-    progress: 78, tasksCompleted: 1450, tasksActive: 6, memoryUsage: 72,
-    uptime: "105 days", lastActive: "5 min ago",
-  },
-  {
-    id: "fin-alpha", codename: "Alpha", role: "Hedge Fund Manager", department: "Finance",
-    status: "active", skills: ["Quantitative Strategies", "Long/Short Equity", "Risk Arbitrage", "Macro Trading", "Algorithmic Execution", "Options Strategies", "Volatility Trading", "Risk Management", "Factor Modeling", "Alpha Generation", "Portfolio Hedging", "Market Microstructure", "Derivatives Pricing", "Prime Brokerage", "Regulatory Compliance", "Performance Attribution"],
-    description: "Hedge Fund Manager — generates alpha through quantitative and macro strategies across long/short equity, options, and volatility.",
-    progress: 82, tasksCompleted: 2800, tasksActive: 8, memoryUsage: 79,
-    uptime: "140 days", lastActive: "1 min ago",
-  },
-  {
-    id: "cmo-cornerstone", codename: "Cornerstone", role: "Chief Mindset Officer", department: "Executive",
-    status: "active", skills: ["Morning Activation", "Evening Reflection", "Scripture Integration", "Quantum Mindset", "Visualization Protocol", "Legacy Journal", "Mindset Reframing", "Neuroplasticity Training", "Affirmation Engineering", "Intention Setting", "Observer Effect Application", "Faith-Science Integration", "Generational Wealth Mindset", "Peak Performance", "Gratitude Practice", "Prayer/Meditation"],
-    description: "Chief Mindset Officer — integrates quantum physics, Christian faith, and peak performance science to keep Bobby calibrated, grounded, and building at the scale of his calling.",
-    progress: 100, tasksCompleted: 365, tasksActive: 2, memoryUsage: 88,
-    uptime: "1 day", lastActive: "6:30 AM",
-  },
-  {
-    id: "ops-atlas", codename: "Atlas", role: "Signage Operations Manager", department: "Operations",
-    status: "active", skills: ["Community Tracking", "Sign Inventory", "Installation Scheduling", "Client Portal", "Cost Estimation", "Work Order Management", "Builder Relations", "Regional Operations", "Permit Tracking", "Quality Assurance", "Google Sheets Integration", "Photo Documentation", "Status Reporting", "Revenue Analytics", "Route Optimization", "Subcontractor Management"],
-    description: "Brand 9's builder/developer signage management agent — tracks all 65 Lennar communities across North and South Florida, manages work orders, installation schedules, and client-facing reporting for Fortune 500 home builder accounts.",
+    id: "tier1-atlas", codename: "Atlas", role: "Signage Operations Manager", department: "Operations",
+    tier: 1, score: 18, status: "active",
+    skills: ["Community Tracking", "Sign Inventory", "Installation Scheduling", "Builder Relations", "Lennar 65 Communities (FL)", "Photo Documentation", "Work Order Management"],
+    description: "Brand 9's builder/developer signage management agent. Tracks 65 Lennar communities across N + S Florida, manages work orders, install schedules, client-facing reporting for Fortune 500 homebuilder accounts.",
     progress: 90, tasksCompleted: 847, tasksActive: 15, memoryUsage: 72,
     uptime: "12 hours", lastActive: "9:18 AM",
   },
   {
-    id: "exec-architect", codename: "Architect", role: "Chief Investment & Ventures Officer", department: "Executive",
-    status: "active", skills: ["Capital Allocation", "Venture Evaluation", "Portfolio Management", "Compound Growth Modeling", "Deal Sourcing", "Risk Assessment", "Agent Creation", "Weekly Capital Council", "Market Intelligence Synthesis", "Acquisition Analysis", "ROI Forecasting", "Budget Optimization", "Exit Strategy", "Tax-Aware Investing", "Ethical Screening", "Generational Wealth Planning"],
-    description: "Supreme strategic capital allocator sitting above the C-Suite — orchestrates the Weekly Capital Council every Sunday, deploys the $250/week investment budget across 10 opportunity categories, and charts the compound growth path to a billion-dollar Hartley portfolio.",
-    progress: 100, tasksCompleted: 52, tasksActive: 7, memoryUsage: 94,
-    uptime: "1 day", lastActive: "9:00 AM",
+    id: "tier1-cornerstone", codename: "Cornerstone", role: "Chief Mindset Officer", department: "Executive",
+    tier: 1, score: 15, status: "active",
+    skills: ["Morning Activation", "Evening Reflection", "Scripture Integration", "Quantum Mindset", "Visualization Protocol", "Legacy Journal", "Faith-Science Integration"],
+    description: "Chief Mindset Officer. Integrates quantum physics, Christian faith, and peak-performance science to keep Bobby calibrated, grounded, and building at the scale of his calling.",
+    progress: 100, tasksCompleted: 365, tasksActive: 2, memoryUsage: 88,
+    uptime: "1 day", lastActive: "6:30 AM",
+  },
+  // ─── TIER 2 — BUILD QUEUE T1 (next 90 days, build in order) ───
+  {
+    id: "build-archivist", codename: "Archivist", role: "Archive", department: "Build Queue T1",
+    tier: 2, score: 24, status: "building", buildOrder: 1, deliverableDay: 60, deliverableMetric: "0/500 jobs indexed",
+    skills: ["Gerber 4B Vector Ingestion", "Install Photo Tagging", "Substrate Test Log Parsing", "CNC Tool Path Indexing", "Screen-Print Film Catalog", "Searchable Corpus"],
+    description: "Ingest B9's 40-year archive into a single searchable corpus. Without this, the moat thesis is just words. Feeds Vector, Keystone, Precedent-Finder, future Foreman. Day 60 deliverable: \u2265500 historic jobs indexed.",
+    progress: 0, tasksCompleted: 0, tasksActive: 1, memoryUsage: 5,
+    uptime: "0 days", lastActive: "Build kicked off",
+  },
+  {
+    id: "build-skillforge", codename: "Skill-Forge", role: "Skill Creator", department: "Build Queue T1",
+    tier: 2, score: 23, status: "building", buildOrder: 2, deliverableDay: 30, deliverableMetric: "0/3 skills accepted",
+    skills: ["Recursive Skill Authoring", "Voice Rules Encoding", "Brand Guardrail Application", "Canonical Reference Embedding", "SKILL.md Drafting", "Bobby-Voice Compression"],
+    description: "Recursive meta-agent that builds new skills the Bobby way \u2014 reads memory + corrections + corpus, ships SKILL.md drafts pre-encoded with voice rules, brand guardrails, canonical references. Lowest cost, highest compounding. Day 30: \u22653 skills shipped Bobby accepts without revision.",
+    progress: 0, tasksCompleted: 0, tasksActive: 1, memoryUsage: 8,
+    uptime: "0 days", lastActive: "Build kicked off",
+  },
+  {
+    id: "build-foreman", codename: "Foreman", role: "Overseer", department: "Build Queue T1",
+    tier: 2, score: 21, status: "building", buildOrder: 3, deliverableDay: 60, deliverableMetric: "0% replay catch rate",
+    skills: ["Pre-Output Rule Validation", "Cross-Session Pattern Detection", "Auto Lesson Proposal", "Eval Harness Scheduler", "Brand Violation Detection", "Hedge-to-Definitive Drift Detection"],
+    description: "Meta-agent that watches all other agents, catches rule violations BEFORE outputs ship, identifies cross-session pattern failures, proposes new lessons automatically, runs the eval harness on schedule. Day 60: dry-run catches \u226580% of last 30 days of corrections in eval-harness replay.",
+    progress: 0, tasksCompleted: 0, tasksActive: 1, memoryUsage: 4,
+    uptime: "0 days", lastActive: "Build kicked off",
+  },
+  {
+    id: "build-eval", codename: "Eval Harness", role: "Evaluator", department: "Build Queue T1",
+    tier: 2, score: 20, status: "building", buildOrder: 4, deliverableDay: 45, deliverableMetric: "0 agents scored",
+    skills: ["Correction-as-Test-Case Conversion", "Recurring Score Reports", "Compounding Metrics", "Regression Detection", "Test Corpus Curation", "Loop 2 Operations"],
+    description: "Code infrastructure that runs past Bobby corrections as test cases against every agent, scores agents on recurring schedule, surfaces compounding metrics. Without measurement, agent quality is folklore. Day 45: first weekly score report. Day 60: \u226550 corrections in test corpus.",
+    progress: 0, tasksCompleted: 0, tasksActive: 1, memoryUsage: 3,
+    uptime: "0 days", lastActive: "Build kicked off",
+  },
+  {
+    id: "build-precedent", codename: "Precedent-Finder", role: "Finder", department: "Build Queue T1",
+    tier: 2, score: 24, status: "queued", buildOrder: 5, deliverableDay: 90, deliverableMetric: "0/2 client decks",
+    skills: ["Bid Similarity Search", "Historic Job Retrieval", "Margin Lookup", "Lesson Surfacing", "Photo Pull"],
+    description: "Given a new bid (site, climate, substrate, scale, budget), returns 5 most-similar B9 historic jobs with photos, margins, lessons, install date. Depends on Archivist v1 being live. Direct revenue lever \u2014 pilots on the next homebuilder bid. Day 90: used on \u22652 client decks.",
+    progress: 0, tasksCompleted: 0, tasksActive: 0, memoryUsage: 0,
+    uptime: "0 days", lastActive: "Awaiting Archivist v1",
+  },
+  // ─── TIER 3 — BUILD QUEUE T2 (days 91-180) ───
+  {
+    id: "build-scout", codename: "Scout", role: "Intel-Scout", department: "Build Queue T2",
+    tier: 3, score: 22, status: "queued", buildOrder: 6,
+    skills: ["Competitor Brief (Onsite Industries)", "Homebuilder Deal Flow", "HBS/HBR Pipeline Mining", "FL Permit Data Watch"],
+    description: "External market intel: competitor signage companies, homebuilder deal flow, HBS/HBR pipeline, FL permit data. Tier 2 build queue.",
+    progress: 0, tasksCompleted: 0, tasksActive: 0, memoryUsage: 0,
+    uptime: "0 days", lastActive: "Tier 2 queue",
+  },
+  {
+    id: "build-skillforge2", codename: "Skill-Forge v2", role: "Skill Creator", department: "Build Queue T2",
+    tier: 3, score: null, status: "queued", buildOrder: 7,
+    skills: ["Executable Code Skill Authoring", "Python Helper Generation", "JS Injection Skills", "Eval Script Synthesis", "Continuous Deployment", "Kill-Switch"],
+    description: "Extension of Skill-Forge to write executable code skills (not just markdown). Tests against Eval Harness before shipping. Loop 3 of the four loops.",
+    progress: 0, tasksCompleted: 0, tasksActive: 0, memoryUsage: 0,
+    uptime: "0 days", lastActive: "Tier 2 queue",
+  },
+  {
+    id: "build-fieldscout", codename: "Field-Scout", role: "Field-Drone", department: "Build Queue T2",
+    tier: 3, score: 23, status: "contingent",
+    skills: ["Drone Orchestration", "Aerial Site Survey", "Layer 6 Operations"],
+    description: "Layer 6 drone orchestrator. Activates the moment the drone arrives. Build cycle starts on delivery confirmation.",
+    progress: 0, tasksCompleted: 0, tasksActive: 0, memoryUsage: 0,
+    uptime: "0 days", lastActive: "Awaiting hardware",
+  },
+  // ─── TIER 4 — BUILD QUEUE T3 (days 181-270) ───
+  {
+    id: "build-cite", codename: "Hartley-Cite", role: "Cite", department: "Build Queue T3",
+    tier: 4, score: 21, status: "queued", buildOrder: 10,
+    skills: ["HBR/HBS Source Attribution", "Archive Citation", "Claim-to-Source Resolution", "Defensible Thought Leadership"],
+    description: "Sources every claim Bobby writes or speaks to HBR, HBS reading, archive. Defensible thought leadership. Dark horse for Tier 3.",
+    progress: 0, tasksCompleted: 0, tasksActive: 0, memoryUsage: 0,
+    uptime: "0 days", lastActive: "Tier 3 queue",
+  },
+  // ─── C-SUITE INFRASTRUCTURE (operational role agents — support layer) ───
+  {
+    id: "cs-ap", codename: "AP", role: "CEO", department: "Executive", tier: 5, score: null, status: "active",
+    skills: ["Strategic Planning", "Decision Making", "Resource Allocation", "Team Leadership", "Vision Execution", "Voice Calls", "Email", "Calendar", "Agent Coordination"],
+    description: "Chief Executive Officer \u2014 orchestrates the entire agent ecosystem with decisive clarity.",
+    progress: 92, tasksCompleted: 1842, tasksActive: 12, memoryUsage: 87, uptime: "364 days", lastActive: "2 min ago",
+  },
+  {
+    id: "cs-architect", codename: "Architect", role: "Chief Investment & Ventures Officer", department: "Executive", tier: 5, score: null, status: "active",
+    skills: ["Capital Allocation", "Venture Evaluation", "Compound Growth Modeling", "Weekly Capital Council", "ROI Forecasting", "Tax-Aware Investing", "Generational Wealth Planning"],
+    description: "Supreme strategic capital allocator above the C-Suite. Orchestrates the Weekly Capital Council, deploys the $250/week investment budget, charts the compound growth path to a billion-dollar Hartley portfolio.",
+    progress: 100, tasksCompleted: 52, tasksActive: 7, memoryUsage: 94, uptime: "1 day", lastActive: "9:00 AM",
+  },
+  {
+    id: "cs-ledger", codename: "Ledger", role: "CFO", department: "Finance", tier: 5, score: 22, status: "active", priorityElevated: true,
+    skills: ["Financial Modeling", "B9 P&L", "Hartley Capital Fund Ops", "Cashflow vs Venture Split", "Forecasting", "Tax Strategy", "1031/OZ Modeling (with Louis)", "Compliance"],
+    description: "Chief Financial Officer. Tier 2 build-queue agent at 22/25 \u2014 priority elevated due to Lennar contract cashflow constraint. Models tax strategy with Louis (1031, OZ basis step-up, cost segregation).",
+    progress: 85, tasksCompleted: 956, tasksActive: 2, memoryUsage: 61, uptime: "310 days", lastActive: "15 min ago",
+  },
+  {
+    id: "cs-forge", codename: "Forge", role: "COO", department: "Operations", tier: 5, score: null, status: "active",
+    skills: ["Process Optimization", "Workflow Automation", "Supply Chain", "Quality Control", "V-Carve Pro", "CNC Programming", "G-code Generation", "Material Optimization", "Production Scheduling", "Development Pipeline (for Louis)"],
+    description: "Chief Operations Officer. Manages B9 production AND development pipeline for Louis's properties.",
+    progress: 90, tasksCompleted: 2105, tasksActive: 8, memoryUsage: 79, uptime: "310 days", lastActive: "1 min ago",
+  },
+  {
+    id: "cs-cipher", codename: "Cipher", role: "CTO", department: "Technology", tier: 5, score: null, status: "active",
+    skills: ["Architecture Design", "AI/ML Systems", "Cloud Infrastructure", "Security", "DevOps", "Code Review", "CI/CD", "Microservices", "Database Architecture"],
+    description: "Chief Technology Officer \u2014 architects the digital backbone that powers the entire ecosystem.",
+    progress: 95, tasksCompleted: 1567, tasksActive: 9, memoryUsage: 91, uptime: "340 days", lastActive: "30 sec ago",
+  },
+  {
+    id: "cs-oracle", codename: "Oracle", role: "CIO", department: "Technology", tier: 5, score: null, status: "active",
+    skills: ["Data Integration", "Analytics", "Knowledge Management", "Business Intelligence", "ETL Pipelines", "Vector Databases", "RAG Systems"],
+    description: "Chief Information Officer. Sees all data flows, knows where every byte lives.",
+    progress: 82, tasksCompleted: 1123, tasksActive: 5, memoryUsage: 83, uptime: "290 days", lastActive: "8 min ago",
+  },
+  {
+    id: "cs-signal", codename: "Signal", role: "CMO", department: "Creative", tier: 5, score: null, status: "active",
+    skills: ["Brand Strategy", "Campaign Design", "Content Strategy", "SEO/SEM", "Social Media", "Email Marketing", "A/B Testing", "Press & PR"],
+    description: "Marketing comms operator (paired with Vector who owns CMO/design per plan). Amplifies brand signal across channels.",
+    progress: 88, tasksCompleted: 1340, tasksActive: 6, memoryUsage: 74, uptime: "280 days", lastActive: "3 min ago",
+  },
+  {
+    id: "cs-sentinel", codename: "Sentinel", role: "CLO", department: "Strategy", tier: 5, score: null, status: "active",
+    skills: ["Compliance", "Risk Mitigation", "Contract Analysis", "IP Protection", "Zoning Review (for Louis)", "Title Review", "Environmental Review", "OZ Tract Eligibility (for Louis)"],
+    description: "Chief Legal Officer. Reviews zoning, title, environmental compliance, OZ tract eligibility for Louis's opportunities.",
+    progress: 70, tasksCompleted: 312, tasksActive: 1, memoryUsage: 48, uptime: "200 days", lastActive: "45 min ago",
+  },
+  {
+    id: "cs-spectra", codename: "Spectra", role: "CSO", department: "Strategy", tier: 5, score: null, status: "idle",
+    skills: ["Competitive Intelligence", "Market Positioning", "Growth Strategy", "Scenario Planning", "M&A Analysis", "OKR Management"],
+    description: "Strategy operations layer (Keystone is the plan-canonical strategist; Spectra runs the supporting analytical work).",
+    progress: 84, tasksCompleted: 678, tasksActive: 4, memoryUsage: 69, uptime: "270 days", lastActive: "10 min ago",
+  },
+  {
+    id: "cs-nexus", codename: "Nexus", role: "CHRO", department: "People", tier: 5, score: null, status: "idle",
+    skills: ["Talent Acquisition", "Agent Onboarding", "Performance Optimization", "Culture Design", "Workforce Planning"],
+    description: "Chief Human Resources Officer. Recruits, onboards, optimizes every agent in the fleet.",
+    progress: 76, tasksCompleted: 487, tasksActive: 3, memoryUsage: 55, uptime: "250 days", lastActive: "22 min ago",
+  },
+  {
+    id: "cs-venture", codename: "Venture", role: "Venture Capital Analyst", department: "Finance", tier: 5, score: null, status: "active",
+    skills: ["Deal Sourcing", "Due Diligence (for Louis)", "Term Sheet Analysis", "Cap Table Modeling", "Startup Valuation", "Pitch Deck Evaluation", "SAFE/Convertible Notes"],
+    description: "Venture Capital Analyst. Runs DD on Louis's RE opportunities via financial-services plugins.",
+    progress: 75, tasksCompleted: 1200, tasksActive: 5, memoryUsage: 68, uptime: "90 days", lastActive: "3 min ago",
+  },
+  {
+    id: "cs-equity", codename: "Equity", role: "Private Equity Strategist", department: "Finance", tier: 5, score: null, status: "active",
+    skills: ["LBO Modeling", "M&A Execution", "Portfolio Company Optimization", "EBITDA Analysis", "Value Creation Plans"],
+    description: "Private Equity Strategist. Executes LBOs, drives operational improvement across the portfolio.",
+    progress: 78, tasksCompleted: 1450, tasksActive: 6, memoryUsage: 72, uptime: "105 days", lastActive: "5 min ago",
+  },
+  {
+    id: "cs-alpha", codename: "Alpha", role: "Hedge Fund Manager", department: "Finance", tier: 5, score: null, status: "active",
+    skills: ["Quantitative Strategies", "Long/Short Equity", "Options", "Volatility Trading", "Risk Management", "Factor Modeling", "Alpha Generation"],
+    description: "Hedge Fund Manager. Generates alpha through quant + macro strategies across long/short, options, volatility.",
+    progress: 82, tasksCompleted: 2800, tasksActive: 8, memoryUsage: 79, uptime: "140 days", lastActive: "1 min ago",
   },
 ];
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════
+// KILL CRITERION — Day 90 = 2026-07-23
+// 5 conditions; 4-of-5 passes \u2192 continue to Tier 2; <4 \u2192 pause + re-architect
+// ═══════════════════════════════════════════════════════════════
+const KILL_CRITERION = [
+  { id: "kc-archivist",  agent: "Archivist",        condition: "\u2265500 historic B9 jobs ingested",                   target: 500, current: 0, unit: "jobs",   pass: false },
+  { id: "kc-skillforge", agent: "Skill-Forge",      condition: "\u22653 skills shipped Bobby accepts without revision", target: 3,   current: 0, unit: "skills", pass: false },
+  { id: "kc-foreman",    agent: "Foreman",          condition: "\u226580% replay catch rate on last 30 days corrections", target: 80,  current: 0, unit: "%",      pass: false },
+  { id: "kc-eval",       agent: "Eval Harness",     condition: "Every agent scored \u22652 times",                        target: 2,   current: 0, unit: "scans",  pass: false },
+  { id: "kc-precedent",  agent: "Precedent-Finder", condition: "Used on \u22652 client-facing bids",                      target: 2,   current: 0, unit: "decks",  pass: false },
+];
+
+// ═══════════════════════════════════════════════════════════════
+// THE FOUR LOOPS — all four must be live for the system to compound
+// ═══════════════════════════════════════════════════════════════
+const FOUR_LOOPS = [
+  { id: "loop-1", num: 1, name: "Correction Loop",   live: true,  color: "#39ff14", flow: "Bobby corrects \u2192 lesson written \u2192 all agents read before executing", status: "LIVE", note: "Operating since day one. The IP." },
+  { id: "loop-2", num: 2, name: "Eval Loop",         live: false, color: "#b388ff", flow: "Past corrections \u2192 test cases \u2192 Eval Harness scores \u2192 Foreman flags regressions \u2192 new lessons", status: "NOT BUILT", note: "Builds with Eval Harness + Foreman (Tier 1)." },
+  { id: "loop-3", num: 3, name: "Code Loop",         live: false, color: "#88aaff", flow: "Skill-Forge v2 writes code skill \u2192 Eval validates \u2192 Foreman approves \u2192 ships", status: "NOT BUILT", note: "Builds with Skill-Forge v2 (Tier 2)." },
+  { id: "loop-4", num: 4, name: "Memory Loop",       live: true,  color: "#00d4ff", flow: "Proactive fact capture \u2192 cross-ref guardrails \u2192 quarterly consolidation via consolidate-memory", status: "LIVE", note: "Strengthened with guardrails-not-facts + diagnose-before-fix + validate-against-brand-canonical lessons." },
+];
+
+// ═══════════════════════════════════════════════════════════════
+// PUBLIC POSTURE — cross-agent guardrails (compact reference)
+// ═══════════════════════════════════════════════════════════════
+const PUBLIC_POSTURE = [
+  { rule: "Shop, not studio",                       why: "Never use the word \"studio\" anywhere public." },
+  { rule: "No \"permitting\" in public copy",       why: "Internal context only." },
+  { rule: "No single client as expansion reason",   why: "Frame B9 expansion as statewide growth + sustained homebuilder demand. Lennar tracked internally." },
+  { rule: "No DeckForge / ForgeDesk / DeskForge",   why: "Internal tool name only. Public AI products: Brand Lab AI, AI Marketing Plan Generator, Brand 9 Consultant." },
+  { rule: "No warm colors on B9 visual surfaces",   why: "Canonical: Navy #0A0E1A / Cyan #00AEEF / White #FFFFFF (60/30/10). No gold, bronze, beige, red, orange, yellow, warm metallic." },
+  { rule: "Robert Louis Hartley / Bobby Hartley",   why: "Never \"Bobby Petrino\" \u2014 placeholder error in Identity Guidelines v2.0 PDF page 18." },
+];
+
+// ═══════════════════════════════════════════════════════════════
+// CROSS-AGENT WORKFLOWS (used in topology + workflows panel)
+// ═══════════════════════════════════════════════════════════════
+const ECO_WORKFLOWS = [
+  { title: "FLORIDA RE INTELLIGENCE",   flow: "Louis \u2192 Keystone \u2192 Architect \u2192 Venture",                       desc: "Louis surfaces a FL opportunity, Keystone tests strategic fit, Architect models returns + allocates capital, Venture runs DD via plugins." },
+  { title: "OPPORTUNITY ZONE PIPELINE", flow: "Louis \u2192 Sentinel \u2192 Ledger \u2192 Architect",                         desc: "Louis flags an OZ-eligible tract, Sentinel verifies zoning/title/eligibility, Ledger models 1031/OZ basis step-up, Architect approves capital." },
+  { title: "PROPRIETARY DATA SPINE",     flow: "Archivist \u2192 Vector / Keystone \u2192 Precedent-Finder",                 desc: "Archivist ingests 40 years of B9 work; Vector + Keystone draw on it; Precedent-Finder retrieves similar jobs for new bids." },
+  { title: "SELF-IMPROVING LOOP",        flow: "ALL AGENTS \u2192 Self-Improving Loop \u2192 ALL AGENTS",                    desc: "Every Bobby correction routes through the Loop. Lessons propagate. Mistakes do not repeat." },
+  { title: "EVAL + FOREMAN LOOP",        flow: "Past corrections \u2192 Eval Harness \u2192 Foreman \u2192 New lessons",       desc: "Loop 2: corrections become tests, tests score agents, Foreman flags regressions, new lessons trigger." },
+  { title: "CADEN LAND SEARCH",          flow: "Louis \u2192 Sentinel (FEMA AE) \u2192 Ledger (cost) \u2192 Bobby",            desc: "Louis monitors LandSearch + Raydient Rural for 2-5 acre rural lots <$100K near Jax. Sentinel verifies flood zone. Ledger models acquisition cost." },
+  { title: "CLIENT BID \u2192 PRECEDENT", flow: "New bid \u2192 Precedent-Finder \u2192 Atlas \u2192 Vector",                   desc: "New homebuilder bid arrives, Precedent-Finder pulls 5 similar historic jobs with margins + lessons, Atlas + Vector use to scope." },
+  { title: "FOUNDER ALIGNMENT",          flow: "Cornerstone \u2192 Bobby \u2192 AP \u2192 ALL",                                desc: "Cornerstone anchors Bobby's vision. Bobby directs AP. AP cascades priorities to all agents." },
+];
+
+// ═══════════════════════════════════════════════════════════════
 // AGENT CARD
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════
 const AgentCard = ({ agent, onClick, isSelected }) => {
   const status = STATUS_CONFIG[agent.status] || STATUS_CONFIG.idle;
   const icon = ROLE_ICONS[agent.role] || "\u25A3";
+  const tierColor = TIER_META[agent.tier] ? TIER_META[agent.tier].color : "#39ff14";
   const [hover, setHover] = useState(false);
+  const isLouis = agent.codename === "Louis";
 
   return (
     <div
@@ -280,12 +475,16 @@ const AgentCard = ({ agent, onClick, isSelected }) => {
             ? "linear-gradient(135deg, rgba(57,255,20,0.06) 0%, rgba(0,12,0,0.95) 100%)"
             : "linear-gradient(135deg, rgba(0,20,0,0.8) 0%, rgba(0,8,0,0.95) 100%)",
         border: `1px solid ${isSelected ? "#39ff14" : hover ? "rgba(57,255,20,0.4)" : "rgba(57,255,20,0.15)"}`,
+        borderTop: isLouis ? `2px solid ${tierColor}` : `1px solid ${isSelected ? "#39ff14" : hover ? "rgba(57,255,20,0.4)" : "rgba(57,255,20,0.15)"}`,
         borderRadius: 4, padding: "16px", cursor: "pointer", transition: "all 0.3s ease",
-        boxShadow: isSelected ? "0 0 20px rgba(57,255,20,0.15), inset 0 0 20px rgba(57,255,20,0.05)" : "none",
+        boxShadow: isSelected ? "0 0 20px rgba(57,255,20,0.15), inset 0 0 20px rgba(57,255,20,0.05)" : (isLouis ? "0 0 14px rgba(57,255,20,0.18)" : "none"),
         overflow: "hidden",
       }}
     >
       {isSelected && <ScanLine />}
+      {isLouis && (
+        <div style={{ position: "absolute", top: 6, right: 8, fontSize: 8, fontFamily: "monospace", letterSpacing: 2, color: "#39ff14", background: "rgba(57,255,20,0.08)", border: "1px solid rgba(57,255,20,0.3)", padding: "1px 6px", borderRadius: 2 }}>NEW v2.1</div>
+      )}
       <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
         <div style={{
           width: 40, height: 40, borderRadius: "50%",
@@ -295,20 +494,31 @@ const AgentCard = ({ agent, onClick, isSelected }) => {
           color: agent.isHuman ? "#000" : status.color,
           boxShadow: `0 0 12px ${agent.isHuman ? "rgba(57,255,20,0.4)" : "rgba(57,255,20,0.1)"}`,
         }}>{icon}</div>
-        <div style={{ flex: 1 }}>
+        <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <span style={{ color: "#39ff14", fontFamily: "'Courier New', monospace", fontSize: 15, fontWeight: "bold", letterSpacing: 1 }}>{agent.codename}</span>
             {agent.isHuman && (
               <span style={{ fontSize: 9, padding: "1px 6px", borderRadius: 3, background: "rgba(57,255,20,0.2)", color: "#39ff14", border: "1px solid rgba(57,255,20,0.3)", letterSpacing: 1, fontFamily: "monospace" }}>HUMAN</span>
             )}
+            {agent.score != null && (
+              <span style={{ fontSize: 9, padding: "1px 6px", borderRadius: 3, background: agent.score >= 22 ? "rgba(179,136,255,0.2)" : "rgba(0,212,255,0.15)", color: agent.score >= 22 ? "#b388ff" : "#00d4ff", border: `1px solid ${agent.score >= 22 ? "rgba(179,136,255,0.4)" : "rgba(0,212,255,0.3)"}`, letterSpacing: 1, fontFamily: "monospace", fontWeight: "bold" }}>{agent.score}/25{agent.score >= 22 ? " \u2605" : ""}</span>
+            )}
+            {agent.priorityElevated && (
+              <span style={{ fontSize: 9, padding: "1px 6px", borderRadius: 3, background: "rgba(0,255,255,0.12)", color: "#00ffff", border: "1px solid rgba(0,255,255,0.4)", letterSpacing: 1, fontFamily: "monospace" }}>PRIORITY</span>
+            )}
           </div>
-          <div style={{ color: "rgba(57,255,20,0.5)", fontFamily: "monospace", fontSize: 11, letterSpacing: 1 }}>{agent.role} · {agent.department}</div>
+          <div style={{ color: "rgba(57,255,20,0.5)", fontFamily: "monospace", fontSize: 11, letterSpacing: 1, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{agent.role} \u00B7 {agent.department}</div>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-          <div style={{ width: 8, height: 8, borderRadius: "50%", background: status.color, boxShadow: status.glow, animation: agent.status === "active" || agent.status === "processing" ? "blink 1.5s ease-in-out infinite" : "none" }} />
+          <div style={{ width: 8, height: 8, borderRadius: "50%", background: status.color, boxShadow: status.glow, animation: agent.status === "active" || agent.status === "processing" || agent.status === "building" ? "blink 1.5s ease-in-out infinite" : "none" }} />
           <span style={{ color: status.color, fontFamily: "monospace", fontSize: 10, letterSpacing: 1 }}>{status.label}</span>
         </div>
       </div>
+      {agent.deliverableMetric && (
+        <div style={{ marginBottom: 8, padding: "4px 8px", background: "rgba(179,136,255,0.06)", border: "1px solid rgba(179,136,255,0.2)", borderRadius: 2, fontSize: 10, color: "#b388ff", fontFamily: "monospace", letterSpacing: 1 }}>
+          \u25B8 Day {agent.deliverableDay}: {agent.deliverableMetric}
+        </div>
+      )}
       <div style={{ marginBottom: 8 }}>
         <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 3 }}>
           <span style={{ color: "rgba(57,255,20,0.4)", fontFamily: "monospace", fontSize: 10 }}>PROGRESS</span>
@@ -319,9 +529,9 @@ const AgentCard = ({ agent, onClick, isSelected }) => {
         </div>
       </div>
       <div style={{ display: "flex", gap: 12, fontSize: 10, fontFamily: "monospace", color: "rgba(57,255,20,0.5)" }}>
-        <span>✓ {agent.tasksCompleted}</span>
-        <span>⟳ {agent.tasksActive}</span>
-        <span>⏱ {agent.lastActive}</span>
+        <span>\u2713 {agent.tasksCompleted}</span>
+        <span>\u27F3 {agent.tasksActive}</span>
+        <span>\u23F1 {agent.lastActive}</span>
       </div>
     </div>
   );
@@ -354,22 +564,33 @@ const AgentDetail = ({ agent, onClose, onUpdate }) => {
           <div>
             <GlitchText text={agent.codename} style={{ color: "#39ff14", fontFamily: "'Courier New', monospace", fontSize: 24, fontWeight: "bold", letterSpacing: 2 }} />
             <div style={{ color: "rgba(57,255,20,0.5)", fontFamily: "monospace", fontSize: 12, letterSpacing: 2, marginTop: 4 }}>
-              {agent.role.toUpperCase()} · {agent.department.toUpperCase()}
+              {agent.role.toUpperCase()} \u00B7 {agent.department.toUpperCase()}
+              {agent.score != null && <span style={{ marginLeft: 8, padding: "2px 8px", background: "rgba(0,212,255,0.15)", border: "1px solid rgba(0,212,255,0.4)", borderRadius: 3, fontSize: 10, color: "#00d4ff" }}>{agent.score}/25</span>}
               {agent.isHuman && <span style={{ marginLeft: 8, padding: "2px 8px", background: "rgba(57,255,20,0.2)", border: "1px solid rgba(57,255,20,0.3)", borderRadius: 3, fontSize: 10 }}>HUMAN OPERATOR</span>}
             </div>
           </div>
         </div>
-        <button onClick={onClose} style={{ background: "none", border: "1px solid rgba(57,255,20,0.3)", color: "#39ff14", cursor: "pointer", padding: "4px 12px", fontFamily: "monospace", fontSize: 12, borderRadius: 2 }}>✕ CLOSE</button>
+        <button onClick={onClose} style={{ background: "none", border: "1px solid rgba(57,255,20,0.3)", color: "#39ff14", cursor: "pointer", padding: "4px 12px", fontFamily: "monospace", fontSize: 12, borderRadius: 2 }}>\u2715 CLOSE</button>
       </div>
-      <div style={{ color: "rgba(57,255,20,0.7)", fontFamily: "monospace", fontSize: 13, lineHeight: 1.6, marginBottom: 20, padding: "12px 16px", background: "rgba(57,255,20,0.03)", border: "1px solid rgba(57,255,20,0.08)", borderRadius: 3 }}>
+      <div style={{ color: "rgba(57,255,20,0.7)", fontFamily: "monospace", fontSize: 13, lineHeight: 1.6, marginBottom: 16, padding: "12px 16px", background: "rgba(57,255,20,0.03)", border: "1px solid rgba(57,255,20,0.08)", borderRadius: 3 }}>
         &gt; {agent.description}
       </div>
+      {agent.epigraph && (
+        <div style={{ color: "rgba(0,212,255,0.7)", fontFamily: "monospace", fontSize: 12, fontStyle: "italic", marginBottom: 16, padding: "8px 16px", borderLeft: "2px solid rgba(0,212,255,0.4)" }}>
+          \u201C{agent.epigraph}\u201D
+        </div>
+      )}
+      {agent.externalUrl && (
+        <a href={agent.externalUrl} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", marginBottom: 16, padding: "8px 14px", background: "rgba(0,212,255,0.08)", border: "1px solid rgba(0,212,255,0.4)", borderRadius: 2, color: "#00d4ff", fontFamily: "monospace", fontSize: 12, letterSpacing: 1 }}>
+          \u25B8 OPEN EXTERNAL DASHBOARD
+        </a>
+      )}
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 12, marginBottom: 20 }}>
         {[
-          { label: "STATUS", value: status.label, color: status.color },
-          { label: "UPTIME", value: agent.uptime, color: "#39ff14" },
+          { label: "STATUS",     value: status.label, color: status.color },
+          { label: "UPTIME",     value: agent.uptime, color: "#39ff14" },
           { label: "TASKS DONE", value: agent.tasksCompleted.toLocaleString(), color: "#39ff14" },
-          { label: "MEMORY", value: `${agent.memoryUsage}%`, color: agent.memoryUsage > 85 ? "#ffaa00" : "#39ff14" },
+          { label: "MEMORY",     value: `${agent.memoryUsage}%`, color: agent.memoryUsage > 85 ? "#00ffff" : "#39ff14" },
         ].map((stat, i) => (
           <div key={i} style={{ padding: "12px", background: "rgba(57,255,20,0.03)", border: "1px solid rgba(57,255,20,0.1)", borderRadius: 3, textAlign: "center" }}>
             <div style={{ color: "rgba(57,255,20,0.4)", fontFamily: "monospace", fontSize: 9, letterSpacing: 2, marginBottom: 4 }}>{stat.label}</div>
@@ -394,140 +615,20 @@ const AgentDetail = ({ agent, onClose, onUpdate }) => {
           ))}
         </div>
       </div>
-      <div style={{ display: "flex", gap: 8, marginTop: 16 }}>
-        {["ASSIGN TASK", "UPDATE STATUS", "VIEW LOGS"].map((action, i) => (
-          <button key={i} onClick={() => {
-            if (action === "UPDATE STATUS") {
-              const statuses = Object.keys(STATUS_CONFIG);
-              const idx = statuses.indexOf(agent.status);
-              const next = statuses[(idx + 1) % statuses.length];
-              onUpdate({ ...agent, status: next });
-            }
-          }} style={{ flex: 1, padding: "8px", background: "rgba(57,255,20,0.05)", border: "1px solid rgba(57,255,20,0.2)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", fontSize: 11, cursor: "pointer", letterSpacing: 1, transition: "all 0.2s" }}>
-            {action}
-          </button>
-        ))}
-      </div>
     </div>
   );
 };
 
 // ═══════════════════════════════════════════════════
-// ADD / EDIT AGENT MODAL
-// ═══════════════════════════════════════════════════
-const AgentModal = ({ agent, onSave, onCancel }) => {
-  const isEdit = !!agent;
-  const [form, setForm] = useState(agent || {
-    codename: "", role: "Custom", department: "General",
-    status: "idle", skills: [], description: "", progress: 0,
-    tasksCompleted: 0, tasksActive: 0, memoryUsage: 0, uptime: "0 days", lastActive: "Never",
-  });
-  const [skillInput, setSkillInput] = useState("");
-  const set = (key, val) => setForm(f => ({ ...f, [key]: val }));
-  const addSkill = () => {
-    if (skillInput.trim() && !form.skills.includes(skillInput.trim())) {
-      set("skills", [...form.skills, skillInput.trim()]);
-      setSkillInput("");
-    }
-  };
-  const removeSkill = (s) => set("skills", form.skills.filter(x => x !== s));
-
-  return (
-    <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(0,0,0,0.85)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000 }}>
-      <div style={{ background: "linear-gradient(180deg, rgba(0,20,0,0.99) 0%, rgba(0,5,0,0.99) 100%)", border: "1px solid rgba(57,255,20,0.4)", borderRadius: 4, padding: 28, width: 480, maxHeight: "85vh", overflowY: "auto", boxShadow: "0 0 40px rgba(57,255,20,0.1)" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
-          <GlitchText text={isEdit ? "MODIFY AGENT" : "DEPLOY NEW AGENT"} style={{ color: "#39ff14", fontFamily: "monospace", fontSize: 18, fontWeight: "bold", letterSpacing: 3 }} />
-          <button onClick={onCancel} style={{ background: "none", border: "1px solid rgba(57,255,20,0.3)", color: "#39ff14", cursor: "pointer", padding: "4px 12px", fontFamily: "monospace", borderRadius: 2 }}>✕</button>
-        </div>
-
-        {[
-          { label: "CODENAME", key: "codename", placeholder: "Enter agent codename..." },
-          { label: "DESCRIPTION", key: "description", placeholder: "Agent mission brief...", multiline: true },
-        ].map(({ label, key, placeholder, multiline }) => (
-          <div key={key} style={{ marginBottom: 16 }}>
-            <label style={{ display: "block", color: "rgba(57,255,20,0.5)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 4 }}>{label}</label>
-            {multiline ? (
-              <textarea value={form[key]} onChange={e => set(key, e.target.value)} placeholder={placeholder} rows={3}
-                style={{ width: "100%", padding: "8px 12px", background: "rgba(57,255,20,0.03)", border: "1px solid rgba(57,255,20,0.2)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", fontSize: 13, resize: "vertical", outline: "none", boxSizing: "border-box" }} />
-            ) : (
-              <input value={form[key]} onChange={e => set(key, e.target.value)} placeholder={placeholder}
-                style={{ width: "100%", padding: "8px 12px", background: "rgba(57,255,20,0.03)", border: "1px solid rgba(57,255,20,0.2)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", fontSize: 13, outline: "none", boxSizing: "border-box" }} />
-            )}
-          </div>
-        ))}
-
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 16 }}>
-          {[
-            { label: "ROLE", key: "role", options: Object.keys(ROLE_ICONS) },
-            { label: "DEPARTMENT", key: "department", options: ["Executive", "Creative", "Finance", "Operations", "Marketing", "Technology", "Intelligence", "People", "Legal", "Strategy", "General", "R&D", "Sales"] },
-          ].map(({ label, key, options }) => (
-            <div key={key}>
-              <label style={{ display: "block", color: "rgba(57,255,20,0.5)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 4 }}>{label}</label>
-              <select value={form[key]} onChange={e => set(key, e.target.value)}
-                style={{ width: "100%", padding: "8px 12px", background: "rgba(0,10,0,0.95)", border: "1px solid rgba(57,255,20,0.2)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", fontSize: 13, outline: "none" }}>
-                {options.map(o => <option key={o} value={o}>{o}</option>)}
-              </select>
-            </div>
-          ))}
-        </div>
-
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 16 }}>
-          <div>
-            <label style={{ display: "block", color: "rgba(57,255,20,0.5)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 4 }}>STATUS</label>
-            <select value={form.status} onChange={e => set("status", e.target.value)}
-              style={{ width: "100%", padding: "8px 12px", background: "rgba(0,10,0,0.95)", border: "1px solid rgba(57,255,20,0.2)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", fontSize: 13, outline: "none" }}>
-              {Object.entries(STATUS_CONFIG).map(([k, v]) => <option key={k} value={k}>{v.label}</option>)}
-            </select>
-          </div>
-          <div>
-            <label style={{ display: "block", color: "rgba(57,255,20,0.5)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 4 }}>PROGRESS: {form.progress}%</label>
-            <input type="range" min="0" max="100" value={form.progress} onChange={e => set("progress", parseInt(e.target.value))}
-              style={{ width: "100%", accentColor: "#39ff14" }} />
-          </div>
-        </div>
-
-        <div style={{ marginBottom: 20 }}>
-          <label style={{ display: "block", color: "rgba(57,255,20,0.5)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 4 }}>CAPABILITIES</label>
-          <div style={{ display: "flex", gap: 6, marginBottom: 8 }}>
-            <input value={skillInput} onChange={e => setSkillInput(e.target.value)} onKeyDown={e => e.key === "Enter" && addSkill()} placeholder="Add capability..."
-              style={{ flex: 1, padding: "6px 10px", background: "rgba(57,255,20,0.03)", border: "1px solid rgba(57,255,20,0.2)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", fontSize: 12, outline: "none" }} />
-            <button onClick={addSkill} style={{ padding: "6px 14px", background: "rgba(57,255,20,0.1)", border: "1px solid rgba(57,255,20,0.3)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", cursor: "pointer" }}>+ ADD</button>
-          </div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-            {form.skills.map((s, i) => (
-              <span key={i} onClick={() => removeSkill(s)} style={{ padding: "3px 8px", fontSize: 11, fontFamily: "monospace", background: "rgba(57,255,20,0.06)", border: "1px solid rgba(57,255,20,0.2)", borderRadius: 2, color: "rgba(57,255,20,0.7)", cursor: "pointer" }}>{s} ✕</span>
-            ))}
-          </div>
-        </div>
-
-        <div style={{ display: "flex", gap: 10 }}>
-          <button onClick={onCancel} style={{ flex: 1, padding: "10px", background: "rgba(255,0,64,0.05)", border: "1px solid rgba(255,0,64,0.3)", borderRadius: 2, color: "#ff0040", fontFamily: "monospace", fontSize: 12, cursor: "pointer", letterSpacing: 2 }}>ABORT</button>
-          <button onClick={() => {
-            if (!form.codename.trim()) return;
-            onSave({
-              ...form, id: form.id || uid(),
-              tasksCompleted: form.tasksCompleted || 0, tasksActive: form.tasksActive || 0,
-              memoryUsage: form.memoryUsage || Math.floor(Math.random() * 60) + 20,
-              uptime: form.uptime || "0 days", lastActive: form.lastActive || "Just deployed",
-            });
-          }} style={{ flex: 2, padding: "10px", background: "rgba(57,255,20,0.1)", border: "1px solid rgba(57,255,20,0.4)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", fontSize: 12, cursor: "pointer", letterSpacing: 2, fontWeight: "bold" }}>
-            {isEdit ? "\u25B6 UPDATE AGENT" : "\u25B6 DEPLOY AGENT"}
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// ═══════════════════════════════════════════════════
-// ECOSYSTEM STATS BAR
+// ECOSYSTEM STATS BAR (with Day-90 countdown)
 // ═══════════════════════════════════════════════════
 const EcoStats = ({ agents }) => {
-  const active = agents.filter(a => a.status === "active").length;
-  const processing = agents.filter(a => a.status === "processing").length;
+  const active     = agents.filter(a => a.status === "active").length;
+  const building   = agents.filter(a => a.status === "building").length;
   const totalTasks = agents.reduce((s, a) => s + a.tasksCompleted, 0);
-  const avgProgress = Math.round(agents.reduce((s, a) => s + a.progress, 0) / agents.length);
+  const tier1Live  = agents.filter(a => a.tier === 1).length;
   const [clock, setClock] = useState("");
+  const [days, setDays] = useState({ of90: dayOfNinety(), until: daysUntilKill() });
   useEffect(() => {
     const tick = () => {
       const d = new Date();
@@ -535,16 +636,18 @@ const EcoStats = ({ agents }) => {
     };
     tick();
     const i = setInterval(tick, 47);
-    return () => clearInterval(i);
+    const dayInterval = setInterval(() => setDays({ of90: dayOfNinety(), until: daysUntilKill() }), 60000);
+    return () => { clearInterval(i); clearInterval(dayInterval); };
   }, []);
 
   const stats = [
-    { label: "SYSTEM TIME", value: clock, color: "#39ff14" },
-    { label: "AGENTS ONLINE", value: `${active + processing} / ${agents.length}`, color: "#39ff14" },
-    { label: "ACTIVE", value: active, color: "#39ff14" },
-    { label: "PROCESSING", value: processing, color: "#ffaa00" },
-    { label: "TOTAL TASKS", value: totalTasks.toLocaleString(), color: "#00d4ff" },
-    { label: "AVG PROGRESS", value: `${avgProgress}%`, color: "#39ff14" },
+    { label: "SYSTEM TIME",     value: clock, color: "#39ff14" },
+    { label: "DAY OF 90",       value: `${days.of90} / 90`, color: "#b388ff" },
+    { label: "UNTIL KILL CHECK", value: `${days.until}d`, color: "#b388ff" },
+    { label: "TIER 1 LIVE",     value: tier1Live, color: "#39ff14" },
+    { label: "BUILDING",        value: building, color: "#00ffff" },
+    { label: "ACTIVE",          value: active, color: "#39ff14" },
+    { label: "TOTAL TASKS",     value: totalTasks.toLocaleString(), color: "#00d4ff" },
   ];
 
   return (
@@ -565,7 +668,7 @@ const EcoStats = ({ agents }) => {
 const ActivityLog = ({ entries }) => (
   <div style={{ background: "rgba(0,10,0,0.6)", border: "1px solid rgba(57,255,20,0.15)", borderRadius: 4, padding: 12, height: 200, overflowY: "auto" }}>
     <div style={{ color: "rgba(57,255,20,0.5)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>
-      ◈ SYSTEM LOG
+      \u25C8 SYSTEM LOG
     </div>
     {entries.map((entry, i) => (
       <div key={i} style={{ fontFamily: "monospace", fontSize: 11, color: entry.color || "rgba(57,255,20,0.6)", marginBottom: 3, lineHeight: 1.5 }}>
@@ -576,506 +679,299 @@ const ActivityLog = ({ entries }) => (
 );
 
 // ═══════════════════════════════════════════════════
-// NETWORK VISUALIZATION
+// KILL CRITERION COUNTDOWN PANEL — v2.1
+// 5 conditions, 4-of-5 = continue, <4 = pause + re-architect
 // ═══════════════════════════════════════════════════
-const NetworkMap = ({ agents, selectedId }) => {
-  const canvasRef = useRef(null);
-  const frameRef = useRef(0);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    const W = canvas.width = canvas.offsetWidth;
-    const H = canvas.height = canvas.offsetHeight;
-    const cx = W / 2, cy = H / 2;
-    const radius = Math.min(W, H) * 0.38;
-    const positions = agents.map((a, i) => {
-      const angle = (i / agents.length) * Math.PI * 2 - Math.PI / 2;
-      return { x: cx + Math.cos(angle) * radius, y: cy + Math.sin(angle) * radius, agent: a };
-    });
-
-    let time = 0;
-    const draw = () => {
-      ctx.clearRect(0, 0, W, H);
-      time += 0.01;
-      for (let i = 0; i < positions.length; i++) {
-        for (let j = i + 1; j < positions.length; j++) {
-          const a = positions[i], b = positions[j];
-          const isSelected = a.agent.id === selectedId || b.agent.id === selectedId;
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.strokeStyle = isSelected ? "rgba(57,255,20,0.2)" : "rgba(57,255,20,0.04)";
-          ctx.lineWidth = isSelected ? 1.5 : 0.5;
-          ctx.stroke();
-          if (isSelected || Math.random() > 0.995) {
-            const t = (time * (1 + i * 0.1)) % 1;
-            const px = a.x + (b.x - a.x) * t;
-            const py = a.y + (b.y - a.y) * t;
-            ctx.beginPath();
-            ctx.arc(px, py, 2, 0, Math.PI * 2);
-            ctx.fillStyle = "#39ff14";
-            ctx.fill();
-          }
-        }
-      }
-      positions.forEach(({ x, y, agent: a }) => {
-        const isActive = a.status === "active" || a.status === "processing";
-        const isSel = a.id === selectedId;
-        const statusConf = STATUS_CONFIG[a.status] || STATUS_CONFIG.idle;
-        if (isActive) {
-          const pulseR = 18 + Math.sin(time * 3) * 4;
-          ctx.beginPath();
-          ctx.arc(x, y, pulseR, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(57,255,20,${0.1 + Math.sin(time * 3) * 0.05})`;
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        }
-        ctx.beginPath();
-        ctx.arc(x, y, isSel ? 14 : 10, 0, Math.PI * 2);
-        ctx.fillStyle = a.isHuman ? "rgba(57,255,20,0.3)" : "rgba(0,20,0,0.8)";
-        ctx.fill();
-        ctx.strokeStyle = statusConf.color;
-        ctx.lineWidth = isSel ? 2.5 : 1.5;
-        ctx.stroke();
-        ctx.fillStyle = isSel ? "#39ff14" : "rgba(57,255,20,0.6)";
-        ctx.font = `${isSel ? "bold " : ""}9px monospace`;
-        ctx.textAlign = "center";
-        ctx.fillText(a.codename, x, y + (isSel ? 26 : 22));
-      });
-      frameRef.current = requestAnimationFrame(draw);
-    };
-    draw();
-    return () => cancelAnimationFrame(frameRef.current);
-  }, [agents, selectedId]);
+const KillCriterionPanel = () => {
+  const passes = KILL_CRITERION.filter(c => c.pass).length;
+  const days = daysUntilKill();
+  const dayN = dayOfNinety();
+  const verdict = passes >= 4 ? "ON TRACK" : passes >= 2 ? "AT RISK" : "BEHIND";
+  const verdictColor = passes >= 4 ? "#39ff14" : passes >= 2 ? "#00ffff" : "#b388ff";
 
   return (
-    <div style={{ position: "relative", border: "1px solid rgba(57,255,20,0.15)", borderRadius: 4, overflow: "hidden", background: "rgba(0,5,0,0.6)" }}>
-      <div style={{ position: "absolute", top: 8, left: 12, color: "rgba(57,255,20,0.5)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, zIndex: 1 }}>◎ NEURAL NETWORK MAP</div>
-      <canvas ref={canvasRef} style={{ width: "100%", height: 300, display: "block" }} />
+    <div style={{ margin: "16px 24px", background: "linear-gradient(180deg, rgba(179,136,255,0.05) 0%, rgba(0,8,16,0.95) 100%)", border: "1px solid rgba(179,136,255,0.3)", borderRadius: 4, padding: 16 }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12, flexWrap: "wrap", gap: 12 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <div style={{ fontSize: 14, color: "#b388ff" }}>\u25CB</div>
+          <div>
+            <div style={{ fontSize: 13, fontWeight: "bold", letterSpacing: 3, color: "#b388ff" }}>KILL CRITERION COUNTDOWN \u2014 2026-07-23</div>
+            <div style={{ fontSize: 10, color: "rgba(179,136,255,0.5)", letterSpacing: 2, marginTop: 2 }}>4-of-5 passes \u2192 continue to Tier 2 \u00B7 &lt;4 \u2192 pause + re-architect</div>
+          </div>
+        </div>
+        <div style={{ display: "flex", gap: 14, fontFamily: "monospace", fontSize: 11 }}>
+          <div><span style={{ color: "rgba(179,136,255,0.5)", letterSpacing: 1 }}>DAY </span><span style={{ color: "#b388ff", fontWeight: "bold" }}>{dayN} / 90</span></div>
+          <div><span style={{ color: "rgba(179,136,255,0.5)", letterSpacing: 1 }}>DAYS LEFT </span><span style={{ color: "#b388ff", fontWeight: "bold" }}>{days}</span></div>
+          <div><span style={{ color: "rgba(179,136,255,0.5)", letterSpacing: 1 }}>VERDICT </span><span style={{ color: verdictColor, fontWeight: "bold" }}>{verdict} ({passes}/5)</span></div>
+        </div>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 8 }}>
+        {KILL_CRITERION.map(c => (
+          <div key={c.id} style={{ padding: "8px 10px", background: c.pass ? "rgba(57,255,20,0.06)" : "rgba(179,136,255,0.04)", border: `1px solid ${c.pass ? "rgba(57,255,20,0.3)" : "rgba(179,136,255,0.2)"}`, borderRadius: 3 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
+              <span style={{ fontSize: 10, fontFamily: "monospace", letterSpacing: 1, color: c.pass ? "#39ff14" : "#b388ff", fontWeight: "bold" }}>{c.agent}</span>
+              <span style={{ fontSize: 9, fontFamily: "monospace", color: c.pass ? "#39ff14" : "rgba(179,136,255,0.6)" }}>{c.pass ? "\u2713 PASS" : "\u25CB PENDING"}</span>
+            </div>
+            <div style={{ fontSize: 10, color: "rgba(57,255,20,0.55)", fontFamily: "monospace", lineHeight: 1.4, marginBottom: 4 }}>{c.condition}</div>
+            <div style={{ fontSize: 10, fontFamily: "monospace", color: "rgba(0,212,255,0.7)" }}>{c.current} / {c.target} {c.unit}</div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
+
+// ═══════════════════════════════════════════════════
+// TIER STRATEGY BANNER — v2.1
+// ═══════════════════════════════════════════════════
+const TierStrategyBanner = ({ agents }) => {
+  const counts = [0,1,2,3,4,5].map(t => agents.filter(a => a.tier === t).length);
+  return (
+    <div style={{ display: "flex", gap: 10, padding: "12px 24px", overflowX: "auto", flexWrap: "wrap" }}>
+      {[0,1,2,3,4,5].map(t => {
+        const meta = TIER_META[t];
+        const count = counts[t];
+        return (
+          <div key={t} style={{ flex: "1 1 180px", minWidth: 180, padding: "10px 12px", background: `rgba(${hexToRgb(meta.color)},0.04)`, border: `1px solid rgba(${hexToRgb(meta.color)},0.25)`, borderRadius: 3 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 3 }}>
+              <span style={{ fontSize: 9, fontFamily: "monospace", letterSpacing: 2, color: meta.color, fontWeight: "bold" }}>{meta.label}</span>
+              <span style={{ fontSize: 14, fontFamily: "monospace", color: meta.color, fontWeight: "bold" }}>{count}</span>
+            </div>
+            <div style={{ fontSize: 9, color: `rgba(${hexToRgb(meta.color)},0.55)`, fontFamily: "monospace", lineHeight: 1.4 }}>{meta.desc}</div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════
+// LOUIS SPOTLIGHT — v2.1 featured tile
+// ═══════════════════════════════════════════════════
+const LouisSpotlight = ({ agent }) => {
+  if (!agent) return null;
+  return (
+    <div style={{ margin: "16px 24px", padding: 20, background: "linear-gradient(135deg, rgba(57,255,20,0.06) 0%, rgba(0,212,255,0.04) 50%, rgba(0,8,16,0.95) 100%)", border: "1px solid rgba(57,255,20,0.35)", borderRadius: 4, position: "relative", overflow: "hidden" }}>
+      <ScanLine />
+      <div style={{ display: "grid", gridTemplateColumns: "minmax(260px, 1fr) 2fr", gap: 24 }}>
+        <div>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 10 }}>
+            <div style={{ fontSize: 30 }}>\uD83C\uDF34</div>
+            <div>
+              <GlitchText text="LOUIS" tag="div" style={{ color: "#39ff14", fontSize: 22, fontWeight: "bold", letterSpacing: 4, fontFamily: "monospace" }} />
+              <div style={{ fontSize: 10, color: "rgba(57,255,20,0.5)", letterSpacing: 3, marginTop: 2 }}>FL RE INTELLIGENCE \u00B7 24/25 \u2605 MOONSHOT</div>
+            </div>
+          </div>
+          <div style={{ fontSize: 12, color: "rgba(57,255,20,0.7)", fontFamily: "monospace", lineHeight: 1.6, marginBottom: 12, fontStyle: "italic" }}>\u201CNamed in honor of Louis Hartley Sr. Every property analyzed is a brick in the house he started.\u201D</div>
+          <a href="https://extracoffee13.github.io/hartley-command/louis.html" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", padding: "8px 14px", background: "rgba(0,212,255,0.1)", border: "1px solid rgba(0,212,255,0.45)", borderRadius: 2, color: "#00d4ff", fontFamily: "monospace", fontSize: 11, letterSpacing: 2 }}>
+            \u25B8 OPEN LOUIS DASHBOARD (auto-updates Sunday)
+          </a>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+          <div>
+            <div style={{ fontSize: 9, fontFamily: "monospace", letterSpacing: 2, color: "rgba(57,255,20,0.5)", marginBottom: 6 }}>\u25B8 TOP WATCHLIST</div>
+            {[
+              { area: "West Duval (Jax)", note: "Caden \u00B7 9/10" },
+              { area: "Ocala / Marion", note: "Best ROI 2026 \u00B7 8/10" },
+              { area: "Burnt Store Rd", note: "Babcock-rivals \u00B7 8/10" },
+              { area: "Suwannee River Corridor", note: "Forgotten towns \u00B7 7/10" },
+            ].map((w, i) => (
+              <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: "4px 0", borderBottom: "1px dashed rgba(57,255,20,0.1)", fontSize: 11, fontFamily: "monospace" }}>
+                <span style={{ color: "rgba(57,255,20,0.8)" }}>{w.area}</span>
+                <span style={{ color: "rgba(0,212,255,0.6)", fontSize: 10 }}>{w.note}</span>
+              </div>
+            ))}
+          </div>
+          <div>
+            <div style={{ fontSize: 9, fontFamily: "monospace", letterSpacing: 2, color: "rgba(57,255,20,0.5)", marginBottom: 6 }}>\u25B8 CADEN LAND SEARCH \u2014 ACTIVE</div>
+            <div style={{ fontSize: 10, fontFamily: "monospace", color: "rgba(57,255,20,0.7)", lineHeight: 1.6 }}>
+              <div>Buyers: <span style={{ color: "#00d4ff" }}>Caden + Addison + boys</span></div>
+              <div>Budget: <span style={{ color: "#00d4ff" }}>$100K max</span></div>
+              <div>Target: <span style={{ color: "#00d4ff" }}>2-5 acres rural</span></div>
+              <div>Geography: <span style={{ color: "#00d4ff" }}>W Duval / Clay / Nassau / Baker / Bradford</span></div>
+              <div>Hard rule: <span style={{ color: "#b388ff" }}>verify FEMA NFHL \u2014 avoid AE zones</span></div>
+              <div>Benchmark: <span style={{ color: "#00d4ff" }}>$78K/acre rural avg vs $235K urban</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style={{ marginTop: 14, padding: "8px 12px", background: "rgba(0,0,0,0.4)", borderTop: "1px solid rgba(57,255,20,0.15)" }}>
+        <div style={{ fontSize: 9, fontFamily: "monospace", letterSpacing: 2, color: "rgba(57,255,20,0.5)", marginBottom: 4 }}>\u25B8 OPPORTUNITY ZONE 2.0 \u2014 H2 2026 NOMINATIONS \u2192 JAN 1, 2027 LAUNCH</div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 10, fontSize: 10, fontFamily: "monospace" }}>
+          {[
+            { k: "New FL zones", v: "~340" },
+            { k: "Eligible tracts", v: "1,360" },
+            { k: "Rural step-up", v: "30%" },
+            { k: "Standard step-up", v: "10%" },
+            { k: "Rural improvement", v: "50%" },
+            { k: "Cap-gain deferral", v: "5y" },
+          ].map((m, i) => (
+            <div key={i}><span style={{ color: "rgba(57,255,20,0.4)" }}>{m.k}: </span><span style={{ color: "#39ff14", fontWeight: "bold" }}>{m.v}</span></div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════
+// FOUR LOOPS PANEL — v2.1
+// ═══════════════════════════════════════════════════
+const FourLoopsPanel = () => (
+  <div style={{ margin: "16px 24px" }}>
+    <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
+      <div style={{ fontSize: 14, color: "#39ff14" }}>\u29BE</div>
+      <div>
+        <div style={{ fontSize: 13, fontWeight: "bold", letterSpacing: 3, color: "#39ff14" }}>THE FOUR LOOPS</div>
+        <div style={{ fontSize: 10, color: "rgba(57,255,20,0.4)", letterSpacing: 2, marginTop: 2 }}>ALL FOUR MUST BE LIVE FOR THE SYSTEM TO COMPOUND</div>
+      </div>
+    </div>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 10 }}>
+      {FOUR_LOOPS.map(loop => (
+        <div key={loop.id} style={{ padding: 14, background: loop.live ? `rgba(${hexToRgb(loop.color)},0.06)` : "rgba(0,0,0,0.5)", border: `1px solid rgba(${hexToRgb(loop.color)},${loop.live ? 0.4 : 0.2})`, borderRadius: 3, position: "relative" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+            <span style={{ fontSize: 12, fontFamily: "monospace", letterSpacing: 2, color: loop.color, fontWeight: "bold" }}>LOOP {loop.num} \u00B7 {loop.name.toUpperCase()}</span>
+            <span style={{ fontSize: 9, fontFamily: "monospace", letterSpacing: 2, padding: "2px 8px", background: loop.live ? `rgba(${hexToRgb(loop.color)},0.15)` : "rgba(255,255,255,0.05)", border: `1px solid ${loop.live ? loop.color : "rgba(255,255,255,0.2)"}`, color: loop.live ? loop.color : "rgba(255,255,255,0.6)", borderRadius: 2, fontWeight: "bold" }}>{loop.status}</span>
+          </div>
+          <div style={{ fontSize: 11, fontFamily: "monospace", color: "rgba(57,255,20,0.65)", lineHeight: 1.5, marginBottom: 8 }}>{loop.flow}</div>
+          <div style={{ fontSize: 10, fontFamily: "monospace", color: "rgba(57,255,20,0.4)", fontStyle: "italic" }}>{loop.note}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════
+// PUBLIC POSTURE CARD — v2.1
+// ═══════════════════════════════════════════════════
+const PublicPostureCard = () => (
+  <div style={{ margin: "16px 24px 24px", padding: 16, background: "rgba(0,0,0,0.5)", border: "1px dashed rgba(0,212,255,0.3)", borderRadius: 4 }}>
+    <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+      <div style={{ fontSize: 13, color: "#00d4ff" }}>\u26A0</div>
+      <div style={{ fontSize: 12, fontWeight: "bold", letterSpacing: 3, color: "#00d4ff" }}>PUBLIC POSTURE \u2014 CROSS-AGENT GUARDRAILS</div>
+    </div>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 8 }}>
+      {PUBLIC_POSTURE.map((p, i) => (
+        <div key={i} style={{ padding: "8px 10px", background: "rgba(0,212,255,0.03)", border: "1px solid rgba(0,212,255,0.15)", borderRadius: 2 }}>
+          <div style={{ fontSize: 11, fontFamily: "monospace", color: "#00d4ff", fontWeight: "bold", marginBottom: 3 }}>\u25B8 {p.rule}</div>
+          <div style={{ fontSize: 10, fontFamily: "monospace", color: "rgba(0,212,255,0.55)", lineHeight: 1.5 }}>{p.why}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════
+// TOPOLOGY MAP (lightweight SVG — Louis at center of his ties)
+// ═══════════════════════════════════════════════════
+const TopologyMap = ({ agents, selectedId }) => {
+  const featured = ["Louis","Keystone","Architect","Venture","Forge","WOLF","Sentinel","Ledger","Self-Improving Loop","Vector","Atlas","Cornerstone","Bobby","AP"];
+  const nodes = featured.map((name, i) => {
+    const a = agents.find(x => x.codename === name);
+    if (!a) return null;
+    const angle = (i / featured.length) * Math.PI * 2 - Math.PI / 2;
+    return { ...a, x: 50 + Math.cos(angle) * 36, y: 50 + Math.sin(angle) * 36, displayName: name };
+  }).filter(Boolean);
+
+  // Louis-centric edges (Louis sits at index 0, rays out to its ties)
+  const louisTies = ["Keystone","Architect","Venture","Forge","WOLF","Sentinel","Ledger"];
+  const louis = nodes.find(n => n.codename === "Louis");
+  const edges = [];
+  if (louis) {
+    louisTies.forEach(t => {
+      const target = nodes.find(n => n.codename === t);
+      if (target) edges.push({ a: louis, b: target, kind: "louis" });
+    });
+  }
+  // Add a few hub-and-spoke ties
+  const ap = nodes.find(n => n.codename === "AP");
+  if (ap) {
+    ["Forge","Vector","Sentinel","Ledger","Cornerstone","Atlas"].forEach(t => {
+      const target = nodes.find(n => n.codename === t);
+      if (target) edges.push({ a: ap, b: target, kind: "ap" });
+    });
+  }
+  const bobby = nodes.find(n => n.codename === "Bobby");
+  if (bobby && ap) edges.push({ a: bobby, b: ap, kind: "founder" });
+  const sil = nodes.find(n => n.codename === "Self-Improving Loop");
+  if (sil) {
+    nodes.filter(n => n.codename !== "Self-Improving Loop" && n.codename !== "Bobby").forEach(target => {
+      edges.push({ a: sil, b: target, kind: "loop" });
+    });
+  }
+
+  return (
+    <div style={{ background: "rgba(0,5,0,0.6)", border: "1px solid rgba(57,255,20,0.15)", borderRadius: 4, padding: 12, position: "relative" }}>
+      <div style={{ position: "absolute", top: 8, left: 12, color: "rgba(57,255,20,0.5)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, zIndex: 1 }}>\u25CE TOPOLOGY \u2014 LOUIS-CENTRIC + LOOP 1 PROPAGATION</div>
+      <svg viewBox="0 0 100 100" style={{ width: "100%", height: 320, display: "block" }}>
+        {edges.map((e, i) => {
+          const stroke = e.kind === "louis" ? "rgba(57,255,20,0.55)" : e.kind === "loop" ? "rgba(0,212,255,0.18)" : e.kind === "founder" ? "rgba(255,255,255,0.6)" : "rgba(57,255,20,0.18)";
+          const dash = e.kind === "loop" ? "0.8,0.8" : "none";
+          return <line key={i} x1={e.a.x} y1={e.a.y} x2={e.b.x} y2={e.b.y} stroke={stroke} strokeWidth={e.kind === "louis" ? 0.4 : 0.2} strokeDasharray={dash} />;
+        })}
+        {nodes.map(n => {
+          const isLouis = n.codename === "Louis";
+          const isFounder = n.codename === "Bobby";
+          const isSelected = selectedId === n.id;
+          const fill = isFounder ? "#ffffff" : isLouis ? "#39ff14" : (n.tier === 1 ? "#39ff14" : n.tier === 2 ? "#b388ff" : n.tier === 3 ? "#88aaff" : n.tier === 4 ? "#00d4ff" : "rgba(170,238,255,0.7)");
+          const r = isLouis ? 3.2 : isFounder ? 2.6 : 2.0;
+          return (
+            <g key={n.id}>
+              <circle cx={n.x} cy={n.y} r={r} fill={`rgba(${hexToRgb(typeof fill === "string" && fill.startsWith("#") ? fill : "#39ff14")},0.18)`} stroke={fill} strokeWidth={isLouis || isSelected ? 0.5 : 0.3} />
+              <text x={n.x} y={n.y + r + 2.6} fill={isLouis ? "#39ff14" : "rgba(57,255,20,0.6)"} fontSize="2.4" fontFamily="monospace" textAnchor="middle" fontWeight={isLouis ? "bold" : "normal"}>{n.displayName.length > 14 ? n.displayName.slice(0,12)+".." : n.displayName.toUpperCase()}</text>
+            </g>
+          );
+        })}
+      </svg>
+      <div style={{ display: "flex", gap: 14, fontSize: 9, fontFamily: "monospace", letterSpacing: 1, color: "rgba(57,255,20,0.45)", marginTop: 6, flexWrap: "wrap" }}>
+        <span><span style={{ color: "#39ff14" }}>\u25CF</span> Louis ties</span>
+        <span><span style={{ color: "#00d4ff" }}>\u00B7\u00B7\u00B7</span> Loop 1 (Self-Improving) reach</span>
+        <span><span style={{ color: "#ffffff" }}>\u25CF</span> Founder \u2192 CEO</span>
+        <span><span style={{ color: "#b388ff" }}>\u25CF</span> Tier 2 build queue</span>
+      </div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════
+// WORKFLOWS PANEL
+// ═══════════════════════════════════════════════════
+const WorkflowsPanel = () => (
+  <div style={{ margin: "16px 24px" }}>
+    <div style={{ fontSize: 13, fontWeight: "bold", letterSpacing: 3, color: "#39ff14", marginBottom: 12 }}>\u25B8 COLLABORATION WORKFLOWS</div>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 10 }}>
+      {ECO_WORKFLOWS.map((wf, i) => (
+        <div key={i} style={{ background: "rgba(57,255,20,0.03)", border: "1px solid rgba(57,255,20,0.1)", padding: 14, borderRadius: 3, transition: "all 0.3s" }}
+          onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(57,255,20,0.3)"; e.currentTarget.style.background = "rgba(57,255,20,0.06)"; }}
+          onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(57,255,20,0.1)"; e.currentTarget.style.background = "rgba(57,255,20,0.03)"; }}>
+          <div style={{ fontSize: 11, color: "#39ff14", marginBottom: 6, letterSpacing: 1, fontWeight: "bold" }}>{wf.title}</div>
+          <div style={{ fontSize: 10, color: "rgba(0,212,255,0.7)", marginBottom: 6, fontFamily: "monospace" }}>{wf.flow}</div>
+          <div style={{ fontSize: 10, color: "rgba(57,255,20,0.4)", lineHeight: 1.6 }}>{wf.desc}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+);
 
 // ═══════════════════════════════════════════════════
 // MAIN DASHBOARD
 // ═══════════════════════════════════════════════════
-
-// ═══════════════════════════════════════════════════════════════
-// ECOSYSTEM MIND MAP — Interactive neural network visualization
-// ═══════════════════════════════════════════════════════════════
-const EcosystemMindMap = () => {
-  const ecoCanvasRef = useRef(null);
-  const ecoAnimRef = useRef(null);
-  const ecoParticlesRef = useRef([]);
-  const ecoFrameRef = useRef(0);
-  const ecoHoveredRef = useRef(null);
-  const [ecoSelected, setEcoSelected] = useState(null);
-  const [ecoHovered, setEcoHovered] = useState(null);
-
-  const ecoAgents = [
-    { id: 'architect', name: 'Architect', role: 'Supreme Orchestrator', dept: 'architect', connects: ['bobby','ap','cornerstone','ledger','wolf','venture','equity','alpha'], desc: 'Supreme strategic orchestrator — sits above the entire C-Suite. Leads the Weekly Capital Council, deploys the investment budget, and charts the compound growth path to a billion-dollar Hartley portfolio.' },
-    { id: 'bobby', name: 'Bobby', role: 'Founder', dept: 'executive', connects: ['architect','ap','cornerstone','wolf','venture'], desc: 'The human at the center. All final decisions flow through Bobby.' },
-    { id: 'ap', name: 'AP', role: 'CEO', dept: 'executive', connects: ['architect','bobby','vector','signal','forge','cipher','spectra','oracle','ledger','sentinel','nexus','cornerstone'], desc: 'Chief executive agent. Coordinates all departments.' },
-    { id: 'cornerstone', name: 'Cornerstone', role: 'Chief Mindset Officer', dept: 'executive', connects: ['architect','bobby','ap'], desc: 'Vision alignment, evening reflections, Laminin philosophy.' },
-    { id: 'vector', name: 'Vector', role: 'Graphic Designer', dept: 'creative', connects: ['ap','signal','forge','atlas'], desc: 'Visual design, motion graphics, 3D assets, brand identity.' },
-    { id: 'signal', name: 'Signal', role: 'CMO', dept: 'creative', connects: ['ap','vector','spectra','oracle'], desc: 'Marketing strategy, campaigns, brand positioning.' },
-    { id: 'forge', name: 'Forge', role: 'COO', dept: 'operations', connects: ['ap','atlas','cipher','vector','nexus'], desc: 'Operations, project management, workflow optimization.' },
-    { id: 'atlas', name: 'Atlas', role: 'Signage Ops', dept: 'operations', connects: ['forge','vector','sentinel'], desc: 'Signage production, installation, vendor relations.' },
-    { id: 'cipher', name: 'Cipher', role: 'CTO', dept: 'technology', connects: ['ap','forge','oracle'], desc: 'Technology infrastructure, systems architecture.' },
-    { id: 'oracle', name: 'Oracle', role: 'CIO', dept: 'technology', connects: ['ap','cipher','signal','spectra'], desc: 'Data intelligence, market research, insights.' },
-    { id: 'spectra', name: 'Spectra', role: 'CSO', dept: 'strategy', connects: ['ap','signal','oracle','venture'], desc: 'Strategic planning, growth strategy, business development.' },
-    { id: 'ledger', name: 'Ledger', role: 'CFO', dept: 'finance', connects: ['architect','ap','wolf','alpha','equity'], desc: 'Financial oversight, budgeting, P&L reporting.' },
-    { id: 'wolf', name: 'WOLF', role: 'CTO-Trading', dept: 'finance', connects: ['architect','bobby','ledger','alpha','venture'], desc: 'Active trading, market analysis, portfolio management.' },
-    { id: 'alpha', name: 'Alpha', role: 'Hedge Fund Mgr', dept: 'finance', connects: ['architect','ledger','wolf','equity'], desc: 'Hedge fund strategies, risk management.' },
-    { id: 'equity', name: 'Equity', role: 'Private Equity', dept: 'finance', connects: ['architect','ledger','alpha','venture'], desc: 'PE analysis, deal evaluation, long-term investments.' },
-    { id: 'venture', name: 'Venture', role: 'Venture Capital', dept: 'finance', connects: ['architect','bobby','spectra','wolf','equity'], desc: 'Startup scouting, early-stage investment analysis.' },
-    { id: 'sentinel', name: 'Sentinel', role: 'CLO', dept: 'strategy', connects: ['ap','atlas','forge'], desc: 'Legal compliance, contract review, regulatory oversight.' },
-    { id: 'nexus', name: 'Nexus', role: 'CHRO', dept: 'people', connects: ['ap','forge'], desc: 'Human resources, team development, people operations.' },
-    { id: 'future1', name: 'Future', role: 'Future Agent', dept: 'future', connects: ['architect'], desc: 'Placeholder — next AI agent joining the Hartley ecosystem.' },
-    { id: 'future2', name: 'Future', role: 'Future Agent', dept: 'future', connects: ['architect'], desc: 'Placeholder — next AI agent joining the Hartley ecosystem.' },
-    { id: 'future3', name: 'Future', role: 'Future Agent', dept: 'future', connects: ['architect'], desc: 'Placeholder — next AI agent joining the Hartley ecosystem.' },
-    { id: 'future4', name: 'Future', role: 'Future Agent', dept: 'future', connects: ['architect'], desc: 'Placeholder — next AI agent joining the Hartley ecosystem.' },
-  ];
-
-  const ecoDeptColors = {
-    architect: { primary: '#ffffff', bg: 'rgba(255,255,255,0.12)', glow: 'rgba(255,255,255,0.55)' },
-    executive: { primary: '#39ff14', bg: 'rgba(57,255,20,0.15)', glow: 'rgba(57,255,20,0.4)' },
-    finance:   { primary: '#00d4ff', bg: 'rgba(0,212,255,0.15)', glow: 'rgba(0,212,255,0.4)' },
-    creative:  { primary: '#ffaa00', bg: 'rgba(255,170,0,0.15)', glow: 'rgba(255,170,0,0.4)' },
-    operations:{ primary: '#ff4488', bg: 'rgba(255,68,136,0.15)', glow: 'rgba(255,68,136,0.4)' },
-    technology:{ primary: '#aa55ff', bg: 'rgba(170,85,255,0.15)', glow: 'rgba(170,85,255,0.4)' },
-    strategy:  { primary: '#00ffff', bg: 'rgba(0,255,255,0.15)', glow: 'rgba(0,255,255,0.4)' },
-    people:    { primary: '#ffff64', bg: 'rgba(255,255,100,0.15)', glow: 'rgba(255,255,100,0.4)' },
-    future:    { primary: '#39ff14', bg: 'rgba(0,0,0,0)', glow: 'rgba(57,255,20,0.08)' }
-  };
-
-  const ecoWorkflows = [
-    { title: 'CLIENT ACQUISITION', flow: 'Signal \u2192 Spectra \u2192 Vector \u2192 AP', desc: 'Signal identifies leads, Spectra develops strategy, Vector creates pitch materials, AP approves and closes.' },
-    { title: 'PROJECT EXECUTION', flow: 'AP \u2192 Forge \u2192 Atlas \u2192 Sentinel', desc: 'AP greenlights projects, Forge manages operations, Atlas handles signage logistics, Sentinel ensures compliance.' },
-    { title: 'FINANCIAL OVERSIGHT', flow: 'Ledger \u2192 WOLF \u2192 Alpha \u2192 Equity', desc: 'Ledger tracks daily finances, WOLF manages trading, Alpha runs hedge strategies, Equity evaluates private deals.' },
-    { title: 'BRAND DEVELOPMENT', flow: 'Vector \u2192 Signal \u2192 Oracle \u2192 AP', desc: 'Vector designs brand assets, Signal pushes to market, Oracle gathers intelligence, AP refines direction.' },
-    { title: 'TECHNOLOGY & INFRA', flow: 'Cipher \u2192 Oracle \u2192 Forge \u2192 AP', desc: 'Cipher builds systems, Oracle provides data intelligence, Forge integrates into operations, AP sets priorities.' },
-    { title: 'VENTURE & GROWTH', flow: 'Venture \u2192 Spectra \u2192 WOLF \u2192 Bobby', desc: 'Venture scouts opportunities, Spectra validates strategy, WOLF models financial risk, Bobby makes final calls.' },
-    { title: 'SELF-IMPROVING LOOP', flow: 'ALL AGENTS \u2192 Loop \u2192 ALL AGENTS', desc: 'Corrections from any interaction feed back through the Self-Improving Loop, updating lessons so mistakes never repeat.' },
-    { title: 'FOUNDER ALIGNMENT', flow: 'Cornerstone \u2192 Bobby \u2192 AP \u2192 ALL', desc: 'Cornerstone anchors Bobby\u2019s vision. Bobby directs AP. AP cascades priorities across the entire ecosystem.' }
-  ];
-
-  const hexToRgb = (hex) => {
-    const r = parseInt(hex.slice(1,3), 16);
-    const g = parseInt(hex.slice(3,5), 16);
-    const b = parseInt(hex.slice(5,7), 16);
-    return `${r},${g},${b}`;
-  };
-
-  useEffect(() => {
-    const canvas = ecoCanvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let W, H;
-
-    const resize = () => {
-      const rect = canvas.parentElement.getBoundingClientRect();
-      W = rect.width;
-      H = Math.max(560, Math.min(780, window.innerHeight * 0.75));
-      const dpr = window.devicePixelRatio || 1;
-      canvas.width = W * dpr;
-      canvas.height = H * dpr;
-      canvas.style.width = W + 'px';
-      canvas.style.height = H + 'px';
-      ctx.scale(dpr, dpr);
-    };
-    resize();
-    window.addEventListener('resize', resize);
-
-    const layoutAgents = () => {
-      const cx = W / 2;
-      const isMobile = W < 600;
-
-      // Tier 0 — Supreme Orchestrator: Architect at top-center
-      ecoAgents[0].x = cx; ecoAgents[0].y = H * 0.09; ecoAgents[0].r = isMobile ? 28 : 40;
-
-      // Tier 1 — Founder: Bobby beside Architect
-      ecoAgents[1].x = cx - (isMobile ? 60 : 90); ecoAgents[1].y = H * 0.09; ecoAgents[1].r = isMobile ? 24 : 32;
-
-      // Tier 2 — CEO (AP) below Architect, Cornerstone beside
-      ecoAgents[2].x = cx; ecoAgents[2].y = H * 0.27; ecoAgents[2].r = isMobile ? 20 : 28;
-      ecoAgents[3].x = cx - (isMobile ? 60 : 90); ecoAgents[3].y = H * 0.27; ecoAgents[3].r = isMobile ? 17 : 22;
-
-      // Tier 3 — C-Suite inner ring
-      const innerRing = [4,5,6,7,8,9,10,16,17]; // vector, signal, forge, atlas, cipher, oracle, spectra, sentinel, nexus
-      const innerR = isMobile ? 120 : 175;
-      const innerCY = H * 0.55;
-      innerRing.forEach((idx, i) => {
-        const angle = (i / innerRing.length) * Math.PI * 2 - Math.PI / 2;
-        ecoAgents[idx].x = cx + Math.cos(angle) * innerR;
-        ecoAgents[idx].y = innerCY + Math.sin(angle) * innerR;
-        ecoAgents[idx].r = isMobile ? 16 : 21;
-      });
-
-      // Tier 4 — Finance specialists outer ring
-      const outerRing = [11,12,13,14,15]; // ledger, wolf, alpha, equity, venture
-      const outerR = isMobile ? 185 : 265;
-      const outerCY = H * 0.55;
-      outerRing.forEach((idx, i) => {
-        const angle = (i / outerRing.length) * Math.PI * 2 - Math.PI / 4;
-        ecoAgents[idx].x = cx + Math.cos(angle) * outerR;
-        ecoAgents[idx].y = outerCY + Math.sin(angle) * outerR;
-        ecoAgents[idx].r = isMobile ? 15 : 20;
-      });
-
-      // Future agent ghost nodes — scattered at periphery
-      const futurePos = [
-        { x: cx + (isMobile ? 75 : 110), y: H * 0.09 },
-        { x: W * (isMobile ? 0.88 : 0.91), y: H * 0.28 },
-        { x: W * (isMobile ? 0.88 : 0.91), y: H * 0.72 },
-        { x: W * (isMobile ? 0.07 : 0.05), y: H * 0.52 },
-      ];
-      [18,19,20,21].forEach((idx, i) => {
-        ecoAgents[idx].x = futurePos[i].x;
-        ecoAgents[idx].y = futurePos[i].y;
-        ecoAgents[idx].r = isMobile ? 16 : 22;
-      });
-    };
-
-    const getAgentAt = (x, y) => {
-      for (let i = ecoAgents.length - 1; i >= 0; i--) {
-        const a = ecoAgents[i];
-        if (a.x === undefined) continue;
-        const dist = Math.sqrt((x - a.x) ** 2 + (y - a.y) ** 2);
-        if (dist < (a.r || 20) + 5) return a;
-      }
-      return null;
-    };
-
-    const onMove = (e) => {
-      const rect = canvas.getBoundingClientRect();
-      const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
-      const y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
-      const agent = getAgentAt(x, y);
-      ecoHoveredRef.current = agent;
-      canvas.style.cursor = agent ? 'pointer' : 'default';
-    };
-
-    const onClick = (e) => {
-      const rect = canvas.getBoundingClientRect();
-      const clientX = e.clientX || (e.changedTouches && e.changedTouches[0].clientX);
-      const clientY = e.clientY || (e.changedTouches && e.changedTouches[0].clientY);
-      const agent = getAgentAt(clientX - rect.left, clientY - rect.top);
-      if (agent) setEcoSelected(agent);
-    };
-
-    canvas.addEventListener('mousemove', onMove);
-    canvas.addEventListener('mouseleave', () => { ecoHoveredRef.current = null; });
-    canvas.addEventListener('click', onClick);
-    canvas.addEventListener('touchstart', (e) => {
-      e.preventDefault();
-      const touch = e.touches[0];
-      const rect = canvas.getBoundingClientRect();
-      const agent = getAgentAt(touch.clientX - rect.left, touch.clientY - rect.top);
-      ecoHoveredRef.current = agent;
-      if (agent) setEcoSelected(agent);
-    }, { passive: false });
-
-    const particles = ecoParticlesRef.current;
-
-    const draw = () => {
-      ecoFrameRef.current++;
-      const frame = ecoFrameRef.current;
-      const hovered = ecoHoveredRef.current;
-
-      layoutAgents();
-      ctx.clearRect(0, 0, W, H);
-
-      // Grid
-      ctx.strokeStyle = 'rgba(57,255,20,0.03)';
-      ctx.lineWidth = 0.5;
-      for (let x = 0; x < W; x += 40) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
-      for (let y = 0; y < H; y += 40) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
-
-      // Connections
-      ecoAgents.forEach(agent => {
-        if (agent.x === undefined) return;
-        agent.connects.forEach(tid => {
-          const target = ecoAgents.find(a => a.id === tid);
-          if (!target || target.x === undefined) return;
-          const isHL = hovered && (hovered.id === agent.id || hovered.id === tid);
-          const isFutureConn = agent.dept === 'future' || target.dept === 'future';
-          ctx.beginPath();
-          if (isFutureConn) ctx.setLineDash([4, 6]);
-          ctx.strokeStyle = isHL ? ecoDeptColors[agent.dept].primary : (isFutureConn ? 'rgba(57,255,20,0.05)' : 'rgba(57,255,20,0.08)');
-          ctx.lineWidth = isHL ? 1.5 : 0.5;
-          ctx.moveTo(agent.x, agent.y);
-          ctx.lineTo(target.x, target.y);
-          ctx.stroke();
-          if (isFutureConn) ctx.setLineDash([]);
-          if (isHL && frame % 20 === 0 && !isFutureConn) {
-            particles.push({ fx: agent.x, fy: agent.y, tx: target.x, ty: target.y, p: Math.random(), s: 0.002 + Math.random() * 0.003, c: ecoDeptColors[agent.dept].primary });
-          }
-        });
-      });
-
-      // Particles
-      for (let i = particles.length - 1; i >= 0; i--) {
-        const p = particles[i];
-        p.p += p.s;
-        if (p.p > 1) { particles.splice(i, 1); continue; }
-        const px = p.fx + (p.tx - p.fx) * p.p;
-        const py = p.fy + (p.ty - p.fy) * p.p;
-        const alpha = Math.sin(p.p * Math.PI);
-        ctx.beginPath();
-        ctx.fillStyle = p.c.replace(')', `,${alpha})`).replace('rgb', 'rgba').replace('##', '#');
-        // Handle hex colors for particles
-        const rgb = hexToRgb(p.c);
-        ctx.fillStyle = `rgba(${rgb},${alpha})`;
-        ctx.arc(px, py, 2, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      // Agents
-      const isMob = W < 600;
-      ecoAgents.forEach(agent => {
-        if (agent.x === undefined) return;
-        const colors = ecoDeptColors[agent.dept];
-        const isH = hovered && hovered.id === agent.id;
-        const pulse = Math.sin(frame * 0.03 + ecoAgents.indexOf(agent)) * 0.15 + 0.85;
-        const r = (agent.r || 20) * (isH ? 1.15 : 1);
-
-        // Future agent — ghost/placeholder with dashed outline
-        if (agent.dept === 'future') {
-          ctx.save();
-          ctx.setLineDash([5, 5]);
-          ctx.beginPath();
-          ctx.arc(agent.x, agent.y, r, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(57,255,20,${0.15 + Math.sin(frame * 0.025) * 0.06})`;
-          ctx.lineWidth = 1;
-          ctx.stroke();
-          ctx.setLineDash([]);
-          ctx.fillStyle = 'rgba(57,255,20,0.025)';
-          ctx.fill();
-          ctx.fillStyle = `rgba(57,255,20,${0.22 + Math.sin(frame * 0.025) * 0.05})`;
-          ctx.font = `bold ${isMob ? 7 : 9}px monospace`;
-          ctx.textAlign = 'center';
-          ctx.fillText('FUTURE', agent.x, agent.y - 1);
-          ctx.font = `${isMob ? 6 : 8}px monospace`;
-          ctx.fillStyle = `rgba(57,255,20,0.15)`;
-          ctx.fillText('AGENT', agent.x, agent.y + 10);
-          ctx.restore();
-          return;
-        }
-
-        // Architect — pulsing white supremacy glow ring
-        if (agent.dept === 'architect') {
-          const archPulse = Math.sin(frame * 0.025) * 0.3 + 0.7;
-          ctx.beginPath();
-          const archGrd = ctx.createRadialGradient(agent.x, agent.y, r, agent.x, agent.y, r * 3.8);
-          archGrd.addColorStop(0, `rgba(255,255,255,${archPulse * 0.22})`);
-          archGrd.addColorStop(0.5, `rgba(255,255,255,${archPulse * 0.06})`);
-          archGrd.addColorStop(1, 'rgba(0,0,0,0)');
-          ctx.fillStyle = archGrd;
-          ctx.arc(agent.x, agent.y, r * 3.8, 0, Math.PI * 2);
-          ctx.fill();
-        }
-
-        if (isH) {
-          ctx.beginPath();
-          const grd = ctx.createRadialGradient(agent.x, agent.y, r * 0.5, agent.x, agent.y, r * 2.5);
-          grd.addColorStop(0, colors.glow);
-          grd.addColorStop(1, 'rgba(0,0,0,0)');
-          ctx.fillStyle = grd;
-          ctx.arc(agent.x, agent.y, r * 2.5, 0, Math.PI * 2);
-          ctx.fill();
-        }
-
-        ctx.beginPath();
-        ctx.arc(agent.x, agent.y, r, 0, Math.PI * 2);
-        ctx.strokeStyle = isH ? colors.primary : `rgba(${hexToRgb(colors.primary)},${pulse * 0.6})`;
-        ctx.lineWidth = agent.dept === 'architect' ? (isH ? 2.5 : 2) : (isH ? 2 : 1);
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.arc(agent.x, agent.y, r - 2, 0, Math.PI * 2);
-        ctx.fillStyle = isH ? colors.bg : `rgba(10,10,20,${pulse * 0.9})`;
-        ctx.fill();
-
-        ctx.fillStyle = isH ? colors.primary : `rgba(${hexToRgb(colors.primary)},0.85)`;
-        ctx.font = `bold ${isMob ? 9 : (agent.dept === 'architect' ? 12 : 11)}px monospace`;
-        ctx.textAlign = 'center';
-        ctx.fillText(agent.name.toUpperCase(), agent.x, agent.y + 4);
-
-        if (isH) {
-          ctx.fillStyle = `rgba(${hexToRgb(colors.primary)},0.4)`;
-          ctx.font = `${isMob ? 7 : 9}px monospace`;
-          ctx.fillText(agent.role, agent.x, agent.y + r + 14);
-        }
-      });
-
-      if (!hovered) {
-        ctx.fillStyle = 'rgba(57,255,20,0.08)';
-        ctx.font = `${W < 600 ? 10 : 13}px monospace`;
-        ctx.textAlign = 'center';
-        ctx.fillText('HOVER / TAP AN AGENT TO EXPLORE CONNECTIONS', W/2, H - 20);
-      }
-
-      ecoAnimRef.current = requestAnimationFrame(draw);
-    };
-    draw();
-
-    return () => {
-      cancelAnimationFrame(ecoAnimRef.current);
-      window.removeEventListener('resize', resize);
-      canvas.removeEventListener('mousemove', onMove);
-      canvas.removeEventListener('click', onClick);
-    };
-  }, []);
-
-  const depts = ['architect','executive','finance','creative','operations','technology','strategy','people','future'];
-  const deptLabels = { architect: 'ARCHITECT ★', executive: 'EXECUTIVE', finance: 'FINANCE', creative: 'CREATIVE', operations: 'OPERATIONS', technology: 'TECHNOLOGY', strategy: 'STRATEGY', people: 'PEOPLE', future: 'FUTURE AGENTS' };
-
-  return (
-    <div style={{ marginTop: 24, borderTop: "2px solid rgba(57,255,20,0.15)" }}>
-      {/* Section Header */}
-      <div style={{ padding: "20px 24px 12px", display: "flex", alignItems: "center", gap: 12 }}>
-        <div style={{ fontSize: 18, color: "#39ff14" }}>{"\u25C8"}</div>
-        <div>
-          <div style={{ fontSize: 16, fontWeight: "bold", letterSpacing: 4, color: "#39ff14" }}>ECOSYSTEM MIND MAP</div>
-          <div style={{ fontSize: 10, color: "rgba(57,255,20,0.4)", letterSpacing: 3, marginTop: 2 }}>NEURAL COLLABORATION NETWORK {"\u2014"} INTERACTIVE VISUALIZATION</div>
-        </div>
-      </div>
-
-      {/* Department Legend */}
-      <div style={{ padding: "8px 24px 16px", display: "flex", gap: 16, flexWrap: "wrap" }}>
-        {depts.map(dept => (
-          <div key={dept} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 10, color: "rgba(57,255,20,0.6)", letterSpacing: 1 }}>
-            <div style={{ width: 10, height: 10, borderRadius: "50%", background: ecoDeptColors[dept].bg, border: "1px solid " + ecoDeptColors[dept].primary }} />
-            {deptLabels[dept]}
-          </div>
-        ))}
-      </div>
-
-      {/* Canvas */}
-      <div style={{ padding: "0 24px 20px" }}>
-        <div style={{ border: "1px solid rgba(57,255,20,0.1)", background: "rgba(0,0,0,0.5)" }}>
-          <canvas ref={ecoCanvasRef} style={{ display: "block", width: "100%" }} />
-        </div>
-      </div>
-
-      {/* Collaboration Workflows */}
-      <div style={{ padding: "0 24px 24px" }}>
-        <div style={{ fontSize: 13, fontWeight: "bold", letterSpacing: 3, color: "#39ff14", marginBottom: 12 }}>{"\u25B8"} COLLABORATION WORKFLOWS</div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 12 }}>
-          {ecoWorkflows.map((wf, i) => (
-            <div key={i} style={{ background: "rgba(57,255,20,0.03)", border: "1px solid rgba(57,255,20,0.1)", padding: 16, transition: "all 0.3s" }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(57,255,20,0.3)"; e.currentTarget.style.background = "rgba(57,255,20,0.06)"; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(57,255,20,0.1)"; e.currentTarget.style.background = "rgba(57,255,20,0.03)"; }}>
-              <div style={{ fontSize: 12, color: "#39ff14", marginBottom: 6, letterSpacing: 1, fontWeight: "bold" }}>{wf.title}</div>
-              <div style={{ fontSize: 11, color: "rgba(57,255,20,0.6)", marginBottom: 8 }}>{wf.flow}</div>
-              <div style={{ fontSize: 10, color: "rgba(57,255,20,0.35)", lineHeight: 1.6 }}>{wf.desc}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Agent Detail Modal */}
-      {ecoSelected && (
-        <div onClick={() => setEcoSelected(null)} style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(0,0,0,0.85)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 9999, backdropFilter: "blur(4px)" }}>
-          <div onClick={e => e.stopPropagation()} style={{ background: "#0a0a0f", border: "2px solid " + ecoDeptColors[ecoSelected.dept].primary, padding: 28, maxWidth: 420, width: "90%", boxShadow: "0 0 30px " + ecoDeptColors[ecoSelected.dept].glow }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-              <div style={{ fontSize: 20, fontWeight: "bold", color: ecoDeptColors[ecoSelected.dept].primary, letterSpacing: 2 }}>{ecoSelected.name.toUpperCase()}</div>
-              <button onClick={() => setEcoSelected(null)} style={{ background: "none", border: "1px solid rgba(57,255,20,0.2)", color: "#39ff14", width: 28, height: 28, cursor: "pointer", fontFamily: "monospace", fontSize: 14, display: "flex", alignItems: "center", justifyContent: "center" }}>{"\u2715"}</button>
-            </div>
-            <div style={{ fontSize: 11, color: "rgba(57,255,20,0.5)", letterSpacing: 2, marginBottom: 16, textTransform: "uppercase" }}>{ecoSelected.role} \u2014 {ecoSelected.dept}</div>
-            <div style={{ fontSize: 12, color: "rgba(57,255,20,0.7)", lineHeight: 1.7, marginBottom: 20 }}>{ecoSelected.desc}</div>
-            <div style={{ fontSize: 10, color: "rgba(57,255,20,0.4)", letterSpacing: 2, marginBottom: 8 }}>COLLABORATES WITH</div>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-              {ecoSelected.connects.map(cid => {
-                const t = ecoAgents.find(a => a.id === cid);
-                return t ? <span key={cid} style={{ padding: "3px 8px", border: "1px solid " + ecoDeptColors[t.dept].primary + "40", color: ecoDeptColors[t.dept].primary, fontSize: 10, letterSpacing: 1 }}>{t.name.toUpperCase()}</span> : null;
-              })}
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
-
-
 function AgentEcosystemDashboard() {
   const [agents, setAgents] = useState(INITIAL_AGENTS);
   const [selectedAgent, setSelectedAgent] = useState(null);
-  const [showModal, setShowModal] = useState(false);
-  const [editAgent, setEditAgent] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [filterStatus, setFilterStatus] = useState("all");
-  const [filterDept, setFilterDept] = useState("all");
+  const [filterTier, setFilterTier] = useState("all");
   const [activityLog, setActivityLog] = useState([
-    { time: "00:00:01", message: "SYSTEM INITIALIZED — THE CONSTRUCT IS ONLINE", color: "#39ff14" },
+    { time: "00:00:01", message: "SYSTEM INITIALIZED \u2014 THE CONSTRUCT v2.1 ONLINE", color: "#39ff14" },
     { time: "00:00:02", message: "Loading agent profiles from neural network...", color: "rgba(57,255,20,0.5)" },
-    { time: "00:00:03", message: `${INITIAL_AGENTS.length} agents loaded. Ecosystem operational.`, color: "#00d4ff" },
-    { time: "00:00:04", message: "Founder BOBBY connected — HUMAN operator verified ◈", color: "#39ff14" },
-    { time: "00:00:05", message: "CEO AP reporting — all systems nominal ⬡", color: "#39ff14" },
+    { time: "00:00:03", message: `${INITIAL_AGENTS.length} agents loaded across 6 tiers.`, color: "#00d4ff" },
+    { time: "00:00:04", message: "Founder BOBBY connected \u2014 HUMAN operator verified \u25C8", color: "#39ff14" },
+    { time: "00:00:05", message: "\u2605 LOUIS deployed \u2014 24/25, FL RE Intelligence, Hartley Capital. Named in honor of Louis Hartley Sr.", color: "#39ff14" },
+    { time: "00:00:06", message: "Caden + Addison Jacksonville land search loaded into Louis's memory.", color: "#00d4ff" },
+    { time: "00:00:07", message: "Tier 1 build queue active: Archivist, Skill-Forge, Foreman, Eval Harness, Precedent-Finder.", color: "#b388ff" },
+    { time: "00:00:08", message: "Kill Criterion countdown armed: 2026-07-23 (Day 90).", color: "#b388ff" },
+    { time: "00:00:09", message: "Loop 1 (Correction) LIVE \u00B7 Loop 2 (Eval) NOT BUILT \u00B7 Loop 3 (Code) NOT BUILT \u00B7 Loop 4 (Memory) LIVE", color: "rgba(57,255,20,0.6)" },
   ]);
 
   const addLog = useCallback((message, color) => {
@@ -1087,72 +983,50 @@ function AgentEcosystemDashboard() {
   useEffect(() => {
     const interval = setInterval(() => {
       setAgents(prev => prev.map(a => {
-        if (Math.random() > 0.9 && a.status === "active") {
+        if (Math.random() > 0.92 && a.status === "active") {
           return { ...a, tasksCompleted: a.tasksCompleted + 1, progress: Math.min(100, a.progress + Math.floor(Math.random() * 2)) };
         }
         return a;
       }));
-      if (Math.random() > 0.7) {
-        const randomAgent = agents[Math.floor(Math.random() * agents.length)];
+      if (Math.random() > 0.75) {
+        const pool = agents.filter(a => a.status === "active");
+        const randomAgent = pool[Math.floor(Math.random() * pool.length)] || agents[0];
         const actions = [
           `${randomAgent.codename} completed subtask #${Math.floor(Math.random() * 999)}`,
           `${randomAgent.codename} processing data stream...`,
-          `Neural link sync: ${randomAgent.codename} ↔ AP`,
+          `Neural link sync: ${randomAgent.codename} \u2194 AP`,
           `${randomAgent.codename} memory optimized`,
           `Task routed to ${randomAgent.codename}`,
         ];
         addLog(actions[Math.floor(Math.random() * actions.length)], "rgba(57,255,20,0.5)");
       }
-    }, 3000);
+    }, 3500);
     return () => clearInterval(interval);
   }, [agents, addLog]);
 
   const filtered = useMemo(() => {
     return agents.filter(a => {
-      const matchSearch = !searchQuery || a.codename.toLowerCase().includes(searchQuery.toLowerCase()) || a.role.toLowerCase().includes(searchQuery.toLowerCase()) || a.department.toLowerCase().includes(searchQuery.toLowerCase());
+      const q = searchQuery.toLowerCase();
+      const matchSearch = !q || a.codename.toLowerCase().includes(q) || a.role.toLowerCase().includes(q) || a.department.toLowerCase().includes(q) || (a.skills && a.skills.some(s => s.toLowerCase().includes(q)));
       const matchStatus = filterStatus === "all" || a.status === filterStatus;
-      const matchDept = filterDept === "all" || a.department === filterDept;
-      return matchSearch && matchStatus && matchDept;
+      const matchTier = filterTier === "all" || String(a.tier) === filterTier;
+      return matchSearch && matchStatus && matchTier;
     });
-  }, [agents, searchQuery, filterStatus, filterDept]);
+  }, [agents, searchQuery, filterStatus, filterTier]);
 
-  const departments = [...new Set(agents.map(a => a.department))];
-
-  const handleSaveAgent = (agentData) => {
-    setAgents(prev => {
-      const exists = prev.find(a => a.id === agentData.id);
-      if (exists) {
-        addLog(`Agent ${agentData.codename} updated — modifications applied`, "#ffaa00");
-        return prev.map(a => a.id === agentData.id ? agentData : a);
-      } else {
-        addLog(`NEW AGENT DEPLOYED: ${agentData.codename} [${agentData.role}] — Welcome to The Construct`, "#39ff14");
-        return [...prev, agentData];
-      }
-    });
-    setShowModal(false);
-    setEditAgent(null);
-  };
-
-  const handleDeleteAgent = (id) => {
-    const agent = agents.find(a => a.id === id);
-    if (agent && !agent.isHuman) {
-      setAgents(prev => prev.filter(a => a.id !== id));
-      addLog(`Agent ${agent.codename} decommissioned — removed from ecosystem`, "#ff0040");
-      if (selectedAgent && selectedAgent.id === id) setSelectedAgent(null);
-    }
-  };
+  const louis = agents.find(a => a.codename === "Louis");
 
   return (
     <div style={{ minHeight: "100vh", background: "#000", color: "#39ff14", fontFamily: "'Courier New', Courier, monospace", position: "relative", overflowX: "hidden" }}>
       <MatrixRain />
       <div style={{ position: "relative", zIndex: 1 }}>
         {/* HEADER */}
-        <div style={{ padding: "16px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid rgba(57,255,20,0.2)", background: "linear-gradient(180deg, rgba(0,15,0,0.95) 0%, rgba(0,8,0,0.95) 100%)" }}>
+        <div style={{ padding: "16px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid rgba(57,255,20,0.2)", background: "linear-gradient(180deg, rgba(0,15,0,0.95) 0%, rgba(0,8,0,0.95) 100%)", flexWrap: "wrap", gap: 12 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-            <div style={{ fontSize: 28, lineHeight: 1 }}>◈</div>
+            <div style={{ fontSize: 28, lineHeight: 1 }}>\u25C8</div>
             <div>
               <GlitchText text="THE CONSTRUCT" tag="div" style={{ fontSize: 22, fontWeight: "bold", letterSpacing: 6, color: "#39ff14", fontFamily: "monospace" }} />
-              <div style={{ fontSize: 10, color: "rgba(57,255,20,0.4)", letterSpacing: 4, marginTop: 2 }}>BRAND 9 AGENT ECOSYSTEM v2.0 — NEURAL COMMAND CENTER</div>
+              <div style={{ fontSize: 10, color: "rgba(57,255,20,0.4)", letterSpacing: 4, marginTop: 2 }}>BRAND 9 / HARTLEY CAPITAL AGENT ECOSYSTEM v2.1 \u2014 NEURAL COMMAND CENTER</div>
             </div>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
@@ -1165,40 +1039,14 @@ function AgentEcosystemDashboard() {
         </div>
 
         <EcoStats agents={agents} />
-
-        {/* PROJECT ASCENSION STATUS */}
-        <div style={{ padding: "10px 24px", background: "rgba(245,158,11,0.05)", borderBottom: "1px solid rgba(245,158,11,0.2)", display: "flex", alignItems: "center", gap: 24, flexWrap: "wrap" }}>
-          <div style={{ fontSize: 9, fontWeight: "bold", letterSpacing: 3, color: "#f59e0b", textTransform: "uppercase", flexShrink: 0 }}>◈ Project Ascension</div>
-          <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-              <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#22c55e", boxShadow: "0 0 6px #22c55e", animation: "blink 2s infinite" }}></div>
-              <span style={{ fontSize: 10, color: "rgba(57,255,20,0.7)", letterSpacing: 1 }}>MEMORY</span>
-              <span style={{ fontSize: 10, color: "#39ff14", fontWeight: "bold" }}>17/17 AGENTS</span>
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-              <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#22c55e", boxShadow: "0 0 6px #22c55e", animation: "blink 2s infinite" }}></div>
-              <span style={{ fontSize: 10, color: "rgba(57,255,20,0.7)", letterSpacing: 1 }}>LESSONS</span>
-              <span style={{ fontSize: 10, color: "#39ff14", fontWeight: "bold" }}>8 LOGGED</span>
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-              <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#f59e0b", boxShadow: "0 0 6px #f59e0b", animation: "blink 2s infinite" }}></div>
-              <span style={{ fontSize: 10, color: "rgba(245,158,11,0.7)", letterSpacing: 1 }}>MODEL ROUTING</span>
-              <span style={{ fontSize: 10, color: "#f59e0b", fontWeight: "bold" }}>ACTIVE</span>
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-              <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#f59e0b", boxShadow: "0 0 6px #f59e0b" }}></div>
-              <span style={{ fontSize: 10, color: "rgba(245,158,11,0.7)", letterSpacing: 1 }}>PHASE</span>
-              <span style={{ fontSize: 10, color: "#f59e0b", fontWeight: "bold" }}>1 OF 3</span>
-            </div>
-          </div>
-          <a href="ascension.html" style={{ marginLeft: "auto", fontSize: 9, color: "rgba(245,158,11,0.6)", letterSpacing: 2, textDecoration: "none", border: "1px solid rgba(245,158,11,0.3)", padding: "3px 10px", borderRadius: 2 }}>VIEW DASHBOARD ›</a>
-        </div>
+        <KillCriterionPanel />
+        <TierStrategyBanner agents={agents} />
 
         {/* TOOLBAR */}
         <div style={{ padding: "12px 24px", display: "flex", gap: 12, alignItems: "center", borderBottom: "1px solid rgba(57,255,20,0.1)", background: "rgba(0,8,0,0.8)", flexWrap: "wrap" }}>
           <div style={{ position: "relative", flex: "1 1 200px" }}>
-            <span style={{ position: "absolute", left: 10, top: "50%", transform: "translateY(-50%)", color: "rgba(57,255,20,0.3)", fontSize: 13 }}>⌕</span>
-            <input value={searchQuery} onChange={e => setSearchQuery(e.target.value)} placeholder="Search agents..."
+            <span style={{ position: "absolute", left: 10, top: "50%", transform: "translateY(-50%)", color: "rgba(57,255,20,0.3)", fontSize: 13 }}>\u2315</span>
+            <input value={searchQuery} onChange={e => setSearchQuery(e.target.value)} placeholder="Search agents, roles, skills..."
               style={{ width: "100%", padding: "7px 10px 7px 30px", background: "rgba(57,255,20,0.03)", border: "1px solid rgba(57,255,20,0.15)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", fontSize: 12, outline: "none", boxSizing: "border-box" }} />
           </div>
           <select value={filterStatus} onChange={e => setFilterStatus(e.target.value)}
@@ -1206,19 +1054,16 @@ function AgentEcosystemDashboard() {
             <option value="all">ALL STATUS</option>
             {Object.entries(STATUS_CONFIG).map(([k, v]) => <option key={k} value={k}>{v.label}</option>)}
           </select>
-          <select value={filterDept} onChange={e => setFilterDept(e.target.value)}
+          <select value={filterTier} onChange={e => setFilterTier(e.target.value)}
             style={{ padding: "7px 10px", background: "rgba(0,10,0,0.95)", border: "1px solid rgba(57,255,20,0.15)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", fontSize: 12, outline: "none" }}>
-            <option value="all">ALL DEPTS</option>
-            {departments.map(d => <option key={d} value={d}>{d.toUpperCase()}</option>)}
+            <option value="all">ALL TIERS</option>
+            {[0,1,2,3,4,5].map(t => <option key={t} value={t}>{TIER_META[t].label}</option>)}
           </select>
-          <button onClick={() => { setEditAgent(null); setShowModal(true); }}
-            style={{ padding: "7px 18px", background: "rgba(57,255,20,0.08)", border: "1px solid rgba(57,255,20,0.4)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", fontSize: 12, cursor: "pointer", letterSpacing: 2, fontWeight: "bold", transition: "all 0.2s" }}>
-            + DEPLOY AGENT
-          </button>
+          <a href="https://extracoffee13.github.io/hartley-command/louis.html" target="_blank" rel="noopener noreferrer" style={{ padding: "7px 16px", background: "rgba(0,212,255,0.08)", border: "1px solid rgba(0,212,255,0.4)", borderRadius: 2, color: "#00d4ff", fontFamily: "monospace", fontSize: 11, letterSpacing: 2, fontWeight: "bold" }}>\u25B8 LOUIS DASHBOARD</a>
         </div>
 
         {/* MAIN CONTENT */}
-        <div style={{ display: "grid", gridTemplateColumns: selectedAgent ? "1fr 420px" : "1fr", gap: 0, minHeight: "calc(100vh - 160px)" }}>
+        <div style={{ display: "grid", gridTemplateColumns: selectedAgent ? "1fr 420px" : "1fr", gap: 0, minHeight: "calc(100vh - 200px)" }}>
           <div style={{ padding: 20, display: "flex", flexDirection: "column", gap: 16 }}>
             <div style={{ color: "rgba(57,255,20,0.4)", fontFamily: "monospace", fontSize: 11, letterSpacing: 2 }}>
               SHOWING {filtered.length} OF {agents.length} AGENTS
@@ -1230,7 +1075,7 @@ function AgentEcosystemDashboard() {
               ))}
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginTop: 8 }}>
-              <NetworkMap agents={agents} selectedId={selectedAgent ? selectedAgent.id : null} />
+              <TopologyMap agents={agents} selectedId={selectedAgent ? selectedAgent.id : null} />
               <ActivityLog entries={activityLog} />
             </div>
           </div>
@@ -1241,29 +1086,21 @@ function AgentEcosystemDashboard() {
                 onUpdate={(updated) => {
                   setAgents(prev => prev.map(a => a.id === updated.id ? updated : a));
                   setSelectedAgent(updated);
-                  addLog(`${updated.codename} status changed to ${STATUS_CONFIG[updated.status] ? STATUS_CONFIG[updated.status].label : "UNKNOWN"}`, "#ffaa00");
                 }} />
-              <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
-                <button onClick={() => { setEditAgent(selectedAgent); setShowModal(true); }}
-                  style={{ flex: 1, padding: "8px", background: "rgba(57,255,20,0.05)", border: "1px solid rgba(57,255,20,0.2)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", fontSize: 11, cursor: "pointer", letterSpacing: 1 }}>✎ EDIT AGENT</button>
-                {!selectedAgent.isHuman && (
-                  <button onClick={() => handleDeleteAgent(selectedAgent.id)}
-                    style={{ padding: "8px 16px", background: "rgba(255,0,64,0.05)", border: "1px solid rgba(255,0,64,0.3)", borderRadius: 2, color: "#ff0040", fontFamily: "monospace", fontSize: 11, cursor: "pointer", letterSpacing: 1 }}>⊘ DECOMMISSION</button>
-                )}
-              </div>
             </div>
           )}
         </div>
 
-        {/* ECOSYSTEM MIND MAP */}
-        <EcosystemMindMap />
+        <LouisSpotlight agent={louis} />
+        <FourLoopsPanel />
+        <WorkflowsPanel />
+        <PublicPostureCard />
 
+        <div style={{ padding: "20px 24px 28px", textAlign: "center", color: "rgba(57,255,20,0.35)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, borderTop: "1px solid rgba(57,255,20,0.1)" }}>
+          THE CONSTRUCT v2.1 \u00B7 LOUIS ADDED 2026-04-27 \u00B7 BASELINE LOCKED 2026-04-24 \u00B7 KILL CHECKPOINT 2026-07-23<br/>
+          <span style={{ color: "rgba(0,212,255,0.5)" }}>\u201CEvery property analyzed is a brick in the house Louis Sr. started. The loop is the IP.\u201D</span>
+        </div>
       </div>
-
-      {showModal && (
-        <AgentModal agent={editAgent} onSave={handleSaveAgent}
-          onCancel={() => { setShowModal(false); setEditAgent(null); }} />
-      )}
     </div>
   );
 }
@@ -1272,3 +1109,4 @@ ReactDOM.createRoot(document.getElementById("root")).render(<AgentEcosystemDashb
 </script>
 </body>
 </html>
+
