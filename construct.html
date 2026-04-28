@@ -996,6 +996,109 @@ const LouisSpotlight = ({ agent }) => {
 };
 
 // ═══════════════════════════════════════════════════
+// QUALITY TRIANGLE PANEL — three-point gate every agent must pass
+// Bobby's canonical quality protocol (locked 2026-04-28).
+// Master: ~/.claude/memory/quality-triangle.md
+// ═══════════════════════════════════════════════════
+const QualityTrianglePanel = () => {
+  const points = [
+    {
+      num: 1,
+      name: "THE SKEPTIC",
+      question: "Does this actually work?",
+      domain: "LOGIC",
+      role: "The tester. Assumes nothing works until proven.",
+      checks: ["If code: did it run?", "If analysis: are the numbers real?", "If recommendation: what's the counter-argument?"],
+      caught: "Hero video failure — would have watched the video before saying done.",
+      color: "#39ff14"
+    },
+    {
+      num: 2,
+      name: "THE ARCHITECT",
+      question: "Does this belong here?",
+      domain: "DESIGN",
+      role: "The structural reviewer. Rejects technically-correct-but-structurally-wrong.",
+      checks: ["Does it fit the system?", "Is it clean and maintainable?", "Aligned with brand standards?"],
+      caught: "Teal-on-teal favicon — \"worked\" as image but invisible in context.",
+      color: "#00d4ff"
+    },
+    {
+      num: 3,
+      name: "THE SECURITY AGENT",
+      question: "Can this be exploited?",
+      domain: "SAFETY",
+      role: "The risk assessor. Assumes everything is vulnerable.",
+      checks: ["Is sensitive data exposed?", "Could this be misused?", "Worst case if it ships?"],
+      caught: "Exposed API keys, bad legal advice, flawed financial calcs.",
+      color: "#ffcc00"
+    }
+  ];
+
+  return (
+    <div style={{ padding: "20px 24px", marginTop: 8, marginBottom: 8 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 4 }}>
+        <span style={{ color: "#00d4ff", fontSize: 18, letterSpacing: 4 }}>△</span>
+        <span style={{ color: "#00d4ff", fontFamily: "monospace", fontSize: 13, fontWeight: "bold", letterSpacing: 3 }}>THE QUALITY TRIANGLE</span>
+        <span style={{ color: "rgba(0,212,255,0.5)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2 }}>· three-point gate · every agent · every deliverable · no exceptions</span>
+      </div>
+      <div style={{ color: "rgba(0,212,255,0.6)", fontFamily: "monospace", fontSize: 11, marginBottom: 18, letterSpacing: 1 }}>
+        If any one check fails, the work goes back. Normal mode = mental checklist · [RED] mode = full audit with evidence.
+      </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+        {points.map(p => (
+          <div key={p.num} style={{
+            padding: "16px 18px",
+            background: "linear-gradient(180deg, rgba(0,20,30,0.85) 0%, rgba(0,8,12,0.95) 100%)",
+            border: `1px solid ${p.color}40`,
+            borderTop: `3px solid ${p.color}`,
+            borderRadius: 4,
+            boxShadow: `0 0 12px ${p.color}15 inset`,
+          }}>
+            <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 8 }}>
+              <span style={{ color: p.color, fontFamily: "monospace", fontSize: 22, fontWeight: "bold", letterSpacing: 2 }}>{p.num}.</span>
+              <span style={{ color: p.color, fontFamily: "monospace", fontSize: 13, fontWeight: "bold", letterSpacing: 2 }}>{p.name}</span>
+              <span style={{ marginLeft: "auto", color: `${p.color}99`, fontFamily: "monospace", fontSize: 9, letterSpacing: 2, padding: "2px 8px", border: `1px solid ${p.color}60`, borderRadius: 2 }}>{p.domain}</span>
+            </div>
+            <div style={{ color: p.color, fontFamily: "monospace", fontSize: 14, fontStyle: "italic", marginBottom: 10, fontWeight: "bold" }}>
+              "{p.question}"
+            </div>
+            <div style={{ color: "rgba(255,255,255,0.7)", fontFamily: "monospace", fontSize: 11, lineHeight: 1.5, marginBottom: 12 }}>
+              {p.role}
+            </div>
+            <div style={{ marginBottom: 12 }}>
+              {p.checks.map((c, i) => (
+                <div key={i} style={{ color: "rgba(0,212,255,0.65)", fontFamily: "monospace", fontSize: 10, letterSpacing: 0.5, marginBottom: 3, paddingLeft: 12, position: "relative" }}>
+                  <span style={{ position: "absolute", left: 0, color: `${p.color}99` }}>▸</span>
+                  {c}
+                </div>
+              ))}
+            </div>
+            <div style={{ paddingTop: 10, borderTop: `1px solid ${p.color}30`, color: "rgba(255,180,80,0.85)", fontFamily: "monospace", fontSize: 10, lineHeight: 1.4 }}>
+              <span style={{ color: "rgba(255,140,0,0.95)", fontWeight: "bold", letterSpacing: 1 }}>WOULD HAVE CAUGHT: </span>
+              {p.caught}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ marginTop: 16, padding: "12px 16px", background: "rgba(0,212,255,0.04)", border: "1px solid rgba(0,212,255,0.2)", borderRadius: 4 }}>
+        <div style={{ color: "rgba(0,212,255,0.85)", fontFamily: "monospace", fontSize: 11, letterSpacing: 2, fontWeight: "bold", marginBottom: 8 }}>◆ PRE-DELIVERY CHECKLIST — every agent runs this before saying "done"</div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, fontFamily: "monospace", fontSize: 11 }}>
+          <div style={{ color: "#39ff14" }}><span style={{ opacity: 0.6 }}>[ ]</span> SKEPTIC: Did I test this? Does it actually produce the result I'm claiming?</div>
+          <div style={{ color: "#00d4ff" }}><span style={{ opacity: 0.6 }}>[ ]</span> ARCHITECT: Is this the right approach? Does it fit Bobby's system and standards?</div>
+          <div style={{ color: "#ffcc00" }}><span style={{ opacity: 0.6 }}>[ ]</span> SECURITY: What could go wrong? Am I exposing anything or creating risk?</div>
+        </div>
+      </div>
+
+      <div style={{ marginTop: 10, color: "rgba(0,212,255,0.45)", fontFamily: "monospace", fontSize: 9, letterSpacing: 1, textAlign: "center" }}>
+        Master protocol: ~/.claude/memory/quality-triangle.md · loaded on session start · appended to all 17 agent SKILL.md files
+      </div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════
 // FOUR LOOPS PANEL — v2.1
 // ═══════════════════════════════════════════════════
 const FourLoopsPanel = () => (
@@ -1273,6 +1376,7 @@ function AgentEcosystemDashboard() {
         </div>
 
         <LouisSpotlight agent={louis} />
+        <QualityTrianglePanel />
         <FourLoopsPanel />
         <WorkflowsPanel />
         <PublicPostureCard />
