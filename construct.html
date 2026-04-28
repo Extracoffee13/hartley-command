@@ -26,202 +26,13 @@
 </style>
 </head>
 <body>
-
-<!-- ═══════════════════════════ NEUROLINK ═══════════════════════════ -->
-<div id="nl-wrap" style="background:#0a0f1a;position:relative;border-bottom:1px solid rgba(201,168,76,.15);font-family:'Courier New',Courier,monospace;">
-  <div style="text-align:center;padding:28px 0 8px;">
-    <div style="font-size:13px;letter-spacing:8px;color:rgba(201,168,76,.9);font-weight:bold;">THE CONSTRUCT — NEUROLINK</div>
-    <div style="font-size:9px;letter-spacing:3px;color:rgba(201,168,76,.35);margin-top:5px;">19 AGENTS · SECOND BRAIN · PERSISTENT MEMORY · LIVE SYNAPTIC NETWORK</div>
-  </div>
-  <canvas id="nl-canvas" style="width:100%;display:block;cursor:crosshair;"></canvas>
-  <div id="nl-tip" style="position:absolute;background:rgba(10,15,26,.95);border:1px solid rgba(201,168,76,.5);padding:6px 12px;border-radius:3px;color:#c9a84c;font-family:'Courier New',monospace;font-size:11px;pointer-events:none;z-index:10;letter-spacing:1px;box-shadow:0 0 12px rgba(201,168,76,.2);display:none;"></div>
-</div>
-<script>
-(function(){
-  var canvas=document.getElementById('nl-canvas');
-  var tip=document.getElementById('nl-tip');
-  var ctx=canvas.getContext('2d');
-  var dpr=window.devicePixelRatio||1;
-  var animId,nodes=[],conns=[],particles=[],frame=0;
-
-  var ND=[
-    {n:"Bobby",       c:"#c9a84c",s:22,ring:0,a:0,  role:"Founder · The Construct"},
-    {n:"Keystone",    c:"#1a9aaa",s:15,ring:1,a:0,  role:"Strategist"},
-    {n:"Architect",   c:"#1a9aaa",s:14,ring:1,a:90, role:"Systems Architect"},
-    {n:"Cornerstone", c:"#c0613a",s:15,ring:1,a:180,role:"Chief Mindset Officer"},
-    {n:"Second Brain",c:"#e0e0ff",s:16,ring:1,a:270,role:"Memory Engine · Obsidian"},
-    {n:"WOLF",        c:"#2e8ab0",s:14,ring:2,a:0,  role:"Hedge Fund Manager"},
-    {n:"Louis",       c:"#3a9ac0",s:15,ring:2,a:36, role:"RE Intelligence"},
-    {n:"Venture",     c:"#1a9aaa",s:13,ring:2,a:72, role:"VC Analyst"},
-    {n:"Forge",       c:"#2d9b45",s:13,ring:2,a:108,role:"Operations"},
-    {n:"Atlas",       c:"#2d9b45",s:12,ring:2,a:144,role:"Operations"},
-    {n:"Ledger",      c:"#2d9b45",s:12,ring:2,a:180,role:"CFO · Finance"},
-    {n:"Vector",      c:"#8a4dba",s:13,ring:2,a:216,role:"Creative Director"},
-    {n:"Signal",      c:"#8a4dba",s:12,ring:2,a:252,role:"Communications"},
-    {n:"Sentinel",    c:"#c0613a",s:12,ring:2,a:288,role:"Security · Legal"},
-    {n:"Nexus",       c:"#00bcd4",s:13,ring:2,a:324,role:"Infrastructure"},
-    {n:"Oracle",      c:"#2e8ab0",s:13,ring:3,a:20, role:"Intelligence"},
-    {n:"Alpha",       c:"#2e8ab0",s:12,ring:3,a:60, role:"Intelligence"},
-    {n:"Cipher",      c:"#2e8ab0",s:11,ring:3,a:100,role:"Intelligence"},
-    {n:"Spectra",     c:"#8a4dba",s:12,ring:3,a:200,role:"Creative"},
-    {n:"NanoClaw",    c:"#00bcd4",s:12,ring:3,a:300,role:"AI Assistant"},
-    {n:"Mnemon",      c:"#a0a0ff",s:11,ring:3,a:340,role:"Graph Memory"}
-  ];
-
-  var CD=[
-    ["Bobby","Keystone",.9],["Bobby","Architect",.85],["Bobby","Cornerstone",.95],
-    ["Bobby","Second Brain",.8],["Bobby","WOLF",.8],["Bobby","Louis",.85],
-    ["Bobby","Forge",.75],["Bobby","Vector",.7],["Bobby","Nexus",.7],
-    ["Keystone","Architect",.85],["Architect","Venture",.8],["Venture","Louis",.85],
-    ["Keystone","Venture",.6],["Louis","Architect",.65],
-    ["WOLF","Oracle",.85],["Oracle","Alpha",.8],["Alpha","Cipher",.75],["WOLF","Alpha",.55],
-    ["Second Brain","WOLF",.6],["Second Brain","Louis",.7],["Second Brain","Oracle",.6],
-    ["Second Brain","Alpha",.55],["Second Brain","Cipher",.5],["Second Brain","Keystone",.6],
-    ["Second Brain","Architect",.6],["Second Brain","Venture",.55],["Second Brain","Forge",.55],
-    ["Second Brain","Atlas",.5],["Second Brain","Ledger",.5],["Second Brain","Vector",.5],
-    ["Second Brain","Signal",.5],["Second Brain","Spectra",.5],["Second Brain","Cornerstone",.55],
-    ["Second Brain","Sentinel",.5],["Second Brain","Nexus",.55],["Second Brain","NanoClaw",.5],
-    ["Second Brain","Mnemon",.75],
-    ["Forge","Atlas",.8],["Atlas","Ledger",.75],
-    ["Vector","Signal",.8],["Signal","Spectra",.7],
-    ["Cornerstone","Sentinel",.65],
-    ["Nexus","NanoClaw",.8],["Nexus","Second Brain",.65],["Mnemon","NanoClaw",.65]
-  ];
-
-  var dust=[];
-  for(var i=0;i<60;i++) dust.push({x:Math.random(),y:Math.random(),vx:(Math.random()-.5)*.00015,vy:(Math.random()-.5)*.00015,sz:Math.random()*1.5+.3,al:Math.random()*.2+.04});
-
-  function rgb(h){return[parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)];}
-
-  function setup(){
-    var w=(canvas.parentElement||document.body).offsetWidth||window.innerWidth;
-    var h=w<480?380:500;
-    canvas.width=w*dpr; canvas.height=h*dpr;
-    canvas.style.height=h+'px';
-    ctx.setTransform(1,0,0,1,0,0); ctx.scale(dpr,dpr);
-    var cx=w/2,cy=h/2,sc=Math.min(w/580,h/500,1.15);
-    var R=[0,120*sc,218*sc,300*sc];
-    nodes=ND.map(function(d){
-      var rad=(d.a-90)*Math.PI/180,r=R[d.ring];
-      return {n:d.n,c:d.c,s:d.s,role:d.role,
-        sz:Math.max(d.s*sc,6),
-        bx:cx+Math.cos(rad)*r,by:cy+Math.sin(rad)*r,x:0,y:0,
-        px:Math.random()*Math.PI*2,py:Math.random()*Math.PI*2,
-        dr:(3+Math.random()*3)*sc,sp:.003+Math.random()*.004};
-    });
-    conns=CD.map(function(c){
-      return{ai:nodes.findIndex(function(n){return n.n===c[0];}),bi:nodes.findIndex(function(n){return n.n===c[1];}),str:c[2]};
-    }).filter(function(c){return c.ai>=0&&c.bi>=0;});
-  }
-
-  function draw(){
-    var w=canvas.width/dpr,h=canvas.height/dpr,cx=w/2,cy=h/2;
-    ctx.fillStyle='#0a0f1a'; ctx.fillRect(0,0,w,h);
-    var bg=ctx.createRadialGradient(cx,cy,0,cx,cy,Math.min(w,h)*.44);
-    bg.addColorStop(0,'rgba(201,168,76,.035)'); bg.addColorStop(1,'rgba(0,0,0,0)');
-    ctx.fillStyle=bg; ctx.fillRect(0,0,w,h);
-
-    dust.forEach(function(d){
-      d.x=(d.x+d.vx+1)%1; d.y=(d.y+d.vy+1)%1;
-      ctx.beginPath(); ctx.arc(d.x*w,d.y*h,d.sz,0,Math.PI*2);
-      ctx.fillStyle='rgba(100,150,220,'+d.al+')'; ctx.fill();
-    });
-
-    nodes.forEach(function(n){
-      n.x=n.bx+Math.sin(frame*n.sp+n.px)*n.dr;
-      n.y=n.by+Math.cos(frame*n.sp+n.py)*n.dr;
-    });
-
-    conns.forEach(function(c){
-      var a=nodes[c.ai],b=nodes[c.bi];
-      ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
-      ctx.strokeStyle='rgba(80,160,220,'+(c.str*.13)+')'; ctx.lineWidth=c.str*1.3; ctx.stroke();
-    });
-
-    particles=particles.filter(function(p){return p.t<1;});
-    particles.forEach(function(p){
-      p.t+=p.sp;
-      var c=conns[p.ci]; if(!c) return;
-      var a=nodes[c.ai],b=nodes[c.bi]; if(!a||!b) return;
-      var t=p.fw?p.t:1-p.t,px=a.x+(b.x-a.x)*t,py=a.y+(b.y-a.y)*t;
-      var col=rgb(a.c),r=col[0],g=col[1],bv=col[2];
-      var grd=ctx.createRadialGradient(px,py,0,px,py,5);
-      grd.addColorStop(0,'rgba('+r+','+g+','+bv+',.9)'); grd.addColorStop(1,'rgba('+r+','+g+','+bv+',0)');
-      ctx.beginPath(); ctx.arc(px,py,5,0,Math.PI*2); ctx.fillStyle=grd; ctx.fill();
-      ctx.beginPath(); ctx.arc(px,py,1.5,0,Math.PI*2); ctx.fillStyle='rgba(255,255,255,.9)'; ctx.fill();
-    });
-
-    nodes.forEach(function(n){
-      var col=rgb(n.c),r=col[0],g=col[1],b=col[2];
-      var pulse=n.n==='Bobby'?1+.12*Math.sin(frame*.04):1;
-      if(n.n==='Bobby'){
-        [1.9,2.8].forEach(function(m,i){
-          ctx.beginPath(); ctx.arc(n.x,n.y,n.sz*m*(1+.08*Math.sin(frame*.04+i)),0,Math.PI*2);
-          ctx.strokeStyle='rgba('+r+','+g+','+b+','+(.18-i*.07)+')'; ctx.lineWidth=1; ctx.stroke();
-        });
-      }
-      var grd=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,n.sz*3.5*pulse);
-      grd.addColorStop(0,'rgba('+r+','+g+','+b+',.25)');
-      grd.addColorStop(.4,'rgba('+r+','+g+','+b+',.07)');
-      grd.addColorStop(1,'rgba(0,0,0,0)');
-      ctx.beginPath(); ctx.arc(n.x,n.y,n.sz*3.5*pulse,0,Math.PI*2); ctx.fillStyle=grd; ctx.fill();
-
-      ctx.beginPath(); ctx.arc(n.x,n.y,n.sz,0,Math.PI*2);
-      ctx.fillStyle='rgba('+r+','+g+','+b+',.18)'; ctx.fill();
-      ctx.strokeStyle='rgba('+r+','+g+','+b+',.95)';
-      ctx.lineWidth=n.n==='Bobby'?2.5:1.5; ctx.stroke();
-
-      var ig=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,n.sz*.6);
-      ig.addColorStop(0,'rgba('+r+','+g+','+b+',.6)'); ig.addColorStop(1,'rgba(0,0,0,0)');
-      ctx.beginPath(); ctx.arc(n.x,n.y,n.sz*.6,0,Math.PI*2); ctx.fillStyle=ig; ctx.fill();
-
-      var fs=n.n==='Bobby'?11:8;
-      ctx.font='bold '+fs+'px \'Courier New\',monospace'; ctx.textAlign='center';
-      ctx.shadowColor='#0a0f1a'; ctx.shadowBlur=5;
-      ctx.fillStyle='rgba('+r+','+g+','+b+',.95)';
-      ctx.fillText(n.n,n.x,n.y+n.sz+fs+2);
-      ctx.shadowBlur=0;
-    });
-
-    frame++;
-    if(particles.length<90&&frame%2===0&&conns.length){
-      var ci=Math.floor(Math.random()*conns.length),c=conns[ci];
-      if(Math.random()<c.str*.85) particles.push({ci:ci,t:0,sp:.004+Math.random()*.007,fw:Math.random()>.5});
-    }
-    animId=requestAnimationFrame(draw);
-  }
-
-  setup(); draw();
-  window.addEventListener('resize',function(){particles=[];setup();});
-
-  function onTap(e){
-    var rect=canvas.getBoundingClientRect();
-    var sx=(canvas.width/dpr)/rect.width,sy=(canvas.height/dpr)/rect.height;
-    var src=e.touches?e.touches[0]:e;
-    var mx=(src.clientX-rect.left)*sx,my=(src.clientY-rect.top)*sy;
-    var best=null,bd=60;
-    nodes.forEach(function(n){var d=Math.sqrt((n.x-mx)*(n.x-mx)+(n.y-my)*(n.y-my));if(d<bd){bd=d;best=n;}});
-    if(best){
-      tip.innerHTML='<strong>'+best.n+'</strong><br><span style="color:rgba(201,168,76,.55);font-size:9px;">'+best.role+'</span>';
-      tip.style.left=(src.clientX-rect.left+12)+'px';
-      tip.style.top=(src.clientY-rect.top-48)+'px';
-      tip.style.display='block';
-      clearTimeout(tip._t);
-      tip._t=setTimeout(function(){tip.style.display='none';},2800);
-    }
-  }
-  canvas.addEventListener('click',onTap);
-  canvas.addEventListener('touchstart',onTap,{passive:true});
-})();
-</script>
-
 <div id="root"></div>
 <script type="text/babel">
 const { useState, useEffect, useRef, useCallback, useMemo } = React;
 
 // ═══════════════════════════════════════════════════════════════
 // THE CONSTRUCT v2.1 — Brand 9 / Hartley Capital Agent Ecosystem
-// Locked 2026-04-24 baseline · Louis added 2026-04-27 · Second Brain added 2026-04-27
+// Locked 2026-04-24 baseline · Louis added 2026-04-27
 // Day-90 kill criterion: 2026-07-23
 // Cool-palette enforced (no warm colors per B9 brand canonical)
 // ═══════════════════════════════════════════════════════════════
@@ -324,7 +135,6 @@ const PulseRing = ({ color = "#39ff14", size = 80 }) => (
 // ═══════════════════════════════════════════════════════════════
 const STATUS_CONFIG = {
   active:     { color: "#39ff14", label: "ACTIVE",     glow: "0 0 10px rgba(57,255,20,0.5)" },
-  installed:  { color: "#aaeeff", label: "INSTALLED",  glow: "0 0 8px rgba(170,238,255,0.3)" },
   idle:       { color: "#00d4ff", label: "IDLE",       glow: "0 0 10px rgba(0,212,255,0.3)" },
   processing: { color: "#00ffff", label: "PROCESSING", glow: "0 0 12px rgba(0,255,255,0.6)" },
   building:   { color: "#b388ff", label: "IN BUILD",   glow: "0 0 12px rgba(179,136,255,0.5)" },
@@ -354,8 +164,6 @@ const ROLE_ICONS = {
   "Intel-Scout": "\uD83D\uDEF0\uFE0F",
   "Field-Drone": "\uD83D\uDEF8",
   Cite: "\uD83D\uDCDA",
-  "Memory Engine": "\uD83E\uDDE0",
-  "AI Assistant": "\uD83E\uDD16",
 };
 
 // Tier metadata — drives the Tier Strategy banner + agent badging
@@ -594,23 +402,693 @@ const INITIAL_AGENTS = [
     description: "Hedge Fund Manager. Generates alpha through quant + macro strategies across long/short, options, volatility.",
     progress: 82, tasksCompleted: 2800, tasksActive: 8, memoryUsage: 79, uptime: "140 days", lastActive: "1 min ago",
   },
-  {
-    id: "sys-second-brain", codename: "Second Brain", role: "Memory Engine", department: "Infrastructure",
-    tier: 5, score: null, status: "active",
-    skills: ["Vault-First Research", "Scheduled Consolidation", "Working Memory", "Episodic Memory", "Semantic Memory", "Cross-Agent Knowledge Sync", "Overnight Compounding", "31-Command Toolkit", "Obsidian Integration", "Memory Distillation", "Correction Capture", "Lesson Propagation"],
-    description: "Obsidian-powered persistent memory layer. 31 commands. Vault-first research, scheduled consolidation cycles, multi-layer memory (working, episodic, semantic). Connected to all 19 agents. The shared brain that gets smarter overnight.",
-    progress: 100, tasksCompleted: 0, tasksActive: 3, memoryUsage: 100,
-    uptime: "0 days", lastActive: "NOW",
-  },
-  {
-    id: "sys-nanoclaw", codename: "NanoClaw", role: "AI Assistant", department: "Infrastructure",
-    tier: 5, score: null, status: "installed",
-    skills: ["WhatsApp Integration", "Telegram Integration", "Slack Integration", "Discord Integration", "Voice Note Processing", "Scheduled Tasks", "Graph-Based Memory (Mnemon)", "Cross-Platform Messaging", "Persistent Memory", "Multi-Channel Routing"],
-    description: "Self-hosted Claude assistant with WhatsApp/Telegram/Slack/Discord integration, voice note processing, scheduled tasks, and graph-based persistent memory via Mnemon. Built by Singapore's Foreign Minister. Multi-channel messaging backbone for the ecosystem.",
-    progress: 85, tasksCompleted: 0, tasksActive: 0, memoryUsage: 40,
-    uptime: "0 days", lastActive: "INSTALLED",
-  },
 ];
+
+// ═══════════════════════════════════════════════════════════════
+// LIVE SKILL DEPLOYMENT DATA — generated 2026-04-28T18:56:51Z
+// Reads c-suite/agents/*/SKILL.md + skills-library/installed/* on disk
+// Universal rule: every agent can pull from every package as needed
+// ═══════════════════════════════════════════════════════════════
+const SKILL_DEPLOYMENT_GENERATED = "2026-04-28T18:56:51Z";
+
+const UNIVERSAL_POOL_PACKAGES = [
+  {
+    "name": "Claude-Skills-Governance-Risk-and-Compliance",
+    "skill_md_count": 15,
+    "total_files": 532
+  },
+  {
+    "name": "ai-legal-claude",
+    "skill_md_count": 14,
+    "total_files": 27
+  },
+  {
+    "name": "buildwithclaude",
+    "skill_md_count": 277,
+    "total_files": 1854
+  },
+  {
+    "name": "ccpm",
+    "skill_md_count": 1,
+    "total_files": 27
+  },
+  {
+    "name": "charlie-cfo-skill",
+    "skill_md_count": 1,
+    "total_files": 5
+  },
+  {
+    "name": "claude-code-skills",
+    "skill_md_count": 270,
+    "total_files": 1042
+  },
+  {
+    "name": "claude-legal-skill",
+    "skill_md_count": 1,
+    "total_files": 10
+  },
+  {
+    "name": "claude-marketplace",
+    "skill_md_count": 5,
+    "total_files": 18
+  },
+  {
+    "name": "claude-seo",
+    "skill_md_count": 27,
+    "total_files": 305
+  },
+  {
+    "name": "claude-skills-alirezarezvani",
+    "skill_md_count": 541,
+    "total_files": 2314
+  },
+  {
+    "name": "claude-trading-skills",
+    "skill_md_count": 62,
+    "total_files": 330
+  },
+  {
+    "name": "claude-trading-skills-tradermonty",
+    "skill_md_count": 72,
+    "total_files": 920
+  },
+  {
+    "name": "data-analytics-skills",
+    "skill_md_count": 33,
+    "total_files": 178
+  },
+  {
+    "name": "design-mastery-claude-code",
+    "skill_md_count": 4,
+    "total_files": 19
+  },
+  {
+    "name": "financial-services-plugins",
+    "skill_md_count": 56,
+    "total_files": 189
+  },
+  {
+    "name": "marketingskills",
+    "skill_md_count": 40,
+    "total_files": 312
+  },
+  {
+    "name": "seo-geo-claude-skills",
+    "skill_md_count": 20,
+    "total_files": 181
+  },
+  {
+    "name": "skills-anthropics-official",
+    "skill_md_count": 18,
+    "total_files": 390
+  },
+  {
+    "name": "skills-figma-designagent",
+    "skill_md_count": 4,
+    "total_files": 10
+  },
+  {
+    "name": "skills-octagon",
+    "skill_md_count": 66,
+    "total_files": 399
+  },
+  {
+    "name": "superpowers",
+    "skill_md_count": 14,
+    "total_files": 147
+  },
+  {
+    "name": "vc-skills",
+    "skill_md_count": 0,
+    "total_files": 76
+  },
+  {
+    "name": "visualize",
+    "skill_md_count": 2,
+    "total_files": 600
+  }
+];
+const UNIVERSAL_POOL_TOTAL_PACKAGES = 23;
+const UNIVERSAL_POOL_TOTAL_SKILL_MD = 1543;
+const UNIVERSAL_POOL_TOTAL_FILES = 9885;
+
+const COWORK_CALLABLE_SKILLS = [
+  "browser-automation-essentials",
+  "docx",
+  "graphic-designer",
+  "keystone",
+  "linkedin-posting",
+  "multi-channel-social-posting",
+  "pdf",
+  "pptx",
+  "schedule",
+  "self-improving-loop",
+  "setup-cowork",
+  "skill-creator",
+  "wordpress-yoast-publishing",
+  "xlsx",
+  "consolidate-memory",
+  "engineering:architecture",
+  "engineering:code-review",
+  "engineering:debug",
+  "engineering:deploy-checklist",
+  "engineering:documentation",
+  "engineering:incident-response",
+  "engineering:standup",
+  "engineering:system-design",
+  "engineering:tech-debt",
+  "engineering:testing-strategy"
+];
+const COWORK_CALLABLE_TOTAL = 25;
+
+const AGENT_SKILL_DATA = {
+  "Bobby": {
+    "has_skill_md": false,
+    "skill_md_path": null,
+    "last_deployed": null,
+    "primary_packages": [],
+    "primary_package_count": 0,
+    "primary_skill_md_count": 0
+  },
+  "Louis": {
+    "has_skill_md": false,
+    "skill_md_path": null,
+    "last_deployed": null,
+    "primary_packages": [],
+    "primary_package_count": 0,
+    "primary_skill_md_count": 0
+  },
+  "Vector": {
+    "has_skill_md": true,
+    "skill_md_path": "c-suite/agents/cmo/SKILL.md",
+    "last_deployed": "2026-04-28T18:09:48Z",
+    "primary_packages": [
+      {
+        "name": "claude-seo",
+        "skill_md_count": 27,
+        "total_files": 305
+      },
+      {
+        "name": "seo-geo-claude-skills",
+        "skill_md_count": 20,
+        "total_files": 181
+      },
+      {
+        "name": "marketingskills",
+        "skill_md_count": 40,
+        "total_files": 312
+      },
+      {
+        "name": "skills-figma-designagent",
+        "skill_md_count": 4,
+        "total_files": 10
+      },
+      {
+        "name": "design-mastery-claude-code",
+        "skill_md_count": 4,
+        "total_files": 19
+      },
+      {
+        "name": "skills-anthropics-official",
+        "skill_md_count": 18,
+        "total_files": 390
+      }
+    ],
+    "primary_package_count": 6,
+    "primary_skill_md_count": 113
+  },
+  "Keystone": {
+    "has_skill_md": false,
+    "skill_md_path": null,
+    "last_deployed": null,
+    "primary_packages": [],
+    "primary_package_count": 0,
+    "primary_skill_md_count": 0
+  },
+  "Self-Improving Loop": {
+    "has_skill_md": false,
+    "skill_md_path": null,
+    "last_deployed": null,
+    "primary_packages": [],
+    "primary_package_count": 0,
+    "primary_skill_md_count": 0
+  },
+  "WOLF": {
+    "has_skill_md": true,
+    "skill_md_path": "c-suite/agents/wolf/SKILL.md",
+    "last_deployed": "2026-04-28T18:09:48Z",
+    "primary_packages": [
+      {
+        "name": "claude-trading-skills",
+        "skill_md_count": 62,
+        "total_files": 330
+      },
+      {
+        "name": "claude-trading-skills-tradermonty",
+        "skill_md_count": 72,
+        "total_files": 920
+      }
+    ],
+    "primary_package_count": 2,
+    "primary_skill_md_count": 134
+  },
+  "Atlas": {
+    "has_skill_md": true,
+    "skill_md_path": "c-suite/agents/chief-of-staff/SKILL.md",
+    "last_deployed": "2026-04-28T18:09:48Z",
+    "primary_packages": [
+      {
+        "name": "skills-anthropics-official",
+        "skill_md_count": 18,
+        "total_files": 390
+      },
+      {
+        "name": "claude-skills-alirezarezvani",
+        "skill_md_count": 541,
+        "total_files": 2314
+      },
+      {
+        "name": "visualize",
+        "skill_md_count": 2,
+        "total_files": 600
+      }
+    ],
+    "primary_package_count": 3,
+    "primary_skill_md_count": 561
+  },
+  "Cornerstone": {
+    "has_skill_md": true,
+    "skill_md_path": "c-suite/agents/cornerstone/SKILL.md",
+    "last_deployed": "2026-04-28T18:09:48Z",
+    "primary_packages": [
+      {
+        "name": "ccpm",
+        "skill_md_count": 1,
+        "total_files": 27
+      },
+      {
+        "name": "claude-code-skills",
+        "skill_md_count": 270,
+        "total_files": 1042
+      },
+      {
+        "name": "visualize",
+        "skill_md_count": 2,
+        "total_files": 600
+      }
+    ],
+    "primary_package_count": 3,
+    "primary_skill_md_count": 273
+  },
+  "Archivist": {
+    "has_skill_md": false,
+    "skill_md_path": null,
+    "last_deployed": null,
+    "primary_packages": [],
+    "primary_package_count": 0,
+    "primary_skill_md_count": 0
+  },
+  "Skill-Forge": {
+    "has_skill_md": false,
+    "skill_md_path": null,
+    "last_deployed": null,
+    "primary_packages": [],
+    "primary_package_count": 0,
+    "primary_skill_md_count": 0
+  },
+  "Foreman": {
+    "has_skill_md": false,
+    "skill_md_path": null,
+    "last_deployed": null,
+    "primary_packages": [],
+    "primary_package_count": 0,
+    "primary_skill_md_count": 0
+  },
+  "Eval Harness": {
+    "has_skill_md": false,
+    "skill_md_path": null,
+    "last_deployed": null,
+    "primary_packages": [],
+    "primary_package_count": 0,
+    "primary_skill_md_count": 0
+  },
+  "Precedent-Finder": {
+    "has_skill_md": false,
+    "skill_md_path": null,
+    "last_deployed": null,
+    "primary_packages": [],
+    "primary_package_count": 0,
+    "primary_skill_md_count": 0
+  },
+  "Scout": {
+    "has_skill_md": false,
+    "skill_md_path": null,
+    "last_deployed": null,
+    "primary_packages": [],
+    "primary_package_count": 0,
+    "primary_skill_md_count": 0
+  },
+  "Skill-Forge v2": {
+    "has_skill_md": false,
+    "skill_md_path": null,
+    "last_deployed": null,
+    "primary_packages": [],
+    "primary_package_count": 0,
+    "primary_skill_md_count": 0
+  },
+  "Field-Scout": {
+    "has_skill_md": false,
+    "skill_md_path": null,
+    "last_deployed": null,
+    "primary_packages": [],
+    "primary_package_count": 0,
+    "primary_skill_md_count": 0
+  },
+  "Hartley-Cite": {
+    "has_skill_md": false,
+    "skill_md_path": null,
+    "last_deployed": null,
+    "primary_packages": [],
+    "primary_package_count": 0,
+    "primary_skill_md_count": 0
+  },
+  "AP": {
+    "has_skill_md": false,
+    "skill_md_path": null,
+    "last_deployed": null,
+    "primary_packages": [],
+    "primary_package_count": 0,
+    "primary_skill_md_count": 0
+  },
+  "Architect": {
+    "has_skill_md": false,
+    "skill_md_path": null,
+    "last_deployed": null,
+    "primary_packages": [],
+    "primary_package_count": 0,
+    "primary_skill_md_count": 0
+  },
+  "Ledger": {
+    "has_skill_md": true,
+    "skill_md_path": "c-suite/agents/cfo/SKILL.md",
+    "last_deployed": "2026-04-28T18:09:48Z",
+    "primary_packages": [
+      {
+        "name": "financial-services-plugins",
+        "skill_md_count": 56,
+        "total_files": 189
+      },
+      {
+        "name": "charlie-cfo-skill",
+        "skill_md_count": 1,
+        "total_files": 5
+      },
+      {
+        "name": "skills-octagon",
+        "skill_md_count": 66,
+        "total_files": 399
+      },
+      {
+        "name": "claude-skills-alirezarezvani",
+        "skill_md_count": 541,
+        "total_files": 2314
+      }
+    ],
+    "primary_package_count": 4,
+    "primary_skill_md_count": 664
+  },
+  "Forge": {
+    "has_skill_md": true,
+    "skill_md_path": "c-suite/agents/coo/SKILL.md",
+    "last_deployed": "2026-04-28T18:09:48Z",
+    "primary_packages": [
+      {
+        "name": "ccpm",
+        "skill_md_count": 1,
+        "total_files": 27
+      },
+      {
+        "name": "claude-code-skills",
+        "skill_md_count": 270,
+        "total_files": 1042
+      },
+      {
+        "name": "superpowers",
+        "skill_md_count": 14,
+        "total_files": 147
+      }
+    ],
+    "primary_package_count": 3,
+    "primary_skill_md_count": 285
+  },
+  "Cipher": {
+    "has_skill_md": true,
+    "skill_md_path": "c-suite/agents/cto/SKILL.md",
+    "last_deployed": "2026-04-28T18:09:48Z",
+    "primary_packages": [
+      {
+        "name": "superpowers",
+        "skill_md_count": 14,
+        "total_files": 147
+      },
+      {
+        "name": "claude-marketplace",
+        "skill_md_count": 5,
+        "total_files": 18
+      },
+      {
+        "name": "claude-trading-skills",
+        "skill_md_count": 62,
+        "total_files": 330
+      },
+      {
+        "name": "skills-anthropics-official",
+        "skill_md_count": 18,
+        "total_files": 390
+      }
+    ],
+    "primary_package_count": 4,
+    "primary_skill_md_count": 99
+  },
+  "Oracle": {
+    "has_skill_md": true,
+    "skill_md_path": "c-suite/agents/oracle/SKILL.md",
+    "last_deployed": "2026-04-28T18:09:48Z",
+    "primary_packages": [
+      {
+        "name": "data-analytics-skills",
+        "skill_md_count": 33,
+        "total_files": 178
+      },
+      {
+        "name": "visualize",
+        "skill_md_count": 2,
+        "total_files": 600
+      },
+      {
+        "name": "skills-anthropics-official",
+        "skill_md_count": 18,
+        "total_files": 390
+      }
+    ],
+    "primary_package_count": 3,
+    "primary_skill_md_count": 53
+  },
+  "Signal": {
+    "has_skill_md": true,
+    "skill_md_path": "c-suite/agents/cmo/SKILL.md",
+    "last_deployed": "2026-04-28T18:09:48Z",
+    "primary_packages": [
+      {
+        "name": "claude-seo",
+        "skill_md_count": 27,
+        "total_files": 305
+      },
+      {
+        "name": "seo-geo-claude-skills",
+        "skill_md_count": 20,
+        "total_files": 181
+      },
+      {
+        "name": "marketingskills",
+        "skill_md_count": 40,
+        "total_files": 312
+      },
+      {
+        "name": "skills-figma-designagent",
+        "skill_md_count": 4,
+        "total_files": 10
+      },
+      {
+        "name": "design-mastery-claude-code",
+        "skill_md_count": 4,
+        "total_files": 19
+      },
+      {
+        "name": "skills-anthropics-official",
+        "skill_md_count": 18,
+        "total_files": 390
+      }
+    ],
+    "primary_package_count": 6,
+    "primary_skill_md_count": 113
+  },
+  "Sentinel": {
+    "has_skill_md": true,
+    "skill_md_path": "c-suite/agents/sentinel/SKILL.md",
+    "last_deployed": "2026-04-28T18:09:48Z",
+    "primary_packages": [
+      {
+        "name": "ai-legal-claude",
+        "skill_md_count": 14,
+        "total_files": 27
+      },
+      {
+        "name": "claude-legal-skill",
+        "skill_md_count": 1,
+        "total_files": 10
+      },
+      {
+        "name": "Claude-Skills-Governance-Risk-and-Compliance",
+        "skill_md_count": 15,
+        "total_files": 532
+      }
+    ],
+    "primary_package_count": 3,
+    "primary_skill_md_count": 30
+  },
+  "Spectra": {
+    "has_skill_md": true,
+    "skill_md_path": "c-suite/agents/spectra/SKILL.md",
+    "last_deployed": "2026-04-28T18:09:48Z",
+    "primary_packages": [
+      {
+        "name": "claude-skills-alirezarezvani",
+        "skill_md_count": 541,
+        "total_files": 2314
+      },
+      {
+        "name": "skills-anthropics-official",
+        "skill_md_count": 18,
+        "total_files": 390
+      }
+    ],
+    "primary_package_count": 2,
+    "primary_skill_md_count": 559
+  },
+  "Nexus": {
+    "has_skill_md": true,
+    "skill_md_path": "c-suite/agents/nexus/SKILL.md",
+    "last_deployed": "2026-04-28T18:09:48Z",
+    "primary_packages": [
+      {
+        "name": "skills-anthropics-official",
+        "skill_md_count": 18,
+        "total_files": 390
+      },
+      {
+        "name": "claude-skills-alirezarezvani",
+        "skill_md_count": 541,
+        "total_files": 2314
+      }
+    ],
+    "primary_package_count": 2,
+    "primary_skill_md_count": 559
+  },
+  "Venture": {
+    "has_skill_md": true,
+    "skill_md_path": "c-suite/agents/venture/SKILL.md",
+    "last_deployed": "2026-04-28T18:09:48Z",
+    "primary_packages": [
+      {
+        "name": "vc-skills",
+        "skill_md_count": 0,
+        "total_files": 76
+      },
+      {
+        "name": "buildwithclaude",
+        "skill_md_count": 277,
+        "total_files": 1854
+      },
+      {
+        "name": "financial-services-plugins",
+        "skill_md_count": 56,
+        "total_files": 189
+      },
+      {
+        "name": "skills-octagon",
+        "skill_md_count": 66,
+        "total_files": 399
+      }
+    ],
+    "primary_package_count": 4,
+    "primary_skill_md_count": 399
+  },
+  "Equity": {
+    "has_skill_md": true,
+    "skill_md_path": "c-suite/agents/equity/SKILL.md",
+    "last_deployed": "2026-04-28T18:09:48Z",
+    "primary_packages": [
+      {
+        "name": "financial-services-plugins",
+        "skill_md_count": 56,
+        "total_files": 189
+      },
+      {
+        "name": "skills-octagon",
+        "skill_md_count": 66,
+        "total_files": 399
+      },
+      {
+        "name": "claude-trading-skills",
+        "skill_md_count": 62,
+        "total_files": 330
+      }
+    ],
+    "primary_package_count": 3,
+    "primary_skill_md_count": 184
+  },
+  "Alpha": {
+    "has_skill_md": true,
+    "skill_md_path": "c-suite/agents/alpha/SKILL.md",
+    "last_deployed": "2026-04-28T18:09:48Z",
+    "primary_packages": [
+      {
+        "name": "claude-trading-skills",
+        "skill_md_count": 62,
+        "total_files": 330
+      },
+      {
+        "name": "claude-trading-skills-tradermonty",
+        "skill_md_count": 72,
+        "total_files": 920
+      },
+      {
+        "name": "financial-services-plugins",
+        "skill_md_count": 56,
+        "total_files": 189
+      }
+    ],
+    "primary_package_count": 3,
+    "primary_skill_md_count": 190
+  },
+  "Second Brain": {
+    "has_skill_md": false,
+    "skill_md_path": null,
+    "last_deployed": null,
+    "primary_packages": [],
+    "primary_package_count": 0,
+    "primary_skill_md_count": 0
+  },
+  "NanoClaw": {
+    "has_skill_md": false,
+    "skill_md_path": null,
+    "last_deployed": null,
+    "primary_packages": [],
+    "primary_package_count": 0,
+    "primary_skill_md_count": 0
+  }
+};
 
 // ═══════════════════════════════════════════════════════════════
 // KILL CRITERION — Day 90 = 2026-07-23
@@ -822,6 +1300,106 @@ const AgentDetail = ({ agent, onClose, onUpdate }) => {
             <span key={i} style={{ padding: "4px 10px", fontSize: 11, fontFamily: "monospace", background: "rgba(57,255,20,0.06)", border: "1px solid rgba(57,255,20,0.2)", borderRadius: 2, color: "rgba(57,255,20,0.7)", letterSpacing: 1 }}>{skill}</span>
           ))}
         </div>
+      </div>
+      <SkillDeploymentPanel agent={agent} />
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════
+// SKILL DEPLOYMENT PANEL — live skill inventory per agent
+// Renders: primary mapped packages + universal filesystem pool + Cowork-callable skills
+// ═══════════════════════════════════════════════════
+const SkillDeploymentPanel = ({ agent }) => {
+  const data = AGENT_SKILL_DATA[agent.codename] || null;
+  const [showPool, setShowPool] = React.useState(false);
+  const [showCowork, setShowCowork] = React.useState(false);
+  const hasMapped = data && data.has_skill_md;
+  const primary = (data && data.primary_packages) || [];
+  const primaryFileCount = (data && data.primary_skill_md_count) || 0;
+  const lastDeployed = (data && data.last_deployed) || null;
+
+  const cardStyle = { padding: "8px 10px", background: "rgba(0,212,255,0.04)", border: "1px solid rgba(0,212,255,0.18)", borderRadius: 3, fontFamily: "monospace", fontSize: 11 };
+
+  return (
+    <div style={{ marginBottom: 16, padding: "12px 14px", background: "rgba(0,0,20,0.6)", border: "1px solid rgba(0,212,255,0.25)", borderRadius: 4 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
+        <span style={{ color: "rgba(0,212,255,0.85)", fontFamily: "monospace", fontSize: 11, letterSpacing: 2, fontWeight: "bold" }}>◈ SKILL DEPLOYMENT — LIVE INVENTORY</span>
+        <span style={{ color: "rgba(0,212,255,0.4)", fontFamily: "monospace", fontSize: 9, letterSpacing: 1 }}>scanned {SKILL_DEPLOYMENT_GENERATED}</span>
+      </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8, marginBottom: 12 }}>
+        <div style={cardStyle}>
+          <div style={{ color: "rgba(0,212,255,0.45)", fontSize: 9, letterSpacing: 1, marginBottom: 3 }}>SKILL.md ON DISK</div>
+          <div style={{ color: hasMapped ? "#39ff14" : "rgba(255,140,0,0.8)", fontSize: 14, fontWeight: "bold" }}>{hasMapped ? "✓ WIRED" : "— UNMAPPED"}</div>
+        </div>
+        <div style={cardStyle}>
+          <div style={{ color: "rgba(0,212,255,0.45)", fontSize: 9, letterSpacing: 1, marginBottom: 3 }}>PRIMARY PACKAGES</div>
+          <div style={{ color: "#00d4ff", fontSize: 14, fontWeight: "bold" }}>{primary.length}</div>
+        </div>
+        <div style={cardStyle}>
+          <div style={{ color: "rgba(0,212,255,0.45)", fontSize: 9, letterSpacing: 1, marginBottom: 3 }}>PRIMARY SKILL.md FILES</div>
+          <div style={{ color: "#00d4ff", fontSize: 14, fontWeight: "bold" }}>{primaryFileCount.toLocaleString()}</div>
+        </div>
+        <div style={cardStyle}>
+          <div style={{ color: "rgba(0,212,255,0.45)", fontSize: 9, letterSpacing: 1, marginBottom: 3 }}>LAST DEPLOYED</div>
+          <div style={{ color: lastDeployed ? "#39ff14" : "rgba(255,140,0,0.6)", fontSize: 11, fontWeight: "bold" }}>{lastDeployed || "—"}</div>
+        </div>
+      </div>
+
+      {hasMapped && primary.length > 0 && (
+        <div style={{ marginBottom: 10 }}>
+          <div style={{ color: "rgba(0,212,255,0.6)", fontSize: 10, letterSpacing: 2, marginBottom: 6 }}>▸ PRIMARY PACKAGES (mapped in this agent's SKILL.md)</div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+            {primary.map((p, i) => (
+              <span key={i} title={`${p.skill_md_count} SKILL.md · ${p.total_files} files`} style={{ padding: "5px 10px", fontSize: 11, fontFamily: "monospace", background: "rgba(0,212,255,0.10)", border: "1px solid rgba(0,212,255,0.4)", borderRadius: 2, color: "#00d4ff", letterSpacing: 1 }}>
+                {p.name} <span style={{ color: "rgba(0,212,255,0.55)", marginLeft: 4 }}>· {p.skill_md_count}sm · {p.total_files}f</span>
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {!hasMapped && (
+        <div style={{ marginBottom: 10, padding: "8px 12px", background: "rgba(255,140,0,0.06)", border: "1px solid rgba(255,140,0,0.25)", borderRadius: 3, color: "rgba(255,180,80,0.85)", fontSize: 11, fontFamily: "monospace" }}>
+          No dedicated SKILL.md file on disk. This agent operates conceptually — it draws from the universal pool below as needed.
+        </div>
+      )}
+
+      <div style={{ marginBottom: 8 }}>
+        <button onClick={() => setShowPool(!showPool)} style={{ width: "100%", padding: "6px 10px", background: "rgba(0,212,255,0.06)", border: "1px solid rgba(0,212,255,0.25)", borderRadius: 2, color: "#00d4ff", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, cursor: "pointer", textAlign: "left" }}>
+          {showPool ? "▼" : "▸"} UNIVERSAL FILESYSTEM POOL — {UNIVERSAL_POOL_TOTAL_PACKAGES} packages · {UNIVERSAL_POOL_TOTAL_SKILL_MD.toLocaleString()} SKILL.md · {UNIVERSAL_POOL_TOTAL_FILES.toLocaleString()} files (every agent can pull from here as needed)
+        </button>
+        {showPool && (
+          <div style={{ marginTop: 8, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 4 }}>
+            {UNIVERSAL_POOL_PACKAGES.map((p, i) => {
+              const isPrimary = primary.find(x => x.name === p.name);
+              return (
+                <div key={i} style={{ padding: "5px 8px", fontSize: 10, fontFamily: "monospace", background: isPrimary ? "rgba(0,212,255,0.12)" : "rgba(0,10,20,0.5)", border: `1px solid ${isPrimary ? "rgba(0,212,255,0.4)" : "rgba(0,212,255,0.12)"}`, borderRadius: 2, color: isPrimary ? "#00d4ff" : "rgba(0,212,255,0.5)" }}>
+                  {isPrimary ? "★ " : ""}{p.name}
+                  <span style={{ color: "rgba(0,212,255,0.4)", marginLeft: 4 }}>{p.skill_md_count}sm</span>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
+
+      <div>
+        <button onClick={() => setShowCowork(!showCowork)} style={{ width: "100%", padding: "6px 10px", background: "rgba(57,255,20,0.06)", border: "1px solid rgba(57,255,20,0.25)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, cursor: "pointer", textAlign: "left" }}>
+          {showCowork ? "▼" : "▸"} COWORK-CALLABLE SKILLS — {COWORK_CALLABLE_TOTAL} skills (directly invokable via Skill tool, available to every agent)
+        </button>
+        {showCowork && (
+          <div style={{ marginTop: 8, display: "flex", flexWrap: "wrap", gap: 4 }}>
+            {COWORK_CALLABLE_SKILLS.map((s, i) => (
+              <span key={i} style={{ padding: "4px 8px", fontSize: 10, fontFamily: "monospace", background: "rgba(57,255,20,0.06)", border: "1px solid rgba(57,255,20,0.2)", borderRadius: 2, color: "rgba(57,255,20,0.75)" }}>{s}</span>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div style={{ marginTop: 10, paddingTop: 8, borderTop: "1px solid rgba(0,212,255,0.12)", color: "rgba(0,212,255,0.5)", fontSize: 9, fontFamily: "monospace", letterSpacing: 1 }}>
+        Universal rule: every skill is available to every agent at all times. Primary mappings are preferences, not walls.
       </div>
     </div>
   );
@@ -1162,116 +1740,6 @@ const WorkflowsPanel = () => (
 );
 
 // ═══════════════════════════════════════════════════
-// SECOND BRAIN PANEL — v2.1
-// ═══════════════════════════════════════════════════
-const SecondBrainPanel = () => (
-  <div style={{ margin: "16px 24px", padding: 20, background: "linear-gradient(135deg, rgba(179,136,255,0.06) 0%, rgba(0,8,16,0.95) 100%)", border: "1px solid rgba(179,136,255,0.35)", borderRadius: 4, position: "relative", overflow: "hidden" }}>
-    <ScanLine />
-    <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}>
-      <div style={{ fontSize: 26 }}>\uD83E\uDDE0</div>
-      <div>
-        <GlitchText text="SECOND BRAIN" tag="div" style={{ color: "#b388ff", fontSize: 20, fontWeight: "bold", letterSpacing: 4, fontFamily: "monospace" }} />
-        <div style={{ fontSize: 10, color: "rgba(179,136,255,0.5)", letterSpacing: 3, marginTop: 2 }}>MEMORY CONSOLIDATION ENGINE \u00B7 OBSIDIAN-POWERED \u00B7 31 COMMANDS</div>
-      </div>
-      <div style={{ marginLeft: "auto", padding: "4px 12px", background: "rgba(57,255,20,0.1)", border: "1px solid rgba(57,255,20,0.4)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", fontSize: 11, letterSpacing: 2 }}>ACTIVE</div>
-    </div>
-    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16 }}>
-      <div style={{ padding: 14, background: "rgba(179,136,255,0.04)", border: "1px solid rgba(179,136,255,0.2)", borderRadius: 3 }}>
-        <div style={{ fontSize: 9, fontFamily: "monospace", letterSpacing: 2, color: "rgba(179,136,255,0.5)", marginBottom: 8 }}>\u25B8 MEMORY LAYERS</div>
-        {[
-          { layer: "Working Memory", desc: "Active session context" },
-          { layer: "Episodic Memory", desc: "Conversation + event log" },
-          { layer: "Semantic Memory", desc: "Distilled facts + lessons" },
-        ].map((m, i) => (
-          <div key={i} style={{ marginBottom: 8, fontSize: 11, fontFamily: "monospace" }}>
-            <div style={{ color: "#b388ff", fontWeight: "bold" }}>{m.layer}</div>
-            <div style={{ color: "rgba(179,136,255,0.5)", fontSize: 10 }}>{m.desc}</div>
-          </div>
-        ))}
-      </div>
-      <div style={{ padding: 14, background: "rgba(179,136,255,0.04)", border: "1px solid rgba(179,136,255,0.2)", borderRadius: 3 }}>
-        <div style={{ fontSize: 9, fontFamily: "monospace", letterSpacing: 2, color: "rgba(179,136,255,0.5)", marginBottom: 8 }}>\u25B8 CONSOLIDATION CYCLES</div>
-        {[
-          { cycle: "Overnight Run", desc: "Auto-consolidates daily" },
-          { cycle: "Vault-First Research", desc: "Local knowledge before web" },
-          { cycle: "Cross-Agent Sync", desc: "All 19 agents fed" },
-        ].map((c, i) => (
-          <div key={i} style={{ marginBottom: 8, fontSize: 11, fontFamily: "monospace" }}>
-            <div style={{ color: "#b388ff", fontWeight: "bold" }}>{c.cycle}</div>
-            <div style={{ color: "rgba(179,136,255,0.5)", fontSize: 10 }}>{c.desc}</div>
-          </div>
-        ))}
-      </div>
-      <div style={{ padding: 14, background: "rgba(179,136,255,0.04)", border: "1px solid rgba(179,136,255,0.2)", borderRadius: 3 }}>
-        <div style={{ fontSize: 9, fontFamily: "monospace", letterSpacing: 2, color: "rgba(179,136,255,0.5)", marginBottom: 8 }}>\u25B8 SKILL STATS</div>
-        <div style={{ fontSize: 28, color: "#b388ff", fontWeight: "bold", fontFamily: "monospace", marginBottom: 2 }}>31</div>
-        <div style={{ fontSize: 10, color: "rgba(179,136,255,0.5)", fontFamily: "monospace", marginBottom: 12 }}>commands available</div>
-        <div style={{ fontSize: 10, fontFamily: "monospace", lineHeight: 1.8 }}>
-          <div><span style={{ color: "rgba(179,136,255,0.45)" }}>Skill: </span><span style={{ color: "#b388ff" }}>obsidian-second-brain</span></div>
-          <div><span style={{ color: "rgba(179,136,255,0.45)" }}>Connected: </span><span style={{ color: "#39ff14" }}>All 19 agents</span></div>
-        </div>
-      </div>
-    </div>
-    <div style={{ marginTop: 12, padding: "8px 12px", background: "rgba(0,0,0,0.4)", borderTop: "1px solid rgba(179,136,255,0.15)", fontSize: 11, fontFamily: "monospace", color: "rgba(179,136,255,0.65)", lineHeight: 1.6 }}>
-      Obsidian-powered persistent memory layer. Vault-first research, scheduled consolidation cycles, multi-layer memory (working, episodic, semantic). <span style={{ color: "#b388ff", fontWeight: "bold" }}>The shared brain that gets smarter overnight.</span>
-    </div>
-  </div>
-);
-
-// ═══════════════════════════════════════════════════
-// NANOCLAW PANEL — v2.1
-// ═══════════════════════════════════════════════════
-const NanoClawPanel = () => (
-  <div style={{ margin: "16px 24px", padding: 20, background: "linear-gradient(135deg, rgba(0,212,255,0.06) 0%, rgba(0,8,16,0.95) 100%)", border: "1px solid rgba(0,212,255,0.3)", borderRadius: 4, position: "relative", overflow: "hidden" }}>
-    <ScanLine />
-    <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}>
-      <div style={{ fontSize: 26 }}>\uD83E\uDD16</div>
-      <div>
-        <GlitchText text="NANOCLAW" tag="div" style={{ color: "#00d4ff", fontSize: 20, fontWeight: "bold", letterSpacing: 4, fontFamily: "monospace" }} />
-        <div style={{ fontSize: 10, color: "rgba(0,212,255,0.5)", letterSpacing: 3, marginTop: 2 }}>SELF-HOSTED AI ASSISTANT \u00B7 MULTI-CHANNEL \u00B7 MNEMON MEMORY</div>
-      </div>
-      <div style={{ marginLeft: "auto", padding: "4px 12px", background: "rgba(170,238,255,0.1)", border: "1px solid rgba(170,238,255,0.4)", borderRadius: 2, color: "#aaeeff", fontFamily: "monospace", fontSize: 11, letterSpacing: 2 }}>INSTALLED</div>
-    </div>
-    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16 }}>
-      <div style={{ padding: 14, background: "rgba(0,212,255,0.04)", border: "1px solid rgba(0,212,255,0.2)", borderRadius: 3 }}>
-        <div style={{ fontSize: 9, fontFamily: "monospace", letterSpacing: 2, color: "rgba(0,212,255,0.5)", marginBottom: 8 }}>\u25B8 MESSAGING CHANNELS</div>
-        {["WhatsApp", "Telegram", "Slack", "Discord"].map((ch, i) => (
-          <div key={i} style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 6, fontSize: 11, fontFamily: "monospace" }}>
-            <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#00d4ff", boxShadow: "0 0 4px rgba(0,212,255,0.6)" }} />
-            <span style={{ color: "#00d4ff" }}>{ch}</span>
-          </div>
-        ))}
-      </div>
-      <div style={{ padding: 14, background: "rgba(0,212,255,0.04)", border: "1px solid rgba(0,212,255,0.2)", borderRadius: 3 }}>
-        <div style={{ fontSize: 9, fontFamily: "monospace", letterSpacing: 2, color: "rgba(0,212,255,0.5)", marginBottom: 8 }}>\u25B8 CAPABILITIES</div>
-        {[
-          { cap: "Voice Note Processing", desc: "Audio → text → action" },
-          { cap: "Scheduled Tasks",       desc: "Cron-driven agent runs" },
-          { cap: "Mnemon Memory",         desc: "Graph-based cross-session recall" },
-        ].map((c, i) => (
-          <div key={i} style={{ marginBottom: 8, fontSize: 11, fontFamily: "monospace" }}>
-            <div style={{ color: "#00d4ff", fontWeight: "bold" }}>{c.cap}</div>
-            <div style={{ color: "rgba(0,212,255,0.5)", fontSize: 10 }}>{c.desc}</div>
-          </div>
-        ))}
-      </div>
-      <div style={{ padding: 14, background: "rgba(0,212,255,0.04)", border: "1px solid rgba(0,212,255,0.2)", borderRadius: 3 }}>
-        <div style={{ fontSize: 9, fontFamily: "monospace", letterSpacing: 2, color: "rgba(0,212,255,0.5)", marginBottom: 8 }}>\u25B8 PROVENANCE</div>
-        <div style={{ fontSize: 11, fontFamily: "monospace", lineHeight: 1.8 }}>
-          <div><span style={{ color: "rgba(0,212,255,0.45)" }}>Author: </span><span style={{ color: "#00d4ff" }}>Singapore FM</span></div>
-          <div><span style={{ color: "rgba(0,212,255,0.45)" }}>Memory: </span><span style={{ color: "#aaeeff" }}>Mnemon (graph)</span></div>
-          <div><span style={{ color: "rgba(0,212,255,0.45)" }}>Skills: </span><span style={{ color: "#aaeeff" }}>nanoclaw + mnemon</span></div>
-          <div style={{ marginTop: 10, fontSize: 9, color: "rgba(0,212,255,0.35)", lineHeight: 1.5 }}>Installed \u2014 configure channels<br/>to activate messaging bridge</div>
-        </div>
-      </div>
-    </div>
-    <div style={{ marginTop: 12, padding: "8px 12px", background: "rgba(0,0,0,0.4)", borderTop: "1px solid rgba(0,212,255,0.15)", fontSize: 11, fontFamily: "monospace", color: "rgba(0,212,255,0.65)", lineHeight: 1.6 }}>
-      Personal Claude assistant with multi-channel messaging, voice note processing, scheduled tasks, and graph-based persistent memory. <span style={{ color: "#00d4ff", fontWeight: "bold" }}>Bobby talks to the ecosystem from anywhere — WhatsApp, Telegram, Slack, or Discord.</span>
-    </div>
-  </div>
-);
-
-// ═══════════════════════════════════════════════════
 // MAIN DASHBOARD
 // ═══════════════════════════════════════════════════
 function AgentEcosystemDashboard() {
@@ -1290,7 +1758,6 @@ function AgentEcosystemDashboard() {
     { time: "00:00:07", message: "Tier 1 build queue active: Archivist, Skill-Forge, Foreman, Eval Harness, Precedent-Finder.", color: "#b388ff" },
     { time: "00:00:08", message: "Kill Criterion countdown armed: 2026-07-23 (Day 90).", color: "#b388ff" },
     { time: "00:00:09", message: "Loop 1 (Correction) LIVE \u00B7 Loop 2 (Eval) NOT BUILT \u00B7 Loop 3 (Code) NOT BUILT \u00B7 Loop 4 (Memory) LIVE", color: "rgba(57,255,20,0.6)" },
-    { time: "00:00:10", message: "\uD83E\uDDE0 SECOND BRAIN online \u2014 Obsidian-powered memory consolidation engine, 31 commands, connected to all 19 agents.", color: "#b388ff" },
   ]);
 
   const addLog = useCallback((message, color) => {
@@ -1411,15 +1878,13 @@ function AgentEcosystemDashboard() {
         </div>
 
         <LouisSpotlight agent={louis} />
-        <SecondBrainPanel />
-        <NanoClawPanel />
         <FourLoopsPanel />
         <WorkflowsPanel />
         <PublicPostureCard />
 
         <div style={{ padding: "20px 24px 28px", textAlign: "center", color: "rgba(57,255,20,0.35)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, borderTop: "1px solid rgba(57,255,20,0.1)" }}>
-          THE CONSTRUCT v2.1 \u00B7 LOUIS ADDED 2026-04-27 \u00B7 SECOND BRAIN + NANOCLAW ADDED 2026-04-27 \u00B7 BASELINE LOCKED 2026-04-24 \u00B7 KILL CHECKPOINT 2026-07-23<br/>
-          <span style={{ color: "rgba(0,212,255,0.5)" }}>\u201CEvery property analyzed is a brick in the house Louis Sr. started. The loop is the IP. The brain compounds overnight.\u201D</span>
+          THE CONSTRUCT v2.1 \u00B7 LOUIS ADDED 2026-04-27 \u00B7 BASELINE LOCKED 2026-04-24 \u00B7 KILL CHECKPOINT 2026-07-23<br/>
+          <span style={{ color: "rgba(0,212,255,0.5)" }}>\u201CEvery property analyzed is a brick in the house Louis Sr. started. The loop is the IP.\u201D</span>
         </div>
       </div>
     </div>
