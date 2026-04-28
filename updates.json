@@ -1,7 +1,34 @@
 {
   "schema_version": "1.0",
-  "last_updated_utc": "2026-04-28T22:45:00Z",
+  "last_updated_utc": "2026-04-28T22:55:00Z",
   "updates": [
+    {
+      "id": "2026-04-28-pro-tier-validated",
+      "date": "2026-04-28",
+      "title": "Gemini Pro tier = production-grade fidelity baseline",
+      "summary": "Bobby switched Gemini model from 'Fast' (Imagen 3) to 'Pro' (Gemini 3 Pro) and re-fired Beat 2 prompt. Result: visible thick painterly brushwork, real impasto wood grain, gallery-grade hand brushstrokes — matches Geddes/Brantley reference at meaningfully higher fidelity than V0/V2 at Fast. Path 1 from Phase 2 Runsheet (account-tier upgrade) now active. All remaining beats render at Pro tier going forward. V2 prompt strategy carries over unchanged — only the model selector switches.",
+      "agents_affected": ["Vector", "Signal", "AP"],
+      "files_changed": [
+        "B9-NS-PRO-render-v1.png (Beat 2 — The kit, Pro tier)",
+        "memory/feedback_ninth_street_render_strategy.md (Pro tier validation appended)"
+      ],
+      "tag": "fidelity-unlock",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-04-28-ninth-street-permanent",
+      "date": "2026-04-28",
+      "title": "Ninth Street style — PERMANENT LOCK + brand deck queued post-film",
+      "summary": "Bobby validated Beat 10 + Beat 12 V2 renders (\"The Gemini Renderings look great\"). Style spec promoted to permanent: never overwritten, default for ALL Brand 9 work going forward (signage, social, motion, web, print, environmental). V2 impasto prompt strategy validated as canonical for future Ninth Street rendering. Brand deck (visual system overview, four pillars, palette logic, typography, drip/halftone rules, do/don't gallery, 15 service-category applications, motion principles) QUEUED — fires only after homepage motion film Phase 5 completes. Trigger: Bobby says \"build the Ninth Street brand deck now.\"",
+      "agents_affected": ["Vector", "Signal", "AP"],
+      "files_changed": [
+        "memory/project_ninth_street_style.md (permanent-lock declaration added)",
+        "memory/feedback_ninth_street_render_strategy.md (new — V2 impasto strategy canonical)",
+        "MEMORY.md (index updated)"
+      ],
+      "tag": "brand-lock",
+      "color": "#ffd700"
+    },
     {
       "id": "2026-04-28-uncaged",
       "date": "2026-04-28",
