@@ -10,6 +10,9 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: #000; overflow-x: hidden; font-family: 'Courier New', Courier, monospace; }
+  
+  @keyframes nlrain { 0% { transform: translateY(0); } 100% { transform: translateY(140%); } }
+  @keyframes nlsweep { 0% { transform: translateY(0); opacity: 0; } 5% { opacity: 1; } 95% { opacity: 1; } 100% { transform: translateY(540px); opacity: 0; } }
   @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
   @keyframes pulse-ring { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.5); opacity: 0; } }
   @keyframes flicker { 0%, 100% { opacity: 1; } 50% { opacity: 0.97; } 51% { opacity: 0.9; } 52% { opacity: 1; } }
@@ -131,145 +134,318 @@ const PulseRing = ({ color = "#39ff14", size = 80 }) => (
 );
 
 // ═══════════════════════════════════════════════════════════════
-// NEUROLINK — animated neural-network visualization at top of dashboard
-// Spec (Bobby 2026-04-28): dark neural map · 21+ glowing nodes (all agents) ·
-// Bobby = gold center w/ breathing pulse rings · synaptic particle streams ·
-// color-coded by function: teal=strategy · blue=intelligence · green=ops ·
-// purple=creative · white=memory. Tappable on iPhone shows agent name+role.
+// ═══════════════════════════════════════════════════════════════
+// NEUROLINK 2099 — 1999 Matrix grammar, 2099 holographic execution.
+// Multi-layer composite: matrix rain bg → hex grid → bezier sigil web →
+// synaptic particle streams → concentric orbital nodes → holographic Bobby
+// core → corner HUD frames + live ticker + scanning sweep.
+// Spec from Bobby 2026-04-28.
 // ═══════════════════════════════════════════════════════════════
 const NEUROLINK_FUNCTION_COLOR = {
-  // department → category → color
-  Strategy:        "#00d4ff", // teal
-  "Hartley Capital": "#4a9eff", // blue (intelligence)
-  Technology:      "#4a9eff", // blue
-  Finance:         "#4a9eff", // blue
-  Operations:      "#39ff14", // green
-  Creative:        "#b388ff", // purple
-  Meta:            "#ffffff", // white (memory)
-  Infrastructure:  "#ffffff", // white (memory)
-  People:          "#39ff14", // green (ops-adjacent)
-  Executive:       "#4a9eff", // blue
+  Strategy:        "#00d4ff",
+  "Hartley Capital": "#4a9eff",
+  Technology:      "#4a9eff",
+  Finance:         "#4a9eff",
+  Operations:      "#39ff14",
+  Creative:        "#b388ff",
+  Meta:            "#ffffff",
+  Infrastructure:  "#ffffff",
+  People:          "#39ff14",
+  Executive:       "#4a9eff",
 };
 
 const neurolinkColorFor = (agent) => {
-  if (agent.isHuman) return "#ffd700"; // Bobby = gold
+  if (agent.isHuman) return "#ffd700";
   if (agent.codename === "Self-Improving Loop" || agent.codename === "Cornerstone") return "#ffffff";
   return NEUROLINK_FUNCTION_COLOR[agent.department] || "#39ff14";
 };
 
+// Matrix-rain layer — falling glyph columns behind everything.
+const NeurolinkMatrixRain = () => {
+  const cols = 60;
+  const glyphs = "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン░▒▓★◆◇◈⟁⟁⟢⟣⌬𓂀";
+  const columns = useMemo(() => Array.from({ length: cols }).map((_, i) => ({
+    left: (i / cols) * 100,
+    delay: -((i * 137) % 1000) / 100,
+    dur: 6 + ((i * 53) % 700) / 100,
+    chars: Array.from({ length: 14 }).map(() => glyphs[Math.floor(Math.random() * glyphs.length)]).join("\n"),
+    opacity: 0.06 + (i % 7) * 0.025,
+  })), []);
+  return (
+    <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none", opacity: 0.85 }}>
+      {columns.map((c, i) => (
+        <div key={i} style={{
+          position: "absolute", left: `${c.left}%`, top: "-30%",
+          fontFamily: "'Courier New', monospace", fontSize: 11, lineHeight: "14px", letterSpacing: 1,
+          color: "#39ff14", opacity: c.opacity, textShadow: "0 0 6px #39ff14",
+          whiteSpace: "pre", animation: `nlrain ${c.dur}s linear ${c.delay}s infinite`,
+        }}>{c.chars}</div>
+      ))}
+    </div>
+  );
+};
+
 const NeurolinkVisualization = ({ agents }) => {
   const [hovered, setHovered] = useState(null);
-  const W = 1400;
-  const H = 220;
-  const cx = W / 2;
-  const cy = H / 2;
+  const [packets, setPackets] = useState(0);
+  const [stamp, setStamp] = useState("00:00:00.000");
 
+  useEffect(() => {
+    const id = setInterval(() => {
+      const d = new Date();
+      setStamp(d.toLocaleTimeString("en-US", { hour12: false }) + "." + String(d.getMilliseconds()).padStart(3, "0"));
+      setPackets(p => p + Math.floor(7 + Math.random() * 18));
+    }, 80);
+    return () => clearInterval(id);
+  }, []);
+
+  const W = 1600, H = 540;
+  const cx = W / 2, cy = H / 2;
   const bobby = agents.find(a => a.isHuman) || agents[0];
   const others = agents.filter(a => !a.isHuman);
   const N = others.length;
 
-  // Two concentric orbits for visual depth
-  const innerR = 70;
-  const outerR = 100;
+  // Two concentric ellipses for visual depth
+  const outerN = Math.ceil(N * 0.62);
+  const innerN = N - outerN;
+  const outer = { rx: 640, ry: 215 };
+  const inner = { rx: 360, ry: 118 };
 
   const positioned = others.map((a, i) => {
-    const angle = (i / N) * Math.PI * 2 - Math.PI / 2; // start at top
-    const r = i % 2 === 0 ? outerR : innerR;
+    const isOuter = i % 2 === 0 ? (i / 2 < outerN) : false;
+    const inOuter = i < outerN;
+    const r = inOuter ? outer : inner;
+    const idx = inOuter ? i : i - outerN;
+    const total = inOuter ? outerN : innerN;
+    const angle = (idx / total) * Math.PI * 2 - Math.PI / 2 + (inOuter ? 0 : Math.PI / total);
     return {
       agent: a,
-      x: cx + Math.cos(angle) * r * (W / H * 0.55),
-      y: cy + Math.sin(angle) * r,
+      x: cx + Math.cos(angle) * r.rx,
+      y: cy + Math.sin(angle) * r.ry,
       color: neurolinkColorFor(a),
+      outer: inOuter,
+      delay: i * 0.07,
+      i,
     };
   });
 
-  return (
-    <div style={{ background: "linear-gradient(180deg, #000511 0%, #000208 100%)", borderBottom: "1px solid rgba(0,212,255,0.2)", padding: "8px 0 6px", position: "relative", overflow: "hidden" }}>
-      <div style={{ position: "absolute", top: 6, left: 16, color: "#00d4ff", fontFamily: "monospace", fontSize: 10, letterSpacing: 4, fontWeight: "bold", zIndex: 2 }}>NEUROLINK</div>
-      <div style={{ position: "absolute", top: 6, right: 16, color: "rgba(0,212,255,0.6)", fontFamily: "monospace", fontSize: 9, letterSpacing: 2, zIndex: 2 }}>
-        {agents.length} NODES · LIVE SYNAPTIC NETWORK
-        <span style={{ marginLeft: 8, width: 6, height: 6, borderRadius: "50%", background: "#39ff14", boxShadow: "0 0 6px #39ff14", display: "inline-block", animation: "blink 2s infinite" }} />
-      </div>
+  // Bezier control point for organic curves — pull toward orbit perpendicular
+  const bezierPath = (p) => {
+    const mx = (cx + p.x) / 2;
+    const my = (cy + p.y) / 2;
+    const dx = p.x - cx, dy = p.y - cy;
+    const len = Math.sqrt(dx * dx + dy * dy) || 1;
+    const offset = 35 + (p.i % 5) * 6;
+    const px = mx + (-dy / len) * offset * (p.i % 2 ? 1 : -1);
+    const py = my + (dx / len) * offset * (p.i % 2 ? 1 : -1);
+    return `M${cx},${cy} Q${px},${py} ${p.x},${p.y}`;
+  };
 
-      <svg viewBox={`0 0 ${W} ${H}`} style={{ display: "block", width: "100%", height: H, maxHeight: 260 }}>
+  return (
+    <div style={{
+      position: "relative", width: "100%", height: H,
+      background: "radial-gradient(ellipse at center, #001a14 0%, #000208 70%, #000000 100%)",
+      borderBottom: "1px solid rgba(0,212,255,0.25)",
+      overflow: "hidden",
+    }}>
+      <NeurolinkMatrixRain />
+
+      {/* Hex grid mid-layer */}
+      <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid slice"
+           style={{ position: "absolute", inset: 0, width: "100%", height: "100%", opacity: 0.18, pointerEvents: "none" }}>
         <defs>
-          <radialGradient id="bobbyGlow">
-            <stop offset="0%" stopColor="#ffd700" stopOpacity="1" />
-            <stop offset="60%" stopColor="#ffd700" stopOpacity="0.45" />
+          <pattern id="hexgrid" x="0" y="0" width="56" height="48.5" patternUnits="userSpaceOnUse">
+            <polygon points="14,0 42,0 56,24.25 42,48.5 14,48.5 0,24.25" fill="none" stroke="#0c5d4a" strokeWidth="0.4" />
+          </pattern>
+        </defs>
+        <rect width={W} height={H} fill="url(#hexgrid)" />
+      </svg>
+
+      {/* Sweeping scan line */}
+      <div style={{
+        position: "absolute", left: 0, right: 0, top: 0, height: 2,
+        background: "linear-gradient(90deg, transparent 0%, rgba(57,255,20,0.4) 30%, rgba(0,212,255,0.5) 50%, rgba(57,255,20,0.4) 70%, transparent 100%)",
+        animation: "nlsweep 8s linear infinite", boxShadow: "0 0 12px #39ff14", pointerEvents: "none",
+      }} />
+
+      {/* Main SVG: connections, particles, nodes */}
+      <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid meet"
+           style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}>
+        <defs>
+          <radialGradient id="nlBobbyCore">
+            <stop offset="0%"  stopColor="#fff8d4" stopOpacity="1" />
+            <stop offset="35%" stopColor="#ffd700" stopOpacity="1" />
+            <stop offset="70%" stopColor="#ff9d00" stopOpacity="0.4" />
             <stop offset="100%" stopColor="#ffd700" stopOpacity="0" />
           </radialGradient>
-          <filter id="nodeGlow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-            <feMerge>
-              <feMergeNode in="coloredBlur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
+          <filter id="nlSoftGlow" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="2.5" result="b" />
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="nlHardGlow" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="6" result="b" />
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
           </filter>
           {positioned.map((p, i) => (
-            <linearGradient key={`g${i}`} id={`syn${i}`} x1={cx} y1={cy} x2={p.x} y2={p.y} gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#ffd700" stopOpacity="0.6" />
-              <stop offset="100%" stopColor={p.color} stopOpacity="0.3" />
+            <linearGradient key={`grad${i}`} id={`nlSyn${i}`} x1={cx} y1={cy} x2={p.x} y2={p.y} gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#ffd700" stopOpacity="0.85" />
+              <stop offset="35%" stopColor={p.color} stopOpacity="0.55" />
+              <stop offset="100%" stopColor={p.color} stopOpacity="0.18" />
             </linearGradient>
           ))}
         </defs>
 
-        {/* Connection lines (synapses) */}
+        {/* Orbit guide ellipses (subtle) */}
+        <ellipse cx={cx} cy={cy} rx={outer.rx} ry={outer.ry} fill="none" stroke="rgba(0,212,255,0.08)" strokeWidth="0.6" strokeDasharray="2 6" />
+        <ellipse cx={cx} cy={cy} rx={inner.rx} ry={inner.ry} fill="none" stroke="rgba(57,255,20,0.10)" strokeWidth="0.6" strokeDasharray="2 6" />
+
+        {/* Bezier connection web — Bobby to every node */}
         {positioned.map((p, i) => (
-          <line key={`L${i}`} x1={cx} y1={cy} x2={p.x} y2={p.y}
-                stroke={`url(#syn${i})`} strokeWidth="0.8" opacity="0.55" />
+          <path key={`L${i}`} d={bezierPath(p)} fill="none" stroke={`url(#nlSyn${i})`} strokeWidth="0.9"
+                opacity={hovered && hovered.codename !== p.agent.codename && hovered.codename !== bobby.codename ? 0.18 : 0.7} />
         ))}
 
-        {/* Synaptic particles — animated dots traveling along each connection */}
-        {positioned.map((p, i) => (
-          <circle key={`P${i}`} r="2.2" fill={p.color}
-                  filter="url(#nodeGlow)"
-                  opacity="0.95">
-            <animateMotion dur={`${2.4 + (i % 5) * 0.4}s`} repeatCount="indefinite"
-              path={`M${cx},${cy} L${p.x},${p.y}`} />
-            <animate attributeName="opacity" values="0;1;1;0" dur={`${2.4 + (i % 5) * 0.4}s`} repeatCount="indefinite" />
+        {/* Synaptic particles — multiple per connection, staggered */}
+        {positioned.flatMap((p, i) => {
+          const dur = 2.2 + (i % 7) * 0.35;
+          return [0, 0.3, 0.65].map((delayFrac, j) => (
+            <circle key={`P${i}-${j}`} r={2 + (j === 0 ? 0.6 : 0)} fill={p.color} filter="url(#nlSoftGlow)" opacity="0">
+              <animateMotion dur={`${dur}s`} repeatCount="indefinite" begin={`${-delayFrac * dur}s`} path={bezierPath(p)} />
+              <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur={`${dur}s`} repeatCount="indefinite" begin={`${-delayFrac * dur}s`} />
+            </circle>
+          ));
+        })}
+
+        {/* Lateral agent-to-agent flickers — every 4th adjacent pair sends a packet */}
+        {positioned.filter((_, i) => i % 4 === 0).map((p, k) => {
+          const next = positioned[(positioned.indexOf(p) + 3) % positioned.length];
+          const dur = 4.5 + (k % 3) * 0.9;
+          return (
+            <circle key={`X${k}`} r="1.6" fill={p.color} opacity="0">
+              <animateMotion dur={`${dur}s`} repeatCount="indefinite" path={`M${p.x},${p.y} Q${cx},${cy + 80} ${next.x},${next.y}`} />
+              <animate attributeName="opacity" values="0;0.8;0.8;0" keyTimes="0;0.2;0.8;1" dur={`${dur}s`} repeatCount="indefinite" />
+            </circle>
+          );
+        })}
+
+        {/* Bobby concentric breathing rings */}
+        {[0, 0.5, 1.0, 1.5, 2.0].map((delay, i) => (
+          <circle key={`pr${i}`} cx={cx} cy={cy} r="22" fill="none" stroke="#ffd700" strokeWidth="1.2" opacity="0">
+            <animate attributeName="r" values="22;90;90" keyTimes="0;0.85;1" dur="2.5s" repeatCount="indefinite" begin={`${delay}s`} />
+            <animate attributeName="opacity" values="0.9;0;0" keyTimes="0;0.85;1" dur="2.5s" repeatCount="indefinite" begin={`${delay}s`} />
+            <animate attributeName="stroke-width" values="1.6;0.3;0.3" keyTimes="0;0.85;1" dur="2.5s" repeatCount="indefinite" begin={`${delay}s`} />
           </circle>
         ))}
 
-        {/* Bobby breathing pulse rings (3 staggered) */}
-        {[0, 0.7, 1.4].map((delay, i) => (
-          <circle key={`pr${i}`} cx={cx} cy={cy} r="14" fill="none" stroke="#ffd700" strokeWidth="1.5">
-            <animate attributeName="r" values="14;46;46" keyTimes="0;0.85;1" dur="2.1s" repeatCount="indefinite" begin={`${delay}s`} />
-            <animate attributeName="opacity" values="0.85;0;0" keyTimes="0;0.85;1" dur="2.1s" repeatCount="indefinite" begin={`${delay}s`} />
-          </circle>
-        ))}
+        {/* Hexagon halo around Bobby */}
+        <polygon points={
+          [0,1,2,3,4,5].map(k => {
+            const a = (k / 6) * Math.PI * 2 - Math.PI / 2;
+            return `${cx + Math.cos(a) * 36},${cy + Math.sin(a) * 36}`;
+          }).join(" ")
+        } fill="none" stroke="#ffd700" strokeWidth="1.2" opacity="0.6" filter="url(#nlSoftGlow)">
+          <animateTransform attributeName="transform" type="rotate" from={`0 ${cx} ${cy}`} to={`360 ${cx} ${cy}`} dur="40s" repeatCount="indefinite" />
+        </polygon>
 
-        {/* Bobby glow halo */}
-        <circle cx={cx} cy={cy} r="34" fill="url(#bobbyGlow)" />
+        {/* Bobby gold glow halo */}
+        <circle cx={cx} cy={cy} r="58" fill="url(#nlBobbyCore)" />
 
-        {/* Bobby center node (gold) */}
-        <circle cx={cx} cy={cy} r="13" fill="#ffd700" filter="url(#nodeGlow)"
-                onMouseEnter={() => setHovered(bobby)} onMouseLeave={() => setHovered(null)}
-                style={{ cursor: "pointer" }} />
-        <text x={cx} y={cy + 4} textAnchor="middle" fontFamily="monospace" fontSize="11" fontWeight="bold" fill="#000" pointerEvents="none">B</text>
+        {/* Bobby center node */}
+        <circle cx={cx} cy={cy} r="20" fill="#ffd700" filter="url(#nlHardGlow)"
+                onMouseEnter={() => setHovered(bobby)} onMouseLeave={() => setHovered(null)} style={{ cursor: "pointer" }}>
+          <animate attributeName="r" values="20;22;20" dur="2.5s" repeatCount="indefinite" />
+        </circle>
+        <text x={cx} y={cy + 6} textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="18" fontWeight="bold" fill="#000" pointerEvents="none">B</text>
+        <text x={cx} y={cy + 56} textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="11" fill="#ffd700" letterSpacing="3" opacity="0.9" pointerEvents="none">BOBBY · FOUNDER</text>
 
         {/* Agent nodes */}
-        {positioned.map((p, i) => (
-          <g key={`N${i}`} onMouseEnter={() => setHovered(p.agent)} onMouseLeave={() => setHovered(null)} style={{ cursor: "pointer" }}>
-            <circle cx={p.x} cy={p.y} r="6.5" fill={p.color} filter="url(#nodeGlow)"
-                    opacity={hovered && hovered.codename !== p.agent.codename ? 0.45 : 1}>
-              <animate attributeName="r" values="6;7.2;6" dur={`${2.5 + (i % 3) * 0.3}s`} repeatCount="indefinite" begin={`${(i * 0.07) % 2}s`} />
-            </circle>
-            <text x={p.x} y={p.y - 11} textAnchor="middle" fontFamily="monospace" fontSize="8.5"
-                  fill={p.color} opacity="0.85" pointerEvents="none">{p.agent.codename.length > 12 ? p.agent.codename.substring(0, 11) + "…" : p.agent.codename}</text>
-          </g>
-        ))}
+        {positioned.map((p, i) => {
+          const isHover = hovered && hovered.codename === p.agent.codename;
+          const r = isHover ? 11 : 8;
+          return (
+            <g key={`N${i}`} onMouseEnter={() => setHovered(p.agent)} onMouseLeave={() => setHovered(null)} style={{ cursor: "pointer" }}>
+              {/* Outer ring */}
+              <circle cx={p.x} cy={p.y} r={r + 6} fill="none" stroke={p.color} strokeWidth="0.8" opacity={isHover ? 0.9 : 0.35}>
+                <animateTransform attributeName="transform" type="rotate" from={`0 ${p.x} ${p.y}`} to={`360 ${p.x} ${p.y}`} dur={`${30 + i}s`} repeatCount="indefinite" />
+              </circle>
+              {/* Glow */}
+              <circle cx={p.x} cy={p.y} r={r + 12} fill={p.color} opacity="0.08" filter="url(#nlSoftGlow)" />
+              {/* Core */}
+              <circle cx={p.x} cy={p.y} r={r} fill={p.color} filter="url(#nlSoftGlow)"
+                      opacity={hovered && !isHover ? 0.42 : 1}>
+                <animate attributeName="r" values={`${r-1};${r+0.8};${r-1}`} dur={`${2.2 + (i % 4) * 0.35}s`} repeatCount="indefinite" begin={`${(i * 0.12) % 2}s`} />
+              </circle>
+              {/* Label */}
+              <text x={p.x} y={p.y - r - 7} textAnchor="middle" fontFamily="'Courier New', monospace"
+                    fontSize="10" fill={p.color} opacity={hovered && !isHover ? 0.45 : 0.95} letterSpacing="1" pointerEvents="none">
+                {p.agent.codename.length > 14 ? p.agent.codename.substring(0, 13) + "…" : p.agent.codename}
+              </text>
+              {p.agent.score != null && (
+                <text x={p.x} y={p.y + r + 14} textAnchor="middle" fontFamily="'Courier New', monospace"
+                      fontSize="8" fill={p.color} opacity={hovered && !isHover ? 0.35 : 0.7} letterSpacing="1" pointerEvents="none">
+                  {p.agent.score}/25
+                </text>
+              )}
+            </g>
+          );
+        })}
       </svg>
 
-      {/* Tooltip / hovered agent overlay */}
-      {hovered && (
-        <div style={{ position: "absolute", bottom: 6, left: "50%", transform: "translateX(-50%)", padding: "4px 14px", background: "rgba(0,8,16,0.95)", border: `1px solid ${neurolinkColorFor(hovered)}`, borderRadius: 3, fontFamily: "monospace", fontSize: 11, color: neurolinkColorFor(hovered), letterSpacing: 1, whiteSpace: "nowrap", zIndex: 3 }}>
-          <span style={{ fontWeight: "bold" }}>{hovered.codename}</span>
-          <span style={{ opacity: 0.6, marginLeft: 8 }}>{hovered.role} · {hovered.department}</span>
+      {/* HUD — top-left identifier */}
+      <div style={{ position: "absolute", top: 12, left: 18, fontFamily: "'Courier New', monospace", color: "#39ff14", fontSize: 10, letterSpacing: 3, zIndex: 5, pointerEvents: "none" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#39ff14", boxShadow: "0 0 8px #39ff14", animation: "blink 1.6s infinite" }} />
+          <span style={{ color: "#39ff14", fontWeight: "bold" }}>NEUROLINK</span>
+          <span style={{ opacity: 0.4 }}>v2.99</span>
+          <span style={{ opacity: 0.3 }}>//</span>
+          <span style={{ color: "#00d4ff" }}>CONSTRUCT/CORE</span>
         </div>
-      )}
+        <div style={{ marginTop: 4, color: "rgba(57,255,20,0.55)", fontSize: 9, letterSpacing: 2 }}>
+          AUTHENTICATED · CHANNEL OPEN · {agents.length} NODES SYNCED
+        </div>
+      </div>
 
-      {/* Function legend */}
-      <div style={{ display: "flex", gap: 14, padding: "4px 16px 0", fontFamily: "monospace", fontSize: 8.5, letterSpacing: 2, justifyContent: "center", flexWrap: "wrap" }}>
+      {/* HUD — top-right live ticker */}
+      <div style={{ position: "absolute", top: 12, right: 18, fontFamily: "'Courier New', monospace", fontSize: 10, letterSpacing: 2, zIndex: 5, pointerEvents: "none", textAlign: "right" }}>
+        <div style={{ color: "#39ff14", marginBottom: 3 }}>{stamp}</div>
+        <div style={{ color: "rgba(0,212,255,0.85)", fontSize: 9, letterSpacing: 2 }}>
+          PACKETS <span style={{ color: "#00d4ff", fontWeight: "bold" }}>{packets.toLocaleString()}</span>
+          <span style={{ margin: "0 6px", opacity: 0.4 }}>·</span>
+          NODES <span style={{ color: "#39ff14", fontWeight: "bold" }}>{agents.length}</span>
+          <span style={{ margin: "0 6px", opacity: 0.4 }}>·</span>
+          SYNC <span style={{ color: "#39ff14" }}>100%</span>
+        </div>
+        <div style={{ marginTop: 4, color: "rgba(255,215,0,0.7)", fontSize: 9, letterSpacing: 2 }}>
+          ◇ LIVE SYNAPTIC NETWORK ◇
+        </div>
+      </div>
+
+      {/* Corner frame brackets — HUD aesthetic */}
+      {[
+        { top: 8, left: 8, borders: "borderTop borderLeft" },
+        { top: 8, right: 8, borders: "borderTop borderRight" },
+        { bottom: 8, left: 8, borders: "borderBottom borderLeft" },
+        { bottom: 8, right: 8, borders: "borderBottom borderRight" },
+      ].map((c, i) => (
+        <div key={i} style={{
+          position: "absolute", width: 22, height: 22, pointerEvents: "none", zIndex: 4,
+          ...(c.top !== undefined ? { top: c.top } : {}),
+          ...(c.bottom !== undefined ? { bottom: c.bottom } : {}),
+          ...(c.left !== undefined ? { left: c.left } : {}),
+          ...(c.right !== undefined ? { right: c.right } : {}),
+          borderTop: c.borders.includes("borderTop") ? "1.5px solid #00d4ff" : "none",
+          borderBottom: c.borders.includes("borderBottom") ? "1.5px solid #00d4ff" : "none",
+          borderLeft: c.borders.includes("borderLeft") ? "1.5px solid #00d4ff" : "none",
+          borderRight: c.borders.includes("borderRight") ? "1.5px solid #00d4ff" : "none",
+          boxShadow: "0 0 8px rgba(0,212,255,0.5)",
+        }} />
+      ))}
+
+      {/* Bottom legend strip */}
+      <div style={{
+        position: "absolute", bottom: 14, left: 0, right: 0, display: "flex", justifyContent: "center", gap: 22,
+        fontFamily: "'Courier New', monospace", fontSize: 9, letterSpacing: 2, zIndex: 5, pointerEvents: "none",
+      }}>
         {[
           { label: "FOUNDER", c: "#ffd700" },
           { label: "STRATEGY", c: "#00d4ff" },
@@ -278,12 +454,28 @@ const NeurolinkVisualization = ({ agents }) => {
           { label: "CREATIVE", c: "#b388ff" },
           { label: "MEMORY", c: "#ffffff" },
         ].map(l => (
-          <span key={l.label} style={{ color: l.c, display: "flex", alignItems: "center", gap: 5 }}>
-            <span style={{ width: 6, height: 6, borderRadius: "50%", background: l.c, boxShadow: `0 0 6px ${l.c}` }} />
+          <span key={l.label} style={{ color: l.c, display: "flex", alignItems: "center", gap: 6, textShadow: `0 0 6px ${l.c}` }}>
+            <span style={{ width: 7, height: 7, borderRadius: "50%", background: l.c, boxShadow: `0 0 8px ${l.c}` }} />
             {l.label}
           </span>
         ))}
       </div>
+
+      {/* Hover tooltip */}
+      {hovered && (
+        <div style={{
+          position: "absolute", top: 50, left: "50%", transform: "translateX(-50%)",
+          padding: "8px 18px", background: "rgba(0,8,16,0.95)",
+          border: `1px solid ${neurolinkColorFor(hovered)}`,
+          borderRadius: 3, fontFamily: "'Courier New', monospace", fontSize: 12,
+          color: neurolinkColorFor(hovered), letterSpacing: 1.5, whiteSpace: "nowrap", zIndex: 10,
+          boxShadow: `0 0 24px ${neurolinkColorFor(hovered)}55`,
+        }}>
+          <span style={{ fontWeight: "bold", letterSpacing: 3 }}>{hovered.codename.toUpperCase()}</span>
+          <span style={{ opacity: 0.55, marginLeft: 12, fontSize: 11 }}>{hovered.role} · {hovered.department}</span>
+          {hovered.score != null && <span style={{ marginLeft: 12, padding: "2px 8px", background: `${neurolinkColorFor(hovered)}22`, borderRadius: 2 }}>{hovered.score}/25</span>}
+        </div>
+      )}
     </div>
   );
 };
