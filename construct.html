@@ -131,6 +131,164 @@ const PulseRing = ({ color = "#39ff14", size = 80 }) => (
 );
 
 // ═══════════════════════════════════════════════════════════════
+// NEUROLINK — animated neural-network visualization at top of dashboard
+// Spec (Bobby 2026-04-28): dark neural map · 21+ glowing nodes (all agents) ·
+// Bobby = gold center w/ breathing pulse rings · synaptic particle streams ·
+// color-coded by function: teal=strategy · blue=intelligence · green=ops ·
+// purple=creative · white=memory. Tappable on iPhone shows agent name+role.
+// ═══════════════════════════════════════════════════════════════
+const NEUROLINK_FUNCTION_COLOR = {
+  // department → category → color
+  Strategy:        "#00d4ff", // teal
+  "Hartley Capital": "#4a9eff", // blue (intelligence)
+  Technology:      "#4a9eff", // blue
+  Finance:         "#4a9eff", // blue
+  Operations:      "#39ff14", // green
+  Creative:        "#b388ff", // purple
+  Meta:            "#ffffff", // white (memory)
+  Infrastructure:  "#ffffff", // white (memory)
+  People:          "#39ff14", // green (ops-adjacent)
+  Executive:       "#4a9eff", // blue
+};
+
+const neurolinkColorFor = (agent) => {
+  if (agent.isHuman) return "#ffd700"; // Bobby = gold
+  if (agent.codename === "Self-Improving Loop" || agent.codename === "Cornerstone") return "#ffffff";
+  return NEUROLINK_FUNCTION_COLOR[agent.department] || "#39ff14";
+};
+
+const NeurolinkVisualization = ({ agents }) => {
+  const [hovered, setHovered] = useState(null);
+  const W = 1400;
+  const H = 220;
+  const cx = W / 2;
+  const cy = H / 2;
+
+  const bobby = agents.find(a => a.isHuman) || agents[0];
+  const others = agents.filter(a => !a.isHuman);
+  const N = others.length;
+
+  // Two concentric orbits for visual depth
+  const innerR = 70;
+  const outerR = 100;
+
+  const positioned = others.map((a, i) => {
+    const angle = (i / N) * Math.PI * 2 - Math.PI / 2; // start at top
+    const r = i % 2 === 0 ? outerR : innerR;
+    return {
+      agent: a,
+      x: cx + Math.cos(angle) * r * (W / H * 0.55),
+      y: cy + Math.sin(angle) * r,
+      color: neurolinkColorFor(a),
+    };
+  });
+
+  return (
+    <div style={{ background: "linear-gradient(180deg, #000511 0%, #000208 100%)", borderBottom: "1px solid rgba(0,212,255,0.2)", padding: "8px 0 6px", position: "relative", overflow: "hidden" }}>
+      <div style={{ position: "absolute", top: 6, left: 16, color: "#00d4ff", fontFamily: "monospace", fontSize: 10, letterSpacing: 4, fontWeight: "bold", zIndex: 2 }}>NEUROLINK</div>
+      <div style={{ position: "absolute", top: 6, right: 16, color: "rgba(0,212,255,0.6)", fontFamily: "monospace", fontSize: 9, letterSpacing: 2, zIndex: 2 }}>
+        {agents.length} NODES · LIVE SYNAPTIC NETWORK
+        <span style={{ marginLeft: 8, width: 6, height: 6, borderRadius: "50%", background: "#39ff14", boxShadow: "0 0 6px #39ff14", display: "inline-block", animation: "blink 2s infinite" }} />
+      </div>
+
+      <svg viewBox={`0 0 ${W} ${H}`} style={{ display: "block", width: "100%", height: H, maxHeight: 260 }}>
+        <defs>
+          <radialGradient id="bobbyGlow">
+            <stop offset="0%" stopColor="#ffd700" stopOpacity="1" />
+            <stop offset="60%" stopColor="#ffd700" stopOpacity="0.45" />
+            <stop offset="100%" stopColor="#ffd700" stopOpacity="0" />
+          </radialGradient>
+          <filter id="nodeGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+            <feMerge>
+              <feMergeNode in="coloredBlur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+          {positioned.map((p, i) => (
+            <linearGradient key={`g${i}`} id={`syn${i}`} x1={cx} y1={cy} x2={p.x} y2={p.y} gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#ffd700" stopOpacity="0.6" />
+              <stop offset="100%" stopColor={p.color} stopOpacity="0.3" />
+            </linearGradient>
+          ))}
+        </defs>
+
+        {/* Connection lines (synapses) */}
+        {positioned.map((p, i) => (
+          <line key={`L${i}`} x1={cx} y1={cy} x2={p.x} y2={p.y}
+                stroke={`url(#syn${i})`} strokeWidth="0.8" opacity="0.55" />
+        ))}
+
+        {/* Synaptic particles — animated dots traveling along each connection */}
+        {positioned.map((p, i) => (
+          <circle key={`P${i}`} r="2.2" fill={p.color}
+                  filter="url(#nodeGlow)"
+                  opacity="0.95">
+            <animateMotion dur={`${2.4 + (i % 5) * 0.4}s`} repeatCount="indefinite"
+              path={`M${cx},${cy} L${p.x},${p.y}`} />
+            <animate attributeName="opacity" values="0;1;1;0" dur={`${2.4 + (i % 5) * 0.4}s`} repeatCount="indefinite" />
+          </circle>
+        ))}
+
+        {/* Bobby breathing pulse rings (3 staggered) */}
+        {[0, 0.7, 1.4].map((delay, i) => (
+          <circle key={`pr${i}`} cx={cx} cy={cy} r="14" fill="none" stroke="#ffd700" strokeWidth="1.5">
+            <animate attributeName="r" values="14;46;46" keyTimes="0;0.85;1" dur="2.1s" repeatCount="indefinite" begin={`${delay}s`} />
+            <animate attributeName="opacity" values="0.85;0;0" keyTimes="0;0.85;1" dur="2.1s" repeatCount="indefinite" begin={`${delay}s`} />
+          </circle>
+        ))}
+
+        {/* Bobby glow halo */}
+        <circle cx={cx} cy={cy} r="34" fill="url(#bobbyGlow)" />
+
+        {/* Bobby center node (gold) */}
+        <circle cx={cx} cy={cy} r="13" fill="#ffd700" filter="url(#nodeGlow)"
+                onMouseEnter={() => setHovered(bobby)} onMouseLeave={() => setHovered(null)}
+                style={{ cursor: "pointer" }} />
+        <text x={cx} y={cy + 4} textAnchor="middle" fontFamily="monospace" fontSize="11" fontWeight="bold" fill="#000" pointerEvents="none">B</text>
+
+        {/* Agent nodes */}
+        {positioned.map((p, i) => (
+          <g key={`N${i}`} onMouseEnter={() => setHovered(p.agent)} onMouseLeave={() => setHovered(null)} style={{ cursor: "pointer" }}>
+            <circle cx={p.x} cy={p.y} r="6.5" fill={p.color} filter="url(#nodeGlow)"
+                    opacity={hovered && hovered.codename !== p.agent.codename ? 0.45 : 1}>
+              <animate attributeName="r" values="6;7.2;6" dur={`${2.5 + (i % 3) * 0.3}s`} repeatCount="indefinite" begin={`${(i * 0.07) % 2}s`} />
+            </circle>
+            <text x={p.x} y={p.y - 11} textAnchor="middle" fontFamily="monospace" fontSize="8.5"
+                  fill={p.color} opacity="0.85" pointerEvents="none">{p.agent.codename.length > 12 ? p.agent.codename.substring(0, 11) + "…" : p.agent.codename}</text>
+          </g>
+        ))}
+      </svg>
+
+      {/* Tooltip / hovered agent overlay */}
+      {hovered && (
+        <div style={{ position: "absolute", bottom: 6, left: "50%", transform: "translateX(-50%)", padding: "4px 14px", background: "rgba(0,8,16,0.95)", border: `1px solid ${neurolinkColorFor(hovered)}`, borderRadius: 3, fontFamily: "monospace", fontSize: 11, color: neurolinkColorFor(hovered), letterSpacing: 1, whiteSpace: "nowrap", zIndex: 3 }}>
+          <span style={{ fontWeight: "bold" }}>{hovered.codename}</span>
+          <span style={{ opacity: 0.6, marginLeft: 8 }}>{hovered.role} · {hovered.department}</span>
+        </div>
+      )}
+
+      {/* Function legend */}
+      <div style={{ display: "flex", gap: 14, padding: "4px 16px 0", fontFamily: "monospace", fontSize: 8.5, letterSpacing: 2, justifyContent: "center", flexWrap: "wrap" }}>
+        {[
+          { label: "FOUNDER", c: "#ffd700" },
+          { label: "STRATEGY", c: "#00d4ff" },
+          { label: "INTELLIGENCE", c: "#4a9eff" },
+          { label: "OPERATIONS", c: "#39ff14" },
+          { label: "CREATIVE", c: "#b388ff" },
+          { label: "MEMORY", c: "#ffffff" },
+        ].map(l => (
+          <span key={l.label} style={{ color: l.c, display: "flex", alignItems: "center", gap: 5 }}>
+            <span style={{ width: 6, height: 6, borderRadius: "50%", background: l.c, boxShadow: `0 0 6px ${l.c}` }} />
+            {l.label}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════════════════
 // CONFIG — cool-palette enforced (no warm colors)
 // ═══════════════════════════════════════════════════════════════
 const STATUS_CONFIG = {
