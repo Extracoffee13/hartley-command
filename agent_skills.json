@@ -1,6 +1,6 @@
 {
-  "scanned_at_utc": "2026-04-28T20:24:05Z",
-  "scanned_at_unix": 1777422245,
+  "scanned_at_utc": "2026-04-28T20:26:33Z",
+  "scanned_at_unix": 1777422393,
   "scanner_version": "1.0.0",
   "universal_pool": [
     {
@@ -183,11 +183,27 @@
     {
       "name": "Louis",
       "tier": "tier1",
-      "has_skill_md": false,
-      "last_deployed": null,
-      "primary_packages": [],
-      "primary_package_count": 0,
-      "primary_skill_md_count": 0
+      "has_skill_md": true,
+      "last_deployed": "",
+      "primary_packages": [
+        {
+          "name": "humanizer-skill",
+          "skill_md_count": 1,
+          "total_files": 17
+        },
+        {
+          "name": "humanizerai",
+          "skill_md_count": 7,
+          "total_files": 15
+        },
+        {
+          "name": "humanize-writing",
+          "skill_md_count": 1,
+          "total_files": 8
+        }
+      ],
+      "primary_package_count": 3,
+      "primary_skill_md_count": 9
     },
     {
       "name": "Vector",
@@ -431,17 +447,48 @@
     {
       "name": "AP",
       "tier": "csuite",
-      "has_skill_md": false,
-      "last_deployed": null,
-      "primary_packages": [],
-      "primary_package_count": 0,
-      "primary_skill_md_count": 0
+      "has_skill_md": true,
+      "last_deployed": "",
+      "primary_packages": [
+        {
+          "name": "claude-skills-alirezarezvani",
+          "skill_md_count": 541,
+          "total_files": 2314
+        },
+        {
+          "name": "visualize",
+          "skill_md_count": 2,
+          "total_files": 600
+        },
+        {
+          "name": "skills-anthropics-official",
+          "skill_md_count": 18,
+          "total_files": 390
+        },
+        {
+          "name": "humanizer-skill",
+          "skill_md_count": 1,
+          "total_files": 17
+        },
+        {
+          "name": "humanizerai",
+          "skill_md_count": 7,
+          "total_files": 15
+        },
+        {
+          "name": "humanize-writing",
+          "skill_md_count": 1,
+          "total_files": 8
+        }
+      ],
+      "primary_package_count": 6,
+      "primary_skill_md_count": 570
     },
     {
       "name": "Architect",
       "tier": "csuite",
-      "has_skill_md": false,
-      "last_deployed": null,
+      "has_skill_md": true,
+      "last_deployed": "",
       "primary_packages": [],
       "primary_package_count": 0,
       "primary_skill_md_count": 0
@@ -775,6 +822,6 @@
       "primary_skill_md_count": 0
     }
   ],
-  "agents_with_skill_md": 15,
+  "agents_with_skill_md": 18,
   "agents_total": 32
 }
