@@ -32,7 +32,7 @@ const { useState, useEffect, useRef, useCallback, useMemo } = React;
 
 // ═══════════════════════════════════════════════════════════════
 // THE CONSTRUCT v2.1 — Brand 9 / Hartley Capital Agent Ecosystem
-// Locked 2026-04-24 baseline · Louis added 2026-04-27
+// Locked 2026-04-24 baseline · Louis added 2026-04-27 · Second Brain added 2026-04-27
 // Day-90 kill criterion: 2026-07-23
 // Cool-palette enforced (no warm colors per B9 brand canonical)
 // ═══════════════════════════════════════════════════════════════
@@ -135,6 +135,7 @@ const PulseRing = ({ color = "#39ff14", size = 80 }) => (
 // ═══════════════════════════════════════════════════════════════
 const STATUS_CONFIG = {
   active:     { color: "#39ff14", label: "ACTIVE",     glow: "0 0 10px rgba(57,255,20,0.5)" },
+  installed:  { color: "#aaeeff", label: "INSTALLED",  glow: "0 0 8px rgba(170,238,255,0.3)" },
   idle:       { color: "#00d4ff", label: "IDLE",       glow: "0 0 10px rgba(0,212,255,0.3)" },
   processing: { color: "#00ffff", label: "PROCESSING", glow: "0 0 12px rgba(0,255,255,0.6)" },
   building:   { color: "#b388ff", label: "IN BUILD",   glow: "0 0 12px rgba(179,136,255,0.5)" },
@@ -164,6 +165,8 @@ const ROLE_ICONS = {
   "Intel-Scout": "\uD83D\uDEF0\uFE0F",
   "Field-Drone": "\uD83D\uDEF8",
   Cite: "\uD83D\uDCDA",
+  "Memory Engine": "\uD83E\uDDE0",
+  "AI Assistant": "\uD83E\uDD16",
 };
 
 // Tier metadata — drives the Tier Strategy banner + agent badging
@@ -401,6 +404,22 @@ const INITIAL_AGENTS = [
     skills: ["Quantitative Strategies", "Long/Short Equity", "Options", "Volatility Trading", "Risk Management", "Factor Modeling", "Alpha Generation"],
     description: "Hedge Fund Manager. Generates alpha through quant + macro strategies across long/short, options, volatility.",
     progress: 82, tasksCompleted: 2800, tasksActive: 8, memoryUsage: 79, uptime: "140 days", lastActive: "1 min ago",
+  },
+  {
+    id: "sys-second-brain", codename: "Second Brain", role: "Memory Engine", department: "Infrastructure",
+    tier: 5, score: null, status: "active",
+    skills: ["Vault-First Research", "Scheduled Consolidation", "Working Memory", "Episodic Memory", "Semantic Memory", "Cross-Agent Knowledge Sync", "Overnight Compounding", "31-Command Toolkit", "Obsidian Integration", "Memory Distillation", "Correction Capture", "Lesson Propagation"],
+    description: "Obsidian-powered persistent memory layer. 31 commands. Vault-first research, scheduled consolidation cycles, multi-layer memory (working, episodic, semantic). Connected to all 19 agents. The shared brain that gets smarter overnight.",
+    progress: 100, tasksCompleted: 0, tasksActive: 3, memoryUsage: 100,
+    uptime: "0 days", lastActive: "NOW",
+  },
+  {
+    id: "sys-nanoclaw", codename: "NanoClaw", role: "AI Assistant", department: "Infrastructure",
+    tier: 5, score: null, status: "installed",
+    skills: ["WhatsApp Integration", "Telegram Integration", "Slack Integration", "Discord Integration", "Voice Note Processing", "Scheduled Tasks", "Graph-Based Memory (Mnemon)", "Cross-Platform Messaging", "Persistent Memory", "Multi-Channel Routing"],
+    description: "Self-hosted Claude assistant with WhatsApp/Telegram/Slack/Discord integration, voice note processing, scheduled tasks, and graph-based persistent memory via Mnemon. Built by Singapore's Foreign Minister. Multi-channel messaging backbone for the ecosystem.",
+    progress: 85, tasksCompleted: 0, tasksActive: 0, memoryUsage: 40,
+    uptime: "0 days", lastActive: "INSTALLED",
   },
 ];
 
@@ -954,6 +973,116 @@ const WorkflowsPanel = () => (
 );
 
 // ═══════════════════════════════════════════════════
+// SECOND BRAIN PANEL — v2.1
+// ═══════════════════════════════════════════════════
+const SecondBrainPanel = () => (
+  <div style={{ margin: "16px 24px", padding: 20, background: "linear-gradient(135deg, rgba(179,136,255,0.06) 0%, rgba(0,8,16,0.95) 100%)", border: "1px solid rgba(179,136,255,0.35)", borderRadius: 4, position: "relative", overflow: "hidden" }}>
+    <ScanLine />
+    <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}>
+      <div style={{ fontSize: 26 }}>\uD83E\uDDE0</div>
+      <div>
+        <GlitchText text="SECOND BRAIN" tag="div" style={{ color: "#b388ff", fontSize: 20, fontWeight: "bold", letterSpacing: 4, fontFamily: "monospace" }} />
+        <div style={{ fontSize: 10, color: "rgba(179,136,255,0.5)", letterSpacing: 3, marginTop: 2 }}>MEMORY CONSOLIDATION ENGINE \u00B7 OBSIDIAN-POWERED \u00B7 31 COMMANDS</div>
+      </div>
+      <div style={{ marginLeft: "auto", padding: "4px 12px", background: "rgba(57,255,20,0.1)", border: "1px solid rgba(57,255,20,0.4)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", fontSize: 11, letterSpacing: 2 }}>ACTIVE</div>
+    </div>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16 }}>
+      <div style={{ padding: 14, background: "rgba(179,136,255,0.04)", border: "1px solid rgba(179,136,255,0.2)", borderRadius: 3 }}>
+        <div style={{ fontSize: 9, fontFamily: "monospace", letterSpacing: 2, color: "rgba(179,136,255,0.5)", marginBottom: 8 }}>\u25B8 MEMORY LAYERS</div>
+        {[
+          { layer: "Working Memory", desc: "Active session context" },
+          { layer: "Episodic Memory", desc: "Conversation + event log" },
+          { layer: "Semantic Memory", desc: "Distilled facts + lessons" },
+        ].map((m, i) => (
+          <div key={i} style={{ marginBottom: 8, fontSize: 11, fontFamily: "monospace" }}>
+            <div style={{ color: "#b388ff", fontWeight: "bold" }}>{m.layer}</div>
+            <div style={{ color: "rgba(179,136,255,0.5)", fontSize: 10 }}>{m.desc}</div>
+          </div>
+        ))}
+      </div>
+      <div style={{ padding: 14, background: "rgba(179,136,255,0.04)", border: "1px solid rgba(179,136,255,0.2)", borderRadius: 3 }}>
+        <div style={{ fontSize: 9, fontFamily: "monospace", letterSpacing: 2, color: "rgba(179,136,255,0.5)", marginBottom: 8 }}>\u25B8 CONSOLIDATION CYCLES</div>
+        {[
+          { cycle: "Overnight Run", desc: "Auto-consolidates daily" },
+          { cycle: "Vault-First Research", desc: "Local knowledge before web" },
+          { cycle: "Cross-Agent Sync", desc: "All 19 agents fed" },
+        ].map((c, i) => (
+          <div key={i} style={{ marginBottom: 8, fontSize: 11, fontFamily: "monospace" }}>
+            <div style={{ color: "#b388ff", fontWeight: "bold" }}>{c.cycle}</div>
+            <div style={{ color: "rgba(179,136,255,0.5)", fontSize: 10 }}>{c.desc}</div>
+          </div>
+        ))}
+      </div>
+      <div style={{ padding: 14, background: "rgba(179,136,255,0.04)", border: "1px solid rgba(179,136,255,0.2)", borderRadius: 3 }}>
+        <div style={{ fontSize: 9, fontFamily: "monospace", letterSpacing: 2, color: "rgba(179,136,255,0.5)", marginBottom: 8 }}>\u25B8 SKILL STATS</div>
+        <div style={{ fontSize: 28, color: "#b388ff", fontWeight: "bold", fontFamily: "monospace", marginBottom: 2 }}>31</div>
+        <div style={{ fontSize: 10, color: "rgba(179,136,255,0.5)", fontFamily: "monospace", marginBottom: 12 }}>commands available</div>
+        <div style={{ fontSize: 10, fontFamily: "monospace", lineHeight: 1.8 }}>
+          <div><span style={{ color: "rgba(179,136,255,0.45)" }}>Skill: </span><span style={{ color: "#b388ff" }}>obsidian-second-brain</span></div>
+          <div><span style={{ color: "rgba(179,136,255,0.45)" }}>Connected: </span><span style={{ color: "#39ff14" }}>All 19 agents</span></div>
+        </div>
+      </div>
+    </div>
+    <div style={{ marginTop: 12, padding: "8px 12px", background: "rgba(0,0,0,0.4)", borderTop: "1px solid rgba(179,136,255,0.15)", fontSize: 11, fontFamily: "monospace", color: "rgba(179,136,255,0.65)", lineHeight: 1.6 }}>
+      Obsidian-powered persistent memory layer. Vault-first research, scheduled consolidation cycles, multi-layer memory (working, episodic, semantic). <span style={{ color: "#b388ff", fontWeight: "bold" }}>The shared brain that gets smarter overnight.</span>
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════
+// NANOCLAW PANEL — v2.1
+// ═══════════════════════════════════════════════════
+const NanoClawPanel = () => (
+  <div style={{ margin: "16px 24px", padding: 20, background: "linear-gradient(135deg, rgba(0,212,255,0.06) 0%, rgba(0,8,16,0.95) 100%)", border: "1px solid rgba(0,212,255,0.3)", borderRadius: 4, position: "relative", overflow: "hidden" }}>
+    <ScanLine />
+    <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}>
+      <div style={{ fontSize: 26 }}>\uD83E\uDD16</div>
+      <div>
+        <GlitchText text="NANOCLAW" tag="div" style={{ color: "#00d4ff", fontSize: 20, fontWeight: "bold", letterSpacing: 4, fontFamily: "monospace" }} />
+        <div style={{ fontSize: 10, color: "rgba(0,212,255,0.5)", letterSpacing: 3, marginTop: 2 }}>SELF-HOSTED AI ASSISTANT \u00B7 MULTI-CHANNEL \u00B7 MNEMON MEMORY</div>
+      </div>
+      <div style={{ marginLeft: "auto", padding: "4px 12px", background: "rgba(170,238,255,0.1)", border: "1px solid rgba(170,238,255,0.4)", borderRadius: 2, color: "#aaeeff", fontFamily: "monospace", fontSize: 11, letterSpacing: 2 }}>INSTALLED</div>
+    </div>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16 }}>
+      <div style={{ padding: 14, background: "rgba(0,212,255,0.04)", border: "1px solid rgba(0,212,255,0.2)", borderRadius: 3 }}>
+        <div style={{ fontSize: 9, fontFamily: "monospace", letterSpacing: 2, color: "rgba(0,212,255,0.5)", marginBottom: 8 }}>\u25B8 MESSAGING CHANNELS</div>
+        {["WhatsApp", "Telegram", "Slack", "Discord"].map((ch, i) => (
+          <div key={i} style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 6, fontSize: 11, fontFamily: "monospace" }}>
+            <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#00d4ff", boxShadow: "0 0 4px rgba(0,212,255,0.6)" }} />
+            <span style={{ color: "#00d4ff" }}>{ch}</span>
+          </div>
+        ))}
+      </div>
+      <div style={{ padding: 14, background: "rgba(0,212,255,0.04)", border: "1px solid rgba(0,212,255,0.2)", borderRadius: 3 }}>
+        <div style={{ fontSize: 9, fontFamily: "monospace", letterSpacing: 2, color: "rgba(0,212,255,0.5)", marginBottom: 8 }}>\u25B8 CAPABILITIES</div>
+        {[
+          { cap: "Voice Note Processing", desc: "Audio → text → action" },
+          { cap: "Scheduled Tasks",       desc: "Cron-driven agent runs" },
+          { cap: "Mnemon Memory",         desc: "Graph-based cross-session recall" },
+        ].map((c, i) => (
+          <div key={i} style={{ marginBottom: 8, fontSize: 11, fontFamily: "monospace" }}>
+            <div style={{ color: "#00d4ff", fontWeight: "bold" }}>{c.cap}</div>
+            <div style={{ color: "rgba(0,212,255,0.5)", fontSize: 10 }}>{c.desc}</div>
+          </div>
+        ))}
+      </div>
+      <div style={{ padding: 14, background: "rgba(0,212,255,0.04)", border: "1px solid rgba(0,212,255,0.2)", borderRadius: 3 }}>
+        <div style={{ fontSize: 9, fontFamily: "monospace", letterSpacing: 2, color: "rgba(0,212,255,0.5)", marginBottom: 8 }}>\u25B8 PROVENANCE</div>
+        <div style={{ fontSize: 11, fontFamily: "monospace", lineHeight: 1.8 }}>
+          <div><span style={{ color: "rgba(0,212,255,0.45)" }}>Author: </span><span style={{ color: "#00d4ff" }}>Singapore FM</span></div>
+          <div><span style={{ color: "rgba(0,212,255,0.45)" }}>Memory: </span><span style={{ color: "#aaeeff" }}>Mnemon (graph)</span></div>
+          <div><span style={{ color: "rgba(0,212,255,0.45)" }}>Skills: </span><span style={{ color: "#aaeeff" }}>nanoclaw + mnemon</span></div>
+          <div style={{ marginTop: 10, fontSize: 9, color: "rgba(0,212,255,0.35)", lineHeight: 1.5 }}>Installed \u2014 configure channels<br/>to activate messaging bridge</div>
+        </div>
+      </div>
+    </div>
+    <div style={{ marginTop: 12, padding: "8px 12px", background: "rgba(0,0,0,0.4)", borderTop: "1px solid rgba(0,212,255,0.15)", fontSize: 11, fontFamily: "monospace", color: "rgba(0,212,255,0.65)", lineHeight: 1.6 }}>
+      Personal Claude assistant with multi-channel messaging, voice note processing, scheduled tasks, and graph-based persistent memory. <span style={{ color: "#00d4ff", fontWeight: "bold" }}>Bobby talks to the ecosystem from anywhere — WhatsApp, Telegram, Slack, or Discord.</span>
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════
 // MAIN DASHBOARD
 // ═══════════════════════════════════════════════════
 function AgentEcosystemDashboard() {
@@ -972,6 +1101,7 @@ function AgentEcosystemDashboard() {
     { time: "00:00:07", message: "Tier 1 build queue active: Archivist, Skill-Forge, Foreman, Eval Harness, Precedent-Finder.", color: "#b388ff" },
     { time: "00:00:08", message: "Kill Criterion countdown armed: 2026-07-23 (Day 90).", color: "#b388ff" },
     { time: "00:00:09", message: "Loop 1 (Correction) LIVE \u00B7 Loop 2 (Eval) NOT BUILT \u00B7 Loop 3 (Code) NOT BUILT \u00B7 Loop 4 (Memory) LIVE", color: "rgba(57,255,20,0.6)" },
+    { time: "00:00:10", message: "\uD83E\uDDE0 SECOND BRAIN online \u2014 Obsidian-powered memory consolidation engine, 31 commands, connected to all 19 agents.", color: "#b388ff" },
   ]);
 
   const addLog = useCallback((message, color) => {
@@ -1092,13 +1222,15 @@ function AgentEcosystemDashboard() {
         </div>
 
         <LouisSpotlight agent={louis} />
+        <SecondBrainPanel />
+        <NanoClawPanel />
         <FourLoopsPanel />
         <WorkflowsPanel />
         <PublicPostureCard />
 
         <div style={{ padding: "20px 24px 28px", textAlign: "center", color: "rgba(57,255,20,0.35)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, borderTop: "1px solid rgba(57,255,20,0.1)" }}>
-          THE CONSTRUCT v2.1 \u00B7 LOUIS ADDED 2026-04-27 \u00B7 BASELINE LOCKED 2026-04-24 \u00B7 KILL CHECKPOINT 2026-07-23<br/>
-          <span style={{ color: "rgba(0,212,255,0.5)" }}>\u201CEvery property analyzed is a brick in the house Louis Sr. started. The loop is the IP.\u201D</span>
+          THE CONSTRUCT v2.1 \u00B7 LOUIS ADDED 2026-04-27 \u00B7 SECOND BRAIN + NANOCLAW ADDED 2026-04-27 \u00B7 BASELINE LOCKED 2026-04-24 \u00B7 KILL CHECKPOINT 2026-07-23<br/>
+          <span style={{ color: "rgba(0,212,255,0.5)" }}>\u201CEvery property analyzed is a brick in the house Louis Sr. started. The loop is the IP. The brain compounds overnight.\u201D</span>
         </div>
       </div>
     </div>
