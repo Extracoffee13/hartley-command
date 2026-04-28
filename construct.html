@@ -996,6 +996,165 @@ const LouisSpotlight = ({ agent }) => {
 };
 
 // ═══════════════════════════════════════════════════
+// SECOND BRAIN PANEL — Obsidian-powered memory consolidation engine
+// 31 commands · connected to all agents · auto-consolidates overnight
+// ═══════════════════════════════════════════════════
+const SecondBrainCard = () => {
+  return (
+    <div style={{ padding: "20px 24px", marginBottom: 8 }}>
+      <div style={{
+        background: "linear-gradient(135deg, rgba(57,255,20,0.04) 0%, rgba(0,40,20,0.6) 100%)",
+        border: "1px solid rgba(57,255,20,0.3)",
+        borderRadius: 4,
+        padding: 24,
+        position: "relative",
+        overflow: "hidden",
+      }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 16 }}>
+          <div style={{
+            width: 56, height: 56, borderRadius: "50%",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontSize: 28, background: "rgba(57,255,20,0.08)",
+            border: "2px solid #39ff14", boxShadow: "0 0 18px rgba(57,255,20,0.3)",
+          }}>{String.fromCodePoint(0x1F9E0)}</div>
+          <div style={{ flex: 1 }}>
+            <div style={{ color: "#39ff14", fontFamily: "monospace", fontSize: 22, fontWeight: "bold", letterSpacing: 4 }}>SECOND BRAIN</div>
+            <div style={{ color: "rgba(57,255,20,0.55)", fontFamily: "monospace", fontSize: 11, letterSpacing: 3, marginTop: 2 }}>
+              MEMORY CONSOLIDATION ENGINE · OBSIDIAN-POWERED · 31 COMMANDS
+            </div>
+          </div>
+          <div style={{ padding: "4px 12px", background: "rgba(57,255,20,0.12)", border: "1px solid rgba(57,255,20,0.45)", borderRadius: 3, color: "#39ff14", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, fontWeight: "bold" }}>
+            ACTIVE
+          </div>
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, marginBottom: 16 }}>
+          <div>
+            <div style={{ color: "rgba(57,255,20,0.6)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>▸ MEMORY LAYERS</div>
+            {[
+              { name: "Working Memory", desc: "Active session context" },
+              { name: "Episodic Memory", desc: "Conversation + event log" },
+              { name: "Semantic Memory", desc: "Distilled facts + lessons" },
+            ].map((m, i) => (
+              <div key={i} style={{ marginBottom: 8, padding: "6px 10px", background: "rgba(57,255,20,0.04)", border: "1px solid rgba(57,255,20,0.15)", borderRadius: 3 }}>
+                <div style={{ color: "#39ff14", fontFamily: "monospace", fontSize: 11, fontWeight: "bold" }}>{m.name}</div>
+                <div style={{ color: "rgba(57,255,20,0.55)", fontFamily: "monospace", fontSize: 10, marginTop: 2 }}>{m.desc}</div>
+              </div>
+            ))}
+          </div>
+          <div>
+            <div style={{ color: "rgba(57,255,20,0.6)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>▸ CONSOLIDATION CYCLES</div>
+            {[
+              { name: "Overnight Run", desc: "Auto-consolidates daily" },
+              { name: "Vault-First Research", desc: "Local knowledge before web" },
+              { name: "Cross-Agent Sync", desc: "All agents fed" },
+            ].map((m, i) => (
+              <div key={i} style={{ marginBottom: 8, padding: "6px 10px", background: "rgba(57,255,20,0.04)", border: "1px solid rgba(57,255,20,0.15)", borderRadius: 3 }}>
+                <div style={{ color: "#39ff14", fontFamily: "monospace", fontSize: 11, fontWeight: "bold" }}>{m.name}</div>
+                <div style={{ color: "rgba(57,255,20,0.55)", fontFamily: "monospace", fontSize: 10, marginTop: 2 }}>{m.desc}</div>
+              </div>
+            ))}
+          </div>
+          <div>
+            <div style={{ color: "rgba(57,255,20,0.6)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>▸ SKILL STATS</div>
+            <div style={{ padding: "10px 12px", background: "rgba(57,255,20,0.04)", border: "1px solid rgba(57,255,20,0.15)", borderRadius: 3 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+                <span style={{ color: "rgba(57,255,20,0.55)", fontFamily: "monospace", fontSize: 10 }}>commands available</span>
+                <span style={{ color: "#39ff14", fontFamily: "monospace", fontSize: 14, fontWeight: "bold" }}>31</span>
+              </div>
+              <div style={{ marginTop: 8, paddingTop: 8, borderTop: "1px solid rgba(57,255,20,0.1)" }}>
+                <div style={{ fontSize: 10, fontFamily: "monospace", color: "rgba(57,255,20,0.7)", marginBottom: 4 }}><span style={{ opacity: 0.5 }}>Skill:</span> obsidian-second-brain</div>
+                <div style={{ fontSize: 10, fontFamily: "monospace", color: "rgba(57,255,20,0.7)" }}><span style={{ opacity: 0.5 }}>Connected:</span> All agents</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style={{ paddingTop: 12, borderTop: "1px solid rgba(57,255,20,0.15)", color: "rgba(57,255,20,0.7)", fontFamily: "monospace", fontSize: 11, lineHeight: 1.5 }}>
+          Obsidian-powered persistent memory layer. Vault-first research, scheduled consolidation cycles, multi-layer recall. The shared brain that gets smarter overnight.
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════
+// NANOCLAW PANEL — self-hosted multi-channel AI assistant
+// WhatsApp / Telegram / Slack / Discord · Mnemon graph memory
+// ═══════════════════════════════════════════════════
+const NanoClawCard = () => {
+  return (
+    <div style={{ padding: "0 24px 20px" }}>
+      <div style={{
+        background: "linear-gradient(135deg, rgba(0,212,255,0.04) 0%, rgba(0,20,40,0.6) 100%)",
+        border: "1px solid rgba(0,212,255,0.3)",
+        borderRadius: 4,
+        padding: 24,
+        position: "relative",
+        overflow: "hidden",
+      }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 16 }}>
+          <div style={{
+            width: 56, height: 56, borderRadius: "50%",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontSize: 28, background: "rgba(0,212,255,0.08)",
+            border: "2px solid #00d4ff", boxShadow: "0 0 18px rgba(0,212,255,0.3)",
+          }}>{String.fromCodePoint(0x1F916)}</div>
+          <div style={{ flex: 1 }}>
+            <div style={{ color: "#00d4ff", fontFamily: "monospace", fontSize: 22, fontWeight: "bold", letterSpacing: 4 }}>NANOCLAW</div>
+            <div style={{ color: "rgba(0,212,255,0.55)", fontFamily: "monospace", fontSize: 11, letterSpacing: 3, marginTop: 2 }}>
+              SELF-HOSTED AI ASSISTANT · MULTI-CHANNEL · MNEMON MEMORY
+            </div>
+          </div>
+          <div style={{ padding: "4px 12px", background: "rgba(255,200,0,0.10)", border: "1px solid rgba(255,200,0,0.45)", borderRadius: 3, color: "#ffcc00", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, fontWeight: "bold" }}>
+            INSTALLED
+          </div>
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, marginBottom: 16 }}>
+          <div>
+            <div style={{ color: "rgba(0,212,255,0.6)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>▸ MESSAGING CHANNELS</div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+              {["WhatsApp", "Telegram", "Slack", "Discord"].map((c, i) => (
+                <span key={i} style={{ padding: "5px 10px", fontSize: 11, fontFamily: "monospace", background: "rgba(0,212,255,0.08)", border: "1px solid rgba(0,212,255,0.3)", borderRadius: 2, color: "#00d4ff", letterSpacing: 1 }}>{c}</span>
+              ))}
+            </div>
+          </div>
+          <div>
+            <div style={{ color: "rgba(0,212,255,0.6)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>▸ CAPABILITIES</div>
+            {[
+              { name: "Voice Note Processing", desc: "Audio \u2192 text \u2192 action" },
+              { name: "Scheduled Tasks", desc: "Cron-driven agent runs" },
+              { name: "Mnemon Memory", desc: "Graph-based cross-session recall" },
+            ].map((c, i) => (
+              <div key={i} style={{ marginBottom: 6, padding: "5px 10px", background: "rgba(0,212,255,0.04)", border: "1px solid rgba(0,212,255,0.15)", borderRadius: 3 }}>
+                <div style={{ color: "#00d4ff", fontFamily: "monospace", fontSize: 11, fontWeight: "bold" }}>{c.name}</div>
+                <div style={{ color: "rgba(0,212,255,0.55)", fontFamily: "monospace", fontSize: 10, marginTop: 2 }}>{c.desc}</div>
+              </div>
+            ))}
+          </div>
+          <div>
+            <div style={{ color: "rgba(0,212,255,0.6)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>▸ PROVENANCE</div>
+            <div style={{ padding: "10px 12px", background: "rgba(0,212,255,0.04)", border: "1px solid rgba(0,212,255,0.15)", borderRadius: 3, fontSize: 10, fontFamily: "monospace", color: "rgba(0,212,255,0.7)", lineHeight: 1.7 }}>
+              <div><span style={{ opacity: 0.55 }}>Author:</span> <span style={{ color: "#00d4ff" }}>Singapore FM</span></div>
+              <div><span style={{ opacity: 0.55 }}>Memory:</span> <span style={{ color: "#00d4ff" }}>Mnemon (graph)</span></div>
+              <div><span style={{ opacity: 0.55 }}>Skills:</span> <span style={{ color: "#00d4ff" }}>nanoclaw + mnemon</span></div>
+            </div>
+            <div style={{ marginTop: 8, padding: "6px 10px", background: "rgba(255,200,0,0.06)", border: "1px solid rgba(255,200,0,0.25)", borderRadius: 3, color: "rgba(255,200,80,0.85)", fontFamily: "monospace", fontSize: 10, lineHeight: 1.4 }}>
+              Installed — configure channels to activate messaging bridge.
+            </div>
+          </div>
+        </div>
+
+        <div style={{ paddingTop: 12, borderTop: "1px solid rgba(0,212,255,0.15)", color: "rgba(0,212,255,0.7)", fontFamily: "monospace", fontSize: 11, lineHeight: 1.5 }}>
+          Personal Claude assistant with multi-channel messaging, voice note processing, scheduled tasks, and graph-based memory. Bobby talks to the ecosystem from anywhere — WhatsApp, Telegram, Slack, or Discord.
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════
 // QUALITY TRIANGLE PANEL — three-point gate every agent must pass
 // Bobby's canonical quality protocol (locked 2026-04-28).
 // Master: ~/.claude/memory/quality-triangle.md
@@ -1395,6 +1554,8 @@ function AgentEcosystemDashboard() {
         </div>
 
         <LouisSpotlight agent={louis} />
+        <SecondBrainCard />
+        <NanoClawCard />
         <QualityTrianglePanel />
         <FourLoopsPanel />
         <WorkflowsPanel />
