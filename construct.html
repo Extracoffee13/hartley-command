@@ -200,17 +200,42 @@ const NeurolinkVisualization = ({ agents }) => {
     return () => clearInterval(id);
   }, []);
 
-  const W = 1600, H = 540;
+  const W = 1600, H = 780;
   const cx = W / 2, cy = H / 2;
   const bobby = agents.find(a => a.isHuman) || agents[0];
   const others = agents.filter(a => !a.isHuman);
   const N = others.length;
 
-  // Two concentric ellipses for visual depth
+  // Two concentric ellipses for visual depth — scaled with the taller H
   const outerN = Math.ceil(N * 0.62);
   const innerN = N - outerN;
-  const outer = { rx: 640, ry: 215 };
-  const inner = { rx: 360, ry: 118 };
+  const outer = { rx: 640, ry: 310 };
+  const inner = { rx: 360, ry: 170 };
+
+  // ── PRAXIS layer: spontaneous firing + explicit synapse fires ──
+  // Spontaneous = autonomous neural activity (a node fires on its own).
+  // Synapse fire = explicit Bobby↔node burst with impact flash at receiver.
+  // Both modeled as ephemeral React state, auto-cleaned after animation.
+  const [spontaneous, setSpontaneous] = useState([]);
+  const [synapseFires, setSynapseFires] = useState([]);
+  useEffect(() => {
+    if (others.length === 0) return;
+    const tickSpontaneous = () => {
+      const idx = Math.floor(Math.random() * others.length);
+      const id = Math.random().toString(36).slice(2);
+      setSpontaneous(s => [...s, { idx, id }]);
+      setTimeout(() => setSpontaneous(s => s.filter(x => x.id !== id)), 1500);
+    };
+    const tickSynapse = () => {
+      const idx = Math.floor(Math.random() * others.length);
+      const id = Math.random().toString(36).slice(2);
+      setSynapseFires(s => [...s, { idx, id }]);
+      setTimeout(() => setSynapseFires(s => s.filter(x => x.id !== id)), 1300);
+    };
+    const a = setInterval(tickSpontaneous, 400);
+    const b = setInterval(tickSynapse, 950);
+    return () => { clearInterval(a); clearInterval(b); };
+  }, [others.length]);
 
   const positioned = others.map((a, i) => {
     const isOuter = i % 2 === 0 ? (i / 2 < outerN) : false;

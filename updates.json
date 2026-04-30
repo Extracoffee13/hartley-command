@@ -1,7 +1,95 @@
 {
   "schema_version": "1.0",
-  "last_updated_utc": "2026-04-28T23:16:34Z",
+  "last_updated_utc": "2026-04-29T14:32:57Z",
   "updates": [
+    {
+      "id": "2026-04-29-master-mp4-shipped",
+      "date": "2026-04-29",
+      "title": "\u2605 MASTER FILM SHIPPED \u2014 60s 1080p + 1080x1920 mobile cut",
+      "summary": "Built the 60-second master film from all 14 locked beat stills using ffmpeg + Ken Burns motion (per-beat zoom + pan calibrated to runsheet timeline). 1920x1080 H.264 master at 7.4MB \u00b7 1080x1920 mobile cut at 3.3MB. Both 24fps, exact 60.000s duration. Each beat's motion calibrated: Beat 10 LIFTOFF gets strong push-in (1.0\u21921.20 zoom), Beat 12 LUNAR ARC longest-dwell gets slow orbital push (9 seconds, 1.0\u21921.15), Beats 1-7 backyard arc get subtle drifts, Beat 14 brand mark holds static for 2s payoff. NO AUDIO in v1 \u2014 placeholder track / commissioned cue layered separately per Audio Sound-Design Brief v1. Files ready for brand9signs.com homepage replacement per integration brief in Brand 9 Site Up-grades folder.",
+      "agents_affected": [
+        "Vector",
+        "Signal",
+        "AP"
+      ],
+      "files_changed": [
+        "Brand 9 Rocket Motion Film./brand9-ninth-street-master-1080p.mp4 (NEW \u00b7 7.4MB \u00b7 60s \u00b7 1920x1080 \u00b7 24fps)",
+        "Brand 9 Rocket Motion Film./brand9-ninth-street-mobile-1080x1920.mp4 (NEW \u00b7 3.3MB \u00b7 60s \u00b7 1080x1920 \u00b7 24fps)"
+      ],
+      "tag": "deliverable",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-04-29-phase3-deep-prep",
+      "date": "2026-04-29",
+      "title": "Phase 3 deep-prep complete \u2014 runsheets + audio brief + embed + Beat 8 keyframes + launcher",
+      "summary": "Pre-baked everything Phase 3 needs so the motion pipeline is paste-and-go: Audio Sound-Design Brief v1 (per-beat SFX + music tier recommendations + LUFS targets), homepage video embed HTML/CSS/JS for brand9signs.com (16:9 desktop + 9:16 mobile media-query swap, autoplay-blocked fallback, prefers-reduced-motion respected), Mobile Cut Layout Strategy v1 (per-beat re-frame rules, AE pre-comp spec), Phase 5 Final Deliverables Checklist v1 (close-out punchlist), Beat 8 sub-shot keyframes built via Python composite (sun-cross, calendar-pages, toy-shelf-to-adult), and Phase 3 quick-launch .command bootstrapper that opens Higgsfield + Runway + all 4 runsheets + project folder in one double-click. Skill stack pulled: graphic-designer (Vector) + ms-office-suite (web) + xlsx (delivery checklist).",
+      "agents_affected": [
+        "Vector",
+        "Signal",
+        "AP"
+      ],
+      "files_changed": [
+        "Brand 9 Rocket Motion Film./Phase 3 \u2014 Audio Sound-Design Brief v1.md",
+        "Brand 9 Rocket Motion Film./Phase 3 \u2014 Mobile Cut Layout Strategy v1.md",
+        "Brand 9 Rocket Motion Film./Phase 5 \u2014 Final Film Deliverables Checklist v1.md",
+        "Brand 9 Rocket Motion Film./B9-NS-Beat08-1-SunCross-keyframe-v1.png",
+        "Brand 9 Rocket Motion Film./B9-NS-Beat08-2-CalendarPages-keyframe-v1.png",
+        "Brand 9 Rocket Motion Film./B9-NS-Beat08-3-ToyShelfToAdult-keyframe-v1.png",
+        "Brand 9 Rocket Motion Film./LAUNCH_phase3_motion.command",
+        "Brand 9 Site Up-grades/homepage-motion-film-embed.html",
+        "Brand 9 Site Up-grades/homepage-motion-film-integration-brief.md"
+      ],
+      "tag": "deliverable",
+      "color": "#ffd700"
+    },
+    {
+      "id": "2026-04-29-phase2-gate2-phase3-prep",
+      "date": "2026-04-29",
+      "title": "Phase 2 Gate 2 PASSED + Phase 3 Motion Runsheet shipped",
+      "summary": "Beat 4 corrected with toy-rocket continuity + contact sheet v2 rebuilt + Bobby validated 'precisely what I had in mind' on full beat range. Gate 2 audit: Skeptic 12/12 PASS, Architect drip rationing held. Phase 3 Motion Runsheet v1 (149 lines) shipped \u2014 full master timeline 0:00\u21921:00, per-beat Higgsfield prompts (Beats 1\u20137) + Runway prompts (Beats 9, 10, 11, 12, 13) + AE shot list (Beat 8 time-passage montage + Beat 14 brand mark + payoff line typography). Beat 14 payoff mock built (1920\u00d71080) showing 'Dream big. Build bigger.' in Cosmo Orange compressed sans with drips on key descenders + final period.",
+      "agents_affected": [
+        "Vector",
+        "Signal",
+        "AP"
+      ],
+      "files_changed": [
+        "Brand 9 Rocket Motion Film./B9-NS-Beat04-Ignition-PRO-v1.png (overwritten \u2014 corrected toy-rocket framing)",
+        "Brand 9 Rocket Motion Film./B9-NS-Beat04-Ignition-v2-toyrocket.png (audit copy)",
+        "Brand 9 Rocket Motion Film./B9-NS-Phase2-ContactSheet-v2.png (new \u2014 beat 4 corrected)",
+        "Brand 9 Rocket Motion Film./Phase 2 Gate 2 \u2014 Skeptic + Architect Pass.md (new)",
+        "Brand 9 Rocket Motion Film./Phase 3 Motion Runsheet v1.md (new \u2014 149 lines)",
+        "Brand 9 Rocket Motion Film./B9-NS-Beat14-PayoffMock-v1.png (new \u2014 payoff frame mock)",
+        "memory/feedback_ninth_street_render_strategy.md (canonical pipeline + Beat 4 toy-rocket rule etched)",
+        "memory/project_ninth_street_style.md (Bobby's 2026-04-29 'precisely what I had in mind' approval logged)"
+      ],
+      "tag": "deliverable",
+      "color": "#ffd700"
+    },
+    {
+      "id": "2026-04-29-phase2-pro-renders-complete",
+      "date": "2026-04-29",
+      "title": "Phase 2 Pro-tier renders COMPLETE \u2014 8 beats + contact sheet shipped",
+      "summary": "Autonomously fired 8 remaining beats (3, 4, 5, 6, 7, 9, 11, 13) into Gemini Pro tier via Chrome MCP. Each rendered as fresh chat per Phase 2 Runsheet protocol \u2014 composition + palette + V2 impasto strategy intact, fidelity at production-grade Pro tier baseline. All 8 PNGs landed in Brand 9 Rocket Motion Film. project folder with canonical filename pattern (B9-NS-BeatNN-Title-PRO-v1.png) via auto-fired move + rename .command. Contact sheet built (2000\u00d71028 PNG, 12-frame grid showing 1, 2, 3, 4, 5, 6, 7, 9, 10-WINNER, 11, 12-WINNER, 13). Phase 2 Gate 2 ready: full Skeptic + Architect pass on contact sheet \u2192 Phase 3 motion (Higgsfield 1-7, Runway 9-13, AE 8+14+master).",
+      "agents_affected": [
+        "Vector",
+        "Signal",
+        "AP"
+      ],
+      "files_changed": [
+        "Brand 9 Rocket Motion Film./B9-NS-Beat03-Pad-PRO-v1.png (new)",
+        "Brand 9 Rocket Motion Film./B9-NS-Beat04-Ignition-PRO-v1.png (new)",
+        "Brand 9 Rocket Motion Film./B9-NS-Beat05-Ascent-PRO-v1.png (new)",
+        "Brand 9 Rocket Motion Film./B9-NS-Beat06-Apogee-PRO-v1.png (new)",
+        "Brand 9 Rocket Motion Film./B9-NS-Beat07-Drift-PRO-v1.png (new)",
+        "Brand 9 Rocket Motion Film./B9-NS-Beat09-ModernPad-PRO-v1.png (new)",
+        "Brand 9 Rocket Motion Film./B9-NS-Beat11-EarthHorizon-PRO-v1.png (new)",
+        "Brand 9 Rocket Motion Film./B9-NS-Beat13-Reentry-PRO-v1.png (new)",
+        "Brand 9 Rocket Motion Film./B9-NS-Phase2-ContactSheet-PRO-v1.png (new \u2014 2000x1028 contact sheet)"
+      ],
+      "tag": "deliverable",
+      "color": "#ffd700"
+    },
     {
       "id": "2026-04-28-gitnexus-codegraph",
       "date": "2026-04-28",
