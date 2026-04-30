@@ -1717,6 +1717,123 @@ const NanoClawCard = () => {
 };
 
 // ═══════════════════════════════════════════════════
+// PRAXIS — era-of-experience layer
+// Frame: David Silver's $1.1B raise (2025). Frontier intelligence from doing.
+// Capture → Distill → Promote → Broadcast → First-Principles Spike.
+// Store: ~/.claude/memory/construct-shared/
+// ═══════════════════════════════════════════════════
+const PRAXISCard = () => {
+  const [tick, setTick] = React.useState(0);
+  const [synapseCount, setSynapseCount] = React.useState(0);
+  const [lastBeat, setLastBeat] = React.useState("00:00:00");
+  React.useEffect(() => {
+    const id = setInterval(() => {
+      setTick(t => (t + 1) % 100);
+      setSynapseCount(c => c + Math.floor(Math.random() * 3));
+      const d = new Date();
+      setLastBeat(d.toLocaleTimeString("en-US", { hour12: false }));
+    }, 700);
+    return () => clearInterval(id);
+  }, []);
+  const stages = [
+    { num: "01", name: "CAPTURE",            desc: "Structured experience packets — every session, every agent. Decision · outcome · lesson · tags." },
+    { num: "02", name: "DISTILL",            desc: "Scheduled sweep — dedupe, cluster, rank lessons by impact." },
+    { num: "03", name: "PROMOTE",            desc: "3+ recurrence OR explicit Bobby approval → lesson is bound to a skill file." },
+    { num: "04", name: "BROADCAST",          desc: "Auto-update CLAUDE.md across the ecosystem. Next session of every agent boots with the new prior." },
+    { num: "05", name: "FIRST-PRINCIPLES SPIKE", desc: "Agent derives an answer from first principles, then compares to the human-data answer. Discrepancy is logged — that's where new knowledge lives." },
+  ];
+  return (
+    <div style={{ padding: "0 24px 20px" }}>
+      <div style={{
+        background: "linear-gradient(135deg, rgba(255,215,0,0.05) 0%, rgba(20,16,0,0.65) 100%)",
+        border: "1px solid rgba(255,215,0,0.32)",
+        borderRadius: 4,
+        padding: 24,
+        position: "relative",
+        overflow: "hidden",
+      }}>
+        {/* Subtle scan sweep */}
+        <div style={{
+          position: "absolute", left: 0, right: 0, top: 0, height: 1,
+          background: "linear-gradient(90deg, transparent, rgba(255,215,0,0.4), transparent)",
+          animation: "nlsweep 6s linear infinite", pointerEvents: "none",
+        }} />
+        <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 16 }}>
+          <div style={{
+            width: 56, height: 56, borderRadius: "50%",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontSize: 28, background: "rgba(255,215,0,0.08)",
+            border: "2px solid #ffd700", boxShadow: "0 0 22px rgba(255,215,0,0.35)",
+            color: "#ffd700", fontFamily: "'Courier New', monospace", fontWeight: "bold",
+          }}>{"\u03A0"}</div>
+          <div style={{ flex: 1 }}>
+            <div style={{ color: "#ffd700", fontFamily: "monospace", fontSize: 22, fontWeight: "bold", letterSpacing: 4 }}>PRAXIS</div>
+            <div style={{ color: "rgba(255,215,0,0.55)", fontFamily: "monospace", fontSize: 11, letterSpacing: 3, marginTop: 2 }}>
+              ERA-OF-EXPERIENCE LAYER · LEARNS FROM AGENT PRAXIS
+            </div>
+          </div>
+          <div style={{ padding: "4px 12px", background: "rgba(179,136,255,0.10)", border: "1px solid rgba(179,136,255,0.45)", borderRadius: 3, color: "#b388ff", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, fontWeight: "bold" }}>
+            IN BUILD
+          </div>
+        </div>
+
+        {/* Mission */}
+        <div style={{ paddingBottom: 14, marginBottom: 14, borderBottom: "1px solid rgba(255,215,0,0.15)", color: "rgba(255,215,0,0.92)", fontFamily: "monospace", fontSize: 12, lineHeight: 1.6 }}>
+          Knowledge gained through doing — not retrieved from human data alone. Every agent in the Construct contributes its lived experience back to the network. Lessons that recur across agents promote into shared skills. The ecosystem gets smarter without retraining.
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: 18, marginBottom: 16 }}>
+          <div>
+            <div style={{ color: "rgba(255,215,0,0.6)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>{"\u25B8"} FIVE-STAGE PIPELINE</div>
+            {stages.map((c, i) => (
+              <div key={i} style={{ marginBottom: 6, padding: "7px 11px", background: "rgba(255,215,0,0.04)", border: "1px solid rgba(255,215,0,0.15)", borderRadius: 3, position: "relative" }}>
+                <div style={{ color: "#ffd700", fontFamily: "monospace", fontSize: 11, fontWeight: "bold", letterSpacing: 1 }}>
+                  <span style={{ opacity: 0.5, marginRight: 10 }}>{c.num}</span>{c.name}
+                </div>
+                <div style={{ color: "rgba(255,215,0,0.62)", fontFamily: "monospace", fontSize: 10, marginTop: 3, lineHeight: 1.45 }}>{c.desc}</div>
+              </div>
+            ))}
+          </div>
+
+          <div>
+            <div style={{ color: "rgba(255,215,0,0.6)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>{"\u25B8"} THESIS</div>
+            <div style={{ padding: "11px 13px", background: "rgba(255,215,0,0.04)", border: "1px solid rgba(255,215,0,0.15)", borderRadius: 3, fontSize: 11, fontFamily: "monospace", color: "rgba(255,215,0,0.85)", lineHeight: 1.6, marginBottom: 10 }}>
+              David Silver (AlphaZero · DeepMind) raised <span style={{ color: "#ffd700", fontWeight: "bold" }}>$1.1B</span> in 2025 on the era-of-experience thesis: frontier intelligence emerges from agents acting in the world, not from compressing the human corpus alone. PRAXIS is The Construct's local instance of that thesis — applied at the team scale, not the lab scale.
+            </div>
+
+            <div style={{ color: "rgba(255,215,0,0.6)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>{"\u25B8"} STORE LAYOUT</div>
+            <div style={{ padding: "10px 12px", background: "rgba(255,215,0,0.04)", border: "1px solid rgba(255,215,0,0.15)", borderRadius: 3, fontSize: 10, fontFamily: "monospace", color: "rgba(255,215,0,0.78)", lineHeight: 1.7 }}>
+              <div style={{ color: "#ffd700" }}>~/.claude/memory/construct-shared/</div>
+              <div style={{ opacity: 0.7 }}>{"\u251C"} experiences/         <span style={{ opacity: 0.5 }}>raw packets</span></div>
+              <div style={{ opacity: 0.7 }}>{"\u251C"} lessons/             <span style={{ opacity: 0.5 }}>distilled</span></div>
+              <div style={{ opacity: 0.7 }}>{"\u251C"} promotions/          <span style={{ opacity: 0.5 }}>skill-bound</span></div>
+              <div style={{ opacity: 0.7 }}>{"\u251C"} first-principles/    <span style={{ opacity: 0.5 }}>delta log</span></div>
+              <div style={{ opacity: 0.7 }}>{"\u2514"} index.json           <span style={{ opacity: 0.5 }}>broadcast manifest</span></div>
+            </div>
+
+            <div style={{ marginTop: 10, padding: "7px 11px", background: "rgba(179,136,255,0.07)", border: "1px solid rgba(179,136,255,0.28)", borderRadius: 3, color: "rgba(179,136,255,0.88)", fontFamily: "monospace", fontSize: 10, lineHeight: 1.45 }}>
+              Foundation in build: shared store + capture hooks. Distillation pipeline + promotion gate next. First-principles spike is stage two.
+            </div>
+          </div>
+        </div>
+
+        <div style={{ paddingTop: 12, borderTop: "1px solid rgba(255,215,0,0.15)", display: "flex", justifyContent: "space-between", alignItems: "center", fontFamily: "monospace", fontSize: 11, color: "rgba(255,215,0,0.78)" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <span style={{ display: "inline-block", width: 8, height: 8, borderRadius: "50%", background: "#b388ff", boxShadow: "0 0 10px #b388ff", animation: "blink 1.6s infinite" }} />
+            <span>Pipeline scaffolded · awaiting first capture · {lastBeat}</span>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 14, color: "rgba(255,215,0,0.55)", letterSpacing: 2, fontSize: 10 }}>
+            <span>{"\u03A0"} ARISTOTLE / SILVER</span>
+            <span style={{ opacity: 0.5 }}>{"\u00B7"}</span>
+            <span>SYN <span style={{ color: "#ffd700", fontWeight: "bold" }}>{synapseCount.toLocaleString()}</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════
 // QUALITY TRIANGLE PANEL — three-point gate every agent must pass
 // Bobby's canonical quality protocol (locked 2026-04-28).
 // Master: ~/.claude/memory/quality-triangle.md
@@ -2103,6 +2220,7 @@ function AgentEcosystemDashboard() {
         <LouisSpotlight agent={louis} />
         <SecondBrainCard />
         <NanoClawCard />
+        <PRAXISCard />
         <QualityTrianglePanel />
         <FourLoopsPanel />
         <WorkflowsPanel />
