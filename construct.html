@@ -1834,6 +1834,137 @@ const PRAXISCard = () => {
 };
 
 // ═══════════════════════════════════════════════════
+// CLOUD CADENCE — Claude Routines + Higgsfield MCP
+// Locked 2026-04-30. Routines spec: CLAUDE_ROUTINES_v1.md
+// Higgsfield spec: HIGGSFIELD_MCP_INTEGRATION.md
+// ═══════════════════════════════════════════════════
+const CloudCadenceCard = () => {
+  const routines = [
+    { slot: 1, hh: "06:00", name: "PRAXIS Daily Review",     daily: true },
+    { slot: 2, hh: "07:00", name: "Skill Discovery Sweep",   daily: true },
+    { slot: 3, hh: "08:00", name: "Industry Pulse · Signage",daily: false },
+    { slot: 4, hh: "08:30", name: "Industry Pulse · AI",     daily: true },
+    { slot: 5, hh: "12:00", name: "Brand 9 Site Health",     daily: true },
+    { slot: 6, hh: "14:00", name: "First-Principles Spike",  daily: false },
+    { slot: 7, hh: "16:00", name: "Hartley Capital Watch",   daily: false },
+    { slot: 8, hh: "18:00", name: "Daily Construct Standup", daily: false },
+  ];
+  const mcps = [
+    { name: "Higgsfield",   role: "30+ models · OAuth · async",      owner: "Vector",  status: "queued" },
+    { name: "Chrome",       role: "browser automation",              owner: "AP",      status: "live" },
+    { name: "Slack",        role: "team channels + canvas",          owner: "Signal",  status: "live" },
+    { name: "Gmail",        role: "thread search + drafts",          owner: "Signal",  status: "live" },
+    { name: "Google Drive", role: "file ops",                        owner: "AP",      status: "live" },
+    { name: "Canva",        role: "design ops",                      owner: "Vector",  status: "live" },
+    { name: "MCP Registry", role: "discovery",                       owner: "AP",      status: "live" },
+    { name: "Cowork",       role: "artifacts + presents",            owner: "AP",      status: "live" },
+  ];
+  const STATUS = {
+    live:   { color: "#39ff14", label: "LIVE" },
+    queued: { color: "#b388ff", label: "QUEUED" },
+  };
+  const dailyCount = 8, cap = 15;
+  return (
+    <div style={{ padding: "0 24px 20px" }}>
+      <div style={{
+        background: "linear-gradient(135deg, rgba(0,212,255,0.05) 0%, rgba(0,16,28,0.7) 100%)",
+        border: "1px solid rgba(0,212,255,0.32)",
+        borderRadius: 4,
+        padding: 24,
+        position: "relative",
+        overflow: "hidden",
+      }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 16 }}>
+          <div style={{
+            width: 56, height: 56, borderRadius: "50%",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontSize: 26, background: "rgba(0,212,255,0.08)",
+            border: "2px solid #00d4ff", boxShadow: "0 0 22px rgba(0,212,255,0.35)",
+            color: "#00d4ff", fontFamily: "'Courier New', monospace", fontWeight: "bold",
+          }}>{"\u29C9"}</div>
+          <div style={{ flex: 1 }}>
+            <div style={{ color: "#00d4ff", fontFamily: "monospace", fontSize: 22, fontWeight: "bold", letterSpacing: 4 }}>CLOUD CADENCE</div>
+            <div style={{ color: "rgba(0,212,255,0.55)", fontFamily: "monospace", fontSize: 11, letterSpacing: 3, marginTop: 2 }}>
+              CLAUDE ROUTINES (MAX 15/DAY) + CONNECTED MCPs
+            </div>
+          </div>
+          <div style={{ padding: "4px 12px", background: "rgba(0,212,255,0.10)", border: "1px solid rgba(0,212,255,0.45)", borderRadius: 3, color: "#00d4ff", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, fontWeight: "bold" }}>
+            {dailyCount}/{cap} SLOTS
+          </div>
+        </div>
+
+        <div style={{ paddingBottom: 14, marginBottom: 14, borderBottom: "1px solid rgba(0,212,255,0.15)", color: "rgba(0,212,255,0.92)", fontFamily: "monospace", fontSize: 12, lineHeight: 1.6 }}>
+          The cloud cadence layer: 8 daily routines fire on schedule, push lessons into PRAXIS via the praxis-inbox.md handshake. 7 daily slots reserved for ad-hoc. Triggered routines (GitHub events, webhooks) don't count against the cap.
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: 18, marginBottom: 16 }}>
+          <div>
+            <div style={{ color: "rgba(0,212,255,0.6)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>{"\u25B8"} 8 DAILY ROUTINES</div>
+            {routines.map(r => (
+              <div key={r.slot} style={{
+                marginBottom: 4, padding: "6px 10px",
+                background: "rgba(0,212,255,0.04)", border: "1px solid rgba(0,212,255,0.15)",
+                borderRadius: 3,
+                display: "flex", alignItems: "center", gap: 10,
+                fontFamily: "monospace", fontSize: 11,
+              }}>
+                <span style={{ color: "rgba(0,212,255,0.5)", letterSpacing: 1, minWidth: 24 }}>0{r.slot}</span>
+                <span style={{ color: "rgba(0,212,255,0.65)", minWidth: 50 }}>{r.hh}</span>
+                <span style={{ color: "#00d4ff", flex: 1 }}>{r.name}</span>
+                <span style={{ color: r.daily ? "#39ff14" : "rgba(0,212,255,0.5)", fontSize: 9, letterSpacing: 1 }}>
+                  {r.daily ? "DAILY" : "WEEKDAYS"}
+                </span>
+              </div>
+            ))}
+            <div style={{ marginTop: 10, color: "rgba(179,136,255,0.85)", fontFamily: "monospace", fontSize: 10, lineHeight: 1.45 }}>
+              + 3 triggered routines (PR review · Yoast drift · failure recovery) — event-based, no cap.
+            </div>
+          </div>
+
+          <div>
+            <div style={{ color: "rgba(0,212,255,0.6)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>{"\u25B8"} CONNECTED MCPs</div>
+            {mcps.map(m => {
+              const s = STATUS[m.status];
+              return (
+                <div key={m.name} style={{
+                  marginBottom: 4, padding: "6px 10px",
+                  background: "rgba(0,212,255,0.04)", border: "1px solid rgba(0,212,255,0.15)",
+                  borderRadius: 3,
+                  fontFamily: "monospace", fontSize: 11,
+                  display: "flex", alignItems: "center", gap: 10,
+                }}>
+                  <span style={{
+                    display: "inline-block", width: 7, height: 7, borderRadius: "50%",
+                    background: s.color, boxShadow: `0 0 6px ${s.color}`,
+                  }} />
+                  <span style={{ color: "#00d4ff", fontWeight: "bold", minWidth: 110 }}>{m.name}</span>
+                  <span style={{ color: "rgba(0,212,255,0.6)", flex: 1, fontSize: 10 }}>{m.role}</span>
+                  <span style={{ color: "rgba(255,215,0,0.7)", fontSize: 10 }}>{m.owner}</span>
+                  <span style={{ color: s.color, fontSize: 9, letterSpacing: 1, minWidth: 50, textAlign: "right" }}>{s.label}</span>
+                </div>
+              );
+            })}
+            <div style={{ marginTop: 10, padding: "7px 11px", background: "rgba(255,215,0,0.06)", border: "1px solid rgba(255,215,0,0.28)", borderRadius: 3, color: "rgba(255,215,0,0.88)", fontFamily: "monospace", fontSize: 10, lineHeight: 1.45 }}>
+              <span style={{ fontWeight: "bold", color: "#ffd700" }}>Higgsfield MCP — launched 2026-04-30.</span> Visit higgsfield.ai/mcp · OAuth into Claude · Vector becomes primary owner. 30+ models (Sora 2 · Veo · Kling · Nano Banana Pro · Flux 2 · Soul) replace the multi-account juggle.
+            </div>
+          </div>
+        </div>
+
+        <div style={{ paddingTop: 12, borderTop: "1px solid rgba(0,212,255,0.15)", display: "flex", justifyContent: "space-between", alignItems: "center", fontFamily: "monospace", fontSize: 11, color: "rgba(0,212,255,0.78)" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <span style={{ display: "inline-block", width: 8, height: 8, borderRadius: "50%", background: "#00d4ff", boxShadow: "0 0 10px #00d4ff", animation: "blink 1.6s infinite" }} />
+            <span>Routines spec locked · paste-ready prompts · awaiting Bobby setup at claude.com/code/routines</span>
+          </div>
+          <div style={{ color: "rgba(0,212,255,0.55)", letterSpacing: 2, fontSize: 10 }}>
+            {"\u29C9"} CLAUDE_ROUTINES_v1 · HIGGSFIELD_MCP_INTEGRATION
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════
 // QUALITY TRIANGLE PANEL — three-point gate every agent must pass
 // Bobby's canonical quality protocol (locked 2026-04-28).
 // Master: ~/.claude/memory/quality-triangle.md
