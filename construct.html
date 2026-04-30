@@ -1840,14 +1840,19 @@ const PRAXISCard = () => {
 // ═══════════════════════════════════════════════════
 const CloudCadenceCard = () => {
   const routines = [
-    { slot: 1, hh: "06:00", name: "PRAXIS Daily Review",     daily: true },
-    { slot: 2, hh: "07:00", name: "Skill Discovery Sweep",   daily: true },
-    { slot: 3, hh: "08:00", name: "Industry Pulse · Signage",daily: false },
-    { slot: 4, hh: "08:30", name: "Industry Pulse · AI",     daily: true },
-    { slot: 5, hh: "12:00", name: "Brand 9 Site Health",     daily: true },
-    { slot: 6, hh: "14:00", name: "First-Principles Spike",  daily: false },
-    { slot: 7, hh: "16:00", name: "Hartley Capital Watch",   daily: false },
-    { slot: 8, hh: "18:00", name: "Daily Construct Standup", daily: false },
+    { slot: 1,  hh: "06:00", name: "PRAXIS Daily Review",          daily: true,  agent: "AP" },
+    { slot: 2,  hh: "07:00", name: "Skill Discovery Sweep",        daily: true,  agent: "AP" },
+    { slot: 3,  hh: "08:00", name: "Industry Pulse · Signage",     daily: false, agent: "AP" },
+    { slot: 4,  hh: "08:30", name: "Industry Pulse · AI",          daily: true,  agent: "AP" },
+    { slot: 5,  hh: "09:00", name: "WOLF · Pre-Market Intel",      daily: false, agent: "WOLF" },
+    { slot: 6,  hh: "09:30", name: "WOLF · Congressional Trading", daily: false, agent: "WOLF" },
+    { slot: 7,  hh: "11:00", name: "WOLF · Consulting Pulse",      daily: false, agent: "WOLF" },
+    { slot: 8,  hh: "12:00", name: "Brand 9 Site Health",          daily: true,  agent: "AP" },
+    { slot: 9,  hh: "14:00", name: "First-Principles Spike",       daily: false, agent: "AP" },
+    { slot: 10, hh: "16:00", name: "Hartley Capital Watch",        daily: false, agent: "AP" },
+    { slot: 11, hh: "16:30", name: "WOLF · Post-Close Recap",      daily: false, agent: "WOLF" },
+    { slot: 12, hh: "18:00", name: "Daily Construct Standup",      daily: false, agent: "AP" },
+    { slot: 13, hh: "Fri 17:00", name: "WOLF · AI Hedge Fund Committee", daily: false, agent: "WOLF", weekly: true },
   ];
   const mcps = [
     { name: "Higgsfield",   role: "30+ models · OAuth · async",      owner: "Vector",  status: "live" },
