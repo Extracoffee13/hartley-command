@@ -415,6 +415,66 @@ const NeurolinkVisualization = ({ agents }) => {
             </g>
           );
         })}
+
+        {/* SPONTANEOUS FIRING — autonomous neural activity, random nodes burst on their own */}
+        {spontaneous.map(s => {
+          const p = positioned[s.idx];
+          if (!p) return null;
+          return (
+            <g key={`SF${s.id}`}>
+              {/* Outer expanding shockwave */}
+              <circle cx={p.x} cy={p.y} r="8" fill="none" stroke={p.color} strokeWidth="2" opacity="0">
+                <animate attributeName="r" values="8;52;52" keyTimes="0;0.85;1" dur="1.5s" repeatCount="1" />
+                <animate attributeName="opacity" values="0;0.95;0" keyTimes="0;0.18;1" dur="1.5s" repeatCount="1" />
+                <animate attributeName="stroke-width" values="2.5;0.4;0.4" keyTimes="0;0.85;1" dur="1.5s" repeatCount="1" />
+              </circle>
+              {/* Inner bright core flash */}
+              <circle cx={p.x} cy={p.y} r="3" fill="#ffffff" filter="url(#nlHardGlow)" opacity="0">
+                <animate attributeName="r" values="3;14;0" keyTimes="0;0.25;1" dur="1.5s" repeatCount="1" />
+                <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.18;1" dur="1.5s" repeatCount="1" />
+              </circle>
+              {/* Color bloom */}
+              <circle cx={p.x} cy={p.y} r="2" fill={p.color} filter="url(#nlSoftGlow)" opacity="0">
+                <animate attributeName="r" values="2;26;26" keyTimes="0;0.55;1" dur="1.5s" repeatCount="1" />
+                <animate attributeName="opacity" values="0;0.6;0" keyTimes="0;0.25;1" dur="1.5s" repeatCount="1" />
+              </circle>
+            </g>
+          );
+        })}
+
+        {/* SYNAPSE FIRES — bright Bobby↔node bursts with impact flash at receiver */}
+        {synapseFires.map(s => {
+          const p = positioned[s.idx];
+          if (!p) return null;
+          const path = bezierPath(p);
+          return (
+            <g key={`SY${s.id}`}>
+              {/* Trailing wake — thicker translucent streak */}
+              <circle r="9" fill={p.color} opacity="0" filter="url(#nlSoftGlow)">
+                <animateMotion dur="0.65s" repeatCount="1" path={path} />
+                <animate attributeName="opacity" values="0;0.55;0.55;0" keyTimes="0;0.15;0.85;1" dur="0.65s" repeatCount="1" />
+                <animate attributeName="r" values="6;10;12" keyTimes="0;0.5;1" dur="0.65s" repeatCount="1" />
+              </circle>
+              {/* Bright pulse — leading edge, white-hot */}
+              <circle r="4" fill="#ffffff" opacity="0" filter="url(#nlHardGlow)">
+                <animateMotion dur="0.65s" repeatCount="1" path={path} />
+                <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="0.65s" repeatCount="1" />
+                <animate attributeName="r" values="3;5;6" keyTimes="0;0.5;1" dur="0.65s" repeatCount="1" />
+              </circle>
+              {/* Impact flash at receiver — fires after pulse arrives */}
+              <circle cx={p.x} cy={p.y} r="0" fill={p.color} filter="url(#nlHardGlow)" opacity="0">
+                <animate attributeName="r" values="0;0;36;36" keyTimes="0;0.5;0.78;1" dur="1.3s" repeatCount="1" />
+                <animate attributeName="opacity" values="0;0;0.95;0" keyTimes="0;0.5;0.6;1" dur="1.3s" repeatCount="1" />
+              </circle>
+              {/* Impact ring */}
+              <circle cx={p.x} cy={p.y} r="0" fill="none" stroke="#ffffff" strokeWidth="2" opacity="0">
+                <animate attributeName="r" values="0;0;46;46" keyTimes="0;0.5;0.95;1" dur="1.3s" repeatCount="1" />
+                <animate attributeName="opacity" values="0;0;1;0" keyTimes="0;0.5;0.55;1" dur="1.3s" repeatCount="1" />
+                <animate attributeName="stroke-width" values="0;0;2.5;0.3" keyTimes="0;0.5;0.55;1" dur="1.3s" repeatCount="1" />
+              </circle>
+            </g>
+          );
+        })}
       </svg>
 
       {/* HUD — top-left identifier */}
@@ -422,12 +482,14 @@ const NeurolinkVisualization = ({ agents }) => {
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#39ff14", boxShadow: "0 0 8px #39ff14", animation: "blink 1.6s infinite" }} />
           <span style={{ color: "#39ff14", fontWeight: "bold" }}>NEUROLINK</span>
-          <span style={{ opacity: 0.4 }}>v2.99</span>
+          <span style={{ opacity: 0.4 }}>v3.0</span>
           <span style={{ opacity: 0.3 }}>//</span>
           <span style={{ color: "#00d4ff" }}>CONSTRUCT/CORE</span>
+          <span style={{ opacity: 0.3 }}>//</span>
+          <span style={{ color: "#ffd700" }}>PRAXIS-LINKED</span>
         </div>
         <div style={{ marginTop: 4, color: "rgba(57,255,20,0.55)", fontSize: 9, letterSpacing: 2 }}>
-          AUTHENTICATED · CHANNEL OPEN · {agents.length} NODES SYNCED
+          AUTHENTICATED · {agents.length} NODES SYNCED · SYNAPSE LIVE · SPONTANEOUS FIRING ON
         </div>
       </div>
 
