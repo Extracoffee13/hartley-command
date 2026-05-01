@@ -74,7 +74,7 @@
     <div class="role">FL Real Estate Intelligence · Hartley Capital</div>
     <div class="meta"><span class="pill live">live · auto-update Sunday</span><span>Caden land search active</span></div>
   </a>
-  <a class="card flag" href="../Agent%20Wolf/WOLF_Command_Center.html">
+  <a class="card flag" href="https://extracoffee13.github.io/wolf-dashboards-repo/WOLF_Command_Center.html">
     <div class="top"><span class="name">WOLF</span><span class="score">19/25</span></div>
     <div class="role">CTO-Trading · 4 markets · 9 strategies</div>
     <div class="meta"><span class="pill live">live · 5min sync</span><span id="wolf-cap">cap: loading…</span></div>
@@ -164,7 +164,7 @@
   refreshStamp();
   setInterval(refreshStamp, 1000);
   function refreshWolf() {
-    fetch('../Agent%20Wolf/wolf_live_data.json?t=' + Date.now(), { cache: 'no-store' })
+    fetch('https://extracoffee13.github.io/wolf-dashboards-repo/wolf_live_data.json?t=' + Date.now(), { cache: 'no-store' })
       .then(r => r.ok ? r.json() : null)
       .then(d => {
         if (!d) return;
