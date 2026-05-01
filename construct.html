@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE CONSTRUCT v2.1 — Hartley Capital Agent Ecosystem</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        @keyframes matrix-fall {
+            from { transform: translateY(-100%); opacity: 1; }
+            to { transform: translateY(100vh); opacity: 0; }
+        }
+        @keyframes glow-pulse {
+            0%, 100% { filter: drop-shadow(0 0 4px rgba(0, 200, 255, 0.6)); }
+            50% { filter: drop-shadow(0 0 8px rgba(0, 200, 255, 1)); }
+        }
+        @keyframes synapse-fire {
+            0% { stroke-dasharray: 1000; stroke-dashoffset: 1000; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { stroke-dashoffset: 0; opacity: 0; }
+        }
+        @keyframes node-pulse {
+            0%, 100% { r: 8; }
+            50% { r: 12; }
+        }
+        @keyframes orbital-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes float-in {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { width: 100%; height: 100%; overflow: hidden; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0d1b2a 100%);
+            color: #e0e6ff;
+        }
+        #root { width: 100%; height: 100%; }
+    </style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useEffect, useCallback, useMemo, useRef } = React;
+
+// Neural network visualization with SMIL animations
+const NeurolinkVisualization = ({ selectedAgent }) => {
+    const svgRef = useRef(null);
+
+    const STATUS_CONFIG = {
+        active: { color: '#00d4ff', icon: '●' },
+        standby: { color: '#ffd700', icon: '◐' },
+        building: { color: '#ff6b9d', icon: '◇' },
+        archived: { color: '#666', icon: '○' },
+    };
+
+    const ROLE_ICONS = {
+        'founder': '👑', 'cto': '⚙️', 'coo': '📊', 'cfo': '💰', 'cio': '🔐',
+        'cmo': '📢', 'cpo': '🎯', 'strategist': '🧠', 'researcher': '🔬',
+        'builder': '🔨', 'connector': '🔗', 'evaluator': '⚖️', 'enforcer': '🛡️',
+        'ai': '🤖', 'system': '⚡', 'analyst': '📈', 'guardian': '👁️', 'standard': '⭐',
+    };
+
+    const TIER_META = {
+        0: { name: 'Founder', y: 100, color: '#ff1744' },
+        1: { name: 'Live Tier', y: 250, color: '#00d4ff' },
+        2: { name: 'T2 Build Queue', y: 400, color: '#ffd700' },
+        3: { name: 'T3 Build Queue', y: 550, color: '#ff6b9d' },
+        4: { name: 'T4 Build Queue', y: 700, color: '#9c27b0' },
+        5: { name: 'C-Suite Infrastructure', y: 850, color: '#4caf50' },
+    };
+
+    const INITIAL_AGENTS = [
+        { id: 'bobby', name: 'Bobby', tier: 0, status: 'active', role: 'founder', icon: '👑' },
+        { id: 'vector', name: 'Vector', tier: 1, status: 'active', role: 'builder', icon: '🎨' },
+        { id: 'forge', name: 'Forge', tier: 1, status: 'active', role: 'cto', icon: '⚙️' },
+        { id: 'signal', name: 'Signal', tier: 1, status: 'active', role: 'connector', icon: '📡' },
+        { id: 'ledger', name: 'Ledger', tier: 1, status: 'active', role: 'analyst', icon: '📊' },
+        { id: 'atlas', name: 'Atlas', tier: 1, status: 'active', role: 'strategist', icon: '🗺️' },
+        { id: 'sentinel', name: 'Sentinel', tier: 1, status: 'active', role: 'guardian', icon: '🛡️' },
+        { id: 'venture', name: 'Venture', tier: 1, status: 'active', role: 'connector', icon: '🚀' },
+        { id: 'louis', name: 'Louis', tier: 1, status: 'active', role: 'strategist', icon: '🧠' },
+        { id: 'cipher', name: 'Cipher', tier: 1, status: 'building', role: 'cto', icon: '🔐' },
+        { id: 'spectra', name: 'Spectra', tier: 2, status: 'building', role: 'builder', icon: '🌈' },
+        { id: 'oracle', name: 'Oracle', tier: 2, status: 'building', role: 'strategist', icon: '🔮' },
+        { id: 'nexus', name: 'Nexus', tier: 2, status: 'building', role: 'connector', icon: '🔗' },
+        { id: 'equity', name: 'Equity', tier: 2, status: 'building', role: 'analyst', icon: '📈' },
+        { id: 'alpha', name: 'Alpha', tier: 3, status: 'building', role: 'evaluator', icon: '⚖️' },
+        { id: 'wolf', name: 'WOLF', tier: 1, status: 'active', role: 'ai', icon: '🐺' },
+        { id: 'keystone', name: 'Keystone', tier: 1, status: 'active', role: 'guardian', icon: '🔑' },
+        { id: 'cornerstone', name: 'Cornerstone', tier: 1, status: 'active', role: 'system', icon: '⭐' },
+        { id: 'charlie', name: 'Charlie', tier: 5, status: 'active', role: 'standard', icon: '👤' },
+        { id: 'architect', name: 'Architect', tier: 5, status: 'active', role: 'builder', icon: '🏗️' },
+        { id: 'self-improving-loop', name: 'Self-Improving Loop', tier: 1, status: 'active', role: 'system', icon: '↻' },
+    ];
+
+    return (
+        <svg ref={svgRef} viewBox="0 0 1200 1000" style={{ width: '100%', height: '100%' }}>
+            <defs>
+                <filter id="glow">
+                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                    <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style={{stopColor: '#00d4ff', stopOpacity: 1}} />
+                    <stop offset="100%" style={{stopColor: '#ff1744', stopOpacity: 1}} />
+                </linearGradient>
+            </defs>
+
+            {/* Central Bobby node */}
+            <circle cx="600" cy={TIER_META[0].y} r="12" fill={TIER_META[0].color} filter="url(#glow)" style={{animation: 'node-pulse 2s infinite'}} />
+            <text x="600" y={TIER_META[0].y + 30} textAnchor="middle" fill="#ff1744" fontSize="14" fontWeight="bold">Bobby</text>
+
+            {/* Tier 1 agents in orbital pattern */}
+            {INITIAL_AGENTS.filter(a => a.tier === 1).map((agent, idx) => {
+                const angle = (idx / 9) * Math.PI * 2;
+                const x = 600 + Math.cos(angle) * 250;
+                const y = 250 + Math.sin(angle) * 150;
+                const statusColor = STATUS_CONFIG[agent.status]?.color || '#666';
+                return (
+                    <g key={agent.id}>
+                        <circle cx={x} cy={y} r="8" fill={statusColor} filter="url(#glow)" style={{animation: selectedAgent?.id === agent.id ? 'node-pulse 1.5s infinite' : 'none'}} />
+                        <text x={x} y={y + 25} textAnchor="middle" fill={statusColor} fontSize="12">{agent.name}</text>
+                    </g>
+                );
+            })}
+
+            {/* Bezier curves from Bobby to Tier 1 */}
+            {INITIAL_AGENTS.filter(a => a.tier === 1).map((agent, idx) => {
+                const angle = (idx / 9) * Math.PI * 2;
+                const x = 600 + Math.cos(angle) * 250;
+                const y = 250 + Math.sin(angle) * 150;
+                return (
+                    <path key={`curve-${agent.id}`} d={`M 600 ${TIER_META[0].y + 12} Q ${(600 + x) / 2} ${(TIER_META[0].y + y) / 2 + 80} ${x} ${y - 8}`}
+                          stroke="#00d4ff" strokeWidth="1" fill="none" opacity="0.3" />
+                );
+            })}
+
+            {/* Tier 2-5 agents */}
+            {INITIAL_AGENTS.filter(a => a.tier > 1).map((agent, idx) => {
+                const tier = TIER_META[agent.tier];
+                const agentsInTier = INITIAL_AGENTS.filter(a => a.tier === agent.tier).length;
+                const posX = 200 + (idx % 5) * 200;
+                const statusColor = STATUS_CONFIG[agent.status]?.color || '#666';
+                return (
+                    <g key={agent.id}>
+                        <circle cx={posX} cy={tier.y} r="6" fill={statusColor} filter="url(#glow)" />
+                        <text x={posX} y={tier.y + 20} textAnchor="middle" fill={statusColor} fontSize="11">{agent.name}</text>
+                    </g>
+                );
+            })}
+
+            {/* Synaptic particle effect */}
+            {[...Array(5)].map((_, i) => (
+                <circle key={`particle-${i}`} cx="600" cy="250" r="2" fill="#00d4ff" opacity="0.5"
+                    style={{animation: `matrix-fall ${3 + i * 0.5}s linear infinite`, animationDelay: `${i * 0.4}s`}} />
+            ))}
+        </svg>
+    );
+};
+
+// Matrix digital rain effect
+const MatrixRain = () => {
+    const canvasRef = useRef(null);
+
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(0);
+
+        const draw = () => {
+            ctx.fillStyle = 'rgba(10, 14, 39, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#00d4ff';
+            ctx.font = `${fontSize}px monospace`;
+            ctx.globalAlpha = 0.3;
+
+            for (let i = 0; i < drops.length; i++) {
+                const char = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+                drops[i]++;
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.95) drops[i] = 0;
+            }
+            ctx.globalAlpha = 1;
+            requestAnimationFrame(draw);
+        };
+        draw();
+    }, []);
+
+    return <canvas ref={canvasRef} style={{position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1}} />;
+};
+
+// Agent card component
+const AgentCard = ({ agent, isSelected, onClick }) => {
+    const STATUS_CONFIG = {
+        active: { color: '#00d4ff', label: 'Active' },
+        standby: { color: '#ffd700', label: 'Standby' },
+        building: { color: '#ff6b9d', label: 'Building' },
+        archived: { color: '#666', label: 'Archived' },
+    };
+
+    const statusConfig = STATUS_CONFIG[agent.status] || STATUS_CONFIG.standby;
+
+    return (
+        <div onClick={onClick} style={{
+            padding: '16px',
+            borderRadius: '8px',
+            background: isSelected ? 'rgba(0, 212, 255, 0.15)' : 'rgba(30, 40, 80, 0.4)',
+            border: isSelected ? '2px solid #00d4ff' : '1px solid rgba(0, 212, 255, 0.3)',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            animation: isSelected ? 'float-in 0.3s ease' : 'none',
+        }}>
+            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px'}}>
+                <h3 style={{fontSize: '16px', fontWeight: 'bold', color: '#e0e6ff'}}>{agent.name}</h3>
+                <span style={{fontSize: '12px', color: statusConfig.color, fontWeight: 'bold'}}>{statusConfig.label}</span>
+            </div>
+            <div style={{fontSize: '12px', color: '#a0a6cc', marginBottom: '4px'}}>Tier {agent.tier} • {agent.role}</div>
+            <div style={{height: '3px', background: 'rgba(0, 212, 255, 0.2)', borderRadius: '2px', marginTop: '8px', overflow: 'hidden'}}>
+                <div style={{height: '100%', background: statusConfig.color, width: agent.status === 'active' ? '100%' : '60%'}}></div>
+            </div>
+        </div>
+    );
+};
+
+// Main dashboard component
+const AgentEcosystemDashboard = () => {
+    const [selectedAgent, setSelectedAgent] = useState(null);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [filterTier, setFilterTier] = useState('all');
+    const [activityLog, setActivityLog] = useState(['Dashboard initialized', 'Neural network online', 'All systems nominal']);
+
+    const INITIAL_AGENTS = [
+        { id: 'bobby', name: 'Bobby', tier: 0, status: 'active', role: 'founder' },
+        { id: 'vector', name: 'Vector', tier: 1, status: 'active', role: 'builder' },
+        { id: 'forge', name: 'Forge', tier: 1, status: 'active', role: 'cto' },
+        { id: 'signal', name: 'Signal', tier: 1, status: 'active', role: 'connector' },
+        { id: 'ledger', name: 'Ledger', tier: 1, status: 'active', role: 'analyst' },
+        { id: 'atlas', name: 'Atlas', tier: 1, status: 'active', role: 'strategist' },
+        { id: 'sentinel', name: 'Sentinel', tier: 1, status: 'active', role: 'guardian' },
+        { id: 'venture', name: 'Venture', tier: 1, status: 'active', role: 'connector' },
+        { id: 'louis', name: 'Louis', tier: 1, status: 'active', role: 'strategist' },
+        { id: 'cipher', name: 'Cipher', tier: 1, status: 'building', role: 'cto' },
+        { id: 'spectra', name: 'Spectra', tier: 2, status: 'building', role: 'builder' },
+        { id: 'oracle', name: 'Oracle', tier: 2, status: 'building', role: 'strategist' },
+        { id: 'nexus', name: 'Nexus', tier: 2, status: 'building', role: 'connector' },
+        { id: 'equity', name: 'Equity', tier: 2, status: 'building', role: 'analyst' },
+        { id: 'alpha', name: 'Alpha', tier: 3, status: 'building', role: 'evaluator' },
+        { id: 'wolf', name: 'WOLF', tier: 1, status: 'active', role: 'ai' },
+        { id: 'keystone', name: 'Keystone', tier: 1, status: 'active', role: 'guardian' },
+        { id: 'cornerstone', name: 'Cornerstone', tier: 1, status: 'active', role: 'system' },
+        { id: 'charlie', name: 'Charlie', tier: 5, status: 'active', role: 'standard' },
+        { id: 'architect', name: 'Architect', tier: 5, status: 'active', role: 'builder' },
+        { id: 'self-improving-loop', name: 'Self-Improving Loop', tier: 1, status: 'active', role: 'system' },
+    ];
+
+    const filteredAgents = useMemo(() => {
+        return INITIAL_AGENTS.filter(agent => {
+            const matchesSearch = agent.name.toLowerCase().includes(searchTerm.toLowerCase());
+            const matchesTier = filterTier === 'all' || agent.tier === parseInt(filterTier);
+            return matchesSearch && matchesTier;
+        });
+    }, [searchTerm, filterTier]);
+
+    const handleAgentSelect = useCallback((agent) => {
+        setSelectedAgent(agent);
+        setActivityLog(prev => [
+            `Selected: ${agent.name} (Tier ${agent.tier})`,
+            ...prev.slice(0, 9)
+        ]);
+    }, []);
+
+    return (
+        <div style={{width: '100%', height: '100%', display: 'flex', flexDirection: 'column', overflow: 'hidden'}}>
+            <MatrixRain />
+
+            {/* Header */}
+            <div style={{padding: '20px', background: 'linear-gradient(90deg, rgba(10, 14, 39, 0.9), rgba(26, 31, 58, 0.9))', borderBottom: '1px solid rgba(0, 212, 255, 0.3)', zIndex: 10}}>
+                <h1 style={{fontSize: '24px', fontWeight: 'bold', color: '#00d4ff', marginBottom: '8px'}}>THE CONSTRUCT v2.1</h1>
+                <p style={{fontSize: '12px', color: '#a0a6cc'}}>Hartley Capital Agent Ecosystem — Neural Command Center</p>
+            </div>
+
+            {/* Main content */}
+            <div style={{display: 'flex', flex: 1, overflow: 'hidden', gap: '20px', padding: '20px'}}>
+
+                {/* Left panel: Neurolink visualization */}
+                <div style={{flex: 1, background: 'rgba(15, 20, 50, 0.6)', borderRadius: '12px', border: '1px solid rgba(0, 212, 255, 0.2)', overflow: 'hidden'}}>
+                    <NeurolinkVisualization selectedAgent={selectedAgent} />
+                </div>
+
+                {/* Right panel: Agent list and details */}
+                <div style={{width: '350px', display: 'flex', flexDirection: 'column', gap: '12px', overflow: 'hidden'}}>
+
+                    {/* Search and filter */}
+                    <div style={{background: 'rgba(15, 20, 50, 0.6)', borderRadius: '8px', border: '1px solid rgba(0, 212, 255, 0.2)', padding: '12px', gap: '8px', display: 'flex', flexDirection: 'column'}}>
+                        <input
+                            type="text"
+                            placeholder="Search agents..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            style={{
+                                width: '100%',
+                                padding: '8px 12px',
+                                background: 'rgba(30, 40, 80, 0.5)',
+                                border: '1px solid rgba(0, 212, 255, 0.3)',
+                                borderRadius: '4px',
+                                color: '#e0e6ff',
+                                fontSize: '12px',
+                            }}
+                        />
+                        <select
+                            value={filterTier}
+                            onChange={(e) => setFilterTier(e.target.value)}
+                            style={{
+                                width: '100%',
+                                padding: '8px 12px',
+                                background: 'rgba(30, 40, 80, 0.5)',
+                                border: '1px solid rgba(0, 212, 255, 0.3)',
+                                borderRadius: '4px',
+                                color: '#e0e6ff',
+                                fontSize: '12px',
+                            }}
+                        >
+                            <option value="all">All Tiers</option>
+                            <option value="0">Tier 0 (Founder)</option>
+                            <option value="1">Tier 1 (Live)</option>
+                            <option value="2">Tier 2</option>
+                            <option value="3">Tier 3</option>
+                            <option value="4">Tier 4</option>
+                            <option value="5">Tier 5 (C-Suite)</option>
+                        </select>
+                    </div>
+
+                    {/* Agent list */}
+                    <div style={{flex: 1, overflow: 'auto', background: 'rgba(15, 20, 50, 0.4)', borderRadius: '8px', border: '1px solid rgba(0, 212, 255, 0.2)', padding: '12px', gap: '8px', display: 'flex', flexDirection: 'column'}}>
+                        {filteredAgents.map(agent => (
+                            <AgentCard
+                                key={agent.id}
+                                agent={agent}
+                                isSelected={selectedAgent?.id === agent.id}
+                                onClick={() => handleAgentSelect(agent)}
+                            />
+                        ))}
+                    </div>
+
+                    {/* Activity log */}
+                    <div style={{background: 'rgba(15, 20, 50, 0.6)', borderRadius: '8px', border: '1px solid rgba(0, 212, 255, 0.2)', padding: '12px'}}>
+                        <h4 style={{fontSize: '12px', fontWeight: 'bold', color: '#00d4ff', marginBottom: '8px'}}>Activity Log</h4>
+                        <div style={{fontSize: '11px', color: '#a0a6cc', lineHeight: '1.6', maxHeight: '100px', overflow: 'auto'}}>
+                            {activityLog.map((entry, idx) => <div key={idx}>{entry}</div>)}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+// Render the app
+ReactDOM.createRoot(document.getElementById('root')).render(<AgentEcosystemDashboard />);
+</script>
+</body>
+</html>
