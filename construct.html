@@ -2234,6 +2234,32 @@ const WorkflowsPanel = () => (
 );
 
 // ═══════════════════════════════════════════════════
+// CONSTRUCT GALAXY v3 — NEUROLINK 3099 hero (iframe)
+// 3D synaptic map of Bobby's empire. Gold core, 4 orbits (loops/agents/systems/ventures),
+// constellation lines, synapse fires, energy waves, code rain, Matrix audio.
+// Locked 2026-05-02. Click anywhere inside the galaxy to enable audio.
+// ═══════════════════════════════════════════════════
+const ConstructGalaxy = () => {
+  return (
+    <div style={{ position: "relative", width: "100%", height: "82vh", minHeight: 700, background: "#000", borderBottom: "1px solid rgba(255,215,0,0.15)" }}>
+      <iframe
+        src="./construct-galaxy-v3.html"
+        title="The Construct · NEUROLINK Galaxy"
+        style={{
+          width: "100%",
+          height: "100%",
+          border: "none",
+          display: "block",
+        }}
+        allow="autoplay"
+      />
+      {/* Bottom gradient fade-out so the galaxy edge dissolves into the dashboard's #000 body */}
+      <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: 80, background: "linear-gradient(180deg, transparent 0%, #000 100%)", pointerEvents: "none" }} />
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════
 // MAIN DASHBOARD
 // ═══════════════════════════════════════════════════
 function AgentEcosystemDashboard() {
