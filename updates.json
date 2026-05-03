@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "last_updated_utc": "2026-05-03T16:21:54Z",
+  "last_updated_utc": "2026-05-03T16:24:19Z",
   "updates": [
     {
       "id": "2026-04-29-master-mp4-shipped",
@@ -335,6 +335,20 @@
         "Sentinel",
         "Ledger",
         "Cornerstone"
+      ],
+      "tag": "infrastructure",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-05-03-apfel-installed",
+      "date": "2026-05-03",
+      "title": "APFEL v1.3.3 installed \u2014 local Apple Intelligence endpoint live for agents",
+      "summary": "brew install arthur-ficial/tap/apfel completed. OpenAI-compatible server at http://127.0.0.1:11434/v1 (run via `brew services start arthur-ficial/tap/apfel` for persistent daemon, or `apfel --serve` for one-shot). Requirements: macOS 26 Tahoe + Apple Silicon + Apple Intelligence enabled. Free, on-device, no API keys, full privacy. Architectural role: drop-in fallback target for any agent or routine that supports a custom OPENAI_API_BASE \u2014 point Sentinel + Ledger at it for privacy-sensitive legal/financial drafting; useful for Cornerstone offline-style entries when you want zero cloud round-trip. Also accepts MCP tool servers via --mcp flag, so APFEL itself can call the Construct MCP servers if Bobby ever wants a fully-local pipeline.",
+      "agents_affected": [
+        "Sentinel",
+        "Ledger",
+        "Cornerstone",
+        "all-fallback-eligible"
       ],
       "tag": "infrastructure",
       "color": "#39ff14"
