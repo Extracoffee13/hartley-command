@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "last_updated_utc": "2026-05-03T17:16:34Z",
+  "last_updated_utc": "2026-05-03T17:29:07Z",
   "updates": [
     {
       "id": "2026-04-29-master-mp4-shipped",
@@ -402,6 +402,17 @@
       ],
       "tag": "site-fix",
       "color": "#39ff14"
+    },
+    {
+      "id": "2026-05-03-telnyx-dormant",
+      "date": "2026-05-03",
+      "title": "Telnyx account closed (orphan from early AP-JARVIS exploration)",
+      "summary": "Telnyx account suspended for negative balance. Disk audit found zero ecosystem references (no agent, skill, scheduled task, or site uses it). Provisioned during early AP-JARVIS SMS/voice exploration that never shipped. Decision: let it stay suspended, no payment, account purges naturally. Future SMS/voice work for AP or any agent routes to Twilio fresh \u2014 better Claude/agent stack support and no negative-balance baggage. Memory locked so future sessions don't re-evaluate.",
+      "agents_affected": [
+        "AP-JARVIS-future"
+      ],
+      "tag": "infrastructure",
+      "color": "#46556B"
     }
   ]
 }
