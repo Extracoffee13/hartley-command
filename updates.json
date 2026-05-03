@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "last_updated_utc": "2026-05-03T17:57:14Z",
+  "last_updated_utc": "2026-05-03T19:36:34Z",
   "updates": [
     {
       "id": "2026-04-29-master-mp4-shipped",
@@ -419,6 +419,18 @@
       "date": "2026-05-03",
       "title": "AP-v2 install package staged \u2014 NanoClaw + iMessage + APFEL hybrid",
       "summary": "Replaces broken AP-JARVIS Electron + wake-word path with NanoClaw containerized Claude reachable via iMessage. Audited v1 source \u2014 ported all 17 ElevenLabs voice IDs, AP system prompt, dispatch protocol, canonical agent IDs. v2 adds: APFEL routing for privacy/cost (free local for ~70% of queries), disk-truth verification (every action verified before claimed done), iMessage as primary input (Mac wake-word irrelevant). Package at ~/Documents/Claude/Projects/AP as JARVIS/AP-v2-install/ \u2014 5 files: mount-allowlist.json (10 ecosystem folders), CLAUDE.local.md (full system prompt), agent-voices.json (17 voices), INSTALL.md (5-step runbook), verify-after-install.sh (10-check smoke test). Bobby runs `bash nanoclaw.sh` on his Mac (~20 min) and texts AP from iPhone. Token projection $1-8/month at his usage shape.",
+      "agents_affected": [
+        "AP",
+        "all-c-suite-future"
+      ],
+      "tag": "infrastructure",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-05-03-ap-v2-online",
+      "date": "2026-05-03",
+      "title": "AP-v2 (NanoClaw + Telegram) operational \u2014 phone to AP loop confirmed",
+      "summary": "AP-v2 v2 baseline shipped. Bobby texts @APAgent0013_bot from Telegram \u2192 NanoClaw routes to containerized Claude in agent group 'AP' (renamed from auto-default 'Terminal Agent') \u2192 replies delivered back. Telegram chosen over iMessage (NanoClaw upstream channels branch missing iMessage adapter). Six DB fixes required beyond the wizard: user_roles owner seed for Bobby's Telegram identity, messaging_group_agents wiring row, sender policy public, agent_group rename, AP system prompt swap into groups/_ping-test/CLAUDE.local.md, port-3000 conflict cleanup. The 8 .command files staged in 'AP as JARVIS/AP-v2-install/' captured the install path for future revisits. Lessons locked: (1) NanoClaw v2 wizard does not auto-seed first-user owner role \u2014 manual SQL required, (2) shallow git clone restricts fetchspec to main, breaks channels-branch references, (3) DB writes don't reflect until service restart. v2.1 follow-on: ElevenLabs voice replies, per-specialist containers, Tailscale dashboard repurpose.",
       "agents_affected": [
         "AP",
         "all-c-suite-future"
