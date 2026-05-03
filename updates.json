@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "last_updated_utc": "2026-05-03T19:36:34Z",
+  "last_updated_utc": "2026-05-03T20:14:58Z",
   "updates": [
     {
       "id": "2026-04-29-master-mp4-shipped",
@@ -437,6 +437,30 @@
       ],
       "tag": "infrastructure",
       "color": "#39ff14"
+    },
+    {
+      "id": "2026-05-03-ap-v2-voice-in-live",
+      "date": "2026-05-03",
+      "title": "AP-v2 voice-in operational \u2014 local Whisper, no API key dependency",
+      "summary": "Bobby talks into Telegram on iPhone, AP transcribes via local Whisper, replies in text. AP-v2 is now fully two-way for voice-input + text-output, no Anthropic API key required (the OneCLI dialog Bobby was driving toward turns out to have been unnecessary \u2014 local Whisper handles transcription). Earlier in the same session AP demonstrated reading brand9signs.com live: identified the 'Four Pillars. One Trajectory.' section, product tile grid, navy/dark palette, footer composition \u2014 all unprompted, by reading the live site through the container's browser context. AP also reasoned about its own limits cleanly: told Bobby it can't push site changes from Telegram without repo URL or SSH/deploy creds wired in, suggested GitHub repo URL as the fix path. The Construct CEO persona is consistent across messages.",
+      "agents_affected": [
+        "AP",
+        "voice-pipeline"
+      ],
+      "tag": "infrastructure",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-05-03-ap-v2-wiring-lessons",
+      "date": "2026-05-03",
+      "title": "AP-v2 install lessons captured \u2014 9 hidden gates between 'wizard finished' and 'AP replies'",
+      "summary": "NanoClaw v2 wizard's 'success' is not the same as 'AP replies.' Tonight's debugging found 9 separate gates the wizard does NOT seed: (1) shallow clone fetchspec excludes the channels branch needed for any channel adapter, (2) launchd auto-respawn after channel install hits port-3000 EADDRINUSE, (3) user_roles for the human is empty \u2014 needs SQL insert, (4) messaging_group_agents wiring row missing \u2014 needs SQL insert, (5) unknown_sender_policy defaults to 'request_approval' \u2014 needs flip to 'public', (6) agent_group folder's CLAUDE.local.md is generic 'Terminal Agent' stub, not the real persona, (7) auto-created messaging group has no channel-registration record, (8) every NEW Telegram user_id creates a fresh messaging group requiring its own user_role + wiring + policy seed, (9) container exit kills session memory \u2014 fresh container per message has no continuity. All 9 fixed during this session via direct DB writes and CLAUDE.local.md swap. Lessons locked in feedback memory `feedback_nanoclaw_v2_not_ready.md` so future sessions don't rediscover.",
+      "agents_affected": [
+        "AP",
+        "future-installs"
+      ],
+      "tag": "lessons",
+      "color": "#ff9933"
     }
   ]
 }
