@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "last_updated_utc": "2026-05-03T16:18:46Z",
+  "last_updated_utc": "2026-05-03T16:21:54Z",
   "updates": [
     {
       "id": "2026-04-29-master-mp4-shipped",
@@ -323,6 +323,20 @@
         "Forge"
       ],
       "tag": "skill-install",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-05-03-apfel-clarified",
+      "date": "2026-05-03",
+      "title": "APFEL clarified \u2014 Arthur-Ficial's local Apple Intelligence CLI (not a Claude skill)",
+      "summary": "Bobby clarified APFEL = arthur-ficial/tap/apfel \u2014 Homebrew-installed macOS CLI exposing on-device Apple Intelligence as a local OpenAI-compatible server. Doesn't belong in skills-library/installed/ \u2014 system-level tool. Install: brew install arthur-ficial/tap/apfel. Operational role: free, private, no-key local-LLM fallback for any agent that can target a custom OPENAI_API_BASE. Use cases: privacy-safe inference for legal/financial/internal memos, offline drafting, low-latency micro-tasks. Bobby running the brew install locally; CLI not on disk via skills loader.",
+      "agents_affected": [
+        "all-agents-as-fallback",
+        "Sentinel",
+        "Ledger",
+        "Cornerstone"
+      ],
+      "tag": "infrastructure",
       "color": "#39ff14"
     }
   ]
