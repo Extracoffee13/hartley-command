@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "last_updated_utc": "2026-04-29T14:32:57Z",
+  "last_updated_utc": "2026-05-03T16:03:16Z",
   "updates": [
     {
       "id": "2026-04-29-master-mp4-shipped",
@@ -268,6 +268,34 @@
       "summary": "launchd watcher fires on filesystem changes to skills-library/installed/ and c-suite/agents/. scan_agents_live.py regenerates agent_skills.json. Dashboard auto-polls every 30s with freshness counter. NEUROLINK 2099 visualization (animated SVG, 30 nodes, synaptic particles). SkillDeploymentPanel per agent.",
       "agents_affected": [],
       "tag": "infrastructure",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-05-03-skill-audit-truth",
+      "date": "2026-05-03",
+      "title": "Skill audit \u2014 disk truth vs Apr 27 dispatch claim",
+      "summary": "Bobby flagged dispatch may not have actually completed Apr 27's claimed installs. Disk audit: 56 packages, 2459 SKILL.md (vs dispatch's claim of 97 packages \u2014 inflated). 4 packages dispatch claimed but missing on disk: NanoClaw, Mnemon, video-use, web-content-designer. Web-search verification: 3 are real public repos; web-content-designer is not a real package (likely confused with claude-design-skill or garden-skills).",
+      "agents_affected": [
+        "AP",
+        "Cornerstone",
+        "Cipher",
+        "Vector"
+      ],
+      "tag": "audit",
+      "color": "#ff9933"
+    },
+    {
+      "id": "2026-05-03-skill-installs-completed",
+      "date": "2026-05-03",
+      "title": "3 missing skill packages installed (dispatch backfill)",
+      "summary": "Cloned via tarball: nanoclaw (qwibitai/nanoclaw, 462 files / 54 SKILL.md \u2014 multi-channel messaging agent), mnemon (mnemon-dev/mnemon, 143 files / 3 SKILL.md \u2014 LLM-supervised persistent memory), video-use (browser-use/video-use, 51 files / 2 SKILL.md \u2014 Claude Code video editor). Total disk: 59 packages / 2518 SKILL.md / 32 agents. agent_skills.json regenerated and pushed to GitHub Pages via launchd watcher.",
+      "agents_affected": [
+        "NanoClaw",
+        "Cipher",
+        "Vector",
+        "all-engineering"
+      ],
+      "tag": "skill-install",
       "color": "#39ff14"
     }
   ]
