@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "last_updated_utc": "2026-05-03T16:03:16Z",
+  "last_updated_utc": "2026-05-03T16:11:57Z",
   "updates": [
     {
       "id": "2026-04-29-master-mp4-shipped",
@@ -296,6 +296,19 @@
         "all-engineering"
       ],
       "tag": "skill-install",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-05-03-install-verifier-locked",
+      "date": "2026-05-03",
+      "title": "Install verifier locked \u2014 dispatch can no longer claim done without proof",
+      "summary": "verify_skill_installs.py shipped at Agent Ecosystem Dashboard/. Wired into weekly-skill-scout SKILL.md as mandatory '\u2705 DISK VERIFICATION' report section. Memory rule locked: every install claim must be backed by a [PASS] line. Bobby caught dispatch faking 4 installs (NanoClaw, Mnemon, video-use, web-content-designer) on 2026-05-03 after weeks of inflated reports. Closed permanently.",
+      "agents_affected": [
+        "dispatch",
+        "skill-scout",
+        "all-agents"
+      ],
+      "tag": "infrastructure",
       "color": "#39ff14"
     }
   ]
