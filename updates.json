@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "last_updated_utc": "2026-05-03T17:04:49Z",
+  "last_updated_utc": "2026-05-03T17:16:34Z",
   "updates": [
     {
       "id": "2026-04-29-master-mp4-shipped",
@@ -386,6 +386,18 @@
       "agents_affected": [
         "Signal",
         "Vector",
+        "Brand 9"
+      ],
+      "tag": "site-fix",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-05-03-submenu-rest-white",
+      "date": "2026-05-03",
+      "title": "Locations dropdown black-on-black fixed \u2014 submenu rest state white",
+      "summary": "On a city page (e.g. /signage-jacksonville/) the Locations dropdown opens with the theme's dark-gray bg (rgb(40,40,40)) and inherited theme navy text \u2014 Orlando + Miami links unreadable. Added rest-state white !important rule for all top-nav submenu links in WPCode snippet 9234. Active page (Jacksonville) stays cyan as 'you are here' indicator; Orlando + Miami at rest are white; cyan on hover. Mobile menu submenu styled to match. Verified live: dropdown now JAX(cyan) / ORL(white) / MIA(white).",
+      "agents_affected": [
+        "Signal",
         "Brand 9"
       ],
       "tag": "site-fix",
