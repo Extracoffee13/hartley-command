@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "last_updated_utc": "2026-05-03T16:11:57Z",
+  "last_updated_utc": "2026-05-03T16:18:46Z",
   "updates": [
     {
       "id": "2026-04-29-master-mp4-shipped",
@@ -309,6 +309,20 @@
         "all-agents"
       ],
       "tag": "infrastructure",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-05-03-7pack-skills-installed",
+      "date": "2026-05-03",
+      "title": "Bobby's 7-pack skill audit + install (4 new + 2 confirmed + 1 ambiguous)",
+      "summary": "Audited Bobby's 7 candidate skills with the new disk verifier. Already installed: taste-skill, impeccable. Newly installed: open-design (nexu-io, 1099 files / 60 SKILL.md \u2014 local-first Claude Design alternative), design-md-chrome (bergside \u2014 Chrome extension that extracts design tokens to DESIGN.md / SKILL.md), design-motion-principles (kylezantos \u2014 Emil Kowalski + Krehel + Tompkins motion design audit), code-review-graph (tirth8205 \u2014 Tree-sitter knowledge graph, 6.8x fewer tokens on reviews). APFEL deferred \u2014 no public repo by that exact name; closest matches: vabole/apple-skills, axiaoge2/Apple-Hig-Designer, rshankras/claude-code-apple-skills. All 4 new installs disk-verified [PASS] via verify_skill_installs.py.",
+      "agents_affected": [
+        "Vector",
+        "Signal",
+        "Cipher",
+        "Forge"
+      ],
+      "tag": "skill-install",
       "color": "#39ff14"
     }
   ]
