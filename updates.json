@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "last_updated_utc": "2026-05-03T17:29:07Z",
+  "last_updated_utc": "2026-05-03T17:57:14Z",
   "updates": [
     {
       "id": "2026-04-29-master-mp4-shipped",
@@ -413,6 +413,18 @@
       ],
       "tag": "infrastructure",
       "color": "#46556B"
+    },
+    {
+      "id": "2026-05-03-ap-v2-package-staged",
+      "date": "2026-05-03",
+      "title": "AP-v2 install package staged \u2014 NanoClaw + iMessage + APFEL hybrid",
+      "summary": "Replaces broken AP-JARVIS Electron + wake-word path with NanoClaw containerized Claude reachable via iMessage. Audited v1 source \u2014 ported all 17 ElevenLabs voice IDs, AP system prompt, dispatch protocol, canonical agent IDs. v2 adds: APFEL routing for privacy/cost (free local for ~70% of queries), disk-truth verification (every action verified before claimed done), iMessage as primary input (Mac wake-word irrelevant). Package at ~/Documents/Claude/Projects/AP as JARVIS/AP-v2-install/ \u2014 5 files: mount-allowlist.json (10 ecosystem folders), CLAUDE.local.md (full system prompt), agent-voices.json (17 voices), INSTALL.md (5-step runbook), verify-after-install.sh (10-check smoke test). Bobby runs `bash nanoclaw.sh` on his Mac (~20 min) and texts AP from iPhone. Token projection $1-8/month at his usage shape.",
+      "agents_affected": [
+        "AP",
+        "all-c-suite-future"
+      ],
+      "tag": "infrastructure",
+      "color": "#39ff14"
     }
   ]
 }
