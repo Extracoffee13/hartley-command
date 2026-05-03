@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "last_updated_utc": "2026-05-03T16:24:19Z",
+  "last_updated_utc": "2026-05-03T16:37:03Z",
   "updates": [
     {
       "id": "2026-04-29-master-mp4-shipped",
@@ -349,6 +349,19 @@
         "Ledger",
         "Cornerstone",
         "all-fallback-eligible"
+      ],
+      "tag": "infrastructure",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-05-03-apfel-online-locked",
+      "date": "2026-05-03",
+      "title": "APFEL fully online on port 11435 \u2014 Sentinel + Ledger wired for privacy-routing",
+      "summary": "APFEL serving apple-foundationmodel via personal launchd plist at ~/Library/LaunchAgents/com.bobby.apfel.plist (RunAtLoad + KeepAlive). Endpoint http://127.0.0.1:11435/v1. Brew services abandoned for apfel \u2014 env-var-through-plist was fragile. Ollama keeps 11434 (Llama 3.1 8B), APFEL holds 11435 (Apple Foundation Model). Sentinel + Ledger SKILL.md updated with mandatory privacy-routing block: privileged contracts/NDAs/settlement drafts (Sentinel) and account numbers/unaudited financials/cap-table drafts (Ledger) MUST shell out to apfel locally instead of cloud. Audit line required: 'Routed to: apfel/apple-foundationmodel (local) \u2014 endpoint http://127.0.0.1:11435/v1'. Two privacy-safe local LLM paths now live across the ecosystem.",
+      "agents_affected": [
+        "Sentinel",
+        "Ledger",
+        "Cornerstone-fallback"
       ],
       "tag": "infrastructure",
       "color": "#39ff14"
