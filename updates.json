@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "last_updated_utc": "2026-05-03T16:54:16Z",
+  "last_updated_utc": "2026-05-03T17:04:49Z",
   "updates": [
     {
       "id": "2026-04-29-master-mp4-shipped",
@@ -376,6 +376,19 @@
         "Brand 9"
       ],
       "tag": "site-architecture",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-05-03-jx-color-revisions",
+      "date": "2026-05-03",
+      "title": "Jacksonville + Locations color revisions (Bobby's 6-pack)",
+      "summary": "Fixed theme override leaks: H1 was rendering at #DC9814 (gold \u2014 Brand 9 canon forbids); buttons rendering theme link cyan instead of white; black CTA banner copy losing to body text color; stat numbers/labels invisible against dark bg. Solution: !important on every Brand 9 color override across both Jacksonville and Locations page CSS to defeat the theme's site-wide rules. Removed all Jan Hartley + Robert Louis Hartley + HBS-alumnus + back-of-a-van references per Bobby's request \u2014 simpler 'Founded in 1986. Built in Jacksonville. Still Florida-owned.' framing. Added sitewide CSS in WPCode snippet 9234 (Brand 9 Fonts) for Locations dropdown hover state \u2014 cyan #00AEEF on submenu :hover and current-page items. SG cache purged. All 6 issues verified [PASS] on live page.",
+      "agents_affected": [
+        "Signal",
+        "Vector",
+        "Brand 9"
+      ],
+      "tag": "site-fix",
       "color": "#39ff14"
     }
   ]
