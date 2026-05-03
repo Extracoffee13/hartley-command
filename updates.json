@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "last_updated_utc": "2026-05-03T16:37:03Z",
+  "last_updated_utc": "2026-05-03T16:54:16Z",
   "updates": [
     {
       "id": "2026-04-29-master-mp4-shipped",
@@ -364,6 +364,18 @@
         "Cornerstone-fallback"
       ],
       "tag": "infrastructure",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-05-03-locations-hub-built",
+      "date": "2026-05-03",
+      "title": "Locations hub IA shipped \u2014 Jacksonville anchor + nav restructure (Option A)",
+      "summary": "Bobby asked whether geo pages belong under Services or Contact dropdown. Recommended dedicated Locations top-nav (industry standard for multi-market service businesses). Built and shipped end-to-end: (1) Jacksonville signage page at /signage-jacksonville/ as the home-market anchor \u2014 40 years, Jan founded 1986, Bobby owns/runs, no permitting language, deepest content of the three. (2) Locations hub at /locations/ summarizing all three markets with internal-linking to services. (3) Nav restructured via WP REST menu-items API: created top-level Locations item (id 9414) between Case Studies and Brand Lab AI, made Jacksonville (9415) the first child, reparented Orlando (9397) and Miami (9398) from Services into Locations, reordered Brand Lab AI / About Us / Contact accordingly. (4) Yoast SEO set on both new pages. (5) SG cache purged. Header, mobile menu, and footer bar all confirmed rendering the new IA. Final top-nav: Services \u00b7 Our Ecosystem \u00b7 Case Studies \u00b7 Locations [JAX | ORL | MIA] \u00b7 Brand Lab AI \u00b7 About Us \u00b7 Contact.",
+      "agents_affected": [
+        "Signal",
+        "Brand 9"
+      ],
+      "tag": "site-architecture",
       "color": "#39ff14"
     }
   ]
