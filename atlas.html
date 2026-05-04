@@ -94,6 +94,7 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
 }
 .r-tab:hover{color:var(--blue);}
 .r-tab.active{color:var(--blue);border-bottom-color:var(--blue);}
+.r-tab.selected{background:var(--blue-l);color:var(--blue);border-bottom-color:var(--blue);font-weight:800;}
 .r-count{background:var(--blue-l);color:var(--blue);font-size:10px;font-weight:800;padding:1px 6px;border-radius:10px;}
 .r-tab.dim{color:var(--gray-400);cursor:default;opacity:.65;}
 .r-tab.dim:hover{color:var(--gray-400);}
@@ -961,7 +962,7 @@ function getSignCategories(c) {
 // ═══════════════════════════════════════════════════════
 // STATE
 // ═══════════════════════════════════════════════════════
-let currentRegion = 'north';
+let currentRegion = 'all'; // 'all' | 'jax' | 'ocala' | 'sofla' — clicking a region tab filters
 let filteredCommunities = [...COMMUNITIES];
 let sheetData = null; // populated if Google Sheets sync succeeds
 
@@ -1253,6 +1254,7 @@ function applyFilters() {
   const status = document.getElementById('statusFilter').value;
   const phase  = document.getElementById('phaseFilter').value;
   filteredCommunities = COMMUNITIES.filter(c => {
+    if (currentRegion !== 'all' && c.region !== currentRegion) return false;
     if (status && c.status !== status) return false;
     if (phase  && c.phase  !== phase)  return false;
     if (search && !c.name.toLowerCase().includes(search) && !c.city.toLowerCase().includes(search)) return false;
@@ -1265,13 +1267,24 @@ function clearFilters() {
   document.getElementById('searchInput').value  = '';
   document.getElementById('statusFilter').value = '';
   document.getElementById('phaseFilter').value  = '';
+  currentRegion = 'all';
+  // Highlight all active tabs (none "selected")
+  document.querySelectorAll('.r-tab[data-region]').forEach(t => t.classList.remove('selected'));
   filteredCommunities = [...COMMUNITIES];
   renderGrid();
 }
 
 function setRegion(r, el) {
   if (!el.classList.contains('active')) return;
-  currentRegion = r;
+  // Toggle: if already selected, go back to 'all'
+  if (currentRegion === r) {
+    currentRegion = 'all';
+    el.classList.remove('selected');
+  } else {
+    currentRegion = r;
+    document.querySelectorAll('.r-tab[data-region]').forEach(t => t.classList.remove('selected'));
+    el.classList.add('selected');
+  }
   applyFilters();
 }
 
