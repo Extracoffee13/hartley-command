@@ -791,8 +791,8 @@ body.client-view .admin-only{display:none !important;}
 // CONFIG — Update these to connect live Google Sheets
 // ═══════════════════════════════════════════════════════
 
-// ATLAS Lennar Sign Operations — Dashboard tab, published-to-web CSV
-const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSgb1SGxQDae9JlxPVQw8LJ6eEIV-8EZM_UNAbZ6OGKMkK-AOLTjFWARnn7Tb17jFMJrckvZjZNuETo/pub?gid=0&single=true&output=csv';
+// Replace YOUR_SHEET_ID with the actual Google Sheet ID (published to web as CSV)
+const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/export?format=csv&gid=0';
 
 // Replace with your Google Form URL and community field entry ID
 const GOOGLE_FORM_BASE = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform';
