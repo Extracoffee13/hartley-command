@@ -1008,34 +1008,110 @@ function set811(id, val, e) {
 // ═══════════════════════════════════════════════════════
 // GOOGLE SHEETS SYNC
 // ═══════════════════════════════════════════════════════
+// Proper CSV parser — handles quoted fields with embedded commas/newlines.
+function parseCSV(text) {
+  const rows = [];
+  let row = [], cell = '', inQuote = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i], next = text[i+1];
+    if (inQuote) {
+      if (ch === '"' && next === '"') { cell += '"'; i++; }
+      else if (ch === '"') { inQuote = false; }
+      else { cell += ch; }
+    } else {
+      if (ch === '"') { inQuote = true; }
+      else if (ch === ',') { row.push(cell); cell = ''; }
+      else if (ch === '\n') { row.push(cell); rows.push(row); row = []; cell = ''; }
+      else if (ch === '\r') { /* skip */ }
+      else { cell += ch; }
+    }
+  }
+  if (cell || row.length) { row.push(cell); rows.push(row); }
+  return rows;
+}
+
 async function syncFromSheet() {
   const dot  = document.getElementById('syncDot');
   const msg  = document.getElementById('syncMsg');
   const time = document.getElementById('syncTime');
   msg.textContent = 'Syncing with Google Sheets…';
   try {
-    const res = await fetch(SHEET_CSV_URL, {signal: AbortSignal.timeout(8000)});
+    const res = await fetch(SHEET_CSV_URL, {signal: AbortSignal.timeout(10000), cache: 'no-store'});
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const csv = await res.text();
-    const rows = csv.split('\n').slice(1).filter(r => r.trim());
-    const updates = {};
-    rows.forEach(row => {
-      const cols = row.split(',').map(c => c.trim().replace(/^"|"$/g, ''));
-      const [communityName, , , status] = cols;
-      if (!updates[communityName]) updates[communityName] = {};
-    });
-    let merged = 0;
-    COMMUNITIES.forEach(c => { if (updates[c.name]) merged++; });
+    const rows = parseCSV(csv).filter(r => r.length && r.some(v => v && v.length));
+    if (rows.length < 2) throw new Error('CSV had no data rows');
+
+    // Header → column-index map
+    const header = rows[0].map(h => h.trim());
+    const idx = {};
+    header.forEach((h, i) => { idx[h] = i; });
+
+    // Required columns. Bail loudly if the schema drifted.
+    const required = ['ID','Region','Community Name','City','Status','Phase','Crew','Drone Status',
+      'WHC Signage','Wayfinding','WHC Interior','Aluminum Awning','Offsite Wayfinding',
+      'Total Signs','Installed','Last Install','Next Install',
+      'Local Contact','Main POC','811 Permit','Office','Sold Out','Notes'];
+    const missing = required.filter(k => idx[k] === undefined);
+    if (missing.length) throw new Error('Sheet missing columns: ' + missing.join(', '));
+
+    // Map each CSV row → community object matching atlas's local schema
+    const truthy = v => /^(true|yes|1|✓|x)$/i.test(String(v||'').trim());
+    const num = v => { const n = parseInt(String(v||'').trim(), 10); return isNaN(n) ? 0 : n; };
+    const pickStatus = v => {
+      const s = String(v||'').trim();
+      // Pipeline statuses pass through as-is; legacy values map to closest equivalent.
+      if (['Artwork','Production','Delivered','Installation','Installation Complete'].includes(s)) return s;
+      if (s.toLowerCase() === 'complete') return 'Installation Complete';
+      if (s.toLowerCase() === 'in progress' || s.toLowerCase() === 'in-progress') return 'Production';
+      if (s.toLowerCase() === 'pending') return 'Artwork';
+      if (s.toLowerCase() === 'sold out') return 'Installation Complete';
+      return s || 'Artwork';
+    };
+
+    const fresh = rows.slice(1).map(r => ({
+      id:            num(r[idx['ID']]),
+      region:        String(r[idx['Region']]||'').trim().toLowerCase() || 'jax',
+      name:          String(r[idx['Community Name']]||'').trim(),
+      city:          String(r[idx['City']]||'').trim(),
+      status:        pickStatus(r[idx['Status']]),
+      phase:         String(r[idx['Phase']]||'').trim() || 'Pre-Launch',
+      crew:          String(r[idx['Crew']]||'').trim() || 'Pete + Andrew',
+      droneStatus:   String(r[idx['Drone Status']]||'').trim().toLowerCase() || 'idle',
+      totalSigns:    num(r[idx['Total Signs']]) || 22,
+      installedSigns:num(r[idx['Installed']]) || 0,
+      lastInstall:   String(r[idx['Last Install']]||'').trim() || 'TBD',
+      nextInstall:   String(r[idx['Next Install']]||'').trim() || 'TBD',
+      localContact:  String(r[idx['Local Contact']]||'').trim() || 'Gina Lee',
+      contact:       String(r[idx['Main POC']]||'').trim() || 'Gina Lee',
+      permit811:     String(r[idx['811 Permit']]||'').trim().toLowerCase().replace('n/a','na') || 'na',
+      office:        truthy(r[idx['Office']]),
+      soldOut:       truthy(r[idx['Sold Out']]),
+      notes:         String(r[idx['Notes']]||'').trim()
+    })).filter(c => c.name);
+
+    if (fresh.length) {
+      // Replace the in-memory COMMUNITIES with the fresh data
+      COMMUNITIES.length = 0;
+      fresh.forEach(c => COMMUNITIES.push(c));
+      filteredCommunities = [...COMMUNITIES];
+      restore811();
+      renderGrid();
+      // Re-render dependent views
+      if (typeof renderWorkOrders === 'function') renderWorkOrders();
+      if (typeof renderActivity === 'function') renderActivity();
+    }
+
     dot.className  = 'sync-dot ok';
-    msg.textContent = 'Live data — synced from Google Sheets';
+    msg.textContent = `Live · ${fresh.length} rows synced from Google Sheets`;
     time.textContent = 'Last sync: ' + new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
-    sheetData = updates;
+    sheetData = fresh;
   } catch(e) {
     dot.className  = 'sync-dot warn';
     if (e.message && e.message.includes('YOUR_SHEET_ID')) {
       msg.textContent = 'Local data mode — configure SHEET_CSV_URL to enable live sync';
     } else {
-      msg.textContent = 'Could not reach Google Sheets — showing local data';
+      msg.textContent = 'Could not reach Google Sheets — showing local data (' + (e.message || e) + ')';
     }
     time.textContent = '';
   }
