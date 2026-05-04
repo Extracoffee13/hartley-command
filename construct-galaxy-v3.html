@@ -201,13 +201,13 @@ canvas{display:block;}
 <div id="hud-tl" class="hud">
   <div class="t1">THE CONSTRUCT · NEUROLINK</div>
   <div class="t2">▸ AGENT ECOSYSTEM · 3099 BUILD</div>
-  <div class="t3">A 3D synaptic map of Bobby Hartley's operating empire. Gold core at the center. 20 agents orbiting. Systems beyond. Ventures in the outer ring. Every flash is a signal pattern. The lattice is alive.</div>
+  <div class="t3">A 3D synaptic map of Bobby Hartley's operating empire. Gold core at the center. <span id="kpi-agents-inline">33</span> agents orbiting. Systems beyond. Ventures in the outer ring. Every flash is a signal pattern. The lattice is alive.</div>
   <div class="t4">▸ STATUS · ALL SYSTEMS NOMINAL</div>
 </div>
 
 <div id="hud-tr" class="hud">
   <div class="row"><span class="label small">CORE</span><span class="num gold" style="font-size:11px;">RLH · BOBBY</span></div>
-  <div class="row"><span class="label small">AGENTS</span><span class="num"><span id="kpi-agents">20</span></span></div>
+  <div class="row"><span class="label small">AGENTS</span><span class="num"><span id="kpi-agents">33</span></span></div>
   <div class="row"><span class="label small">SYSTEMS</span><span class="num"><span id="kpi-systems">8</span></span></div>
   <div class="row"><span class="label small">VENTURES</span><span class="num"><span id="kpi-ventures">12</span></span></div>
   <div class="row"><span class="label small">PRAXIS PRIORS</span><span class="num gold"><span id="kpi-priors">8</span></span></div>
@@ -1489,10 +1489,13 @@ async function fetchLiveData(){
     if(j && Array.isArray(j.agents)){
       const count = j.agents.length;
       document.getElementById('kpi-agents').textContent = count;
-      // Sum total skills across agents + universal pool (rough)
+      const inline = document.getElementById('kpi-agents-inline');
+      if (inline) inline.textContent = count;
+      // Sum total skills: per-agent primary packages + universal-pool packages + cowork-callable skills
       let totalSkills = 0;
       j.agents.forEach(a => { totalSkills += (a.primary_packages?.length || 0); });
       if(Array.isArray(j.universal_pool)) totalSkills += j.universal_pool.length;
+      if(Array.isArray(j.cowork_skills)) totalSkills += j.cowork_skills.length;
       document.getElementById('kpi-skills').textContent = totalSkills;
       pushLog(`▸ Live data sync · ${count} agents · ${totalSkills} skills`, 'green');
     }
