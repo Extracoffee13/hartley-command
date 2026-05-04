@@ -566,32 +566,32 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
 <!-- ── KPI BAR ── -->
 <div class="kpi-bar">
   <div class="kpi-card">
-    <div class="kpi-lbl">Current Communities</div>
-    <div class="kpi-val" id="kpi-communities">10</div>
-    <div class="kpi-sub">North Florida · Active</div>
-    <div class="kpi-chg up">&#9650; Jacksonville metro area</div>
+    <div class="kpi-lbl">Active Communities</div>
+    <div class="kpi-val" id="kpi-communities">29</div>
+    <div class="kpi-sub" id="kpi-communities-sub">JAX 17 · Ocala 12 · MIA office</div>
+    <div class="kpi-chg up">&#9650; Ocala region added</div>
     <div class="kpi-icon">&#127864;</div>
   </div>
   <div class="kpi-card">
     <div class="kpi-lbl">Active Installations</div>
-    <div class="kpi-val" id="kpi-active">6</div>
+    <div class="kpi-val" id="kpi-active">0</div>
     <div class="kpi-sub">Communities in progress</div>
-    <div class="kpi-chg up">&#9650; Installs through April</div>
+    <div class="kpi-chg up">&#9650; Crew: Pete + Andrew</div>
     <div class="kpi-icon">&#128295;</div>
   </div>
   <div class="kpi-card">
-    <div class="kpi-lbl">Pending / Overdue</div>
+    <div class="kpi-lbl">Sold Out / Closed</div>
     <div class="kpi-val" id="kpi-pending">2</div>
-    <div class="kpi-sub">Awaiting installation</div>
-    <div class="kpi-chg up" id="kpi-overdue-note">&#9650; All on schedule</div>
+    <div class="kpi-sub" id="kpi-pending-sub">Holly Cove · Kings Preserve</div>
+    <div class="kpi-chg up" id="kpi-overdue-note">&#9650; Closeout complete</div>
     <div class="kpi-icon">&#128203;</div>
   </div>
   <div class="kpi-card">
-    <div class="kpi-lbl">Sign Progress</div>
-    <div class="kpi-val" id="kpi-progress">55%</div>
-    <div class="kpi-sub" id="kpi-progress-sub">Signs installed across all communities</div>
-    <div class="kpi-chg up">&#9650; On track for Q2 completion</div>
-    <div class="kpi-icon">&#10003;</div>
+    <div class="kpi-lbl">Drone Fleet</div>
+    <div class="kpi-val" id="kpi-progress">0/1</div>
+    <div class="kpi-sub" id="kpi-progress-sub">Pre-launch · Brand 9's first physical AI</div>
+    <div class="kpi-chg up">&#9650; Live feed coming soon</div>
+    <div class="kpi-icon">&#128760;</div>
   </div>
 </div>
 
@@ -1051,15 +1051,42 @@ function renderCard(c, delay) {
     </div>
   </div>`;
 
-  return `<div class="c-card s-${c.status}" style="animation-delay:${delay}ms" onclick="openModal(${c.id})">
+  // Sold-out + office visual states
+  const cardExtraClass = c.soldOut ? ' card-sold-out' : (c.office ? ' card-office' : '');
+  const statusBadgeOverride = c.soldOut
+    ? '<span class="s-badge" style="background:var(--gray-200);color:var(--gray-600)">Sold Out</span>'
+    : c.office
+      ? '<span class="s-badge" style="background:var(--orange-l);color:var(--orange)">Office</span>'
+      : `<span class="s-badge ${badgeCls[c.status]}">${statusLabel[c.status]}</span>`;
+
+  // Region label pill
+  const regionLabel = {jax:'JAX/St.Aug', ocala:'Ocala', sofla:'South FL'}[c.region] || '';
+  const regionPill = regionLabel
+    ? `<span style="font-size:9px;font-weight:800;padding:2px 7px;border-radius:8px;background:var(--blue-l);color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-right:4px;">${regionLabel}</span>`
+    : '';
+
+  // Drone pill
+  const droneStatusLabel = {idle:'Idle', predeploy:'Pre-deploy', live:'🔴 LIVE', 'wrap-up':'Wrap-up'}[c.droneStatus||'idle'] || 'Idle';
+  const droneStatusBg = {idle:'#f1f5f9', predeploy:'#fef3c7', live:'#fee2e2', 'wrap-up':'#dbeafe'}[c.droneStatus||'idle'] || '#f1f5f9';
+  const droneStatusColor = {idle:'#475569', predeploy:'#d97706', live:'#dc2626', 'wrap-up':'#1d4ed8'}[c.droneStatus||'idle'] || '#475569';
+  const droneSlug = c.name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+  const droneUrl = `https://stream.brand9.ai/${droneSlug}`;
+  const droneBlock = c.soldOut
+    ? `<span style="font-size:10px;color:var(--gray-400);font-weight:600;">Drone: —</span>`
+    : `<span style="display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;padding:2px 8px;border-radius:10px;background:${droneStatusBg};color:${droneStatusColor};text-transform:uppercase;letter-spacing:.5px;">🛰 ${droneStatusLabel}</span>` +
+      (c.droneStatus === 'live'
+        ? ` <a href="${droneUrl}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="font-size:10px;color:var(--blue);font-weight:800;text-decoration:none;margin-left:4px;">Live ▸</a>`
+        : '');
+
+  return `<div class="c-card s-${c.status}${cardExtraClass}" style="animation-delay:${delay}ms;${c.soldOut?'opacity:.65;':''}" onclick="openModal(${c.id})">
   <div class="c-head">
     <div>
-      <div class="c-name">${c.name}</div>
+      <div class="c-name">${regionPill}${c.name}</div>
       <div class="c-city">${c.city}, FL</div>
     </div>
-    <span class="s-badge ${badgeCls[c.status]}">${statusLabel[c.status]}</span>
+    ${statusBadgeOverride}
   </div>
-  ${permit811Row}
+  ${c.soldOut || c.office ? '' : permit811Row}
   <div class="c-prog">
     <div class="prog-lbl">
       <span>${c.installedSigns} of ${c.totalSigns} signs installed</span>
@@ -1069,25 +1096,33 @@ function renderCard(c, delay) {
   </div>
   <div class="c-meta">
     <div class="m-item">
-      <div class="m-lbl">Last Install</div>
-      <div class="m-val">${c.lastInstall || '—'}</div>
+      <div class="m-lbl">Crew</div>
+      <div class="m-val" style="color:var(--orange);">${c.crew||'Pete + Andrew'}</div>
+    </div>
+    <div class="m-item" style="text-align:right;">
+      <div class="m-lbl">Drone</div>
+      <div class="m-val">${droneBlock}</div>
     </div>
     <div class="m-item">
       <div class="m-lbl">Next Scheduled</div>
       <div class="m-val">${nextDisplay}</div>
     </div>
-    <div class="m-item">
+    <div class="m-item" style="text-align:right;">
       <div class="m-lbl">Phase</div>
       <div class="m-val phase">${c.phase}</div>
     </div>
     <div class="m-item">
-      <div class="m-lbl">Contact</div>
+      <div class="m-lbl">Local Contact</div>
+      <div class="m-val phase">${c.localContact||c.contact}</div>
+    </div>
+    <div class="m-item" style="text-align:right;">
+      <div class="m-lbl">Main POC</div>
       <div class="m-val phase">${c.contact}</div>
     </div>
   </div>
   <div class="c-footer">
     <div class="c-detail-link">View Details →</div>
-    ${fieldBtn}
+    ${c.soldOut ? '' : fieldBtn}
   </div>
 </div>`;
 }
