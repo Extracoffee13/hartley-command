@@ -1086,9 +1086,24 @@ const fmtPct = (a,b) => b > 0 ? Math.round(a/b*100) : 0;
 // ═══════════════════════════════════════════════════════
 function renderCard(c, delay) {
   const pct = fmtPct(c.installedSigns, c.totalSigns);
-  const statusLabel = {complete:'Complete','in-progress':'In Progress',pending:'Pending',overdue:'OVERDUE',new:'New'};
-  const badgeCls    = {complete:'sb-complete','in-progress':'sb-in-progress',pending:'sb-pending',overdue:'sb-overdue',new:'sb-new'};
-  const fillCls     = {complete:'pf-complete','in-progress':'pf-in-progress',pending:'pf-pending',overdue:'pf-overdue',new:'pf-new'};
+  // Pipeline status labels — match the Google Sheet's Status dropdown:
+  //   Artwork → Production → Delivered → Installation → Installation Complete
+  // Plus legacy aliases for any rows still using the old vocabulary.
+  const statusLabel = {
+    'Artwork':'Artwork','Production':'Production','Delivered':'Delivered',
+    'Installation':'Installation','Installation Complete':'Installation Complete',
+    complete:'Installation Complete','in-progress':'Production',pending:'Artwork',overdue:'OVERDUE',new:'Artwork'
+  };
+  const badgeCls = {
+    'Artwork':'sb-new','Production':'sb-pending','Delivered':'sb-in-progress',
+    'Installation':'sb-in-progress','Installation Complete':'sb-complete',
+    complete:'sb-complete','in-progress':'sb-in-progress',pending:'sb-pending',overdue:'sb-overdue',new:'sb-new'
+  };
+  const fillCls = {
+    'Artwork':'pf-new','Production':'pf-pending','Delivered':'pf-in-progress',
+    'Installation':'pf-in-progress','Installation Complete':'pf-complete',
+    complete:'pf-complete','in-progress':'pf-in-progress',pending:'pf-pending',overdue:'pf-overdue',new:'pf-new'
+  };
   const nextDisplay = !c.nextInstall
     ? '<span style="color:var(--gray-400);font-weight:500;font-size:11px;">—</span>'
     : c.nextInstall === 'OVERDUE'
@@ -1407,8 +1422,16 @@ function openModal(id) {
   document.getElementById('m-name').textContent   = c.name;
   document.getElementById('m-city').textContent   = c.city + ', FL';
 
-  const statusLabel = {complete:'Complete','in-progress':'In Progress',pending:'Pending',overdue:'OVERDUE',new:'New'};
-  const badgeCls    = {complete:'sb-complete','in-progress':'sb-in-progress',pending:'sb-pending',overdue:'sb-overdue',new:'sb-new'};
+  const statusLabel = {
+    'Artwork':'Artwork','Production':'Production','Delivered':'Delivered',
+    'Installation':'Installation','Installation Complete':'Installation Complete',
+    complete:'Installation Complete','in-progress':'Production',pending:'Artwork',overdue:'OVERDUE',new:'Artwork'
+  };
+  const badgeCls = {
+    'Artwork':'sb-new','Production':'sb-pending','Delivered':'sb-in-progress',
+    'Installation':'sb-in-progress','Installation Complete':'sb-complete',
+    complete:'sb-complete','in-progress':'sb-in-progress',pending:'sb-pending',overdue:'sb-overdue',new:'sb-new'
+  };
   const pct         = fmtPct(c.installedSigns, c.totalSigns);
   const cats        = getSignCategories(c);
 
