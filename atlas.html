@@ -1622,6 +1622,7 @@ function openModal(id) {
         <div class="m-info-val">${({jax:'Jacksonville / St. Augustine',ocala:'Ocala',sofla:'South Florida'})[c.region]||'Florida'}</div>
       </div>
     </div>
+    ${c.notes ? `<div style="margin-top:16px;padding:14px 16px;background:var(--gray-50);border-radius:8px;border:1px solid var(--gray-200);"><div style="font-size:10px;font-weight:800;color:var(--gray-400);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;">Notes</div><div style="font-size:13px;color:var(--gray-800);line-height:1.5;white-space:pre-wrap;">${(c.notes+'').replace(/</g,'&lt;')}</div></div>` : ''}
     ${c.status==='overdue' ? `<div style="margin-top:16px;padding:14px;background:var(--red-l);border-radius:8px;border:1px solid #fca5a5;color:#dc2626;font-size:13px;font-weight:700;">⚠ Attention Required: This community has overdue installations. Crew has been reassigned — next available date being confirmed.</div>` : ''}
     ${fieldBtnHtml}
   `;
