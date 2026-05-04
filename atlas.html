@@ -513,26 +513,54 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
   </div>
 
   <div class="hdr-center">
-    <div class="cl-label">Client</div>
-    <div class="cl-name">Lennar Homes</div>
+    <div>
+      <div class="cl-label">Client</div>
+      <div class="cl-name">Lennar Homes</div>
+    </div>
+    <div style="width:1px;height:28px;background:rgba(255,255,255,.15);margin:0 6px;"></div>
+    <div>
+      <div class="cl-label">Main POC</div>
+      <div class="cl-name">Gina Lee</div>
+    </div>
   </div>
 
   <div class="hdr-right">
     <div id="viewBadge" class="view-badge admin">&#9679; Admin View</div>
     <div class="live-badge">
       <div class="live-dot"></div>
-      Live · Apr 6, 2026
+      <span id="liveStamp">Live</span>
     </div>
     <button class="hdr-btn hdr-btn-ghost" onclick="window.print()">&#8595; Export</button>
   </div>
 </header>
 
+<!-- ── INSTALL TEAM STRIP ── -->
+<div style="background:#fff;border-bottom:1px solid var(--gray-200);padding:8px 20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:11px;">
+  <span style="font-size:9px;font-weight:800;color:var(--gray-400);letter-spacing:1.2px;text-transform:uppercase;">Install Team</span>
+  <span style="background:var(--orange-l);color:var(--orange);border:1px solid #fed7aa;padding:3px 10px;border-radius:12px;font-weight:800;font-size:11px;">⚙ Pete</span>
+  <span style="background:var(--orange-l);color:var(--orange);border:1px solid #fed7aa;padding:3px 10px;border-radius:12px;font-weight:800;font-size:11px;">⚙ Andrew</span>
+  <span style="background:var(--blue-l);color:var(--blue);padding:3px 10px;border-radius:12px;font-weight:700;font-size:11px;">Ben</span>
+  <span style="background:var(--blue-l);color:var(--blue);padding:3px 10px;border-radius:12px;font-weight:700;font-size:11px;">Shermin</span>
+  <span style="background:var(--blue-l);color:var(--blue);padding:3px 10px;border-radius:12px;font-weight:700;font-size:11px;">Rachel</span>
+  <span style="background:var(--blue-l);color:var(--blue);padding:3px 10px;border-radius:12px;font-weight:700;font-size:11px;">Donovan</span>
+  <span style="margin-left:auto;font-size:10px;color:var(--gray-400);font-weight:600;">⚙ Active install pair · others on rotation</span>
+</div>
+
 <!-- ── REGION TABS ── -->
 <div class="region-bar">
-  <div class="r-tab active" data-region="north" onclick="setRegion('north',this)">North Florida <span class="r-count" id="cnt-north">10</span></div>
-  <div class="r-tab dim" title="Coming Soon">South Florida <span class="r-cs">Coming Soon</span></div>
-  <div class="r-tab dim" title="Coming Soon">Southeast Region <span class="r-cs">Coming Soon</span></div>
-  <div class="r-tab dim" title="Coming Soon">National <span class="r-cs">Coming Soon</span></div>
+  <div class="r-tab active" data-region="jax"   onclick="setRegion('jax',this)">Jacksonville / St. Augustine <span class="r-count" id="cnt-jax">17</span></div>
+  <div class="r-tab active" data-region="ocala" onclick="setRegion('ocala',this)">Ocala <span class="r-count" id="cnt-ocala">12</span></div>
+  <div class="r-tab active" data-region="sofla" onclick="setRegion('sofla',this)">South Florida <span class="r-count" id="cnt-sofla">1</span></div>
+  <div class="r-tab dim" title="Coming Soon">Ft. Lauderdale <span class="r-cs">Soon</span></div>
+  <div class="r-tab dim" title="Coming Soon">Naples / Ft. Myers <span class="r-cs">Soon</span></div>
+  <div class="r-tab dim" title="Coming Soon">Orlando <span class="r-cs">Soon</span></div>
+  <div class="r-tab dim" title="Coming Soon">Palm Beach <span class="r-cs">Soon</span></div>
+  <div class="r-tab dim" title="Coming Soon">Panama City <span class="r-cs">Soon</span></div>
+  <div class="r-tab dim" title="Coming Soon">Pensacola <span class="r-cs">Soon</span></div>
+  <div class="r-tab dim" title="Coming Soon">Sarasota / Manatee <span class="r-cs">Soon</span></div>
+  <div class="r-tab dim" title="Coming Soon">Space Coast / Melbourne <span class="r-cs">Soon</span></div>
+  <div class="r-tab dim" title="Coming Soon">Tampa / Manatee <span class="r-cs">Soon</span></div>
+  <div class="r-tab dim" title="Coming Soon">Treasure Coast <span class="r-cs">Soon</span></div>
 </div>
 
 <!-- ── KPI BAR ── -->
