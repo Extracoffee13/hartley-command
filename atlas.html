@@ -1146,28 +1146,43 @@ function renderGrid() {
 
 // ─── UPDATE KPIs ───
 function updateKPIs() {
-  const cs       = COMMUNITIES; // KPIs always reflect all 10 current communities
-  const active   = cs.filter(c => c.status === 'in-progress').length;
-  const pending  = cs.filter(c => c.status === 'pending').length;
+  const cs       = COMMUNITIES;
+  const activeNonOffice = cs.filter(c => !c.soldOut && !c.office);
+  const active   = activeNonOffice.filter(c => c.status === 'in-progress').length;
+  const soldOut  = cs.filter(c => c.soldOut).length;
   const overdue  = cs.filter(c => c.status === 'overdue').length;
-  const totalNeeded    = cs.reduce((s,c) => s + c.totalSigns, 0);
-  const totalInstalled = cs.reduce((s,c) => s + c.installedSigns, 0);
-  const overallPct     = fmtPct(totalInstalled, totalNeeded);
+  const liveDrones = cs.filter(c => c.droneStatus === 'live').length;
+  const droneFleetSize = 1; // v1: one drone in pre-launch
 
-  document.getElementById('kpi-communities').textContent = cs.length;
+  // Active card counts (incl. office; excl. sold-out from headline count? keep all visible)
+  const totalCards = cs.length;
+  const jaxCount   = cs.filter(c => c.region === 'jax').length;
+  const ocalaCount = cs.filter(c => c.region === 'ocala').length;
+  const soflaCount = cs.filter(c => c.region === 'sofla').length;
+
+  document.getElementById('kpi-communities').textContent = totalCards;
+  document.getElementById('kpi-communities-sub').textContent = `JAX ${jaxCount} · Ocala ${ocalaCount} · SoFla ${soflaCount}`;
   document.getElementById('kpi-active').textContent      = active;
-  document.getElementById('kpi-pending').textContent     = pending + (overdue > 0 ? ' / ' + overdue : '');
-  document.getElementById('kpi-progress').textContent    = overallPct + '%';
-  document.getElementById('kpi-progress-sub').textContent = totalInstalled + ' of ' + totalNeeded + ' signs installed';
-  document.getElementById('cnt-north').textContent       = cs.length;
+  document.getElementById('kpi-pending').textContent     = soldOut;
+  document.getElementById('kpi-progress').textContent    = `${liveDrones}/${droneFleetSize}`;
+
+  // Region tab counts
+  const setText = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+  setText('cnt-jax',   jaxCount);
+  setText('cnt-ocala', ocalaCount);
+  setText('cnt-sofla', soflaCount);
 
   if (overdue > 0) {
     document.getElementById('kpi-overdue-note').textContent = '▼ ' + overdue + ' overdue — flagged';
     document.getElementById('kpi-overdue-note').className  = 'kpi-chg dn';
   } else {
-    document.getElementById('kpi-overdue-note').textContent = '▲ All on schedule';
+    document.getElementById('kpi-overdue-note').textContent = '▲ Closeout complete';
     document.getElementById('kpi-overdue-note').className  = 'kpi-chg up';
   }
+
+  // Live timestamp in header
+  const lt = document.getElementById('liveStamp');
+  if (lt) lt.textContent = 'Live · ' + new Date().toLocaleString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'});
 }
 
 // ─── FILTERS ───
@@ -1308,7 +1323,12 @@ function openModal(id) {
   const c = COMMUNITIES.find(x => x.id === id);
   if (!c) return;
 
-  document.getElementById('m-region').textContent = '📍 NORTH FLORIDA';
+  const regionDisplay = {
+    jax:   '📍 JACKSONVILLE / ST. AUGUSTINE',
+    ocala: '📍 OCALA',
+    sofla: '📍 SOUTH FLORIDA'
+  }[c.region] || '📍 FLORIDA';
+  document.getElementById('m-region').textContent = regionDisplay;
   document.getElementById('m-name').textContent   = c.name;
   document.getElementById('m-city').textContent   = c.city + ', FL';
 
@@ -1396,6 +1416,22 @@ function openModal(id) {
     <div class="sign-cats">${catsHtml}</div>
     <div class="m-info-grid">
       <div class="m-info-card">
+        <div class="m-info-lbl">Crew</div>
+        <div class="m-info-val" style="color:var(--orange);">${c.crew || 'Pete + Andrew'}</div>
+      </div>
+      <div class="m-info-card">
+        <div class="m-info-lbl">Drone Status</div>
+        <div class="m-info-val">${{idle:'Idle · Pre-launch',predeploy:'Pre-deploy',live:'🔴 LIVE','wrap-up':'Wrap-up'}[c.droneStatus||'idle']}</div>
+      </div>
+      <div class="m-info-card">
+        <div class="m-info-lbl">Local Contact (Lennar)</div>
+        <div class="m-info-val">${c.localContact || c.contact}</div>
+      </div>
+      <div class="m-info-card">
+        <div class="m-info-lbl">Main POC (Lennar)</div>
+        <div class="m-info-val">${c.contact}</div>
+      </div>
+      <div class="m-info-card">
         <div class="m-info-lbl">Last Installation</div>
         <div class="m-info-val">${c.lastInstall || 'Not yet scheduled'}</div>
       </div>
@@ -1404,12 +1440,12 @@ function openModal(id) {
         <div class="m-info-val" style="${c.nextInstall==='OVERDUE'?'color:var(--red)':''}">${c.nextInstall || (c.status==='complete'?'All complete':c.status==='new'?'TBD — Pre-Development':'Not yet scheduled')}</div>
       </div>
       <div class="m-info-card">
-        <div class="m-info-lbl">Lennar Contact</div>
-        <div class="m-info-val">${c.contact}</div>
-      </div>
-      <div class="m-info-card">
         <div class="m-info-lbl">Phase</div>
         <div class="m-info-val">${c.phase}</div>
+      </div>
+      <div class="m-info-card">
+        <div class="m-info-lbl">Region</div>
+        <div class="m-info-val">${({jax:'Jacksonville / St. Augustine',ocala:'Ocala',sofla:'South Florida'})[c.region]||'Florida'}</div>
       </div>
     </div>
     ${c.status==='overdue' ? `<div style="margin-top:16px;padding:14px;background:var(--red-l);border-radius:8px;border:1px solid #fca5a5;color:#dc2626;font-size:13px;font-weight:700;">⚠ Attention Required: This community has overdue installations. Crew has been reassigned — next available date being confirmed.</div>` : ''}
