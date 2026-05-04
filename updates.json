@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "last_updated_utc": "2026-05-03T20:14:58Z",
+  "last_updated_utc": "2026-05-04T12:40:48Z",
   "updates": [
     {
       "id": "2026-04-29-master-mp4-shipped",
@@ -461,6 +461,19 @@
       ],
       "tag": "lessons",
       "color": "#ff9933"
+    },
+    {
+      "id": "2026-05-04-ap-voice-out-live",
+      "date": "2026-05-04",
+      "title": "AP voice OUT live \u2014 Harry speaks back via Telegram",
+      "summary": "AP can now reply with voice messages to Bobby's Telegram, spoken in Harry (his cloned ElevenLabs voice OeQ4VTZk797BW9xIopa0). Architecture: in-container Bash primitive at /workspace/agent/bin/ap-tts-send.sh \u2014 self-contained (curl + node only, both in nanoclaw image), reads keys from chmod-600 .voice-env, calls ElevenLabs (model eleven_turbo_v2_5, output_format opus_48000_128) \u2192 OGG/Opus \u2192 Telegram sendVoice multipart. Zero host code changes, zero new launchd plists, zero rebuild required. Two end-to-end smoke tests passed (Telegram message_ids 47, 51). AP system prompt updated with full Voice OUT section (when to use, when not, voice-writing style, sequencing). The earlier 'George' label drift on AP's voice was also corrected \u2014 OeQ4VTZk797BW9xIopa0 is Harry, not George; George (JBFqn...) is Architect's voice.",
+      "tags": [
+        "ap-v2",
+        "voice",
+        "telegram",
+        "elevenlabs"
+      ],
+      "status": "live"
     }
   ]
 }
