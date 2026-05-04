@@ -647,8 +647,8 @@ body.client-view .admin-only{display:none !important;}
   <!-- ── COMMUNITY GRID ── -->
   <div class="sec-hdr">
     <div class="sec-title">
-      &#127864; Current Communities
-      <span class="sec-badge" id="gridCount">10</span>
+      &#127864; Communities &amp; Offices
+      <span class="sec-badge" id="gridCount">31</span>
     </div>
     <div class="legend">
       <span class="leg-item"><span class="leg-dot" style="background:#10b981"></span><span style="color:#059669">Complete</span></span>
@@ -856,30 +856,27 @@ const COMMUNITIES = [
 
 // ─── WORK ORDERS ───
 const WORK_ORDERS = [
-{id:"WO-2847",community:"Avalon Woods",         category:"Community Signage",           qty:1,date:"Apr 8, 2026", crew:"Mike Rodriguez", priority:"high"},
-{id:"WO-2848",community:"The Cove at Southwood",category:"Community Signage",           qty:2,date:"Apr 9, 2026", crew:"Carlos Mendez",  priority:"high"},
-{id:"WO-2849",community:"Stillwater",           category:"Model ID Sign Changes",       qty:3,date:"Apr 9, 2026", crew:"Derek Thompson", priority:"med"},
-{id:"WO-2850",community:"Oak Hill Village",     category:"Sail Flag Replacements",      qty:2,date:"Apr 6, 2026", crew:"Julio Reyes",    priority:"med"},
-{id:"WO-2851",community:"Silver Falls",         category:"4x8 + 6x4 Signs",             qty:2,date:"Apr 6, 2026", crew:"Mike Rodriguez", priority:"med"},
-{id:"WO-2852",community:"Silver Meadows",       category:"Builder Barricade Banners",   qty:1,date:"Apr 7, 2026", crew:"Carlos Mendez",  priority:"med"},
-{id:"WO-2853",community:"Stillwater",           category:"Aluminum Awning",             qty:1,date:"Apr 18, 2026",crew:"Derek Thompson", priority:"med"},
-{id:"WO-2854",community:"The Cove at Southwood",category:"Aluminum Awning",             qty:1,date:"Apr 18, 2026",crew:"Julio Reyes",    priority:"low"},
-{id:"WO-2855",community:"Oak Hill Village",     category:"Community Signage",           qty:1,date:"May 13, 2026",crew:"Mike Rodriguez", priority:"low"},
-{id:"WO-2856",community:"Holly Cove",           category:"Pre-Install Survey",          qty:1,date:"TBD",         crew:"Carlos Mendez",  priority:"low"},
+{id:"WO-3001",community:"Avalon Woods",                            category:"WHC Community Signage",      qty:1,date:"This week", crew:"Pete + Andrew", priority:"high"},
+{id:"WO-3002",community:"Cove at Southwood",                       category:"WHC Community Signage",      qty:2,date:"This week", crew:"Pete + Andrew", priority:"high"},
+{id:"WO-3003",community:"Oak Hill Village Townhomes",              category:"Wayfinding",                 qty:3,date:"This week", crew:"Pete + Andrew", priority:"med"},
+{id:"WO-3004",community:"Russell Retreat",                         category:"WHC Interior Signage",       qty:2,date:"This week", crew:"Pete + Andrew", priority:"med"},
+{id:"WO-3005",community:"Silver Falls Single Family at SilverLeaf",category:"Aluminum Awning",            qty:2,date:"This week", crew:"Pete + Andrew", priority:"med"},
+{id:"WO-3006",community:"Shearwater",                              category:"Offsite Wayfinding",         qty:1,date:"Next week", crew:"Pete + Andrew", priority:"med"},
+{id:"WO-3007",community:"Tributary",                               category:"WHC Community Signage",      qty:1,date:"Next week", crew:"Pete + Andrew", priority:"med"},
+{id:"WO-3008",community:"MIAMI Corp Office",                       category:"Office Interior Package",    qty:1,date:"Next week", crew:"Pete + Andrew", priority:"low"},
+{id:"WO-3009",community:"Marion Ranch",                            category:"Pre-Install Survey",         qty:1,date:"Ocala kickoff", crew:"Pete + Andrew", priority:"low"},
+{id:"WO-3010",community:"Grand Park",                              category:"Pre-Install Survey",         qty:1,date:"Ocala kickoff", crew:"Pete + Andrew", priority:"low"},
 ];
 
 // ─── ACTIVITY LOG ───
 const ACTIVITY = [
-{icon:"✅",bg:"#d1fae5",text:"Emerald Isles — community signage installation complete. 811 clearance confirmed.",time:"Today 10:30 AM"},
-{icon:"📋",bg:"#dbeafe",text:"Avalon Woods — WO-2847 scheduled for Apr 8. Underground permit approved.",time:"Today 9:15 AM"},
-{icon:"🔧",bg:"#fff7ed",text:"Oak Hill Village — Sail flag replacements (x2) production complete, install Apr 6.",time:"Today 8:45 AM"},
-{icon:"📋",bg:"#dbeafe",text:"Silver Falls — 4x8 and 6x4 signs in production, install scheduled Apr 6.",time:"Yesterday 3:20 PM"},
-{icon:"📋",bg:"#dbeafe",text:"Silver Meadows — Builder barricade boulevard banners scheduled Apr 7.",time:"Yesterday 2:10 PM"},
-{icon:"🎨",bg:"#ede9fe",text:"Stillwater — Aluminum awning artwork in progress, install Apr 18.",time:"Yesterday 11:30 AM"},
-{icon:"🎨",bg:"#ede9fe",text:"Lakeview Estates — Community signage in artwork phase. 811 status pending.",time:"Apr 4 · 4:15 PM"},
-{icon:"📋",bg:"#dbeafe",text:"The Cove at Southwood — Community signage in production, install Apr 9.",time:"Apr 3 · 2:45 PM"},
-{icon:"✅",bg:"#d1fae5",text:"JAX Office — internal signage package complete.",time:"Mar 15 · 5:00 PM"},
-{icon:"🆕",bg:"#ede9fe",text:"Holly Cove added to portal — pre-launch, scope being finalized.",time:"Mar 28 · 9:00 AM"},
+{icon:"🆕",bg:"#ede9fe",text:"Atlas v1.1 — Ocala region added (12 communities). Crew: Pete + Andrew.",time:"Today"},
+{icon:"🆕",bg:"#ede9fe",text:"MIAMI Corp office added under South Florida band — pipeline staging.",time:"Today"},
+{icon:"🛰",bg:"#fff7ed",text:"Drone Console scaffolded (admin only) — Brand 9's first physical AI is in pre-launch.",time:"Today"},
+{icon:"📋",bg:"#dbeafe",text:"Region taxonomy aligned to Lennar's exact area names: Jacksonville / St. Augustine, Ocala, etc.",time:"Today"},
+{icon:"✅",bg:"#d1fae5",text:"Holly Cove + Kings Preserve marked Sold Out / Closeout.",time:"Today"},
+{icon:"✅",bg:"#d1fae5",text:"JAX Corp Office — internal signage package complete.",time:"Mar 15"},
+{icon:"📋",bg:"#dbeafe",text:"Lennar regional contacts assigned: Kyle, Cassandra (NoFla) · Gina Lee remains main POC.",time:"Today"},
 ];
 
 // ═══════════════════════════════════════════════════════
