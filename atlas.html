@@ -752,8 +752,8 @@ body.client-view .admin-only{display:none !important;}
   <!-- ── CATEGORY PROGRESS CHART ── -->
   <div class="panel" style="margin-bottom:28px;">
     <div class="p-hdr">
-      <div class="p-title"><span class="p-title-icon">&#128202;</span> Sign Installation Progress by Category &mdash; North Florida</div>
-      <span class="sec-badge">All 10 Current Communities</span>
+      <div class="p-title"><span class="p-title-icon">&#128202;</span> Sign Installation Progress by Category</div>
+      <span class="sec-badge" id="chartCommunityCount">All Active Communities</span>
     </div>
     <div class="chart-wrap">
       <div class="chart-container"><canvas id="signChart"></canvas></div>
@@ -764,8 +764,8 @@ body.client-view .admin-only{display:none !important;}
 
 <!-- ── FOOTER ── -->
 <footer class="ftr">
-  <div class="ftr-brand"><strong>ATLAS</strong> &middot; Brand 9 Signs Installation Tracker &middot; Lennar Homes &mdash; North Florida</div>
-  <div class="ftr-powered"><div class="atlas-dot"></div> Powered by Brand 9 AI &middot; Atlas Agent &middot; Last sync: Apr 6, 2026</div>
+  <div class="ftr-brand"><strong>ATLAS v1.1</strong> &middot; Brand 9 Signs Installation Tracker &middot; Lennar Homes &mdash; Active: Jacksonville / St. Augustine + Ocala &middot; SoFla Office Online</div>
+  <div class="ftr-powered"><div class="atlas-dot"></div> Powered by Brand 9 AI &middot; Atlas Agent &middot; <a href="?view=client" style="color:var(--blue);text-decoration:none;font-weight:700;">Client view</a> &middot; <span id="footerStamp">—</span></div>
 </footer>
 
 <!-- ═══════════════════════════════════
@@ -1239,9 +1239,12 @@ function updateKPIs() {
     document.getElementById('kpi-overdue-note').className  = 'kpi-chg up';
   }
 
-  // Live timestamp in header
+  // Live timestamp in header + footer
+  const stamp = new Date().toLocaleString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'});
   const lt = document.getElementById('liveStamp');
-  if (lt) lt.textContent = 'Live · ' + new Date().toLocaleString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'});
+  if (lt) lt.textContent = 'Live · ' + stamp;
+  const ft = document.getElementById('footerStamp');
+  if (ft) ft.textContent = 'Last refresh: ' + stamp;
 }
 
 // ─── FILTERS ───
