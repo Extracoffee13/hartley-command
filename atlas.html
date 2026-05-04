@@ -1667,6 +1667,15 @@ renderGrid();
 renderWorkOrders();
 renderActivity();
 renderChart();
+
+// Auto-refresh: re-fetch the Sheet every 60s while the page is open.
+// Skipped while the tab is hidden to avoid wasting fetches; resumes on visibility.
+setInterval(() => {
+  if (document.visibilityState === 'visible') syncFromSheet();
+}, 60000);
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') syncFromSheet();
+});
 </script>
 </body>
 </html>
