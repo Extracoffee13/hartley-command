@@ -483,6 +483,11 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
 @keyframes card-in{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 .c-card{animation:card-in .3s ease both;}
 
+/* ── ADMIN-ONLY (hidden when ?view=client) ── */
+body.client-view .admin-only{display:none !important;}
+.c-card.card-sold-out::before{background:var(--gray-400);}
+.c-card.card-office::before{background:var(--orange);}
+
 /* ── PRINT ── */
 @media print{
   .hdr{background:var(--navy)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
@@ -658,6 +663,60 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
   <div id="emptyState" class="empty" style="display:none;">
     <div class="empty-icon">&#128269;</div>
     <div class="empty-text">No communities match your filters</div>
+  </div>
+
+  <!-- ── DRONE CONSOLE (admin-only) ── -->
+  <div class="panel admin-only" id="droneConsole" style="margin-bottom:22px;">
+    <div class="p-hdr">
+      <div class="p-title"><span class="p-title-icon">&#128760;</span> Drone Console
+        <span style="font-size:9px;font-weight:800;color:var(--orange);background:var(--orange-l);padding:2px 8px;border-radius:8px;letter-spacing:.5px;text-transform:uppercase;margin-left:6px;">Admin only</span>
+      </div>
+      <span class="sec-badge sec-badge-orange">v1 · Pre-launch</span>
+    </div>
+    <div style="padding:14px 18px;font-size:11px;color:var(--gray-600);background:var(--gray-50);border-bottom:1px solid var(--gray-200);">
+      Brand 9's first physical AI: an install drone that follows the crew on every job, streams a live feed to Bobby + the local + regional marketing directors, and (admin-only) reads installer performance and reports back to a monitoring agent.
+    </div>
+    <div style="padding:18px;display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;">
+      <div style="border:1px solid var(--gray-200);border-radius:8px;padding:12px;background:var(--gray-50);">
+        <div style="font-size:13px;font-weight:800;color:var(--navy);margin-bottom:6px;">Pete <span style="font-size:9px;font-weight:800;background:var(--orange);color:#fff;padding:2px 6px;border-radius:6px;margin-left:4px;">CREW</span></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Jobs:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Avg time:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Quality:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+      </div>
+      <div style="border:1px solid var(--gray-200);border-radius:8px;padding:12px;background:var(--gray-50);">
+        <div style="font-size:13px;font-weight:800;color:var(--navy);margin-bottom:6px;">Andrew <span style="font-size:9px;font-weight:800;background:var(--orange);color:#fff;padding:2px 6px;border-radius:6px;margin-left:4px;">CREW</span></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Jobs:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Avg time:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Quality:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+      </div>
+      <div style="border:1px solid var(--gray-200);border-radius:8px;padding:12px;background:var(--gray-50);">
+        <div style="font-size:13px;font-weight:800;color:var(--navy);margin-bottom:6px;">Ben</div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Jobs:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Avg time:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Quality:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+      </div>
+      <div style="border:1px solid var(--gray-200);border-radius:8px;padding:12px;background:var(--gray-50);">
+        <div style="font-size:13px;font-weight:800;color:var(--navy);margin-bottom:6px;">Shermin</div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Jobs:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Avg time:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Quality:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+      </div>
+      <div style="border:1px solid var(--gray-200);border-radius:8px;padding:12px;background:var(--gray-50);">
+        <div style="font-size:13px;font-weight:800;color:var(--navy);margin-bottom:6px;">Rachel</div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Jobs:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Avg time:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Quality:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+      </div>
+      <div style="border:1px solid var(--gray-200);border-radius:8px;padding:12px;background:var(--gray-50);">
+        <div style="font-size:13px;font-weight:800;color:var(--navy);margin-bottom:6px;">Donovan</div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Jobs:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Avg time:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Quality:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+      </div>
+    </div>
+    <div style="padding:10px 18px 16px;font-size:11px;color:var(--gray-600);font-family:ui-monospace,Menlo,monospace;border-top:1px solid var(--gray-200);background:var(--gray-50);">
+      Performance webhook: <span style="color:var(--gray-400);">https://hooks.brand9.ai/installer-performance/{event}</span> <span style="font-style:italic;">(stub — pipes to monitoring agent when drone is live)</span>
+    </div>
   </div>
 
   <!-- ── WORK ORDERS + ACTIVITY ── -->
@@ -1013,6 +1072,9 @@ function applyViewMode() {
     badge.className = 'view-badge client';
     badge.textContent = '● Client View';
     document.getElementById('adminOnlySync').style.display = 'none';
+    document.body.classList.add('client-view');
+  } else {
+    document.body.classList.remove('client-view');
   }
 }
 
