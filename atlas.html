@@ -1084,7 +1084,16 @@ async function syncFromSheet() {
       crew:          String(r[idx['Crew']]||'').trim() || 'Pete + Andrew',
       droneStatus:   String(r[idx['Drone']]||'').trim().toLowerCase() || 'idle',
       totalSigns:    22,  // Total Signs col dropped — default 22
-      installedSigns:0,   // Installed col dropped — default 0 (or compute from status)
+      installedSigns:(function(){
+        const s = pickStatus(r[idx['Status']]);
+        const closed = isClosedFromStatus(r[idx['Status']], r[idx['Request']]);
+        if (closed) return 20;                        // Sold Out / Closeout → 20/20 historical
+        if (s === 'Installation Complete') return 22; // 100%
+        if (s === 'Installation') return 18;          // ~80% (in install)
+        if (s === 'Delivered') return 14;             // ~65% (delivered, not installed)
+        if (s === 'Production') return 8;             // ~35% (in production)
+        return 0;                                     // Artwork / Pre-Launch
+      })(),
       lastInstall:   String(r[idx['Last Install']]||'').trim() || 'TBD',
       nextInstall:   String(r[idx['Next Install']]||'').trim() || 'TBD',
       localContact:  String(r[idx['Local Contact']]||'').trim() || 'Gina Lee',
@@ -1238,7 +1247,7 @@ function renderCard(c, delay) {
   <div class="c-head">
     <div>
       <div class="c-name">${regionPill}${c.name}</div>
-      <div class="c-city">${c.city}, FL</div>
+      <div class="c-city">${c.city ? c.city + ", FL" : ""}</div>
     </div>
     ${statusBadgeOverride}
   </div>
@@ -1353,7 +1362,7 @@ function applyFilters() {
     if (currentRegion !== 'all' && c.region !== currentRegion) return false;
     if (status && c.status !== status) return false;
     if (phase  && c.phase  !== phase)  return false;
-    if (search && !c.name.toLowerCase().includes(search) && !c.city.toLowerCase().includes(search)) return false;
+    if (search && !c.name.toLowerCase().includes(search) && !(c.city||'').toLowerCase().includes(search)) return false;
     return true;
   });
   renderGrid();
@@ -1501,7 +1510,7 @@ function openModal(id) {
   }[c.region] || '📍 FLORIDA';
   document.getElementById('m-region').textContent = regionDisplay;
   document.getElementById('m-name').textContent   = c.name;
-  document.getElementById('m-city').textContent   = c.city + ', FL';
+  document.getElementById('m-city').textContent   = c.city ? c.city + ', FL' : '';
 
   const statusLabel = {
     'Artwork':'Artwork','Production':'Production','Delivered':'Delivered',
