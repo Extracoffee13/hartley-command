@@ -204,7 +204,7 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
 .c-card.s-new::before{background:var(--purple);}
 
 .c-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px;padding-left:10px;}
-.c-name{font-size:13px;font-weight:800;color:var(--gray-800);line-height:1.3;flex:1;}
+.c-name{font-size:13px;font-weight:800;color:var(--gray-800);line-height:1.3;flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:34px;}
 .c-city{font-size:11px;color:var(--gray-400);margin-top:1px;font-weight:500;}
 .s-badge{font-size:9px;font-weight:800;padding:3px 8px;border-radius:10px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;margin-left:8px;margin-top:1px;}
 .sb-complete{background:var(--green-l);color:#059669;}
@@ -1037,8 +1037,17 @@ async function syncFromSheet() {
   msg.textContent = 'Syncing with Google Sheets…';
   try {
     const res = await fetch(SHEET_CSV_URL + '&_t=' + Date.now(), {signal: AbortSignal.timeout(10000), cache: 'no-store'});
+    // Diff guard: skip re-render if CSV is byte-identical to last successful sync.
+    // This stops the blink/flicker on every 5s poll when nothing changed.
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const csv = await res.text();
+    // Skip if unchanged
+    if (window.__atlasLastCsv && window.__atlasLastCsv === csv) {
+      // update last-sync timestamp so user sees it's polling
+      const tEl = document.getElementById('last-sync'); if (tEl) tEl.textContent = new Date().toLocaleTimeString([], {hour:'numeric', minute:'2-digit'});
+      return;
+    }
+    window.__atlasLastCsv = csv;
     const rows = parseCSV(csv).filter(r => r.length && r.some(v => v && v.length));
     if (rows.length < 2) throw new Error('CSV had no data rows');
 
