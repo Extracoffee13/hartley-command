@@ -811,11 +811,11 @@ body.client-view .admin-only{display:none !important;}
 
 // ATLAS Lennar Sign Operations — Dashboard tab CSV (Sheet shared "Anyone with link → View")
 const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1vhkDxy0M4xUBKX5z9QBWPpBh5A0szkEx5571_wP6ac4/export?format=csv&gid=0';
-// Form Responses tab — populated by the Field Photo Upload form. gid TBD after form is created;
-// once the responses tab exists, set this URL to its export?format=csv&gid=<gid>.
-let PHOTOS_CSV_URL = null;
-// Public form URL for "Add Photos" buttons on dashboard cards. Set after form creation.
-let FIELD_PHOTO_FORM_URL = null;
+// Photos tab — populated by the Atlas Web App's upload pipeline.
+// Uses gviz tq endpoint (no gid lookup needed — works by sheet name).
+let PHOTOS_CSV_URL = 'https://docs.google.com/spreadsheets/d/1vhkDxy0M4xUBKX5z9QBWPpBh5A0szkEx5571_wP6ac4/gviz/tq?tqx=out:csv&sheet=Photos';
+// Mobile upload page served by the Atlas Web App. Append &community=<name> to pre-select.
+let FIELD_PHOTO_FORM_URL = 'https://script.google.com/macros/s/AKfycbyjF3HvyBm47tOXolMcnNG7igVfpwfrXg8v4q04kW6qZJ7VS6udEaR7UsmTL96eN8Y9/exec?page=upload';
 // Per-community photo cache populated by syncPhotos()
 const COMMUNITY_PHOTOS = {};  // { "Cove at SW": [{url, thumb, caption, crew, ts}, ...] }
 function _driveIdFromUrl(u) {
@@ -1208,9 +1208,10 @@ async function syncFromSheet() {
 // FIELD UPDATE BUTTON — opens Google Form pre-filled
 // ═══════════════════════════════════════════════════════
 function fieldUpdateUrl(communityName) {
-  // Prefer the Field Photo Upload form when configured.
+  // Prefer the Field Photo Upload form when configured. Pre-select the community.
   if (typeof FIELD_PHOTO_FORM_URL === 'string' && FIELD_PHOTO_FORM_URL) {
-    return FIELD_PHOTO_FORM_URL;  // entry pre-fill optional; crew picks community in dropdown
+    const sep = FIELD_PHOTO_FORM_URL.includes('?') ? '&' : '?';
+    return FIELD_PHOTO_FORM_URL + sep + 'community=' + encodeURIComponent(communityName || '');
   }
   const base = GOOGLE_FORM_BASE.includes('YOUR_FORM_ID')
     ? '#field-update-not-configured'
