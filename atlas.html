@@ -577,23 +577,16 @@ body.client-view .admin-only{display:none !important;}
 <!-- ── KPI BAR ── -->
 <div class="kpi-bar">
   <div class="kpi-card">
-    <div class="kpi-lbl">Active Communities</div>
-    <div class="kpi-val" id="kpi-communities">29</div>
-    <div class="kpi-sub" id="kpi-communities-sub">JAX 17 · Ocala 12 · MIA office</div>
-    <div class="kpi-chg up">&#9650; Ocala region added</div>
-    <div class="kpi-icon">&#127864;</div>
-  </div>
-  <div class="kpi-card">
     <div class="kpi-lbl">Active Projects</div>
-    <div class="kpi-val" id="kpi-active-projects">0</div>
-    <div class="kpi-sub" id="kpi-active-projects-sub">Production · Installation · Delivered</div>
+    <div class="kpi-val" id="kpi-communities">0</div>
+    <div class="kpi-sub" id="kpi-communities-sub">JAX · Ocala · SoFla</div>
     <div class="kpi-chg up">&#9650; Crew: Pete + Andrew</div>
     <div class="kpi-icon">&#128295;</div>
   </div>
   <div class="kpi-card">
     <div class="kpi-lbl">Total Communities</div>
     <div class="kpi-val" id="kpi-total-fl">0</div>
-    <div class="kpi-sub" id="kpi-total-fl-sub">All Lennar FL communities on map</div>
+    <div class="kpi-sub" id="kpi-total-fl-sub">All Lennar communities in Florida</div>
     <div class="kpi-chg up">&#9650; Brand 9 + reference</div>
     <div class="kpi-icon">&#127965;</div>
   </div>
@@ -1832,22 +1825,29 @@ function updateKPIs() {
   const ocalaCount = cs.filter(c => c.region === 'ocala').length;
   const soflaCount = cs.filter(c => c.region === 'sofla').length;
 
+  // "Active Projects" card now shows total Sheet communities (every Brand 9 engagement)
   document.getElementById('kpi-communities').textContent = totalCards;
   document.getElementById('kpi-communities-sub').textContent = `JAX ${jaxCount} · Ocala ${ocalaCount} · SoFla ${soflaCount}`;
-  document.getElementById('kpi-active').textContent      = active;
+  const kpiActive = document.getElementById('kpi-active');
+  if (kpiActive) kpiActive.textContent = active;
   document.getElementById('kpi-progress').textContent    = `${liveDrones}/${droneFleetSize}`;
 
-  // Active Projects = Sheet communities currently in active workflow status
-  const activeProjects = cs.filter(c => ['Production','Installation','Delivered'].includes(c.status)).length;
-  const apEl = document.getElementById('kpi-active-projects');
-  if (apEl) apEl.textContent = activeProjects;
-
-  // Total Communities = Lennar FL background dots (non-Sheet) + all Sheet communities
-  // = exactly what's drawn on the map (orange + navy)
+  // Total Communities = all Lennar FL communities + Sheet communities not in the Lennar list
+  // Robust to ordering: walk LENNAR_FL_COMMUNITIES if defined, else fall back to Sheet count
   const totalEl = document.getElementById('kpi-total-fl');
-  if (totalEl && typeof LENNAR_FL_COMMUNITIES !== 'undefined' && typeof _isInSheet === 'function') {
-    const lennarBg = LENNAR_FL_COMMUNITIES.filter(L => !_isInSheet(L.name)).length;
-    const total = lennarBg + cs.length;
+  if (totalEl) {
+    let total = cs.length;  // safe fallback
+    let lennarBg = 0;
+    if (typeof LENNAR_FL_COMMUNITIES !== 'undefined') {
+      // Inline isInSheet so we don't depend on the helper being defined yet
+      const norm = s => String(s||'').toLowerCase().replace(/[^a-z0-9]/g, '');
+      const sheetNames = cs.map(c => norm(c.name));
+      lennarBg = LENNAR_FL_COMMUNITIES.filter(L => {
+        const n = norm(L.name);
+        return !sheetNames.some(s => s === n || n.includes(s) || s.includes(n));
+      }).length;
+      total = lennarBg + cs.length;
+    }
     totalEl.textContent = total;
     const sub = document.getElementById('kpi-total-fl-sub');
     if (sub) sub.textContent = `${cs.length} Brand 9 · ${lennarBg} Lennar reference`;
