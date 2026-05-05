@@ -1487,7 +1487,18 @@ async function fetchLiveData(){
     if(!r.ok) throw new Error('fetch ' + r.status);
     const j = await r.json();
     if(j && Array.isArray(j.agents)){
-      const count = j.agents.length;
+      // Prefer the live React INITIAL_AGENTS count from the parent window (the source of truth
+      // for the visible roster). Fall back to the scanner's agent_skills.json count if the parent
+      // is inaccessible (different origin, standalone iframe, etc.). The scanner only sees agents
+      // that have SKILL.md files on disk, so it lags by N agents whenever new ones are added to
+      // INITIAL_AGENTS without yet having a SKILL.md authored.
+      let count = j.agents.length;
+      try {
+        const parentRoster = window.parent && window.parent.INITIAL_AGENTS;
+        if (Array.isArray(parentRoster) && parentRoster.length > count) {
+          count = parentRoster.length;
+        }
+      } catch(crossOriginErr) { /* parent inaccessible — keep scanner count */ }
       document.getElementById('kpi-agents').textContent = count;
       const inline = document.getElementById('kpi-agents-inline');
       if (inline) inline.textContent = count;
