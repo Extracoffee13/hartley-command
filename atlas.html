@@ -783,16 +783,6 @@ body.client-view .admin-only{display:none !important;}
     </div>
   </div>
 
-  <!-- ── CATEGORY PROGRESS CHART ── -->
-  <div class="panel" style="margin-bottom:28px;">
-    <div class="p-hdr">
-      <div class="p-title"><span class="p-title-icon">&#128202;</span> Sign Installation Progress by Category</div>
-      <span class="sec-badge" id="chartCommunityCount">All Active Communities</span>
-    </div>
-    <div class="chart-wrap">
-      <div class="chart-container"><canvas id="signChart"></canvas></div>
-    </div>
-  </div>
 
 </main>
 
@@ -1802,23 +1792,61 @@ function setRegionFromDropdown(r) {
   applyFilters();
 }
 
-// ─── WORK ORDERS ───
+// ─── WORK ORDERS ── pulled live from the Sheet ───
+// Builds work orders from every Sheet community with an active workflow status
+// AND a non-empty Request. Sorted by Install Date (TBD-last), then status priority.
 function renderWorkOrders() {
-  const colors = {high:'#ef4444', med:'#f59e0b', low:'#10b981'};
-  const rows = WORK_ORDERS.map(wo => `
-    <tr>
-      <td><div class="wo-num">${wo.id}</div></td>
+  const ACTIVE_STATUSES = ['Production','Installation','Delivered'];
+  const STATUS_BADGE = {
+    'Installation Complete': {cls:'sb-complete',    label:'Complete'},
+    'Installation':          {cls:'sb-in-progress', label:'Installing'},
+    'Delivered':             {cls:'sb-in-progress', label:'Delivered'},
+    'Production':            {cls:'sb-pending',     label:'In Production'},
+    'Artwork':               {cls:'sb-pending',     label:'Artwork'}
+  };
+  // Priority by status: Installation (red) > Delivered (yellow) > Production (yellow) > Artwork (green)
+  const priorityFor = c => ['Installation','Delivered'].includes(c.status) ? 'high'
+                          : c.status === 'Production' ? 'med' : 'low';
+  const priorityColors = {high:'#ef4444', med:'#f59e0b', low:'#10b981'};
+  // Filter: in-progress workflow + has a Request, OR any status with non-empty Request
+  let orders = COMMUNITIES.filter(c => {
+    const hasRequest = c.notes && c.notes.trim();
+    return hasRequest && (ACTIVE_STATUSES.includes(c.status) || c.status === 'Artwork');
+  });
+  // Sort: Installation first, then Delivered, Production, Artwork; within each, soonest Install Date first
+  const statusRank = { 'Installation':0, 'Delivered':1, 'Production':2, 'Artwork':3 };
+  orders.sort((a, b) => {
+    const sa = statusRank[a.status] ?? 9, sb = statusRank[b.status] ?? 9;
+    if (sa !== sb) return sa - sb;
+    // Compare Install Date — TBD/empty pushed to end
+    const dateA = a.nextInstall, dateB = b.nextInstall;
+    const aTBD = !dateA || dateA === 'TBD';
+    const bTBD = !dateB || dateB === 'TBD';
+    if (aTBD && !bTBD) return 1;
+    if (!aTBD && bTBD) return -1;
+    return String(dateA).localeCompare(String(dateB));
+  });
+  const badge = document.querySelector('.panel .p-hdr .sec-badge');
+  if (badge && badge.textContent.match(/Scheduled/)) badge.textContent = orders.length + ' Active';
+  const rows = orders.map((c, i) => {
+    const sb = STATUS_BADGE[c.status] || {cls:'sb-pending', label:c.status||'Pending'};
+    const woId = 'WO-' + String(i+1).padStart(3,'0');
+    return `
+    <tr style="cursor:pointer;" onclick="openModal(${c.id})">
+      <td><div class="wo-num">${woId}</div></td>
       <td>
-        <span class="wo-priority" style="background:${colors[wo.priority]}"></span>
-        <span class="wo-comm">${wo.community}</span>
+        <span class="wo-priority" style="background:${priorityColors[priorityFor(c)]}"></span>
+        <span class="wo-comm">${c.name}</span>
       </td>
-      <td class="wo-type">${wo.category}</td>
-      <td style="font-weight:700">${wo.qty}</td>
-      <td class="wo-date">${wo.date}</td>
-      <td class="wo-crew">${wo.crew}</td>
-      <td><span class="s-badge sb-in-progress" style="font-size:9px">Scheduled</span></td>
-    </tr>`).join('');
-  document.getElementById('workOrdersBody').innerHTML = rows;
+      <td class="wo-type">${c.notes || '—'}</td>
+      <td style="font-weight:700;color:var(--gray-400);">—</td>
+      <td class="wo-date">${c.nextInstall || 'TBD'}</td>
+      <td class="wo-crew">${c.crew || 'Pete + Andrew'}</td>
+      <td><span class="s-badge ${sb.cls}" style="font-size:9px">${sb.label}</span></td>
+    </tr>`;
+  }).join('');
+  const body = document.getElementById('workOrdersBody');
+  if (body) body.innerHTML = rows || '<tr><td colspan="7" style="padding:20px;text-align:center;color:var(--gray-400);font-style:italic;">No active work orders — all current Sheet entries are Pre-Launch or empty.</td></tr>';
 }
 
 // ─── ACTIVITY LOG ───
@@ -2090,7 +2118,6 @@ filteredCommunities = [...COMMUNITIES];
 renderGrid();
 renderWorkOrders();
 renderActivity();
-renderChart();
 
 // Auto-refresh: re-fetch the Sheet every 60s while the page is open.
 // Skipped while the tab is hidden to avoid wasting fetches; resumes on visibility.
