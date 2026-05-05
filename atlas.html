@@ -811,6 +811,52 @@ body.client-view .admin-only{display:none !important;}
 
 // ATLAS Lennar Sign Operations — Dashboard tab CSV (Sheet shared "Anyone with link → View")
 const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1vhkDxy0M4xUBKX5z9QBWPpBh5A0szkEx5571_wP6ac4/export?format=csv&gid=0';
+// Form Responses tab — populated by the Field Photo Upload form. gid TBD after form is created;
+// once the responses tab exists, set this URL to its export?format=csv&gid=<gid>.
+let PHOTOS_CSV_URL = null;
+// Public form URL for "Add Photos" buttons on dashboard cards. Set after form creation.
+let FIELD_PHOTO_FORM_URL = null;
+// Per-community photo cache populated by syncPhotos()
+const COMMUNITY_PHOTOS = {};  // { "Cove at SW": [{url, thumb, caption, crew, ts}, ...] }
+function _driveIdFromUrl(u) {
+  const m = String(u||'').match(/[-\w]{25,}/);
+  return m ? m[0] : null;
+}
+async function syncPhotos() {
+  if (!PHOTOS_CSV_URL) return;
+  try {
+    const r = await fetch(PHOTOS_CSV_URL + '&_t=' + Date.now(), {cache:'no-store'});
+    if (!r.ok) return;
+    const csv = await r.text();
+    const rows = parseCSV(csv);  // existing helper
+    if (!rows.length) return;
+    const headers = rows[0].map(h => String(h||'').trim());
+    const idxTs = headers.findIndex(h => /timestamp/i.test(h));
+    const idxComm = headers.findIndex(h => /community/i.test(h));
+    const idxCrew = headers.findIndex(h => /crew/i.test(h));
+    const idxPhotos = headers.findIndex(h => /photo/i.test(h));
+    const idxCaption = headers.findIndex(h => /caption|notes/i.test(h));
+    Object.keys(COMMUNITY_PHOTOS).forEach(k => delete COMMUNITY_PHOTOS[k]);
+    rows.slice(1).forEach(row => {
+      const community = String(row[idxComm]||'').trim();
+      if (!community) return;
+      const photoCell = String(row[idxPhotos]||'').trim();
+      const ids = photoCell.split(/[\s,]+/).map(_driveIdFromUrl).filter(Boolean);
+      if (!ids.length) return;
+      if (!COMMUNITY_PHOTOS[community]) COMMUNITY_PHOTOS[community] = [];
+      ids.forEach(id => {
+        COMMUNITY_PHOTOS[community].push({
+          id,
+          thumb: `https://drive.google.com/thumbnail?id=${id}&sz=w400`,
+          full:  `https://drive.google.com/uc?id=${id}`,
+          caption: idxCaption>=0 ? row[idxCaption] : '',
+          crew:    idxCrew>=0 ? row[idxCrew] : '',
+          ts:      idxTs>=0 ? row[idxTs] : ''
+        });
+      });
+    });
+  } catch(e) { /* fail silently — photos are non-critical */ }
+}
 
 // Replace with your Google Form URL and community field entry ID
 const GOOGLE_FORM_BASE = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform';
@@ -1162,6 +1208,10 @@ async function syncFromSheet() {
 // FIELD UPDATE BUTTON — opens Google Form pre-filled
 // ═══════════════════════════════════════════════════════
 function fieldUpdateUrl(communityName) {
+  // Prefer the Field Photo Upload form when configured.
+  if (typeof FIELD_PHOTO_FORM_URL === 'string' && FIELD_PHOTO_FORM_URL) {
+    return FIELD_PHOTO_FORM_URL;  // entry pre-fill optional; crew picks community in dropdown
+  }
   const base = GOOGLE_FORM_BASE.includes('YOUR_FORM_ID')
     ? '#field-update-not-configured'
     : GOOGLE_FORM_BASE + '?usp=pp_url&' + FORM_COMMUNITY_ENTRY + '=' + encodeURIComponent(communityName);
@@ -1172,7 +1222,7 @@ function openFieldUpdate(communityName, e) {
   e.stopPropagation();
   const url = fieldUpdateUrl(communityName);
   if (url.startsWith('#')) {
-    alert('Field Update form not yet configured.\n\nTo enable:\n1. Create a Google Form with fields: Community, Sign Category, Sign Name, Status, Installer, Date, Notes\n2. Publish the response sheet\n3. Update GOOGLE_FORM_BASE and FORM_COMMUNITY_ENTRY in the dashboard code.');
+    alert('Field Photo Upload form not yet configured. Create the form via the Atlas Web App first.');
     return;
   }
   window.open(url, '_blank');
@@ -1252,7 +1302,9 @@ function renderCard(c, delay) {
       : `<span class="s-badge ${badgeCls[c.status]}">${statusLabel[c.status]}</span>`;
 
   // Region label pill
-  const regionLabel = {jax:'JAX/St.Aug', ocala:'Ocala', sofla:'South FL'}[c.region] || '';
+  // Region pill derives from c.region — known regions get pretty labels, unknown ones uppercase the slug.
+  const regionLabel = {jax:'JAX/St.Aug', ocala:'Ocala', gainesville:'Gainesville', sofla:'South FL'}[c.region]
+    || (c.region ? String(c.region).replace(/-/g,' ').replace(/\b\w/g, ch => ch.toUpperCase()) : '');
   const regionPill = regionLabel
     ? `<span style="font-size:9px;font-weight:800;padding:2px 7px;border-radius:8px;background:var(--blue-l);color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-right:4px;">${regionLabel}</span>`
     : '';
@@ -1279,6 +1331,14 @@ function renderCard(c, delay) {
     ${statusBadgeOverride}
   </div>
   ${c.soldOut || c.office ? '' : permit811Row}
+  ${(() => {
+    const photos = COMMUNITY_PHOTOS[c.name] || [];
+    if (!photos.length) return '';
+    const recent = photos.slice(-3);
+    return `<div style="display:flex;gap:4px;margin:8px 0;">${recent.map(p =>
+      `<a href="${p.full}" target="_blank" rel="noopener" style="flex:1;display:block;height:60px;background:url('${p.thumb}') center/cover;border-radius:6px;border:1px solid var(--gray-200);"></a>`
+    ).join('')}${photos.length > 3 ? `<div style="display:flex;align-items:center;justify-content:center;width:34px;height:60px;background:var(--gray-50);border-radius:6px;font-size:10px;font-weight:700;color:var(--gray-600);">+${photos.length-3}</div>` : ''}</div>`;
+  })()}
   <div class="c-prog">
     <div class="prog-lbl" style="display:block;">
       <div style="font-size:9px;font-weight:800;color:var(--gray-400);letter-spacing:.5px;text-transform:uppercase;margin-bottom:2px;">Latest Request</div>
@@ -2352,6 +2412,14 @@ filteredCommunities = [...COMMUNITIES];
 renderGrid();
 renderWorkOrders();
 renderActivity();
+// Photo sync: pulls field-uploaded photos from the Form Responses tab and renders thumbnails
+// on each card. Re-runs every 60s when tab is visible.
+syncPhotos().then(() => renderGrid());
+setInterval(() => {
+  if (document.visibilityState === 'visible' && PHOTOS_CSV_URL) {
+    syncPhotos().then(() => renderGrid());
+  }
+}, 60000);
 
 // Auto-refresh: re-fetch the Sheet every 60s while the page is open.
 // Skipped while the tab is hidden to avoid wasting fetches; resumes on visibility.
