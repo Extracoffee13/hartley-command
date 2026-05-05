@@ -1047,11 +1047,12 @@ async function syncFromSheet() {
     const idx = {};
     header.forEach((h, i) => { idx[h] = i; });
 
-    // Required columns. Bail loudly if the schema drifted.
-    const required = ['ID','Region','Community Name','City','Status','Phase','Crew','Drone Status',
-      'WHC Signage','Wayfinding','WHC Interior','Aluminum Awning','Offsite Wayfinding',
-      'Total Signs','Installed','Last Install','Next Install',
-      'Local Contact','Main POC','811 Permit','Office','Sold Out','Notes'];
+    // Required columns — updated 2026-05-05 for new schema after column renames/drops.
+    // Old → New mapping: Community Name→Community, Drone Status→Drone, Aluminum Awning→AL Awning,
+    // Offsite Wayfinding→Offsite, Notes→Request. Dropped: ID, City, Total Signs, Installed, Office, Sold Out.
+    const required = ['Region','Community','Status','Phase','Crew','Drone',
+      'WHC Signage','Wayfinding','WHC Interior','AL Awning','Offsite',
+      'Last Install','Next Install','Local Contact','Main POC','811 Permit'];
     const missing = required.filter(k => idx[k] === undefined);
     if (missing.length) throw new Error('Sheet missing columns: ' + missing.join(', '));
 
@@ -1060,7 +1061,6 @@ async function syncFromSheet() {
     const num = v => { const n = parseInt(String(v||'').trim(), 10); return isNaN(n) ? 0 : n; };
     const pickStatus = v => {
       const s = String(v||'').trim();
-      // Pipeline statuses pass through as-is; legacy values map to closest equivalent.
       if (['Artwork','Production','Delivered','Installation','Installation Complete'].includes(s)) return s;
       if (s.toLowerCase() === 'complete') return 'Installation Complete';
       if (s.toLowerCase() === 'in progress' || s.toLowerCase() === 'in-progress') return 'Production';
@@ -1068,26 +1068,31 @@ async function syncFromSheet() {
       if (s.toLowerCase() === 'sold out') return 'Installation Complete';
       return s || 'Artwork';
     };
+    // Detect closeout/sold-out from Status text since Sold Out column was dropped
+    const isClosedFromStatus = (s, request) => {
+      const v = (String(s||'') + ' ' + String(request||'')).toLowerCase();
+      return /sold out|closeout/.test(v);
+    };
 
-    const fresh = rows.slice(1).map(r => ({
-      id:            num(r[idx['ID']]),
+    const fresh = rows.slice(1).map((r, i) => ({
+      id:            i + 1,  // synthetic since ID col was dropped
       region:        String(r[idx['Region']]||'').trim().toLowerCase() || 'jax',
-      name:          String(r[idx['Community Name']]||'').trim(),
-      city:          String(r[idx['City']]||'').trim(),
+      name:          String(r[idx['Community']]||'').trim(),
+      city:          '',  // City col dropped — leave empty
       status:        pickStatus(r[idx['Status']]),
       phase:         String(r[idx['Phase']]||'').trim() || 'Pre-Launch',
       crew:          String(r[idx['Crew']]||'').trim() || 'Pete + Andrew',
-      droneStatus:   String(r[idx['Drone Status']]||'').trim().toLowerCase() || 'idle',
-      totalSigns:    num(r[idx['Total Signs']]) || 22,
-      installedSigns:num(r[idx['Installed']]) || 0,
+      droneStatus:   String(r[idx['Drone']]||'').trim().toLowerCase() || 'idle',
+      totalSigns:    22,  // Total Signs col dropped — default 22
+      installedSigns:0,   // Installed col dropped — default 0 (or compute from status)
       lastInstall:   String(r[idx['Last Install']]||'').trim() || 'TBD',
       nextInstall:   String(r[idx['Next Install']]||'').trim() || 'TBD',
       localContact:  String(r[idx['Local Contact']]||'').trim() || 'Gina Lee',
       contact:       String(r[idx['Main POC']]||'').trim() || 'Gina Lee',
       permit811:     String(r[idx['811 Permit']]||'').trim().toLowerCase().replace('n/a','na') || 'na',
-      office:        truthy(r[idx['Office']]),
-      soldOut:       truthy(r[idx['Sold Out']]),
-      notes:         String(r[idx['Notes']]||'').trim()
+      office:        false,  // Office col dropped
+      soldOut:       isClosedFromStatus(r[idx['Status']], r[idx['Request']]),
+      notes:         String(r[idx['Request']]||'').trim()  // Notes renamed to Request
     })).filter(c => c.name);
 
     if (fresh.length) {
