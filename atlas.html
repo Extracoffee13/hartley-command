@@ -1826,8 +1826,11 @@ function renderWorkOrders() {
     if (!aTBD && bTBD) return -1;
     return String(dateA).localeCompare(String(dateB));
   });
-  const badge = document.querySelector('.panel .p-hdr .sec-badge');
-  if (badge && badge.textContent.match(/Scheduled/)) badge.textContent = orders.length + ' Active';
+  // Update the Work Orders panel badge specifically (find by walking from the WO body up to its panel)
+  const woBodyEl = document.getElementById('workOrdersBody');
+  const woPanel = woBodyEl ? woBodyEl.closest('.panel') : null;
+  const badge = woPanel ? woPanel.querySelector('.p-hdr .sec-badge') : null;
+  if (badge) badge.textContent = orders.length + ' Active';
   const rows = orders.map((c, i) => {
     const sb = STATUS_BADGE[c.status] || {cls:'sb-pending', label:c.status||'Pending'};
     const woId = 'WO-' + String(i+1).padStart(3,'0');
