@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>ATLAS — Brand 9 Signs | Lennar Homes</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
@@ -660,6 +662,21 @@ body.client-view .admin-only{display:none !important;}
     </div>
   </div>
 
+  <!-- ── REGION MAP ── -->
+  <div class="panel" style="margin-bottom:18px;overflow:hidden;">
+    <div class="p-hdr" style="padding:10px 14px;">
+      <div class="p-title" style="font-size:13px;"><span class="p-title-icon">&#128205;</span> Region Map
+        <span id="mapRegionLabel" style="font-size:10px;font-weight:700;color:var(--gray-600);margin-left:6px;">All Regions</span>
+      </div>
+      <div style="display:flex;gap:10px;font-size:10px;font-weight:700;">
+        <span style="display:flex;align-items:center;gap:4px;color:var(--orange);"><span style="width:10px;height:10px;border-radius:50%;background:var(--orange);display:inline-block;"></span>Active workflow</span>
+        <span style="display:flex;align-items:center;gap:4px;color:#059669;"><span style="width:10px;height:10px;border-radius:50%;background:#10b981;display:inline-block;"></span>Complete</span>
+        <span style="display:flex;align-items:center;gap:4px;color:var(--gray-600);"><span style="width:10px;height:10px;border-radius:50%;background:#94a3b8;display:inline-block;"></span>Pending</span>
+      </div>
+    </div>
+    <div id="regionMap" style="height:340px;width:100%;"></div>
+  </div>
+
   <div class="comm-grid" id="communityGrid"></div>
   <div id="emptyState" class="empty" style="display:none;">
     <div class="empty-icon">&#128269;</div>
@@ -1104,7 +1121,7 @@ async function syncFromSheet() {
         return 0;                                     // Artwork / Pre-Launch
       })(),
       lastInstall:   'TBD',  // col dropped
-      nextInstall:   'TBD',  // col dropped
+      nextInstall:   (idx['Install Date'] !== undefined ? String(r[idx['Install Date']]||'').trim() : '') || 'TBD',
       localContact:  String(r[idx['Local Contact']]||'').trim() || 'Gina Lee',
       contact:       String(r[idx['Main POC']]||'').trim() || 'Gina Lee',
       permit811:     String(r[idx['811 Permit']]||'').trim().toLowerCase().replace('n/a','na') || 'na',
@@ -1278,7 +1295,7 @@ function renderCard(c, delay) {
       <div class="m-val">${droneBlock}</div>
     </div>
     <div class="m-item">
-      <div class="m-lbl">Next Scheduled</div>
+      <div class="m-lbl">Install Date</div>
       <div class="m-val">${nextDisplay}</div>
     </div>
     <div class="m-item" style="text-align:right;">
@@ -1316,6 +1333,116 @@ function renderGrid() {
   }
   document.getElementById('gridCount').textContent = filteredCommunities.length;
   updateKPIs();
+  renderRegionMap();
+}
+
+// ═══════════════════════════════════════════════════════
+// REGION MAP — Leaflet
+// ═══════════════════════════════════════════════════════
+// City → coords lookup. Add new cities here as the field expands.
+const CITY_COORDS = {
+  // JAX region
+  'jacksonville':       [30.3322, -81.6557],
+  'st. augustine':      [29.9012, -81.3124],
+  'st. johns':          [30.0938, -81.5373],
+  'green cove spgs':    [29.9919, -81.6781],
+  'green cove springs': [29.9919, -81.6781],
+  'orange park':        [30.1661, -81.7065],
+  'tallahassee':        [30.4383, -84.2807],
+  'northeast fl':       [30.3322, -81.6557],
+  // Ocala region
+  'ocala':              [29.1872, -82.1401],
+  'dunnellon':          [29.0530, -82.4734],
+  'alachua':            [29.7958, -82.4845],
+  // South FL
+  'miami':              [25.7617, -80.1918],
+  'south fl':           [25.7617, -80.1918],
+  'south fl division hq': [25.7617, -80.1918]
+};
+const REGION_CENTROIDS = {
+  jax:   { center: [30.0938, -81.5373], zoom: 9 },
+  ocala: { center: [29.4, -82.2],         zoom: 9 },
+  sofla: { center: [25.7617, -80.1918],   zoom: 10 },
+  all:   { center: [29.0, -81.7],         zoom: 7 }
+};
+function _coordsForCommunity(c) {
+  // 1. city lookup
+  const city = String(c.city || '').toLowerCase().trim();
+  if (CITY_COORDS[city]) return CITY_COORDS[city];
+  // 2. notes/request might mention a city
+  const notes = String(c.notes || '').toLowerCase();
+  for (const k in CITY_COORDS) {
+    if (notes.includes(k)) return CITY_COORDS[k];
+  }
+  // 3. region centroid fallback (with small jitter so markers don't fully overlap)
+  const r = REGION_CENTROIDS[c.region] || REGION_CENTROIDS.all;
+  const seed = (c.name || '').split('').reduce((a, ch) => a + ch.charCodeAt(0), 0);
+  const jitterLat = ((seed * 13) % 200 - 100) / 1500;  // ±0.067°
+  const jitterLng = ((seed * 17) % 200 - 100) / 1500;
+  return [r.center[0] + jitterLat, r.center[1] + jitterLng];
+}
+function _markerColorFor(c) {
+  // Active workflow: Production / Installation / Delivered
+  if (['Production','Installation','Delivered'].includes(c.status)) return '#f97316';  // orange
+  if (c.status === 'Installation Complete' || c.soldOut) return '#10b981';              // green
+  return '#94a3b8';                                                                      // gray (Artwork/Pre-Launch)
+}
+let _regionMap = null;
+let _regionMapLayer = null;
+function renderRegionMap() {
+  const el = document.getElementById('regionMap');
+  if (!el || typeof L === 'undefined') return;
+  // Init map once, reuse
+  if (!_regionMap) {
+    const view = REGION_CENTROIDS[currentRegion] || REGION_CENTROIDS.all;
+    _regionMap = L.map(el, {
+      center: view.center, zoom: view.zoom, scrollWheelZoom: false, attributionControl: false
+    });
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+      maxZoom: 18, subdomains: 'abcd'
+    }).addTo(_regionMap);
+    L.control.attribution({position:'bottomright',prefix:false}).addAttribution('&copy; OpenStreetMap, &copy; CARTO').addTo(_regionMap);
+  } else {
+    // recenter on region change
+    const view = REGION_CENTROIDS[currentRegion] || REGION_CENTROIDS.all;
+    _regionMap.setView(view.center, view.zoom);
+  }
+  // Update region label
+  const lbl = document.getElementById('mapRegionLabel');
+  if (lbl) {
+    lbl.textContent = currentRegion === 'all' ? 'All Regions' :
+      currentRegion === 'jax' ? 'Jacksonville / St. Augustine' :
+      currentRegion === 'ocala' ? 'Ocala' :
+      currentRegion === 'sofla' ? 'South Florida' : 'All Regions';
+  }
+  // Clear and repaint markers
+  if (_regionMapLayer) _regionMapLayer.clearLayers();
+  _regionMapLayer = L.layerGroup().addTo(_regionMap);
+  // Use ALL communities in current region (not filtered) so the map shows the full footprint
+  const inRegion = COMMUNITIES.filter(c => currentRegion === 'all' || c.region === currentRegion);
+  inRegion.forEach(c => {
+    const [lat, lng] = _coordsForCommunity(c);
+    const color = _markerColorFor(c);
+    const isActive = ['Production','Installation','Delivered'].includes(c.status);
+    const radius = isActive ? 9 : 6;
+    const m = L.circleMarker([lat, lng], {
+      radius, color: '#fff', weight: 2, fillColor: color, fillOpacity: 0.95
+    });
+    const statusLabel = c.status || '—';
+    const phaseLabel = c.phase || '—';
+    m.bindPopup(
+      `<div style="font:13px/1.4 system-ui,-apple-system,sans-serif;">
+        <div style="font-weight:800;color:#0d2b4e;margin-bottom:4px;">${c.name}</div>
+        <div style="color:#64748b;font-size:11px;margin-bottom:6px;">${c.city || c.region.toUpperCase()}</div>
+        <div style="font-size:11px;"><strong>Status:</strong> ${statusLabel}</div>
+        <div style="font-size:11px;"><strong>Phase:</strong> ${phaseLabel}</div>
+        <div style="font-size:11px;"><strong>Crew:</strong> ${c.crew || '—'}</div>
+       </div>`
+    );
+    m.addTo(_regionMapLayer);
+  });
+  // Defer invalidateSize for tab transitions
+  setTimeout(() => { if (_regionMap) _regionMap.invalidateSize(); }, 50);
 }
 
 // ─── UPDATE KPIs ───
@@ -1633,7 +1760,7 @@ function openModal(id) {
         <div class="m-info-val">${c.lastInstall || 'Not yet scheduled'}</div>
       </div>
       <div class="m-info-card">
-        <div class="m-info-lbl">Next Scheduled</div>
+        <div class="m-info-lbl">Install Date</div>
         <div class="m-info-val" style="${c.nextInstall==='OVERDUE'?'color:var(--red)':''}">${c.nextInstall || (c.status==='complete'?'All complete':c.status==='new'?'TBD — Pre-Development':'Not yet scheduled')}</div>
       </div>
       <div class="m-info-card">
