@@ -687,7 +687,7 @@ body.client-view .admin-only{display:none !important;}
       </div>
       <div style="display:flex;gap:14px;font-size:10px;font-weight:700;">
         <span style="display:flex;align-items:center;gap:4px;color:var(--orange);"><span style="width:11px;height:11px;border-radius:50%;background:var(--orange);display:inline-block;border:2px solid #fff;box-shadow:0 0 0 1px #cbd5e1;"></span>Brand 9 workflow</span>
-        <span style="display:flex;align-items:center;gap:4px;color:var(--gray-600);"><span style="width:8px;height:8px;border-radius:50%;background:#cbd5e1;display:inline-block;border:1px solid #fff;box-shadow:0 0 0 1px #cbd5e1;"></span>Other Lennar FL community</span>
+        <span style="display:flex;align-items:center;gap:4px;color:var(--navy);"><span style="width:9px;height:9px;border-radius:50%;background:var(--navy);display:inline-block;border:1px solid #fff;box-shadow:0 0 0 1px #cbd5e1;"></span>Other Lennar FL community</span>
       </div>
     </div>
     <div id="regionMap" style="height:340px;width:100%;"></div>
@@ -1361,13 +1361,12 @@ const REGION_LABELS = {
 function renderRegionActiveBar() {
   const bar = document.getElementById('regionActiveBar');
   if (!bar) return;
-  const ACTIVE = ['Production','Installation','Delivered'];
-  // Count per-region active from Sheet data
+  // Count by region: total tracked Sheet communities per region.
+  // Highlight orange whenever the region has any Sheet community, regardless of current status.
   const counts = {};
   COMMUNITIES.forEach(c => {
-    if (ACTIVE.includes(c.status)) counts[c.region] = (counts[c.region] || 0) + 1;
+    counts[c.region] = (counts[c.region] || 0) + 1;
   });
-  // Render in order: jax, ocala, sofla first (current Brand 9 footprint), then others if any
   const order = ['jax','ocala','sofla','naples-ft-myers','orlando','tampa','palm-beach','treasure-coast','space-coast','panama-city','pensacola'];
   bar.innerHTML = order.map(r => {
     const n = counts[r] || 0;
@@ -1589,19 +1588,72 @@ const REGION_CENTROIDS = {
   pensacola:     { center: [30.42, -87.2],      zoom: 10 },
   all:           { center: [28.5, -82.5],       zoom: 7 }
 };
+// Per-community accurate coordinates (pulled from Lennar's community detail pages).
+// Falls back to city centroid when a community isn't here.
+const COMMUNITY_COORDS = {
+  // Brand 9 Sheet — JAX/St. Augustine
+  "Cove at SW":              [30.176565, -81.609143],
+  "Emerald Isles TH":        [30.205939, -81.588896],
+  "Granary Park":            [30.046139, -81.771412],
+  "Holstein Crossing":       [30.048633, -81.768918],
+  "Oak Hill Village TH":     [30.237826, -81.747292],
+  "Silver Meadows":          [30.009266, -81.516592],
+  "Silver Falls SF":         [30.006918, -81.525497],
+  "Silver Falls TH":         [30.009949, -81.524648],
+  "Tributary":               [30.607198, -81.686222],
+  "Russell Retreat":         [30.074385, -81.785793],
+  "Hardwick Farms":          [30.248866, -81.612434],
+  "Saddle Oaks":             [30.397657, -81.818878],
+  "Edenbrooke at Hyland Trail": [30.01929, -81.785568],
+  "Edenbrooke at Hyland Trail | 55+": [30.01929, -81.785568],
+  // Brand 9 Sheet — Ocala
+  "Marion Oaks":             [29.031787, -82.261772],
+  "Marion Ranch":            [29.10284,  -82.199851],
+  "Millwood":                [29.225267, -82.08709],
+  "Pioneer Ranch":           [29.090749, -82.234074],
+  "Heath Preserve":          [29.204462, -82.196198],
+  // Other Lennar FL — Tampa / Manatee
+  "Beacon Lake":             [28.078516, -81.836975],
+  "Connerton":               [28.290302, -82.451736],
+  "Angeline":                [28.299213, -82.522552],
+  "Angeline Active Adult":   [28.31002,  -82.533239],
+  "Prosperity Lakes":        [27.626493, -82.407436],
+  "Prosperity Lakes Active Adult": [27.627277, -82.43325],
+  "Sandhill":                [28.333487, -82.17547],
+  "New Port Corners":        [28.251926, -82.671654],
+  "New Port Corners Active Adult": [28.25309, -82.674759],
+  "Curiosity Creek":         [27.62754,  -82.50104],
+  "Stonegate Preserve":      [27.617265, -82.494667],
+  "Mirada Active Adult":     [28.313571, -82.293182],
+  "Balm Grove":              [27.758145, -82.258507],
+  "Two Rivers":              [28.177231, -82.21508],
+  // Other Lennar FL — Orlando
+  "Sanctuary at Wellness Ridge": [28.478739, -81.694265],
+  "Ranches at Lake Mcleod":  [27.952224, -81.7547],
+  "Bridgewalk":              [28.343863, -81.214485],
+  "The Glades at Crossprairie": [28.217786, -81.33632],
+  "Waterlin":                [28.154587, -81.271432],
+  // Other Lennar FL — Space Coast / Melbourne
+  "Meridian at Mayfair":     [28.051717, -80.612206],
+  "Riverwood at Everlands":  [28.038857, -80.733151],
+  "The Timbers at Everlands": [28.024325, -80.733242],
+  "Tillman Lakes":           [27.991524, -80.723927]
+};
 function _coordsForCommunity(c) {
-  // 1. city lookup
+  // 1. exact community-name lookup (most accurate)
+  if (c.name && COMMUNITY_COORDS[c.name]) return COMMUNITY_COORDS[c.name];
+  // 2. city lookup
   const city = String(c.city || '').toLowerCase().trim();
   if (CITY_COORDS[city]) return CITY_COORDS[city];
-  // 2. notes/request might mention a city
+  // 3. notes/request might mention a city
   const notes = String(c.notes || '').toLowerCase();
   for (const k in CITY_COORDS) {
     if (notes.includes(k)) return CITY_COORDS[k];
   }
-  // 3. region centroid fallback (with small jitter so markers don't fully overlap)
+  // 4. region centroid fallback (with small jitter so markers don't fully overlap)
   const r = REGION_CENTROIDS[c.region] || REGION_CENTROIDS.all;
   const seed = (c.name || '').split('').reduce((a, ch) => a + ch.charCodeAt(0), 0);
-  const jitterLat = ((seed * 13) % 200 - 100) / 1500;  // ±0.067°
+  const jitterLat = ((seed * 13) % 200 - 100) / 1500;
   const jitterLng = ((seed * 17) % 200 - 100) / 1500;
   return [r.center[0] + jitterLat, r.center[1] + jitterLng];
 }
@@ -1649,18 +1701,25 @@ function renderRegionMap() {
   });
   lennarFiltered.forEach(L1 => {
     if (_isInSheet(L1.name)) return;  // drawn on top by Sheet layer
-    const cityKey = String(L1.city || '').toLowerCase().trim();
-    let coords = CITY_COORDS[cityKey];
+    let coords = COMMUNITY_COORDS[L1.name];
+    if (!coords) {
+      const cityKey = String(L1.city || '').toLowerCase().trim();
+      coords = CITY_COORDS[cityKey];
+    }
     if (!coords) {
       const r = REGION_CENTROIDS[L1.metro] || REGION_CENTROIDS.all;
       coords = r.center;
     }
-    // Add small jitter so multiple communities in same city don't overlap fully
-    const seed = (L1.name + L1.city).split('').reduce((a, ch) => a + ch.charCodeAt(0), 0);
-    const jitterLat = ((seed * 13) % 200 - 100) / 1500;
-    const jitterLng = ((seed * 17) % 200 - 100) / 1500;
-    const m = L.circleMarker([coords[0] + jitterLat, coords[1] + jitterLng], {
-      radius: 4, color: '#fff', weight: 1, fillColor: '#cbd5e1', fillOpacity: 0.85
+    // Add small jitter only when we don't have an exact community coord
+    const hasExact = !!COMMUNITY_COORDS[L1.name];
+    let lat = coords[0], lng = coords[1];
+    if (!hasExact) {
+      const seed = (L1.name + L1.city).split('').reduce((a, ch) => a + ch.charCodeAt(0), 0);
+      lat += ((seed * 13) % 200 - 100) / 1500;
+      lng += ((seed * 17) % 200 - 100) / 1500;
+    }
+    const m = L.circleMarker([lat, lng], {
+      radius: 5, color: '#fff', weight: 1, fillColor: '#0d2b4e', fillOpacity: 0.85
     });
     m.bindPopup(
       `<div style="font:13px/1.4 system-ui,-apple-system,sans-serif;">
