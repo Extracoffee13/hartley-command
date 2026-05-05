@@ -1313,7 +1313,7 @@ function renderGrid() {
 function updateKPIs() {
   const cs       = COMMUNITIES;
   const activeNonOffice = cs.filter(c => !c.soldOut && !c.office);
-  const active   = activeNonOffice.filter(c => c.status === 'in-progress').length;
+  const active   = activeNonOffice.filter(c => ['Production','Installation','Delivered'].includes(c.status)).length;
   const soldOut  = cs.filter(c => c.soldOut).length;
   const overdue  = cs.filter(c => c.status === 'overdue').length;
   const liveDrones = cs.filter(c => c.droneStatus === 'live').length;
