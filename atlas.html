@@ -556,8 +556,9 @@ body.client-view .admin-only{display:none !important;}
 
 <!-- ── REGION TABS ── -->
 <div class="region-bar">
-  <div class="r-tab active" data-region="jax"   onclick="setRegion('jax',this)">Jacksonville / St. Augustine <span class="r-count" id="cnt-jax">17</span></div>
-  <div class="r-tab active" data-region="ocala" onclick="setRegion('ocala',this)">Ocala <span class="r-count" id="cnt-ocala">12</span></div>
+  <div class="r-tab active" data-region="jax"   onclick="setRegion('jax',this)">Jacksonville / St. Augustine <span class="r-count" id="cnt-jax">10</span></div>
+  <div class="r-tab active" data-region="ocala" onclick="setRegion('ocala',this)">Ocala <span class="r-count" id="cnt-ocala">11</span></div>
+  <div class="r-tab active" data-region="gainesville" onclick="setRegion('gainesville',this)">Gainesville <span class="r-count" id="cnt-gainesville">4</span></div>
   <div class="r-tab active" data-region="sofla" onclick="setRegion('sofla',this)">South Florida <span class="r-count" id="cnt-sofla">1</span></div>
   <div class="r-tab dim" title="Coming Soon">Ft. Lauderdale <span class="r-cs">Soon</span></div>
   <div class="r-tab dim" title="Coming Soon">Naples / Ft. Myers <span class="r-cs">Soon</span></div>
@@ -625,6 +626,7 @@ body.client-view .admin-only{display:none !important;}
       <option value="all">All Regions</option>
       <option value="jax">JAX / St. Augustine</option>
       <option value="ocala">Ocala</option>
+      <option value="gainesville">Gainesville</option>
       <option value="orlando">Orlando</option>
       <option value="tampa">Tampa / Manatee</option>
       <option value="naples-ft-myers">Naples / Ft. Myers</option>
@@ -1339,17 +1341,18 @@ function renderGrid() {
 // Top-of-dashboard strip: count of communities per region currently in active workflow
 // (status = Production / Installation / Delivered). Pulled live from the Sheet.
 const REGION_LABELS = {
-  jax:   'North Florida — JAX/St. Augustine',
-  ocala: 'North Florida — Ocala',
-  sofla: 'South Florida — Miami',
+  jax:         'North Florida — JAX/St. Augustine',
+  ocala:       'North Florida — Ocala',
+  gainesville: 'North Florida — Gainesville',
+  sofla:       'South Florida — Miami',
   'naples-ft-myers': 'Naples / Ft. Myers',
-  orlando: 'Orlando',
-  tampa: 'Tampa / Manatee',
+  orlando:     'Orlando',
+  tampa:       'Tampa / Manatee',
   'palm-beach': 'Palm Beach',
   'treasure-coast': 'Treasure Coast',
   'space-coast': 'Space Coast / Melbourne',
   'panama-city': 'Panama City',
-  pensacola: 'Pensacola'
+  pensacola:   'Pensacola'
 };
 function renderRegionActiveBar() {
   const bar = document.getElementById('regionActiveBar');
@@ -1360,7 +1363,7 @@ function renderRegionActiveBar() {
   COMMUNITIES.forEach(c => {
     counts[c.region] = (counts[c.region] || 0) + 1;
   });
-  const order = ['jax','ocala','sofla','naples-ft-myers','orlando','tampa','palm-beach','treasure-coast','space-coast','panama-city','pensacola'];
+  const order = ['jax','ocala','gainesville','sofla','naples-ft-myers','orlando','tampa','palm-beach','treasure-coast','space-coast','panama-city','pensacola'];
   bar.innerHTML = order.map(r => {
     const n = counts[r] || 0;
     const isActive = n > 0;
@@ -1454,108 +1457,223 @@ const CITY_COORDS = {
 // All Lennar communities currently selling in Florida (background reference layer on map).
 // Communities also tracked in our Sheet are detected by name match and rendered ORANGE.
 const LENNAR_FL_COMMUNITIES = [
-  // Jacksonville / St. Augustine
-  { name: "Granary Park", city: "Green Cove Springs", metro: "jax" },
-  { name: "Holstein Crossing", city: "Green Cove Springs", metro: "jax" },
-  { name: "Russell Retreat", city: "Green Cove Springs", metro: "jax" },
-  { name: "Edenbrooke at Hyland Trail | 55+", city: "Green Cove Springs", metro: "jax" },
-  { name: "Avalon Woods", city: "Jacksonville", metro: "jax" },
-  { name: "Cove at Southwood", city: "Jacksonville", metro: "jax" },
-  { name: "Emerald Isles Townhomes", city: "Jacksonville", metro: "jax" },
-  { name: "Hardwick Farms", city: "Jacksonville", metro: "jax" },
-  { name: "Oak Hill Village Townhomes", city: "Jacksonville", metro: "jax" },
-  { name: "Saddle Oaks", city: "Jacksonville", metro: "jax" },
-  { name: "Shearwater", city: "St Augustine", metro: "jax" },
-  { name: "Silver Falls Single Family at SilverLeaf", city: "St Augustine", metro: "jax" },
-  { name: "Silver Falls Townhomes at Silverleaf", city: "St Augustine", metro: "jax" },
-  { name: "Silver Meadows at SilverLeaf", city: "St Augustine", metro: "jax" },
-  { name: "Tributary", city: "Yulee", metro: "jax" },
-  { name: "Seaton Creek", city: "Jacksonville", metro: "jax" },
-  // Miami / Southeast FL
-  { name: "Coral Gate", city: "Doral", metro: "sofla" },
-  { name: "Evergrene", city: "Doral", metro: "sofla" },
-  { name: "Talavera", city: "Doral", metro: "sofla" },
-  { name: "Venture", city: "Doral", metro: "sofla" },
-  { name: "Emerald Cove", city: "Homestead", metro: "sofla" },
-  { name: "Homestead at Redland", city: "Homestead", metro: "sofla" },
-  { name: "Aria", city: "Miami", metro: "sofla" },
-  { name: "Palmetto Grove", city: "Miami", metro: "sofla" },
-  { name: "Aventura", city: "Miramar", metro: "sofla" },
-  { name: "Beacon Lake", city: "Miramar", metro: "sofla" },
-  { name: "Madison at Broward", city: "Miramar", metro: "sofla" },
-  { name: "Madison at Lakes", city: "Miramar", metro: "sofla" },
-  { name: "Vizcaya", city: "Pembroke Pines", metro: "sofla" },
-  // Naples / Ft. Myers
-  { name: "River Hall", city: "Alva", metro: "naples-ft-myers" },
-  { name: "Island Walk", city: "Bonita Springs", metro: "naples-ft-myers" },
-  { name: "Paloma", city: "Bonita Springs", metro: "naples-ft-myers" },
-  { name: "Spanish Wells", city: "Bonita Springs", metro: "naples-ft-myers" },
-  { name: "Cypress Creek", city: "Estero", metro: "naples-ft-myers" },
-  { name: "Palmira", city: "Fort Myers", metro: "naples-ft-myers" },
-  { name: "Silver Nip", city: "Fort Myers", metro: "naples-ft-myers" },
-  { name: "Sunbridge", city: "Fort Myers", metro: "naples-ft-myers" },
-  { name: "Westbury", city: "Lehigh Acres", metro: "naples-ft-myers" },
-  { name: "Miromar Lakes", city: "Miromar Lakes", metro: "naples-ft-myers" },
-  { name: "Lely Resort", city: "Naples", metro: "naples-ft-myers" },
-  { name: "Raffia Preserve", city: "Naples", metro: "naples-ft-myers" },
-  { name: "Endeavor", city: "North Fort Myers", metro: "naples-ft-myers" },
-  // Orlando
-  { name: "Sanctuary at Wellness Ridge", city: "Clermont", metro: "orlando" },
-  { name: "Ranches at Lake Mcleod", city: "Eagle Lake", metro: "orlando" },
-  { name: "Bridgewalk", city: "Saint Cloud", metro: "orlando" },
-  { name: "The Glades at Crossprairie", city: "Saint Cloud", metro: "orlando" },
-  { name: "Waterlin", city: "Saint Cloud", metro: "orlando" },
-  // Palm Beach / Treasure Coast
-  { name: "Quantum Park", city: "Boynton Beach", metro: "palm-beach" },
-  { name: "Avenir", city: "Delray Beach", metro: "palm-beach" },
-  { name: "Mainyard", city: "Delray Beach", metro: "palm-beach" },
-  { name: "Seasons", city: "Delray Beach", metro: "palm-beach" },
-  { name: "Cortile", city: "West Palm Beach", metro: "palm-beach" },
-  { name: "Forest Grove", city: "Jensen Beach", metro: "treasure-coast" },
-  { name: "Lakewood Ranch", city: "Port Saint Lucie", metro: "treasure-coast" },
-  { name: "River Park", city: "Port Saint Lucie", metro: "treasure-coast" },
-  { name: "Tradition", city: "Port Saint Lucie", metro: "treasure-coast" },
-  { name: "Verano", city: "Stuart", metro: "treasure-coast" },
-  // Tampa / Manatee
-  { name: "Sandhill", city: "Dade City", metro: "tampa" },
-  { name: "Beacon Lake", city: "Lakeland", metro: "tampa" },
-  { name: "Harmony", city: "Lakeland", metro: "tampa" },
-  { name: "Angeline", city: "Land O Lakes", metro: "tampa" },
-  { name: "Angeline Active Adult", city: "Land O Lakes", metro: "tampa" },
-  { name: "Connerton", city: "Land O Lakes", metro: "tampa" },
-  { name: "The Crest", city: "Land O Lakes", metro: "tampa" },
-  { name: "Waterston", city: "Land O Lakes", metro: "tampa" },
-  { name: "Westshore Estates", city: "Land O Lakes", metro: "tampa" },
-  { name: "New Port Corners", city: "New Port Richey", metro: "tampa" },
-  { name: "New Port Corners Active Adult", city: "New Port Richey", metro: "tampa" },
-  { name: "Curiosity Creek", city: "Palmetto", metro: "tampa" },
-  { name: "Stonegate Preserve", city: "Palmetto", metro: "tampa" },
-  { name: "Prosperity Lakes", city: "Parrish", metro: "tampa" },
-  { name: "Prosperity Lakes Active Adult", city: "Parrish", metro: "tampa" },
-  { name: "Mirada Active Adult", city: "San Antonio", metro: "tampa" },
-  { name: "Rosemont", city: "Valrico", metro: "tampa" },
-  { name: "Balm Grove", city: "Wimauma", metro: "tampa" },
-  { name: "Two Rivers", city: "Zephyrhills", metro: "tampa" },
-  // Space Coast / Melbourne
-  { name: "Meridian at Mayfair", city: "Melbourne", metro: "space-coast" },
-  { name: "Riverwood at Everlands", city: "Palm Bay", metro: "space-coast" },
-  { name: "The Timbers at Everlands", city: "Palm Bay", metro: "space-coast" },
-  { name: "Tillman Lakes", city: "Palm Bay", metro: "space-coast" },
-  // Panama City / Panhandle
-  { name: "Coral Reef", city: "Panama City", metro: "panama-city" },
-  { name: "Hidden Pines", city: "Panama City", metro: "panama-city" },
-  { name: "Bay Colony", city: "Panama City Beach", metro: "panama-city" },
-  { name: "Pier Park", city: "Panama City Beach", metro: "panama-city" },
-  // Pensacola
-  { name: "Bay Forest", city: "Gulf Breeze", metro: "pensacola" },
-  { name: "Oak Forest", city: "Gulf Breeze", metro: "pensacola" },
-  { name: "Belleview", city: "Pensacola", metro: "pensacola" },
-  { name: "Blackstone", city: "Pensacola", metro: "pensacola" },
-  { name: "Heritage", city: "Pensacola", metro: "pensacola" },
-  { name: "Heritage Oak", city: "Pensacola", metro: "pensacola" },
-  { name: "Northtowne", city: "Pensacola", metro: "pensacola" },
-  { name: "Sanctuary", city: "Pensacola", metro: "pensacola" },
-  { name: "Timber Creek", city: "Pensacola", metro: "pensacola" }
+  // ─── JAX ───
+  {name: "Avalon Woods", city: "Jacksonville", metro: "jax", coords: [30.462122, -81.625918], address: {street: "578 Avalon Woods Lane", line2: "Jacksonville, FL"}},
+  {name: "Cove at Southwood", city: "Jacksonville", metro: "jax", coords: [30.176565, -81.609143], address: {street: "4011 Lingo Lane", line2: "Jacksonville, FL"}},
+  {name: "Diamond Springs", city: "Jacksonville", metro: "jax", coords: [30.3742, -81.611033], address: null},
+  {name: "Edenbrooke at Hyland Trail | 55+", city: "Green Cove Springs", metro: "jax", coords: [30.01929, -81.785568], address: {street: "3017 NEW MOON CIRCLE", line2: "Green Cove Springs, FL"}},
+  {name: "Emerald Isles Townhomes", city: "Jacksonville", metro: "jax", coords: [30.205939, -81.588896], address: {street: "9712 Topaz Lane", line2: "Jacksonville, FL"}},
+  {name: "Granary Park", city: "Green Cove Springs", metro: "jax", coords: [30.046139, -81.771412], address: {street: "2669 Field Daisy Ln", line2: "Green Cove Springs, FL"}},
+  {name: "Hardwick Farms", city: "Jacksonville", metro: "jax", coords: [30.248866, -81.614747], address: {street: "6960 GOLDEN MONARCH AVE", line2: "Jacksonville, FL"}},
+  {name: "Holstein Crossing", city: "Green Cove Springs", metro: "jax", coords: [30.048633, -81.768918], address: {street: "3024 Grand Finale Street", line2: "Green Cove Springs, FL"}},
+  {name: "Kings Creek2", city: "Jacksonville", metro: "jax", coords: [30.292867, -81.676367], address: null},
+  {name: "Longbay Townhomes", city: "Middleburg", metro: "jax", coords: [30.040433, -81.9097], address: null},
+  {name: "Mill Creek North Townhomes", city: "Jacksonville", metro: "jax", coords: [30.3282, -81.6917], address: null},
+  {name: "Oak Hill Village Townhomes", city: "Jacksonville", metro: "jax", coords: [30.237826, -81.747406], address: {street: "6090 Falcon Gate Lane", line2: "Jacksonville, FL"}},
+  {name: "Resilience at Palm Coast", city: "Palm Coast", metro: "jax", coords: [30.042467, -81.532633], address: null},
+  {name: "Russell Retreat", city: "Green Cove Springs", metro: "jax", coords: [30.074385, -81.785793], address: {street: "2336 River Park Trc", line2: "Green Cove Springs, FL"}},
+  {name: "Saddle Oaks", city: "Jacksonville", metro: "jax", coords: [30.397657, -81.819284], address: {street: "6239 Rein Ave", line2: "Jacksonville, FL"}},
+  {name: "Seaton Creek", city: "Jacksonville", metro: "jax", coords: [30.522518, -81.666923], address: null},
+  {name: "Shearwater", city: "St Augustine", metro: "jax", coords: [30.020593, -81.572773], address: {street: "99 Hogan Court", line2: "St Augustine, FL"}},
+  {name: "Silver Falls Single Family at Silverleaf", city: "St Augustine", metro: "jax", coords: [30.006971, -81.524131], address: {street: "23 Good Harbor Pl", line2: "St Augustine, FL"}},
+  {name: "Silver Falls Townhomes at Silverleaf", city: "St Augustine", metro: "jax", coords: [30.009949, -81.524648], address: {street: "113 HUBBARD BEND", line2: "St Augustine, FL"}},
+  {name: "Silver Meadows at Silverleaf", city: "St Augustine", metro: "jax", coords: [30.009458, -81.516592], address: {street: "142 Whitmore Drive", line2: "St Augustine, FL"}},
+  {name: "Stillwateractiveadult55", city: "St Johns", metro: "jax", coords: [30.1118, -81.5753], address: null},
+  {name: "Trailmark", city: "St Augustine2", metro: "jax", coords: [30.141133, -81.577967], address: null},
+  {name: "Tributary", city: "Yulee", metro: "jax", coords: [30.607505, -81.685823], address: {street: "76024 Estuary Way", line2: "Yulee, FL"}},
+  {name: "Villages of Westport", city: "Jacksonville", metro: "jax", coords: [30.269533, -81.686367], address: null},
+  {name: "Whistler Woods", city: "Jacksonville", metro: "jax", coords: [30.3182, -81.715033], address: null},
+  // ─── NAPLES-FT-MYERS ───
+  {name: "Bayshore Ranch", city: "North Fort Myers", metro: "naples-ft-myers", coords: [26.7184, -81.869533], address: {street: "17539 SADDLEBACK LOOP", line2: "North Fort Myers, FL"}},
+  {name: "Brightwater Lagoon", city: "North Fort Myers", metro: "naples-ft-myers", coords: [26.6824, -81.926867], address: {street: "18851 River Burst Ct", line2: "North Fort Myers, FL"}},
+  {name: "Broadway Crossing", city: "Estero", metro: "naples-ft-myers", coords: [26.412767, -81.768133], address: null},
+  {name: "Cielo Mar Townhomes", city: "North Fort Myers", metro: "naples-ft-myers", coords: [26.651733, -81.9362], address: null},
+  {name: "Crane Landing", city: "North Fort Myers", metro: "naples-ft-myers", coords: [26.649733, -81.887533], address: {street: "4245 Caterina Ct", line2: "North Fort Myers, FL"}},
+  {name: "Gatherpoint", city: "Ave Maria", metro: "naples-ft-myers", coords: [26.311933, -81.4828], address: null},
+  {name: "Hampton Lakes at River Hall", city: "Alva", metro: "naples-ft-myers", coords: [26.6758, -81.656467], address: null},
+  {name: "Ibis Landing Golf Country Club", city: "Lehigh Acres", metro: "naples-ft-myers", coords: [26.5604, -81.630867], address: {street: "18421 COPPERHEAD CT N #223", line2: "Lehigh Acres, FL"}},
+  {name: "Kingston", city: "Estero", metro: "naples-ft-myers", coords: [26.3721, -81.8008], address: null},
+  {name: "Maple Point", city: "Naples", metro: "naples-ft-myers", coords: [26.100667, -81.7668], address: null},
+  {name: "Maplewood Park", city: "Lehigh Acres", metro: "naples-ft-myers", coords: [26.659733, -81.603533], address: null},
+  {name: "New Homes in Cape Coral", city: "Cape Coral", metro: "naples-ft-myers", coords: [26.522233, -81.982167], address: {street: "3906 NW 46th St", line2: "Cape Coral, FL"}},
+  {name: "New Homes in Lehigh Acres", city: "Lehigh Acres", metro: "naples-ft-myers", coords: [26.559067, -81.642867], address: {street: "4024 23rd St SW", line2: "Lehigh Acres, FL"}},
+  {name: "Orange River Townhomes", city: "Fort Myers", metro: "naples-ft-myers", coords: [26.681933, -81.9003], address: null},
+  {name: "Palmetta Pines Townhomes", city: "Cape Coral", metro: "naples-ft-myers", coords: [26.566233, -81.986167], address: null},
+  {name: "Portico", city: "Fort Myers", metro: "naples-ft-myers", coords: [26.6966, -81.901633], address: null},
+  {name: "River Hall Country Club", city: "Alva", metro: "naples-ft-myers", coords: [26.7058, -81.586467], address: null},
+  {name: "Rivergrass", city: "Naples", metro: "naples-ft-myers", coords: [26.107333, -81.840133], address: null},
+  {name: "Sabal Glen at Midtown", city: "Punta Gorda", metro: "naples-ft-myers", coords: [26.9398, -82.022067], address: null},
+  {name: "Sandy Key", city: "Fort Myers", metro: "naples-ft-myers", coords: [26.6546, -81.812967], address: {street: "13629 Cerith Court", line2: "Fort Myers, FL"}},
+  {name: "Savanna Lakes", city: "Lehigh Acres", metro: "naples-ft-myers", coords: [26.6344, -81.564867], address: {street: "11938 SAVANNA LAKES BLVD", line2: "Lehigh Acres, FL"}},
+  {name: "Stonehill Manor", city: "North Fort Myers", metro: "naples-ft-myers", coords: [26.679733, -81.817533], address: null},
+  {name: "The National Golf Country Club", city: "Ave Maria", metro: "naples-ft-myers", coords: [26.311933, -81.4828], address: {street: "5615 Newcastle Ct #5212", line2: "Ave Maria, FL"}},
+  {name: "Timber Creek", city: "Fort Myers", metro: "naples-ft-myers", coords: [26.6606, -81.825633], address: null},
+  {name: "Tuckers Cove", city: "Punta Gorda", metro: "naples-ft-myers", coords: [26.969133, -82.024733], address: {street: "14911 BLUEWATER RD", line2: "Punta Gorda, FL"}},
+  {name: "Valencia Golf Country Club", city: "Naples", metro: "naples-ft-myers", coords: [26.11, -81.816133], address: null},
+  {name: "Verdana Village", city: "Estero", metro: "naples-ft-myers", coords: [26.495433, -81.824133], address: null},
+  {name: "Webbs Reserve", city: "Punta Gorda", metro: "naples-ft-myers", coords: [26.876467, -81.992067], address: {street: "15285 Green Acres Ave #435", line2: "Punta Gorda, FL"}},
+  {name: "Willowgreen at Babcock Ranch", city: "Punta Gorda", metro: "naples-ft-myers", coords: [26.956467, -82.072067], address: {street: "16532 Kingwood Ln #3211", line2: "Punta Gorda, FL"}},
+  // ─── OCALA ───
+  {name: "Bellehaven", city: "Belleview", metro: "ocala", coords: [29.465333, -82.145333], address: null},
+  {name: "Grand Oaks Manor", city: "Oxford", metro: "ocala", coords: [29.336667, -82.17], address: null},
+  {name: "Grand Park", city: "Dunnellon", metro: "ocala", coords: [29.111, -82.418067], address: {street: "19689 SW 82nd Loop", line2: "Dunnellon, FL"}},
+  {name: "Grand Park North", city: "Dunnellon", metro: "ocala", coords: [29.111, -82.418067], address: {street: "19376 SW 77TH LOOP", line2: "Dunnellon, FL"}},
+  {name: "Heath Preserve", city: "Ocala", metro: "ocala", coords: [29.204462, -82.196198], address: {street: "1591 NW 48TH TERR", line2: "Ocala, FL"}},
+  {name: "Juliette Falls", city: "Dunnellon", metro: "ocala", coords: [29.109667, -82.430067], address: {street: "6606 SW 180TH CIR", line2: "Dunnellon, FL"}},
+  {name: "Marion Oaks", city: "Ocala", metro: "ocala", coords: [29.031787, -82.261772], address: {street: "13220 SW 87TH CIR", line2: "Ocala, FL"}},
+  {name: "Marion Ranch", city: "Ocala", metro: "ocala", coords: [29.10284, -82.199851], address: {street: "8307 SW 42ND CIR", line2: "Ocala, FL"}},
+  {name: "Millwood", city: "Ocala", metro: "ocala", coords: [29.225267, -82.08709], address: {street: "3201 NE 38TH Street", line2: "Ocala, FL"}},
+  {name: "Oak Hammock Preserve Townhomes", city: "Ocala", metro: "ocala", coords: [29.2232, -82.082767], address: {street: "3634 SE 37TH AVE RD", line2: "Ocala, FL"}},
+  {name: "Pioneer Ranch", city: "Ocala", metro: "ocala", coords: [29.090749, -82.234074], address: {street: "8685 SW 69TH TERRACE", line2: "Ocala, FL"}},
+  {name: "Tara Baywood", city: "Alachua", metro: "ocala", coords: [29.821133, -82.523167], address: {street: "16344 NW 145TH DR", line2: "Alachua, FL"}},
+  {name: "Tara Forest East", city: "Alachua", metro: "ocala", coords: [29.746467, -82.5285], address: {street: "16731 NW 144TH ST", line2: "Alachua, FL"}},
+  {name: "Tara Serena", city: "Gainesville", metro: "ocala", coords: [29.712267, -82.3788], address: {street: "5436 NW 22ND DR", line2: "Gainesville, FL"}},
+  {name: "Trailhead Landing", city: "Alachua", metro: "ocala", coords: [29.8358, -82.5245], address: {street: "12679 NW 139TH WAY", line2: "Alachua, FL"}},
+  // ─── ORLANDO ───
+  {name: "Brentwood2", city: "Davenport", metro: "orlando", coords: [28.2214, -81.595133], address: null},
+  {name: "Bridgewalk", city: "Saint Cloud", metro: "orlando", coords: [28.343863, -81.214485], address: {street: "5606 NINA WAY", line2: "Saint Cloud, FL"}},
+  {name: "Bronsons Ridge", city: "Apopka", metro: "orlando", coords: [28.6774, -81.542967], address: {street: "2372 Rider Rain Lane", line2: "Apopka, FL"}},
+  {name: "Crosswinds", city: "Haines City", metro: "orlando", coords: [28.1404, -81.5863], address: {street: "3829 AMERS LOOP", line2: "Haines City, FL"}},
+  {name: "Cypress Reserve", city: "Groveland", metro: "orlando", coords: [28.345333, -81.358667], address: null},
+  {name: "Everbe", city: "Orlando", metro: "orlando", coords: [28.490967, -81.338533], address: null},
+  {name: "Grandview Townhomes", city: "Davenport", metro: "orlando", coords: [28.164067, -81.5778], address: null},
+  {name: "Groves at Grenelefe", city: "Haines City", metro: "orlando", coords: [28.1664, -81.685633], address: null},
+  {name: "Gum Lake Preserve", city: "Lake Alfred", metro: "orlando", coords: [28.336, -81.442667], address: null},
+  {name: "Hamilton Bluff", city: "Haines City", metro: "orlando", coords: [28.0584, -81.590967], address: {street: "2240 CROWN ROCK DRIVE", line2: "Haines City, FL"}},
+  {name: "Hidden Ridge", city: "Groveland", metro: "orlando", coords: [28.362667, -81.336], address: null},
+  {name: "Hunt Club Groves", city: "Lake Wales", metro: "orlando", coords: [27.884, -81.5479], address: {street: "375 Artemis Street", line2: "Lake Wales, FL"}},
+  {name: "Knightsbridge", city: "Kissimmee", metro: "orlando", coords: [28.327333, -81.422933], address: {street: "4754 Maple Cross Drive", line2: "Kissimmee, FL"}},
+  {name: "Lennar at Esplanade", city: "Kissimmee", metro: "orlando", coords: [28.286667, -81.4556], address: null},
+  {name: "Meadow Pointe", city: "Groveland", metro: "orlando", coords: [28.454, -81.380667], address: null},
+  {name: "Oak Hammock", city: "Deland", metro: "orlando", coords: [28.365333, -81.445333], address: null},
+  {name: "Peace Creek Reserve", city: "Winter Haven", metro: "orlando", coords: [28.0342, -81.758233], address: {street: "1546 JESSICA BOULEVARD", line2: "Winter Haven, FL"}},
+  {name: "Pine Meadows", city: "Eustis", metro: "orlando", coords: [28.869367, -81.7356], address: {street: "1491 WILLOW GARDEN LOOP", line2: "Eustis, FL"}},
+  {name: "Preserve at Lpga", city: "Daytona Beach", metro: "orlando", coords: [28.458, -81.344667], address: null},
+  {name: "Providence", city: "Davenport", metro: "orlando", coords: [28.176733, -81.6638], address: {street: "4042 EASTMINSTER ROAD", line2: "Davenport, FL"}},
+  {name: "Ranches at Lake Mcleod", city: "Eagle Lake", metro: "orlando", coords: [27.952224, -81.7547], address: {street: "3447 ROVER ROAD", line2: "Eagle Lake, FL"}},
+  {name: "Reedy Isle2", city: "Davenport", metro: "orlando", coords: [28.2234, -81.6438], address: null},
+  {name: "Reunion Village", city: "Kissimmee", metro: "orlando", coords: [28.351333, -81.4736], address: null},
+  {name: "Ridgebrooke", city: "Apopka", metro: "orlando", coords: [28.7234, -81.595633], address: null},
+  {name: "Rivington", city: "Debary", metro: "orlando", coords: [28.880333, -81.3321], address: {street: "641 TERRAPIN DRIVE(P)", line2: "Debary, FL"}},
+  {name: "Sanctuary at Wellness Ridge2", city: "Clermont", metro: "orlando", coords: [28.478739, -81.694265], address: {street: "3063 REPOSE DRIVE", line2: "Clermont, FL"}},
+  {name: "Scenic Terrace", city: "Haines City", metro: "orlando", coords: [28.053067, -81.638967], address: null},
+  {name: "Serenity at Peace Creek Reserve", city: "Winter Haven", metro: "orlando", coords: [28.0462, -81.783567], address: null},
+  {name: "Sol Vista", city: "Dundee", metro: "orlando", coords: [28.393333, -81.46], address: null},
+  {name: "Storey Creek", city: "Kissimmee", metro: "orlando", coords: [28.348667, -81.364267], address: null},
+  {name: "Sugarloaf Ridge", city: "Minneola", metro: "orlando", coords: [28.582867, -81.782933], address: {street: "3133 Brookhollow Way", line2: "Minneola, FL"}},
+  {name: "The Glades at Crossprairie", city: "Saint Cloud", metro: "orlando", coords: [28.217786, -81.33632], address: {street: "4350 BENTGRASS BEND", line2: "Saint Cloud, FL"}},
+  {name: "The Parks at Edgewater", city: "Edgewater", metro: "orlando", coords: [28.438667, -81.452], address: null},
+  {name: "Tohoqua", city: "Kissimmee", metro: "orlando", coords: [28.356667, -81.4256], address: null},
+  {name: "Villa Mar", city: "Winter Haven", metro: "orlando", coords: [28.030867, -81.721567], address: {street: "6441 Domizio Drive", line2: "Winter Haven, FL"}},
+  {name: "Waterlin", city: "Saint Cloud", metro: "orlando", coords: [28.154587, -81.271432], address: {street: "476 Cypress Fork Trail", line2: "Saint Cloud, FL"}},
+  {name: "Waterstone", city: "Groveland", metro: "orlando", coords: [28.4, -81.4], address: null},
+  {name: "Wellness Ridge", city: "Clermont", metro: "orlando", coords: [28.478739, -81.694265], address: {street: "6072 ZEN WAY", line2: "Clermont, FL"}},
+  {name: "Westview", city: "Kissimmee", metro: "orlando", coords: [28.24, -81.342267], address: {street: "3088 Chromatic Street", line2: "Kissimmee, FL"}},
+  {name: "Woodland Ranch Estates", city: "Dundee", metro: "orlando", coords: [28.335333, -81.382], address: null},
+  {name: "Wynnstone", city: "Davenport", metro: "orlando", coords: [28.2074, -81.654467], address: null},
+  // ─── PALM-BEACH ───
+  {name: "Arden", city: "Loxahatchee", metro: "palm-beach", coords: [26.657333, -80.117333], address: {street: "1734 Hoot Owl Hollow", line2: "Loxahatchee, FL"}},
+  {name: "Delray Trails", city: "Delray Beach", metro: "palm-beach", coords: [26.416833, -80.008133], address: {street: "13707 Jubilee Lane", line2: "Delray Beach, FL"}},
+  {name: "Estates of Boynton Waters", city: "Boynton Beach", metro: "palm-beach", coords: [26.5416, -80.055733], address: null},
+  {name: "The Estates at Lotis Wellington", city: "Wellington", metro: "palm-beach", coords: [26.707567, -80.270067], address: {street: "1014 Raleigh Way", line2: "Wellington, FL"}},
+  {name: "Whitmore Estates2", city: "Lake Worth", metro: "palm-beach", coords: [26.653467, -80.071733], address: {street: "7616 Bridle Trail Way", line2: "Lake Worth, FL"}},
+  // ─── PANAMA-CITY ───
+  {name: "Bay Springs", city: "DeFuniak Springs", metro: "panama-city", coords: [30.206667, -85.703333], address: {street: "80 Bay Springs Blvd", line2: "DeFuniak Springs, FL"}},
+  {name: "Cross Creek", city: "Freeport", metro: "panama-city", coords: [30.218667, -85.728667], address: {street: "373 Bent Oak Dr", line2: "Freeport, FL"}},
+  {name: "Magnolia Ridge", city: "Panama City", metro: "panama-city", coords: [30.161467, -85.6362], address: {street: "3840 Wall Street", line2: "Panama City, FL"}},
+  {name: "Riverbend Run2", city: "Southport", metro: "panama-city", coords: [30.210667, -85.667333], address: null},
+  // ─── PENSACOLA ───
+  {name: "Bella Terra", city: "Cantonment", metro: "pensacola", coords: [30.599333, -87.348533], address: {street: "1537 Paisley Drive", line2: "Cantonment, FL"}},
+  {name: "Eagles Ridge", city: "Pace", metro: "pensacola", coords: [30.6055, -87.174867], address: {street: "4775 Air Field Drive", line2: "Pace, FL"}},
+  {name: "Grove at Bella Terra", city: "Cantonment", metro: "pensacola", coords: [30.632667, -87.3152], address: null},
+  {name: "Horizons Edge", city: "Milton", metro: "pensacola", coords: [30.5966, -87.097033], address: {street: "5349 Horizons Edge Ln", line2: "Milton, FL"}},
+  {name: "Lost Key Townhomes", city: "Pensacola", metro: "pensacola", coords: [30.384633, -87.213567], address: {street: "14158 Sable Palm Way", line2: "Pensacola, FL"}},
+  {name: "Pipers Landing", city: "Pensacola", metro: "pensacola", coords: [30.408633, -87.264233], address: {street: "7721 Palm Vista Court", line2: "Pensacola, FL"}},
+  {name: "Ridge at Harvest Point", city: "Milton", metro: "pensacola", coords: [30.6126, -87.086367], address: {street: "7129 Season Dr\\t", line2: "Milton, FL"}},
+  {name: "Stonechase2", city: "Pace", metro: "pensacola", coords: [30.630833, -87.213533], address: {street: "5983 Briarcliff Ln", line2: "Pace, FL"}},
+  {name: "Yellow River Plantation", city: "Laurel Hill", metro: "pensacola", coords: [30.417333, -87.224], address: {street: "6218 Buccaneer Way", line2: "Laurel Hill, FL"}},
+  // ─── SOFLA ───
+  {name: "Acacia Groves", city: "Miami", metro: "sofla", coords: [25.454982, -80.505797], address: null},
+  {name: "Altamira", city: "Homestead", metro: "sofla", coords: [25.449138, -80.438819], address: {street: "2561 SE 25 TER", line2: "Homestead, FL"}},
+  {name: "Aria Park", city: "Homestead", metro: "sofla", coords: [25.448226, -80.464354], address: null},
+  {name: "Breezewood", city: "Miami", metro: "sofla", coords: [25.55168, -80.372037], address: null},
+  {name: "Briarcrest", city: "Miami", metro: "sofla", coords: [25.559578, -80.404785], address: {street: "22301 SW 132 AVE", line2: "Miami, FL"}},
+  {name: "Coral Breeze2", city: "Miami", metro: "sofla", coords: [25.476975, -80.501672], address: {street: "31427  SW  192 AVE", line2: "Miami, FL"}},
+  {name: "Coral Landings", city: "Miami", metro: "sofla", coords: [25.473385, -80.493654], address: {street: "18851 SW 315 ST", line2: "Miami, FL"}},
+  {name: "Del Mar", city: "Miami", metro: "sofla", coords: [25.433183, -80.483269], address: null},
+  {name: "Emerald Palms", city: "Miami", metro: "sofla", coords: [25.544259, -80.396495], address: null},
+  {name: "Greenview at Presidential", city: "Miami", metro: "sofla", coords: [25.951855, -80.172844], address: {street: "19652 NE 14 CT", line2: "Miami, FL"}},
+  {name: "Heron Pointe", city: "Miami", metro: "sofla", coords: [25.49941, -80.477357], address: null},
+  {name: "Killian Grove", city: "Miami", metro: "sofla", coords: [25.666224, -80.333391], address: null},
+  {name: "Le Jardine", city: "Florida City", metro: "sofla", coords: [25.447295, -80.460679], address: {street: "283 SE 11 CT", line2: "Florida City, FL"}},
+  {name: "Luminara", city: "Miami", metro: "sofla", coords: [25.523834, -80.416334], address: {street: "13855 SW 262 ST", line2: "Miami, FL"}},
+  {name: "Penn Cove", city: "Florida City", metro: "sofla", coords: [25.462406, -80.469031], address: {street: "1507  NE 4 CT", line2: "Florida City, FL"}},
+  {name: "Pineland Crest", city: "Miami", metro: "sofla", coords: [25.436118, -80.50135], address: {street: "35753 SW 189 CT", line2: "Miami, FL"}},
+  {name: "Redlands Ridge", city: "Miami", metro: "sofla", coords: [25.501154, -80.47738], address: {street: "17484 SW 284 ST", line2: "Miami, FL"}},
+  {name: "Saltaire", city: "Florida City", metro: "sofla", coords: [25.45004, -80.472731], address: null},
+  {name: "Siena Reserve", city: "Miami", metro: "sofla", coords: [25.551283, -80.403407], address: null},
+  {name: "Solstice", city: "Miami", metro: "sofla", coords: [25.536622, -80.393662], address: {street: "12486 SW 248 ST #6", line2: "Miami, FL"}},
+  {name: "Sunscapes", city: "Florida City", metro: "sofla", coords: [25.440466, -80.501536], address: {street: "8 NW 15 CT", line2: "Florida City, FL"}},
+  {name: "Sunstone", city: "Homestead", metro: "sofla", coords: [25.469958, -80.449142], address: null},
+  {name: "Terra Sol", city: "Homestead", metro: "sofla", coords: [25.455258, -80.467714], address: null},
+  {name: "Villas De San Diego", city: "Miami", metro: "sofla", coords: [25.437747, -80.501494], address: {street: "18933 SW 355 TER", line2: "Miami, FL"}},
+  {name: "Vivant", city: "Miami", metro: "sofla", coords: [25.513922, -80.453383], address: {street: "15657 SW 280 ST #5", line2: "Miami, FL"}},
+  {name: "Wildwood Groves", city: "Miami", metro: "sofla", coords: [25.513925, -80.453391], address: null},
+  // ─── SPACE-COAST ───
+  {name: "Emerald Lakes", city: "Palm Bay", metro: "space-coast", coords: [28.0605, -80.5547], address: null},
+  {name: "Meridian at Mayfair", city: "Melbourne", metro: "space-coast", coords: [28.051717, -80.612206], address: {street: "3737 Astral Road", line2: "Melbourne, FL"}},
+  {name: "New Homes in Cocoa", city: "Cocoa", metro: "space-coast", coords: [28.114, -80.580667], address: null},
+  {name: "New Homes in Palm Bay", city: "Palm Bay", metro: "space-coast", coords: [28.0285, -80.576033], address: {street: "754 INDIGO ST SE", line2: "Palm Bay, FL"}},
+  {name: "Riverwood at Everlands", city: "Palm Bay", metro: "space-coast", coords: [28.038857, -80.733151], address: {street: "2368 Croft Inlet Drive NW", line2: "Palm Bay, FL"}},
+  {name: "The Timbers at Everlands", city: "Palm Bay", metro: "space-coast", coords: [28.024325, -80.733242], address: {street: "923 Veronese Place NW", line2: "Palm Bay, FL"}},
+  {name: "Tillman Lakes", city: "Palm Bay", metro: "space-coast", coords: [27.991524, -80.723927], address: {street: "1900 Bayou Avenue SW", line2: "Palm Bay, FL"}},
+  // ─── TAMPA ───
+  {name: "Acacia Fields", city: "Wesley Chapel", metro: "tampa", coords: [28.246367, -82.2671], address: null},
+  {name: "Angeline", city: "Land O Lakes", metro: "tampa", coords: [28.301645, -82.529298], address: {street: "18209 Pleasantview Blvd", line2: "Land O Lakes, FL"}},
+  {name: "Angeline Active Adult", city: "Land O Lakes", metro: "tampa", coords: [28.31002, -82.533239], address: {street: "9343 Minnow Ray Dr", line2: "Land O Lakes, FL"}},
+  {name: "Balm Grove", city: "Wimauma", metro: "tampa", coords: [27.758145, -82.258507], address: {street: "13519 New Jade Ave", line2: "Wimauma, FL"}},
+  {name: "Bellamy Crossings", city: "Dade City", metro: "tampa", coords: [28.339667, -82.157233], address: {street: "11189 Brae Way", line2: "Dade City, FL"}},
+  {name: "Connerton", city: "Land O Lakes", metro: "tampa", coords: [28.290302, -82.451736], address: {street: "22841 Pondered Day Lane", line2: "Land O Lakes, FL"}},
+  {name: "Crescent Meadows", city: "Zephyrhills", metro: "tampa", coords: [28.2176, -82.191867], address: null},
+  {name: "Curiosity Creek", city: "Palmetto", metro: "tampa", coords: [27.62754, -82.50104], address: {street: "6123 Blue Paloma Ct", line2: "Palmetto, FL"}},
+  {name: "Cypress Point at Lake Parker", city: "Lakeland", metro: "tampa", coords: [28.0835, -81.9538], address: null},
+  {name: "Gladesong", city: "Riverview", metro: "tampa", coords: [27.8821, -82.315833], address: null},
+  {name: "Hilltop Point", city: "Dade City", metro: "tampa", coords: [28.377667, -82.148567], address: {street: "38292 Palomino Drive", line2: "Dade City, FL"}},
+  {name: "Ivywood", city: "Lakeland", metro: "tampa", coords: [27.976167, -81.9198], address: null},
+  {name: "Longleaf", city: "New Port Richey", metro: "tampa", coords: [28.257433, -82.732633], address: null},
+  {name: "Mirada", city: "San Antonio", metro: "tampa", coords: [28.326467, -82.225467], address: null},
+  {name: "Mirada Active Adult", city: "San Antonio", metro: "tampa", coords: [28.313571, -82.293182], address: {street: "31663 Splash Isle", line2: "San Antonio, FL"}},
+  {name: "New Port Corners", city: "New Port Richey", metro: "tampa", coords: [28.251926, -82.671654], address: {street: "9246 Plathe Road", line2: "New Port Richey, FL"}},
+  {name: "New Port Corners Active Adult", city: "New Port Richey", metro: "tampa", coords: [28.25309, -82.674759], address: {street: "8478 Futureside Loop", line2: "New Port Richey, FL"}},
+  {name: "North Park Isle", city: "Plant City", metro: "tampa", coords: [28.053267, -82.069167], address: null},
+  {name: "Park East", city: "Plant City", metro: "tampa", coords: [28.053267, -82.069167], address: {street: "2346 Allium Roseum Ln", line2: "Plant City, FL"}},
+  {name: "Pearl Estates", city: "Lutz", metro: "tampa", coords: [28.213467, -82.430533], address: null},
+  {name: "Prosperity Lakes", city: "Parrish", metro: "tampa", coords: [27.626493, -82.407436], address: {street: "13413 Noble Garnet Ln", line2: "Parrish, FL"}},
+  {name: "Prosperity Lakes Active Adult", city: "Parrish", metro: "tampa", coords: [27.627277, -82.43325], address: {street: "12050 Violet Jasper Dr", line2: "Parrish, FL"}},
+  {name: "Sandhill", city: "Dade City", metro: "tampa", coords: [28.333487, -82.17547], address: null},
+  {name: "Seaire", city: "Parrish", metro: "tampa", coords: [27.532367, -82.382533], address: {street: "8611 Tropical Aire Ln", line2: "Parrish, FL"}},
+  {name: "South Creek", city: "Riverview", metro: "tampa", coords: [27.859433, -82.3865], address: null},
+  {name: "Southshore Bay", city: "Wimauma", metro: "tampa", coords: [27.706, -82.250033], address: null},
+  {name: "Stonegate Preserve", city: "Palmetto", metro: "tampa", coords: [27.617265, -82.494667], address: {street: "10947 65th Ter E", line2: "Palmetto, FL"}},
+  {name: "The Townes at Cross Creek", city: "Tampa", metro: "tampa", coords: [27.887933, -82.487867], address: null},
+  {name: "The Townes at Crystal Brook", city: "Zephyrhills", metro: "tampa", coords: [28.2076, -82.2152], address: null},
+  {name: "The Townes at Market Edge", city: "Riverview", metro: "tampa", coords: [27.8361, -82.263167], address: null},
+  {name: "The Townes at West River", city: "Tampa", metro: "tampa", coords: [27.921933, -82.5152], address: null},
+  {name: "The Townes at Windsong", city: "Zephyrhills", metro: "tampa", coords: [28.288267, -82.222533], address: null},
+  {name: "Townes at Manhattan Crossing", city: "Tampa", metro: "tampa", coords: [27.899933, -82.5132], address: null},
+  {name: "Twinflowers", city: "Wesley Chapel", metro: "tampa", coords: [28.213033, -82.300433], address: null},
+  {name: "Two Rivers", city: "Zephyrhills", metro: "tampa", coords: [28.177231, -82.21508], address: {street: "1054 Broward Drive", line2: "Zephyrhills, FL"}},
+  {name: "Vista Walk", city: "Dade City", metro: "tampa", coords: [28.399, -82.223233], address: null},
+  {name: "West Lake", city: "Wimauma", metro: "tampa", coords: [27.652667, -82.330033], address: {street: "2237 Rosefinch Hill Pl", line2: "Wimauma, FL"}},
+  {name: "Wind Meadows South", city: "Bartow", metro: "tampa", coords: [27.901067, -81.867867], address: {street: "2045 Albatross Nest Dr", line2: "Bartow, FL"}},
+  // ─── TREASURE-COAST ───
+  {name: "Brystol at Wylder", city: "Port St. Lucie", metro: "treasure-coast", coords: [27.274667, -80.278], address: {street: "10881 NW Everbreeze Drive", line2: "Port St. Lucie, FL"}},
+  {name: "Glynlea Country Club", city: "Port St. Lucie", metro: "treasure-coast", coords: [27.199333, -80.356], address: {street: "10684 NW WILGROVE LN", line2: "Port St. Lucie, FL"}},
+  {name: "New Homes in West Vero", city: "Vero Beach", metro: "treasure-coast", coords: [27.236667, -80.286667], address: null},
+  {name: "Pepperwood", city: "Stuart", metro: "treasure-coast", coords: [27.136533, -80.1988], address: null},
+  {name: "Seagrove", city: "Fort Pierce", metro: "treasure-coast", coords: [27.500033, -80.378933], address: {street: "3724 Harborside Avenue", line2: "Fort Pierce, FL"}},
+  {name: "Tesoro Club", city: "Port St. Lucie", metro: "treasure-coast", coords: [27.286667, -80.303333], address: {street: "460 SE FASCINO CIR", line2: "Port St. Lucie, FL"}},
+  {name: "Veranda Preserve", city: "Port St. Lucie", metro: "treasure-coast", coords: [27.286, -80.242667], address: {street: "1348 SE Willow Oaks Street", line2: "Port St. Lucie, FL"}},
 ];
 function _normalizeName(s) {
   return String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
@@ -1569,7 +1687,8 @@ function _isInSheet(communityName) {
 }
 const REGION_CENTROIDS = {
   jax:           { center: [30.0938, -81.5373], zoom: 9 },
-  ocala:         { center: [29.4, -82.2],       zoom: 9 },
+  ocala:         { center: [29.18,   -82.14],   zoom: 10 },
+  gainesville:   { center: [29.65,   -82.32],   zoom: 10 },
   sofla:         { center: [25.9, -80.25],      zoom: 9 },
   'naples-ft-myers':{center:[26.4, -81.8],      zoom: 9 },
   'palm-beach':  { center: [26.6, -80.1],       zoom: 9 },
@@ -1741,35 +1860,22 @@ function renderRegionMap() {
   });
   lennarFiltered.forEach(L1 => {
     if (_isInSheet(L1.name)) return;  // drawn on top by Sheet layer
-    let coords = COMMUNITY_COORDS[L1.name];
-    if (!coords) {
-      const cityKey = String(L1.city || '').toLowerCase().trim();
-      coords = CITY_COORDS[cityKey];
-    }
-    if (!coords) {
-      const r = REGION_CENTROIDS[L1.metro] || REGION_CENTROIDS.all;
-      coords = r.center;
-    }
-    // Add small jitter only when we don't have an exact community coord
-    const hasExact = !!COMMUNITY_COORDS[L1.name];
-    let lat = coords[0], lng = coords[1];
-    if (!hasExact) {
-      const seed = (L1.name + L1.city).split('').reduce((a, ch) => a + ch.charCodeAt(0), 0);
-      lat += ((seed * 13) % 200 - 100) / 1500;
-      lng += ((seed * 17) % 200 - 100) / 1500;
-    }
+    // Embedded coords are authoritative (verified from Lennar pages or city centroid).
+    const coords = L1.coords || (COMMUNITY_COORDS[L1.name] || CITY_COORDS[String(L1.city||'').toLowerCase().trim()] || (REGION_CENTROIDS[L1.metro] || REGION_CENTROIDS.all).center);
+    const lat = coords[0], lng = coords[1];
     const m = L.circleMarker([lat, lng], {
       radius: 5, color: '#fff', weight: 1, fillColor: '#0d2b4e', fillOpacity: 0.85
     });
-    const addr = _addressFor(L1.name);
+    // Address: prefer embedded address from LENNAR_FL_COMMUNITIES, fall back to legacy lookup
+    const addr = L1.address ? { addr: L1.address.street, city: L1.address.line2 } : _addressFor(L1.name);
     const directionsUrl = addr
       ? `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(addr.addr + ', ' + addr.city)}`
       : `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(L1.name + ' ' + L1.city + ' FL')}`;
     m.bindPopup(
-      `<div style="font:13px/1.4 system-ui,-apple-system,sans-serif;">
+      `<div style="font:13px/1.4 system-ui,-apple-system,sans-serif;min-width:200px;">
         <div style="font-weight:800;color:#0d2b4e;margin-bottom:4px;">${L1.name}</div>
         <div style="color:#64748b;font-size:11px;margin-bottom:6px;">${L1.city}</div>
-        ${addr ? `<div style="font-size:11px;color:#0d2b4e;margin-bottom:4px;"><strong>📍</strong> ${addr.addr}<br>${addr.city}</div>` : ''}
+        ${addr ? `<div style="font-size:11px;color:#0d2b4e;margin-bottom:6px;background:#f1f5f9;padding:6px 8px;border-radius:6px;"><strong>📍 ${addr.addr}</strong><br>${addr.city}</div>` : ''}
         <div style="font-size:11px;color:#94a3b8;font-style:italic;margin-bottom:6px;">Currently No Projects Underway</div>
         <a href="${directionsUrl}" target="_blank" rel="noopener" style="font-size:11px;font-weight:700;color:#1565c0;text-decoration:none;">🚗 Open in Google Maps</a>
        </div>`
