@@ -1061,7 +1061,7 @@ async function syncFromSheet() {
     // Offsite Wayfinding→Offsite, Notes→Request. Dropped: ID, City, Total Signs, Installed, Office, Sold Out.
     const required = ['Region','Community','Status','Phase','Crew','Drone',
       'WHC Signage','Wayfinding','WHC Interior','AL Awning','Offsite',
-      'Last Install','Next Install','Local Contact','Main POC','811 Permit'];
+      'Local Contact','Main POC','811 Permit'];
     const missing = required.filter(k => idx[k] === undefined);
     if (missing.length) throw new Error('Sheet missing columns: ' + missing.join(', '));
 
@@ -1103,8 +1103,8 @@ async function syncFromSheet() {
         if (s === 'Production') return 8;             // ~35% (in production)
         return 0;                                     // Artwork / Pre-Launch
       })(),
-      lastInstall:   String(r[idx['Last Install']]||'').trim() || 'TBD',
-      nextInstall:   String(r[idx['Next Install']]||'').trim() || 'TBD',
+      lastInstall:   'TBD',  // col dropped
+      nextInstall:   'TBD',  // col dropped
       localContact:  String(r[idx['Local Contact']]||'').trim() || 'Gina Lee',
       contact:       String(r[idx['Main POC']]||'').trim() || 'Gina Lee',
       permit811:     String(r[idx['811 Permit']]||'').trim().toLowerCase().replace('n/a','na') || 'na',
