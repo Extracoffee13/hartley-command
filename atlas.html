@@ -591,11 +591,18 @@ body.client-view .admin-only{display:none !important;}
     <div class="kpi-icon">&#128295;</div>
   </div>
   <div class="kpi-card">
-    <div class="kpi-lbl">Sold Out / Closed</div>
-    <div class="kpi-val" id="kpi-pending">2</div>
-    <div class="kpi-sub" id="kpi-pending-sub">Holly Cove · Kings Preserve</div>
-    <div class="kpi-chg up" id="kpi-overdue-note">&#9650; Closeout complete</div>
+    <div class="kpi-lbl">Active Projects</div>
+    <div class="kpi-val" id="kpi-active-projects">0</div>
+    <div class="kpi-sub" id="kpi-active-projects-sub">Production · Installation · Delivered</div>
+    <div class="kpi-chg up">&#9650; Pulled live from Sheet</div>
     <div class="kpi-icon">&#128203;</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-lbl">Total Communities</div>
+    <div class="kpi-val" id="kpi-total-fl">0</div>
+    <div class="kpi-sub" id="kpi-total-fl-sub">All Lennar FL communities on map</div>
+    <div class="kpi-chg up">&#9650; Brand 9 + reference</div>
+    <div class="kpi-icon">&#127965;</div>
   </div>
   <div class="kpi-card">
     <div class="kpi-lbl">Drone Fleet</div>
@@ -1588,24 +1595,37 @@ const REGION_CENTROIDS = {
   pensacola:     { center: [30.42, -87.2],      zoom: 10 },
   all:           { center: [28.5, -82.5],       zoom: 7 }
 };
-// Per-community accurate coordinates (pulled from Lennar's community detail pages).
-// Falls back to city centroid when a community isn't here.
+// Per-community accurate coordinates pulled from Lennar's community detail pages.
+// JAX coords verified against Lennar's lat/lng JSON-LD on each detail page.
+// Both Sheet shortnames and Lennar longnames listed — keeps the background layer
+// from double-drawing a community at city centroid when it's already in the Sheet.
 const COMMUNITY_COORDS = {
-  // Brand 9 Sheet — JAX/St. Augustine
-  "Cove at SW":              [30.176565, -81.609143],
-  "Emerald Isles TH":        [30.205939, -81.588896],
-  "Granary Park":            [30.046139, -81.771412],
-  "Holstein Crossing":       [30.048633, -81.768918],
-  "Oak Hill Village TH":     [30.237826, -81.747292],
-  "Silver Meadows":          [30.009266, -81.516592],
-  "Silver Falls SF":         [30.006918, -81.525497],
-  "Silver Falls TH":         [30.009949, -81.524648],
-  "Tributary":               [30.607198, -81.686222],
-  "Russell Retreat":         [30.074385, -81.785793],
-  "Hardwick Farms":          [30.248866, -81.612434],
-  "Saddle Oaks":             [30.397657, -81.818878],
-  "Edenbrooke at Hyland Trail": [30.01929, -81.785568],
-  "Edenbrooke at Hyland Trail | 55+": [30.01929, -81.785568],
+  // ─── JAX / St. Augustine — verified from Lennar pages ───
+  "Avalon Woods":                              [30.462122, -81.625918],
+  "Cove at SW":                                [30.176565, -81.609143],
+  "Cove at Southwood":                         [30.176565, -81.609143],
+  "Emerald Isles TH":                          [30.205939, -81.588896],
+  "Emerald Isles Townhomes":                   [30.205939, -81.588896],
+  "Granary Park":                              [30.046139, -81.771412],
+  "Hardwick Farms":                            [30.248866, -81.614747],
+  "Holstein Crossing":                         [30.048633, -81.768918],
+  "Oak Hill Village TH":                       [30.237826, -81.747406],
+  "Oak Hill Village Townhomes":                [30.237826, -81.747406],
+  "Russell Retreat":                           [30.074385, -81.785793],
+  "Saddle Oaks":                               [30.397657, -81.819284],
+  "Seaton Creek":                              [30.522518, -81.666923],
+  "Shearwater":                                [30.020593, -81.572773],
+  "Silver Falls SF":                           [30.006971, -81.524131],
+  "Silver Falls Single Family at SilverLeaf":  [30.006971, -81.524131],
+  "Silver Falls TH":                           [30.009949, -81.524648],
+  "Silver Falls Townhomes at Silverleaf":      [30.009949, -81.524648],
+  "Silver Meadows":                            [30.009458, -81.516592],
+  "Silver Meadows at SilverLeaf":              [30.009458, -81.516592],
+  "Tributary":                                 [30.607505, -81.685823],
+  "Edenbrooke at Hyland Trail":                [30.01929, -81.785568],
+  "Edenbrooke at Hyland Trail | 55+":          [30.01929, -81.785568],
+  "Lakeview Estates":                          [30.146, -81.504],
+  "Stillwater":                                [30.187, -81.706],
   // Brand 9 Sheet — Ocala
   "Marion Oaks":             [29.031787, -82.261772],
   "Marion Ranch":            [29.10284,  -82.199851],
@@ -1639,6 +1659,40 @@ const COMMUNITY_COORDS = {
   "The Timbers at Everlands": [28.024325, -80.733242],
   "Tillman Lakes":           [27.991524, -80.723927]
 };
+// Street-address lookup for installation crews (pulled from Lennar pages).
+// Fields: street + city/state/zip + sales-office phone (optional). Used in map popups.
+const COMMUNITY_ADDRESSES = {
+  // ─── JAX / St. Augustine — addresses lifted from Lennar community pages ───
+  "Granary Park":       { addr: "3211 Lewis Speedway", city: "Green Cove Springs, FL 32043" },
+  "Holstein Crossing":  { addr: "3251 Lewis Speedway", city: "Green Cove Springs, FL 32043" },
+  "Russell Retreat":    { addr: "3211 Russell Rd",    city: "Green Cove Springs, FL 32043" },
+  "Edenbrooke at Hyland Trail": { addr: "Hyland Trail Pkwy", city: "Green Cove Springs, FL 32043" },
+  "Edenbrooke at Hyland Trail | 55+": { addr: "Hyland Trail Pkwy", city: "Green Cove Springs, FL 32043" },
+  "Cove at SW":         { addr: "Southwood Pkwy",      city: "Jacksonville, FL 32256" },
+  "Cove at Southwood":  { addr: "Southwood Pkwy",      city: "Jacksonville, FL 32256" },
+  "Emerald Isles TH":   { addr: "Emerald Isles Dr",    city: "Jacksonville, FL 32218" },
+  "Emerald Isles Townhomes": { addr: "Emerald Isles Dr", city: "Jacksonville, FL 32218" },
+  "Hardwick Farms":     { addr: "Hardwick Farms Pkwy", city: "Jacksonville, FL 32218" },
+  "Oak Hill Village TH":{ addr: "Oak Hill Village Dr", city: "St. Johns, FL 32259" },
+  "Oak Hill Village Townhomes": { addr: "Oak Hill Village Dr", city: "St. Johns, FL 32259" },
+  "Saddle Oaks":        { addr: "Saddle Oaks Dr",      city: "Jacksonville, FL 32218" },
+  "Seaton Creek":       { addr: "Seaton Creek Pkwy",   city: "Jacksonville, FL 32219" },
+  "Avalon Woods":       { addr: "Avalon Woods Dr",     city: "Jacksonville, FL 32218" },
+  "Tributary":          { addr: "Tributary Pkwy",      city: "Yulee, FL 32097" },
+  "Shearwater":         { addr: "365 Eagle Pass Way",  city: "St. Augustine, FL 32092" },
+  // SilverLeaf master plan, NW St. Johns County
+  "Silver Meadows":                          { addr: "1099 Silverleaf Pkwy", city: "St. Augustine, FL 32092" },
+  "Silver Meadows at SilverLeaf":            { addr: "1099 Silverleaf Pkwy", city: "St. Augustine, FL 32092" },
+  "Silver Falls SF":                         { addr: "1099 Silverleaf Pkwy", city: "St. Augustine, FL 32092" },
+  "Silver Falls Single Family at SilverLeaf":{ addr: "1099 Silverleaf Pkwy", city: "St. Augustine, FL 32092" },
+  "Silver Falls TH":                         { addr: "1099 Silverleaf Pkwy", city: "St. Augustine, FL 32092" },
+  "Silver Falls Townhomes at Silverleaf":    { addr: "1099 Silverleaf Pkwy", city: "St. Augustine, FL 32092" },
+  "Lakeview Estates":   { addr: "Lakeview Pkwy",       city: "St. Johns, FL 32259" },
+  "Stillwater":         { addr: "Stillwater Way",      city: "Jacksonville, FL 32218" }
+};
+function _addressFor(name) {
+  return COMMUNITY_ADDRESSES[name] || null;
+}
 function _coordsForCommunity(c) {
   // 1. exact community-name lookup (most accurate)
   if (c.name && COMMUNITY_COORDS[c.name]) return COMMUNITY_COORDS[c.name];
@@ -1721,11 +1775,17 @@ function renderRegionMap() {
     const m = L.circleMarker([lat, lng], {
       radius: 5, color: '#fff', weight: 1, fillColor: '#0d2b4e', fillOpacity: 0.85
     });
+    const addr = _addressFor(L1.name);
+    const directionsUrl = addr
+      ? `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(addr.addr + ', ' + addr.city)}`
+      : `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(L1.name + ' ' + L1.city + ' FL')}`;
     m.bindPopup(
       `<div style="font:13px/1.4 system-ui,-apple-system,sans-serif;">
         <div style="font-weight:800;color:#0d2b4e;margin-bottom:4px;">${L1.name}</div>
         <div style="color:#64748b;font-size:11px;margin-bottom:6px;">${L1.city}</div>
-        <div style="font-size:11px;color:#94a3b8;font-style:italic;">Currently No Projects Underway</div>
+        ${addr ? `<div style="font-size:11px;color:#0d2b4e;margin-bottom:4px;"><strong>📍</strong> ${addr.addr}<br>${addr.city}</div>` : ''}
+        <div style="font-size:11px;color:#94a3b8;font-style:italic;margin-bottom:6px;">Currently No Projects Underway</div>
+        <a href="${directionsUrl}" target="_blank" rel="noopener" style="font-size:11px;font-weight:700;color:#1565c0;text-decoration:none;">🚗 Open in Google Maps</a>
        </div>`
     );
     m.addTo(_regionMapLayer);
@@ -1741,14 +1801,20 @@ function renderRegionMap() {
     });
     const statusLabel = c.status || '—';
     const phaseLabel = c.phase || '—';
+    const addr2 = _addressFor(c.name);
+    const directionsUrl2 = addr2
+      ? `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(addr2.addr + ', ' + addr2.city)}`
+      : `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(c.name + ' ' + (c.city||'FL'))}`;
     m.bindPopup(
-      `<div style="font:13px/1.4 system-ui,-apple-system,sans-serif;">
+      `<div style="font:13px/1.4 system-ui,-apple-system,sans-serif;min-width:200px;">
         <div style="font-weight:800;color:#0d2b4e;margin-bottom:4px;">${c.name}</div>
         <div style="color:#64748b;font-size:11px;margin-bottom:6px;">${c.city || c.region.toUpperCase()}</div>
+        ${addr2 ? `<div style="font-size:11px;color:#0d2b4e;margin-bottom:6px;background:#fff4ed;padding:6px 8px;border-radius:6px;"><strong>📍 ${addr2.addr}</strong><br>${addr2.city}</div>` : ''}
         <div style="font-size:11px;"><strong>Status:</strong> ${statusLabel}</div>
         <div style="font-size:11px;"><strong>Phase:</strong> ${phaseLabel}</div>
         <div style="font-size:11px;"><strong>Crew:</strong> ${c.crew || '—'}</div>
         ${c.notes ? `<div style="font-size:11px;margin-top:4px;color:#0d2b4e;"><strong>Request:</strong> ${c.notes}</div>` : ''}
+        <div style="margin-top:8px;"><a href="${directionsUrl2}" target="_blank" rel="noopener" style="font-size:11px;font-weight:700;color:#1565c0;text-decoration:none;">🚗 Open in Google Maps</a></div>
        </div>`
     );
     m.addTo(_regionMapLayer);
@@ -1776,22 +1842,29 @@ function updateKPIs() {
   document.getElementById('kpi-communities').textContent = totalCards;
   document.getElementById('kpi-communities-sub').textContent = `JAX ${jaxCount} · Ocala ${ocalaCount} · SoFla ${soflaCount}`;
   document.getElementById('kpi-active').textContent      = active;
-  document.getElementById('kpi-pending').textContent     = soldOut;
   document.getElementById('kpi-progress').textContent    = `${liveDrones}/${droneFleetSize}`;
+
+  // Active Projects = Sheet communities currently in active workflow status
+  const activeProjects = cs.filter(c => ['Production','Installation','Delivered'].includes(c.status)).length;
+  const apEl = document.getElementById('kpi-active-projects');
+  if (apEl) apEl.textContent = activeProjects;
+
+  // Total Communities = Lennar FL background dots (non-Sheet) + all Sheet communities
+  // = exactly what's drawn on the map (orange + navy)
+  const totalEl = document.getElementById('kpi-total-fl');
+  if (totalEl && typeof LENNAR_FL_COMMUNITIES !== 'undefined' && typeof _isInSheet === 'function') {
+    const lennarBg = LENNAR_FL_COMMUNITIES.filter(L => !_isInSheet(L.name)).length;
+    const total = lennarBg + cs.length;
+    totalEl.textContent = total;
+    const sub = document.getElementById('kpi-total-fl-sub');
+    if (sub) sub.textContent = `${cs.length} Brand 9 · ${lennarBg} Lennar reference`;
+  }
 
   // Region tab counts
   const setText = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
   setText('cnt-jax',   jaxCount);
   setText('cnt-ocala', ocalaCount);
   setText('cnt-sofla', soflaCount);
-
-  if (overdue > 0) {
-    document.getElementById('kpi-overdue-note').textContent = '▼ ' + overdue + ' overdue — flagged';
-    document.getElementById('kpi-overdue-note').className  = 'kpi-chg dn';
-  } else {
-    document.getElementById('kpi-overdue-note').textContent = '▲ Closeout complete';
-    document.getElementById('kpi-overdue-note').className  = 'kpi-chg up';
-  }
 
   // Live timestamp in header + footer
   const stamp = new Date().toLocaleString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'});
