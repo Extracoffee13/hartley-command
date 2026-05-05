@@ -571,6 +571,9 @@ body.client-view .admin-only{display:none !important;}
   <div class="r-tab dim" title="Coming Soon">Treasure Coast <span class="r-cs">Soon</span></div>
 </div>
 
+<!-- ── ACTIVE BY REGION HEADER ── -->
+<div id="regionActiveBar" style="display:flex;flex-wrap:wrap;gap:10px;padding:12px 0 6px;font-size:12px;"></div>
+
 <!-- ── KPI BAR ── -->
 <div class="kpi-bar">
   <div class="kpi-card">
@@ -625,6 +628,20 @@ body.client-view .admin-only{display:none !important;}
       <span class="search-icon">&#128269;</span>
       <input class="search-input" type="text" id="searchInput" placeholder="Search communities or cities&#8230;" oninput="applyFilters()">
     </div>
+    <select class="flt-sel" id="regionFilter" onchange="setRegionFromDropdown(this.value)">
+      <option value="all">All Regions</option>
+      <option value="jax">JAX / St. Augustine</option>
+      <option value="ocala">Ocala</option>
+      <option value="orlando">Orlando</option>
+      <option value="tampa">Tampa / Manatee</option>
+      <option value="naples-ft-myers">Naples / Ft. Myers</option>
+      <option value="space-coast">Space Coast / Melbourne</option>
+      <option value="palm-beach">Palm Beach</option>
+      <option value="treasure-coast">Treasure Coast</option>
+      <option value="sofla">South Florida</option>
+      <option value="panama-city">Panama City</option>
+      <option value="pensacola">Pensacola</option>
+    </select>
     <select class="flt-sel" id="statusFilter" onchange="applyFilters()">
       <option value="">All Statuses</option>
       <option value="Artwork">Artwork</option>
@@ -668,10 +685,9 @@ body.client-view .admin-only{display:none !important;}
       <div class="p-title" style="font-size:13px;"><span class="p-title-icon">&#128205;</span> Region Map
         <span id="mapRegionLabel" style="font-size:10px;font-weight:700;color:var(--gray-600);margin-left:6px;">All Regions</span>
       </div>
-      <div style="display:flex;gap:10px;font-size:10px;font-weight:700;">
-        <span style="display:flex;align-items:center;gap:4px;color:var(--orange);"><span style="width:10px;height:10px;border-radius:50%;background:var(--orange);display:inline-block;"></span>Active workflow</span>
-        <span style="display:flex;align-items:center;gap:4px;color:#059669;"><span style="width:10px;height:10px;border-radius:50%;background:#10b981;display:inline-block;"></span>Complete</span>
-        <span style="display:flex;align-items:center;gap:4px;color:var(--gray-600);"><span style="width:10px;height:10px;border-radius:50%;background:#94a3b8;display:inline-block;"></span>Pending</span>
+      <div style="display:flex;gap:14px;font-size:10px;font-weight:700;">
+        <span style="display:flex;align-items:center;gap:4px;color:var(--orange);"><span style="width:11px;height:11px;border-radius:50%;background:var(--orange);display:inline-block;border:2px solid #fff;box-shadow:0 0 0 1px #cbd5e1;"></span>Brand 9 workflow</span>
+        <span style="display:flex;align-items:center;gap:4px;color:var(--gray-600);"><span style="width:8px;height:8px;border-radius:50%;background:#cbd5e1;display:inline-block;border:1px solid #fff;box-shadow:0 0 0 1px #cbd5e1;"></span>Other Lennar FL community</span>
       </div>
     </div>
     <div id="regionMap" style="height:340px;width:100%;"></div>
@@ -1279,11 +1295,10 @@ function renderCard(c, delay) {
   </div>
   ${c.soldOut || c.office ? '' : permit811Row}
   <div class="c-prog">
-    <div class="prog-lbl">
-      <span>${c.installedSigns} of ${c.totalSigns} signs installed</span>
-      <span style="font-weight:800;">${pct}%</span>
+    <div class="prog-lbl" style="display:block;">
+      <div style="font-size:9px;font-weight:800;color:var(--gray-400);letter-spacing:.5px;text-transform:uppercase;margin-bottom:2px;">Latest Request</div>
+      <div style="font-size:12px;font-weight:700;color:var(--navy);line-height:1.3;">${c.notes && c.notes.trim() ? c.notes : '<span style="color:var(--gray-400);font-weight:500;font-style:italic;">No active request</span>'}</div>
     </div>
-    <div class="prog-bar"><div class="prog-fill ${fillCls[c.status]}" style="width:${pct}%"></div></div>
   </div>
   <div class="c-meta">
     <div class="m-item">
@@ -1334,6 +1349,51 @@ function renderGrid() {
   document.getElementById('gridCount').textContent = filteredCommunities.length;
   updateKPIs();
   renderRegionMap();
+  renderRegionActiveBar();
+}
+
+// ─── PER-REGION ACTIVE COUNT BAR ───
+// Top-of-dashboard strip: count of communities per region currently in active workflow
+// (status = Production / Installation / Delivered). Pulled live from the Sheet.
+const REGION_LABELS = {
+  jax:   'North Florida — JAX/St. Augustine',
+  ocala: 'North Florida — Ocala',
+  sofla: 'South Florida — Miami',
+  'naples-ft-myers': 'Naples / Ft. Myers',
+  orlando: 'Orlando',
+  tampa: 'Tampa / Manatee',
+  'palm-beach': 'Palm Beach',
+  'treasure-coast': 'Treasure Coast',
+  'space-coast': 'Space Coast / Melbourne',
+  'panama-city': 'Panama City',
+  pensacola: 'Pensacola'
+};
+function renderRegionActiveBar() {
+  const bar = document.getElementById('regionActiveBar');
+  if (!bar) return;
+  const ACTIVE = ['Production','Installation','Delivered'];
+  // Count per-region active from Sheet data
+  const counts = {};
+  COMMUNITIES.forEach(c => {
+    if (ACTIVE.includes(c.status)) counts[c.region] = (counts[c.region] || 0) + 1;
+  });
+  // Render in order: jax, ocala, sofla first (current Brand 9 footprint), then others if any
+  const order = ['jax','ocala','sofla','naples-ft-myers','orlando','tampa','palm-beach','treasure-coast','space-coast','panama-city','pensacola'];
+  bar.innerHTML = order.map(r => {
+    const n = counts[r] || 0;
+    const isActive = n > 0;
+    const label = REGION_LABELS[r] || r;
+    return `<div style="
+      display:inline-flex;align-items:center;gap:8px;padding:8px 14px;
+      background:${isActive?'var(--orange-l)':'var(--gray-50)'};
+      border:1px solid ${isActive?'var(--orange)':'var(--gray-200)'};
+      border-radius:8px;font-size:11px;font-weight:700;
+      color:${isActive?'var(--orange)':'var(--gray-400)'};
+      ">
+      <span style="font-size:18px;font-weight:900;line-height:1;">${n}</span>
+      <span style="text-transform:uppercase;letter-spacing:.4px;">${label} active</span>
+    </div>`;
+  }).join('');
 }
 
 // ═══════════════════════════════════════════════════════
@@ -1344,26 +1404,200 @@ const CITY_COORDS = {
   // JAX region
   'jacksonville':       [30.3322, -81.6557],
   'st. augustine':      [29.9012, -81.3124],
+  'st augustine':       [29.9012, -81.3124],
   'st. johns':          [30.0938, -81.5373],
   'green cove spgs':    [29.9919, -81.6781],
   'green cove springs': [29.9919, -81.6781],
+  'greencove springs':  [29.9919, -81.6781],
   'orange park':        [30.1661, -81.7065],
+  'yulee':              [30.6402, -81.6062],
   'tallahassee':        [30.4383, -84.2807],
   'northeast fl':       [30.3322, -81.6557],
-  // Ocala region
+  // Ocala / Gainesville
   'ocala':              [29.1872, -82.1401],
   'dunnellon':          [29.0530, -82.4734],
   'alachua':            [29.7958, -82.4845],
-  // South FL
+  'gainesville':        [29.6516, -82.3248],
+  // South FL / Miami
   'miami':              [25.7617, -80.1918],
+  'doral':              [25.8195, -80.3553],
+  'homestead':          [25.4687, -80.4776],
+  'miramar':            [25.9860, -80.3322],
+  'pembroke pines':     [26.0078, -80.2962],
   'south fl':           [25.7617, -80.1918],
-  'south fl division hq': [25.7617, -80.1918]
+  'south fl division hq': [25.7617, -80.1918],
+  // Palm Beach / Treasure Coast
+  'boynton beach':      [26.5256, -80.0664],
+  'delray beach':       [26.4615, -80.0728],
+  'west palm beach':    [26.7153, -80.0534],
+  'jensen beach':       [27.2503, -80.2284],
+  'port saint lucie':   [27.2730, -80.3582],
+  'stuart':             [27.1972, -80.2528],
+  // Naples / Ft. Myers
+  'alva':               [26.7178, -81.6118],
+  'bonita springs':     [26.3398, -81.7787],
+  'estero':             [26.4381, -81.8068],
+  'fort myers':         [26.6406, -81.8723],
+  'lehigh acres':       [26.6204, -81.6242],
+  'miromar lakes':      [26.4673, -81.7848],
+  'naples':             [26.1420, -81.7948],
+  'north fort myers':   [26.6584, -81.8762],
+  // Orlando / Central FL
+  'clermont':           [28.5494, -81.7728],
+  'eagle lake':         [27.9783, -81.7596],
+  'saint cloud':        [28.2489, -81.2812],
+  'orlando':            [28.5383, -81.3792],
+  // Tampa / Manatee
+  'dade city':          [28.3650, -82.1959],
+  'lakeland':           [28.0395, -81.9498],
+  'land o lakes':       [28.2189, -82.4625],
+  'new port richey':    [28.2441, -82.7193],
+  'palmetto':           [27.5214, -82.5723],
+  'parrish':            [27.5797, -82.4232],
+  'san antonio':        [28.3358, -82.2748],
+  'valrico':            [27.9389, -82.2376],
+  'wimauma':            [27.7080, -82.2987],
+  'zephyrhills':        [28.2336, -82.1812],
+  'tampa':              [27.9506, -82.4572],
+  // Space Coast / Melbourne
+  'melbourne':          [28.0836, -80.6081],
+  'palm bay':           [28.0345, -80.5887],
+  // Panama City / Panhandle
+  'panama city':        [30.1588, -85.6602],
+  'panama city beach':  [30.1766, -85.8055],
+  // Pensacola
+  'gulf breeze':        [30.3577, -87.1639],
+  'pensacola':          [30.4213, -87.2169]
 };
+// All Lennar communities currently selling in Florida (background reference layer on map).
+// Communities also tracked in our Sheet are detected by name match and rendered ORANGE.
+const LENNAR_FL_COMMUNITIES = [
+  // Jacksonville / St. Augustine
+  { name: "Granary Park", city: "Green Cove Springs", metro: "jax" },
+  { name: "Holstein Crossing", city: "Green Cove Springs", metro: "jax" },
+  { name: "Russell Retreat", city: "Green Cove Springs", metro: "jax" },
+  { name: "Edenbrooke at Hyland Trail | 55+", city: "Green Cove Springs", metro: "jax" },
+  { name: "Avalon Woods", city: "Jacksonville", metro: "jax" },
+  { name: "Cove at Southwood", city: "Jacksonville", metro: "jax" },
+  { name: "Emerald Isles Townhomes", city: "Jacksonville", metro: "jax" },
+  { name: "Hardwick Farms", city: "Jacksonville", metro: "jax" },
+  { name: "Oak Hill Village Townhomes", city: "Jacksonville", metro: "jax" },
+  { name: "Saddle Oaks", city: "Jacksonville", metro: "jax" },
+  { name: "Shearwater", city: "St Augustine", metro: "jax" },
+  { name: "Silver Falls Single Family at SilverLeaf", city: "St Augustine", metro: "jax" },
+  { name: "Silver Falls Townhomes at Silverleaf", city: "St Augustine", metro: "jax" },
+  { name: "Silver Meadows at SilverLeaf", city: "St Augustine", metro: "jax" },
+  { name: "Tributary", city: "Yulee", metro: "jax" },
+  { name: "Seaton Creek", city: "Jacksonville", metro: "jax" },
+  // Miami / Southeast FL
+  { name: "Coral Gate", city: "Doral", metro: "sofla" },
+  { name: "Evergrene", city: "Doral", metro: "sofla" },
+  { name: "Talavera", city: "Doral", metro: "sofla" },
+  { name: "Venture", city: "Doral", metro: "sofla" },
+  { name: "Emerald Cove", city: "Homestead", metro: "sofla" },
+  { name: "Homestead at Redland", city: "Homestead", metro: "sofla" },
+  { name: "Aria", city: "Miami", metro: "sofla" },
+  { name: "Palmetto Grove", city: "Miami", metro: "sofla" },
+  { name: "Aventura", city: "Miramar", metro: "sofla" },
+  { name: "Beacon Lake", city: "Miramar", metro: "sofla" },
+  { name: "Madison at Broward", city: "Miramar", metro: "sofla" },
+  { name: "Madison at Lakes", city: "Miramar", metro: "sofla" },
+  { name: "Vizcaya", city: "Pembroke Pines", metro: "sofla" },
+  // Naples / Ft. Myers
+  { name: "River Hall", city: "Alva", metro: "naples-ft-myers" },
+  { name: "Island Walk", city: "Bonita Springs", metro: "naples-ft-myers" },
+  { name: "Paloma", city: "Bonita Springs", metro: "naples-ft-myers" },
+  { name: "Spanish Wells", city: "Bonita Springs", metro: "naples-ft-myers" },
+  { name: "Cypress Creek", city: "Estero", metro: "naples-ft-myers" },
+  { name: "Palmira", city: "Fort Myers", metro: "naples-ft-myers" },
+  { name: "Silver Nip", city: "Fort Myers", metro: "naples-ft-myers" },
+  { name: "Sunbridge", city: "Fort Myers", metro: "naples-ft-myers" },
+  { name: "Westbury", city: "Lehigh Acres", metro: "naples-ft-myers" },
+  { name: "Miromar Lakes", city: "Miromar Lakes", metro: "naples-ft-myers" },
+  { name: "Lely Resort", city: "Naples", metro: "naples-ft-myers" },
+  { name: "Raffia Preserve", city: "Naples", metro: "naples-ft-myers" },
+  { name: "Endeavor", city: "North Fort Myers", metro: "naples-ft-myers" },
+  // Orlando
+  { name: "Sanctuary at Wellness Ridge", city: "Clermont", metro: "orlando" },
+  { name: "Ranches at Lake Mcleod", city: "Eagle Lake", metro: "orlando" },
+  { name: "Bridgewalk", city: "Saint Cloud", metro: "orlando" },
+  { name: "The Glades at Crossprairie", city: "Saint Cloud", metro: "orlando" },
+  { name: "Waterlin", city: "Saint Cloud", metro: "orlando" },
+  // Palm Beach / Treasure Coast
+  { name: "Quantum Park", city: "Boynton Beach", metro: "palm-beach" },
+  { name: "Avenir", city: "Delray Beach", metro: "palm-beach" },
+  { name: "Mainyard", city: "Delray Beach", metro: "palm-beach" },
+  { name: "Seasons", city: "Delray Beach", metro: "palm-beach" },
+  { name: "Cortile", city: "West Palm Beach", metro: "palm-beach" },
+  { name: "Forest Grove", city: "Jensen Beach", metro: "treasure-coast" },
+  { name: "Lakewood Ranch", city: "Port Saint Lucie", metro: "treasure-coast" },
+  { name: "River Park", city: "Port Saint Lucie", metro: "treasure-coast" },
+  { name: "Tradition", city: "Port Saint Lucie", metro: "treasure-coast" },
+  { name: "Verano", city: "Stuart", metro: "treasure-coast" },
+  // Tampa / Manatee
+  { name: "Sandhill", city: "Dade City", metro: "tampa" },
+  { name: "Beacon Lake", city: "Lakeland", metro: "tampa" },
+  { name: "Harmony", city: "Lakeland", metro: "tampa" },
+  { name: "Angeline", city: "Land O Lakes", metro: "tampa" },
+  { name: "Angeline Active Adult", city: "Land O Lakes", metro: "tampa" },
+  { name: "Connerton", city: "Land O Lakes", metro: "tampa" },
+  { name: "The Crest", city: "Land O Lakes", metro: "tampa" },
+  { name: "Waterston", city: "Land O Lakes", metro: "tampa" },
+  { name: "Westshore Estates", city: "Land O Lakes", metro: "tampa" },
+  { name: "New Port Corners", city: "New Port Richey", metro: "tampa" },
+  { name: "New Port Corners Active Adult", city: "New Port Richey", metro: "tampa" },
+  { name: "Curiosity Creek", city: "Palmetto", metro: "tampa" },
+  { name: "Stonegate Preserve", city: "Palmetto", metro: "tampa" },
+  { name: "Prosperity Lakes", city: "Parrish", metro: "tampa" },
+  { name: "Prosperity Lakes Active Adult", city: "Parrish", metro: "tampa" },
+  { name: "Mirada Active Adult", city: "San Antonio", metro: "tampa" },
+  { name: "Rosemont", city: "Valrico", metro: "tampa" },
+  { name: "Balm Grove", city: "Wimauma", metro: "tampa" },
+  { name: "Two Rivers", city: "Zephyrhills", metro: "tampa" },
+  // Space Coast / Melbourne
+  { name: "Meridian at Mayfair", city: "Melbourne", metro: "space-coast" },
+  { name: "Riverwood at Everlands", city: "Palm Bay", metro: "space-coast" },
+  { name: "The Timbers at Everlands", city: "Palm Bay", metro: "space-coast" },
+  { name: "Tillman Lakes", city: "Palm Bay", metro: "space-coast" },
+  // Panama City / Panhandle
+  { name: "Coral Reef", city: "Panama City", metro: "panama-city" },
+  { name: "Hidden Pines", city: "Panama City", metro: "panama-city" },
+  { name: "Bay Colony", city: "Panama City Beach", metro: "panama-city" },
+  { name: "Pier Park", city: "Panama City Beach", metro: "panama-city" },
+  // Pensacola
+  { name: "Bay Forest", city: "Gulf Breeze", metro: "pensacola" },
+  { name: "Oak Forest", city: "Gulf Breeze", metro: "pensacola" },
+  { name: "Belleview", city: "Pensacola", metro: "pensacola" },
+  { name: "Blackstone", city: "Pensacola", metro: "pensacola" },
+  { name: "Heritage", city: "Pensacola", metro: "pensacola" },
+  { name: "Heritage Oak", city: "Pensacola", metro: "pensacola" },
+  { name: "Northtowne", city: "Pensacola", metro: "pensacola" },
+  { name: "Sanctuary", city: "Pensacola", metro: "pensacola" },
+  { name: "Timber Creek", city: "Pensacola", metro: "pensacola" }
+];
+function _normalizeName(s) {
+  return String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+}
+function _isInSheet(communityName) {
+  const target = _normalizeName(communityName);
+  return COMMUNITIES.some(c => {
+    const n = _normalizeName(c.name);
+    return n === target || n.includes(target) || target.includes(n);
+  });
+}
 const REGION_CENTROIDS = {
-  jax:   { center: [30.0938, -81.5373], zoom: 9 },
-  ocala: { center: [29.4, -82.2],         zoom: 9 },
-  sofla: { center: [25.7617, -80.1918],   zoom: 10 },
-  all:   { center: [29.0, -81.7],         zoom: 7 }
+  jax:           { center: [30.0938, -81.5373], zoom: 9 },
+  ocala:         { center: [29.4, -82.2],       zoom: 9 },
+  sofla:         { center: [25.9, -80.25],      zoom: 9 },
+  'naples-ft-myers':{center:[26.4, -81.8],      zoom: 9 },
+  'palm-beach':  { center: [26.6, -80.1],       zoom: 9 },
+  'treasure-coast':{center:[27.25, -80.3],      zoom: 9 },
+  orlando:       { center: [28.4, -81.4],       zoom: 9 },
+  tampa:         { center: [27.95, -82.4],      zoom: 8 },
+  'space-coast': { center: [28.06, -80.6],      zoom: 9 },
+  'panama-city': { center: [30.17, -85.7],      zoom: 10 },
+  pensacola:     { center: [30.42, -87.2],      zoom: 10 },
+  all:           { center: [28.5, -82.5],       zoom: 7 }
 };
 function _coordsForCommunity(c) {
   // 1. city lookup
@@ -1382,10 +1616,8 @@ function _coordsForCommunity(c) {
   return [r.center[0] + jitterLat, r.center[1] + jitterLng];
 }
 function _markerColorFor(c) {
-  // Active workflow: Production / Installation / Delivered
-  if (['Production','Installation','Delivered'].includes(c.status)) return '#f97316';  // orange
-  if (c.status === 'Installation Complete' || c.soldOut) return '#10b981';              // green
-  return '#94a3b8';                                                                      // gray (Artwork/Pre-Launch)
+  // Any community in the Sheet (any status) → ORANGE — these are the ones we're running.
+  return '#f97316';
 }
 let _regionMap = null;
 let _regionMapLayer = null;
@@ -1418,15 +1650,45 @@ function renderRegionMap() {
   // Clear and repaint markers
   if (_regionMapLayer) _regionMapLayer.clearLayers();
   _regionMapLayer = L.layerGroup().addTo(_regionMap);
-  // Use ALL communities in current region (not filtered) so the map shows the full footprint
+
+  // Layer 1 — ALL Lennar FL communities (background reference). Filtered to current region/metro.
+  // Skip ones that are also in our Sheet (those will be drawn on top in orange).
+  const lennarFiltered = LENNAR_FL_COMMUNITIES.filter(L => {
+    if (currentRegion === 'all') return true;
+    return L.metro === currentRegion;
+  });
+  lennarFiltered.forEach(L1 => {
+    if (_isInSheet(L1.name)) return;  // drawn on top by Sheet layer
+    const cityKey = String(L1.city || '').toLowerCase().trim();
+    let coords = CITY_COORDS[cityKey];
+    if (!coords) {
+      const r = REGION_CENTROIDS[L1.metro] || REGION_CENTROIDS.all;
+      coords = r.center;
+    }
+    // Add small jitter so multiple communities in same city don't overlap fully
+    const seed = (L1.name + L1.city).split('').reduce((a, ch) => a + ch.charCodeAt(0), 0);
+    const jitterLat = ((seed * 13) % 200 - 100) / 1500;
+    const jitterLng = ((seed * 17) % 200 - 100) / 1500;
+    const m = L.circleMarker([coords[0] + jitterLat, coords[1] + jitterLng], {
+      radius: 4, color: '#fff', weight: 1, fillColor: '#cbd5e1', fillOpacity: 0.85
+    });
+    m.bindPopup(
+      `<div style="font:13px/1.4 system-ui,-apple-system,sans-serif;">
+        <div style="font-weight:800;color:#0d2b4e;margin-bottom:4px;">${L1.name}</div>
+        <div style="color:#64748b;font-size:11px;margin-bottom:6px;">${L1.city}</div>
+        <div style="font-size:11px;color:#94a3b8;font-style:italic;">Lennar community — not in Brand 9 workflow</div>
+       </div>`
+    );
+    m.addTo(_regionMapLayer);
+  });
+
+  // Layer 2 — Brand 9 Sheet communities (any status). All ORANGE.
   const inRegion = COMMUNITIES.filter(c => currentRegion === 'all' || c.region === currentRegion);
   inRegion.forEach(c => {
     const [lat, lng] = _coordsForCommunity(c);
     const color = _markerColorFor(c);
-    const isActive = ['Production','Installation','Delivered'].includes(c.status);
-    const radius = isActive ? 9 : 6;
     const m = L.circleMarker([lat, lng], {
-      radius, color: '#fff', weight: 2, fillColor: color, fillOpacity: 0.95
+      radius: 9, color: '#fff', weight: 2, fillColor: color, fillOpacity: 0.95
     });
     const statusLabel = c.status || '—';
     const phaseLabel = c.phase || '—';
@@ -1437,6 +1699,7 @@ function renderRegionMap() {
         <div style="font-size:11px;"><strong>Status:</strong> ${statusLabel}</div>
         <div style="font-size:11px;"><strong>Phase:</strong> ${phaseLabel}</div>
         <div style="font-size:11px;"><strong>Crew:</strong> ${c.crew || '—'}</div>
+        ${c.notes ? `<div style="font-size:11px;margin-top:4px;color:#0d2b4e;"><strong>Request:</strong> ${c.notes}</div>` : ''}
        </div>`
     );
     m.addTo(_regionMapLayer);
@@ -1526,6 +1789,16 @@ function setRegion(r, el) {
     document.querySelectorAll('.r-tab[data-region]').forEach(t => t.classList.remove('selected'));
     el.classList.add('selected');
   }
+  const dd = document.getElementById('regionFilter');
+  if (dd) dd.value = currentRegion;
+  applyFilters();
+}
+function setRegionFromDropdown(r) {
+  currentRegion = r || 'all';
+  document.querySelectorAll('.r-tab[data-region]').forEach(t => {
+    if (t.getAttribute('data-region') === currentRegion) t.classList.add('selected');
+    else t.classList.remove('selected');
+  });
   applyFilters();
 }
 
