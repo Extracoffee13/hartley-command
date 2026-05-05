@@ -754,6 +754,14 @@ const INITIAL_AGENTS = [
     progress: 0, tasksCompleted: 0, tasksActive: 0, memoryUsage: 0,
     uptime: "0 days", lastActive: "Awaiting hardware",
   },
+  // ─── 2026-05-04 evening: NEW DAILY INTELLIGENCE AGENT — pattern-finding lens onto institutional research ───
+  {
+    id: "build-lens", codename: "Lens", role: "Daily Intelligence Officer", department: "Build Queue T2",
+    tier: 3, score: null, status: "building", buildOrder: 8,
+    skills: ["RSS / open-feed ingest", "Authenticated browser scan (HBR / WSJ / FT / Economist)", "Pattern clustering (TF-IDF + KMeans + sentence-transformers)", "Daily Brief authoring (Patterns / Signal Pieces / Read Later)", "Consumer routing to target agents", "Bookmark + pull-quote capture (feeds Hartley-Cite)", "Source-provenance tagging", "Weekly pattern synthesis (Friday digest)", "Monthly Big Idea distillation", "HBS case-study watch"],
+    description: "Daily pattern-finding lens onto the world's serious thinking — Bobby's HBR + HBS Working Knowledge + Harvard + MIT + Stanford GSB + Wharton + NBER + SSRN + Fed/BIS/IMF working papers + Bloomberg Opinion + Matt Levine + Stratechery + Howard Marks + Dalio, plus paid sources via authenticated Chrome MCP (HBR confirmed, WSJ/FT/Economist TBD). Runs daily at 5:30am ET. Clusters ~5 themes. Routes findings to Architect (capital), WOLF (quant), Anvil (M&A playbooks), Keystone (strategic moves), Ledger (macro), Hartley-Cite (citation corpus), and 7 more. Friday weekly synthesis. First-of-month Big Idea. Spec at /Atlas/lens-agent-spec.md. Sponsor: Architect; build owner: Skill-Forge. Provenance map: ~70% inherited/composed from existing primitives + Chrome MCP; net new = 4 routines (clustering, routing, weekly synth, monthly Big Idea).",
+    progress: 5, tasksCompleted: 0, tasksActive: 1, memoryUsage: 1, uptime: "0 days", lastActive: "Spec + provenance map shipped 2026-05-04",
+  },
   // ─── TIER 4 — BUILD QUEUE T3 (days 181-270) ───
   {
     id: "build-cite", codename: "Hartley-Cite", role: "Cite", department: "Build Queue T3",
