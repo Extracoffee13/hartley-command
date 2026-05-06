@@ -1047,53 +1047,67 @@ async function syncFromSheet() {
     const idx = {};
     header.forEach((h, i) => { idx[h] = i; });
 
-    // Required columns. Bail loudly if the schema drifted.
-    const required = ['ID','Region','Community Name','City','Status','Phase','Crew','Drone Status',
-      'WHC Signage','Wayfinding','WHC Interior','Aluminum Awning','Offsite Wayfinding',
-      'Total Signs','Installed','Last Install','Next Install',
-      'Local Contact','Main POC','811 Permit','Office','Sold Out','Notes'];
+    // Required columns — current Sheet schema (post 2026-05-06 cleanup).
+    // Drops removed: ID, Community Name (→ Community), City, Drone Status (→ Drone),
+    //   Aluminum Awning (→ AL Awning), Offsite Wayfinding (→ Offsite),
+    //   Total Signs, Installed, Last Install, Next Install, Office, Sold Out, Notes.
+    // Adds: Approval, Request, Install Date, Repair, Sort Order.
+    const required = ['Region','Status','Community','Phase','Crew','Drone',
+      'WHC Signage','Wayfinding','WHC Interior','AL Awning','Offsite','Repair',
+      'Local Contact','Main POC','811 Permit'];
     const missing = required.filter(k => idx[k] === undefined);
     if (missing.length) throw new Error('Sheet missing columns: ' + missing.join(', '));
 
-    // Map each CSV row → community object matching atlas's local schema
+    // Map each CSV row → community object matching atlas's local schema.
+    // Skips banner rows (Region/Community blank but other cells empty too).
     const truthy = v => /^(true|yes|1|✓|x)$/i.test(String(v||'').trim());
     const num = v => { const n = parseInt(String(v||'').trim(), 10); return isNaN(n) ? 0 : n; };
     const pickStatus = v => {
       const s = String(v||'').trim();
-      // Pipeline statuses pass through as-is; legacy values map to closest equivalent.
       if (['Artwork','Production','Delivered','Installation','Installation Complete'].includes(s)) return s;
-      if (s.toLowerCase() === 'complete') return 'Installation Complete';
-      if (s.toLowerCase() === 'in progress' || s.toLowerCase() === 'in-progress') return 'Production';
-      if (s.toLowerCase() === 'pending') return 'Artwork';
-      if (s.toLowerCase() === 'sold out') return 'Installation Complete';
+      const sl = s.toLowerCase();
+      if (sl === 'complete') return 'Installation Complete';
+      if (sl === 'in progress' || sl === 'in-progress') return 'Production';
+      if (sl === 'pending') return 'Artwork';
+      if (sl === 'sold out') return 'Installation Complete';
       return s || 'Artwork';
     };
 
-    const fresh = rows.slice(1).map(r => ({
-      id:            num(r[idx['ID']]),
+    const fresh = rows.slice(1).map((r, i) => ({
+      id:            num(r[idx['Sort Order']]) || (i + 1),
       region:        String(r[idx['Region']]||'').trim().toLowerCase() || 'jax',
-      name:          String(r[idx['Community Name']]||'').trim(),
-      city:          String(r[idx['City']]||'').trim(),
+      name:          String(r[idx['Community']]||'').trim(),
+      city:          '',                                     // City column dropped from Sheet 2026-05-06
       status:        pickStatus(r[idx['Status']]),
       phase:         String(r[idx['Phase']]||'').trim() || 'Pre-Launch',
       crew:          String(r[idx['Crew']]||'').trim() || 'Pete + Andrew',
-      droneStatus:   String(r[idx['Drone Status']]||'').trim().toLowerCase() || 'idle',
-      totalSigns:    num(r[idx['Total Signs']]) || 22,
-      installedSigns:num(r[idx['Installed']]) || 0,
-      lastInstall:   String(r[idx['Last Install']]||'').trim() || 'TBD',
-      nextInstall:   String(r[idx['Next Install']]||'').trim() || 'TBD',
+      droneStatus:   String(r[idx['Drone']]||'').trim().toLowerCase() || 'idle',
+      // Total/Installed counters dropped — derive from per-component status fields below.
+      totalSigns:    22,
+      installedSigns: ['WHC Signage','Wayfinding','WHC Interior','AL Awning','Offsite','Repair']
+                       .filter(k => idx[k] !== undefined)
+                       .reduce((acc, k) => acc + (String(r[idx[k]]||'').toLowerCase() === 'installed' ? 1 : 0), 0),
+      // Single Install Date column replaces both Last + Next.
+      lastInstall:   String(r[idx['Install Date']]||'').trim() || 'TBD',
+      nextInstall:   String(r[idx['Install Date']]||'').trim() || 'TBD',
+      approval:      String(r[idx['Approval']]||'').trim(),
       localContact:  String(r[idx['Local Contact']]||'').trim() || 'Gina Lee',
       contact:       String(r[idx['Main POC']]||'').trim() || 'Gina Lee',
       permit811:     String(r[idx['811 Permit']]||'').trim().toLowerCase().replace('n/a','na') || 'na',
-      office:        truthy(r[idx['Office']]),
-      soldOut:       truthy(r[idx['Sold Out']]),
-      notes:         String(r[idx['Notes']]||'').trim()
-    })).filter(c => c.name);
+      office:        false,                                  // Office column dropped from Sheet
+      soldOut:       false,                                  // Sold Out column dropped — derive elsewhere if needed
+      // Notes column dropped — use latest Request as the visible note instead.
+      notes:         String(r[idx['Request']]||'').trim()
+    })).filter(c => c.name && c.name.toUpperCase() !== c.name.replace(/[^A-Z\s\/.\-]/g, ''));
+    // Banner-row guard: Sheet has rows like "JAX/ST AUG", "OCALA", "SOUTH FLORIDA", "GAINESVILLE"
+    // where Community is the all-caps banner text. Drop those.
+    const isBanner = name => /^[A-Z\s\/.\-]+$/.test(name) && name.length < 40 && !name.match(/^[A-Z][a-z]/);
+    const cleanedFresh = fresh.filter(c => !isBanner(c.name));
 
-    if (fresh.length) {
+    if (cleanedFresh.length) {
       // Replace the in-memory COMMUNITIES with the fresh data
       COMMUNITIES.length = 0;
-      fresh.forEach(c => COMMUNITIES.push(c));
+      cleanedFresh.forEach(c => COMMUNITIES.push(c));
       filteredCommunities = [...COMMUNITIES];
       restore811();
       renderGrid();
@@ -1103,9 +1117,9 @@ async function syncFromSheet() {
     }
 
     dot.className  = 'sync-dot ok';
-    msg.textContent = `Live · ${fresh.length} rows synced from Google Sheets`;
+    msg.textContent = `Live · ${cleanedFresh.length} rows synced from Google Sheets`;
     time.textContent = 'Last sync: ' + new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
-    sheetData = fresh;
+    sheetData = cleanedFresh;
   } catch(e) {
     dot.className  = 'sync-dot warn';
     if (e.message && e.message.includes('YOUR_SHEET_ID')) {
