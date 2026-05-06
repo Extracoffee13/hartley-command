@@ -1377,9 +1377,9 @@ function renderCard(c, delay) {
     return `<div style="display:flex;gap:4px;margin:8px 0;">${recent.map(p => {
       const safeId = String(p.id).replace(/'/g, "\\'");
       const delBtn = showDelete
-        ? `<button onclick="event.preventDefault();event.stopPropagation();deleteAtlasPhoto('${safeId}','${safeName}');" title="Delete photo" style="position:absolute;top:2px;right:2px;width:18px;height:18px;padding:0;border:none;border-radius:50%;background:rgba(0,0,0,0.65);color:#fff;font-size:11px;font-weight:700;line-height:18px;text-align:center;cursor:pointer;display:none;" class="photo-x">&times;</button>`
+        ? `<button onclick="event.preventDefault();event.stopPropagation();deleteAtlasPhoto('${safeId}','${safeName}');" title="Delete photo" style="position:absolute;top:3px;right:3px;width:20px;height:20px;padding:0;border:1.5px solid #fff;border-radius:50%;background:#dc2626;color:#fff;font-size:13px;font-weight:700;line-height:16px;text-align:center;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.4);" class="photo-x">&times;</button>`
         : '';
-      return `<div style="flex:1;position:relative;" onmouseenter="this.querySelector('.photo-x')&&(this.querySelector('.photo-x').style.display='block')" onmouseleave="this.querySelector('.photo-x')&&(this.querySelector('.photo-x').style.display='none')"><a href="${p.full}" target="_blank" rel="noopener" style="display:block;height:60px;background:url('${p.thumb}') center/cover;border-radius:6px;border:1px solid var(--gray-200);"></a>${delBtn}</div>`;
+      return `<div style="flex:1;position:relative;"><a href="${p.full}" target="_blank" rel="noopener" style="display:block;height:60px;background:url('${p.thumb}') center/cover;border-radius:6px;border:1px solid var(--gray-200);"></a>${delBtn}</div>`;
     }).join('')}${photos.length > 3 ? `<div style="display:flex;align-items:center;justify-content:center;width:34px;height:60px;background:var(--gray-50);border-radius:6px;font-size:10px;font-weight:700;color:var(--gray-600);">+${photos.length-3}</div>` : ''}</div>`;
   })()}
   <div class="c-prog">
