@@ -1284,7 +1284,14 @@ function renderCard(c, delay) {
   </div>
   ${c.soldOut || c.office ? '' : permit811Row}
   <div class="c-prog">
-    <div class="prog-lbl" style="display:block;">
+    <div class="prog-lbl" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+      <span style="font-size:9px;font-weight:800;color:var(--gray-400);letter-spacing:.5px;text-transform:uppercase;">Signs Installed</span>
+      <span style="font-size:12px;font-weight:800;color:var(--navy);">${c.installedSigns||0} / ${c.totalSigns||22} <span style="color:var(--gray-400);font-weight:600;font-size:10px;">(${Math.round(((c.installedSigns||0)/(c.totalSigns||22))*100)}%)</span></span>
+    </div>
+    <div class="prog-bar" style="margin-bottom:10px;">
+      <div class="prog-fill" style="width:${Math.min(100,Math.round(((c.installedSigns||0)/(c.totalSigns||22))*100))}%;background:${c.soldOut?'var(--gray-400)':(c.installedSigns>=c.totalSigns?'var(--green)':(c.installedSigns>0?'var(--orange)':'var(--gray-200)'))};"></div>
+    </div>
+    <div style="display:block;">
       <div style="font-size:9px;font-weight:800;color:var(--gray-400);letter-spacing:.5px;text-transform:uppercase;margin-bottom:2px;">Latest Request</div>
       <div style="font-size:12px;font-weight:700;color:var(--navy);line-height:1.3;">${c.notes && c.notes.trim() ? c.notes : '<span style="color:var(--gray-400);font-weight:500;font-style:italic;">No active request</span>'}</div>
     </div>
