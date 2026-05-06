@@ -4,17 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>ATLAS — Brand 9 Signs | Lennar Homes</title>
-<link rel="icon" type="image/png" sizes="32x32" href="icons/b9-32.png?v=navy">
-<link rel="icon" type="image/png" sizes="16x16" href="icons/b9-16.png?v=navy">
-<link rel="apple-touch-icon" sizes="180x180" href="icons/b9-180.png?v=navy">
-<link rel="icon" type="image/png" sizes="192x192" href="icons/b9-192.png?v=navy">
-<link rel="icon" type="image/png" sizes="512x512" href="icons/b9-512.png?v=navy">
-<meta name="theme-color" content="#0d1118">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="ATLAS">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
@@ -214,7 +204,7 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
 .c-card.s-new::before{background:var(--purple);}
 
 .c-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px;padding-left:10px;}
-.c-name{font-size:13px;font-weight:800;color:var(--gray-800);line-height:1.3;flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:34px;}
+.c-name{font-size:13px;font-weight:800;color:var(--gray-800);line-height:1.3;flex:1;}
 .c-city{font-size:11px;color:var(--gray-400);margin-top:1px;font-weight:500;}
 .s-badge{font-size:9px;font-weight:800;padding:3px 8px;border-radius:10px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;margin-left:8px;margin-top:1px;}
 .sb-complete{background:var(--green-l);color:#059669;}
@@ -564,9 +554,8 @@ body.client-view .admin-only{display:none !important;}
 
 <!-- ── REGION TABS ── -->
 <div class="region-bar">
-  <div class="r-tab active" data-region="jax"   onclick="setRegion('jax',this)">Jacksonville / St. Augustine <span class="r-count" id="cnt-jax">10</span></div>
-  <div class="r-tab active" data-region="ocala" onclick="setRegion('ocala',this)">Ocala <span class="r-count" id="cnt-ocala">11</span></div>
-  <div class="r-tab active" data-region="gainesville" onclick="setRegion('gainesville',this)">Gainesville <span class="r-count" id="cnt-gainesville">4</span></div>
+  <div class="r-tab active" data-region="jax"   onclick="setRegion('jax',this)">Jacksonville / St. Augustine <span class="r-count" id="cnt-jax">17</span></div>
+  <div class="r-tab active" data-region="ocala" onclick="setRegion('ocala',this)">Ocala <span class="r-count" id="cnt-ocala">12</span></div>
   <div class="r-tab active" data-region="sofla" onclick="setRegion('sofla',this)">South Florida <span class="r-count" id="cnt-sofla">1</span></div>
   <div class="r-tab dim" title="Coming Soon">Ft. Lauderdale <span class="r-cs">Soon</span></div>
   <div class="r-tab dim" title="Coming Soon">Naples / Ft. Myers <span class="r-cs">Soon</span></div>
@@ -580,24 +569,28 @@ body.client-view .admin-only{display:none !important;}
   <div class="r-tab dim" title="Coming Soon">Treasure Coast <span class="r-cs">Soon</span></div>
 </div>
 
-<!-- ── ACTIVE BY REGION HEADER ── -->
-<div id="regionActiveBar" style="display:flex;flex-wrap:wrap;gap:10px;padding:12px 0 6px;font-size:12px;"></div>
-
 <!-- ── KPI BAR ── -->
 <div class="kpi-bar">
   <div class="kpi-card">
-    <div class="kpi-lbl">Active Projects</div>
-    <div class="kpi-val" id="kpi-communities">0</div>
-    <div class="kpi-sub" id="kpi-communities-sub">JAX · Ocala · SoFla</div>
+    <div class="kpi-lbl">Active Communities</div>
+    <div class="kpi-val" id="kpi-communities">29</div>
+    <div class="kpi-sub" id="kpi-communities-sub">JAX 17 · Ocala 12 · MIA office</div>
+    <div class="kpi-chg up">&#9650; Ocala region added</div>
+    <div class="kpi-icon">&#127864;</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-lbl">Active Installations</div>
+    <div class="kpi-val" id="kpi-active">0</div>
+    <div class="kpi-sub">Communities in progress</div>
     <div class="kpi-chg up">&#9650; Crew: Pete + Andrew</div>
     <div class="kpi-icon">&#128295;</div>
   </div>
   <div class="kpi-card">
-    <div class="kpi-lbl">Total Communities</div>
-    <div class="kpi-val" id="kpi-total-fl">0</div>
-    <div class="kpi-sub" id="kpi-total-fl-sub">All Lennar communities in Florida</div>
-    <div class="kpi-chg up">&#9650; Brand 9 + reference</div>
-    <div class="kpi-icon">&#127965;</div>
+    <div class="kpi-lbl">Sold Out / Closed</div>
+    <div class="kpi-val" id="kpi-pending">2</div>
+    <div class="kpi-sub" id="kpi-pending-sub">Holly Cove · Kings Preserve</div>
+    <div class="kpi-chg up" id="kpi-overdue-note">&#9650; Closeout complete</div>
+    <div class="kpi-icon">&#128203;</div>
   </div>
   <div class="kpi-card">
     <div class="kpi-lbl">Drone Fleet</div>
@@ -630,21 +623,6 @@ body.client-view .admin-only{display:none !important;}
       <span class="search-icon">&#128269;</span>
       <input class="search-input" type="text" id="searchInput" placeholder="Search communities or cities&#8230;" oninput="applyFilters()">
     </div>
-    <select class="flt-sel" id="regionFilter" onchange="setRegionFromDropdown(this.value)">
-      <option value="all">All Regions</option>
-      <option value="jax">JAX / St. Augustine</option>
-      <option value="ocala">Ocala</option>
-      <option value="gainesville">Gainesville</option>
-      <option value="orlando">Orlando</option>
-      <option value="tampa">Tampa / Manatee</option>
-      <option value="naples-ft-myers">Naples / Ft. Myers</option>
-      <option value="space-coast">Space Coast / Melbourne</option>
-      <option value="palm-beach">Palm Beach</option>
-      <option value="treasure-coast">Treasure Coast</option>
-      <option value="sofla">South Florida</option>
-      <option value="panama-city">Panama City</option>
-      <option value="pensacola">Pensacola</option>
-    </select>
     <select class="flt-sel" id="statusFilter" onchange="applyFilters()">
       <option value="">All Statuses</option>
       <option value="Artwork">Artwork</option>
@@ -680,20 +658,6 @@ body.client-view .admin-only{display:none !important;}
       <span class="leg-item"><span class="leg-dot" style="background:#ef4444"></span><span style="color:#dc2626">Overdue</span></span>
       <span class="leg-item"><span class="leg-dot" style="background:#8b5cf6"></span><span style="color:#7c3aed">New</span></span>
     </div>
-  </div>
-
-  <!-- ── REGION MAP ── -->
-  <div class="panel" style="margin-bottom:18px;overflow:hidden;">
-    <div class="p-hdr" style="padding:10px 14px;">
-      <div class="p-title" style="font-size:13px;"><span class="p-title-icon">&#128205;</span> Region Map
-        <span id="mapRegionLabel" style="font-size:10px;font-weight:700;color:var(--gray-600);margin-left:6px;">All Regions</span>
-      </div>
-      <div style="display:flex;gap:14px;font-size:10px;font-weight:700;">
-        <span style="display:flex;align-items:center;gap:4px;color:var(--orange);"><span style="width:11px;height:11px;border-radius:50%;background:var(--orange);display:inline-block;border:2px solid #fff;box-shadow:0 0 0 1px #cbd5e1;"></span>Brand 9 workflow</span>
-        <span style="display:flex;align-items:center;gap:4px;color:var(--navy);"><span style="width:9px;height:9px;border-radius:50%;background:var(--navy);display:inline-block;border:1px solid #fff;box-shadow:0 0 0 1px #cbd5e1;"></span>Other Lennar FL community</span>
-      </div>
-    </div>
-    <div id="regionMap" style="height:340px;width:100%;"></div>
   </div>
 
   <div class="comm-grid" id="communityGrid"></div>
@@ -786,6 +750,16 @@ body.client-view .admin-only{display:none !important;}
     </div>
   </div>
 
+  <!-- ── CATEGORY PROGRESS CHART ── -->
+  <div class="panel" style="margin-bottom:28px;">
+    <div class="p-hdr">
+      <div class="p-title"><span class="p-title-icon">&#128202;</span> Sign Installation Progress by Category</div>
+      <span class="sec-badge" id="chartCommunityCount">All Active Communities</span>
+    </div>
+    <div class="chart-wrap">
+      <div class="chart-container"><canvas id="signChart"></canvas></div>
+    </div>
+  </div>
 
 </main>
 
@@ -819,80 +793,6 @@ body.client-view .admin-only{display:none !important;}
 
 // ATLAS Lennar Sign Operations — Dashboard tab CSV (Sheet shared "Anyone with link → View")
 const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1vhkDxy0M4xUBKX5z9QBWPpBh5A0szkEx5571_wP6ac4/export?format=csv&gid=0';
-// Photos tab — populated by the Atlas Web App's upload pipeline.
-// Uses gviz tq endpoint (no gid lookup needed — works by sheet name).
-let PHOTOS_CSV_URL = 'https://docs.google.com/spreadsheets/d/1vhkDxy0M4xUBKX5z9QBWPpBh5A0szkEx5571_wP6ac4/gviz/tq?tqx=out:csv&sheet=Photos';
-// Mobile upload page served by the Atlas Web App. Append &community=<name> to pre-select.
-let FIELD_PHOTO_FORM_URL = 'https://script.google.com/macros/s/AKfycbyjF3HvyBm47tOXolMcnNG7igVfpwfrXg8v4q04kW6qZJ7VS6udEaR7UsmTL96eN8Y9/exec?page=upload';
-// Atlas Web App POST endpoint — admin actions (delete_photo, etc.)
-const ATLAS_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyjF3HvyBm47tOXolMcnNG7igVfpwfrXg8v4q04kW6qZJ7VS6udEaR7UsmTL96eN8Y9/exec';
-async function atlasPost(action, params) {
-  // text/plain content-type avoids CORS preflight with Apps Script
-  const r = await fetch(ATLAS_WEBAPP_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-    body: JSON.stringify({ action, params: params || {} }),
-    redirect: 'follow'
-  });
-  const j = await r.json();
-  if (!j.ok) throw new Error(j.error || 'Action failed');
-  return j.result;
-}
-// Admin-only: delete a photo by Drive file ID
-async function deleteAtlasPhoto(photoId, community) {
-  if (!confirm('Delete this photo? This cannot be undone.')) return;
-  try {
-    await atlasPost('delete_photo', { photoId });
-    // Optimistic local removal so the user sees instant feedback
-    if (COMMUNITY_PHOTOS[community]) {
-      COMMUNITY_PHOTOS[community] = COMMUNITY_PHOTOS[community].filter(p => p.id !== photoId);
-    }
-    if (typeof renderGrid === 'function') renderGrid();
-  } catch (err) {
-    alert('Delete failed: ' + err.message);
-  }
-}
-// Per-community photo cache populated by syncPhotos()
-const COMMUNITY_PHOTOS = {};  // { "Cove at SW": [{url, thumb, caption, crew, ts}, ...] }
-function _driveIdFromUrl(u) {
-  const m = String(u||'').match(/[-\w]{25,}/);
-  return m ? m[0] : null;
-}
-async function syncPhotos() {
-  if (!PHOTOS_CSV_URL) return;
-  try {
-    const r = await fetch(PHOTOS_CSV_URL + '&_t=' + Date.now(), {cache:'no-store'});
-    if (!r.ok) return;
-    const csv = await r.text();
-    const rows = parseCSV(csv);  // existing helper
-    if (!rows.length) return;
-    const headers = rows[0].map(h => String(h||'').trim());
-    const idxTs = headers.findIndex(h => /timestamp/i.test(h));
-    const idxComm = headers.findIndex(h => /community/i.test(h));
-    const idxCrew = headers.findIndex(h => /crew/i.test(h));
-    const idxPhotos = headers.findIndex(h => /photo/i.test(h));
-    const idxCaption = headers.findIndex(h => /caption|notes/i.test(h));
-    Object.keys(COMMUNITY_PHOTOS).forEach(k => delete COMMUNITY_PHOTOS[k]);
-    rows.slice(1).forEach(row => {
-      const community = String(row[idxComm]||'').trim();
-      if (!community) return;
-      const photoCell = String(row[idxPhotos]||'').trim();
-      const ids = photoCell.split(/[\s,]+/).map(_driveIdFromUrl).filter(Boolean);
-      if (!ids.length) return;
-      if (!COMMUNITY_PHOTOS[community]) COMMUNITY_PHOTOS[community] = [];
-      ids.forEach(id => {
-        COMMUNITY_PHOTOS[community].push({
-          id,
-          thumb: `https://drive.google.com/thumbnail?id=${id}&sz=w400`,
-          full:  `https://drive.google.com/uc?id=${id}`,
-          caption: idxCaption>=0 ? row[idxCaption] : '',
-          crew:    idxCrew>=0 ? row[idxCrew] : '',
-          ts:      idxTs>=0 ? row[idxTs] : ''
-        });
-      });
-    });
-  } catch(e) { /* fail silently — photos are non-critical */ }
-}
 
 // Replace with your Google Form URL and community field entry ID
 const GOOGLE_FORM_BASE = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform';
@@ -1136,18 +1036,9 @@ async function syncFromSheet() {
   const time = document.getElementById('syncTime');
   msg.textContent = 'Syncing with Google Sheets…';
   try {
-    const res = await fetch(SHEET_CSV_URL + '&_t=' + Date.now(), {signal: AbortSignal.timeout(10000), cache: 'no-store'});
-    // Diff guard: skip re-render if CSV is byte-identical to last successful sync.
-    // This stops the blink/flicker on every 5s poll when nothing changed.
+    const res = await fetch(SHEET_CSV_URL, {signal: AbortSignal.timeout(10000), cache: 'no-store'});
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const csv = await res.text();
-    // Skip if unchanged
-    if (window.__atlasLastCsv && window.__atlasLastCsv === csv) {
-      // update last-sync timestamp so user sees it's polling
-      const tEl = document.getElementById('last-sync'); if (tEl) tEl.textContent = new Date().toLocaleTimeString([], {hour:'numeric', minute:'2-digit'});
-      return;
-    }
-    window.__atlasLastCsv = csv;
     const rows = parseCSV(csv).filter(r => r.length && r.some(v => v && v.length));
     if (rows.length < 2) throw new Error('CSV had no data rows');
 
@@ -1156,12 +1047,11 @@ async function syncFromSheet() {
     const idx = {};
     header.forEach((h, i) => { idx[h] = i; });
 
-    // Required columns — updated 2026-05-05 for new schema after column renames/drops.
-    // Old → New mapping: Community Name→Community, Drone Status→Drone, Aluminum Awning→AL Awning,
-    // Offsite Wayfinding→Offsite, Notes→Request. Dropped: ID, City, Total Signs, Installed, Office, Sold Out.
-    const required = ['Region','Community','Status','Phase','Crew','Drone',
-      'WHC Signage','Wayfinding','WHC Interior','AL Awning','Offsite',
-      'Local Contact','Main POC','811 Permit'];
+    // Required columns. Bail loudly if the schema drifted.
+    const required = ['ID','Region','Community Name','City','Status','Phase','Crew','Drone Status',
+      'WHC Signage','Wayfinding','WHC Interior','Aluminum Awning','Offsite Wayfinding',
+      'Total Signs','Installed','Last Install','Next Install',
+      'Local Contact','Main POC','811 Permit','Office','Sold Out','Notes'];
     const missing = required.filter(k => idx[k] === undefined);
     if (missing.length) throw new Error('Sheet missing columns: ' + missing.join(', '));
 
@@ -1170,6 +1060,7 @@ async function syncFromSheet() {
     const num = v => { const n = parseInt(String(v||'').trim(), 10); return isNaN(n) ? 0 : n; };
     const pickStatus = v => {
       const s = String(v||'').trim();
+      // Pipeline statuses pass through as-is; legacy values map to closest equivalent.
       if (['Artwork','Production','Delivered','Installation','Installation Complete'].includes(s)) return s;
       if (s.toLowerCase() === 'complete') return 'Installation Complete';
       if (s.toLowerCase() === 'in progress' || s.toLowerCase() === 'in-progress') return 'Production';
@@ -1177,40 +1068,26 @@ async function syncFromSheet() {
       if (s.toLowerCase() === 'sold out') return 'Installation Complete';
       return s || 'Artwork';
     };
-    // Detect closeout/sold-out from Status text since Sold Out column was dropped
-    const isClosedFromStatus = (s, request) => {
-      const v = (String(s||'') + ' ' + String(request||'')).toLowerCase();
-      return /sold out|closeout/.test(v);
-    };
 
-    const fresh = rows.slice(1).map((r, i) => ({
-      id:            i + 1,  // synthetic since ID col was dropped
+    const fresh = rows.slice(1).map(r => ({
+      id:            num(r[idx['ID']]),
       region:        String(r[idx['Region']]||'').trim().toLowerCase() || 'jax',
-      name:          String(r[idx['Community']]||'').trim(),
-      city:          '',  // City col dropped — leave empty
+      name:          String(r[idx['Community Name']]||'').trim(),
+      city:          String(r[idx['City']]||'').trim(),
       status:        pickStatus(r[idx['Status']]),
       phase:         String(r[idx['Phase']]||'').trim() || 'Pre-Launch',
       crew:          String(r[idx['Crew']]||'').trim() || 'Pete + Andrew',
-      droneStatus:   String(r[idx['Drone']]||'').trim().toLowerCase() || 'idle',
-      totalSigns:    22,  // Total Signs col dropped — default 22
-      installedSigns:(function(){
-        const s = pickStatus(r[idx['Status']]);
-        const closed = isClosedFromStatus(r[idx['Status']], r[idx['Request']]);
-        if (closed) return 20;                        // Sold Out / Closeout → 20/20 historical
-        if (s === 'Installation Complete') return 22; // 100%
-        if (s === 'Installation') return 18;          // ~80% (in install)
-        if (s === 'Delivered') return 14;             // ~65% (delivered, not installed)
-        if (s === 'Production') return 8;             // ~35% (in production)
-        return 0;                                     // Artwork / Pre-Launch
-      })(),
-      lastInstall:   'TBD',  // col dropped
-      nextInstall:   (idx['Install Date'] !== undefined ? String(r[idx['Install Date']]||'').trim() : '') || 'TBD',
+      droneStatus:   String(r[idx['Drone Status']]||'').trim().toLowerCase() || 'idle',
+      totalSigns:    num(r[idx['Total Signs']]) || 22,
+      installedSigns:num(r[idx['Installed']]) || 0,
+      lastInstall:   String(r[idx['Last Install']]||'').trim() || 'TBD',
+      nextInstall:   String(r[idx['Next Install']]||'').trim() || 'TBD',
       localContact:  String(r[idx['Local Contact']]||'').trim() || 'Gina Lee',
       contact:       String(r[idx['Main POC']]||'').trim() || 'Gina Lee',
       permit811:     String(r[idx['811 Permit']]||'').trim().toLowerCase().replace('n/a','na') || 'na',
-      office:        false,  // Office col dropped
-      soldOut:       isClosedFromStatus(r[idx['Status']], r[idx['Request']]),
-      notes:         String(r[idx['Request']]||'').trim()  // Notes renamed to Request
+      office:        truthy(r[idx['Office']]),
+      soldOut:       truthy(r[idx['Sold Out']]),
+      notes:         String(r[idx['Notes']]||'').trim()
     })).filter(c => c.name);
 
     if (fresh.length) {
@@ -1244,11 +1121,6 @@ async function syncFromSheet() {
 // FIELD UPDATE BUTTON — opens Google Form pre-filled
 // ═══════════════════════════════════════════════════════
 function fieldUpdateUrl(communityName) {
-  // Prefer the Field Photo Upload form when configured. Pre-select the community.
-  if (typeof FIELD_PHOTO_FORM_URL === 'string' && FIELD_PHOTO_FORM_URL) {
-    const sep = FIELD_PHOTO_FORM_URL.includes('?') ? '&' : '?';
-    return FIELD_PHOTO_FORM_URL + sep + 'community=' + encodeURIComponent(communityName || '');
-  }
   const base = GOOGLE_FORM_BASE.includes('YOUR_FORM_ID')
     ? '#field-update-not-configured'
     : GOOGLE_FORM_BASE + '?usp=pp_url&' + FORM_COMMUNITY_ENTRY + '=' + encodeURIComponent(communityName);
@@ -1259,7 +1131,7 @@ function openFieldUpdate(communityName, e) {
   e.stopPropagation();
   const url = fieldUpdateUrl(communityName);
   if (url.startsWith('#')) {
-    alert('Field Photo Upload form not yet configured. Create the form via the Atlas Web App first.');
+    alert('Field Update form not yet configured.\n\nTo enable:\n1. Create a Google Form with fields: Community, Sign Category, Sign Name, Status, Installer, Date, Notes\n2. Publish the response sheet\n3. Update GOOGLE_FORM_BASE and FORM_COMMUNITY_ENTRY in the dashboard code.');
     return;
   }
   window.open(url, '_blank');
@@ -1339,9 +1211,7 @@ function renderCard(c, delay) {
       : `<span class="s-badge ${badgeCls[c.status]}">${statusLabel[c.status]}</span>`;
 
   // Region label pill
-  // Region pill derives from c.region — known regions get pretty labels, unknown ones uppercase the slug.
-  const regionLabel = {jax:'JAX/St.Aug', ocala:'Ocala', gainesville:'Gainesville', sofla:'South FL'}[c.region]
-    || (c.region ? String(c.region).replace(/-/g,' ').replace(/\b\w/g, ch => ch.toUpperCase()) : '');
+  const regionLabel = {jax:'JAX/St.Aug', ocala:'Ocala', sofla:'South FL'}[c.region] || '';
   const regionPill = regionLabel
     ? `<span style="font-size:9px;font-weight:800;padding:2px 7px;border-radius:8px;background:var(--blue-l);color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-right:4px;">${regionLabel}</span>`
     : '';
@@ -1363,30 +1233,17 @@ function renderCard(c, delay) {
   <div class="c-head">
     <div>
       <div class="c-name">${regionPill}${c.name}</div>
-      <div class="c-city">${c.city ? c.city + ", FL" : ""}</div>
+      <div class="c-city">${c.city}, FL</div>
     </div>
     ${statusBadgeOverride}
   </div>
   ${c.soldOut || c.office ? '' : permit811Row}
-  ${(() => {
-    const photos = COMMUNITY_PHOTOS[c.name] || [];
-    if (!photos.length) return '';
-    const recent = photos.slice(-3);
-    const showDelete = !isClientView;
-    const safeName = String(c.name).replace(/'/g, "\\'");
-    return `<div style="display:flex;gap:4px;margin:8px 0;">${recent.map(p => {
-      const safeId = String(p.id).replace(/'/g, "\\'");
-      const delBtn = showDelete
-        ? `<button onclick="event.preventDefault();event.stopPropagation();deleteAtlasPhoto('${safeId}','${safeName}');" title="Delete photo" style="position:absolute;top:3px;right:3px;width:20px;height:20px;padding:0;border:1.5px solid #fff;border-radius:50%;background:#dc2626;color:#fff;font-size:13px;font-weight:700;line-height:16px;text-align:center;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.4);" class="photo-x">&times;</button>`
-        : '';
-      return `<div style="flex:1;position:relative;"><a href="${p.full}" target="_blank" rel="noopener" style="display:block;height:60px;background:url('${p.thumb}') center/cover;border-radius:6px;border:1px solid var(--gray-200);"></a>${delBtn}</div>`;
-    }).join('')}${photos.length > 3 ? `<div style="display:flex;align-items:center;justify-content:center;width:34px;height:60px;background:var(--gray-50);border-radius:6px;font-size:10px;font-weight:700;color:var(--gray-600);">+${photos.length-3}</div>` : ''}</div>`;
-  })()}
   <div class="c-prog">
-    <div class="prog-lbl" style="display:block;">
-      <div style="font-size:9px;font-weight:800;color:var(--gray-400);letter-spacing:.5px;text-transform:uppercase;margin-bottom:2px;">Latest Request</div>
-      <div style="font-size:12px;font-weight:700;color:var(--navy);line-height:1.3;">${c.notes && c.notes.trim() ? c.notes : '<span style="color:var(--gray-400);font-weight:500;font-style:italic;">No active request</span>'}</div>
+    <div class="prog-lbl">
+      <span>${c.installedSigns} of ${c.totalSigns} signs installed</span>
+      <span style="font-weight:800;">${pct}%</span>
     </div>
+    <div class="prog-bar"><div class="prog-fill ${fillCls[c.status]}" style="width:${pct}%"></div></div>
   </div>
   <div class="c-meta">
     <div class="m-item">
@@ -1398,7 +1255,7 @@ function renderCard(c, delay) {
       <div class="m-val">${droneBlock}</div>
     </div>
     <div class="m-item">
-      <div class="m-lbl">Install Date</div>
+      <div class="m-lbl">Next Scheduled</div>
       <div class="m-val">${nextDisplay}</div>
     </div>
     <div class="m-item" style="text-align:right;">
@@ -1436,593 +1293,13 @@ function renderGrid() {
   }
   document.getElementById('gridCount').textContent = filteredCommunities.length;
   updateKPIs();
-  renderRegionMap();
-  renderRegionActiveBar();
-}
-
-// ─── PER-REGION ACTIVE COUNT BAR ───
-// Top-of-dashboard strip: count of communities per region currently in active workflow
-// (status = Production / Installation / Delivered). Pulled live from the Sheet.
-const REGION_LABELS = {
-  jax:         'North Florida — JAX/St. Augustine',
-  ocala:       'North Florida — Ocala',
-  gainesville: 'North Florida — Gainesville',
-  sofla:       'South Florida — Miami',
-  'naples-ft-myers': 'Naples / Ft. Myers',
-  orlando:     'Orlando',
-  tampa:       'Tampa / Manatee',
-  'palm-beach': 'Palm Beach',
-  'treasure-coast': 'Treasure Coast',
-  'space-coast': 'Space Coast / Melbourne',
-  'panama-city': 'Panama City',
-  pensacola:   'Pensacola'
-};
-function renderRegionActiveBar() {
-  const bar = document.getElementById('regionActiveBar');
-  if (!bar) return;
-  // Count by region: total tracked Sheet communities per region.
-  // Highlight orange whenever the region has any Sheet community, regardless of current status.
-  const counts = {};
-  COMMUNITIES.forEach(c => {
-    counts[c.region] = (counts[c.region] || 0) + 1;
-  });
-  const order = ['jax','ocala','gainesville','sofla','naples-ft-myers','orlando','tampa','palm-beach','treasure-coast','space-coast','panama-city','pensacola'];
-  bar.innerHTML = order.map(r => {
-    const n = counts[r] || 0;
-    const isActive = n > 0;
-    const label = REGION_LABELS[r] || r;
-    return `<div style="
-      display:inline-flex;align-items:center;gap:8px;padding:8px 14px;
-      background:${isActive?'var(--orange-l)':'var(--gray-50)'};
-      border:1px solid ${isActive?'var(--orange)':'var(--gray-200)'};
-      border-radius:8px;font-size:11px;font-weight:700;
-      color:${isActive?'var(--orange)':'var(--gray-400)'};
-      ">
-      <span style="font-size:18px;font-weight:900;line-height:1;">${n}</span>
-      <span style="text-transform:uppercase;letter-spacing:.4px;">${label} active</span>
-    </div>`;
-  }).join('');
-}
-
-// ═══════════════════════════════════════════════════════
-// REGION MAP — Leaflet
-// ═══════════════════════════════════════════════════════
-// City → coords lookup. Add new cities here as the field expands.
-const CITY_COORDS = {
-  // JAX region
-  'jacksonville':       [30.3322, -81.6557],
-  'st. augustine':      [29.9012, -81.3124],
-  'st augustine':       [29.9012, -81.3124],
-  'st. johns':          [30.0938, -81.5373],
-  'green cove spgs':    [29.9919, -81.6781],
-  'green cove springs': [29.9919, -81.6781],
-  'greencove springs':  [29.9919, -81.6781],
-  'orange park':        [30.1661, -81.7065],
-  'yulee':              [30.6402, -81.6062],
-  'tallahassee':        [30.4383, -84.2807],
-  'northeast fl':       [30.3322, -81.6557],
-  // Ocala / Gainesville
-  'ocala':              [29.1872, -82.1401],
-  'dunnellon':          [29.0530, -82.4734],
-  'alachua':            [29.7958, -82.4845],
-  'gainesville':        [29.6516, -82.3248],
-  // South FL / Miami
-  'miami':              [25.7617, -80.1918],
-  'doral':              [25.8195, -80.3553],
-  'homestead':          [25.4687, -80.4776],
-  'miramar':            [25.9860, -80.3322],
-  'pembroke pines':     [26.0078, -80.2962],
-  'south fl':           [25.7617, -80.1918],
-  'south fl division hq': [25.7617, -80.1918],
-  // Palm Beach / Treasure Coast
-  'boynton beach':      [26.5256, -80.0664],
-  'delray beach':       [26.4615, -80.0728],
-  'west palm beach':    [26.7153, -80.0534],
-  'jensen beach':       [27.2503, -80.2284],
-  'port saint lucie':   [27.2730, -80.3582],
-  'stuart':             [27.1972, -80.2528],
-  // Naples / Ft. Myers
-  'alva':               [26.7178, -81.6118],
-  'bonita springs':     [26.3398, -81.7787],
-  'estero':             [26.4381, -81.8068],
-  'fort myers':         [26.6406, -81.8723],
-  'lehigh acres':       [26.6204, -81.6242],
-  'miromar lakes':      [26.4673, -81.7848],
-  'naples':             [26.1420, -81.7948],
-  'north fort myers':   [26.6584, -81.8762],
-  // Orlando / Central FL
-  'clermont':           [28.5494, -81.7728],
-  'eagle lake':         [27.9783, -81.7596],
-  'saint cloud':        [28.2489, -81.2812],
-  'orlando':            [28.5383, -81.3792],
-  // Tampa / Manatee
-  'dade city':          [28.3650, -82.1959],
-  'lakeland':           [28.0395, -81.9498],
-  'land o lakes':       [28.2189, -82.4625],
-  'new port richey':    [28.2441, -82.7193],
-  'palmetto':           [27.5214, -82.5723],
-  'parrish':            [27.5797, -82.4232],
-  'san antonio':        [28.3358, -82.2748],
-  'valrico':            [27.9389, -82.2376],
-  'wimauma':            [27.7080, -82.2987],
-  'zephyrhills':        [28.2336, -82.1812],
-  'tampa':              [27.9506, -82.4572],
-  // Space Coast / Melbourne
-  'melbourne':          [28.0836, -80.6081],
-  'palm bay':           [28.0345, -80.5887],
-  // Panama City / Panhandle
-  'panama city':        [30.1588, -85.6602],
-  'panama city beach':  [30.1766, -85.8055],
-  // Pensacola
-  'gulf breeze':        [30.3577, -87.1639],
-  'pensacola':          [30.4213, -87.2169]
-};
-// All Lennar communities currently selling in Florida (background reference layer on map).
-// Communities also tracked in our Sheet are detected by name match and rendered ORANGE.
-const LENNAR_FL_COMMUNITIES = [
-  // ─── JAX ───
-  {name: "Avalon Woods", city: "Jacksonville", metro: "jax", coords: [30.462122, -81.625918], address: {street: "578 Avalon Woods Lane", line2: "Jacksonville, FL"}},
-  {name: "Cove at Southwood", city: "Jacksonville", metro: "jax", coords: [30.176565, -81.609143], address: {street: "4011 Lingo Lane", line2: "Jacksonville, FL"}},
-  {name: "Diamond Springs", city: "Jacksonville", metro: "jax", coords: [30.3742, -81.611033], address: null},
-  {name: "Edenbrooke at Hyland Trail | 55+", city: "Green Cove Springs", metro: "jax", coords: [30.01929, -81.785568], address: {street: "3017 NEW MOON CIRCLE", line2: "Green Cove Springs, FL"}},
-  {name: "Emerald Isles Townhomes", city: "Jacksonville", metro: "jax", coords: [30.205939, -81.588896], address: {street: "9712 Topaz Lane", line2: "Jacksonville, FL"}},
-  {name: "Granary Park", city: "Green Cove Springs", metro: "jax", coords: [30.046139, -81.771412], address: {street: "2669 Field Daisy Ln", line2: "Green Cove Springs, FL"}},
-  {name: "Hardwick Farms", city: "Jacksonville", metro: "jax", coords: [30.248866, -81.614747], address: {street: "6960 GOLDEN MONARCH AVE", line2: "Jacksonville, FL"}},
-  {name: "Holstein Crossing", city: "Green Cove Springs", metro: "jax", coords: [30.048633, -81.768918], address: {street: "3024 Grand Finale Street", line2: "Green Cove Springs, FL"}},
-  {name: "Kings Creek2", city: "Jacksonville", metro: "jax", coords: [30.292867, -81.676367], address: null},
-  {name: "Longbay Townhomes", city: "Middleburg", metro: "jax", coords: [30.040433, -81.9097], address: null},
-  {name: "Mill Creek North Townhomes", city: "Jacksonville", metro: "jax", coords: [30.3282, -81.6917], address: null},
-  {name: "Oak Hill Village Townhomes", city: "Jacksonville", metro: "jax", coords: [30.237826, -81.747406], address: {street: "6090 Falcon Gate Lane", line2: "Jacksonville, FL"}},
-  {name: "Resilience at Palm Coast", city: "Palm Coast", metro: "jax", coords: [30.042467, -81.532633], address: null},
-  {name: "Russell Retreat", city: "Green Cove Springs", metro: "jax", coords: [30.074385, -81.785793], address: {street: "2336 River Park Trc", line2: "Green Cove Springs, FL"}},
-  {name: "Saddle Oaks", city: "Jacksonville", metro: "jax", coords: [30.397657, -81.819284], address: {street: "6239 Rein Ave", line2: "Jacksonville, FL"}},
-  {name: "Seaton Creek", city: "Jacksonville", metro: "jax", coords: [30.522518, -81.666923], address: null},
-  {name: "Shearwater", city: "St Augustine", metro: "jax", coords: [30.020593, -81.572773], address: {street: "99 Hogan Court", line2: "St Augustine, FL"}},
-  {name: "Silver Falls Single Family at Silverleaf", city: "St Augustine", metro: "jax", coords: [30.006971, -81.524131], address: {street: "23 Good Harbor Pl", line2: "St Augustine, FL"}},
-  {name: "Silver Falls Townhomes at Silverleaf", city: "St Augustine", metro: "jax", coords: [30.009949, -81.524648], address: {street: "113 HUBBARD BEND", line2: "St Augustine, FL"}},
-  {name: "Silver Meadows at Silverleaf", city: "St Augustine", metro: "jax", coords: [30.009458, -81.516592], address: {street: "142 Whitmore Drive", line2: "St Augustine, FL"}},
-  {name: "Stillwateractiveadult55", city: "St Johns", metro: "jax", coords: [30.1118, -81.5753], address: null},
-  {name: "Trailmark", city: "St Augustine2", metro: "jax", coords: [30.141133, -81.577967], address: null},
-  {name: "Tributary", city: "Yulee", metro: "jax", coords: [30.607505, -81.685823], address: {street: "76024 Estuary Way", line2: "Yulee, FL"}},
-  {name: "Villages of Westport", city: "Jacksonville", metro: "jax", coords: [30.269533, -81.686367], address: null},
-  {name: "Whistler Woods", city: "Jacksonville", metro: "jax", coords: [30.3182, -81.715033], address: null},
-  // ─── NAPLES-FT-MYERS ───
-  {name: "Bayshore Ranch", city: "North Fort Myers", metro: "naples-ft-myers", coords: [26.7184, -81.869533], address: {street: "17539 SADDLEBACK LOOP", line2: "North Fort Myers, FL"}},
-  {name: "Brightwater Lagoon", city: "North Fort Myers", metro: "naples-ft-myers", coords: [26.6824, -81.926867], address: {street: "18851 River Burst Ct", line2: "North Fort Myers, FL"}},
-  {name: "Broadway Crossing", city: "Estero", metro: "naples-ft-myers", coords: [26.412767, -81.768133], address: null},
-  {name: "Cielo Mar Townhomes", city: "North Fort Myers", metro: "naples-ft-myers", coords: [26.651733, -81.9362], address: null},
-  {name: "Crane Landing", city: "North Fort Myers", metro: "naples-ft-myers", coords: [26.649733, -81.887533], address: {street: "4245 Caterina Ct", line2: "North Fort Myers, FL"}},
-  {name: "Gatherpoint", city: "Ave Maria", metro: "naples-ft-myers", coords: [26.311933, -81.4828], address: null},
-  {name: "Hampton Lakes at River Hall", city: "Alva", metro: "naples-ft-myers", coords: [26.6758, -81.656467], address: null},
-  {name: "Ibis Landing Golf Country Club", city: "Lehigh Acres", metro: "naples-ft-myers", coords: [26.5604, -81.630867], address: {street: "18421 COPPERHEAD CT N #223", line2: "Lehigh Acres, FL"}},
-  {name: "Kingston", city: "Estero", metro: "naples-ft-myers", coords: [26.3721, -81.8008], address: null},
-  {name: "Maple Point", city: "Naples", metro: "naples-ft-myers", coords: [26.100667, -81.7668], address: null},
-  {name: "Maplewood Park", city: "Lehigh Acres", metro: "naples-ft-myers", coords: [26.659733, -81.603533], address: null},
-  {name: "New Homes in Cape Coral", city: "Cape Coral", metro: "naples-ft-myers", coords: [26.522233, -81.982167], address: {street: "3906 NW 46th St", line2: "Cape Coral, FL"}},
-  {name: "New Homes in Lehigh Acres", city: "Lehigh Acres", metro: "naples-ft-myers", coords: [26.559067, -81.642867], address: {street: "4024 23rd St SW", line2: "Lehigh Acres, FL"}},
-  {name: "Orange River Townhomes", city: "Fort Myers", metro: "naples-ft-myers", coords: [26.681933, -81.9003], address: null},
-  {name: "Palmetta Pines Townhomes", city: "Cape Coral", metro: "naples-ft-myers", coords: [26.566233, -81.986167], address: null},
-  {name: "Portico", city: "Fort Myers", metro: "naples-ft-myers", coords: [26.6966, -81.901633], address: null},
-  {name: "River Hall Country Club", city: "Alva", metro: "naples-ft-myers", coords: [26.7058, -81.586467], address: null},
-  {name: "Rivergrass", city: "Naples", metro: "naples-ft-myers", coords: [26.107333, -81.840133], address: null},
-  {name: "Sabal Glen at Midtown", city: "Punta Gorda", metro: "naples-ft-myers", coords: [26.9398, -82.022067], address: null},
-  {name: "Sandy Key", city: "Fort Myers", metro: "naples-ft-myers", coords: [26.6546, -81.812967], address: {street: "13629 Cerith Court", line2: "Fort Myers, FL"}},
-  {name: "Savanna Lakes", city: "Lehigh Acres", metro: "naples-ft-myers", coords: [26.6344, -81.564867], address: {street: "11938 SAVANNA LAKES BLVD", line2: "Lehigh Acres, FL"}},
-  {name: "Stonehill Manor", city: "North Fort Myers", metro: "naples-ft-myers", coords: [26.679733, -81.817533], address: null},
-  {name: "The National Golf Country Club", city: "Ave Maria", metro: "naples-ft-myers", coords: [26.311933, -81.4828], address: {street: "5615 Newcastle Ct #5212", line2: "Ave Maria, FL"}},
-  {name: "Timber Creek", city: "Fort Myers", metro: "naples-ft-myers", coords: [26.6606, -81.825633], address: null},
-  {name: "Tuckers Cove", city: "Punta Gorda", metro: "naples-ft-myers", coords: [26.969133, -82.024733], address: {street: "14911 BLUEWATER RD", line2: "Punta Gorda, FL"}},
-  {name: "Valencia Golf Country Club", city: "Naples", metro: "naples-ft-myers", coords: [26.11, -81.816133], address: null},
-  {name: "Verdana Village", city: "Estero", metro: "naples-ft-myers", coords: [26.495433, -81.824133], address: null},
-  {name: "Webbs Reserve", city: "Punta Gorda", metro: "naples-ft-myers", coords: [26.876467, -81.992067], address: {street: "15285 Green Acres Ave #435", line2: "Punta Gorda, FL"}},
-  {name: "Willowgreen at Babcock Ranch", city: "Punta Gorda", metro: "naples-ft-myers", coords: [26.956467, -82.072067], address: {street: "16532 Kingwood Ln #3211", line2: "Punta Gorda, FL"}},
-  // ─── OCALA ───
-  {name: "Bellehaven", city: "Belleview", metro: "ocala", coords: [29.465333, -82.145333], address: null},
-  {name: "Grand Oaks Manor", city: "Oxford", metro: "ocala", coords: [29.336667, -82.17], address: null},
-  {name: "Grand Park", city: "Dunnellon", metro: "ocala", coords: [29.111, -82.418067], address: {street: "19689 SW 82nd Loop", line2: "Dunnellon, FL"}},
-  {name: "Grand Park North", city: "Dunnellon", metro: "ocala", coords: [29.111, -82.418067], address: {street: "19376 SW 77TH LOOP", line2: "Dunnellon, FL"}},
-  {name: "Heath Preserve", city: "Ocala", metro: "ocala", coords: [29.204462, -82.196198], address: {street: "1591 NW 48TH TERR", line2: "Ocala, FL"}},
-  {name: "Juliette Falls", city: "Dunnellon", metro: "ocala", coords: [29.109667, -82.430067], address: {street: "6606 SW 180TH CIR", line2: "Dunnellon, FL"}},
-  {name: "Marion Oaks", city: "Ocala", metro: "ocala", coords: [29.031787, -82.261772], address: {street: "13220 SW 87TH CIR", line2: "Ocala, FL"}},
-  {name: "Marion Ranch", city: "Ocala", metro: "ocala", coords: [29.10284, -82.199851], address: {street: "8307 SW 42ND CIR", line2: "Ocala, FL"}},
-  {name: "Millwood", city: "Ocala", metro: "ocala", coords: [29.225267, -82.08709], address: {street: "3201 NE 38TH Street", line2: "Ocala, FL"}},
-  {name: "Oak Hammock Preserve Townhomes", city: "Ocala", metro: "ocala", coords: [29.2232, -82.082767], address: {street: "3634 SE 37TH AVE RD", line2: "Ocala, FL"}},
-  {name: "Pioneer Ranch", city: "Ocala", metro: "ocala", coords: [29.090749, -82.234074], address: {street: "8685 SW 69TH TERRACE", line2: "Ocala, FL"}},
-  {name: "Tara Baywood", city: "Alachua", metro: "ocala", coords: [29.821133, -82.523167], address: {street: "16344 NW 145TH DR", line2: "Alachua, FL"}},
-  {name: "Tara Forest East", city: "Alachua", metro: "ocala", coords: [29.746467, -82.5285], address: {street: "16731 NW 144TH ST", line2: "Alachua, FL"}},
-  {name: "Tara Serena", city: "Gainesville", metro: "ocala", coords: [29.712267, -82.3788], address: {street: "5436 NW 22ND DR", line2: "Gainesville, FL"}},
-  {name: "Trailhead Landing", city: "Alachua", metro: "ocala", coords: [29.8358, -82.5245], address: {street: "12679 NW 139TH WAY", line2: "Alachua, FL"}},
-  // ─── ORLANDO ───
-  {name: "Brentwood2", city: "Davenport", metro: "orlando", coords: [28.2214, -81.595133], address: null},
-  {name: "Bridgewalk", city: "Saint Cloud", metro: "orlando", coords: [28.343863, -81.214485], address: {street: "5606 NINA WAY", line2: "Saint Cloud, FL"}},
-  {name: "Bronsons Ridge", city: "Apopka", metro: "orlando", coords: [28.6774, -81.542967], address: {street: "2372 Rider Rain Lane", line2: "Apopka, FL"}},
-  {name: "Crosswinds", city: "Haines City", metro: "orlando", coords: [28.1404, -81.5863], address: {street: "3829 AMERS LOOP", line2: "Haines City, FL"}},
-  {name: "Cypress Reserve", city: "Groveland", metro: "orlando", coords: [28.345333, -81.358667], address: null},
-  {name: "Everbe", city: "Orlando", metro: "orlando", coords: [28.490967, -81.338533], address: null},
-  {name: "Grandview Townhomes", city: "Davenport", metro: "orlando", coords: [28.164067, -81.5778], address: null},
-  {name: "Groves at Grenelefe", city: "Haines City", metro: "orlando", coords: [28.1664, -81.685633], address: null},
-  {name: "Gum Lake Preserve", city: "Lake Alfred", metro: "orlando", coords: [28.336, -81.442667], address: null},
-  {name: "Hamilton Bluff", city: "Haines City", metro: "orlando", coords: [28.0584, -81.590967], address: {street: "2240 CROWN ROCK DRIVE", line2: "Haines City, FL"}},
-  {name: "Hidden Ridge", city: "Groveland", metro: "orlando", coords: [28.362667, -81.336], address: null},
-  {name: "Hunt Club Groves", city: "Lake Wales", metro: "orlando", coords: [27.884, -81.5479], address: {street: "375 Artemis Street", line2: "Lake Wales, FL"}},
-  {name: "Knightsbridge", city: "Kissimmee", metro: "orlando", coords: [28.327333, -81.422933], address: {street: "4754 Maple Cross Drive", line2: "Kissimmee, FL"}},
-  {name: "Lennar at Esplanade", city: "Kissimmee", metro: "orlando", coords: [28.286667, -81.4556], address: null},
-  {name: "Meadow Pointe", city: "Groveland", metro: "orlando", coords: [28.454, -81.380667], address: null},
-  {name: "Oak Hammock", city: "Deland", metro: "orlando", coords: [28.365333, -81.445333], address: null},
-  {name: "Peace Creek Reserve", city: "Winter Haven", metro: "orlando", coords: [28.0342, -81.758233], address: {street: "1546 JESSICA BOULEVARD", line2: "Winter Haven, FL"}},
-  {name: "Pine Meadows", city: "Eustis", metro: "orlando", coords: [28.869367, -81.7356], address: {street: "1491 WILLOW GARDEN LOOP", line2: "Eustis, FL"}},
-  {name: "Preserve at Lpga", city: "Daytona Beach", metro: "orlando", coords: [28.458, -81.344667], address: null},
-  {name: "Providence", city: "Davenport", metro: "orlando", coords: [28.176733, -81.6638], address: {street: "4042 EASTMINSTER ROAD", line2: "Davenport, FL"}},
-  {name: "Ranches at Lake Mcleod", city: "Eagle Lake", metro: "orlando", coords: [27.952224, -81.7547], address: {street: "3447 ROVER ROAD", line2: "Eagle Lake, FL"}},
-  {name: "Reedy Isle2", city: "Davenport", metro: "orlando", coords: [28.2234, -81.6438], address: null},
-  {name: "Reunion Village", city: "Kissimmee", metro: "orlando", coords: [28.351333, -81.4736], address: null},
-  {name: "Ridgebrooke", city: "Apopka", metro: "orlando", coords: [28.7234, -81.595633], address: null},
-  {name: "Rivington", city: "Debary", metro: "orlando", coords: [28.880333, -81.3321], address: {street: "641 TERRAPIN DRIVE(P)", line2: "Debary, FL"}},
-  {name: "Sanctuary at Wellness Ridge2", city: "Clermont", metro: "orlando", coords: [28.478739, -81.694265], address: {street: "3063 REPOSE DRIVE", line2: "Clermont, FL"}},
-  {name: "Scenic Terrace", city: "Haines City", metro: "orlando", coords: [28.053067, -81.638967], address: null},
-  {name: "Serenity at Peace Creek Reserve", city: "Winter Haven", metro: "orlando", coords: [28.0462, -81.783567], address: null},
-  {name: "Sol Vista", city: "Dundee", metro: "orlando", coords: [28.393333, -81.46], address: null},
-  {name: "Storey Creek", city: "Kissimmee", metro: "orlando", coords: [28.348667, -81.364267], address: null},
-  {name: "Sugarloaf Ridge", city: "Minneola", metro: "orlando", coords: [28.582867, -81.782933], address: {street: "3133 Brookhollow Way", line2: "Minneola, FL"}},
-  {name: "The Glades at Crossprairie", city: "Saint Cloud", metro: "orlando", coords: [28.217786, -81.33632], address: {street: "4350 BENTGRASS BEND", line2: "Saint Cloud, FL"}},
-  {name: "The Parks at Edgewater", city: "Edgewater", metro: "orlando", coords: [28.438667, -81.452], address: null},
-  {name: "Tohoqua", city: "Kissimmee", metro: "orlando", coords: [28.356667, -81.4256], address: null},
-  {name: "Villa Mar", city: "Winter Haven", metro: "orlando", coords: [28.030867, -81.721567], address: {street: "6441 Domizio Drive", line2: "Winter Haven, FL"}},
-  {name: "Waterlin", city: "Saint Cloud", metro: "orlando", coords: [28.154587, -81.271432], address: {street: "476 Cypress Fork Trail", line2: "Saint Cloud, FL"}},
-  {name: "Waterstone", city: "Groveland", metro: "orlando", coords: [28.4, -81.4], address: null},
-  {name: "Wellness Ridge", city: "Clermont", metro: "orlando", coords: [28.478739, -81.694265], address: {street: "6072 ZEN WAY", line2: "Clermont, FL"}},
-  {name: "Westview", city: "Kissimmee", metro: "orlando", coords: [28.24, -81.342267], address: {street: "3088 Chromatic Street", line2: "Kissimmee, FL"}},
-  {name: "Woodland Ranch Estates", city: "Dundee", metro: "orlando", coords: [28.335333, -81.382], address: null},
-  {name: "Wynnstone", city: "Davenport", metro: "orlando", coords: [28.2074, -81.654467], address: null},
-  // ─── PALM-BEACH ───
-  {name: "Arden", city: "Loxahatchee", metro: "palm-beach", coords: [26.657333, -80.117333], address: {street: "1734 Hoot Owl Hollow", line2: "Loxahatchee, FL"}},
-  {name: "Delray Trails", city: "Delray Beach", metro: "palm-beach", coords: [26.416833, -80.008133], address: {street: "13707 Jubilee Lane", line2: "Delray Beach, FL"}},
-  {name: "Estates of Boynton Waters", city: "Boynton Beach", metro: "palm-beach", coords: [26.5416, -80.055733], address: null},
-  {name: "The Estates at Lotis Wellington", city: "Wellington", metro: "palm-beach", coords: [26.707567, -80.270067], address: {street: "1014 Raleigh Way", line2: "Wellington, FL"}},
-  {name: "Whitmore Estates2", city: "Lake Worth", metro: "palm-beach", coords: [26.653467, -80.071733], address: {street: "7616 Bridle Trail Way", line2: "Lake Worth, FL"}},
-  // ─── PANAMA-CITY ───
-  {name: "Bay Springs", city: "DeFuniak Springs", metro: "panama-city", coords: [30.206667, -85.703333], address: {street: "80 Bay Springs Blvd", line2: "DeFuniak Springs, FL"}},
-  {name: "Cross Creek", city: "Freeport", metro: "panama-city", coords: [30.218667, -85.728667], address: {street: "373 Bent Oak Dr", line2: "Freeport, FL"}},
-  {name: "Magnolia Ridge", city: "Panama City", metro: "panama-city", coords: [30.161467, -85.6362], address: {street: "3840 Wall Street", line2: "Panama City, FL"}},
-  {name: "Riverbend Run2", city: "Southport", metro: "panama-city", coords: [30.210667, -85.667333], address: null},
-  // ─── PENSACOLA ───
-  {name: "Bella Terra", city: "Cantonment", metro: "pensacola", coords: [30.599333, -87.348533], address: {street: "1537 Paisley Drive", line2: "Cantonment, FL"}},
-  {name: "Eagles Ridge", city: "Pace", metro: "pensacola", coords: [30.6055, -87.174867], address: {street: "4775 Air Field Drive", line2: "Pace, FL"}},
-  {name: "Grove at Bella Terra", city: "Cantonment", metro: "pensacola", coords: [30.632667, -87.3152], address: null},
-  {name: "Horizons Edge", city: "Milton", metro: "pensacola", coords: [30.5966, -87.097033], address: {street: "5349 Horizons Edge Ln", line2: "Milton, FL"}},
-  {name: "Lost Key Townhomes", city: "Pensacola", metro: "pensacola", coords: [30.384633, -87.213567], address: {street: "14158 Sable Palm Way", line2: "Pensacola, FL"}},
-  {name: "Pipers Landing", city: "Pensacola", metro: "pensacola", coords: [30.408633, -87.264233], address: {street: "7721 Palm Vista Court", line2: "Pensacola, FL"}},
-  {name: "Ridge at Harvest Point", city: "Milton", metro: "pensacola", coords: [30.6126, -87.086367], address: {street: "7129 Season Dr\\t", line2: "Milton, FL"}},
-  {name: "Stonechase2", city: "Pace", metro: "pensacola", coords: [30.630833, -87.213533], address: {street: "5983 Briarcliff Ln", line2: "Pace, FL"}},
-  {name: "Yellow River Plantation", city: "Laurel Hill", metro: "pensacola", coords: [30.417333, -87.224], address: {street: "6218 Buccaneer Way", line2: "Laurel Hill, FL"}},
-  // ─── SOFLA ───
-  {name: "Acacia Groves", city: "Miami", metro: "sofla", coords: [25.454982, -80.505797], address: null},
-  {name: "Altamira", city: "Homestead", metro: "sofla", coords: [25.449138, -80.438819], address: {street: "2561 SE 25 TER", line2: "Homestead, FL"}},
-  {name: "Aria Park", city: "Homestead", metro: "sofla", coords: [25.448226, -80.464354], address: null},
-  {name: "Breezewood", city: "Miami", metro: "sofla", coords: [25.55168, -80.372037], address: null},
-  {name: "Briarcrest", city: "Miami", metro: "sofla", coords: [25.559578, -80.404785], address: {street: "22301 SW 132 AVE", line2: "Miami, FL"}},
-  {name: "Coral Breeze2", city: "Miami", metro: "sofla", coords: [25.476975, -80.501672], address: {street: "31427  SW  192 AVE", line2: "Miami, FL"}},
-  {name: "Coral Landings", city: "Miami", metro: "sofla", coords: [25.473385, -80.493654], address: {street: "18851 SW 315 ST", line2: "Miami, FL"}},
-  {name: "Del Mar", city: "Miami", metro: "sofla", coords: [25.433183, -80.483269], address: null},
-  {name: "Emerald Palms", city: "Miami", metro: "sofla", coords: [25.544259, -80.396495], address: null},
-  {name: "Greenview at Presidential", city: "Miami", metro: "sofla", coords: [25.951855, -80.172844], address: {street: "19652 NE 14 CT", line2: "Miami, FL"}},
-  {name: "Heron Pointe", city: "Miami", metro: "sofla", coords: [25.49941, -80.477357], address: null},
-  {name: "Killian Grove", city: "Miami", metro: "sofla", coords: [25.666224, -80.333391], address: null},
-  {name: "Le Jardine", city: "Florida City", metro: "sofla", coords: [25.447295, -80.460679], address: {street: "283 SE 11 CT", line2: "Florida City, FL"}},
-  {name: "Luminara", city: "Miami", metro: "sofla", coords: [25.523834, -80.416334], address: {street: "13855 SW 262 ST", line2: "Miami, FL"}},
-  {name: "Penn Cove", city: "Florida City", metro: "sofla", coords: [25.462406, -80.469031], address: {street: "1507  NE 4 CT", line2: "Florida City, FL"}},
-  {name: "Pineland Crest", city: "Miami", metro: "sofla", coords: [25.436118, -80.50135], address: {street: "35753 SW 189 CT", line2: "Miami, FL"}},
-  {name: "Redlands Ridge", city: "Miami", metro: "sofla", coords: [25.501154, -80.47738], address: {street: "17484 SW 284 ST", line2: "Miami, FL"}},
-  {name: "Saltaire", city: "Florida City", metro: "sofla", coords: [25.45004, -80.472731], address: null},
-  {name: "Siena Reserve", city: "Miami", metro: "sofla", coords: [25.551283, -80.403407], address: null},
-  {name: "Solstice", city: "Miami", metro: "sofla", coords: [25.536622, -80.393662], address: {street: "12486 SW 248 ST #6", line2: "Miami, FL"}},
-  {name: "Sunscapes", city: "Florida City", metro: "sofla", coords: [25.440466, -80.501536], address: {street: "8 NW 15 CT", line2: "Florida City, FL"}},
-  {name: "Sunstone", city: "Homestead", metro: "sofla", coords: [25.469958, -80.449142], address: null},
-  {name: "Terra Sol", city: "Homestead", metro: "sofla", coords: [25.455258, -80.467714], address: null},
-  {name: "Villas De San Diego", city: "Miami", metro: "sofla", coords: [25.437747, -80.501494], address: {street: "18933 SW 355 TER", line2: "Miami, FL"}},
-  {name: "Vivant", city: "Miami", metro: "sofla", coords: [25.513922, -80.453383], address: {street: "15657 SW 280 ST #5", line2: "Miami, FL"}},
-  {name: "Wildwood Groves", city: "Miami", metro: "sofla", coords: [25.513925, -80.453391], address: null},
-  // ─── SPACE-COAST ───
-  {name: "Emerald Lakes", city: "Palm Bay", metro: "space-coast", coords: [28.0605, -80.5547], address: null},
-  {name: "Meridian at Mayfair", city: "Melbourne", metro: "space-coast", coords: [28.051717, -80.612206], address: {street: "3737 Astral Road", line2: "Melbourne, FL"}},
-  {name: "New Homes in Cocoa", city: "Cocoa", metro: "space-coast", coords: [28.114, -80.580667], address: null},
-  {name: "New Homes in Palm Bay", city: "Palm Bay", metro: "space-coast", coords: [28.0285, -80.576033], address: {street: "754 INDIGO ST SE", line2: "Palm Bay, FL"}},
-  {name: "Riverwood at Everlands", city: "Palm Bay", metro: "space-coast", coords: [28.038857, -80.733151], address: {street: "2368 Croft Inlet Drive NW", line2: "Palm Bay, FL"}},
-  {name: "The Timbers at Everlands", city: "Palm Bay", metro: "space-coast", coords: [28.024325, -80.733242], address: {street: "923 Veronese Place NW", line2: "Palm Bay, FL"}},
-  {name: "Tillman Lakes", city: "Palm Bay", metro: "space-coast", coords: [27.991524, -80.723927], address: {street: "1900 Bayou Avenue SW", line2: "Palm Bay, FL"}},
-  // ─── TAMPA ───
-  {name: "Acacia Fields", city: "Wesley Chapel", metro: "tampa", coords: [28.246367, -82.2671], address: null},
-  {name: "Angeline", city: "Land O Lakes", metro: "tampa", coords: [28.301645, -82.529298], address: {street: "18209 Pleasantview Blvd", line2: "Land O Lakes, FL"}},
-  {name: "Angeline Active Adult", city: "Land O Lakes", metro: "tampa", coords: [28.31002, -82.533239], address: {street: "9343 Minnow Ray Dr", line2: "Land O Lakes, FL"}},
-  {name: "Balm Grove", city: "Wimauma", metro: "tampa", coords: [27.758145, -82.258507], address: {street: "13519 New Jade Ave", line2: "Wimauma, FL"}},
-  {name: "Bellamy Crossings", city: "Dade City", metro: "tampa", coords: [28.339667, -82.157233], address: {street: "11189 Brae Way", line2: "Dade City, FL"}},
-  {name: "Connerton", city: "Land O Lakes", metro: "tampa", coords: [28.290302, -82.451736], address: {street: "22841 Pondered Day Lane", line2: "Land O Lakes, FL"}},
-  {name: "Crescent Meadows", city: "Zephyrhills", metro: "tampa", coords: [28.2176, -82.191867], address: null},
-  {name: "Curiosity Creek", city: "Palmetto", metro: "tampa", coords: [27.62754, -82.50104], address: {street: "6123 Blue Paloma Ct", line2: "Palmetto, FL"}},
-  {name: "Cypress Point at Lake Parker", city: "Lakeland", metro: "tampa", coords: [28.0835, -81.9538], address: null},
-  {name: "Gladesong", city: "Riverview", metro: "tampa", coords: [27.8821, -82.315833], address: null},
-  {name: "Hilltop Point", city: "Dade City", metro: "tampa", coords: [28.377667, -82.148567], address: {street: "38292 Palomino Drive", line2: "Dade City, FL"}},
-  {name: "Ivywood", city: "Lakeland", metro: "tampa", coords: [27.976167, -81.9198], address: null},
-  {name: "Longleaf", city: "New Port Richey", metro: "tampa", coords: [28.257433, -82.732633], address: null},
-  {name: "Mirada", city: "San Antonio", metro: "tampa", coords: [28.326467, -82.225467], address: null},
-  {name: "Mirada Active Adult", city: "San Antonio", metro: "tampa", coords: [28.313571, -82.293182], address: {street: "31663 Splash Isle", line2: "San Antonio, FL"}},
-  {name: "New Port Corners", city: "New Port Richey", metro: "tampa", coords: [28.251926, -82.671654], address: {street: "9246 Plathe Road", line2: "New Port Richey, FL"}},
-  {name: "New Port Corners Active Adult", city: "New Port Richey", metro: "tampa", coords: [28.25309, -82.674759], address: {street: "8478 Futureside Loop", line2: "New Port Richey, FL"}},
-  {name: "North Park Isle", city: "Plant City", metro: "tampa", coords: [28.053267, -82.069167], address: null},
-  {name: "Park East", city: "Plant City", metro: "tampa", coords: [28.053267, -82.069167], address: {street: "2346 Allium Roseum Ln", line2: "Plant City, FL"}},
-  {name: "Pearl Estates", city: "Lutz", metro: "tampa", coords: [28.213467, -82.430533], address: null},
-  {name: "Prosperity Lakes", city: "Parrish", metro: "tampa", coords: [27.626493, -82.407436], address: {street: "13413 Noble Garnet Ln", line2: "Parrish, FL"}},
-  {name: "Prosperity Lakes Active Adult", city: "Parrish", metro: "tampa", coords: [27.627277, -82.43325], address: {street: "12050 Violet Jasper Dr", line2: "Parrish, FL"}},
-  {name: "Sandhill", city: "Dade City", metro: "tampa", coords: [28.333487, -82.17547], address: null},
-  {name: "Seaire", city: "Parrish", metro: "tampa", coords: [27.532367, -82.382533], address: {street: "8611 Tropical Aire Ln", line2: "Parrish, FL"}},
-  {name: "South Creek", city: "Riverview", metro: "tampa", coords: [27.859433, -82.3865], address: null},
-  {name: "Southshore Bay", city: "Wimauma", metro: "tampa", coords: [27.706, -82.250033], address: null},
-  {name: "Stonegate Preserve", city: "Palmetto", metro: "tampa", coords: [27.617265, -82.494667], address: {street: "10947 65th Ter E", line2: "Palmetto, FL"}},
-  {name: "The Townes at Cross Creek", city: "Tampa", metro: "tampa", coords: [27.887933, -82.487867], address: null},
-  {name: "The Townes at Crystal Brook", city: "Zephyrhills", metro: "tampa", coords: [28.2076, -82.2152], address: null},
-  {name: "The Townes at Market Edge", city: "Riverview", metro: "tampa", coords: [27.8361, -82.263167], address: null},
-  {name: "The Townes at West River", city: "Tampa", metro: "tampa", coords: [27.921933, -82.5152], address: null},
-  {name: "The Townes at Windsong", city: "Zephyrhills", metro: "tampa", coords: [28.288267, -82.222533], address: null},
-  {name: "Townes at Manhattan Crossing", city: "Tampa", metro: "tampa", coords: [27.899933, -82.5132], address: null},
-  {name: "Twinflowers", city: "Wesley Chapel", metro: "tampa", coords: [28.213033, -82.300433], address: null},
-  {name: "Two Rivers", city: "Zephyrhills", metro: "tampa", coords: [28.177231, -82.21508], address: {street: "1054 Broward Drive", line2: "Zephyrhills, FL"}},
-  {name: "Vista Walk", city: "Dade City", metro: "tampa", coords: [28.399, -82.223233], address: null},
-  {name: "West Lake", city: "Wimauma", metro: "tampa", coords: [27.652667, -82.330033], address: {street: "2237 Rosefinch Hill Pl", line2: "Wimauma, FL"}},
-  {name: "Wind Meadows South", city: "Bartow", metro: "tampa", coords: [27.901067, -81.867867], address: {street: "2045 Albatross Nest Dr", line2: "Bartow, FL"}},
-  // ─── TREASURE-COAST ───
-  {name: "Brystol at Wylder", city: "Port St. Lucie", metro: "treasure-coast", coords: [27.274667, -80.278], address: {street: "10881 NW Everbreeze Drive", line2: "Port St. Lucie, FL"}},
-  {name: "Glynlea Country Club", city: "Port St. Lucie", metro: "treasure-coast", coords: [27.199333, -80.356], address: {street: "10684 NW WILGROVE LN", line2: "Port St. Lucie, FL"}},
-  {name: "New Homes in West Vero", city: "Vero Beach", metro: "treasure-coast", coords: [27.236667, -80.286667], address: null},
-  {name: "Pepperwood", city: "Stuart", metro: "treasure-coast", coords: [27.136533, -80.1988], address: null},
-  {name: "Seagrove", city: "Fort Pierce", metro: "treasure-coast", coords: [27.500033, -80.378933], address: {street: "3724 Harborside Avenue", line2: "Fort Pierce, FL"}},
-  {name: "Tesoro Club", city: "Port St. Lucie", metro: "treasure-coast", coords: [27.286667, -80.303333], address: {street: "460 SE FASCINO CIR", line2: "Port St. Lucie, FL"}},
-  {name: "Veranda Preserve", city: "Port St. Lucie", metro: "treasure-coast", coords: [27.286, -80.242667], address: {street: "1348 SE Willow Oaks Street", line2: "Port St. Lucie, FL"}},
-];
-function _normalizeName(s) {
-  return String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
-}
-function _isInSheet(communityName) {
-  const target = _normalizeName(communityName);
-  return COMMUNITIES.some(c => {
-    const n = _normalizeName(c.name);
-    return n === target || n.includes(target) || target.includes(n);
-  });
-}
-const REGION_CENTROIDS = {
-  jax:           { center: [30.0938, -81.5373], zoom: 9 },
-  ocala:         { center: [29.18,   -82.14],   zoom: 10 },
-  gainesville:   { center: [29.65,   -82.32],   zoom: 10 },
-  sofla:         { center: [25.9, -80.25],      zoom: 9 },
-  'naples-ft-myers':{center:[26.4, -81.8],      zoom: 9 },
-  'palm-beach':  { center: [26.6, -80.1],       zoom: 9 },
-  'treasure-coast':{center:[27.25, -80.3],      zoom: 9 },
-  orlando:       { center: [28.4, -81.4],       zoom: 9 },
-  tampa:         { center: [27.95, -82.4],      zoom: 8 },
-  'space-coast': { center: [28.06, -80.6],      zoom: 9 },
-  'panama-city': { center: [30.17, -85.7],      zoom: 10 },
-  pensacola:     { center: [30.42, -87.2],      zoom: 10 },
-  all:           { center: [28.5, -82.5],       zoom: 7 }
-};
-// Per-community accurate coordinates pulled from Lennar's community detail pages.
-// JAX coords verified against Lennar's lat/lng JSON-LD on each detail page.
-// Both Sheet shortnames and Lennar longnames listed — keeps the background layer
-// from double-drawing a community at city centroid when it's already in the Sheet.
-const COMMUNITY_COORDS = {
-  // ─── JAX / St. Augustine — verified from Lennar pages ───
-  "Avalon Woods":                              [30.462122, -81.625918],
-  "Cove at SW":                                [30.176565, -81.609143],
-  "Cove at Southwood":                         [30.176565, -81.609143],
-  "Emerald Isles TH":                          [30.205939, -81.588896],
-  "Emerald Isles Townhomes":                   [30.205939, -81.588896],
-  "Granary Park":                              [30.046139, -81.771412],
-  "Hardwick Farms":                            [30.248866, -81.614747],
-  "Holstein Crossing":                         [30.048633, -81.768918],
-  "Oak Hill Village TH":                       [30.237826, -81.747406],
-  "Oak Hill Village Townhomes":                [30.237826, -81.747406],
-  "Russell Retreat":                           [30.074385, -81.785793],
-  "Saddle Oaks":                               [30.397657, -81.819284],
-  "Seaton Creek":                              [30.522518, -81.666923],
-  "Shearwater":                                [30.020593, -81.572773],
-  "Silver Falls SF":                           [30.006971, -81.524131],
-  "Silver Falls Single Family at SilverLeaf":  [30.006971, -81.524131],
-  "Silver Falls TH":                           [30.009949, -81.524648],
-  "Silver Falls Townhomes at Silverleaf":      [30.009949, -81.524648],
-  "Silver Meadows":                            [30.009458, -81.516592],
-  "Silver Meadows at SilverLeaf":              [30.009458, -81.516592],
-  "Tributary":                                 [30.607505, -81.685823],
-  "Edenbrooke at Hyland Trail":                [30.01929, -81.785568],
-  "Edenbrooke at Hyland Trail | 55+":          [30.01929, -81.785568],
-  "Lakeview Estates":                          [30.146, -81.504],
-  "Stillwater":                                [30.187, -81.706],
-  // Brand 9 Sheet — Ocala
-  "Marion Oaks":             [29.031787, -82.261772],
-  "Marion Ranch":            [29.10284,  -82.199851],
-  "Millwood":                [29.225267, -82.08709],
-  "Pioneer Ranch":           [29.090749, -82.234074],
-  "Heath Preserve":          [29.204462, -82.196198],
-  // Other Lennar FL — Tampa / Manatee
-  "Beacon Lake":             [28.078516, -81.836975],
-  "Connerton":               [28.290302, -82.451736],
-  "Angeline":                [28.299213, -82.522552],
-  "Angeline Active Adult":   [28.31002,  -82.533239],
-  "Prosperity Lakes":        [27.626493, -82.407436],
-  "Prosperity Lakes Active Adult": [27.627277, -82.43325],
-  "Sandhill":                [28.333487, -82.17547],
-  "New Port Corners":        [28.251926, -82.671654],
-  "New Port Corners Active Adult": [28.25309, -82.674759],
-  "Curiosity Creek":         [27.62754,  -82.50104],
-  "Stonegate Preserve":      [27.617265, -82.494667],
-  "Mirada Active Adult":     [28.313571, -82.293182],
-  "Balm Grove":              [27.758145, -82.258507],
-  "Two Rivers":              [28.177231, -82.21508],
-  // Other Lennar FL — Orlando
-  "Sanctuary at Wellness Ridge": [28.478739, -81.694265],
-  "Ranches at Lake Mcleod":  [27.952224, -81.7547],
-  "Bridgewalk":              [28.343863, -81.214485],
-  "The Glades at Crossprairie": [28.217786, -81.33632],
-  "Waterlin":                [28.154587, -81.271432],
-  // Other Lennar FL — Space Coast / Melbourne
-  "Meridian at Mayfair":     [28.051717, -80.612206],
-  "Riverwood at Everlands":  [28.038857, -80.733151],
-  "The Timbers at Everlands": [28.024325, -80.733242],
-  "Tillman Lakes":           [27.991524, -80.723927]
-};
-// Street-address lookup for installation crews (pulled from Lennar pages).
-// Fields: street + city/state/zip + sales-office phone (optional). Used in map popups.
-const COMMUNITY_ADDRESSES = {
-  // ─── JAX / St. Augustine — addresses lifted from Lennar community pages ───
-  "Granary Park":       { addr: "3211 Lewis Speedway", city: "Green Cove Springs, FL 32043" },
-  "Holstein Crossing":  { addr: "3251 Lewis Speedway", city: "Green Cove Springs, FL 32043" },
-  "Russell Retreat":    { addr: "3211 Russell Rd",    city: "Green Cove Springs, FL 32043" },
-  "Edenbrooke at Hyland Trail": { addr: "Hyland Trail Pkwy", city: "Green Cove Springs, FL 32043" },
-  "Edenbrooke at Hyland Trail | 55+": { addr: "Hyland Trail Pkwy", city: "Green Cove Springs, FL 32043" },
-  "Cove at SW":         { addr: "Southwood Pkwy",      city: "Jacksonville, FL 32256" },
-  "Cove at Southwood":  { addr: "Southwood Pkwy",      city: "Jacksonville, FL 32256" },
-  "Emerald Isles TH":   { addr: "Emerald Isles Dr",    city: "Jacksonville, FL 32218" },
-  "Emerald Isles Townhomes": { addr: "Emerald Isles Dr", city: "Jacksonville, FL 32218" },
-  "Hardwick Farms":     { addr: "Hardwick Farms Pkwy", city: "Jacksonville, FL 32218" },
-  "Oak Hill Village TH":{ addr: "Oak Hill Village Dr", city: "St. Johns, FL 32259" },
-  "Oak Hill Village Townhomes": { addr: "Oak Hill Village Dr", city: "St. Johns, FL 32259" },
-  "Saddle Oaks":        { addr: "Saddle Oaks Dr",      city: "Jacksonville, FL 32218" },
-  "Seaton Creek":       { addr: "Seaton Creek Pkwy",   city: "Jacksonville, FL 32219" },
-  "Avalon Woods":       { addr: "Avalon Woods Dr",     city: "Jacksonville, FL 32218" },
-  "Tributary":          { addr: "Tributary Pkwy",      city: "Yulee, FL 32097" },
-  "Shearwater":         { addr: "365 Eagle Pass Way",  city: "St. Augustine, FL 32092" },
-  // SilverLeaf master plan, NW St. Johns County
-  "Silver Meadows":                          { addr: "1099 Silverleaf Pkwy", city: "St. Augustine, FL 32092" },
-  "Silver Meadows at SilverLeaf":            { addr: "1099 Silverleaf Pkwy", city: "St. Augustine, FL 32092" },
-  "Silver Falls SF":                         { addr: "1099 Silverleaf Pkwy", city: "St. Augustine, FL 32092" },
-  "Silver Falls Single Family at SilverLeaf":{ addr: "1099 Silverleaf Pkwy", city: "St. Augustine, FL 32092" },
-  "Silver Falls TH":                         { addr: "1099 Silverleaf Pkwy", city: "St. Augustine, FL 32092" },
-  "Silver Falls Townhomes at Silverleaf":    { addr: "1099 Silverleaf Pkwy", city: "St. Augustine, FL 32092" },
-  "Lakeview Estates":   { addr: "Lakeview Pkwy",       city: "St. Johns, FL 32259" },
-  "Stillwater":         { addr: "Stillwater Way",      city: "Jacksonville, FL 32218" }
-};
-function _addressFor(name) {
-  return COMMUNITY_ADDRESSES[name] || null;
-}
-function _coordsForCommunity(c) {
-  // 1. exact community-name lookup (most accurate)
-  if (c.name && COMMUNITY_COORDS[c.name]) return COMMUNITY_COORDS[c.name];
-  // 2. city lookup
-  const city = String(c.city || '').toLowerCase().trim();
-  if (CITY_COORDS[city]) return CITY_COORDS[city];
-  // 3. notes/request might mention a city
-  const notes = String(c.notes || '').toLowerCase();
-  for (const k in CITY_COORDS) {
-    if (notes.includes(k)) return CITY_COORDS[k];
-  }
-  // 4. region centroid fallback (with small jitter so markers don't fully overlap)
-  const r = REGION_CENTROIDS[c.region] || REGION_CENTROIDS.all;
-  const seed = (c.name || '').split('').reduce((a, ch) => a + ch.charCodeAt(0), 0);
-  const jitterLat = ((seed * 13) % 200 - 100) / 1500;
-  const jitterLng = ((seed * 17) % 200 - 100) / 1500;
-  return [r.center[0] + jitterLat, r.center[1] + jitterLng];
-}
-function _markerColorFor(c) {
-  // Any community in the Sheet (any status) → ORANGE — these are the ones we're running.
-  return '#f97316';
-}
-let _regionMap = null;
-let _regionMapLayer = null;
-function renderRegionMap() {
-  const el = document.getElementById('regionMap');
-  if (!el || typeof L === 'undefined') return;
-  // Init map once, reuse
-  if (!_regionMap) {
-    const view = REGION_CENTROIDS[currentRegion] || REGION_CENTROIDS.all;
-    _regionMap = L.map(el, {
-      center: view.center, zoom: view.zoom, scrollWheelZoom: false, attributionControl: false
-    });
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-      maxZoom: 18, subdomains: 'abcd'
-    }).addTo(_regionMap);
-    L.control.attribution({position:'bottomright',prefix:false}).addAttribution('&copy; OpenStreetMap, &copy; CARTO').addTo(_regionMap);
-  } else {
-    // recenter on region change
-    const view = REGION_CENTROIDS[currentRegion] || REGION_CENTROIDS.all;
-    _regionMap.setView(view.center, view.zoom);
-  }
-  // Update region label
-  const lbl = document.getElementById('mapRegionLabel');
-  if (lbl) {
-    lbl.textContent = currentRegion === 'all' ? 'All Regions' :
-      currentRegion === 'jax' ? 'Jacksonville / St. Augustine' :
-      currentRegion === 'ocala' ? 'Ocala' :
-      currentRegion === 'sofla' ? 'South Florida' : 'All Regions';
-  }
-  // Clear and repaint markers
-  if (_regionMapLayer) _regionMapLayer.clearLayers();
-  _regionMapLayer = L.layerGroup().addTo(_regionMap);
-
-  // Layer 1 — ALL Lennar FL communities (background reference). Filtered to current region/metro.
-  // Skip ones that are also in our Sheet (those will be drawn on top in orange).
-  const lennarFiltered = LENNAR_FL_COMMUNITIES.filter(L => {
-    if (currentRegion === 'all') return true;
-    return L.metro === currentRegion;
-  });
-  lennarFiltered.forEach(L1 => {
-    if (_isInSheet(L1.name)) return;  // drawn on top by Sheet layer
-    // Embedded coords are authoritative (verified from Lennar pages or city centroid).
-    const coords = L1.coords || (COMMUNITY_COORDS[L1.name] || CITY_COORDS[String(L1.city||'').toLowerCase().trim()] || (REGION_CENTROIDS[L1.metro] || REGION_CENTROIDS.all).center);
-    const lat = coords[0], lng = coords[1];
-    const m = L.circleMarker([lat, lng], {
-      radius: 5, color: '#fff', weight: 1, fillColor: '#0d2b4e', fillOpacity: 0.85
-    });
-    // Address: prefer embedded address from LENNAR_FL_COMMUNITIES, fall back to legacy lookup
-    const addr = L1.address ? { addr: L1.address.street, city: L1.address.line2 } : _addressFor(L1.name);
-    const directionsUrl = addr
-      ? `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(addr.addr + ', ' + addr.city)}`
-      : `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(L1.name + ' ' + L1.city + ' FL')}`;
-    m.bindPopup(
-      `<div style="font:13px/1.4 system-ui,-apple-system,sans-serif;min-width:200px;">
-        <div style="font-weight:800;color:#0d2b4e;margin-bottom:4px;">${L1.name}</div>
-        <div style="color:#64748b;font-size:11px;margin-bottom:6px;">${L1.city}</div>
-        ${addr ? `<div style="font-size:11px;color:#0d2b4e;margin-bottom:6px;background:#f1f5f9;padding:6px 8px;border-radius:6px;"><strong>📍 ${addr.addr}</strong><br>${addr.city}</div>` : ''}
-        <div style="font-size:11px;color:#94a3b8;font-style:italic;margin-bottom:6px;">Currently No Projects Underway</div>
-        <a href="${directionsUrl}" target="_blank" rel="noopener" style="font-size:11px;font-weight:700;color:#1565c0;text-decoration:none;">🚗 Open in Google Maps</a>
-       </div>`
-    );
-    m.addTo(_regionMapLayer);
-  });
-
-  // Layer 2 — Brand 9 Sheet communities (any status). All ORANGE.
-  const inRegion = COMMUNITIES.filter(c => currentRegion === 'all' || c.region === currentRegion);
-  inRegion.forEach(c => {
-    const [lat, lng] = _coordsForCommunity(c);
-    const color = _markerColorFor(c);
-    const m = L.circleMarker([lat, lng], {
-      radius: 9, color: '#fff', weight: 2, fillColor: color, fillOpacity: 0.95
-    });
-    const statusLabel = c.status || '—';
-    const phaseLabel = c.phase || '—';
-    const addr2 = _addressFor(c.name);
-    const directionsUrl2 = addr2
-      ? `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(addr2.addr + ', ' + addr2.city)}`
-      : `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(c.name + ' ' + (c.city||'FL'))}`;
-    m.bindPopup(
-      `<div style="font:13px/1.4 system-ui,-apple-system,sans-serif;min-width:200px;">
-        <div style="font-weight:800;color:#0d2b4e;margin-bottom:4px;">${c.name}</div>
-        <div style="color:#64748b;font-size:11px;margin-bottom:6px;">${c.city || c.region.toUpperCase()}</div>
-        ${addr2 ? `<div style="font-size:11px;color:#0d2b4e;margin-bottom:6px;background:#fff4ed;padding:6px 8px;border-radius:6px;"><strong>📍 ${addr2.addr}</strong><br>${addr2.city}</div>` : ''}
-        <div style="font-size:11px;"><strong>Status:</strong> ${statusLabel}</div>
-        <div style="font-size:11px;"><strong>Phase:</strong> ${phaseLabel}</div>
-        <div style="font-size:11px;"><strong>Crew:</strong> ${c.crew || '—'}</div>
-        ${c.notes ? `<div style="font-size:11px;margin-top:4px;color:#0d2b4e;"><strong>Request:</strong> ${c.notes}</div>` : ''}
-        <div style="margin-top:8px;"><a href="${directionsUrl2}" target="_blank" rel="noopener" style="font-size:11px;font-weight:700;color:#1565c0;text-decoration:none;">🚗 Open in Google Maps</a></div>
-       </div>`
-    );
-    m.addTo(_regionMapLayer);
-  });
-  // Defer invalidateSize for tab transitions
-  setTimeout(() => { if (_regionMap) _regionMap.invalidateSize(); }, 50);
 }
 
 // ─── UPDATE KPIs ───
 function updateKPIs() {
   const cs       = COMMUNITIES;
   const activeNonOffice = cs.filter(c => !c.soldOut && !c.office);
-  const active   = activeNonOffice.filter(c => ['Production','Installation','Delivered'].includes(c.status)).length;
+  const active   = activeNonOffice.filter(c => c.status === 'in-progress').length;
   const soldOut  = cs.filter(c => c.soldOut).length;
   const overdue  = cs.filter(c => c.status === 'overdue').length;
   const liveDrones = cs.filter(c => c.droneStatus === 'live').length;
@@ -2034,39 +1311,25 @@ function updateKPIs() {
   const ocalaCount = cs.filter(c => c.region === 'ocala').length;
   const soflaCount = cs.filter(c => c.region === 'sofla').length;
 
-  // "Active Projects" card now shows total Sheet communities (every Brand 9 engagement)
   document.getElementById('kpi-communities').textContent = totalCards;
   document.getElementById('kpi-communities-sub').textContent = `JAX ${jaxCount} · Ocala ${ocalaCount} · SoFla ${soflaCount}`;
-  const kpiActive = document.getElementById('kpi-active');
-  if (kpiActive) kpiActive.textContent = active;
+  document.getElementById('kpi-active').textContent      = active;
+  document.getElementById('kpi-pending').textContent     = soldOut;
   document.getElementById('kpi-progress').textContent    = `${liveDrones}/${droneFleetSize}`;
-
-  // Total Communities = all Lennar FL communities + Sheet communities not in the Lennar list
-  // Robust to ordering: walk LENNAR_FL_COMMUNITIES if defined, else fall back to Sheet count
-  const totalEl = document.getElementById('kpi-total-fl');
-  if (totalEl) {
-    let total = cs.length;  // safe fallback
-    let lennarBg = 0;
-    if (typeof LENNAR_FL_COMMUNITIES !== 'undefined') {
-      // Inline isInSheet so we don't depend on the helper being defined yet
-      const norm = s => String(s||'').toLowerCase().replace(/[^a-z0-9]/g, '');
-      const sheetNames = cs.map(c => norm(c.name));
-      lennarBg = LENNAR_FL_COMMUNITIES.filter(L => {
-        const n = norm(L.name);
-        return !sheetNames.some(s => s === n || n.includes(s) || s.includes(n));
-      }).length;
-      total = lennarBg + cs.length;
-    }
-    totalEl.textContent = total;
-    const sub = document.getElementById('kpi-total-fl-sub');
-    if (sub) sub.textContent = `${cs.length} Brand 9 · ${lennarBg} Lennar reference`;
-  }
 
   // Region tab counts
   const setText = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
   setText('cnt-jax',   jaxCount);
   setText('cnt-ocala', ocalaCount);
   setText('cnt-sofla', soflaCount);
+
+  if (overdue > 0) {
+    document.getElementById('kpi-overdue-note').textContent = '▼ ' + overdue + ' overdue — flagged';
+    document.getElementById('kpi-overdue-note').className  = 'kpi-chg dn';
+  } else {
+    document.getElementById('kpi-overdue-note').textContent = '▲ Closeout complete';
+    document.getElementById('kpi-overdue-note').className  = 'kpi-chg up';
+  }
 
   // Live timestamp in header + footer
   const stamp = new Date().toLocaleString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'});
@@ -2085,7 +1348,7 @@ function applyFilters() {
     if (currentRegion !== 'all' && c.region !== currentRegion) return false;
     if (status && c.status !== status) return false;
     if (phase  && c.phase  !== phase)  return false;
-    if (search && !c.name.toLowerCase().includes(search) && !(c.city||'').toLowerCase().includes(search)) return false;
+    if (search && !c.name.toLowerCase().includes(search) && !c.city.toLowerCase().includes(search)) return false;
     return true;
   });
   renderGrid();
@@ -2113,77 +1376,26 @@ function setRegion(r, el) {
     document.querySelectorAll('.r-tab[data-region]').forEach(t => t.classList.remove('selected'));
     el.classList.add('selected');
   }
-  const dd = document.getElementById('regionFilter');
-  if (dd) dd.value = currentRegion;
-  applyFilters();
-}
-function setRegionFromDropdown(r) {
-  currentRegion = r || 'all';
-  document.querySelectorAll('.r-tab[data-region]').forEach(t => {
-    if (t.getAttribute('data-region') === currentRegion) t.classList.add('selected');
-    else t.classList.remove('selected');
-  });
   applyFilters();
 }
 
-// ─── WORK ORDERS ── pulled live from the Sheet ───
-// Builds work orders from every Sheet community with an active workflow status
-// AND a non-empty Request. Sorted by Install Date (TBD-last), then status priority.
+// ─── WORK ORDERS ───
 function renderWorkOrders() {
-  const ACTIVE_STATUSES = ['Production','Installation','Delivered'];
-  const STATUS_BADGE = {
-    'Installation Complete': {cls:'sb-complete',    label:'Complete'},
-    'Installation':          {cls:'sb-in-progress', label:'Installing'},
-    'Delivered':             {cls:'sb-in-progress', label:'Delivered'},
-    'Production':            {cls:'sb-pending',     label:'In Production'},
-    'Artwork':               {cls:'sb-pending',     label:'Artwork'}
-  };
-  // Priority by status: Installation (red) > Delivered (yellow) > Production (yellow) > Artwork (green)
-  const priorityFor = c => ['Installation','Delivered'].includes(c.status) ? 'high'
-                          : c.status === 'Production' ? 'med' : 'low';
-  const priorityColors = {high:'#ef4444', med:'#f59e0b', low:'#10b981'};
-  // Filter: in-progress workflow + has a Request, OR any status with non-empty Request
-  let orders = COMMUNITIES.filter(c => {
-    const hasRequest = c.notes && c.notes.trim();
-    return hasRequest && (ACTIVE_STATUSES.includes(c.status) || c.status === 'Artwork');
-  });
-  // Sort: Installation first, then Delivered, Production, Artwork; within each, soonest Install Date first
-  const statusRank = { 'Installation':0, 'Delivered':1, 'Production':2, 'Artwork':3 };
-  orders.sort((a, b) => {
-    const sa = statusRank[a.status] ?? 9, sb = statusRank[b.status] ?? 9;
-    if (sa !== sb) return sa - sb;
-    // Compare Install Date — TBD/empty pushed to end
-    const dateA = a.nextInstall, dateB = b.nextInstall;
-    const aTBD = !dateA || dateA === 'TBD';
-    const bTBD = !dateB || dateB === 'TBD';
-    if (aTBD && !bTBD) return 1;
-    if (!aTBD && bTBD) return -1;
-    return String(dateA).localeCompare(String(dateB));
-  });
-  // Update the Work Orders panel badge specifically (find by walking from the WO body up to its panel)
-  const woBodyEl = document.getElementById('workOrdersBody');
-  const woPanel = woBodyEl ? woBodyEl.closest('.panel') : null;
-  const badge = woPanel ? woPanel.querySelector('.p-hdr .sec-badge') : null;
-  if (badge) badge.textContent = orders.length + ' Active';
-  const rows = orders.map((c, i) => {
-    const sb = STATUS_BADGE[c.status] || {cls:'sb-pending', label:c.status||'Pending'};
-    const woId = 'WO-' + String(i+1).padStart(3,'0');
-    return `
-    <tr style="cursor:pointer;" onclick="openModal(${c.id})">
-      <td><div class="wo-num">${woId}</div></td>
+  const colors = {high:'#ef4444', med:'#f59e0b', low:'#10b981'};
+  const rows = WORK_ORDERS.map(wo => `
+    <tr>
+      <td><div class="wo-num">${wo.id}</div></td>
       <td>
-        <span class="wo-priority" style="background:${priorityColors[priorityFor(c)]}"></span>
-        <span class="wo-comm">${c.name}</span>
+        <span class="wo-priority" style="background:${colors[wo.priority]}"></span>
+        <span class="wo-comm">${wo.community}</span>
       </td>
-      <td class="wo-type">${c.notes || '—'}</td>
-      <td style="font-weight:700;color:var(--gray-400);">—</td>
-      <td class="wo-date">${c.nextInstall || 'TBD'}</td>
-      <td class="wo-crew">${c.crew || 'Pete + Andrew'}</td>
-      <td><span class="s-badge ${sb.cls}" style="font-size:9px">${sb.label}</span></td>
-    </tr>`;
-  }).join('');
-  const body = document.getElementById('workOrdersBody');
-  if (body) body.innerHTML = rows || '<tr><td colspan="7" style="padding:20px;text-align:center;color:var(--gray-400);font-style:italic;">No active work orders — all current Sheet entries are Pre-Launch or empty.</td></tr>';
+      <td class="wo-type">${wo.category}</td>
+      <td style="font-weight:700">${wo.qty}</td>
+      <td class="wo-date">${wo.date}</td>
+      <td class="wo-crew">${wo.crew}</td>
+      <td><span class="s-badge sb-in-progress" style="font-size:9px">Scheduled</span></td>
+    </tr>`).join('');
+  document.getElementById('workOrdersBody').innerHTML = rows;
 }
 
 // ─── ACTIVITY LOG ───
@@ -2284,7 +1496,7 @@ function openModal(id) {
   }[c.region] || '📍 FLORIDA';
   document.getElementById('m-region').textContent = regionDisplay;
   document.getElementById('m-name').textContent   = c.name;
-  document.getElementById('m-city').textContent   = c.city ? c.city + ', FL' : '';
+  document.getElementById('m-city').textContent   = c.city + ', FL';
 
   const statusLabel = {
     'Artwork':'Artwork','Production':'Production','Delivered':'Delivered',
@@ -2398,7 +1610,7 @@ function openModal(id) {
         <div class="m-info-val">${c.lastInstall || 'Not yet scheduled'}</div>
       </div>
       <div class="m-info-card">
-        <div class="m-info-lbl">Install Date</div>
+        <div class="m-info-lbl">Next Scheduled</div>
         <div class="m-info-val" style="${c.nextInstall==='OVERDUE'?'color:var(--red)':''}">${c.nextInstall || (c.status==='complete'?'All complete':c.status==='new'?'TBD — Pre-Development':'Not yet scheduled')}</div>
       </div>
       <div class="m-info-card">
@@ -2455,21 +1667,13 @@ filteredCommunities = [...COMMUNITIES];
 renderGrid();
 renderWorkOrders();
 renderActivity();
-// Photo sync: pulls field-uploaded photos from the Form Responses tab and renders thumbnails
-// on each card. Re-runs every 60s when tab is visible.
-syncPhotos().then(() => renderGrid());
-setInterval(() => {
-  if (document.visibilityState === 'visible' && PHOTOS_CSV_URL) {
-    syncPhotos().then(() => renderGrid());
-  }
-}, 60000);
+renderChart();
 
 // Auto-refresh: re-fetch the Sheet every 60s while the page is open.
 // Skipped while the tab is hidden to avoid wasting fetches; resumes on visibility.
-// Real-time: poll every 5 seconds while tab is visible
 setInterval(() => {
   if (document.visibilityState === 'visible') syncFromSheet();
-}, 5000);
+}, 60000);
 document.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'visible') syncFromSheet();
 });
