@@ -824,6 +824,34 @@ const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1vhkDxy0M4xUBKX5z9
 let PHOTOS_CSV_URL = 'https://docs.google.com/spreadsheets/d/1vhkDxy0M4xUBKX5z9QBWPpBh5A0szkEx5571_wP6ac4/gviz/tq?tqx=out:csv&sheet=Photos';
 // Mobile upload page served by the Atlas Web App. Append &community=<name> to pre-select.
 let FIELD_PHOTO_FORM_URL = 'https://script.google.com/macros/s/AKfycbyjF3HvyBm47tOXolMcnNG7igVfpwfrXg8v4q04kW6qZJ7VS6udEaR7UsmTL96eN8Y9/exec?page=upload';
+// Atlas Web App POST endpoint — admin actions (delete_photo, etc.)
+const ATLAS_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyjF3HvyBm47tOXolMcnNG7igVfpwfrXg8v4q04kW6qZJ7VS6udEaR7UsmTL96eN8Y9/exec';
+async function atlasPost(action, params) {
+  // text/plain content-type avoids CORS preflight with Apps Script
+  const r = await fetch(ATLAS_WEBAPP_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ action, params: params || {} }),
+    redirect: 'follow'
+  });
+  const j = await r.json();
+  if (!j.ok) throw new Error(j.error || 'Action failed');
+  return j.result;
+}
+// Admin-only: delete a photo by Drive file ID
+async function deleteAtlasPhoto(photoId, community) {
+  if (!confirm('Delete this photo? This cannot be undone.')) return;
+  try {
+    await atlasPost('delete_photo', { photoId });
+    // Optimistic local removal so the user sees instant feedback
+    if (COMMUNITY_PHOTOS[community]) {
+      COMMUNITY_PHOTOS[community] = COMMUNITY_PHOTOS[community].filter(p => p.id !== photoId);
+    }
+    if (typeof renderGrid === 'function') renderGrid();
+  } catch (err) {
+    alert('Delete failed: ' + err.message);
+  }
+}
 // Per-community photo cache populated by syncPhotos()
 const COMMUNITY_PHOTOS = {};  // { "Cove at SW": [{url, thumb, caption, crew, ts}, ...] }
 function _driveIdFromUrl(u) {
@@ -1344,9 +1372,15 @@ function renderCard(c, delay) {
     const photos = COMMUNITY_PHOTOS[c.name] || [];
     if (!photos.length) return '';
     const recent = photos.slice(-3);
-    return `<div style="display:flex;gap:4px;margin:8px 0;">${recent.map(p =>
-      `<a href="${p.full}" target="_blank" rel="noopener" style="flex:1;display:block;height:60px;background:url('${p.thumb}') center/cover;border-radius:6px;border:1px solid var(--gray-200);"></a>`
-    ).join('')}${photos.length > 3 ? `<div style="display:flex;align-items:center;justify-content:center;width:34px;height:60px;background:var(--gray-50);border-radius:6px;font-size:10px;font-weight:700;color:var(--gray-600);">+${photos.length-3}</div>` : ''}</div>`;
+    const showDelete = !isClientView;
+    const safeName = String(c.name).replace(/'/g, "\\'");
+    return `<div style="display:flex;gap:4px;margin:8px 0;">${recent.map(p => {
+      const safeId = String(p.id).replace(/'/g, "\\'");
+      const delBtn = showDelete
+        ? `<button onclick="event.preventDefault();event.stopPropagation();deleteAtlasPhoto('${safeId}','${safeName}');" title="Delete photo" style="position:absolute;top:2px;right:2px;width:18px;height:18px;padding:0;border:none;border-radius:50%;background:rgba(0,0,0,0.65);color:#fff;font-size:11px;font-weight:700;line-height:18px;text-align:center;cursor:pointer;display:none;" class="photo-x">&times;</button>`
+        : '';
+      return `<div style="flex:1;position:relative;" onmouseenter="this.querySelector('.photo-x')&&(this.querySelector('.photo-x').style.display='block')" onmouseleave="this.querySelector('.photo-x')&&(this.querySelector('.photo-x').style.display='none')"><a href="${p.full}" target="_blank" rel="noopener" style="display:block;height:60px;background:url('${p.thumb}') center/cover;border-radius:6px;border:1px solid var(--gray-200);"></a>${delBtn}</div>`;
+    }).join('')}${photos.length > 3 ? `<div style="display:flex;align-items:center;justify-content:center;width:34px;height:60px;background:var(--gray-50);border-radius:6px;font-size:10px;font-weight:700;color:var(--gray-600);">+${photos.length-3}</div>` : ''}</div>`;
   })()}
   <div class="c-prog">
     <div class="prog-lbl" style="display:block;">
