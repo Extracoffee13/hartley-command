@@ -888,6 +888,7 @@ const KILL_CRITERION = [
   { id: "kc-foreman",    agent: "Foreman",          condition: "\u226580% replay catch rate on last 30 days corrections", target: 80,  current: 0, unit: "%",      pass: false },
   { id: "kc-eval",       agent: "Eval Harness",     condition: "Every agent scored \u22652 times",                        target: 2,   current: 0, unit: "scans",  pass: false },
   { id: "kc-precedent",  agent: "Precedent-Finder", condition: "Used on \u22652 client-facing bids",                      target: 2,   current: 0, unit: "decks",  pass: false },
+  { id: "kc-codeforge",  agent: "Skill-Forge v2",   condition: "\u22653 executable code skills shipped via Loop 3 that pass Eval Harness validation", target: 3, current: 0, unit: "skills", pass: false },
 ];
 
 // ═══════════════════════════════════════════════════════════════
@@ -896,7 +897,7 @@ const KILL_CRITERION = [
 const FOUR_LOOPS = [
   { id: "loop-1", num: 1, name: "Correction Loop",   live: true,  color: "#39ff14", flow: "Bobby corrects \u2192 lesson written \u2192 all agents read before executing", status: "LIVE", note: "Operating since day one. The IP." },
   { id: "loop-2", num: 2, name: "Eval Loop",         live: false, color: "#b388ff", flow: "Past corrections \u2192 test cases \u2192 Eval Harness scores \u2192 Foreman flags regressions \u2192 new lessons", status: "SUBSTRATE SHIPPED", note: "Day 30 milestone hit 2026-05-07: match_engine + llm_judge + run.py + weekly_report all shipped. Day 45 = first weekly score. Day 60 = \u226580% catch rate to flip live." },
-  { id: "loop-3", num: 3, name: "Code Loop",         live: false, color: "#88aaff", flow: "Skill-Forge v2 writes code skill \u2192 Eval validates \u2192 Foreman approves \u2192 ships", status: "NOT BUILT", note: "Builds with Skill-Forge v2 (Tier 2)." },
+  { id: "loop-3", num: 3, name: "Code Loop",         live: false, color: "#88aaff", flow: "Skill-Forge v2 writes code skill \u2192 Eval validates \u2192 Foreman approves \u2192 ships", status: "SUBSTRATE SHIPPED", note: "Day 30 milestone hit 2026-05-07: scaffold.py + validate.py + deploy.py shipped same day as Loop 2 Day 30+45. Day 60 = \u22653 code skills shipped via pipeline." },
   { id: "loop-4", num: 4, name: "Memory Loop",       live: true,  color: "#00d4ff", flow: "Proactive fact capture \u2192 cross-ref guardrails \u2192 quarterly consolidation via consolidate-memory", status: "LIVE", note: "Strengthened with guardrails-not-facts + diagnose-before-fix + validate-against-brand-canonical lessons." },
 ];
 
@@ -2633,7 +2634,7 @@ const ConstructAtlas = ({ agents }) => {
             <div style={{ marginTop: 12, background: "#11161e", border: "1px solid rgba(179,136,255,0.35)", borderRadius: 4, padding: "10px 12px" }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 8 }}>
                 <h5 style={{ fontSize: 10, color: "#b388ff", letterSpacing: "0.1em", margin: 0 }}>LOOP 2 BUILD PROGRESS · KILL CRITERION ITEMS 3+4 · TARGET 2026-07-23</h5>
-                <span style={{ fontSize: 9, color: "#8a94a6", fontFamily: "ui-monospace, monospace" }}>updated 2026-05-06</span>
+                <span style={{ fontSize: 9, color: "#8a94a6", fontFamily: "ui-monospace, monospace" }}>updated 2026-05-07 · DAY 30+45 ✓</span>
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 8 }}>
                 <div style={{ background: "rgba(0,212,255,0.04)", borderLeft: "2px solid #00d4ff", padding: "6px 9px", borderRadius: 3 }}>
@@ -2723,7 +2724,7 @@ function AgentEcosystemDashboard() {
     { time: "00:00:06", message: "Caden + Addison Jacksonville land search loaded into Louis's memory.", color: "#00d4ff" },
     { time: "00:00:07", message: "Tier 1 build queue active: Archivist, Skill-Forge, Foreman, Eval Harness, Precedent-Finder.", color: "#b388ff" },
     { time: "00:00:08", message: "Kill Criterion countdown armed: 2026-07-23 (Day 90).", color: "#b388ff" },
-    { time: "00:00:09", message: "Loop 1 (Correction) LIVE \u00B7 Loop 2 (Eval) SUBSTRATE SHIPPED \u00B7 Loop 3 (Code) NOT BUILT \u00B7 Loop 4 (Memory) LIVE", color: "rgba(57,255,20,0.6)" },
+    { time: "00:00:09", message: "Loop 1 (Correction) LIVE \u00B7 Loop 2 (Eval) SUBSTRATE SHIPPED \u00B7 Loop 3 (Code) SUBSTRATE SHIPPED \u00B7 Loop 4 (Memory) LIVE", color: "rgba(57,255,20,0.6)" },
   ]);
 
   const addLog = useCallback((message, color) => {
