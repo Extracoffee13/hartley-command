@@ -880,8 +880,11 @@ const INITIAL_AGENTS = [
 
 // ═══════════════════════════════════════════════════════════════
 // KILL CRITERION — Day 90 = 2026-07-23
+// AUTO-MAINTAINED by data/dashboard-refresh.py from data/construct-state.json
+// /* === LIVE-DATA-START: KILL_CRITERIA === */ marker on next non-comment line
 // 5 conditions; 4-of-5 passes \u2192 continue to Tier 2; <4 \u2192 pause + re-architect
 // ═══════════════════════════════════════════════════════════════
+/* === LIVE-DATA-START: KILL_CRITERIA === */
 const KILL_CRITERION = [
   { id: "kc-archivist",  agent: "Archivist",        condition: "\u2265500 historic B9 jobs ingested",                   target: 500, current: 0, unit: "jobs",   pass: false },
   { id: "kc-skillforge", agent: "Skill-Forge",      condition: "\u22653 skills shipped Bobby accepts without revision", target: 3,   current: 0, unit: "skills", pass: false },
@@ -903,6 +906,7 @@ const FOUR_LOOPS = [
   { id: "loop-3", num: 3, name: "Code Loop",         live: false, color: "#88aaff", flow: "Skill-Forge v2 writes code skill \u2192 Eval validates \u2192 Foreman approves \u2192 ships", status: "SUBSTRATE SHIPPED", note: "Day 30 milestone hit 2026-05-07: scaffold.py + validate.py + deploy.py shipped same day as Loop 2 Day 30+45. Day 60 = \u22653 code skills shipped via pipeline." },
   { id: "loop-4", num: 4, name: "Memory Loop",       live: true,  color: "#00d4ff", flow: "Proactive fact capture \u2192 cross-ref guardrails \u2192 quarterly consolidation via consolidate-memory", status: "LIVE", note: "Strengthened with guardrails-not-facts + diagnose-before-fix + validate-against-brand-canonical lessons." },
 ];
+/* === LIVE-DATA-END: FOUR_LOOPS === */
 
 // ═══════════════════════════════════════════════════════════════
 // PUBLIC POSTURE — cross-agent guardrails (compact reference)
