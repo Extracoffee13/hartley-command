@@ -881,8 +881,8 @@ const INITIAL_AGENTS = [
 // ═══════════════════════════════════════════════════════════════
 // KILL CRITERION — Day 90 = 2026-07-23
 // AUTO-MAINTAINED by data/dashboard-refresh.py from data/construct-state.json
-// /* === LIVE-DATA-START: KILL_CRITERIA === */
-const KILL_CRITERIA = [
+/* === LIVE-DATA-START: KILL_CRITERION === */
+const KILL_CRITERION = [
   {"id": "kc-archivist", "agent": "Archivist", "condition": "≥500 historic jobs ingested", "target": 500, "current": 0, "unit": "jobs", "pass": false},
   {"id": "kc-skillforge", "agent": "Skill-Forge", "condition": "≥3 skills shipped Bobby accepts without revision", "target": 3, "current": 4, "unit": "skills", "pass": true},
   {"id": "kc-foreman", "agent": "Foreman", "condition": "≥80% replay catch rate on last 30 days corrections", "target": 80, "current": 0, "unit": "%", "pass": false},
@@ -890,7 +890,7 @@ const KILL_CRITERIA = [
   {"id": "kc-precedent", "agent": "Precedent-Finder", "condition": "Used on ≥2 client-facing bids", "target": 2, "current": 0, "unit": "decks", "pass": false},
   {"id": "kc-codeforge", "agent": "Skill-Forge v2", "condition": "≥3 executable code skills shipped via Loop 3 that pass Eval Harness validation", "target": 3, "current": 0, "unit": "skills", "pass": false}
 ];
-/* === LIVE-DATA-END: KILL_CRITERIA === */
+/* === LIVE-DATA-END: KILL_CRITERION === */
 
 // ═══════════════════════════════════════════════════════════════
 // THE FOUR LOOPS — all four must be live for the system to compound
