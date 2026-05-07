@@ -740,11 +740,11 @@ const INITIAL_AGENTS = [
   },
   {
     id: "build-skillforge2", codename: "Skill-Forge v2", role: "Skill Creator", department: "Build Queue T2",
-    tier: 3, score: null, status: "queued", buildOrder: 7,
+    tier: 3, score: 22, status: "building", buildOrder: 7, deliverableDay: 30, deliverableMetric: "scaffold + validate + deploy CLIs round-trip a fixture skill",
     skills: ["Executable Code Skill Authoring", "Python Helper Generation", "JS Injection Skills", "Eval Script Synthesis", "Continuous Deployment", "Kill-Switch"],
-    description: "Extension of Skill-Forge to write executable code skills (not just markdown). Tests against Eval Harness before shipping. Loop 3 of the four loops.",
-    progress: 0, tasksCompleted: 0, tasksActive: 0, memoryUsage: 0,
-    uptime: "0 days", lastActive: "Tier 2 queue",
+    description: "Extension of Skill-Forge to write executable code skills (not just markdown). Tests against Eval Harness before shipping. Loop 3 of the four loops. Day 30 substrate shipped 2026-05-07: scaffold.py + validate.py + deploy.py.",
+    progress: 30, tasksCompleted: 3, tasksActive: 1, memoryUsage: 6,
+    uptime: "0 days", lastActive: "Day 30 substrate shipped",
   },
   {
     id: "build-fieldscout", codename: "Field-Scout", role: "Field-Drone", department: "Build Queue T2",
