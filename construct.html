@@ -899,10 +899,10 @@ const KILL_CRITERIA = [
 // ═══════════════════════════════════════════════════════════════
 /* === LIVE-DATA-START: FOUR_LOOPS === */
 const FOUR_LOOPS = [
-  {"num": 1, "name": "Correction Loop", "status": "LIVE", "live": true, "color": "#39ff14", "flow": "Bobby corrects → lesson written → all agents read before executing", "note": "Operating since day one. The IP."},
-  {"num": 2, "name": "Eval Loop", "status": "SUBSTRATE SHIPPED", "live": false, "color": "#b388ff", "flow": "Past corrections → test cases → Eval Harness scores → Foreman flags regressions → new lessons", "note": "Day 30+45 hit 2026-05-07: match_engine + llm_judge + run.py + weekly_report all shipped, launchd schedule wired, first fire clean. Day 60 = ≥80% catch rate to flip live."},
-  {"num": 3, "name": "Code Loop", "status": "SUBSTRATE SHIPPED", "live": false, "color": "#88aaff", "flow": "Skill-Forge v2 writes code skill → Eval validates → Foreman approves → ships", "note": "Day 30 hit 2026-05-07: scaffold.py + validate.py + deploy.py shipped same day as Loop 2 Day 30+45. Day 60 = ≥3 code skills shipped via pipeline."},
-  {"num": 4, "name": "Memory Loop", "status": "LIVE", "live": true, "color": "#00d4ff", "flow": "Proactive fact capture → cross-ref guardrails → quarterly consolidation via consolidate-memory", "note": "Strengthened with guardrails-not-facts + diagnose-before-fix + validate-against-brand-canonical lessons."}
+  {"id": "loop-1", "num": 1, "name": "Correction Loop", "status": "LIVE", "live": true, "color": "#39ff14", "flow": "Bobby corrects → lesson written → all agents read before executing", "note": "Operating since day one. The IP."},
+  {"id": "loop-2", "num": 2, "name": "Eval Loop", "status": "SUBSTRATE SHIPPED", "live": false, "color": "#b388ff", "flow": "Past corrections → test cases → Eval Harness scores → Foreman flags regressions → new lessons", "note": "Day 30+45 hit 2026-05-07: match_engine + llm_judge + run.py + weekly_report all shipped, launchd schedule wired, first fire clean. Day 60 = ≥80% catch rate to flip live."},
+  {"id": "loop-3", "num": 3, "name": "Code Loop", "status": "SUBSTRATE SHIPPED", "live": false, "color": "#88aaff", "flow": "Skill-Forge v2 writes code skill → Eval validates → Foreman approves → ships", "note": "Day 30 hit 2026-05-07: scaffold.py + validate.py + deploy.py shipped same day as Loop 2 Day 30+45. Day 60 = ≥3 code skills shipped via pipeline."},
+  {"id": "loop-4", "num": 4, "name": "Memory Loop", "status": "LIVE", "live": true, "color": "#00d4ff", "flow": "Proactive fact capture → cross-ref guardrails → quarterly consolidation via consolidate-memory", "note": "Strengthened with guardrails-not-facts + diagnose-before-fix + validate-against-brand-canonical lessons."}
 ];
 /* === LIVE-DATA-END: FOUR_LOOPS === */
 
