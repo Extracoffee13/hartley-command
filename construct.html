@@ -893,7 +893,10 @@ const KILL_CRITERION = [
 
 // ═══════════════════════════════════════════════════════════════
 // THE FOUR LOOPS — all four must be live for the system to compound
+// AUTO-MAINTAINED by data/dashboard-refresh.py from data/construct-state.json
+// DO NOT EDIT BETWEEN THE LIVE-DATA MARKERS — edits will be overwritten
 // ═══════════════════════════════════════════════════════════════
+/* === LIVE-DATA-START: FOUR_LOOPS === */
 const FOUR_LOOPS = [
   { id: "loop-1", num: 1, name: "Correction Loop",   live: true,  color: "#39ff14", flow: "Bobby corrects \u2192 lesson written \u2192 all agents read before executing", status: "LIVE", note: "Operating since day one. The IP." },
   { id: "loop-2", num: 2, name: "Eval Loop",         live: false, color: "#b388ff", flow: "Past corrections \u2192 test cases \u2192 Eval Harness scores \u2192 Foreman flags regressions \u2192 new lessons", status: "SUBSTRATE SHIPPED", note: "Day 30 milestone hit 2026-05-07: match_engine + llm_judge + run.py + weekly_report all shipped. Day 45 = first weekly score. Day 60 = \u226580% catch rate to flip live." },
