@@ -2625,8 +2625,8 @@ const ConstructAtlas = ({ agents }) => {
             </div>
             <div style={s.loopsRow}>
               <div style={s.loop}><h5 style={s.loopH5}>Loop 1 — Correction</h5><div style={s.loopStatus}>▸ LIVE</div><div style={s.loopDesc}>Bobby corrects → lesson → all agents read.</div></div>
-              <div style={{ ...s.loop, ...s.loopBuild }}><h5 style={{ ...s.loopH5, ...s.loopH5Build }}>Loop 2 — Eval</h5><div style={{ ...s.loopStatus, ...s.loopStatusBuild }}>▸ SPEC · BUILDING · Tier 1</div><div style={s.loopDesc}>Past corrections → test cases → score.</div></div>
-              <div style={{ ...s.loop, ...s.loopBuild }}><h5 style={{ ...s.loopH5, ...s.loopH5Build }}>Loop 3 — Code</h5><div style={{ ...s.loopStatus, ...s.loopStatusBuild }}>▸ NOT BUILT · Tier 2</div><div style={s.loopDesc}>Skill-Forge v2 ships executable skills.</div></div>
+              <div style={{ ...s.loop, ...s.loopBuild }}><h5 style={{ ...s.loopH5, ...s.loopH5Build }}>Loop 2 — Eval</h5><div style={{ ...s.loopStatus, ...s.loopStatusBuild }}>▸ SUBSTRATE SHIPPED · Day 30+45 ✓</div><div style={s.loopDesc}>Past corrections → test cases → score.</div></div>
+              <div style={{ ...s.loop, ...s.loopBuild }}><h5 style={{ ...s.loopH5, ...s.loopH5Build }}>Loop 3 — Code</h5><div style={{ ...s.loopStatus, ...s.loopStatusBuild }}>▸ SUBSTRATE SHIPPED · Day 30 ✓</div><div style={s.loopDesc}>Skill-Forge v2 ships executable skills.</div></div>
               <div style={s.loop}><h5 style={s.loopH5}>Loop 4 — Memory</h5><div style={s.loopStatus}>▸ LIVE</div><div style={s.loopDesc}>Facts captured · cross-referenced · consolidated Q.</div></div>
             </div>
 
@@ -2684,6 +2684,53 @@ const ConstructAtlas = ({ agents }) => {
                 {" "}<span style={{ color: "#39ff14" }}>2. ✓ Day 30 SHIPPED — match_engine + llm_judge + run + weekly_report</span> ·
                 {" "}<span style={{ color: "#39ff14" }}>3. ✓ Day 45 SCHEDULED + FIRST FIRE CLEAN — Sundays 23:55 ET via com.construct.eval-weekly</span> ·
                 {" "}4. ≥80% catch rate (Day 60 ~2026-06-22 — promotes Foreman to live mode).
+              </div>
+            </div>
+
+            {/* Loop 3 build progress — added 2026-05-07 */}
+            <div style={{ marginTop: 12, background: "#11161e", border: "1px solid rgba(136,170,255,0.35)", borderRadius: 4, padding: "10px 12px" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 8 }}>
+                <h5 style={{ fontSize: 10, color: "#88aaff", letterSpacing: "0.1em", margin: 0 }}>LOOP 3 BUILD PROGRESS · KILL CRITERION kc-codeforge · TARGET 2026-07-23</h5>
+                <span style={{ fontSize: 9, color: "#8a94a6", fontFamily: "ui-monospace, monospace" }}>updated 2026-05-07 · DAY 30 ✓</span>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 8 }}>
+                <div style={{ background: "rgba(136,170,255,0.04)", borderLeft: "2px solid #88aaff", padding: "6px 9px", borderRadius: 3 }}>
+                  <div style={{ fontSize: 9, color: "#88aaff", letterSpacing: "0.06em" }}>BUILD BRIEF</div>
+                  <div style={{ fontSize: 14, color: "#aaffcc", fontWeight: 700, fontFamily: "ui-monospace, monospace" }}>READY</div>
+                  <div style={{ fontSize: 9, color: "#6b7688" }}>skill-forge-v2/BUILD_BRIEF_loop3.md</div>
+                </div>
+                <div style={{ background: "rgba(57,255,20,0.04)", borderLeft: "2px solid #39ff14", padding: "6px 9px", borderRadius: 3 }}>
+                  <div style={{ fontSize: 9, color: "#39ff14", letterSpacing: "0.06em" }}>SCAFFOLD</div>
+                  <div style={{ fontSize: 14, color: "#aaffcc", fontWeight: 700, fontFamily: "ui-monospace, monospace" }}>SHIPPED</div>
+                  <div style={{ fontSize: 9, color: "#6b7688" }}>scaffold.py · 4 skill types</div>
+                </div>
+                <div style={{ background: "rgba(57,255,20,0.04)", borderLeft: "2px solid #39ff14", padding: "6px 9px", borderRadius: 3 }}>
+                  <div style={{ fontSize: 9, color: "#39ff14", letterSpacing: "0.06em" }}>VALIDATE</div>
+                  <div style={{ fontSize: 14, color: "#aaffcc", fontWeight: 700, fontFamily: "ui-monospace, monospace" }}>SHIPPED</div>
+                  <div style={{ fontSize: 9, color: "#6b7688" }}>validate.py · lint + match_engine + tests</div>
+                </div>
+                <div style={{ background: "rgba(57,255,20,0.04)", borderLeft: "2px solid #39ff14", padding: "6px 9px", borderRadius: 3 }}>
+                  <div style={{ fontSize: 9, color: "#39ff14", letterSpacing: "0.06em" }}>DEPLOY</div>
+                  <div style={{ fontSize: 14, color: "#aaffcc", fontWeight: 700, fontFamily: "ui-monospace, monospace" }}>SHIPPED</div>
+                  <div style={{ fontSize: 9, color: "#6b7688" }}>deploy.py · journal + rollback</div>
+                </div>
+                <div style={{ background: "rgba(255,255,255,0.04)", borderLeft: "2px solid #6b7688", padding: "6px 9px", borderRadius: 3 }}>
+                  <div style={{ fontSize: 9, color: "#6b7688", letterSpacing: "0.06em" }}>STAGED SKILLS</div>
+                  <div style={{ fontSize: 14, color: "#6b7688", fontWeight: 700, fontFamily: "ui-monospace, monospace" }}>0</div>
+                  <div style={{ fontSize: 9, color: "#6b7688" }}>staged/ awaits first scaffold</div>
+                </div>
+                <div style={{ background: "rgba(255,255,255,0.04)", borderLeft: "2px solid #6b7688", padding: "6px 9px", borderRadius: 3 }}>
+                  <div style={{ fontSize: 9, color: "#6b7688", letterSpacing: "0.06em" }}>kc-codeforge</div>
+                  <div style={{ fontSize: 14, color: "#6b7688", fontWeight: 700, fontFamily: "ui-monospace, monospace" }}>0<span style={{ fontSize: 9, marginLeft: 4 }}>/ 3 target</span></div>
+                  <div style={{ fontSize: 9, color: "#6b7688" }}>Day 60 ~2026-06-22</div>
+                </div>
+              </div>
+              <div style={{ marginTop: 8, fontSize: 9, color: "#8a94a6", lineHeight: 1.5 }}>
+                <strong style={{ color: "#88aaff" }}>Path to LIVE:</strong>
+                {" "}<span style={{ color: "#39ff14" }}>1. ✓ Day 30 SHIPPED — scaffold + validate + deploy</span> ·
+                {" "}2. First real code skill scaffolded from a Loop 1 lesson (Day 45) ·
+                {" "}3. ≥3 code skills shipped via the pipeline (Day 60 — clears kc-codeforge) ·
+                {" "}4. Foreman + Skill-Forge v2 self-deploying via Loop 3 (Day 90 kill-criterion checkpoint).
               </div>
             </div>
           </div>
