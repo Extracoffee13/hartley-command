@@ -895,7 +895,7 @@ const KILL_CRITERION = [
 // ═══════════════════════════════════════════════════════════════
 const FOUR_LOOPS = [
   { id: "loop-1", num: 1, name: "Correction Loop",   live: true,  color: "#39ff14", flow: "Bobby corrects \u2192 lesson written \u2192 all agents read before executing", status: "LIVE", note: "Operating since day one. The IP." },
-  { id: "loop-2", num: 2, name: "Eval Loop",         live: false, color: "#b388ff", flow: "Past corrections \u2192 test cases \u2192 Eval Harness scores \u2192 Foreman flags regressions \u2192 new lessons", status: "NOT BUILT", note: "Builds with Eval Harness + Foreman (Tier 1)." },
+  { id: "loop-2", num: 2, name: "Eval Loop",         live: false, color: "#b388ff", flow: "Past corrections \u2192 test cases \u2192 Eval Harness scores \u2192 Foreman flags regressions \u2192 new lessons", status: "SUBSTRATE SHIPPED", note: "Day 30 milestone hit 2026-05-07: match_engine + llm_judge + run.py + weekly_report all shipped. Day 45 = first weekly score. Day 60 = \u226580% catch rate to flip live." },
   { id: "loop-3", num: 3, name: "Code Loop",         live: false, color: "#88aaff", flow: "Skill-Forge v2 writes code skill \u2192 Eval validates \u2192 Foreman approves \u2192 ships", status: "NOT BUILT", note: "Builds with Skill-Forge v2 (Tier 2)." },
   { id: "loop-4", num: 4, name: "Memory Loop",       live: true,  color: "#00d4ff", flow: "Proactive fact capture \u2192 cross-ref guardrails \u2192 quarterly consolidation via consolidate-memory", status: "LIVE", note: "Strengthened with guardrails-not-facts + diagnose-before-fix + validate-against-brand-canonical lessons." },
 ];
@@ -2679,10 +2679,10 @@ const ConstructAtlas = ({ agents }) => {
               </div>
               <div style={{ marginTop: 8, fontSize: 9, color: "#8a94a6", lineHeight: 1.5 }}>
                 <strong style={{ color: "#b388ff" }}>Path to LIVE:</strong>
-                {" "}1. Run extract_corpus.py to refresh corpus from all spaces (≥50 entries) ·
-                {" "}2. Skill-Forge ships <code style={{ background: "rgba(0,212,255,0.08)", padding: "0 4px", borderRadius: 2, color: "#00d4ff" }}>foreman/match_engine.py</code> + <code style={{ background: "rgba(0,212,255,0.08)", padding: "0 4px", borderRadius: 2, color: "#00d4ff" }}>eval-harness/run.py</code> (Day 30) ·
-                {" "}3. First weekly score report shipped (Day 45) ·
-                {" "}4. ≥80% catch rate (Day 60 — promotes Foreman to live mode).
+                {" "}<span style={{ color: "#39ff14" }}>1. ✓ extract_corpus.py READY</span> ·
+                {" "}<span style={{ color: "#39ff14" }}>2. ✓ Day 30 SHIPPED — match_engine.py + llm_judge.py + run.py + weekly_report.py</span> ·
+                {" "}3. First weekly score report shipped (Day 45 — needs API key + first launchd run) ·
+                {" "}4. ≥80% catch rate (Day 60 ~2026-06-22 — promotes Foreman to live mode).
               </div>
             </div>
           </div>
@@ -2723,7 +2723,7 @@ function AgentEcosystemDashboard() {
     { time: "00:00:06", message: "Caden + Addison Jacksonville land search loaded into Louis's memory.", color: "#00d4ff" },
     { time: "00:00:07", message: "Tier 1 build queue active: Archivist, Skill-Forge, Foreman, Eval Harness, Precedent-Finder.", color: "#b388ff" },
     { time: "00:00:08", message: "Kill Criterion countdown armed: 2026-07-23 (Day 90).", color: "#b388ff" },
-    { time: "00:00:09", message: "Loop 1 (Correction) LIVE \u00B7 Loop 2 (Eval) NOT BUILT \u00B7 Loop 3 (Code) NOT BUILT \u00B7 Loop 4 (Memory) LIVE", color: "rgba(57,255,20,0.6)" },
+    { time: "00:00:09", message: "Loop 1 (Correction) LIVE \u00B7 Loop 2 (Eval) SUBSTRATE SHIPPED \u00B7 Loop 3 (Code) NOT BUILT \u00B7 Loop 4 (Memory) LIVE", color: "rgba(57,255,20,0.6)" },
   ]);
 
   const addLog = useCallback((message, color) => {
