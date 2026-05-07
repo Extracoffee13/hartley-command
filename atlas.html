@@ -1330,7 +1330,20 @@ function renderCard(c, delay) {
       : `<span class="s-badge ${badgeCls[c.status]}">${statusLabel[c.status]}</span>`;
 
   // Region label pill
-  const regionLabel = {jax:'JAX/St.Aug', ocala:'Ocala', sofla:'South FL'}[c.region] || '';
+  const regionLabel = {
+    jax:'JAX/St.Aug',
+    ocala:'Ocala',
+    gainesville:'Gainesville',
+    sofla:'South FL',
+    'naples-ft-myers':'Naples/Ft.Myers',
+    orlando:'Orlando',
+    tampa:'Tampa',
+    'palm-beach':'Palm Beach',
+    'treasure-coast':'Treasure Coast',
+    'space-coast':'Space Coast',
+    'panama-city':'Panama City',
+    pensacola:'Pensacola'
+  }[c.region] || '';
   const regionPill = regionLabel
     ? `<span style="font-size:9px;font-weight:800;padding:2px 7px;border-radius:8px;background:var(--blue-l);color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-right:4px;">${regionLabel}</span>`
     : '';
