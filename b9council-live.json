@@ -1,0 +1,46 @@
+{
+  "_meta": {
+    "purpose": "Live slice of construct-state.json b9council block, deployed for Hartley-Command index card. Auto-updated every 4 hours by tools/sync-council-sessions.py.",
+    "source": "Agent Ecosystem Dashboard/data/construct-state.json :: b9council",
+    "last_sync_iso": "2026-05-08T12:32:40-04:00",
+    "first_session_iso": "2026-05-07T19:04:19+00:00"
+  },
+  "status": "LIVE",
+  "sessions_total": 2,
+  "sessions_last_7_days": 2,
+  "sessions_last_30_days": 2,
+  "sessions_per_day_avg_30d": 0.1,
+  "distinct_ips_total": 1,
+  "distinct_ips_last_7_days": 1,
+  "share_rate_pct": null,
+  "verdict_distribution": {
+    "GO": 0,
+    "HOLD": 0,
+    "KILL": 0,
+    "ITERATE": 1,
+    "NEEDS_DATA": 1
+  },
+  "foreman_violation_rate_pct": 0.0,
+  "inbound_leads_traceable": 0,
+  "kc_council_day7": {
+    "target": 50,
+    "current": 2,
+    "metric": "sessions",
+    "deadline_iso": "2026-05-16",
+    "pass": false
+  },
+  "kc_council_day30": {
+    "target": 500,
+    "current": 0,
+    "metric": "indexed_council_urls",
+    "deadline_iso": "2026-06-08",
+    "pass": false
+  },
+  "kc_council_day60": {
+    "target": 1,
+    "current": 0,
+    "metric": "inbound_leads_traceable_to_session",
+    "deadline_iso": "2026-07-08",
+    "pass": false
+  }
+}
