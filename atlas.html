@@ -2527,9 +2527,9 @@ document.addEventListener('visibilitychange', () => {
   ov.addEventListener("click",function(e){if(e.target===ov)closeOv();});
   document.addEventListener("keydown",function(e){if(e.key==="Escape"&&ov.classList.contains("open"))closeOv();});
   document.addEventListener("click",function(e){
-    var a=e.target.closest("a[href*=\"drive.google.com/file/d/\"]");
+    var a=e.target.closest("a[href*=\"drive.google.com\"]");
     if(!a)return;
-    var m=a.href.match(/\/file\/d\/([^\/?#]+)/);
+    var m=a.href.match(/\/file\/d\/([^\/?#]+)/)||a.href.match(/[?&]id=([^&#]+)/);
     if(!m)return;
     e.preventDefault();e.stopPropagation();
     var card=a.closest("[data-community],.community-card,article,section,li,div");
