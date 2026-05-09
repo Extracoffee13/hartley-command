@@ -907,32 +907,6 @@ const FOUR_LOOPS = [
 /* === LIVE-DATA-END: FOUR_LOOPS === */
 
 // ═══════════════════════════════════════════════════════════════
-// BRAND 9 COUNCIL — public product live metrics (the only public-facing wedge)
-// AUTO-MAINTAINED by tools/sync-council-sessions.py + data/dashboard-refresh.py
-// DO NOT EDIT BETWEEN THE LIVE-DATA MARKERS — edits will be overwritten
-// ═══════════════════════════════════════════════════════════════
-/* === LIVE-DATA-START: B9COUNCIL === */
-const B9COUNCIL = [
-  {"purpose": "Live metrics for the Brand 9 Council — public Council product on /brand-lab-ai/. Sourced from WP wp-content/uploads/b9council/sessions.jsonl, synced via tools/sync-council-sessions.py.", "wp_sessions_endpoint": "https://brand9signs.com/wp-content/uploads/b9council/sessions.jsonl", "local_sync_path": "outputs/b9council/sessions.jsonl", "last_sync_iso": "2026-05-08T12:32:40-04:00", "first_session_iso": "2026-05-07T19:04:19+00:00", "schema_note": "Real schema uses {hash, created_at, ip_md5, input, verdict}. Sync script tolerates the original draft schema fields too."},
-  "LIVE",
-  "2026-05-09",
-  2,
-  2,
-  2,
-  0.1,
-  1,
-  1,
-  null,
-  {"GO": 0, "HOLD": 0, "KILL": 0, "ITERATE": 1, "NEEDS_DATA": 1},
-  0.0,
-  0,
-  {"target": 50, "current": 2, "metric": "sessions", "deadline_iso": "2026-05-16", "pass": false},
-  {"target": 500, "current": 0, "metric": "indexed_council_urls", "deadline_iso": "2026-06-08", "pass": false},
-  {"target": 1, "current": 0, "metric": "inbound_leads_traceable_to_session", "deadline_iso": "2026-07-08", "pass": false}
-];
-/* === LIVE-DATA-END: B9COUNCIL === */
-
-// ═══════════════════════════════════════════════════════════════
 // PUBLIC POSTURE — cross-agent guardrails (compact reference)
 // ═══════════════════════════════════════════════════════════════
 const PUBLIC_POSTURE = [
