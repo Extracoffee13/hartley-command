@@ -101,15 +101,6 @@
   </a>
 </div>
 
-<h2>Brand 9 Public</h2>
-<div class="grid">
-  <a class="card flag" href="https://brand9signs.com/brand-lab-ai/" target="_blank" rel="noopener">
-    <div class="top"><span class="name">Brand 9 Council</span><span class="score">live</span></div>
-    <div class="role">Free SMB AI decision review · 7 specialists · 30-second verdict</div>
-    <div class="meta"><span class="pill live" id="b9council-status">awaiting first session</span><span id="b9council-sessions">sessions: —</span><span id="b9council-day7">day-7: —/50</span></div>
-  </a>
-</div>
-
 <h2>Hartley Capital</h2>
 <div class="grid">
   <a class="card" href="hartley-equity.html">
@@ -188,34 +179,6 @@
   }
   refreshWolf();
   setInterval(refreshWolf, 30000);
-
-  function refreshB9Council() {
-    fetch('b9council-live.json?t=' + Date.now(), { cache: 'no-store' })
-      .then(r => r.ok ? r.json() : null)
-      .then(d => {
-        if (!d) return;
-        const status = document.getElementById('b9council-status');
-        const sessions = document.getElementById('b9council-sessions');
-        const day7 = document.getElementById('b9council-day7');
-        if (status) status.textContent = (d.status || 'unknown').toLowerCase().replace(/_/g, ' ');
-        if (sessions) {
-          const v = d.verdict_distribution || {};
-          const breakdown = ['GO','HOLD','KILL','ITERATE','NEEDS_DATA']
-            .filter(k => (v[k] || 0) > 0)
-            .map(k => k.replace('_',' ').toLowerCase() + ': ' + v[k])
-            .join(' · ');
-          sessions.textContent = 'sessions: ' + (d.sessions_total ?? '—') +
-            (breakdown ? ' · ' + breakdown : '');
-        }
-        if (day7) {
-          const kc = d.kc_council_day7 || {};
-          day7.textContent = 'day-7: ' + (kc.current ?? 0) + '/' + (kc.target ?? 50);
-        }
-      })
-      .catch(() => { });
-  }
-  refreshB9Council();
-  setInterval(refreshB9Council, 60000);
 })();
 </script>
 
