@@ -2474,7 +2474,13 @@ setInterval(() => {
   if (document.visibilityState === 'visible') syncFromSheet();
 }, 5000);
 document.addEventListener('visibilitychange', () => {
-  i
+  if (document.visibilityState === 'visible') {
+    syncFromSheet();
+    if (PHOTOS_CSV_URL) syncPhotos().then(() => renderGrid());
+  }
+});
+</script>
+
 <!-- Atlas inline document viewer (PDF multi-page + image) -->
 <div id="atlas-pdf-viewer" onclick="if(event.target===this)closePhotoViewer()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:99999;align-items:center;justify-content:center;padding:20px;">
   <div style="position:relative;width:100%;max-width:1200px;height:calc(100vh - 40px);background:#fff;border-radius:8px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.6);">
@@ -2516,12 +2522,6 @@ document.addEventListener('visibilitychange', () => {
     }
   });
 })();
-</script>
-</body>ment.visibilityState === 'visible') {
-    syncFromSheet();
-    if (PHOTOS_CSV_URL) syncPhotos().then(() => renderGrid());
-  }
-});
 </script>
 </body>
 </html>
