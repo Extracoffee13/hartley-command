@@ -2514,7 +2514,7 @@ document.addEventListener('visibilitychange', () => {
     document.getElementById('atlas-pdf-next').style.visibility = state.index < state.items.length - 1 ? 'visible' : 'hidden';
   }
   window.openPhotoViewer = function(community, id) {
-    var arr = (window.COMMUNITY_PHOTOS && window.COMMUNITY_PHOTOS[community]) || [];
+    var arr = (typeof COMMUNITY_PHOTOS !== 'undefined' && COMMUNITY_PHOTOS[community]) || [];
     if (!arr.length) return;
     state.community = community;
     state.items = arr;
