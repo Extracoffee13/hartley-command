@@ -1381,7 +1381,7 @@ function renderCard(c, delay) {
       const delBtn = showDelete
         ? `<button onclick="event.preventDefault();event.stopPropagation();deleteAtlasPhoto('${safeId}','${safeName}');" title="Delete photo" style="position:absolute;top:3px;right:3px;width:20px;height:20px;padding:0;border:1.5px solid #fff;border-radius:50%;background:#dc2626;color:#fff;font-size:13px;font-weight:700;line-height:16px;text-align:center;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.4);" class="photo-x">&times;</button>`
         : '';
-      return `<div style="flex:1;position:relative;"><a href="${p.full}" target="_blank" rel="noopener" style="display:block;height:60px;background:url('${p.thumb}') center/cover;border-radius:6px;border:1px solid var(--gray-200);"></a>${delBtn}</div>`;
+      return `<div style="flex:1;position:relative;"><a href="${p.full}" target="_blank" rel="noopener" onclick="event.preventDefault();event.stopPropagation();openPhotoViewer('${safeName}', '${safeId}');" style="display:block;height:60px;background:url('${p.thumb}') center/cover;border-radius:6px;border:1px solid var(--gray-200);cursor:pointer;"></a>${delBtn}</div>`;
     }).join('')}${photos.length > 3 ? `<div style="display:flex;align-items:center;justify-content:center;width:34px;height:60px;background:var(--gray-50);border-radius:6px;font-size:10px;font-weight:700;color:var(--gray-600);">+${photos.length-3}</div>` : ''}</div>`;
   })()}
   <div class="c-prog">
@@ -2479,6 +2479,67 @@ document.addEventListener('visibilitychange', () => {
     if (PHOTOS_CSV_URL) syncPhotos().then(() => renderGrid());
   }
 });
+</script>
+
+<!-- Atlas inline document viewer with carousel -->
+<div id="atlas-pdf-viewer" onclick="if(event.target===this)closePhotoViewer()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:99999;align-items:center;justify-content:center;padding:20px;">
+  <button id="atlas-pdf-prev" type="button" onclick="_atlasPrev()" aria-label="Previous" style="position:absolute;left:24px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.10);color:#fff;border:1px solid rgba(255,255,255,0.25);width:54px;height:54px;border-radius:50%;font-size:28px;cursor:pointer;line-height:1;">&#8249;</button>
+  <button id="atlas-pdf-next" type="button" onclick="_atlasNext()" aria-label="Next" style="position:absolute;right:24px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.10);color:#fff;border:1px solid rgba(255,255,255,0.25);width:54px;height:54px;border-radius:50%;font-size:28px;cursor:pointer;line-height:1;">&#8250;</button>
+  <div style="position:relative;width:100%;max-width:1200px;height:calc(100vh - 40px);background:#fff;border-radius:8px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.6);">
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:#0A0E1A;color:#fff;">
+      <div id="atlas-pdf-caption" style="font-size:13px;font-weight:600;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;letter-spacing:.3px;">Document</div>
+      <div id="atlas-pdf-counter" style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:1px;white-space:nowrap;">1 of 1</div>
+      <a id="atlas-pdf-download" href="" download style="background:#00AEEF;color:#fff;padding:7px 14px;border-radius:6px;font-size:11px;font-weight:800;text-decoration:none;text-transform:uppercase;letter-spacing:1px;">Download</a>
+      <a id="atlas-pdf-newtab" href="" target="_blank" rel="noopener" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.35);padding:6px 12px;border-radius:6px;font-size:11px;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:1px;">Open &#8599;</a>
+      <button onclick="closePhotoViewer()" aria-label="Close" style="background:transparent;color:#fff;border:none;font-size:24px;cursor:pointer;line-height:1;padding:0 8px;">&times;</button>
+    </div>
+    <iframe id="atlas-pdf-iframe" src="" allow="autoplay" style="flex:1;width:100%;border:none;background:#444;"></iframe>
+  </div>
+</div>
+<script>
+(function(){
+  var state = { community: null, items: [], index: 0 };
+  function showItem(idx) {
+    if (!state.items || !state.items.length) return;
+    state.index = Math.max(0, Math.min(idx, state.items.length - 1));
+    var p = state.items[state.index];
+    if (!p) return;
+    document.getElementById('atlas-pdf-iframe').src = 'https://drive.google.com/file/d/' + p.id + '/preview';
+    var cap = (p.caption && String(p.caption).trim()) ? p.caption : (state.community || 'Document');
+    document.getElementById('atlas-pdf-caption').textContent = cap;
+    document.getElementById('atlas-pdf-counter').textContent = (state.index + 1) + ' of ' + state.items.length;
+    document.getElementById('atlas-pdf-download').href = 'https://drive.google.com/uc?export=download&id=' + p.id;
+    document.getElementById('atlas-pdf-newtab').href = 'https://drive.google.com/file/d/' + p.id + '/view';
+    document.getElementById('atlas-pdf-prev').style.visibility = state.index > 0 ? 'visible' : 'hidden';
+    document.getElementById('atlas-pdf-next').style.visibility = state.index < state.items.length - 1 ? 'visible' : 'hidden';
+  }
+  window.openPhotoViewer = function(community, id) {
+    var arr = (window.COMMUNITY_PHOTOS && window.COMMUNITY_PHOTOS[community]) || [];
+    if (!arr.length) return;
+    state.community = community;
+    state.items = arr;
+    var idx = arr.findIndex(function(p){ return p.id === id; });
+    if (idx < 0) idx = 0;
+    document.getElementById('atlas-pdf-viewer').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    showItem(idx);
+  };
+  window.closePhotoViewer = function() {
+    document.getElementById('atlas-pdf-viewer').style.display = 'none';
+    document.getElementById('atlas-pdf-iframe').src = '';
+    document.body.style.overflow = '';
+    state.items = []; state.community = null; state.index = 0;
+  };
+  window._atlasPrev = function() { if (state.index > 0) showItem(state.index - 1); };
+  window._atlasNext = function() { if (state.index < state.items.length - 1) showItem(state.index + 1); };
+  document.addEventListener('keydown', function(e) {
+    var v = document.getElementById('atlas-pdf-viewer');
+    if (!v || v.style.display === 'none') return;
+    if (e.key === 'Escape') closePhotoViewer();
+    else if (e.key === 'ArrowLeft') window._atlasPrev();
+    else if (e.key === 'ArrowRight') window._atlasNext();
+  });
+})();
 </script>
 </body>
 </html>
