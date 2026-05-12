@@ -876,7 +876,7 @@ async function syncPhotos() {
         COMMUNITY_PHOTOS[community].push({
           id,
           thumb: `https://drive.google.com/thumbnail?id=${id}&sz=w400`,
-          full:  `https://drive.google.com/uc?id=${id}`,
+          full:  `https://drive.google.com/file/d/${id}/view`,
           caption: idxCaption>=0 ? row[idxCaption] : '',
           crew:    idxCrew>=0 ? row[idxCrew] : '',
           ts:      idxTs>=0 ? row[idxTs] : ''
@@ -1381,7 +1381,7 @@ function renderCard(c, delay) {
       const delBtn = showDelete
         ? `<button onclick="event.preventDefault();event.stopPropagation();deleteAtlasPhoto('${safeId}','${safeName}');" title="Delete photo" style="position:absolute;top:3px;right:3px;width:20px;height:20px;padding:0;border:1.5px solid #fff;border-radius:50%;background:#dc2626;color:#fff;font-size:13px;font-weight:700;line-height:16px;text-align:center;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.4);" class="photo-x">&times;</button>`
         : '';
-      return `<div style="flex:1;position:relative;"><a href="${p.full}" target="_blank" rel="noopener" onclick="event.preventDefault();event.stopPropagation();openPhotoViewer('${safeName}', '${safeId}');" style="display:block;height:60px;background:url('${p.thumb}') center/cover;border-radius:6px;border:1px solid var(--gray-200);cursor:pointer;"></a>${delBtn}</div>`;
+      return `<div style="flex:1;position:relative;"><a href="${p.full}" target="_blank" rel="noopener" onclick="event.preventDefault();event.stopPropagation();try{openPhotoViewer('${safeName}','${safeId}');}catch(e){console.error('viewer err',e);}return false;" style="display:block;height:60px;background:url('${p.thumb}') center/cover;border-radius:6px;border:1px solid var(--gray-200);cursor:pointer;"></a>${delBtn}</div>`;
     }).join('')}${photos.length > 3 ? `<div style="display:flex;align-items:center;justify-content:center;width:34px;height:60px;background:var(--gray-50);border-radius:6px;font-size:10px;font-weight:700;color:var(--gray-600);">+${photos.length-3}</div>` : ''}</div>`;
   })()}
   <div class="c-prog">
