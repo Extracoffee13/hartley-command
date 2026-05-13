@@ -934,6 +934,22 @@ const AGENT_AUTHORED_SKILLS = [
 /* === LIVE-DATA-END: AGENT_AUTHORED_SKILLS === */
 
 // ═══════════════════════════════════════════════════════════════
+// PLUGINS INSTALLED — knowledge-work-plugins + anthropic-bundled
+// Audited weekly by construct-plugin-audit-weekly (Sat 8:30 AM ET)
+// ═══════════════════════════════════════════════════════════════
+/* === LIVE-DATA-START: PLUGINS_INSTALLED === */
+const PLUGINS_INSTALLED = [
+  {"plugin_id": "finance@knowledge-work-plugins", "skill_count": 8, "installed_date": "≤2026-04", "primary_agents": ["Architect", "Ledger (build queue)", "WOLF (paper accounting)"], "deployment_status": "wired", "notes": "Variance, financial-statements, reconciliation, close-management, audit-support, sox-testing, journal-entry × 2."},
+  {"plugin_id": "operations@knowledge-work-plugins", "skill_count": 9, "installed_date": "≤2026-04", "primary_agents": ["Architect", "Anvil (build queue)", "AP"], "deployment_status": "wired", "notes": "Risk-assessment, vendor-review, status-report, runbook, process-doc, change-request, compliance-tracking, capacity-plan, process-optimization."},
+  {"plugin_id": "marketing@knowledge-work-plugins", "skill_count": 8, "installed_date": "≤2026-04", "primary_agents": ["Vector", "Signal (build queue)", "Brand Lab AI"], "deployment_status": "wired", "notes": "Draft-content, content-creation, competitive-brief, brand-review, email-sequence, campaign-plan, performance-report, seo-audit."},
+  {"plugin_id": "design@knowledge-work-plugins", "skill_count": 7, "installed_date": "≤2026-04", "primary_agents": ["Vector"], "deployment_status": "wired", "notes": "Design-system, accessibility-review, design-critique, ux-copy, design-handoff, research-synthesis, user-research."},
+  {"plugin_id": "productivity@knowledge-work-plugins", "skill_count": 4, "installed_date": "≤2026-04", "primary_agents": ["AP", "Bobby"], "deployment_status": "wired", "notes": "Task-management, memory-management, start, update."},
+  {"plugin_id": "cowork-plugin-management@knowledge-work-plugins", "skill_count": 2, "installed_date": "≤2026-04", "primary_agents": ["Bobby"], "deployment_status": "wired", "notes": "Plugin authoring + customization."},
+  {"plugin_id": "legal@knowledge-work-plugins", "skill_count": 10, "installed_date": "2026-05-13 (pending Bobby Add click)", "primary_agents": ["Sentinel (build queue)", "Architect", "Anvil (build queue)", "Louis"], "deployment_status": "partial", "notes": "Audited + install-card surfaced 5/13. After Add click: triage-nda, review-contract, compliance-check, vendor-check, legal-risk-assessment, brief, meeting-briefing, legal-response, signature-request. Architect to wire 3 skills (triage-nda + review-contract + meeting-briefing) into Sunday Capital Council."}
+];
+/* === LIVE-DATA-END: PLUGINS_INSTALLED === */
+
+// ═══════════════════════════════════════════════════════════════
 // PUBLIC POSTURE — cross-agent guardrails (compact reference)
 // ═══════════════════════════════════════════════════════════════
 const PUBLIC_POSTURE = [
@@ -2254,6 +2270,56 @@ const SelfAuthoredPanel = () => (
 );
 
 // ═══════════════════════════════════════════════════
+// PLUGIN INVENTORY & DEPLOYMENT PANEL
+// Shows which plugins are installed, which agents are wired to invoke them,
+// and which are pending/partial deployment
+// ═══════════════════════════════════════════════════
+const PluginInventoryPanel = () => {
+  const totalSkills = PLUGINS_INSTALLED.reduce((s, p) => s + (p.skill_count || 0), 0);
+  const installed = PLUGINS_INSTALLED.filter(p => p.deployment_status === "wired").length;
+  const partial = PLUGINS_INSTALLED.filter(p => p.deployment_status === "partial").length;
+  return (
+    <div style={{ margin: "16px 24px 24px", padding: 16, background: "rgba(0,0,0,0.5)", border: "1px solid rgba(179,136,255,0.3)", borderRadius: 4 }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <div style={{ fontSize: 14, color: "#b388ff" }}>◈</div>
+          <div>
+            <div style={{ fontSize: 13, fontWeight: "bold", letterSpacing: 3, color: "#b388ff" }}>PLUGIN INVENTORY & AGENT DEPLOYMENT</div>
+            <div style={{ fontSize: 10, color: "rgba(179,136,255,0.5)", letterSpacing: 2, marginTop: 2 }}>WHICH PLUGINS ARE INSTALLED · WHICH AGENTS INVOKE THEM</div>
+          </div>
+        </div>
+        <div style={{ fontSize: 10, fontFamily: "monospace", color: "rgba(179,136,255,0.7)", letterSpacing: 2 }}>
+          {PLUGINS_INSTALLED.length} plugins · {totalSkills} skills · {installed} wired · {partial} partial
+        </div>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 10 }}>
+        {PLUGINS_INSTALLED.map(p => {
+          const statusColor = p.deployment_status === "wired" ? "#39ff14" : (p.deployment_status === "partial" ? "#ffd966" : "rgba(179,136,255,0.4)");
+          const pluginName = p.plugin_id.split("@")[0];
+          return (
+            <div key={p.plugin_id} style={{ padding: 12, background: "rgba(179,136,255,0.04)", border: "1px solid rgba(179,136,255,0.2)", borderRadius: 3 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
+                <span style={{ fontSize: 13, fontFamily: "monospace", color: "#b388ff", fontWeight: "bold", textTransform: "uppercase" }}>{pluginName}</span>
+                <span style={{ fontSize: 9, fontFamily: "monospace", letterSpacing: 2, padding: "2px 8px", border: `1px solid ${statusColor}`, color: statusColor, borderRadius: 2 }}>{(p.deployment_status || "?").toUpperCase()}</span>
+              </div>
+              <div style={{ fontSize: 10, fontFamily: "monospace", color: "rgba(179,136,255,0.65)", marginBottom: 6 }}>
+                {p.skill_count} skill{p.skill_count === 1 ? "" : "s"} · installed {p.installed_date}
+              </div>
+              <div style={{ fontSize: 10, fontFamily: "monospace", color: "rgba(0,212,255,0.7)", marginBottom: 6 }}>
+                ▸ {(p.primary_agents || []).join(" · ")}
+              </div>
+              <div style={{ fontSize: 9, fontFamily: "monospace", color: "rgba(179,136,255,0.45)", fontStyle: "italic", lineHeight: 1.4 }}>
+                {p.notes}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════
 // PUBLIC POSTURE CARD — v2.1
 // ═══════════════════════════════════════════════════
 const PublicPostureCard = () => (
@@ -2994,6 +3060,7 @@ function AgentEcosystemDashboard() {
         <QualityTrianglePanel />
         <FourLoopsPanel />
         <SelfAuthoredPanel />
+        <PluginInventoryPanel />
         <WorkflowsPanel />
         <PublicPostureCard />
 
