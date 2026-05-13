@@ -907,6 +907,33 @@ const FOUR_LOOPS = [
 /* === LIVE-DATA-END: FOUR_LOOPS === */
 
 // ═══════════════════════════════════════════════════════════════
+// AGENT SCORECARDS — Coca-Cola Test (1-25) per agent, re-scored monthly
+// AUTO-MAINTAINED by data/dashboard-refresh.py from construct-state.json
+// DO NOT EDIT BETWEEN THE LIVE-DATA MARKERS — overwritten on refresh
+// ═══════════════════════════════════════════════════════════════
+/* === LIVE-DATA-START: AGENT_SCORECARDS === */
+const AGENT_SCORECARDS = [
+  {"codename": "Louis", "score": 24, "role": "FL RE Intelligence (Hartley Capital)", "scored_date": "2026-04-27", "trend": "stable"},
+  {"codename": "Vector", "score": 21, "role": "CMO / design", "scored_date": "2026-04-24", "trend": "stable"},
+  {"codename": "Keystone", "score": 20, "role": "Strategy / venture architecture", "scored_date": "2026-04-24", "trend": "stable"},
+  {"codename": "Self-Improving Loop", "score": 20, "role": "Meta-quality (corrections → lessons)", "scored_date": "2026-04-24", "trend": "rising — 2 new lessons added 2026-05-13"},
+  {"codename": "WOLF", "score": 19, "role": "Markets / autonomous trading research", "scored_date": "2026-04-24", "trend": "rising — mandate v1.0 enforced + esoteric registry seeded"},
+  {"codename": "Atlas Signage Ops", "score": 18, "role": "B9 operational dashboards", "scored_date": "2026-04-24", "trend": "stable"},
+  {"codename": "Cornerstone", "score": 15, "role": "Personal / faith / reflection", "scored_date": "2026-04-24", "trend": "stable"}
+];
+/* === LIVE-DATA-END: AGENT_SCORECARDS === */
+
+// ═══════════════════════════════════════════════════════════════
+// AGENT-AUTHORED SKILLS — tracked SEPARATELY from imported third-party skills
+// Populated by construct-skill-forge-weekly (Sat 9 AM) + Loop 3 deploy journal
+// ═══════════════════════════════════════════════════════════════
+/* === LIVE-DATA-START: AGENT_AUTHORED_SKILLS === */
+const AGENT_AUTHORED_SKILLS = [
+  
+];
+/* === LIVE-DATA-END: AGENT_AUTHORED_SKILLS === */
+
+// ═══════════════════════════════════════════════════════════════
 // PUBLIC POSTURE — cross-agent guardrails (compact reference)
 // ═══════════════════════════════════════════════════════════════
 const PUBLIC_POSTURE = [
@@ -2170,6 +2197,63 @@ const FourLoopsPanel = () => (
 );
 
 // ═══════════════════════════════════════════════════
+// SELF-AUTHORED PANEL — agent scorecards + agent-authored skills
+// Separate registries that prove the ecosystem is producing its own IP
+// ═══════════════════════════════════════════════════
+const SelfAuthoredPanel = () => (
+  <div style={{ margin: "16px 24px 24px", padding: 16, background: "rgba(0,0,0,0.5)", border: "1px solid rgba(57,255,20,0.25)", borderRadius: 4 }}>
+    <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
+      <div style={{ fontSize: 14, color: "#39ff14" }}>⦾</div>
+      <div>
+        <div style={{ fontSize: 13, fontWeight: "bold", letterSpacing: 3, color: "#39ff14" }}>SELF-AUTHORED OUTPUT</div>
+        <div style={{ fontSize: 10, color: "rgba(57,255,20,0.4)", letterSpacing: 2, marginTop: 2 }}>WHAT THE ECOSYSTEM PRODUCED ON ITS OWN — TRACKED SEPARATELY FROM IMPORTED SKILLS</div>
+      </div>
+    </div>
+
+    {/* Agent scorecards row */}
+    <div style={{ marginBottom: 16 }}>
+      <div style={{ fontSize: 11, fontFamily: "monospace", color: "rgba(57,255,20,0.7)", letterSpacing: 2, marginBottom: 8 }}>▸ AGENT SCORECARDS · COCA-COLA TEST (1–25) · RE-SCORED MONTHLY BY KEYSTONE</div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 8 }}>
+        {AGENT_SCORECARDS.map(a => {
+          const trendColor = a.trend && a.trend.startsWith("rising") ? "#39ff14" : (a.trend === "stable" ? "rgba(57,255,20,0.5)" : "#ff9966");
+          const scoreColor = a.score >= 22 ? "#39ff14" : (a.score >= 18 ? "#00d4ff" : "rgba(57,255,20,0.55)");
+          return (
+            <div key={a.codename} style={{ padding: "8px 12px", background: "rgba(57,255,20,0.04)", border: "1px solid rgba(57,255,20,0.18)", borderRadius: 2 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+                <span style={{ fontSize: 12, fontFamily: "monospace", color: "#39ff14", fontWeight: "bold" }}>{a.codename}</span>
+                <span style={{ fontSize: 14, fontFamily: "monospace", color: scoreColor, fontWeight: "bold" }}>{a.score}/25</span>
+              </div>
+              <div style={{ fontSize: 10, fontFamily: "monospace", color: "rgba(57,255,20,0.55)", marginTop: 2 }}>{a.role}</div>
+              <div style={{ fontSize: 9, fontFamily: "monospace", color: trendColor, marginTop: 4, fontStyle: "italic" }}>{a.trend || "stable"}</div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+
+    {/* Agent-authored skills row */}
+    <div>
+      <div style={{ fontSize: 11, fontFamily: "monospace", color: "rgba(0,212,255,0.7)", letterSpacing: 2, marginBottom: 8 }}>▸ AGENT-AUTHORED SKILLS · STAGED BY SKILL-FORGE WEEKLY · SEPARATE FROM 245 IMPORTED</div>
+      {AGENT_AUTHORED_SKILLS.length === 0 ? (
+        <div style={{ padding: "10px 12px", background: "rgba(0,212,255,0.03)", border: "1px dashed rgba(0,212,255,0.2)", borderRadius: 2, fontSize: 11, fontFamily: "monospace", color: "rgba(0,212,255,0.55)", fontStyle: "italic" }}>
+          0 staged · 0 deployed. Loop is warming — first agent-authored skill expected once praxis promotes its first lesson cluster. Saturday 9:02 AM ET: construct-skill-forge-weekly runs the staging pass.
+        </div>
+      ) : (
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 8 }}>
+          {AGENT_AUTHORED_SKILLS.map(s => (
+            <div key={s.skill_name} style={{ padding: "8px 12px", background: "rgba(0,212,255,0.04)", border: "1px solid rgba(0,212,255,0.2)", borderRadius: 2 }}>
+              <div style={{ fontSize: 12, fontFamily: "monospace", color: "#00d4ff", fontWeight: "bold" }}>{s.skill_name}</div>
+              <div style={{ fontSize: 10, fontFamily: "monospace", color: "rgba(0,212,255,0.6)", marginTop: 2 }}>by {s.authored_by} · {s.status}</div>
+              <div style={{ fontSize: 10, fontFamily: "monospace", color: "rgba(0,212,255,0.45)", marginTop: 2 }}>triangle: {s.triangle_status || "—"}</div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════
 // PUBLIC POSTURE CARD — v2.1
 // ═══════════════════════════════════════════════════
 const PublicPostureCard = () => (
@@ -2909,6 +2993,7 @@ function AgentEcosystemDashboard() {
         <CloudCadenceCard />
         <QualityTrianglePanel />
         <FourLoopsPanel />
+        <SelfAuthoredPanel />
         <WorkflowsPanel />
         <PublicPostureCard />
 
