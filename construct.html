@@ -2221,6 +2221,68 @@ const FourLoopsPanel = () => (
 );
 
 // ═══════════════════════════════════════════════════
+// CREATIVE BOARD PANEL — 5-lens parallel critique + agentic self-improvement
+// Standing panel covering ALL creative + written output. 2-3 cycle minimum on
+// blog work, premium ceiling required on heritage. Every cycle's lessons harvest
+// into memory → Skill-Forge v2 codifies → all agents read them next session.
+// This IS where agentic self-improvement happens.
+// Added 2026-05-15 per Bobby directive — visible across all agents.
+// ═══════════════════════════════════════════════════
+const CreativeBoardPanel = () => {
+  const lenses = [
+    { name: "VECTOR",        domain: "DESIGN",          q: "Does it clear the brand premium ceiling?",      role: "Visual hierarchy · craft · brand fit · 5-dim critique runner (philosophy / hierarchy / craft / functionality / innovation each /10).", color: "#b388ff", recent: "Vizcaya v12 9.0 → Ybor v11 9.0 → Kingsley v8 9.4 → Hibernia v9 9.2" },
+    { name: "THE CRITIC",    domain: "TASTE",           q: "Is it AI-slop or signature?",                   role: "Anti-slop watch. Calls out purple gradients, emoji icons, cyber-neon backgrounds, SVG-drawn imagery, unearned color blocks. Forces signature over template.", color: "#39ff14", recent: "Caught cyan-square slop in Vizcaya v12 footer · enforced photo-credit-on-paper-field" },
+    { name: "THE ARCHIVIST", domain: "FACTS",           q: "Are the facts verifiable + cited?",             role: "Core Principle #0 enforcement. Every date, name, figure, claim must WebSearch-verify before publication. Primary sources cited. No invented names.", color: "#00d4ff", recent: "Killed 7 invented enslaved-person names in Kingsley v8 draft · verified Hibernia 1790 grant via NPS" },
+    { name: "THE PROOFER",   domain: "DETAIL",          q: "Does it fit, scan, render, hold up?",           role: "Pixel + render check. Text-fits-container arithmetic, alignment, no overlaps, dateModified vs render state, all alt text present, integrity-diff passes before push.", color: "#00ffff", recent: "Caught Kingsley grid overflow · enforced WP base64(urlencode) for homepage strip" },
+    { name: "THE STEWARD",   domain: "VOICE / EQUITY",  q: "Whose story is this? Whose link survives?",     role: "Labor history, naming conventions, link preservation, accessibility. Names the people who built / read / suffered / were forgotten. Diffs every existing-post edit against the rule: ADDITIVE ONLY.", color: "#ffd700", recent: "Bahamian + Afro-Caribbean labor named in Vizcaya · St. Johns River reframing for Hibernia · 0 inbound links lost across 4 post edits" },
+  ];
+
+  return (
+    <div style={{ margin: "16px 24px", padding: 16, background: "rgba(0,0,0,0.5)", border: "1px solid rgba(179,136,255,0.35)", borderRadius: 4 }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12, flexWrap: "wrap", gap: 12 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <div style={{ fontSize: 14, color: "#b388ff" }}>◆</div>
+          <div>
+            <div style={{ fontSize: 13, fontWeight: "bold", letterSpacing: 3, color: "#b388ff" }}>THE CREATIVE BOARD — 5-LENS PARALLEL CRITIQUE</div>
+            <div style={{ fontSize: 10, color: "rgba(179,136,255,0.5)", letterSpacing: 2, marginTop: 2 }}>EVERY CREATIVE + WRITTEN DELIVERABLE PASSES THROUGH BEFORE BOBBY SEES IT</div>
+          </div>
+        </div>
+        <div style={{ fontSize: 10, fontFamily: "monospace", color: "rgba(179,136,255,0.7)", letterSpacing: 2 }}>
+          ≥2-3 CYCLES ON BLOG · PREMIUM CEILING ON HERITAGE
+        </div>
+      </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 10, marginBottom: 14 }}>
+        {lenses.map(l => (
+          <div key={l.name} style={{ padding: "10px 12px", background: `rgba(${hexToRgb(l.color)},0.04)`, border: `1px solid rgba(${hexToRgb(l.color)},0.30)`, borderTop: `3px solid ${l.color}`, borderRadius: 3 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 5 }}>
+              <span style={{ fontSize: 11, fontFamily: "monospace", letterSpacing: 2, color: l.color, fontWeight: "bold" }}>{l.name}</span>
+              <span style={{ fontSize: 8, fontFamily: "monospace", letterSpacing: 2, padding: "2px 6px", border: `1px solid ${l.color}55`, color: `${l.color}cc`, borderRadius: 2 }}>{l.domain}</span>
+            </div>
+            <div style={{ fontSize: 10, fontFamily: "monospace", color: l.color, fontStyle: "italic", marginBottom: 5, fontWeight: "bold" }}>"{l.q}"</div>
+            <div style={{ fontSize: 9, fontFamily: "monospace", color: "rgba(255,255,255,0.62)", lineHeight: 1.45, marginBottom: 7 }}>{l.role}</div>
+            <div style={{ fontSize: 8, fontFamily: "monospace", color: `rgba(${hexToRgb(l.color)},0.80)`, lineHeight: 1.4, paddingTop: 6, borderTop: `1px solid rgba(${hexToRgb(l.color)},0.20)` }}><span style={{ opacity: 0.6 }}>RECENT&nbsp;·&nbsp;</span>{l.recent}</div>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ padding: "10px 12px", background: "rgba(179,136,255,0.06)", border: "1px solid rgba(179,136,255,0.25)", borderRadius: 3, fontFamily: "monospace", fontSize: 11, color: "rgba(255,255,255,0.78)", lineHeight: 1.5 }}>
+        <span style={{ color: "#b388ff", fontWeight: "bold", letterSpacing: 1 }}>◆ THE LOOP →</span>{" "}
+        Output runs through all 5 lenses in <strong style={{ color: "#39ff14" }}>parallel</strong> (Agent-tool spawn).{" "}
+        Each lens scores /10 + Keep/Fix/Quick-Wins. Iterate until pass. Lessons harvest into memory.{" "}
+        <strong style={{ color: "#00d4ff" }}>Skill-Forge v2 (Loop 3)</strong> codifies recurring patterns into <strong style={{ color: "#00d4ff" }}>self-authored code skills</strong>.{" "}
+        All agents read the new skills the next session. <strong style={{ color: "#b388ff" }}>This is where the system gets smarter.</strong>
+      </div>
+
+      <div style={{ marginTop: 10, padding: "9px 12px", background: "rgba(57,255,20,0.04)", border: "1px solid rgba(57,255,20,0.22)", borderRadius: 3, fontFamily: "monospace", fontSize: 10, color: "rgba(57,255,20,0.85)", lineHeight: 1.5 }}>
+        <span style={{ color: "#39ff14", fontWeight: "bold" }}>SCOPE&nbsp;·&nbsp;</span>
+        Standing rule across all agents. Visual renders, blog posts, social captions, emails, schedules, memos, code commits, journal entries, signage mockups, motion films, dashboard panels — same 5 lenses, parallel, every time. The Creative Board is NOT optional for Bobby-facing deliverables.
+      </div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════
 // SELF-AUTHORED PANEL — agent scorecards + agent-authored skills
 // Separate registries that prove the ecosystem is producing its own IP
 // ═══════════════════════════════════════════════════
@@ -3067,6 +3129,7 @@ function AgentEcosystemDashboard() {
         <CloudCadenceCard />
         <QualityTrianglePanel />
         <FourLoopsPanel />
+        <CreativeBoardPanel />
         <SelfAuthoredPanel />
         <PluginInventoryPanel />
         <WorkflowsPanel />
