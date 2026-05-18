@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>The Construct · NEUROLINK 3099</title>
+<title>The Construct Â· NEUROLINK 3099</title>
 <style>
 :root{
   --gold:#ffd700;
@@ -199,19 +199,19 @@ canvas{display:block;}
 </div>
 
 <div id="hud-tl" class="hud">
-  <div class="t1">THE CONSTRUCT · NEUROLINK</div>
-  <div class="t2">▸ AGENT ECOSYSTEM · 3099 BUILD</div>
+  <div class="t1">THE CONSTRUCT Â· NEUROLINK</div>
+  <div class="t2">â¸ AGENT ECOSYSTEM Â· 3099 BUILD</div>
   <div class="t3">A 3D synaptic map of Bobby Hartley's operating empire. Gold core at the center. <span id="kpi-agents-inline">33</span> agents orbiting. Systems beyond. Ventures in the outer ring. Every flash is a signal pattern. The lattice is alive.</div>
-  <div class="t4">▸ STATUS · ALL SYSTEMS NOMINAL</div>
+  <div class="t4">â¸ STATUS Â· ALL SYSTEMS NOMINAL</div>
 </div>
 
 <div id="hud-tr" class="hud">
-  <div class="row"><span class="label small">CORE</span><span class="num gold" style="font-size:11px;">RLH · BOBBY</span></div>
+  <div class="row"><span class="label small">CORE</span><span class="num gold" style="font-size:11px;">RLH Â· BOBBY</span></div>
   <div class="row"><span class="label small">AGENTS</span><span class="num"><span id="kpi-agents">35</span></span></div>
   <div class="row"><span class="label small">SYSTEMS</span><span class="num"><span id="kpi-systems">8</span></span></div>
   <div class="row"><span class="label small">VENTURES</span><span class="num"><span id="kpi-ventures">12</span></span></div>
   <div class="row"><span class="label small">PRAXIS PRIORS</span><span class="num gold"><span id="kpi-priors">8</span></span></div>
-  <div class="row"><span class="label small">SKILLS DEPLOYED</span><span class="num"><span id="kpi-skills">245</span></span></div>
+  <div class="row"><span class="label small">SKILLS DEPLOYED</span><span class="num"><span id="kpi-skills">324</span></span></div>
   <div class="row"><span class="label small">SYNAPSES / MIN</span><span class="num green"><span id="kpi-synapses">0</span></span></div>
   <div class="row"><span class="label small">CONSTRUCT MATURITY</span><span class="num gold"><span id="kpi-maturity">0%</span></span></div>
   <div class="row" style="margin-top:14px;"><span class="label small">UPTIME</span><span class="num small" style="font-size:11px;"><span id="kpi-uptime">000d 00:00:00</span></span></div>
@@ -219,24 +219,24 @@ canvas{display:block;}
 </div>
 
 <div id="hud-bl" class="hud">
-  <div class="head">▸ EVENT STREAM</div>
+  <div class="head">â¸ EVENT STREAM</div>
   <div class="log" id="event-log">
-    <div><span class="ts">[--:--]</span> Booting…</div>
+    <div><span class="ts">[--:--]</span> Bootingâ¦</div>
   </div>
 </div>
 
 <div id="hud-br" class="hud">
-  <div class="head">▸ FOCUS</div>
-  <div class="name" id="focus-name">RLH · BOBBY</div>
-  <div class="role" id="focus-role">Founder · Showrunner</div>
+  <div class="head">â¸ FOCUS</div>
+  <div class="name" id="focus-name">RLH Â· BOBBY</div>
+  <div class="role" id="focus-role">Founder Â· Showrunner</div>
   <div class="desc" id="focus-desc">The center of The Construct. 40-year operator, HBS alumnus, building the most ambitious AI-c-suite experiment running in any small-mid business in 2026.</div>
-  <div class="reticle">↻ HOVER NODES · CLICK TO FIRE</div>
+  <div class="reticle">â» HOVER NODES Â· CLICK TO FIRE</div>
 </div>
 
-<div id="controls"><span class="key">DRAG</span> · <span class="key">SCROLL ZOOM</span> · <span class="key">CLICK A NODE TO FIRE THE LATTICE</span></div>
+<div id="controls"><span class="key">DRAG</span> Â· <span class="key">SCROLL ZOOM</span> Â· <span class="key">CLICK A NODE TO FIRE THE LATTICE</span></div>
 
 <div id="audio-widget" title="Click to enable Matrix audio">
-  <span class="icon">▸</span>
+  <span class="icon">â¸</span>
   <span class="label" id="audio-label">CLICK TO ENABLE AUDIO</span>
   <span class="vol-bars" id="vol-bars">
     <span class="bar" style="height:30%"></span>
@@ -247,7 +247,7 @@ canvas{display:block;}
   <input type="range" min="0" max="100" value="40" class="vol-slider" id="vol-slider" />
 </div>
 
-<div id="stamp">SYNCED · v3.099</div>
+<div id="stamp">SYNCED Â· v3.099</div>
 
 <div id="tooltip">
   <div class="tt-name"></div>
@@ -257,18 +257,18 @@ canvas{display:block;}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-// ═══════════════════════════════════════════════════════════════════════════
-// THE CONSTRUCT · NEUROLINK GALAXY v3 — Matrix 3099
-// ═══════════════════════════════════════════════════════════════════════════
+// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// THE CONSTRUCT Â· NEUROLINK GALAXY v3 â Matrix 3099
+// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 
 const COLORS = { GOLD:0xffd700, CYAN:0x00AEEF, WHITE:0xffffff, MAGENTA:0xff3aa6, GREEN:0x39ff14, PURPLE:0xb388ff, RED:0xff5454, MATRIXGREEN:0x00ffd0 };
 
-// ─── Code rain background (Matrix-style with cyan/gold tint)
+// âââ Code rain background (Matrix-style with cyan/gold tint)
 (function setupCodeRain(){
   const c = document.getElementById('rain');
   const ctx = c.getContext('2d');
   let cw, ch, cols, drops;
-  const charSet = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789{}<>[]*/+=¥§∞≈≠";
+  const charSet = "ã¢ã¤ã¦ã¨ãªã«ã­ã¯ã±ã³ãµã·ã¹ã»ã½ã¿ããããããããããããããããã ã¡ã¢ã¤ã¦ã¨ã©ãªã«ã¬ã­ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789{}<>[]*/+=Â¥Â§âââ ";
   const fontSize = 12;
   function resize(){
     cw = c.width = window.innerWidth;
@@ -303,7 +303,7 @@ const COLORS = { GOLD:0xffd700, CYAN:0x00AEEF, WHITE:0xffffff, MAGENTA:0xff3aa6,
   tick();
 })();
 
-// ─── Subtle digital noise canvas
+// âââ Subtle digital noise canvas
 (function setupNoise(){
   const c = document.getElementById('noise');
   const ctx = c.getContext('2d');
@@ -321,56 +321,56 @@ const COLORS = { GOLD:0xffd700, CYAN:0x00AEEF, WHITE:0xffffff, MAGENTA:0xff3aa6,
   }, 90);
 })();
 
-// ─── Ecosystem
+// âââ Ecosystem
 const NODES = {
-  core: { name:"RLH · BOBBY", role:"Founder · Showrunner", desc:"The center of The Construct. 40-year operator, HBS alumnus, building the most ambitious AI-c-suite experiment in any small-mid business in 2026.", color:COLORS.GOLD, size:18 },
+  core: { name:"RLH Â· BOBBY", role:"Founder Â· Showrunner", desc:"The center of The Construct. 40-year operator, HBS alumnus, building the most ambitious AI-c-suite experiment in any small-mid business in 2026.", color:COLORS.GOLD, size:18 },
   agents: [
-    { name:"AP",          role:"CEO · Synthesizer",     desc:"Chief executive — holds the whole arch together.", color:COLORS.CYAN },
-    { name:"Vector",      role:"Graphic Designer · CMO", desc:"Visual lead. Brand identity, motion, hero work.", color:COLORS.CYAN },
+    { name:"AP",          role:"CEO Â· Synthesizer",     desc:"Chief executive â holds the whole arch together.", color:COLORS.CYAN },
+    { name:"Vector",      role:"Graphic Designer Â· CMO", desc:"Visual lead. Brand identity, motion, hero work.", color:COLORS.CYAN },
     { name:"Keystone",    role:"Chief Strategy Officer", desc:"Venture architect. Coca-Cola Test owner.", color:COLORS.RED },
     { name:"Forge",       role:"COO",                    desc:"Operations. Runs the build.", color:COLORS.PURPLE },
     { name:"Signal",      role:"CMO Suite",              desc:"Communications, social, multi-channel.", color:COLORS.PURPLE },
     { name:"Ledger",      role:"CFO",                    desc:"Financial precision. Stress-tests every venture.", color:COLORS.PURPLE },
     { name:"Atlas",       role:"Signage Operations",     desc:"Brand 9 ops data. Bid analysis, install ops.", color:COLORS.PURPLE },
-    { name:"Sentinel",    role:"Risk · Compliance",      desc:"Watches the perimeter. Flags exposure.", color:COLORS.PURPLE },
-    { name:"Venture",     role:"Scout · Market Intel",   desc:"Hunts new opportunities. Feeds Keystone.", color:COLORS.RED },
+    { name:"Sentinel",    role:"Risk Â· Compliance",      desc:"Watches the perimeter. Flags exposure.", color:COLORS.PURPLE },
+    { name:"Venture",     role:"Scout Â· Market Intel",   desc:"Hunts new opportunities. Feeds Keystone.", color:COLORS.RED },
     { name:"Cipher",      role:"CTO",                    desc:"Code, infra, agent platform.", color:COLORS.PURPLE },
     { name:"Spectra",     role:"Brand Guardian",         desc:"Brand canon enforcement.", color:COLORS.CYAN },
-    { name:"Oracle",      role:"CIO · Knowledge",        desc:"Information layer. Second Brain owner.", color:COLORS.PURPLE },
+    { name:"Oracle",      role:"CIO Â· Knowledge",        desc:"Information layer. Second Brain owner.", color:COLORS.PURPLE },
     { name:"Nexus",       role:"Connector",              desc:"Network builder. Surfaces warm intros.", color:COLORS.PURPLE },
     { name:"Equity",      role:"Capital Allocator",      desc:"Hartley Capital strategy.", color:COLORS.RED },
     { name:"Alpha",       role:"WOLF Trader",            desc:"Live market operations.", color:COLORS.RED },
-    { name:"WOLF",        role:"Research Substrate",     desc:"Local research bridge — Perplexity/Grok/YouTube.", color:COLORS.RED },
+    { name:"WOLF",        role:"Research Substrate",     desc:"Local research bridge â Perplexity/Grok/YouTube.", color:COLORS.RED },
     { name:"Cornerstone", role:"Construct Foundation",   desc:"Ecosystem anchor. Operating standards.", color:COLORS.WHITE },
     { name:"Charlie",     role:"Self-Improving Loop",    desc:"Captures every correction. Routes through PRAXIS.", color:COLORS.GREEN },
     { name:"Architect",   role:"Systems Designer",       desc:"Designs new agents and Construct architecture.", color:COLORS.PURPLE },
     { name:"Louis",       role:"Newest Addition",        desc:"Added 2026-04-27. The 24th of 25 planned agents.", color:COLORS.MAGENTA },
   ],
   systems: [
-    { name:"Brand 9 Signs",      role:"Signage Empire · Since 1986",     desc:"Florida's signage partner. Cashflow engine.", color:COLORS.CYAN },
+    { name:"Brand 9 Signs",      role:"Signage Empire Â· Since 1986",     desc:"Florida's signage partner. Cashflow engine.", color:COLORS.CYAN },
     { name:"Hartley Capital",    role:"Investment Vehicle",                desc:"Capital allocation arm.", color:COLORS.RED },
-    { name:"Second Brain",       role:"Obsidian · Knowledge System",       desc:"Personal knowledge graph. Notes, MOCs, lessons.", color:COLORS.PURPLE },
-    { name:"WOLF Substrate",     role:"Research Bridge",                   desc:"Cloud→local research pipeline.", color:COLORS.RED },
-    { name:"PRAXIS Layer",       role:"Era-of-Experience Engine",          desc:"Capture → Distill → Promote → Broadcast.", color:COLORS.GOLD },
-    { name:"Ninth Street Film",  role:"Brand Story · Hero Visual",         desc:"12-beat painterly film telling Brand 9's origin.", color:COLORS.CYAN },
+    { name:"Second Brain",       role:"Obsidian Â· Knowledge System",       desc:"Personal knowledge graph. Notes, MOCs, lessons.", color:COLORS.PURPLE },
+    { name:"WOLF Substrate",     role:"Research Bridge",                   desc:"Cloudâlocal research pipeline.", color:COLORS.RED },
+    { name:"PRAXIS Layer",       role:"Era-of-Experience Engine",          desc:"Capture â Distill â Promote â Broadcast.", color:COLORS.GOLD },
+    { name:"Ninth Street Film",  role:"Brand Story Â· Hero Visual",         desc:"12-beat painterly film telling Brand 9's origin.", color:COLORS.CYAN },
     { name:"Brand 9 Site",       role:"brand9signs.com",                   desc:"WC + WPBakery. SEO/GBP/GSC fully audited 2026-05-02.", color:COLORS.CYAN },
-    { name:"The Construct",      role:"Agent Ecosystem · Recursive",       desc:"Self-referential. Contains its own map.", color:COLORS.WHITE },
+    { name:"The Construct",      role:"Agent Ecosystem Â· Recursive",       desc:"Self-referential. Contains its own map.", color:COLORS.WHITE },
   ],
   loops: [
-    { name:"Self-Improving Loop", role:"Loop 1 · LIVE",      desc:"Bobby corrects → lesson written → all agents read before executing. Operating since day one. The IP.", color:COLORS.GREEN, status:"LIVE" },
-    { name:"Eval Loop",           role:"Loop 2 · NOT BUILT", desc:"Past corrections → test cases → Eval Harness scores → Foreman flags regressions → new lessons. Builds with Eval Harness + Foreman (Tier 1).", color:0x666666, status:"NOT_BUILT" },
-    { name:"Knowledge Loop",      role:"Loop 3 · LIVE",      desc:"Cross-agent shared knowledge. Lessons promote into shared skills. Every agent gets sharper without retraining.", color:COLORS.CYAN, status:"LIVE" },
-    { name:"Memory Loop",         role:"Loop 4 · LIVE",      desc:"Proactive fact capture → cross-ref guardrails → quarterly consolidation via consolidate-memory. The substrate.", color:COLORS.PURPLE, status:"LIVE" },
+    { name:"Self-Improving Loop", role:"Loop 1 Â· LIVE",      desc:"Bobby corrects â lesson written â all agents read before executing. Operating since day one. The IP.", color:COLORS.GREEN, status:"LIVE" },
+    { name:"Eval Loop",           role:"Loop 2 Â· NOT BUILT", desc:"Past corrections â test cases â Eval Harness scores â Foreman flags regressions â new lessons. Builds with Eval Harness + Foreman (Tier 1).", color:0x666666, status:"NOT_BUILT" },
+    { name:"Knowledge Loop",      role:"Loop 3 Â· LIVE",      desc:"Cross-agent shared knowledge. Lessons promote into shared skills. Every agent gets sharper without retraining.", color:COLORS.CYAN, status:"LIVE" },
+    { name:"Memory Loop",         role:"Loop 4 Â· LIVE",      desc:"Proactive fact capture â cross-ref guardrails â quarterly consolidation via consolidate-memory. The substrate.", color:COLORS.PURPLE, status:"LIVE" },
   ],
   ventures: [
     { name:"AI-First Signage",       role:"Defensible Moat",     desc:"40-year firm + agents = bigger moat than startups.", color:COLORS.CYAN },
-    { name:"Orlando Expansion",      role:"Central FL · 2026",   desc:"New regional capacity. Geo + GBP + blog live.", color:COLORS.CYAN },
-    { name:"Miami Expansion",        role:"South FL · 2026",     desc:"Luxury developer market. Live.", color:COLORS.CYAN },
+    { name:"Orlando Expansion",      role:"Central FL Â· 2026",   desc:"New regional capacity. Geo + GBP + blog live.", color:COLORS.CYAN },
+    { name:"Miami Expansion",        role:"South FL Â· 2026",     desc:"Luxury developer market. Live.", color:COLORS.CYAN },
     { name:"Construct Productizing", role:"SaaS / Course",       desc:"The Construct as a productizable offering.", color:COLORS.RED },
-    { name:"LinkedIn DECODED",       role:"Brand Asset · Parked",desc:"Annotated environments. Parked 2026-05-02.", color:COLORS.RED },
+    { name:"LinkedIn DECODED",       role:"Brand Asset Â· Parked",desc:"Annotated environments. Parked 2026-05-02.", color:COLORS.RED },
     { name:"Hartley Capital Watch",  role:"Daily Routine",       desc:"Daily capital intel.", color:COLORS.RED },
-    { name:"Industry Pulse · AI",    role:"Daily",               desc:"AI/Agent industry sweep.", color:COLORS.PURPLE },
-    { name:"Industry Pulse · Sign",  role:"Weekday",             desc:"Signage industry monitoring.", color:COLORS.PURPLE },
+    { name:"Industry Pulse Â· AI",    role:"Daily",               desc:"AI/Agent industry sweep.", color:COLORS.PURPLE },
+    { name:"Industry Pulse Â· Sign",  role:"Weekday",             desc:"Signage industry monitoring.", color:COLORS.PURPLE },
     { name:"Construct Dashboard",    role:"This Visualization",  desc:"The galaxy you're looking at.", color:COLORS.WHITE },
     { name:"Ninth Street Style",     role:"Brand 9 Visual System",desc:"Painterly four-pillar visual system.", color:COLORS.CYAN },
     { name:"First-Principles Spike", role:"Daily Routine",       desc:"Logs agent-derived-vs-human-data deltas.", color:COLORS.GOLD },
@@ -378,7 +378,7 @@ const NODES = {
   ],
 };
 
-// ─── Three.js setup
+// âââ Three.js setup
 const canvas = document.getElementById('scene');
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -392,13 +392,13 @@ scene.fog = new THREE.FogExp2(0x000208, 0.0007);
 const camera = new THREE.PerspectiveCamera(56, window.innerWidth/window.innerHeight, 1, 5000);
 camera.position.set(0, 280, 700);
 
-// ─── No postprocessing — direct render for max compatibility.
-console.log('[NEUROLINK] Direct render mode — no bloom postprocessing');
+// âââ No postprocessing â direct render for max compatibility.
+console.log('[NEUROLINK] Direct render mode â no bloom postprocessing');
 
-// ═════════════════════════════════════════════════════════════════════
-// AUDIO ENGINE — Web Audio API
+// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// AUDIO ENGINE â Web Audio API
 // Ambient drone (always on after user gesture) + synapse zap + PRAXIS thump
-// ═════════════════════════════════════════════════════════════════════
+// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 let audioCtx = null;
 let droneNode = null;
 let droneFilter = null;
@@ -416,7 +416,7 @@ function initAudio(){
     masterGain.gain.value = 0.4;
     masterGain.connect(audioCtx.destination);
 
-    // ─── Matrix server-room hum: filtered white noise + sub bass + glitch whisper
+    // âââ Matrix server-room hum: filtered white noise + sub bass + glitch whisper
     // Layer 1: filtered white noise (server room ambient)
     const noiseBufferSize = audioCtx.sampleRate * 4;
     const noiseBuffer = audioCtx.createBuffer(1, noiseBufferSize, audioCtx.sampleRate);
@@ -459,7 +459,7 @@ function initAudio(){
     subGain.connect(masterGain);
     sub1.start(); sub2.start(); sub3.start(); sub4.start();
 
-    // Slow LFO on filter — breathing
+    // Slow LFO on filter â breathing
     const lfo = audioCtx.createOscillator();
     lfo.type = 'sine'; lfo.frequency.value = 0.06;
     const lfoGain = audioCtx.createGain();
@@ -468,7 +468,7 @@ function initAudio(){
     lfoGain.connect(droneFilter.frequency);
     lfo.start();
 
-    // ─── Reverb network (delay-based, since no impulse responses)
+    // âââ Reverb network (delay-based, since no impulse responses)
     matrixReverbDelay = audioCtx.createDelay();
     matrixReverbDelay.delayTime.value = 0.18;
     matrixReverbFeedback = audioCtx.createGain();
@@ -484,7 +484,7 @@ function initAudio(){
     matrixReverbDelay.connect(matrixReverbWet);
     matrixReverbWet.connect(masterGain);
 
-    // ─── Periodic scanner pulse (low beep, like a Matrix terminal scanning)
+    // âââ Periodic scanner pulse (low beep, like a Matrix terminal scanning)
     setInterval(() => {
       if(!audioReady) return;
       const t = audioCtx.currentTime;
@@ -502,7 +502,7 @@ function initAudio(){
       o.start(t); o.stop(t + 0.3);
     }, 7000 + Math.random()*4000);
 
-    // ─── Periodic glitch whisper (digital scan artifact)
+    // âââ Periodic glitch whisper (digital scan artifact)
     setInterval(() => {
       if(!audioReady) return;
       const t = audioCtx.currentTime;
@@ -527,13 +527,13 @@ function initAudio(){
 
     audioReady = true;
     console.log('[NEUROLINK] Matrix audio online');
-    pushLog("▸ Audio engine engaged · NEUROLINK Matrix mix", 'green');
+    pushLog("â¸ Audio engine engaged Â· NEUROLINK Matrix mix", 'green');
   } catch(e){
     console.error('[NEUROLINK] Audio init failed:', e);
   }
 }
 
-// Synapse zap — Matrix-style electric data ping with reverb tail
+// Synapse zap â Matrix-style electric data ping with reverb tail
 function audioSynapseZap(intensity){
   if(!audioReady) return;
   intensity = intensity || 1;
@@ -559,7 +559,7 @@ function audioSynapseZap(intensity){
   osc.stop(t + 0.12);
 }
 
-// PRAXIS thump — cinematic Matrix bass drop with reverse swell + boom + shimmer + reverb tail
+// PRAXIS thump â cinematic Matrix bass drop with reverse swell + boom + shimmer + reverb tail
 function audioPraxisThump(){
   if(!audioReady) return;
   const t = audioCtx.currentTime;
@@ -581,7 +581,7 @@ function audioPraxisThump(){
   if(matrixReverbDelay) swellGain.connect(matrixReverbDelay);
   swell.start(t); swell.stop(t + 0.55);
 
-  // The drop — sub bass boom
+  // The drop â sub bass boom
   const boom = audioCtx.createOscillator();
   boom.type = 'sine';
   boom.frequency.setValueAtTime(160, t + 0.45);
@@ -626,7 +626,7 @@ function audioPraxisThump(){
   crash.start(t + 0.46); crash.stop(t + 1.0);
 }
 
-// ─── Audio Widget — visible volume + mute control + activation
+// âââ Audio Widget â visible volume + mute control + activation
 const audioWidget = document.getElementById('audio-widget');
 const audioLabel = document.getElementById('audio-label');
 const volSlider = document.getElementById('vol-slider');
@@ -646,12 +646,12 @@ function toggleMute(){
     setVolume(0);
     audioWidget.classList.add('muted');
     audioWidget.classList.remove('live');
-    audioLabel.textContent = 'AUDIO MUTED · CLICK TO UNMUTE';
+    audioLabel.textContent = 'AUDIO MUTED Â· CLICK TO UNMUTE';
   } else {
     setVolume(lastVolume);
     audioWidget.classList.remove('muted');
     audioWidget.classList.add('live');
-    audioLabel.textContent = 'NEUROLINK AUDIO · LIVE';
+    audioLabel.textContent = 'NEUROLINK AUDIO Â· LIVE';
   }
 }
 
@@ -662,7 +662,7 @@ audioWidget.addEventListener('click', (e) => {
     initAudio();
     setTimeout(() => {
       audioWidget.classList.add('live');
-      audioLabel.textContent = 'NEUROLINK AUDIO · LIVE';
+      audioLabel.textContent = 'NEUROLINK AUDIO Â· LIVE';
       setVolume(parseFloat(volSlider.value)/100);
     }, 150);
   } else {
@@ -676,7 +676,7 @@ volSlider.addEventListener('input', () => {
     initAudio();
     setTimeout(() => {
       audioWidget.classList.add('live');
-      audioLabel.textContent = 'NEUROLINK AUDIO · LIVE';
+      audioLabel.textContent = 'NEUROLINK AUDIO Â· LIVE';
       setVolume(v);
     }, 150);
   } else {
@@ -684,7 +684,7 @@ volSlider.addEventListener('input', () => {
       isMuted = false;
       audioWidget.classList.remove('muted');
       audioWidget.classList.add('live');
-      audioLabel.textContent = 'NEUROLINK AUDIO · LIVE';
+      audioLabel.textContent = 'NEUROLINK AUDIO Â· LIVE';
     }
     setVolume(v);
     lastVolume = v;
@@ -705,7 +705,7 @@ setInterval(() => {
 window.addEventListener('click', () => { if(!audioReady) initAudio(); }, { once: false });
 window.addEventListener('keydown', () => { if(!audioReady) initAudio(); }, { once: false });
 
-// ─── Glow texture
+// âââ Glow texture
 function makeGlowSprite(){
   const c = document.createElement('canvas');
   c.width = c.height = 256;
@@ -735,7 +735,7 @@ function makeNebulaSprite(color){
 }
 const glowTex = makeGlowSprite();
 
-// ─── Stars
+// âââ Stars
 const starGeo = new THREE.BufferGeometry();
 const STAR_COUNT = 6000;
 const sP = new Float32Array(STAR_COUNT*3);
@@ -757,7 +757,7 @@ starGeo.setAttribute('color', new THREE.BufferAttribute(sC,3));
 const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({size:1.8, vertexColors:true, transparent:true, opacity:0.95}));
 scene.add(stars);
 
-// ─── Nebulae
+// âââ Nebulae
 function spawnNebula(color, size, opacity, position){
   const m = new THREE.SpriteMaterial({ map: makeNebulaSprite(color), color, transparent:true, opacity, blending: THREE.AdditiveBlending, depthWrite:false });
   const s = new THREE.Sprite(m);
@@ -774,7 +774,7 @@ const nebulae = [
   spawnNebula(COLORS.CYAN, 950, 0.22, new THREE.Vector3(0, -500, 0)),
 ];
 
-// ─── Disk dust
+// âââ Disk dust
 const dustGeo = new THREE.BufferGeometry();
 const DUST_COUNT = 1800;
 const dP = new Float32Array(DUST_COUNT*3);
@@ -792,7 +792,7 @@ dustGeo.setAttribute('color', new THREE.BufferAttribute(dC,3));
 const dust = new THREE.Points(dustGeo, new THREE.PointsMaterial({size:1.8, vertexColors:true, transparent:true, opacity:0.6, blending:THREE.AdditiveBlending}));
 scene.add(dust);
 
-// ─── Wireframe lattice shell encasing the whole galaxy
+// âââ Wireframe lattice shell encasing the whole galaxy
 const latticeGeo = new THREE.SphereGeometry(700, 24, 12);
 const latticeMat = new THREE.LineBasicMaterial({ color: COLORS.CYAN, transparent:true, opacity:0.10, blending:THREE.AdditiveBlending });
 const latticeWire = new THREE.LineSegments(new THREE.WireframeGeometry(latticeGeo), latticeMat);
@@ -803,7 +803,7 @@ const innerLatticeMat = new THREE.LineBasicMaterial({ color: COLORS.GOLD, transp
 const innerLattice = new THREE.LineSegments(new THREE.WireframeGeometry(innerLatticeGeo), innerLatticeMat);
 scene.add(innerLattice);
 
-// ─── Floating wireframe geometry in deep space
+// âââ Floating wireframe geometry in deep space
 const floatingShapes = [];
 for(let i=0;i<14;i++){
   const types = [
@@ -824,7 +824,7 @@ for(let i=0;i<14;i++){
   floatingShapes.push(wf);
 }
 
-// ─── Lights
+// âââ Lights
 scene.add(new THREE.AmbientLight(0x223355, 0.7));
 const _gold = new THREE.PointLight(COLORS.GOLD, 5.0, 1200);
 _gold.position.set(0,0,0); scene.add(_gold);
@@ -833,7 +833,7 @@ _cyan.position.set(220,100,220); scene.add(_cyan);
 const _magenta = new THREE.PointLight(COLORS.MAGENTA, 0.9, 700);
 _magenta.position.set(-280,80,-200); scene.add(_magenta);
 
-// ─── Bobby gold core
+// âââ Bobby gold core
 const coreGroup = new THREE.Group();
 scene.add(coreGroup);
 
@@ -881,7 +881,7 @@ const coreRings = [
 ];
 coreRings.forEach(r => coreGroup.add(r));
 
-// ─── Wireframe orbit tracks (Matrix style, dashed-feel via segments)
+// âââ Wireframe orbit tracks (Matrix style, dashed-feel via segments)
 function makeWireOrbit(radius, color, opacity, segs){
   segs = segs || 96;
   const points = [];
@@ -898,7 +898,7 @@ scene.add(makeWireOrbit(95, COLORS.CYAN, 0.22, 192));   // Agents
 scene.add(makeWireOrbit(220, COLORS.CYAN, 0.16, 192));  // Systems
 scene.add(makeWireOrbit(380, COLORS.CYAN, 0.12, 192));  // Ventures
 
-// ─── Place orbital nodes (with sub-moons on systems)
+// âââ Place orbital nodes (with sub-moons on systems)
 const nodeMeshes = [];
 function placeOrbit(items, radius, sizeBase, yJitter, speedScale){
   const angleStep = (Math.PI*2)/items.length;
@@ -970,7 +970,7 @@ placeOrbit(NODES.agents,   95,  3.8, 8,  1.4);
 placeOrbit(NODES.systems,  220, 6.5, 18, 0.8);
 placeOrbit(NODES.ventures, 380, 4.6, 30, 0.55);
 
-// ─── Constellation lines
+// âââ Constellation lines
 const constellations = [
   ["Brand 9 Signs",     ["Vector","Spectra","Atlas","Forge"]],
   ["Hartley Capital",   ["Equity","Ledger","Alpha","Keystone"]],
@@ -1019,7 +1019,7 @@ NODES.agents.forEach(a => {
 coreSphere.userData = { name: NODES.core.name, role: NODES.core.role, desc: NODES.core.desc, color: COLORS.GOLD };
 connectionsByName[NODES.core.name] = lineMeshes.filter(l => l.userData.anchor === coreSphere);
 
-// ─── Flow particles (massive)
+// âââ Flow particles (massive)
 const FLOW_COUNT = 380;
 const flowGeo = new THREE.BufferGeometry();
 const fP = new Float32Array(FLOW_COUNT*3);
@@ -1040,7 +1040,7 @@ for(let i=0;i<FLOW_COUNT;i++){
   });
 }
 
-// ─── Energy waves
+// âââ Energy waves
 const energyWaves = [];
 function spawnEnergyWave(color, peakSize){
   const g = new THREE.RingGeometry(1, 2, 96);
@@ -1051,7 +1051,7 @@ function spawnEnergyWave(color, peakSize){
   energyWaves.push({ mesh:r, t:0, peakSize:peakSize||700, color });
 }
 
-// ─── Synapse fires
+// âââ Synapse fires
 const synapseFlashes = [];
 let synapseCount = 0;
 function fireSynapse(line, intensity){
@@ -1105,7 +1105,7 @@ function praxisPulse(){
   setTimeout(() => spawnEnergyWave(COLORS.WHITE, 850), 200);
   setTimeout(() => spawnEnergyWave(COLORS.CYAN, 700), 400);
 
-  // Strobe — multi-stage gold flash
+  // Strobe â multi-stage gold flash
   const strobe = document.getElementById('strobe');
   strobe.style.background = 'rgba(255,215,0,0.45)';
   setTimeout(() => strobe.style.background = 'rgba(255,255,255,0.25)', 80);
@@ -1123,7 +1123,7 @@ function praxisPulse(){
   });
   camShake = 28;  // bigger shake
   audioPraxisThump();
-  pushLog("⚡ PRAXIS PULSE — manifest broadcast · v9", 'pulse');
+  pushLog("â¡ PRAXIS PULSE â manifest broadcast Â· v9", 'pulse');
 }
 
 // Random fires (very frequent)
@@ -1143,7 +1143,7 @@ function scheduleNextWave(){
 }
 scheduleNextWave();
 
-// ─── Mouse interaction
+// âââ Mouse interaction
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 const tooltip = document.getElementById('tooltip');
@@ -1188,7 +1188,7 @@ canvas.addEventListener('click', () => {
     focusName.textContent = u.name;
     focusRole.textContent = u.role || '';
     focusDesc.textContent = u.desc || '';
-    if(u.name){ pushLog(`▸ Focus → ${u.name}`, 'fire'); fireFromNode(u.name); }
+    if(u.name){ pushLog(`â¸ Focus â ${u.name}`, 'fire'); fireFromNode(u.name); }
   }
 });
 window.addEventListener('wheel', e => { cameraDist = Math.max(220, Math.min(1600, cameraDist + e.deltaY*0.6)); });
@@ -1198,33 +1198,33 @@ window.addEventListener('resize', () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-// ─── Event log
+// âââ Event log
 const eventLog = document.getElementById('event-log');
 const eventTemplates = [
-  ["Vector rendered hero frame v3 · 0:42", null],
-  ["Keystone scored idea — 21/25 (Coca-Cola)", null],
-  ["Charlie captured correction → Loop", 'fire'],
-  ["WOLF returned 3 sources · Perplexity", null],
-  ["AP synthesized standup · 18:00 ET", null],
-  ["Atlas flagged margin drift — Q3 program", null],
-  ["Spectra blocked render · gold detected", null],
-  ["Cipher pushed snippet 9346 → live", null],
-  ["PRAXIS promoted prior — recurrence ≥ 3", 'pulse'],
-  ["Oracle ingested 12 notes · MOC v18", null],
-  ["Signal scheduled post · brand9signs", null],
+  ["Vector rendered hero frame v3 Â· 0:42", null],
+  ["Keystone scored idea â 21/25 (Coca-Cola)", null],
+  ["Charlie captured correction â Loop", 'fire'],
+  ["WOLF returned 3 sources Â· Perplexity", null],
+  ["AP synthesized standup Â· 18:00 ET", null],
+  ["Atlas flagged margin drift â Q3 program", null],
+  ["Spectra blocked render Â· gold detected", null],
+  ["Cipher pushed snippet 9346 â live", null],
+  ["PRAXIS promoted prior â recurrence â¥ 3", 'pulse'],
+  ["Oracle ingested 12 notes Â· MOC v18", null],
+  ["Signal scheduled post Â· brand9signs", null],
   ["Equity rebalanced theoretical book", null],
   ["Architect drafted new agent: Louis", null],
   ["Forge dispatched task to Atlas", null],
   ["Sentinel: contract review clear", null],
-  ["Ledger: COGS check on Brickell job · pass", null],
+  ["Ledger: COGS check on Brickell job Â· pass", null],
   ["Venture pinged: signage rollup opportunity", null],
-  ["Nexus: warm intro queued · HBS-FL", null],
+  ["Nexus: warm intro queued Â· HBS-FL", null],
   ["Cornerstone re-broadcast manifest v9", 'pulse'],
-  ["Alpha: alpha signal · neutral hold", null],
-  ["⚡ Synapse cascade · 12 nodes", 'fire'],
-  ["▸ Lattice integrity · 99.94%", 'green'],
-  ["▸ Bloom layer engaged · v3.099", null],
-  ["▸ Quantum sync · NEUROLINK matrix", 'green'],
+  ["Alpha: alpha signal Â· neutral hold", null],
+  ["â¡ Synapse cascade Â· 12 nodes", 'fire'],
+  ["â¸ Lattice integrity Â· 99.94%", 'green'],
+  ["â¸ Bloom layer engaged Â· v3.099", null],
+  ["â¸ Quantum sync Â· NEUROLINK matrix", 'green'],
 ];
 let logBuffer = [];
 function pushLog(text, kind){
@@ -1235,10 +1235,10 @@ function pushLog(text, kind){
   if(logBuffer.length>10) logBuffer.pop();
   eventLog.innerHTML = logBuffer.join('');
 }
-pushLog("▸ NEUROLINK 3099 boot complete", 'green');
-pushLog("▸ Bloom + lattice engaged");
-pushLog("▸ All agents online · 20/20", 'green');
-// ─── Live updates feed — pulls from updates.json (the rollout log)
+pushLog("â¸ NEUROLINK 3099 boot complete", 'green');
+pushLog("â¸ Bloom + lattice engaged");
+pushLog("â¸ All agents online Â· 20/20", 'green');
+// âââ Live updates feed â pulls from updates.json (the rollout log)
 // Same source the dashboard's RolloutLogPanel uses.
 let liveUpdates = [];
 
@@ -1251,13 +1251,13 @@ async function fetchUpdates(){
       const prevCount = liveUpdates.length;
       liveUpdates = j.updates;
       if(liveUpdates.length !== prevCount && prevCount > 0){
-        pushLog(`▸ Rollout log refresh · ${liveUpdates.length} entries`, 'green');
+        pushLog(`â¸ Rollout log refresh Â· ${liveUpdates.length} entries`, 'green');
       } else if(prevCount === 0){
-        pushLog(`▸ Live ops feed online · ${liveUpdates.length} updates`, 'green');
+        pushLog(`â¸ Live ops feed online Â· ${liveUpdates.length} updates`, 'green');
       }
     }
   } catch(e){
-    // file:// or offline — silently keep falling back to templates
+    // file:// or offline â silently keep falling back to templates
     console.log('[NEUROLINK] updates.json fetch unavailable:', e.message);
   }
 }
@@ -1268,13 +1268,13 @@ setInterval(fetchUpdates, 60000);
 function formatUpdate(u){
   const agent = u.agents_affected && u.agents_affected.length ? u.agents_affected[0] : '';
   // Strip stars and em-dashes for cleaner look
-  let title = (u.title || '').replace(/[★—]/g, '').trim();
+  let title = (u.title || '').replace(/[ââ]/g, '').trim();
   // Collapse whitespace
   title = title.replace(/\s+/g, ' ');
   // Truncate
-  if(title.length > 56) title = title.substring(0, 53) + '…';
+  if(title.length > 56) title = title.substring(0, 53) + 'â¦';
   // Format
-  const text = agent ? `${agent} ▸ ${title}` : title;
+  const text = agent ? `${agent} â¸ ${title}` : title;
   // Color by tag/color
   let kind = null;
   if(u.color === '#ffd700' || u.tag === 'praxis') kind = 'pulse';
@@ -1283,7 +1283,7 @@ function formatUpdate(u){
   return [text, kind];
 }
 
-// Event stream tick — mix 70% real updates / 30% template flavor (or fall back to 100% templates if no live data)
+// Event stream tick â mix 70% real updates / 30% template flavor (or fall back to 100% templates if no live data)
 setInterval(() => {
   if(liveUpdates.length > 0 && Math.random() < 0.7){
     const u = liveUpdates[Math.floor(Math.random()*liveUpdates.length)];
@@ -1320,7 +1320,7 @@ const matInterval = setInterval(() => {
   else clearInterval(matInterval);
 }, 26);
 
-// ─── Animate
+// âââ Animate
 let frame = 0;
 function animate(){
   frame++;
@@ -1475,11 +1475,11 @@ animate();
 setTimeout(() => {
   document.getElementById('stamp').classList.add('show-stamp');
   spawnEnergyWave(COLORS.GOLD, 700);
-  fireFromNode("RLH · BOBBY");
+  fireFromNode("RLH Â· BOBBY");
 }, 600);
 setTimeout(() => praxisPulse(), 2000);
 
-// ─── Live data fetch — agent_skills.json (auto-poll every 30s)
+// âââ Live data fetch â agent_skills.json (auto-poll every 30s)
 // Falls back silently to hardcoded list if fetch fails (file:// CORS, etc.)
 async function fetchLiveData(){
   try {
@@ -1498,7 +1498,7 @@ async function fetchLiveData(){
         if (Array.isArray(parentRoster) && parentRoster.length > count) {
           count = parentRoster.length;
         }
-      } catch(crossOriginErr) { /* parent inaccessible — keep scanner count */ }
+      } catch(crossOriginErr) { /* parent inaccessible â keep scanner count */ }
       document.getElementById('kpi-agents').textContent = count;
       const inline = document.getElementById('kpi-agents-inline');
       if (inline) inline.textContent = count;
@@ -1508,10 +1508,10 @@ async function fetchLiveData(){
       if(Array.isArray(j.universal_pool)) totalSkills += j.universal_pool.length;
       if(Array.isArray(j.cowork_skills)) totalSkills += j.cowork_skills.length;
       document.getElementById('kpi-skills').textContent = totalSkills;
-      pushLog(`▸ Live data sync · ${count} agents · ${totalSkills} skills`, 'green');
+      pushLog(`â¸ Live data sync Â· ${count} agents Â· ${totalSkills} skills`, 'green');
     }
   } catch(e){
-    // Expected on file:// — keep going with hardcoded
+    // Expected on file:// â keep going with hardcoded
     console.log('[NEUROLINK] Live data fetch unavailable (offline mode):', e.message);
   }
 }
