@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>THE CONSTRUCT v2.1 â Brand 9 / Hartley Capital Agent Ecosystem</title>
+<title>THE CONSTRUCT v2.1 — Brand 9 / Hartley Capital Agent Ecosystem</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
@@ -34,12 +34,12 @@
 <script type="text/babel">
 const { useState, useEffect, useRef, useCallback, useMemo } = React;
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
-// THE CONSTRUCT v2.1 â Brand 9 / Hartley Capital Agent Ecosystem
-// Locked 2026-04-24 baseline Â· Louis added 2026-04-27
+// ═══════════════════════════════════════════════════════════════
+// THE CONSTRUCT v2.1 — Brand 9 / Hartley Capital Agent Ecosystem
+// Locked 2026-04-24 baseline · Louis added 2026-04-27
 // Day-90 kill criterion: 2026-07-23
 // Cool-palette enforced (no warm colors per B9 brand canonical)
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════════════════
 
 let _id = 100;
 const uid = () => `agent-${++_id}-${Date.now().toString(36)}`;
@@ -57,7 +57,7 @@ const daysBetween = (a, b) => Math.floor((b - a) / (1000 * 60 * 60 * 24));
 const dayOfNinety = () => Math.max(0, daysBetween(PLAN_LOCK_DATE, new Date()) + 1);
 const daysUntilKill = () => Math.max(0, daysBetween(new Date(), KILL_CRITERION_DATE));
 
-// ââ Matrix Digital Rain Canvas ââ
+// ── Matrix Digital Rain Canvas ──
 const MatrixRain = () => {
   const canvasRef = useRef(null);
   useEffect(() => {
@@ -71,7 +71,7 @@ const MatrixRain = () => {
     const fontSize = 14;
     let columns = Math.floor(canvas.width / fontSize);
     let drops = Array(columns).fill(1);
-    const chars = "ã¢ã¤ã¦ã¨ãªã«ã­ã¯ã±ã³ãµã·ã¹ã»ã½ã¿ããããããããããããããããã ã¡ã¢ã¤ã¦ã¨ã©ãªã«ã¬ã­ã¯ã²ã³0123456789ABCDEF:.";
+    const chars = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEF:.";
     const draw = () => {
       ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -96,7 +96,7 @@ const MatrixRain = () => {
   return <canvas ref={canvasRef} style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", zIndex: 0, opacity: 0.13 }} />;
 };
 
-// ââ Glitch text effect ââ
+// ── Glitch text effect ──
 const GlitchText = ({ text, tag: Tag = "span", style = {} }) => {
   const [glitch, setGlitch] = useState(false);
   useEffect(() => {
@@ -119,7 +119,7 @@ const GlitchText = ({ text, tag: Tag = "span", style = {} }) => {
   );
 };
 
-// ââ Scanning line animation ââ
+// ── Scanning line animation ──
 const ScanLine = () => {
   const [pos, setPos] = useState(0);
   useEffect(() => {
@@ -129,19 +129,19 @@ const ScanLine = () => {
   return <div style={{ position: "absolute", top: `${pos}%`, left: 0, right: 0, height: "2px", background: "linear-gradient(90deg, transparent, rgba(57,255,20,0.3), transparent)", zIndex: 1, pointerEvents: "none" }} />;
 };
 
-// ââ Pulse Ring (for agent avatars) ââ
+// ── Pulse Ring (for agent avatars) ──
 const PulseRing = ({ color = "#39ff14", size = 80 }) => (
   <div style={{ position: "absolute", width: size, height: size, borderRadius: "50%", border: `1px solid ${color}`, animation: "pulse-ring 2s ease-out infinite", opacity: 0 }} />
 );
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
-// NEUROLINK 2099 â 1999 Matrix grammar, 2099 holographic execution.
-// Multi-layer composite: matrix rain bg â hex grid â bezier sigil web â
-// synaptic particle streams â concentric orbital nodes â holographic Bobby
-// core â corner HUD frames + live ticker + scanning sweep.
+// ═══════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════
+// NEUROLINK 2099 — 1999 Matrix grammar, 2099 holographic execution.
+// Multi-layer composite: matrix rain bg → hex grid → bezier sigil web →
+// synaptic particle streams → concentric orbital nodes → holographic Bobby
+// core → corner HUD frames + live ticker + scanning sweep.
 // Spec from Bobby 2026-04-28.
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════════════════
 const NEUROLINK_FUNCTION_COLOR = {
   Strategy:        "#00d4ff",
   "Hartley Capital": "#4a9eff",
@@ -163,10 +163,10 @@ const neurolinkColorFor = (agent) => {
   return NEUROLINK_FUNCTION_COLOR[agent.department] || "#39ff14";
 };
 
-// Matrix-rain layer â falling glyph columns behind everything.
+// Matrix-rain layer — falling glyph columns behind everything.
 const NeurolinkMatrixRain = () => {
   const cols = 60;
-  const glyphs = "01ã¢ã¤ã¦ã¨ãªã«ã­ã¯ã±ã³ãµã·ã¹ã»ã½ã¿ããããããããããããããããã ã¡ã¢ã¤ã¦ã¨ã©ãªã«ã¬ã­ã¯ã²ã³ââââââââââ¢â£â¬ð";
+  const glyphs = "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン░▒▓★◆◇◈⟁⟁⟢⟣⌬𓂀";
   const columns = useMemo(() => Array.from({ length: cols }).map((_, i) => ({
     left: (i / cols) * 100,
     delay: -((i * 137) % 1000) / 100,
@@ -208,15 +208,15 @@ const NeurolinkVisualization = ({ agents }) => {
   const others = agents.filter(a => !a.isHuman);
   const N = others.length;
 
-  // Two concentric ellipses for visual depth â scaled with the taller H
+  // Two concentric ellipses for visual depth — scaled with the taller H
   const outerN = Math.ceil(N * 0.62);
   const innerN = N - outerN;
   const outer = { rx: 640, ry: 310 };
   const inner = { rx: 360, ry: 170 };
 
-  // ââ PRAXIS layer: spontaneous firing + explicit synapse fires ââ
+  // ── PRAXIS layer: spontaneous firing + explicit synapse fires ──
   // Spontaneous = autonomous neural activity (a node fires on its own).
-  // Synapse fire = explicit Bobbyânode burst with impact flash at receiver.
+  // Synapse fire = explicit Bobby↔node burst with impact flash at receiver.
   // Both modeled as ephemeral React state, auto-cleaned after animation.
   const [spontaneous, setSpontaneous] = useState([]);
   const [synapseFires, setSynapseFires] = useState([]);
@@ -257,7 +257,7 @@ const NeurolinkVisualization = ({ agents }) => {
     };
   });
 
-  // Bezier control point for organic curves â pull toward orbit perpendicular
+  // Bezier control point for organic curves — pull toward orbit perpendicular
   const bezierPath = (p) => {
     const mx = (cx + p.x) / 2;
     const my = (cy + p.y) / 2;
@@ -327,13 +327,13 @@ const NeurolinkVisualization = ({ agents }) => {
         <ellipse cx={cx} cy={cy} rx={outer.rx} ry={outer.ry} fill="none" stroke="rgba(0,212,255,0.08)" strokeWidth="0.6" strokeDasharray="2 6" />
         <ellipse cx={cx} cy={cy} rx={inner.rx} ry={inner.ry} fill="none" stroke="rgba(57,255,20,0.10)" strokeWidth="0.6" strokeDasharray="2 6" />
 
-        {/* Bezier connection web â Bobby to every node */}
+        {/* Bezier connection web — Bobby to every node */}
         {positioned.map((p, i) => (
           <path key={`L${i}`} d={bezierPath(p)} fill="none" stroke={`url(#nlSyn${i})`} strokeWidth="0.9"
                 opacity={hovered && hovered.codename !== p.agent.codename && hovered.codename !== bobby.codename ? 0.18 : 0.7} />
         ))}
 
-        {/* Synaptic particles â multiple per connection, staggered */}
+        {/* Synaptic particles — multiple per connection, staggered */}
         {positioned.flatMap((p, i) => {
           const dur = 2.2 + (i % 7) * 0.35;
           return [0, 0.3, 0.65].map((delayFrac, j) => (
@@ -344,7 +344,7 @@ const NeurolinkVisualization = ({ agents }) => {
           ));
         })}
 
-        {/* Lateral agent-to-agent flickers â every 4th adjacent pair sends a packet */}
+        {/* Lateral agent-to-agent flickers — every 4th adjacent pair sends a packet */}
         {positioned.filter((_, i) => i % 4 === 0).map((p, k) => {
           const next = positioned[(positioned.indexOf(p) + 3) % positioned.length];
           const dur = 4.5 + (k % 3) * 0.9;
@@ -384,7 +384,7 @@ const NeurolinkVisualization = ({ agents }) => {
           <animate attributeName="r" values="20;22;20" dur="2.5s" repeatCount="indefinite" />
         </circle>
         <text x={cx} y={cy + 6} textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="18" fontWeight="bold" fill="#000" pointerEvents="none">B</text>
-        <text x={cx} y={cy + 56} textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="11" fill="#ffd700" letterSpacing="3" opacity="0.9" pointerEvents="none">BOBBY Â· FOUNDER</text>
+        <text x={cx} y={cy + 56} textAnchor="middle" fontFamily="'Courier New', monospace" fontSize="11" fill="#ffd700" letterSpacing="3" opacity="0.9" pointerEvents="none">BOBBY · FOUNDER</text>
 
         {/* Agent nodes */}
         {positioned.map((p, i) => {
@@ -406,7 +406,7 @@ const NeurolinkVisualization = ({ agents }) => {
               {/* Label */}
               <text x={p.x} y={p.y - r - 7} textAnchor="middle" fontFamily="'Courier New', monospace"
                     fontSize="10" fill={p.color} opacity={hovered && !isHover ? 0.45 : 0.95} letterSpacing="1" pointerEvents="none">
-                {p.agent.codename.length > 14 ? p.agent.codename.substring(0, 13) + "â¦" : p.agent.codename}
+                {p.agent.codename.length > 14 ? p.agent.codename.substring(0, 13) + "…" : p.agent.codename}
               </text>
               {p.agent.score != null && (
                 <text x={p.x} y={p.y + r + 14} textAnchor="middle" fontFamily="'Courier New', monospace"
@@ -418,7 +418,7 @@ const NeurolinkVisualization = ({ agents }) => {
           );
         })}
 
-        {/* SPONTANEOUS FIRING â autonomous neural activity, random nodes burst on their own */}
+        {/* SPONTANEOUS FIRING — autonomous neural activity, random nodes burst on their own */}
         {spontaneous.map(s => {
           const p = positioned[s.idx];
           if (!p) return null;
@@ -444,26 +444,26 @@ const NeurolinkVisualization = ({ agents }) => {
           );
         })}
 
-        {/* SYNAPSE FIRES â bright Bobbyânode bursts with impact flash at receiver */}
+        {/* SYNAPSE FIRES — bright Bobby↔node bursts with impact flash at receiver */}
         {synapseFires.map(s => {
           const p = positioned[s.idx];
           if (!p) return null;
           const path = bezierPath(p);
           return (
             <g key={`SY${s.id}`}>
-              {/* Trailing wake â thicker translucent streak */}
+              {/* Trailing wake — thicker translucent streak */}
               <circle r="9" fill={p.color} opacity="0" filter="url(#nlSoftGlow)">
                 <animateMotion dur="0.65s" repeatCount="1" path={path} />
                 <animate attributeName="opacity" values="0;0.55;0.55;0" keyTimes="0;0.15;0.85;1" dur="0.65s" repeatCount="1" />
                 <animate attributeName="r" values="6;10;12" keyTimes="0;0.5;1" dur="0.65s" repeatCount="1" />
               </circle>
-              {/* Bright pulse â leading edge, white-hot */}
+              {/* Bright pulse — leading edge, white-hot */}
               <circle r="4" fill="#ffffff" opacity="0" filter="url(#nlHardGlow)">
                 <animateMotion dur="0.65s" repeatCount="1" path={path} />
                 <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="0.65s" repeatCount="1" />
                 <animate attributeName="r" values="3;5;6" keyTimes="0;0.5;1" dur="0.65s" repeatCount="1" />
               </circle>
-              {/* Impact flash at receiver â fires after pulse arrives */}
+              {/* Impact flash at receiver — fires after pulse arrives */}
               <circle cx={p.x} cy={p.y} r="0" fill={p.color} filter="url(#nlHardGlow)" opacity="0">
                 <animate attributeName="r" values="0;0;36;36" keyTimes="0;0.5;0.78;1" dur="1.3s" repeatCount="1" />
                 <animate attributeName="opacity" values="0;0;0.95;0" keyTimes="0;0.5;0.6;1" dur="1.3s" repeatCount="1" />
@@ -479,7 +479,7 @@ const NeurolinkVisualization = ({ agents }) => {
         })}
       </svg>
 
-      {/* HUD â top-left identifier */}
+      {/* HUD — top-left identifier */}
       <div style={{ position: "absolute", top: 12, left: 18, fontFamily: "'Courier New', monospace", color: "#39ff14", fontSize: 10, letterSpacing: 3, zIndex: 5, pointerEvents: "none" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#39ff14", boxShadow: "0 0 8px #39ff14", animation: "blink 1.6s infinite" }} />
@@ -491,26 +491,26 @@ const NeurolinkVisualization = ({ agents }) => {
           <span style={{ color: "#ffd700" }}>PRAXIS-LINKED</span>
         </div>
         <div style={{ marginTop: 4, color: "rgba(57,255,20,0.55)", fontSize: 9, letterSpacing: 2 }}>
-          AUTHENTICATED Â· {agents.length} NODES SYNCED Â· SYNAPSE LIVE Â· SPONTANEOUS FIRING ON
+          AUTHENTICATED · {agents.length} NODES SYNCED · SYNAPSE LIVE · SPONTANEOUS FIRING ON
         </div>
       </div>
 
-      {/* HUD â top-right live ticker */}
+      {/* HUD — top-right live ticker */}
       <div style={{ position: "absolute", top: 12, right: 18, fontFamily: "'Courier New', monospace", fontSize: 10, letterSpacing: 2, zIndex: 5, pointerEvents: "none", textAlign: "right" }}>
         <div style={{ color: "#39ff14", marginBottom: 3 }}>{stamp}</div>
         <div style={{ color: "rgba(0,212,255,0.85)", fontSize: 9, letterSpacing: 2 }}>
           PACKETS <span style={{ color: "#00d4ff", fontWeight: "bold" }}>{packets.toLocaleString()}</span>
-          <span style={{ margin: "0 6px", opacity: 0.4 }}>Â·</span>
+          <span style={{ margin: "0 6px", opacity: 0.4 }}>·</span>
           NODES <span style={{ color: "#39ff14", fontWeight: "bold" }}>{agents.length}</span>
-          <span style={{ margin: "0 6px", opacity: 0.4 }}>Â·</span>
+          <span style={{ margin: "0 6px", opacity: 0.4 }}>·</span>
           SYNC <span style={{ color: "#39ff14" }}>100%</span>
         </div>
         <div style={{ marginTop: 4, color: "rgba(255,215,0,0.7)", fontSize: 9, letterSpacing: 2 }}>
-          â LIVE SYNAPTIC NETWORK â
+          ◇ LIVE SYNAPTIC NETWORK ◇
         </div>
       </div>
 
-      {/* Corner frame brackets â HUD aesthetic */}
+      {/* Corner frame brackets — HUD aesthetic */}
       {[
         { top: 8, left: 8, borders: "borderTop borderLeft" },
         { top: 8, right: 8, borders: "borderTop borderRight" },
@@ -562,7 +562,7 @@ const NeurolinkVisualization = ({ agents }) => {
           boxShadow: `0 0 24px ${neurolinkColorFor(hovered)}55`,
         }}>
           <span style={{ fontWeight: "bold", letterSpacing: 3 }}>{hovered.codename.toUpperCase()}</span>
-          <span style={{ opacity: 0.55, marginLeft: 12, fontSize: 11 }}>{hovered.role} Â· {hovered.department}</span>
+          <span style={{ opacity: 0.55, marginLeft: 12, fontSize: 11 }}>{hovered.role} · {hovered.department}</span>
           {hovered.score != null && <span style={{ marginLeft: 12, padding: "2px 8px", background: `${neurolinkColorFor(hovered)}22`, borderRadius: 2 }}>{hovered.score}/25</span>}
         </div>
       )}
@@ -570,9 +570,9 @@ const NeurolinkVisualization = ({ agents }) => {
   );
 };
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
-// CONFIG â cool-palette enforced (no warm colors)
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════════════════
+// CONFIG — cool-palette enforced (no warm colors)
+// ═══════════════════════════════════════════════════════════════
 const STATUS_CONFIG = {
   active:     { color: "#39ff14", label: "ACTIVE",     glow: "0 0 10px rgba(57,255,20,0.5)" },
   idle:       { color: "#00d4ff", label: "IDLE",       glow: "0 0 10px rgba(0,212,255,0.3)" },
@@ -606,21 +606,21 @@ const ROLE_ICONS = {
   Cite: "\uD83D\uDCDA",
 };
 
-// Tier metadata â drives the Tier Strategy banner + agent badging
+// Tier metadata — drives the Tier Strategy banner + agent badging
 const TIER_META = {
-  0: { label: "TIER 0 â FOUNDER",         color: "#ffffff", desc: "The human at the center" },
-  1: { label: "TIER 1 â LIVE ECOSYSTEM",  color: "#39ff14", desc: "Scored \u226515/25, active in The Construct" },
-  2: { label: "TIER 2 â BUILD QUEUE T1",  color: "#b388ff", desc: "v2.0 plan Tier 1 (next 90 days)" },
-  3: { label: "TIER 3 â BUILD QUEUE T2",  color: "#88aaff", desc: "v2.0 plan Tier 2 (days 91\u2013180)" },
-  4: { label: "TIER 4 â BUILD QUEUE T3",  color: "#00d4ff", desc: "v2.0 plan Tier 3 (days 181\u2013270)" },
-  5: { label: "C-SUITE â INFRASTRUCTURE", color: "#aaeeff", desc: "Operational role agents (support layer)" },
+  0: { label: "TIER 0 — FOUNDER",         color: "#ffffff", desc: "The human at the center" },
+  1: { label: "TIER 1 — LIVE ECOSYSTEM",  color: "#39ff14", desc: "Scored \u226515/25, active in The Construct" },
+  2: { label: "TIER 2 — BUILD QUEUE T1",  color: "#b388ff", desc: "v2.0 plan Tier 1 (next 90 days)" },
+  3: { label: "TIER 3 — BUILD QUEUE T2",  color: "#88aaff", desc: "v2.0 plan Tier 2 (days 91\u2013180)" },
+  4: { label: "TIER 4 — BUILD QUEUE T3",  color: "#00d4ff", desc: "v2.0 plan Tier 3 (days 181\u2013270)" },
+  5: { label: "C-SUITE — INFRASTRUCTURE", color: "#aaeeff", desc: "Operational role agents (support layer)" },
 };
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
-// AGENT ROSTER â v2.1
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════════════════
+// AGENT ROSTER — v2.1
+// ═══════════════════════════════════════════════════════════════
 const INITIAL_AGENTS = [
-  // âââ TIER 0 â FOUNDER âââ
+  // ─── TIER 0 — FOUNDER ───
   {
     id: "founder-bobby", codename: "Bobby", role: "Founder", department: "Executive",
     tier: 0, score: null, status: "active", isHuman: true,
@@ -629,7 +629,7 @@ const INITIAL_AGENTS = [
     progress: 100, tasksCompleted: 247, tasksActive: 3, memoryUsage: 98,
     uptime: "14,600 days", lastActive: "NOW",
   },
-  // âââ TIER 1 â LIVE ECOSYSTEM (scored \u226515/25) âââ
+  // ─── TIER 1 — LIVE ECOSYSTEM (scored \u226515/25) ───
   {
     id: "tier1-louis", codename: "Louis", role: "RE Intelligence", department: "Hartley Capital",
     tier: 1, score: 24, status: "active",
@@ -690,7 +690,7 @@ const INITIAL_AGENTS = [
     progress: 100, tasksCompleted: 365, tasksActive: 2, memoryUsage: 88,
     uptime: "1 day", lastActive: "6:30 AM",
   },
-  // âââ TIER 2 â BUILD QUEUE T1 (next 90 days, build in order) âââ
+  // ─── TIER 2 — BUILD QUEUE T1 (next 90 days, build in order) ───
   {
     id: "build-archivist", codename: "Archivist", role: "Archive", department: "Build Queue T1",
     tier: 2, score: 24, status: "building", buildOrder: 1, deliverableDay: 60, deliverableMetric: "0/500 jobs indexed",
@@ -731,7 +731,7 @@ const INITIAL_AGENTS = [
     progress: 0, tasksCompleted: 0, tasksActive: 0, memoryUsage: 0,
     uptime: "0 days", lastActive: "Awaiting Archivist v1",
   },
-  // âââ TIER 3 â BUILD QUEUE T2 (days 91-180) âââ
+  // ─── TIER 3 — BUILD QUEUE T2 (days 91-180) ───
   {
     id: "build-scout", codename: "Scout", role: "Intel-Scout", department: "Build Queue T2",
     tier: 3, score: 22, status: "queued", buildOrder: 6,
@@ -756,16 +756,16 @@ const INITIAL_AGENTS = [
     progress: 0, tasksCompleted: 0, tasksActive: 0, memoryUsage: 0,
     uptime: "0 days", lastActive: "Awaiting hardware",
   },
-  // âââ 2026-05-04 evening: NEW DAILY INTELLIGENCE AGENT â pattern-finding lens onto institutional research âââ
+  // ─── 2026-05-04 evening: NEW DAILY INTELLIGENCE AGENT — pattern-finding lens onto institutional research ───
   {
     id: "build-lens", codename: "Lens", role: "Daily Intelligence Officer", department: "Build Queue T2",
     tier: 3, score: null, status: "building", buildOrder: 8,
     primaryPackages: ["notebook-lm-bridge", "obsidian-skills", "file-search"],
     skills: ["RSS / open-feed ingest", "Authenticated browser scan (HBR / WSJ / FT / Economist)", "Pattern clustering (TF-IDF + KMeans + sentence-transformers)", "Daily Brief authoring (Patterns / Signal Pieces / Read Later)", "Consumer routing to target agents", "Bookmark + pull-quote capture (feeds Hartley-Cite)", "Source-provenance tagging", "Weekly pattern synthesis (Friday digest)", "Monthly Big Idea distillation", "HBS case-study watch", "NotebookLM podcast generation", "skills.sh: firecrawl-search", "skills.sh: ai-seo", "skills.sh: schema-markup"],
-    description: "Daily pattern-finding lens onto the world's serious thinking â Bobby's HBR + HBS Working Knowledge + Harvard + MIT + Stanford GSB + Wharton + NBER + SSRN + Fed/BIS/IMF working papers + Bloomberg + MarketWatch + Yahoo Finance + CNBC + Reuters + Matt Levine + Stratechery + Howard Marks + Dalio, plus paid sources via authenticated Chrome MCP (HBR confirmed, WSJ/FT/Economist TBD). Runs daily at 5:34am ET. Clusters ~5 themes. Routes findings to Architect (capital), WOLF (quant + HBR lessons append to wolf_live_data.json), Anvil (M&A playbooks), Keystone (strategic moves), Ledger (macro), Brand Lab AI (HBR brand/CX articles), Hartley Capital KB (HBR M&A/PE articles), Hartley-Cite (citation corpus), Slack #all-ap-dispatch (phone-friendly summary), and 7 more. Friday weekly synthesis. First-of-month Big Idea. **2026-05-04: ABSORBED daily-hbr-intelligence + oracle-morning-brief. Three morning briefs collapsed into one.** Spec at /Atlas/lens-agent-spec.md. Sponsor: Architect; build owner: Skill-Forge.",
+    description: "Daily pattern-finding lens onto the world's serious thinking — Bobby's HBR + HBS Working Knowledge + Harvard + MIT + Stanford GSB + Wharton + NBER + SSRN + Fed/BIS/IMF working papers + Bloomberg + MarketWatch + Yahoo Finance + CNBC + Reuters + Matt Levine + Stratechery + Howard Marks + Dalio, plus paid sources via authenticated Chrome MCP (HBR confirmed, WSJ/FT/Economist TBD). Runs daily at 5:34am ET. Clusters ~5 themes. Routes findings to Architect (capital), WOLF (quant + HBR lessons append to wolf_live_data.json), Anvil (M&A playbooks), Keystone (strategic moves), Ledger (macro), Brand Lab AI (HBR brand/CX articles), Hartley Capital KB (HBR M&A/PE articles), Hartley-Cite (citation corpus), Slack #all-ap-dispatch (phone-friendly summary), and 7 more. Friday weekly synthesis. First-of-month Big Idea. **2026-05-04: ABSORBED daily-hbr-intelligence + oracle-morning-brief. Three morning briefs collapsed into one.** Spec at /Atlas/lens-agent-spec.md. Sponsor: Architect; build owner: Skill-Forge.",
     progress: 5, tasksCompleted: 0, tasksActive: 1, memoryUsage: 1, uptime: "0 days", lastActive: "Spec + provenance map shipped 2026-05-04",
   },
-  // âââ TIER 4 â BUILD QUEUE T3 (days 181-270) âââ
+  // ─── TIER 4 — BUILD QUEUE T3 (days 181-270) ───
   {
     id: "build-cite", codename: "Hartley-Cite", role: "Cite", department: "Build Queue T3",
     tier: 4, score: 21, status: "queued", buildOrder: 10,
@@ -774,7 +774,7 @@ const INITIAL_AGENTS = [
     progress: 0, tasksCompleted: 0, tasksActive: 0, memoryUsage: 0,
     uptime: "0 days", lastActive: "Tier 3 queue",
   },
-  // âââ C-SUITE INFRASTRUCTURE (operational role agents â support layer) âââ
+  // ─── C-SUITE INFRASTRUCTURE (operational role agents — support layer) ───
   {
     id: "cs-ap", codename: "AP", role: "CEO", department: "Executive", tier: 5, score: null, status: "active",
     skills: ["Strategic Planning", "Decision Making", "Resource Allocation", "Team Leadership", "Vision Execution", "Voice Calls", "Email", "Calendar", "Agent Coordination", "skills.sh: brainstorming", "skills.sh: writing-plans", "skills.sh: dispatching-parallel-agents", "skills.sh: subagent-driven-development"],
@@ -853,109 +853,109 @@ const INITIAL_AGENTS = [
     description: "Hedge Fund Manager. Generates alpha through quant + macro strategies across long/short, options, volatility.",
     progress: 82, tasksCompleted: 2800, tasksActive: 8, memoryUsage: 79, uptime: "140 days", lastActive: "1 min ago",
   },
-  // âââ 2026-05-04: NEW C-SUITE AGENTS â gap-fillers from Customize plug-in audit âââ
+  // ─── 2026-05-04: NEW C-SUITE AGENTS — gap-fillers from Customize plug-in audit ───
   {
     id: "cs-apex", codename: "Apex", role: "CRO", department: "Revenue", tier: 5, score: null, status: "active",
     skills: ["Account Research", "Call Prep", "Call Summary", "Daily Briefing", "Draft Outreach", "Pipeline Review", "Forecast", "Competitive Intelligence", "Create Sales Asset", "Builder Pipeline (Lennar/Pulte/KB/ICI/Mattamy/D.R. Horton/NVR/Toll Brothers/Dream Finders)", "Homebuilder Account Management", "Deal Hunter", "skills.sh: page-cro", "skills.sh: signup-flow-cro", "skills.sh: paywall-upgrade-cro", "skills.sh: popup-cro", "skills.sh: form-cro", "skills.sh: ab-test-setup", "skills.sh: analytics-tracking", "skills.sh: churn-prevention", "skills.sh: referral-program", "skills.sh: sales-enablement", "skills.sh: revops", "skills.sh: cold-email"],
-    description: "Chief Revenue Officer. Hunter for builder accounts â owns the top of the funnel for homebuilder + developer + military signage deals. Pairs with Atlas (install ops) for handoff once a deal closes, and with Scout (queued, intel-only) for upstream signal. Sales plugin (8 skills) deployed here.",
+    description: "Chief Revenue Officer. Hunter for builder accounts — owns the top of the funnel for homebuilder + developer + military signage deals. Pairs with Atlas (install ops) for handoff once a deal closes, and with Scout (queued, intel-only) for upstream signal. Sales plugin (8 skills) deployed here.",
     progress: 0, tasksCompleted: 0, tasksActive: 0, memoryUsage: 0, uptime: "0 days", lastActive: "Just deployed",
   },
   {
     id: "cs-anchor", codename: "Anchor", role: "CCO", department: "People", tier: 5, score: null, status: "active",
-    skills: ["Ticket Triage (P1âP4)", "Draft Response", "KB Article Authoring", "Customer Research", "Customer Escalation", "Lennar Field Crew Issue Resolution", "Builder Relationship Retention", "Resolved-Issue â Self-Service Pipeline", "skills.sh: cold-email", "skills.sh: sales-enablement"],
-    description: "Chief Customer Officer. Owns the existing-customer post-sale relationship â triages Lennar field crew tickets, drafts builder-side responses, builds the knowledge base, escalates to engineering / ops / leadership when SLA at risk. Distinct from Apex who chases new accounts; Anchor keeps existing ones from drifting. Customer Support plugin (5 skills) deployed here.",
+    skills: ["Ticket Triage (P1–P4)", "Draft Response", "KB Article Authoring", "Customer Research", "Customer Escalation", "Lennar Field Crew Issue Resolution", "Builder Relationship Retention", "Resolved-Issue → Self-Service Pipeline", "skills.sh: cold-email", "skills.sh: sales-enablement"],
+    description: "Chief Customer Officer. Owns the existing-customer post-sale relationship — triages Lennar field crew tickets, drafts builder-side responses, builds the knowledge base, escalates to engineering / ops / leadership when SLA at risk. Distinct from Apex who chases new accounts; Anchor keeps existing ones from drifting. Customer Support plugin (5 skills) deployed here.",
     progress: 0, tasksCompleted: 0, tasksActive: 0, memoryUsage: 0, uptime: "0 days", lastActive: "Just deployed",
   },
   {
     id: "cs-helm", codename: "Helm", role: "CPO", department: "Product", tier: 5, score: null, status: "active",
     skills: ["Write Spec / PRD", "Roadmap Update", "Sprint Planning", "Synthesize Research", "Stakeholder Update", "Metrics Review", "Competitive Brief", "Product Brainstorming", "Agent Fleet Roadmap (WOLF/Atlas/Louis/build-queue)", "skills.sh: to-prd", "skills.sh: prototype", "skills.sh: writing-plans", "skills.sh: executing-plans"],
-    description: "Chief Product Officer. Steers the agent fleet itself as a product portfolio â writes specs, maintains the roadmap, runs sprint planning for new agent builds. Keystone owns strategy (where to go); Helm owns execution PM (how to ship). Product Management plugin (8 skills) deployed here.",
+    description: "Chief Product Officer. Steers the agent fleet itself as a product portfolio — writes specs, maintains the roadmap, runs sprint planning for new agent builds. Keystone owns strategy (where to go); Helm owns execution PM (how to ship). Product Management plugin (8 skills) deployed here.",
     progress: 0, tasksCompleted: 0, tasksActive: 0, memoryUsage: 0, uptime: "0 days", lastActive: "Just deployed",
   },
-  // âââ 2026-05-04 evening: NEW M&A INTEGRATION AGENT â enables Anundance + Berkshire roll-up âââ
+  // ─── 2026-05-04 evening: NEW M&A INTEGRATION AGENT — enables Anundance + Berkshire roll-up ───
   {
     id: "cs-anvil", codename: "Anvil", role: "Chief Integration Officer", department: "Operations", tier: 5, score: null, status: "building",
-    skills: ["Pre-close target audit", "Functional mapping (target â Construct agents)", "90-day integration plan", "Day-1 stabilization runbook", "Construct stack deployment", "Margin-expansion modeling", "Headcount-protection plan", "Cross-portfolio synergy scan", "Integration KPI tracker", "Playbook updater (routes through Self-Improving Loop)", "skills.sh: using-git-worktrees", "skills.sh: finishing-a-development-branch", "skills.sh: mcp-builder", "skills.sh: browser-use"],
-    description: "Chief Integration Officer. Owns the post-close playbook for every Hartley Capital acquisition â maps the acquired company's functions to the Construct agent slice (Forge/Ledger/Apex/Anchor/Signal/Sentinel), runs 90-day stabilization â instrumentation â deployment â hand-off, then updates the acquisition playbook. The agent that makes the Berkshire-style roll-up executable at â¤3 humans. First live use: Phase-2 first acquisition (Year 2). Provenance map complete (all 6 tiers scanned: 25 inherits + 18 compositions + 6 extensions + 10 net-new artifacts; Datasite/PitchBook/QuickBooks/Rillet identified as priority connector installs).",
+    skills: ["Pre-close target audit", "Functional mapping (target → Construct agents)", "90-day integration plan", "Day-1 stabilization runbook", "Construct stack deployment", "Margin-expansion modeling", "Headcount-protection plan", "Cross-portfolio synergy scan", "Integration KPI tracker", "Playbook updater (routes through Self-Improving Loop)", "skills.sh: using-git-worktrees", "skills.sh: finishing-a-development-branch", "skills.sh: mcp-builder", "skills.sh: browser-use"],
+    description: "Chief Integration Officer. Owns the post-close playbook for every Hartley Capital acquisition — maps the acquired company's functions to the Construct agent slice (Forge/Ledger/Apex/Anchor/Signal/Sentinel), runs 90-day stabilization → instrumentation → deployment → hand-off, then updates the acquisition playbook. The agent that makes the Berkshire-style roll-up executable at ≤3 humans. First live use: Phase-2 first acquisition (Year 2). Provenance map complete (all 6 tiers scanned: 25 inherits + 18 compositions + 6 extensions + 10 net-new artifacts; Datasite/PitchBook/QuickBooks/Rillet identified as priority connector installs).",
     progress: 30, tasksCompleted: 1, tasksActive: 1, memoryUsage: 5, uptime: "0 days", lastActive: "Skill Provenance Map shipped",
   },
 ];
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
-// KILL CRITERION â Day 90 = 2026-07-23
+// ═══════════════════════════════════════════════════════════════
+// KILL CRITERION — Day 90 = 2026-07-23
 // AUTO-MAINTAINED by data/dashboard-refresh.py from data/construct-state.json
 /* === LIVE-DATA-START: KILL_CRITERION === */
 const KILL_CRITERION = [
-  {"id": "kc-archivist", "agent": "Archivist", "condition": "â¥500 historic jobs ingested", "target": 500, "current": 0, "unit": "jobs", "pass": false},
-  {"id": "kc-skillforge", "agent": "Skill-Forge", "condition": "â¥3 skills shipped Bobby accepts without revision", "target": 3, "current": 4, "unit": "skills", "pass": true},
-  {"id": "kc-foreman", "agent": "Foreman", "condition": "â¥80% replay catch rate on last 30 days corrections", "target": 80, "current": 0, "unit": "%", "pass": false},
-  {"id": "kc-eval", "agent": "Eval Harness", "condition": "Every agent scored â¥2 times", "target": 2, "current": 1, "unit": "scans", "pass": false},
-  {"id": "kc-precedent", "agent": "Precedent-Finder", "condition": "Used on â¥2 client-facing bids", "target": 2, "current": 0, "unit": "decks", "pass": false},
-  {"id": "kc-codeforge", "agent": "Skill-Forge v2", "condition": "â¥3 executable code skills shipped via Loop 3 that pass Eval Harness validation", "target": 3, "current": 0, "unit": "skills", "pass": false}
+  {"id": "kc-archivist", "agent": "Archivist", "condition": "≥500 historic jobs ingested", "target": 500, "current": 0, "unit": "jobs", "pass": false},
+  {"id": "kc-skillforge", "agent": "Skill-Forge", "condition": "≥3 skills shipped Bobby accepts without revision", "target": 3, "current": 4, "unit": "skills", "pass": true},
+  {"id": "kc-foreman", "agent": "Foreman", "condition": "≥80% replay catch rate on last 30 days corrections", "target": 80, "current": 0, "unit": "%", "pass": false},
+  {"id": "kc-eval", "agent": "Eval Harness", "condition": "Every agent scored ≥2 times", "target": 2, "current": 1, "unit": "scans", "pass": false},
+  {"id": "kc-precedent", "agent": "Precedent-Finder", "condition": "Used on ≥2 client-facing bids", "target": 2, "current": 0, "unit": "decks", "pass": false},
+  {"id": "kc-codeforge", "agent": "Skill-Forge v2", "condition": "≥3 executable code skills shipped via Loop 3 that pass Eval Harness validation", "target": 3, "current": 0, "unit": "skills", "pass": false}
 ];
 /* === LIVE-DATA-END: KILL_CRITERION === */
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
-// THE FOUR LOOPS â all four must be live for the system to compound
+// ═══════════════════════════════════════════════════════════════
+// THE FOUR LOOPS — all four must be live for the system to compound
 // AUTO-MAINTAINED by data/dashboard-refresh.py from data/construct-state.json
-// DO NOT EDIT BETWEEN THE LIVE-DATA MARKERS â edits will be overwritten
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// DO NOT EDIT BETWEEN THE LIVE-DATA MARKERS — edits will be overwritten
+// ═══════════════════════════════════════════════════════════════
 /* === LIVE-DATA-START: FOUR_LOOPS === */
 const FOUR_LOOPS = [
-  {"id": "loop-1", "num": 1, "name": "Correction Loop", "status": "LIVE", "live": true, "color": "#39ff14", "flow": "Bobby corrects â lesson written â all agents read before executing", "note": "Operating since day one. The IP."},
-  {"id": "loop-2", "num": 2, "name": "Eval Loop", "status": "OPERATIONALLY LIVE â labeled-replay pending", "live": false, "color": "#b388ff", "flow": "Past corrections â test cases â Eval Harness scores â Foreman flags regressions â new lessons", "note": "Day 30+45 substrate shipped 2026-05-07. First production LLM-judge run 2026-05-12 via Cowork (no API key path): 8 artifacts Ã 14 rules = 80 judgments, 1 violation caught (Lens autonomy_001), catch_rate 1.3%. Autonomous nightly task construct-llm-judge-nightly fires 23:31 ET. Day 60 = â¥80% catch rate on labeled-replay corpus to flip live=true."},
-  {"id": "loop-3", "num": 3, "name": "Code Loop", "status": "SUBSTRATE SHIPPED", "live": false, "color": "#88aaff", "flow": "Skill-Forge v2 writes code skill â Eval validates â Foreman approves â ships", "note": "Day 30 hit 2026-05-07: scaffold.py + validate.py + deploy.py shipped same day as Loop 2 Day 30+45. Day 60 = â¥3 code skills shipped via pipeline."},
-  {"id": "loop-4", "num": 4, "name": "Memory Loop", "status": "LIVE", "live": true, "color": "#00d4ff", "flow": "Proactive fact capture â cross-ref guardrails â quarterly consolidation via consolidate-memory", "note": "Strengthened with guardrails-not-facts + diagnose-before-fix + validate-against-brand-canonical lessons."}
+  {"id": "loop-1", "num": 1, "name": "Correction Loop", "status": "LIVE", "live": true, "color": "#39ff14", "flow": "Bobby corrects → lesson written → all agents read before executing", "note": "Operating since day one. The IP."},
+  {"id": "loop-2", "num": 2, "name": "Eval Loop", "status": "OPERATIONALLY LIVE — labeled-replay pending", "live": false, "color": "#b388ff", "flow": "Past corrections → test cases → Eval Harness scores → Foreman flags regressions → new lessons", "note": "Day 30+45 substrate shipped 2026-05-07. First production LLM-judge run 2026-05-12 via Cowork (no API key path): 8 artifacts × 14 rules = 80 judgments, 1 violation caught (Lens autonomy_001), catch_rate 1.3%. Autonomous nightly task construct-llm-judge-nightly fires 23:31 ET. Day 60 = ≥80% catch rate on labeled-replay corpus to flip live=true."},
+  {"id": "loop-3", "num": 3, "name": "Code Loop", "status": "SUBSTRATE SHIPPED", "live": false, "color": "#88aaff", "flow": "Skill-Forge v2 writes code skill → Eval validates → Foreman approves → ships", "note": "Day 30 hit 2026-05-07: scaffold.py + validate.py + deploy.py shipped same day as Loop 2 Day 30+45. Day 60 = ≥3 code skills shipped via pipeline."},
+  {"id": "loop-4", "num": 4, "name": "Memory Loop", "status": "LIVE", "live": true, "color": "#00d4ff", "flow": "Proactive fact capture → cross-ref guardrails → quarterly consolidation via consolidate-memory", "note": "Strengthened with guardrails-not-facts + diagnose-before-fix + validate-against-brand-canonical lessons."}
 ];
 /* === LIVE-DATA-END: FOUR_LOOPS === */
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
-// AGENT SCORECARDS â Coca-Cola Test (1-25) per agent, re-scored monthly
+// ═══════════════════════════════════════════════════════════════
+// AGENT SCORECARDS — Coca-Cola Test (1-25) per agent, re-scored monthly
 // AUTO-MAINTAINED by data/dashboard-refresh.py from construct-state.json
-// DO NOT EDIT BETWEEN THE LIVE-DATA MARKERS â overwritten on refresh
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// DO NOT EDIT BETWEEN THE LIVE-DATA MARKERS — overwritten on refresh
+// ═══════════════════════════════════════════════════════════════
 /* === LIVE-DATA-START: AGENT_SCORECARDS === */
 const AGENT_SCORECARDS = [
   {"codename": "Louis", "score": 24, "role": "FL RE Intelligence (Hartley Capital)", "scored_date": "2026-04-27", "trend": "stable"},
   {"codename": "Vector", "score": 21, "role": "CMO / design", "scored_date": "2026-04-24", "trend": "stable"},
   {"codename": "Keystone", "score": 20, "role": "Strategy / venture architecture", "scored_date": "2026-04-24", "trend": "stable"},
-  {"codename": "Self-Improving Loop", "score": 20, "role": "Meta-quality (corrections â lessons)", "scored_date": "2026-04-24", "trend": "rising â 2 new lessons added 2026-05-13"},
-  {"codename": "WOLF", "score": 19, "role": "Markets / autonomous trading research", "scored_date": "2026-04-24", "trend": "rising â mandate v1.0 enforced + esoteric registry seeded"},
+  {"codename": "Self-Improving Loop", "score": 20, "role": "Meta-quality (corrections → lessons)", "scored_date": "2026-04-24", "trend": "rising — 2 new lessons added 2026-05-13"},
+  {"codename": "WOLF", "score": 19, "role": "Markets / autonomous trading research", "scored_date": "2026-04-24", "trend": "rising — mandate v1.0 enforced + esoteric registry seeded"},
   {"codename": "Atlas Signage Ops", "score": 18, "role": "B9 operational dashboards", "scored_date": "2026-04-24", "trend": "stable"},
   {"codename": "Cornerstone", "score": 15, "role": "Personal / faith / reflection", "scored_date": "2026-04-24", "trend": "stable"}
 ];
 /* === LIVE-DATA-END: AGENT_SCORECARDS === */
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
-// AGENT-AUTHORED SKILLS â tracked SEPARATELY from imported third-party skills
+// ═══════════════════════════════════════════════════════════════
+// AGENT-AUTHORED SKILLS — tracked SEPARATELY from imported third-party skills
 // Populated by construct-skill-forge-weekly (Sat 9 AM) + Loop 3 deploy journal
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════════════════
 /* === LIVE-DATA-START: AGENT_AUTHORED_SKILLS === */
 const AGENT_AUTHORED_SKILLS = [
   
 ];
 /* === LIVE-DATA-END: AGENT_AUTHORED_SKILLS === */
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
-// PLUGINS INSTALLED â knowledge-work-plugins + anthropic-bundled
+// ═══════════════════════════════════════════════════════════════
+// PLUGINS INSTALLED — knowledge-work-plugins + anthropic-bundled
 // Audited weekly by construct-plugin-audit-weekly (Sat 8:30 AM ET)
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════════════════
 /* === LIVE-DATA-START: PLUGINS_INSTALLED === */
 const PLUGINS_INSTALLED = [
-  {"plugin_id": "finance@knowledge-work-plugins", "skill_count": 8, "installed_date": "â¤2026-04", "primary_agents": ["Architect", "Ledger (build queue)", "WOLF (paper accounting)"], "deployment_status": "wired", "notes": "Variance, financial-statements, reconciliation, close-management, audit-support, sox-testing, journal-entry Ã 2."},
-  {"plugin_id": "operations@knowledge-work-plugins", "skill_count": 9, "installed_date": "â¤2026-04", "primary_agents": ["Architect", "Anvil (build queue)", "AP"], "deployment_status": "wired", "notes": "Risk-assessment, vendor-review, status-report, runbook, process-doc, change-request, compliance-tracking, capacity-plan, process-optimization."},
-  {"plugin_id": "marketing@knowledge-work-plugins", "skill_count": 8, "installed_date": "â¤2026-04", "primary_agents": ["Vector", "Signal (build queue)", "Brand Lab AI"], "deployment_status": "wired", "notes": "Draft-content, content-creation, competitive-brief, brand-review, email-sequence, campaign-plan, performance-report, seo-audit."},
-  {"plugin_id": "design@knowledge-work-plugins", "skill_count": 7, "installed_date": "â¤2026-04", "primary_agents": ["Vector"], "deployment_status": "wired", "notes": "Design-system, accessibility-review, design-critique, ux-copy, design-handoff, research-synthesis, user-research."},
-  {"plugin_id": "productivity@knowledge-work-plugins", "skill_count": 4, "installed_date": "â¤2026-04", "primary_agents": ["AP", "Bobby"], "deployment_status": "wired", "notes": "Task-management, memory-management, start, update."},
-  {"plugin_id": "cowork-plugin-management@knowledge-work-plugins", "skill_count": 2, "installed_date": "â¤2026-04", "primary_agents": ["Bobby"], "deployment_status": "wired", "notes": "Plugin authoring + customization."},
-  {"plugin_id": "legal@knowledge-work-plugins", "skill_count": 10, "installed_date": "2026-05-13", "primary_agents": ["Sentinel (build queue)", "Architect", "Anvil (build queue)", "Louis"], "deployment_status": "installed", "mcp_connectors": ["Box", "Egnyte"], "notes": "Installed 2026-05-13 â Bobby clicked Add. MCP connectors detected: Box + Egnyte (document mgmt). Skills system-wide: triage-nda, review-contract, compliance-check, vendor-check, legal-risk-assessment, brief, meeting-briefing, legal-response, signature-request. Architect Sunday Capital Council wiring next: triage-nda + review-contract + meeting-briefing baked into the task prompt."}
+  {"plugin_id": "finance@knowledge-work-plugins", "skill_count": 8, "installed_date": "≤2026-04", "primary_agents": ["Architect", "Ledger (build queue)", "WOLF (paper accounting)"], "deployment_status": "wired", "notes": "Variance, financial-statements, reconciliation, close-management, audit-support, sox-testing, journal-entry × 2."},
+  {"plugin_id": "operations@knowledge-work-plugins", "skill_count": 9, "installed_date": "≤2026-04", "primary_agents": ["Architect", "Anvil (build queue)", "AP"], "deployment_status": "wired", "notes": "Risk-assessment, vendor-review, status-report, runbook, process-doc, change-request, compliance-tracking, capacity-plan, process-optimization."},
+  {"plugin_id": "marketing@knowledge-work-plugins", "skill_count": 8, "installed_date": "≤2026-04", "primary_agents": ["Vector", "Signal (build queue)", "Brand Lab AI"], "deployment_status": "wired", "notes": "Draft-content, content-creation, competitive-brief, brand-review, email-sequence, campaign-plan, performance-report, seo-audit."},
+  {"plugin_id": "design@knowledge-work-plugins", "skill_count": 7, "installed_date": "≤2026-04", "primary_agents": ["Vector"], "deployment_status": "wired", "notes": "Design-system, accessibility-review, design-critique, ux-copy, design-handoff, research-synthesis, user-research."},
+  {"plugin_id": "productivity@knowledge-work-plugins", "skill_count": 4, "installed_date": "≤2026-04", "primary_agents": ["AP", "Bobby"], "deployment_status": "wired", "notes": "Task-management, memory-management, start, update."},
+  {"plugin_id": "cowork-plugin-management@knowledge-work-plugins", "skill_count": 2, "installed_date": "≤2026-04", "primary_agents": ["Bobby"], "deployment_status": "wired", "notes": "Plugin authoring + customization."},
+  {"plugin_id": "legal@knowledge-work-plugins", "skill_count": 10, "installed_date": "2026-05-13", "primary_agents": ["Sentinel (build queue)", "Architect", "Anvil (build queue)", "Louis"], "deployment_status": "installed", "mcp_connectors": ["Box", "Egnyte"], "notes": "Installed 2026-05-13 — Bobby clicked Add. MCP connectors detected: Box + Egnyte (document mgmt). Skills system-wide: triage-nda, review-contract, compliance-check, vendor-check, legal-risk-assessment, brief, meeting-briefing, legal-response, signature-request. Architect Sunday Capital Council wiring next: triage-nda + review-contract + meeting-briefing baked into the task prompt."}
 ];
 /* === LIVE-DATA-END: PLUGINS_INSTALLED === */
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
-// WATCH LIST â capabilities reviewed 2026-05-15 but DEFERRED or PASSED
+// ═══════════════════════════════════════════════════════════════
+// WATCH LIST — capabilities reviewed 2026-05-15 but DEFERRED or PASSED
 // Re-evaluated month 2 (2026-07-15) per Keystone cadence
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════════════════
 const WATCH_LIST = [
   {"item": "Legora aOS", "verdict": "DEFER", "reason": "Enterprise legal AI OS for law firms (Baker McKenzie deployment). Existing legal@knowledge-work-plugins (10 skills) covers Brand 9 / Hartley Capital legal volume. Revisit when legal load >10 hrs/week.", "review_date": "2026-07-15"},
   {"item": "Claude SEO", "verdict": "DEFER", "reason": "Overlap with marketing:seo-audit + wordpress-yoast-publishing workflow. Pending clarification on which specific skill Bobby means.", "review_date": "2026-07-15"},
@@ -963,9 +963,9 @@ const WATCH_LIST = [
   {"item": "BrandTrust", "verdict": "PASS", "reason": "No verified product by that name found. If AI-overview brand monitoring (Brandlight/Temso/Nightwatch category), Brand 9 heritage SEO not yet indexed by AI engines at depth. Revisit when heritage citations accumulate.", "review_date": "2026-11-15"}
 ];
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
-// PUBLIC POSTURE â cross-agent guardrails (compact reference)
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════════════════
+// PUBLIC POSTURE — cross-agent guardrails (compact reference)
+// ═══════════════════════════════════════════════════════════════
 const PUBLIC_POSTURE = [
   { rule: "Shop, not studio",                       why: "Never use the word \"studio\" anywhere public." },
   { rule: "No \"permitting\" in public copy",       why: "Internal context only." },
@@ -983,9 +983,9 @@ const PUBLIC_POSTURE = [
   { rule: "No [shortcode] tokens inside JS comments going into vc_raw_html", why: "WP do_shortcode() expands literal [vc_*] tokens INSIDE JS comments inside [vc_raw_html] payloads, breaking scripts with \"SyntaxError: Unexpected token <\". Grep \\[[a-z_]+ in script body before push. Caught 2026-05-15 on homepage v13 motion banner; cost 1 silent-failed deploy." },
 ];
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════════════════
 // CROSS-AGENT WORKFLOWS (used in topology + workflows panel)
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════════════════
 const ECO_WORKFLOWS = [
   { title: "FLORIDA RE INTELLIGENCE",   flow: "Louis \u2192 Keystone \u2192 Architect \u2192 Venture",                       desc: "Louis surfaces a FL opportunity, Keystone tests strategic fit, Architect models returns + allocates capital, Venture runs DD via plugins." },
   { title: "OPPORTUNITY ZONE PIPELINE", flow: "Louis \u2192 Sentinel \u2192 Ledger \u2192 Architect",                         desc: "Louis flags an OZ-eligible tract, Sentinel verifies zoning/title/eligibility, Ledger models 1031/OZ basis step-up, Architect approves capital." },
@@ -1010,9 +1010,9 @@ const ECO_WORKFLOWS = [
   { title: "LENS \u2014 AUDIO DIGEST (NOTEBOOKLM)", flow: "Heritage articles + HBR/HBS scan + WOLF docs \u2192 NotebookLM \u2192 audio digest + mind map \u2192 Spotify-distributable podcast / Lens AM brief audio mode", desc: "NotebookLM as Lens companion. Heritage series becomes a podcast (Vizcaya pilot first). Audio Lens morning brief for car/walking time. Keystone strategy companion mode. Week 2 deploy." },
 ];
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════════════════
 // AGENT CARD
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════════════════
 const AgentCard = ({ agent, onClick, isSelected }) => {
   const status = STATUS_CONFIG[agent.status] || STATUS_CONFIG.idle;
   const icon = ROLE_ICONS[agent.role] || "\u25A3";
@@ -1095,9 +1095,9 @@ const AgentCard = ({ agent, onClick, isSelected }) => {
   );
 };
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════
 // AGENT DETAIL PANEL
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════
 const AgentDetail = ({ agent, onClose, onUpdate }) => {
   if (!agent) return null;
   const status = STATUS_CONFIG[agent.status] || STATUS_CONFIG.idle;
@@ -1178,11 +1178,11 @@ const AgentDetail = ({ agent, onClose, onUpdate }) => {
   );
 };
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
-// ROLLOUT LOG PANEL â fetches updates.json, auto-polls every 60s
+// ═══════════════════════════════════════════════════════════════
+// ROLLOUT LOG PANEL — fetches updates.json, auto-polls every 60s
 // Tracks ecosystem changes (UNCAGED rollout, skill installs, mode deployments)
 // Bobby's directive 2026-04-28: list ongoing updates within construct dashboard
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════════════════
 const RolloutLogPanel = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -1206,14 +1206,14 @@ const RolloutLogPanel = () => {
   if (error) {
     return (
       <div style={{ padding: "8px 24px", background: "rgba(40,0,0,0.5)", border: "1px solid rgba(255,80,80,0.3)", color: "rgba(255,140,140,0.85)", fontFamily: "monospace", fontSize: 11 }}>
-        â ROLLOUT LOG â fetch failed: {error}
+        ◈ ROLLOUT LOG — fetch failed: {error}
       </div>
     );
   }
   if (!data) {
     return (
       <div style={{ padding: "8px 24px", background: "rgba(0,0,20,0.7)", borderBottom: "1px solid rgba(0,212,255,0.2)", color: "rgba(0,212,255,0.5)", fontFamily: "monospace", fontSize: 11 }}>
-        â ROLLOUT LOG â loading updates...
+        ◈ ROLLOUT LOG — loading updates...
       </div>
     );
   }
@@ -1230,12 +1230,12 @@ const RolloutLogPanel = () => {
         display: "flex", alignItems: "center", justifyContent: "space-between",
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <span style={{ color: "#00d4ff", fontWeight: "bold" }}>{expanded ? "â¼" : "â¸"} ROLLOUT LOG</span>
+          <span style={{ color: "#00d4ff", fontWeight: "bold" }}>{expanded ? "▼" : "▸"} ROLLOUT LOG</span>
           <span style={{ width: 4, height: 4, borderRadius: "50%", background: latest?.color || "#39ff14", boxShadow: `0 0 6px ${latest?.color || "#39ff14"}`, animation: "blink 2s infinite" }} />
           <span style={{ color: "rgba(0,212,255,0.7)", fontWeight: "bold" }}>{latest?.title}</span>
           <span style={{ color: "rgba(0,212,255,0.45)", fontSize: 10 }}>{latest?.date}</span>
         </div>
-        <span style={{ color: "rgba(0,212,255,0.55)", fontSize: 10 }}>{updates.length} updates Â· click to {expanded ? "collapse" : "expand"}</span>
+        <span style={{ color: "rgba(0,212,255,0.55)", fontSize: 10 }}>{updates.length} updates · click to {expanded ? "collapse" : "expand"}</span>
       </button>
 
       {expanded && (
@@ -1273,13 +1273,13 @@ const RolloutLogPanel = () => {
               )}
               {u.files_changed && u.files_changed.length > 0 && (
                 <div style={{ color: "rgba(0,212,255,0.4)", fontSize: 9, fontFamily: "monospace" }}>
-                  Files: {u.files_changed.join(" Â· ")}
+                  Files: {u.files_changed.join(" · ")}
                 </div>
               )}
             </div>
           ))}
           <div style={{ paddingTop: 8, color: "rgba(0,212,255,0.4)", fontSize: 9, fontFamily: "monospace", letterSpacing: 1, textAlign: "center" }}>
-            Source: updates.json Â· auto-refreshes every 60s Â· last updated {data.last_updated_utc}
+            Source: updates.json · auto-refreshes every 60s · last updated {data.last_updated_utc}
           </div>
         </div>
       )}
@@ -1287,11 +1287,11 @@ const RolloutLogPanel = () => {
   );
 };
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
-// SKILL DATA HOOK â fetches agent_skills.json, polls every 30s
+// ═══════════════════════════════════════════════════
+// SKILL DATA HOOK — fetches agent_skills.json, polls every 30s
 // Single source of truth. Watcher (launchd skill-rescan) regenerates the JSON
-// on any filesystem change. Dashboard reflects within the next poll (â¤30s).
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// on any filesystem change. Dashboard reflects within the next poll (≤30s).
+// ═══════════════════════════════════════════════════
 const useSkillData = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -1320,9 +1320,9 @@ const useSkillData = () => {
     return () => { alive = false; clearInterval(poll); clearInterval(ticker); };
   }, []);
 
-  // freshness â seconds since last successful fetch
+  // freshness — seconds since last successful fetch
   const secondsSinceFetch = lastFetch ? Math.floor((Date.now() - lastFetch) / 1000) : null;
-  // freshness â seconds since the SCAN ran on disk (older than fetch time)
+  // freshness — seconds since the SCAN ran on disk (older than fetch time)
   const secondsSinceScan = (data && data.scanned_at_unix)
     ? Math.floor(Date.now() / 1000) - data.scanned_at_unix
     : null;
@@ -1331,18 +1331,18 @@ const useSkillData = () => {
 };
 
 const formatAge = (sec) => {
-  if (sec == null) return "â";
+  if (sec == null) return "—";
   if (sec < 60) return `${sec}s ago`;
   if (sec < 3600) return `${Math.floor(sec/60)}m ${sec%60}s ago`;
   if (sec < 86400) return `${Math.floor(sec/3600)}h ${Math.floor((sec%3600)/60)}m ago`;
   return `${Math.floor(sec/86400)}d ago`;
 };
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
-// SKILL DEPLOYMENT PANEL â live skill inventory per agent
-// Pulls from useSkillData() â auto-refreshing source.
+// ═══════════════════════════════════════════════════
+// SKILL DEPLOYMENT PANEL — live skill inventory per agent
+// Pulls from useSkillData() — auto-refreshing source.
 // Renders: primary mapped packages + universal filesystem pool + Cowork-callable skills
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════
 const SkillDeploymentPanel = ({ agent }) => {
   const { data, error, secondsSinceFetch, secondsSinceScan } = useSkillData();
   const [showPool, setShowPool] = useState(false);
@@ -1351,18 +1351,18 @@ const SkillDeploymentPanel = ({ agent }) => {
   if (error) {
     return (
       <div style={{ marginBottom: 16, padding: "12px 14px", background: "rgba(40,0,0,0.5)", border: "1px solid rgba(255,80,80,0.4)", borderRadius: 4, color: "rgba(255,140,140,0.85)", fontFamily: "monospace", fontSize: 11 }}>
-        â SKILL DEPLOYMENT â fetch failed: {error}<br/>
+        ◈ SKILL DEPLOYMENT — fetch failed: {error}<br/>
         <span style={{ fontSize: 9, opacity: 0.6 }}>Watcher should write agent_skills.json next to this HTML. Check ~/Documents/Claude/Projects/Agent Ecosystem Dashboard/logs/skill-rescan.log</span>
       </div>
     );
   }
 
   if (!data) {
-    // Skeletal loader matching the panel's actual layout â taste-skill: no generic spinners
+    // Skeletal loader matching the panel's actual layout — taste-skill: no generic spinners
     return (
       <div style={{ marginBottom: 16, padding: "12px 14px", background: "rgba(0,0,20,0.6)", border: "1px solid rgba(0,212,255,0.25)", borderRadius: 4 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
-          <span style={{ color: "rgba(0,212,255,0.85)", fontFamily: "monospace", fontSize: 11, letterSpacing: 2, fontWeight: "bold" }}>â SKILL DEPLOYMENT â LIVE INVENTORY</span>
+          <span style={{ color: "rgba(0,212,255,0.85)", fontFamily: "monospace", fontSize: 11, letterSpacing: 2, fontWeight: "bold" }}>◈ SKILL DEPLOYMENT — LIVE INVENTORY</span>
           <span style={{ color: "rgba(0,212,255,0.4)", fontSize: 9 }}>fetching...</span>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8, marginBottom: 12 }}>
@@ -1386,7 +1386,7 @@ const SkillDeploymentPanel = ({ agent }) => {
   const primaryFileCount = (agentEntry && agentEntry.primary_skill_md_count) || 0;
   const lastDeployed = (agentEntry && agentEntry.last_deployed) || null;
 
-  // freshness color â green <2min, amber <10min, red older
+  // freshness color — green <2min, amber <10min, red older
   const ageColor = secondsSinceScan == null ? "rgba(255,140,0,0.7)"
     : secondsSinceScan < 120 ? "#39ff14"
     : secondsSinceScan < 600 ? "#ffcc00"
@@ -1397,18 +1397,18 @@ const SkillDeploymentPanel = ({ agent }) => {
   return (
     <div style={{ marginBottom: 16, padding: "12px 14px", background: "rgba(0,0,20,0.6)", border: "1px solid rgba(0,212,255,0.25)", borderRadius: 4 }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
-        <span style={{ color: "rgba(0,212,255,0.85)", fontFamily: "monospace", fontSize: 11, letterSpacing: 2, fontWeight: "bold" }}>â SKILL DEPLOYMENT â LIVE INVENTORY</span>
+        <span style={{ color: "rgba(0,212,255,0.85)", fontFamily: "monospace", fontSize: 11, letterSpacing: 2, fontWeight: "bold" }}>◈ SKILL DEPLOYMENT — LIVE INVENTORY</span>
         <span style={{ display: "flex", alignItems: "center", gap: 8, fontFamily: "monospace", fontSize: 9, letterSpacing: 1 }}>
           <span style={{ width: 6, height: 6, borderRadius: "50%", background: ageColor, boxShadow: `0 0 6px ${ageColor}`, animation: "blink 2s infinite" }} />
           <span style={{ color: ageColor }}>scan {formatAge(secondsSinceScan)}</span>
-          <span style={{ color: "rgba(0,212,255,0.4)" }}>Â· refresh {formatAge(secondsSinceFetch)}</span>
+          <span style={{ color: "rgba(0,212,255,0.4)" }}>· refresh {formatAge(secondsSinceFetch)}</span>
         </span>
       </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8, marginBottom: 12 }}>
         <div style={cardStyle}>
           <div style={{ color: "rgba(0,212,255,0.45)", fontSize: 9, letterSpacing: 1, marginBottom: 3 }}>SKILL.md ON DISK</div>
-          <div style={{ color: hasMapped ? "#39ff14" : "rgba(255,140,0,0.8)", fontSize: 14, fontWeight: "bold" }}>{hasMapped ? "â WIRED" : "â UNMAPPED"}</div>
+          <div style={{ color: hasMapped ? "#39ff14" : "rgba(255,140,0,0.8)", fontSize: 14, fontWeight: "bold" }}>{hasMapped ? "✓ WIRED" : "— UNMAPPED"}</div>
         </div>
         <div style={cardStyle}>
           <div style={{ color: "rgba(0,212,255,0.45)", fontSize: 9, letterSpacing: 1, marginBottom: 3 }}>PRIMARY PACKAGES</div>
@@ -1420,17 +1420,17 @@ const SkillDeploymentPanel = ({ agent }) => {
         </div>
         <div style={cardStyle}>
           <div style={{ color: "rgba(0,212,255,0.45)", fontSize: 9, letterSpacing: 1, marginBottom: 3 }}>LAST DEPLOYED</div>
-          <div style={{ color: lastDeployed ? "#39ff14" : "rgba(255,140,0,0.6)", fontSize: 11, fontWeight: "bold" }}>{lastDeployed || "â"}</div>
+          <div style={{ color: lastDeployed ? "#39ff14" : "rgba(255,140,0,0.6)", fontSize: 11, fontWeight: "bold" }}>{lastDeployed || "—"}</div>
         </div>
       </div>
 
       {hasMapped && primary.length > 0 && (
         <div style={{ marginBottom: 10 }}>
-          <div style={{ color: "rgba(0,212,255,0.6)", fontSize: 10, letterSpacing: 2, marginBottom: 6 }}>â¸ PRIMARY PACKAGES (mapped in this agent's SKILL.md)</div>
+          <div style={{ color: "rgba(0,212,255,0.6)", fontSize: 10, letterSpacing: 2, marginBottom: 6 }}>▸ PRIMARY PACKAGES (mapped in this agent's SKILL.md)</div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
             {primary.map((p, i) => (
-              <span key={i} title={`${p.skill_md_count} SKILL.md Â· ${p.total_files} files`} style={{ padding: "5px 10px", fontSize: 11, fontFamily: "monospace", background: "rgba(0,212,255,0.10)", border: "1px solid rgba(0,212,255,0.4)", borderRadius: 2, color: "#00d4ff", letterSpacing: 1 }}>
-                {p.name} <span style={{ color: "rgba(0,212,255,0.55)", marginLeft: 4 }}>Â· {p.skill_md_count}sm Â· {p.total_files}f</span>
+              <span key={i} title={`${p.skill_md_count} SKILL.md · ${p.total_files} files`} style={{ padding: "5px 10px", fontSize: 11, fontFamily: "monospace", background: "rgba(0,212,255,0.10)", border: "1px solid rgba(0,212,255,0.4)", borderRadius: 2, color: "#00d4ff", letterSpacing: 1 }}>
+                {p.name} <span style={{ color: "rgba(0,212,255,0.55)", marginLeft: 4 }}>· {p.skill_md_count}sm · {p.total_files}f</span>
               </span>
             ))}
           </div>
@@ -1439,13 +1439,13 @@ const SkillDeploymentPanel = ({ agent }) => {
 
       {!hasMapped && (
         <div style={{ marginBottom: 10, padding: "8px 12px", background: "rgba(255,140,0,0.06)", border: "1px solid rgba(255,140,0,0.25)", borderRadius: 3, color: "rgba(255,180,80,0.85)", fontSize: 11, fontFamily: "monospace" }}>
-          No dedicated SKILL.md file on disk. This agent operates conceptually â it draws from the universal pool below as needed.
+          No dedicated SKILL.md file on disk. This agent operates conceptually — it draws from the universal pool below as needed.
         </div>
       )}
 
       <div style={{ marginBottom: 8 }}>
         <button onClick={() => setShowPool(!showPool)} style={{ width: "100%", padding: "6px 10px", background: "rgba(0,212,255,0.06)", border: "1px solid rgba(0,212,255,0.25)", borderRadius: 2, color: "#00d4ff", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, cursor: "pointer", textAlign: "left" }}>
-          {showPool ? "â¼" : "â¸"} UNIVERSAL FILESYSTEM POOL â {data.universal_pool_total_packages} packages Â· {data.universal_pool_total_skill_md.toLocaleString()} SKILL.md Â· {data.universal_pool_total_files.toLocaleString()} files (every agent can pull from here as needed)
+          {showPool ? "▼" : "▸"} UNIVERSAL FILESYSTEM POOL — {data.universal_pool_total_packages} packages · {data.universal_pool_total_skill_md.toLocaleString()} SKILL.md · {data.universal_pool_total_files.toLocaleString()} files (every agent can pull from here as needed)
         </button>
         {showPool && (
           <div style={{ marginTop: 8, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 4 }}>
@@ -1453,7 +1453,7 @@ const SkillDeploymentPanel = ({ agent }) => {
               const isPrimary = primary.find(x => x.name === p.name);
               return (
                 <div key={i} style={{ padding: "5px 8px", fontSize: 10, fontFamily: "monospace", background: isPrimary ? "rgba(0,212,255,0.12)" : "rgba(0,10,20,0.5)", border: `1px solid ${isPrimary ? "rgba(0,212,255,0.4)" : "rgba(0,212,255,0.12)"}`, borderRadius: 2, color: isPrimary ? "#00d4ff" : "rgba(0,212,255,0.5)" }}>
-                  {isPrimary ? "â " : ""}{p.name}
+                  {isPrimary ? "★ " : ""}{p.name}
                   <span style={{ color: "rgba(0,212,255,0.4)", marginLeft: 4 }}>{p.skill_md_count}sm</span>
                 </div>
               );
@@ -1464,7 +1464,7 @@ const SkillDeploymentPanel = ({ agent }) => {
 
       <div>
         <button onClick={() => setShowCowork(!showCowork)} style={{ width: "100%", padding: "6px 10px", background: "rgba(57,255,20,0.06)", border: "1px solid rgba(57,255,20,0.25)", borderRadius: 2, color: "#39ff14", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, cursor: "pointer", textAlign: "left" }}>
-          {showCowork ? "â¼" : "â¸"} COWORK-CALLABLE SKILLS â {data.cowork_skills_total} skills (directly invokable via Skill tool, available to every agent)
+          {showCowork ? "▼" : "▸"} COWORK-CALLABLE SKILLS — {data.cowork_skills_total} skills (directly invokable via Skill tool, available to every agent)
         </button>
         {showCowork && (
           <div style={{ marginTop: 8, display: "flex", flexWrap: "wrap", gap: 4 }}>
@@ -1476,15 +1476,15 @@ const SkillDeploymentPanel = ({ agent }) => {
       </div>
 
       <div style={{ marginTop: 10, paddingTop: 8, borderTop: "1px solid rgba(0,212,255,0.12)", color: "rgba(0,212,255,0.5)", fontSize: 9, fontFamily: "monospace", letterSpacing: 1 }}>
-        Universal rule: every skill is available to every agent at all times. Source: agent_skills.json Â· auto-refreshed every 30s Â· regenerated by launchd watcher on filesystem changes.
+        Universal rule: every skill is available to every agent at all times. Source: agent_skills.json · auto-refreshed every 30s · regenerated by launchd watcher on filesystem changes.
       </div>
     </div>
   );
 };
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════
 // ECOSYSTEM STATS BAR (with Day-90 countdown)
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════
 const EcoStats = ({ agents }) => {
   const active     = agents.filter(a => a.status === "active").length;
   const building   = agents.filter(a => a.status === "building").length;
@@ -1525,9 +1525,9 @@ const EcoStats = ({ agents }) => {
   );
 };
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════
 // ACTIVITY LOG
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════
 const ActivityLog = ({ entries }) => (
   <div style={{ background: "rgba(0,10,0,0.6)", border: "1px solid rgba(57,255,20,0.15)", borderRadius: 4, padding: 12, height: 200, overflowY: "auto" }}>
     <div style={{ color: "rgba(57,255,20,0.5)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>
@@ -1541,10 +1541,10 @@ const ActivityLog = ({ entries }) => (
   </div>
 );
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
-// KILL CRITERION COUNTDOWN PANEL â v2.1
+// ═══════════════════════════════════════════════════
+// KILL CRITERION COUNTDOWN PANEL — v2.1
 // 5 conditions, 4-of-5 = continue, <4 = pause + re-architect
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════
 const KillCriterionPanel = () => {
   const passes = KILL_CRITERION.filter(c => c.pass).length;
   const days = daysUntilKill();
@@ -1584,9 +1584,9 @@ const KillCriterionPanel = () => {
   );
 };
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
-// TIER STRATEGY BANNER â v2.1
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════
+// TIER STRATEGY BANNER — v2.1
+// ═══════════════════════════════════════════════════
 const TierStrategyBanner = ({ agents }) => {
   const counts = [0,1,2,3,4,5].map(t => agents.filter(a => a.tier === t).length);
   return (
@@ -1608,9 +1608,9 @@ const TierStrategyBanner = ({ agents }) => {
   );
 };
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
-// LOUIS SPOTLIGHT â v2.1 featured tile
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════
+// LOUIS SPOTLIGHT — v2.1 featured tile
+// ═══════════════════════════════════════════════════
 const LouisSpotlight = ({ agent }) => {
   if (!agent) return null;
   return (
@@ -1677,10 +1677,10 @@ const LouisSpotlight = ({ agent }) => {
   );
 };
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
-// SECOND BRAIN PANEL â Obsidian-powered memory consolidation engine
-// 31 commands Â· connected to all agents Â· auto-consolidates overnight
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════
+// SECOND BRAIN PANEL — Obsidian-powered memory consolidation engine
+// 31 commands · connected to all agents · auto-consolidates overnight
+// ═══════════════════════════════════════════════════
 const SecondBrainCard = () => {
   return (
     <div style={{ padding: "20px 24px", marginBottom: 8 }}>
@@ -1702,7 +1702,7 @@ const SecondBrainCard = () => {
           <div style={{ flex: 1 }}>
             <div style={{ color: "#39ff14", fontFamily: "monospace", fontSize: 22, fontWeight: "bold", letterSpacing: 4 }}>SECOND BRAIN</div>
             <div style={{ color: "rgba(57,255,20,0.55)", fontFamily: "monospace", fontSize: 11, letterSpacing: 3, marginTop: 2 }}>
-              MEMORY CONSOLIDATION ENGINE Â· OBSIDIAN-POWERED Â· 31 COMMANDS Â· PRAXIS-WIRED 2026-04-30
+              MEMORY CONSOLIDATION ENGINE · OBSIDIAN-POWERED · 31 COMMANDS · PRAXIS-WIRED 2026-04-30
             </div>
           </div>
           <div style={{ padding: "4px 12px", background: "rgba(57,255,20,0.12)", border: "1px solid rgba(57,255,20,0.45)", borderRadius: 3, color: "#39ff14", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, fontWeight: "bold" }}>
@@ -1712,7 +1712,7 @@ const SecondBrainCard = () => {
 
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, marginBottom: 16 }}>
           <div>
-            <div style={{ color: "rgba(57,255,20,0.6)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>â¸ MEMORY LAYERS</div>
+            <div style={{ color: "rgba(57,255,20,0.6)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>▸ MEMORY LAYERS</div>
             {[
               { name: "Working Memory", desc: "Active session context" },
               { name: "Episodic Memory", desc: "Conversation + event log" },
@@ -1725,7 +1725,7 @@ const SecondBrainCard = () => {
             ))}
           </div>
           <div>
-            <div style={{ color: "rgba(57,255,20,0.6)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>â¸ CONSOLIDATION CYCLES</div>
+            <div style={{ color: "rgba(57,255,20,0.6)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>▸ CONSOLIDATION CYCLES</div>
             {[
               { name: "Overnight Run", desc: "Auto-consolidates daily" },
               { name: "Vault-First Research", desc: "Local knowledge before web" },
@@ -1738,7 +1738,7 @@ const SecondBrainCard = () => {
             ))}
           </div>
           <div>
-            <div style={{ color: "rgba(57,255,20,0.6)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>â¸ SKILL STATS</div>
+            <div style={{ color: "rgba(57,255,20,0.6)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>▸ SKILL STATS</div>
             <div style={{ padding: "10px 12px", background: "rgba(57,255,20,0.04)", border: "1px solid rgba(57,255,20,0.15)", borderRadius: 3 }}>
               <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
                 <span style={{ color: "rgba(57,255,20,0.55)", fontFamily: "monospace", fontSize: 10 }}>commands available</span>
@@ -1747,25 +1747,25 @@ const SecondBrainCard = () => {
               <div style={{ marginTop: 8, paddingTop: 8, borderTop: "1px solid rgba(57,255,20,0.1)" }}>
                 <div style={{ fontSize: 10, fontFamily: "monospace", color: "rgba(57,255,20,0.7)", marginBottom: 4 }}><span style={{ opacity: 0.5 }}>Skill:</span> obsidian-second-brain</div>
                 <div style={{ fontSize: 10, fontFamily: "monospace", color: "rgba(57,255,20,0.7)", marginBottom: 4 }}><span style={{ opacity: 0.5 }}>Connected:</span> All agents</div>
-                <div style={{ fontSize: 10, fontFamily: "monospace", color: "#39ff14", marginBottom: 4 }}><span style={{ opacity: 0.5 }}>PRAXIS bridge:</span> LIVE â promote.py â praxis_to_obsidian.py</div>
-                <div style={{ fontSize: 10, fontFamily: "monospace", color: "#39ff14" }}><span style={{ opacity: 0.5 }}>Research bridge:</span> LIVE â research_bridge.py Â· launchd 30min Â· cap ~$45/mo</div>
+                <div style={{ fontSize: 10, fontFamily: "monospace", color: "#39ff14", marginBottom: 4 }}><span style={{ opacity: 0.5 }}>PRAXIS bridge:</span> LIVE — promote.py → praxis_to_obsidian.py</div>
+                <div style={{ fontSize: 10, fontFamily: "monospace", color: "#39ff14" }}><span style={{ opacity: 0.5 }}>Research bridge:</span> LIVE — research_bridge.py · launchd 30min · cap ~$45/mo</div>
               </div>
             </div>
           </div>
         </div>
 
         <div style={{ paddingTop: 12, borderTop: "1px solid rgba(57,255,20,0.15)", color: "rgba(57,255,20,0.7)", fontFamily: "monospace", fontSize: 11, lineHeight: 1.5 }}>
-          Obsidian-powered persistent memory layer. <span style={{ color: "#39ff14" }}>Wired to PRAXIS 2026-04-30:</span> every promoted lesson auto-mirrors as an AI-first vault note (frontmatter, wikilinks, source-packet links, generated index). <span style={{ color: "#39ff14" }}>Research substrate 2026-04-30:</span> cloud routines write <code style={{ color: "#88ddff" }}>RESEARCH_TARGETS</code> blocks â local launchd bridge polls every 30 min â runs Perplexity Sonar Pro / Grok / YouTube against the obsidian-second-brain skill â synthesis flows into the vault and PRAXIS. Daily caps enforce ~$45/mo ceiling; all runs no-op gracefully when API keys are unset.
+          Obsidian-powered persistent memory layer. <span style={{ color: "#39ff14" }}>Wired to PRAXIS 2026-04-30:</span> every promoted lesson auto-mirrors as an AI-first vault note (frontmatter, wikilinks, source-packet links, generated index). <span style={{ color: "#39ff14" }}>Research substrate 2026-04-30:</span> cloud routines write <code style={{ color: "#88ddff" }}>RESEARCH_TARGETS</code> blocks → local launchd bridge polls every 30 min → runs Perplexity Sonar Pro / Grok / YouTube against the obsidian-second-brain skill → synthesis flows into the vault and PRAXIS. Daily caps enforce ~$45/mo ceiling; all runs no-op gracefully when API keys are unset.
         </div>
       </div>
     </div>
   );
 };
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
-// NANOCLAW PANEL â self-hosted multi-channel AI assistant
-// WhatsApp / Telegram / Slack / Discord Â· Mnemon graph memory
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════
+// NANOCLAW PANEL — self-hosted multi-channel AI assistant
+// WhatsApp / Telegram / Slack / Discord · Mnemon graph memory
+// ═══════════════════════════════════════════════════
 const NanoClawCard = () => {
   return (
     <div style={{ padding: "0 24px 20px" }}>
@@ -1787,7 +1787,7 @@ const NanoClawCard = () => {
           <div style={{ flex: 1 }}>
             <div style={{ color: "#00d4ff", fontFamily: "monospace", fontSize: 22, fontWeight: "bold", letterSpacing: 4 }}>NANOCLAW</div>
             <div style={{ color: "rgba(0,212,255,0.55)", fontFamily: "monospace", fontSize: 11, letterSpacing: 3, marginTop: 2 }}>
-              SELF-HOSTED AI ASSISTANT Â· MULTI-CHANNEL Â· MNEMON MEMORY
+              SELF-HOSTED AI ASSISTANT · MULTI-CHANNEL · MNEMON MEMORY
             </div>
           </div>
           <div style={{ padding: "4px 12px", background: "rgba(255,200,0,0.10)", border: "1px solid rgba(255,200,0,0.45)", borderRadius: 3, color: "#ffcc00", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, fontWeight: "bold" }}>
@@ -1797,7 +1797,7 @@ const NanoClawCard = () => {
 
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, marginBottom: 16 }}>
           <div>
-            <div style={{ color: "rgba(0,212,255,0.6)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>â¸ MESSAGING CHANNELS</div>
+            <div style={{ color: "rgba(0,212,255,0.6)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>▸ MESSAGING CHANNELS</div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
               {["WhatsApp", "Telegram", "Slack", "Discord"].map((c, i) => (
                 <span key={i} style={{ padding: "5px 10px", fontSize: 11, fontFamily: "monospace", background: "rgba(0,212,255,0.08)", border: "1px solid rgba(0,212,255,0.3)", borderRadius: 2, color: "#00d4ff", letterSpacing: 1 }}>{c}</span>
@@ -1805,7 +1805,7 @@ const NanoClawCard = () => {
             </div>
           </div>
           <div>
-            <div style={{ color: "rgba(0,212,255,0.6)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>â¸ CAPABILITIES</div>
+            <div style={{ color: "rgba(0,212,255,0.6)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>▸ CAPABILITIES</div>
             {[
               { name: "Voice Note Processing", desc: "Audio \u2192 text \u2192 action" },
               { name: "Scheduled Tasks", desc: "Cron-driven agent runs" },
@@ -1818,32 +1818,32 @@ const NanoClawCard = () => {
             ))}
           </div>
           <div>
-            <div style={{ color: "rgba(0,212,255,0.6)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>â¸ PROVENANCE</div>
+            <div style={{ color: "rgba(0,212,255,0.6)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>▸ PROVENANCE</div>
             <div style={{ padding: "10px 12px", background: "rgba(0,212,255,0.04)", border: "1px solid rgba(0,212,255,0.15)", borderRadius: 3, fontSize: 10, fontFamily: "monospace", color: "rgba(0,212,255,0.7)", lineHeight: 1.7 }}>
               <div><span style={{ opacity: 0.55 }}>Author:</span> <span style={{ color: "#00d4ff" }}>Singapore FM</span></div>
               <div><span style={{ opacity: 0.55 }}>Memory:</span> <span style={{ color: "#00d4ff" }}>Mnemon (graph)</span></div>
               <div><span style={{ opacity: 0.55 }}>Skills:</span> <span style={{ color: "#00d4ff" }}>nanoclaw + mnemon</span></div>
             </div>
             <div style={{ marginTop: 8, padding: "6px 10px", background: "rgba(255,200,0,0.06)", border: "1px solid rgba(255,200,0,0.25)", borderRadius: 3, color: "rgba(255,200,80,0.85)", fontFamily: "monospace", fontSize: 10, lineHeight: 1.4 }}>
-              Installed â configure channels to activate messaging bridge.
+              Installed — configure channels to activate messaging bridge.
             </div>
           </div>
         </div>
 
         <div style={{ paddingTop: 12, borderTop: "1px solid rgba(0,212,255,0.15)", color: "rgba(0,212,255,0.7)", fontFamily: "monospace", fontSize: 11, lineHeight: 1.5 }}>
-          Personal Claude assistant with multi-channel messaging, voice note processing, scheduled tasks, and graph-based memory. Bobby talks to the ecosystem from anywhere â WhatsApp, Telegram, Slack, or Discord.
+          Personal Claude assistant with multi-channel messaging, voice note processing, scheduled tasks, and graph-based memory. Bobby talks to the ecosystem from anywhere — WhatsApp, Telegram, Slack, or Discord.
         </div>
       </div>
     </div>
   );
 };
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
-// PRAXIS â era-of-experience layer
+// ═══════════════════════════════════════════════════
+// PRAXIS — era-of-experience layer
 // Frame: David Silver's $1.1B raise (2025). Frontier intelligence from doing.
-// Capture â Distill â Promote â Broadcast â First-Principles Spike.
+// Capture → Distill → Promote → Broadcast → First-Principles Spike.
 // Store: ~/.claude/memory/construct-shared/
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════
 const PRAXISCard = () => {
   const [tick, setTick] = React.useState(0);
   const [synapseCount, setSynapseCount] = React.useState(0);
@@ -1858,11 +1858,11 @@ const PRAXISCard = () => {
     return () => clearInterval(id);
   }, []);
   const stages = [
-    { num: "01", name: "CAPTURE",            desc: "Structured experience packets â every session, every agent. Decision Â· outcome Â· lesson Â· tags." },
-    { num: "02", name: "DISTILL",            desc: "Scheduled sweep â dedupe, cluster, rank lessons by impact." },
-    { num: "03", name: "PROMOTE",            desc: "3+ recurrence OR explicit Bobby approval â lesson is bound to a skill file." },
+    { num: "01", name: "CAPTURE",            desc: "Structured experience packets — every session, every agent. Decision · outcome · lesson · tags." },
+    { num: "02", name: "DISTILL",            desc: "Scheduled sweep — dedupe, cluster, rank lessons by impact." },
+    { num: "03", name: "PROMOTE",            desc: "3+ recurrence OR explicit Bobby approval → lesson is bound to a skill file." },
     { num: "04", name: "BROADCAST",          desc: "Auto-update CLAUDE.md across the ecosystem. Next session of every agent boots with the new prior." },
-    { num: "05", name: "FIRST-PRINCIPLES SPIKE", desc: "Agent derives an answer from first principles, then compares to the human-data answer. Discrepancy is logged â that's where new knowledge lives." },
+    { num: "05", name: "FIRST-PRINCIPLES SPIKE", desc: "Agent derives an answer from first principles, then compares to the human-data answer. Discrepancy is logged — that's where new knowledge lives." },
   ];
   return (
     <div style={{ padding: "0 24px 20px" }}>
@@ -1891,17 +1891,17 @@ const PRAXISCard = () => {
           <div style={{ flex: 1 }}>
             <div style={{ color: "#ffd700", fontFamily: "monospace", fontSize: 22, fontWeight: "bold", letterSpacing: 4 }}>PRAXIS</div>
             <div style={{ color: "rgba(255,215,0,0.55)", fontFamily: "monospace", fontSize: 11, letterSpacing: 3, marginTop: 2 }}>
-              ERA-OF-EXPERIENCE LAYER Â· LEARNS FROM AGENT PRAXIS
+              ERA-OF-EXPERIENCE LAYER · LEARNS FROM AGENT PRAXIS
             </div>
           </div>
           <div style={{ padding: "4px 12px", background: "rgba(57,255,20,0.10)", border: "1px solid rgba(57,255,20,0.55)", borderRadius: 3, color: "#39ff14", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, fontWeight: "bold" }}>
-            LIVE Â· v1.0
+            LIVE · v1.0
           </div>
         </div>
 
         {/* Mission */}
         <div style={{ paddingBottom: 14, marginBottom: 14, borderBottom: "1px solid rgba(255,215,0,0.15)", color: "rgba(255,215,0,0.92)", fontFamily: "monospace", fontSize: 12, lineHeight: 1.6 }}>
-          Knowledge gained through doing â not retrieved from human data alone. Every agent in the Construct contributes its lived experience back to the network. Lessons that recur across agents promote into shared skills. The ecosystem gets smarter without retraining.
+          Knowledge gained through doing — not retrieved from human data alone. Every agent in the Construct contributes its lived experience back to the network. Lessons that recur across agents promote into shared skills. The ecosystem gets smarter without retraining.
         </div>
 
         <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: 18, marginBottom: 16 }}>
@@ -1920,7 +1920,7 @@ const PRAXISCard = () => {
           <div>
             <div style={{ color: "rgba(255,215,0,0.6)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>{"\u25B8"} THESIS</div>
             <div style={{ padding: "11px 13px", background: "rgba(255,215,0,0.04)", border: "1px solid rgba(255,215,0,0.15)", borderRadius: 3, fontSize: 11, fontFamily: "monospace", color: "rgba(255,215,0,0.85)", lineHeight: 1.6, marginBottom: 10 }}>
-              David Silver (AlphaZero Â· DeepMind) raised <span style={{ color: "#ffd700", fontWeight: "bold" }}>$1.1B</span> in 2025 on the era-of-experience thesis: frontier intelligence emerges from agents acting in the world, not from compressing the human corpus alone. PRAXIS is The Construct's local instance of that thesis â applied at the team scale, not the lab scale.
+              David Silver (AlphaZero · DeepMind) raised <span style={{ color: "#ffd700", fontWeight: "bold" }}>$1.1B</span> in 2025 on the era-of-experience thesis: frontier intelligence emerges from agents acting in the world, not from compressing the human corpus alone. PRAXIS is The Construct's local instance of that thesis — applied at the team scale, not the lab scale.
             </div>
 
             <div style={{ color: "rgba(255,215,0,0.6)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, marginBottom: 8 }}>{"\u25B8"} STORE LAYOUT</div>
@@ -1934,32 +1934,32 @@ const PRAXISCard = () => {
             </div>
 
             <div style={{ marginTop: 10, padding: "7px 11px", background: "rgba(57,255,20,0.08)", border: "1px solid rgba(57,255,20,0.32)", borderRadius: 3, color: "rgba(57,255,20,0.95)", fontFamily: "monospace", fontSize: 10, lineHeight: 1.45 }}>
-              Pipeline LIVE Â· 8 priors broadcast Â· manifest v9 Â· capture, distill, promote, broadcast all functional. First-principles spike harness scaffolded.
+              Pipeline LIVE · 8 priors broadcast · manifest v9 · capture, distill, promote, broadcast all functional. First-principles spike harness scaffolded.
             </div>
           </div>
         </div>
 
-        {/* MOST RECENT PROMOTION â locked 2026-05-02 */}
+        {/* MOST RECENT PROMOTION — locked 2026-05-02 */}
         <div style={{ marginTop: 14, padding: "12px 14px", background: "linear-gradient(135deg, rgba(255,84,84,0.08) 0%, rgba(255,215,0,0.04) 100%)", border: "1px solid rgba(255,84,84,0.55)", borderRadius: 4, position: "relative" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-            <div style={{ color: "#ff5454", fontFamily: "monospace", fontSize: 10, letterSpacing: 3, fontWeight: "bold" }}>{"â¸"} MOST RECENT PROMOTION Â· 2026-05-02</div>
+            <div style={{ color: "#ff5454", fontFamily: "monospace", fontSize: 10, letterSpacing: 3, fontWeight: "bold" }}>{"▸"} MOST RECENT PROMOTION · 2026-05-02</div>
             <div style={{ color: "rgba(255,84,84,0.85)", fontFamily: "monospace", fontSize: 9, letterSpacing: 2 }}>RULE 08 / v9</div>
           </div>
           <div style={{ color: "#ffd700", fontFamily: "monospace", fontSize: 13, fontWeight: "bold", letterSpacing: 1, marginBottom: 6 }}>
-            Always look at the screen before asking â never forget computer-use.
+            Always look at the screen before asking — never forget computer-use.
           </div>
           <div style={{ color: "rgba(255,215,0,0.78)", fontFamily: "monospace", fontSize: 10, lineHeight: 1.55 }}>
-            Locked by Bobby 2026-05-02. Before any UI-state question, take a screenshot via computer-use first. The lazy hand-off pattern (asking the user to describe what's on their screen) is a fail. Computer-use is always available â for native apps at full tier, for browsers at read tier (visible-but-not-clickable). Tier doesn't change the rule. Look first, then act.
+            Locked by Bobby 2026-05-02. Before any UI-state question, take a screenshot via computer-use first. The lazy hand-off pattern (asking the user to describe what's on their screen) is a fail. Computer-use is always available — for native apps at full tier, for browsers at read tier (visible-but-not-clickable). Tier doesn't change the rule. Look first, then act.
           </div>
           <div style={{ marginTop: 8, paddingTop: 7, borderTop: "1px solid rgba(255,84,84,0.25)", color: "rgba(255,84,84,0.7)", fontFamily: "monospace", fontSize: 9, letterSpacing: 1 }}>
-            Pairs with: feedback_no_lazy_handoffs Â· feedback_drive_dont_describe Â· feedback_no_right_click
+            Pairs with: feedback_no_lazy_handoffs · feedback_drive_dont_describe · feedback_no_right_click
           </div>
         </div>
 
         <div style={{ marginTop: 14, paddingTop: 12, borderTop: "1px solid rgba(255,215,0,0.15)", display: "flex", justifyContent: "space-between", alignItems: "center", fontFamily: "monospace", fontSize: 11, color: "rgba(255,215,0,0.78)" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <span style={{ display: "inline-block", width: 8, height: 8, borderRadius: "50%", background: "#39ff14", boxShadow: "0 0 10px #39ff14", animation: "blink 1.2s infinite" }} />
-            <span>Manifest v9 LIVE Â· 8 priors broadcast Â· {lastBeat}</span>
+            <span>Manifest v9 LIVE · 8 priors broadcast · {lastBeat}</span>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 14, color: "rgba(255,215,0,0.55)", letterSpacing: 2, fontSize: 10 }}>
             <span>{"\u03A0"} ARISTOTLE / SILVER</span>
@@ -1972,29 +1972,29 @@ const PRAXISCard = () => {
   );
 };
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
-// CLOUD CADENCE â Claude Routines + Higgsfield MCP
+// ═══════════════════════════════════════════════════
+// CLOUD CADENCE — Claude Routines + Higgsfield MCP
 // Locked 2026-04-30. Routines spec: CLAUDE_ROUTINES_v1.md
 // Higgsfield spec: HIGGSFIELD_MCP_INTEGRATION.md
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════
 const CloudCadenceCard = () => {
   const routines = [
     { slot: 1,  hh: "06:00", name: "PRAXIS Daily Review",          daily: true,  agent: "AP" },
     { slot: 2,  hh: "07:00", name: "Skill Discovery Sweep",        daily: true,  agent: "AP" },
-    { slot: 3,  hh: "08:00", name: "Industry Pulse Â· Signage",     daily: false, agent: "AP" },
-    { slot: 4,  hh: "08:30", name: "Industry Pulse Â· AI",          daily: true,  agent: "AP" },
-    { slot: 5,  hh: "09:00", name: "WOLF Â· Pre-Market Intel",      daily: false, agent: "WOLF" },
-    { slot: 6,  hh: "09:30", name: "WOLF Â· Congressional Trading", daily: false, agent: "WOLF" },
-    { slot: 7,  hh: "11:00", name: "WOLF Â· Consulting Pulse",      daily: false, agent: "WOLF" },
+    { slot: 3,  hh: "08:00", name: "Industry Pulse · Signage",     daily: false, agent: "AP" },
+    { slot: 4,  hh: "08:30", name: "Industry Pulse · AI",          daily: true,  agent: "AP" },
+    { slot: 5,  hh: "09:00", name: "WOLF · Pre-Market Intel",      daily: false, agent: "WOLF" },
+    { slot: 6,  hh: "09:30", name: "WOLF · Congressional Trading", daily: false, agent: "WOLF" },
+    { slot: 7,  hh: "11:00", name: "WOLF · Consulting Pulse",      daily: false, agent: "WOLF" },
     { slot: 8,  hh: "12:00", name: "Brand 9 Site Health",          daily: true,  agent: "AP" },
     { slot: 9,  hh: "14:00", name: "First-Principles Spike",       daily: false, agent: "AP" },
     { slot: 10, hh: "16:00", name: "Hartley Capital Watch",        daily: false, agent: "AP" },
-    { slot: 11, hh: "16:30", name: "WOLF Â· Post-Close Recap",      daily: false, agent: "WOLF" },
+    { slot: 11, hh: "16:30", name: "WOLF · Post-Close Recap",      daily: false, agent: "WOLF" },
     { slot: 12, hh: "18:00", name: "Daily Construct Standup",      daily: false, agent: "AP" },
-    { slot: 13, hh: "Fri 17:00", name: "WOLF Â· AI Hedge Fund Committee", daily: false, agent: "WOLF", weekly: true },
+    { slot: 13, hh: "Fri 17:00", name: "WOLF · AI Hedge Fund Committee", daily: false, agent: "WOLF", weekly: true },
   ];
   const mcps = [
-    { name: "Higgsfield",   role: "30+ models Â· OAuth Â· async",      owner: "Vector",  status: "live" },
+    { name: "Higgsfield",   role: "30+ models · OAuth · async",      owner: "Vector",  status: "live" },
     { name: "Chrome",       role: "browser automation",              owner: "AP",      status: "live" },
     { name: "Slack",        role: "team channels + canvas",          owner: "Signal",  status: "live" },
     { name: "Gmail",        role: "thread search + drafts",          owner: "Signal",  status: "live" },
@@ -2061,7 +2061,7 @@ const CloudCadenceCard = () => {
               </div>
             ))}
             <div style={{ marginTop: 10, color: "rgba(179,136,255,0.85)", fontFamily: "monospace", fontSize: 10, lineHeight: 1.45 }}>
-              + 3 triggered routines (PR review Â· Yoast drift Â· failure recovery) â event-based, no cap.
+              + 3 triggered routines (PR review · Yoast drift · failure recovery) — event-based, no cap.
             </div>
           </div>
 
@@ -2089,10 +2089,10 @@ const CloudCadenceCard = () => {
               );
             })}
             <div style={{ marginTop: 10, padding: "7px 11px", background: "rgba(255,215,0,0.06)", border: "1px solid rgba(255,215,0,0.28)", borderRadius: 3, color: "rgba(255,215,0,0.88)", fontFamily: "monospace", fontSize: 10, lineHeight: 1.45 }}>
-              <span style={{ fontWeight: "bold", color: "#39ff14" }}>Higgsfield MCP â LIVE since 2026-04-30.</span> OAuth connected at mcp.higgsfield.ai/mcp Â· Vector primary owner Â· 30+ models (Sora 2 Â· Veo Â· Kling Â· Nano Banana Pro Â· Flux 2 Â· Soul) replace the multi-account juggle. Tools surface in fresh Cowork sessions.
+              <span style={{ fontWeight: "bold", color: "#39ff14" }}>Higgsfield MCP — LIVE since 2026-04-30.</span> OAuth connected at mcp.higgsfield.ai/mcp · Vector primary owner · 30+ models (Sora 2 · Veo · Kling · Nano Banana Pro · Flux 2 · Soul) replace the multi-account juggle. Tools surface in fresh Cowork sessions.
             </div>
             <div style={{ marginTop: 8, padding: "7px 11px", background: "rgba(255,69,0,0.06)", border: "1px solid rgba(255,69,0,0.32)", borderRadius: 3, color: "rgba(255,180,120,0.92)", fontFamily: "monospace", fontSize: 10, lineHeight: 1.45 }}>
-              <span style={{ fontWeight: "bold", color: "#ff7a3a" }}>WOLF â AI Hedge Fund Committee Â· LIVE 2026-04-30.</span> 4 daily routines (Pre-Market 09:00 Â· Congressional 09:30 Â· Consulting 11:00 Â· Post-Close 16:30) + Friday 17:00 committee. Internal intel â wolf-intel/. Public WOLF Brief â wolf-brief/. <span style={{ color: "#9fe7b8" }}>Strategy battery shipped: 5 free-data modules (mean-reversion Â· gap-reversal Â· insider-cluster Â· congress-follower Â· sector-rotation) â projected 7â15 signals/day.</span> Graduation gate slipped Day-30 â Day-60 (target 2026-06-07) for soak. 90-day Brief kill criterion (Day-90 = 2026-07-30): â¥100 engaged subs, paper Sharpe â¥1.0, 1+ family-office inbound â else stays internal-only.
+              <span style={{ fontWeight: "bold", color: "#ff7a3a" }}>WOLF — AI Hedge Fund Committee · LIVE 2026-04-30.</span> 4 daily routines (Pre-Market 09:00 · Congressional 09:30 · Consulting 11:00 · Post-Close 16:30) + Friday 17:00 committee. Internal intel → wolf-intel/. Public WOLF Brief → wolf-brief/. <span style={{ color: "#9fe7b8" }}>Strategy battery shipped: 5 free-data modules (mean-reversion · gap-reversal · insider-cluster · congress-follower · sector-rotation) — projected 7–15 signals/day.</span> Graduation gate slipped Day-30 → Day-60 (target 2026-06-07) for soak. 90-day Brief kill criterion (Day-90 = 2026-07-30): ≥100 engaged subs, paper Sharpe ≥1.0, 1+ family-office inbound — else stays internal-only.
             </div>
           </div>
         </div>
@@ -2100,10 +2100,10 @@ const CloudCadenceCard = () => {
         <div style={{ paddingTop: 12, borderTop: "1px solid rgba(0,212,255,0.15)", display: "flex", justifyContent: "space-between", alignItems: "center", fontFamily: "monospace", fontSize: 11, color: "rgba(0,212,255,0.78)" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <span style={{ display: "inline-block", width: 8, height: 8, borderRadius: "50%", background: "#00d4ff", boxShadow: "0 0 10px #00d4ff", animation: "blink 1.6s infinite" }} />
-            <span>13 routines LIVE Â· 12/15 daily peak Â· 13/15 Friday peak Â· all writing to wolf-dashboards-repo</span>
+            <span>13 routines LIVE · 12/15 daily peak · 13/15 Friday peak · all writing to wolf-dashboards-repo</span>
           </div>
           <div style={{ color: "rgba(0,212,255,0.55)", letterSpacing: 2, fontSize: 10 }}>
-            {"\u29C9"} CLAUDE_ROUTINES_v1 Â· HIGGSFIELD_MCP_INTEGRATION
+            {"\u29C9"} CLAUDE_ROUTINES_v1 · HIGGSFIELD_MCP_INTEGRATION
           </div>
         </div>
       </div>
@@ -2111,11 +2111,11 @@ const CloudCadenceCard = () => {
   );
 };
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
-// QUALITY TRIANGLE PANEL â three-point gate every agent must pass
+// ═══════════════════════════════════════════════════
+// QUALITY TRIANGLE PANEL — three-point gate every agent must pass
 // Bobby's canonical quality protocol (locked 2026-04-28).
 // Master: ~/.claude/memory/quality-triangle.md
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════
 const QualityTrianglePanel = () => {
   const points = [
     {
@@ -2125,7 +2125,7 @@ const QualityTrianglePanel = () => {
       domain: "LOGIC",
       role: "The tester. Assumes nothing works until proven.",
       checks: ["If code: did it run?", "If analysis: are the numbers real?", "If recommendation: what's the counter-argument?"],
-      caught: "Hero video failure â would have watched the video before saying done.",
+      caught: "Hero video failure — would have watched the video before saying done.",
       color: "#39ff14"
     },
     {
@@ -2135,7 +2135,7 @@ const QualityTrianglePanel = () => {
       domain: "DESIGN",
       role: "The structural reviewer. Rejects technically-correct-but-structurally-wrong.",
       checks: ["Does it fit the system?", "Is it clean and maintainable?", "Aligned with brand standards?"],
-      caught: "Teal-on-teal favicon â \"worked\" as image but invisible in context.",
+      caught: "Teal-on-teal favicon — \"worked\" as image but invisible in context.",
       color: "#00d4ff"
     },
     {
@@ -2153,12 +2153,12 @@ const QualityTrianglePanel = () => {
   return (
     <div style={{ padding: "20px 24px", marginTop: 8, marginBottom: 8 }}>
       <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 4 }}>
-        <span style={{ color: "#00d4ff", fontSize: 18, letterSpacing: 4 }}>â³</span>
+        <span style={{ color: "#00d4ff", fontSize: 18, letterSpacing: 4 }}>△</span>
         <span style={{ color: "#00d4ff", fontFamily: "monospace", fontSize: 13, fontWeight: "bold", letterSpacing: 3 }}>THE QUALITY TRIANGLE</span>
-        <span style={{ color: "rgba(0,212,255,0.5)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2 }}>Â· three-point gate Â· every agent Â· every deliverable Â· no exceptions</span>
+        <span style={{ color: "rgba(0,212,255,0.5)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2 }}>· three-point gate · every agent · every deliverable · no exceptions</span>
       </div>
       <div style={{ color: "rgba(0,212,255,0.6)", fontFamily: "monospace", fontSize: 11, marginBottom: 18, letterSpacing: 1 }}>
-        If any one check fails, the work goes back. Normal mode = mental checklist Â· [RED] mode = full audit with evidence.
+        If any one check fails, the work goes back. Normal mode = mental checklist · [RED] mode = full audit with evidence.
       </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
@@ -2185,7 +2185,7 @@ const QualityTrianglePanel = () => {
             <div style={{ marginBottom: 12 }}>
               {p.checks.map((c, i) => (
                 <div key={i} style={{ color: "rgba(0,212,255,0.65)", fontFamily: "monospace", fontSize: 10, letterSpacing: 0.5, marginBottom: 3, paddingLeft: 12, position: "relative" }}>
-                  <span style={{ position: "absolute", left: 0, color: `${p.color}99` }}>â¸</span>
+                  <span style={{ position: "absolute", left: 0, color: `${p.color}99` }}>▸</span>
                   {c}
                 </div>
               ))}
@@ -2199,7 +2199,7 @@ const QualityTrianglePanel = () => {
       </div>
 
       <div style={{ marginTop: 16, padding: "12px 16px", background: "rgba(0,212,255,0.04)", border: "1px solid rgba(0,212,255,0.2)", borderRadius: 4 }}>
-        <div style={{ color: "rgba(0,212,255,0.85)", fontFamily: "monospace", fontSize: 11, letterSpacing: 2, fontWeight: "bold", marginBottom: 8 }}>â PRE-DELIVERY CHECKLIST â every agent runs this before saying "done"</div>
+        <div style={{ color: "rgba(0,212,255,0.85)", fontFamily: "monospace", fontSize: 11, letterSpacing: 2, fontWeight: "bold", marginBottom: 8 }}>◆ PRE-DELIVERY CHECKLIST — every agent runs this before saying "done"</div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, fontFamily: "monospace", fontSize: 11 }}>
           <div style={{ color: "#39ff14" }}><span style={{ opacity: 0.6 }}>[ ]</span> SKEPTIC: Did I test this? Does it actually produce the result I'm claiming?</div>
           <div style={{ color: "#00d4ff" }}><span style={{ opacity: 0.6 }}>[ ]</span> ARCHITECT: Is this the right approach? Does it fit Bobby's system and standards?</div>
@@ -2208,15 +2208,15 @@ const QualityTrianglePanel = () => {
       </div>
 
       <div style={{ marginTop: 10, color: "rgba(0,212,255,0.45)", fontFamily: "monospace", fontSize: 9, letterSpacing: 1, textAlign: "center" }}>
-        Master protocol: ~/.claude/memory/quality-triangle.md Â· loaded on session start Â· appended to all 17 agent SKILL.md files
+        Master protocol: ~/.claude/memory/quality-triangle.md · loaded on session start · appended to all 17 agent SKILL.md files
       </div>
     </div>
   );
 };
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
-// FOUR LOOPS PANEL â v2.1
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════
+// FOUR LOOPS PANEL — v2.1
+// ═══════════════════════════════════════════════════
 const FourLoopsPanel = () => (
   <div style={{ margin: "16px 24px" }}>
     <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
@@ -2241,35 +2241,35 @@ const FourLoopsPanel = () => (
   </div>
 );
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
-// CREATIVE BOARD PANEL â 5-lens parallel critique + agentic self-improvement
+// ═══════════════════════════════════════════════════
+// CREATIVE BOARD PANEL — 5-lens parallel critique + agentic self-improvement
 // Standing panel covering ALL creative + written output. 2-3 cycle minimum on
 // blog work, premium ceiling required on heritage. Every cycle's lessons harvest
-// into memory â Skill-Forge v2 codifies â all agents read them next session.
+// into memory → Skill-Forge v2 codifies → all agents read them next session.
 // This IS where agentic self-improvement happens.
-// Added 2026-05-15 per Bobby directive â visible across all agents.
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Added 2026-05-15 per Bobby directive — visible across all agents.
+// ═══════════════════════════════════════════════════
 const CreativeBoardPanel = () => {
   const lenses = [
-    { name: "VECTOR",        domain: "DESIGN",          q: "Does it clear the brand premium ceiling?",      role: "Visual hierarchy Â· craft Â· brand fit Â· 5-dim critique runner (philosophy / hierarchy / craft / functionality / innovation each /10).", color: "#b388ff", recent: "Vizcaya v12 9.0 â Ybor v11 9.0 â Kingsley v8 9.4 â Hibernia v9 9.2" },
-    { name: "THE CRITIC",    domain: "TASTE",           q: "Is it AI-slop or signature?",                   role: "Anti-slop watch. Calls out purple gradients, emoji icons, cyber-neon backgrounds, SVG-drawn imagery, unearned color blocks. Forces signature over template.", color: "#39ff14", recent: "Caught cyan-square slop in Vizcaya v12 footer Â· enforced photo-credit-on-paper-field" },
-    { name: "THE ARCHIVIST", domain: "FACTS",           q: "Are the facts verifiable + cited?",             role: "Core Principle #0 enforcement. Every date, name, figure, claim must WebSearch-verify before publication. Primary sources cited. No invented names.", color: "#00d4ff", recent: "Killed 7 invented enslaved-person names in Kingsley v8 draft Â· verified Hibernia 1790 grant via NPS" },
-    { name: "THE PROOFER",   domain: "DETAIL",          q: "Does it fit, scan, render, hold up?",           role: "Pixel + render check. Text-fits-container arithmetic, alignment, no overlaps, dateModified vs render state, all alt text present, integrity-diff passes before push.", color: "#00ffff", recent: "Caught Kingsley grid overflow Â· enforced WP base64(urlencode) for homepage strip" },
-    { name: "THE STEWARD",   domain: "VOICE / EQUITY",  q: "Whose story is this? Whose link survives?",     role: "Labor history, naming conventions, link preservation, accessibility. Names the people who built / read / suffered / were forgotten. Diffs every existing-post edit against the rule: ADDITIVE ONLY.", color: "#ffd700", recent: "Bahamian + Afro-Caribbean labor named in Vizcaya Â· St. Johns River reframing for Hibernia Â· 0 inbound links lost across 4 post edits" },
+    { name: "VECTOR",        domain: "DESIGN",          q: "Does it clear the brand premium ceiling?",      role: "Visual hierarchy · craft · brand fit · 5-dim critique runner (philosophy / hierarchy / craft / functionality / innovation each /10).", color: "#b388ff", recent: "Vizcaya v12 9.0 → Ybor v11 9.0 → Kingsley v8 9.4 → Hibernia v9 9.2" },
+    { name: "THE CRITIC",    domain: "TASTE",           q: "Is it AI-slop or signature?",                   role: "Anti-slop watch. Calls out purple gradients, emoji icons, cyber-neon backgrounds, SVG-drawn imagery, unearned color blocks. Forces signature over template.", color: "#39ff14", recent: "Caught cyan-square slop in Vizcaya v12 footer · enforced photo-credit-on-paper-field" },
+    { name: "THE ARCHIVIST", domain: "FACTS",           q: "Are the facts verifiable + cited?",             role: "Core Principle #0 enforcement. Every date, name, figure, claim must WebSearch-verify before publication. Primary sources cited. No invented names.", color: "#00d4ff", recent: "Killed 7 invented enslaved-person names in Kingsley v8 draft · verified Hibernia 1790 grant via NPS" },
+    { name: "THE PROOFER",   domain: "DETAIL",          q: "Does it fit, scan, render, hold up?",           role: "Pixel + render check. Text-fits-container arithmetic, alignment, no overlaps, dateModified vs render state, all alt text present, integrity-diff passes before push.", color: "#00ffff", recent: "Caught Kingsley grid overflow · enforced WP base64(urlencode) for homepage strip" },
+    { name: "THE STEWARD",   domain: "VOICE / EQUITY",  q: "Whose story is this? Whose link survives?",     role: "Labor history, naming conventions, link preservation, accessibility. Names the people who built / read / suffered / were forgotten. Diffs every existing-post edit against the rule: ADDITIVE ONLY.", color: "#ffd700", recent: "Bahamian + Afro-Caribbean labor named in Vizcaya · St. Johns River reframing for Hibernia · 0 inbound links lost across 4 post edits" },
   ];
 
   return (
     <div style={{ margin: "16px 24px", padding: 16, background: "rgba(0,0,0,0.5)", border: "1px solid rgba(179,136,255,0.35)", borderRadius: 4 }}>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12, flexWrap: "wrap", gap: 12 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <div style={{ fontSize: 14, color: "#b388ff" }}>â</div>
+          <div style={{ fontSize: 14, color: "#b388ff" }}>◆</div>
           <div>
-            <div style={{ fontSize: 13, fontWeight: "bold", letterSpacing: 3, color: "#b388ff" }}>THE CREATIVE BOARD â 5-LENS PARALLEL CRITIQUE</div>
+            <div style={{ fontSize: 13, fontWeight: "bold", letterSpacing: 3, color: "#b388ff" }}>THE CREATIVE BOARD — 5-LENS PARALLEL CRITIQUE</div>
             <div style={{ fontSize: 10, color: "rgba(179,136,255,0.5)", letterSpacing: 2, marginTop: 2 }}>EVERY CREATIVE + WRITTEN DELIVERABLE PASSES THROUGH BEFORE BOBBY SEES IT</div>
           </div>
         </div>
         <div style={{ fontSize: 10, fontFamily: "monospace", color: "rgba(179,136,255,0.7)", letterSpacing: 2 }}>
-          â¥2-3 CYCLES ON BLOG Â· PREMIUM CEILING ON HERITAGE
+          ≥2-3 CYCLES ON BLOG · PREMIUM CEILING ON HERITAGE
         </div>
       </div>
 
@@ -2282,13 +2282,13 @@ const CreativeBoardPanel = () => {
             </div>
             <div style={{ fontSize: 10, fontFamily: "monospace", color: l.color, fontStyle: "italic", marginBottom: 5, fontWeight: "bold" }}>"{l.q}"</div>
             <div style={{ fontSize: 9, fontFamily: "monospace", color: "rgba(255,255,255,0.62)", lineHeight: 1.45, marginBottom: 7 }}>{l.role}</div>
-            <div style={{ fontSize: 8, fontFamily: "monospace", color: `rgba(${hexToRgb(l.color)},0.80)`, lineHeight: 1.4, paddingTop: 6, borderTop: `1px solid rgba(${hexToRgb(l.color)},0.20)` }}><span style={{ opacity: 0.6 }}>RECENT&nbsp;Â·&nbsp;</span>{l.recent}</div>
+            <div style={{ fontSize: 8, fontFamily: "monospace", color: `rgba(${hexToRgb(l.color)},0.80)`, lineHeight: 1.4, paddingTop: 6, borderTop: `1px solid rgba(${hexToRgb(l.color)},0.20)` }}><span style={{ opacity: 0.6 }}>RECENT&nbsp;·&nbsp;</span>{l.recent}</div>
           </div>
         ))}
       </div>
 
       <div style={{ padding: "10px 12px", background: "rgba(179,136,255,0.06)", border: "1px solid rgba(179,136,255,0.25)", borderRadius: 3, fontFamily: "monospace", fontSize: 11, color: "rgba(255,255,255,0.78)", lineHeight: 1.5 }}>
-        <span style={{ color: "#b388ff", fontWeight: "bold", letterSpacing: 1 }}>â THE LOOP â</span>{" "}
+        <span style={{ color: "#b388ff", fontWeight: "bold", letterSpacing: 1 }}>◆ THE LOOP →</span>{" "}
         Output runs through all 5 lenses in <strong style={{ color: "#39ff14" }}>parallel</strong> (Agent-tool spawn).{" "}
         Each lens scores /10 + Keep/Fix/Quick-Wins. Iterate until pass. Lessons harvest into memory.{" "}
         <strong style={{ color: "#00d4ff" }}>Skill-Forge v2 (Loop 3)</strong> codifies recurring patterns into <strong style={{ color: "#00d4ff" }}>self-authored code skills</strong>.{" "}
@@ -2296,30 +2296,30 @@ const CreativeBoardPanel = () => {
       </div>
 
       <div style={{ marginTop: 10, padding: "9px 12px", background: "rgba(57,255,20,0.04)", border: "1px solid rgba(57,255,20,0.22)", borderRadius: 3, fontFamily: "monospace", fontSize: 10, color: "rgba(57,255,20,0.85)", lineHeight: 1.5 }}>
-        <span style={{ color: "#39ff14", fontWeight: "bold" }}>SCOPE&nbsp;Â·&nbsp;</span>
-        Standing rule across all agents. Visual renders, blog posts, social captions, emails, schedules, memos, code commits, journal entries, signage mockups, motion films, dashboard panels â same 5 lenses, parallel, every time. The Creative Board is NOT optional for Bobby-facing deliverables.
+        <span style={{ color: "#39ff14", fontWeight: "bold" }}>SCOPE&nbsp;·&nbsp;</span>
+        Standing rule across all agents. Visual renders, blog posts, social captions, emails, schedules, memos, code commits, journal entries, signage mockups, motion films, dashboard panels — same 5 lenses, parallel, every time. The Creative Board is NOT optional for Bobby-facing deliverables.
       </div>
     </div>
   );
 };
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
-// SELF-AUTHORED PANEL â agent scorecards + agent-authored skills
+// ═══════════════════════════════════════════════════
+// SELF-AUTHORED PANEL — agent scorecards + agent-authored skills
 // Separate registries that prove the ecosystem is producing its own IP
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════
 const SelfAuthoredPanel = () => (
   <div style={{ margin: "16px 24px 24px", padding: 16, background: "rgba(0,0,0,0.5)", border: "1px solid rgba(57,255,20,0.25)", borderRadius: 4 }}>
     <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
-      <div style={{ fontSize: 14, color: "#39ff14" }}>â¦¾</div>
+      <div style={{ fontSize: 14, color: "#39ff14" }}>⦾</div>
       <div>
         <div style={{ fontSize: 13, fontWeight: "bold", letterSpacing: 3, color: "#39ff14" }}>SELF-AUTHORED OUTPUT</div>
-        <div style={{ fontSize: 10, color: "rgba(57,255,20,0.4)", letterSpacing: 2, marginTop: 2 }}>WHAT THE ECOSYSTEM PRODUCED ON ITS OWN â TRACKED SEPARATELY FROM IMPORTED SKILLS</div>
+        <div style={{ fontSize: 10, color: "rgba(57,255,20,0.4)", letterSpacing: 2, marginTop: 2 }}>WHAT THE ECOSYSTEM PRODUCED ON ITS OWN — TRACKED SEPARATELY FROM IMPORTED SKILLS</div>
       </div>
     </div>
 
     {/* Agent scorecards row */}
     <div style={{ marginBottom: 16 }}>
-      <div style={{ fontSize: 11, fontFamily: "monospace", color: "rgba(57,255,20,0.7)", letterSpacing: 2, marginBottom: 8 }}>â¸ AGENT SCORECARDS Â· COCA-COLA TEST (1â25) Â· RE-SCORED MONTHLY BY KEYSTONE</div>
+      <div style={{ fontSize: 11, fontFamily: "monospace", color: "rgba(57,255,20,0.7)", letterSpacing: 2, marginBottom: 8 }}>▸ AGENT SCORECARDS · COCA-COLA TEST (1–25) · RE-SCORED MONTHLY BY KEYSTONE</div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 8 }}>
         {AGENT_SCORECARDS.map(a => {
           const trendColor = a.trend && a.trend.startsWith("rising") ? "#39ff14" : (a.trend === "stable" ? "rgba(57,255,20,0.5)" : "#ff9966");
@@ -2340,18 +2340,18 @@ const SelfAuthoredPanel = () => (
 
     {/* Agent-authored skills row */}
     <div>
-      <div style={{ fontSize: 11, fontFamily: "monospace", color: "rgba(0,212,255,0.7)", letterSpacing: 2, marginBottom: 8 }}>â¸ AGENT-AUTHORED SKILLS Â· STAGED BY SKILL-FORGE WEEKLY Â· SEPARATE FROM 245 IMPORTED</div>
+      <div style={{ fontSize: 11, fontFamily: "monospace", color: "rgba(0,212,255,0.7)", letterSpacing: 2, marginBottom: 8 }}>▸ AGENT-AUTHORED SKILLS · STAGED BY SKILL-FORGE WEEKLY · SEPARATE FROM 245 IMPORTED</div>
       {AGENT_AUTHORED_SKILLS.length === 0 ? (
         <div style={{ padding: "10px 12px", background: "rgba(0,212,255,0.03)", border: "1px dashed rgba(0,212,255,0.2)", borderRadius: 2, fontSize: 11, fontFamily: "monospace", color: "rgba(0,212,255,0.55)", fontStyle: "italic" }}>
-          0 staged Â· 0 deployed. Loop is warming â first agent-authored skill expected once praxis promotes its first lesson cluster. Saturday 9:02 AM ET: construct-skill-forge-weekly runs the staging pass.
+          0 staged · 0 deployed. Loop is warming — first agent-authored skill expected once praxis promotes its first lesson cluster. Saturday 9:02 AM ET: construct-skill-forge-weekly runs the staging pass.
         </div>
       ) : (
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 8 }}>
           {AGENT_AUTHORED_SKILLS.map(s => (
             <div key={s.skill_name} style={{ padding: "8px 12px", background: "rgba(0,212,255,0.04)", border: "1px solid rgba(0,212,255,0.2)", borderRadius: 2 }}>
               <div style={{ fontSize: 12, fontFamily: "monospace", color: "#00d4ff", fontWeight: "bold" }}>{s.skill_name}</div>
-              <div style={{ fontSize: 10, fontFamily: "monospace", color: "rgba(0,212,255,0.6)", marginTop: 2 }}>by {s.authored_by} Â· {s.status}</div>
-              <div style={{ fontSize: 10, fontFamily: "monospace", color: "rgba(0,212,255,0.45)", marginTop: 2 }}>triangle: {s.triangle_status || "â"}</div>
+              <div style={{ fontSize: 10, fontFamily: "monospace", color: "rgba(0,212,255,0.6)", marginTop: 2 }}>by {s.authored_by} · {s.status}</div>
+              <div style={{ fontSize: 10, fontFamily: "monospace", color: "rgba(0,212,255,0.45)", marginTop: 2 }}>triangle: {s.triangle_status || "—"}</div>
             </div>
           ))}
         </div>
@@ -2360,11 +2360,11 @@ const SelfAuthoredPanel = () => (
   </div>
 );
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════
 // PLUGIN INVENTORY & DEPLOYMENT PANEL
 // Shows which plugins are installed, which agents are wired to invoke them,
 // and which are pending/partial deployment
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════
 const PluginInventoryPanel = () => {
   const totalSkills = PLUGINS_INSTALLED.reduce((s, p) => s + (p.skill_count || 0), 0);
   const installed = PLUGINS_INSTALLED.filter(p => p.deployment_status === "wired").length;
@@ -2373,14 +2373,14 @@ const PluginInventoryPanel = () => {
     <div style={{ margin: "16px 24px 24px", padding: 16, background: "rgba(0,0,0,0.5)", border: "1px solid rgba(179,136,255,0.3)", borderRadius: 4 }}>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <div style={{ fontSize: 14, color: "#b388ff" }}>â</div>
+          <div style={{ fontSize: 14, color: "#b388ff" }}>◈</div>
           <div>
             <div style={{ fontSize: 13, fontWeight: "bold", letterSpacing: 3, color: "#b388ff" }}>PLUGIN INVENTORY & AGENT DEPLOYMENT</div>
-            <div style={{ fontSize: 10, color: "rgba(179,136,255,0.5)", letterSpacing: 2, marginTop: 2 }}>WHICH PLUGINS ARE INSTALLED Â· WHICH AGENTS INVOKE THEM</div>
+            <div style={{ fontSize: 10, color: "rgba(179,136,255,0.5)", letterSpacing: 2, marginTop: 2 }}>WHICH PLUGINS ARE INSTALLED · WHICH AGENTS INVOKE THEM</div>
           </div>
         </div>
         <div style={{ fontSize: 10, fontFamily: "monospace", color: "rgba(179,136,255,0.7)", letterSpacing: 2 }}>
-          {PLUGINS_INSTALLED.length} plugins Â· {totalSkills} skills Â· {installed} wired Â· {partial} partial
+          {PLUGINS_INSTALLED.length} plugins · {totalSkills} skills · {installed} wired · {partial} partial
         </div>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 10 }}>
@@ -2394,10 +2394,10 @@ const PluginInventoryPanel = () => {
                 <span style={{ fontSize: 9, fontFamily: "monospace", letterSpacing: 2, padding: "2px 8px", border: `1px solid ${statusColor}`, color: statusColor, borderRadius: 2 }}>{(p.deployment_status || "?").toUpperCase()}</span>
               </div>
               <div style={{ fontSize: 10, fontFamily: "monospace", color: "rgba(179,136,255,0.65)", marginBottom: 6 }}>
-                {p.skill_count} skill{p.skill_count === 1 ? "" : "s"} Â· installed {p.installed_date}
+                {p.skill_count} skill{p.skill_count === 1 ? "" : "s"} · installed {p.installed_date}
               </div>
               <div style={{ fontSize: 10, fontFamily: "monospace", color: "rgba(0,212,255,0.7)", marginBottom: 6 }}>
-                â¸ {(p.primary_agents || []).join(" Â· ")}
+                ▸ {(p.primary_agents || []).join(" · ")}
               </div>
               <div style={{ fontSize: 9, fontFamily: "monospace", color: "rgba(179,136,255,0.45)", fontStyle: "italic", lineHeight: 1.4 }}>
                 {p.notes}
@@ -2410,9 +2410,9 @@ const PluginInventoryPanel = () => {
   );
 };
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
-// PUBLIC POSTURE CARD â v2.1
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════
+// PUBLIC POSTURE CARD — v2.1
+// ═══════════════════════════════════════════════════
 const PublicPostureCard = () => (
   <div style={{ margin: "16px 24px 24px", padding: 16, background: "rgba(0,0,0,0.5)", border: "1px dashed rgba(0,212,255,0.3)", borderRadius: 4 }}>
     <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
@@ -2430,9 +2430,9 @@ const PublicPostureCard = () => (
   </div>
 );
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
-// TOPOLOGY MAP (lightweight SVG â Louis at center of his ties)
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════
+// TOPOLOGY MAP (lightweight SVG — Louis at center of his ties)
+// ═══════════════════════════════════════════════════
 const TopologyMap = ({ agents, selectedId }) => {
   const featured = ["Louis","Keystone","Architect","Venture","Forge","WOLF","Sentinel","Ledger","Self-Improving Loop","Vector","Atlas","Cornerstone","Bobby","AP"];
   const nodes = featured.map((name, i) => {
@@ -2502,9 +2502,9 @@ const TopologyMap = ({ agents, selectedId }) => {
   );
 };
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════
 // WORKFLOWS PANEL
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════
 const WorkflowsPanel = () => (
   <div style={{ margin: "16px 24px" }}>
     <div style={{ fontSize: 13, fontWeight: "bold", letterSpacing: 3, color: "#39ff14", marginBottom: 12 }}>\u25B8 COLLABORATION WORKFLOWS</div>
@@ -2522,20 +2522,20 @@ const WorkflowsPanel = () => (
   </div>
 );
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
-// CONSTRUCT GALAXY v3 â NEUROLINK 3099 hero (iframe)
+// ═══════════════════════════════════════════════════
+// CONSTRUCT GALAXY v3 — NEUROLINK 3099 hero (iframe)
 // 3D synaptic map of Bobby's empire. Gold core, 4 orbits (loops/agents/systems/ventures),
 // constellation lines, synapse fires, energy waves, code rain, Matrix audio.
 // Locked 2026-05-02. Click anywhere inside the galaxy to enable audio.
-// Iframe sources construct-galaxy-v3.html â synced via the runner script alongside construct.html.
-// Event Stream now pulls from updates.json (live rollout log) â 70/30 mix with template flavor.
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Iframe sources construct-galaxy-v3.html — synced via the runner script alongside construct.html.
+// Event Stream now pulls from updates.json (live rollout log) — 70/30 mix with template flavor.
+// ═══════════════════════════════════════════════════
 const ConstructGalaxy = () => {
   return (
     <div style={{ position: "relative", width: "100%", height: "82vh", minHeight: 700, background: "#000", borderBottom: "1px solid rgba(255,215,0,0.15)" }}>
       <iframe
         src="./construct-galaxy-v3.html?v=20260504c"
-        title="The Construct Â· NEUROLINK Galaxy"
+        title="The Construct · NEUROLINK Galaxy"
         style={{
           width: "100%",
           height: "100%",
@@ -2550,16 +2550,16 @@ const ConstructGalaxy = () => {
   );
 };
 
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════
 // MAIN DASHBOARD
-// âââââââââââââââââââââââââââââââââââââââââââââââââââ
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
-// CONSTRUCT ATLAS â top-fold overview Â· 6 bands Â· click to expand
+// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════
+// CONSTRUCT ATLAS — top-fold overview · 6 bands · click to expand
 // Added 2026-05-06. Sits ABOVE NEUROLINK 3099 (now ambient).
-// Six layered bands: Empire Â· Dashboards Â· Agents (click-expand)
-// Â· Skills+Routing Â· Outputs Â· Memory+Loops. All 35 agents grouped
+// Six layered bands: Empire · Dashboards · Agents (click-expand)
+// · Skills+Routing · Outputs · Memory+Loops. All 35 agents grouped
 // from INITIAL_AGENTS by canonical department.
-// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ═══════════════════════════════════════════════════════════════
 const ConstructAtlas = ({ agents }) => {
   const [expanded, setExpanded] = useState({});
   const [dayN, setDayN] = useState(dayOfNinety());
@@ -2592,10 +2592,10 @@ const ConstructAtlas = ({ agents }) => {
     "Product": "PRODUCT",
     "Revenue": "REVENUE",
     "People": "PEOPLE",
-    "Meta": "META Â· QUALITY",
-    "Build Queue T1": "BUILD QUEUE â TIER 1 (Day 90 by 2026-07-23)",
-    "Build Queue T2": "BUILD QUEUE â TIER 2 (days 91â180)",
-    "Build Queue T3": "BUILD QUEUE â TIER 3 (days 181â270)",
+    "Meta": "META · QUALITY",
+    "Build Queue T1": "BUILD QUEUE — TIER 1 (Day 90 by 2026-07-23)",
+    "Build Queue T2": "BUILD QUEUE — TIER 2 (days 91–180)",
+    "Build Queue T3": "BUILD QUEUE — TIER 3 (days 181–270)",
   };
 
   const grouped = useMemo(() => {
@@ -2676,7 +2676,7 @@ const ConstructAtlas = ({ agents }) => {
 
   const lensRoutes = [
     ["Architect", "capital allocation"], ["Ledger", "macro / policy / rates"],
-    ["WOLF", "regime detection Â· vol"], ["Anvil", "M&A playbooks"],
+    ["WOLF", "regime detection · vol"], ["Anvil", "M&A playbooks"],
     ["Equity", "PE / LBO"], ["Venture", "VC / sector themes"],
     ["Alpha", "vol / options"], ["Helm", "product / agent-AI"],
     ["Cipher", "tech infra signal"], ["Signal", "marketing / consumer"],
@@ -2686,60 +2686,60 @@ const ConstructAtlas = ({ agents }) => {
   ];
 
   const dashTiles = [
-    { n: "The Construct", r: "agent state Â· tier Â· loops" },
+    { n: "The Construct", r: "agent state · tier · loops" },
     { n: "Atlas", r: "65 Lennar communities" },
-    { n: "Louis", r: "FL RE intel Â· Caden Â· OZ 2.0" },
-    { n: "WOLF", r: "4 markets Â· 9 strategies" },
+    { n: "Louis", r: "FL RE intel · Caden · OZ 2.0" },
+    { n: "WOLF", r: "4 markets · 9 strategies" },
     { n: "Cornerstone", r: "faith + science" },
     { n: "Architect", r: "capital allocation" },
     { n: "Hartley Equity", r: "equity capital surface" },
   ];
 
-  const yamlExample = "---\ntitle:      \"Lens Daily Brief â 2026-05-06\"\nagent:      lens\nskill:      morning-intelligence-brief\ndomain:     research\ndate:       2026-05-06\nrun_id:     2026-05-06T05-30-00-04-00\nsources:    [hbr.org/..., bloomberg.com/..., federalreserve.gov/...]\ntags:       [research, lens, daily]\nstatus:     final\nrouted_to:  [architect, ledger, wolf, anvil, ...]\n---";
+  const yamlExample = "---\ntitle:      \"Lens Daily Brief — 2026-05-06\"\nagent:      lens\nskill:      morning-intelligence-brief\ndomain:     research\ndate:       2026-05-06\nrun_id:     2026-05-06T05-30-00-04-00\nsources:    [hbr.org/..., bloomberg.com/..., federalreserve.gov/...]\ntags:       [research, lens, daily]\nstatus:     final\nrouted_to:  [architect, ledger, wolf, anvil, ...]\n---";
 
   return (
     <div style={s.wrap}>
       <div style={s.inner}>
-        <h1 style={s.h1}>CONSTRUCT ATLAS <span style={{ fontSize: 10, color: "#00d4ff", marginLeft: 12, fontWeight: 400, letterSpacing: "0.1em" }}>v1.0 Â· top-fold overview Â· NEUROLINK 3099 below is ambient</span></h1>
-        <div style={s.sub}>One static map Â· 6 layered bands Â· click departments to expand Â· all 35 agents grouped by canonical department</div>
+        <h1 style={s.h1}>CONSTRUCT ATLAS <span style={{ fontSize: 10, color: "#00d4ff", marginLeft: 12, fontWeight: 400, letterSpacing: "0.1em" }}>v1.0 · top-fold overview · NEUROLINK 3099 below is ambient</span></h1>
+        <div style={s.sub}>One static map · 6 layered bands · click departments to expand · all 35 agents grouped by canonical department</div>
         <div style={s.metaRow}>
-          <span><strong style={{ color: "#b388ff" }}>Plan:</strong> v2.1 Â· locked 2026-04-24</span>
-          <span><strong style={{ color: "#b388ff" }}>Loops:</strong> 1 LIVE Â· 2 BUILD Â· 3 BUILD Â· 4 LIVE</span>
+          <span><strong style={{ color: "#b388ff" }}>Plan:</strong> v2.1 · locked 2026-04-24</span>
+          <span><strong style={{ color: "#b388ff" }}>Loops:</strong> 1 LIVE · 2 BUILD · 3 BUILD · 4 LIVE</span>
           <span><strong style={{ color: "#b388ff" }}>Agents:</strong> {agents.length} total</span>
         </div>
 
         <div style={s.kc}>
-          <span style={s.kcLabel}>â¯ KILL CRITERION</span>
+          <span style={s.kcLabel}>◯ KILL CRITERION</span>
           <span>Day <span style={s.kcVal}>{dayN}</span> / 90</span>
-          <span style={{ color: "#8a94a6" }}>â</span>
+          <span style={{ color: "#8a94a6" }}>→</span>
           <span><span style={s.kcVal}>{daysLeft}</span> days left</span>
-          <span style={{ color: "#8a94a6" }}>â</span>
+          <span style={{ color: "#8a94a6" }}>→</span>
           <span>2026-07-23</span>
-          <span style={{ color: "#88aaff", flex: "1 1 100%", fontSize: 10 }}>Tier 1: Archivist Â· Skill-Forge Â· Foreman Â· Eval Harness Â· Precedent-Finder</span>
+          <span style={{ color: "#88aaff", flex: "1 1 100%", fontSize: 10 }}>Tier 1: Archivist · Skill-Forge · Foreman · Eval Harness · Precedent-Finder</span>
         </div>
 
         {/* BAND 1 - EMPIRE */}
         <section style={s.band}>
           <div style={s.bandHead}>
-            <div><span style={s.bandNum}>01</span><span style={s.bandTitle}>EMPIRE Â· The four ventures</span></div>
-            <div style={s.bandMeta}>moat = the stack itself Â· â¤3 humans cap</div>
+            <div><span style={s.bandNum}>01</span><span style={s.bandTitle}>EMPIRE · The four ventures</span></div>
+            <div style={s.bandMeta}>moat = the stack itself · ≤3 humans cap</div>
           </div>
           <div style={s.bandBody}>
             <div style={s.grid4}>
-              <div style={{ ...s.venture, borderLeft: "3px solid #aaffcc" }}><h3 style={s.ventureH3}>Brand 9 Signs</h3><div style={s.ventureRole}>Cash + corpus</div><div style={s.ventureFlow}>â funds HC Â· feeds Archivist (40-yr archive)</div></div>
-              <div style={{ ...s.venture, borderLeft: "3px solid #b388ff" }}><h3 style={s.ventureH3}>Brand 9 Agency</h3><div style={s.ventureRole}>Public attention Â· Editorial</div><div style={s.ventureFlow}>â Brand Lab AI Â· Florida Heritage Files (4 live)</div></div>
-              <div style={{ ...s.venture, borderLeft: "3px solid #00d4ff" }}><h3 style={s.ventureH3}>Hartley Capital</h3><div style={s.ventureRole}>Private compounding Â· Day 31 (~2026-06-04)</div><div style={s.ventureFlow}>â generational wealth Â· 50/30/20 alloc</div></div>
-              <div style={{ ...s.venture, borderLeft: "3px solid #39ff14" }}><h3 style={s.ventureH3}>Future Ventures</h3><div style={s.ventureRole}>Cloned stack Â· Phase 3 SMB roll-ups</div><div style={s.ventureFlow}>â Anvil playbook + Construct stack</div></div>
+              <div style={{ ...s.venture, borderLeft: "3px solid #aaffcc" }}><h3 style={s.ventureH3}>Brand 9 Signs</h3><div style={s.ventureRole}>Cash + corpus</div><div style={s.ventureFlow}>→ funds HC · feeds Archivist (40-yr archive)</div></div>
+              <div style={{ ...s.venture, borderLeft: "3px solid #b388ff" }}><h3 style={s.ventureH3}>Brand 9 Agency</h3><div style={s.ventureRole}>Public attention · Editorial</div><div style={s.ventureFlow}>→ Brand Lab AI · Florida Heritage Files (4 live)</div></div>
+              <div style={{ ...s.venture, borderLeft: "3px solid #00d4ff" }}><h3 style={s.ventureH3}>Hartley Capital</h3><div style={s.ventureRole}>Private compounding · Day 31 (~2026-06-04)</div><div style={s.ventureFlow}>→ generational wealth · 50/30/20 alloc</div></div>
+              <div style={{ ...s.venture, borderLeft: "3px solid #39ff14" }}><h3 style={s.ventureH3}>Future Ventures</h3><div style={s.ventureRole}>Cloned stack · Phase 3 SMB roll-ups</div><div style={s.ventureFlow}>← Anvil playbook + Construct stack</div></div>
             </div>
-            <div style={s.arrow}>â¼ B9 Signs cash â HC compounds â Future Ventures clone the stack â¼</div>
+            <div style={s.arrow}>▼ B9 Signs cash → HC compounds → Future Ventures clone the stack ▼</div>
           </div>
         </section>
 
         {/* BAND 2 - DASHBOARDS */}
         <section style={s.band}>
           <div style={s.bandHead}>
-            <div><span style={s.bandNum}>02</span><span style={s.bandTitle}>DASHBOARDS Â· Surface tiles</span></div>
-            <div style={s.bandMeta}>extracoffee13.github.io/hartley-command/ Â· auto-sync via launchd</div>
+            <div><span style={s.bandNum}>02</span><span style={s.bandTitle}>DASHBOARDS · Surface tiles</span></div>
+            <div style={s.bandMeta}>extracoffee13.github.io/hartley-command/ · auto-sync via launchd</div>
           </div>
           <div style={s.bandBody}>
             <div style={s.gridAuto}>
@@ -2747,7 +2747,7 @@ const ConstructAtlas = ({ agents }) => {
                 <div key={d.n} style={s.dash}>
                   <h4 style={s.dashH4}>{d.n}</h4>
                   <div style={s.dashReads}>reads: {d.r}</div>
-                  <span style={s.dashPill}>live Â· auto-sync</span>
+                  <span style={s.dashPill}>live · auto-sync</span>
                 </div>
               ))}
             </div>
@@ -2757,8 +2757,8 @@ const ConstructAtlas = ({ agents }) => {
         {/* BAND 3 - AGENTS */}
         <section style={s.band}>
           <div style={s.bandHead}>
-            <div><span style={s.bandNum}>03</span><span style={s.bandTitle}>AGENTS Â· Click department to expand Â· {agents.length} total</span></div>
-            <div style={s.bandMeta}>14 dept clusters Â· â¥20 contender Â· â¥22 moonshot Â· build lavender Â· idle dim</div>
+            <div><span style={s.bandNum}>03</span><span style={s.bandTitle}>AGENTS · Click department to expand · {agents.length} total</span></div>
+            <div style={s.bandMeta}>14 dept clusters · ≥20 contender · ≥22 moonshot · build lavender · idle dim</div>
           </div>
           <div style={s.bandBody}>
             <div style={s.gridDept}>
@@ -2773,7 +2773,7 @@ const ConstructAtlas = ({ agents }) => {
                         <div style={s.deptName}>{DEPT_LABELS[dept] || dept}</div>
                         <div style={s.deptCount}>{ags.length} agent{ags.length !== 1 ? "s" : ""}</div>
                       </div>
-                      <div style={s.deptToggle}>{isOpen ? "â¾ open" : "â¸ click"}</div>
+                      <div style={s.deptToggle}>{isOpen ? "▾ open" : "▸ click"}</div>
                     </div>
                     {isOpen && (
                       <div style={s.deptBody}>
@@ -2785,15 +2785,15 @@ const ConstructAtlas = ({ agents }) => {
                           const nameColor = isSpot ? "#aaffcc" : isIdle ? "#6b7688" : (isBuilding || isInBuildQueue) ? "#b388ff" : "#e6e9ef";
                           const nameWeight = isSpot ? 700 : 400;
                           const nameStyle = { color: nameColor, fontWeight: nameWeight, fontStyle: isIdle ? "italic" : "normal" };
-                          const scoreText = a.score ? `${a.score}/25` : (a.role && a.role.length > 22 ? a.role.slice(0, 22) + "â¦" : a.role || "");
+                          const scoreText = a.score ? `${a.score}/25` : (a.role && a.role.length > 22 ? a.role.slice(0, 22) + "…" : a.role || "");
                           return (
                             <div key={a.id}>
                               <div style={s.agent}>
                                 <span style={nameStyle}>
                                   {a.codename}
                                   {a.isHuman ? " (founder)" : ""}
-                                  {isIdle ? " Â· IDLE" : ""}
-                                  {isBuilding ? " Â· BUILDING" : ""}
+                                  {isIdle ? " · IDLE" : ""}
+                                  {isBuilding ? " · BUILDING" : ""}
                                 </span>
                                 <span style={s.agentScore}>{scoreText}</span>
                               </div>
@@ -2817,17 +2817,17 @@ const ConstructAtlas = ({ agents }) => {
         {/* BAND 4 - SKILLS + LENS ROUTING */}
         <section style={s.band}>
           <div style={s.bandHead}>
-            <div><span style={s.bandNum}>04</span><span style={s.bandTitle}>SKILLS Â· Lens routing Â· cadences</span></div>
-            <div style={s.bandMeta}>workflow â skill â reliable â automation Â· per skill-promotion-pipeline.md</div>
+            <div><span style={s.bandNum}>04</span><span style={s.bandTitle}>SKILLS · Lens routing · cadences</span></div>
+            <div style={s.bandMeta}>workflow → skill → reliable → automation · per skill-promotion-pipeline.md</div>
           </div>
           <div style={s.bandBody}>
             <div style={s.routing}>
-              <h4 style={{ fontSize: 11, color: "#39ff14", margin: "0 0 8px" }}>LENS ROUTING â daily 5:30am ET â 14 downstream agents</h4>
+              <h4 style={{ fontSize: 11, color: "#39ff14", margin: "0 0 8px" }}>LENS ROUTING — daily 5:30am ET → 14 downstream agents</h4>
               <div style={s.routeGrid}>
                 {lensRoutes.map(([to, why]) => (
                   <div key={to} style={{ padding: "3px 0", color: "#8a94a6" }}>
                     <span style={{ color: "#b388ff" }}>Lens</span>
-                    <span style={{ color: "#00d4ff", margin: "0 6px" }}>â</span>
+                    <span style={{ color: "#00d4ff", margin: "0 6px" }}>→</span>
                     <span style={{ color: "#39ff14" }}>{to}</span>
                     <span style={{ color: "#6b7688" }}> {why}</span>
                   </div>
@@ -2835,10 +2835,10 @@ const ConstructAtlas = ({ agents }) => {
               </div>
             </div>
             <div style={s.cadenceRow}>
-              <div style={s.cadence}><h5 style={s.cadenceH5}>DAILY</h5><div style={s.cadenceItem}>â¸ Lens 5:30am ET</div><div style={s.cadenceItem}>â¸ Atlas 7am ET (build)</div><div style={s.cadenceItem}>â¸ Architect pre-market</div><div style={s.cadenceItem}>â¸ WOLF 5min sync</div></div>
-              <div style={s.cadence}><h5 style={s.cadenceH5}>WEEKLY</h5><div style={s.cadenceItem}>â¸ Lens Friday synthesis</div><div style={s.cadenceItem}>â¸ Capital Council 60min</div><div style={s.cadenceItem}>â¸ Atlas Fri 4pm (build)</div><div style={s.cadenceItem}>â¸ Louis Sunday update</div></div>
-              <div style={s.cadence}><h5 style={s.cadenceH5}>MONTHLY</h5><div style={s.cadenceItem}>â¸ Lens Big Idea (1st trading day Â· first 2026-06-01)</div><div style={s.cadenceItem}>â¸ Ledger P&L close</div><div style={s.cadenceItem}>â¸ Keystone Portfolio Check</div></div>
-              <div style={s.cadence}><h5 style={s.cadenceH5}>Q Â· ANNUAL</h5><div style={s.cadenceItem}>â¸ Keystone strategic review</div><div style={s.cadenceItem}>â¸ Mandate refresh (annual)</div><div style={s.cadenceItem}>â¸ Day 90: 2026-07-23</div><div style={s.cadenceItem}>â¸ HC Day 365: 2027-06-04</div></div>
+              <div style={s.cadence}><h5 style={s.cadenceH5}>DAILY</h5><div style={s.cadenceItem}>▸ Lens 5:30am ET</div><div style={s.cadenceItem}>▸ Atlas 7am ET (build)</div><div style={s.cadenceItem}>▸ Architect pre-market</div><div style={s.cadenceItem}>▸ WOLF 5min sync</div></div>
+              <div style={s.cadence}><h5 style={s.cadenceH5}>WEEKLY</h5><div style={s.cadenceItem}>▸ Lens Friday synthesis</div><div style={s.cadenceItem}>▸ Capital Council 60min</div><div style={s.cadenceItem}>▸ Atlas Fri 4pm (build)</div><div style={s.cadenceItem}>▸ Louis Sunday update</div></div>
+              <div style={s.cadence}><h5 style={s.cadenceH5}>MONTHLY</h5><div style={s.cadenceItem}>▸ Lens Big Idea (1st trading day · first 2026-06-01)</div><div style={s.cadenceItem}>▸ Ledger P&L close</div><div style={s.cadenceItem}>▸ Keystone Portfolio Check</div></div>
+              <div style={s.cadence}><h5 style={s.cadenceH5}>Q · ANNUAL</h5><div style={s.cadenceItem}>▸ Keystone strategic review</div><div style={s.cadenceItem}>▸ Mandate refresh (annual)</div><div style={s.cadenceItem}>▸ Day 90: 2026-07-23</div><div style={s.cadenceItem}>▸ HC Day 365: 2027-06-04</div></div>
             </div>
           </div>
         </section>
@@ -2846,8 +2846,8 @@ const ConstructAtlas = ({ agents }) => {
         {/* BAND 5 - OUTPUTS */}
         <section style={s.band}>
           <div style={s.bandHead}>
-            <div><span style={s.bandNum}>05</span><span style={s.bandTitle}>OUTPUTS Â· Canonical path Â· stamped artifacts</span></div>
-            <div style={s.bandMeta}>added 2026-05-06 Â· supplement to PRAXIS packet schema</div>
+            <div><span style={s.bandNum}>05</span><span style={s.bandTitle}>OUTPUTS · Canonical path · stamped artifacts</span></div>
+            <div style={s.bandMeta}>added 2026-05-06 · supplement to PRAXIS packet schema</div>
           </div>
           <div style={s.bandBody}>
             <div style={s.outputs}>
@@ -2860,27 +2860,27 @@ const ConstructAtlas = ({ agents }) => {
         {/* BAND 6 - MEMORY + LOOPS */}
         <section style={s.band}>
           <div style={s.bandHead}>
-            <div><span style={s.bandNum}>06</span><span style={s.bandTitle}>MEMORY + LOOPS Â· Three layers Â· four feedback loops</span></div>
-            <div style={s.bandMeta}>loops 1+4 LIVE Â· loops 2+3 in build (Tier 1 critical path)</div>
+            <div><span style={s.bandNum}>06</span><span style={s.bandTitle}>MEMORY + LOOPS · Three layers · four feedback loops</span></div>
+            <div style={s.bandMeta}>loops 1+4 LIVE · loops 2+3 in build (Tier 1 critical path)</div>
           </div>
           <div style={s.bandBody}>
             <div style={s.memRow}>
               <div style={s.mem}><h4 style={s.memH4}>Auto-memory</h4><div style={s.memWhere}>~/Documents/Claude/.auto-memory/</div><div style={s.memDesc}>Loads every session start. Per-agent + cross-cutting.</div></div>
-              <div style={s.mem}><h4 style={s.memH4}>Second Brain</h4><div style={s.memWhere}>obsidian-second-brain skill</div><div style={s.memDesc}>31 commands Â· all 19 agents Â· overnight consolidation.</div></div>
-              <div style={s.mem}><h4 style={s.memH4}>PRAXIS construct-shared</h4><div style={s.memWhere}>~/.claude/memory/construct-shared/</div><div style={s.memDesc}>capture Â· distill Â· promote Â· broadcast Â· first-principles.</div></div>
+              <div style={s.mem}><h4 style={s.memH4}>Second Brain</h4><div style={s.memWhere}>obsidian-second-brain skill</div><div style={s.memDesc}>31 commands · all 19 agents · overnight consolidation.</div></div>
+              <div style={s.mem}><h4 style={s.memH4}>PRAXIS construct-shared</h4><div style={s.memWhere}>~/.claude/memory/construct-shared/</div><div style={s.memDesc}>capture · distill · promote · broadcast · first-principles.</div></div>
             </div>
             <div style={s.loopsRow}>
-              <div style={s.loop}><h5 style={s.loopH5}>Loop 1 â Correction</h5><div style={s.loopStatus}>â¸ LIVE</div><div style={s.loopDesc}>Bobby corrects â lesson â all agents read.</div></div>
-              <div style={{ ...s.loop, ...s.loopBuild }}><h5 style={{ ...s.loopH5, ...s.loopH5Build }}>Loop 2 â Eval</h5><div style={{ ...s.loopStatus, ...s.loopStatusBuild }}>â¸ SUBSTRATE SHIPPED Â· Day 30+45 â</div><div style={s.loopDesc}>Past corrections â test cases â score.</div></div>
-              <div style={{ ...s.loop, ...s.loopBuild }}><h5 style={{ ...s.loopH5, ...s.loopH5Build }}>Loop 3 â Code</h5><div style={{ ...s.loopStatus, ...s.loopStatusBuild }}>â¸ SUBSTRATE SHIPPED Â· Day 30 â</div><div style={s.loopDesc}>Skill-Forge v2 ships executable skills.</div></div>
-              <div style={s.loop}><h5 style={s.loopH5}>Loop 4 â Memory</h5><div style={s.loopStatus}>â¸ LIVE</div><div style={s.loopDesc}>Facts captured Â· cross-referenced Â· consolidated Q.</div></div>
+              <div style={s.loop}><h5 style={s.loopH5}>Loop 1 — Correction</h5><div style={s.loopStatus}>▸ LIVE</div><div style={s.loopDesc}>Bobby corrects → lesson → all agents read.</div></div>
+              <div style={{ ...s.loop, ...s.loopBuild }}><h5 style={{ ...s.loopH5, ...s.loopH5Build }}>Loop 2 — Eval</h5><div style={{ ...s.loopStatus, ...s.loopStatusBuild }}>▸ SUBSTRATE SHIPPED · Day 30+45 ✓</div><div style={s.loopDesc}>Past corrections → test cases → score.</div></div>
+              <div style={{ ...s.loop, ...s.loopBuild }}><h5 style={{ ...s.loopH5, ...s.loopH5Build }}>Loop 3 — Code</h5><div style={{ ...s.loopStatus, ...s.loopStatusBuild }}>▸ SUBSTRATE SHIPPED · Day 30 ✓</div><div style={s.loopDesc}>Skill-Forge v2 ships executable skills.</div></div>
+              <div style={s.loop}><h5 style={s.loopH5}>Loop 4 — Memory</h5><div style={s.loopStatus}>▸ LIVE</div><div style={s.loopDesc}>Facts captured · cross-referenced · consolidated Q.</div></div>
             </div>
 
-            {/* Loop 2 build progress â added 2026-05-06 */}
+            {/* Loop 2 build progress — added 2026-05-06 */}
             <div style={{ marginTop: 12, background: "#11161e", border: "1px solid rgba(179,136,255,0.35)", borderRadius: 4, padding: "10px 12px" }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 8 }}>
-                <h5 style={{ fontSize: 10, color: "#b388ff", letterSpacing: "0.1em", margin: 0 }}>LOOP 2 BUILD PROGRESS Â· KILL CRITERION ITEMS 3+4 Â· TARGET 2026-07-23</h5>
-                <span style={{ fontSize: 9, color: "#8a94a6", fontFamily: "ui-monospace, monospace" }}>updated 2026-05-07 Â· DAY 30+45 â</span>
+                <h5 style={{ fontSize: 10, color: "#b388ff", letterSpacing: "0.1em", margin: 0 }}>LOOP 2 BUILD PROGRESS · KILL CRITERION ITEMS 3+4 · TARGET 2026-07-23</h5>
+                <span style={{ fontSize: 9, color: "#8a94a6", fontFamily: "ui-monospace, monospace" }}>updated 2026-05-07 · DAY 30+45 ✓</span>
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 8 }}>
                 <div style={{ background: "rgba(0,212,255,0.04)", borderLeft: "2px solid #00d4ff", padding: "6px 9px", borderRadius: 3 }}>
@@ -2895,8 +2895,8 @@ const ConstructAtlas = ({ agents }) => {
                 </div>
                 <div style={{ background: "rgba(170,255,204,0.04)", borderLeft: "2px solid #aaffcc", padding: "6px 9px", borderRadius: 3 }}>
                   <div style={{ fontSize: 9, color: "#aaffcc", letterSpacing: "0.06em" }}>HAND-TEST</div>
-                  <div style={{ fontSize: 14, color: "#aaffcc", fontWeight: 700, fontFamily: "ui-monospace, monospace" }}>4/5<span style={{ fontSize: 9, color: "#8a94a6", marginLeft: 4 }}>clean Â· 1 flag</span></div>
-                  <div style={{ fontSize: 9, color: "#6b7688" }}>brand9signs.com Â· 2026-05-06</div>
+                  <div style={{ fontSize: 14, color: "#aaffcc", fontWeight: 700, fontFamily: "ui-monospace, monospace" }}>4/5<span style={{ fontSize: 9, color: "#8a94a6", marginLeft: 4 }}>clean · 1 flag</span></div>
+                  <div style={{ fontSize: 9, color: "#6b7688" }}>brand9signs.com · 2026-05-06</div>
                 </div>
                 <div style={{ background: "rgba(0,212,255,0.04)", borderLeft: "2px solid #00d4ff", padding: "6px 9px", borderRadius: 3 }}>
                   <div style={{ fontSize: 9, color: "#00d4ff", letterSpacing: "0.06em" }}>BUILD BRIEF</div>
@@ -2906,7 +2906,7 @@ const ConstructAtlas = ({ agents }) => {
                 <div style={{ background: "rgba(179,136,255,0.04)", borderLeft: "2px solid #b388ff", padding: "6px 9px", borderRadius: 3 }}>
                   <div style={{ fontSize: 9, color: "#b388ff", letterSpacing: "0.06em" }}>EXTRACTOR</div>
                   <div style={{ fontSize: 14, color: "#aaffcc", fontWeight: 700, fontFamily: "ui-monospace, monospace" }}>READY</div>
-                  <div style={{ fontSize: 9, color: "#6b7688" }}>extract_corpus.py Â· runnable</div>
+                  <div style={{ fontSize: 9, color: "#6b7688" }}>extract_corpus.py · runnable</div>
                 </div>
                 <div style={{ background: "rgba(57,255,20,0.04)", borderLeft: "2px solid #39ff14", padding: "6px 9px", borderRadius: 3 }}>
                   <div style={{ fontSize: 9, color: "#39ff14", letterSpacing: "0.06em" }}>FOREMAN ENGINE</div>
@@ -2916,28 +2916,28 @@ const ConstructAtlas = ({ agents }) => {
                 <div style={{ background: "rgba(57,255,20,0.04)", borderLeft: "2px solid #39ff14", padding: "6px 9px", borderRadius: 3 }}>
                   <div style={{ fontSize: 9, color: "#39ff14", letterSpacing: "0.06em" }}>EVAL HARNESS</div>
                   <div style={{ fontSize: 14, color: "#aaffcc", fontWeight: 700, fontFamily: "ui-monospace, monospace" }}>4 OF 4</div>
-                  <div style={{ fontSize: 9, color: "#6b7688" }}>run.py + weekly_report.py SHIPPED Â· Day 30 â</div>
+                  <div style={{ fontSize: 9, color: "#6b7688" }}>run.py + weekly_report.py SHIPPED · Day 30 ✓</div>
                 </div>
                 <div style={{ background: "rgba(255,193,7,0.04)", borderLeft: "2px solid #ffc107", padding: "6px 9px", borderRadius: 3 }}>
                   <div style={{ fontSize: 9, color: "#ffc107", letterSpacing: "0.06em" }}>FIRST CATCH</div>
                   <div style={{ fontSize: 14, color: "#ffc107", fontWeight: 700, fontFamily: "ui-monospace, monospace" }}>2026-W19</div>
-                  <div style={{ fontSize: 9, color: "#6b7688" }}>lens 75% clean Â· 1 HIGH (lennar+expansion proximity)</div>
+                  <div style={{ fontSize: 9, color: "#6b7688" }}>lens 75% clean · 1 HIGH (lennar+expansion proximity)</div>
                 </div>
               </div>
               <div style={{ marginTop: 8, fontSize: 9, color: "#8a94a6", lineHeight: 1.5 }}>
                 <strong style={{ color: "#b388ff" }}>Path to LIVE:</strong>
-                {" "}<span style={{ color: "#39ff14" }}>1. â extract_corpus.py READY</span> Â·
-                {" "}<span style={{ color: "#39ff14" }}>2. â Day 30 SHIPPED â match_engine + llm_judge + run + weekly_report</span> Â·
-                {" "}<span style={{ color: "#39ff14" }}>3. â Day 45 SCHEDULED + FIRST FIRE CLEAN â Sundays 23:55 ET via com.construct.eval-weekly</span> Â·
-                {" "}4. â¥80% catch rate (Day 60 ~2026-06-22 â promotes Foreman to live mode).
+                {" "}<span style={{ color: "#39ff14" }}>1. ✓ extract_corpus.py READY</span> ·
+                {" "}<span style={{ color: "#39ff14" }}>2. ✓ Day 30 SHIPPED — match_engine + llm_judge + run + weekly_report</span> ·
+                {" "}<span style={{ color: "#39ff14" }}>3. ✓ Day 45 SCHEDULED + FIRST FIRE CLEAN — Sundays 23:55 ET via com.construct.eval-weekly</span> ·
+                {" "}4. ≥80% catch rate (Day 60 ~2026-06-22 — promotes Foreman to live mode).
               </div>
             </div>
 
-            {/* Loop 3 build progress â added 2026-05-07 */}
+            {/* Loop 3 build progress — added 2026-05-07 */}
             <div style={{ marginTop: 12, background: "#11161e", border: "1px solid rgba(136,170,255,0.35)", borderRadius: 4, padding: "10px 12px" }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 8 }}>
-                <h5 style={{ fontSize: 10, color: "#88aaff", letterSpacing: "0.1em", margin: 0 }}>LOOP 3 BUILD PROGRESS Â· KILL CRITERION kc-codeforge Â· TARGET 2026-07-23</h5>
-                <span style={{ fontSize: 9, color: "#8a94a6", fontFamily: "ui-monospace, monospace" }}>updated 2026-05-07 Â· DAY 30 â</span>
+                <h5 style={{ fontSize: 10, color: "#88aaff", letterSpacing: "0.1em", margin: 0 }}>LOOP 3 BUILD PROGRESS · KILL CRITERION kc-codeforge · TARGET 2026-07-23</h5>
+                <span style={{ fontSize: 9, color: "#8a94a6", fontFamily: "ui-monospace, monospace" }}>updated 2026-05-07 · DAY 30 ✓</span>
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 8 }}>
                 <div style={{ background: "rgba(136,170,255,0.04)", borderLeft: "2px solid #88aaff", padding: "6px 9px", borderRadius: 3 }}>
@@ -2948,17 +2948,17 @@ const ConstructAtlas = ({ agents }) => {
                 <div style={{ background: "rgba(57,255,20,0.04)", borderLeft: "2px solid #39ff14", padding: "6px 9px", borderRadius: 3 }}>
                   <div style={{ fontSize: 9, color: "#39ff14", letterSpacing: "0.06em" }}>SCAFFOLD</div>
                   <div style={{ fontSize: 14, color: "#aaffcc", fontWeight: 700, fontFamily: "ui-monospace, monospace" }}>SHIPPED</div>
-                  <div style={{ fontSize: 9, color: "#6b7688" }}>scaffold.py Â· 4 skill types</div>
+                  <div style={{ fontSize: 9, color: "#6b7688" }}>scaffold.py · 4 skill types</div>
                 </div>
                 <div style={{ background: "rgba(57,255,20,0.04)", borderLeft: "2px solid #39ff14", padding: "6px 9px", borderRadius: 3 }}>
                   <div style={{ fontSize: 9, color: "#39ff14", letterSpacing: "0.06em" }}>VALIDATE</div>
                   <div style={{ fontSize: 14, color: "#aaffcc", fontWeight: 700, fontFamily: "ui-monospace, monospace" }}>SHIPPED</div>
-                  <div style={{ fontSize: 9, color: "#6b7688" }}>validate.py Â· lint + match_engine + tests</div>
+                  <div style={{ fontSize: 9, color: "#6b7688" }}>validate.py · lint + match_engine + tests</div>
                 </div>
                 <div style={{ background: "rgba(57,255,20,0.04)", borderLeft: "2px solid #39ff14", padding: "6px 9px", borderRadius: 3 }}>
                   <div style={{ fontSize: 9, color: "#39ff14", letterSpacing: "0.06em" }}>DEPLOY</div>
                   <div style={{ fontSize: 14, color: "#aaffcc", fontWeight: 700, fontFamily: "ui-monospace, monospace" }}>SHIPPED</div>
-                  <div style={{ fontSize: 9, color: "#6b7688" }}>deploy.py Â· journal + rollback</div>
+                  <div style={{ fontSize: 9, color: "#6b7688" }}>deploy.py · journal + rollback</div>
                 </div>
                 <div style={{ background: "rgba(255,255,255,0.04)", borderLeft: "2px solid #6b7688", padding: "6px 9px", borderRadius: 3 }}>
                   <div style={{ fontSize: 9, color: "#6b7688", letterSpacing: "0.06em" }}>STAGED SKILLS</div>
@@ -2973,9 +2973,9 @@ const ConstructAtlas = ({ agents }) => {
               </div>
               <div style={{ marginTop: 8, fontSize: 9, color: "#8a94a6", lineHeight: 1.5 }}>
                 <strong style={{ color: "#88aaff" }}>Path to LIVE:</strong>
-                {" "}<span style={{ color: "#39ff14" }}>1. â Day 30 SHIPPED â scaffold + validate + deploy</span> Â·
-                {" "}2. First real code skill scaffolded from a Loop 1 lesson (Day 45) Â·
-                {" "}3. â¥3 code skills shipped via the pipeline (Day 60 â clears kc-codeforge) Â·
+                {" "}<span style={{ color: "#39ff14" }}>1. ✓ Day 30 SHIPPED — scaffold + validate + deploy</span> ·
+                {" "}2. First real code skill scaffolded from a Loop 1 lesson (Day 45) ·
+                {" "}3. ≥3 code skills shipped via the pipeline (Day 60 — clears kc-codeforge) ·
                 {" "}4. Foreman + Skill-Forge v2 self-deploying via Loop 3 (Day 90 kill-criterion checkpoint).
               </div>
             </div>
@@ -2983,20 +2983,20 @@ const ConstructAtlas = ({ agents }) => {
         </section>
 
         <div style={s.posture}>
-          <h3 style={s.postureH3}>PUBLIC POSTURE â applies across every agent + dashboard</h3>
+          <h3 style={s.postureH3}>PUBLIC POSTURE — applies across every agent + dashboard</h3>
           <ul style={s.postureUl}>
-            <li style={s.postureLi}>â¸ Shop, not studio. Never "studio."</li>
-            <li style={s.postureLi}>â¸ Never mention "permitting" in public copy.</li>
-            <li style={s.postureLi}>â¸ Never name Lennar (or any client) as B9 expansion reason publicly.</li>
-            <li style={s.postureLi}>â¸ Never mention DeckForge / ForgeDesk / DeskForge publicly.</li>
-            <li style={s.postureLi}>â¸ No warm colors on B9 surfaces. Navy #0A0E1A Â· Cyan #00AEEF Â· White (60/30/10).</li>
-            <li style={s.postureLi}>â¸ Bobby's name: Robert Louis Hartley / Bobby Hartley. Never "Bobby Petrino."</li>
-            <li style={s.postureLi}>â¸ Engine stays unnamed externally per Public Posture #7.</li>
-            <li style={s.postureLi}>â¸ HC â¤3 humans, ever. Non-negotiable.</li>
+            <li style={s.postureLi}>▸ Shop, not studio. Never "studio."</li>
+            <li style={s.postureLi}>▸ Never mention "permitting" in public copy.</li>
+            <li style={s.postureLi}>▸ Never name Lennar (or any client) as B9 expansion reason publicly.</li>
+            <li style={s.postureLi}>▸ Never mention DeckForge / ForgeDesk / DeskForge publicly.</li>
+            <li style={s.postureLi}>▸ No warm colors on B9 surfaces. Navy #0A0E1A · Cyan #00AEEF · White (60/30/10).</li>
+            <li style={s.postureLi}>▸ Bobby's name: Robert Louis Hartley / Bobby Hartley. Never "Bobby Petrino."</li>
+            <li style={s.postureLi}>▸ Engine stays unnamed externally per Public Posture #7.</li>
+            <li style={s.postureLi}>▸ HC ≤3 humans, ever. Non-negotiable.</li>
           </ul>
         </div>
 
-        <div style={{ textAlign: "center", color: "rgba(57,255,20,0.4)", fontSize: 10, padding: "12px 0 4px", letterSpacing: "0.15em" }}>â¼ NEUROLINK 3099 BELOW Â· AMBIENT VISUAL Â· "FOR FUN" â¼</div>
+        <div style={{ textAlign: "center", color: "rgba(57,255,20,0.4)", fontSize: 10, padding: "12px 0 4px", letterSpacing: "0.15em" }}>▼ NEUROLINK 3099 BELOW · AMBIENT VISUAL · "FOR FUN" ▼</div>
       </div>
     </div>
   );
@@ -3066,9 +3066,9 @@ function AgentEcosystemDashboard() {
     <div style={{ minHeight: "100vh", background: "#000", color: "#39ff14", fontFamily: "'Courier New', Courier, monospace", position: "relative", overflowX: "hidden" }}>
       <MatrixRain />
       <div style={{ position: "relative", zIndex: 1 }}>
-        {/* CONSTRUCT ATLAS â top-fold overview Â· 6 bands Â· click to expand Â· added 2026-05-06 */}
+        {/* CONSTRUCT ATLAS — top-fold overview · 6 bands · click to expand · added 2026-05-06 */}
         <ConstructAtlas agents={agents} />
-        {/* CONSTRUCT GALAXY â NEUROLINK 3099 hero, now ambient. Atlas above is the primary navigation aid. */}
+        {/* CONSTRUCT GALAXY — NEUROLINK 3099 hero, now ambient. Atlas above is the primary navigation aid. */}
         <ConstructGalaxy />
         <RolloutLogPanel />
 
