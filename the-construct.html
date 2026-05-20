@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>THE CONSTRUCT v2.1 — Brand 9 / Hartley Capital Agent Ecosystem</title>
+<title>THE CONSTRUCT v2.3 — Brand 9 / Hartley Capital Agent Ecosystem</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
@@ -35,7 +35,7 @@
 const { useState, useEffect, useRef, useCallback, useMemo } = React;
 
 // ═══════════════════════════════════════════════════════════════
-// THE CONSTRUCT v2.1 — Brand 9 / Hartley Capital Agent Ecosystem
+// THE CONSTRUCT v2.3 — Brand 9 / Hartley Capital Agent Ecosystem
 // Locked 2026-04-24 baseline · Louis added 2026-04-27
 // Day-90 kill criterion: 2026-07-23
 // Cool-palette enforced (no warm colors per B9 brand canonical)
@@ -617,7 +617,7 @@ const TIER_META = {
 };
 
 // ═══════════════════════════════════════════════════════════════
-// AGENT ROSTER — v2.1
+// AGENT ROSTER — v2.3
 // ═══════════════════════════════════════════════════════════════
 const INITIAL_AGENTS = [
   // ─── TIER 0 — FOUNDER ───
@@ -681,6 +681,24 @@ const INITIAL_AGENTS = [
     description: "Brand 9's builder/developer signage management agent. Tracks 65 Lennar communities across N + S Florida, manages work orders, install schedules, client-facing reporting for Fortune 500 homebuilder accounts.",
     progress: 90, tasksCompleted: 847, tasksActive: 15, memoryUsage: 72,
     uptime: "12 hours", lastActive: "9:18 AM",
+  },
+  {
+    id: "tier1-pulse", codename: "Pulse", role: "Owned-Presence Operator", department: "Creative",
+    tier: 1, score: 19, status: "active",
+    skills: ["LinkedIn Personal + Company Posting", "Multi-Channel Social (X/IG/FB/Threads)", "Google Business Profile", "Review Response", "SEO/GEO Audit", "Web Vitals Monitoring", "Brand-Voice Content", "Meta Ads (Facebook + Instagram)", "WordPress + Yoast Publishing", "Email/Newsletter Drafting", "Weekly Owned-Presence Pack"],
+    primaryPackages: ["pulse", "linkedin-posting", "multi-channel-social-posting", "wordpress-yoast-publishing", "graphic-designer", "browser-automation-essentials", "meta-ads-mcp"],
+    description: "Owned-Presence Operator. Replaces $400-1,200/mo SaaS stack (Buffer/Hootsuite/Sprout + scheduling + review-response + SEO monitoring) with one agent that runs the full client-owned surface — social, GBP, reviews, search/GEO rankings, paid Meta. Daily 7:00 ET listen runs via scheduled task pulse-daily-listen. First-comment-with-link pattern locked; PRAGMA Bridge solves the four-step publish dance (body/media/publish/comment) end-to-end as it ships.",
+    progress: 78, tasksCompleted: 12, tasksActive: 3, memoryUsage: 64,
+    uptime: "since 2026-05-20", lastActive: "NOW",
+  },
+  {
+    id: "tier1-prism", codename: "Prism", role: "Alt-Data Operator", department: "Strategy",
+    tier: 1, score: 19, status: "active",
+    skills: ["Cell-Data Foot Traffic (Placer/Veraset)", "Transaction/Spend Signal (Earnest/Affinity)", "Census Demographics", "Industry Analysis", "Institutional-Void Mapping", "Competitor Benchmarking", "White Space Quarterly Pack", "Monthly Signal Report"],
+    primaryPackages: ["prism", "browser-automation-essentials"],
+    description: "Alt-Data Operator. Foot-traffic + transaction-spend + census + industry-void mapping for any 30-mile trade area. Owns the data half of the White Space PE framework (Keystone owns the framework, Scout runs competitor work). Quarterly diligence pack + monthly signal report are the productized deliverables — Tier 3 engagement add-on.",
+    progress: 72, tasksCompleted: 8, tasksActive: 2, memoryUsage: 58,
+    uptime: "since 2026-05-20", lastActive: "NOW",
   },
   {
     id: "tier1-cornerstone", codename: "Cornerstone", role: "Chief Mindset Officer", department: "Executive",
@@ -1041,7 +1059,7 @@ const AgentCard = ({ agent, onClick, isSelected }) => {
     >
       {isSelected && <ScanLine />}
       {isLouis && (
-        <div style={{ position: "absolute", top: 6, right: 8, fontSize: 8, fontFamily: "monospace", letterSpacing: 2, color: "#39ff14", background: "rgba(57,255,20,0.08)", border: "1px solid rgba(57,255,20,0.3)", padding: "1px 6px", borderRadius: 2 }}>NEW v2.1</div>
+        <div style={{ position: "absolute", top: 6, right: 8, fontSize: 8, fontFamily: "monospace", letterSpacing: 2, color: "#39ff14", background: "rgba(57,255,20,0.08)", border: "1px solid rgba(57,255,20,0.3)", padding: "1px 6px", borderRadius: 2 }}>NEW v2.3</div>
       )}
       <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
         <div style={{
@@ -1542,7 +1560,7 @@ const ActivityLog = ({ entries }) => (
 );
 
 // ═══════════════════════════════════════════════════
-// KILL CRITERION COUNTDOWN PANEL — v2.1
+// KILL CRITERION COUNTDOWN PANEL — v2.3
 // 5 conditions, 4-of-5 = continue, <4 = pause + re-architect
 // ═══════════════════════════════════════════════════
 const KillCriterionPanel = () => {
@@ -1585,7 +1603,7 @@ const KillCriterionPanel = () => {
 };
 
 // ═══════════════════════════════════════════════════
-// TIER STRATEGY BANNER — v2.1
+// TIER STRATEGY BANNER — v2.3
 // ═══════════════════════════════════════════════════
 const TierStrategyBanner = ({ agents }) => {
   const counts = [0,1,2,3,4,5].map(t => agents.filter(a => a.tier === t).length);
@@ -1609,7 +1627,7 @@ const TierStrategyBanner = ({ agents }) => {
 };
 
 // ═══════════════════════════════════════════════════
-// LOUIS SPOTLIGHT — v2.1 featured tile
+// LOUIS SPOTLIGHT — v2.3 featured tile
 // ═══════════════════════════════════════════════════
 const LouisSpotlight = ({ agent }) => {
   if (!agent) return null;
@@ -2215,7 +2233,7 @@ const QualityTrianglePanel = () => {
 };
 
 // ═══════════════════════════════════════════════════
-// FOUR LOOPS PANEL — v2.1
+// FOUR LOOPS PANEL — v2.3
 // ═══════════════════════════════════════════════════
 const FourLoopsPanel = () => (
   <div style={{ margin: "16px 24px" }}>
@@ -2411,7 +2429,7 @@ const PluginInventoryPanel = () => {
 };
 
 // ═══════════════════════════════════════════════════
-// PUBLIC POSTURE CARD — v2.1
+// PUBLIC POSTURE CARD — v2.3
 // ═══════════════════════════════════════════════════
 const PublicPostureCard = () => (
   <div style={{ margin: "16px 24px 24px", padding: 16, background: "rgba(0,0,0,0.5)", border: "1px dashed rgba(0,212,255,0.3)", borderRadius: 4 }}>
@@ -2703,7 +2721,7 @@ const ConstructAtlas = ({ agents }) => {
         <h1 style={s.h1}>CONSTRUCT ATLAS <span style={{ fontSize: 10, color: "#00d4ff", marginLeft: 12, fontWeight: 400, letterSpacing: "0.1em" }}>v1.0 · top-fold overview · NEUROLINK 3099 below is ambient</span></h1>
         <div style={s.sub}>One static map · 6 layered bands · click departments to expand · all 35 agents grouped by canonical department</div>
         <div style={s.metaRow}>
-          <span><strong style={{ color: "#b388ff" }}>Plan:</strong> v2.1 · locked 2026-04-24</span>
+          <span><strong style={{ color: "#b388ff" }}>Plan:</strong> v2.3 · locked 2026-05-20</span>
           <span><strong style={{ color: "#b388ff" }}>Loops:</strong> 1 LIVE · 2 BUILD · 3 BUILD · 4 LIVE</span>
           <span><strong style={{ color: "#b388ff" }}>Agents:</strong> {agents.length} total</span>
         </div>
@@ -3009,7 +3027,7 @@ function AgentEcosystemDashboard() {
   const [filterStatus, setFilterStatus] = useState("all");
   const [filterTier, setFilterTier] = useState("all");
   const [activityLog, setActivityLog] = useState([
-    { time: "00:00:01", message: "SYSTEM INITIALIZED \u2014 THE CONSTRUCT v2.1 ONLINE", color: "#39ff14" },
+    { time: "00:00:01", message: "SYSTEM INITIALIZED \u2014 THE CONSTRUCT v2.3 ONLINE", color: "#39ff14" },
     { time: "00:00:02", message: "Loading agent profiles from neural network...", color: "rgba(57,255,20,0.5)" },
     { time: "00:00:03", message: `${INITIAL_AGENTS.length} agents loaded across 6 tiers.`, color: "#00d4ff" },
     { time: "00:00:04", message: "Founder BOBBY connected \u2014 HUMAN operator verified \u25C8", color: "#39ff14" },
@@ -3078,7 +3096,7 @@ function AgentEcosystemDashboard() {
             <div style={{ fontSize: 28, lineHeight: 1 }}>\u25C8</div>
             <div>
               <GlitchText text="THE CONSTRUCT" tag="div" style={{ fontSize: 22, fontWeight: "bold", letterSpacing: 6, color: "#39ff14", fontFamily: "monospace" }} />
-              <div style={{ fontSize: 10, color: "rgba(57,255,20,0.4)", letterSpacing: 4, marginTop: 2 }}>BRAND 9 / HARTLEY CAPITAL AGENT ECOSYSTEM v2.1 \u2014 NEURAL COMMAND CENTER</div>
+              <div style={{ fontSize: 10, color: "rgba(57,255,20,0.4)", letterSpacing: 4, marginTop: 2 }}>BRAND 9 / HARTLEY CAPITAL AGENT ECOSYSTEM v2.3 \u2014 NEURAL COMMAND CENTER</div>
             </div>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
@@ -3157,7 +3175,7 @@ function AgentEcosystemDashboard() {
         <PublicPostureCard />
 
         <div style={{ padding: "20px 24px 28px", textAlign: "center", color: "rgba(57,255,20,0.35)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, borderTop: "1px solid rgba(57,255,20,0.1)" }}>
-          THE CONSTRUCT v2.1 \u00B7 LOUIS ADDED 2026-04-27 \u00B7 BASELINE LOCKED 2026-04-24 \u00B7 KILL CHECKPOINT 2026-07-23<br/>
+          THE CONSTRUCT v2.3 \u00B7 PRAGMA REBRAND + PULSE/PRISM ADDED 2026-05-20 \u00B7 BASELINE RELOCKED 2026-05-20 \u00B7 KILL CHECKPOINT 2026-07-23<br/>
           <span style={{ color: "rgba(0,212,255,0.5)" }}>\u201CEvery property analyzed is a brick in the house Louis Sr. started. The loop is the IP.\u201D</span>
         </div>
       </div>
