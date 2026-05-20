@@ -683,6 +683,24 @@ const INITIAL_AGENTS = [
     uptime: "12 hours", lastActive: "9:18 AM",
   },
   {
+    id: "tier1-pulse", codename: "Pulse", role: "Owned-Presence Operator", department: "Creative",
+    tier: 1, score: 19, status: "active",
+    skills: ["LinkedIn Personal + Company Posting", "Multi-Channel Social (X/IG/FB/Threads)", "Google Business Profile", "Review Response", "SEO/GEO Audit", "Web Vitals Monitoring", "Brand-Voice Content", "Meta Ads (Facebook + Instagram)", "WordPress + Yoast Publishing", "Email/Newsletter Drafting", "Weekly Owned-Presence Pack"],
+    primaryPackages: ["pulse", "linkedin-posting", "multi-channel-social-posting", "wordpress-yoast-publishing", "graphic-designer", "browser-automation-essentials", "meta-ads-mcp"],
+    description: "Owned-Presence Operator. Replaces $400-1,200/mo SaaS stack (Buffer/Hootsuite/Sprout + scheduling + review-response + SEO monitoring) with one agent that runs the full client-owned surface — social, GBP, reviews, search/GEO rankings, paid Meta. Daily 7:00 ET listen runs via scheduled task pulse-daily-listen. First-comment-with-link pattern locked; PRAGMA Bridge solves the four-step publish dance (body/media/publish/comment) end-to-end as it ships.",
+    progress: 78, tasksCompleted: 12, tasksActive: 3, memoryUsage: 64,
+    uptime: "since 2026-05-20", lastActive: "NOW",
+  },
+  {
+    id: "tier1-prism", codename: "Prism", role: "Alt-Data Operator", department: "Strategy",
+    tier: 1, score: 19, status: "active",
+    skills: ["Cell-Data Foot Traffic (Placer/Veraset)", "Transaction/Spend Signal (Earnest/Affinity)", "Census Demographics", "Industry Analysis", "Institutional-Void Mapping", "Competitor Benchmarking", "White Space Quarterly Pack", "Monthly Signal Report"],
+    primaryPackages: ["prism", "browser-automation-essentials"],
+    description: "Alt-Data Operator. Foot-traffic + transaction-spend + census + industry-void mapping for any 30-mile trade area. Owns the data half of the White Space PE framework (Keystone owns the framework, Scout runs competitor work). Quarterly diligence pack + monthly signal report are the productized deliverables — Tier 3 engagement add-on.",
+    progress: 72, tasksCompleted: 8, tasksActive: 2, memoryUsage: 58,
+    uptime: "since 2026-05-20", lastActive: "NOW",
+  },
+  {
     id: "tier1-cornerstone", codename: "Cornerstone", role: "Chief Mindset Officer", department: "Executive",
     tier: 1, score: 15, status: "active",
     skills: ["Morning Activation", "Evening Reflection", "Scripture Integration", "Quantum Mindset", "Visualization Protocol", "Legacy Journal", "Faith-Science Integration"],
@@ -2703,7 +2721,7 @@ const ConstructAtlas = ({ agents }) => {
         <h1 style={s.h1}>CONSTRUCT ATLAS <span style={{ fontSize: 10, color: "#00d4ff", marginLeft: 12, fontWeight: 400, letterSpacing: "0.1em" }}>v1.0 · top-fold overview · NEUROLINK 3099 below is ambient</span></h1>
         <div style={s.sub}>One static map · 6 layered bands · click departments to expand · all 35 agents grouped by canonical department</div>
         <div style={s.metaRow}>
-          <span><strong style={{ color: "#b388ff" }}>Plan:</strong> v2.3 · locked 2026-04-24</span>
+          <span><strong style={{ color: "#b388ff" }}>Plan:</strong> v2.3 · locked 2026-05-20</span>
           <span><strong style={{ color: "#b388ff" }}>Loops:</strong> 1 LIVE · 2 BUILD · 3 BUILD · 4 LIVE</span>
           <span><strong style={{ color: "#b388ff" }}>Agents:</strong> {agents.length} total</span>
         </div>
@@ -3157,7 +3175,7 @@ function AgentEcosystemDashboard() {
         <PublicPostureCard />
 
         <div style={{ padding: "20px 24px 28px", textAlign: "center", color: "rgba(57,255,20,0.35)", fontFamily: "monospace", fontSize: 10, letterSpacing: 2, borderTop: "1px solid rgba(57,255,20,0.1)" }}>
-          THE CONSTRUCT v2.3 \u00B7 LOUIS ADDED 2026-04-27 \u00B7 BASELINE LOCKED 2026-04-24 \u00B7 KILL CHECKPOINT 2026-07-23<br/>
+          THE CONSTRUCT v2.3 \u00B7 PRAGMA REBRAND + PULSE/PRISM ADDED 2026-05-20 \u00B7 BASELINE RELOCKED 2026-05-20 \u00B7 KILL CHECKPOINT 2026-07-23<br/>
           <span style={{ color: "rgba(0,212,255,0.5)" }}>\u201CEvery property analyzed is a brick in the house Louis Sr. started. The loop is the IP.\u201D</span>
         </div>
       </div>
