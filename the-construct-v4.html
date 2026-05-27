@@ -89,13 +89,46 @@ const PUBLIC_OPERATORS = [
     today: "Quarterly TLC trade-area refresh", workload: "Foot traffic · spend", tier: "T1 · Cowork", status: "active" },
 ];
 
-// Internal Tier 2 — Infrastructure agents
+// Tier 1.5 — Internal Coordination Layer (active, behind-the-scenes)
 const INTERNAL_AGENTS = [
-  { id: "in-architect", codename: "Architect", role: "Capital Council · Sunday 7:06 ET", color: C.blue, tier: "T2 · Cowork", status: "active" },
-  { id: "in-anvil", codename: "Anvil", role: "Chief Integration · plugin wiring", color: C.green, tier: "T2 · Cowork", status: "active" },
-  { id: "in-wolf", codename: "WOLF", role: "Quant Research · Day-60 reassess 6/5", color: C.blue, tier: "T2 · Cowork", status: "active" },
-  { id: "in-cornerstone", codename: "Cornerstone", role: "Morning + Evening reflection", color: C.white, tier: "T2 · Cowork", status: "active" },
-  { id: "in-loop", codename: "Self-Improving Loop", role: "Meta · captures corrections", color: C.white, tier: "T2 · Cowork", status: "active" },
+  { id: "in-architect", codename: "Architect", role: "Capital Council · Sunday 7:06 ET · CIVO", color: C.blue, tier: "T1.5 · Cowork", status: "active" },
+  { id: "in-anvil", codename: "Anvil", role: "Chief Integration · plugin wiring", color: C.green, tier: "T1.5 · Cowork", status: "active" },
+  { id: "in-wolf", codename: "WOLF", role: "Quant Research · Day-60 reassess 6/5", color: C.blue, tier: "T1.5 · Cowork", status: "active" },
+  { id: "in-cornerstone", codename: "Cornerstone", role: "Morning + Evening reflection", color: C.white, tier: "T1.5 · Cowork", status: "active" },
+  { id: "in-loop", codename: "Self-Improving Loop", role: "Meta · captures corrections", color: C.white, tier: "T1.5 · Cowork", status: "active" },
+];
+
+// Tier 1B — C-Suite Routing Labels (internal routing terminology used by Lens)
+// Per Two-Tier Naming memory: these are NOT separate agents — they're routing labels Lens uses to tag actions.
+// Don't conflate with public Tier 1 PRAGMA Operators.
+const CSUITE_ROSTER = [
+  { codename: "AP",       role: "CEO",                  dept: "Executive",   color: C.gold },
+  { codename: "Ledger",   role: "CFO",                  dept: "Finance",     color: C.blue, priorityElevated: true },
+  { codename: "Forge",    role: "COO",                  dept: "Operations",  color: C.green },
+  { codename: "Cipher",   role: "CTO",                  dept: "Technology",  color: C.blue },
+  { codename: "Oracle",   role: "CIO",                  dept: "Technology",  color: C.blue },
+  { codename: "Signal",   role: "CMO",                  dept: "Creative",    color: C.purple },
+  { codename: "Sentinel", role: "CLO",                  dept: "Strategy",    color: C.cyan },
+  { codename: "Spectra",  role: "CSO",                  dept: "Strategy",    color: C.cyan,  status: "idle" },
+  { codename: "Nexus",    role: "CHRO",                 dept: "People",      color: C.green, status: "idle" },
+  { codename: "Venture",  role: "VC Analyst",           dept: "Finance",     color: C.blue },
+  { codename: "Equity",   role: "PE Strategist",        dept: "Finance",     color: C.blue },
+  { codename: "Alpha",    role: "Hedge Fund Manager",   dept: "Finance",     color: C.blue },
+  { codename: "Apex",     role: "CRO",                  dept: "Revenue",     color: C.green },
+  { codename: "Anchor",   role: "CCO",                  dept: "People",      color: C.green },
+  { codename: "Helm",     role: "CPO",                  dept: "Product",     color: C.purple },
+];
+
+// Build Queue Backlog — future-state agents under construction or queued
+const BUILD_BACKLOG = [
+  { codename: "Archivist",       role: "Archive · 0/500 jobs indexed",      status: "building",   day: 60, color: C.cyan },
+  { codename: "Skill-Forge",     role: "Skill Creator · 0/3 skills accepted", status: "building", day: 30, color: C.green },
+  { codename: "Foreman",         role: "Overseer · 0% replay catch rate",   status: "building",   day: 60, color: C.green },
+  { codename: "Eval Harness",    role: "Evaluator · 0 agents scored",       status: "building",   day: 45, color: C.cyan },
+  { codename: "Skill-Forge v2",  role: "scaffold + validate + deploy CLIs", status: "building",   day: 30, color: C.green },
+  { codename: "Precedent-Finder",role: "Finder · 0/2 client decks",         status: "queued",     day: 90, color: C.cyan },
+  { codename: "Field-Scout",     role: "Field-Drone · contingent build",    status: "contingent", day: null, color: C.greenDim },
+  { codename: "Hartley-Cite",    role: "Cite · queued",                     status: "queued",     day: null, color: C.cyan },
 ];
 
 // NEW Tier 2 — Production engine (Hermes-Agent + DeepSeek)
@@ -626,10 +659,76 @@ const OperatorGrid = () => (
     </div>
 
     <div style={{ fontSize: 11, color: C.green, letterSpacing: 4, marginTop: 28, marginBottom: 12, opacity: 0.85 }}>
-      ⎔ INTERNAL AGENTS · INFRASTRUCTURE LAYER
+      ⎔ TIER 1.5 · INTERNAL COORDINATION LAYER
+    </div>
+    <div style={{ fontSize: 9, color: C.greenDim, marginBottom: 10, fontStyle: "italic" }}>
+      Behind-the-scenes agents that coordinate · gate · reflect. Active but not customer-facing.
     </div>
     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 10 }}>
       {INTERNAL_AGENTS.map(a => <InternalCard key={a.id} a={a} />)}
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════
+// TIER 1B — C-SUITE ROUTING ROSTER (compressed)
+// Per Two-Tier Naming memory: routing labels Lens uses · NOT separate agents
+// ═══════════════════════════════════════════════════════════════
+const CSuiteRoster = () => (
+  <div style={{ margin: "20px 28px", padding: 16, border: `1px solid ${C.greenDim}`, background: "rgba(0,0,0,0.6)", borderStyle: "dashed" }}>
+    <div style={{ fontSize: 11, color: C.cyan, letterSpacing: 4, marginBottom: 6 }}>
+      ⎔ TIER 1B · C-SUITE ROUTING ROSTER
+    </div>
+    <div style={{ fontSize: 9, color: C.greenDim, fontStyle: "italic", marginBottom: 12, lineHeight: 1.5 }}>
+      Internal routing terminology Lens uses to tag actions across the Construct. <span style={{ color: C.orange }}>NOT separate agents</span> — these are labels for the same Cowork runtime acting in different functional capacities. Do not conflate with Tier 1 PRAGMA Operators. Mass-renaming these labels breaks Lens routing.
+    </div>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(170px, 1fr))", gap: 6 }}>
+      {CSUITE_ROSTER.map((a, i) => (
+        <div key={i} style={{
+          padding: "5px 9px",
+          borderLeft: `2px solid ${a.color}`,
+          background: a.priorityElevated ? "rgba(74,158,255,0.07)" : "rgba(0,0,0,0.3)",
+          display: "flex", flexDirection: "column",
+        }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+            <span style={{ fontSize: 11, fontWeight: 700, color: a.color, letterSpacing: 1 }}>{a.codename}</span>
+            <span style={{ fontSize: 7, color: a.status === "idle" ? C.greenDim : C.green, letterSpacing: 1 }}>{a.status === "idle" ? "idle" : "●"}</span>
+          </div>
+          <span style={{ fontSize: 8, color: a.color, opacity: 0.7, marginTop: 1 }}>{a.role}</span>
+          <span style={{ fontSize: 7, color: C.greenDim, marginTop: 2, letterSpacing: 1 }}>{a.dept.toUpperCase()}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════
+// BUILD QUEUE BACKLOG — future-state agents under construction
+// ═══════════════════════════════════════════════════════════════
+const BuildBacklog = () => (
+  <div style={{ margin: "20px 28px", padding: 16, border: `1px solid ${C.cyan}`, borderStyle: "dashed", background: "rgba(0,212,255,0.03)" }}>
+    <div style={{ fontSize: 11, color: C.cyan, letterSpacing: 4, marginBottom: 6 }}>
+      ⊕ BUILD QUEUE · BACKLOG · FUTURE-STATE AGENTS
+    </div>
+    <div style={{ fontSize: 9, color: C.greenDim, fontStyle: "italic", marginBottom: 12, lineHeight: 1.5 }}>
+      Agents under construction or queued. Day-90 kill criterion 2026-07-23 applies — agents not shipped by then get re-evaluated for fit.
+    </div>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 8 }}>
+      {BUILD_BACKLOG.map((b, i) => (
+        <div key={i} style={{
+          padding: 8,
+          border: `1px ${b.status === "contingent" ? "dotted" : "dashed"} ${b.color}`,
+          background: "rgba(0,0,0,0.5)",
+        }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+            <span style={{ fontSize: 11, fontWeight: 700, color: b.color, letterSpacing: 1 }}>{b.codename}</span>
+            <span style={{ fontSize: 7, color: C.greenDim, letterSpacing: 1 }}>
+              {b.status.toUpperCase()}{b.day ? ` · D${b.day}` : ""}
+            </span>
+          </div>
+          <div style={{ fontSize: 8, color: b.color, opacity: 0.75, marginTop: 3 }}>{b.role}</div>
+        </div>
+      ))}
     </div>
   </div>
 );
@@ -931,6 +1030,8 @@ const Dashboard = () => (
       <HermesPanel />
       <HermesMigrationMap />
       <OperatorGrid />
+      <CSuiteRoster />
+      <BuildBacklog />
       <LiveDataFeed />
       <PragmaPanel />
       <FoundationPanel />
