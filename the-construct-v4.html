@@ -99,6 +99,7 @@ const INTERNAL_AGENTS = [
 ];
 
 // NEW Tier 2 — Production engine (Hermes-Agent + DeepSeek)
+// Top 5 strategic workloads shown in Neurolink; full migration map below
 const HERMES_WORKLOADS = [
   { id: "h-arxiv",  codename: "arxiv-scan", role: "ArXiv q-fin daily", color: C.green, status: "proven", lastRun: "13:15 ET · 3 papers · $0.005" },
   { id: "h-wolf",   codename: "wolf-discovery", role: "WOLF research scan", color: C.green, status: "proven", lastRun: "12:53 ET · placeholder · $0 (blocked)" },
@@ -106,6 +107,101 @@ const HERMES_WORKLOADS = [
   { id: "h-pulse",  codename: "pulse-poll", role: "Hourly review/GBP poll", color: C.greenDim, status: "planned", lastRun: "—" },
   { id: "h-scout",  codename: "scout-watch", role: "Competitor pricing watch", color: C.greenDim, status: "planned", lastRun: "—" },
 ];
+
+// Full Hermes Migration Map — A-G categories from audit
+const HERMES_MIGRATION_MAP = [
+  {
+    id: "cat-a", letter: "A", title: "Background Polling · 24/7", color: C.green,
+    thesis: "Workloads that should run continuously but currently can't at Claude prices.",
+    items: [
+      { name: "Review monitoring", detail: "Google · Yelp · BBB · Brand 9 + TLC + PRAGMA clients", status: "planned" },
+      { name: "GBP listing health", detail: "hourly polling per location", status: "planned" },
+      { name: "Competitor pricing watch", detail: "per-PRAGMA-client + B9 competitors", status: "planned" },
+      { name: "Inventory delta detection", detail: "Atlas → QBO via MCP", status: "opportunity" },
+      { name: "Web traffic anomaly", detail: "GSC + Site Kit hourly pull · 2σ flag", status: "opportunity" },
+      { name: "Lennar new-community discovery", detail: "DeckForge feed source", status: "opportunity" },
+      { name: "GitHub release watch", detail: "Hermes-Agent · Anthropic SDK · plugin deps", status: "opportunity" },
+    ],
+  },
+  {
+    id: "cat-b", letter: "B", title: "Bulk Data Assembly", color: C.cyan,
+    thesis: "Overnight prep so morning Cowork synthesis runs on pre-staged data, not raw scrapes.",
+    items: [
+      { name: "Lens broad-sweep", detail: "3×/day · proven today at ~$0.07", status: "proven" },
+      { name: "Architect Capital Council data prep", detail: "Sat night → Sun morning synthesis", status: "ready" },
+      { name: "Weekly portfolio data assembly", detail: "Mon 8 AM brief upstream", status: "ready" },
+      { name: "Brand-Lab AI weekly source scan", detail: "Mon AM upstream", status: "ready" },
+      { name: "Memory compression source pull", detail: "Monthly 1st of month upstream", status: "ready" },
+    ],
+  },
+  {
+    id: "cat-c", letter: "C", title: "First-Pass Triage", color: C.cyan,
+    thesis: "Hermes classifies & routes · Cowork only sees items needing decisions.",
+    items: [
+      { name: "Email triage", detail: "action / fyi / spam pre-routing", status: "planned" },
+      { name: "Slack #all-ap-dispatch monitor", detail: "missed-action flagging", status: "planned" },
+      { name: "Daily dispatch check", detail: "channel verification · M-F 8:38 ET", status: "ready" },
+      { name: "AP morning briefing data layer", detail: "Hermes assembles · Cowork writes voice", status: "ready" },
+    ],
+  },
+  {
+    id: "cat-d", letter: "D", title: "Source-Specific Scrapes", color: C.green,
+    thesis: "Pure scrape + parse + de-dupe · zero Claude reasoning needed.",
+    items: [
+      { name: "ArXiv q-fin", detail: "daily · proven today · 3 papers · $0.005", status: "proven" },
+      { name: "NBER working papers", detail: "weekly", status: "ready" },
+      { name: "FRED data releases", detail: "weekly", status: "ready" },
+      { name: "Reddit /r/algotrading + /r/quant", detail: "daily top posts", status: "ready" },
+      { name: "Hacker News quant mentions", detail: "daily via HN Algolia API", status: "ready" },
+      { name: "SSRN finance papers", detail: "weekly most-downloaded", status: "ready" },
+      { name: "WOLF consulting intel", detail: "PwC · McKinsey · Deloitte · BCG · Bain daily", status: "ready" },
+    ],
+  },
+  {
+    id: "cat-e", letter: "E", title: "Client-Side · PRAGMA Lite", color: C.purple,
+    thesis: "Every Install client runs Hermes on their own hardware · zero recurring Anthropic dependency.",
+    items: [
+      { name: "Per-client review monitoring", detail: "always-on on client's Mac/VPS", status: "spec" },
+      { name: "Per-client SEO drift watch", detail: "weekly site scan · alert on drops", status: "spec" },
+      { name: "Per-client GBP health", detail: "hourly listing integrity", status: "spec" },
+      { name: "Per-client content publishing", detail: "scheduled posts via gateway integrations", status: "spec" },
+      { name: "PRAGMA Skill Pack v0.1", detail: "6-item spec locked 2026-05-27", status: "spec" },
+    ],
+  },
+  {
+    id: "cat-f", letter: "F", title: "Health · Monitoring", color: C.white,
+    thesis: "Lowest stakes · fully autonomous · runs forever once configured.",
+    items: [
+      { name: "Daily machine cleanup", detail: "currently launchd — could move to Hermes", status: "opportunity" },
+      { name: "Log scanning + error patterns", detail: "system health surface", status: "opportunity" },
+      { name: "File integrity checks", detail: "sensitive client dirs", status: "opportunity" },
+      { name: "Disk + memory usage tracking", detail: "trend alerts", status: "opportunity" },
+    ],
+  },
+  {
+    id: "cat-g", letter: "G", title: "Auxiliary for Cowork", color: C.white,
+    thesis: "Cheap Hermes calls inside Cowork's auxiliary task pipeline.",
+    items: [
+      { name: "Context compression", detail: "long-conversation summaries via Hermes", status: "ready" },
+      { name: "Title generation", detail: "session titles · file naming", status: "ready" },
+      { name: "Inbox summarization", detail: "Hermes pre-summarizes · Cowork triages", status: "ready" },
+      { name: "Web-page text extraction", detail: "before Cowork reads the page", status: "ready" },
+    ],
+  },
+];
+
+// ROI projection (napkin math)
+const ROI = {
+  current_scheduler_burn_low: 200,
+  current_scheduler_burn_high: 1000,
+  hermes_data_capture_pct: 0.60,
+  monthly_savings_low: 120,
+  monthly_savings_high: 600,
+  annualized_low: 1440,
+  annualized_high: 7200,
+  new_workloads_unlocked: 11, // Categories A + F items that don't run today
+  pragma_lite_client_cost_removed: 100, // $/mo per client (Claude Max replacement)
+};
 
 // Tier 0 — Foundation infrastructure
 const FOUNDATION = [
@@ -612,6 +708,107 @@ const HermesPanel = () => (
 );
 
 // ═══════════════════════════════════════════════════════════════
+// HERMES MIGRATION MAP — A-G categories from the larger-scale audit
+// ═══════════════════════════════════════════════════════════════
+const STATUS_STYLE = {
+  proven:      { color: C.green,    bg: "rgba(57,255,20,0.12)",  border: C.green,    label: "● PROVEN",      style: "solid" },
+  ready:       { color: C.green,    bg: "rgba(57,255,20,0.05)",  border: C.green,    label: "◐ READY",       style: "solid" },
+  planned:     { color: C.cyan,     bg: "rgba(0,212,255,0.05)",  border: C.cyan,     label: "○ PLANNED",     style: "dashed" },
+  opportunity: { color: C.greenDim, bg: "rgba(57,255,20,0.02)",  border: C.greenDim, label: "◇ OPPORTUNITY", style: "dashed" },
+  spec:        { color: C.purple,   bg: "rgba(179,136,255,0.05)",border: C.purple,   label: "△ SPEC",        style: "dashed" },
+};
+
+const HermesMigrationMap = () => {
+  const totals = useMemo(() => {
+    const counts = { proven: 0, ready: 0, planned: 0, opportunity: 0, spec: 0 };
+    HERMES_MIGRATION_MAP.forEach(cat => cat.items.forEach(i => { counts[i.status] = (counts[i.status] || 0) + 1; }));
+    return counts;
+  }, []);
+  const totalItems = Object.values(totals).reduce((a,b) => a+b, 0);
+
+  return (
+    <div style={{ margin: "28px 28px 20px", padding: 20,
+      border: `1px solid ${C.green}`, background: "rgba(0,0,0,0.75)", position: "relative",
+    }}>
+      <div style={{ position: "absolute", top: -10, left: 16, padding: "0 8px", background: "#000", fontSize: 10, color: C.green, letterSpacing: 4 }}>
+        ⌬ HERMES MIGRATION MAP — LARGER-SCALE AUDIT 2026-05-27
+      </div>
+
+      <div style={{ marginTop: 8, marginBottom: 18, display: "flex", flexWrap: "wrap", gap: 18, alignItems: "center", fontSize: 10 }}>
+        <span style={{ color: C.greenDim, letterSpacing: 2 }}>SCOPE</span>
+        <span style={{ color: C.green }}>{totalItems} workloads · 7 categories</span>
+        <span style={{ color: C.greenDim }}>·</span>
+        {Object.entries(totals).map(([k,v]) => (
+          <span key={k} style={{ color: STATUS_STYLE[k].color }}>
+            {STATUS_STYLE[k].label} <span style={{ fontWeight: 700 }}>{v}</span>
+          </span>
+        ))}
+      </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(420px, 1fr))", gap: 14 }}>
+        {HERMES_MIGRATION_MAP.map(cat => (
+          <div key={cat.id} style={{
+            borderLeft: `3px solid ${cat.color}`, paddingLeft: 14, paddingBottom: 6,
+            background: "rgba(0,0,0,0.4)", paddingTop: 10, paddingRight: 10,
+          }}>
+            <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 4 }}>
+              <span style={{ fontSize: 22, fontWeight: 700, color: cat.color, letterSpacing: 2, fontFamily: "Courier New, monospace" }}>{cat.letter}</span>
+              <span style={{ fontSize: 12, fontWeight: 700, color: cat.color, letterSpacing: 3 }}>{cat.title}</span>
+            </div>
+            <div style={{ fontSize: 9, color: C.greenDim, lineHeight: 1.5, marginBottom: 10, fontStyle: "italic", paddingRight: 8 }}>
+              {cat.thesis}
+            </div>
+            {cat.items.map((it, i) => {
+              const ss = STATUS_STYLE[it.status];
+              return (
+                <div key={i} style={{
+                  display: "flex", justifyContent: "space-between", alignItems: "center",
+                  padding: "5px 8px", marginBottom: 3,
+                  border: `1px ${ss.style} ${ss.border}`, background: ss.bg,
+                }}>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: 10, color: ss.color, fontWeight: 600 }}>{it.name}</div>
+                    <div style={{ fontSize: 8, color: C.greenDim, marginTop: 1, opacity: 0.85 }}>{it.detail}</div>
+                  </div>
+                  <span style={{ fontSize: 8, color: ss.color, letterSpacing: 1, marginLeft: 8, whiteSpace: "nowrap" }}>{ss.label}</span>
+                </div>
+              );
+            })}
+          </div>
+        ))}
+      </div>
+
+      {/* ROI strip */}
+      <div style={{ marginTop: 18, paddingTop: 14, borderTop: `1px solid ${C.greenDim}` }}>
+        <div style={{ fontSize: 10, color: C.green, letterSpacing: 3, marginBottom: 8 }}>⊕ NAPKIN ROI</div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14, fontSize: 10, color: C.greenDim, lineHeight: 1.6 }}>
+          <div>
+            <div style={{ color: C.cyan, fontSize: 9, letterSpacing: 2 }}>CURRENT SCHEDULER BURN</div>
+            <div style={{ color: C.green, fontSize: 18, fontWeight: 700 }}>${ROI.current_scheduler_burn_low}–${ROI.current_scheduler_burn_high}<span style={{ fontSize: 10, color: C.greenDim }}>/mo</span></div>
+            <div style={{ fontSize: 8 }}>~20+ scheduled tasks · Anthropic tokens</div>
+          </div>
+          <div>
+            <div style={{ color: C.cyan, fontSize: 9, letterSpacing: 2 }}>HERMES CAPTURE @ 60%</div>
+            <div style={{ color: C.green, fontSize: 18, fontWeight: 700 }}>${ROI.monthly_savings_low}–${ROI.monthly_savings_high}<span style={{ fontSize: 10, color: C.greenDim }}>/mo saved</span></div>
+            <div style={{ fontSize: 8 }}>annualized ${ROI.annualized_low.toLocaleString()}–${ROI.annualized_high.toLocaleString()}</div>
+          </div>
+          <div>
+            <div style={{ color: C.cyan, fontSize: 9, letterSpacing: 2 }}>NEW 24/7 WORKLOADS</div>
+            <div style={{ color: C.green, fontSize: 18, fontWeight: 700 }}>{ROI.new_workloads_unlocked}<span style={{ fontSize: 10, color: C.greenDim }}> unlocked</span></div>
+            <div style={{ fontSize: 8 }}>cat A+F · currently $0 because too costly</div>
+          </div>
+          <div>
+            <div style={{ color: C.cyan, fontSize: 9, letterSpacing: 2 }}>PRAGMA LITE</div>
+            <div style={{ color: C.purple, fontSize: 18, fontWeight: 700 }}>−$${ROI.pragma_lite_client_cost_removed}<span style={{ fontSize: 10, color: C.greenDim }}>/mo per client</span></div>
+            <div style={{ fontSize: 8 }}>Claude Max removed from client TCO · opens SMB tier</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════════════════
 // LIVE DATA FEED
 // ═══════════════════════════════════════════════════════════════
 const LiveDataFeed = () => (
@@ -732,6 +929,7 @@ const Dashboard = () => (
       <Header />
       <TieredNeurolink />
       <HermesPanel />
+      <HermesMigrationMap />
       <OperatorGrid />
       <LiveDataFeed />
       <PragmaPanel />
