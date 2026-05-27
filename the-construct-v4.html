@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>THE CONSTRUCT v4 — Brand 9 / Hartley Capital Agent Ecosystem</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #000; overflow-x: hidden; font-family: 'Courier New', Courier, monospace; color: #39ff14; }
+
+  @keyframes nlrain { 0% { transform: translateY(0); } 100% { transform: translateY(140%); } }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  @keyframes pulse-ring { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.6); opacity: 0; } }
+  @keyframes flicker { 0%, 100% { opacity: 1; } 50% { opacity: 0.97; } 51% { opacity: 0.9; } 52% { opacity: 1; } }
+  @keyframes glow-pulse { 0%, 100% { box-shadow: 0 0 8px rgba(57,255,20,0.3); } 50% { box-shadow: 0 0 22px rgba(57,255,20,0.55); } }
+  @keyframes scan-line { 0% { transform: translateY(-100%); } 100% { transform: translateY(900px); } }
+  @keyframes tier-flow { 0% { stroke-dashoffset: 100; } 100% { stroke-dashoffset: 0; } }
+  @keyframes node-breathe { 0%, 100% { filter: drop-shadow(0 0 6px currentColor) brightness(1); } 50% { filter: drop-shadow(0 0 14px currentColor) brightness(1.25); } }
+  @keyframes data-flow { 0% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -40; } }
+  @keyframes packet-travel { 0% { offset-distance: 0%; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { offset-distance: 100%; opacity: 0; } }
+
+  * { scrollbar-width: thin; scrollbar-color: rgba(57,255,20,0.3) transparent; }
+  *::-webkit-scrollbar { width: 4px; height: 4px; }
+  *::-webkit-scrollbar-track { background: transparent; }
+  *::-webkit-scrollbar-thumb { background: rgba(57,255,20,0.3); border-radius: 2px; }
+  a { color: #00d4ff; text-decoration: none; }
+  a:hover { color: #39ff14; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect, useRef, useCallback, useMemo } = React;
+
+// ═══════════════════════════════════════════════════════════════
+// THE CONSTRUCT v4 — Brand 9 / Hartley Capital Agent Ecosystem
+// Plan locked 2026-04-24 · Day-90 kill criterion 2026-07-23
+// v4 rebuild 2026-05-27 — tiered Neurolink + Hermes T2 panel + live PRAGMA Lite spec
+// Cool palette enforced. Matrix grammar, holographic execution.
+// ═══════════════════════════════════════════════════════════════
+
+const PLAN_LOCK_DATE = new Date("2026-04-24T00:00:00");
+const KILL_CRITERION_DATE = new Date("2026-07-23T00:00:00");
+const V4_BUILD_DATE = new Date("2026-05-27T18:50:00");
+
+const daysBetween = (a, b) => Math.floor((b - a) / (1000 * 60 * 60 * 24));
+const dayOfNinety = () => Math.max(0, daysBetween(PLAN_LOCK_DATE, new Date()) + 1);
+const daysUntilKill = () => Math.max(0, daysBetween(new Date(), KILL_CRITERION_DATE));
+
+// ─── Brand tokens (cool palette enforced) ────────────────────────
+const C = {
+  bg: "#000000",
+  green: "#39ff14",      // primary signal
+  greenDim: "rgba(57,255,20,0.3)",
+  greenSoft: "rgba(57,255,20,0.08)",
+  cyan: "#00d4ff",       // strategy / data flow
+  blue: "#4a9eff",       // finance / executive
+  purple: "#b388ff",     // creative
+  white: "#ffffff",      // meta / foundation
+  gold: "#ffd700",       // human (Bobby)
+  red: "#ff3366",        // kill / risk
+  orange: "#ff9933",     // warning (used sparingly)
+};
+
+// ─── Agent registry (v4 — accurate to memory + ops state) ──────
+const FOUNDER = {
+  id: "founder", codename: "Bobby", role: "Founder · CEO", color: C.gold,
+  isHuman: true,
+};
+
+// Tier 1 — Public PRAGMA Operators (Cowork-Claude)
+const PUBLIC_OPERATORS = [
+  { id: "op-keystone", codename: "Keystone", role: "CSO · Venture Architect", color: C.cyan,
+    today: "PRAGMA Lite spec review", workload: "Strategic · synthesis", tier: "T1 · Cowork", status: "active" },
+  { id: "op-vector", codename: "Vector", role: "Graphic Designer", color: C.purple,
+    today: "Hero film assets · PRAGMA brand", workload: "Creative · visual", tier: "T1 · Cowork", status: "active" },
+  { id: "op-atlas", codename: "Atlas", role: "Daily Orchestration", color: C.green,
+    today: "Construct dashboard v4 build", workload: "Coordination · dashboard", tier: "T1 · Cowork", status: "active" },
+  { id: "op-lens", codename: "Lens", role: "Daily Intelligence Officer", color: C.cyan,
+    today: "9:34 ET fire · 31 items · 6 sources · 0 fails", workload: "Intel · 3×/day", tier: "T1 · Cowork", status: "active" },
+  { id: "op-scout", codename: "Scout", role: "Competitive Research", color: C.cyan,
+    today: "PRAGMA Lite competitor scan pending", workload: "Research · ad-hoc", tier: "T1 · Cowork", status: "idle" },
+  { id: "op-pulse", codename: "Pulse", role: "Owned-Presence Operator", color: C.green,
+    today: "7:00 ET LISTEN brief shipped", workload: "Social · SEO · reviews", tier: "T1 · Cowork", status: "active" },
+  { id: "op-prism", codename: "Prism", role: "Alt-Data Operator", color: C.cyan,
+    today: "Quarterly TLC trade-area refresh", workload: "Foot traffic · spend", tier: "T1 · Cowork", status: "active" },
+];
+
+// Internal Tier 2 — Infrastructure agents
+const INTERNAL_AGENTS = [
+  { id: "in-architect", codename: "Architect", role: "Capital Council · Sunday 7:06 ET", color: C.blue, tier: "T2 · Cowork", status: "active" },
+  { id: "in-anvil", codename: "Anvil", role: "Chief Integration · plugin wiring", color: C.green, tier: "T2 · Cowork", status: "active" },
+  { id: "in-wolf", codename: "WOLF", role: "Quant Research · Day-60 reassess 6/5", color: C.blue, tier: "T2 · Cowork", status: "active" },
+  { id: "in-cornerstone", codename: "Cornerstone", role: "Morning + Evening reflection", color: C.white, tier: "T2 · Cowork", status: "active" },
+  { id: "in-loop", codename: "Self-Improving Loop", role: "Meta · captures corrections", color: C.white, tier: "T2 · Cowork", status: "active" },
+];
+
+// NEW Tier 2 — Production engine (Hermes-Agent + DeepSeek)
+const HERMES_WORKLOADS = [
+  { id: "h-arxiv",  codename: "arxiv-scan", role: "ArXiv q-fin daily", color: C.green, status: "proven", lastRun: "13:15 ET · 3 papers · $0.005" },
+  { id: "h-wolf",   codename: "wolf-discovery", role: "WOLF research scan", color: C.green, status: "proven", lastRun: "12:53 ET · placeholder · $0 (blocked)" },
+  { id: "h-lens",   codename: "lens-broad", role: "Lens broad-sweep first pass", color: C.green, status: "proven", lastRun: "14:35 ET · 23 items · 17 sources · ~$0.07" },
+  { id: "h-pulse",  codename: "pulse-poll", role: "Hourly review/GBP poll", color: C.greenDim, status: "planned", lastRun: "—" },
+  { id: "h-scout",  codename: "scout-watch", role: "Competitor pricing watch", color: C.greenDim, status: "planned", lastRun: "—" },
+];
+
+// Tier 0 — Foundation infrastructure
+const FOUNDATION = [
+  { id: "f-mcp", label: "MCPs", detail: "10+ wired · Slack · Gmail · QBO · Canva · Higgsfield · Meta Ads · Chrome", color: C.white },
+  { id: "f-skills", label: "Skills", detail: "50+ installed · plugin marketplace · agentskills.io", color: C.white },
+  { id: "f-memory", label: "Memory", detail: "Two-tier · CLAUDE.md + memory/ · Self-Improving Loop active", color: C.white },
+  { id: "f-sched", label: "Scheduled Tasks", detail: "20+ active · Cornerstone · Lens · Pulse · WOLF tool-discovery", color: C.white },
+  { id: "f-qt", label: "Quality Triangle", detail: "Skeptic · Architect · Security · pre-ship gate", color: C.green },
+];
+
+// ─── Live ops state (snapshotted today) ──────────────────────────
+const LIVE = {
+  lens_today: { items: 31, sources: 6, failures: 0, fired_at: "09:34 ET", phase: "A.2" },
+  hermes_today: {
+    runs: 3,
+    real_findings: true,
+    arxiv_papers: 3,
+    lens_items: 23,
+    cost_usd: 0.075,
+    cost_cowork_equivalent: 1.5,
+    cost_ratio: "~20× cheaper",
+  },
+  wolf_state: { day_of_60: 21, decision_window: "2026-06-05", paper_track_status: "active" },
+  pragma_active: { engagements: 1, client: "TLC · Sprint Build + Monitor", days_into_build: 7 },
+  schedules_next: [
+    { name: "Lens 13:34 fire", at: "13:34 ET", status: "fired" },
+    { name: "Cornerstone evening", at: "21:00 ET", status: "pending" },
+    { name: "Construct LLM judge", at: "23:31 ET", status: "pending" },
+    { name: "Cornerstone morning", at: "tomorrow 06:06 ET", status: "pending" },
+  ],
+};
+
+// ─── Matrix rain background (preserved from v2.3) ────────────────
+const MatrixRain = () => {
+  const canvasRef = useRef(null);
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    let animId;
+    const resize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
+    resize();
+    window.addEventListener("resize", resize);
+    const fontSize = 14;
+    let columns = Math.floor(canvas.width / fontSize);
+    let drops = Array(columns).fill(1);
+    const chars = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEF:.";
+    const draw = () => {
+      ctx.fillStyle = "rgba(0,0,0,0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.font = `${fontSize}px monospace`;
+      columns = Math.floor(canvas.width / fontSize);
+      while (drops.length < columns) drops.push(1);
+      for (let i = 0; i < columns; i++) {
+        const ch = chars[Math.floor(Math.random() * chars.length)];
+        const b = Math.random();
+        if (b > 0.95) ctx.fillStyle = "#ffffff";
+        else if (b > 0.85) ctx.fillStyle = "#39ff14";
+        else ctx.fillStyle = `rgba(0, ${100 + Math.floor(Math.random()*155)}, 0, ${0.25 + Math.random()*0.4})`;
+        ctx.fillText(ch, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+      }
+      animId = requestAnimationFrame(draw);
+    };
+    draw();
+    return () => { cancelAnimationFrame(animId); window.removeEventListener("resize", resize); };
+  }, []);
+  return <canvas ref={canvasRef} style={{ position: "fixed", inset: 0, zIndex: 0, opacity: 0.10, pointerEvents: "none" }} />;
+};
+
+// ─── Glitch text ─────────────────────────────────────────────────
+const GlitchText = ({ text, style = {} }) => {
+  const [g, setG] = useState(false);
+  useEffect(() => {
+    const id = setInterval(() => { setG(true); setTimeout(() => setG(false), 130); }, 3500 + Math.random()*4000);
+    return () => clearInterval(id);
+  }, []);
+  return (
+    <span style={{ ...style, position: "relative", display: "inline-block" }}>
+      {text}
+      {g && (
+        <>
+          <span style={{ ...style, position: "absolute", left: 2, top: -1, color: "#c500ff", clipPath: "inset(20% 0 40% 0)", opacity: 0.7 }}>{text}</span>
+          <span style={{ ...style, position: "absolute", left: -2, top: 1, color: "#00ffff", clipPath: "inset(50% 0 10% 0)", opacity: 0.7 }}>{text}</span>
+        </>
+      )}
+    </span>
+  );
+};
+
+// ─── Scan line ───────────────────────────────────────────────────
+const ScanSweep = () => (
+  <div style={{
+    position: "absolute", left: 0, right: 0, height: 2, top: 0,
+    background: "linear-gradient(90deg, transparent, rgba(57,255,20,0.5), transparent)",
+    animation: "scan-line 4.5s linear infinite", pointerEvents: "none", zIndex: 2,
+  }} />
+);
+
+// ─── Live clock ──────────────────────────────────────────────────
+const useLiveStamp = () => {
+  const [s, setS] = useState(() => new Date().toLocaleTimeString("en-US", { hour12: false }));
+  useEffect(() => {
+    const id = setInterval(() => setS(new Date().toLocaleTimeString("en-US", { hour12: false })), 1000);
+    return () => clearInterval(id);
+  }, []);
+  return s;
+};
+
+// ═══════════════════════════════════════════════════════════════
+// HEADER
+// ═══════════════════════════════════════════════════════════════
+const Header = () => {
+  const stamp = useLiveStamp();
+  const d90 = dayOfNinety();
+  const kill = daysUntilKill();
+  return (
+    <div style={{
+      position: "relative", zIndex: 10, padding: "20px 28px 16px",
+      borderBottom: "1px solid rgba(57,255,20,0.2)", background: "rgba(0,0,0,0.85)",
+    }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 12 }}>
+        <div>
+          <div style={{ fontSize: 11, color: C.greenDim, letterSpacing: 4, marginBottom: 6 }}>
+            BRAND 9 · HARTLEY CAPITAL · PRAGMA
+          </div>
+          <div style={{ fontSize: 28, fontWeight: 700, color: C.green, letterSpacing: 6, lineHeight: 1 }}>
+            <GlitchText text="THE CONSTRUCT" style={{ color: C.green, fontWeight: 700 }} />
+            <span style={{ color: C.cyan, fontSize: 18, marginLeft: 14, letterSpacing: 4 }}>v4</span>
+          </div>
+          <div style={{ fontSize: 10, color: C.greenDim, marginTop: 8, letterSpacing: 2 }}>
+            FRONTIER-FIRM AGENT ECOSYSTEM · TWO-TIER OPERATING MODEL
+          </div>
+        </div>
+        <div style={{ textAlign: "right", fontSize: 10, lineHeight: 1.7 }}>
+          <div style={{ color: C.greenDim, letterSpacing: 2 }}>SYSTEM TIME</div>
+          <div style={{ color: C.green, fontSize: 14, fontWeight: 700, letterSpacing: 2 }}>{stamp}</div>
+          <div style={{ marginTop: 8, color: C.greenDim }}>
+            DAY <span style={{ color: C.cyan }}>{d90}</span> / 90
+            <span style={{ margin: "0 10px", color: C.greenDim }}>·</span>
+            KILL-CRIT IN <span style={{ color: kill < 30 ? C.orange : C.cyan }}>{kill}</span>d
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════════════════
+// TIERED NEUROLINK — the new central visual
+// ═══════════════════════════════════════════════════════════════
+const TieredNeurolink = () => {
+  const W = 1400, H = 720;
+  const founderY = 60;
+  const tier1Y = 220;
+  const tier2Y = 420;
+  const tier0Y = 600;
+
+  const tier1X = (i, n) => 140 + i * ((W - 280) / Math.max(1, n - 1));
+  const tier2X = (i, n) => 220 + i * ((W - 440) / Math.max(1, n - 1));
+  const tier0X = (i, n) => 180 + i * ((W - 360) / Math.max(1, n - 1));
+
+  const [stamp, setStamp] = useState("00:00:00.000");
+  const [packets, setPackets] = useState(8421);
+  useEffect(() => {
+    const id = setInterval(() => {
+      const d = new Date();
+      setStamp(d.toLocaleTimeString("en-US", { hour12: false }) + "." + String(d.getMilliseconds()).padStart(3, "0"));
+      setPackets(p => p + Math.floor(5 + Math.random() * 14));
+    }, 90);
+    return () => clearInterval(id);
+  }, []);
+
+  // Synapse fire animation — random nodes "fire" with a brief flash
+  const allNodes = useMemo(() => [
+    ...PUBLIC_OPERATORS.map((o, i) => ({ ...o, layer: 1, x: tier1X(i, PUBLIC_OPERATORS.length), y: tier1Y })),
+    ...HERMES_WORKLOADS.map((h, i) => ({ ...h, layer: 2, x: tier2X(i, HERMES_WORKLOADS.length), y: tier2Y })),
+  ], []);
+
+  const [fires, setFires] = useState([]);
+  useEffect(() => {
+    const id = setInterval(() => {
+      const node = allNodes[Math.floor(Math.random() * allNodes.length)];
+      const fireId = Math.random().toString(36).slice(2);
+      setFires(f => [...f, { id: fireId, x: node.x, y: node.y, color: node.color }]);
+      setTimeout(() => setFires(f => f.filter(x => x.id !== fireId)), 1100);
+    }, 600);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <div style={{
+      position: "relative", margin: "20px 28px", padding: 18,
+      border: "1px solid rgba(57,255,20,0.2)", background: "rgba(0,0,0,0.7)",
+      overflow: "hidden",
+    }}>
+      <ScanSweep />
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+        <div style={{ fontSize: 11, color: C.green, letterSpacing: 4 }}>
+          ⌬ NEUROLINK · TIERED ARCHITECTURE · TWO-TIER OPERATING MODEL
+        </div>
+        <div style={{ fontSize: 10, color: C.greenDim, letterSpacing: 2 }}>
+          PKT <span style={{ color: C.cyan }}>{packets.toLocaleString()}</span>
+          <span style={{ margin: "0 8px" }}>·</span>
+          T<span style={{ color: C.cyan }}>{stamp}</span>
+        </div>
+      </div>
+
+      <svg viewBox={`0 0 ${W} ${H}`} style={{ width: "100%", height: "auto", display: "block" }} preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="connFlow" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor={C.green} stopOpacity="0.6" />
+            <stop offset="100%" stopColor={C.cyan} stopOpacity="0.2" />
+          </linearGradient>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3" result="b" />
+            <feMerge>
+              <feMergeNode in="b" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+          <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="1.5" result="b" />
+            <feMerge>
+              <feMergeNode in="b" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+        {/* Tier band labels (left side) */}
+        <g fontFamily="Courier New, monospace" fontSize="9" letterSpacing="2" fill={C.greenDim}>
+          <text x="20" y={founderY + 5}>FOUNDER</text>
+          <text x="20" y={tier1Y + 5}>TIER 1 · COWORK · CLAUDE</text>
+          <text x="20" y={tier2Y + 5}>TIER 2 · HERMES · DEEPSEEK</text>
+          <text x="20" y={tier0Y + 5}>TIER 0 · FOUNDATION</text>
+        </g>
+
+        {/* Tier band background bars */}
+        <g>
+          <rect x="120" y={tier1Y - 60} width={W - 240} height="120" fill={C.cyan} opacity="0.04" />
+          <rect x="120" y={tier2Y - 60} width={W - 240} height="120" fill={C.green} opacity="0.04" />
+          <rect x="120" y={tier0Y - 30} width={W - 240} height="60" fill={C.white} opacity="0.03" />
+        </g>
+
+        {/* Connection lines: Founder → Tier 1 */}
+        {PUBLIC_OPERATORS.map((o, i) => {
+          const x = tier1X(i, PUBLIC_OPERATORS.length);
+          return (
+            <line key={`f1-${i}`} x1={W/2} y1={founderY + 30} x2={x} y2={tier1Y - 30}
+              stroke={C.gold} strokeOpacity="0.25" strokeWidth="1"
+              strokeDasharray="2,4" />
+          );
+        })}
+
+        {/* Connection lines: Tier 1 → Tier 2 (selective, showing which Operators have T2 backing) */}
+        {[
+          { fromOpIdx: 3, toWorkIdx: 2, label: "Lens broad-sweep" },     // Lens → lens-broad
+          { fromOpIdx: 4, toWorkIdx: 4, label: "Scout watch" },            // Scout → scout-watch
+          { fromOpIdx: 5, toWorkIdx: 3, label: "Pulse poll" },             // Pulse → pulse-poll
+        ].map((c, i) => {
+          const x1 = tier1X(c.fromOpIdx, PUBLIC_OPERATORS.length);
+          const x2 = tier2X(c.toWorkIdx, HERMES_WORKLOADS.length);
+          return (
+            <line key={`t12-${i}`} x1={x1} y1={tier1Y + 30} x2={x2} y2={tier2Y - 30}
+              stroke={C.green} strokeOpacity="0.55" strokeWidth="1.5"
+              strokeDasharray="5,5" style={{ animation: "data-flow 2.5s linear infinite" }} />
+          );
+        })}
+
+        {/* Connection lines: All to Foundation */}
+        {FOUNDATION.map((f, i) => {
+          const x = tier0X(i, FOUNDATION.length);
+          return (
+            <line key={`t0-${i}`} x1={W/2} y1={tier2Y + 30} x2={x} y2={tier0Y - 20}
+              stroke={C.white} strokeOpacity="0.15" strokeWidth="0.8" />
+          );
+        })}
+
+        {/* Founder node (Bobby) */}
+        <g transform={`translate(${W/2},${founderY})`}>
+          <circle r="48" fill="none" stroke={C.gold} strokeOpacity="0.3" strokeWidth="0.5">
+            <animate attributeName="r" values="48;58;48" dur="3s" repeatCount="indefinite" />
+            <animate attributeName="stroke-opacity" values="0.3;0.1;0.3" dur="3s" repeatCount="indefinite" />
+          </circle>
+          <circle r="32" fill="#000" stroke={C.gold} strokeWidth="2" filter="url(#glow)" />
+          <text x="0" y="-2" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="11" fontWeight="700" fill={C.gold}>BOBBY</text>
+          <text x="0" y="10" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="7" fill={C.gold} opacity="0.7">FOUNDER</text>
+        </g>
+
+        {/* Tier 1 nodes (Public Operators) */}
+        {PUBLIC_OPERATORS.map((o, i) => {
+          const x = tier1X(i, PUBLIC_OPERATORS.length);
+          return (
+            <g key={o.id} transform={`translate(${x},${tier1Y})`}>
+              <rect x="-58" y="-22" width="116" height="44" rx="3" fill="#000" stroke={o.color} strokeWidth="1.5" filter="url(#softGlow)" />
+              {o.status === "active" && (
+                <circle cx="50" cy="-14" r="3" fill={C.green}>
+                  <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite" />
+                </circle>
+              )}
+              <text x="0" y="-2" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="10" fontWeight="700" fill={o.color}>{o.codename.toUpperCase()}</text>
+              <text x="0" y="12" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="7" fill={o.color} opacity="0.7">{o.workload}</text>
+            </g>
+          );
+        })}
+
+        {/* Tier 2 nodes (Hermes workloads) */}
+        {HERMES_WORKLOADS.map((h, i) => {
+          const x = tier2X(i, HERMES_WORKLOADS.length);
+          const isProven = h.status === "proven";
+          return (
+            <g key={h.id} transform={`translate(${x},${tier2Y})`}>
+              <rect x="-52" y="-20" width="104" height="40" rx="3"
+                fill="#000" stroke={isProven ? C.green : C.greenDim}
+                strokeWidth={isProven ? 1.5 : 1}
+                strokeDasharray={isProven ? "0" : "3,3"}
+                filter={isProven ? "url(#softGlow)" : "none"} />
+              {isProven && (
+                <circle cx="44" cy="-12" r="2.5" fill={C.green}>
+                  <animate attributeName="opacity" values="1;0.4;1" dur="1.8s" repeatCount="indefinite" />
+                </circle>
+              )}
+              <text x="0" y="-3" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="9" fontWeight="700"
+                fill={isProven ? C.green : C.greenDim}>{h.codename}</text>
+              <text x="0" y="9" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="6"
+                fill={isProven ? C.green : C.greenDim} opacity="0.8">
+                {isProven ? "● proven" : "○ planned"}
+              </text>
+            </g>
+          );
+        })}
+
+        {/* Tier 0 — Foundation */}
+        {FOUNDATION.map((f, i) => {
+          const x = tier0X(i, FOUNDATION.length);
+          return (
+            <g key={f.id} transform={`translate(${x},${tier0Y})`}>
+              <rect x="-72" y="-14" width="144" height="28" rx="3" fill="#000" stroke={f.color} strokeOpacity="0.5" strokeWidth="1" />
+              <text x="0" y="3" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="9" fontWeight="600" fill={f.color}>{f.label}</text>
+            </g>
+          );
+        })}
+
+        {/* Synapse fires — random node flashes */}
+        {fires.map(f => (
+          <circle key={f.id} cx={f.x} cy={f.y} r="6" fill={f.color} opacity="0.7">
+            <animate attributeName="r" values="6;38;6" dur="1s" repeatCount="1" />
+            <animate attributeName="opacity" values="0.8;0;0" dur="1s" repeatCount="1" />
+          </circle>
+        ))}
+
+        {/* HUD corner ticks */}
+        <g stroke={C.green} strokeOpacity="0.4" strokeWidth="1" fill="none">
+          <path d={`M 8 8 L 8 28 M 8 8 L 28 8`} />
+          <path d={`M ${W-8} 8 L ${W-8} 28 M ${W-8} 8 L ${W-28} 8`} />
+          <path d={`M 8 ${H-8} L 8 ${H-28} M 8 ${H-8} L 28 ${H-8}`} />
+          <path d={`M ${W-8} ${H-8} L ${W-8} ${H-28} M ${W-8} ${H-8} L ${W-28} ${H-8}`} />
+        </g>
+      </svg>
+
+      <div style={{ marginTop: 10, display: "flex", flexWrap: "wrap", gap: 18, fontSize: 9, color: C.greenDim, letterSpacing: 1 }}>
+        <span>● TIER 1 — STRATEGIC COCKPIT — Cowork·Claude — premium reasoning · synthesis · decision-grade</span>
+        <span>● TIER 2 — PRODUCTION ENGINE — Hermes·DeepSeek — mechanical workloads · ~20× cheaper · 24/7 capable</span>
+        <span>○ planned — backlog</span>
+        <span>● proven — shipped today</span>
+      </div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════════════════
+// OPERATOR STATUS CARDS
+// ═══════════════════════════════════════════════════════════════
+const OperatorCard = ({ op }) => (
+  <div style={{
+    border: `1px solid ${op.color}`, padding: 12, position: "relative",
+    background: "rgba(0,0,0,0.7)", minWidth: 220,
+  }}>
+    <div style={{ position: "absolute", top: 8, right: 8, display: "flex", alignItems: "center", gap: 5 }}>
+      <span style={{
+        width: 7, height: 7, borderRadius: "50%",
+        background: op.status === "active" ? C.green : op.status === "idle" ? C.greenDim : C.orange,
+        animation: op.status === "active" ? "blink 1.6s infinite" : "none",
+      }} />
+      <span style={{ fontSize: 8, color: op.color, letterSpacing: 1 }}>{op.status.toUpperCase()}</span>
+    </div>
+    <div style={{ fontSize: 14, fontWeight: 700, color: op.color, letterSpacing: 2 }}>{op.codename.toUpperCase()}</div>
+    <div style={{ fontSize: 9, color: op.color, opacity: 0.8, marginTop: 2 }}>{op.role}</div>
+    <div style={{ fontSize: 9, color: C.greenDim, marginTop: 10, lineHeight: 1.5 }}>
+      <span style={{ color: C.cyan }}>TODAY</span> {op.today}
+    </div>
+    <div style={{ fontSize: 9, color: C.greenDim, marginTop: 4, lineHeight: 1.5 }}>
+      <span style={{ color: C.cyan }}>LANE</span> {op.workload}
+    </div>
+    <div style={{ fontSize: 8, color: C.greenDim, marginTop: 8, letterSpacing: 1 }}>{op.tier}</div>
+  </div>
+);
+
+const InternalCard = ({ a }) => (
+  <div style={{
+    border: `1px solid ${a.color}`, padding: 10,
+    background: "rgba(0,0,0,0.6)", borderStyle: "dashed",
+  }}>
+    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <span style={{ fontSize: 11, fontWeight: 700, color: a.color, letterSpacing: 1 }}>{a.codename}</span>
+      <span style={{ width: 6, height: 6, borderRadius: "50%", background: C.green, animation: "blink 2s infinite" }} />
+    </div>
+    <div style={{ fontSize: 8, color: a.color, opacity: 0.7, marginTop: 4 }}>{a.role}</div>
+    <div style={{ fontSize: 7, color: C.greenDim, marginTop: 6, letterSpacing: 1 }}>{a.tier}</div>
+  </div>
+);
+
+const OperatorGrid = () => (
+  <div style={{ margin: "20px 28px" }}>
+    <div style={{ fontSize: 11, color: C.green, letterSpacing: 4, marginBottom: 12 }}>
+      ⎔ TIER 1 · PUBLIC OPERATORS · COWORK·CLAUDE
+    </div>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 12 }}>
+      {PUBLIC_OPERATORS.map(o => <OperatorCard key={o.id} op={o} />)}
+    </div>
+
+    <div style={{ fontSize: 11, color: C.green, letterSpacing: 4, marginTop: 28, marginBottom: 12, opacity: 0.85 }}>
+      ⎔ INTERNAL AGENTS · INFRASTRUCTURE LAYER
+    </div>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 10 }}>
+      {INTERNAL_AGENTS.map(a => <InternalCard key={a.id} a={a} />)}
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════
+// HERMES TIER-2 PANEL — the new infrastructure layer
+// ═══════════════════════════════════════════════════════════════
+const HermesPanel = () => (
+  <div style={{ margin: "28px 28px 20px", padding: 18,
+    border: `2px solid ${C.green}`, background: "rgba(57,255,20,0.04)", position: "relative",
+    animation: "glow-pulse 3s ease-in-out infinite",
+  }}>
+    <div style={{ position: "absolute", top: -10, left: 16, padding: "0 8px", background: "#000", fontSize: 10, color: C.green, letterSpacing: 4 }}>
+      ⚕ TIER 2 — HERMES AGENT — PRODUCTION ENGINE
+    </div>
+    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 24, marginTop: 8 }}>
+      <div>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 4 }}>STACK</div>
+        <div style={{ fontSize: 11, color: C.green, lineHeight: 1.6 }}>
+          <div><span style={{ color: C.cyan }}>OS:</span> Hermes-Agent v0.14.0 (Nous Research, MIT)</div>
+          <div><span style={{ color: C.cyan }}>Model:</span> deepseek/deepseek-v3.2</div>
+          <div><span style={{ color: C.cyan }}>Inference:</span> OpenRouter ($10 credits, ~$9.93 free)</div>
+          <div><span style={{ color: C.cyan }}>Search backend:</span> Tavily (1000 free/mo)</div>
+          <div><span style={{ color: C.cyan }}>Host:</span> AP-Agent (Mac Mini)</div>
+          <div><span style={{ color: C.cyan }}>Approvals:</span> smart (auto-approve low-risk)</div>
+        </div>
+      </div>
+      <div>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 4 }}>TODAY · A/B vs COWORK</div>
+        <div style={{ fontSize: 11, color: C.green, lineHeight: 1.6 }}>
+          <div><span style={{ color: C.cyan }}>Lens-class:</span> 23 items · 17 sources · 4 patterns</div>
+          <div><span style={{ color: C.cyan }}>Wall-clock:</span> ~15 min</div>
+          <div><span style={{ color: C.cyan }}>Compute:</span> 1m 11s</div>
+          <div><span style={{ color: C.cyan }}>Cost:</span> ~$0.07 (vs ~$1.50 Cowork equiv)</div>
+          <div><span style={{ color: C.cyan }}>Cost ratio:</span> <span style={{ color: C.green, fontWeight: 700 }}>~20× cheaper</span></div>
+          <div><span style={{ color: C.cyan }}>Quality:</span> ~70% Cowork · breadth&gt;depth</div>
+        </div>
+      </div>
+      <div>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 4 }}>PRAGMA LITE · SKILL PACK v0.1 SPEC</div>
+        <div style={{ fontSize: 10, color: C.green, lineHeight: 1.55 }}>
+          <div>1. Source-auth bridge (HBR / WSJ paywalled)</div>
+          <div>2. Cross-source synthesis template</div>
+          <div>3. Operator action-routing vocab</div>
+          <div>4. Depth-over-breadth source priority</div>
+          <div>5. Voice template (founder-grade)</div>
+          <div>6. Sector modules (real estate, capital, macro)</div>
+        </div>
+      </div>
+    </div>
+
+    <div style={{ marginTop: 14, paddingTop: 12, borderTop: `1px solid ${C.greenDim}` }}>
+      <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 6 }}>WORKLOADS</div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 8 }}>
+        {HERMES_WORKLOADS.map(h => (
+          <div key={h.id} style={{
+            border: `1px solid ${h.status === "proven" ? C.green : C.greenDim}`,
+            borderStyle: h.status === "proven" ? "solid" : "dashed",
+            padding: 8, background: "rgba(0,0,0,0.5)",
+          }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span style={{ fontSize: 10, fontWeight: 700, color: h.status === "proven" ? C.green : C.greenDim, letterSpacing: 1 }}>
+                {h.codename}
+              </span>
+              <span style={{ fontSize: 8, color: h.status === "proven" ? C.green : C.greenDim }}>
+                {h.status === "proven" ? "● proven" : "○ planned"}
+              </span>
+            </div>
+            <div style={{ fontSize: 8, color: h.status === "proven" ? C.green : C.greenDim, opacity: 0.7, marginTop: 3 }}>{h.role}</div>
+            <div style={{ fontSize: 8, color: C.greenDim, marginTop: 4, fontFamily: "Courier New, monospace" }}>{h.lastRun}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════
+// LIVE DATA FEED
+// ═══════════════════════════════════════════════════════════════
+const LiveDataFeed = () => (
+  <div style={{ margin: "20px 28px", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16 }}>
+    {/* Today's Lens */}
+    <div style={{ border: `1px solid ${C.cyan}`, padding: 14, background: "rgba(0,0,0,0.7)" }}>
+      <div style={{ fontSize: 9, color: C.cyan, letterSpacing: 3, marginBottom: 8 }}>● LENS · 2026-05-27 · 09:34 ET</div>
+      <div style={{ fontSize: 30, color: C.cyan, fontWeight: 700, lineHeight: 1 }}>{LIVE.lens_today.items}</div>
+      <div style={{ fontSize: 9, color: C.greenDim, marginTop: 4 }}>items · {LIVE.lens_today.sources} sources · {LIVE.lens_today.failures} fails</div>
+      <div style={{ fontSize: 8, color: C.greenDim, marginTop: 10 }}>Phase {LIVE.lens_today.phase} · 3×/day fire schedule</div>
+      <div style={{ fontSize: 8, color: C.cyan, marginTop: 6, opacity: 0.7 }}>HBR ✓ HBS WK ✓ HBS AI ✓ CNBC ✓ Yahoo ✓ Reuters ✓</div>
+    </div>
+
+    {/* Hermes Today */}
+    <div style={{ border: `1px solid ${C.green}`, padding: 14, background: "rgba(0,0,0,0.7)" }}>
+      <div style={{ fontSize: 9, color: C.green, letterSpacing: 3, marginBottom: 8 }}>⚕ HERMES · 2026-05-27 · DAY 1</div>
+      <div style={{ fontSize: 30, color: C.green, fontWeight: 700, lineHeight: 1 }}>${LIVE.hermes_today.cost_usd.toFixed(2)}</div>
+      <div style={{ fontSize: 9, color: C.greenDim, marginTop: 4 }}>burned vs ${LIVE.hermes_today.cost_cowork_equivalent.toFixed(2)} Cowork eq</div>
+      <div style={{ fontSize: 8, color: C.greenDim, marginTop: 10 }}>{LIVE.hermes_today.runs} runs · {LIVE.hermes_today.cost_ratio}</div>
+      <div style={{ fontSize: 8, color: C.green, marginTop: 6, opacity: 0.8 }}>ArXiv ✓ Wolf (blocked) ✓ Lens-broad ✓</div>
+    </div>
+
+    {/* Next Fires */}
+    <div style={{ border: `1px solid ${C.green}`, padding: 14, background: "rgba(0,0,0,0.7)" }}>
+      <div style={{ fontSize: 9, color: C.green, letterSpacing: 3, marginBottom: 8 }}>⏲ SCHEDULED · NEXT 4 FIRES</div>
+      {LIVE.schedules_next.map((s, i) => (
+        <div key={i} style={{ fontSize: 9, color: s.status === "fired" ? C.greenDim : C.green, marginBottom: 3, display: "flex", justifyContent: "space-between" }}>
+          <span>{s.status === "fired" ? "✓" : "○"} {s.name}</span>
+          <span style={{ color: C.greenDim }}>{s.at}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════
+// PRAGMA PIPELINE
+// ═══════════════════════════════════════════════════════════════
+const PragmaPanel = () => (
+  <div style={{ margin: "20px 28px", padding: 18, border: `1px solid ${C.purple}`, background: "rgba(179,136,255,0.04)" }}>
+    <div style={{ fontSize: 11, color: C.purple, letterSpacing: 4, marginBottom: 14 }}>
+      ⌬ PRAGMA · INSTALL+BUILD PIPELINE
+    </div>
+    <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr 1fr", gap: 18 }}>
+      <div>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 4 }}>ACTIVE</div>
+        <div style={{ fontSize: 14, color: C.purple, fontWeight: 700 }}>TLC · The Lakeshore Co.</div>
+        <div style={{ fontSize: 9, color: C.purple, opacity: 0.7, marginTop: 4 }}>Sprint Build + Monitor (90-day build / 90-day monitor)</div>
+        <div style={{ fontSize: 10, color: C.greenDim, marginTop: 8 }}>Day {LIVE.pragma_active.days_into_build} / 90 build · agrihood proximity strategy</div>
+      </div>
+      <div>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 4 }}>PRODUCT TIERS</div>
+        <div style={{ fontSize: 10, color: C.purple, lineHeight: 1.7 }}>
+          <div><span style={{ color: C.green }}>Install 1</span> · "Starting at $7,500" · published</div>
+          <div><span style={{ color: C.greenDim }}>Install 2/3</span> · by inquiry · pricing locked</div>
+          <div><span style={{ color: C.greenDim }}>Build (enterprise)</span> · by inquiry</div>
+          <div><span style={{ color: C.green }}>Lite (NEW)</span> · Hermes-based · sub-$7,500 target</div>
+        </div>
+      </div>
+      <div>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 4 }}>WEDGE</div>
+        <div style={{ fontSize: 10, color: C.purple, lineHeight: 1.7 }}>
+          <div>14-30 day deployment</div>
+          <div>vs. 60-90 day consulting</div>
+          <div style={{ marginTop: 6 }}>+ Hermes Lite: ~20× lower runtime cost</div>
+          <div>+ Skill Pack v0.1 spec locked</div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════
+// FOUNDATION DETAIL
+// ═══════════════════════════════════════════════════════════════
+const FoundationPanel = () => (
+  <div style={{ margin: "20px 28px", padding: 16, border: `1px solid ${C.white}`, borderColor: "rgba(255,255,255,0.25)", background: "rgba(255,255,255,0.02)" }}>
+    <div style={{ fontSize: 11, color: C.white, letterSpacing: 4, marginBottom: 12, opacity: 0.9 }}>
+      ◇ TIER 0 · FOUNDATION
+    </div>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 12 }}>
+      {FOUNDATION.map(f => (
+        <div key={f.id} style={{ borderLeft: `2px solid ${f.color}`, paddingLeft: 10 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: f.color, letterSpacing: 2 }}>{f.label.toUpperCase()}</div>
+          <div style={{ fontSize: 9, color: C.greenDim, marginTop: 4, lineHeight: 1.5 }}>{f.detail}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════
+// FOOTER
+// ═══════════════════════════════════════════════════════════════
+const Footer = () => (
+  <div style={{
+    margin: "20px 28px 28px", padding: 14, fontSize: 9, color: C.greenDim,
+    borderTop: `1px solid ${C.greenDim}`, letterSpacing: 1, lineHeight: 1.6,
+  }}>
+    <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
+      <span>v4 BUILD · {V4_BUILD_DATE.toISOString().slice(0,16)} · COOL PALETTE ENFORCED</span>
+      <span>QUALITY TRIANGLE: SKEPTIC · ARCHITECT · SECURITY — pre-ship gate active</span>
+      <span>SELF-IMPROVING LOOP: capturing corrections · feeding back to all agents</span>
+    </div>
+    <div style={{ marginTop: 8, opacity: 0.6 }}>
+      THE CONSTRUCT · INTERNAL NAMING · PUBLIC TIER = 5 PRAGMA OPERATORS · DO NOT MASS-RENAME T2 LABELS
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════
+// MAIN
+// ═══════════════════════════════════════════════════════════════
+const Dashboard = () => (
+  <div style={{ minHeight: "100vh", position: "relative" }}>
+    <MatrixRain />
+    <div style={{ position: "relative", zIndex: 5 }}>
+      <Header />
+      <TieredNeurolink />
+      <HermesPanel />
+      <OperatorGrid />
+      <LiveDataFeed />
+      <PragmaPanel />
+      <FoundationPanel />
+      <Footer />
+    </div>
+  </div>
+);
+
+ReactDOM.createRoot(document.getElementById("root")).render(<Dashboard />);
+</script>
+</body>
+</html>
