@@ -1,3 +1,4 @@
+<!-- cdn-purge 2026-05-28-20:30 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -601,7 +602,7 @@ const TieredNeurolink = () => {
 
       <div style={{ marginTop: 10, display: "flex", flexWrap: "wrap", gap: 18, fontSize: 9, color: C.greenDim, letterSpacing: 1 }}>
         <span>● TIER 1 — STRATEGIC COCKPIT — Cowork·Claude — premium reasoning · synthesis · decision-grade</span>
-        <span>● TIER 2 — PRODUCTION ENGINE — Hermes·DeepSeek — mechanical workloads · ~20× cheaper · 24/7 capable</span>
+        <span>● TIER 1 EXECUTION LAYER — Hermes·DeepSeek + Wild Ducks — IBM/Watson-style mavericks · ~20× cheaper · 24/7 capable · DOCTRINE LOCKED 2026-05-28</span>
         <span>○ planned — backlog</span>
         <span>● proven — shipped today</span>
       </div>
@@ -744,7 +745,7 @@ const HermesPanel = () => (
     animation: "glow-pulse 3s ease-in-out infinite",
   }}>
     <div style={{ position: "absolute", top: -10, left: 16, padding: "0 8px", background: "#000", fontSize: 10, color: C.green, letterSpacing: 4 }}>
-      ⚕ TIER 2 — HERMES AGENT — PRODUCTION ENGINE
+      ⚕ TIER 1 — EXECUTION LAYER — HERMES + WILD DUCKS
     </div>
     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 24, marginTop: 8 }}>
       <div>
@@ -754,7 +755,7 @@ const HermesPanel = () => (
           <div><span style={{ color: C.cyan }}>Model:</span> deepseek/deepseek-v3.2</div>
           <div><span style={{ color: C.cyan }}>Inference:</span> OpenRouter ($10 credits, ~$9.93 free)</div>
           <div><span style={{ color: C.cyan }}>Search backend:</span> Tavily (1000 free/mo)</div>
-          <div><span style={{ color: C.cyan }}>Host:</span> AP-Agent (Mac Mini)</div>
+          <div><span style={{ color: C.cyan }}>Host:</span> AP-Agent (Mac)</div>
           <div><span style={{ color: C.cyan }}>Approvals:</span> smart (auto-approve low-risk)</div>
         </div>
       </div>
@@ -807,6 +808,85 @@ const HermesPanel = () => (
     </div>
   </div>
 );
+
+// ═══════════════════════════════════════════════════════════════
+// WILD DUCKS — IBM/Watson mavericks · Hermes-hosted skill agents
+// ═══════════════════════════════════════════════════════════════
+const WILD_DUCKS = [
+  { name: "deploy-pragma-site",   phase: 1, status: "spec",    domain: "prag-ma.ai SCP deploy",          task: "09" },
+  { name: "inbox-poller",         phase: 1, status: "spec",    domain: "launchd file-watch poller",      task: "06" },
+  { name: "wolf-state-watcher",   phase: 1, status: "spec",    domain: "WOLF mandate drift detection",   task: "11" },
+  { name: "lens-mechanical",      phase: 1, status: "spec",    domain: "RSS/HTML extract · Lens corpus", task: "12" },
+  { name: "three-string-verify",  phase: 1, status: "spec",    domain: "post-deploy verification",       task: "10" },
+  { name: "inbox-self-heal",      phase: 1, status: "spec",    domain: "heartbeat + Slack alert",        task: "07" },
+  { name: "praxis-distiller",     phase: 1, status: "spec",    domain: "PRAXIS_INBOX → memory promote",  task: "08" },
+  { name: "deploy-brand9-wp",     phase: 2, status: "planned", domain: "WP App Password REST",           task: "—" },
+  { name: "deploy-tlc-site",      phase: 2, status: "planned", domain: "TLC-stack deploy",               task: "—" },
+  { name: "gbp-review-monitor",   phase: 2, status: "planned", domain: "Google Biz reviews + sentiment", task: "—" },
+  { name: "social-cross-post",    phase: 2, status: "planned", domain: "multi-channel post queue",       task: "—" },
+  { name: "metric-collector",     phase: 2, status: "planned", domain: "engagement-metrics.json refresh",task: "—" },
+  { name: "serp-tracker",         phase: 3, status: "planned", domain: "keyword rank monitoring",        task: "—" },
+  { name: "skill-installer",      phase: 3, status: "planned", domain: "PRAGMA Lite install kit",        task: "—" },
+  { name: "handoff-protocol",     phase: 3, status: "planned", domain: "Claude↔Hermes task spec format", task: "—" },
+];
+
+const WildDucksBand = () => {
+  const phase1 = WILD_DUCKS.filter(d => d.phase === 1);
+  const phase2 = WILD_DUCKS.filter(d => d.phase === 2);
+  const phase3 = WILD_DUCKS.filter(d => d.phase === 3);
+  const stat = s => s === "proven" ? { c: C.green, label: "● proven" }
+                 : s === "ready"  ? { c: C.green, label: "◐ ready" }
+                 : s === "spec"   ? { c: C.cyan,  label: "△ spec queued" }
+                 : { c: C.greenDim, label: "○ planned" };
+  return (
+    <div style={{ margin: "20px 28px 28px", padding: 18, border: `2px solid ${C.cyan}`, background: "rgba(0,212,255,0.04)", position: "relative" }}>
+      <div style={{ position: "absolute", top: -10, left: 16, padding: "0 8px", background: "#000", fontSize: 10, color: C.cyan, letterSpacing: 4 }}>
+        ✺ WILD DUCKS — the flock inside Hermes
+      </div>
+      <div style={{ display: "flex", alignItems: "center", gap: 18, marginTop: 8 }}>
+        <svg viewBox="0 0 240 100" width="120" height="50" aria-label="Wild Duck silhouette" style={{ flex: "0 0 auto" }}>
+          <path fill={C.cyan} d="M 28 62 Q 22 67 28 72 L 78 70 Q 102 62 132 55 L 178 49 L 200 46 L 218 49 L 200 54 L 174 56 L 138 64 Q 108 70 86 76 L 48 78 Q 32 76 28 62 Z"/>
+          <path fill={C.cyan} d="M 78 58 L 56 18 Q 86 22 102 46 Z"/>
+          <path fill="rgba(0,212,255,0.65)" d="M 78 76 L 60 96 Q 92 92 108 70 Z"/>
+          <circle cx="190" cy="48" r="1.4" fill="#000"/>
+        </svg>
+        <div style={{ fontSize: 10, color: C.cyan, lineHeight: 1.6, fontStyle: "italic", opacity: 0.85 }}>
+          IBM/Watson 1960s. Kierkegaard parable underneath: you can tame wild ducks but you can never make tame ducks wild again. Andreessen: IBM/HP lost theirs to VC. Most SMBs never had any. PRAGMA installs a flock on the operator's Mac where they don't fly away.
+        </div>
+      </div>
+      <div style={{ marginTop: 14, fontSize: 11, color: C.cyan, lineHeight: 1.8 }}>
+        Three-tier brand: <span style={{ color: C.green, fontWeight: 700 }}>Operators</span> (Brain) → <span style={{ color: C.green, fontWeight: 700 }}>Hermes</span> (OS) → <span style={{ color: C.cyan, fontWeight: 700 }}>Wild Ducks</span> (narrow-domain, no-approval-gates, never tamed)
+      </div>
+      {[{ label: "PHASE 1 · this week (base flock)", ducks: phase1 },
+        { label: "PHASE 2 · next 2 weeks", ducks: phase2 },
+        { label: "PHASE 3 · this month", ducks: phase3 }].map(({ label, ducks }) => (
+        <div key={label} style={{ marginTop: 16 }}>
+          <div style={{ fontSize: 9, color: C.cyanDim || "rgba(0,212,255,0.6)", letterSpacing: 2, marginBottom: 6 }}>{label}</div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 8 }}>
+            {ducks.map(d => {
+              const s = stat(d.status);
+              return (
+                <div key={d.name} style={{ border: `1px solid ${s.c}`, borderStyle: d.status === "planned" ? "dashed" : "solid",
+                                            padding: 8, background: "rgba(0,0,0,0.5)" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <span style={{ fontSize: 10, fontWeight: 700, color: s.c, letterSpacing: 1, fontFamily: "Courier New, monospace" }}>
+                      {d.name}
+                    </span>
+                    <span style={{ fontSize: 8, color: s.c }}>{s.label}</span>
+                  </div>
+                  <div style={{ fontSize: 8, color: s.c, opacity: 0.7, marginTop: 3 }}>{d.domain}</div>
+                  <div style={{ fontSize: 8, color: C.greenDim, marginTop: 4, fontFamily: "Courier New, monospace" }}>
+                    {d.task !== "—" ? `inbox task ${d.task}` : "phase 2/3 — not yet scheduled"}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
 
 // ═══════════════════════════════════════════════════════════════
 // HERMES MIGRATION MAP — A-G categories from the larger-scale audit
@@ -1083,6 +1163,7 @@ const Dashboard = () => (
       <Header />
       <TieredNeurolink />
       <HermesPanel />
+      <WildDucksBand />
       <HermesMigrationMap />
       <OperatorGrid />
       <CSuiteRoster />
