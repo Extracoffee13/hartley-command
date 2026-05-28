@@ -93,9 +93,10 @@ const PUBLIC_OPERATORS = [
 const INTERNAL_AGENTS = [
   { id: "in-architect", codename: "Architect", role: "Capital Council · Sunday 7:06 ET · CIVO", color: C.blue, tier: "T1.5 · Cowork", status: "active" },
   { id: "in-anvil", codename: "Anvil", role: "Chief Integration · plugin wiring", color: C.green, tier: "T1.5 · Cowork", status: "active" },
-  { id: "in-wolf", codename: "WOLF", role: "Quant Research · Day-60 reassess 6/5", color: C.blue, tier: "T1.5 · Cowork", status: "active" },
+  { id: "in-wolf", codename: "WOLF", role: "Quant · Day 50 calendar / Day 28 reported · audit 2026-05-28", color: C.orange, tier: "T1.5 · Cowork", status: "audit" },
   { id: "in-cornerstone", codename: "Cornerstone", role: "Morning + Evening reflection", color: C.white, tier: "T1.5 · Cowork", status: "active" },
   { id: "in-loop", codename: "Self-Improving Loop", role: "Meta · captures corrections", color: C.white, tier: "T1.5 · Cowork", status: "active" },
+  { id: "in-leo", codename: "Leo", role: "Aschenbrenner lens · PE/VC/WOLF deal screening · NEW 2026-05-28", color: C.gold, tier: "T1.5 · Skill", status: "active" },
 ];
 
 // Tier 1B — C-Suite Routing Labels (internal routing terminology used by Lens)
@@ -132,13 +133,14 @@ const BUILD_BACKLOG = [
 ];
 
 // NEW Tier 2 — Production engine (Hermes-Agent + DeepSeek)
-// Top 5 strategic workloads shown in Neurolink; full migration map below
+// Top workloads shown in Neurolink; full migration map below
 const HERMES_WORKLOADS = [
-  { id: "h-arxiv",  codename: "arxiv-scan", role: "ArXiv q-fin daily", color: C.green, status: "proven", lastRun: "13:15 ET · 3 papers · $0.005" },
-  { id: "h-wolf",   codename: "wolf-discovery", role: "WOLF research scan", color: C.green, status: "proven", lastRun: "12:53 ET · placeholder · $0 (blocked)" },
-  { id: "h-lens",   codename: "lens-broad", role: "Lens broad-sweep first pass", color: C.green, status: "proven", lastRun: "14:35 ET · 23 items · 17 sources · ~$0.07" },
-  { id: "h-pulse",  codename: "pulse-poll", role: "Hourly review/GBP poll", color: C.greenDim, status: "planned", lastRun: "—" },
-  { id: "h-scout",  codename: "scout-watch", role: "Competitor pricing watch", color: C.greenDim, status: "planned", lastRun: "—" },
+  { id: "h-wolf-disc",  codename: "wolf-discovery", role: "Parallel A/B vs Cowork daily 06:30 ET", color: C.green, status: "proven", lastRun: "5/27 probe · 3 ArXiv papers · $0.005" },
+  { id: "h-wolf-less",  codename: "wolf-lesson-capture", role: "Nightly · fixes broken WOLF feed", color: C.green, status: "staged", lastRun: "spec ready · lane-1-lesson-capture.md" },
+  { id: "h-wolf-bench", codename: "wolf-strategy-benchmark", role: "Nightly · candidates from discoveries", color: C.green, status: "staged", lastRun: "spec ready · lane-2" },
+  { id: "h-wolf-mand",  codename: "wolf-mandate-poll", role: "Every 4hr · Day-60 gate-1 feed", color: C.green, status: "staged", lastRun: "spec ready · lane-3" },
+  { id: "h-wolf-esot",  codename: "wolf-esoteric-daily", role: "Daily 10:00 ET · 7× weekly throughput", color: C.green, status: "staged", lastRun: "spec ready · lane-4" },
+  { id: "h-lens",       codename: "lens-broad", role: "Lens broad-sweep first pass · proven 5/27", color: C.green, status: "proven", lastRun: "23 items · 17 sources · ~$0.07" },
 ];
 
 // Full Hermes Migration Map — A-G categories from audit
@@ -1002,6 +1004,41 @@ const FoundationPanel = () => (
 // ═══════════════════════════════════════════════════════════════
 // FOOTER
 // ═══════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════
+// LEO SKILL + WOLF AUDIT FLAG — added 2026-05-28
+// ═══════════════════════════════════════════════════════════════
+const LeoWolfStrip = () => (
+  <div style={{ margin: "20px 28px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+    <div style={{ border: `2px solid ${C.gold}`, padding: 16, background: "rgba(255,215,0,0.04)" }}>
+      <div style={{ fontSize: 10, color: C.gold, letterSpacing: 4, marginBottom: 8 }}>⌬ LEO · NEW SKILL · 2026-05-28</div>
+      <div style={{ fontSize: 14, color: C.gold, fontWeight: 700, marginBottom: 6 }}>Aschenbrenner Lens — PE · VC · WOLF</div>
+      <div style={{ fontSize: 10, color: C.gold, opacity: 0.85, lineHeight: 1.6, marginBottom: 10 }}>
+        Operationalizes Leopold Aschenbrenner's "Situational Awareness" framework (AGI ~2027 · bottleneck thesis · trillion-dollar cluster) as a deal/strategy lens for Hartley Capital acquisitions, the venture book, and WOLF positions.
+      </div>
+      <div style={{ fontSize: 9, color: C.gold, opacity: 0.7, lineHeight: 1.5 }}>
+        <div><span style={{ color: C.green }}>Long thesis:</span> power producers · BTC miners as compute infra · memory/storage</div>
+        <div><span style={{ color: C.red }}>Short thesis:</span> NVDA · SMH · ORCL · AVGO commoditization · model-lab speculation</div>
+        <div><span style={{ color: C.cyan }}>Triggers:</span> "what does Leo say" · "Aschenbrenner read" · "bottleneck framework" · deal screening · WOLF strategy review</div>
+      </div>
+      <div style={{ fontSize: 8, color: C.gold, opacity: 0.6, marginTop: 10, letterSpacing: 1 }}>
+        /Atlas/skills/leo/ — SKILL.md + framework.md + applications.md + portfolio-snapshot.md + sources.md
+      </div>
+    </div>
+    <div style={{ border: `2px solid ${C.orange}`, padding: 16, background: "rgba(255,153,51,0.04)" }}>
+      <div style={{ fontSize: 10, color: C.orange, letterSpacing: 4, marginBottom: 8 }}>⚠ WOLF AUDIT · 2026-05-28</div>
+      <div style={{ fontSize: 14, color: C.orange, fontWeight: 700, marginBottom: 6 }}>Day 50 reality · Day 28 dashboard · 23d stale lesson feed</div>
+      <div style={{ fontSize: 10, color: C.orange, opacity: 0.85, lineHeight: 1.6, marginBottom: 10 }}>
+        Persistent-state bug · 3 prior fixes regressed. Discovery alive (today: Kronos 9/10 · Complex MPT 9/10 · HMM+RL 8/10). State now mounted at /Atlas/wolf/state.json. 4-lane Hermes plan staged at /Atlas/hermes-sandbox/wolf-lanes/.
+      </div>
+      <div style={{ fontSize: 9, color: C.orange, opacity: 0.7, lineHeight: 1.5 }}>
+        <div><span style={{ color: C.green }}>Day-60 reassess:</span> 2026-06-05 09:00 ET (8 days)</div>
+        <div><span style={{ color: C.green }}>Path:</span> lane-1 lesson capture → unsticks score · lane-2 benchmark → cycle rate up · lane-3 mandate poll → gate-1 feed · lane-4 esoteric daily</div>
+        <div><span style={{ color: C.cyan }}>Health page:</span> /dashboards-deploy/wolf-health.html</div>
+      </div>
+    </div>
+  </div>
+);
+
 const Footer = () => (
   <div style={{
     margin: "20px 28px 28px", padding: 14, fontSize: 9, color: C.greenDim,
@@ -1034,6 +1071,7 @@ const Dashboard = () => (
       <BuildBacklog />
       <LiveDataFeed />
       <PragmaPanel />
+      <LeoWolfStrip />
       <FoundationPanel />
       <Footer />
     </div>
