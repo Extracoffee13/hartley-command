@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WOLF Health Check — 2026-05-28</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #000; color: #39ff14; font-family: 'Courier New', Courier, monospace; min-height: 100vh; padding: 28px; }
+  a { color: #00d4ff; text-decoration: none; }
+  a:hover { color: #39ff14; }
+  .grid { display: grid; gap: 16px; }
+  .card { border: 1px solid rgba(57,255,20,0.3); background: rgba(0,0,0,0.7); padding: 16px; }
+  .card.warn { border-color: #ff9933; }
+  .card.crit { border-color: #ff3366; }
+  .card.ok { border-color: #39ff14; }
+  .label { font-size: 9px; letter-spacing: 3px; color: rgba(57,255,20,0.5); margin-bottom: 8px; }
+  .value { font-size: 28px; font-weight: 700; color: #39ff14; line-height: 1; }
+  .value.crit { color: #ff3366; }
+  .value.warn { color: #ff9933; }
+  .sub { font-size: 10px; color: rgba(57,255,20,0.6); margin-top: 6px; line-height: 1.5; }
+  h1 { font-size: 22px; letter-spacing: 4px; color: #39ff14; margin-bottom: 4px; }
+  h2 { font-size: 11px; letter-spacing: 4px; color: #39ff14; margin: 24px 0 12px; }
+  .header { border-bottom: 1px solid rgba(57,255,20,0.2); padding-bottom: 16px; margin-bottom: 20px; }
+  .row { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px; }
+  .tag { display: inline-block; padding: 2px 8px; font-size: 9px; letter-spacing: 2px; border: 1px solid currentColor; margin-right: 6px; }
+  .tag.ok { color: #39ff14; }
+  .tag.warn { color: #ff9933; }
+  .tag.crit { color: #ff3366; }
+  .table { width: 100%; border-collapse: collapse; font-size: 11px; margin-top: 8px; }
+  .table th, .table td { text-align: left; padding: 6px 8px; border-bottom: 1px solid rgba(57,255,20,0.15); }
+  .table th { color: rgba(57,255,20,0.7); font-weight: 700; letter-spacing: 2px; font-size: 9px; }
+  .footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid rgba(57,255,20,0.2); font-size: 10px; color: rgba(57,255,20,0.4); }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>WOLF · HEALTH CHECK</h1>
+  <div style="font-size: 10px; letter-spacing: 2px; color: rgba(57,255,20,0.5); margin-top: 6px;">
+    INDEPENDENT STATUS PAGE · CROSS-CHECK AGAINST <a href="https://extracoffee13.github.io/wolf-dashboards-repo/WOLF_Command_Center.html" target="_blank">WOLF COMMAND CENTER</a>
+  </div>
+  <div style="font-size: 10px; color: rgba(57,255,20,0.5); margin-top: 4px;">
+    Audit date: <span style="color:#39ff14">2026-05-28 12:55 ET</span> · Mission started: <span style="color:#39ff14">2026-04-08</span> · Day-60 reassess: <span style="color:#ff9933">2026-06-05 (8 days)</span>
+  </div>
+</div>
+
+<h2>⚠ DASHBOARD INTEGRITY</h2>
+<div class="row">
+  <div class="card crit">
+    <div class="label">DAY ON MISSION</div>
+    <div class="value crit">50</div>
+    <div class="sub">Calendar reality. Live dashboard reports <strong style="color:#ff3366">Day 28</strong> — 22 days stale.</div>
+  </div>
+  <div class="card crit">
+    <div class="label">LAST IMPROVEMENT FEED</div>
+    <div class="value crit">23d</div>
+    <div class="sub">Last lesson logged 2026-05-05 (lessons_corpus_index). Discovery has shipped daily since — feed broken.</div>
+  </div>
+  <div class="card warn">
+    <div class="label">CAPABILITY SCORE</div>
+    <div class="value warn">51<span style="font-size:14px;color:rgba(57,255,20,0.5)">/100</span></div>
+    <div class="sub">Real-money unlock at 80. Score stuck because lesson feed is severed — discovery is fine.</div>
+  </div>
+  <div class="card warn">
+    <div class="label">CYCLES (50 DAYS)</div>
+    <div class="value warn">3</div>
+    <div class="sub">~0.4/wk. Self-Improving Loop spec targets near-daily. Off by an order of magnitude.</div>
+  </div>
+</div>
+
+<h2>✓ WHAT IS WORKING</h2>
+<div class="row">
+  <div class="card ok">
+    <div class="label">DAILY DISCOVERY (06:09 ET)</div>
+    <div class="value">3</div>
+    <div class="sub">Today's finds in <a href="https://extracoffee13.github.io/hartley-command/the-construct-v4.html">/Atlas/wolf-discovery-inbox.md</a>: Kronos (9), Complex MPT Kelly/Malamud (9), HMM+RL allocation (8). Inbox is healthy.</div>
+  </div>
+  <div class="card ok">
+    <div class="label">MARKET-OPEN EXEC (9:30)</div>
+    <div class="value">●</div>
+    <div class="sub">launchd com.wolf.market-open-exec fires weekdays via wolf-task-runner.sh. Outputs to iCloud + macOS notif + dashboard JSON.</div>
+  </div>
+  <div class="card ok">
+    <div class="label">EOD SUMMARY (4:50)</div>
+    <div class="value">●</div>
+    <div class="sub">launchd com.wolf.daily-summary fires weekdays. Same delivery surfaces.</div>
+  </div>
+  <div class="card ok">
+    <div class="label">MANDATE ENFORCEMENT</div>
+    <div class="value">●</div>
+    <div class="sub">Live since 2026-05-13. mandate_gate.py + mandate_rebalance.py + wolf-task-runner.sh patches active. Day-60 evaluates UNDER constraint.</div>
+  </div>
+</div>
+
+<h2>✗ WHAT IS BROKEN</h2>
+<div class="card crit">
+  <div style="font-size:12px;color:#ff3366;font-weight:700;letter-spacing:2px;margin-bottom:8px">PERSISTENT-STATE BUG · CHRONIC · 3 FIXES REGRESSED</div>
+  <table class="table">
+    <thead>
+      <tr><th>FIX ATTEMPT</th><th>FIRED</th><th>OUTCOME</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>wolf-capability-score-fix</td><td>2026-04-14</td><td style="color:#ff3366">Regressed within days</td></tr>
+      <tr><td>wolf-progress-fix-now</td><td>2026-04-20</td><td style="color:#ff3366">Regressed within days</td></tr>
+      <tr><td>wolf-cornerstone-dashboard-fix</td><td>2026-05-12</td><td style="color:#ff3366">Regressed within days</td></tr>
+    </tbody>
+  </table>
+  <div class="sub" style="margin-top:10px">
+    Root cause: state lives in ephemeral session folder, clears between runs. Same fix → same regression pattern each time. <strong style="color:#39ff14">Actual fix:</strong> move authoritative state to <code style="color:#00d4ff">/Atlas/wolf/state.json</code> — mounted, single-writer, both Cowork AND Hermes can read/write. Stop patching the symptom.
+  </div>
+</div>
+
+<h2>⚕ HERMES WOLF-LANES — 4 ADDS NEEDED</h2>
+<div class="row" style="grid-template-columns: 1fr 1fr;">
+  <div class="card">
+    <div class="label">LANE 1 · LESSON CAPTURE</div>
+    <div style="font-size:12px;color:#39ff14;margin-bottom:6px">Nightly · ~$0.05/run</div>
+    <div class="sub">Read both wolf-discovery inboxes (Cowork + Hermes parallel), extract PRAXIS_INBOX blocks, promote recurring patterns to lessons file. Directly unsticks the capability-score feed.</div>
+  </div>
+  <div class="card">
+    <div class="label">LANE 2 · STRATEGY BENCHMARK</div>
+    <div style="font-size:12px;color:#39ff14;margin-bottom:6px">Nightly · ~$0.10/run</div>
+    <div class="sub">Pull today's WOLF positions + recent discovered methodologies (Kronos, HMM+RL, etc.), run backtests, write candidates file. Cycles per week 0.4 → 7+.</div>
+  </div>
+  <div class="card">
+    <div class="label">LANE 3 · MANDATE POLL</div>
+    <div style="font-size:12px;color:#39ff14;margin-bottom:6px">Every 4hr · ~$0.02/run</div>
+    <div class="sub">Poll rejected_signals.jsonl + position state. Flag drift before compliance break. Direct input to Day-60 gate-1 metric.</div>
+  </div>
+  <div class="card">
+    <div class="label">LANE 4 · ESOTERIC RESEARCH</div>
+    <div style="font-size:12px;color:#39ff14;margin-bottom:6px">Daily · ~$0.07/run</div>
+    <div class="sub">Move Cowork's weekly Sunday task to Hermes daily. Same dollar cost, 7× research throughput. Already specced in wolf-esoteric-research-weekly skill.</div>
+  </div>
+</div>
+
+<h2>⏲ DAY-60 REASSESS COUNTDOWN · 2026-06-05 · 8 DAYS</h2>
+<div class="card warn">
+  <table class="table">
+    <thead>
+      <tr><th>METRIC</th><th>REQUIRED</th><th>STATUS</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Sharpe ratio Day 19 → Day 60</td><td>≥ 1.0 for graduation</td><td style="color:#ff9933">Not pre-staged · need wolf_day60_dryrun.json</td></tr>
+      <tr><td>Max drawdown</td><td>≤ 12%</td><td style="color:#ff9933">Not pre-staged</td></tr>
+      <tr><td>Win rate</td><td>computed</td><td style="color:#ff9933">Not pre-staged</td></tr>
+      <tr><td>Position-cap compliance</td><td>30 consecutive days</td><td style="color:#ff9933">Tracked but not surfaced</td></tr>
+      <tr><td>Rejected signals count</td><td>&lt;50% of total signals</td><td style="color:#ff9933">In rejected_signals.jsonl · not surfaced</td></tr>
+      <tr><td>Strategy attribution</td><td>per-strategy P&amp;L</td><td style="color:#ff9933">In wolf_live_data.json · not surfaced</td></tr>
+    </tbody>
+  </table>
+  <div class="sub" style="margin-top:10px">
+    All metrics live in <code style="color:#00d4ff">/Agent Wolf/</code> which is outside Cowork's mount. Bobby cannot pre-review numbers before June 5 fires.
+    <strong style="color:#39ff14">Single fix:</strong> add one line to the WOLF launchd script that writes <code style="color:#00d4ff">/Atlas/wolf/wolf_day60_dryrun.json</code> alongside the existing wolf_live_data.json. Then this Health Check can pull the numbers directly.
+  </div>
+</div>
+
+<h2>📋 PRIORITY ORDER · 8 DAYS TO DAY-60</h2>
+<div class="card">
+  <table class="table">
+    <thead>
+      <tr><th>DATE</th><th>ACTION</th><th>OWNER</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>5/28 (today)</td><td>Hermes wolf-discovery cron live · Day 1 of A/B</td><td>Bobby paste · 30s</td></tr>
+      <tr><td>5/29</td><td>Move WOLF state to /Atlas/wolf/state.json · rewrite dashboard read path</td><td>Bobby or grant /Agent Wolf/ access</td></tr>
+      <tr><td>5/30 – 6/1</td><td>Wire the 4 Hermes WOLF-lanes (lessons · strategy · mandate · esoteric)</td><td>Cowork · paste-ready prompts</td></tr>
+      <tr><td>6/2 – 6/4</td><td>Stage wolf_day60_dryrun.json · pre-review numbers</td><td>Cowork once dryrun file lands</td></tr>
+      <tr><td>6/5 09:00 ET</td><td>wolf-day60-reassess scheduled task fires · decision: graduate / extend / retire</td><td>Cowork (scheduled)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="footer">
+  Independent audit page · written 2026-05-28 12:55 ET · lives at <code>/dashboards-deploy/wolf-health.html</code> · refresh manually until WOLF state is on a mounted path · upstream dashboard at <a href="https://extracoffee13.github.io/wolf-dashboards-repo/WOLF_Command_Center.html" target="_blank">extracoffee13.github.io/wolf-dashboards-repo/WOLF_Command_Center.html</a><br>
+  Full audit memo: <a href="https://extracoffee13.github.io/hartley-command/" target="_blank">/Atlas/wolf-audit-2026-05-28.md</a>
+</div>
+
+</body>
+</html>
