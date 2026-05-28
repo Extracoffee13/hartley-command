@@ -1,4 +1,3 @@
-<!-- cdn-purge 2026-05-28-20:30 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -813,21 +812,29 @@ const HermesPanel = () => (
 // WILD DUCKS — IBM/Watson mavericks · Hermes-hosted skill agents
 // ═══════════════════════════════════════════════════════════════
 const WILD_DUCKS = [
-  { name: "deploy-pragma-site",   phase: 1, status: "spec",    domain: "prag-ma.ai SCP deploy",          task: "09" },
-  { name: "inbox-poller",         phase: 1, status: "spec",    domain: "launchd file-watch poller",      task: "06" },
-  { name: "wolf-state-watcher",   phase: 1, status: "spec",    domain: "WOLF mandate drift detection",   task: "11" },
-  { name: "lens-mechanical",      phase: 1, status: "spec",    domain: "RSS/HTML extract · Lens corpus", task: "12" },
-  { name: "three-string-verify",  phase: 1, status: "spec",    domain: "post-deploy verification",       task: "10" },
-  { name: "inbox-self-heal",      phase: 1, status: "spec",    domain: "heartbeat + Slack alert",        task: "07" },
-  { name: "praxis-distiller",     phase: 1, status: "spec",    domain: "PRAXIS_INBOX → memory promote",  task: "08" },
-  { name: "deploy-brand9-wp",     phase: 2, status: "planned", domain: "WP App Password REST",           task: "—" },
-  { name: "deploy-tlc-site",      phase: 2, status: "planned", domain: "TLC-stack deploy",               task: "—" },
-  { name: "gbp-review-monitor",   phase: 2, status: "planned", domain: "Google Biz reviews + sentiment", task: "—" },
-  { name: "social-cross-post",    phase: 2, status: "planned", domain: "multi-channel post queue",       task: "—" },
-  { name: "metric-collector",     phase: 2, status: "planned", domain: "engagement-metrics.json refresh",task: "—" },
-  { name: "serp-tracker",         phase: 3, status: "planned", domain: "keyword rank monitoring",        task: "—" },
-  { name: "skill-installer",      phase: 3, status: "planned", domain: "PRAGMA Lite install kit",        task: "—" },
-  { name: "handoff-protocol",     phase: 3, status: "planned", domain: "Claude↔Hermes task spec format", task: "—" },
+  // PHASE 1 — base flock
+  { name: "deploy-pragma-site",   phase: 1, status: "spec", domain: "prag-ma.ai SCP deploy · PROVEN today",  task: "09" },
+  { name: "inbox-poller",         phase: 1, status: "spec", domain: "launchd file-watch poller",             task: "06" },
+  { name: "wolf-state-watcher",   phase: 1, status: "spec", domain: "WOLF mandate drift detection · 60s",    task: "11" },
+  { name: "lens-mechanical",      phase: 1, status: "spec", domain: "RSS/HTML extract · Lens corpus · 3×/d", task: "12" },
+  { name: "three-string-verify",  phase: 1, status: "spec", domain: "post-deploy URL verification",          task: "10" },
+  { name: "inbox-self-heal",      phase: 1, status: "spec", domain: "heartbeat + Slack alert · 5min",        task: "07" },
+  { name: "praxis-distiller",     phase: 1, status: "spec", domain: "PRAXIS_INBOX → memory · nightly 3am",   task: "08" },
+  // PHASE 2 — next 2 weeks
+  { name: "deploy-brand9-wp",     phase: 2, status: "spec", domain: "WP App Password REST · brand9signs.com",task: "13" },
+  { name: "deploy-tlc-site",      phase: 2, status: "spec", domain: "stack-detect deploy · TLC client",      task: "14" },
+  { name: "gbp-review-monitor",   phase: 2, status: "spec", domain: "Google Biz reviews · cross-business",   task: "15" },
+  { name: "social-cross-post",    phase: 2, status: "spec", domain: "multi-channel queue · pre-flight gated",task: "16" },
+  { name: "metric-collector",     phase: 2, status: "spec", domain: "engagement-metrics.json · hourly",      task: "17" },
+  // PHASE 3 — this month
+  { name: "serp-tracker",         phase: 3, status: "spec", domain: "SERP rank monitoring · daily 6am",      task: "18" },
+  { name: "skill-installer",      phase: 3, status: "spec", domain: "PRAGMA Lite install kit · the product", task: "19" },
+  { name: "handoff-protocol",     phase: 3, status: "spec", domain: "Claude↔Hermes spec format · meta-util", task: "20" },
+];
+
+// META task 21 — batch-migrates the 16 READY workloads from HermesMigrationMap into Wild Duck pattern
+const WILD_DUCK_META_TASKS = [
+  { name: "batch-migrate-ready-workloads", phase: "meta", status: "spec", domain: "16 READY workloads → Wild Ducks", task: "21" },
 ];
 
 const WildDucksBand = () => {
