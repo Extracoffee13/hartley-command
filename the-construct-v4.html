@@ -72,21 +72,32 @@ const FOUNDER = {
 };
 
 // Tier 1 — Public PRAGMA Operators (Cowork-Claude)
+// Coca-Cola Test (1-25) · re-scored monthly by Keystone · v2.3 lineage
+// ≥22 = ★ MOONSHOT tier (durable, defensible, Coke-class)
+// 18-21 = active live ecosystem
+// 15-17 = active but lower leverage
 const PUBLIC_OPERATORS = [
-  { id: "op-keystone", codename: "Keystone", role: "CSO · Venture Architect", color: C.cyan,
-    today: "PRAGMA Lite spec review", workload: "Strategic · synthesis", tier: "T1 · Cowork", status: "active" },
-  { id: "op-vector", codename: "Vector", role: "Graphic Designer", color: C.purple,
-    today: "Hero film assets · PRAGMA brand", workload: "Creative · visual", tier: "T1 · Cowork", status: "active" },
-  { id: "op-atlas", codename: "Atlas", role: "Daily Orchestration", color: C.green,
-    today: "Construct dashboard v4 build", workload: "Coordination · dashboard", tier: "T1 · Cowork", status: "active" },
-  { id: "op-lens", codename: "Lens", role: "Daily Intelligence Officer", color: C.cyan,
-    today: "9:34 ET fire · 31 items · 6 sources · 0 fails", workload: "Intel · 3×/day", tier: "T1 · Cowork", status: "active" },
-  { id: "op-scout", codename: "Scout", role: "Competitive Research", color: C.cyan,
-    today: "PRAGMA Lite competitor scan pending", workload: "Research · ad-hoc", tier: "T1 · Cowork", status: "idle" },
-  { id: "op-pulse", codename: "Pulse", role: "Owned-Presence Operator", color: C.green,
-    today: "7:00 ET LISTEN brief shipped", workload: "Social · SEO · reviews", tier: "T1 · Cowork", status: "active" },
-  { id: "op-prism", codename: "Prism", role: "Alt-Data Operator", color: C.cyan,
-    today: "Quarterly TLC trade-area refresh", workload: "Foot traffic · spend", tier: "T1 · Cowork", status: "active" },
+  { id: "op-keystone", codename: "Keystone", role: "CSO · Venture Architect", color: C.cyan, score: 20,
+    today: "PRAGMA Lite spec review", workload: "Strategic · synthesis", tier: "T1 · Cowork", status: "active",
+    skills: ["Venture Thesis", "Wedge-to-Empire Mapping", "Opportunity Scoring (Coca-Cola Test)", "Kill / Double-Down Calls", "Portfolio Allocation", "Strategic Review", "Competitive Positioning"] },
+  { id: "op-vector", codename: "Vector", role: "Graphic Designer", color: C.purple, score: 21,
+    today: "Hero film assets · PRAGMA brand", workload: "Creative · visual", tier: "T1 · Cowork", status: "active",
+    skills: ["huashu-design (canon entry)", "Remotion programmatic video", "Blender 3D", "Adobe MCP", "Theme Factory", "Algorithmic Art", "Motion Graphics (PRAGMA spec)", "Brand Tokens (Void/Signal/Output)", "Design Critique"] },
+  { id: "op-atlas", codename: "Atlas", role: "Daily Orchestration", color: C.green, score: 18,
+    today: "Construct dashboard v4 build", workload: "Coordination · dashboard", tier: "T1 · Cowork", status: "active",
+    skills: ["Daily Orchestration", "Dashboard Synthesis", "Cross-Operator Coordination", "AM Briefing Generation", "Hermes inbox dispatch"] },
+  { id: "op-lens", codename: "Lens", role: "Daily Intelligence Officer", color: C.cyan, score: 21,
+    today: "9:34 ET fire · 31 items · 6 sources · 0 fails", workload: "Intel · 3×/day", tier: "T1 · Cowork", status: "active",
+    skills: ["lens-daily-scan (5:34/9:34/13:34 ET)", "HBR authenticated crawl", "Multi-source RSS extract", "Idempotent multi-fire", "WOLF feed append", "Slack #all-ap-dispatch", "Harvard library inbox"] },
+  { id: "op-scout", codename: "Scout", role: "Competitive Research", color: C.cyan, score: 19,
+    today: "PRAGMA Lite competitor scan pending", workload: "Research · ad-hoc", tier: "T1 · Cowork", status: "idle",
+    skills: ["competitive-brief", "Battlecard generation", "Positioning gap detection", "Web sweep automation", "White Space analysis (with Prism)"] },
+  { id: "op-pulse", codename: "Pulse", role: "Owned-Presence Operator", color: C.green, score: 20,
+    today: "7:00 ET LISTEN brief shipped", workload: "Social · SEO · reviews", tier: "T1 · Cowork", status: "active",
+    skills: ["GBP audit", "Review response drafting", "seo-audit", "linkedin-posting", "multi-channel-social-posting", "wordpress-yoast-publishing", "Meta Ads MCP"] },
+  { id: "op-prism", codename: "Prism", role: "Alt-Data Operator", color: C.cyan, score: 19,
+    today: "Quarterly TLC trade-area refresh", workload: "Foot traffic · spend", tier: "T1 · Cowork", status: "active",
+    skills: ["Foot-traffic alt-data", "Census demographics", "Trade-area mapping", "Institutional voids", "Competitor benchmarking", "Quarterly diligence pack"] },
 ];
 
 // Tier 1.5 — Internal Coordination Layer (active, behind-the-scenes)
@@ -612,30 +623,64 @@ const TieredNeurolink = () => {
 // ═══════════════════════════════════════════════════════════════
 // OPERATOR STATUS CARDS
 // ═══════════════════════════════════════════════════════════════
-const OperatorCard = ({ op }) => (
-  <div style={{
-    border: `1px solid ${op.color}`, padding: 12, position: "relative",
-    background: "rgba(0,0,0,0.7)", minWidth: 220,
-  }}>
-    <div style={{ position: "absolute", top: 8, right: 8, display: "flex", alignItems: "center", gap: 5 }}>
-      <span style={{
-        width: 7, height: 7, borderRadius: "50%",
-        background: op.status === "active" ? C.green : op.status === "idle" ? C.greenDim : C.orange,
-        animation: op.status === "active" ? "blink 1.6s infinite" : "none",
-      }} />
-      <span style={{ fontSize: 8, color: op.color, letterSpacing: 1 }}>{op.status.toUpperCase()}</span>
+const OperatorCard = ({ op }) => {
+  const [open, setOpen] = useState(false);
+  const sc = scoreColor(op.score);
+  return (
+    <div style={{
+      border: `1px solid ${op.color}`, padding: 12, position: "relative",
+      background: "rgba(0,0,0,0.7)", minWidth: 220,
+    }}>
+      <div style={{ position: "absolute", top: 8, right: 8, display: "flex", alignItems: "center", gap: 5 }}>
+        <span style={{
+          width: 7, height: 7, borderRadius: "50%",
+          background: op.status === "active" ? C.green : op.status === "idle" ? C.greenDim : C.orange,
+          animation: op.status === "active" ? "blink 1.6s infinite" : "none",
+        }} />
+        <span style={{ fontSize: 8, color: op.color, letterSpacing: 1 }}>{op.status.toUpperCase()}</span>
+      </div>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 6, paddingRight: 56 }}>
+        <div style={{ fontSize: 14, fontWeight: 700, color: op.color, letterSpacing: 2 }}>{op.codename.toUpperCase()}</div>
+      </div>
+      <div style={{ fontSize: 9, color: op.color, opacity: 0.8, marginTop: 2 }}>{op.role}</div>
+      {op.score != null && (
+        <div style={{ marginTop: 6 }}>
+          <span style={{ fontSize: 10, padding: "1px 6px", borderRadius: 2, background: scoreBg(op.score),
+                         color: sc, border: `1px solid ${scoreBorder(op.score)}`,
+                         letterSpacing: 1, fontFamily: "Courier New, monospace", fontWeight: 700 }}>
+            {op.score}/25{op.score >= 22 ? " ★" : ""}
+          </span>
+          <span style={{ fontSize: 8, color: C.greenDim, marginLeft: 6, letterSpacing: 1 }}>COCA-COLA</span>
+        </div>
+      )}
+      <div style={{ fontSize: 9, color: C.greenDim, marginTop: 10, lineHeight: 1.5 }}>
+        <span style={{ color: C.cyan }}>TODAY</span> {op.today}
+      </div>
+      <div style={{ fontSize: 9, color: C.greenDim, marginTop: 4, lineHeight: 1.5 }}>
+        <span style={{ color: C.cyan }}>LANE</span> {op.workload}
+      </div>
+      <div style={{ fontSize: 8, color: C.greenDim, marginTop: 8, letterSpacing: 1 }}>{op.tier}</div>
+      {op.skills && op.skills.length > 0 && (
+        <div style={{ marginTop: 8, borderTop: `1px dashed ${op.color}55`, paddingTop: 6 }}>
+          <button onClick={() => setOpen(o => !o)}
+                  style={{ background: "transparent", border: "none", color: op.color, cursor: "pointer",
+                           fontSize: 9, fontFamily: "Courier New, monospace", padding: 0, letterSpacing: 1, textAlign: "left", width: "100%" }}>
+            {open ? "▾" : "▸"} skills ({op.skills.length})
+          </button>
+          {open && (
+            <ul style={{ margin: "5px 0 0 14px", padding: 0, listStyle: "none" }}>
+              {op.skills.map(sk => (
+                <li key={sk} style={{ fontSize: 9, color: op.color, opacity: 0.85, lineHeight: 1.6, fontFamily: "Courier New, monospace" }}>
+                  · {sk}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
     </div>
-    <div style={{ fontSize: 14, fontWeight: 700, color: op.color, letterSpacing: 2 }}>{op.codename.toUpperCase()}</div>
-    <div style={{ fontSize: 9, color: op.color, opacity: 0.8, marginTop: 2 }}>{op.role}</div>
-    <div style={{ fontSize: 9, color: C.greenDim, marginTop: 10, lineHeight: 1.5 }}>
-      <span style={{ color: C.cyan }}>TODAY</span> {op.today}
-    </div>
-    <div style={{ fontSize: 9, color: C.greenDim, marginTop: 4, lineHeight: 1.5 }}>
-      <span style={{ color: C.cyan }}>LANE</span> {op.workload}
-    </div>
-    <div style={{ fontSize: 8, color: C.greenDim, marginTop: 8, letterSpacing: 1 }}>{op.tier}</div>
-  </div>
-);
+  );
+};
 
 const InternalCard = ({ a }) => (
   <div style={{
@@ -811,33 +856,58 @@ const HermesPanel = () => (
 // ═══════════════════════════════════════════════════════════════
 // WILD DUCKS — IBM/Watson mavericks · Hermes-hosted skill agents
 // ═══════════════════════════════════════════════════════════════
+// Wild Ducks scored same Coca-Cola Test (1-25) as Operators — Keystone re-scores monthly
+// Score reflects: strategic durability × frequency leverage × productization value to PRAGMA
 const WILD_DUCKS = [
   // PHASE 1 — base flock
-  { name: "deploy-pragma-site",   phase: 1, status: "spec", domain: "prag-ma.ai SCP deploy · PROVEN today",  task: "09" },
-  { name: "inbox-poller",         phase: 1, status: "spec", domain: "launchd file-watch poller",             task: "06" },
-  { name: "wolf-state-watcher",   phase: 1, status: "spec", domain: "WOLF mandate drift detection · 60s",    task: "11" },
-  { name: "lens-mechanical",      phase: 1, status: "spec", domain: "RSS/HTML extract · Lens corpus · 3×/d", task: "12" },
-  { name: "three-string-verify",  phase: 1, status: "spec", domain: "post-deploy URL verification",          task: "10" },
-  { name: "inbox-self-heal",      phase: 1, status: "spec", domain: "heartbeat + Slack alert · 5min",        task: "07" },
-  { name: "praxis-distiller",     phase: 1, status: "spec", domain: "PRAXIS_INBOX → memory · nightly 3am",   task: "08" },
+  { name: "deploy-pragma-site",   phase: 1, status: "spec", score: 24, domain: "prag-ma.ai SCP deploy · PROVEN today",  task: "09",
+    skills: ["paramiko SSH client", "ed25519 deploy key", "SCP atomic transfer", "DreamHost path resolution", "three-string verify hook"] },
+  { name: "inbox-poller",         phase: 1, status: "spec", score: 22, domain: "launchd file-watch poller",             task: "06",
+    skills: ["launchd WatchPaths binding", "NN-name task routing", "phase-based dispatch", "report emit per task", "60s throttle"] },
+  { name: "wolf-state-watcher",   phase: 1, status: "spec", score: 20, domain: "WOLF mandate drift detection · 60s",    task: "11",
+    skills: ["mandate.json poll 60s", "drift delta detect", "Slack escalation", "Day-60 gate hook", "compliance crisis trigger"] },
+  { name: "lens-mechanical",      phase: 1, status: "spec", score: 22, domain: "RSS/HTML extract · Lens corpus · 3×/d", task: "12",
+    skills: ["RSS feed extract", "HTML scrape (BS4)", "schedule 5:34/9:34/13:34 ET", "idempotent multi-fire skip", "Harvard library inbox append"] },
+  { name: "three-string-verify",  phase: 1, status: "spec", score: 18, domain: "post-deploy URL verification",          task: "10",
+    skills: ["multi-URL curl", "byte-match validation", "GH Pages cache wait", "fail-loud reporting"] },
+  { name: "inbox-self-heal",      phase: 1, status: "spec", score: 17, domain: "heartbeat + Slack alert · 5min",        task: "07",
+    skills: ["heartbeat write 5min", "Slack alert on miss", "stale-lock recovery", "launchctl status check"] },
+  { name: "praxis-distiller",     phase: 1, status: "spec", score: 20, domain: "PRAXIS_INBOX → memory · nightly 3am",   task: "08",
+    skills: ["PRAXIS_INBOX block parse", "confidence ≥0.8 promotion", "memory file write", "MEMORY.md index update", "dedupe vs existing"] },
   // PHASE 2 — next 2 weeks
-  { name: "deploy-brand9-wp",     phase: 2, status: "spec", domain: "WP App Password REST · brand9signs.com",task: "13" },
-  { name: "deploy-tlc-site",      phase: 2, status: "spec", domain: "stack-detect deploy · TLC client",      task: "14" },
-  { name: "gbp-review-monitor",   phase: 2, status: "spec", domain: "Google Biz reviews · cross-business",   task: "15" },
-  { name: "social-cross-post",    phase: 2, status: "spec", domain: "multi-channel queue · pre-flight gated",task: "16" },
-  { name: "metric-collector",     phase: 2, status: "spec", domain: "engagement-metrics.json · hourly",      task: "17" },
+  { name: "deploy-brand9-wp",     phase: 2, status: "spec", score: 19, domain: "WP App Password REST · brand9signs.com",task: "13",
+    skills: ["WP REST API client", "App Password auth", "Post publish/update", "Yoast field set", "Media upload"] },
+  { name: "deploy-tlc-site",      phase: 2, status: "spec", score: 20, domain: "stack-detect deploy · TLC client",      task: "14",
+    skills: ["Stack detect (WP / static / GH Pages)", "Credential resolution per-client", "Deploy router fan-out", "Per-client CONTEXT.md read"] },
+  { name: "gbp-review-monitor",   phase: 2, status: "spec", score: 21, domain: "Google Biz reviews · cross-business",   task: "15",
+    skills: ["Google Places API client", "Review delta detect", "Per-business loop", "Alert classification (1-2★ → escalate)", "Pulse handoff"] },
+  { name: "social-cross-post",    phase: 2, status: "spec", score: 18, domain: "multi-channel queue · pre-flight gated",task: "16",
+    skills: ["Multi-channel queue", "Platform composer adapters (LI/X/IG/FB/Threads)", "Pre-flight strategic gate (10-pt)", "Verify after post"] },
+  { name: "metric-collector",     phase: 2, status: "spec", score: 19, domain: "engagement-metrics.json · hourly",      task: "17",
+    skills: ["engagement-metrics.json append", "Hourly cadence", "PRAGMA per-client roll-up", "Dollar-equivalent value compute"] },
   // PHASE 3 — this month
-  { name: "serp-tracker",         phase: 3, status: "spec", domain: "SERP rank monitoring · daily 6am",      task: "18" },
-  { name: "skill-installer",      phase: 3, status: "spec", domain: "PRAGMA Lite install kit · the product", task: "19" },
-  { name: "handoff-protocol",     phase: 3, status: "spec", domain: "Claude↔Hermes spec format · meta-util", task: "20" },
+  { name: "serp-tracker",         phase: 3, status: "spec", score: 17, domain: "SERP rank monitoring · daily 6am",      task: "18",
+    skills: ["SerpAPI client", "Per-keyword rank delta", "Daily 6am ET", "Pulse SEO handoff"] },
+  { name: "skill-installer",      phase: 3, status: "spec", score: 24, domain: "PRAGMA Lite install kit · the product", task: "19",
+    skills: ["Mac bootstrap (7-phase)", "git clone Hermes-Agent", "skill-pack symlink", "launchd plist install loop", "Per-client install.json", "selftest 6-step"] },
+  { name: "handoff-protocol",     phase: 3, status: "spec", score: 16, domain: "Claude↔Hermes spec format · meta-util", task: "20",
+    skills: ["Frontmatter parser", "Report validator", "PRAXIS_INBOX extractor", "Template emit (task + report)"] },
 ];
 
 // META task 21 — batch-migrates the 16 READY workloads from HermesMigrationMap into Wild Duck pattern
 const WILD_DUCK_META_TASKS = [
-  { name: "batch-migrate-ready-workloads", phase: "meta", status: "spec", domain: "16 READY workloads → Wild Ducks", task: "21" },
+  { name: "batch-migrate-ready-workloads", phase: "meta", status: "spec", score: 15, domain: "16 READY workloads → Wild Ducks", task: "21",
+    skills: ["Migration Map parse", "Wild Duck scaffold from template", "Auto-populate vs STATUS_SPEC triage", "Per-workload self-test"] },
 ];
 
+// Coca-Cola score color tier (matches v2.3 lineage)
+const scoreColor = score => score >= 22 ? "#b388ff" : score >= 18 ? C.cyan : C.greenDim;
+const scoreBg    = score => score >= 22 ? "rgba(179,136,255,0.18)" : score >= 18 ? "rgba(0,212,255,0.15)" : "rgba(57,255,20,0.08)";
+const scoreBorder= score => score >= 22 ? "rgba(179,136,255,0.55)" : score >= 18 ? "rgba(0,212,255,0.4)" : "rgba(57,255,20,0.25)";
+
 const WildDucksBand = () => {
+  const [expanded, setExpanded] = useState({});
+  const toggle = name => setExpanded(prev => ({ ...prev, [name]: !prev[name] }));
   const phase1 = WILD_DUCKS.filter(d => d.phase === 1);
   const phase2 = WILD_DUCKS.filter(d => d.phase === 2);
   const phase3 = WILD_DUCKS.filter(d => d.phase === 3);
@@ -864,27 +934,55 @@ const WildDucksBand = () => {
       <div style={{ marginTop: 14, fontSize: 11, color: C.cyan, lineHeight: 1.8 }}>
         Three-tier brand: <span style={{ color: C.green, fontWeight: 700 }}>Operators</span> (Brain) → <span style={{ color: C.green, fontWeight: 700 }}>Hermes</span> (OS) → <span style={{ color: C.cyan, fontWeight: 700 }}>Wild Ducks</span> (narrow-domain, no-approval-gates, never tamed)
       </div>
+      <div style={{ marginTop: 6, fontSize: 9, color: C.greenDim, letterSpacing: 2, fontFamily: "Courier New, monospace" }}>
+        ▸ SCORED COCA-COLA TEST (1–25) · RE-SCORED MONTHLY BY KEYSTONE · ≥22 ★ MOONSHOT TIER
+      </div>
       {[{ label: "PHASE 1 · this week (base flock)", ducks: phase1 },
         { label: "PHASE 2 · next 2 weeks", ducks: phase2 },
         { label: "PHASE 3 · this month", ducks: phase3 }].map(({ label, ducks }) => (
         <div key={label} style={{ marginTop: 16 }}>
           <div style={{ fontSize: 9, color: C.cyanDim || "rgba(0,212,255,0.6)", letterSpacing: 2, marginBottom: 6 }}>{label}</div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 8 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 8 }}>
             {ducks.map(d => {
               const s = stat(d.status);
+              const sc = scoreColor(d.score);
+              const isOpen = !!expanded[d.name];
               return (
                 <div key={d.name} style={{ border: `1px solid ${s.c}`, borderStyle: d.status === "planned" ? "dashed" : "solid",
                                             padding: 8, background: "rgba(0,0,0,0.5)" }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 6 }}>
                     <span style={{ fontSize: 10, fontWeight: 700, color: s.c, letterSpacing: 1, fontFamily: "Courier New, monospace" }}>
                       {d.name}
                     </span>
-                    <span style={{ fontSize: 8, color: s.c }}>{s.label}</span>
+                    <span style={{ fontSize: 9, padding: "1px 6px", borderRadius: 2, background: scoreBg(d.score),
+                                   color: sc, border: `1px solid ${scoreBorder(d.score)}`,
+                                   letterSpacing: 1, fontFamily: "Courier New, monospace", fontWeight: 700, whiteSpace: "nowrap" }}>
+                      {d.score}/25{d.score >= 22 ? " ★" : ""}
+                    </span>
                   </div>
                   <div style={{ fontSize: 8, color: s.c, opacity: 0.7, marginTop: 3 }}>{d.domain}</div>
-                  <div style={{ fontSize: 8, color: C.greenDim, marginTop: 4, fontFamily: "Courier New, monospace" }}>
-                    {d.task !== "—" ? `inbox task ${d.task}` : "phase 2/3 — not yet scheduled"}
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 4 }}>
+                    <span style={{ fontSize: 8, color: C.greenDim, fontFamily: "Courier New, monospace" }}>inbox task {d.task}</span>
+                    <span style={{ fontSize: 8, color: s.c }}>{s.label}</span>
                   </div>
+                  {d.skills && d.skills.length > 0 && (
+                    <div style={{ marginTop: 6, borderTop: `1px dashed rgba(0,212,255,0.2)`, paddingTop: 5 }}>
+                      <button onClick={() => toggle(d.name)}
+                              style={{ background: "transparent", border: "none", color: C.cyan, cursor: "pointer",
+                                       fontSize: 8, fontFamily: "Courier New, monospace", padding: 0, letterSpacing: 1, textAlign: "left", width: "100%" }}>
+                        {isOpen ? "▾" : "▸"} skills ({d.skills.length})
+                      </button>
+                      {isOpen && (
+                        <ul style={{ margin: "5px 0 0 12px", padding: 0, listStyle: "none" }}>
+                          {d.skills.map(sk => (
+                            <li key={sk} style={{ fontSize: 8, color: C.cyan, opacity: 0.85, lineHeight: 1.5, fontFamily: "Courier New, monospace" }}>
+                              · {sk}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  )}
                 </div>
               );
             })}
