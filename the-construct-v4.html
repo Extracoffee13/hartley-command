@@ -1007,6 +1007,23 @@ const FoundationPanel = () => (
 // ═══════════════════════════════════════════════════════════════
 // LEO SKILL + WOLF AUDIT FLAG — added 2026-05-28
 // ═══════════════════════════════════════════════════════════════
+const ChernyAnchor = () => (
+  <div style={{ margin: "20px 28px", padding: 16, border: `2px solid ${C.cyan}`, background: "rgba(0,212,255,0.04)" }}>
+    <div style={{ fontSize: 10, color: C.cyan, letterSpacing: 4, marginBottom: 8 }}>★ CANONICAL CITATION · ANTHROPIC STATES THE PRAGMA THESIS · 2026-05-28</div>
+    <div style={{ fontSize: 13, color: C.cyan, fontWeight: 700, fontStyle: "italic", marginBottom: 10, lineHeight: 1.45 }}>
+      "The best person to write accounting software is a really good accountant... Coding is the easy part. Knowing the domain is the hard part."
+    </div>
+    <div style={{ fontSize: 10, color: C.cyan, opacity: 0.75, marginBottom: 10 }}>
+      — Boris Cherny · Anthropic · Claude Code engineering lead · Sequoia AI Ascent 2026
+    </div>
+    <div style={{ fontSize: 10, color: C.greenDim, lineHeight: 1.5 }}>
+      Three-piece anchor stack now in play for PRAGMA + HC pitch surfaces: <strong style={{ color: C.cyan }}>HBR cover (Lee/Mantia/McNeill)</strong> + <strong style={{ color: C.cyan }}>HBR Insider counter (Gavett)</strong> + <strong style={{ color: C.cyan }}>Cherny at Sequoia</strong> — three institutional surfaces, same week, same conclusion: the moat is the operating model, not the model.
+      <br/>
+      <span style={{ color: C.cyan, opacity: 0.7 }}>Staged: /thinking/ post · PRAGMA + Bobby + HC LinkedIn drafts · site integration spec · awaiting pre-flight gate + Vector pass.</span>
+    </div>
+  </div>
+);
+
 const LeoWolfStrip = () => (
   <div style={{ margin: "20px 28px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
     <div style={{ border: `2px solid ${C.gold}`, padding: 16, background: "rgba(255,215,0,0.04)" }}>
@@ -1072,6 +1089,7 @@ const Dashboard = () => (
       <BuildBacklog />
       <LiveDataFeed />
       <PragmaPanel />
+      <ChernyAnchor />
       <LeoWolfStrip />
       <FoundationPanel />
       <Footer />
