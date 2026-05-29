@@ -137,6 +137,21 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
 .contact-card p{font-size:13px;line-height:1.6;opacity:.93;margin-bottom:10px;}
 .contact-card a{color:var(--inv-lime);font-weight:700;text-decoration:none;}
 
+/* ── QUOTE CARD ── */
+.quote-card{
+  background:var(--inv-cream);border-left:4px solid var(--inv-forest);
+  border-radius:8px;padding:20px 22px 22px;margin-top:24px;position:relative;
+}
+.quote-mark{
+  position:absolute;top:-2px;left:14px;font-size:54px;line-height:1;
+  font-family:Georgia,serif;color:var(--inv-forest);opacity:.25;font-weight:700;
+}
+.quote-text{
+  font-family:Georgia,'Times New Roman',serif;font-style:italic;
+  font-size:15px;line-height:1.55;color:var(--gray-800);margin:6px 0 0;
+  position:relative;z-index:1;
+}
+
 /* ── FOOTER ── */
 .footer{padding:16px 32px;background:var(--gray-50);border-top:1px solid var(--gray-200);
   display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--gray-400);flex-wrap:wrap;gap:8px;}
@@ -210,14 +225,14 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
     Brand 9 Signs has run signage operations across the same Southeast metros where
     <span class="inv-name">Invitation Homes</span> holds its largest concentrations — Jacksonville, St. Augustine,
     Ocala, Tampa, Orlando, South Florida, Atlanta, and the Carolinas. We currently operate
-    65+ active community programs for Lennar Homes across these same markets, with our crews
+    250+ active community programs for Lennar Homes across these same markets, with our crews
     on the ground every week.
   </p>
 </div>
 
 <div class="kpi-row">
   <div class="kpi"><div class="kpi-l">Years in business</div><div class="kpi-v">40+</div><div class="kpi-s">Family-owned · est. 1986</div></div>
-  <div class="kpi"><div class="kpi-l">Active community programs</div><div class="kpi-v">65+</div><div class="kpi-s">Built-to-rent + new construction</div></div>
+  <div class="kpi"><div class="kpi-l">Active community programs</div><div class="kpi-v">250+</div><div class="kpi-s">Built-to-rent + new construction</div></div>
   <div class="kpi"><div class="kpi-l">SE markets covered</div><div class="kpi-v">7 of 7</div><div class="kpi-s">All major INVH Southeast metros</div></div>
   <div class="kpi"><div class="kpi-l">Install crews on route</div><div class="kpi-v">Weekly</div><div class="kpi-s">Florida + Georgia · same crews, same week</div></div>
   <div class="kpi"><div class="kpi-l">Headquartered</div><div class="kpi-v">Jacksonville, FL</div><div class="kpi-s">Independent · single point of accountability</div></div>
@@ -289,11 +304,75 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
       </div>
     </div>
 
+    <div class="section-hdr" style="margin-top:28px;">
+      <div class="section-title">Marketing Services</div>
+    </div>
+    <p style="font-size:12px;color:var(--gray-600);line-height:1.6;margin-bottom:12px;">
+      Beyond signage, Brand 9 is a full-spectrum marketing partner. The message in the market
+      and the sign on the ground come from the same team — same day, same brand.
+    </p>
+    <div class="capability-list">
+      <div class="capability">
+        <div class="capability-icon">🎯</div>
+        <div>
+          <div class="capability-title">Brand Strategy &amp; Positioning</div>
+          <div class="capability-detail">Competitive audits · narrative architecture · voice frameworks · launch planning</div>
+        </div>
+      </div>
+      <div class="capability">
+        <div class="capability-icon">✏️</div>
+        <div>
+          <div class="capability-title">Visual Identity Systems</div>
+          <div class="capability-detail">Logomarks · color systems · typography · design manuals that scale</div>
+        </div>
+      </div>
+      <div class="capability">
+        <div class="capability-icon">🎬</div>
+        <div>
+          <div class="capability-title">Creative Production</div>
+          <div class="capability-detail">Graphic design · motion graphics · pitch decks · packaging · editorial systems</div>
+        </div>
+      </div>
+      <div class="capability">
+        <div class="capability-icon">📣</div>
+        <div>
+          <div class="capability-title">Go-to-Market Campaigns</div>
+          <div class="capability-detail">GTM sequencing · media planning · launch execution · measurement</div>
+        </div>
+      </div>
+      <div class="capability">
+        <div class="capability-icon">🏡</div>
+        <div>
+          <div class="capability-title">Community Launch Programs</div>
+          <div class="capability-detail">Model home marketing · sales center collateral · on-site buyer experience</div>
+        </div>
+      </div>
+      <div class="capability">
+        <div class="capability-icon">📊</div>
+        <div>
+          <div class="capability-title">Digital &amp; Print Collateral</div>
+          <div class="capability-detail">Brochures · landing pages · email · social kits · investor decks</div>
+        </div>
+      </div>
+      <div class="capability">
+        <div class="capability-icon">📈</div>
+        <div>
+          <div class="capability-title">Marketing Measurement</div>
+          <div class="capability-detail">Performance tracking across campaigns, communities, and portfolios</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote-card">
+      <div class="quote-mark">"</div>
+      <p class="quote-text">A sign is the slowest medium in marketing. It is also the longest-lived.</p>
+    </div>
+
     <div class="contact-card">
       <h3>Direct Contact</h3>
-      <p>Robert "Bobby" Hartley · President</p>
       <p><a href="mailto:ap@brand9signs.com">ap@brand9signs.com</a></p>
-      <p style="font-size:11px;opacity:.75;margin-top:8px;">Brand 9 Signs · Jacksonville, Florida</p>
+      <p>(888) 460-1308</p>
+      <p style="font-size:11px;opacity:.75;margin-top:8px;">Brand 9 Signs · Jacksonville, Florida · est. 1986</p>
     </div>
 
   </div>
