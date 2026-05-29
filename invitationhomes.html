@@ -144,6 +144,36 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
 .footer-link:hover{text-decoration:underline;}
 
 @media(max-width:1100px){.main{grid-template-columns:1fr;height:auto;}.right-pane{border-left:0;border-top:1px solid var(--gray-200);}}
+
+/* Community modal */
+.comm-modal-ov{
+  display:none;position:fixed;inset:0;background:rgba(15,30,15,.65);
+  align-items:center;justify-content:center;z-index:500;padding:20px;
+}
+.comm-modal-ov.open{display:flex;}
+.comm-modal{
+  background:#fff;border-radius:14px;max-width:760px;width:100%;max-height:90vh;
+  overflow-y:auto;box-shadow:var(--shadow-lg);
+}
+.cm-hdr{
+  background:linear-gradient(135deg,var(--inv-forest),var(--inv-forest-d));
+  color:#fff;padding:22px 26px;border-radius:14px 14px 0 0;
+  display:flex;justify-content:space-between;align-items:flex-start;
+}
+.cm-region{font-size:11px;color:var(--inv-lime);letter-spacing:1.5px;text-transform:uppercase;font-weight:700;}
+.cm-name{font-size:20px;font-weight:800;color:#fff;margin-top:6px;}
+.cm-city{font-size:12px;color:rgba(255,255,255,.7);margin-top:4px;}
+.cm-close{background:rgba(255,255,255,.18);color:#fff;border:0;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:16px;}
+.cm-body{padding:22px 26px;}
+.cm-section{margin-bottom:22px;}
+.cm-section-title{font-size:11px;color:var(--inv-forest);text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:10px;}
+.cm-actions{display:flex;gap:10px;margin-top:14px;}
+.cm-btn{
+  background:var(--inv-lime);color:var(--inv-forest-d);
+  padding:8px 16px;border-radius:6px;font-size:12px;font-weight:700;
+  border:0;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;
+}
+.cm-btn.outline{background:transparent;border:1px solid var(--inv-forest);color:var(--inv-forest);}
 </style>
 </head>
 <body>
@@ -280,6 +310,46 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
   </div>
 </div>
 
+<!-- Community detail modal -->
+<div class="comm-modal-ov" id="commModal" onclick="if(event.target===this)closeCommModal()">
+  <div class="comm-modal">
+    <div class="cm-hdr">
+      <div>
+        <div class="cm-region" id="cm-region"></div>
+        <div class="cm-name" id="cm-name"></div>
+        <div class="cm-city" id="cm-city"></div>
+      </div>
+      <button class="cm-close" onclick="closeCommModal()">✕</button>
+    </div>
+    <div class="cm-body">
+
+      <div class="cm-section">
+        <div class="cm-section-title">📊 Slide Deck</div>
+        <div id="cm-deck"></div>
+        <div class="cm-actions">
+          <button class="cm-btn outline" onclick="alert('Slide deck attachment — wire to Google Drive folder per-community.\n\nWhen wired, this opens an upload modal that POSTs to the Atlas Web App and stores the deck under /Atlas/invh/decks/&lt;community-slug&gt;/.')">+ Attach deck</button>
+        </div>
+      </div>
+
+      <div class="cm-section">
+        <div class="cm-section-title">📷 Photos</div>
+        <div id="cm-photos"></div>
+        <div class="cm-actions">
+          <button class="cm-btn outline" onclick="alert('Photo upload — same pipeline as Atlas-Lennar Sign Operations.\n\nWhen wired, this opens the mobile upload form that captures crew-on-site photos, captions, timestamps, and writes to the INVH Sheet → Photos tab.')">📷 Upload photos</button>
+        </div>
+      </div>
+
+      <div class="cm-section">
+        <div class="cm-section-title">📝 Notes</div>
+        <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:14px;font-size:12px;color:var(--gray-600);line-height:1.6;">
+          Sample placeholder community. Real INVH community names + addresses unlock when NDA executed and INVH ops provides the community list. Sign categories planned: WHC Community Signage, Wayfinding, Model Home, Leasing Center, Construction Phase (during BTR build).
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <div class="footer">
   <div>Atlas · Invitation Homes Signage Operations Map · Brand 9 Signs</div>
   <div>Source data: INVH SEC filings + invitationhomes.com · Brand colors sampled from INVH brand · Generated <span id="ts"></span></div>
@@ -288,14 +358,26 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
 <script>
 document.getElementById('ts').textContent = new Date().toLocaleDateString('en-US', {year:'numeric',month:'short',day:'numeric'});
 
-// INVH 16 markets — Southeast flagged for Brand 9 priority
+// INVH 16 markets — Jacksonville moved to top (B9 HQ + first install territory).
+// Each SE market can carry sample communities with attached photos + slide decks.
 const MARKETS = [
-  // SOUTHEAST — Brand 9 priority
-  {name:"Atlanta",        state:"GA", se:true,  top:true,  pct:13, est_homes:14160, btr:true},
-  {name:"Tampa",          state:"FL", se:true,  top:true,  pct:10, est_homes:10890, btr:true},
+  // SOUTHEAST — Brand 9 priority · Jacksonville first (HQ market)
+  {name:"Jacksonville",   state:"FL", se:true,  hq:true, pct:2,  est_homes:2180,  btr:true,
+   communities:[
+     {name:"Sample Community A · St. Johns BTR",   city:"St. Johns, FL",       status:"sample", photos:[], deck:null},
+     {name:"Sample Community B · Nocatee adj.",    city:"Ponte Vedra, FL",     status:"sample", photos:[], deck:null},
+     {name:"Sample Community C · Westside JAX",    city:"Jacksonville, FL",    status:"sample", photos:[], deck:null},
+   ]},
+  {name:"Atlanta",        state:"GA", se:true,  top:true,  pct:13, est_homes:14160, btr:true,
+   communities:[
+     {name:"Sample Community · ATL Metro BTR",     city:"Marietta, GA",        status:"sample", photos:[], deck:null},
+   ]},
+  {name:"Tampa",          state:"FL", se:true,  top:true,  pct:10, est_homes:10890, btr:true,
+   communities:[
+     {name:"Sample Community · Wesley Chapel",     city:"Wesley Chapel, FL",   status:"sample", photos:[], deck:null},
+   ]},
   {name:"South Florida",  state:"FL", se:true,  pct:12, est_homes:13070, btr:true},
   {name:"Orlando",        state:"FL", se:true,  pct:5,  est_homes:5450,  btr:true},
-  {name:"Jacksonville",   state:"FL", se:true,  pct:2,  est_homes:2180,  btr:false},
   {name:"Carolinas",      state:"NC/SC", se:true,  pct:6,  est_homes:6540,  btr:true},
   {name:"Nashville",      state:"TN", se:true,  pct:3,  est_homes:3270,  btr:false},
   // NON-SE
@@ -318,15 +400,20 @@ const COORDS = {
   "S. California":[34.052,-118.243],"N. California":[37.774,-122.419],"Seattle":[47.606,-122.332],"Minneapolis":[44.978,-93.265]
 };
 
-// Render market cards
+// Render market cards — HQ market (Jacksonville) first, then SE by portfolio %, then rest
 const grid = document.getElementById('market-grid');
-MARKETS.sort((a,b)=>b.pct-a.pct).forEach(m=>{
+MARKETS.sort((a,b)=>{
+  if (a.hq) return -1; if (b.hq) return 1;
+  if (a.se && !b.se) return -1; if (!a.se && b.se) return 1;
+  return b.pct - a.pct;
+}).forEach((m, mIdx)=>{
   const card = document.createElement('div');
-  card.className = 'market-card' + (m.se ? ' se' : '') + (m.top ? ' top' : '');
+  card.className = 'market-card' + (m.se ? ' se' : '') + (m.top ? ' top' : '') + (m.hq ? ' hq' : '');
+  const commCount = (m.communities||[]).length;
   card.innerHTML = `
     <div style="display:flex;justify-content:space-between;align-items:flex-start;">
       <div>
-        <div class="market-name">${m.name}</div>
+        <div class="market-name">${m.name}${m.hq ? ' <span style="font-size:10px;background:var(--inv-lime);color:var(--inv-forest-d);padding:2px 6px;border-radius:3px;letter-spacing:.5px;">★ B9 HQ</span>' : ''}</div>
         <div class="market-state">${m.state}</div>
       </div>
       ${m.se ? '<span class="market-badge se">SE</span>' : ''}
@@ -336,9 +423,38 @@ MARKETS.sort((a,b)=>b.pct-a.pct).forEach(m=>{
       <div class="market-stat"><div class="market-stat-v">${(m.est_homes/1000).toFixed(1)}K</div><div class="market-stat-l">Est. Homes</div></div>
     </div>
     ${m.btr ? '<span class="market-badge btr" style="margin-top:8px;">BTR pipeline</span>' : ''}
+    ${commCount > 0 ? `<div style="margin-top:10px;padding-top:8px;border-top:1px dashed var(--gray-200);">
+      <div style="font-size:9px;color:var(--inv-forest);text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:6px;">${commCount} Sample Communities</div>
+      ${m.communities.map((c,ci)=>`
+        <div class="comm-row" onclick="openCommModal(${mIdx},${ci})" style="font-size:11px;color:var(--gray-600);padding:5px 7px;border-radius:5px;cursor:pointer;background:var(--inv-lime-l);margin-bottom:3px;display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-weight:600;">${c.name}</span>
+          <span style="font-size:9px;color:var(--inv-forest);">📎 ${(c.photos||[]).length} · 📊 ${c.deck ? '1' : '0'}</span>
+        </div>
+      `).join('')}
+    </div>` : ''}
   `;
   grid.appendChild(card);
 });
+
+// ── COMMUNITY MODAL — slide deck + photos attachment ──
+function openCommModal(mIdx, ci) {
+  const m = MARKETS[mIdx];
+  const c = m.communities[ci];
+  const ov = document.getElementById('commModal');
+  document.getElementById('cm-name').textContent = c.name;
+  document.getElementById('cm-city').textContent = c.city + ' · ' + m.name + ' market';
+  document.getElementById('cm-region').textContent = '📍 ' + m.state + (m.hq ? ' · B9 HQ MARKET' : '');
+  document.getElementById('cm-photos').innerHTML = (c.photos||[]).length === 0
+    ? '<div style="text-align:center;padding:24px;color:var(--gray-400);font-size:13px;">No photos uploaded yet</div>'
+    : c.photos.map(p=>`<img src="${p.url}" style="width:100%;border-radius:8px;margin-bottom:8px;" alt="${p.caption||''}">`).join('');
+  document.getElementById('cm-deck').innerHTML = c.deck
+    ? `<a href="${c.deck.url}" target="_blank" style="display:block;background:var(--inv-forest);color:#fff;padding:18px;border-radius:8px;text-decoration:none;text-align:center;font-weight:700;">📊 ${c.deck.title || 'Open slide deck'}</a>`
+    : `<div style="text-align:center;padding:24px;color:var(--gray-400);font-size:13px;">No slide deck attached yet</div>`;
+  ov.classList.add('open');
+}
+function closeCommModal() {
+  document.getElementById('commModal').classList.remove('open');
+}
 
 // Render addresses table
 const body = document.getElementById('addr-body');
@@ -378,4 +494,3 @@ L.rectangle([[24.5,-91],[36.8,-75]], {color:'#68B631', weight:1, fillOpacity:.05
 
 </body>
 </html>
-<!-- invh propagate 173305 -->
