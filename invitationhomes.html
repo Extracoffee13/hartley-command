@@ -3,24 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ATLAS — Brand 9 Signs | Invitation Homes (INVH)</title>
+<title>Brand 9 Signs · Invitation Homes Coverage Overview</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  /* Invitation Homes brand colors — sampled from invitationhomes.com CSS */
-  --inv-forest:#217106;       /* primary forest green */
-  --inv-forest-d:#1a5905;
-  --inv-lime:#68B631;         /* secondary lime green */
-  --inv-lime-l:#e8f7dc;
-  --inv-cream:#f5f3ec;
-  /* Neutrals */
+  --inv-forest:#217106;--inv-forest-d:#1a5905;
+  --inv-lime:#68B631;--inv-lime-l:#e8f7dc;--inv-cream:#f5f3ec;
   --gray-50:#f8fafc;--gray-100:#f1f5f9;--gray-200:#e2e8f0;
   --gray-400:#94a3b8;--gray-600:#475569;--gray-800:#1e293b;
   --white:#fff;
-  /* Status */
-  --green:#10b981;--amber:#f59e0b;--red:#ef4444;
   --font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
   --shadow:0 1px 3px rgba(0,0,0,.08);
   --shadow-md:0 4px 16px rgba(0,0,0,.1);
@@ -32,127 +25,133 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
 /* ── HEADER ── */
 .hdr{
   background:linear-gradient(135deg,var(--inv-forest) 0%,var(--inv-forest-d) 100%);
-  height:64px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;
-  position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,.25);
+  padding:18px 32px;display:flex;align-items:center;justify-content:space-between;
+  box-shadow:0 2px 12px rgba(0,0,0,.2);
 }
-.hdr-left{display:flex;align-items:center;gap:12px;}
+.hdr-left{display:flex;align-items:center;gap:14px;}
 .logo-mark{
-  width:38px;height:38px;border-radius:8px;background:var(--inv-lime);
+  width:48px;height:48px;border-radius:10px;background:var(--inv-lime);
   display:flex;align-items:center;justify-content:center;
-  font-weight:900;font-size:13px;color:#fff;letter-spacing:-0.5px;
+  font-weight:900;font-size:20px;color:#fff;
   box-shadow:0 2px 8px rgba(104,182,49,.4);
 }
-.brand-name{font-size:11px;color:rgba(255,255,255,.55);letter-spacing:2px;text-transform:uppercase;}
-.divider-v{width:1px;height:32px;background:rgba(255,255,255,.15);}
-.atlas-badge{display:flex;flex-direction:column;}
-.atlas-name{font-size:22px;font-weight:800;color:#fff;letter-spacing:4px;line-height:1;}
-.atlas-sub{font-size:10px;color:rgba(255,255,255,.45);letter-spacing:2.5px;text-transform:uppercase;margin-top:3px;}
-.hdr-center{
-  display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:8px 16px;
+.hdr h1{font-size:18px;font-weight:800;color:#fff;letter-spacing:.5px;}
+.hdr-sub{font-size:11px;color:rgba(255,255,255,.65);letter-spacing:2px;text-transform:uppercase;margin-top:3px;}
+.hdr-right{font-size:12px;color:rgba(255,255,255,.7);text-align:right;}
+
+/* ── DECK STRIP ── */
+.deck-strip{
+  background:var(--inv-cream);padding:18px 32px;border-bottom:1px solid #e6e3d2;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
 }
-.cl-label{font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1px;}
-.cl-name{font-size:14px;font-weight:700;color:#fff;}
-.hdr-right{display:flex;align-items:center;gap:8px;}
-.live-badge{display:flex;align-items:center;gap:5px;font-size:11px;color:rgba(255,255,255,.6);}
-.live-dot{width:7px;height:7px;background:var(--inv-lime);border-radius:50%;animation:pulse-dot 2s infinite;}
-@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.7;transform:scale(1.3);}}
+.deck-strip-left{display:flex;align-items:center;gap:14px;flex:1;min-width:300px;}
+.deck-icon{
+  width:44px;height:44px;border-radius:9px;background:var(--inv-forest);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;
+}
+.deck-info{flex:1;}
+.deck-label{font-size:10px;color:var(--inv-forest);text-transform:uppercase;letter-spacing:1.5px;font-weight:700;}
+.deck-title{font-size:15px;font-weight:700;color:var(--gray-800);margin-top:2px;}
+.deck-actions{display:flex;gap:10px;}
+.deck-btn{
+  background:var(--inv-forest);color:#fff;
+  padding:11px 22px;border-radius:7px;font-size:13px;font-weight:700;
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+  border:0;cursor:pointer;font-family:var(--font);
+}
+.deck-btn:hover{background:var(--inv-forest-d);}
+.deck-btn.outline{background:transparent;color:var(--inv-forest);border:1.5px solid var(--inv-forest);}
+.deck-btn.outline:hover{background:var(--inv-lime-l);}
+.deck-empty-form{display:flex;gap:8px;align-items:center;flex:1;flex-wrap:wrap;}
+.deck-empty-form input{
+  flex:1;min-width:200px;padding:10px 12px;
+  border:1px solid var(--gray-200);border-radius:6px;font-family:var(--font);font-size:13px;
+}
 
-/* ── REGION BAR ── */
-.region-bar{background:#fff;border-bottom:1px solid var(--gray-200);padding:14px 24px;
-  display:flex;align-items:center;gap:24px;flex-wrap:wrap;box-shadow:var(--shadow);}
-.region-stat{display:flex;flex-direction:column;}
-.region-stat-label{font-size:10px;color:var(--gray-600);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;}
-.region-stat-value{font-size:24px;font-weight:800;color:var(--inv-forest);line-height:1;margin-top:2px;}
-.region-stat-sub{font-size:11px;color:var(--gray-400);margin-top:2px;}
+/* ── INTRO ── */
+.intro{background:#fff;padding:24px 32px;border-bottom:1px solid var(--gray-200);}
+.intro h2{font-size:22px;font-weight:800;color:var(--inv-forest);margin-bottom:10px;}
+.intro p{font-size:14px;color:var(--gray-600);line-height:1.7;max-width:900px;}
+.intro .inv-name{color:var(--inv-forest);font-weight:700;}
 
-/* ── MAIN GRID ── */
-.main{display:grid;grid-template-columns:1fr 380px;gap:0;height:calc(100vh - 64px - 90px);}
-.left-pane{padding:18px;overflow-y:auto;background:var(--gray-50);}
-.right-pane{padding:18px;background:#fff;border-left:1px solid var(--gray-200);overflow-y:auto;}
+/* ── KPI ── */
+.kpi-row{background:#fff;padding:0 32px 24px;display:flex;gap:32px;flex-wrap:wrap;}
+.kpi{display:flex;flex-direction:column;}
+.kpi-l{font-size:10px;color:var(--inv-forest);text-transform:uppercase;letter-spacing:1.5px;font-weight:700;}
+.kpi-v{font-size:24px;font-weight:800;color:var(--inv-forest);line-height:1;margin-top:3px;}
+.kpi-s{font-size:11px;color:var(--gray-600);margin-top:2px;}
 
-/* ── SECTION HEADERS ── */
-.section-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
-.section-title{font-size:13px;font-weight:700;color:var(--gray-800);letter-spacing:1px;text-transform:uppercase;}
+/* ── MAIN ── */
+.main{display:grid;grid-template-columns:1fr 360px;gap:0;}
+.left{padding:24px 32px;background:var(--gray-50);}
+.right{padding:24px 32px;background:#fff;border-left:1px solid var(--gray-200);}
+
+.section-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.section-title{font-size:13px;font-weight:700;color:var(--gray-800);letter-spacing:1.5px;text-transform:uppercase;}
 .section-meta{font-size:11px;color:var(--gray-400);}
 
-/* ── MAP CARD ── */
-.map-card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:18px;}
-#invmap{height:380px;}
+.map-card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:24px;}
+#invmap{height:420px;}
+.map-legend{padding:10px 14px;background:var(--inv-cream);font-size:11px;color:var(--gray-600);border-top:1px solid #e6e3d2;display:flex;gap:18px;align-items:center;}
+.legend-dot{width:12px;height:12px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:middle;border:2px solid var(--inv-forest);background:var(--inv-lime);}
 
 /* ── MARKET GRID ── */
-.market-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;}
+.market-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:24px;}
 .market-card{
   background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);
-  padding:14px;cursor:pointer;transition:all .2s;position:relative;
+  padding:14px;transition:all .2s;
 }
-.market-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:var(--inv-lime);}
-.market-card.se{border-left:3px solid var(--inv-lime);}
-.market-card.top{border-top:2px solid var(--inv-forest);}
+.market-card.coverage{border-left:3px solid var(--inv-lime);background:linear-gradient(to right,var(--inv-lime-l) 0%,#fff 30%);}
+.market-card.hq{border-top:2px solid var(--inv-forest);}
 .market-name{font-weight:700;font-size:14px;color:var(--gray-800);}
 .market-state{font-size:11px;color:var(--gray-400);margin-top:2px;}
 .market-stats{display:flex;justify-content:space-between;margin-top:10px;padding-top:10px;border-top:1px solid var(--gray-100);}
 .market-stat{display:flex;flex-direction:column;}
 .market-stat-v{font-size:18px;font-weight:800;color:var(--inv-forest);line-height:1;}
 .market-stat-l{font-size:9px;color:var(--gray-400);text-transform:uppercase;letter-spacing:.5px;margin-top:2px;}
-.market-badge{
-  display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;
-  text-transform:uppercase;letter-spacing:.5px;margin-top:4px;
+.market-coverage{font-size:10px;color:var(--inv-forest);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-top:8px;}
+.comm-row{
+  font-size:11px;color:var(--gray-600);padding:6px 8px;border-radius:5px;cursor:pointer;
+  background:var(--inv-lime-l);margin-top:4px;display:flex;align-items:center;justify-content:space-between;
 }
-.market-badge.se{background:var(--inv-lime-l);color:var(--inv-forest);}
-.market-badge.btr{background:#fef3c7;color:#92400e;}
+.comm-row:hover{background:#d4ebc1;}
 
-/* ── OPPORTUNITY PANEL ── */
-.opp-list{display:flex;flex-direction:column;gap:8px;}
-.opp{
-  background:var(--inv-lime-l);border:1px solid #d4ebc1;border-radius:8px;padding:12px;
-  display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;
+/* ── CAPABILITY (right pane) ── */
+.capability-list{display:flex;flex-direction:column;gap:10px;}
+.capability{
+  background:var(--inv-lime-l);border:1px solid #d4ebc1;border-radius:8px;padding:13px;
+  display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;
 }
-.opp-icon{
-  width:38px;height:38px;border-radius:7px;background:var(--inv-forest);
-  color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;
+.capability-icon{
+  width:40px;height:40px;border-radius:8px;background:var(--inv-forest);
+  color:#fff;display:flex;align-items:center;justify-content:center;font-size:19px;
 }
-.opp-title{font-size:13px;font-weight:700;color:var(--gray-800);}
-.opp-detail{font-size:11px;color:var(--gray-600);margin-top:2px;}
-.opp-num{font-size:18px;font-weight:800;color:var(--inv-forest);}
-.opp-num-l{font-size:9px;color:var(--gray-400);text-transform:uppercase;letter-spacing:.5px;}
+.capability-title{font-size:13px;font-weight:700;color:var(--gray-800);}
+.capability-detail{font-size:11px;color:var(--gray-600);margin-top:2px;line-height:1.5;}
 
-/* ── ADDRESSES TABLE ── */
-.addr-table-wrap{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-top:18px;}
-.addr-table{width:100%;border-collapse:collapse;font-size:12px;}
-.addr-table thead th{
-  background:var(--inv-forest);color:#fff;padding:10px 12px;text-align:left;
-  font-size:10px;text-transform:uppercase;letter-spacing:1px;font-weight:700;
-}
-.addr-table tbody td{padding:9px 12px;border-bottom:1px solid var(--gray-100);}
-.addr-table tbody tr:hover{background:var(--inv-lime-l);}
-.addr-region{font-weight:700;color:var(--inv-forest);font-size:11px;letter-spacing:.5px;}
-
-/* ── PITCH BOX ── */
-.pitch{
+.contact-card{
   background:linear-gradient(135deg,var(--inv-forest),var(--inv-forest-d));
-  color:#fff;border-radius:var(--radius);padding:18px;margin-bottom:16px;
+  color:#fff;border-radius:var(--radius);padding:20px;margin-top:20px;
 }
-.pitch h3{font-size:13px;text-transform:uppercase;letter-spacing:1.5px;font-weight:800;color:var(--inv-lime);margin-bottom:8px;}
-.pitch p{font-size:13px;line-height:1.55;opacity:.92;}
-.pitch strong{color:var(--inv-lime);}
+.contact-card h3{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;font-weight:800;color:var(--inv-lime);margin-bottom:8px;}
+.contact-card p{font-size:13px;line-height:1.6;opacity:.93;margin-bottom:10px;}
+.contact-card a{color:var(--inv-lime);font-weight:700;text-decoration:none;}
 
 /* ── FOOTER ── */
-.footer{padding:16px 24px;background:var(--gray-50);border-top:1px solid var(--gray-200);
-  display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--gray-400);}
-.footer-link{color:var(--inv-forest);text-decoration:none;font-weight:600;}
-.footer-link:hover{text-decoration:underline;}
+.footer{padding:16px 32px;background:var(--gray-50);border-top:1px solid var(--gray-200);
+  display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--gray-400);flex-wrap:wrap;gap:8px;}
+.footer-brand{color:var(--inv-forest);font-weight:700;}
 
-@media(max-width:1100px){.main{grid-template-columns:1fr;height:auto;}.right-pane{border-left:0;border-top:1px solid var(--gray-200);}}
+@media(max-width:1100px){.main{grid-template-columns:1fr;}.right{border-left:0;border-top:1px solid var(--gray-200);}}
 
-/* Community modal */
+/* ── COMMUNITY MODAL ── */
 .comm-modal-ov{
   display:none;position:fixed;inset:0;background:rgba(15,30,15,.65);
   align-items:center;justify-content:center;z-index:500;padding:20px;
 }
 .comm-modal-ov.open{display:flex;}
 .comm-modal{
-  background:#fff;border-radius:14px;max-width:760px;width:100%;max-height:90vh;
+  background:#fff;border-radius:14px;max-width:680px;width:100%;max-height:90vh;
   overflow-y:auto;box-shadow:var(--shadow-lg);
 }
 .cm-hdr{
@@ -167,13 +166,6 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
 .cm-body{padding:22px 26px;}
 .cm-section{margin-bottom:22px;}
 .cm-section-title{font-size:11px;color:var(--inv-forest);text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:10px;}
-.cm-actions{display:flex;gap:10px;margin-top:14px;}
-.cm-btn{
-  background:var(--inv-lime);color:var(--inv-forest-d);
-  padding:8px 16px;border-radius:6px;font-size:12px;font-weight:700;
-  border:0;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;
-}
-.cm-btn.outline{background:transparent;border:1px solid var(--inv-forest);color:var(--inv-forest);}
 </style>
 </head>
 <body>
@@ -182,131 +174,113 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
   <div class="hdr-left">
     <div class="logo-mark">9</div>
     <div>
-      <div class="brand-name">Brand 9 Signs</div>
-      <div style="font-size:10px;color:rgba(255,255,255,.4);letter-spacing:1px;">SIGNAGE OPERATIONS</div>
-    </div>
-    <div class="divider-v"></div>
-    <div class="atlas-badge">
-      <div class="atlas-name">ATLAS</div>
-      <div class="atlas-sub">INVH OPPORTUNITY MAP</div>
-    </div>
-  </div>
-  <div class="hdr-center">
-    <div>
-      <div class="cl-label">Client</div>
-      <div class="cl-name">Invitation Homes · NYSE:INVH</div>
+      <h1>Brand 9 Signs</h1>
+      <div class="hdr-sub">Florida-based signage operations · est. 1986</div>
     </div>
   </div>
   <div class="hdr-right">
-    <div class="live-badge"><span class="live-dot"></span> PIPELINE STAGE: pre-engagement</div>
+    <div style="font-size:11px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:1px;">Coverage Overview for</div>
+    <div style="font-size:14px;color:#fff;font-weight:700;margin-top:2px;">Invitation Homes (NYSE: INVH)</div>
   </div>
 </header>
 
-<div class="region-bar">
-  <div class="region-stat"><div class="region-stat-label">Total Homes</div><div class="region-stat-value">~109K</div><div class="region-stat-sub">85,970 owned + 8,016 JV + 15,759 managed (Q1 2026)</div></div>
-  <div class="region-stat"><div class="region-stat-label">Core Markets</div><div class="region-stat-value">16</div><div class="region-stat-sub">National footprint</div></div>
-  <div class="region-stat"><div class="region-stat-label">Southeast Share</div><div class="region-stat-value">51%</div><div class="region-stat-sub">FL 32.4% + GA/Carolinas 18.7%</div></div>
-  <div class="region-stat"><div class="region-stat-label">BTR Pipeline</div><div class="region-stat-value">4,200+</div><div class="region-stat-sub">ResiBuilt acq · GA/FL/Carolinas focus</div></div>
-  <div class="region-stat"><div class="region-stat-label">B9 Fit</div><div class="region-stat-value" style="color:var(--inv-lime);">★★★★★</div><div class="region-stat-sub">SE-concentrated · existing Lennar muscle</div></div>
+<!-- ONE-DECK SLOT — paste a Google Slides / Drive / PDF URL here, persists in browser -->
+<div class="deck-strip" id="deck-strip">
+  <!-- rendered by JS — either deck button or paste form -->
+</div>
+
+<div class="intro">
+  <h2>Built for your portfolio. Already on your routes.</h2>
+  <p>
+    Brand 9 Signs has run signage operations across the same Southeast metros where
+    <span class="inv-name">Invitation Homes</span> holds its largest concentrations — Jacksonville, St. Augustine,
+    Ocala, Tampa, Orlando, South Florida, Atlanta, and the Carolinas. We currently operate
+    65+ active community programs for Lennar Homes across these same markets, with our crews
+    on the ground every week.
+  </p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi"><div class="kpi-l">Years in business</div><div class="kpi-v">40+</div><div class="kpi-s">Family-owned · est. 1986</div></div>
+  <div class="kpi"><div class="kpi-l">Active community programs</div><div class="kpi-v">65+</div><div class="kpi-s">Built-to-rent + new construction</div></div>
+  <div class="kpi"><div class="kpi-l">SE markets covered</div><div class="kpi-v">7 of 7</div><div class="kpi-s">All major INVH Southeast metros</div></div>
+  <div class="kpi"><div class="kpi-l">Install crews on route</div><div class="kpi-v">Weekly</div><div class="kpi-s">Florida + Georgia · same crews, same week</div></div>
+  <div class="kpi"><div class="kpi-l">Headquartered</div><div class="kpi-v">Jacksonville, FL</div><div class="kpi-s">Independent · single point of accountability</div></div>
 </div>
 
 <div class="main">
-  <div class="left-pane">
-
-    <div class="pitch">
-      <h3>WHY BRAND 9 WINS THE INVH ACCOUNT</h3>
-      <p>
-        Invitation Homes' US Southeast portfolio overlaps <strong>directly</strong> with Brand 9's installed Lennar operating footprint —
-        Jacksonville · St. Augustine · Ocala · Tampa · Orlando · South Florida · Atlanta · Carolinas. Crew Pete + Andrew already
-        run signage installs in the same metros, weekly. Adding INVH = <strong>incremental scale on existing routes</strong>, not new infrastructure.
-        The BTR pipeline (ResiBuilt acquisition · 4,200+ homes · GA/FL/Carolinas) is fresh community signage demand at scale.
-      </p>
-    </div>
+  <div class="left">
 
     <div class="section-hdr">
-      <div class="section-title">US Southeast — Geographic Concentration</div>
-      <div class="section-meta">Source: INVH Q1 2026 Supplemental · 8-K Mar 2026</div>
+      <div class="section-title">Where Our Routes Overlap with Invitation Homes</div>
     </div>
 
     <div class="map-card">
       <div id="invmap"></div>
+      <div class="map-legend">
+        <span><span class="legend-dot"></span> Markets where Brand 9 has active install routes</span>
+        <span style="margin-left:auto;font-size:10px;">Sized by INVH portfolio share</span>
+      </div>
     </div>
 
-    <div class="section-hdr" style="margin-top:18px;">
-      <div class="section-title">16 Core Markets</div>
-      <div class="section-meta">SE markets badge ► priority for Brand 9 engagement</div>
+    <div class="section-hdr">
+      <div class="section-title">Southeast Coverage by Market</div>
     </div>
 
     <div class="market-grid" id="market-grid"></div>
 
-    <div class="addr-table-wrap">
-      <table class="addr-table">
-        <thead><tr>
-          <th>Market</th><th>State</th><th>Portfolio %</th><th>Est. Homes</th><th>BTR (ResiBuilt)</th><th>B9 Crew</th>
-        </tr></thead>
-        <tbody id="addr-body"></tbody>
-      </table>
-    </div>
-
   </div>
 
-  <div class="right-pane">
+  <div class="right">
+
     <div class="section-hdr">
-      <div class="section-title">Signage Opportunity — Categories</div>
+      <div class="section-title">Signage Scope We Handle</div>
     </div>
-    <div class="opp-list">
-      <div class="opp">
-        <div class="opp-icon">🪧</div>
+    <div class="capability-list">
+      <div class="capability">
+        <div class="capability-icon">🪧</div>
         <div>
-          <div class="opp-title">"For Lease" Yard Signs</div>
-          <div class="opp-detail">Per-unit turnover (every 18-24 mo) × 109K = ~50K signs/yr · highest volume</div>
+          <div class="capability-title">"For Lease" Yard Signs</div>
+          <div class="capability-detail">Per-unit signage · designed for repeat use across vacancy cycles</div>
         </div>
-        <div style="text-align:right;"><div class="opp-num">~50K/yr</div><div class="opp-num-l">at vacancy</div></div>
       </div>
-      <div class="opp">
-        <div class="opp-icon">🏘️</div>
+      <div class="capability">
+        <div class="capability-icon">🏘️</div>
         <div>
-          <div class="opp-title">BTR Community Entrance Signs</div>
-          <div class="opp-detail">ResiBuilt pipeline — community/section/wayfinding · same WHC pkg as Lennar</div>
+          <div class="capability-title">Build-to-Rent Community Signage</div>
+          <div class="capability-detail">Entrance monuments · wayfinding · model home · leasing center</div>
         </div>
-        <div style="text-align:right;"><div class="opp-num">4,200+</div><div class="opp-num-l">homes coming</div></div>
       </div>
-      <div class="opp">
-        <div class="opp-icon">🏢</div>
+      <div class="capability">
+        <div class="capability-icon">🏢</div>
         <div>
-          <div class="opp-title">Regional Office Signage</div>
-          <div class="opp-detail">INVH regional offices · interior + exterior packages</div>
+          <div class="capability-title">Regional Office Identity</div>
+          <div class="capability-detail">Interior + exterior office signage · consistent across markets</div>
         </div>
-        <div style="text-align:right;"><div class="opp-num">16</div><div class="opp-num-l">offices</div></div>
       </div>
-      <div class="opp">
-        <div class="opp-icon">🚧</div>
+      <div class="capability">
+        <div class="capability-icon">🚧</div>
         <div>
-          <div class="opp-title">BTR Construction Signage</div>
-          <div class="opp-detail">During build phase — site safety, sponsor, sales preview · per ResiBuilt project</div>
+          <div class="capability-title">Construction Phase Signage</div>
+          <div class="capability-detail">Site safety · sponsor boards · sales preview · fencing graphics</div>
         </div>
-        <div style="text-align:right;"><div class="opp-num">23+</div><div class="opp-num-l">contracts</div></div>
       </div>
-      <div class="opp">
-        <div class="opp-icon">🪟</div>
+      <div class="capability">
+        <div class="capability-icon">🪟</div>
         <div>
-          <div class="opp-title">Window / Door Decals</div>
-          <div class="opp-detail">"Now Leasing" + Invitation Homes branding · property-level</div>
+          <div class="capability-title">Window Graphics + Decals</div>
+          <div class="capability-detail">"Now Leasing" treatments · property branding · leasing-center windows</div>
         </div>
-        <div style="text-align:right;"><div class="opp-num">+++</div><div class="opp-num-l">recurring</div></div>
       </div>
     </div>
 
-    <div class="section-hdr" style="margin-top:20px;">
-      <div class="section-title">Next Actions</div>
+    <div class="contact-card">
+      <h3>Direct Contact</h3>
+      <p>Robert "Bobby" Hartley · President</p>
+      <p><a href="mailto:ap@brand9signs.com">ap@brand9signs.com</a></p>
+      <p style="font-size:11px;opacity:.75;margin-top:8px;">Brand 9 Signs · Jacksonville, Florida</p>
     </div>
-    <div style="background:var(--gray-50);border-radius:8px;padding:14px;font-size:12px;color:var(--gray-600);line-height:1.6;">
-      <strong>1.</strong> Confirm INVH point-of-contact name + role · pipeline-stage = pre-engagement<br>
-      <strong>2.</strong> Pull live community + address list from INVH ops once NDA signed<br>
-      <strong>3.</strong> Stage SE-only Atlas v2 with actual community names + crew assignments<br>
-      <strong>4.</strong> Cross-reference INVH market list with Brand 9's existing Lennar route density<br>
-      <strong>5.</strong> Draft pitch deck — "incremental on existing routes" angle
-    </div>
+
   </div>
 </div>
 
@@ -322,107 +296,141 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
       <button class="cm-close" onclick="closeCommModal()">✕</button>
     </div>
     <div class="cm-body">
-
       <div class="cm-section">
-        <div class="cm-section-title">📊 Slide Deck</div>
-        <div id="cm-deck"></div>
+        <div class="cm-section-title">Notes</div>
+        <div id="cm-notes" style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:14px;font-size:13px;color:var(--gray-600);line-height:1.6;"></div>
       </div>
-
-      <div class="cm-section">
-        <div class="cm-section-title">📷 Photos</div>
-        <div id="cm-photos"></div>
-      </div>
-
-      <div class="cm-section">
-        <div class="cm-section-title">📝 Notes</div>
-        <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:14px;font-size:12px;color:var(--gray-600);line-height:1.6;">
-          Sample placeholder community. Real INVH community names + addresses unlock when NDA executed and INVH ops provides the community list. Sign categories planned: WHC Community Signage, Wayfinding, Model Home, Leasing Center, Construction Phase (during BTR build).
-        </div>
-      </div>
-
     </div>
   </div>
 </div>
 
 <div class="footer">
-  <div>Atlas · Invitation Homes Signage Operations Map · Brand 9 Signs</div>
-  <div>Source data: INVH SEC filings + invitationhomes.com · Brand colors sampled from INVH brand · Generated <span id="ts"></span></div>
+  <div><span class="footer-brand">Brand 9 Signs</span> · est. 1986 · Jacksonville, FL</div>
+  <div>Prepared for Invitation Homes · <span id="ts"></span></div>
 </div>
 
 <script>
-document.getElementById('ts').textContent = new Date().toLocaleDateString('en-US', {year:'numeric',month:'short',day:'numeric'});
+document.getElementById('ts').textContent = new Date().toLocaleDateString('en-US', {year:'numeric',month:'long',day:'numeric'});
 
-// INVH 16 markets — Jacksonville moved to top (B9 HQ + first install territory).
-// Each SE market can carry sample communities with attached photos + slide decks.
+// ── DECK STRIP — single deck for the dashboard, localStorage backed ──
+const DECK_KEY = 'invh-dashboard-deck-v1';
+function loadDeck() {
+  try { return JSON.parse(localStorage.getItem(DECK_KEY) || 'null'); }
+  catch(e) { return null; }
+}
+function saveDeck(deck) {
+  if (deck) localStorage.setItem(DECK_KEY, JSON.stringify(deck));
+  else localStorage.removeItem(DECK_KEY);
+}
+function renderDeckStrip() {
+  const deck = loadDeck();
+  const strip = document.getElementById('deck-strip');
+  if (deck) {
+    strip.innerHTML = `
+      <div class="deck-strip-left">
+        <div class="deck-icon">📊</div>
+        <div class="deck-info">
+          <div class="deck-label">Pitch Deck</div>
+          <div class="deck-title">${deck.title || 'Brand 9 Signs · Coverage Deck'}</div>
+        </div>
+      </div>
+      <div class="deck-actions">
+        <a href="${deck.url}" target="_blank" class="deck-btn">📊 Open Deck</a>
+        <button class="deck-btn outline" onclick="if(confirm('Remove the attached deck?')){saveDeck(null);renderDeckStrip();}">Replace</button>
+      </div>
+    `;
+  } else {
+    strip.innerHTML = `
+      <div class="deck-strip-left">
+        <div class="deck-icon">📊</div>
+        <div class="deck-info">
+          <div class="deck-label">Attach Pitch Deck</div>
+          <div class="deck-title">Paste a Google Slides / Drive / PDF link</div>
+        </div>
+      </div>
+      <div class="deck-empty-form">
+        <input id="deck-url" type="url" placeholder="https://docs.google.com/presentation/d/...">
+        <input id="deck-title" type="text" placeholder="Title (optional)" style="max-width:200px;">
+        <button class="deck-btn" onclick="attachDeck()">Attach</button>
+      </div>
+    `;
+  }
+}
+function attachDeck() {
+  const url = document.getElementById('deck-url').value.trim();
+  const title = document.getElementById('deck-title').value.trim();
+  if (!url) { alert('Paste a URL first.'); return; }
+  saveDeck({url, title: title || 'Brand 9 Signs · Coverage Deck', attached_at: new Date().toISOString()});
+  renderDeckStrip();
+}
+renderDeckStrip();
+
+// ── MARKETS ──
 const MARKETS = [
-  // SOUTHEAST — Brand 9 priority · Jacksonville first (HQ market)
-  {name:"Jacksonville",   state:"FL", se:true,  hq:true, pct:2,  est_homes:2180,  btr:true,
+  {name:"Jacksonville",   state:"FL",    coverage:true, hq:true, pct:2,  est_homes:2180,
    communities:[
-     {name:"Sample Community A · St. Johns BTR",   city:"St. Johns, FL",       status:"sample", photos:[], deck:null},
-     {name:"Sample Community B · Nocatee adj.",    city:"Ponte Vedra, FL",     status:"sample", photos:[], deck:null},
-     {name:"Sample Community C · Westside JAX",    city:"Jacksonville, FL",    status:"sample", photos:[], deck:null},
+     {name:"Sample Community A · St. Johns",    city:"St. Johns, FL",       notes:"Northeast Florida community. Brand 9 currently installs in this corridor for Lennar."},
+     {name:"Sample Community B · Nocatee Area", city:"Ponte Vedra, FL",     notes:"Adjacent to Brand 9's existing Nocatee-area route. Same crew, same week."},
+     {name:"Sample Community C · Westside JAX", city:"Jacksonville, FL",    notes:"West Jacksonville. Same crew rotation as our 18 Lennar communities in greater JAX."},
    ]},
-  {name:"Atlanta",        state:"GA", se:true,  top:true,  pct:13, est_homes:14160, btr:true,
+  {name:"Atlanta",        state:"GA",    coverage:true, pct:13, est_homes:14160,
    communities:[
-     {name:"Sample Community · ATL Metro BTR",     city:"Marietta, GA",        status:"sample", photos:[], deck:null},
+     {name:"Sample Community · ATL Metro", city:"Marietta, GA", notes:"Atlanta metro market. Brand 9 has install capability and route experience here."},
    ]},
-  {name:"Tampa",          state:"FL", se:true,  top:true,  pct:10, est_homes:10890, btr:true,
+  {name:"Tampa",          state:"FL",    coverage:true, pct:10, est_homes:10890,
    communities:[
-     {name:"Sample Community · Wesley Chapel",     city:"Wesley Chapel, FL",   status:"sample", photos:[], deck:null},
+     {name:"Sample Community · Wesley Chapel", city:"Wesley Chapel, FL", notes:"Tampa metro · Wesley Chapel corridor. Brand 9 current install route."},
    ]},
-  {name:"South Florida",  state:"FL", se:true,  pct:12, est_homes:13070, btr:true},
-  {name:"Orlando",        state:"FL", se:true,  pct:5,  est_homes:5450,  btr:true},
-  {name:"Carolinas",      state:"NC/SC", se:true,  pct:6,  est_homes:6540,  btr:true},
-  {name:"Nashville",      state:"TN", se:true,  pct:3,  est_homes:3270,  btr:false},
-  // NON-SE
-  {name:"Phoenix",        state:"AZ", top:true, pct:10, est_homes:10890, btr:false},
-  {name:"Dallas",          state:"TX", pct:3,  est_homes:3270,  btr:false},
-  {name:"Houston",        state:"TX", pct:2,  est_homes:2180,  btr:false},
-  {name:"Denver",         state:"CO", pct:3,  est_homes:3270,  btr:false},
-  {name:"Las Vegas",      state:"NV", pct:4,  est_homes:4360,  btr:false},
-  {name:"S. California",  state:"CA", pct:13, est_homes:14160, btr:false},
-  {name:"N. California",  state:"CA", pct:6,  est_homes:6540,  btr:false},
-  {name:"Seattle",        state:"WA", pct:6,  est_homes:6540,  btr:false},
-  {name:"Minneapolis",    state:"MN", pct:1,  est_homes:1090,  btr:false},
+  {name:"South Florida",  state:"FL",    coverage:true, pct:12, est_homes:13070},
+  {name:"Orlando",        state:"FL",    coverage:true, pct:5,  est_homes:5450},
+  {name:"Carolinas",      state:"NC/SC", coverage:true, pct:6,  est_homes:6540},
+  {name:"Nashville",      state:"TN",    coverage:true, pct:3,  est_homes:3270},
+  {name:"Phoenix",        state:"AZ",    pct:10, est_homes:10890},
+  {name:"Dallas",         state:"TX",    pct:3,  est_homes:3270},
+  {name:"Houston",        state:"TX",    pct:2,  est_homes:2180},
+  {name:"Denver",         state:"CO",    pct:3,  est_homes:3270},
+  {name:"Las Vegas",      state:"NV",    pct:4,  est_homes:4360},
+  {name:"S. California",  state:"CA",    pct:13, est_homes:14160},
+  {name:"N. California",  state:"CA",    pct:6,  est_homes:6540},
+  {name:"Seattle",        state:"WA",    pct:6,  est_homes:6540},
+  {name:"Minneapolis",    state:"MN",    pct:1,  est_homes:1090},
 ];
 
 const COORDS = {
-  "Atlanta":[33.749,-84.388],     "Tampa":[27.951,-82.458],     "South Florida":[26.122,-80.137],
-  "Orlando":[28.538,-81.379],     "Jacksonville":[30.332,-81.656],"Carolinas":[35.227,-80.843],
-  "Nashville":[36.165,-86.784],   "Phoenix":[33.448,-112.074],   "Dallas":[32.776,-96.797],
-  "Houston":[29.760,-95.369],     "Denver":[39.739,-104.990],    "Las Vegas":[36.169,-115.140],
+  "Jacksonville":[30.332,-81.656],"Tampa":[27.951,-82.458],"Orlando":[28.538,-81.379],
+  "South Florida":[26.122,-80.137],"Atlanta":[33.749,-84.388],"Carolinas":[35.227,-80.843],
+  "Nashville":[36.165,-86.784],"Phoenix":[33.448,-112.074],"Dallas":[32.776,-96.797],
+  "Houston":[29.760,-95.369],"Denver":[39.739,-104.990],"Las Vegas":[36.169,-115.140],
   "S. California":[34.052,-118.243],"N. California":[37.774,-122.419],"Seattle":[47.606,-122.332],"Minneapolis":[44.978,-93.265]
 };
 
-// Render market cards — HQ market (Jacksonville) first, then SE by portfolio %, then rest
+// Render market cards — HQ first, coverage markets next, rest after
 const grid = document.getElementById('market-grid');
 MARKETS.sort((a,b)=>{
   if (a.hq) return -1; if (b.hq) return 1;
-  if (a.se && !b.se) return -1; if (!a.se && b.se) return 1;
+  if (a.coverage && !b.coverage) return -1; if (!a.coverage && b.coverage) return 1;
   return b.pct - a.pct;
 }).forEach((m, mIdx)=>{
   const card = document.createElement('div');
-  card.className = 'market-card' + (m.se ? ' se' : '') + (m.top ? ' top' : '') + (m.hq ? ' hq' : '');
+  card.className = 'market-card' + (m.coverage ? ' coverage' : '') + (m.hq ? ' hq' : '');
   const commCount = (m.communities||[]).length;
   card.innerHTML = `
     <div style="display:flex;justify-content:space-between;align-items:flex-start;">
       <div>
-        <div class="market-name">${m.name}${m.hq ? ' <span style="font-size:10px;background:var(--inv-lime);color:var(--inv-forest-d);padding:2px 6px;border-radius:3px;letter-spacing:.5px;">★ B9 HQ</span>' : ''}</div>
-        <div class="market-state">${m.state}</div>
+        <div class="market-name">${m.name}${m.hq ? ' <span style="font-size:9px;background:var(--inv-lime);color:var(--inv-forest-d);padding:2px 6px;border-radius:3px;letter-spacing:.5px;vertical-align:middle;">★ HQ</span>' : ''}</div>
+        <div class="market-state">${m.state} · ${m.pct}% INVH portfolio</div>
       </div>
-      ${m.se ? '<span class="market-badge se">SE</span>' : ''}
     </div>
     <div class="market-stats">
-      <div class="market-stat"><div class="market-stat-v">${m.pct}%</div><div class="market-stat-l">Portfolio</div></div>
-      <div class="market-stat"><div class="market-stat-v">${(m.est_homes/1000).toFixed(1)}K</div><div class="market-stat-l">Est. Homes</div></div>
+      <div class="market-stat"><div class="market-stat-v">~${(m.est_homes/1000).toFixed(1)}K</div><div class="market-stat-l">Est. Homes</div></div>
+      ${m.coverage ? '<div style="font-size:10px;color:var(--inv-forest);font-weight:700;text-transform:uppercase;letter-spacing:.5px;align-self:flex-end;">✓ Brand 9 active</div>' : '<div style="font-size:10px;color:var(--gray-400);align-self:flex-end;">—</div>'}
     </div>
-    ${m.btr ? '<span class="market-badge btr" style="margin-top:8px;">BTR pipeline</span>' : ''}
     ${commCount > 0 ? `<div style="margin-top:10px;padding-top:8px;border-top:1px dashed var(--gray-200);">
-      <div style="font-size:9px;color:var(--inv-forest);text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:6px;">${commCount} Sample Communities</div>
+      <div style="font-size:9px;color:var(--inv-forest);text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:6px;">Sample Communities</div>
       ${m.communities.map((c,ci)=>`
-        <div class="comm-row" onclick="openCommModal(${mIdx},${ci})" style="font-size:11px;color:var(--gray-600);padding:5px 7px;border-radius:5px;cursor:pointer;background:var(--inv-lime-l);margin-bottom:3px;display:flex;align-items:center;justify-content:space-between;">
+        <div class="comm-row" onclick="openCommModal(${mIdx},${ci})">
           <span style="font-weight:600;">${c.name}</span>
-          <span style="font-size:9px;color:var(--inv-forest);">📎 ${(c.photos||[]).length} · 📊 ${c.deck ? '1' : '0'}</span>
+          <span style="font-size:10px;color:var(--inv-forest);">›</span>
         </div>
       `).join('')}
     </div>` : ''}
@@ -430,141 +438,21 @@ MARKETS.sort((a,b)=>{
   grid.appendChild(card);
 });
 
-// ── COMMUNITY MODAL — slide deck + photos attachment ──
-// V3: localStorage-backed paste-URL attachment. No backend needed.
-// Upgrade path: swap STORE getters/setters to a Sheets+AppsScript backend.
-const STORE_KEY = 'invh-comm-attachments-v1';
-let CURRENT_COMM_KEY = null; // mIdx:ci
-
-function loadStore() {
-  try { return JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); }
-  catch(e) { return {}; }
-}
-function saveStore(s) {
-  localStorage.setItem(STORE_KEY, JSON.stringify(s));
-}
-function getCommAttachments(mIdx, ci) {
-  const s = loadStore();
-  return s[`${mIdx}:${ci}`] || {deck: null, photos: [], notes: ''};
-}
-function setCommAttachments(mIdx, ci, data) {
-  const s = loadStore();
-  s[`${mIdx}:${ci}`] = data;
-  saveStore(s);
-}
-
 function openCommModal(mIdx, ci) {
-  CURRENT_COMM_KEY = `${mIdx}:${ci}`;
   const m = MARKETS[mIdx];
   const c = m.communities[ci];
-  const att = getCommAttachments(mIdx, ci);
-  // Merge baked-in data with localStorage-stored attachments
-  const deck = att.deck || c.deck;
-  const photos = (att.photos || []).concat(c.photos || []);
-
   document.getElementById('cm-name').textContent = c.name;
   document.getElementById('cm-city').textContent = c.city + ' · ' + m.name + ' market';
-  document.getElementById('cm-region').textContent = '📍 ' + m.state + (m.hq ? ' · B9 HQ MARKET' : '');
-
-  // DECK section
-  const deckBox = document.getElementById('cm-deck');
-  if (deck) {
-    deckBox.innerHTML = `
-      <a href="${deck.url}" target="_blank" style="display:block;background:var(--inv-forest);color:#fff;padding:18px;border-radius:8px;text-decoration:none;text-align:center;font-weight:700;">📊 ${deck.title || 'Open slide deck'}</a>
-      <div style="font-size:11px;color:var(--gray-400);margin-top:6px;text-align:center;">
-        <button onclick="removeDeck()" style="background:none;border:0;color:var(--red,#ef4444);cursor:pointer;font-size:11px;">Remove</button>
-      </div>
-    `;
-  } else {
-    deckBox.innerHTML = `
-      <div style="background:var(--gray-50);border:1px dashed var(--gray-200);border-radius:8px;padding:18px;">
-        <label style="display:block;font-size:11px;font-weight:700;color:var(--inv-forest);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Paste Google Slides / Drive / PDF link</label>
-        <input id="deck-url-input" type="url" placeholder="https://docs.google.com/presentation/d/..."
-               style="width:100%;padding:9px 12px;border:1px solid var(--gray-200);border-radius:6px;font-family:var(--font);font-size:12px;margin-bottom:8px;">
-        <input id="deck-title-input" type="text" placeholder="Deck title (optional, defaults to community name)"
-               style="width:100%;padding:9px 12px;border:1px solid var(--gray-200);border-radius:6px;font-family:var(--font);font-size:12px;margin-bottom:10px;">
-        <button onclick="attachDeck()" class="cm-btn" style="width:100%;justify-content:center;">📊 Attach Deck</button>
-        <div style="font-size:10px;color:var(--gray-400);margin-top:8px;line-height:1.5;">
-          <strong>Tip:</strong> in Drive, right-click your deck → Share → set "Anyone with the link" → Viewer → copy URL → paste here.
-        </div>
-      </div>
-    `;
-  }
-
-  // PHOTOS section
-  document.getElementById('cm-photos').innerHTML = photos.length === 0
-    ? `<div style="background:var(--gray-50);border:1px dashed var(--gray-200);border-radius:8px;padding:18px;">
-        <label style="display:block;font-size:11px;font-weight:700;color:var(--inv-forest);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Paste Drive photo link or image URL</label>
-        <input id="photo-url-input" type="url" placeholder="https://drive.google.com/..."
-               style="width:100%;padding:9px 12px;border:1px solid var(--gray-200);border-radius:6px;font-family:var(--font);font-size:12px;margin-bottom:8px;">
-        <input id="photo-caption-input" type="text" placeholder="Caption (optional)"
-               style="width:100%;padding:9px 12px;border:1px solid var(--gray-200);border-radius:6px;font-family:var(--font);font-size:12px;margin-bottom:10px;">
-        <button onclick="addPhoto()" class="cm-btn outline" style="width:100%;justify-content:center;">📷 Add Photo Link</button>
-       </div>`
-    : photos.map((p,i)=>`
-        <div style="position:relative;margin-bottom:8px;">
-          <img src="${p.url}" style="width:100%;border-radius:8px;display:block;" alt="${p.caption||''}" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
-          <div style="display:none;background:var(--gray-50);border:1px dashed var(--gray-200);border-radius:8px;padding:14px;text-align:center;">
-            <a href="${p.url}" target="_blank" style="color:var(--inv-forest);font-weight:700;text-decoration:none;">📷 Open photo →</a>
-            <div style="font-size:11px;color:var(--gray-400);margin-top:4px;">${p.caption||'(no caption)'}</div>
-          </div>
-        </div>
-      `).join('') + `
-        <button onclick="openCommModal(${mIdx},${ci})" class="cm-btn outline" style="width:100%;justify-content:center;margin-top:8px;">+ Add another photo</button>`;
-
+  document.getElementById('cm-region').textContent = '📍 ' + m.state + (m.hq ? ' · Brand 9 HQ market' : '');
+  document.getElementById('cm-notes').textContent = c.notes || 'Sample community for reference. Real community list confirmed once partnership underway.';
   document.getElementById('commModal').classList.add('open');
-}
-
-function attachDeck() {
-  const url = document.getElementById('deck-url-input').value.trim();
-  const title = document.getElementById('deck-title-input').value.trim();
-  if (!url) { alert('Paste a URL first.'); return; }
-  const [mIdx, ci] = CURRENT_COMM_KEY.split(':').map(Number);
-  const att = getCommAttachments(mIdx, ci);
-  att.deck = {url, title: title || MARKETS[mIdx].communities[ci].name + ' — Pitch Deck', attached_at: new Date().toISOString()};
-  setCommAttachments(mIdx, ci, att);
-  openCommModal(mIdx, ci);
-}
-function removeDeck() {
-  if (!confirm('Remove the attached deck?')) return;
-  const [mIdx, ci] = CURRENT_COMM_KEY.split(':').map(Number);
-  const att = getCommAttachments(mIdx, ci);
-  att.deck = null;
-  setCommAttachments(mIdx, ci, att);
-  openCommModal(mIdx, ci);
-}
-function addPhoto() {
-  const url = document.getElementById('photo-url-input').value.trim();
-  const caption = document.getElementById('photo-caption-input').value.trim();
-  if (!url) { alert('Paste a photo URL first.'); return; }
-  const [mIdx, ci] = CURRENT_COMM_KEY.split(':').map(Number);
-  const att = getCommAttachments(mIdx, ci);
-  att.photos = att.photos || [];
-  att.photos.unshift({url, caption, attached_at: new Date().toISOString()});
-  setCommAttachments(mIdx, ci, att);
-  openCommModal(mIdx, ci);
 }
 function closeCommModal() {
   document.getElementById('commModal').classList.remove('open');
 }
 
-// Render addresses table
-const body = document.getElementById('addr-body');
-MARKETS.forEach(m=>{
-  const tr = document.createElement('tr');
-  tr.innerHTML = `
-    <td><span class="addr-region">${m.name}</span></td>
-    <td>${m.state}</td>
-    <td>${m.pct}%</td>
-    <td>~${m.est_homes.toLocaleString()}</td>
-    <td>${m.btr ? '✓' : '–'}</td>
-    <td>${m.se ? 'Pete + Andrew' : 'TBD'}</td>
-  `;
-  body.appendChild(tr);
-});
-
-// Init Leaflet map — focused on US Southeast
-const map = L.map('invmap',{zoomControl:true,scrollWheelZoom:false}).setView([32.5,-86],5);
+// ── MAP ──
+const map = L.map('invmap',{zoomControl:true,scrollWheelZoom:false}).setView([34.5,-92],4);
 L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png',{
   attribution:'© OpenStreetMap © CARTO', maxZoom:18, subdomains:'abcd'
 }).addTo(map);
@@ -573,15 +461,16 @@ MARKETS.forEach(m=>{
   const c = COORDS[m.name];
   if (!c) return;
   const r = Math.max(8, Math.sqrt(m.est_homes)/4);
-  const color = m.se ? '#217106' : '#94a3b8';
-  const fill = m.se ? '#68B631' : '#cbd5e1';
-  L.circleMarker(c,{radius:r, color:color, fillColor:fill, fillOpacity:.7, weight:2})
-    .bindTooltip(`<strong>${m.name}</strong><br>${m.pct}% portfolio · ~${m.est_homes.toLocaleString()} homes${m.btr ? '<br>BTR pipeline ✓' : ''}`, {permanent:false})
-    .addTo(map);
+  if (m.coverage) {
+    L.circleMarker(c,{radius:r, color:'#217106', fillColor:'#68B631', fillOpacity:.75, weight:2.5})
+      .bindTooltip(`<strong>${m.name}</strong><br>${m.pct}% INVH portfolio · ~${m.est_homes.toLocaleString()} homes<br><strong style="color:#217106">✓ Brand 9 active here</strong>`, {permanent:false})
+      .addTo(map);
+  } else {
+    L.circleMarker(c,{radius:r, color:'#cbd5e1', fillColor:'#e2e8f0', fillOpacity:.5, weight:1})
+      .bindTooltip(`<strong>${m.name}</strong><br>${m.pct}% INVH portfolio · ~${m.est_homes.toLocaleString()} homes`, {permanent:false})
+      .addTo(map);
+  }
 });
-
-// SE focus rectangle
-L.rectangle([[24.5,-91],[36.8,-75]], {color:'#68B631', weight:1, fillOpacity:.05, dashArray:'5,5'}).addTo(map);
 </script>
 
 </body>
