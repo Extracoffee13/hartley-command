@@ -326,17 +326,11 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
       <div class="cm-section">
         <div class="cm-section-title">📊 Slide Deck</div>
         <div id="cm-deck"></div>
-        <div class="cm-actions">
-          <button class="cm-btn outline" onclick="alert('Slide deck attachment — wire to Google Drive folder per-community.\n\nWhen wired, this opens an upload modal that POSTs to the Atlas Web App and stores the deck under /Atlas/invh/decks/&lt;community-slug&gt;/.')">+ Attach deck</button>
-        </div>
       </div>
 
       <div class="cm-section">
         <div class="cm-section-title">📷 Photos</div>
         <div id="cm-photos"></div>
-        <div class="cm-actions">
-          <button class="cm-btn outline" onclick="alert('Photo upload — same pipeline as Atlas-Lennar Sign Operations.\n\nWhen wired, this opens the mobile upload form that captures crew-on-site photos, captions, timestamps, and writes to the INVH Sheet → Photos tab.')">📷 Upload photos</button>
-        </div>
       </div>
 
       <div class="cm-section">
@@ -437,20 +431,118 @@ MARKETS.sort((a,b)=>{
 });
 
 // ── COMMUNITY MODAL — slide deck + photos attachment ──
+// V3: localStorage-backed paste-URL attachment. No backend needed.
+// Upgrade path: swap STORE getters/setters to a Sheets+AppsScript backend.
+const STORE_KEY = 'invh-comm-attachments-v1';
+let CURRENT_COMM_KEY = null; // mIdx:ci
+
+function loadStore() {
+  try { return JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); }
+  catch(e) { return {}; }
+}
+function saveStore(s) {
+  localStorage.setItem(STORE_KEY, JSON.stringify(s));
+}
+function getCommAttachments(mIdx, ci) {
+  const s = loadStore();
+  return s[`${mIdx}:${ci}`] || {deck: null, photos: [], notes: ''};
+}
+function setCommAttachments(mIdx, ci, data) {
+  const s = loadStore();
+  s[`${mIdx}:${ci}`] = data;
+  saveStore(s);
+}
+
 function openCommModal(mIdx, ci) {
+  CURRENT_COMM_KEY = `${mIdx}:${ci}`;
   const m = MARKETS[mIdx];
   const c = m.communities[ci];
-  const ov = document.getElementById('commModal');
+  const att = getCommAttachments(mIdx, ci);
+  // Merge baked-in data with localStorage-stored attachments
+  const deck = att.deck || c.deck;
+  const photos = (att.photos || []).concat(c.photos || []);
+
   document.getElementById('cm-name').textContent = c.name;
   document.getElementById('cm-city').textContent = c.city + ' · ' + m.name + ' market';
   document.getElementById('cm-region').textContent = '📍 ' + m.state + (m.hq ? ' · B9 HQ MARKET' : '');
-  document.getElementById('cm-photos').innerHTML = (c.photos||[]).length === 0
-    ? '<div style="text-align:center;padding:24px;color:var(--gray-400);font-size:13px;">No photos uploaded yet</div>'
-    : c.photos.map(p=>`<img src="${p.url}" style="width:100%;border-radius:8px;margin-bottom:8px;" alt="${p.caption||''}">`).join('');
-  document.getElementById('cm-deck').innerHTML = c.deck
-    ? `<a href="${c.deck.url}" target="_blank" style="display:block;background:var(--inv-forest);color:#fff;padding:18px;border-radius:8px;text-decoration:none;text-align:center;font-weight:700;">📊 ${c.deck.title || 'Open slide deck'}</a>`
-    : `<div style="text-align:center;padding:24px;color:var(--gray-400);font-size:13px;">No slide deck attached yet</div>`;
-  ov.classList.add('open');
+
+  // DECK section
+  const deckBox = document.getElementById('cm-deck');
+  if (deck) {
+    deckBox.innerHTML = `
+      <a href="${deck.url}" target="_blank" style="display:block;background:var(--inv-forest);color:#fff;padding:18px;border-radius:8px;text-decoration:none;text-align:center;font-weight:700;">📊 ${deck.title || 'Open slide deck'}</a>
+      <div style="font-size:11px;color:var(--gray-400);margin-top:6px;text-align:center;">
+        <button onclick="removeDeck()" style="background:none;border:0;color:var(--red,#ef4444);cursor:pointer;font-size:11px;">Remove</button>
+      </div>
+    `;
+  } else {
+    deckBox.innerHTML = `
+      <div style="background:var(--gray-50);border:1px dashed var(--gray-200);border-radius:8px;padding:18px;">
+        <label style="display:block;font-size:11px;font-weight:700;color:var(--inv-forest);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Paste Google Slides / Drive / PDF link</label>
+        <input id="deck-url-input" type="url" placeholder="https://docs.google.com/presentation/d/..."
+               style="width:100%;padding:9px 12px;border:1px solid var(--gray-200);border-radius:6px;font-family:var(--font);font-size:12px;margin-bottom:8px;">
+        <input id="deck-title-input" type="text" placeholder="Deck title (optional, defaults to community name)"
+               style="width:100%;padding:9px 12px;border:1px solid var(--gray-200);border-radius:6px;font-family:var(--font);font-size:12px;margin-bottom:10px;">
+        <button onclick="attachDeck()" class="cm-btn" style="width:100%;justify-content:center;">📊 Attach Deck</button>
+        <div style="font-size:10px;color:var(--gray-400);margin-top:8px;line-height:1.5;">
+          <strong>Tip:</strong> in Drive, right-click your deck → Share → set "Anyone with the link" → Viewer → copy URL → paste here.
+        </div>
+      </div>
+    `;
+  }
+
+  // PHOTOS section
+  document.getElementById('cm-photos').innerHTML = photos.length === 0
+    ? `<div style="background:var(--gray-50);border:1px dashed var(--gray-200);border-radius:8px;padding:18px;">
+        <label style="display:block;font-size:11px;font-weight:700;color:var(--inv-forest);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Paste Drive photo link or image URL</label>
+        <input id="photo-url-input" type="url" placeholder="https://drive.google.com/..."
+               style="width:100%;padding:9px 12px;border:1px solid var(--gray-200);border-radius:6px;font-family:var(--font);font-size:12px;margin-bottom:8px;">
+        <input id="photo-caption-input" type="text" placeholder="Caption (optional)"
+               style="width:100%;padding:9px 12px;border:1px solid var(--gray-200);border-radius:6px;font-family:var(--font);font-size:12px;margin-bottom:10px;">
+        <button onclick="addPhoto()" class="cm-btn outline" style="width:100%;justify-content:center;">📷 Add Photo Link</button>
+       </div>`
+    : photos.map((p,i)=>`
+        <div style="position:relative;margin-bottom:8px;">
+          <img src="${p.url}" style="width:100%;border-radius:8px;display:block;" alt="${p.caption||''}" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+          <div style="display:none;background:var(--gray-50);border:1px dashed var(--gray-200);border-radius:8px;padding:14px;text-align:center;">
+            <a href="${p.url}" target="_blank" style="color:var(--inv-forest);font-weight:700;text-decoration:none;">📷 Open photo →</a>
+            <div style="font-size:11px;color:var(--gray-400);margin-top:4px;">${p.caption||'(no caption)'}</div>
+          </div>
+        </div>
+      `).join('') + `
+        <button onclick="openCommModal(${mIdx},${ci})" class="cm-btn outline" style="width:100%;justify-content:center;margin-top:8px;">+ Add another photo</button>`;
+
+  document.getElementById('commModal').classList.add('open');
+}
+
+function attachDeck() {
+  const url = document.getElementById('deck-url-input').value.trim();
+  const title = document.getElementById('deck-title-input').value.trim();
+  if (!url) { alert('Paste a URL first.'); return; }
+  const [mIdx, ci] = CURRENT_COMM_KEY.split(':').map(Number);
+  const att = getCommAttachments(mIdx, ci);
+  att.deck = {url, title: title || MARKETS[mIdx].communities[ci].name + ' — Pitch Deck', attached_at: new Date().toISOString()};
+  setCommAttachments(mIdx, ci, att);
+  openCommModal(mIdx, ci);
+}
+function removeDeck() {
+  if (!confirm('Remove the attached deck?')) return;
+  const [mIdx, ci] = CURRENT_COMM_KEY.split(':').map(Number);
+  const att = getCommAttachments(mIdx, ci);
+  att.deck = null;
+  setCommAttachments(mIdx, ci, att);
+  openCommModal(mIdx, ci);
+}
+function addPhoto() {
+  const url = document.getElementById('photo-url-input').value.trim();
+  const caption = document.getElementById('photo-caption-input').value.trim();
+  if (!url) { alert('Paste a photo URL first.'); return; }
+  const [mIdx, ci] = CURRENT_COMM_KEY.split(':').map(Number);
+  const att = getCommAttachments(mIdx, ci);
+  att.photos = att.photos || [];
+  att.photos.unshift({url, caption, attached_at: new Date().toISOString()});
+  setCommAttachments(mIdx, ci, att);
+  openCommModal(mIdx, ci);
 }
 function closeCommModal() {
   document.getElementById('commModal').classList.remove('open');
