@@ -892,6 +892,20 @@ const WILD_DUCKS = [
     skills: ["Mac bootstrap (7-phase)", "git clone Hermes-Agent", "skill-pack symlink", "launchd plist install loop", "Per-client install.json", "selftest 6-step"] },
   { name: "handoff-protocol",     phase: 3, status: "spec", score: 16, domain: "Claude↔Hermes spec format · meta-util", task: "20",
     skills: ["Frontmatter parser", "Report validator", "PRAXIS_INBOX extractor", "Template emit (task + report)"] },
+  // MEMORY CLUSTER — added 2026-05-29 per project_hermes_memory_doctrine
+  { name: "memory-capture",       phase: 1, status: "spec", score: 22, domain: "PRAXIS_INBOX → staging queue · continuous", task: "23",
+    skills: ["File-watch all report paths", "PRAXIS_INBOX block parser", "Provenance + dedupe hash", "30s debounce throttle"] },
+  { name: "memory-index",         phase: 1, status: "spec", score: 20, domain: "MEMORY.md regenerate · nightly 03:30 ET", task: "24",
+    skills: ["Frontmatter scan", "[[wiki-link]] resolution", "Broken-ref sidecar", "Stale-flag (>180d)", "Manual edits preserved"] },
+  { name: "memory-crossshare",    phase: 1, status: "spec", score: 23, domain: "Lessons → all 37+ agent CONTEXT.md · post-distill", task: "25",
+    skills: ["routing.yaml lookup", "tag → agent fan-out", "Auto-shared section managed", "Additive-only writes", "Per-agent idempotency"] },
+  { name: "memory-prefetch",      phase: 1, status: "spec", score: 18, domain: "Session-start bundle · daily 06:00 ET", task: "26",
+    skills: ["Activity-signal score", "PREFLIGHT_ALWAYS_LIST honoring", "Top-N curation", "Read-only output to Claude"] },
+  // LOOP DUCKS — Phase 2 toward agents-writing-their-own-skills
+  { name: "loop-correction-watcher", phase: 2, status: "spec", score: 21, domain: "Bobby corrections → staging queue · transcript-watch", task: "27",
+    skills: ["Trigger pattern lib", "Prior-action summarize", "Confidence-score formula", "Dry-run review tier", "5s debounce"] },
+  { name: "skill-pattern-detector",  phase: 2, status: "spec", score: 22, domain: "≥3× manual → skill-author candidate · weekly Sat", task: "28",
+    skills: ["30-day corpus scan", "Recurrence-marker lib", "Action-object clustering", "Coca-Cola score (frequency × complexity × priority)", "Quality Triangle gate handoff"] },
 ];
 
 // META task 21 — batch-migrates the 16 READY workloads from HermesMigrationMap into Wild Duck pattern
