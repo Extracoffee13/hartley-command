@@ -909,6 +909,23 @@ const WILD_DUCKS = [
   // mac-driver — pulled to Phase 2 by Bobby 2026-05-29: "Hermes does everything Claude can't"
   { name: "mac-driver",               phase: 2, status: "proven", score: 24, domain: "Full macOS GUI control · SHIPPED 5/29 · Opus-4.8-picker SUCCESS 5/30 in 55.1s · 30× cheaper", task: "29",
     skills: ["Claude Sonnet Vision via OpenRouter (single key)", "DeepSeek V3.2 reasoning", "PyAutoGUI + cliclick + osascript", "JPEG 1280px resize (fixes payload-size timeout)", "Patched blocker semantics (human-only escalation)", "Per-task app whitelist", "DENY_PHRASES + NEVER_TYPE safety", "5min timeout + audit trail"] },
+  // PHASE 2 — TELEGRAM BRIDGE — added 2026-05-29 evening
+  { name: "telegram-listener",        phase: 2, status: "proven", score: 23, domain: "Telegram → Hermes · CONVERSATIONAL · LIVE 2026-05-29 · OpenRouter Claude Haiku · voice via Whisper", task: "15a",
+    skills: ["Long-poll Telegram Bot API every 30s", "Slash-command routing (/digest /scout /lens /pulse /wolf /prism /keystone)", "ACL on chat_id", "OpenRouter conversational LLM", "OpenAI Whisper voice transcription", "EOD digest at 18:00 ET", "PRAXIS_INBOX emission"] },
+  // PHASE 3 — WAVE 1 MCP WRAPS — added 2026-05-29 evening · per reference_mcp_wild_duck_priorities
+  { name: "gh-pr-watch",              phase: 3, status: "proven", score: 19, domain: "GitHub PR + CI watcher · gh CLI authed · 15min cadence · LIVE 2026-05-29", task: "30",
+    skills: ["gh CLI subprocess wrapping (no SDK)", "Per-repo PR snapshot diff", "Newly-failing CI detection", "Draft-PR filter (non-draft alerts only)", "4 watched repos (hartley-command, dashboards-deploy, pragma-site, agent-ecosystem-dashboard)"] },
+  { name: "dh-dns-tracker",           phase: 3, status: "ready", score: 18, domain: "DreamHost DNS drift detector · 60min cadence · LIVE 2026-05-29 · awaits DH_API_KEY", task: "31",
+    skills: ["DH API dns-list_records call", "Per-domain record normalization", "Add/Del diff against snapshot", "Multi-key fallback (DH_API_KEY / DREAMHOST_API_KEY / DH_KEY)", "Soft-block (exit 0) when key missing"] },
+  // PHASE 3 — MONITORING / META — added 2026-05-29 evening · no-auth utilities
+  { name: "uptime-monitor",           phase: 3, status: "proven", score: 19, domain: "8 URLs probed every 5min · state-changed-only alerting · LIVE 2026-05-29", task: "33",
+    skills: ["urllib HTTP GET with timeout", "Per-target state snapshot", "Newly-down + newly-up state transitions", "PLANNED bucket (track-but-no-alert for future sites)", "Telegram alert on state change only"] },
+  { name: "ssl-cert-watcher",         phase: 3, status: "proven", score: 17, domain: "5 Hartley domains · daily TLS check · staged alerts 30/14/7/1d · LIVE 2026-05-29", task: "34",
+    skills: ["ssl.getpeercert via socket.create_connection", "notAfter parsing (Apr 12 12:00:00 2026 GMT format)", "Severity tier escalation", "State-changed-only alerts"] },
+  { name: "agent-cross-ref-validator", phase: 3, status: "proven", score: 21, domain: "Meta-monitor of cross-reference chain · 30min · LIVE 2026-05-29 · 'are agents learning?'", task: "35",
+    skills: ["distill-complete.flag freshness check", "memory-crossshare log age", "Per-Wild-Duck CONTEXT.md mtime scan", "Outlier detection (>7d AND >3× median)", "Severity escalation"] },
+  { name: "visual-qa-monitor",        phase: 3, status: "ready", score: 20, domain: "HTML-structural contracts · B9/PRAGMA/llms.txt · 30min · LIVE 2026-05-29", task: "36",
+    skills: ["Per-URL required-substring contracts", "JSON-LD @type extraction + assertion", "Marker-driven regression detection (caught the services-film bug)", "State-changed-only alerts", "Regression + Fixed dual alert flow"] },
 ];
 
 // META task 21 — batch-migrates the 16 READY workloads from HermesMigrationMap into Wild Duck pattern
