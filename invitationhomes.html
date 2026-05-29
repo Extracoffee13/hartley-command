@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATLAS — Brand 9 Signs | Invitation Homes (INVH)</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  /* Invitation Homes brand colors — sampled from invitationhomes.com CSS */
+  --inv-forest:#217106;       /* primary forest green */
+  --inv-forest-d:#1a5905;
+  --inv-lime:#68B631;         /* secondary lime green */
+  --inv-lime-l:#e8f7dc;
+  --inv-cream:#f5f3ec;
+  /* Neutrals */
+  --gray-50:#f8fafc;--gray-100:#f1f5f9;--gray-200:#e2e8f0;
+  --gray-400:#94a3b8;--gray-600:#475569;--gray-800:#1e293b;
+  --white:#fff;
+  /* Status */
+  --green:#10b981;--amber:#f59e0b;--red:#ef4444;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --shadow:0 1px 3px rgba(0,0,0,.08);
+  --shadow-md:0 4px 16px rgba(0,0,0,.1);
+  --shadow-lg:0 10px 40px rgba(0,0,0,.15);
+  --radius:10px;
+}
+body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);min-height:100vh;line-height:1.5;}
+
+/* ── HEADER ── */
+.hdr{
+  background:linear-gradient(135deg,var(--inv-forest) 0%,var(--inv-forest-d) 100%);
+  height:64px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,.25);
+}
+.hdr-left{display:flex;align-items:center;gap:12px;}
+.logo-mark{
+  width:38px;height:38px;border-radius:8px;background:var(--inv-lime);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:13px;color:#fff;letter-spacing:-0.5px;
+  box-shadow:0 2px 8px rgba(104,182,49,.4);
+}
+.brand-name{font-size:11px;color:rgba(255,255,255,.55);letter-spacing:2px;text-transform:uppercase;}
+.divider-v{width:1px;height:32px;background:rgba(255,255,255,.15);}
+.atlas-badge{display:flex;flex-direction:column;}
+.atlas-name{font-size:22px;font-weight:800;color:#fff;letter-spacing:4px;line-height:1;}
+.atlas-sub{font-size:10px;color:rgba(255,255,255,.45);letter-spacing:2.5px;text-transform:uppercase;margin-top:3px;}
+.hdr-center{
+  display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:8px 16px;
+}
+.cl-label{font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1px;}
+.cl-name{font-size:14px;font-weight:700;color:#fff;}
+.hdr-right{display:flex;align-items:center;gap:8px;}
+.live-badge{display:flex;align-items:center;gap:5px;font-size:11px;color:rgba(255,255,255,.6);}
+.live-dot{width:7px;height:7px;background:var(--inv-lime);border-radius:50%;animation:pulse-dot 2s infinite;}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.7;transform:scale(1.3);}}
+
+/* ── REGION BAR ── */
+.region-bar{background:#fff;border-bottom:1px solid var(--gray-200);padding:14px 24px;
+  display:flex;align-items:center;gap:24px;flex-wrap:wrap;box-shadow:var(--shadow);}
+.region-stat{display:flex;flex-direction:column;}
+.region-stat-label{font-size:10px;color:var(--gray-600);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;}
+.region-stat-value{font-size:24px;font-weight:800;color:var(--inv-forest);line-height:1;margin-top:2px;}
+.region-stat-sub{font-size:11px;color:var(--gray-400);margin-top:2px;}
+
+/* ── MAIN GRID ── */
+.main{display:grid;grid-template-columns:1fr 380px;gap:0;height:calc(100vh - 64px - 90px);}
+.left-pane{padding:18px;overflow-y:auto;background:var(--gray-50);}
+.right-pane{padding:18px;background:#fff;border-left:1px solid var(--gray-200);overflow-y:auto;}
+
+/* ── SECTION HEADERS ── */
+.section-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.section-title{font-size:13px;font-weight:700;color:var(--gray-800);letter-spacing:1px;text-transform:uppercase;}
+.section-meta{font-size:11px;color:var(--gray-400);}
+
+/* ── MAP CARD ── */
+.map-card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:18px;}
+#invmap{height:380px;}
+
+/* ── MARKET GRID ── */
+.market-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;}
+.market-card{
+  background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);
+  padding:14px;cursor:pointer;transition:all .2s;position:relative;
+}
+.market-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:var(--inv-lime);}
+.market-card.se{border-left:3px solid var(--inv-lime);}
+.market-card.top{border-top:2px solid var(--inv-forest);}
+.market-name{font-weight:700;font-size:14px;color:var(--gray-800);}
+.market-state{font-size:11px;color:var(--gray-400);margin-top:2px;}
+.market-stats{display:flex;justify-content:space-between;margin-top:10px;padding-top:10px;border-top:1px solid var(--gray-100);}
+.market-stat{display:flex;flex-direction:column;}
+.market-stat-v{font-size:18px;font-weight:800;color:var(--inv-forest);line-height:1;}
+.market-stat-l{font-size:9px;color:var(--gray-400);text-transform:uppercase;letter-spacing:.5px;margin-top:2px;}
+.market-badge{
+  display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.5px;margin-top:4px;
+}
+.market-badge.se{background:var(--inv-lime-l);color:var(--inv-forest);}
+.market-badge.btr{background:#fef3c7;color:#92400e;}
+
+/* ── OPPORTUNITY PANEL ── */
+.opp-list{display:flex;flex-direction:column;gap:8px;}
+.opp{
+  background:var(--inv-lime-l);border:1px solid #d4ebc1;border-radius:8px;padding:12px;
+  display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;
+}
+.opp-icon{
+  width:38px;height:38px;border-radius:7px;background:var(--inv-forest);
+  color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;
+}
+.opp-title{font-size:13px;font-weight:700;color:var(--gray-800);}
+.opp-detail{font-size:11px;color:var(--gray-600);margin-top:2px;}
+.opp-num{font-size:18px;font-weight:800;color:var(--inv-forest);}
+.opp-num-l{font-size:9px;color:var(--gray-400);text-transform:uppercase;letter-spacing:.5px;}
+
+/* ── ADDRESSES TABLE ── */
+.addr-table-wrap{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-top:18px;}
+.addr-table{width:100%;border-collapse:collapse;font-size:12px;}
+.addr-table thead th{
+  background:var(--inv-forest);color:#fff;padding:10px 12px;text-align:left;
+  font-size:10px;text-transform:uppercase;letter-spacing:1px;font-weight:700;
+}
+.addr-table tbody td{padding:9px 12px;border-bottom:1px solid var(--gray-100);}
+.addr-table tbody tr:hover{background:var(--inv-lime-l);}
+.addr-region{font-weight:700;color:var(--inv-forest);font-size:11px;letter-spacing:.5px;}
+
+/* ── PITCH BOX ── */
+.pitch{
+  background:linear-gradient(135deg,var(--inv-forest),var(--inv-forest-d));
+  color:#fff;border-radius:var(--radius);padding:18px;margin-bottom:16px;
+}
+.pitch h3{font-size:13px;text-transform:uppercase;letter-spacing:1.5px;font-weight:800;color:var(--inv-lime);margin-bottom:8px;}
+.pitch p{font-size:13px;line-height:1.55;opacity:.92;}
+.pitch strong{color:var(--inv-lime);}
+
+/* ── FOOTER ── */
+.footer{padding:16px 24px;background:var(--gray-50);border-top:1px solid var(--gray-200);
+  display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--gray-400);}
+.footer-link{color:var(--inv-forest);text-decoration:none;font-weight:600;}
+.footer-link:hover{text-decoration:underline;}
+
+@media(max-width:1100px){.main{grid-template-columns:1fr;height:auto;}.right-pane{border-left:0;border-top:1px solid var(--gray-200);}}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-left">
+    <div class="logo-mark">9</div>
+    <div>
+      <div class="brand-name">Brand 9 Signs</div>
+      <div style="font-size:10px;color:rgba(255,255,255,.4);letter-spacing:1px;">SIGNAGE OPERATIONS</div>
+    </div>
+    <div class="divider-v"></div>
+    <div class="atlas-badge">
+      <div class="atlas-name">ATLAS</div>
+      <div class="atlas-sub">INVH OPPORTUNITY MAP</div>
+    </div>
+  </div>
+  <div class="hdr-center">
+    <div>
+      <div class="cl-label">Client</div>
+      <div class="cl-name">Invitation Homes · NYSE:INVH</div>
+    </div>
+  </div>
+  <div class="hdr-right">
+    <div class="live-badge"><span class="live-dot"></span> PIPELINE STAGE: pre-engagement</div>
+  </div>
+</header>
+
+<div class="region-bar">
+  <div class="region-stat"><div class="region-stat-label">Total Homes</div><div class="region-stat-value">~109K</div><div class="region-stat-sub">85,970 owned + 8,016 JV + 15,759 managed (Q1 2026)</div></div>
+  <div class="region-stat"><div class="region-stat-label">Core Markets</div><div class="region-stat-value">16</div><div class="region-stat-sub">National footprint</div></div>
+  <div class="region-stat"><div class="region-stat-label">Southeast Share</div><div class="region-stat-value">51%</div><div class="region-stat-sub">FL 32.4% + GA/Carolinas 18.7%</div></div>
+  <div class="region-stat"><div class="region-stat-label">BTR Pipeline</div><div class="region-stat-value">4,200+</div><div class="region-stat-sub">ResiBuilt acq · GA/FL/Carolinas focus</div></div>
+  <div class="region-stat"><div class="region-stat-label">B9 Fit</div><div class="region-stat-value" style="color:var(--inv-lime);">★★★★★</div><div class="region-stat-sub">SE-concentrated · existing Lennar muscle</div></div>
+</div>
+
+<div class="main">
+  <div class="left-pane">
+
+    <div class="pitch">
+      <h3>WHY BRAND 9 WINS THE INVH ACCOUNT</h3>
+      <p>
+        Invitation Homes' US Southeast portfolio overlaps <strong>directly</strong> with Brand 9's installed Lennar operating footprint —
+        Jacksonville · St. Augustine · Ocala · Tampa · Orlando · South Florida · Atlanta · Carolinas. Crew Pete + Andrew already
+        run signage installs in the same metros, weekly. Adding INVH = <strong>incremental scale on existing routes</strong>, not new infrastructure.
+        The BTR pipeline (ResiBuilt acquisition · 4,200+ homes · GA/FL/Carolinas) is fresh community signage demand at scale.
+      </p>
+    </div>
+
+    <div class="section-hdr">
+      <div class="section-title">US Southeast — Geographic Concentration</div>
+      <div class="section-meta">Source: INVH Q1 2026 Supplemental · 8-K Mar 2026</div>
+    </div>
+
+    <div class="map-card">
+      <div id="invmap"></div>
+    </div>
+
+    <div class="section-hdr" style="margin-top:18px;">
+      <div class="section-title">16 Core Markets</div>
+      <div class="section-meta">SE markets badge ► priority for Brand 9 engagement</div>
+    </div>
+
+    <div class="market-grid" id="market-grid"></div>
+
+    <div class="addr-table-wrap">
+      <table class="addr-table">
+        <thead><tr>
+          <th>Market</th><th>State</th><th>Portfolio %</th><th>Est. Homes</th><th>BTR (ResiBuilt)</th><th>B9 Crew</th>
+        </tr></thead>
+        <tbody id="addr-body"></tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="right-pane">
+    <div class="section-hdr">
+      <div class="section-title">Signage Opportunity — Categories</div>
+    </div>
+    <div class="opp-list">
+      <div class="opp">
+        <div class="opp-icon">🪧</div>
+        <div>
+          <div class="opp-title">"For Lease" Yard Signs</div>
+          <div class="opp-detail">Per-unit turnover (every 18-24 mo) × 109K = ~50K signs/yr · highest volume</div>
+        </div>
+        <div style="text-align:right;"><div class="opp-num">~50K/yr</div><div class="opp-num-l">at vacancy</div></div>
+      </div>
+      <div class="opp">
+        <div class="opp-icon">🏘️</div>
+        <div>
+          <div class="opp-title">BTR Community Entrance Signs</div>
+          <div class="opp-detail">ResiBuilt pipeline — community/section/wayfinding · same WHC pkg as Lennar</div>
+        </div>
+        <div style="text-align:right;"><div class="opp-num">4,200+</div><div class="opp-num-l">homes coming</div></div>
+      </div>
+      <div class="opp">
+        <div class="opp-icon">🏢</div>
+        <div>
+          <div class="opp-title">Regional Office Signage</div>
+          <div class="opp-detail">INVH regional offices · interior + exterior packages</div>
+        </div>
+        <div style="text-align:right;"><div class="opp-num">16</div><div class="opp-num-l">offices</div></div>
+      </div>
+      <div class="opp">
+        <div class="opp-icon">🚧</div>
+        <div>
+          <div class="opp-title">BTR Construction Signage</div>
+          <div class="opp-detail">During build phase — site safety, sponsor, sales preview · per ResiBuilt project</div>
+        </div>
+        <div style="text-align:right;"><div class="opp-num">23+</div><div class="opp-num-l">contracts</div></div>
+      </div>
+      <div class="opp">
+        <div class="opp-icon">🪟</div>
+        <div>
+          <div class="opp-title">Window / Door Decals</div>
+          <div class="opp-detail">"Now Leasing" + Invitation Homes branding · property-level</div>
+        </div>
+        <div style="text-align:right;"><div class="opp-num">+++</div><div class="opp-num-l">recurring</div></div>
+      </div>
+    </div>
+
+    <div class="section-hdr" style="margin-top:20px;">
+      <div class="section-title">Next Actions</div>
+    </div>
+    <div style="background:var(--gray-50);border-radius:8px;padding:14px;font-size:12px;color:var(--gray-600);line-height:1.6;">
+      <strong>1.</strong> Confirm INVH point-of-contact name + role · pipeline-stage = pre-engagement<br>
+      <strong>2.</strong> Pull live community + address list from INVH ops once NDA signed<br>
+      <strong>3.</strong> Stage SE-only Atlas v2 with actual community names + crew assignments<br>
+      <strong>4.</strong> Cross-reference INVH market list with Brand 9's existing Lennar route density<br>
+      <strong>5.</strong> Draft pitch deck — "incremental on existing routes" angle
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div>Atlas · Invitation Homes Signage Operations Map · Brand 9 Signs</div>
+  <div>Source data: INVH SEC filings + invitationhomes.com · Brand colors sampled from INVH brand · Generated <span id="ts"></span></div>
+</div>
+
+<script>
+document.getElementById('ts').textContent = new Date().toLocaleDateString('en-US', {year:'numeric',month:'short',day:'numeric'});
+
+// INVH 16 markets — Southeast flagged for Brand 9 priority
+const MARKETS = [
+  // SOUTHEAST — Brand 9 priority
+  {name:"Atlanta",        state:"GA", se:true,  top:true,  pct:13, est_homes:14160, btr:true},
+  {name:"Tampa",          state:"FL", se:true,  top:true,  pct:10, est_homes:10890, btr:true},
+  {name:"South Florida",  state:"FL", se:true,  pct:12, est_homes:13070, btr:true},
+  {name:"Orlando",        state:"FL", se:true,  pct:5,  est_homes:5450,  btr:true},
+  {name:"Jacksonville",   state:"FL", se:true,  pct:2,  est_homes:2180,  btr:false},
+  {name:"Carolinas",      state:"NC/SC", se:true,  pct:6,  est_homes:6540,  btr:true},
+  {name:"Nashville",      state:"TN", se:true,  pct:3,  est_homes:3270,  btr:false},
+  // NON-SE
+  {name:"Phoenix",        state:"AZ", top:true, pct:10, est_homes:10890, btr:false},
+  {name:"Dallas",          state:"TX", pct:3,  est_homes:3270,  btr:false},
+  {name:"Houston",        state:"TX", pct:2,  est_homes:2180,  btr:false},
+  {name:"Denver",         state:"CO", pct:3,  est_homes:3270,  btr:false},
+  {name:"Las Vegas",      state:"NV", pct:4,  est_homes:4360,  btr:false},
+  {name:"S. California",  state:"CA", pct:13, est_homes:14160, btr:false},
+  {name:"N. California",  state:"CA", pct:6,  est_homes:6540,  btr:false},
+  {name:"Seattle",        state:"WA", pct:6,  est_homes:6540,  btr:false},
+  {name:"Minneapolis",    state:"MN", pct:1,  est_homes:1090,  btr:false},
+];
+
+const COORDS = {
+  "Atlanta":[33.749,-84.388],     "Tampa":[27.951,-82.458],     "South Florida":[26.122,-80.137],
+  "Orlando":[28.538,-81.379],     "Jacksonville":[30.332,-81.656],"Carolinas":[35.227,-80.843],
+  "Nashville":[36.165,-86.784],   "Phoenix":[33.448,-112.074],   "Dallas":[32.776,-96.797],
+  "Houston":[29.760,-95.369],     "Denver":[39.739,-104.990],    "Las Vegas":[36.169,-115.140],
+  "S. California":[34.052,-118.243],"N. California":[37.774,-122.419],"Seattle":[47.606,-122.332],"Minneapolis":[44.978,-93.265]
+};
+
+// Render market cards
+const grid = document.getElementById('market-grid');
+MARKETS.sort((a,b)=>b.pct-a.pct).forEach(m=>{
+  const card = document.createElement('div');
+  card.className = 'market-card' + (m.se ? ' se' : '') + (m.top ? ' top' : '');
+  card.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+      <div>
+        <div class="market-name">${m.name}</div>
+        <div class="market-state">${m.state}</div>
+      </div>
+      ${m.se ? '<span class="market-badge se">SE</span>' : ''}
+    </div>
+    <div class="market-stats">
+      <div class="market-stat"><div class="market-stat-v">${m.pct}%</div><div class="market-stat-l">Portfolio</div></div>
+      <div class="market-stat"><div class="market-stat-v">${(m.est_homes/1000).toFixed(1)}K</div><div class="market-stat-l">Est. Homes</div></div>
+    </div>
+    ${m.btr ? '<span class="market-badge btr" style="margin-top:8px;">BTR pipeline</span>' : ''}
+  `;
+  grid.appendChild(card);
+});
+
+// Render addresses table
+const body = document.getElementById('addr-body');
+MARKETS.forEach(m=>{
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td><span class="addr-region">${m.name}</span></td>
+    <td>${m.state}</td>
+    <td>${m.pct}%</td>
+    <td>~${m.est_homes.toLocaleString()}</td>
+    <td>${m.btr ? '✓' : '–'}</td>
+    <td>${m.se ? 'Pete + Andrew' : 'TBD'}</td>
+  `;
+  body.appendChild(tr);
+});
+
+// Init Leaflet map — focused on US Southeast
+const map = L.map('invmap',{zoomControl:true,scrollWheelZoom:false}).setView([32.5,-86],5);
+L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png',{
+  attribution:'© OpenStreetMap © CARTO', maxZoom:18, subdomains:'abcd'
+}).addTo(map);
+
+MARKETS.forEach(m=>{
+  const c = COORDS[m.name];
+  if (!c) return;
+  const r = Math.max(8, Math.sqrt(m.est_homes)/4);
+  const color = m.se ? '#217106' : '#94a3b8';
+  const fill = m.se ? '#68B631' : '#cbd5e1';
+  L.circleMarker(c,{radius:r, color:color, fillColor:fill, fillOpacity:.7, weight:2})
+    .bindTooltip(`<strong>${m.name}</strong><br>${m.pct}% portfolio · ~${m.est_homes.toLocaleString()} homes${m.btr ? '<br>BTR pipeline ✓' : ''}`, {permanent:false})
+    .addTo(map);
+});
+
+// SE focus rectangle
+L.rectangle([[24.5,-91],[36.8,-75]], {color:'#68B631', weight:1, fillOpacity:.05, dashArray:'5,5'}).addTo(map);
+</script>
+
+</body>
+</html>
