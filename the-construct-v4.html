@@ -795,12 +795,17 @@ const HermesPanel = () => (
       <div>
         <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 4 }}>STACK</div>
         <div style={{ fontSize: 11, color: C.green, lineHeight: 1.6 }}>
-          <div><span style={{ color: C.cyan }}>OS:</span> Hermes-Agent v0.14.0 (Nous Research, MIT)</div>
-          <div><span style={{ color: C.cyan }}>Model:</span> deepseek/deepseek-v3.2</div>
-          <div><span style={{ color: C.cyan }}>Inference:</span> OpenRouter ($10 credits, ~$9.93 free)</div>
+          <div><span style={{ color: C.cyan }}>Named agent:</span> <strong>Hermes</strong> (COS — Bobby's AP-equivalent, locked 2026-05-31)</div>
+          <div><span style={{ color: C.cyan }}>OS:</span> Hermes-Agent v0.15 — install/upgrade in flight (was v0.14 aspirational since May, never invoked)</div>
+          <div><span style={{ color: C.cyan }}>Caps loaded:</span> Agent Swarm · Steer Mode · Compile Knowledge (target)</div>
+          <div><span style={{ color: C.cyan }}>Model:</span> DeepSeek V3.2 + Claude Sonnet 4.5 via OpenRouter (dual-LLM)</div>
+          <div><span style={{ color: C.cyan }}>Memory:</span> Hermes-Agent built-in + our cluster (capture/index/crossshare/prefetch/harvard-library)</div>
+          <div><span style={{ color: C.cyan }}>Skills:</span> 34 Wild Ducks registered as callable skills</div>
+          <div><span style={{ color: C.cyan }}>Interface:</span> @HartleyHermesBot (Telegram) + Cowork</div>
+          <div><span style={{ color: C.cyan }}>Inference:</span> OpenRouter ($10 credits)</div>
           <div><span style={{ color: C.cyan }}>Search backend:</span> Tavily (1000 free/mo)</div>
-          <div><span style={{ color: C.cyan }}>Host:</span> AP-Agent (Mac)</div>
-          <div><span style={{ color: C.cyan }}>Approvals:</span> smart (auto-approve low-risk)</div>
+          <div><span style={{ color: C.cyan }}>Host:</span> Bobby's Mac · launchd daemon `com.hermes.cos-agent`</div>
+          <div><span style={{ color: C.cyan }}>Approvals:</span> smart (auto low-risk, Bobby gate on irreversible)</div>
         </div>
       </div>
       <div>
@@ -956,6 +961,16 @@ const WILD_DUCKS = [
   // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
   { name: "probe-hermes-agent-install", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
     skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/probe-hermes-agent-install/ for detail"] },
+
+  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
+  { name: "probe-hermes-agent-deep", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
+    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/probe-hermes-agent-deep/ for detail"] },
+  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
+  { name: "wake-hermes-cos", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
+    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/wake-hermes-cos/ for detail"] },
+  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
+  { name: "wake-hermes-cos-phase2", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
+    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/wake-hermes-cos-phase2/ for detail"] },
 ];
 
 // META task 21 — batch-migrates the 16 READY workloads from HermesMigrationMap into Wild Duck pattern
