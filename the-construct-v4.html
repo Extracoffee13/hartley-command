@@ -401,11 +401,12 @@ const Header = () => {
 // TIERED NEUROLINK — the new central visual
 // ═══════════════════════════════════════════════════════════════
 const TieredNeurolink = () => {
-  const W = 1400, H = 720;
-  const founderY = 60;
-  const tier1Y = 220;
-  const tier2Y = 420;
-  const tier0Y = 600;
+  const W = 1400, H = 760;
+  const founderY = 50;
+  const hermesY = 140;   // NEW · Hermes COS sits between Bobby and Operators
+  const tier1Y = 250;
+  const tier2Y = 440;
+  const tier0Y = 640;
 
   const tier1X = (i, n) => 140 + i * ((W - 280) / Math.max(1, n - 1));
   const tier2X = (i, n) => 220 + i * ((W - 440) / Math.max(1, n - 1));
@@ -482,6 +483,7 @@ const TieredNeurolink = () => {
         {/* Tier band labels (left side) */}
         <g fontFamily="Courier New, monospace" fontSize="9" letterSpacing="2" fill={C.greenDim}>
           <text x="20" y={founderY + 5}>FOUNDER</text>
+          <text x="20" y={hermesY + 5} fill={C.cyan} fontWeight="700">HERMES · COS · OVERSEER</text>
           <text x="20" y={tier1Y + 5}>TIER 1 · COWORK · CLAUDE</text>
           <text x="20" y={tier2Y + 5}>TIER 2 · HERMES · DEEPSEEK</text>
           <text x="20" y={tier0Y + 5}>TIER 0 · FOUNDATION</text>
@@ -489,18 +491,44 @@ const TieredNeurolink = () => {
 
         {/* Tier band background bars */}
         <g>
+          <rect x="120" y={hermesY - 40} width={W - 240} height="80" fill={C.cyan} opacity="0.07" />
           <rect x="120" y={tier1Y - 60} width={W - 240} height="120" fill={C.cyan} opacity="0.04" />
           <rect x="120" y={tier2Y - 60} width={W - 240} height="120" fill={C.green} opacity="0.04" />
           <rect x="120" y={tier0Y - 30} width={W - 240} height="60" fill={C.white} opacity="0.03" />
         </g>
 
-        {/* Connection lines: Founder → Tier 1 */}
+        {/* Connection: Founder ↔ Hermes (the COS bridge — animated) */}
+        <line x1={W/2} y1={founderY + 30} x2={W/2} y2={hermesY - 30}
+          stroke={C.cyan} strokeOpacity="0.85" strokeWidth="2.5"
+          strokeDasharray="6,3" style={{ animation: "data-flow 1.8s linear infinite" }} />
+
+        {/* Hermes → ALL Operators (he can use the ecosystem) */}
+        {PUBLIC_OPERATORS.map((o, i) => {
+          const x = tier1X(i, PUBLIC_OPERATORS.length);
+          return (
+            <line key={`h1-${i}`} x1={W/2} y1={hermesY + 30} x2={x} y2={tier1Y - 30}
+              stroke={C.cyan} strokeOpacity="0.5" strokeWidth="1.3"
+              strokeDasharray="3,3" />
+          );
+        })}
+
+        {/* Hermes → ALL Tier 2 Wild Ducks (direct command lines — Hermes is the overseer) */}
+        {HERMES_WORKLOADS.map((h, i) => {
+          const x = tier2X(i, HERMES_WORKLOADS.length);
+          return (
+            <line key={`h2-${i}`} x1={W/2} y1={hermesY + 30} x2={x} y2={tier2Y - 30}
+              stroke={C.green} strokeOpacity="0.4" strokeWidth="1"
+              strokeDasharray="4,4" style={{ animation: "data-flow 3s linear infinite" }} />
+          );
+        })}
+
+        {/* Faded: Founder → Tier 1 (legacy lines, now mediated by Hermes) */}
         {PUBLIC_OPERATORS.map((o, i) => {
           const x = tier1X(i, PUBLIC_OPERATORS.length);
           return (
             <line key={`f1-${i}`} x1={W/2} y1={founderY + 30} x2={x} y2={tier1Y - 30}
-              stroke={C.gold} strokeOpacity="0.25" strokeWidth="1"
-              strokeDasharray="2,4" />
+              stroke={C.gold} strokeOpacity="0.08" strokeWidth="0.5"
+              strokeDasharray="2,6" />
           );
         })}
 
@@ -537,6 +565,25 @@ const TieredNeurolink = () => {
           <circle r="32" fill="#000" stroke={C.gold} strokeWidth="2" filter="url(#glow)" />
           <text x="0" y="-2" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="11" fontWeight="700" fill={C.gold}>BOBBY</text>
           <text x="0" y="10" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="7" fill={C.gold} opacity="0.7">FOUNDER</text>
+        </g>
+
+        {/* Hermes COS — sits directly under Bobby, oversees ecosystem */}
+        <g transform={`translate(${W/2},${hermesY})`}>
+          {/* Pulsing halo */}
+          <circle r="56" fill="none" stroke={C.cyan} strokeOpacity="0.45" strokeWidth="0.8">
+            <animate attributeName="r" values="56;70;56" dur="2.4s" repeatCount="indefinite" />
+            <animate attributeName="stroke-opacity" values="0.5;0.15;0.5" dur="2.4s" repeatCount="indefinite" />
+          </circle>
+          <circle r="42" fill="none" stroke={C.cyan} strokeOpacity="0.25" strokeWidth="0.5" />
+          {/* Main body — hex-feel rounded */}
+          <rect x="-48" y="-26" width="96" height="52" rx="6" fill="#000" stroke={C.cyan} strokeWidth="2.2" filter="url(#glow)" />
+          {/* Status pulse */}
+          <circle cx="38" cy="-16" r="3.5" fill={C.green}>
+            <animate attributeName="opacity" values="1;0.3;1" dur="1.2s" repeatCount="indefinite" />
+          </circle>
+          <text x="0" y="-7" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="13" fontWeight="700" fill={C.cyan}>HERMES</text>
+          <text x="0" y="5" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="7" fill={C.cyan} opacity="0.8">CHIEF OF STAFF · OVERSEER</text>
+          <text x="0" y="16" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="6" fill={C.green} opacity="0.7">hermes-agent v0.14 · 27 skills · 30+ wild ducks</text>
         </g>
 
         {/* Tier 1 nodes (Public Operators) */}
