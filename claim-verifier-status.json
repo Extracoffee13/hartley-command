@@ -1,0 +1,14 @@
+{
+  "_generated_at": "2026-06-01T17:20:11.444618+00:00",
+  "all_pass": false,
+  "pass_count": 8,
+  "total": 11,
+  "failing_claims": [
+    "v4 dashboard has WILD_DUCKS:BEGIN marker (regenerator wiring is in place)",
+    "v4 dashboard WILD_DUCKS count in HTML == state.json wild_ducks_count (THE conflict that started this)",
+    "v4 dashboard CALLS count in HTML == state.json calls_count"
+  ],
+  "verifier_exit_code": 1,
+  "stdout_tail": "ashboard reachable\n       url: https://extracoffee13.github.io/hartley-command/wolf-health.html?_cb=1780334412\n       status: 200\n       expected_status: 200\n[PASS] wolf-health has DATA FRESHNESS panel code\n       url: https://extracoffee13.github.io/hartley-command/wolf-health.html?_cb=1780334412\n       status: 200\n       needle: DATA FRESHNESS\n       found_count: 2\n\n=== overall: FAIL (8/11) ===\n",
+  "stderr_tail": ""
+}
