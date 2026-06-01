@@ -583,7 +583,7 @@ const TieredNeurolink = () => {
           </circle>
           <text x="0" y="-7" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="13" fontWeight="700" fill={C.cyan}>HERMES</text>
           <text x="0" y="5" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="7" fill={C.cyan} opacity="0.8">CHIEF OF STAFF · OVERSEER</text>
-          <text x="0" y="16" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="6" fill={C.green} opacity="0.7">hermes-agent v0.14 · 27 skills · 30+ wild ducks</text>
+          <text x="0" y="16" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="6" fill={C.green} opacity="0.7">hermes-agent v0.15 · substrate · 13 wild ducks · 33 calls</text>
         </g>
 
         {/* Tier 1 nodes (Public Operators) */}
@@ -847,7 +847,7 @@ const HermesPanel = () => (
           <div><span style={{ color: C.cyan }}>Caps loaded:</span> Agent Swarm · Steer Mode · Compile Knowledge (target)</div>
           <div><span style={{ color: C.cyan }}>Model:</span> DeepSeek V3.2 + Claude Sonnet 4.5 via OpenRouter (dual-LLM)</div>
           <div><span style={{ color: C.cyan }}>Memory:</span> Hermes-Agent built-in + our cluster (capture/index/crossshare/prefetch/harvard-library)</div>
-          <div><span style={{ color: C.cyan }}>Skills:</span> 34 Wild Ducks registered as callable skills</div>
+          <div><span style={{ color: C.cyan }}>Substrate:</span> 13 Wild Ducks (rare · judgment) + 33 Calls (cron · monitors · dispatchers) — reclassified 2026-06-01</div>
           <div><span style={{ color: C.cyan }}>Interface:</span> @HartleyHermesBot (Telegram) + Cowork</div>
           <div><span style={{ color: C.cyan }}>Inference:</span> OpenRouter ($10 credits)</div>
           <div><span style={{ color: C.cyan }}>Search backend:</span> Tavily (1000 free/mo)</div>
@@ -910,200 +910,82 @@ const HermesPanel = () => (
 // ═══════════════════════════════════════════════════════════════
 // Wild Ducks scored same Coca-Cola Test (1-25) as Operators — Keystone re-scores monthly
 // Score reflects: strategic durability × frequency leverage × productization value to PRAGMA
+// WILD DUCKS — the rare flock · judgment + synthesis · IBM/Watson mavericks
+// Reclassified 2026-06-01 per Bobby: 75 → 13 actual Wild Ducks. Everything else
+// moved to CALLS (cron monitors/dispatchers) or archive/one-shots/.
+// Rule: must (a) make judgment calls or synthesize, (b) recur, (c) be
+// non-trivial for a Claude agent + plain skill to replicate.
 const WILD_DUCKS = [
-  // PHASE 1 — base flock
-  { name: "deploy-pragma-site",   phase: 1, status: "proven", score: 24, domain: "prag-ma.ai SCP deploy · proven 2026-05-28",  task: "09",
-    skills: ["paramiko SSH client", "ed25519 deploy key", "SCP atomic transfer", "DreamHost path resolution", "three-string verify hook"] },
-  { name: "inbox-poller",         phase: 1, status: "proven", score: 22, domain: "launchd file-watch poller · LIVE 2026-05-29", task: "06",
-    skills: ["launchd WatchPaths binding", "NN-name task routing", "phase-based dispatch", "report emit per task", "60s throttle"] },
-  { name: "wolf-state-watcher",   phase: 1, status: "ready", score: 20, domain: "WOLF mandate drift detection · 60s · CAUGHT CRITICAL: capability score stale 23d", task: "11",
-    skills: ["state.json poll 60s", "capability staleness check", "days_to_reassess escalation", "infra status flag", "fix_history regression detect", "Slack alert"] },
-  { name: "lens-mechanical",      phase: 1, status: "proven", score: 22, domain: "RSS/HTML extract · Lens corpus · LIVE", task: "12",
-    skills: ["RSS feed extract", "HTML scrape (BS4)", "schedule 5:34/9:34/13:34 ET", "idempotent multi-fire skip", "Harvard library inbox append"] },
-  { name: "three-string-verify",  phase: 1, status: "ready", score: 18, domain: "post-deploy URL verification · built 2026-05-30 noon", task: "10",
-    skills: ["multi-URL curl", "byte-match validation", "expect_md5 + expect_in_body checks", "fail-loud reporting"] },
-  { name: "inbox-self-heal",      phase: 1, status: "ready", score: 17, domain: "heartbeat alert · 5min · built 2026-05-30 noon", task: "07",
-    skills: ["heartbeat parse 5min", "stale >10min → WARNING", "Slack webhook post", "alert.json sidecar"] },
-  { name: "praxis-distiller",     phase: 1, status: "ready", score: 20, domain: "PRAXIS_INBOX → memory · built 2026-05-30 noon", task: "08",
-    skills: ["queue.jsonl parse", "confidence ≥0.8 promotion", "auto memory file write", "pending review tier (0.5-0.79)", "crossshare flag emit"] },
-  // PHASE 2 — next 2 weeks
-  { name: "deploy-brand9-wp",     phase: 2, status: "proven", score: 19, domain: "WP REST · LIVE 5/30 · draft #9635 round-tripped end-to-end", task: "13",
-    skills: ["WP REST API client (no SDK)", "App Password Basic auth", "publish_post / update_post", "draft-default safety", "B9_WP_USER + B9_WP_APP_PASSWORD env · WIRED"] },
-  { name: "deploy-tlc-site",      phase: 2, status: "spec", score: 20, domain: "stack-detect deploy · TLC client",      task: "14",
-    skills: ["Stack detect (WP / static / GH Pages)", "Credential resolution per-client", "Deploy router fan-out", "Per-client CONTEXT.md read"] },
-  { name: "gbp-review-monitor",   phase: 2, status: "ready", score: 21, domain: "Google Places API · built 2026-05-30 · needs GOOGLE_PLACES_API_KEY", task: "15",
-    skills: ["Google Places Details API", "Per-business delta detect", "1-2★ ESCALATE classifier", "Per-biz state.json", "alert.json per detection"] },
-  { name: "social-cross-post",    phase: 2, status: "ready", score: 18, domain: "10-point pre-flight gate · built 2026-05-30", task: "16",
-    skills: ["10-point preflight (voice + trademarks + visual + char + verify)", "Bobby-greenlight enforcement on personal surfaces", "GATE_PASSED → gated/ dir", "GATE_BLOCKED → Cowork handoff dir"] },
-  { name: "metric-collector",     phase: 2, status: "proven", score: 19, domain: "engagement-metrics.json · TESTED 12:55 · 15 ducks · 29 reports · 19.9h saved", task: "17",
-    skills: ["Substrate file counts", "Latest activity mtime", "Hours-saved estimate (5/2/30min weights)", "Dollar-equivalent ($30/hr)", "Per-client roll-up (when clients exist)"] },
-  // PHASE 3 — this month
-  { name: "serp-tracker",         phase: 3, status: "proven", score: 17, domain: "LIVE 2026-05-30 · brand9signs.com #4 for 'lennar community signs' FL", task: "18",
-    skills: ["SerpAPI Google search · 250/mo free", "Top-50 organic scan", "Per-keyword rank delta detect (≥3 = alert)", "Per-keyword state.json · 3 B9 keywords staged", "Daily 06:00 ET launchd"] },
-  { name: "skill-installer",      phase: 3, status: "spec", score: 24, domain: "PRAGMA Lite install kit · the product", task: "19",
-    skills: ["Mac bootstrap (7-phase)", "git clone Hermes-Agent", "skill-pack symlink", "launchd plist install loop", "Per-client install.json", "selftest 6-step"] },
-  { name: "handoff-protocol",     phase: 3, status: "spec", score: 16, domain: "Claude↔Hermes spec format · meta-util", task: "20",
-    skills: ["Frontmatter parser", "Report validator", "PRAXIS_INBOX extractor", "Template emit (task + report)"] },
-  // MEMORY CLUSTER — added 2026-05-29 per project_hermes_memory_doctrine
-  { name: "memory-capture",       phase: 1, status: "proven", score: 22, domain: "PRAXIS_INBOX → staging · TESTED 2026-05-30 12:30 ET captured 6 lessons", task: "23",
-    skills: ["File-watch all report paths", "PRAXIS_INBOX block parser", "Provenance + dedupe hash", "30s debounce throttle"] },
-  { name: "memory-index",         phase: 1, status: "ready", score: 20, domain: "MEMORY.md regen + sidecar reports · built 2026-05-30 noon", task: "24",
-    skills: ["Frontmatter scan", "[[wiki-link]] broken-ref detect", "Stale-flag (>180d)", "MEMORY.md backup", "Sidecar reports"] },
-  { name: "memory-crossshare",    phase: 1, status: "ready", score: 23, domain: "Lessons → all agent CONTEXT.md · built 2026-05-30 noon", task: "25",
-    skills: ["routing.yaml lookup", "tag → agent fan-out", "Managed section preservation", "Additive-only writes", "Per-agent idempotency"] },
-  { name: "memory-prefetch",      phase: 1, status: "ready", score: 18, domain: "Session-start PREFETCH.md · built 2026-05-30 noon", task: "26",
-    skills: ["Activity-signal scoring 7d window", "ALWAYS_PREFETCH list", "Top-10 activity-matched", "Read-only output"] },
-  // LOOP DUCKS — Phase 2 toward agents-writing-their-own-skills
-  { name: "loop-correction-watcher", phase: 2, status: "spec", score: 21, domain: "Bobby corrections → staging queue · transcript-watch", task: "27",
-    skills: ["Trigger pattern lib", "Prior-action summarize", "Confidence-score formula", "Dry-run review tier", "5s debounce"] },
-  { name: "skill-pattern-detector",  phase: 2, status: "spec", score: 22, domain: "≥3× manual → skill-author candidate · weekly Sat", task: "28",
-    skills: ["30-day corpus scan", "Recurrence-marker lib", "Action-object clustering", "Coca-Cola score (frequency × complexity × priority)", "Quality Triangle gate handoff"] },
-  // mac-driver — pulled to Phase 2 by Bobby 2026-05-29: "Hermes does everything Claude can't"
-  { name: "mac-driver",               phase: 2, status: "proven", score: 24, domain: "Full macOS GUI control · SHIPPED 5/29 · Opus-4.8-picker SUCCESS 5/30 in 55.1s · 30× cheaper", task: "29",
-    skills: ["Claude Sonnet Vision via OpenRouter (single key)", "DeepSeek V3.2 reasoning", "PyAutoGUI + cliclick + osascript", "JPEG 1280px resize (fixes payload-size timeout)", "Patched blocker semantics (human-only escalation)", "Per-task app whitelist", "DENY_PHRASES + NEVER_TYPE safety", "5min timeout + audit trail"] },
-  // PHASE 2 — TELEGRAM BRIDGE — added 2026-05-29 evening
-  { name: "telegram-listener",        phase: 2, status: "proven", score: 23, domain: "Telegram → Hermes · CONVERSATIONAL · LIVE 2026-05-29 · OpenRouter Claude Haiku · voice via Whisper", task: "15a",
-    skills: ["Long-poll Telegram Bot API every 30s", "Slash-command routing (/digest /scout /lens /pulse /wolf /prism /keystone)", "ACL on chat_id", "OpenRouter conversational LLM", "OpenAI Whisper voice transcription", "EOD digest at 18:00 ET", "PRAXIS_INBOX emission"] },
-  // PHASE 3 — WAVE 1 MCP WRAPS — added 2026-05-29 evening · per reference_mcp_wild_duck_priorities
-  { name: "gh-pr-watch",              phase: 3, status: "proven", score: 19, domain: "GitHub PR + CI watcher · gh CLI authed · 15min cadence · LIVE 2026-05-29", task: "30",
-    skills: ["gh CLI subprocess wrapping (no SDK)", "Per-repo PR snapshot diff", "Newly-failing CI detection", "Draft-PR filter (non-draft alerts only)", "4 watched repos (hartley-command, dashboards-deploy, pragma-site, agent-ecosystem-dashboard)"] },
-  { name: "dh-dns-tracker",           phase: 3, status: "ready", score: 18, domain: "DreamHost DNS drift detector · 60min cadence · LIVE 2026-05-29 · awaits DH_API_KEY", task: "31",
-    skills: ["DH API dns-list_records call", "Per-domain record normalization", "Add/Del diff against snapshot", "Multi-key fallback (DH_API_KEY / DREAMHOST_API_KEY / DH_KEY)", "Soft-block (exit 0) when key missing"] },
-  // PHASE 3 — MONITORING / META — added 2026-05-29 evening · no-auth utilities
-  { name: "uptime-monitor",           phase: 3, status: "proven", score: 19, domain: "8 URLs probed every 5min · state-changed-only alerting · LIVE 2026-05-29", task: "33",
-    skills: ["urllib HTTP GET with timeout", "Per-target state snapshot", "Newly-down + newly-up state transitions", "PLANNED bucket (track-but-no-alert for future sites)", "Telegram alert on state change only"] },
-  { name: "ssl-cert-watcher",         phase: 3, status: "proven", score: 17, domain: "5 Hartley domains · daily TLS check · staged alerts 30/14/7/1d · LIVE 2026-05-29", task: "34",
-    skills: ["ssl.getpeercert via socket.create_connection", "notAfter parsing (Apr 12 12:00:00 2026 GMT format)", "Severity tier escalation", "State-changed-only alerts"] },
-  { name: "agent-cross-ref-validator", phase: 3, status: "proven", score: 21, domain: "Meta-monitor of cross-reference chain · 30min · LIVE 2026-05-29 · 'are agents learning?'", task: "35",
-    skills: ["distill-complete.flag freshness check", "memory-crossshare log age", "Per-Wild-Duck CONTEXT.md mtime scan", "Outlier detection (>7d AND >3× median)", "Severity escalation"] },
-  { name: "visual-qa-monitor",        phase: 3, status: "ready", score: 20, domain: "HTML-structural contracts · B9/PRAGMA/llms.txt · 30min · LIVE 2026-05-29", task: "36",
-    skills: ["Per-URL required-substring contracts", "JSON-LD @type extraction + assertion", "Marker-driven regression detection (caught the services-film bug)", "State-changed-only alerts", "Regression + Fixed dual alert flow"] },
+  { name: "void-prospector",                     status: "proven", score: 23, domain: "Institutional void hunter · weekly Sat 09:00 ET · LLM-driven",
+    skills: ["Three-vehicle thesis routing (B9 · PRAGMA · HC)", "Coca-Cola scoring per opportunity", "Hermes-substrate write-through"] },
+  { name: "wealth-signal-aggregator",            status: "proven", score: 22, domain: "Daily wealth digest · 06:30 ET · what advanced wealth today",
+    skills: ["Cross-vehicle synthesis", "Signal-to-noise filter", "Telegram brief"] },
+  { name: "morning-briefing-composer",           status: "proven", score: 21, domain: "Hermes-composed daily brief · operator-voiced",
+    skills: ["Day-of context assembly", "Voice discipline (no AI cadence)", "Top-3 priority ranking"] },
+  { name: "pragma-engagement-audit",             status: "proven", score: 22, domain: "Weekly Mon 09:00 ET · scores every PRAGMA engagement against current spec",
+    skills: ["10-dimension scoring", "Gap-to-upgrade plan", "Drift detection before client trust breaks"] },
+  { name: "agent-cross-ref-validator",           status: "proven", score: 20, domain: "Meta-learning detection · are agents learning from each other",
+    skills: ["Cross-agent citation tracing", "Hermes-substrate validation", "Closes Bobby&apos;s &quot;are agents learning?&quot; question"] },
+  { name: "harvard-library-index-builder",       status: "proven", score: 19, domain: "Queryable Lens corpus · knowledge curation",
+    skills: ["HBR + HBS + MIT + Stanford ingest", "Topic clustering", "Searchable index for any agent"] },
+  { name: "praxis-distiller",                    status: "proven", score: 19, domain: "Lesson distillation from PRAXIS_INBOX",
+    skills: ["Pattern detection across mistakes", "Prevention-rule generation", "Memory write-through"] },
+  { name: "wild-duck-doctor",                    status: "proven", score: 18, domain: "Meta-flock health · catches dead ducks",
+    skills: ["Heartbeat aggregation", "Anomaly detection", "Telegram on regression"] },
+  { name: "pragma-smb-install-readiness-tracker",status: "proven", score: 20, domain: "Pre-engagement scoring · stops TLC-class blockers",
+    skills: ["Stack detection", "Writability + SSL gates", "Tier recommendation"] },
+  { name: "lennar-route-density-tracker",        status: "proven", score: 20, domain: "INVH-class pursuit lever · Lennar route SE FL synthesis",
+    skills: ["Community density mapping", "Bid pipeline intel", "Expansion alerting"] },
+  { name: "invitation-homes-watcher",            status: "proven", score: 19, domain: "Active national-deal intel synthesis",
+    skills: ["Public filings + press scan", "Vendor RFP detection", "Strategic next-action prompt"] },
+  { name: "competitor-watch",                    status: "proven", score: 18, domain: "Daily 12:00 ET · 15 named competitors per vehicle",
+    skills: ["Material-change detection (not just diff)", "Layoff / pivot / sunset signals", "Void-prospector feed"] },
+  { name: "hermes-composed-brief",               status: "proven", score: 20, domain: "Hermes substrate's daily artifact (supersedes morning-briefing-composer)",
+    skills: ["LLM-composed via Hermes", "Multi-vehicle scope", "Telegram + dashboard"] },
+];
 
-  // AUTO-SYNC 2026-05-29 — added by dashboard-autosync Wild Duck
-  { name: "dashboard-autosync", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-29", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/dashboard-autosync/ for detail"] },
-
-  // AUTO-SYNC 2026-05-29 — added by dashboard-autosync Wild Duck
-  { name: "brand9-product-catalog-watcher", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-29", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/brand9-product-catalog-watcher/ for detail"] },
-  // AUTO-SYNC 2026-05-29 — added by dashboard-autosync Wild Duck
-  { name: "github-pages-build-watcher", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-29", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/github-pages-build-watcher/ for detail"] },
-  // AUTO-SYNC 2026-05-29 — added by dashboard-autosync Wild Duck
-  { name: "harvard-library-index-builder", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-29", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/harvard-library-index-builder/ for detail"] },
-  // AUTO-SYNC 2026-05-29 — added by dashboard-autosync Wild Duck
-  { name: "hermes-archive-cleaner", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-29", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/hermes-archive-cleaner/ for detail"] },
-  // AUTO-SYNC 2026-05-29 — added by dashboard-autosync Wild Duck
-  { name: "invitation-homes-watcher", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-29", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/invitation-homes-watcher/ for detail"] },
-  // AUTO-SYNC 2026-05-29 — added by dashboard-autosync Wild Duck
-  { name: "morning-briefing-composer", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-29", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/morning-briefing-composer/ for detail"] },
-  // AUTO-SYNC 2026-05-29 — added by dashboard-autosync Wild Duck
-  { name: "wild-duck-doctor", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-29", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/wild-duck-doctor/ for detail"] },
-
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "probe-hermes-agent-install", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/probe-hermes-agent-install/ for detail"] },
-
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "probe-hermes-agent-deep", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/probe-hermes-agent-deep/ for detail"] },
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "wake-hermes-cos", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/wake-hermes-cos/ for detail"] },
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "wake-hermes-cos-phase2", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/wake-hermes-cos-phase2/ for detail"] },
-
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "bridge-hermes-memory-cluster", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/bridge-hermes-memory-cluster/ for detail"] },
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "build-hartley-skill-pack", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/build-hartley-skill-pack/ for detail"] },
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "force-push-dashboards-deploy", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/force-push-dashboards-deploy/ for detail"] },
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "hermes-composed-brief", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/hermes-composed-brief/ for detail"] },
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "probe-hermes-mcp-gap", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/probe-hermes-mcp-gap/ for detail"] },
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "probe-hermes-skill-inventory", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/probe-hermes-skill-inventory/ for detail"] },
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "upgrade-hermes-to-v015", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/upgrade-hermes-to-v015/ for detail"] },
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "wire-hermes-dispatch-scripts", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/wire-hermes-dispatch-scripts/ for detail"] },
-
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "build-cowork-hermes-sync-dispatch", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/build-cowork-hermes-sync-dispatch/ for detail"] },
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "build-shared-skill-catalog", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/build-shared-skill-catalog/ for detail"] },
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "cowork-inbox-monitor", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/cowork-inbox-monitor/ for detail"] },
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "port-keystone-cocacola-scoring", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/port-keystone-cocacola-scoring/ for detail"] },
-
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "b9-ops-autosync", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/b9-ops-autosync/ for detail"] },
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "lennar-route-density-tracker", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/lennar-route-density-tracker/ for detail"] },
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "memory-unifier", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/memory-unifier/ for detail"] },
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "pragma-pipeline-autosync", phase: 3, status: "ready", score: 18, domain: "auto-detected on disk · alive 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/pragma-pipeline-autosync/ for detail"] },
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "void-prospector", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/void-prospector/ for detail"] },
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "wolf-dashboard-autosync", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/wolf-dashboard-autosync/ for detail"] },
-
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "ai-citation-probe", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/ai-citation-probe/ for detail"] },
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "competitor-watch", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/competitor-watch/ for detail"] },
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "content-publish-scheduler", phase: 3, status: "ready", score: 18, domain: "auto-detected on disk · alive 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/content-publish-scheduler/ for detail"] },
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "engagement-metrics-rollup", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/engagement-metrics-rollup/ for detail"] },
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "inbound-lead-router", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/inbound-lead-router/ for detail"] },
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "pragma-smb-install-readiness-tracker", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/pragma-smb-install-readiness-tracker/ for detail"] },
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "review-velocity-tracker", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/review-velocity-tracker/ for detail"] },
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "wealth-signal-aggregator", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/wealth-signal-aggregator/ for detail"] },
-
-  // AUTO-SYNC 2026-05-31 — added by dashboard-autosync Wild Duck
-  { name: "pragma-engagement-audit", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-05-31", task: "autosync",
-    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/pragma-engagement-audit/ for detail"] },
+// CALLS — the operational substrate · cron monitors · dispatchers · daemons
+// Locked 2026-06-01 per Bobby: "duck calls" — predictable instruments, not the rare ducks
+// Listed compactly because they're plumbing, not headliners.
+const CALLS = [
+  // Monitors
+  { name: "uptime-monitor",                  cadence: "5min",  group: "monitor" },
+  { name: "ssl-cert-watcher",                cadence: "daily", group: "monitor" },
+  { name: "dh-dns-tracker",                  cadence: "daily", group: "monitor" },
+  { name: "gh-pr-watch",                     cadence: "15min", group: "monitor" },
+  { name: "visual-qa-monitor",               cadence: "daily", group: "monitor" },
+  { name: "brand9-product-catalog-watcher",  cadence: "daily", group: "monitor" },
+  { name: "github-pages-build-watcher",      cadence: "10min", group: "monitor" },
+  { name: "gbp-review-monitor",              cadence: "daily", group: "monitor" },
+  { name: "wolf-state-watcher",              cadence: "hourly",group: "monitor" },
+  { name: "serp-tracker",                    cadence: "daily", group: "monitor" },
+  // Dashboards (autosync regenerators)
+  { name: "dashboard-autosync",              cadence: "30min", group: "autosync" },
+  { name: "b9-ops-autosync",                 cadence: "daily", group: "autosync" },
+  { name: "pragma-pipeline-autosync",        cadence: "daily", group: "autosync" },
+  { name: "wolf-dashboard-autosync",         cadence: "hourly",group: "autosync" },
+  // Rollups + dispatchers
+  { name: "engagement-metrics-rollup",       cadence: "daily", group: "rollup" },
+  { name: "content-publish-scheduler",       cadence: "15min", group: "dispatch" },
+  { name: "inbound-lead-router",             cadence: "30min", group: "dispatch" },
+  { name: "review-velocity-tracker",         cadence: "daily", group: "rollup" },
+  { name: "ai-citation-probe",               cadence: "weekly",group: "probe" },
+  { name: "social-cross-post",               cadence: "ondemand", group: "dispatch" },
+  { name: "deploy-brand9-wp",                cadence: "ondemand", group: "dispatch" },
+  // Memory substrate (the Hermes-as-substrate plumbing)
+  { name: "memory-unifier",                  cadence: "15min", group: "memory" },
+  { name: "memory-crossshare",               cadence: "30min", group: "memory" },
+  { name: "memory-index",                    cadence: "hourly",group: "memory" },
+  { name: "memory-prefetch",                 cadence: "5min",  group: "memory" },
+  { name: "memory-capture",                  cadence: "ondemand", group: "memory" },
+  // Inbox + ops daemons
+  { name: "inbox-poller",                    cadence: "daemon", group: "daemon" },
+  { name: "inbox-self-heal",                 cadence: "5min",  group: "daemon" },
+  { name: "cowork-inbox-monitor",            cadence: "5min",  group: "daemon" },
+  { name: "telegram-listener",               cadence: "daemon", group: "daemon" },
+  { name: "mac-driver",                      cadence: "daemon", group: "daemon" },
+  { name: "hermes-archive-cleaner",          cadence: "weekly",group: "ops" },
+  { name: "metric-collector",                cadence: "hourly",group: "ops" },
 ];
 
 // META task 21 — batch-migrates the 16 READY workloads from HermesMigrationMap into Wild Duck pattern
@@ -1120,13 +1002,11 @@ const scoreBorder= score => score >= 22 ? "rgba(179,136,255,0.55)" : score >= 18
 const WildDucksBand = () => {
   const [expanded, setExpanded] = useState({});
   const toggle = name => setExpanded(prev => ({ ...prev, [name]: !prev[name] }));
-  const phase1 = WILD_DUCKS.filter(d => d.phase === 1);
-  const phase2 = WILD_DUCKS.filter(d => d.phase === 2);
-  const phase3 = WILD_DUCKS.filter(d => d.phase === 3);
   const stat = s => s === "proven" ? { c: C.green, label: "● proven" }
                  : s === "ready"  ? { c: C.green, label: "◐ ready" }
                  : s === "spec"   ? { c: C.cyan,  label: "△ spec queued" }
                  : { c: C.greenDim, label: "○ planned" };
+  const callGroupColor = g => g === "memory" ? "#b388ff" : g === "daemon" ? "#ffb74d" : g === "monitor" ? C.green : g === "autosync" ? C.cyan : g === "rollup" ? C.green : g === "dispatch" ? C.cyan : C.greenDim;
   return (
     <div style={{ margin: "20px 28px 28px", padding: 18, border: `2px solid ${C.cyan}`, background: "rgba(0,212,255,0.04)", position: "relative" }}>
       <div style={{ position: "absolute", top: -10, left: 16, padding: "0 8px", background: "#000", fontSize: 10, color: C.cyan, letterSpacing: 4 }}>
@@ -1149,58 +1029,82 @@ const WildDucksBand = () => {
       <div style={{ marginTop: 6, fontSize: 9, color: C.greenDim, letterSpacing: 2, fontFamily: "Courier New, monospace" }}>
         ▸ SCORED COCA-COLA TEST (1–25) · RE-SCORED MONTHLY BY KEYSTONE · ≥22 ★ MOONSHOT TIER
       </div>
-      {[{ label: "PHASE 1 · this week (base flock)", ducks: phase1 },
-        { label: "PHASE 2 · next 2 weeks", ducks: phase2 },
-        { label: "PHASE 3 · this month", ducks: phase3 }].map(({ label, ducks }) => (
-        <div key={label} style={{ marginTop: 16 }}>
-          <div style={{ fontSize: 9, color: C.cyanDim || "rgba(0,212,255,0.6)", letterSpacing: 2, marginBottom: 6 }}>{label}</div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 8 }}>
-            {ducks.map(d => {
-              const s = stat(d.status);
-              const sc = scoreColor(d.score);
-              const isOpen = !!expanded[d.name];
-              return (
-                <div key={d.name} style={{ border: `1px solid ${s.c}`, borderStyle: d.status === "planned" ? "dashed" : "solid",
-                                            padding: 8, background: "rgba(0,0,0,0.5)" }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 6 }}>
-                    <span style={{ fontSize: 10, fontWeight: 700, color: s.c, letterSpacing: 1, fontFamily: "Courier New, monospace" }}>
-                      {d.name}
-                    </span>
-                    <span style={{ fontSize: 9, padding: "1px 6px", borderRadius: 2, background: scoreBg(d.score),
-                                   color: sc, border: `1px solid ${scoreBorder(d.score)}`,
-                                   letterSpacing: 1, fontFamily: "Courier New, monospace", fontWeight: 700, whiteSpace: "nowrap" }}>
-                      {d.score}/25{d.score >= 22 ? " ★" : ""}
-                    </span>
-                  </div>
-                  <div style={{ fontSize: 8, color: s.c, opacity: 0.7, marginTop: 3 }}>{d.domain}</div>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 4 }}>
-                    <span style={{ fontSize: 8, color: C.greenDim, fontFamily: "Courier New, monospace" }}>inbox task {d.task}</span>
-                    <span style={{ fontSize: 8, color: s.c }}>{s.label}</span>
-                  </div>
-                  {d.skills && d.skills.length > 0 && (
-                    <div style={{ marginTop: 6, borderTop: `1px dashed rgba(0,212,255,0.2)`, paddingTop: 5 }}>
-                      <button onClick={() => toggle(d.name)}
-                              style={{ background: "transparent", border: "none", color: C.cyan, cursor: "pointer",
-                                       fontSize: 8, fontFamily: "Courier New, monospace", padding: 0, letterSpacing: 1, textAlign: "left", width: "100%" }}>
-                        {isOpen ? "▾" : "▸"} skills ({d.skills.length})
-                      </button>
-                      {isOpen && (
-                        <ul style={{ margin: "5px 0 0 12px", padding: 0, listStyle: "none" }}>
-                          {d.skills.map(sk => (
-                            <li key={sk} style={{ fontSize: 8, color: C.cyan, opacity: 0.85, lineHeight: 1.5, fontFamily: "Courier New, monospace" }}>
-                              · {sk}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+      {/* Wild Ducks — the rare flock, flat list */}
+      <div style={{ marginTop: 16 }}>
+        <div style={{ fontSize: 9, color: C.cyanDim || "rgba(0,212,255,0.6)", letterSpacing: 2, marginBottom: 6 }}>
+          ✺ THE FLOCK · {WILD_DUCKS.length} WILD DUCKS · RECLASSIFIED 2026-06-01 (was 75)
         </div>
-      ))}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 8 }}>
+          {WILD_DUCKS.map(d => {
+            const s = stat(d.status);
+            const sc = scoreColor(d.score);
+            const isOpen = !!expanded[d.name];
+            return (
+              <div key={d.name} style={{ border: `1px solid ${s.c}`, padding: 8, background: "rgba(0,0,0,0.5)" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 6 }}>
+                  <span style={{ fontSize: 10, fontWeight: 700, color: s.c, letterSpacing: 1, fontFamily: "Courier New, monospace" }}>
+                    {d.name}
+                  </span>
+                  <span style={{ fontSize: 9, padding: "1px 6px", borderRadius: 2, background: scoreBg(d.score),
+                                 color: sc, border: `1px solid ${scoreBorder(d.score)}`,
+                                 letterSpacing: 1, fontFamily: "Courier New, monospace", fontWeight: 700, whiteSpace: "nowrap" }}>
+                    {d.score}/25{d.score >= 22 ? " ★" : ""}
+                  </span>
+                </div>
+                <div style={{ fontSize: 8, color: s.c, opacity: 0.7, marginTop: 3 }}>{d.domain}</div>
+                <div style={{ fontSize: 8, color: s.c, marginTop: 4 }}>{s.label}</div>
+                {d.skills && d.skills.length > 0 && (
+                  <div style={{ marginTop: 6, borderTop: `1px dashed rgba(0,212,255,0.2)`, paddingTop: 5 }}>
+                    <button onClick={() => toggle(d.name)}
+                            style={{ background: "transparent", border: "none", color: C.cyan, cursor: "pointer",
+                                     fontSize: 8, fontFamily: "Courier New, monospace", padding: 0, letterSpacing: 1, textAlign: "left", width: "100%" }}>
+                      {isOpen ? "▾" : "▸"} skills ({d.skills.length})
+                    </button>
+                    {isOpen && (
+                      <ul style={{ margin: "5px 0 0 12px", padding: 0, listStyle: "none" }}>
+                        {d.skills.map(sk => (
+                          <li key={sk} style={{ fontSize: 8, color: C.cyan, opacity: 0.85, lineHeight: 1.5, fontFamily: "Courier New, monospace" }}>
+                            · {sk}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* CALLS — the operational substrate · cron monitors + dispatchers + daemons */}
+      <div style={{ marginTop: 24, paddingTop: 16, borderTop: `1px dashed ${C.cyan}` }}>
+        <div style={{ fontSize: 10, color: C.cyan, letterSpacing: 3, marginBottom: 4 }}>
+          ◉ CALLS · {CALLS.length} OPERATIONAL INSTRUMENTS
+        </div>
+        <div style={{ fontSize: 9, color: C.greenDim, fontStyle: "italic", marginBottom: 10, lineHeight: 1.5 }}>
+          Duck calls — predictable cron monitors, dispatchers, daemons, and memory plumbing. Not Wild Ducks — they don't innovate, they execute. Hermes substrate.
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: 4 }}>
+          {CALLS.map(c => {
+            const cc = callGroupColor(c.group);
+            return (
+              <div key={c.name} style={{ border: `1px solid ${cc}`, opacity: 0.85, padding: "4px 6px", background: "rgba(0,0,0,0.4)",
+                                          display: "flex", justifyContent: "space-between", alignItems: "center", gap: 6 }}>
+                <span style={{ fontSize: 8, color: cc, fontFamily: "Courier New, monospace", letterSpacing: 0.5,
+                               overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{c.name}</span>
+                <span style={{ fontSize: 7, color: cc, opacity: 0.8, fontFamily: "Courier New, monospace", letterSpacing: 1 }}>
+                  {c.cadence}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+        <div style={{ marginTop: 10, fontSize: 8, color: C.greenDim, fontFamily: "Courier New, monospace", letterSpacing: 1 }}>
+          ▸ GROUPS: monitor · autosync · rollup · dispatch · memory · daemon · probe · ops
+          &nbsp;&nbsp;·&nbsp;&nbsp;19 one-shots archived to /Atlas/hermes-sandbox/archive/one-shots/
+        </div>
+      </div>
     </div>
   );
 };
