@@ -843,27 +843,29 @@ const HermesPanel = () => (
         <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 4 }}>STACK</div>
         <div style={{ fontSize: 11, color: C.green, lineHeight: 1.6 }}>
           <div><span style={{ color: C.cyan }}>Named agent:</span> <strong>Hermes</strong> (COS — Bobby's AP-equivalent, locked 2026-05-31)</div>
-          <div><span style={{ color: C.cyan }}>OS:</span> Hermes-Agent v0.15 — install/upgrade in flight (was v0.14 aspirational since May, never invoked)</div>
-          <div><span style={{ color: C.cyan }}>Caps loaded:</span> Agent Swarm · Steer Mode · Compile Knowledge (target)</div>
-          <div><span style={{ color: C.cyan }}>Model:</span> DeepSeek V3.2 + Claude Sonnet 4.5 via OpenRouter (dual-LLM)</div>
-          <div><span style={{ color: C.cyan }}>Memory:</span> Hermes-Agent built-in + our cluster (capture/index/crossshare/prefetch/harvard-library)</div>
-          <div><span style={{ color: C.cyan }}>Substrate:</span> 13 Wild Ducks (rare · judgment) + 33 Calls (cron · monitors · dispatchers) — reclassified 2026-06-01</div>
+          <div><span style={{ color: C.cyan }}>OS:</span> Hermes-Agent v0.15 · <span data-live="os_status" style={{color: C.green}}>LIVE 2026-06-01</span></div>
+          <div><span style={{ color: C.cyan }}>Model:</span> DeepSeek V3.2 + Claude Sonnet 4.5 via OpenRouter</div>
+          <div><span style={{ color: C.cyan }}>Memory files:</span> <span data-live="memory_files">280+</span> across substrate</div>
+          <div><span style={{ color: C.cyan }}>Substrate:</span> <span data-live="wild_ducks_count">14</span> Wild Ducks + <span data-live="calls_count">36</span> Calls (locked 2026-06-01)</div>
           <div><span style={{ color: C.cyan }}>Interface:</span> @HartleyHermesBot (Telegram) + Cowork</div>
-          <div><span style={{ color: C.cyan }}>Inference:</span> OpenRouter ($10 credits)</div>
           <div><span style={{ color: C.cyan }}>Search backend:</span> Tavily (1000 free/mo)</div>
-          <div><span style={{ color: C.cyan }}>Host:</span> Bobby's Mac · launchd daemon `com.hermes.cos-agent`</div>
-          <div><span style={{ color: C.cyan }}>Approvals:</span> smart (auto low-risk, Bobby gate on irreversible)</div>
+          <div><span style={{ color: C.cyan }}>Host:</span> Bobby's Mac · launchd</div>
+          <div><span style={{ color: C.cyan }}>Approvals:</span> smart (auto low-risk · Bobby-gate on irreversible)</div>
+          <div><span style={{ color: C.cyan }}>Quiet hours:</span> 22:00-07:00 ET · digest 7:05 ET (locked 2026-06-01)</div>
         </div>
       </div>
       <div>
-        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 4 }}>TODAY · A/B vs COWORK</div>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 4 }}>LIVE TODAY · auto-refresh on load</div>
         <div style={{ fontSize: 11, color: C.green, lineHeight: 1.6 }}>
-          <div><span style={{ color: C.cyan }}>Lens-class:</span> 23 items · 17 sources · 4 patterns</div>
-          <div><span style={{ color: C.cyan }}>Wall-clock:</span> ~15 min</div>
-          <div><span style={{ color: C.cyan }}>Compute:</span> 1m 11s</div>
-          <div><span style={{ color: C.cyan }}>Cost:</span> ~$0.07 (vs ~$1.50 Cowork equiv)</div>
-          <div><span style={{ color: C.cyan }}>Cost ratio:</span> <span style={{ color: C.green, fontWeight: 700 }}>~20× cheaper</span></div>
-          <div><span style={{ color: C.cyan }}>Quality:</span> ~70% Cowork · breadth&gt;depth</div>
+          <div><span style={{ color: C.cyan }}>Last heartbeat:</span> <span data-live="heartbeat_ts">poll on load</span></div>
+          <div><span style={{ color: C.cyan }}>Reports filed today:</span> <span data-live="reports_today">—</span></div>
+          <div><span style={{ color: C.cyan }}>Inbox tasks pending:</span> <span data-live="inbox_pending">—</span></div>
+          <div><span style={{ color: C.cyan }}>Lens briefs (last 7d):</span> <span data-live="lens_week">—</span></div>
+          <div><span style={{ color: C.cyan }}>Adoption queue:</span> <span data-live="adoption_pending">—</span></div>
+          <div><span style={{ color: C.cyan }}>Last state write:</span> <span data-live="last_write">—</span></div>
+        </div>
+        <div style={{ fontSize: 9, color: C.greenDim, marginTop: 8, lineHeight: 1.4 }}>
+          Source: <code style={{ color: C.cyan }}>hermes-status.json</code> · written hourly by <code style={{ color: C.cyan }}>hermes-status-writer</code> Call · falls back to static if 404
         </div>
       </div>
       <div>
@@ -1419,6 +1421,41 @@ const Dashboard = () => (
 
 ReactDOM.createRoot(document.getElementById("root")).render(<Dashboard />);
 </script>
+
+<!-- Live-data hydration · reads hermes-status.json (written hourly by hermes-status-writer Call).
+     Failed fetch leaves static fallback values in place — dashboard stays usable offline. -->
+<script>
+(function hydrateLive() {
+  function update(key, val) {
+    document.querySelectorAll('[data-live="' + key + '"]').forEach(el => {
+      if (val !== null && val !== undefined && val !== '') el.textContent = String(val);
+    });
+  }
+  const sources = [
+    './hermes-status.json',
+    'https://extracoffee13.github.io/hartley-command/hermes-status.json'
+  ];
+  (async () => {
+    for (const url of sources) {
+      try {
+        const res = await fetch(url + '?nocache=' + Date.now(), { cache: 'no-store' });
+        if (!res.ok) continue;
+        const d = await res.json();
+        Object.entries(d).forEach(([k, v]) => update(k, v));
+        // Stamp the source URL so we can see it worked
+        const stamp = document.createElement('div');
+        stamp.style.cssText = 'position:fixed;bottom:6px;right:8px;font-size:8px;color:#39ff14;opacity:0.4;font-family:monospace;letter-spacing:1px';
+        stamp.textContent = 'live · ' + new Date(d.heartbeat_ts || d.last_write || Date.now()).toLocaleTimeString();
+        document.body.appendChild(stamp);
+        return;
+      } catch (e) { /* try next source */ }
+    }
+  })();
+  // Re-hydrate after React mounts (give it 600ms)
+  setTimeout(hydrateLive, 600);
+})();
+</script>
+
 </body>
 </html>
 <!-- watcher-tick: 2026-05-31T18:40:28Z hermes-cos-node-deploy -->
