@@ -1430,8 +1430,10 @@ const Dashboard = () => (
 ReactDOM.createRoot(document.getElementById("root")).render(<Dashboard />);
 </script>
 
-<!-- Live-data hydration · reads hermes-status.json (written hourly by hermes-status-writer Call).
-     Failed fetch leaves static fallback values in place — dashboard stays usable offline. -->
+<!-- Live-data hydration · TWO sources:
+       hermes-status.json (legacy, 10 numeric spans)
+       dashboard-state.json (new — every section · written every 5 min by dashboard-data-writer)
+     Visible truth-of-freshness panel + per-section LIVE/SNAPSHOT badges. -->
 <script>
 (function hydrateLive() {
   function update(key, val) {
@@ -1439,24 +1441,107 @@ ReactDOM.createRoot(document.getElementById("root")).render(<Dashboard />);
       if (val !== null && val !== undefined && val !== '') el.textContent = String(val);
     });
   }
-  const sources = [
-    './hermes-status.json',
-    'https://extracoffee13.github.io/hartley-command/hermes-status.json'
-  ];
+  function fmtAge(iso) {
+    if (!iso) return 'never';
+    const ms = Date.now() - new Date(iso).getTime();
+    if (ms < 0) return 'just now';
+    const m = Math.floor(ms / 60000);
+    if (m < 1) return 'just now';
+    if (m < 60) return m + 'm ago';
+    const h = Math.floor(m / 60);
+    if (h < 24) return h + 'h ago';
+    return Math.floor(h / 24) + 'd ago';
+  }
+  async function fetchJSON(url) {
+    try {
+      const r = await fetch(url + '?nocache=' + Date.now(), { cache: 'no-store' });
+      if (!r.ok) return null;
+      return await r.json();
+    } catch (e) { return null; }
+  }
+
   (async () => {
-    for (const url of sources) {
-      try {
-        const res = await fetch(url + '?nocache=' + Date.now(), { cache: 'no-store' });
-        if (!res.ok) continue;
-        const d = await res.json();
-        Object.entries(d).forEach(([k, v]) => update(k, v));
-        // Stamp the source URL so we can see it worked
-        const stamp = document.createElement('div');
-        stamp.style.cssText = 'position:fixed;bottom:6px;right:8px;font-size:8px;color:#39ff14;opacity:0.4;font-family:monospace;letter-spacing:1px';
-        stamp.textContent = 'live · ' + new Date(d.heartbeat_ts || d.last_write || Date.now()).toLocaleTimeString();
-        document.body.appendChild(stamp);
-        return;
-      } catch (e) { /* try next source */ }
+    // 1. Legacy hermes-status.json — hydrate numeric data-live spans
+    const hsURLs = [
+      './hermes-status.json',
+      'https://extracoffee13.github.io/hartley-command/hermes-status.json'
+    ];
+    for (const url of hsURLs) {
+      const d = await fetchJSON(url);
+      if (d) { Object.entries(d).forEach(([k, v]) => update(k, v)); break; }
+    }
+
+    // 2. New dashboard-state.json — section-by-section honest data
+    const dsURLs = [
+      './dashboard-state.json',
+      'https://extracoffee13.github.io/hartley-command/dashboard-state.json'
+    ];
+    let ds = null;
+    for (const url of dsURLs) {
+      ds = await fetchJSON(url);
+      if (ds) break;
+    }
+
+    // 3. DATA FRESHNESS panel · visible at all times
+    const panel = document.createElement('div');
+    panel.id = 'data-status-panel';
+    panel.style.cssText = 'position:fixed;top:8px;right:8px;z-index:9999;background:rgba(0,0,0,0.92);border:1px solid #39ff14;padding:8px 12px;font-family:monospace;font-size:10px;color:#39ff14;line-height:1.5;letter-spacing:0.5px;max-width:340px;box-shadow:0 0 12px rgba(57,255,20,0.25);cursor:pointer;';
+
+    let html = '<div style="color:#00d4ff;font-weight:bold;margin-bottom:4px">DATA FRESHNESS</div>';
+    if (ds) {
+      const gen = ds._generated_at;
+      html += '<div>state.json: <span style="color:#fff">' + fmtAge(gen) + '</span></div>';
+      html += '<div style="opacity:0.6;font-size:9px">' + (gen ? new Date(gen).toLocaleString() : '—') + '</div>';
+      html += '<div style="margin-top:6px;border-top:1px solid rgba(57,255,20,0.25);padding-top:6px">';
+      html += 'ducks: <span style="color:#fff">' + ds.ducks_and_calls.wild_ducks_count + '</span> · ';
+      html += 'calls: <span style="color:#fff">' + ds.ducks_and_calls.calls_count + '</span><br>';
+      html += 'operators: <span style="color:#fff">' + (ds.operators?.operators?.length || 0) + '</span> · ';
+      html += 'pragma: <span style="color:#fff">' + (ds.pragma?.engagements?.length || 0) + '</span><br>';
+      const wolfDay = ds.wolf?.mission?.calendar_day_on_mission;
+      const wolfScore = ds.wolf?.capability?.score;
+      html += 'wolf: <span style="color:#fff">Day ' + (wolfDay || '?') + ' · score ' + (wolfScore || '?') + '</span><br>';
+      html += 'hermes-agent: <span style="color:#fff">' + (ds.hermes?.hermes_agent_version || '?') + '</span><br>';
+      html += 'webui: <span style="color:' + (ds.hermes?.webui_loaded ? '#39ff14' : '#ff3939') + '">' + (ds.hermes?.webui_loaded ? 'loaded' : 'down') + '</span> · ';
+      html += 'logs/24h: <span style="color:#fff">' + (ds.hermes?.logs_fresh_24h || 0) + '</span>';
+      html += '</div>';
+    } else {
+      html += '<div style="color:#ff3939">state.json unreachable</div>';
+      html += '<div style="opacity:0.6;font-size:9px">static fallback in use — do not trust</div>';
+    }
+    html += '<div style="margin-top:6px;opacity:0.5;font-size:9px;border-top:1px solid rgba(57,255,20,0.2);padding-top:4px">writer: dashboard-data-writer · 5min</div>';
+    panel.innerHTML = html;
+    panel.title = 'click to fade';
+
+    panel.addEventListener('click', () => {
+      panel.style.opacity = panel.style.opacity === '0.25' ? '1' : '0.25';
+    });
+
+    const old = document.getElementById('data-status-panel');
+    if (old) old.remove();
+    document.body.appendChild(panel);
+
+    // 4. Per-section LIVE / SNAPSHOT badges (honest about each section's source)
+    function badge(text, color) {
+      return ' <span style="font-size:9px;font-family:monospace;color:' + color + ';letter-spacing:1px;background:rgba(0,0,0,0.4);padding:2px 6px;border:1px solid ' + color + ';border-radius:3px;margin-left:8px;vertical-align:middle">' + text + '</span>';
+    }
+    function addBadge(matchText, badgeHTML) {
+      document.querySelectorAll('h1, h2, h3, h4').forEach(h => {
+        if (h.textContent.includes(matchText) && !h.dataset.badged) {
+          h.dataset.badged = '1';
+          h.insertAdjacentHTML('beforeend', badgeHTML);
+        }
+      });
+    }
+    if (ds) {
+      const dsAge = fmtAge(ds._generated_at);
+      addBadge('Wild Ducks',     badge('LIVE · ' + dsAge, '#39ff14'));
+      addBadge('CALLS',          badge('LIVE · ' + dsAge, '#39ff14'));
+      addBadge('Operator',       badge('LIVE · ' + dsAge, '#39ff14'));
+      addBadge('Hermes',         badge('LIVE · ' + dsAge, '#39ff14'));
+      addBadge('WOLF',           badge('LIVE · ' + dsAge, '#39ff14'));
+      addBadge('PRAGMA',         badge('LIVE · ' + dsAge, '#39ff14'));
+      addBadge('Migration Map',  badge('SNAPSHOT · 2026-05-27', '#ffaa00'));
+      addBadge('Neurolink',      badge('SNAPSHOT · 2026-05-27', '#ffaa00'));
     }
   })();
   // Re-hydrate after React mounts (give it 600ms)
