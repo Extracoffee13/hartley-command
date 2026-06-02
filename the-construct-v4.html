@@ -1442,6 +1442,73 @@ const Footer = () => (
 );
 
 // ═══════════════════════════════════════════════════════════════
+// HARVARD CORPUS PANEL — strategic asymmetric advantage
+// ═══════════════════════════════════════════════════════════════
+const HarvardCorpusPanel = () => (
+  <div style={{ margin: "28px 28px 20px", padding: 18,
+    border: `2px solid ${C.cyan}`, background: "rgba(0,212,255,0.04)", position: "relative",
+  }}>
+    <div style={{ position: "absolute", top: -10, left: 16, padding: "0 8px", background: "#000", fontSize: 10, color: C.cyan, letterSpacing: 4 }}>
+      ⚑ HARVARD CORPUS — strategic asymmetric advantage · shared substrate
+    </div>
+    <div style={{ marginTop: 8, marginBottom: 16, fontSize: 12, color: C.green, opacity: 0.85 }}>
+      Full-body offline corpus from every Harvard / HBS / HBSWK / HBR / d3 surface Bobby has access to. Wrapped as <strong>skills</strong> mounted on BOTH Cowork and Hermes — every agent grep&apos;s the same on-disk files. No re-fetching per query. Bobby&apos;s strategic moat: <em>"access very few have."</em>
+    </div>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 14, marginTop: 12 }}>
+      <div style={{ background: "rgba(0,0,0,0.4)", padding: 12, borderLeft: `3px solid ${C.cyan}` }}>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2 }}>ARTICLES</div>
+        <div style={{ fontSize: 32, fontWeight: 900, color: C.cyan }} data-live="hc_total">404</div>
+      </div>
+      <div style={{ background: "rgba(0,0,0,0.4)", padding: 12, borderLeft: `3px solid ${C.cyan}` }}>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2 }}>FACULTY</div>
+        <div style={{ fontSize: 32, fontWeight: 900, color: C.cyan }} data-live="hc_faculty">52</div>
+      </div>
+      <div style={{ background: "rgba(0,0,0,0.4)", padding: 12, borderLeft: `3px solid ${C.cyan}` }}>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2 }}>TOPICS</div>
+        <div style={{ fontSize: 32, fontWeight: 900, color: C.cyan }} data-live="hc_topics">17</div>
+      </div>
+      <div style={{ background: "rgba(0,0,0,0.4)", padding: 12, borderLeft: `3px solid ${C.cyan}` }}>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2 }}>FACULTY LINKS</div>
+        <div style={{ fontSize: 32, fontWeight: 900, color: C.cyan }} data-live="hc_faclinks">2,850</div>
+      </div>
+      <div style={{ background: "rgba(0,0,0,0.4)", padding: 12, borderLeft: `3px solid ${C.cyan}` }}>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2 }}>TOPIC LINKS</div>
+        <div style={{ fontSize: 32, fontWeight: 900, color: C.cyan }} data-live="hc_topiclinks">1,077</div>
+      </div>
+    </div>
+    <div style={{ marginTop: 16, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+      <div>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 6 }}>SOURCES ON DISK</div>
+        <div style={{ fontSize: 11, color: C.green, lineHeight: 1.7 }}>
+          <div><span style={{ color: C.cyan }}>d3.harvard.edu:</span> 125 insights · 5 events · 6 communities · 7 labs · 18 faculty · 7 team/org</div>
+          <div><span style={{ color: C.cyan }}>HBS Working Knowledge:</span> <span data-live="hc_hbswk">137</span> articles (sitemap-paced)</div>
+          <div><span style={{ color: C.cyan }}>HBR:</span> 4 metadata snapshots + canonical PRAGMA-cite list (full bodies = copyright)</div>
+          <div><span style={{ color: C.cyan }}>HBS AI Institute Sana:</span> auto-capture when Bobby's foreground tab is d3.sana.ai</div>
+          <div><span style={{ color: C.cyan }}>Bobby's enrolled Programs:</span> captured progressively · 3 programs at Step 1 of 2</div>
+        </div>
+      </div>
+      <div>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 6 }}>SKILLS · BOTH SIDES</div>
+        <div style={{ fontSize: 11, color: C.green, lineHeight: 1.7 }}>
+          <div><span style={{ color: C.cyan }}>harvard-library</span> · base query interface</div>
+          <div><span style={{ color: C.cyan }}>hbs-ai-institute</span> · d3-specific</div>
+          <div><span style={{ color: C.cyan }}>hbs-courses</span> · Bobby's enrolled Programs</div>
+          <div><span style={{ color: C.cyan }}>harvard-quotables</span> · Hartley-Cite corpus</div>
+          <div><span style={{ color: C.cyan }}>frontier-firm-framework</span> · canonical PRAGMA cite (Lakhani)</div>
+          <div style={{ marginTop: 6, opacity: 0.7 }}>Mounted at /Atlas/skills/ (Cowork) + ~/.hermes/skills/hartley-construct/skills/ (Hermes)</div>
+        </div>
+      </div>
+    </div>
+    <div style={{ marginTop: 14, display: "flex", justifyContent: "space-between", alignItems: "center", borderTop: `1px solid ${C.cyan}33`, paddingTop: 10 }}>
+      <div style={{ fontSize: 10, color: C.greenDim, letterSpacing: 1 }}>
+        <span style={{ color: C.cyan }}>Maintenance:</span> harvard-corpus-builder (4:00 ET) · harvard-corpus-indexer (4:30 ET) · harvard-deep-scan (6:30 ET) · session-context-primer (5:00 ET) · lens-daily-scan (5:34/9:34/13:34 ET)
+      </div>
+      <a href="harvard-library.html" style={{ color: C.cyan, fontSize: 11, fontFamily: "monospace", textDecoration: "underline" }}>open library →</a>
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════
 // MAIN
 // ═══════════════════════════════════════════════════════════════
 const Dashboard = () => (
@@ -1451,6 +1518,7 @@ const Dashboard = () => (
       <Header />
       <TieredNeurolink />
       <HermesPanel />
+      <HarvardCorpusPanel />
       <WildDucksBand />
       <HermesMigrationMap />
       <OperatorGrid />
@@ -1482,6 +1550,31 @@ ReactDOM.createRoot(document.getElementById("root")).render(<Dashboard />);
     './hermes-status.json',
     'https://extracoffee13.github.io/hartley-command/hermes-status.json'
   ];
+  // Harvard Corpus hydration — separate JSON
+  (async () => {
+    try {
+      const r = await fetch('./harvard-corpus-stats.json?nocache=' + Date.now(), { cache: 'no-store' });
+      if (!r.ok) {
+        const r2 = await fetch('https://extracoffee13.github.io/hartley-command/harvard-corpus-stats.json?nocache=' + Date.now(), { cache: 'no-store' });
+        if (!r2.ok) return;
+        const hc = await r2.json();
+        update('hc_total', hc.total_articles);
+        update('hc_faculty', hc.faculty_indexed);
+        update('hc_topics', hc.topics_covered);
+        update('hc_faclinks', (hc.total_faculty_links || 0).toLocaleString());
+        update('hc_topiclinks', (hc.total_topic_links || 0).toLocaleString());
+        update('hc_hbswk', hc.by_source && hc.by_source.hbswk);
+        return;
+      }
+      const hc = await r.json();
+      update('hc_total', hc.total_articles);
+      update('hc_faculty', hc.faculty_indexed);
+      update('hc_topics', hc.topics_covered);
+      update('hc_faclinks', (hc.total_faculty_links || 0).toLocaleString());
+      update('hc_topiclinks', (hc.total_topic_links || 0).toLocaleString());
+      update('hc_hbswk', hc.by_source && hc.by_source.hbswk);
+    } catch (e) { /* fallback to static */ }
+  })();
   (async () => {
     for (const url of sources) {
       try {
