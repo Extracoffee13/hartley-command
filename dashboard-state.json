@@ -1,12 +1,12 @@
 {
-  "_generated_at": "2026-06-02T16:12:02.149901+00:00",
+  "_generated_at": "2026-06-02T16:17:04.255507+00:00",
   "_writer": "dashboard-data-writer",
   "_version": 1,
   "ducks_and_calls": {
     "wild_ducks": [
       {
         "name": "agent-cross-ref-validator",
-        "last_fired": "2026-06-02T15:46:08.437681+00:00"
+        "last_fired": "2026-06-02T16:16:08.600243+00:00"
       },
       {
         "name": "competitor-watch",
@@ -54,7 +54,7 @@
       },
       {
         "name": "wild-duck-doctor",
-        "last_fired": "2026-06-02T15:46:13.858866+00:00"
+        "last_fired": "2026-06-02T16:16:14.846537+00:00"
       }
     ],
     "calls": [
@@ -76,7 +76,7 @@
       },
       {
         "name": "content-publish-scheduler",
-        "last_fired": "2026-06-02T16:01:17.399023+00:00"
+        "last_fired": "2026-06-02T16:16:17.552460+00:00"
       },
       {
         "name": "cowork-inbox-monitor",
@@ -84,7 +84,7 @@
       },
       {
         "name": "dashboard-autosync",
-        "last_fired": "2026-06-02T16:05:30.082223+00:00"
+        "last_fired": "2026-06-02T16:16:41.545385+00:00"
       },
       {
         "name": "deploy-brand9-wp",
@@ -92,7 +92,7 @@
       },
       {
         "name": "dh-dns-tracker",
-        "last_fired": "2026-06-02T15:16:00.983262+00:00"
+        "last_fired": "2026-06-02T16:16:01.135545+00:00"
       },
       {
         "name": "ecosystem-evolution-scanner",
@@ -112,7 +112,7 @@
       },
       {
         "name": "github-pages-build-watcher",
-        "last_fired": "2026-06-02T16:07:20.088331+00:00"
+        "last_fired": "2026-06-02T16:12:20.598088+00:00"
       },
       {
         "name": "hermes-archive-cleaner",
@@ -128,7 +128,7 @@
       },
       {
         "name": "inbox-poller",
-        "last_fired": "2026-06-02T16:11:52.642992+00:00"
+        "last_fired": "2026-06-02T16:16:52.928341+00:00"
       },
       {
         "name": "inbox-self-heal",
@@ -192,11 +192,11 @@
       },
       {
         "name": "telegram-listener",
-        "last_fired": "2026-06-02T16:11:39.455436+00:00"
+        "last_fired": "2026-06-02T16:15:40.370822+00:00"
       },
       {
         "name": "uptime-monitor",
-        "last_fired": "2026-06-02T16:10:46.907603+00:00"
+        "last_fired": "2026-06-02T16:15:48.774958+00:00"
       },
       {
         "name": "visual-qa-monitor",
@@ -204,7 +204,7 @@
       },
       {
         "name": "wolf-dashboard-autosync",
-        "last_fired": "2026-06-02T15:45:54.781294+00:00"
+        "last_fired": "2026-06-02T16:15:56.501987+00:00"
       },
       {
         "name": "wolf-state-updater",
@@ -219,7 +219,7 @@
     "calls_count": 39,
     "archived_count": 0,
     "_source_mtime": "2026-06-01T14:08:06.519678+00:00",
-    "_section_updated": "2026-06-02T16:12:02.149901+00:00"
+    "_section_updated": "2026-06-02T16:17:04.255507+00:00"
   },
   "operators": {
     "operators": [
@@ -273,38 +273,38 @@
         "status": "active"
       }
     ],
-    "_section_updated": "2026-06-02T16:12:02.149901+00:00"
+    "_section_updated": "2026-06-02T16:17:04.255507+00:00"
   },
   "pragma": {
     "engagements": [
       {
-        "collected_at": "2026-06-02T15:16:03.544345Z",
+        "collected_at": "2026-06-02T16:16:03.816437Z",
         "substrate": {
-          "hermes_reports_filed": 512,
+          "hermes_reports_filed": 522,
           "lens_briefs": 44,
           "pulse_briefs": 11,
           "mac_driver_runs": 2,
           "wild_ducks_installed": 100
         },
         "latest_activity": {
-          "hermes_report": "2026-06-02T11:06:11.412812Z",
+          "hermes_report": "2026-06-02T11:49:30.876847Z",
           "lens_brief": "2026-06-02T10:07:28.978789Z",
           "mac_driver_log": "2026-05-29T12:12:58.573432Z"
         },
         "estimated_value": {
-          "hours_saved_total": 64.7,
-          "dollar_equivalent_total": 1941.0,
+          "hours_saved_total": 65.6,
+          "dollar_equivalent_total": 1968.0,
           "_basis": "reports\u00d75min + mac-driver\u00d72min + lens\u00d730min, $30/hr Claude-equivalent rate"
         },
         "per_client": {}
       }
     ],
-    "_source_mtime": "2026-06-02T15:16:03.609893+00:00",
-    "_section_updated": "2026-06-02T16:12:02.149901+00:00"
+    "_source_mtime": "2026-06-02T16:16:03.887381+00:00",
+    "_section_updated": "2026-06-02T16:17:04.255507+00:00"
   },
   "wolf": {
     "_source_mtime": "2026-06-02T16:00:05.704727+00:00",
-    "_section_updated": "2026-06-02T16:12:02.149901+00:00",
+    "_section_updated": "2026-06-02T16:17:04.255507+00:00",
     "_comment": "WOLF authoritative state. Mounted location both Cowork agents and Hermes can read/write. Replaces the chronic-regression ephemeral counter pattern. See /Atlas/wolf-audit-2026-05-28.md for the why.",
     "_schema_version": 1,
     "_location": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/wolf/state.json",
@@ -465,7 +465,7 @@
     "_last_write_iso": "2026-06-02T12:00:05"
   },
   "hermes": {
-    "_section_updated": "2026-06-02T16:12:02.149901+00:00",
+    "_section_updated": "2026-06-02T16:17:04.255507+00:00",
     "hermes_agent_version": "0.15.2",
     "webui_pid": "63931",
     "webui_loaded": true,
