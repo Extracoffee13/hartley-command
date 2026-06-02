@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Harvard Corpus · The Construct</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+:root { --void: #0A0A0A; --signal: #1FE07E; --output: #FFFFFF; --dim: rgba(255,255,255,0.55); }
+* { box-sizing: border-box; }
+body { background: var(--void); color: var(--output); font-family: 'Inter', -apple-system, system-ui, sans-serif; margin: 0; padding: 32px; line-height: 1.55; }
+h1 { font-size: clamp(36px, 5vw, 64px); font-weight: 900; margin: 0 0 8px; letter-spacing: -2px; }
+h1 .accent { color: var(--signal); }
+.subtitle { color: var(--dim); font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 48px; }
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin: 32px 0; }
+.metric { background: rgba(31,224,126,0.05); border: 1px solid rgba(31,224,126,0.18); border-radius: 12px; padding: 24px; }
+.metric .label { color: var(--dim); font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
+.metric .value { font-size: 56px; font-weight: 900; color: var(--signal); line-height: 1; margin-top: 8px; }
+.section { margin: 56px 0; padding: 32px; background: rgba(255,255,255,0.02); border-radius: 12px; }
+.section h2 { font-size: 24px; margin: 0 0 16px; }
+.bysource { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.src { background: rgba(0,0,0,0.3); padding: 16px 20px; border-radius: 8px; border-left: 3px solid var(--signal); }
+.src .name { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--dim); text-transform: uppercase; letter-spacing: 1px; }
+.src .count { font-size: 32px; font-weight: 900; color: var(--output); margin-top: 4px; }
+.refresh { color: var(--signal); font-family: monospace; font-size: 12px; }
+.nav { margin-bottom: 24px; }
+.nav a { color: var(--signal); text-decoration: none; margin-right: 16px; font-family: monospace; font-size: 13px; }
+.nav a:hover { text-decoration: underline; }
+.gaps { color: var(--dim); margin-top: 24px; }
+.gaps li { margin-bottom: 8px; }
+</style>
+</head>
+<body>
+<div class="nav">
+  <a href="https://extracoffee13.github.io/hartley-command/">← Hartley Command</a>
+  <a href="the-construct-v4.html">The Construct v4 →</a>
+</div>
+
+<h1>Harvard <span class="accent">Corpus</span></h1>
+<div class="subtitle" id="lastIndexed">Loading…</div>
+
+<div class="metrics">
+  <div class="metric"><div class="label">Articles indexed</div><div class="value" id="total">—</div></div>
+  <div class="metric"><div class="label">Topics covered</div><div class="value" id="topics">—</div></div>
+  <div class="metric"><div class="label">Faculty indexed</div><div class="value" id="faculty">—</div></div>
+  <div class="metric"><div class="label">Topic→article links</div><div class="value" id="topiclinks">—</div></div>
+  <div class="metric"><div class="label">Faculty→article links</div><div class="value" id="faclinks">—</div></div>
+</div>
+
+<div class="section">
+  <h2>Corpus by source</h2>
+  <div class="bysource" id="bysource">Loading…</div>
+</div>
+
+<div class="section">
+  <h2>What's in scope</h2>
+  <p style="color: var(--dim); max-width: 720px;">Bobby's strategic asymmetric advantage — Harvard / HBS AI Institute / HBSWK / HBR / Sana — captured as raw corpus on disk AND wrapped as skills shared across Cowork + Hermes. Daily auto-scan, no skips. Every Construct agent (Lens, Pulse, Keystone, Architect, Vector, Cornerstone) grep this corpus instead of re-fetching.</p>
+  <ul class="gaps">
+    <li><strong>d3.harvard.edu</strong> — full insights archive (12 pages), events, communities, labs, team — captured automatically</li>
+    <li><strong>HBS Working Knowledge</strong> — 3,000+ article sitemap, priority crawl in progress</li>
+    <li><strong>HBR</strong> — cookie-shared Chrome MCP auth (Bobby's login). Topic snapshots + canonical PRAGMA citations</li>
+    <li><strong>HBS AI Institute Sana</strong> (d3.sana.ai) — per-tab sessionStorage auth; computer-use screenshot of Bobby's foreground tab whenever Sana is visible</li>
+    <li><strong>Bobby's enrolled Programs</strong> — AI-Enhanced Product · Actionable AI in DSOps · Actionable AI in Finance — captured as he progresses</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>Ducks maintaining this corpus</h2>
+  <div class="bysource">
+    <div class="src"><div class="name">harvard-corpus-builder</div><div class="count" style="font-size:16px; color:var(--signal); margin-top:8px;">Daily 4:00 AM ET · full bodies</div></div>
+    <div class="src"><div class="name">harvard-corpus-indexer</div><div class="count" style="font-size:16px; color:var(--signal); margin-top:8px;">Daily 4:30 AM ET · topics + faculty + quotables</div></div>
+    <div class="src"><div class="name">harvard-deep-scan</div><div class="count" style="font-size:16px; color:var(--signal); margin-top:8px;">Daily 6:30 AM ET · delta alerts</div></div>
+    <div class="src"><div class="name">session-context-primer</div><div class="count" style="font-size:16px; color:var(--signal); margin-top:8px;">Daily 5:00 AM ET · auth map refresh</div></div>
+    <div class="src"><div class="name">lens-daily-scan</div><div class="count" style="font-size:16px; color:var(--signal); margin-top:8px;">5:34 · 9:34 · 13:34 ET</div></div>
+  </div>
+</div>
+
+<script>
+fetch('harvard-corpus-stats.json').then(r=>r.json()).then(s=>{
+  document.getElementById('total').textContent = s.total_articles;
+  document.getElementById('topics').textContent = s.topics_covered;
+  document.getElementById('faculty').textContent = s.faculty_indexed;
+  document.getElementById('topiclinks').textContent = s.total_topic_links;
+  document.getElementById('faclinks').textContent = s.total_faculty_links;
+  document.getElementById('lastIndexed').textContent = 'Last indexed: ' + new Date(s.last_indexed).toLocaleString();
+  const bs = document.getElementById('bysource');
+  bs.innerHTML = '';
+  Object.entries(s.by_source).forEach(([name, count]) => {
+    if (count > 0) bs.innerHTML += `<div class="src"><div class="name">${name}</div><div class="count">${count}</div></div>`;
+  });
+}).catch(e => {
+  document.getElementById('lastIndexed').textContent = 'Failed to load stats — corpus-stats.json missing or unreachable';
+});
+</script>
+
+</body>
+</html>
