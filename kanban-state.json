@@ -1,18 +1,8 @@
 {
-  "generated_at": "2026-06-03T09:45:00-04:00",
+  "generated_at": "2026-06-03T09:45:33-04:00",
   "db_path": "/Users/alfredpennyworth/.hermes/kanban.db",
   "lanes": {
-    "inbox": [],
     "in_flight": [
-      {
-        "task_id": "400-wolf-alpaca-restart-non-blocking",
-        "title": "Task 400 \u2014 Restart com.bobby.wolf.data-updater (non-blocking, no test-fire)",
-        "lane": "in_flight",
-        "report_path": null,
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T09:44:24-04:00",
-        "updated_at": "2026-06-03T09:44:24-04:00"
-      },
       {
         "task_id": "395-ship-watcher-plus-v4-dashboard-push",
         "title": "Task 395 \u2014 Install dashboard-deploy-watcher + push V4 with 13 new skill cards + verify",
@@ -502,6 +492,7 @@
         "updated_at": "2026-06-03T12:28:43+00:00"
       }
     ],
+    "inbox": [],
     "blocked": [
       {
         "task_id": "386-kanban-bootstrap-and-wolf-audit",
@@ -511,6 +502,15 @@
         "source": "inbox-poller",
         "created_at": "2026-06-03T12:28:24+00:00",
         "updated_at": "2026-06-03T12:28:53+00:00"
+      },
+      {
+        "task_id": "400-wolf-alpaca-restart-non-blocking",
+        "title": "Task 400 \u2014 Restart com.bobby.wolf.data-updater (non-blocking, no test-fire)",
+        "lane": "blocked",
+        "report_path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/hermes-reports/400-wolf-alpaca-restart-non-blocking-report.md",
+        "source": "inbox-poller",
+        "created_at": "2026-06-03T09:44:24-04:00",
+        "updated_at": "2026-06-03T09:45:24-04:00"
       },
       {
         "task_id": "392-install-watcher-plus-restart-wolf-updater",
@@ -533,9 +533,9 @@
     ]
   },
   "counts": {
-    "inbox": 0,
-    "in_flight": 5,
+    "in_flight": 4,
     "done": 50,
-    "blocked": 3
+    "inbox": 0,
+    "blocked": 4
   }
 }
