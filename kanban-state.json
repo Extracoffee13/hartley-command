@@ -1,48 +1,7 @@
 {
-  "generated_at": "2026-06-03T09:00:51-04:00",
+  "generated_at": "2026-06-03T09:01:23-04:00",
   "db_path": "/Users/alfredpennyworth/.hermes/kanban.db",
   "lanes": {
-    "in_flight": [
-      {
-        "task_id": "392-install-watcher-plus-restart-wolf-updater",
-        "title": "Task 392 \u2014 Install dashboard-deploy-watcher + diagnose+restart com.bobby.wolf.data-updater",
-        "lane": "in_flight",
-        "report_path": null,
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T08:54:30-04:00",
-        "updated_at": "2026-06-03T08:54:30-04:00"
-      },
-      {
-        "task_id": "391-find-wolf-data-writer",
-        "title": "Task 391 \u2014 Find the wolf_live_data.json writer + why it died Jun 1 14:14",
-        "lane": "in_flight",
-        "report_path": null,
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T08:52:28-04:00",
-        "updated_at": "2026-06-03T08:52:28-04:00"
-      }
-    ],
-    "inbox": [],
-    "blocked": [
-      {
-        "task_id": "386-kanban-bootstrap-and-wolf-audit",
-        "title": "Task 386 \u2014 Kanban bootstrap + WOLF dashboard staleness audit",
-        "lane": "blocked",
-        "report_path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/hermes-reports/386-kanban-bootstrap-and-wolf-audit-report.md",
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T12:28:24+00:00",
-        "updated_at": "2026-06-03T12:28:53+00:00"
-      },
-      {
-        "task_id": "390-wolf-real-repo-and-alpaca-diagnose",
-        "title": "Task 390 \u2014 Open the REAL WOLF Command Center + find Alpaca updater + diagnose stall",
-        "lane": "blocked",
-        "report_path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/hermes-reports/390-wolf-real-repo-and-alpaca-diagnose-report.md",
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T08:48:56-04:00",
-        "updated_at": "2026-06-03T08:49:16-04:00"
-      }
-    ],
     "done": [
       {
         "task_id": "387-v4-push-with-kanban-plus-wolf-bridge-fix",
@@ -494,12 +453,53 @@
         "created_at": "2026-06-03T12:28:43+00:00",
         "updated_at": "2026-06-03T12:28:43+00:00"
       }
+    ],
+    "in_flight": [
+      {
+        "task_id": "392-install-watcher-plus-restart-wolf-updater",
+        "title": "Task 392 \u2014 Install dashboard-deploy-watcher + diagnose+restart com.bobby.wolf.data-updater",
+        "lane": "in_flight",
+        "report_path": null,
+        "source": "inbox-poller",
+        "created_at": "2026-06-03T08:54:30-04:00",
+        "updated_at": "2026-06-03T08:54:30-04:00"
+      },
+      {
+        "task_id": "391-find-wolf-data-writer",
+        "title": "Task 391 \u2014 Find the wolf_live_data.json writer + why it died Jun 1 14:14",
+        "lane": "in_flight",
+        "report_path": null,
+        "source": "inbox-poller",
+        "created_at": "2026-06-03T08:52:28-04:00",
+        "updated_at": "2026-06-03T08:52:28-04:00"
+      }
+    ],
+    "inbox": [],
+    "blocked": [
+      {
+        "task_id": "386-kanban-bootstrap-and-wolf-audit",
+        "title": "Task 386 \u2014 Kanban bootstrap + WOLF dashboard staleness audit",
+        "lane": "blocked",
+        "report_path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/hermes-reports/386-kanban-bootstrap-and-wolf-audit-report.md",
+        "source": "inbox-poller",
+        "created_at": "2026-06-03T12:28:24+00:00",
+        "updated_at": "2026-06-03T12:28:53+00:00"
+      },
+      {
+        "task_id": "390-wolf-real-repo-and-alpaca-diagnose",
+        "title": "Task 390 \u2014 Open the REAL WOLF Command Center + find Alpaca updater + diagnose stall",
+        "lane": "blocked",
+        "report_path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/hermes-reports/390-wolf-real-repo-and-alpaca-diagnose-report.md",
+        "source": "inbox-poller",
+        "created_at": "2026-06-03T08:48:56-04:00",
+        "updated_at": "2026-06-03T08:49:16-04:00"
+      }
     ]
   },
   "counts": {
+    "done": 50,
     "in_flight": 2,
     "inbox": 0,
-    "blocked": 2,
-    "done": 50
+    "blocked": 2
   }
 }
