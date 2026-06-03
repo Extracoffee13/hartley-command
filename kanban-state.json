@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-03T09:26:22-04:00",
+  "generated_at": "2026-06-03T09:26:40-04:00",
   "db_path": "/Users/alfredpennyworth/.hermes/kanban.db",
   "lanes": {
     "blocked": [
@@ -483,7 +483,17 @@
         "updated_at": "2026-06-03T12:28:43+00:00"
       }
     ],
+    "inbox": [],
     "in_flight": [
+      {
+        "task_id": "396-watcher-recover-and-rebase-fix",
+        "title": "Task 396 \u2014 Recover stuck watcher pushes + verify v4 13 cards live + WOLF Alpaca writer status",
+        "lane": "in_flight",
+        "report_path": null,
+        "source": "inbox-poller",
+        "created_at": "2026-06-03T09:26:29-04:00",
+        "updated_at": "2026-06-03T09:26:29-04:00"
+      },
       {
         "task_id": "395-ship-watcher-plus-v4-dashboard-push",
         "title": "Task 395 \u2014 Install dashboard-deploy-watcher + push V4 with 13 new skill cards + verify",
@@ -520,13 +530,12 @@
         "created_at": "2026-06-03T08:52:28-04:00",
         "updated_at": "2026-06-03T08:52:28-04:00"
       }
-    ],
-    "inbox": []
+    ]
   },
   "counts": {
     "blocked": 3,
     "done": 50,
-    "in_flight": 4,
-    "inbox": 0
+    "inbox": 0,
+    "in_flight": 5
   }
 }
