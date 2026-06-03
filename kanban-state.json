@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-03T08:56:08-04:00",
+  "generated_at": "2026-06-03T08:56:39-04:00",
   "db_path": "/Users/alfredpennyworth/.hermes/kanban.db",
   "lanes": {
     "blocked": [
@@ -20,6 +20,27 @@
         "source": "inbox-poller",
         "created_at": "2026-06-03T08:48:56-04:00",
         "updated_at": "2026-06-03T08:49:16-04:00"
+      }
+    ],
+    "inbox": [],
+    "in_flight": [
+      {
+        "task_id": "392-install-watcher-plus-restart-wolf-updater",
+        "title": "Task 392 \u2014 Install dashboard-deploy-watcher + diagnose+restart com.bobby.wolf.data-updater",
+        "lane": "in_flight",
+        "report_path": null,
+        "source": "inbox-poller",
+        "created_at": "2026-06-03T08:54:30-04:00",
+        "updated_at": "2026-06-03T08:54:30-04:00"
+      },
+      {
+        "task_id": "391-find-wolf-data-writer",
+        "title": "Task 391 \u2014 Find the wolf_live_data.json writer + why it died Jun 1 14:14",
+        "lane": "in_flight",
+        "report_path": null,
+        "source": "inbox-poller",
+        "created_at": "2026-06-03T08:52:28-04:00",
+        "updated_at": "2026-06-03T08:52:28-04:00"
       }
     ],
     "done": [
@@ -473,33 +494,12 @@
         "created_at": "2026-06-03T12:28:43+00:00",
         "updated_at": "2026-06-03T12:28:43+00:00"
       }
-    ],
-    "in_flight": [
-      {
-        "task_id": "392-install-watcher-plus-restart-wolf-updater",
-        "title": "Task 392 \u2014 Install dashboard-deploy-watcher + diagnose+restart com.bobby.wolf.data-updater",
-        "lane": "in_flight",
-        "report_path": null,
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T08:54:30-04:00",
-        "updated_at": "2026-06-03T08:54:30-04:00"
-      },
-      {
-        "task_id": "391-find-wolf-data-writer",
-        "title": "Task 391 \u2014 Find the wolf_live_data.json writer + why it died Jun 1 14:14",
-        "lane": "in_flight",
-        "report_path": null,
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T08:52:28-04:00",
-        "updated_at": "2026-06-03T08:52:28-04:00"
-      }
-    ],
-    "inbox": []
+    ]
   },
   "counts": {
     "blocked": 2,
-    "done": 50,
+    "inbox": 0,
     "in_flight": 2,
-    "inbox": 0
+    "done": 50
   }
 }
