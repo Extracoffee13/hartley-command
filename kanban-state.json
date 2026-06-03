@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-03T13:18:46-04:00",
+  "generated_at": "2026-06-03T13:19:18-04:00",
   "db_path": "/Users/alfredpennyworth/.hermes/kanban.db",
   "lanes": {
     "done": [
@@ -456,6 +456,15 @@
     ],
     "in_flight": [
       {
+        "task_id": "422-fix-outdoor-wayfinding-thumbnail",
+        "title": "Task 422 \u2014 Fix missing thumbnail on /product/outdoor-wayfinding-signage/",
+        "lane": "in_flight",
+        "report_path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/hermes-reports/422-fix-outdoor-wayfinding-thumbnail-report.md",
+        "source": "inbox-poller",
+        "created_at": "2026-06-03T13:16:12-04:00",
+        "updated_at": "2026-06-03T13:19:13-04:00"
+      },
+      {
         "task_id": "404-wolf-drain-real-repo-and-patch",
         "title": "Task 404 \u2014 Drain the REAL wolf writer repo + patch line 417 with pull-rebase",
         "lane": "in_flight",
@@ -501,17 +510,7 @@
         "updated_at": "2026-06-03T08:52:28-04:00"
       }
     ],
-    "inbox": [],
     "blocked": [
-      {
-        "task_id": "422-fix-outdoor-wayfinding-thumbnail",
-        "title": "Task 422 \u2014 Fix missing thumbnail on /product/outdoor-wayfinding-signage/",
-        "lane": "blocked",
-        "report_path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/hermes-reports/422-fix-outdoor-wayfinding-thumbnail-report.md",
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T13:16:12-04:00",
-        "updated_at": "2026-06-03T13:17:12-04:00"
-      },
       {
         "task_id": "420-CRITICAL-restore-b9-homepage-via-wpcli-ssh",
         "title": "Task 420 \u2014 CRITICAL \u00b7 Restore B9 homepage via WP-CLI over SSH (bypasses wpautop)",
@@ -602,12 +601,13 @@
         "created_at": "2026-06-03T08:48:56-04:00",
         "updated_at": "2026-06-03T08:49:16-04:00"
       }
-    ]
+    ],
+    "inbox": []
   },
   "counts": {
     "done": 50,
-    "in_flight": 5,
-    "inbox": 0,
-    "blocked": 11
+    "in_flight": 6,
+    "blocked": 10,
+    "inbox": 0
   }
 }
