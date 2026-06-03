@@ -1,8 +1,45 @@
 {
-  "generated_at": "2026-06-03T10:14:08-04:00",
+  "generated_at": "2026-06-03T10:14:43-04:00",
   "db_path": "/Users/alfredpennyworth/.hermes/kanban.db",
   "lanes": {
-    "inbox": [],
+    "blocked": [
+      {
+        "task_id": "386-kanban-bootstrap-and-wolf-audit",
+        "title": "Task 386 \u2014 Kanban bootstrap + WOLF dashboard staleness audit",
+        "lane": "blocked",
+        "report_path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/hermes-reports/386-kanban-bootstrap-and-wolf-audit-report.md",
+        "source": "inbox-poller",
+        "created_at": "2026-06-03T12:28:24+00:00",
+        "updated_at": "2026-06-03T12:28:53+00:00"
+      },
+      {
+        "task_id": "400-wolf-alpaca-restart-non-blocking",
+        "title": "Task 400 \u2014 Restart com.bobby.wolf.data-updater (non-blocking, no test-fire)",
+        "lane": "blocked",
+        "report_path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/hermes-reports/400-wolf-alpaca-restart-non-blocking-report.md",
+        "source": "inbox-poller",
+        "created_at": "2026-06-03T09:44:24-04:00",
+        "updated_at": "2026-06-03T09:45:24-04:00"
+      },
+      {
+        "task_id": "392-install-watcher-plus-restart-wolf-updater",
+        "title": "Task 392 \u2014 Install dashboard-deploy-watcher + diagnose+restart com.bobby.wolf.data-updater",
+        "lane": "blocked",
+        "report_path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/hermes-reports/392-install-watcher-plus-restart-wolf-updater-report.md",
+        "source": "inbox-poller",
+        "created_at": "2026-06-03T08:54:30-04:00",
+        "updated_at": "2026-06-03T09:04:39-04:00"
+      },
+      {
+        "task_id": "390-wolf-real-repo-and-alpaca-diagnose",
+        "title": "Task 390 \u2014 Open the REAL WOLF Command Center + find Alpaca updater + diagnose stall",
+        "lane": "blocked",
+        "report_path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/hermes-reports/390-wolf-real-repo-and-alpaca-diagnose-report.md",
+        "source": "inbox-poller",
+        "created_at": "2026-06-03T08:48:56-04:00",
+        "updated_at": "2026-06-03T08:49:16-04:00"
+      }
+    ],
     "done": [
       {
         "task_id": "387-v4-push-with-kanban-plus-wolf-bridge-fix",
@@ -455,44 +492,6 @@
         "updated_at": "2026-06-03T12:28:43+00:00"
       }
     ],
-    "blocked": [
-      {
-        "task_id": "386-kanban-bootstrap-and-wolf-audit",
-        "title": "Task 386 \u2014 Kanban bootstrap + WOLF dashboard staleness audit",
-        "lane": "blocked",
-        "report_path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/hermes-reports/386-kanban-bootstrap-and-wolf-audit-report.md",
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T12:28:24+00:00",
-        "updated_at": "2026-06-03T12:28:53+00:00"
-      },
-      {
-        "task_id": "400-wolf-alpaca-restart-non-blocking",
-        "title": "Task 400 \u2014 Restart com.bobby.wolf.data-updater (non-blocking, no test-fire)",
-        "lane": "blocked",
-        "report_path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/hermes-reports/400-wolf-alpaca-restart-non-blocking-report.md",
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T09:44:24-04:00",
-        "updated_at": "2026-06-03T09:45:24-04:00"
-      },
-      {
-        "task_id": "392-install-watcher-plus-restart-wolf-updater",
-        "title": "Task 392 \u2014 Install dashboard-deploy-watcher + diagnose+restart com.bobby.wolf.data-updater",
-        "lane": "blocked",
-        "report_path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/hermes-reports/392-install-watcher-plus-restart-wolf-updater-report.md",
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T08:54:30-04:00",
-        "updated_at": "2026-06-03T09:04:39-04:00"
-      },
-      {
-        "task_id": "390-wolf-real-repo-and-alpaca-diagnose",
-        "title": "Task 390 \u2014 Open the REAL WOLF Command Center + find Alpaca updater + diagnose stall",
-        "lane": "blocked",
-        "report_path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/hermes-reports/390-wolf-real-repo-and-alpaca-diagnose-report.md",
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T08:48:56-04:00",
-        "updated_at": "2026-06-03T08:49:16-04:00"
-      }
-    ],
     "in_flight": [
       {
         "task_id": "404-wolf-drain-real-repo-and-patch",
@@ -539,12 +538,13 @@
         "created_at": "2026-06-03T08:52:28-04:00",
         "updated_at": "2026-06-03T08:52:28-04:00"
       }
-    ]
+    ],
+    "inbox": []
   },
   "counts": {
-    "inbox": 0,
-    "done": 50,
     "blocked": 4,
-    "in_flight": 5
+    "done": 50,
+    "in_flight": 5,
+    "inbox": 0
   }
 }
