@@ -1,8 +1,17 @@
 {
-  "generated_at": "2026-06-03T13:19:18-04:00",
+  "generated_at": "2026-06-03T13:19:50-04:00",
   "db_path": "/Users/alfredpennyworth/.hermes/kanban.db",
   "lanes": {
     "done": [
+      {
+        "task_id": "422-fix-outdoor-wayfinding-thumbnail",
+        "title": "Task 422 \u2014 Fix missing thumbnail on /product/outdoor-wayfinding-signage/",
+        "lane": "done",
+        "report_path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/hermes-reports/422-fix-outdoor-wayfinding-thumbnail-report.md",
+        "source": "inbox-poller",
+        "created_at": "2026-06-03T13:16:12-04:00",
+        "updated_at": "2026-06-03T13:19:35-04:00"
+      },
       {
         "task_id": "387-v4-push-with-kanban-plus-wolf-bridge-fix",
         "title": "Task 387 \u2014 Push V4 with KanbanStrip + fix WOLF state bridge to dashboards-deploy",
@@ -443,27 +452,9 @@
         "source": "inbox-poller",
         "created_at": "2026-06-03T12:28:44+00:00",
         "updated_at": "2026-06-03T12:28:44+00:00"
-      },
-      {
-        "task_id": "385-kanban-db-and-cli-surface",
-        "title": "Task 385 \u2014 Kanban DB location + CLI surface",
-        "lane": "done",
-        "report_path": null,
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T12:28:43+00:00",
-        "updated_at": "2026-06-03T12:28:43+00:00"
       }
     ],
     "in_flight": [
-      {
-        "task_id": "422-fix-outdoor-wayfinding-thumbnail",
-        "title": "Task 422 \u2014 Fix missing thumbnail on /product/outdoor-wayfinding-signage/",
-        "lane": "in_flight",
-        "report_path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/hermes-reports/422-fix-outdoor-wayfinding-thumbnail-report.md",
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T13:16:12-04:00",
-        "updated_at": "2026-06-03T13:19:13-04:00"
-      },
       {
         "task_id": "404-wolf-drain-real-repo-and-patch",
         "title": "Task 404 \u2014 Drain the REAL wolf writer repo + patch line 417 with pull-rebase",
@@ -510,6 +501,7 @@
         "updated_at": "2026-06-03T08:52:28-04:00"
       }
     ],
+    "inbox": [],
     "blocked": [
       {
         "task_id": "420-CRITICAL-restore-b9-homepage-via-wpcli-ssh",
@@ -601,13 +593,12 @@
         "created_at": "2026-06-03T08:48:56-04:00",
         "updated_at": "2026-06-03T08:49:16-04:00"
       }
-    ],
-    "inbox": []
+    ]
   },
   "counts": {
     "done": 50,
-    "in_flight": 6,
-    "blocked": 10,
-    "inbox": 0
+    "in_flight": 5,
+    "inbox": 0,
+    "blocked": 10
   }
 }
