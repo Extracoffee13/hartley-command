@@ -1,21 +1,58 @@
 {
-  "generated_at": "2026-06-03T12:28:49+00:00",
+  "generated_at": "2026-06-03T08:54:31-04:00",
   "db_path": "/Users/alfredpennyworth/.hermes/kanban.db",
   "lanes": {
-    "inbox": [
+    "in_flight": [
+      {
+        "task_id": "392-install-watcher-plus-restart-wolf-updater",
+        "title": "Task 392 \u2014 Install dashboard-deploy-watcher + diagnose+restart com.bobby.wolf.data-updater",
+        "lane": "in_flight",
+        "report_path": null,
+        "source": "inbox-poller",
+        "created_at": "2026-06-03T08:54:30-04:00",
+        "updated_at": "2026-06-03T08:54:30-04:00"
+      },
+      {
+        "task_id": "391-find-wolf-data-writer",
+        "title": "Task 391 \u2014 Find the wolf_live_data.json writer + why it died Jun 1 14:14",
+        "lane": "in_flight",
+        "report_path": null,
+        "source": "inbox-poller",
+        "created_at": "2026-06-03T08:52:28-04:00",
+        "updated_at": "2026-06-03T08:52:28-04:00"
+      }
+    ],
+    "inbox": [],
+    "blocked": [
       {
         "task_id": "386-kanban-bootstrap-and-wolf-audit",
         "title": "Task 386 \u2014 Kanban bootstrap + WOLF dashboard staleness audit",
-        "lane": "inbox",
-        "report_path": null,
+        "lane": "blocked",
+        "report_path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/hermes-reports/386-kanban-bootstrap-and-wolf-audit-report.md",
         "source": "inbox-poller",
         "created_at": "2026-06-03T12:28:24+00:00",
-        "updated_at": "2026-06-03T12:28:43+00:00"
+        "updated_at": "2026-06-03T12:28:53+00:00"
+      },
+      {
+        "task_id": "390-wolf-real-repo-and-alpaca-diagnose",
+        "title": "Task 390 \u2014 Open the REAL WOLF Command Center + find Alpaca updater + diagnose stall",
+        "lane": "blocked",
+        "report_path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/hermes-reports/390-wolf-real-repo-and-alpaca-diagnose-report.md",
+        "source": "inbox-poller",
+        "created_at": "2026-06-03T08:48:56-04:00",
+        "updated_at": "2026-06-03T08:49:16-04:00"
       }
     ],
-    "blocked": [],
-    "in_flight": [],
     "done": [
+      {
+        "task_id": "387-v4-push-with-kanban-plus-wolf-bridge-fix",
+        "title": "Task 387 \u2014 Push V4 with KanbanStrip + fix WOLF state bridge to dashboards-deploy",
+        "lane": "done",
+        "report_path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/hermes-reports/387-v4-push-with-kanban-plus-wolf-bridge-fix-report.md",
+        "source": "inbox-poller",
+        "created_at": "2026-06-03T12:30:33+00:00",
+        "updated_at": "2026-06-03T12:36:36+00:00"
+      },
       {
         "task_id": "87-deploy-pragma-via-ssh-correct-path",
         "title": "Task 87 \u2014 Deploy prag-ma.ai via SSH/rsync (correct path \u00b7 task 86 was wrong)",
@@ -456,22 +493,13 @@
         "source": "inbox-poller",
         "created_at": "2026-06-03T12:28:43+00:00",
         "updated_at": "2026-06-03T12:28:43+00:00"
-      },
-      {
-        "task_id": "383-probe-kanban-cli-and-wolf-state",
-        "title": "Task 383 \u2014 Probe Hermes kanban CLI surface + WOLF state freshness",
-        "lane": "done",
-        "report_path": null,
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T12:28:43+00:00",
-        "updated_at": "2026-06-03T12:28:43+00:00"
       }
     ]
   },
   "counts": {
-    "inbox": 1,
-    "blocked": 0,
-    "in_flight": 0,
+    "in_flight": 2,
+    "inbox": 0,
+    "blocked": 2,
     "done": 50
   }
 }
