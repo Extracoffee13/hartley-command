@@ -1408,6 +1408,82 @@ const ChernyAnchor = () => (
   </div>
 );
 
+// KANBAN STRIP — live Hermes kanban board state (2026-06-03)
+// Reads /kanban-state.json (written by kanban_bridge.py via inbox-poller hook)
+const KanbanStrip = () => {
+  const [data, setData] = React.useState(null);
+  const [err, setErr] = React.useState(null);
+  React.useEffect(() => {
+    fetch('./kanban-state.json?cb=' + Date.now())
+      .then(r => r.ok ? r.json() : Promise.reject('http ' + r.status))
+      .then(d => setData(d))
+      .catch(e => setErr(String(e)));
+    const t = setInterval(() => {
+      fetch('./kanban-state.json?cb=' + Date.now())
+        .then(r => r.ok ? r.json() : null).then(d => d && setData(d)).catch(()=>{});
+    }, 60000);
+    return () => clearInterval(t);
+  }, []);
+
+  const lanes = [
+    { key: 'inbox', label: 'INBOX', color: C.greenDim },
+    { key: 'in_flight', label: 'IN-FLIGHT', color: C.cyan },
+    { key: 'blocked', label: 'BLOCKED', color: C.red },
+    { key: 'done', label: 'DONE', color: C.green },
+  ];
+  const counts = data?.counts || {};
+  const total = Object.values(counts).reduce((a,b) => a+b, 0);
+  const freshness = data?.generated_at ? new Date(data.generated_at) : null;
+  const ageMin = freshness ? Math.round((Date.now() - freshness.getTime()) / 60000) : null;
+  const fresh = ageMin !== null && ageMin < 10;
+
+  return (
+    <div style={{ margin: "20px 28px", border: `2px solid ${C.cyan}`, padding: 16, background: "rgba(0,212,255,0.04)" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 12 }}>
+        <div>
+          <div style={{ fontSize: 10, color: C.cyan, letterSpacing: 4 }}>⌬ KANBAN · Hermes-Agent native · 2026-06-03</div>
+          <div style={{ fontSize: 14, color: C.cyan, fontWeight: 700, marginTop: 4 }}>
+            Inbox → In-Flight → Blocked / Done · {total} cards total
+          </div>
+        </div>
+        <div style={{ fontSize: 9, color: fresh ? C.green : C.orange, letterSpacing: 1 }}>
+          {err ? `STATE FILE MISSING — ${err}` : (
+            ageMin === null ? "loading…" :
+            fresh ? `🟢 LIVE · refreshed ${ageMin}m ago` :
+                    `🟠 SNAPSHOT · ${ageMin}m old`
+          )}
+        </div>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }}>
+        {lanes.map(L => {
+          const cards = (data?.lanes?.[L.key] || []).slice(0, 8);
+          return (
+            <div key={L.key} style={{ border: `1px solid ${L.color}`, padding: 10, background: "rgba(0,0,0,0.3)" }}>
+              <div style={{ fontSize: 10, color: L.color, letterSpacing: 3, marginBottom: 8, display: "flex", justifyContent: "space-between" }}>
+                <span>{L.label}</span>
+                <span style={{ fontWeight: 700 }}>{counts[L.key] ?? 0}</span>
+              </div>
+              {cards.length === 0 && <div style={{ fontSize: 9, color: C.greenDim, opacity: 0.5 }}>—</div>}
+              {cards.map(c => (
+                <div key={c.task_id} style={{ fontSize: 9, color: C.greenDim, lineHeight: 1.4, marginBottom: 6, opacity: 0.85 }}>
+                  <div style={{ color: L.color, fontWeight: 500 }}>{c.task_id.split('-')[0]}</div>
+                  <div>{(c.title || c.task_id).slice(0, 60)}</div>
+                </div>
+              ))}
+              {counts[L.key] > 8 && (
+                <div style={{ fontSize: 8, color: L.color, opacity: 0.6, marginTop: 4 }}>+{counts[L.key] - 8} more</div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+      <div style={{ fontSize: 8, color: C.cyan, opacity: 0.55, marginTop: 10, letterSpacing: 1 }}>
+        Source: ~/.hermes/kanban.db (SQLite) · Bridge: /Atlas/hermes-sandbox/lib/kanban_bridge.py · Refresh: every 60s
+      </div>
+    </div>
+  );
+};
+
 const LeoWolfStrip = () => (
   <div style={{ margin: "20px 28px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
     <div style={{ border: `2px solid ${C.gold}`, padding: 16, background: "rgba(255,215,0,0.04)" }}>
@@ -1543,6 +1619,7 @@ const Dashboard = () => (
       <LiveDataFeed />
       <PragmaPanel />
       <ChernyAnchor />
+      <KanbanStrip />
       <LeoWolfStrip />
       <FoundationPanel />
       <Footer />
