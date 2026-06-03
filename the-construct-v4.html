@@ -1025,6 +1025,10 @@ const WILD_DUCKS = [
   // AUTO-SYNC 2026-06-02 — added by dashboard-autosync Wild Duck
   { name: "thinker-corpus-builder", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-06-02", task: "autosync",
     skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/thinker-corpus-builder/ for detail"] },
+
+  // AUTO-SYNC 2026-06-03 — added by dashboard-autosync Wild Duck
+  { name: "dashboard-deploy-watcher", phase: 3, status: "spec", score: 18, domain: "auto-detected on disk · no heartbeat 2026-06-03", task: "autosync",
+    skills: ["auto-registered by dashboard-autosync", "see /Atlas/hermes-sandbox/wild-ducks/dashboard-deploy-watcher/ for detail"] },
 ];
 
 // CALLS — the operational substrate · cron monitors · dispatchers · daemons
@@ -1436,6 +1440,8 @@ const KanbanStrip = () => {
   const freshness = data?.generated_at ? new Date(data.generated_at) : null;
   const ageMin = freshness ? Math.round((Date.now() - freshness.getTime()) / 60000) : null;
   const fresh = ageMin !== null && ageMin < 10;
+  // ET-localized display per locked Eastern-Time-everywhere rule
+  const etTime = freshness ? freshness.toLocaleString("en-US", { timeZone: "America/New_York", hour: "2-digit", minute: "2-digit", hour12: false }) : null;
 
   return (
     <div style={{ margin: "20px 28px", border: `2px solid ${C.cyan}`, padding: 16, background: "rgba(0,212,255,0.04)" }}>
@@ -1449,8 +1455,8 @@ const KanbanStrip = () => {
         <div style={{ fontSize: 9, color: fresh ? C.green : C.orange, letterSpacing: 1 }}>
           {err ? `STATE FILE MISSING — ${err}` : (
             ageMin === null ? "loading…" :
-            fresh ? `🟢 LIVE · refreshed ${ageMin}m ago` :
-                    `🟠 SNAPSHOT · ${ageMin}m old`
+            fresh ? `🟢 LIVE · ${etTime} ET · refreshed ${ageMin}m ago` :
+                    `🟠 SNAPSHOT · ${etTime} ET · ${ageMin}m old`
           )}
         </div>
       </div>
