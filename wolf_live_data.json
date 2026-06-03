@@ -1,0 +1,408 @@
+{
+  "last_updated": "2026-06-03T08:34:27.021385",
+  "update_interval_seconds": 300,
+  "account": {
+    "portfolio_value": 109689.71,
+    "cash": -100545.31,
+    "buying_power": 9144.4,
+    "equity": 109689.71,
+    "last_equity": 110354.87,
+    "unrealized_pl": 0.0,
+    "unrealized_plpc": 0.0,
+    "status": "ACTIVE"
+  },
+  "daily_pnl": {
+    "amount": -665.16,
+    "pct": -0.006,
+    "circuit_breaker_status": "yellow",
+    "circuit_breaker_message": "MANUAL HALT \u2014 WOLF mandate v1.0 enforcement \u2014 portfolio non-compliant (PLTR 47.6%, NVDA/MSFT/TSLA/JPM each over 8%, MDT 25%, cash -$100K margin). Auto-rebalance fires at next market-open via wolf-task-runner.sh \u2192 mandate_rebalance.py. halt_new_entries clears after compliance achieved. Now preserved across polls (poll updated 2026-05-13)."
+  },
+  "weekly_pnl": {
+    "amount": 6547.52,
+    "pct": 0.0643
+  },
+  "positions": [
+    {
+      "ticker": "JPM",
+      "qty": 76.0,
+      "side": "long",
+      "avg_entry": 306.73,
+      "current_price": 298.2,
+      "market_value": 22663.2,
+      "unrealized_pl": -648.28,
+      "unrealized_plpc": -0.02781,
+      "cost_basis": 23311.48
+    },
+    {
+      "ticker": "MDT",
+      "qty": 333.0,
+      "side": "long",
+      "avg_entry": 75.842613,
+      "current_price": 76.685,
+      "market_value": 25536.105,
+      "unrealized_pl": 280.514871,
+      "unrealized_plpc": 0.01111,
+      "cost_basis": 25255.590129
+    },
+    {
+      "ticker": "MSFT",
+      "qty": 63.0,
+      "side": "long",
+      "avg_entry": 421.673333,
+      "current_price": 439.25,
+      "market_value": 27672.75,
+      "unrealized_pl": 1107.330021,
+      "unrealized_plpc": 0.04168,
+      "cost_basis": 26565.419979
+    },
+    {
+      "ticker": "NVDA",
+      "qty": 124.0,
+      "side": "long",
+      "avg_entry": 207.39,
+      "current_price": 222.96,
+      "market_value": 27647.04,
+      "unrealized_pl": 1930.68,
+      "unrealized_plpc": 0.07508,
+      "cost_basis": 25716.36
+    },
+    {
+      "ticker": "PLTR",
+      "qty": 364.0,
+      "side": "long",
+      "avg_entry": 136.767115,
+      "current_price": 150.6,
+      "market_value": 54818.4,
+      "unrealized_pl": 5035.17014,
+      "unrealized_plpc": 0.10114,
+      "cost_basis": 49783.22986
+    },
+    {
+      "ticker": "TSLA",
+      "qty": 66.0,
+      "side": "long",
+      "avg_entry": 442.450455,
+      "current_price": 419.4284,
+      "market_value": 27682.2744,
+      "unrealized_pl": -1519.45563,
+      "unrealized_plpc": -0.05203,
+      "cost_basis": 29201.73003
+    },
+    {
+      "ticker": "XLE",
+      "qty": 415.0,
+      "side": "long",
+      "avg_entry": 56.408675,
+      "current_price": 58.35,
+      "market_value": 24215.25,
+      "unrealized_pl": 805.649875,
+      "unrealized_plpc": 0.03442,
+      "cost_basis": 23409.600125
+    }
+  ],
+  "todays_trades": [],
+  "strategy_performance": {
+    "small_cap_catalyst": {
+      "name": "Small Cap Catalyst",
+      "status": "ACTIVE",
+      "trades_today": 0,
+      "wins_today": 0,
+      "losses_today": 0,
+      "pnl_today": 0.0,
+      "win_rate_all_time": 0.607,
+      "sharpe_backtest": 1.5,
+      "max_dd_backtest": -0.033,
+      "profit_factor": 3.59,
+      "data_source": "real_alpaca",
+      "code_path": "strategies/small_cap_catalyst.py (legacy strategies.py)",
+      "wired_into_scan": true
+    },
+    "pead": {
+      "name": "PEAD (Post-Earnings Announcement Drift)",
+      "status": "ACTIVE",
+      "trades_today": 0,
+      "wins_today": 0,
+      "losses_today": 0,
+      "pnl_today": 0.0,
+      "win_rate_all_time": null,
+      "sharpe_backtest": 1.76,
+      "max_dd_backtest": -0.125,
+      "profit_factor": null,
+      "data_source": "real_alpaca",
+      "code_path": "strategies/pead.py",
+      "wired_into_scan": true,
+      "academic_source": "Bernard & Thomas (1989)"
+    },
+    "breakout_52w": {
+      "name": "52-Week High Breakout",
+      "status": "ACTIVE",
+      "trades_today": 0,
+      "wins_today": 0,
+      "losses_today": 0,
+      "pnl_today": 0.0,
+      "win_rate_all_time": null,
+      "sharpe_backtest": 1.91,
+      "max_dd_backtest": -0.068,
+      "profit_factor": null,
+      "data_source": "real_alpaca",
+      "code_path": "strategies/breakout_52w.py",
+      "wired_into_scan": true,
+      "academic_source": "George & Hwang (2004)",
+      "note": "BEST IN PORTFOLIO"
+    },
+    "congress_follower": {
+      "name": "Congressional Trade Follower",
+      "status": "ACTIVE_PARTIAL \u2014 trade-level data flowing via PDF parser; member-track-record weighting deferred",
+      "trades_today": 0,
+      "wins_today": 0,
+      "losses_today": 0,
+      "pnl_today": 0.0,
+      "win_rate_all_time": null,
+      "sharpe_backtest": null,
+      "max_dd_backtest": null,
+      "profit_factor": null,
+      "data_source": "House Clerk PTR PDFs + SEC company_tickers.json (both free, real-time)",
+      "code_path": "strategies/congress_follower.py + congressional_ptr_parser.py (NEW 2026-05-06)",
+      "wired_into_scan": true,
+      "academic_source": "Ziobrowski et al. (2004, 2011)",
+      "note": "BLOCKED resolved 2026-05-06: built congressional_ptr_parser.py to extract ticker+amount from House PTR PDFs (free, replaces paid Quiver). Tested on last 30d: 5 qualifying \u2265$50K equity buys, including Josh Gottheimer's MSFT $500K options buy 3/25. Member-track-record filter (Sharpe vs SPX) is enhancement for later.",
+      "blocker_action": null
+    },
+    "cross_sectional_momentum": {
+      "name": "Cross-Sectional Momentum",
+      "status": "PENDING_BACKTEST",
+      "trades_today": 0,
+      "wins_today": 0,
+      "losses_today": 0,
+      "pnl_today": 0.0,
+      "win_rate_all_time": null,
+      "sharpe_backtest": null,
+      "max_dd_backtest": null,
+      "profit_factor": null,
+      "data_source": null,
+      "code_path": "strategies/cross_sectional_momentum.py",
+      "wired_into_scan": false,
+      "note": "Coded 2026-04-30. Needs backtest + paper-trade gate before activation."
+    },
+    "insider_cluster_form4": {
+      "name": "Insider Cluster (Form 4)",
+      "status": "ACTIVE",
+      "trades_today": 0,
+      "wins_today": 0,
+      "losses_today": 0,
+      "pnl_today": 0.0,
+      "win_rate_all_time": null,
+      "sharpe_backtest": 1.86,
+      "max_dd_backtest": -0.216,
+      "profit_factor": null,
+      "data_source": "synthetic backtest (proxy: price+volume jumps for insider buy events)",
+      "code_path": "strategies/insider_cluster_form4.py",
+      "wired_into_scan": true,
+      "note": "Backtest 2026-05-06: 2663 trades over 2y, Sharpe 1.86, Max DD -21.6%, Return +232.8%. Live data via SEC EDGAR Form 4 RSS (free, real-time, 10 req/s rate limit). HIGH SIGNAL VOLUME.",
+      "academic_source": "Cohen, Malloy, Pomorski (2012)"
+    },
+    "mean_reversion_bb_rsi": {
+      "name": "Mean Reversion (BB + RSI)",
+      "status": "DISABLED \u2014 Sharpe -1.63, Max DD -78.9% (real backtest 2026-05-06)",
+      "trades_today": 0,
+      "wins_today": 0,
+      "losses_today": 0,
+      "pnl_today": 0.0,
+      "win_rate_all_time": null,
+      "sharpe_backtest": -1.63,
+      "max_dd_backtest": -0.789,
+      "profit_factor": null,
+      "data_source": null,
+      "code_path": "strategies/mean_reversion_bb_rsi.py",
+      "wired_into_scan": false,
+      "note": "Backtest 2026-05-06: 2383 trades, blew up to -78.9% return. Bollinger/RSI mean reversion fights trend on this universe. DO NOT ACTIVATE without redesign \u2014 possible fix: regime-filter (only trade during VIX < 20)."
+    },
+    "overnight_gap_reversal": {
+      "name": "Overnight Gap Reversal",
+      "status": "DISABLED \u2014 Sharpe -4.85, Max DD -100% (real backtest 2026-05-06)",
+      "trades_today": 0,
+      "wins_today": 0,
+      "losses_today": 0,
+      "pnl_today": 0.0,
+      "win_rate_all_time": null,
+      "sharpe_backtest": -4.85,
+      "max_dd_backtest": -1.0,
+      "profit_factor": null,
+      "data_source": null,
+      "code_path": "strategies/overnight_gap_reversal.py",
+      "wired_into_scan": false,
+      "note": "Backtest 2026-05-06: 1763 trades, total wipeout. Gap-fade strategy doesn't survive. DO NOT ACTIVATE \u2014 fundamental edge thesis appears wrong on liquid mid-large caps."
+    },
+    "sector_etf_rotation": {
+      "name": "Sector ETF Rotation",
+      "status": "ACTIVE",
+      "trades_today": 0,
+      "wins_today": 0,
+      "losses_today": 0,
+      "pnl_today": 0.0,
+      "win_rate_all_time": null,
+      "sharpe_backtest": 1.69,
+      "max_dd_backtest": -0.071,
+      "profit_factor": null,
+      "data_source": "Alpaca IEX (SPDR sector ETFs)",
+      "code_path": "strategies/sector_etf_rotation.py",
+      "wired_into_scan": true,
+      "note": "Backtest 2026-05-06: 315 trades over 2y, Sharpe 1.69, Max DD -7.1%, Return +73.2%. Top-3 of 11 SPDR sectors by 20d momentum, weekly Friday rebalance.",
+      "academic_source": "Faber 10-month MA momentum"
+    },
+    "pead_options": {
+      "name": "PEAD on Options",
+      "status": "PAPER_PENDING \u2014 paper-trade only until 30 days of real option fills inform Sharpe",
+      "trades_today": 0,
+      "wins_today": 0,
+      "losses_today": 0,
+      "pnl_today": 0.0,
+      "win_rate_all_time": null,
+      "sharpe_backtest": null,
+      "max_dd_backtest": null,
+      "profit_factor": null,
+      "data_source": "Alpaca paper options + same gap-up proxy as pead",
+      "code_path": "strategies/pead_options.py (NEW 2026-05-06)",
+      "wired_into_scan": false,
+      "academic_source": "Bernard & Thomas (1989) \u2014 drift edge applied to leveraged option contract",
+      "note": "Built 2026-05-06. Same signal trigger as pead (Sharpe 1.76); buys 30-DTE 5%-OTM call instead of stock. Defined-risk leverage 3-5x. Paper-trade only until Alpaca paper records 30 days of real option fills, then evaluate Sharpe vs stock-PEAD. Position size capped at 1% portfolio per trade."
+    }
+  },
+  "circuit_breaker": {
+    "status": "yellow",
+    "daily_triggered": false,
+    "weekly_triggered": false,
+    "halt_new_entries": true,
+    "halt_all_activity": false,
+    "message": "MANUAL HALT \u2014 WOLF mandate v1.0 enforcement \u2014 portfolio non-compliant (PLTR 47.6%, NVDA/MSFT/TSLA/JPM each over 8%, MDT 25%, cash -$100K margin). Auto-rebalance fires at next market-open via wolf-task-runner.sh \u2192 mandate_rebalance.py. halt_new_entries clears after compliance achieved. Now preserved across polls (poll updated 2026-05-13).",
+    "halt_reason": "WOLF mandate v1.0 enforcement \u2014 portfolio non-compliant (PLTR 47.6%, NVDA/MSFT/TSLA/JPM each over 8%, MDT 25%, cash -$100K margin). Auto-rebalance fires at next market-open via wolf-task-runner.sh \u2192 mandate_rebalance.py. halt_new_entries clears after compliance achieved. Now preserved across polls (poll updated 2026-05-13).",
+    "halt_until": "post-rebalance"
+  },
+  "backtest": {
+    "last_run_date": "2026-04-07",
+    "data_source": "REAL \u2014 Alpaca IEX feed (2024-04-07 to 2026-04-07)",
+    "strategies_passed": 1,
+    "strategies_failed": 7,
+    "best_strategy": "Small Cap Catalyst",
+    "best_sharpe": 1.5,
+    "report_path": "backtest/results/real_backtest_2026-04-07.md",
+    "note": "Real data sharpe ratios 45-61% lower than synthetic. Only Small Cap Catalyst passes."
+  },
+  "market_regime": {
+    "current": "UNKNOWN",
+    "vix": null,
+    "spy_trend": null,
+    "last_assessed": null
+  },
+  "wolf_status": {
+    "mode": "PAPER",
+    "phase": "Mandate v1.0 enforced \u00b7 paper through 2026-06-05",
+    "approved_strategies": 3,
+    "disabled_strategies": 7,
+    "approved_strategy_names": [
+      "Small Cap Catalyst",
+      "PEAD",
+      "52-Week High Breakout"
+    ],
+    "real_backtest_complete": true,
+    "total_trades_all_time": 5,
+    "total_pnl_all_time": 50.09,
+    "win_rate_all_time": 0.0,
+    "mandate_v1_status": "ENFORCED \u2014 gate active, rebalance pending at next market-open",
+    "mandate_enforcement_wired_date": "2026-05-13",
+    "day_60_reassess_date": "2026-06-05"
+  },
+  "wolf_capabilities": {
+    "capability_score": 51,
+    "score_max": 100,
+    "day_on_mission": 57,
+    "mission_start": "2026-04-08",
+    "streak_days": 57,
+    "totals": {
+      "scripts": 58,
+      "core_modules": 14,
+      "root_scripts": 7,
+      "command_files": 30,
+      "backtest_utils": 7,
+      "strategies_known": 18,
+      "strategies_implemented": 3,
+      "committee_personas": 12,
+      "open_trades": 5,
+      "lessons_learned": 23,
+      "skills_acquired": 3,
+      "backtests_run": 1,
+      "improvement_cycles": 3,
+      "streak_days": 7,
+      "free_data_sources": 5
+    },
+    "latest_improvement": {
+      "name": "Mandate v1.0 enforcement wired",
+      "description": "mandate_gate.py blocks any signal that would breach 8%/15% caps before committee votes. mandate_rebalance.py auto-trims existing violations at next market-open. wolf_data_updater.py preserves manual halt state across polls. WOLF now operates under math-driven sizing, not feeling.",
+      "date": "2026-05-13"
+    },
+    "recent_lessons": [
+      {
+        "date": "2026-05-13",
+        "lesson": "Mandate enforcement must be MECHANICAL, not advisory. Writing a mandate document and not wiring pre-trade gates means new violations (e.g., MDT 24% entry) keep firing under the old strategy logic. The gate has to live in the runner."
+      },
+      {
+        "date": "2026-05-12",
+        "lesson": "Generational wealth requires 8% single-name cap + 60-70% vault floor + zero margin. Concentration on margin is the failure mode generational wealth must not have. A 50% loss requires a 100% gain to recover."
+      },
+      {
+        "date": "2026-05-12",
+        "lesson": "Paper trading window extended 30 \u2192 60 days. The Day-30 reassess fired 5/7 but did not graduate. Day-60 reassess (2026-06-05) is the next forcing function."
+      },
+      {
+        "date": "2026-05-05",
+        "lesson": "Indexed 61 lessons across 3 files. Local-only capability proves loop survives offline data sources."
+      },
+      {
+        "date": "2026-04-08",
+        "lesson": "WOLF can now enumerate his own 14 scripts for self-aware planning."
+      }
+    ],
+    "real_money_unlocked": false,
+    "unlock_threshold": {
+      "capability_score": 80,
+      "consecutive_profitable_weeks": 4,
+      "max_drawdown_pct": 5.0
+    },
+    "esoteric_strategies": {
+      "_meta": {
+        "purpose": "WOLF-ORIGINAL strategies developed in-house via open-source research synthesis (arxiv/SSRN/github/reddit/Lens) + cross-agent inputs. Tracked SEPARATELY from the 8 academic-grounded strategies (52-Week Breakout, PEAD, Insider Cluster, Sector Rotation, Small Cap Catalyst, Congress Follower, Cross-Sectional Momentum, PEAD-on-Options) so Bobby can see what WOLF discovered vs what was borrowed from the literature. Status pipeline: research \u2192 backtest \u2192 paper_gate \u2192 small_allocation \u2192 scale.",
+        "schema_per_strategy": {
+          "name": "human-readable strategy name",
+          "code_path": "strategies/esoteric/<file>.py",
+          "status": "research | backtest_pending | paper_pending | paper_active | small_real | full_real | retired",
+          "hypothesis": "one-sentence thesis",
+          "open_source_inspiration": "what arxiv paper, github repo, or research feed inspired this",
+          "cross_agent_inputs": "which Construct agents contribute signals (Lens, Atlas, Louis, etc.)",
+          "backtest_sharpe": "live measurement once backtest runs",
+          "backtest_max_dd": "live measurement",
+          "paper_pnl_to_date": "if paper-trading",
+          "discovered_date": "YYYY-MM-DD",
+          "promoted_date": "YYYY-MM-DD when moved to paper"
+        },
+        "graduation_to_real": "Must pass same gates as academic strategies (Sharpe \u2265 1.0 net, max-DD \u2264 12%, 30 mandate-compliant days). No special pass for being WOLF-original.",
+        "research_cadence": "wolf-tool-discovery fires daily; wolf-esoteric-research fires weekly Sundays to propose 1 new candidate from the week's research digest."
+      },
+      "strategies": [
+        {
+          "name": "Construct Synthesis Signal",
+          "code_path": "strategies/esoteric/construct_synthesis.py",
+          "status": "research",
+          "hypothesis": "The Lens daily intelligence brief synthesizes ~5 patterns per day from institutional research (HBR, MIT Sloan, Wharton, Stratechery, NBER, Fed). When \u22653 institutions converge on the same theme in one week, that's a high-conviction directional signal usable for sector/factor allocation. Bobby's Lens is the moat \u2014 no other quant uses this input.",
+          "open_source_inspiration": "Bobby's own Lens daily-scan output (Atlas/lens-briefs/) \u2014 a proprietary intelligence corpus built from open institutional sources.",
+          "cross_agent_inputs": "Lens (signal generator), Architect (allocation), Keystone (regime context), Helm (agent-economy theme detection).",
+          "backtest_sharpe": null,
+          "backtest_max_dd": null,
+          "paper_pnl_to_date": null,
+          "discovered_date": "2026-05-13",
+          "promoted_date": null,
+          "next_step": "Author construct_synthesis.py: parse Atlas/lens-briefs/*.md, extract pattern statements + routed agents, map to sector/factor ETF universe, backtest 30-day windows over the available Lens corpus."
+        }
+      ]
+    }
+  }
+}
