@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-04T14:29:08-04:00",
+  "generated_at": "2026-06-04T14:29:39-04:00",
   "db_path": "/Users/alfredpennyworth/.hermes/kanban.db",
   "lanes": {
     "done": [
@@ -456,15 +456,6 @@
     ],
     "in_flight": [
       {
-        "task_id": "475-push-pragma-mirror-live",
-        "title": "Task 475 \u2014 Push PRAGMA Mirror tile live + verify",
-        "lane": "in_flight",
-        "report_path": null,
-        "source": "inbox-poller",
-        "created_at": "2026-06-04T14:27:55-04:00",
-        "updated_at": "2026-06-04T14:27:55-04:00"
-      },
-      {
         "task_id": "464-fire-b9-exhaustive-audit",
         "title": "Task 464 \u2014 Fire b9-exhaustive-audit duck + install plist",
         "lane": "in_flight",
@@ -539,6 +530,15 @@
     ],
     "inbox": [],
     "blocked": [
+      {
+        "task_id": "475-push-pragma-mirror-live",
+        "title": "Task 475 \u2014 Push PRAGMA Mirror tile live + verify",
+        "lane": "blocked",
+        "report_path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/hermes-reports/475-push-pragma-mirror-live-report.md",
+        "source": "inbox-poller",
+        "created_at": "2026-06-04T14:27:55-04:00",
+        "updated_at": "2026-06-04T14:29:12-04:00"
+      },
       {
         "task_id": "470-install-official-hermes-desktop",
         "title": "Task 470 \u2014 Install official Nous Research Hermes Desktop",
@@ -768,8 +768,8 @@
   },
   "counts": {
     "done": 50,
-    "in_flight": 9,
+    "in_flight": 8,
     "inbox": 0,
-    "blocked": 25
+    "blocked": 26
   }
 }
