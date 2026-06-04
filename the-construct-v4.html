@@ -930,6 +930,214 @@ const HermesPanel = () => (
 );
 
 // ═══════════════════════════════════════════════════════════════
+// PRAGMA MIRROR — replaces Yoast AI+ Brand Insights ($358.80/yr SaaS)
+// ═══════════════════════════════════════════════════════════════
+// Sourced from /Atlas/pragma/clients/brand9signs/brand-insights/latest.json
+// mirrored to /dashboards-deploy/brand-insights/latest.json on each cycle.
+// Locked 2026-06-04 per Bobby — Path 1: build, don't buy.
+const PragmaMirrorPanel = () => {
+  const [data, setData] = React.useState(null);
+  const [fetched, setFetched] = React.useState(false);
+  React.useEffect(() => {
+    const tryFetch = async () => {
+      const urls = [
+        './brand-insights/latest.json?cb=' + Date.now(),
+        'https://extracoffee13.github.io/dashboards-deploy/brand-insights/latest.json?cb=' + Date.now(),
+      ];
+      for (const u of urls) {
+        try {
+          const r = await fetch(u, { cache: 'no-store' });
+          if (r.ok) { setData(await r.json()); setFetched(true); return; }
+        } catch (e) { /* try next */ }
+      }
+      setFetched(true);
+    };
+    tryFetch();
+  }, []);
+
+  const productName = (data && data.product_name) || "PRAGMA Mirror";
+  const tagline = (data && data.product_tagline) || "See your brand the way AI sees it.";
+  const aiviVal = data && data.aivi && data.aivi.composite;
+  const thresh = (data && data.aivi && data.aivi.color_threshold) || { red_below: 50, yellow_below: 70, green_at_or_above: 70 };
+  const aiviColor = (v) => {
+    if (v === null || v === undefined) return C.greenDim;
+    if (v < thresh.red_below) return "#FF4D4F";
+    if (v < thresh.yellow_below) return "#FFC53D";
+    return C.green;
+  };
+  const sparkline = (data && data.aivi && data.aivi.trend_7day) || [];
+  const surfaces = (data && data.surfaces) || { claude: null, chatgpt: null, gemini: null, perplexity: null, google_ai_overview: null };
+  const sentiment = (data && data.sentiment) || { positive_pct: null, neutral_pct: null, negative_pct: null };
+  const topCitations = (data && data.top_citations) || [];
+  const competitors = (data && data.competitors) || [];
+  const isPending = !data || data.scan_status === "first_scan_pending" || aiviVal === null || aiviVal === undefined;
+  const emptyMsg = (data && data.empty_state_message) || "First scan running — check back after the next 05:30 ET cycle.";
+
+  // Sparkline SVG inline (no chart libs — locked rule)
+  const sparkSvg = () => {
+    if (!sparkline || sparkline.length === 0) {
+      return <div style={{ fontSize: 9, color: C.greenDim, fontStyle: "italic" }}>no trend yet · 7-day sparkline appears after first week</div>;
+    }
+    const w = 220, h = 40;
+    const max = Math.max(...sparkline, 1), min = Math.min(...sparkline, 0);
+    const range = Math.max(max - min, 1);
+    const pts = sparkline.map((v, i) => {
+      const x = (i / Math.max(sparkline.length - 1, 1)) * w;
+      const y = h - ((v - min) / range) * h;
+      return x.toFixed(1) + "," + y.toFixed(1);
+    }).join(" ");
+    return (
+      <svg width={w} height={h} viewBox={"0 0 " + w + " " + h}>
+        <polyline points={pts} fill="none" stroke={C.green} strokeWidth="2" />
+      </svg>
+    );
+  };
+
+  // Surface bar: each surface is a row, name + mentions + ranking pill
+  const surfaceRow = (key, label) => {
+    const s = surfaces[key];
+    const mentions = s ? (s.mentions || 0) : null;
+    const rank = s ? (s.best_ranking || s.ranking || "unranked") : "—";
+    const cited = s ? (s.citations || []).length : 0;
+    return (
+      <div key={key} style={{ display: "grid", gridTemplateColumns: "120px 1fr 80px", alignItems: "center", padding: "4px 0", borderBottom: `1px dashed ${C.greenDim}` }}>
+        <span style={{ fontSize: 10, color: C.cyan }}>{label}</span>
+        <span style={{ fontSize: 10, color: C.green }}>
+          {mentions === null ? "—" : mentions + " mentions · " + cited + " citations"}
+        </span>
+        <span style={{ fontSize: 9, color: C.green, textAlign: "right", letterSpacing: 1 }}>{rank}</span>
+      </div>
+    );
+  };
+
+  // Sentiment donut (simple SVG, 3 segments)
+  const sentimentChart = () => {
+    const p = sentiment.positive_pct, n = sentiment.neutral_pct, neg = sentiment.negative_pct;
+    if (p === null || p === undefined) {
+      return <div style={{ fontSize: 9, color: C.greenDim, fontStyle: "italic" }}>sentiment pending</div>;
+    }
+    const total = (p || 0) + (n || 0) + (neg || 0);
+    if (total === 0) return <div style={{ fontSize: 9, color: C.greenDim }}>no mentions yet</div>;
+    const arc = (start, end, color) => {
+      const r = 28, cx = 35, cy = 35;
+      const a1 = (start / 100) * 2 * Math.PI - Math.PI / 2;
+      const a2 = (end / 100) * 2 * Math.PI - Math.PI / 2;
+      const large = (end - start) > 50 ? 1 : 0;
+      const x1 = cx + r * Math.cos(a1), y1 = cy + r * Math.sin(a1);
+      const x2 = cx + r * Math.cos(a2), y2 = cy + r * Math.sin(a2);
+      return <path d={"M " + cx + " " + cy + " L " + x1 + " " + y1 + " A " + r + " " + r + " 0 " + large + " 1 " + x2 + " " + y2 + " Z"} fill={color} />;
+    };
+    let cursor = 0;
+    return (
+      <svg width="70" height="70" viewBox="0 0 70 70">
+        {p > 0 && arc(cursor, cursor + p, C.green)}
+        {(() => { cursor += p; return null; })()}
+        {n > 0 && arc(cursor, cursor + n, C.cyan)}
+        {(() => { cursor += n; return null; })()}
+        {neg > 0 && arc(cursor, cursor + neg, "#FF4D4F")}
+        <circle cx="35" cy="35" r="14" fill="#000" />
+      </svg>
+    );
+  };
+
+  return (
+    <div style={{ margin: "28px 28px 20px", padding: 18,
+      border: `2px solid ${C.green}`, background: "rgba(31,224,126,0.03)", position: "relative" }}>
+      <div style={{ position: "absolute", top: -10, left: 16, padding: "0 8px", background: "#000", fontSize: 10, color: C.green, letterSpacing: 4 }}>
+        ◉ PRAGMA MIRROR — AI VISIBILITY · YOAST AI+ REPLACEMENT · BETA B9 DOGFOOD
+      </div>
+
+      {/* Header row */}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginTop: 6, marginBottom: 14 }}>
+        <div>
+          <div style={{ fontSize: 22, fontWeight: 900, color: C.green, fontFamily: "Georgia, serif", letterSpacing: 1 }}>{productName}</div>
+          <div style={{ fontSize: 11, color: C.cyan, marginTop: 2 }}>{tagline}</div>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 4 }}>
+          <span style={{ fontSize: 9, color: C.green, border: `1px solid ${C.green}`, padding: "2px 8px", letterSpacing: 2 }}>BETA · B9 DOGFOOD</span>
+          <span style={{ fontSize: 8, color: C.greenDim }}>Replaces Yoast AI+ Brand Insights · $358.80/yr · bundled in every PRAGMA Install</span>
+        </div>
+      </div>
+
+      {isPending && (
+        <div style={{ padding: 14, border: `1px dashed ${C.greenDim}`, marginBottom: 14, background: "rgba(0,0,0,0.4)" }}>
+          <div style={{ fontSize: 11, color: C.cyan, letterSpacing: 1, marginBottom: 4 }}>○ FIRST SCAN PENDING</div>
+          <div style={{ fontSize: 10, color: C.green, lineHeight: 1.5 }}>{emptyMsg}</div>
+          <div style={{ fontSize: 8, color: C.greenDim, marginTop: 6, fontFamily: "Courier New, monospace" }}>
+            scan_status={data ? data.scan_status : "no_data"} · fetched={fetched ? "yes" : "loading"} · honest empty-state per locked dashboard-honesty rule
+          </div>
+        </div>
+      )}
+
+      {/* Body grid: AIVI big number + sparkline | surfaces | sentiment + competitors */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1.4fr 1fr", gap: 24 }}>
+        {/* AIVI column */}
+        <div>
+          <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 4 }}>AIVI · COMPOSITE 0-100</div>
+          <div style={{ fontSize: 64, fontWeight: 900, color: aiviColor(aiviVal), lineHeight: 1, fontFamily: "Georgia, serif" }}>
+            {aiviVal === null || aiviVal === undefined ? "--" : aiviVal}
+          </div>
+          <div style={{ fontSize: 9, color: C.greenDim, marginTop: 6 }}>7-DAY TREND</div>
+          <div style={{ marginTop: 4 }}>{sparkSvg()}</div>
+          <div style={{ fontSize: 8, color: C.greenDim, marginTop: 8, lineHeight: 1.4 }}>
+            Transparent formula:<br/>
+            0.30·mention + 0.25·citation + 0.20·sentiment + 0.15·ranking + 0.10·coverage
+          </div>
+        </div>
+
+        {/* Surfaces column */}
+        <div>
+          <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 6 }}>AI SURFACES · MENTIONS · RANKING</div>
+          {surfaceRow("claude", "Claude")}
+          {surfaceRow("chatgpt", "ChatGPT")}
+          {surfaceRow("gemini", "Gemini")}
+          {surfaceRow("perplexity", "Perplexity")}
+          {surfaceRow("google_ai_overview", "Google AIO")}
+          <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginTop: 12, marginBottom: 4 }}>TOP CITATIONS THIS WEEK</div>
+          {topCitations.length === 0 ? (
+            <div style={{ fontSize: 9, color: C.greenDim, fontStyle: "italic" }}>—</div>
+          ) : topCitations.slice(0, 3).map((c, i) => (
+            <div key={i} style={{ fontSize: 9, color: C.cyan, marginTop: 2 }}>
+              <a href={c.url} target="_blank" rel="noopener" style={{ color: C.cyan, textDecoration: "none" }}>{c.url}</a>
+              <span style={{ color: C.greenDim, marginLeft: 6 }}>· {c.times_cited || 0} cites</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Sentiment + competitors column */}
+        <div>
+          <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 6 }}>SENTIMENT</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            {sentimentChart()}
+            <div style={{ fontSize: 9, lineHeight: 1.6 }}>
+              <div style={{ color: C.green }}>● positive {sentiment.positive_pct === null ? "—" : sentiment.positive_pct + "%"}</div>
+              <div style={{ color: C.cyan }}>● neutral {sentiment.neutral_pct === null ? "—" : sentiment.neutral_pct + "%"}</div>
+              <div style={{ color: "#FF4D4F" }}>● negative {sentiment.negative_pct === null ? "—" : sentiment.negative_pct + "%"}</div>
+            </div>
+          </div>
+          <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginTop: 14, marginBottom: 4 }}>COMPETITOR BENCHMARK</div>
+          {competitors.length === 0 ? (
+            <div style={{ fontSize: 9, color: C.greenDim, fontStyle: "italic" }}>cyndra.ai · signazon.com — pending first scan</div>
+          ) : competitors.slice(0, 4).map((c, i) => (
+            <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 50px", alignItems: "center", padding: "3px 0" }}>
+              <span style={{ fontSize: 10, color: C.cyan }}>{c.domain}</span>
+              <span style={{ fontSize: 10, color: aiviColor(c.aivi), textAlign: "right", fontWeight: 700 }}>{c.aivi == null ? "—" : c.aivi}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div style={{ marginTop: 14, paddingTop: 10, borderTop: `1px solid ${C.greenDim}`, display: "flex", justifyContent: "space-between", fontSize: 9, color: C.greenDim }}>
+        <span>Last scan: <span style={{ color: C.cyan }}>{(data && data.last_scan_ts) || "—"}</span></span>
+        <span>Source: <code style={{ color: C.cyan }}>/Atlas/pragma/clients/brand9signs/brand-insights/latest.json</code></span>
+        <span>Next scan: <span style={{ color: C.cyan }}>05:30 ET daily</span></span>
+      </div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════════════════
 // WILD DUCKS — IBM/Watson mavericks · Hermes-hosted skill agents
 // ═══════════════════════════════════════════════════════════════
 // Wild Ducks scored same Coca-Cola Test (1-25) as Operators — Keystone re-scores monthly
