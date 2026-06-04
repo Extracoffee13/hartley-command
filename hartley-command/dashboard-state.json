@@ -1,5 +1,5 @@
 {
-  "_generated_at": "2026-06-04T15:59:19.766700+00:00",
+  "_generated_at": "2026-06-04T16:04:21.458530+00:00",
   "_writer": "dashboard-data-writer",
   "_version": 1,
   "ducks_and_calls": {
@@ -10,7 +10,7 @@
       },
       {
         "name": "competitor-watch",
-        "last_fired": "2026-06-03T16:00:42.270462+00:00"
+        "last_fired": "2026-06-04T16:00:40.341390+00:00"
       },
       {
         "name": "harvard-library-index-builder",
@@ -76,7 +76,7 @@
       },
       {
         "name": "content-publish-scheduler",
-        "last_fired": "2026-06-04T15:46:48.222823+00:00"
+        "last_fired": "2026-06-04T16:01:48.388866+00:00"
       },
       {
         "name": "cowork-inbox-monitor",
@@ -112,7 +112,7 @@
       },
       {
         "name": "github-pages-build-watcher",
-        "last_fired": "2026-06-04T15:58:41.964714+00:00"
+        "last_fired": "2026-06-04T16:03:42.082869+00:00"
       },
       {
         "name": "hermes-archive-cleaner",
@@ -124,11 +124,11 @@
       },
       {
         "name": "inbound-lead-router",
-        "last_fired": "2026-06-04T15:35:21.428467+00:00"
+        "last_fired": "2026-06-04T15:59:54.910626+00:00"
       },
       {
         "name": "inbox-poller",
-        "last_fired": "2026-06-04T15:56:42.511609+00:00"
+        "last_fired": "2026-06-04T16:01:42.839000+00:00"
       },
       {
         "name": "inbox-self-heal",
@@ -192,11 +192,11 @@
       },
       {
         "name": "telegram-listener",
-        "last_fired": "2026-06-04T15:52:26.533969+00:00"
+        "last_fired": "2026-06-04T16:03:04.244862+00:00"
       },
       {
         "name": "uptime-monitor",
-        "last_fired": "2026-06-04T15:59:19.504051+00:00"
+        "last_fired": "2026-06-04T16:04:21.456771+00:00"
       },
       {
         "name": "visual-qa-monitor",
@@ -219,7 +219,7 @@
     "calls_count": 39,
     "archived_count": 0,
     "_source_mtime": "2026-06-01T14:08:06.519678+00:00",
-    "_section_updated": "2026-06-04T15:59:19.766700+00:00"
+    "_section_updated": "2026-06-04T16:04:21.458530+00:00"
   },
   "operators": {
     "operators": [
@@ -273,7 +273,7 @@
         "status": "active"
       }
     ],
-    "_section_updated": "2026-06-04T15:59:19.766700+00:00"
+    "_section_updated": "2026-06-04T16:04:21.458530+00:00"
   },
   "pragma": {
     "engagements": [
@@ -300,11 +300,11 @@
       }
     ],
     "_source_mtime": "2026-06-04T15:16:18.996656+00:00",
-    "_section_updated": "2026-06-04T15:59:19.766700+00:00"
+    "_section_updated": "2026-06-04T16:04:21.458530+00:00"
   },
   "wolf": {
-    "_source_mtime": "2026-06-04T15:00:03.436105+00:00",
-    "_section_updated": "2026-06-04T15:59:19.766700+00:00",
+    "_source_mtime": "2026-06-04T16:00:02.363295+00:00",
+    "_section_updated": "2026-06-04T16:04:21.458530+00:00",
     "_comment": "WOLF authoritative state. Mounted location both Cowork agents and Hermes can read/write. Replaces the chronic-regression ephemeral counter pattern. See /Atlas/wolf-audit-2026-05-28.md for the why.",
     "_schema_version": 1,
     "_location": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/wolf/state.json",
@@ -328,7 +328,7 @@
       "stale_reason": ""
     },
     "tracking": {
-      "scripts": 76,
+      "scripts": 78,
       "strategies_active": 6,
       "strategies_max": 10,
       "skills": 3,
@@ -419,14 +419,14 @@
       "2026-05-28 12:55 ET \u00b7 Claude audit identified Day 28 vs Day 50 dashboard lie \u00b7 state authority moved to this file as the canonical writer \u00b7 upstream wolf-dashboards-repo HTML still needs to be rewired to read from here"
     ],
     "live_market_data": {
-      "last_synced_at": "2026-06-04T11:00:03",
-      "public_mirror_ts": "2026-06-04T10:56:55.628732",
-      "portfolio_value": 107300.99,
+      "last_synced_at": "2026-06-04T12:00:02",
+      "public_mirror_ts": "2026-06-04T11:58:01.117309",
+      "portfolio_value": 108032.66,
       "today_pnl": {
-        "amount": 1383.28,
-        "pct": 0.0131,
+        "amount": 2114.95,
+        "pct": 0.02,
         "circuit_breaker_status": "green",
-        "circuit_breaker_message": "CLEAR \u2014 Daily: +1.3% (buf: 3.0%) | Weekly: +0.5% (buf: 7.0%)"
+        "circuit_breaker_message": "CLEAR \u2014 Daily: +2.0% (buf: 3.0%) | Weekly: +0.5% (buf: 7.0%)"
       },
       "weekly_pnl": {
         "amount": 290.75,
@@ -437,7 +437,7 @@
     "infrastructure_status_live": {
       "wolf-state-updater": {
         "loaded": true,
-        "pid": "4826",
+        "pid": "10588",
         "last_exit": "0"
       },
       "wolf-state-watcher": {
@@ -462,10 +462,10 @@
       }
     },
     "_last_writer": "wolf-state-updater",
-    "_last_write_iso": "2026-06-04T11:00:03"
+    "_last_write_iso": "2026-06-04T12:00:02"
   },
   "hermes": {
-    "_section_updated": "2026-06-04T15:59:19.766700+00:00",
+    "_section_updated": "2026-06-04T16:04:21.458530+00:00",
     "hermes_agent_version": "0.15.2",
     "webui_pid": "63931",
     "webui_loaded": true,
