@@ -1,15 +1,16 @@
 {
-  "_generated_at": "2026-06-04T17:07:05.941102+00:00",
+  "_generated_at": "2026-06-04T17:12:08.552478+00:00",
   "all_pass": false,
-  "pass_count": 7,
+  "pass_count": 6,
   "total": 11,
   "failing_claims": [
+    "state.json hermes_agent_version == 0.15.2",
     "state.json wolf day_on_mission == 55",
     "v4 dashboard has WILD_DUCKS:BEGIN marker (regenerator wiring is in place)",
     "v4 dashboard WILD_DUCKS count in HTML == state.json wild_ducks_count (THE conflict that started this)",
     "v4 dashboard CALLS count in HTML == state.json calls_count"
   ],
   "verifier_exit_code": 1,
-  "stdout_tail": "ashboard reachable\n       url: https://extracoffee13.github.io/hartley-command/wolf-health.html?_cb=1780592826\n       status: 200\n       expected_status: 200\n[PASS] wolf-health has DATA FRESHNESS panel code\n       url: https://extracoffee13.github.io/hartley-command/wolf-health.html?_cb=1780592827\n       status: 200\n       needle: DATA FRESHNESS\n       found_count: 2\n\n=== overall: FAIL (7/11) ===\n",
+  "stdout_tail": "ashboard reachable\n       url: https://extracoffee13.github.io/hartley-command/wolf-health.html?_cb=1780593129\n       status: 200\n       expected_status: 200\n[PASS] wolf-health has DATA FRESHNESS panel code\n       url: https://extracoffee13.github.io/hartley-command/wolf-health.html?_cb=1780593129\n       status: 200\n       needle: DATA FRESHNESS\n       found_count: 2\n\n=== overall: FAIL (6/11) ===\n",
   "stderr_tail": ""
 }
