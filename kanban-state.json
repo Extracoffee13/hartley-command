@@ -1,7 +1,8 @@
 {
-  "generated_at": "2026-06-04T09:16:07-04:00",
+  "generated_at": "2026-06-04T09:16:40-04:00",
   "db_path": "/Users/alfredpennyworth/.hermes/kanban.db",
   "lanes": {
+    "inbox": [],
     "blocked": [
       {
         "task_id": "442-blog-tag-consolidation-audit",
@@ -158,6 +159,15 @@
       }
     ],
     "done": [
+      {
+        "task_id": "443-patch-adoption-reminder-respect-installed",
+        "title": "Task 443 \u2014 Inspect + patch adoption-reminder to respect installed status",
+        "lane": "done",
+        "report_path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/hermes-reports/443-patch-adoption-reminder-respect-installed-report.md",
+        "source": "inbox-poller",
+        "created_at": "2026-06-04T09:16:35-04:00",
+        "updated_at": "2026-06-04T09:16:36-04:00"
+      },
       {
         "task_id": "441-build-meta-rewrite-prioritizer",
         "title": "Task 441 \u2014 Build b9-meta-rewrite-prioritizer Wild Duck",
@@ -598,15 +608,6 @@
         "source": "inbox-poller",
         "created_at": "2026-06-03T12:28:45+00:00",
         "updated_at": "2026-06-03T12:28:45+00:00"
-      },
-      {
-        "task_id": "54-upgrade-hermes-to-v015",
-        "title": "Task 54 \u2014 Upgrade Hermes-Agent \u2192 v0.15",
-        "lane": "done",
-        "report_path": null,
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T12:28:45+00:00",
-        "updated_at": "2026-06-03T12:28:45+00:00"
       }
     ],
     "in_flight": [
@@ -664,13 +665,12 @@
         "created_at": "2026-06-03T08:52:28-04:00",
         "updated_at": "2026-06-03T08:52:28-04:00"
       }
-    ],
-    "inbox": []
+    ]
   },
   "counts": {
+    "inbox": 0,
     "blocked": 17,
     "done": 50,
-    "in_flight": 6,
-    "inbox": 0
+    "in_flight": 6
   }
 }
