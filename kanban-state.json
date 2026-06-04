@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-04T09:23:06-04:00",
+  "generated_at": "2026-06-04T09:23:38-04:00",
   "db_path": "/Users/alfredpennyworth/.hermes/kanban.db",
   "lanes": {
     "blocked": [
@@ -213,7 +213,17 @@
         "updated_at": "2026-06-03T08:52:28-04:00"
       }
     ],
+    "inbox": [],
     "done": [
+      {
+        "task_id": "445-trace-985-kingsley-v3",
+        "title": "Task 445 \u2014 985 Kingsley trace v3 (fixed heredoc fence collision)",
+        "lane": "done",
+        "report_path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/hermes-reports/445-trace-985-kingsley-v3-report.md",
+        "source": "inbox-poller",
+        "created_at": "2026-06-04T09:23:30-04:00",
+        "updated_at": "2026-06-04T09:23:30-04:00"
+      },
       {
         "task_id": "444-rollback-hibernia-mw-fabricated-meta",
         "title": "Task 444 \u2014 URGENT rollback: Hibernia + Margaret's Walk meta (fabricated history)",
@@ -654,23 +664,13 @@
         "source": "inbox-poller",
         "created_at": "2026-06-03T12:28:45+00:00",
         "updated_at": "2026-06-03T12:28:45+00:00"
-      },
-      {
-        "task_id": "57-force-push-dashboards-deploy",
-        "title": "Task 57 \u2014 Force-push dashboards-deploy now",
-        "lane": "done",
-        "report_path": null,
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T12:28:45+00:00",
-        "updated_at": "2026-06-03T12:28:45+00:00"
       }
-    ],
-    "inbox": []
+    ]
   },
   "counts": {
     "blocked": 17,
     "in_flight": 6,
-    "done": 50,
-    "inbox": 0
+    "inbox": 0,
+    "done": 50
   }
 }
