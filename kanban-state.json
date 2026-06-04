@@ -1,7 +1,8 @@
 {
-  "generated_at": "2026-06-04T11:13:02-04:00",
+  "generated_at": "2026-06-04T11:13:35-04:00",
   "db_path": "/Users/alfredpennyworth/.hermes/kanban.db",
   "lanes": {
+    "inbox": [],
     "blocked": [
       {
         "task_id": "455-fix-81-gsc-404s-v2",
@@ -193,8 +194,16 @@
         "updated_at": "2026-06-03T08:49:16-04:00"
       }
     ],
-    "inbox": [],
     "done": [
+      {
+        "task_id": "459-install-b9-wp-options-plist",
+        "title": "Task 459 \u2014 Install launchd plist for b9-wp-options-daily",
+        "lane": "done",
+        "report_path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/hermes-reports/459-install-b9-wp-options-plist-report.md",
+        "source": "inbox-poller",
+        "created_at": "2026-06-04T11:13:08-04:00",
+        "updated_at": "2026-06-04T11:13:31-04:00"
+      },
       {
         "task_id": "458-update-pragma-playbook-and-daily-scans",
         "title": "Task 458 \u2014 Update PRAGMA playbook + extend daily scans to cover ALL GSC + WP options",
@@ -635,15 +644,6 @@
         "source": "inbox-poller",
         "created_at": "2026-06-03T12:28:47+00:00",
         "updated_at": "2026-06-03T12:28:47+00:00"
-      },
-      {
-        "task_id": "67-install-lennar-route-density-tracker",
-        "title": "Task 67 \u2014 Install lennar-route-density-tracker",
-        "lane": "done",
-        "report_path": null,
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T12:28:46+00:00",
-        "updated_at": "2026-06-03T12:28:46+00:00"
       }
     ],
     "in_flight": [
@@ -713,8 +713,8 @@
     ]
   },
   "counts": {
-    "blocked": 21,
     "inbox": 0,
+    "blocked": 21,
     "done": 50,
     "in_flight": 7
   }
