@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRAGMA Mirror — Build Status</title>
+<meta name="robots" content="noindex">
+<style>
+:root {
+  --void:#0A0A0A; --void-3:#141414;
+  --signal:#1FE07E; --cyan:#3FA9F5;
+  --output:#FFF; --output-65:rgba(255,255,255,0.65);
+  --output-45:rgba(255,255,255,0.45); --output-30:rgba(255,255,255,0.30);
+  --output-12:rgba(255,255,255,0.12);
+  --red:#FF4D4F; --yellow:#FFC53D; --orange:#FF9F40;
+  --f-sans:'Inter',system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',monospace;
+  --f-serif:Georgia,serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--void);color:var(--output);font-family:var(--f-sans);font-size:14px;line-height:1.55;padding:28px 24px;max-width:1200px;margin:0 auto;-webkit-font-smoothing:antialiased}
+a{color:var(--signal);text-decoration:none}
+a:hover{text-decoration:underline}
+code{font-family:var(--f-mono);font-size:12px;color:var(--cyan);background:rgba(63,169,245,0.08);padding:1px 6px;border-radius:3px}
+
+.hdr{margin-bottom:34px;border-bottom:1px solid var(--output-12);padding-bottom:18px}
+.hdr h1{font-family:var(--f-serif);font-size:34px;font-weight:900;color:var(--signal);letter-spacing:-0.5px}
+.hdr .sub{color:var(--output-65);font-size:13px;margin-top:5px;font-family:var(--f-mono)}
+.hdr .meta{display:flex;gap:18px;margin-top:14px;font-family:var(--f-mono);font-size:11px;color:var(--output-45)}
+.hdr .meta span{color:var(--signal)}
+
+h2{font-size:18px;font-weight:800;color:var(--cyan);margin:34px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--output-12);letter-spacing:-0.2px}
+h2 .badge{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;padding:3px 8px;margin-left:10px;border-radius:3px;background:rgba(31,224,126,0.12);color:var(--signal);font-weight:500;text-transform:uppercase}
+h3{font-size:13px;font-weight:700;color:var(--output);margin:18px 0 6px;font-family:var(--f-mono);text-transform:uppercase;letter-spacing:1px}
+
+.section{margin:18px 0}
+.row{display:grid;grid-template-columns:200px 1fr;gap:18px;padding:8px 0;border-bottom:1px dashed var(--output-12);align-items:start}
+.row .k{color:var(--output-45);font-family:var(--f-mono);font-size:11px;letter-spacing:1px;padding-top:2px}
+.row .v{color:var(--output-65);font-size:13px}
+.row .v.signal{color:var(--signal)}
+
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:14px 0}
+@media (max-width:780px){.grid-3{grid-template-columns:1fr}}
+.card{border:1px solid var(--output-12);background:var(--void-3);padding:16px;border-radius:6px}
+.card.signal{border-color:var(--signal)}
+.card h4{font-size:14px;font-weight:700;color:var(--signal);margin-bottom:6px}
+.card .aivi-big{font-family:var(--f-serif);font-size:42px;font-weight:900;line-height:1;color:var(--signal);margin:6px 0}
+.card .aivi-big.red{color:var(--red)}
+.card .aivi-big.yellow{color:var(--yellow)}
+.card .meta{font-family:var(--f-mono);font-size:10px;color:var(--output-45);margin-top:8px}
+.card .link{display:inline-block;margin-top:8px;font-size:11px;color:var(--cyan)}
+
+.flow{padding:16px;background:var(--void-3);border-left:3px solid var(--signal);font-family:var(--f-mono);font-size:11px;color:var(--output-65);line-height:1.9;border-radius:4px}
+.flow .arrow{color:var(--signal);margin:0 6px}
+.flow strong{color:var(--cyan);font-weight:500}
+
+.surface-grid{display:grid;grid-template-columns:140px 1fr 90px 100px 80px;gap:14px;font-size:12px;padding:8px 0;border-bottom:1px dashed var(--output-12);align-items:center}
+.surface-grid.head{color:var(--output-45);font-family:var(--f-mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--output-12)}
+.surface-grid .name{color:var(--signal);font-family:var(--f-mono)}
+.status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.status-dot.live{background:var(--signal)}
+.status-dot.missing{background:var(--red)}
+.status-dot.pending{background:var(--yellow)}
+
+.warn-box{padding:14px 16px;background:rgba(255,77,79,0.08);border-left:3px solid var(--red);font-size:13px;color:var(--output-65);margin:14px 0;border-radius:4px}
+.warn-box strong{color:var(--red)}
+.win-box{padding:14px 16px;background:rgba(31,224,126,0.08);border-left:3px solid var(--signal);font-size:13px;color:var(--output);margin:14px 0;border-radius:4px}
+.win-box strong{color:var(--signal)}
+
+ul.bare{list-style:none}
+ul.bare li{padding:5px 0;color:var(--output-65)}
+ul.bare li::before{content:"+ ";color:var(--signal);font-family:var(--f-mono);font-weight:700;margin-right:4px}
+
+footer{margin-top:50px;padding-top:18px;border-top:1px solid var(--output-12);text-align:center;font-family:var(--f-mono);font-size:10px;color:var(--output-30);letter-spacing:1.5px}
+footer a{color:var(--output-45);margin:0 8px}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <h1>PRAGMA Mirror &mdash; Build Status</h1>
+  <div class="sub">The Yoast AI+ replacement we built into the PRAGMA Install. Single pane of glass for what shipped, what it does, where the numbers are, and what&rsquo;s next.</div>
+  <div class="meta">
+    <span>Build: 2026-06-04</span>
+    <span>Status: <span id="status">checking&hellip;</span></span>
+    <span>Cycle: daily 05:30 ET</span>
+    <span>Replaces: Yoast AI+ Brand Insights ($358.80/yr)</span>
+  </div>
+</div>
+
+<h2>Live AIVI numbers <span class="badge">first real fire</span></h2>
+<div class="grid-3">
+  <div class="card" id="b9-card">
+    <h4>Brand 9 Signs</h4>
+    <div class="aivi-big" id="b9-aivi">&mdash;</div>
+    <div class="meta" id="b9-meta">loading&hellip;</div>
+    <a class="link" href="/clients/b9/brand-insights.html">Open B9 tile &rarr;</a>
+  </div>
+  <div class="card" id="pragma-card">
+    <h4>PRAGMA</h4>
+    <div class="aivi-big" id="pragma-aivi">&mdash;</div>
+    <div class="meta" id="pragma-meta">loading&hellip;</div>
+    <a class="link" href="https://prag-ma.ai/aivi/" target="_blank">Open PRAGMA page &rarr;</a>
+  </div>
+  <div class="card" id="hc-card">
+    <h4>Hartley Capital</h4>
+    <div class="aivi-big" id="hc-aivi">&mdash;</div>
+    <div class="meta" id="hc-meta">loading&hellip;</div>
+    <a class="link" href="/clients/hc/brand-insights.html">Open HC tile &rarr;</a>
+  </div>
+</div>
+
+<h2>Public-facing surfaces <span class="badge">where bobby clicks</span></h2>
+<div class="row"><div class="k">PRAGMA dogfood page</div><div class="v"><a href="https://prag-ma.ai/aivi/" target="_blank">https://prag-ma.ai/aivi/</a> &mdash; full AIVI tile + 3-brand context, formula visible, live JSON behind it</div></div>
+<div class="row"><div class="k">PRAGMA homepage nav</div><div class="v">&ldquo;our AIVI&rdquo; link added to main nav (deploys with the next prag-ma.ai push)</div></div>
+<div class="row"><div class="k">Build-vs-buy article</div><div class="v"><a href="https://prag-ma.ai/thinking/we-built-our-own-ai-brand-monitoring/" target="_blank">https://prag-ma.ai/thinking/we-built-our-own-ai-brand-monitoring/</a></div></div>
+<div class="row"><div class="k">Pricing page bullets</div><div class="v"><a href="https://prag-ma.ai/pricing/" target="_blank">https://prag-ma.ai/pricing/</a> &mdash; PRAGMA Mirror in Express &amp; Starter tiers</div></div>
+
+<h2>Ops dashboards <span class="badge">internal</span></h2>
+<div class="row"><div class="k">B9 client tile</div><div class="v"><a href="https://extracoffee13.github.io/hartley-command/clients/b9/brand-insights.html" target="_blank">extracoffee13.github.io/hartley-command/clients/b9/brand-insights.html</a></div></div>
+<div class="row"><div class="k">PRAGMA client tile</div><div class="v"><a href="https://extracoffee13.github.io/hartley-command/clients/pragma/brand-insights/latest.json" target="_blank">JSON: clients/pragma/brand-insights/latest.json</a> (page TBD)</div></div>
+<div class="row"><div class="k">HC client tile</div><div class="v"><a href="https://extracoffee13.github.io/hartley-command/clients/hc/brand-insights.html" target="_blank">extracoffee13.github.io/hartley-command/clients/hc/brand-insights.html</a></div></div>
+<div class="row"><div class="k">V4 dashboard tile</div><div class="v"><a href="/the-construct-v4.html" target="_blank">/the-construct-v4.html</a> &mdash; PragmaMirrorPanel between Harvard Corpus and Wild Ducks bands</div></div>
+<div class="row"><div class="k">This status page</div><div class="v"><a href="/pragma-mirror.html">/pragma-mirror.html</a> &larr; you are here</div></div>
+
+<h2>What the system does <span class="badge">data flow</span></h2>
+<div class="flow">
+  05:30 ET <strong>launchd</strong> fires <strong>com.hermes.b9-ai-citation-probe</strong>, <strong>pragma</strong>, <strong>hc</strong> (offset 2 min each)
+  <span class="arrow">&rarr;</span> each probe asks 5 AI surfaces 6-7 buyer-intent queries
+  <span class="arrow">&rarr;</span> per response: sentiment classified, citations extracted, ranking computed, competitor swap-and-rerun
+  <span class="arrow">&rarr;</span> AIVI composite written to <code>/Atlas/pragma/clients/&lt;slug&gt;/brand-insights/latest.json</code>
+  <span class="arrow">&rarr;</span> 05:40 <strong>brand-insights-mirror</strong> Call copies each to <code>/dashboards-deploy/clients/&lt;slug&gt;/brand-insights/latest.json</code>
+  <span class="arrow">&rarr;</span> <strong>dashboard-deploy-watcher</strong> pushes to GitHub Pages
+  <span class="arrow">&rarr;</span> Telegram digest if any AIVI moved &gt;10% vs 7-day average
+</div>
+
+<h2>AI surface coverage <span class="badge">parity vs yoast</span></h2>
+<div class="surface-grid head">
+  <div>Surface</div><div>Purpose</div><div>API key</div><div>Status</div><div>Yoast also?</div>
+</div>
+<div class="surface-grid"><div class="name">Claude</div><div>Claude.ai, Claude in Chrome</div><div><code>OPENROUTER_API_KEY</code></div><div><span class="status-dot live"></span>live</div><div>yes</div></div>
+<div class="surface-grid"><div class="name">ChatGPT</div><div>ChatGPT Voice, Apple Intelligence</div><div><code>OPENAI_API_KEY</code></div><div><span class="status-dot missing"></span>401 invalid</div><div>yes</div></div>
+<div class="surface-grid"><div class="name">Gemini</div><div>Pixel, Workspace AI</div><div><code>GOOGLE_GEMINI_API_KEY</code></div><div><span class="status-dot missing"></span>missing</div><div>yes</div></div>
+<div class="surface-grid"><div class="name">Perplexity</div><div>Perplexity Voice</div><div><code>PERPLEXITY_API_KEY</code></div><div><span class="status-dot missing"></span>missing</div><div>yes</div></div>
+<div class="surface-grid"><div class="name">Google AIO</div><div>Hey Google / Assistant</div><div><code>SERPAPI_API_KEY</code></div><div><span class="status-dot pending"></span>check</div><div><strong style="color:var(--signal)">no &mdash; bonus</strong></div></div>
+
+<div class="warn-box">
+  <strong>Action needed:</strong> ChatGPT key returns 401. Gemini + Perplexity keys aren&rsquo;t set in <code>~/.hermes/.env</code>. Right now only Claude is reporting. Once the 3 keys land, surface coverage jumps from 1/5 to 5/5 and AIVI numbers become meaningful.
+</div>
+
+<div class="win-box">
+  <strong>Code parity confirmed:</strong> all 5 finishing modules wired and tested. Sentiment via Claude API (hash-cached, ~$5/mo budget). Citation URL extraction. Competitor probes with name substitution. AIVI composite with published formula (Yoast hides theirs). Per-client tailoring framework already proven on B9 + TLC.
+</div>
+
+<h2>Files shipped <span class="badge">inventory</span></h2>
+
+<h3>Master modules (one copy, shared by all clients)</h3>
+<ul class="bare">
+  <li><code>/Atlas/hermes-sandbox/wild-ducks/ai-citation-probe/run.py</code> &mdash; orchestrator, 5-surface probe loop + finishing layer</li>
+  <li><code>/Atlas/hermes-sandbox/wild-ducks/ai-citation-probe/sentiment.py</code> &mdash; Claude-API sentiment per mention</li>
+  <li><code>/Atlas/hermes-sandbox/wild-ducks/ai-citation-probe/citation_extractor.py</code> &mdash; URL regex + client/competitor filter</li>
+  <li><code>/Atlas/hermes-sandbox/wild-ducks/ai-citation-probe/competitor_probe.py</code> &mdash; substituted-name re-probe</li>
+  <li><code>/Atlas/hermes-sandbox/wild-ducks/ai-citation-probe/aivi_score.py</code> &mdash; transparent composite (formula published)</li>
+  <li><code>/Atlas/hermes-sandbox/calls/brand-insights-mirror/run.py</code> &mdash; mirrors per-client JSON to dashboards-deploy</li>
+</ul>
+
+<h3>Per-client tailored ducks</h3>
+<ul class="bare">
+  <li><code>/Atlas/hermes-sandbox/wild-ducks-clients/b9-ai-citation-probe/</code> &mdash; B9 brand, 4 sign-shop queries</li>
+  <li><code>/Atlas/hermes-sandbox/wild-ducks-clients/pragma-ai-citation-probe/</code> &mdash; PRAGMA brand, 7 agentic-AI queries, competitors: Cyndra, Ciridae, Signazon, Operator AI, Tab</li>
+  <li><code>/Atlas/hermes-sandbox/wild-ducks-clients/hc-ai-citation-probe/</code> &mdash; HC brand, 6 holding-co queries, competitors: Constellation, Berkshire, 8VC</li>
+</ul>
+
+<h3>Per-client configs</h3>
+<ul class="bare">
+  <li><code>/Atlas/clients/PRAGMA_Brand9/wild-duck-config.yaml</code></li>
+  <li><code>/Atlas/clients/PRAGMA_Pragma/wild-duck-config.yaml</code></li>
+  <li><code>/Atlas/clients/PRAGMA_HC/wild-duck-config.yaml</code></li>
+</ul>
+
+<h3>Output JSON (the actual data)</h3>
+<ul class="bare">
+  <li><code>/Atlas/pragma/clients/b9/brand-insights/latest.json</code> + <code>history/YYYY-MM-DD.json</code></li>
+  <li><code>/Atlas/pragma/clients/pragma/brand-insights/latest.json</code> + <code>history/YYYY-MM-DD.json</code></li>
+  <li><code>/Atlas/pragma/clients/hc/brand-insights/latest.json</code> + <code>history/YYYY-MM-DD.json</code></li>
+</ul>
+
+<h3>Web surfaces (deployed)</h3>
+<ul class="bare">
+  <li>prag-ma.ai/aivi/ &mdash; dogfood AIVI page (PRAGMA)</li>
+  <li>prag-ma.ai/thinking/we-built-our-own-ai-brand-monitoring/ &mdash; build-vs-buy article</li>
+  <li>prag-ma.ai/pricing/ &mdash; PRAGMA Mirror bullet under Express + Starter tiers</li>
+  <li>/clients/b9/brand-insights.html (this repo) &mdash; B9 ops tile</li>
+  <li>/clients/hc/brand-insights.html (this repo) &mdash; HC ops tile</li>
+  <li>V4 dashboard PragmaMirrorPanel (this repo)</li>
+</ul>
+
+<h3>Playbook + memory</h3>
+<ul class="bare">
+  <li><code>/Atlas/pragma/playbook/pragma-brand-insights-day1-v14.md</code> &mdash; PRAGMA Day-1 V14 install playbook</li>
+  <li>Memory: <code>project_pragma_mirror_2026_06_04.md</code></li>
+  <li>Memory: <code>reference_dashboards_deploy_folder_is_hartley_command_repo.md</code></li>
+  <li>Memory: <code>feedback_dont_defer_deploy_when_sandbox_can_ssh.md</code></li>
+</ul>
+
+<h2>How to verify it&rsquo;s working <span class="badge">tomorrow morning</span></h2>
+<ul class="bare">
+  <li>Open <a href="https://prag-ma.ai/aivi/" target="_blank">prag-ma.ai/aivi/</a> &mdash; the AIVI number should be non-zero once API keys are in place</li>
+  <li>Check Telegram &mdash; daily digest fires after the 05:30 ET cycle</li>
+  <li>Look at <code>/Atlas/pragma/clients/&lt;slug&gt;/brand-insights/history/2026-06-05.json</code> tomorrow</li>
+  <li>Run <code>launchctl list | grep ai-citation-probe</code> &mdash; should show 3 jobs</li>
+  <li>Tail <code>/Atlas/hermes-sandbox/logs/ai-citation-probe.log</code> for fresh entries</li>
+</ul>
+
+<h2>Open punch list</h2>
+<ul class="bare">
+  <li><strong>Provision API keys:</strong> regenerate OpenAI, add Gemini, add Perplexity to <code>~/.hermes/.env</code></li>
+  <li><strong>Push hartley-command tiles to GitHub:</strong> sandbox can&rsquo;t push, watcher will sync on next cycle</li>
+  <li><strong>Verify launchd cron fires at 05:30 ET tomorrow:</strong> not just manually triggered today</li>
+  <li><strong>Deploy updated homepage nav to prag-ma.ai:</strong> &ldquo;our AIVI&rdquo; link gets added</li>
+</ul>
+
+<footer>
+  PRAGMA MIRROR &middot; A HARTLEY CAPITAL TOOL &middot; BUILT 2026-06-04 &middot; <a href="https://prag-ma.ai/">prag-ma.ai</a> &middot; <a href="/">hartley command</a>
+</footer>
+
+<script>
+const CLIENTS = [
+  {slug:'b9', display:'Brand 9 Signs'},
+  {slug:'pragma', display:'PRAGMA'},
+  {slug:'hc', display:'Hartley Capital'},
+];
+
+async function load(slug) {
+  const urls = [
+    `./clients/${slug}/brand-insights/latest.json?cb=${Date.now()}`,
+    `https://extracoffee13.github.io/hartley-command/clients/${slug}/brand-insights/latest.json?cb=${Date.now()}`,
+  ];
+  for (const u of urls) {
+    try {
+      const r = await fetch(u, {cache:'no-store'});
+      if (r.ok) return await r.json();
+    } catch(_) {}
+  }
+  return null;
+}
+
+(async () => {
+  let liveCount = 0;
+  for (const c of CLIENTS) {
+    const d = await load(c.slug);
+    const aiviEl = document.getElementById(c.slug + '-aivi');
+    const metaEl = document.getElementById(c.slug + '-meta');
+    if (!d) { aiviEl.textContent = 'no data'; metaEl.textContent = 'fetch failed'; continue; }
+    const a = d.aivi && d.aivi.composite;
+    if (d.scan_status === 'first_scan_pending' || a == null) {
+      aiviEl.textContent = '—';
+      metaEl.textContent = 'first scan pending · ' + (d.empty_state_message || 'awaiting daily cycle');
+      continue;
+    }
+    aiviEl.textContent = a;
+    const t = (d.aivi && d.aivi.color_threshold) || {red_below:50, yellow_below:70};
+    if (a < t.red_below) aiviEl.classList.add('red');
+    else if (a < t.yellow_below) aiviEl.classList.add('yellow');
+    const surfaces = Object.entries(d.surfaces || {}).filter(([k,v])=>v).map(([k])=>k);
+    metaEl.innerHTML = `scan ts ${(d.ts || 'unknown').slice(0,19)}Z · surfaces with data: ${surfaces.join(', ') || 'none'}`;
+    liveCount++;
+  }
+  document.getElementById('status').textContent = liveCount + '/3 with real data';
+  document.getElementById('status').style.color = liveCount === 3 ? 'var(--signal)' : (liveCount > 0 ? 'var(--yellow)' : 'var(--red)');
+})();
+</script>
+</body>
+</html>
