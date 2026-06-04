@@ -1,15 +1,42 @@
 {
   "schema_version": "1.0",
-  "ts": null,
-  "scan_status": "first_scan_pending",
+  "ts": "2026-06-04T19:58:33.013609Z",
+  "scan_status": "completed",
   "client": "prag-ma.ai",
   "client_display_name": "PRAGMA",
   "product_name": "PRAGMA Mirror",
   "product_tagline": "See your brand the way AI sees it.",
   "product_status": "beta-dogfood-2026-06-04",
   "aivi": {
-    "composite": null,
-    "trend_7day": [],
+    "composite": 0.0,
+    "subscores": {
+      "composite": 0.0,
+      "mention_score": 0.0,
+      "citation_score": 0.0,
+      "sentiment_score": 0.0,
+      "ranking_score": 0.0,
+      "surface_coverage_score": 0.0,
+      "weights": {
+        "mention": 0.3,
+        "citation": 0.25,
+        "sentiment": 0.2,
+        "ranking": 0.15,
+        "surface_coverage": 0.1
+      },
+      "inputs": {
+        "mention_rate": 0.0,
+        "target_mention_rate": 0.5,
+        "citation_count": 0,
+        "target_citations": 10,
+        "positive_sentiment_pct": 0,
+        "best_ranking": "unranked",
+        "surfaces_with_mentions": 0,
+        "total_surfaces": 5
+      }
+    },
+    "trend_7day": [
+      0.0
+    ],
     "color_threshold": {
       "red_below": 50,
       "yellow_below": 70,
@@ -17,7 +44,13 @@
     }
   },
   "surfaces": {
-    "claude": null,
+    "claude": {
+      "mentions": 0,
+      "queries_probed": 7,
+      "best_ranking": "unranked",
+      "ranking_distribution": {},
+      "citations": []
+    },
     "chatgpt": null,
     "gemini": null,
     "perplexity": null,
@@ -29,11 +62,41 @@
     "negative_pct": null
   },
   "top_citations": [],
-  "competitors": [],
-  "last_scan_ts": null,
-  "next_scan_ts": null,
-  "empty_state_message": "First scan running \u2014 check back after the next 05:30 ET cycle. PRAGMA Mirror is in beta dogfood for PRAGMA starting 2026-06-04.",
+  "competitors": [
+    {
+      "domain": "Cyndra",
+      "aivi": 10.0
+    },
+    {
+      "domain": "Ciridae",
+      "aivi": 10.0
+    },
+    {
+      "domain": "Signazon",
+      "aivi": 10.0
+    },
+    {
+      "domain": "Operator AI",
+      "aivi": 10.0
+    },
+    {
+      "domain": "Tab",
+      "aivi": 41.0
+    }
+  ],
+  "last_scan_ts": "2026-06-04T19:58:33.013609Z",
+  "next_scan_ts": "2026-06-05T09:30:00Z",
+  "empty_state_message": "",
   "yoast_ai_plus_equivalent": true,
   "yoast_ai_plus_annual_cost_replaced": 358.8,
-  "_mirrored_at": "2026-06-04T19:32:06.772187Z"
+  "queries_probed_full": [
+    "best agentic AI consulting for SMBs",
+    "Frontier Firm operating system",
+    "AI install for small business",
+    "install AI agents on Mac for business",
+    "Operator AI consulting firm",
+    "agentic AI for 1M to 50M revenue business",
+    "AI consulting flat-fee versus outcome-priced"
+  ],
+  "_mirrored_at": "2026-06-04T20:00:20.025782Z"
 }

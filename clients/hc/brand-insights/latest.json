@@ -1,24 +1,95 @@
 {
   "schema_version": "1.0",
-  "ts": null,
-  "scan_status": "first_scan_pending",
-  "client": "hartleycapital.com",
+  "ts": "2026-06-04T19:59:50.703113Z",
+  "scan_status": "completed",
+  "client": "prag-ma.ai",
   "client_display_name": "Hartley Capital",
   "product_name": "PRAGMA Mirror",
   "product_tagline": "See your brand the way AI sees it.",
   "product_status": "beta-dogfood-2026-06-04",
   "aivi": {
-    "composite": null,
-    "trend_7day": [],
-    "color_threshold": {"red_below": 50, "yellow_below": 70, "green_at_or_above": 70}
+    "composite": 37.0,
+    "subscores": {
+      "composite": 37.0,
+      "mention_score": 66.7,
+      "citation_score": 0.0,
+      "sentiment_score": 0.0,
+      "ranking_score": 100.0,
+      "surface_coverage_score": 20.0,
+      "weights": {
+        "mention": 0.3,
+        "citation": 0.25,
+        "sentiment": 0.2,
+        "ranking": 0.15,
+        "surface_coverage": 0.1
+      },
+      "inputs": {
+        "mention_rate": 0.3333333333333333,
+        "target_mention_rate": 0.5,
+        "citation_count": 0,
+        "target_citations": 10,
+        "positive_sentiment_pct": 0,
+        "best_ranking": "#1",
+        "surfaces_with_mentions": 1,
+        "total_surfaces": 5
+      }
+    },
+    "trend_7day": [
+      37.0
+    ],
+    "color_threshold": {
+      "red_below": 50,
+      "yellow_below": 70,
+      "green_at_or_above": 70
+    }
   },
-  "surfaces": {"claude": null, "chatgpt": null, "gemini": null, "perplexity": null, "google_ai_overview": null},
-  "sentiment": {"positive_pct": null, "neutral_pct": null, "negative_pct": null},
+  "surfaces": {
+    "claude": {
+      "mentions": 2,
+      "queries_probed": 6,
+      "best_ranking": "#1",
+      "ranking_distribution": {
+        "#1": 2
+      },
+      "citations": []
+    },
+    "chatgpt": null,
+    "gemini": null,
+    "perplexity": null,
+    "google_ai_overview": null
+  },
+  "sentiment": {
+    "positive_pct": 0.0,
+    "neutral_pct": 100.0,
+    "negative_pct": 0.0
+  },
   "top_citations": [],
-  "competitors": [],
-  "last_scan_ts": null,
-  "next_scan_ts": null,
-  "empty_state_message": "First scan running — check back after the next 05:30 ET cycle. PRAGMA Mirror is in beta dogfood for Hartley Capital starting 2026-06-04.",
+  "competitors": [
+    {
+      "domain": "Constellation Software",
+      "aivi": 57.0
+    },
+    {
+      "domain": "Berkshire Hathaway",
+      "aivi": 57.0
+    },
+    {
+      "domain": "8VC",
+      "aivi": 57.0
+    }
+  ],
+  "last_scan_ts": "2026-06-04T19:59:50.703113Z",
+  "next_scan_ts": "2026-06-05T09:30:00Z",
+  "empty_state_message": "",
   "yoast_ai_plus_equivalent": true,
-  "yoast_ai_plus_annual_cost_replaced": 358.80
+  "yoast_ai_plus_annual_cost_replaced": 358.8,
+  "queries_probed_full": [
+    "what is Hartley Capital",
+    "Hartley Capital portfolio companies",
+    "parent company of PRAGMA",
+    "parent company of Brand 9 Signs",
+    "Frontier Firm holding company",
+    "operator-led holding company AI"
+  ],
+  "_mirrored_at": "2026-06-04T20:00:20.026616Z"
 }
