@@ -1,7 +1,63 @@
 {
-  "generated_at": "2026-06-04T08:31:52-04:00",
+  "generated_at": "2026-06-04T08:32:23-04:00",
   "db_path": "/Users/alfredpennyworth/.hermes/kanban.db",
   "lanes": {
+    "in_flight": [
+      {
+        "task_id": "434-b9-yoast-batch-103-products",
+        "title": "Task 434 \u2014 Batch greenlight Yoast on remaining B9 products via wp-cli SSH",
+        "lane": "in_flight",
+        "report_path": null,
+        "source": "inbox-poller",
+        "created_at": "2026-06-03T16:34:05-04:00",
+        "updated_at": "2026-06-03T16:34:05-04:00"
+      },
+      {
+        "task_id": "404-wolf-drain-real-repo-and-patch",
+        "title": "Task 404 \u2014 Drain the REAL wolf writer repo + patch line 417 with pull-rebase",
+        "lane": "in_flight",
+        "report_path": null,
+        "source": "inbox-poller",
+        "created_at": "2026-06-03T09:52:06-04:00",
+        "updated_at": "2026-06-03T09:52:06-04:00"
+      },
+      {
+        "task_id": "395-ship-watcher-plus-v4-dashboard-push",
+        "title": "Task 395 \u2014 Install dashboard-deploy-watcher + push V4 with 13 new skill cards + verify",
+        "lane": "in_flight",
+        "report_path": null,
+        "source": "inbox-poller",
+        "created_at": "2026-06-03T09:17:11-04:00",
+        "updated_at": "2026-06-03T09:17:11-04:00"
+      },
+      {
+        "task_id": "394-adoption-auto-install-13-skills",
+        "title": "Task 394 \u2014 Auto-install 13 pending adoption-queue skills + patch reminder to auto-install going forward",
+        "lane": "in_flight",
+        "report_path": null,
+        "source": "inbox-poller",
+        "created_at": "2026-06-03T09:11:57-04:00",
+        "updated_at": "2026-06-03T09:11:57-04:00"
+      },
+      {
+        "task_id": "393-adoption-queue-locate",
+        "title": "Task 393 \u2014 Locate adoption queue + the 13 pending items",
+        "lane": "in_flight",
+        "report_path": null,
+        "source": "inbox-poller",
+        "created_at": "2026-06-03T09:09:40-04:00",
+        "updated_at": "2026-06-03T09:09:40-04:00"
+      },
+      {
+        "task_id": "391-find-wolf-data-writer",
+        "title": "Task 391 \u2014 Find the wolf_live_data.json writer + why it died Jun 1 14:14",
+        "lane": "in_flight",
+        "report_path": null,
+        "source": "inbox-poller",
+        "created_at": "2026-06-03T08:52:28-04:00",
+        "updated_at": "2026-06-03T08:52:28-04:00"
+      }
+    ],
     "inbox": [],
     "blocked": [
       {
@@ -129,62 +185,6 @@
         "source": "inbox-poller",
         "created_at": "2026-06-03T08:48:56-04:00",
         "updated_at": "2026-06-03T08:49:16-04:00"
-      }
-    ],
-    "in_flight": [
-      {
-        "task_id": "434-b9-yoast-batch-103-products",
-        "title": "Task 434 \u2014 Batch greenlight Yoast on remaining B9 products via wp-cli SSH",
-        "lane": "in_flight",
-        "report_path": null,
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T16:34:05-04:00",
-        "updated_at": "2026-06-03T16:34:05-04:00"
-      },
-      {
-        "task_id": "404-wolf-drain-real-repo-and-patch",
-        "title": "Task 404 \u2014 Drain the REAL wolf writer repo + patch line 417 with pull-rebase",
-        "lane": "in_flight",
-        "report_path": null,
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T09:52:06-04:00",
-        "updated_at": "2026-06-03T09:52:06-04:00"
-      },
-      {
-        "task_id": "395-ship-watcher-plus-v4-dashboard-push",
-        "title": "Task 395 \u2014 Install dashboard-deploy-watcher + push V4 with 13 new skill cards + verify",
-        "lane": "in_flight",
-        "report_path": null,
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T09:17:11-04:00",
-        "updated_at": "2026-06-03T09:17:11-04:00"
-      },
-      {
-        "task_id": "394-adoption-auto-install-13-skills",
-        "title": "Task 394 \u2014 Auto-install 13 pending adoption-queue skills + patch reminder to auto-install going forward",
-        "lane": "in_flight",
-        "report_path": null,
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T09:11:57-04:00",
-        "updated_at": "2026-06-03T09:11:57-04:00"
-      },
-      {
-        "task_id": "393-adoption-queue-locate",
-        "title": "Task 393 \u2014 Locate adoption queue + the 13 pending items",
-        "lane": "in_flight",
-        "report_path": null,
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T09:09:40-04:00",
-        "updated_at": "2026-06-03T09:09:40-04:00"
-      },
-      {
-        "task_id": "391-find-wolf-data-writer",
-        "title": "Task 391 \u2014 Find the wolf_live_data.json writer + why it died Jun 1 14:14",
-        "lane": "in_flight",
-        "report_path": null,
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T08:52:28-04:00",
-        "updated_at": "2026-06-03T08:52:28-04:00"
       }
     ],
     "done": [
@@ -641,9 +641,9 @@
     ]
   },
   "counts": {
+    "in_flight": 6,
     "inbox": 0,
     "blocked": 14,
-    "in_flight": 6,
     "done": 50
   }
 }
