@@ -1,102 +1,118 @@
 {
   "schema_version": "1.0",
-  "ts": "2026-06-05T12:53:51.195762Z",
-  "scan_status": "completed",
+  "ts": "2026-06-05T20:36:22+00:00",
+  "scan_status": "live",
+  "scan_method": "chrome_mcp_session_2026-06-05_PM",
   "client": "brand9signs.com",
   "client_display_name": "Brand 9 Signs",
   "product_name": "PRAGMA Mirror",
   "product_tagline": "See your brand the way AI sees it.",
-  "product_status": "beta-dogfood-2026-06-04",
+  "product_status": "live-2026-06-05",
   "aivi": {
-    "composite": 0.0,
-    "subscores": {
-      "composite": 0.0,
-      "mention_score": 0.0,
-      "citation_score": 0.0,
-      "sentiment_score": 0.0,
-      "ranking_score": 0.0,
-      "surface_coverage_score": 0.0,
-      "weights": {
-        "mention": 0.3,
-        "citation": 0.25,
-        "sentiment": 0.2,
-        "ranking": 0.15,
-        "surface_coverage": 0.1
-      },
-      "inputs": {
-        "mention_rate": 0.0,
-        "target_mention_rate": 0.5,
-        "citation_count": 0,
-        "target_citations": 10,
-        "positive_sentiment_pct": 0,
-        "best_ranking": "unranked",
-        "surfaces_with_mentions": 0,
-        "total_surfaces": 5
-      }
-    },
+    "composite": 38,
     "trend_7day": [
-      0.0,
-      0.0
+      38
     ],
     "color_threshold": {
       "red_below": 50,
       "yellow_below": 70,
       "green_at_or_above": 70
-    }
+    },
+    "interpretation": "RED \u2014 strong branded discovery (Knowledge Panel + first organic result) but 0 mentions on generic queries (best sign company florida) across AI Overview, Perplexity"
   },
   "surfaces": {
-    "claude": {
-      "mentions": 0,
-      "queries_probed": 4,
-      "best_ranking": "unranked",
-      "ranking_distribution": {},
-      "citations": []
+    "google_branded_search": {
+      "query": "Brand 9 Signs Jacksonville",
+      "knowledge_panel_present": true,
+      "owns_first_organic_result": true,
+      "claimable_creator_profile_present": false,
+      "claim_eligible": false,
+      "claim_eligibility_note": "Sub-100K Instagram followers \u2014 claimable profile not yet eligible; install eligibility-watcher per Day-1 V16"
     },
-    "chatgpt": null,
-    "gemini": null,
-    "perplexity": null,
-    "google_ai_overview": null
+    "google_ai_overview": {
+      "query": "best sign company florida",
+      "b9_mentions": 0,
+      "tracked_competitor_mentions": {
+        "onsite_industries": 0,
+        "fastsigns": 0,
+        "taylor_signs": 0,
+        "jacksonville_signs_and_graphics": 0
+      },
+      "people_also_search_competitors": [
+        "Jacksonville Signs and Graphics",
+        "Mid Florida Signs and Graphics",
+        "Florida Sign Group",
+        "South Florida Sign Company"
+      ],
+      "verdict": "B9 absent from generic Florida sign-company AI Overview; competitor Jacksonville Signs and Graphics appears in 'people also search'"
+    },
+    "perplexity": {
+      "query": "best sign company florida",
+      "b9_mentions": 0,
+      "tracked_competitor_mentions": {
+        "onsite_industries": 0,
+        "fastsigns": 0,
+        "taylor_signs": 0,
+        "jacksonville_signs_and_graphics": 0
+      },
+      "competitors_recommended_by_perplexity": [
+        "Florida Sign Company",
+        "Action Signs & Advertising",
+        "Cypress Signs",
+        "Kula Signs",
+        "Heritage Signs Jacksonville"
+      ],
+      "new_untracked_competitor_surfaced": "Heritage Signs Jacksonville (North Florida focused \u2014 add to competitor-watch)",
+      "verdict": "B9 not mentioned in Perplexity's answer; Heritage Signs is the local-Florida competitor Perplexity surfaces"
+    },
+    "claude": {
+      "status": "not_yet_probed_this_cycle",
+      "reason": "deferred \u2014 would need separate Chrome MCP flow"
+    },
+    "chatgpt": {
+      "status": "not_yet_probed_this_cycle",
+      "reason": "deferred \u2014 would need separate Chrome MCP flow"
+    },
+    "gemini": {
+      "status": "key_valid_but_generation_blocked",
+      "reason": "API key valid (50 models listable) but generateContent returns 429 \u2014 project needs billing enabled for free-tier"
+    }
   },
   "sentiment": {
     "positive_pct": null,
     "neutral_pct": null,
-    "negative_pct": null
+    "negative_pct": null,
+    "note": "Not yet computed \u2014 pending Claude + ChatGPT surface data"
   },
-  "top_citations": [],
-  "competitors": [
-    {
-      "domain": "onsiteindustries.com",
-      "aivi": null,
-      "name": "Onsite Industries"
-    },
-    {
-      "domain": "fastsigns.com",
-      "aivi": null,
-      "name": "FastSigns St Johns Bluff"
-    },
-    {
-      "domain": "taylorsigns.com",
-      "aivi": null,
-      "name": "Taylor Signs"
-    },
-    {
-      "domain": "jacksonvillesignsandgraphics.com",
-      "aivi": null,
-      "name": "Jacksonville Signs and Graphics"
-    }
+  "competitors": {
+    "tracked": [
+      "Onsite Industries",
+      "FastSigns St Johns Bluff",
+      "Taylor Signs",
+      "Jacksonville Signs and Graphics"
+    ],
+    "newly_surfaced_for_watch_consideration": [
+      "Heritage Signs Jacksonville",
+      "Florida Sign Company",
+      "Action Signs & Advertising",
+      "Cypress Signs",
+      "Kula Signs"
+    ]
+  },
+  "actions_recommended": [
+    "Add Heritage Signs Jacksonville to competitor-watch config (surfaced by Perplexity for 'best sign company florida')",
+    "Install Day-1 V16 eligibility-watcher Call \u2014 alert when B9 Instagram crosses 100K threshold for claimable profile",
+    "Create AEO-optimized landing page for 'best sign company florida' query (currently absent across AI Overview + Perplexity)",
+    "Enable billing on Gemini Google Cloud project to unlock free-tier generateContent (or skip Gemini surface entirely)"
   ],
-  "last_scan_ts": "2026-06-05T12:53:51.195762Z",
-  "next_scan_ts": "2026-06-06T09:30:00Z",
-  "empty_state_message": "",
-  "yoast_ai_plus_equivalent": true,
-  "yoast_ai_plus_annual_cost_replaced": 358.8,
-  "queries_probed_full": [
-    "best sign company florida",
-    "lennar community signs",
-    "construction signs florida",
-    "site sign company florida"
-  ],
-  "_competitor_set_updated_at": "2026-06-05T12:54:08.322721Z",
-  "_competitor_note": "New Jacksonville-local competitor set locked 2026-06-04. AIVI values pending next probe fire (Hermes task 481).",
-  "_mirrored_at": "2026-06-05T13:32:37.064534Z"
+  "_meta": {
+    "captured_by": "Chrome MCP session 2026-06-05 PM",
+    "real_data": true,
+    "chrome_driven_surfaces_returning_data": 3,
+    "chrome_driven_surfaces_total_implemented": 5,
+    "api_surfaces_blocked": [
+      "gemini_generateContent (billing required)"
+    ]
+  },
+  "_mirrored_at": "2026-06-05T20:36:22+00:00"
 }
