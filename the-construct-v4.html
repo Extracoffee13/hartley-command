@@ -605,7 +605,7 @@ const TieredNeurolink = () => {
           </circle>
           <text x="0" y="-7" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="13" fontWeight="700" fill={C.cyan}>HERMES</text>
           <text x="0" y="5" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="7" fill={C.cyan} opacity="0.8">CHIEF OF STAFF · OVERSEER</text>
-          <text x="0" y="16" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="6" fill={C.green} opacity="0.7">hermes-agent v0.15 · substrate · 13 wild ducks · 33 calls</text>
+          <text x="0" y="16" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="6" fill={C.green} opacity="0.7" data-live="hermes-flock-summary">hermes-agent v0.15 · substrate · 13 wild ducks · 93 calls</text>
         </g>
 
         {/* Tier 1 nodes (Public Operators) */}
@@ -884,7 +884,7 @@ const HermesPanel = () => (
           <div><span style={{ color: C.cyan }}>OS:</span> Hermes-Agent v0.15 · <span data-live="os_status" style={{color: C.green}}>LIVE 2026-06-01</span></div>
           <div><span style={{ color: C.cyan }}>Model:</span> DeepSeek V3.2 + Claude Sonnet 4.5 via OpenRouter</div>
           <div><span style={{ color: C.cyan }}>Memory files:</span> <span data-live="memory_files">280+</span> across substrate</div>
-          <div><span style={{ color: C.cyan }}>Substrate:</span> <span data-live="wild_ducks_count">14</span> Wild Ducks + <span data-live="calls_count">36</span> Calls (locked 2026-06-01)</div>
+          <div><span style={{ color: C.cyan }}>Substrate:</span> <span data-live="wild_ducks_count">13</span> Wild Ducks + <span data-live="calls_count">93</span> Calls (live from flock-classification.json)</div>
           <div><span style={{ color: C.cyan }}>Interface:</span> @HartleyHermesBot (Telegram) + Cowork</div>
           <div><span style={{ color: C.cyan }}>Search backend:</span> Tavily (1000 free/mo)</div>
           <div><span style={{ color: C.cyan }}>Host:</span> Bobby's Mac · launchd</div>
@@ -1961,6 +1961,25 @@ ReactDOM.createRoot(document.getElementById("root")).render(<Dashboard />);
       update('hc_topiclinks', (hc.total_topic_links || 0).toLocaleString());
       update('hc_hbswk', hc.by_source && hc.by_source.hbswk);
     } catch (e) { /* fallback to static */ }
+  })();
+
+  // Flock classification hydration — flock-classification.json (added 2026-06-05 PM)
+  // Replaces hardcoded "13 wild ducks · 33 calls" with live count from classifier output.
+  (async () => {
+    const urls = [
+      './flock-classification.json?cb=' + Date.now(),
+      'https://extracoffee13.github.io/hartley-command/flock-classification.json?cb=' + Date.now(),
+    ];
+    let fc = null;
+    for (const u of urls) {
+      try { const r = await fetch(u, {cache:'no-store'}); if (r.ok) { fc = await r.json(); break; } } catch(_){}
+    }
+    if (!fc) return;
+    const wd = (fc.wild_ducks && fc.wild_ducks.count) || 0;
+    const ca = (fc.calls && fc.calls.count) || 0;
+    update('hermes-flock-summary', `hermes-agent v0.15 · substrate · ${wd} wild ducks · ${ca} calls`);
+    update('wild_ducks_count', wd);
+    update('calls_count', ca);
   })();
 
   // Skills Registry hydration — daily-scanner output (added 2026-06-05)
