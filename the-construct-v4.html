@@ -783,6 +783,22 @@ const OperatorGrid = () => (
     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 10 }}>
       {INTERNAL_AGENTS.map(a => <InternalCard key={a.id} a={a} />)}
     </div>
+
+    {/* Live Skills Registry — hydrates from installed-skills-registry.json (daily scanner output) */}
+    {/* Locked 2026-06-05: per [[feedback_dashboards_auto_sync_no_reminders]], new skill discoveries must surface without manual V4 edits. */}
+    <div style={{ marginTop: 20, padding: 14, border: `1px dashed ${C.cyan}`, background: "rgba(63,169,245,0.04)", borderRadius: 4 }}>
+      <div style={{ fontSize: 11, color: C.cyan, letterSpacing: 3, marginBottom: 6 }}>
+        ⚡ SKILLS REGISTRY · LIVE · daily ecosystem-evolution-scanner
+      </div>
+      <div style={{ fontSize: 12, color: C.green, lineHeight: 1.7 }}>
+        <div>Total skills installed: <strong data-live="skills_registry_total" style={{color: C.cyan}}>—</strong> · Last scan: <span data-live="skills_registry_ts" style={{color: C.cyan, fontFamily: "monospace", fontSize: 10}}>polling…</span></div>
+        <div>Newly discovered (not yet hardcoded as Internal cards): <strong data-live="skills_registry_new_count" style={{color: C.orange}}>—</strong></div>
+        <div style={{ marginTop: 8, fontSize: 11, color: C.greenDim, fontFamily: "monospace" }} data-live="skills_registry_new_list">—</div>
+      </div>
+      <div style={{ fontSize: 9, color: C.greenDim, marginTop: 8, lineHeight: 1.5 }}>
+        Source: <code style={{ color: C.cyan }}>/Atlas/hermes-sandbox/state/installed-skills-registry.json</code> · mirrored hourly by <code style={{ color: C.cyan }}>brand-insights-mirror</code> Call · scanner fires <strong>daily 08:00 ET</strong> (was weekly Sundays; flipped 2026-06-05)
+      </div>
+    </div>
   </div>
 );
 
