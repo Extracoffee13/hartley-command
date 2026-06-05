@@ -1,9 +1,63 @@
 {
-  "generated_at": "2026-06-05T09:33:17-04:00",
+  "generated_at": "2026-06-05T09:37:05-04:00",
   "db_path": "/Users/alfredpennyworth/.hermes/kanban.db",
   "lanes": {
     "inbox": [],
     "done": [
+      {
+        "task_id": "deploy-watcher-harvard-stats-20260605T09370",
+        "title": "auto-deploy: pushed (harvard-stats)",
+        "lane": "done",
+        "report_path": null,
+        "source": "inbox-poller",
+        "created_at": "2026-06-05T09:37:05-04:00",
+        "updated_at": "2026-06-05T09:37:05-04:00"
+      },
+      {
+        "task_id": "deploy-watcher-kanban-state-20260605T09370",
+        "title": "auto-deploy: pushed (kanban-state)",
+        "lane": "done",
+        "report_path": null,
+        "source": "inbox-poller",
+        "created_at": "2026-06-05T09:37:03-04:00",
+        "updated_at": "2026-06-05T09:37:03-04:00"
+      },
+      {
+        "task_id": "deploy-watcher-kanban-state-20260605T09363",
+        "title": "auto-deploy: pushed (kanban-state)",
+        "lane": "done",
+        "report_path": null,
+        "source": "inbox-poller",
+        "created_at": "2026-06-05T09:36:31-04:00",
+        "updated_at": "2026-06-05T09:36:31-04:00"
+      },
+      {
+        "task_id": "482-reload-daily-scanner-and-push-registry",
+        "title": "Task 482 \u2014 Reload daily-scanner plist + push registry/V4 commits",
+        "lane": "done",
+        "report_path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/hermes-reports/482-reload-daily-scanner-and-push-registry-report.md",
+        "source": "inbox-poller",
+        "created_at": "2026-06-05T09:34:58-04:00",
+        "updated_at": "2026-06-05T09:36:01-04:00"
+      },
+      {
+        "task_id": "deploy-watcher-kanban-state-20260605T09355",
+        "title": "auto-deploy: pushed (kanban-state)",
+        "lane": "done",
+        "report_path": null,
+        "source": "inbox-poller",
+        "created_at": "2026-06-05T09:35:59-04:00",
+        "updated_at": "2026-06-05T09:35:59-04:00"
+      },
+      {
+        "task_id": "deploy-watcher-kanban-state-20260605T09352",
+        "title": "auto-deploy: pushed (kanban-state)",
+        "lane": "done",
+        "report_path": null,
+        "source": "inbox-poller",
+        "created_at": "2026-06-05T09:35:27-04:00",
+        "updated_at": "2026-06-05T09:35:27-04:00"
+      },
       {
         "task_id": "481-refire-b9-with-new-competitors",
         "title": "Task 481 \u2014 Re-fire B9 PRAGMA Mirror with new Jacksonville-local competitors",
@@ -399,60 +453,89 @@
         "source": "inbox-poller",
         "created_at": "2026-06-03T12:35:03-04:00",
         "updated_at": "2026-06-03T12:35:07-04:00"
-      },
+      }
+    ],
+    "in_flight": [
       {
-        "task_id": "87-deploy-pragma-via-ssh-correct-path",
-        "title": "Task 87 \u2014 Deploy prag-ma.ai via SSH/rsync (correct path \u00b7 task 86 was wrong)",
-        "lane": "done",
+        "task_id": "478-fire-pragma-mirror-first-real-scan",
+        "title": "Task 478 \u2014 Fire PRAGMA Mirror first real scan for B9 + PRAGMA + HC",
+        "lane": "in_flight",
         "report_path": null,
         "source": "inbox-poller",
-        "created_at": "2026-06-03T12:28:49+00:00",
-        "updated_at": "2026-06-03T12:28:49+00:00"
+        "created_at": "2026-06-04T15:46:44-04:00",
+        "updated_at": "2026-06-04T15:46:44-04:00"
       },
       {
-        "task_id": "86-deploy-pragma-homepage-update",
-        "title": "Task 86 \u2014 Deploy full prag-ma.ai update (homepage + all pages + articles)",
-        "lane": "done",
+        "task_id": "464-fire-b9-exhaustive-audit",
+        "title": "Task 464 \u2014 Fire b9-exhaustive-audit duck + install plist",
+        "lane": "in_flight",
         "report_path": null,
         "source": "inbox-poller",
-        "created_at": "2026-06-03T12:28:48+00:00",
-        "updated_at": "2026-06-03T12:28:48+00:00"
+        "created_at": "2026-06-04T11:53:55-04:00",
+        "updated_at": "2026-06-04T11:53:55-04:00"
       },
       {
-        "task_id": "85-install-status-writer-and-push-v4",
-        "title": "Task 85 \u2014 Install hermes-status-writer + push V4 with live hydration",
-        "lane": "done",
+        "task_id": "447-build-apple-2fa-capture-duck",
+        "title": "Task 447 \u2014 Build `apple-2fa-capture` Wild Duck",
+        "lane": "in_flight",
         "report_path": null,
         "source": "inbox-poller",
-        "created_at": "2026-06-03T12:28:48+00:00",
-        "updated_at": "2026-06-03T12:28:48+00:00"
+        "created_at": "2026-06-04T09:37:57-04:00",
+        "updated_at": "2026-06-04T09:37:57-04:00"
       },
       {
-        "task_id": "84-install-wolf-state-updater",
-        "title": "Task 84 \u2014 Install wolf-state-updater + fire once to refresh state.json",
-        "lane": "done",
+        "task_id": "434-b9-yoast-batch-103-products",
+        "title": "Task 434 \u2014 Batch greenlight Yoast on remaining B9 products via wp-cli SSH",
+        "lane": "in_flight",
         "report_path": null,
         "source": "inbox-poller",
-        "created_at": "2026-06-03T12:28:48+00:00",
-        "updated_at": "2026-06-03T12:28:48+00:00"
+        "created_at": "2026-06-03T16:34:05-04:00",
+        "updated_at": "2026-06-03T16:34:05-04:00"
       },
       {
-        "task_id": "83-install-quiet-hours-safety-net",
-        "title": "Task 83 \u2014 Install quiet-hours safety net for Telegram notifications",
-        "lane": "done",
+        "task_id": "404-wolf-drain-real-repo-and-patch",
+        "title": "Task 404 \u2014 Drain the REAL wolf writer repo + patch line 417 with pull-rebase",
+        "lane": "in_flight",
         "report_path": null,
         "source": "inbox-poller",
-        "created_at": "2026-06-03T12:28:48+00:00",
-        "updated_at": "2026-06-03T12:28:48+00:00"
+        "created_at": "2026-06-03T09:52:06-04:00",
+        "updated_at": "2026-06-03T09:52:06-04:00"
       },
       {
-        "task_id": "82-resolve-memory-conflicts",
-        "title": "Task 82 \u2014 Resolve memory-unifier conflicts (Cowork \u2192 Hermes canonical)",
-        "lane": "done",
+        "task_id": "395-ship-watcher-plus-v4-dashboard-push",
+        "title": "Task 395 \u2014 Install dashboard-deploy-watcher + push V4 with 13 new skill cards + verify",
+        "lane": "in_flight",
         "report_path": null,
         "source": "inbox-poller",
-        "created_at": "2026-06-03T12:28:48+00:00",
-        "updated_at": "2026-06-03T12:28:48+00:00"
+        "created_at": "2026-06-03T09:17:11-04:00",
+        "updated_at": "2026-06-03T09:17:11-04:00"
+      },
+      {
+        "task_id": "394-adoption-auto-install-13-skills",
+        "title": "Task 394 \u2014 Auto-install 13 pending adoption-queue skills + patch reminder to auto-install going forward",
+        "lane": "in_flight",
+        "report_path": null,
+        "source": "inbox-poller",
+        "created_at": "2026-06-03T09:11:57-04:00",
+        "updated_at": "2026-06-03T09:11:57-04:00"
+      },
+      {
+        "task_id": "393-adoption-queue-locate",
+        "title": "Task 393 \u2014 Locate adoption queue + the 13 pending items",
+        "lane": "in_flight",
+        "report_path": null,
+        "source": "inbox-poller",
+        "created_at": "2026-06-03T09:09:40-04:00",
+        "updated_at": "2026-06-03T09:09:40-04:00"
+      },
+      {
+        "task_id": "391-find-wolf-data-writer",
+        "title": "Task 391 \u2014 Find the wolf_live_data.json writer + why it died Jun 1 14:14",
+        "lane": "in_flight",
+        "report_path": null,
+        "source": "inbox-poller",
+        "created_at": "2026-06-03T08:52:28-04:00",
+        "updated_at": "2026-06-03T08:52:28-04:00"
       }
     ],
     "blocked": [
@@ -699,95 +782,12 @@
         "created_at": "2026-06-03T08:48:56-04:00",
         "updated_at": "2026-06-03T08:49:16-04:00"
       }
-    ],
-    "in_flight": [
-      {
-        "task_id": "478-fire-pragma-mirror-first-real-scan",
-        "title": "Task 478 \u2014 Fire PRAGMA Mirror first real scan for B9 + PRAGMA + HC",
-        "lane": "in_flight",
-        "report_path": null,
-        "source": "inbox-poller",
-        "created_at": "2026-06-04T15:46:44-04:00",
-        "updated_at": "2026-06-04T15:46:44-04:00"
-      },
-      {
-        "task_id": "464-fire-b9-exhaustive-audit",
-        "title": "Task 464 \u2014 Fire b9-exhaustive-audit duck + install plist",
-        "lane": "in_flight",
-        "report_path": null,
-        "source": "inbox-poller",
-        "created_at": "2026-06-04T11:53:55-04:00",
-        "updated_at": "2026-06-04T11:53:55-04:00"
-      },
-      {
-        "task_id": "447-build-apple-2fa-capture-duck",
-        "title": "Task 447 \u2014 Build `apple-2fa-capture` Wild Duck",
-        "lane": "in_flight",
-        "report_path": null,
-        "source": "inbox-poller",
-        "created_at": "2026-06-04T09:37:57-04:00",
-        "updated_at": "2026-06-04T09:37:57-04:00"
-      },
-      {
-        "task_id": "434-b9-yoast-batch-103-products",
-        "title": "Task 434 \u2014 Batch greenlight Yoast on remaining B9 products via wp-cli SSH",
-        "lane": "in_flight",
-        "report_path": null,
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T16:34:05-04:00",
-        "updated_at": "2026-06-03T16:34:05-04:00"
-      },
-      {
-        "task_id": "404-wolf-drain-real-repo-and-patch",
-        "title": "Task 404 \u2014 Drain the REAL wolf writer repo + patch line 417 with pull-rebase",
-        "lane": "in_flight",
-        "report_path": null,
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T09:52:06-04:00",
-        "updated_at": "2026-06-03T09:52:06-04:00"
-      },
-      {
-        "task_id": "395-ship-watcher-plus-v4-dashboard-push",
-        "title": "Task 395 \u2014 Install dashboard-deploy-watcher + push V4 with 13 new skill cards + verify",
-        "lane": "in_flight",
-        "report_path": null,
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T09:17:11-04:00",
-        "updated_at": "2026-06-03T09:17:11-04:00"
-      },
-      {
-        "task_id": "394-adoption-auto-install-13-skills",
-        "title": "Task 394 \u2014 Auto-install 13 pending adoption-queue skills + patch reminder to auto-install going forward",
-        "lane": "in_flight",
-        "report_path": null,
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T09:11:57-04:00",
-        "updated_at": "2026-06-03T09:11:57-04:00"
-      },
-      {
-        "task_id": "393-adoption-queue-locate",
-        "title": "Task 393 \u2014 Locate adoption queue + the 13 pending items",
-        "lane": "in_flight",
-        "report_path": null,
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T09:09:40-04:00",
-        "updated_at": "2026-06-03T09:09:40-04:00"
-      },
-      {
-        "task_id": "391-find-wolf-data-writer",
-        "title": "Task 391 \u2014 Find the wolf_live_data.json writer + why it died Jun 1 14:14",
-        "lane": "in_flight",
-        "report_path": null,
-        "source": "inbox-poller",
-        "created_at": "2026-06-03T08:52:28-04:00",
-        "updated_at": "2026-06-03T08:52:28-04:00"
-      }
     ]
   },
   "counts": {
     "inbox": 0,
     "done": 50,
-    "blocked": 27,
-    "in_flight": 9
+    "in_flight": 9,
+    "blocked": 27
   }
 }
