@@ -1958,6 +1958,51 @@ ReactDOM.createRoot(document.getElementById("root")).render(<Dashboard />);
       update('hc_hbswk', hc.by_source && hc.by_source.hbswk);
     } catch (e) { /* fallback to static */ }
   })();
+
+  // Skills Registry hydration — daily-scanner output (added 2026-06-05)
+  // Reads installed-skills-registry.json + compares to hardcoded INTERNAL_AGENTS cards
+  (async () => {
+    const urls = [
+      './installed-skills-registry.json?cb=' + Date.now(),
+      'https://extracoffee13.github.io/hartley-command/installed-skills-registry.json?cb=' + Date.now(),
+    ];
+    let reg = null;
+    for (const u of urls) {
+      try { const r = await fetch(u, {cache: 'no-store'}); if (r.ok) { reg = await r.json(); break; } } catch(_) {}
+    }
+    if (!reg) {
+      update('skills_registry_total', 'registry not yet mirrored');
+      update('skills_registry_ts', 'pending first sync');
+      update('skills_registry_new_count', '?');
+      update('skills_registry_new_list', '(brand-insights-mirror Call needs to fire once to publish the registry)');
+      return;
+    }
+    const skills = reg.skills || [];
+    update('skills_registry_total', skills.length);
+    update('skills_registry_ts', (reg.updated_at || reg._mirrored_at || '?').slice(0,19) + 'Z');
+    // Find skills in registry NOT in INTERNAL_AGENTS hardcoded ids
+    let hardcoded = new Set();
+    try {
+      document.querySelectorAll('[data-internal-id]').forEach(el => hardcoded.add(el.getAttribute('data-internal-id')));
+    } catch(_) {}
+    // Fallback if no data-internal-id — derive from INTERNAL_AGENTS global if exposed
+    const hardcodedNames = new Set([
+      'graphify','taste-skill','notfair','pro-workflow','memsearch','design-extract',
+      'claude-codex-settings','claude-mem','harness','awesome-claude-plugins',
+      'antigravity-skills','claude-octopus','nesquena-hermes-webui','allin','anthropic',
+      'gv','jobs','hormozi','musk','nvidia','oleary','leo','harvard-library',
+      'harvard-quotables','hbs-ai-institute','hbs-courses','frontier-firm-framework',
+    ]);
+    const newOnes = skills.filter(s => {
+      const nm = (s.name || s.slug || s.id || '').toLowerCase();
+      return nm && !hardcodedNames.has(nm);
+    });
+    update('skills_registry_new_count', newOnes.length);
+    update('skills_registry_new_list',
+      newOnes.length === 0 ? 'all registry skills represented in Internal cards · no new discoveries today' :
+      newOnes.map(s => '· ' + (s.name || s.slug || s.id || '?')).join('  '));
+  })();
+
   (async () => {
     for (const url of sources) {
       try {
