@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "ts": "2026-06-05T09:32:17.652150Z",
+  "ts": "2026-06-06T09:32:20.331941Z",
   "scan_status": "completed",
   "client": "prag-ma.ai",
   "client_display_name": "PRAGMA",
@@ -8,14 +8,14 @@
   "product_tagline": "See your brand the way AI sees it.",
   "product_status": "beta-dogfood-2026-06-04",
   "aivi": {
-    "composite": 0.0,
+    "composite": 10.6,
     "subscores": {
-      "composite": 0.0,
-      "mention_score": 0.0,
+      "composite": 10.6,
+      "mention_score": 28.6,
       "citation_score": 0.0,
       "sentiment_score": 0.0,
       "ranking_score": 0.0,
-      "surface_coverage_score": 0.0,
+      "surface_coverage_score": 20.0,
       "weights": {
         "mention": 0.3,
         "citation": 0.25,
@@ -24,19 +24,20 @@
         "surface_coverage": 0.1
       },
       "inputs": {
-        "mention_rate": 0.0,
+        "mention_rate": 0.14285714285714285,
         "target_mention_rate": 0.5,
         "citation_count": 0,
         "target_citations": 10,
         "positive_sentiment_pct": 0,
         "best_ranking": "unranked",
-        "surfaces_with_mentions": 0,
+        "surfaces_with_mentions": 1,
         "total_surfaces": 5
       }
     },
     "trend_7day": [
       0.0,
-      0.0
+      0.0,
+      10.6
     ],
     "color_threshold": {
       "red_below": 50,
@@ -46,10 +47,12 @@
   },
   "surfaces": {
     "claude": {
-      "mentions": 0,
+      "mentions": 1,
       "queries_probed": 7,
       "best_ranking": "unranked",
-      "ranking_distribution": {},
+      "ranking_distribution": {
+        "unranked": 1
+      },
       "citations": []
     },
     "chatgpt": null,
@@ -58,9 +61,9 @@
     "google_ai_overview": null
   },
   "sentiment": {
-    "positive_pct": null,
-    "neutral_pct": null,
-    "negative_pct": null
+    "positive_pct": 0.0,
+    "neutral_pct": 100.0,
+    "negative_pct": 0.0
   },
   "top_citations": [],
   "competitors": [
@@ -85,8 +88,8 @@
       "aivi": 10.0
     }
   ],
-  "last_scan_ts": "2026-06-05T09:32:17.652150Z",
-  "next_scan_ts": "2026-06-06T09:30:00Z",
+  "last_scan_ts": "2026-06-06T09:32:20.331941Z",
+  "next_scan_ts": "2026-06-07T09:30:00Z",
   "empty_state_message": "",
   "yoast_ai_plus_equivalent": true,
   "yoast_ai_plus_annual_cost_replaced": 358.8,
@@ -99,5 +102,5 @@
     "agentic AI for 1M to 50M revenue business",
     "AI consulting flat-fee versus outcome-priced"
   ],
-  "_mirrored_at": "2026-06-05T13:32:37.067265Z"
+  "_mirrored_at": "2026-06-06T09:40:00.562983Z"
 }
