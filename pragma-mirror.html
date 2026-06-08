@@ -81,7 +81,7 @@ footer a{color:var(--output-45);margin:0 8px}
   <h1>PRAGMA Mirror &mdash; Build Status</h1>
   <div class="sub">The Yoast AI+ replacement we built into the PRAGMA Install. Single pane of glass for what shipped, what it does, where the numbers are, and what&rsquo;s next.</div>
   <div class="meta">
-    <span>Build: 2026-06-04</span>
+    <span>Build: <span id="build-date">2026-06-04</span></span>
     <span>Status: <span id="status">checking&hellip;</span></span>
     <span>Cycle: daily 05:30 ET</span>
     <span>Replaces: Yoast AI+ Brand Insights ($358.80/yr)</span>
@@ -100,7 +100,7 @@ footer a{color:var(--output-45);margin:0 8px}
     <h4>PRAGMA</h4>
     <div class="aivi-big" id="pragma-aivi">&mdash;</div>
     <div class="meta" id="pragma-meta">loading&hellip;</div>
-    <a class="link" href="https://prag-ma.ai/aivi/" target="_blank">Open PRAGMA page &rarr;</a>
+    <a class="link" href="/clients/pragma/brand-insights.html">Open PRAGMA tile &rarr;</a>
   </div>
   <div class="card" id="hc-card">
     <h4>Hartley Capital</h4>
@@ -118,7 +118,7 @@ footer a{color:var(--output-45);margin:0 8px}
 
 <h2>Ops dashboards <span class="badge">internal</span></h2>
 <div class="row"><div class="k">B9 client tile</div><div class="v"><a href="https://extracoffee13.github.io/hartley-command/clients/b9/brand-insights.html" target="_blank">extracoffee13.github.io/hartley-command/clients/b9/brand-insights.html</a></div></div>
-<div class="row"><div class="k">PRAGMA client tile</div><div class="v"><a href="https://extracoffee13.github.io/hartley-command/clients/pragma/brand-insights/latest.json" target="_blank">JSON: clients/pragma/brand-insights/latest.json</a> (page TBD)</div></div>
+<div class="row"><div class="k">PRAGMA client tile</div><div class="v"><a href="https://extracoffee13.github.io/hartley-command/clients/pragma/brand-insights.html" target="_blank">extracoffee13.github.io/hartley-command/clients/pragma/brand-insights.html</a></div></div>
 <div class="row"><div class="k">HC client tile</div><div class="v"><a href="https://extracoffee13.github.io/hartley-command/clients/hc/brand-insights.html" target="_blank">extracoffee13.github.io/hartley-command/clients/hc/brand-insights.html</a></div></div>
 <div class="row"><div class="k">V4 dashboard tile</div><div class="v"><a href="/the-construct-v4.html" target="_blank">/the-construct-v4.html</a> &mdash; PragmaMirrorPanel between Harvard Corpus and Wild Ducks bands</div></div>
 <div class="row"><div class="k">This status page</div><div class="v"><a href="/pragma-mirror.html">/pragma-mirror.html</a> &larr; you are here</div></div>
@@ -134,18 +134,18 @@ footer a{color:var(--output-45);margin:0 8px}
   <span class="arrow">&rarr;</span> Telegram digest if any AIVI moved &gt;10% vs 7-day average
 </div>
 
-<h2>AI surface coverage <span class="badge">parity vs yoast</span></h2>
+<h2>AI surface coverage <span class="badge">v3 scraper · no API keys</span></h2>
 <div class="surface-grid head">
   <div>Surface</div><div>Purpose</div><div>API key</div><div>Status</div><div>Yoast also?</div>
 </div>
-<div class="surface-grid"><div class="name">Claude</div><div>Claude.ai, Claude in Chrome</div><div><code>OPENROUTER_API_KEY</code></div><div><span class="status-dot live"></span>live</div><div>yes</div></div>
-<div class="surface-grid"><div class="name">ChatGPT</div><div>ChatGPT Voice, Apple Intelligence</div><div><code>OPENAI_API_KEY</code></div><div><span class="status-dot missing"></span>401 invalid</div><div>yes</div></div>
-<div class="surface-grid"><div class="name">Gemini</div><div>Pixel, Workspace AI</div><div><code>GOOGLE_GEMINI_API_KEY</code></div><div><span class="status-dot missing"></span>missing</div><div>yes</div></div>
-<div class="surface-grid"><div class="name">Perplexity</div><div>Perplexity Voice</div><div><code>PERPLEXITY_API_KEY</code></div><div><span class="status-dot missing"></span>missing</div><div>yes</div></div>
-<div class="surface-grid"><div class="name">Google AIO</div><div>Hey Google / Assistant</div><div><code>SERPAPI_API_KEY</code></div><div><span class="status-dot pending"></span>check</div><div><strong style="color:var(--signal)">no &mdash; bonus</strong></div></div>
+<div class="surface-grid"><div class="name">DuckDuckGo</div><div>AI Answer, privacy-first search</div><div><em style="color:var(--output-45)">none needed</em></div><div><span class="status-dot live"></span>live</div><div><strong style="color:var(--signal)">no &mdash; bonus</strong></div></div>
+<div class="surface-grid"><div class="name">You.com</div><div>AI-first search, YouChat</div><div><em style="color:var(--output-45)">none needed</em></div><div><span class="status-dot live"></span>live</div><div><strong style="color:var(--signal)">no &mdash; bonus</strong></div></div>
+<div class="surface-grid"><div class="name">Bing AI</div><div>Copilot, Bing Chat, Edge</div><div><em style="color:var(--output-45)">none needed</em></div><div><span class="status-dot live"></span>live</div><div>yes</div></div>
+<div class="surface-grid"><div class="name">Mojeek</div><div>Independent AI search</div><div><em style="color:var(--output-45)">none needed</em></div><div><span class="status-dot live"></span>live</div><div><strong style="color:var(--signal)">no &mdash; bonus</strong></div></div>
+<div class="surface-grid"><div class="name">Phind</div><div>AI search for developers &amp; pros</div><div><em style="color:var(--output-45)">none needed</em></div><div><span class="status-dot live"></span>live</div><div><strong style="color:var(--signal)">no &mdash; bonus</strong></div></div>
 
-<div class="warn-box">
-  <strong>Action needed:</strong> ChatGPT key returns 401. Gemini + Perplexity keys aren&rsquo;t set in <code>~/.hermes/.env</code>. Right now only Claude is reporting. Once the 3 keys land, surface coverage jumps from 1/5 to 5/5 and AIVI numbers become meaningful.
+<div class="win-box">
+  <strong>v3 scraper active:</strong> All 5 surfaces (DuckDuckGo, You.com, Bing AI, Mojeek, Phind) probe without API keys. No expiry, no 401s. Sentiment analysis, citation extraction, competitor benchmarking, and AIVI composite all wired. Once PRAGMA earns mentions, AIVI will be non-zero.
 </div>
 
 <div class="win-box">
@@ -252,6 +252,10 @@ async function load(slug) {
     const aiviEl = document.getElementById(c.slug + '-aivi');
     const metaEl = document.getElementById(c.slug + '-meta');
     if (!d) { aiviEl.textContent = 'no data'; metaEl.textContent = 'fetch failed'; continue; }
+    // Update build date dynamically from PRAGMA JSON ts field
+    if (c.slug === 'pragma' && d.ts) {
+      document.getElementById('build-date').textContent = d.ts.slice(0,10);
+    }
     const a = d.aivi && d.aivi.composite;
     if (d.scan_status === 'first_scan_pending' || a == null) {
       aiviEl.textContent = '—';
