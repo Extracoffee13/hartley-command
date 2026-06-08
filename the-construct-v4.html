@@ -1776,6 +1776,52 @@ const Footer = () => (
 // ═══════════════════════════════════════════════════════════════
 // HARVARD CORPUS PANEL — strategic asymmetric advantage
 // ═══════════════════════════════════════════════════════════════
+
+const EcosystemAdditionsPanel = () => (
+  <div style={{ ...panelStyle, borderColor: C.cyan, marginTop: 24 }}>
+    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
+      <h3 style={{ color: C.signal, margin: 0, fontSize: 16, letterSpacing: 0.5 }}>📡 RECENT ECOSYSTEM ADDITIONS</h3>
+      <div style={{ color: C.cyan, fontSize: 11, fontFamily: "monospace" }} data-live="ecosystem_additions_updated">polling…</div>
+    </div>
+    <div style={{ color: C.greenDim, fontSize: 12, marginBottom: 12 }}>
+      Auto-registered the moment they appear in /Atlas/hermes-sandbox/. Locked rule [[feedback_ecosystem_additions_auto_registration]] — Bobby never reminds.
+    </div>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, fontSize: 11 }}>
+      <div>
+        <div style={{ color: C.cyan, fontWeight: "bold" }}>Wild Ducks</div>
+        <div data-live="ecosystem_wild_ducks_count" style={{ color: C.signal, fontSize: 24, fontFamily: "monospace" }}>—</div>
+      </div>
+      <div>
+        <div style={{ color: C.cyan, fontWeight: "bold" }}>Calls</div>
+        <div data-live="ecosystem_calls_count" style={{ color: C.signal, fontSize: 24, fontFamily: "monospace" }}>—</div>
+      </div>
+      <div>
+        <div style={{ color: C.cyan, fontWeight: "bold" }}>Tailored Ducks</div>
+        <div data-live="ecosystem_tailored_count" style={{ color: C.signal, fontSize: 24, fontFamily: "monospace" }}>—</div>
+      </div>
+      <div>
+        <div style={{ color: C.cyan, fontWeight: "bold" }}>Memory Rules</div>
+        <div data-live="ecosystem_memory_rules_count" style={{ color: C.signal, fontSize: 24, fontFamily: "monospace" }}>—</div>
+      </div>
+      <div>
+        <div style={{ color: C.cyan, fontWeight: "bold" }}>Dashboards</div>
+        <div data-live="ecosystem_dashboards_count" style={{ color: C.signal, fontSize: 24, fontFamily: "monospace" }}>—</div>
+      </div>
+      <div>
+        <div style={{ color: C.cyan, fontWeight: "bold" }}>Thinker Skills</div>
+        <div data-live="ecosystem_thinker_count" style={{ color: C.signal, fontSize: 24, fontFamily: "monospace" }}>—</div>
+      </div>
+    </div>
+    <div style={{ marginTop: 16, fontSize: 11, color: C.greenDim }}>
+      <strong style={{ color: C.cyan }}>Last 24h: <span data-live="ecosystem_recent_24h" style={{ color: C.signal }}>—</span> new items</strong>
+    </div>
+    <div style={{ marginTop: 12, fontSize: 11, fontFamily: "monospace", color: C.greenDim }} data-live="ecosystem_recent_list">—</div>
+    <div style={{ marginTop: 12, fontSize: 10, color: C.greenDim }}>
+      Source: <code style={{ color: C.cyan }}>/Atlas/hermes-sandbox/state/ecosystem-additions-feed.json</code> · auto-fires every dashboard-autosync cycle (30 min)
+    </div>
+  </div>
+);
+
 const HarvardCorpusPanel = () => (
   <div style={{ margin: "28px 28px 20px", padding: 18,
     border: `2px solid ${C.cyan}`, background: "rgba(0,212,255,0.04)", position: "relative",
@@ -1850,6 +1896,7 @@ const Dashboard = () => (
       <Header />
       <TieredNeurolink />
       <HermesPanel />
+      <EcosystemAdditionsPanel />
       <HarvardCorpusPanel />
       <PragmaMirrorPanel />
       <WildDucksBand />
@@ -1909,6 +1956,36 @@ ReactDOM.createRoot(document.getElementById("root")).render(<Dashboard />);
       update('hc_hbswk', hc.by_source && hc.by_source.hbswk);
     } catch (e) { /* fallback to static */ }
   })();
+
+  // Ecosystem Additions hydration — auto-registered new wild ducks/calls/skills/etc
+  (async () => {
+    const urls = [
+      './ecosystem-additions-feed.json?nocache=' + Date.now(),
+    ];
+    let feed = null;
+    for (const u of urls) {
+      try { const r = await fetch(u, {cache:'no-store'}); if (r.ok) { feed = await r.json(); break; } } catch(_){}
+    }
+    if (!feed) {
+      update('ecosystem_additions_updated', 'feed not yet published');
+      return;
+    }
+    update('ecosystem_additions_updated', (feed.updated_at || '?').slice(0,19) + 'Z');
+    const by = feed.by_type || {};
+    update('ecosystem_wild_ducks_count', by.wild_ducks || 0);
+    update('ecosystem_calls_count', by.calls || 0);
+    update('ecosystem_tailored_count', by.tailored_ducks || 0);
+    update('ecosystem_memory_rules_count', by.memory_rules || 0);
+    update('ecosystem_dashboards_count', by.dashboards || 0);
+    update('ecosystem_thinker_count', by.thinker_skills || 0);
+    update('ecosystem_recent_24h', feed.recent_24h_count || 0);
+    // Show last 10 additions inline
+    const recent = (feed.additions || []).slice(-10).reverse();
+    const list = recent.length === 0 ? '(no additions yet detected)' :
+      recent.map(a => '· ' + a.type + ': ' + a.name).join('  ');
+    update('ecosystem_recent_list', list);
+  })();
+
 
   // Flock classification hydration — flock-classification.json (added 2026-06-05 PM)
   // Replaces hardcoded "13 wild ducks · 33 calls" with live count from classifier output.
