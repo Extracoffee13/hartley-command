@@ -1841,6 +1841,82 @@ const HarvardCorpusPanel = () => (
 );
 
 // ═══════════════════════════════════════════════════════════════
+// FOUNDERS PLAYBOOK PANEL — Anthropic's May 2026 guide as ecosystem skill
+// ═══════════════════════════════════════════════════════════════
+const FoundersPlaybookPanel = () => (
+  <div style={{ margin: "28px 28px 20px", padding: 18,
+    border: `2px solid ${C.gold}`, background: "rgba(255,215,0,0.04)", position: "relative",
+  }}>
+    <div style={{ position: "absolute", top: -10, left: 16, padding: "0 8px", background: "#000", fontSize: 10, color: C.gold, letterSpacing: 4 }}>
+      ⚑ FOUNDERS PLAYBOOK — Anthropic (May 2026) · operationalized as ecosystem skill
+    </div>
+    <div style={{ marginTop: 8, marginBottom: 16, fontSize: 12, color: C.green, opacity: 0.85 }}>
+      Anthropic&apos;s 36pp guide read cover-to-cover and wrapped as a callable skill. Frameworks, decision tests, and verbatim quotes routed to Keystone scoring, PRAGMA pitch + Day-1 V-blocks, HC diligence, B9 strategy, and /thinking/ articles. The first founder playbook that treats AI <em>speed</em> as the central risk and ends on moat construction instead of fundraising mechanics.
+    </div>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))", gap: 14, marginTop: 12 }}>
+      <div style={{ background: "rgba(0,0,0,0.4)", padding: 12, borderLeft: `3px solid ${C.gold}` }}>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2 }}>PAGES READ</div>
+        <div style={{ fontSize: 32, fontWeight: 900, color: C.gold }}>36</div>
+      </div>
+      <div style={{ background: "rgba(0,0,0,0.4)", padding: 12, borderLeft: `3px solid ${C.gold}` }}>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2 }}>STAGES</div>
+        <div style={{ fontSize: 32, fontWeight: 900, color: C.gold }}>4</div>
+      </div>
+      <div style={{ background: "rgba(0,0,0,0.4)", padding: 12, borderLeft: `3px solid ${C.gold}` }}>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2 }}>FRAMEWORKS</div>
+        <div style={{ fontSize: 32, fontWeight: 900, color: C.gold }}>8</div>
+      </div>
+      <div style={{ background: "rgba(0,0,0,0.4)", padding: 12, borderLeft: `3px solid ${C.gold}` }}>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2 }}>QUOTABLES</div>
+        <div style={{ fontSize: 32, fontWeight: 900, color: C.gold }}>10</div>
+      </div>
+      <div style={{ background: "rgba(0,0,0,0.4)", padding: 12, borderLeft: `3px solid ${C.gold}` }}>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2 }}>SURFACES WIRED</div>
+        <div style={{ fontSize: 32, fontWeight: 900, color: C.gold }}>5</div>
+      </div>
+    </div>
+    <div style={{ marginTop: 16, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+      <div>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 6 }}>NAMED FRAMEWORKS</div>
+        <div style={{ fontSize: 11, color: C.green, lineHeight: 1.7 }}>
+          <div><span style={{ color: C.gold }}>Sean Ellis Test</span> · &gt;40% &quot;very disappointed&quot; = real PMF</div>
+          <div><span style={{ color: C.gold }}>The Effort Test</span> · push vs pull on retention</div>
+          <div><span style={{ color: C.gold }}>3-Q MVP Diagnostic</span> · when PMF stalls</div>
+          <div><span style={{ color: C.gold }}>Bottleneck Map</span> · where founder is still load-bearing</div>
+          <div><span style={{ color: C.gold }}>Moat Stack (3 sources)</span> · domain + data + lock-in</div>
+          <div><span style={{ color: C.gold }}>Incumbent-Copy Gate</span> · binary moat test</div>
+          <div><span style={{ color: C.gold }}>Surface Matrix</span> · Chat / Cowork / Code</div>
+          <div><span style={{ color: C.gold }}>CLAUDE.md as architecture</span> · persistent project memory</div>
+        </div>
+      </div>
+      <div>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 6 }}>WIRED INTO</div>
+        <div style={{ fontSize: 11, color: C.green, lineHeight: 1.7 }}>
+          <div><span style={{ color: C.gold }}>Keystone scoring</span> · 4 new venture axes</div>
+          <div><span style={{ color: C.gold }}>PRAGMA pitch</span> · install-not-train is doc&apos;d Anthropic best practice</div>
+          <div><span style={{ color: C.gold }}>PRAGMA Day-1</span> · 7 productizable V-blocks</div>
+          <div><span style={{ color: C.gold }}>HC diligence</span> · 8 standardized questions</div>
+          <div><span style={{ color: C.gold }}>B9 strategy</span> · founder-as-orchestrator for 40-yr SMB</div>
+          <div style={{ marginTop: 6, opacity: 0.7 }}>Mounted at /Atlas/skills/founders-playbook/ (Cowork + Hermes mirror)</div>
+        </div>
+      </div>
+    </div>
+    <div style={{ marginTop: 14, padding: 10, background: "rgba(255,215,0,0.06)", borderLeft: `3px solid ${C.gold}` }}>
+      <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 4 }}>SPINE QUOTE</div>
+      <div style={{ fontSize: 12, color: C.gold, fontStyle: "italic", lineHeight: 1.5 }}>
+        &quot;The bottlenecks are no longer what you can build, but what you choose to build.&quot; <span style={{ opacity: 0.6, fontSize: 10 }}>— p.32</span>
+      </div>
+    </div>
+    <div style={{ marginTop: 14, display: "flex", justifyContent: "space-between", alignItems: "center", borderTop: `1px solid ${C.gold}33`, paddingTop: 10 }}>
+      <div style={{ fontSize: 10, color: C.greenDim, letterSpacing: 1 }}>
+        <span style={{ color: C.gold }}>Triggers:</span> &quot;is this a Coca-Cola&quot; · &quot;score this venture&quot; · &quot;run the moat test&quot; · &quot;PRAGMA prospect qualification&quot; · &quot;what does Anthropic say about [moats / agents / PMF]&quot;
+      </div>
+      <a href="https://claude.com/blog/the-founders-playbook" target="_blank" style={{ color: C.gold, fontSize: 11, fontFamily: "monospace", textDecoration: "underline" }}>source →</a>
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════
 // MAIN
 // ═══════════════════════════════════════════════════════════════
 const Dashboard = () => (
@@ -1851,6 +1927,7 @@ const Dashboard = () => (
       <TieredNeurolink />
       <HermesPanel />
       <HarvardCorpusPanel />
+      <FoundersPlaybookPanel />
       <PragmaMirrorPanel />
       <WildDucksBand />
       <HermesMigrationMap />
