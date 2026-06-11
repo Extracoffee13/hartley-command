@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PRAGMA Mirror — Build Status</title>
+<title>PRAGMA Mirror — AI Visibility Engine</title>
 <meta name="robots" content="noindex">
 <style>
 :root {
@@ -78,17 +78,17 @@ footer a{color:var(--output-45);margin:0 8px}
 <body>
 
 <div class="hdr">
-  <h1>PRAGMA Mirror &mdash; Build Status</h1>
-  <div class="sub">The Yoast AI+ replacement we built into the PRAGMA Install. Single pane of glass for what shipped, what it does, where the numbers are, and what&rsquo;s next.</div>
+  <h1>PRAGMA Mirror &mdash; AI Visibility Engine</h1>
+  <div class="sub">Measures AI visibility across 5 surfaces. Diagnoses citation gaps. Autonomously generates and publishes AEO-optimized content to close them. Not a tracker &mdash; an engine. Google tells you what AI says. PRAGMA changes it.</div>
   <div class="meta">
     <span>Build: <span id="build-date">2026-06-04</span></span>
     <span>Status: <span id="status">checking&hellip;</span></span>
-    <span>Cycle: daily 05:30 ET</span>
-    <span>Replaces: Yoast AI+ Brand Insights ($358.80/yr)</span>
+    <span>Probe: daily 05:30 ET &nbsp;|&nbsp; AEO Operator: daily 06:00 ET</span>
+    <span>Replaces: Yoast AI+ Brand Insights + Google AI monitoring tools</span>
   </div>
 </div>
 
-<h2>Live AIVI numbers <span class="badge">first real fire</span></h2>
+<h2>Live AIVI numbers <span class="badge">B9 current: 38/100 · RED</span></h2>
 <div class="grid-3">
   <div class="card" id="b9-card">
     <h4>Brand 9 Signs</h4>
@@ -110,6 +110,33 @@ footer a{color:var(--output-45);margin:0 8px}
   </div>
 </div>
 
+<h2>AEO Action Engine <span class="badge">live · first run 2026-06-11</span></h2>
+
+<div class="win-box">
+  <strong>First operator run complete:</strong> 6 AEO pages generated and queued (2026-06-11 19:29 UTC) &mdash; <code>best-sign-company-florida</code>, <code>lennar-community-signs-florida</code>, <code>construction-signs-florida</code>, <code>site-sign-company-florida</code>, <code>homebuilder-signage-florida</code>, <code>jacksonville-sign-company</code>.
+  WP publish activates once credentials are added to <code>~/.hermes/.env</code> &mdash; run <code>bash ~/Documents/Claude/Projects/Atlas/hermes-sandbox/wild-ducks-clients/b9-aeo-operator/setup-env.sh</code> in Terminal.
+</div>
+
+<div class="flow">
+  <strong>Full autonomous loop (once credentials live):</strong>
+  <br/>
+  05:30 ET <strong>citation-probe</strong> queries 5 AI surfaces &mdash; 6 buyer-intent queries each
+  <span class="arrow">&rarr;</span> AIVI composite scored and written to <code>latest.json</code>
+  <br/>
+  06:00 ET <strong>b9-aeo-operator</strong> reads AIVI gaps (surfaces below 70)
+  <span class="arrow">&rarr;</span> generates AEO page per gap (OpenRouter claude-sonnet-4-5)
+  <span class="arrow">&rarr;</span> publishes direct to brand9signs.com via WP REST API (status: publish, no approval gate)
+  <span class="arrow">&rarr;</span> submits to Google Search Console for fast indexing
+  <span class="arrow">&rarr;</span> logs to <code>actions_taken</code> in <code>latest.json</code>
+  <br/>
+  Next 05:30 cycle re-probes &mdash; AIVI trend shows improvement over days/weeks
+</div>
+
+<div class="warn-box" id="credentials-status">
+  <strong>Credentials needed:</strong> Add <code>OPENROUTER_API_KEY</code>, <code>B9_WP_USER</code>, <code>B9_WP_APP_PASSWORD</code> to <code>~/.hermes/.env</code> to unlock AI content generation and WP publishing.
+  Run: <code>bash ~/Documents/Claude/Projects/Atlas/hermes-sandbox/wild-ducks-clients/b9-aeo-operator/setup-env.sh</code>
+</div>
+
 <h2>Public-facing surfaces <span class="badge">where bobby clicks</span></h2>
 <div class="row"><div class="k">PRAGMA dogfood page</div><div class="v"><a href="https://prag-ma.ai/aivi/" target="_blank">https://prag-ma.ai/aivi/</a> &mdash; full AIVI tile + 3-brand context, formula visible, live JSON behind it</div></div>
 <div class="row"><div class="k">PRAGMA homepage nav</div><div class="v">&ldquo;our AIVI&rdquo; link added to main nav (deploys with the next prag-ma.ai push)</div></div>
@@ -123,18 +150,40 @@ footer a{color:var(--output-45);margin:0 8px}
 <div class="row"><div class="k">V4 dashboard tile</div><div class="v"><a href="/the-construct-v4.html" target="_blank">/the-construct-v4.html</a> &mdash; PragmaMirrorPanel between Harvard Corpus and Wild Ducks bands</div></div>
 <div class="row"><div class="k">This status page</div><div class="v"><a href="/pragma-mirror.html">/pragma-mirror.html</a> &larr; you are here</div></div>
 
-<h2>What the system does <span class="badge">data flow</span></h2>
+<h2>What the system does <span class="badge">full AEO loop</span></h2>
 <div class="flow">
+  <strong>MEASURE →</strong>
   05:30 ET <strong>launchd</strong> fires <strong>com.hermes.b9-ai-citation-probe</strong>, <strong>pragma</strong>, <strong>hc</strong> (offset 2 min each)
   <span class="arrow">&rarr;</span> each probe asks 5 AI surfaces 6-7 buyer-intent queries
   <span class="arrow">&rarr;</span> per response: sentiment classified, citations extracted, ranking computed, competitor swap-and-rerun
   <span class="arrow">&rarr;</span> AIVI composite written to <code>/Atlas/pragma/clients/&lt;slug&gt;/brand-insights/latest.json</code>
-  <span class="arrow">&rarr;</span> 05:40 <strong>brand-insights-mirror</strong> Call copies each to <code>/dashboards-deploy/clients/&lt;slug&gt;/brand-insights/latest.json</code>
+  <span class="arrow">&rarr;</span> 05:40 <strong>brand-insights-mirror</strong> copies to <code>/dashboards-deploy/</code>
   <span class="arrow">&rarr;</span> <strong>dashboard-deploy-watcher</strong> pushes to GitHub Pages
   <span class="arrow">&rarr;</span> Telegram digest if any AIVI moved &gt;10% vs 7-day average
+  <br/><br/>
+  <strong>ACT →</strong>
+  06:00 ET <strong>com.hermes.b9-aeo-operator</strong> fires (30 min after probe)
+  <span class="arrow">&rarr;</span> reads PRAGMA <code>latest.json</code> &mdash; identifies queries where AIVI &lt; 70 (citation gap)
+  <span class="arrow">&rarr;</span> generates AEO page per gap via OpenRouter (anthropic/claude-sonnet-4-5)
+  <span class="arrow">&rarr;</span> writes FAQPage JSON-LD schema + direct-answer body optimized for LLM citations
+  <span class="arrow">&rarr;</span> publishes directly to brand9signs.com via WP REST API (no approval gate)
+  <span class="arrow">&rarr;</span> submits URL to Google Search Console Indexing API
+  <span class="arrow">&rarr;</span> logs <code>actions_taken</code> to <code>latest.json</code> &mdash; next probe measures improvement
 </div>
 
-<h2>AI surface coverage <span class="badge">v3 scraper · no API keys</span></h2>
+<h2>AI surface coverage <span class="badge">5 LLM surfaces · AEO targets</span></h2>
+
+<h3>Tier 1 — Direct LLM probe (Playwright · authenticated sessions)</h3>
+<div class="surface-grid head">
+  <div>Surface</div><div>Why it matters</div><div>Probe method</div><div>Status</div><div>AEO targets</div>
+</div>
+<div class="surface-grid"><div class="name">Claude.ai</div><div>Anthropic &mdash; fastest-growing enterprise LLM</div><div>Playwright · authenticated</div><div><span class="status-dot pending"></span>bootstrap login needed</div><div><strong style="color:var(--signal)">yes</strong></div></div>
+<div class="surface-grid"><div class="name">ChatGPT</div><div>OpenAI &mdash; largest consumer LLM base</div><div>Playwright · authenticated</div><div><span class="status-dot pending"></span>bootstrap login needed</div><div><strong style="color:var(--signal)">yes</strong></div></div>
+<div class="surface-grid"><div class="name">Gemini</div><div>Google &mdash; AI Mode + AI Overviews</div><div>Playwright · authenticated</div><div><span class="status-dot pending"></span>bootstrap login needed</div><div><strong style="color:var(--signal)">yes</strong></div></div>
+<div class="surface-grid"><div class="name">Perplexity</div><div>AI search &mdash; heavy citation-first format</div><div>Playwright · authenticated</div><div><span class="status-dot pending"></span>bootstrap login needed</div><div><strong style="color:var(--signal)">yes</strong></div></div>
+<div class="surface-grid"><div class="name">Google AIO</div><div>Google AI Overview &mdash; shown to 1B+ users</div><div>Playwright · search SERP</div><div><span class="status-dot pending"></span>bootstrap login needed</div><div><strong style="color:var(--signal)">yes</strong></div></div>
+
+<h3>Tier 2 — Search-engine AI scraper (no keys · always-on baseline)</h3>
 <div class="surface-grid head">
   <div>Surface</div><div>Purpose</div><div>API key</div><div>Status</div><div>Yoast also?</div>
 </div>
@@ -145,11 +194,7 @@ footer a{color:var(--output-45);margin:0 8px}
 <div class="surface-grid"><div class="name">Phind</div><div>AI search for developers &amp; pros</div><div><em style="color:var(--output-45)">none needed</em></div><div><span class="status-dot live"></span>live</div><div><strong style="color:var(--signal)">no &mdash; bonus</strong></div></div>
 
 <div class="win-box">
-  <strong>v3 scraper active:</strong> All 5 surfaces (DuckDuckGo, You.com, Bing AI, Mojeek, Phind) probe without API keys. No expiry, no 401s. Sentiment analysis, citation extraction, competitor benchmarking, and AIVI composite all wired. Once PRAGMA earns mentions, AIVI will be non-zero.
-</div>
-
-<div class="win-box">
-  <strong>Code parity confirmed:</strong> all 5 finishing modules wired and tested. Sentiment via Claude API (hash-cached, ~$5/mo budget). Citation URL extraction. Competitor probes with name substitution. AIVI composite with published formula (Yoast hides theirs). Per-client tailoring framework already proven on B9 + TLC.
+  <strong>Why this beats Google&rsquo;s AI tools:</strong> Google Search Console tells you your organic ranking. Google&rsquo;s AI Overview tracking tells you <em>if</em> you&rsquo;re cited in AI answers. PRAGMA Mirror tells you where you&rsquo;re missing across <em>all five major AI surfaces</em> &mdash; and then the AEO operator writes and publishes the content to fix it. Measure, diagnose, act &mdash; fully autonomous.
 </div>
 
 <h2>Files shipped <span class="badge">inventory</span></h2>
@@ -214,10 +259,10 @@ footer a{color:var(--output-45);margin:0 8px}
 
 <h2>Open punch list</h2>
 <ul class="bare">
-  <li><strong>Provision API keys:</strong> regenerate OpenAI, add Gemini, add Perplexity to <code>~/.hermes/.env</code></li>
-  <li><strong>Push hartley-command tiles to GitHub:</strong> sandbox can&rsquo;t push, watcher will sync on next cycle</li>
-  <li><strong>Verify launchd cron fires at 05:30 ET tomorrow:</strong> not just manually triggered today</li>
-  <li><strong>Deploy updated homepage nav to prag-ma.ai:</strong> &ldquo;our AIVI&rdquo; link gets added</li>
+  <li><strong>Wire AEO credentials:</strong> run <code>bash ~/Documents/Claude/Projects/Atlas/hermes-sandbox/wild-ducks-clients/b9-aeo-operator/setup-env.sh</code> in Terminal &mdash; enter OpenRouter key + WP App Password to unlock autonomous publishing</li>
+  <li><strong>Bootstrap Playwright LLM probe:</strong> <code>pip install playwright &amp;&amp; playwright install chromium</code>, then login once to each surface (Claude.ai, ChatGPT, Gemini, Perplexity) to save auth sessions for daily scanning</li>
+  <li><strong>Wire GSC indexing:</strong> add <code>GSC_SERVICE_ACCOUNT_JSON</code> to <code>~/.hermes/.env</code> for automatic Search Console submission after each AEO page publish</li>
+  <li><strong>Update prag-ma.ai OS page:</strong> change &ldquo;AI Citation Probe&rdquo; Flock entry from measurement-only language to &ldquo;measures citations AND publishes content to close gaps&rdquo;</li>
 </ul>
 
 <footer>
