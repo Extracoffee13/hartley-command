@@ -148,21 +148,50 @@
     "negative_pct": 0,
     "note": "Computed 2026-06-11 across 5 surfaces \u2014 zero B9 mentions anywhere, so sentiment is neutral-absent; no negative signal."
   },
-  "competitors": {
-    "tracked": [
-      "Onsite Industries",
-      "FastSigns St Johns Bluff",
-      "Taylor Signs",
-      "Jacksonville Signs and Graphics"
-    ],
-    "newly_surfaced_for_watch_consideration": [
-      "Heritage Signs Jacksonville",
-      "Florida Sign Company",
-      "Action Signs & Advertising",
-      "Cypress Signs",
-      "Kula Signs"
-    ]
-  },
+  "competitors": [
+    {
+      "domain": "Florida Sign Company",
+      "aivi": 2,
+      "note": "cited on 2/5 AI surfaces (Gemini, ChatGPT)"
+    },
+    {
+      "domain": "Thomas Sign & Awning",
+      "aivi": 2,
+      "note": "watch candidate \u2014 2/5 surfaces"
+    },
+    {
+      "domain": "Onsite Industries",
+      "aivi": 0
+    },
+    {
+      "domain": "FastSigns St Johns Bluff",
+      "aivi": 0
+    },
+    {
+      "domain": "Taylor Signs",
+      "aivi": 0
+    },
+    {
+      "domain": "Jacksonville Signs and Graphics",
+      "aivi": 0
+    },
+    {
+      "domain": "Heritage Signs Jacksonville",
+      "aivi": 0
+    },
+    {
+      "domain": "Action Signs & Advertising",
+      "aivi": 0
+    },
+    {
+      "domain": "Cypress Signs",
+      "aivi": 0
+    },
+    {
+      "domain": "Kula Signs",
+      "aivi": 0
+    }
+  ],
   "actions_recommended": [
     "Add Heritage Signs Jacksonville to competitor-watch config (surfaced by Perplexity for 'best sign company florida')",
     "Install Day-1 V16 eligibility-watcher Call \u2014 alert when B9 Instagram crosses 100K threshold for claimable profile",
@@ -213,5 +242,6 @@
       "HD Signs & Lighting"
     ]
   },
-  "_mirrored_at": "2026-06-11T14:39:44.689848Z"
+  "_competitors_note": "aivi column = AI-surface citation count (of 5 surfaces) on canonical query, 2026-06-11; competitor_benchmark holds full analysis",
+  "_mirrored_at": "2026-06-11T14:52:35.090686Z"
 }
