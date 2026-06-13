@@ -1,25 +1,50 @@
 {
  "schema_version": "1.0",
- "ts": "2026-06-11T14:39:44+00:00",
+ "ts": "2026-06-13T10:15:00.585900Z",
  "scan_status": "live",
- "scan_method": "chrome_mcp_session_2026-06-11_AM (Cowork/Lens \u2014 Gemini + ChatGPT + Claude added)",
+ "scan_method": "autonomous-playwright-daily",
  "client": "brand9signs.com",
  "client_display_name": "Brand 9 Signs",
  "product_name": "PRAGMA Mirror",
- "product_tagline": "See your brand the way AI sees it.",
+ "product_tagline": "We don't just track AI citations \u2014 we engineer them.",
  "product_status": "live-2026-06-05",
  "aivi": {
-  "composite": 38,
+  "composite": 16.6,
   "trend_7day": [
    38,
-   38
+   38,
+   16.6
   ],
+  "color": "RED",
   "color_threshold": {
    "red_below": 50,
    "yellow_below": 70,
    "green_at_or_above": 70
   },
-  "interpretation": "RED \u2014 branded discovery strong (Knowledge Panel + #1 organic) but 0 B9 mentions on the generic query across ALL FIVE AI surfaces now measured (AI Overview, Perplexity, Gemini, ChatGPT, Claude). Surface coverage 5/6 complete. Open field confirmed: only Florida Sign Company (2/5) and Thomas Sign & Awning (2/5) get any AI citations; statewide term is aggregator-dominated \u2014 AEO content at Jacksonville-intent terms is the play."
+  "interpretation": "RED \u2014 B9 cited on 0/5 LLM surfaces across 1/4 queries. AEO operator publishing content to close gaps.",
+  "subscores": {
+   "composite": 16.6,
+   "mention_score": 31.2,
+   "citation_score": 5.0,
+   "sentiment_score": 0.0,
+   "ranking_score": 40,
+   "surface_coverage_score": 0.0,
+   "inputs": {
+    "b9_queries_cited": 1,
+    "total_queries": 4,
+    "b9_surface_hits": 1,
+    "target_citations": 20,
+    "positive_pct": 0,
+    "best_ranking": "mentioned",
+    "surfaces_with_mentions": 0,
+    "total_surfaces": 5
+   }
+  },
+  "computed_at": "2026-06-13T10:15:00.585900Z",
+  "data_sources": {
+   "search_probe": true,
+   "llm_probe": true
+  }
  },
  "surfaces": {
   "google_branded_search": {
@@ -31,7 +56,7 @@
    "claim_eligibility_note": "Sub-100K Instagram followers \u2014 claimable profile not yet eligible; install eligibility-watcher per Day-1 V16"
   },
   "google_ai_overview": {
-   "query": "best sign company florida",
+   "query": "site sign company florida",
    "b9_mentions": 0,
    "tracked_competitor_mentions": {
     "onsite_industries": 0,
@@ -45,10 +70,13 @@
     "Florida Sign Group",
     "South Florida Sign Company"
    ],
-   "verdict": "B9 absent from generic Florida sign-company AI Overview; competitor Jacksonville Signs and Graphics appears in 'people also search'"
+   "verdict": "B9 absent from generic Florida sign-company AI Overview; competitor Jacksonville Signs and Graphics appears in 'people also search'",
+   "snippet": "\n\nAbout this page\n\nOur systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. Why did this happen?\n\n\n\nIP address: 2603:3010:1f11:a400:9476:5f19:cfe8:d0ea\nTime: 2026-06-13T09:46:33Z\nURL: https://www.google.co",
+   "scanned_at": "2026-06-13T09:46:39.084172",
+   "scan_method": "playwright-autonomous"
   },
   "perplexity": {
-   "query": "best sign company florida",
+   "query": "site sign company florida",
    "b9_mentions": 0,
    "tracked_competitor_mentions": {
     "onsite_industries": 0,
@@ -64,11 +92,14 @@
     "Heritage Signs Jacksonville"
    ],
    "new_untracked_competitor_surfaced": "Heritage Signs Jacksonville (North Florida focused \u2014 add to competitor-watch)",
-   "verdict": "B9 not mentioned in Perplexity's answer; Heritage Signs is the local-Florida competitor Perplexity surfaces"
+   "verdict": "B9 not mentioned in Perplexity's answer; Heritage Signs is the local-Florida competitor Perplexity surfaces",
+   "snippet": "If you\u2019re looking for a **site sign company in Florida**, several Florida-based providers offer **custom site signs** and related installation services, including **OnSight Industries** (headquartered in Orlando with multiple Florida locations), **Duval Sign Solutions** in Northeast Florida, and **F",
+   "scanned_at": "2026-06-13T09:46:39.084172",
+   "scan_method": "playwright-autonomous"
   },
   "claude": {
-   "query": "best sign company florida",
-   "scanned_at": "2026-06-11T14:39:44+00:00",
+   "query": "site sign company florida",
+   "scanned_at": "2026-06-13T09:46:39.084172",
    "b9_mentions": 0,
    "tracked_competitor_mentions": {
     "onsite_industries": 0,
@@ -90,11 +121,13 @@
    ],
    "organic_b9_presence": "Claude stated explicitly: Jacksonville isn't in top results for the statewide term, and neither is Brand 9.",
    "personalization_caveat": "Bobby's logged-in claude.ai account \u2014 response addressed Brand 9 directly; commentary excluded from mention scoring, organic web-search results used.",
-   "strategic_note": "Statewide term owned by regional shops + lead-gen aggregators; 'a vacuum, not a wall'. Better fight: Jacksonville-intent terms."
+   "strategic_note": "Statewide term owned by regional shops + lead-gen aggregators; 'a vacuum, not a wall'. Better fight: Jacksonville-intent terms.",
+   "snippet": "Here are some top site sign companies in Florida that can help with your signage needs:\n\n1. SignCo of Florida - Based in Miami, they provide custom signs, banners, vehicle wraps, and other visual graphics for businesses across Florida.\n\n2. Sunshine Sign Company - Located in Clearwater, they speciali",
+   "scan_method": "playwright-autonomous"
   },
   "chatgpt": {
-   "query": "best sign company florida",
-   "scanned_at": "2026-06-11T14:39:44+00:00",
+   "query": "site sign company florida",
+   "scanned_at": "2026-06-13T09:46:39.084172",
    "b9_mentions": 0,
    "tracked_competitor_mentions": {
     "onsite_industries": 0,
@@ -115,11 +148,13 @@
     "CG Signs",
     "DVC Signs"
    ],
-   "note": "Map/local-style answer. Stale leading draft found in composer (named B9) \u2014 cleared before clean canonical query; future scans must use the neutral query only."
+   "note": "Map/local-style answer. Stale leading draft found in composer (named B9) \u2014 cleared before clean canonical query; future scans must use the neutral query only.",
+   "snippet": "If you\u2019re looking for sign companies in Florida, there are many options available that offer a variety of services, including custom signs, banners, vehicle graphics, and more. Here are a few notable sign companies in Florida:\n\n1. **Signarama** - With multiple locations throughout Florida, Signarama",
+   "scan_method": "playwright-autonomous"
   },
   "gemini": {
-   "query": "best sign company florida",
-   "scanned_at": "2026-06-11T14:39:44+00:00",
+   "query": "site sign company florida",
+   "scanned_at": "2026-06-13T09:46:39.084172",
    "b9_mentions": 0,
    "tracked_competitor_mentions": {
     "onsite_industries": 0,
@@ -139,7 +174,9 @@
     "Creative Signs Inc. (Orlando)",
     "Thomas Sign & Awning (Clearwater/Tampa Bay)"
    ],
-   "note": "Logged-in Brand 9 Google account; despite personalization, 0 B9 mentions."
+   "note": "Logged-in Brand 9 Google account; despite personalization, 0 B9 mentions.",
+   "snippet": "When looking for a sign company in Florida, you'll find a wide range of options, from small local shops to large national providers. To help you narrow down your search, consider these factors and how to find them:\n\n**Types of Sign Companies and Services:**\n\n*   **Custom Sign Shops:** These are the ",
+   "scan_method": "playwright-autonomous"
   }
  },
  "sentiment": {
@@ -243,7 +280,102 @@
   ]
  },
  "_competitors_note": "aivi column = AI-surface citation count (of 5 surfaces) on canonical query, 2026-06-11; competitor_benchmark holds full analysis",
+ "actions_taken": [
+  {
+   "ts": "2026-06-11T19:29:21.461377Z",
+   "action": "page_queued",
+   "slug": "best-sign-company-florida",
+   "query": "best sign company florida",
+   "priority": "high",
+   "published_url": ""
+  },
+  {
+   "ts": "2026-06-11T19:29:21.462944Z",
+   "action": "page_queued",
+   "slug": "lennar-community-signs-florida",
+   "query": "lennar community signs",
+   "priority": "high",
+   "published_url": ""
+  },
+  {
+   "ts": "2026-06-11T19:29:21.464402Z",
+   "action": "page_queued",
+   "slug": "construction-signs-florida",
+   "query": "construction signs florida",
+   "priority": "medium",
+   "published_url": ""
+  },
+  {
+   "ts": "2026-06-11T19:29:21.469099Z",
+   "action": "page_queued",
+   "slug": "site-sign-company-florida",
+   "query": "site sign company florida",
+   "priority": "medium",
+   "published_url": ""
+  },
+  {
+   "ts": "2026-06-11T19:29:21.471041Z",
+   "action": "page_queued",
+   "slug": "homebuilder-signage-florida",
+   "query": "homebuilder signage florida",
+   "priority": "medium",
+   "published_url": ""
+  },
+  {
+   "ts": "2026-06-11T19:29:21.473868Z",
+   "action": "page_queued",
+   "slug": "jacksonville-sign-company",
+   "query": "jacksonville sign company",
+   "priority": "medium",
+   "published_url": ""
+  },
+  {
+   "ts": "2026-06-11T20:13:01.906543Z",
+   "action": "page_published",
+   "slug": "best-sign-company-florida",
+   "url": "https://brand9signs.com/best-sign-company-florida/",
+   "post_id": 9694
+  },
+  {
+   "ts": "2026-06-11T20:13:01.906543Z",
+   "action": "page_published",
+   "slug": "construction-signs-florida",
+   "url": "https://brand9signs.com/construction-signs-florida-2/",
+   "post_id": 9695
+  },
+  {
+   "ts": "2026-06-11T20:13:01.906543Z",
+   "action": "page_published",
+   "slug": "homebuilder-signage-florida",
+   "url": "https://brand9signs.com/homebuilder-signage-florida/",
+   "post_id": 9696
+  },
+  {
+   "ts": "2026-06-11T20:13:01.906543Z",
+   "action": "page_published",
+   "slug": "jacksonville-sign-company",
+   "url": "https://brand9signs.com/jacksonville-sign-company/",
+   "post_id": 9697
+  },
+  {
+   "ts": "2026-06-11T20:13:01.906543Z",
+   "action": "page_published",
+   "slug": "lennar-community-signs-florida",
+   "url": "https://brand9signs.com/lennar-community-signs-florida/",
+   "post_id": 9698
+  },
+  {
+   "ts": "2026-06-11T20:13:01.906543Z",
+   "action": "page_published",
+   "slug": "site-sign-company-florida",
+   "url": "https://brand9signs.com/site-sign-company-florida-2/",
+   "post_id": 9699
+  }
+ ],
+ "last_aeo_run": "2026-06-11T20:13:01.906543Z",
+ "product_description": "Measures AI visibility across 5 surfaces, diagnoses citation gaps, and autonomously publishes AEO-optimized content to close them.",
  "aeo_pages_live": 6,
+ "aeo_first_publish": "2026-06-11T20:11:42Z",
  "aeo_published_slugs": [
   "best-sign-company-florida:2026-06",
   "lennar-community-signs-florida:2026-06",
