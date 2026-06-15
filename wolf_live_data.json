@@ -1,18 +1,18 @@
 {
-  "last_updated": "2026-06-15T16:48:16.935068",
+  "last_updated": "2026-06-15T16:53:19.668370",
   "update_interval_seconds": 300,
   "account": {
-    "portfolio_value": 99780.22,
+    "portfolio_value": 99775.73,
     "cash": -149977.84,
-    "buying_power": 77767.12,
-    "equity": 99780.22,
+    "buying_power": 77753.28,
+    "equity": 99775.73,
     "last_equity": 97364.56,
     "unrealized_pl": 0.0,
     "unrealized_plpc": 0.0,
     "status": "ACTIVE"
   },
   "daily_pnl": {
-    "amount": 2415.66,
+    "amount": 2411.17,
     "pct": 0.0248,
     "circuit_breaker_status": "yellow",
     "circuit_breaker_message": "MANUAL HALT \u2014 WOLF mandate v1.0 enforcement \u2014 portfolio non-compliant (PLTR 47.6%, NVDA/MSFT/TSLA/JPM each over 8%, MDT 25%, cash -$100K margin). Auto-rebalance fires at next market-open via wolf-task-runner.sh \u2192 mandate_rebalance.py. halt_new_entries clears after compliance achieved. Now preserved across polls (poll updated 2026-05-13)."
@@ -60,10 +60,10 @@
       "qty": 63.0,
       "side": "long",
       "avg_entry": 421.673333,
-      "current_price": 399.74,
-      "market_value": 25183.62,
-      "unrealized_pl": -1381.799979,
-      "unrealized_plpc": -0.05201,
+      "current_price": 399.75,
+      "market_value": 25184.25,
+      "unrealized_pl": -1381.169979,
+      "unrealized_plpc": -0.05199,
       "cost_basis": 26565.419979
     },
     {
@@ -71,10 +71,10 @@
       "qty": 242.0,
       "side": "long",
       "avg_entry": 105.688222,
-      "current_price": 104.4539,
-      "market_value": 25277.8438,
-      "unrealized_pl": -298.705924,
-      "unrealized_plpc": -0.01168,
+      "current_price": 104.4284,
+      "market_value": 25271.6728,
+      "unrealized_pl": -304.876924,
+      "unrealized_plpc": -0.01192,
       "cost_basis": 25576.549724
     },
     {
@@ -82,10 +82,10 @@
       "qty": 124.0,
       "side": "long",
       "avg_entry": 207.39,
-      "current_price": 212.0626,
-      "market_value": 26295.7624,
-      "unrealized_pl": 579.4024,
-      "unrealized_plpc": 0.02253,
+      "current_price": 212.1,
+      "market_value": 26300.4,
+      "unrealized_pl": 584.04,
+      "unrealized_plpc": 0.02271,
       "cost_basis": 25716.36
     },
     {
@@ -93,10 +93,10 @@
       "qty": 364.0,
       "side": "long",
       "avg_entry": 136.767115,
-      "current_price": 134.84,
-      "market_value": 49081.76,
-      "unrealized_pl": -701.46986,
-      "unrealized_plpc": -0.01409,
+      "current_price": 134.86,
+      "market_value": 49089.04,
+      "unrealized_pl": -694.18986,
+      "unrealized_plpc": -0.01394,
       "cost_basis": 49783.22986
     },
     {
@@ -104,10 +104,10 @@
       "qty": 66.0,
       "side": "long",
       "avg_entry": 442.450455,
-      "current_price": 409.926,
-      "market_value": 27055.116,
-      "unrealized_pl": -2146.61403,
-      "unrealized_plpc": -0.07351,
+      "current_price": 409.95,
+      "market_value": 27056.7,
+      "unrealized_pl": -2145.03003,
+      "unrealized_plpc": -0.07346,
       "cost_basis": 29201.73003
     },
     {
@@ -115,10 +115,10 @@
       "qty": 415.0,
       "side": "long",
       "avg_entry": 56.408675,
-      "current_price": 55.56,
-      "market_value": 23057.4,
-      "unrealized_pl": -352.200125,
-      "unrealized_plpc": -0.01505,
+      "current_price": 55.53,
+      "market_value": 23044.95,
+      "unrealized_pl": -364.650125,
+      "unrealized_plpc": -0.01558,
       "cost_basis": 23409.600125
     }
   ],
@@ -437,47 +437,5 @@
         }
       ]
     }
-  },
-  "daily_summary": {
-    "date": "2026-06-15",
-    "account": {
-      "portfolio_value": 99780.22,
-      "cash": -149977.84,
-      "buying_power": 77767.12,
-      "positions": 9,
-      "todays_trades": 1,
-      "daily_pnl_amount": 2415.66,
-      "daily_pnl_pct": 0.0248,
-      "circuit_breaker": "yellow"
-    },
-    "log": {
-      "task_fires": {
-        "wolf-crypto-247": 3,
-        "wolf-market-open-exec": 1,
-        "wolf-midday-rescan": 1,
-        "wolf-gate-status": 1,
-        "wolf-daily-summary": 1
-      },
-      "errors": 1
-    },
-    "rejected": {
-      "count": 0,
-      "reasons": {},
-      "recent": []
-    },
-    "committee": {
-      "runs": 2,
-      "tickers_voted": 3,
-      "verdicts": {
-        "bullish": 3
-      }
-    }
-  },
-  "daily_summary_updated_at": "2026-06-15T16:50:00.885299",
-  "today_signals": {
-    "as_of": "2026-06-15 16:50:01",
-    "last_task": "EOD recap",
-    "count": 0,
-    "signals": []
   }
 }
