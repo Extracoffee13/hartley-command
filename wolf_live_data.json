@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-16T12:03:44.558188",
+  "last_updated": "2026-06-16T12:09:06.872601",
   "update_interval_seconds": 300,
   "account": {
     "portfolio_value": 97675.4,
@@ -12,8 +12,8 @@
     "status": "ACTIVE"
   },
   "daily_pnl": {
-    "amount": -1998.58,
-    "pct": -0.0201,
+    "amount": 2309.42,
+    "pct": 0.0237,
     "circuit_breaker_status": "yellow",
     "circuit_breaker_message": "MANUAL HALT \u2014 WOLF mandate v1.0 enforcement \u2014 portfolio non-compliant (PLTR 47.6%, NVDA/MSFT/TSLA/JPM each over 8%, MDT 25%, cash -$100K margin). Auto-rebalance fires at next market-open via wolf-task-runner.sh \u2192 mandate_rebalance.py. halt_new_entries clears after compliance achieved. Now preserved across polls (poll updated 2026-05-13)."
   },
@@ -21,129 +21,7 @@
     "amount": -56.26,
     "pct": 0.0006
   },
-  "positions": [
-    {
-      "ticker": "ACN",
-      "qty": 48.0,
-      "side": "long",
-      "avg_entry": 174.131168,
-      "current_price": 168.36,
-      "market_value": 8081.28,
-      "unrealized_pl": -277.016064,
-      "unrealized_plpc": -0.03314,
-      "cost_basis": 8358.296064
-    },
-    {
-      "ticker": "JPM",
-      "qty": 25.0,
-      "side": "long",
-      "avg_entry": 306.73,
-      "current_price": 330.195,
-      "market_value": 8254.875,
-      "unrealized_pl": 586.625,
-      "unrealized_plpc": 0.0765,
-      "cost_basis": 7668.25
-    },
-    {
-      "ticker": "MDT",
-      "qty": 98.0,
-      "side": "long",
-      "avg_entry": 75.842613,
-      "current_price": 81.205,
-      "market_value": 7958.09,
-      "unrealized_pl": 525.513926,
-      "unrealized_plpc": 0.0707,
-      "cost_basis": 7432.576074
-    },
-    {
-      "ticker": "MSFT",
-      "qty": 20.0,
-      "side": "long",
-      "avg_entry": 421.673333,
-      "current_price": 392.85,
-      "market_value": 7857.0,
-      "unrealized_pl": -576.46666,
-      "unrealized_plpc": -0.06835,
-      "cost_basis": 8433.46666
-    },
-    {
-      "ticker": "NOW",
-      "qty": 77.0,
-      "side": "long",
-      "avg_entry": 105.688223,
-      "current_price": 101.93,
-      "market_value": 7848.61,
-      "unrealized_pl": -289.383171,
-      "unrealized_plpc": -0.03556,
-      "cost_basis": 8137.993171
-    },
-    {
-      "ticker": "NVDA",
-      "qty": 38.0,
-      "side": "long",
-      "avg_entry": 207.39,
-      "current_price": 209.6401,
-      "market_value": 7966.3238,
-      "unrealized_pl": 85.5038,
-      "unrealized_plpc": 0.01085,
-      "cost_basis": 7880.82
-    },
-    {
-      "ticker": "PLTR",
-      "qty": 60.0,
-      "side": "long",
-      "avg_entry": 136.767115,
-      "current_price": 130.75,
-      "market_value": 7845.0,
-      "unrealized_pl": -361.0269,
-      "unrealized_plpc": -0.044,
-      "cost_basis": 8206.0269
-    },
-    {
-      "ticker": "SHV",
-      "qty": 90.649065505,
-      "side": "long",
-      "avg_entry": 110.22,
-      "current_price": 110.215,
-      "market_value": 9990.886755,
-      "unrealized_pl": -0.453245,
-      "unrealized_plpc": -5e-05,
-      "cost_basis": 9991.34
-    },
-    {
-      "ticker": "TSLA",
-      "qty": 20.0,
-      "side": "long",
-      "avg_entry": 442.450455,
-      "current_price": 407.185,
-      "market_value": 8143.7,
-      "unrealized_pl": -705.3091,
-      "unrealized_plpc": -0.0797,
-      "cost_basis": 8849.0091
-    },
-    {
-      "ticker": "VOO",
-      "qty": 14.389693809,
-      "side": "long",
-      "avg_entry": 694.34,
-      "current_price": 692.79,
-      "market_value": 9969.035974,
-      "unrealized_pl": -22.304025,
-      "unrealized_plpc": -0.00223,
-      "cost_basis": 9991.339999
-    },
-    {
-      "ticker": "XLE",
-      "qty": 270.0,
-      "side": "long",
-      "avg_entry": 56.408675,
-      "current_price": 55.23,
-      "market_value": 14912.1,
-      "unrealized_pl": -318.24225,
-      "unrealized_plpc": -0.0209,
-      "cost_basis": 15230.34225
-    }
-  ],
+  "positions": [],
   "todays_trades": [
     {
       "id": "afb4fc8f-756c-4580-afd2-5f01acf59829",
