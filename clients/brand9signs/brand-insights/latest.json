@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0",
- "ts": "2026-06-15T10:15:01.231246Z",
+ "ts": "2026-06-16T10:15:02.407292Z",
  "scan_status": "live",
  "scan_method": "autonomous-playwright-daily",
  "client": "brand9signs.com",
@@ -9,13 +9,14 @@
  "product_tagline": "We don't just track AI citations \u2014 we engineer them.",
  "product_status": "live-2026-06-05",
  "aivi": {
-  "composite": 30.5,
+  "composite": 27.2,
   "trend_7day": [
    38,
    38,
    16.6,
    27.2,
-   30.5
+   30.5,
+   27.2
   ],
   "color": "RED",
   "color_threshold": {
@@ -23,26 +24,26 @@
    "yellow_below": 70,
    "green_at_or_above": 70
   },
-  "interpretation": "RED \u2014 B9 cited on 1/5 LLM surfaces across 2/4 queries. AEO operator publishing content to close gaps.",
+  "interpretation": "RED \u2014 B9 cited on 0/5 LLM surfaces across 2/4 queries. AEO operator publishing content to close gaps.",
   "subscores": {
-   "composite": 30.5,
+   "composite": 27.2,
    "mention_score": 62.5,
-   "citation_score": 15.0,
+   "citation_score": 10.0,
    "sentiment_score": 0.0,
    "ranking_score": 40,
-   "surface_coverage_score": 20.0,
+   "surface_coverage_score": 0.0,
    "inputs": {
     "b9_queries_cited": 2,
     "total_queries": 4,
-    "b9_surface_hits": 3,
+    "b9_surface_hits": 2,
     "target_citations": 20,
     "positive_pct": 0,
     "best_ranking": "mentioned",
-    "surfaces_with_mentions": 1,
+    "surfaces_with_mentions": 0,
     "total_surfaces": 5
    }
   },
-  "computed_at": "2026-06-15T10:15:01.231246Z",
+  "computed_at": "2026-06-16T10:15:02.407292Z",
   "data_sources": {
    "search_probe": true,
    "llm_probe": true
@@ -73,8 +74,8 @@
     "South Florida Sign Company"
    ],
    "verdict": "B9 absent from generic Florida sign-company AI Overview; competitor Jacksonville Signs and Graphics appears in 'people also search'",
-   "snippet": "\n\nAbout this page\n\nOur systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. Why did this happen?\n\n\n\nIP address: 2603:3010:1f11:a400:5ce3:1e8e:87cc:bf02\nTime: 2026-06-15T09:46:42Z\nURL: https://www.google.co",
-   "scanned_at": "2026-06-15T09:46:47.917985",
+   "snippet": "\n\nAbout this page\n\nOur systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. Why did this happen?\n\n\n\nIP address: 2603:3010:1f11:a400:6412:80f4:9ab8:e0d3\nTime: 2026-06-16T09:45:22Z\nURL: https://www.google.co",
+   "scanned_at": "2026-06-16T09:45:27.711607",
    "scan_method": "playwright-autonomous"
   },
   "perplexity": {
@@ -95,13 +96,13 @@
    ],
    "new_untracked_competitor_surfaced": "Heritage Signs Jacksonville (North Florida focused \u2014 add to competitor-watch)",
    "verdict": "B9 not mentioned in Perplexity's answer; Heritage Signs is the local-Florida competitor Perplexity surfaces",
-   "snippet": "Here are some top **site sign companies in Florida** that specialize in construction site signage, temporary signs, and branded job site solutions:\n\n---\n\n### \ud83c\udfd7\ufe0f **1. Duval Sign Solutions**  \n- **Location:** Jacksonville & Northeast Florida  \n- **Specialty:** OSHA-compliant construction site signs, d",
-   "scanned_at": "2026-06-15T09:46:47.917985",
+   "snippet": "(no response)",
+   "scanned_at": "2026-06-16T09:45:27.711607",
    "scan_method": "playwright-autonomous"
   },
   "claude": {
    "query": "site sign company florida",
-   "scanned_at": "2026-06-15T09:46:47.917985",
+   "scanned_at": "2026-06-16T09:45:27.711607",
    "b9_mentions": 0,
    "tracked_competitor_mentions": {
     "onsite_industries": 0,
@@ -124,12 +125,12 @@
    "organic_b9_presence": "Claude stated explicitly: Jacksonville isn't in top results for the statewide term, and neither is Brand 9.",
    "personalization_caveat": "Bobby's logged-in claude.ai account \u2014 response addressed Brand 9 directly; commentary excluded from mention scoring, organic web-search results used.",
    "strategic_note": "Statewide term owned by regional shops + lead-gen aggregators; 'a vacuum, not a wall'. Better fight: Jacksonville-intent terms.",
-   "snippet": "Here are a few top sign companies located in Florida that you may want to consider for your business:\n\n1. Signs Now - They have multiple locations across Florida, including in cities like Jacksonville, Orlando, Tampa, Miami, and more. They offer a wide range of sign services including custom design,",
+   "snippet": "(no response)",
    "scan_method": "playwright-autonomous"
   },
   "chatgpt": {
    "query": "site sign company florida",
-   "scanned_at": "2026-06-15T09:46:47.917985",
+   "scanned_at": "2026-06-16T09:45:27.711607",
    "b9_mentions": 0,
    "tracked_competitor_mentions": {
     "onsite_industries": 0,
@@ -151,12 +152,12 @@
     "DVC Signs"
    ],
    "note": "Map/local-style answer. Stale leading draft found in composer (named B9) \u2014 cleared before clean canonical query; future scans must use the neutral query only.",
-   "snippet": "If you're looking for sign companies in Florida, several options cater to various signage needs, such as retail signs, outdoor signs, vehicle graphics, and more. Here are some prominent sign companies in Florida:\n\n1. **FASTSIGNS** - With multiple locations across Florida, FASTSIGNS offers a wide ran",
+   "snippet": "(no response)",
    "scan_method": "playwright-autonomous"
   },
   "gemini": {
    "query": "site sign company florida",
-   "scanned_at": "2026-06-15T09:46:47.917985",
+   "scanned_at": "2026-06-16T09:45:27.711607",
    "b9_mentions": 0,
    "tracked_competitor_mentions": {
     "onsite_industries": 0,
@@ -177,7 +178,7 @@
     "Thomas Sign & Awning (Clearwater/Tampa Bay)"
    ],
    "note": "Logged-in Brand 9 Google account; despite personalization, 0 B9 mentions.",
-   "snippet": "Okay, I can help you find site sign companies in Florida. To give you the best recommendations, I need a little more information. Please tell me:\n\n1.  **What kind of \"site signs\" are you looking for?**\n    *   **Construction Site Signs:** (e.g., job site safety signs, project information signs, comi",
+   "snippet": "(no response)",
    "scan_method": "playwright-autonomous"
   }
  },
@@ -372,11 +373,91 @@
    "slug": "site-sign-company-florida",
    "url": "https://brand9signs.com/site-sign-company-florida-2/",
    "post_id": 9699
+  },
+  {
+   "ts": "2026-06-15T14:27:56.784561Z",
+   "action": "page_published",
+   "slug": "commercial-signs-jacksonville-fl",
+   "query": "commercial signs jacksonville fl",
+   "priority": "medium",
+   "published_url": "https://brand9signs.com/commercial-signs-jacksonville-fl/"
+  },
+  {
+   "ts": "2026-06-15T14:28:15.946870Z",
+   "action": "page_published",
+   "slug": "channel-letter-signs-jacksonville",
+   "query": "channel letter signs jacksonville",
+   "priority": "medium",
+   "published_url": "https://brand9signs.com/channel-letter-signs-jacksonville/"
+  },
+  {
+   "ts": "2026-06-15T14:28:39.125043Z",
+   "action": "page_published",
+   "slug": "community-entrance-signs-florida",
+   "query": "community entrance signs florida",
+   "priority": "medium",
+   "published_url": "https://brand9signs.com/community-entrance-signs-florida/"
+  },
+  {
+   "ts": "2026-06-15T14:29:02.533848Z",
+   "action": "page_published",
+   "slug": "wayfinding-signs-florida-homebuilder",
+   "query": "wayfinding signs florida homebuilder",
+   "priority": "medium",
+   "published_url": "https://brand9signs.com/wayfinding-signs-florida-homebuilder/"
+  },
+  {
+   "ts": "2026-06-15T14:29:24.640816Z",
+   "action": "page_published",
+   "slug": "model-home-signs-florida",
+   "query": "model home signs florida",
+   "priority": "medium",
+   "published_url": "https://brand9signs.com/model-home-signs-florida/"
+  },
+  {
+   "ts": "2026-06-15T14:29:46.934983Z",
+   "action": "page_published",
+   "slug": "monument-signs-orange-park-fl",
+   "query": "monument signs orange park fl",
+   "priority": "medium",
+   "published_url": "https://brand9signs.com/monument-signs-orange-park-fl/"
+  },
+  {
+   "ts": "2026-06-15T14:30:10.019961Z",
+   "action": "page_published",
+   "slug": "led-signs-jacksonville-florida",
+   "query": "led signs jacksonville florida",
+   "priority": "medium",
+   "published_url": "https://brand9signs.com/led-signs-jacksonville-florida/"
+  },
+  {
+   "ts": "2026-06-15T14:30:29.448039Z",
+   "action": "page_published",
+   "slug": "dr-horton-signs-florida",
+   "query": "dr horton signs florida",
+   "priority": "medium",
+   "published_url": "https://brand9signs.com/dr-horton-signs-florida/"
+  },
+  {
+   "ts": "2026-06-15T14:30:51.454552Z",
+   "action": "page_published",
+   "slug": "sign-company-orange-park-fl",
+   "query": "sign company orange park fl",
+   "priority": "medium",
+   "published_url": "https://brand9signs.com/sign-company-orange-park-fl/"
+  },
+  {
+   "ts": "2026-06-15T14:31:12.451445Z",
+   "action": "page_published",
+   "slug": "ada-signs-florida-commercial",
+   "query": "ada signs florida commercial",
+   "priority": "medium",
+   "published_url": "https://brand9signs.com/ada-signs-florida-commercial/"
   }
  ],
- "last_aeo_run": "2026-06-11T20:13:01.906543Z",
+ "last_aeo_run": "2026-06-15T14:31:12.452169Z",
  "product_description": "Measures AI visibility across 5 surfaces, diagnoses citation gaps, and autonomously publishes AEO-optimized content to close them.",
- "aeo_pages_live": 6,
+ "aeo_pages_live": 16,
  "aeo_first_publish": "2026-06-11T20:11:42Z",
  "aeo_published_slugs": [
   "best-sign-company-florida:2026-06",
@@ -384,6 +465,16 @@
   "construction-signs-florida:2026-06",
   "site-sign-company-florida:2026-06",
   "homebuilder-signage-florida:2026-06",
-  "jacksonville-sign-company:2026-06"
+  "jacksonville-sign-company:2026-06",
+  "commercial-signs-jacksonville-fl:2026-06",
+  "channel-letter-signs-jacksonville:2026-06",
+  "community-entrance-signs-florida:2026-06",
+  "wayfinding-signs-florida-homebuilder:2026-06",
+  "model-home-signs-florida:2026-06",
+  "monument-signs-orange-park-fl:2026-06",
+  "led-signs-jacksonville-florida:2026-06",
+  "dr-horton-signs-florida:2026-06",
+  "sign-company-orange-park-fl:2026-06",
+  "ada-signs-florida-commercial:2026-06"
  ]
 }
