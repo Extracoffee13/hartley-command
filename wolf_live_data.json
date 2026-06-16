@@ -1,19 +1,19 @@
 {
-  "last_updated": "2026-06-16T09:32:24.772963",
+  "last_updated": "2026-06-16T09:37:27.438777",
   "update_interval_seconds": 300,
   "account": {
-    "portfolio_value": 97874.51,
-    "cash": -149977.85,
-    "buying_power": 52801.95,
-    "equity": 97874.51,
+    "portfolio_value": 97643.86,
+    "cash": -1150.9,
+    "buying_power": 265580.93,
+    "equity": 97643.86,
     "last_equity": 99673.98,
     "unrealized_pl": 0.0,
     "unrealized_plpc": 0.0,
     "status": "ACTIVE"
   },
   "daily_pnl": {
-    "amount": -1799.47,
-    "pct": -0.0181,
+    "amount": -2030.12,
+    "pct": -0.0204,
     "circuit_breaker_status": "yellow",
     "circuit_breaker_message": "MANUAL HALT \u2014 WOLF mandate v1.0 enforcement \u2014 portfolio non-compliant (PLTR 47.6%, NVDA/MSFT/TSLA/JPM each over 8%, MDT 25%, cash -$100K margin). Auto-rebalance fires at next market-open via wolf-task-runner.sh \u2192 mandate_rebalance.py. halt_new_entries clears after compliance achieved. Now preserved across polls (poll updated 2026-05-13)."
   },
@@ -24,105 +24,260 @@
   "positions": [
     {
       "ticker": "ACN",
-      "qty": 137.0,
+      "qty": 48.0,
       "side": "long",
       "avg_entry": 174.131168,
-      "current_price": 166.01,
-      "market_value": 22743.37,
-      "unrealized_pl": -1112.600016,
-      "unrealized_plpc": -0.04664,
-      "cost_basis": 23855.970016
+      "current_price": 167.5,
+      "market_value": 8040.0,
+      "unrealized_pl": -318.296064,
+      "unrealized_plpc": -0.03808,
+      "cost_basis": 8358.296064
     },
     {
       "ticker": "JPM",
-      "qty": 76.0,
+      "qty": 25.0,
       "side": "long",
       "avg_entry": 306.73,
-      "current_price": 325.82,
-      "market_value": 24762.32,
-      "unrealized_pl": 1450.84,
-      "unrealized_plpc": 0.06224,
-      "cost_basis": 23311.48
+      "current_price": 324.84,
+      "market_value": 8121.0,
+      "unrealized_pl": 452.75,
+      "unrealized_plpc": 0.05904,
+      "cost_basis": 7668.25
     },
     {
       "ticker": "MDT",
-      "qty": 333.0,
+      "qty": 98.0,
       "side": "long",
       "avg_entry": 75.842613,
-      "current_price": 81.25,
-      "market_value": 27056.25,
-      "unrealized_pl": 1800.659871,
-      "unrealized_plpc": 0.0713,
-      "cost_basis": 25255.590129
+      "current_price": 81.52,
+      "market_value": 7988.96,
+      "unrealized_pl": 556.383926,
+      "unrealized_plpc": 0.07486,
+      "cost_basis": 7432.576074
     },
     {
       "ticker": "MSFT",
-      "qty": 63.0,
+      "qty": 20.0,
       "side": "long",
       "avg_entry": 421.673333,
-      "current_price": 393.09,
-      "market_value": 24764.67,
-      "unrealized_pl": -1800.749979,
-      "unrealized_plpc": -0.06779,
-      "cost_basis": 26565.419979
+      "current_price": 393.95,
+      "market_value": 7879.0,
+      "unrealized_pl": -554.46666,
+      "unrealized_plpc": -0.06575,
+      "cost_basis": 8433.46666
     },
     {
       "ticker": "NOW",
-      "qty": 242.0,
+      "qty": 77.0,
       "side": "long",
       "avg_entry": 105.688223,
-      "current_price": 102.01,
-      "market_value": 24686.42,
-      "unrealized_pl": -890.129966,
-      "unrealized_plpc": -0.0348,
-      "cost_basis": 25576.549966
+      "current_price": 103.3339,
+      "market_value": 7956.7103,
+      "unrealized_pl": -181.282871,
+      "unrealized_plpc": -0.02228,
+      "cost_basis": 8137.993171
     },
     {
       "ticker": "NVDA",
-      "qty": 124.0,
+      "qty": 38.0,
       "side": "long",
       "avg_entry": 207.39,
-      "current_price": 209.885,
-      "market_value": 26025.74,
-      "unrealized_pl": 309.38,
-      "unrealized_plpc": 0.01203,
-      "cost_basis": 25716.36
+      "current_price": 209.425,
+      "market_value": 7958.15,
+      "unrealized_pl": 77.33,
+      "unrealized_plpc": 0.00981,
+      "cost_basis": 7880.82
     },
     {
       "ticker": "PLTR",
-      "qty": 364.0,
+      "qty": 60.0,
       "side": "long",
       "avg_entry": 136.767115,
-      "current_price": 132.78,
-      "market_value": 48331.92,
-      "unrealized_pl": -1451.30986,
-      "unrealized_plpc": -0.02915,
-      "cost_basis": 49783.22986
+      "current_price": 132.5697,
+      "market_value": 7954.182,
+      "unrealized_pl": -251.8449,
+      "unrealized_plpc": -0.03069,
+      "cost_basis": 8206.0269
+    },
+    {
+      "ticker": "SHV",
+      "qty": 90.649065505,
+      "side": "long",
+      "avg_entry": 110.22,
+      "current_price": 110.215,
+      "market_value": 9990.886755,
+      "unrealized_pl": -0.453245,
+      "unrealized_plpc": -5e-05,
+      "cost_basis": 9991.34
     },
     {
       "ticker": "TSLA",
-      "qty": 66.0,
+      "qty": 20.0,
       "side": "long",
       "avg_entry": 442.450455,
-      "current_price": 403.17,
-      "market_value": 26609.22,
-      "unrealized_pl": -2592.51003,
-      "unrealized_plpc": -0.08878,
-      "cost_basis": 29201.73003
+      "current_price": 402.52,
+      "market_value": 8050.4,
+      "unrealized_pl": -798.6091,
+      "unrealized_plpc": -0.09025,
+      "cost_basis": 8849.0091
+    },
+    {
+      "ticker": "VOO",
+      "qty": 14.389693809,
+      "side": "long",
+      "avg_entry": 694.34,
+      "current_price": 694.33,
+      "market_value": 9991.196102,
+      "unrealized_pl": -0.143897,
+      "unrealized_plpc": -1e-05,
+      "cost_basis": 9991.339999
     },
     {
       "ticker": "XLE",
-      "qty": 415.0,
+      "qty": 270.0,
       "side": "long",
       "avg_entry": 56.408675,
-      "current_price": 55.11,
-      "market_value": 22870.65,
-      "unrealized_pl": -538.950125,
-      "unrealized_plpc": -0.02302,
-      "cost_basis": 23409.600125
+      "current_price": 55.055,
+      "market_value": 14864.85,
+      "unrealized_pl": -365.49225,
+      "unrealized_plpc": -0.024,
+      "cost_basis": 15230.34225
     }
   ],
-  "todays_trades": [],
+  "todays_trades": [
+    {
+      "id": "afb4fc8f-756c-4580-afd2-5f01acf59829",
+      "client_order_id": "wolf-vault-20260616133107",
+      "ticker": "VOO",
+      "side": "buy",
+      "qty": 14.389693809,
+      "filled_price": 694.34,
+      "status": "filled",
+      "created_at": "2026-06-16T13:31:07.195497Z",
+      "order_class": "",
+      "strategy": "vault"
+    },
+    {
+      "id": "4e77ef66-f965-4d02-928e-2111ea48f4ba",
+      "client_order_id": "wolf-vault-20260616133106",
+      "ticker": "SHV",
+      "side": "buy",
+      "qty": 90.649065505,
+      "filled_price": 110.22,
+      "status": "filled",
+      "created_at": "2026-06-16T13:31:06.997803Z",
+      "order_class": "",
+      "strategy": "vault"
+    },
+    {
+      "id": "28a15c01-d00d-4333-9dc1-a3c20bc2adaf",
+      "client_order_id": "afd7ceae-3e7b-47f9-9737-3fbffa7c8967",
+      "ticker": "XLE",
+      "side": "sell",
+      "qty": 145.0,
+      "filled_price": 55.28,
+      "status": "filled",
+      "created_at": "2026-06-16T13:30:06.650592Z",
+      "order_class": "",
+      "strategy": "unattributed"
+    },
+    {
+      "id": "f2cac273-3222-4542-a896-013ed5dbab06",
+      "client_order_id": "8f9ff0ea-1019-41a5-b200-78ced6c674be",
+      "ticker": "TSLA",
+      "side": "sell",
+      "qty": 46.0,
+      "filled_price": 401.79,
+      "status": "filled",
+      "created_at": "2026-06-16T13:30:06.051216Z",
+      "order_class": "",
+      "strategy": "unattributed"
+    },
+    {
+      "id": "36fe7ee8-ea3e-4437-976b-f4e04772055e",
+      "client_order_id": "9d5cc290-9f1d-4621-aab7-1c6503cbfced",
+      "ticker": "PLTR",
+      "side": "sell",
+      "qty": 304.0,
+      "filled_price": 132.466743,
+      "status": "filled",
+      "created_at": "2026-06-16T13:30:05.653817Z",
+      "order_class": "",
+      "strategy": "unattributed"
+    },
+    {
+      "id": "1b2cf52a-b386-429c-af53-4f6896203700",
+      "client_order_id": "e4cd473c-8d77-437e-8d10-3c8c93ccf0af",
+      "ticker": "NVDA",
+      "side": "sell",
+      "qty": 86.0,
+      "filled_price": 209.71,
+      "status": "filled",
+      "created_at": "2026-06-16T13:30:05.257634Z",
+      "order_class": "",
+      "strategy": "unattributed"
+    },
+    {
+      "id": "8dbf3baa-3d85-4013-931a-c39fa4e08d4d",
+      "client_order_id": "9c549bd0-4317-4b5f-a817-cc8c3b6e66b8",
+      "ticker": "NOW",
+      "side": "sell",
+      "qty": 165.0,
+      "filled_price": 101.61,
+      "status": "filled",
+      "created_at": "2026-06-16T13:30:04.872209Z",
+      "order_class": "",
+      "strategy": "unattributed"
+    },
+    {
+      "id": "ef0b6742-8a84-401b-8d91-6393cb757226",
+      "client_order_id": "083dd882-33fd-4f32-bc0e-04e15744aad7",
+      "ticker": "MSFT",
+      "side": "sell",
+      "qty": 43.0,
+      "filled_price": 391.435117,
+      "status": "filled",
+      "created_at": "2026-06-16T13:30:04.60498Z",
+      "order_class": "",
+      "strategy": "unattributed"
+    },
+    {
+      "id": "536a1106-e131-447a-a395-26b34b92585b",
+      "client_order_id": "9704f276-0118-4b87-89fb-00fdd6f52fc0",
+      "ticker": "MDT",
+      "side": "sell",
+      "qty": 235.0,
+      "filled_price": 81.103957,
+      "status": "filled",
+      "created_at": "2026-06-16T13:30:04.143983Z",
+      "order_class": "",
+      "strategy": "unattributed"
+    },
+    {
+      "id": "55e5e22e-ac43-400e-afeb-2cdac246b1ad",
+      "client_order_id": "85f6838a-5a37-4c15-9550-4ac5cf392894",
+      "ticker": "JPM",
+      "side": "sell",
+      "qty": 51.0,
+      "filled_price": 325.938431,
+      "status": "filled",
+      "created_at": "2026-06-16T13:30:02.783158Z",
+      "order_class": "",
+      "strategy": "unattributed"
+    },
+    {
+      "id": "cb8b9551-2ad7-4809-afb7-e4db1ca49529",
+      "client_order_id": "b88a8562-7fb9-4801-800b-49fde0569efa",
+      "ticker": "ACN",
+      "side": "sell",
+      "qty": 89.0,
+      "filled_price": 165.472922,
+      "status": "filled",
+      "created_at": "2026-06-16T13:30:02.368111Z",
+      "order_class": "",
+      "strategy": "unattributed"
+    }
+  ],
   "strategy_performance": {
     "small_cap_catalyst": {
       "name": "Small Cap Catalyst",
@@ -430,11 +585,5 @@
         }
       ]
     }
-  },
-  "today_signals": {
-    "as_of": "2026-06-16 09:32:34",
-    "last_task": "Market open scan",
-    "count": 0,
-    "signals": []
   }
 }
