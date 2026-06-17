@@ -188,7 +188,7 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
 .leg-dot{width:8px;height:8px;border-radius:50%;display:inline-block;}
 
 /* ── COMMUNITY GRID ── */
-.comm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:28px;}
+.comm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:28px;grid-column:1 / -1;}
 .area-header{background:linear-gradient(135deg,var(--navy) 0%,#0f3460 100%);color:#fff;border-radius:0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;font-size:13px;font-weight:900;letter-spacing:1px;text-transform:uppercase;margin:0 0 10px;grid-column:1 / -1;border-bottom:3px solid var(--orange);}
 .zone-header{background:#E6F1FB;color:#042C53;border-left:3px solid #185FA5;border-radius:0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;font-size:12px;font-weight:800;margin:0 0 10px;grid-column:1 / -1;}
 
@@ -1459,6 +1459,7 @@ function renderGrid() {
       ? [...areaOrder.filter(r => filteredCommunities.some(c => c.region === r)), ...[...new Set(filteredCommunities.map(c => c.region).filter(r => !areaOrder.includes(r)))]]
       : [currentRegion];
     const cards = items => `<div class="comm-grid">${items.map((c,i) => renderCard(c, i*25)).join('')}</div>`;
+    // Keep the card grid as the direct child of the section; the grid itself handles columns.
     const html = [];
     currentAreas.forEach(area => {
       const items = filteredCommunities.filter(c => c.region === area);
