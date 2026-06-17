@@ -189,6 +189,7 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
 
 /* ── COMMUNITY GRID ── */
 .comm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:28px;}
+.zone-header{background:#E6F1FB;color:#042C53;border-left:3px solid #185FA5;border-radius:0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;font-size:12px;font-weight:800;margin:0 0 10px;}
 
 /* ── COMMUNITY CARD ── */
 .c-card{
@@ -1198,6 +1199,7 @@ async function syncFromSheet() {
       lastInstall:   'TBD',  // col dropped
       nextInstall:   (idx['Install Date'] !== undefined ? String(r[idx['Install Date']]||'').trim() : '') || 'TBD',
       localContact:  String(r[idx['Local Contact']]||'').trim() || 'Gina Lee',
+      zone:          String(r[idx['Zone']]||'').trim(),
       contact:       String(r[idx['Main POC']]||'').trim() || 'Gina Lee',
       permit811:     String(r[idx['811 Permit']]||'').trim().toLowerCase().replace('n/a','na') || 'na',
       office:        false,  // Office col dropped
@@ -1434,7 +1436,35 @@ function renderGrid() {
     empty.style.display = 'block';
   } else {
     empty.style.display = 'none';
-    grid.innerHTML = filteredCommunities.map((c,i) => renderCard(c, i*25)).join('');
+    const isJax = currentRegion === 'jax';
+    const zoneOf = c => {
+      if (!isJax) return 'none';
+      const explicit = String(c.zone || '').trim().toLowerCase();
+      if (explicit === '1' || explicit === 'zone 1' || explicit === 'zone1') return 'zone1';
+      if (explicit === '2' || explicit === 'zone 2' || explicit === 'zone2') return 'zone2';
+      if (c.office) return 'none';
+      const lc = String(c.localContact || c.contact || '').toLowerCase();
+      if (!lc || lc.includes('jax corp office')) return 'none';
+      if (lc.includes('kyle') && !lc.includes('cassandra')) return 'zone1';
+      if (lc.includes('cassandra') && !lc.includes('kyle')) return 'zone2';
+      return 'none';
+    };
+    const zoneMeta = {
+      zone1: {label:'Zone 1 — Kyle Bazler', rep:'Kyle Bazler', count:0},
+      zone2: {label:'Zone 2 — Cassandra Clitus', rep:'Cassandra Clitus', count:0},
+      none:  {label:'Ungrouped', rep:'', count:0},
+    };
+    const order = ['zone1','zone2','none'];
+    const grouped = order.map(z => ({zone:z, items: filteredCommunities.filter(c => zoneOf(c) === z)})).filter(g => g.items.length);
+    const html = [];
+    grouped.forEach(g => {
+      if (isJax && g.zone !== 'none') {
+        const meta = zoneMeta[g.zone];
+        html.push(`<div class="zone-header"><div>📍 ${meta.label}</div><div>${g.items.length} projects</div></div>`);
+      }
+      html.push(`<div class="comm-grid">${g.items.map((c,i) => renderCard(c, i*25)).join('')}</div>`);
+    });
+    grid.innerHTML = isJax ? html.join('') : filteredCommunities.map((c,i) => renderCard(c, i*25)).join('');
   }
   document.getElementById('gridCount').textContent = filteredCommunities.length;
   updateKPIs();
