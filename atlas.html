@@ -1436,9 +1436,8 @@ function renderGrid() {
     empty.style.display = 'block';
   } else {
     empty.style.display = 'none';
-    const isJax = currentRegion === 'jax';
+    const shouldGroupJax = currentRegion === 'all' || currentRegion === 'jax';
     const zoneOf = c => {
-      if (!isJax) return 'none';
       const explicit = String(c.zone || '').trim().toLowerCase();
       if (explicit === '1' || explicit === 'zone 1' || explicit === 'zone1') return 'zone1';
       if (explicit === '2' || explicit === 'zone 2' || explicit === 'zone2') return 'zone2';
@@ -1450,21 +1449,26 @@ function renderGrid() {
       return 'none';
     };
     const zoneMeta = {
-      zone1: {label:'Zone 1 — Kyle Bazler', rep:'Kyle Bazler', count:0},
-      zone2: {label:'Zone 2 — Cassandra Clitus', rep:'Cassandra Clitus', count:0},
-      none:  {label:'Ungrouped', rep:'', count:0},
+      zone1: {label:'Zone 1 — Kyle Bazler'},
+      zone2: {label:'Zone 2 — Cassandra Clitus'},
     };
-    const order = ['zone1','zone2','none'];
-    const grouped = order.map(z => ({zone:z, items: filteredCommunities.filter(c => zoneOf(c) === z)})).filter(g => g.items.length);
-    const html = [];
-    grouped.forEach(g => {
-      if (isJax && g.zone !== 'none') {
-        const meta = zoneMeta[g.zone];
-        html.push(`<div class="zone-header"><div>📍 ${meta.label}</div><div>${g.items.length} projects</div></div>`);
-      }
-      html.push(`<div class="comm-grid">${g.items.map((c,i) => renderCard(c, i*25)).join('')}</div>`);
-    });
-    grid.innerHTML = isJax ? html.join('') : filteredCommunities.map((c,i) => renderCard(c, i*25)).join('');
+    const cards = items => items.map((c,i) => renderCard(c, i*25)).join('');
+    if (shouldGroupJax) {
+      const jaxCards = filteredCommunities.filter(c => c.region === 'jax');
+      const otherCards = filteredCommunities.filter(c => c.region !== 'jax');
+      const grouped = ['zone1','zone2'].map(z => ({zone:z, items: jaxCards.filter(c => zoneOf(c) === z)})).filter(g => g.items.length);
+      const ungrouped = jaxCards.filter(c => zoneOf(c) === 'none');
+      const html = [];
+      grouped.forEach(g => {
+        html.push(`<div class="zone-header"><div>📍 ${zoneMeta[g.zone].label}</div><div>${g.items.length} projects</div></div>`);
+        html.push(cards(g.items));
+      });
+      if (ungrouped.length) html.push(cards(ungrouped));
+      if (otherCards.length) html.push(cards(otherCards));
+      grid.innerHTML = html.join('');
+    } else {
+      grid.innerHTML = filteredCommunities.map((c,i) => renderCard(c, i*25)).join('');
+    }
   }
   document.getElementById('gridCount').textContent = filteredCommunities.length;
   updateKPIs();
