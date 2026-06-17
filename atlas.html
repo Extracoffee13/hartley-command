@@ -189,6 +189,7 @@ body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);mi
 
 /* ── COMMUNITY GRID ── */
 .comm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:28px;}
+.area-header{background:linear-gradient(135deg,var(--navy) 0%,#0f3460 100%);color:#fff;border-radius:0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;font-size:13px;font-weight:900;letter-spacing:1px;text-transform:uppercase;margin:0 0 10px;grid-column:1 / -1;border-bottom:3px solid var(--orange);}
 .zone-header{background:#E6F1FB;color:#042C53;border-left:3px solid #185FA5;border-radius:0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;font-size:12px;font-weight:800;margin:0 0 10px;grid-column:1 / -1;}
 
 /* ── COMMUNITY CARD ── */
@@ -1436,7 +1437,6 @@ function renderGrid() {
     empty.style.display = 'block';
   } else {
     empty.style.display = 'none';
-    const shouldGroupJax = currentRegion === 'all' || currentRegion === 'jax';
     const zoneOf = c => {
       const explicit = String(c.zone || '').trim().toLowerCase();
       if (explicit === '1' || explicit === 'zone 1' || explicit === 'zone1') return 'zone1';
@@ -1448,27 +1448,40 @@ function renderGrid() {
       if (lc.includes('cassandra') && !lc.includes('kyle')) return 'zone2';
       return 'none';
     };
-    const zoneMeta = {
-      zone1: {label:'Zone 1 — Kyle Bazler'},
-      zone2: {label:'Zone 2 — Cassandra Clitus'},
+    const areaLabel = {
+      jax: 'JACKSONVILLE / ST. AUGUSTINE',
+      ocala: 'OCALA',
+      gainesville: 'GAINESVILLE',
+      sofla: 'SOUTH FLORIDA',
     };
-    const cards = items => items.map((c,i) => renderCard(c, i*25)).join('');
-    if (shouldGroupJax) {
-      const jaxCards = filteredCommunities.filter(c => c.region === 'jax');
-      const otherCards = filteredCommunities.filter(c => c.region !== 'jax');
-      const grouped = ['zone1','zone2'].map(z => ({zone:z, items: jaxCards.filter(c => zoneOf(c) === z)})).filter(g => g.items.length);
-      const ungrouped = jaxCards.filter(c => zoneOf(c) === 'none');
-      const html = [];
-      grouped.forEach(g => {
-        html.push(`<div class="zone-header"><div>📍 ${zoneMeta[g.zone].label}</div><div>${g.items.length} projects</div></div>`);
-        html.push(cards(g.items));
-      });
-      if (ungrouped.length) html.push(cards(ungrouped));
-      if (otherCards.length) html.push(cards(otherCards));
-      grid.innerHTML = html.join('');
-    } else {
-      grid.innerHTML = filteredCommunities.map((c,i) => renderCard(c, i*25)).join('');
-    }
+    const areaOrder = ['jax','ocala','gainesville','sofla'];
+    const currentAreas = currentRegion === 'all'
+      ? [...areaOrder.filter(r => filteredCommunities.some(c => c.region === r)), ...[...new Set(filteredCommunities.map(c => c.region).filter(r => !areaOrder.includes(r)))]]
+      : [currentRegion];
+    const cards = items => `<div class="comm-grid">${items.map((c,i) => renderCard(c, i*25)).join('')}</div>`;
+    const html = [];
+    currentAreas.forEach(area => {
+      const items = filteredCommunities.filter(c => c.region === area);
+      if (!items.length) return;
+      html.push(`<div class="area-header">📍 ${areaLabel[area] || String(area).toUpperCase()}</div>`);
+      if (area === 'jax') {
+        const zoneMeta = {
+          zone1: {label:'Zone 1 — Kyle Bazler'},
+          zone2: {label:'Zone 2 — Cassandra Clitus'},
+        };
+        ['zone1','zone2'].forEach(zone => {
+          const zoneItems = items.filter(c => zoneOf(c) === zone);
+          if (!zoneItems.length) return;
+          html.push(`<div class="zone-header"><div>📍 ${zoneMeta[zone].label}</div><div>${zoneItems.length} projects</div></div>`);
+          html.push(cards(zoneItems));
+        });
+        const ungrouped = items.filter(c => zoneOf(c) === 'none');
+        if (ungrouped.length) html.push(cards(ungrouped));
+      } else {
+        html.push(cards(items));
+      }
+    });
+    grid.innerHTML = html.join('');
   }
   document.getElementById('gridCount').textContent = filteredCommunities.length;
   updateKPIs();
