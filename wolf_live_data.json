@@ -1,19 +1,19 @@
 {
-  "last_updated": "2026-06-16T23:55:18.748697",
+  "last_updated": "2026-06-17T00:00:21.151854",
   "update_interval_seconds": 300,
   "account": {
-    "portfolio_value": 97637.1,
+    "portfolio_value": 97648.48,
     "cash": -1150.9,
-    "buying_power": 265533.37,
-    "equity": 97637.1,
+    "buying_power": 265565.22,
+    "equity": 97648.48,
     "last_equity": 99673.98,
     "unrealized_pl": 0.0,
     "unrealized_plpc": 0.0,
     "status": "ACTIVE"
   },
   "daily_pnl": {
-    "amount": -2036.88,
-    "pct": -0.0204,
+    "amount": -2025.5,
+    "pct": -0.0203,
     "circuit_breaker_status": "yellow",
     "circuit_breaker_message": "MANUAL HALT \u2014 WOLF mandate v1.0 enforcement \u2014 portfolio non-compliant (PLTR 47.6%, NVDA/MSFT/TSLA/JPM each over 8%, MDT 25%, cash -$100K margin). Auto-rebalance fires at next market-open via wolf-task-runner.sh \u2192 mandate_rebalance.py. halt_new_entries clears after compliance achieved. Now preserved across polls (poll updated 2026-05-13)."
   },
@@ -38,10 +38,10 @@
       "qty": 25.0,
       "side": "long",
       "avg_entry": 306.73,
-      "current_price": 331.2,
-      "market_value": 8280.0,
-      "unrealized_pl": 611.75,
-      "unrealized_plpc": 0.07978,
+      "current_price": 331.21,
+      "market_value": 8280.25,
+      "unrealized_pl": 612.0,
+      "unrealized_plpc": 0.07981,
       "cost_basis": 7668.25
     },
     {
@@ -60,10 +60,10 @@
       "qty": 20.0,
       "side": "long",
       "avg_entry": 421.673333,
-      "current_price": 393.95,
-      "market_value": 7879.0,
-      "unrealized_pl": -554.46666,
-      "unrealized_plpc": -0.06575,
+      "current_price": 393.94,
+      "market_value": 7878.8,
+      "unrealized_pl": -554.66666,
+      "unrealized_plpc": -0.06577,
       "cost_basis": 8433.46666
     },
     {
@@ -71,10 +71,10 @@
       "qty": 77.0,
       "side": "long",
       "avg_entry": 105.688223,
-      "current_price": 101.83,
-      "market_value": 7840.91,
-      "unrealized_pl": -297.083171,
-      "unrealized_plpc": -0.03651,
+      "current_price": 101.99,
+      "market_value": 7853.23,
+      "unrealized_pl": -284.763171,
+      "unrealized_plpc": -0.03499,
       "cost_basis": 8137.993171
     },
     {
@@ -82,10 +82,10 @@
       "qty": 38.0,
       "side": "long",
       "avg_entry": 207.39,
-      "current_price": 208.88,
-      "market_value": 7937.44,
-      "unrealized_pl": 56.62,
-      "unrealized_plpc": 0.00718,
+      "current_price": 208.85,
+      "market_value": 7936.3,
+      "unrealized_pl": 55.48,
+      "unrealized_plpc": 0.00704,
       "cost_basis": 7880.82
     },
     {
@@ -126,10 +126,10 @@
       "qty": 14.389693809,
       "side": "long",
       "avg_entry": 694.34,
-      "current_price": 691.64,
-      "market_value": 9952.487826,
-      "unrealized_pl": -38.852173,
-      "unrealized_plpc": -0.00389,
+      "current_price": 691.65,
+      "market_value": 9952.631723,
+      "unrealized_pl": -38.708276,
+      "unrealized_plpc": -0.00387,
       "cost_basis": 9991.339999
     },
     {
@@ -144,140 +144,7 @@
       "cost_basis": 15230.34225
     }
   ],
-  "todays_trades": [
-    {
-      "id": "afb4fc8f-756c-4580-afd2-5f01acf59829",
-      "client_order_id": "wolf-vault-20260616133107",
-      "ticker": "VOO",
-      "side": "buy",
-      "qty": 14.389693809,
-      "filled_price": 694.34,
-      "status": "filled",
-      "created_at": "2026-06-16T13:31:07.195497Z",
-      "order_class": "",
-      "strategy": "vault"
-    },
-    {
-      "id": "4e77ef66-f965-4d02-928e-2111ea48f4ba",
-      "client_order_id": "wolf-vault-20260616133106",
-      "ticker": "SHV",
-      "side": "buy",
-      "qty": 90.649065505,
-      "filled_price": 110.22,
-      "status": "filled",
-      "created_at": "2026-06-16T13:31:06.997803Z",
-      "order_class": "",
-      "strategy": "vault"
-    },
-    {
-      "id": "28a15c01-d00d-4333-9dc1-a3c20bc2adaf",
-      "client_order_id": "afd7ceae-3e7b-47f9-9737-3fbffa7c8967",
-      "ticker": "XLE",
-      "side": "sell",
-      "qty": 145.0,
-      "filled_price": 55.28,
-      "status": "filled",
-      "created_at": "2026-06-16T13:30:06.650592Z",
-      "order_class": "",
-      "strategy": "unattributed"
-    },
-    {
-      "id": "f2cac273-3222-4542-a896-013ed5dbab06",
-      "client_order_id": "8f9ff0ea-1019-41a5-b200-78ced6c674be",
-      "ticker": "TSLA",
-      "side": "sell",
-      "qty": 46.0,
-      "filled_price": 401.79,
-      "status": "filled",
-      "created_at": "2026-06-16T13:30:06.051216Z",
-      "order_class": "",
-      "strategy": "unattributed"
-    },
-    {
-      "id": "36fe7ee8-ea3e-4437-976b-f4e04772055e",
-      "client_order_id": "9d5cc290-9f1d-4621-aab7-1c6503cbfced",
-      "ticker": "PLTR",
-      "side": "sell",
-      "qty": 304.0,
-      "filled_price": 132.466743,
-      "status": "filled",
-      "created_at": "2026-06-16T13:30:05.653817Z",
-      "order_class": "",
-      "strategy": "unattributed"
-    },
-    {
-      "id": "1b2cf52a-b386-429c-af53-4f6896203700",
-      "client_order_id": "e4cd473c-8d77-437e-8d10-3c8c93ccf0af",
-      "ticker": "NVDA",
-      "side": "sell",
-      "qty": 86.0,
-      "filled_price": 209.71,
-      "status": "filled",
-      "created_at": "2026-06-16T13:30:05.257634Z",
-      "order_class": "",
-      "strategy": "unattributed"
-    },
-    {
-      "id": "8dbf3baa-3d85-4013-931a-c39fa4e08d4d",
-      "client_order_id": "9c549bd0-4317-4b5f-a817-cc8c3b6e66b8",
-      "ticker": "NOW",
-      "side": "sell",
-      "qty": 165.0,
-      "filled_price": 101.61,
-      "status": "filled",
-      "created_at": "2026-06-16T13:30:04.872209Z",
-      "order_class": "",
-      "strategy": "unattributed"
-    },
-    {
-      "id": "ef0b6742-8a84-401b-8d91-6393cb757226",
-      "client_order_id": "083dd882-33fd-4f32-bc0e-04e15744aad7",
-      "ticker": "MSFT",
-      "side": "sell",
-      "qty": 43.0,
-      "filled_price": 391.435117,
-      "status": "filled",
-      "created_at": "2026-06-16T13:30:04.60498Z",
-      "order_class": "",
-      "strategy": "unattributed"
-    },
-    {
-      "id": "536a1106-e131-447a-a395-26b34b92585b",
-      "client_order_id": "9704f276-0118-4b87-89fb-00fdd6f52fc0",
-      "ticker": "MDT",
-      "side": "sell",
-      "qty": 235.0,
-      "filled_price": 81.103957,
-      "status": "filled",
-      "created_at": "2026-06-16T13:30:04.143983Z",
-      "order_class": "",
-      "strategy": "unattributed"
-    },
-    {
-      "id": "55e5e22e-ac43-400e-afeb-2cdac246b1ad",
-      "client_order_id": "85f6838a-5a37-4c15-9550-4ac5cf392894",
-      "ticker": "JPM",
-      "side": "sell",
-      "qty": 51.0,
-      "filled_price": 325.938431,
-      "status": "filled",
-      "created_at": "2026-06-16T13:30:02.783158Z",
-      "order_class": "",
-      "strategy": "unattributed"
-    },
-    {
-      "id": "cb8b9551-2ad7-4809-afb7-e4db1ca49529",
-      "client_order_id": "b88a8562-7fb9-4801-800b-49fde0569efa",
-      "ticker": "ACN",
-      "side": "sell",
-      "qty": 89.0,
-      "filled_price": 165.472922,
-      "status": "filled",
-      "created_at": "2026-06-16T13:30:02.368111Z",
-      "order_class": "",
-      "strategy": "unattributed"
-    }
-  ],
+  "todays_trades": [],
   "strategy_performance": {
     "small_cap_catalyst": {
       "name": "Small Cap Catalyst",
@@ -496,9 +363,9 @@
   "wolf_capabilities": {
     "capability_score": 51,
     "score_max": 100,
-    "day_on_mission": 70,
+    "day_on_mission": 71,
     "mission_start": "2026-04-08",
-    "streak_days": 70,
+    "streak_days": 71,
     "totals": {
       "scripts": 58,
       "core_modules": 14,
