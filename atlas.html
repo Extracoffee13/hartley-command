@@ -561,7 +561,7 @@ body.client-view .admin-only{display:none !important;}
   <div class="r-tab active" data-region="jax"   onclick="setRegion('jax',this)">Jacksonville / St. Augustine <span class="r-count" id="cnt-jax">10</span></div>
   <div class="r-tab active" data-region="ocala" onclick="setRegion('ocala',this)">Ocala <span class="r-count" id="cnt-ocala">11</span></div>
   <div class="r-tab active" data-region="gainesville" onclick="setRegion('gainesville',this)">Gainesville <span class="r-count" id="cnt-gainesville">4</span></div>
-  <div class="r-tab active" data-region="sofla" onclick="setRegion('sofla',this)">South Florida <span class="r-count" id="cnt-sofla">1</span></div>
+  <div class="r-tab active" data-region="sofla" onclick="setRegion('sofla',this)">Southeast <span class="r-count" id="cnt-sofla">1</span></div>
   <div class="r-tab dim" title="Coming Soon">Ft. Lauderdale <span class="r-cs">Soon</span></div>
   <div class="r-tab dim" title="Coming Soon">Naples / Ft. Myers <span class="r-cs">Soon</span></div>
   <div class="r-tab dim" title="Coming Soon">Orlando <span class="r-cs">Soon</span></div>
@@ -635,7 +635,7 @@ body.client-view .admin-only{display:none !important;}
       <option value="space-coast">Space Coast / Melbourne</option>
       <option value="palm-beach">Palm Beach</option>
       <option value="treasure-coast">Treasure Coast</option>
-      <option value="sofla">South Florida</option>
+      <option value="sofla">Southeast</option>
       <option value="panama-city">Panama City</option>
       <option value="pensacola">Pensacola</option>
     </select>
@@ -966,7 +966,7 @@ const WORK_ORDERS = [
 // ─── ACTIVITY LOG ───
 const ACTIVITY = [
 {icon:"🆕",bg:"#ede9fe",text:"Atlas v1.1 — Ocala region added (12 communities). Crew: Pete + Andrew.",time:"Today"},
-{icon:"🆕",bg:"#ede9fe",text:"MIAMI Corp office added under South Florida band — pipeline staging.",time:"Today"},
+{icon:"🆕",bg:"#ede9fe",text:"MIAMI Corp office added under Southeast band — pipeline staging.",time:"Today"},
 {icon:"🛰",bg:"#fff7ed",text:"Drone Console scaffolded (admin only) — Brand 9's first physical AI is in pre-launch.",time:"Today"},
 {icon:"📋",bg:"#dbeafe",text:"Region taxonomy aligned to Lennar's exact area names: Jacksonville / St. Augustine, Ocala, etc.",time:"Today"},
 {icon:"✅",bg:"#d1fae5",text:"Holly Cove + Kings Preserve marked Sold Out / Closeout.",time:"Today"},
@@ -1207,7 +1207,7 @@ async function syncFromSheet() {
       soldOut:       isClosedFromStatus(r[idx['Status']], r[idx['Request']]),
       notes:         String(r[idx['Request']]||'').trim()  // Notes renamed to Request
     })).filter(c => c.name);
-    // Banner-row guard: Sheet has rows like "JAX/ST AUG", "OCALA", "SOUTH FLORIDA", "GAINESVILLE"
+    // Banner-row guard: Sheet has rows like "JAX/ST AUG", "OCALA", "SOUTHEAST", "GAINESVILLE"
     // where Community is the all-caps banner text. Drop those.
     const isBanner = name => /^[A-Z\s\/.\-]+$/.test(name) && name.length < 40 && !name.match(/^[A-Z][a-z]/);
     const cleanedFresh = fresh.filter(c => !isBanner(c.name));
@@ -1452,7 +1452,7 @@ function renderGrid() {
       jax: 'JACKSONVILLE / ST. AUGUSTINE',
       ocala: 'OCALA',
       gainesville: 'GAINESVILLE',
-      sofla: 'SOUTH FLORIDA',
+      sofla: 'SOUTHEAST',
     };
     const areaOrder = ['jax','ocala','gainesville','sofla'];
     const currentAreas = currentRegion === 'all'
@@ -1497,7 +1497,7 @@ const REGION_LABELS = {
   jax:         'North Florida — JAX/St. Augustine',
   ocala:       'North Florida — Ocala',
   gainesville: 'North Florida — Gainesville',
-  sofla:       'South Florida — Miami',
+  sofla:       'Southeast — Miami',
   'naples-ft-myers': 'Naples / Ft. Myers',
   orlando:     'Orlando',
   tampa:       'Tampa / Manatee',
@@ -1999,7 +1999,7 @@ function renderRegionMap() {
     lbl.textContent = currentRegion === 'all' ? 'All Regions' :
       currentRegion === 'jax' ? 'Jacksonville / St. Augustine' :
       currentRegion === 'ocala' ? 'Ocala' :
-      currentRegion === 'sofla' ? 'South Florida' : 'All Regions';
+      currentRegion === 'sofla' ? 'Southeast' : 'All Regions';
   }
   // Clear and repaint markers
   if (_regionMapLayer) _regionMapLayer.clearLayers();
@@ -2330,7 +2330,7 @@ function openModal(id) {
   const regionDisplay = {
     jax:   '📍 JACKSONVILLE / ST. AUGUSTINE',
     ocala: '📍 OCALA',
-    sofla: '📍 SOUTH FLORIDA'
+    sofla: '📍 SOUTHEAST'
   }[c.region] || '📍 FLORIDA';
   document.getElementById('m-region').textContent = regionDisplay;
   document.getElementById('m-name').textContent   = c.name;
@@ -2457,7 +2457,7 @@ function openModal(id) {
       </div>
       <div class="m-info-card">
         <div class="m-info-lbl">Region</div>
-        <div class="m-info-val">${({jax:'Jacksonville / St. Augustine',ocala:'Ocala',sofla:'South Florida'})[c.region]||'Florida'}</div>
+        <div class="m-info-val">${({jax:'Jacksonville / St. Augustine',ocala:'Ocala',sofla:'Southeast'})[c.region]||'Florida'}</div>
       </div>
     </div>
     ${c.notes ? `<div style="margin-top:16px;padding:14px 16px;background:var(--gray-50);border-radius:8px;border:1px solid var(--gray-200);"><div style="font-size:10px;font-weight:800;color:var(--gray-400);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;">Notes</div><div style="font-size:13px;color:var(--gray-800);line-height:1.5;white-space:pre-wrap;">${(c.notes+'').replace(/</g,'&lt;')}</div></div>` : ''}
