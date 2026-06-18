@@ -1452,9 +1452,10 @@ function renderGrid() {
       jax: 'JACKSONVILLE / ST. AUGUSTINE',
       ocala: 'OCALA',
       gainesville: 'GAINESVILLE',
+      palm: 'PALM ATLANTIC',
       sofla: 'SOUTHEAST',
     };
-    const areaOrder = ['jax','ocala','gainesville','sofla'];
+    const areaOrder = ['jax','ocala','gainesville','palm','sofla'];
     const currentAreas = currentRegion === 'all'
       ? [...areaOrder.filter(r => filteredCommunities.some(c => c.region === r)), ...[...new Set(filteredCommunities.map(c => c.region).filter(r => !areaOrder.includes(r)))]]
       : [currentRegion];
