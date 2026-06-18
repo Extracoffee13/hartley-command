@@ -31,6 +31,7 @@
 </style>
 </head>
 <body>
+<div id="construct-updates-overlay" style="max-width:1200px;margin:0 auto;padding:10px 16px;font-family:-apple-system,system-ui,sans-serif;"></div>
 <div id="root"></div>
 <script type="text/babel">
 const { useState, useEffect, useRef, useCallback, useMemo } = React;
@@ -2074,6 +2075,60 @@ ReactDOM.createRoot(document.getElementById("root")).render(<Dashboard />);
   })();
   // Re-hydrate after React mounts (give it 600ms)
   setTimeout(hydrateLive, 600);
+})();
+</script>
+
+<script>
+/* ===== CONSTRUCT LIVE-UPDATES + PER-FEED FRESHNESS (2026-06-18) =====
+   Ends the recurring "dashboard reads the same as yesterday" problem: every feed
+   shows its own timestamp + a red STALE badge when old, so missing/old data is
+   VISIBLE and attributable — never silently reassuring. Runs outside React. */
+(function(){
+  var O=document.getElementById('construct-updates-overlay'); if(!O) return;
+  var MUT='#8a94a6',RED='#f87171',GRN='#4ade80',AMB='#fbbf24',CY='#00d4ff';
+  function ageH(ts){ if(!ts) return null; var t=new Date(ts); if(isNaN(t)) return null; return (Date.now()-t)/36e5; }
+  function badge(ts,maxH){ var a=ageH(ts); if(a==null) return '<span style="color:'+RED+'">⚠ no timestamp</span>';
+    var lbl=a<1?Math.round(a*60)+'m':(a<48?a.toFixed(1)+'h':Math.round(a/24)+'d')+' ago';
+    var stale=a>maxH; return '<span style="color:'+(stale?RED:GRN)+'">'+(stale?'⚠ STALE ':'● ')+lbl+'</span>'; }
+  function gj(u){ return fetch(u+'?cb='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;}); }
+
+  function render(corpus,scout,cites,wolf){
+    var rows=[];
+    // Harvard corpus
+    rows.push(['Harvard corpus', corpus?(corpus.total_articles+' articles'):'—', corpus&&corpus.last_indexed, 30]);
+    // Capability scout
+    var sc = scout&&(scout.candidates||scout); var scn = Array.isArray(sc)?sc.length:0;
+    rows.push(['Capability scout', scn?scn+' candidates':'—', scout&&(scout.generated||scout.updated_at), 30]);
+    // Citations (per client, browserless probe)
+    if(cites){ Object.keys(cites).forEach(function(c){ var x=cites[c]||{};
+      rows.push(['Citations · '+c, (x.cited_any?Object.keys(x.cited_any).filter(function(k){return x.cited_any[k];}).join(',')||'none cited':'—'), x.ran_at, 30]); }); }
+    // WOLF
+    rows.push(['WOLF', wolf?((wolf.market_regime&&wolf.market_regime.current||'?')+' · '+(wolf.account&&'$'+Math.round(wolf.account.equity).toLocaleString())):'—', wolf&&wolf.last_updated, 12]);
+
+    var anyStale=rows.some(function(r){var a=ageH(r[2]); return a==null||a>r[3];});
+    var html='<div style="background:#0f1217;border:1px solid '+(anyStale?RED:GRN)+';border-radius:10px;padding:12px 14px;">'+
+      '<div style="font-size:12px;font-weight:700;letter-spacing:.04em;color:'+(anyStale?RED:GRN)+';margin-bottom:8px;">'+
+        (anyStale?'⚠ CONSTRUCT — some feeds STALE (see flags)':'● CONSTRUCT — all feeds current')+
+        '<span style="float:right;color:'+MUT+';font-weight:400;">live · refreshes 60s · '+new Date().toLocaleTimeString()+'</span></div>'+
+      '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;">';
+    rows.forEach(function(r){ html+='<div style="background:#151a21;border:1px solid #1f2630;border-radius:8px;padding:8px 10px;">'+
+      '<div style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:'+MUT+'">'+r[0]+'</div>'+
+      '<div style="font-size:13px;color:#e6e9ef;margin:2px 0;font-family:ui-monospace,Menlo,monospace;">'+r[1]+'</div>'+
+      '<div style="font-size:11px;font-family:ui-monospace,Menlo,monospace;">'+badge(r[2],r[3])+'</div></div>'; });
+    html+='</div>';
+    // Scout top picks
+    if(scn){ var top=(Array.isArray(sc)?sc:[]).slice(0,3); html+='<div style="margin-top:8px;font-size:11px;color:'+CY+'">Scout top: '+
+      top.map(function(c){return (c.name||c.title||'?')+(c.action&&/APPROVAL/i.test(c.action)?' ⚑needs approval':'');}).join(' · ')+'</div>'; }
+    html+='</div>';
+    O.innerHTML=html;
+  }
+  function load(){
+    Promise.all([ gj('./harvard-corpus-stats.json'), gj('./capability-scout-queue.json'),
+      gj('./citations-summary.json'),
+      gj('https://raw.githubusercontent.com/Extracoffee13/wolf-dashboards-repo/main/wolf_live_data.json')
+    ]).then(function(a){ render(a[0],a[1],a[2],a[3]); });
+  }
+  load(); setInterval(load,60000);
 })();
 </script>
 

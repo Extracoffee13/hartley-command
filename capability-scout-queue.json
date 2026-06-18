@@ -1,0 +1,82 @@
+{
+  "generated": "2026-06-18",
+  "run_type": "daily",
+  "scan_coverage": {
+    "mcp_registry": "5 keyword sweeps (trading; alt-data; SEO/marketing/social; automation/orchestration; research/filings); no results, no new connectors beyond known live set (FMP, IBKR, Similarweb, n8n)",
+    "skills": "suggest_skills returned nothing addable",
+    "plugins": "search_plugins returned nothing addable",
+    "anthropic": "high signal (Claude Finance 10 finance agents; Managed Agents vaults env-var creds; self-hosted sandboxes public beta; MCP tunnels research preview; connector observability + directory submission)",
+    "world_research": "2026 context-engineering / agent-memory literature (store-time organization, context editing -84% tokens, multi-signal retrieval, single-agent ~4x vs multi-agent ~15x token cost)",
+    "lens": "2026-06-18 brief read (agentic-AI-supercharges-startups; AI-as-buyer; frontier-lab data moats; SaaS replacement)"
+  },
+  "candidates": [
+    {
+      "id": "2026-06-18-01",
+      "name": "Claude Finance pattern-harvest (adopt the 10 finance agents' workflows/rubrics, NOT 10 new agents)",
+      "improves_agent": "Hartley Capital (Earnings reviewer + Model builder + Market researcher), WOLF (Statement-auditor-style live-state grader), Anvil/Hermes (Month-end closer, Statement auditor), Lens (Market-researcher synthesis loop)",
+      "what": "Anthropic Claude Finance (May 5 2026): 10 predefined finance agents (Pitch builder, Meeting preparer, Earnings reviewer, Model builder, Market researcher, Statement auditor, KYC screener, Month-end closer + ops). Harvest the rubric/step structure into existing agents.",
+      "why": "Vetted, named decompositions of workflows our agents already run by hand. Take the recipes, not the headcount (more agents != better). High Pragma resale value to finance/PE clients.",
+      "scores": {"fit": 5, "impact": 5, "integration": 4, "risk": 5, "pragma": 5, "composite": 4.8},
+      "status": "auto-deployed",
+      "action": "Registered as pattern source. Next adoptions: WOLF Statement-auditor grader, Hartley Earnings-reviewer loop. Installing the actual Claude Finance plugin/managed agents = separate NEEDS-APPROVAL step (cost + access)."
+    },
+    {
+      "id": "2026-06-18-02",
+      "name": "Context-engineering / store-time memory discipline",
+      "improves_agent": "self-improving-loop + all memory-using agents (WOLF, Lens, Prism, Pulse, Keystone)",
+      "what": "Organize/compress memory once at storage time, not per-retrieval; combine vector+graph+temporal signals; context editing/sliding windows (100-turn eval: -84% tokens, no completion loss). Single agent ~4x chat tokens; multi-agent ~15x.",
+      "why": "Quantifies and reinforces 'more agents != better'; extends Fable-5 memory-3x finding into a concrete storage discipline. The 15x figure is the strongest argument for a lean, shared-memory fleet.",
+      "scores": {"fit": 5, "impact": 4, "integration": 4, "risk": 5, "pragma": 4, "composite": 4.4},
+      "status": "auto-deployed",
+      "action": "Logged as today's lesson in agent-lessons.md (store-at-creation; shared-state over re-fetch; context-edit long loops)."
+    },
+    {
+      "id": "2026-06-18-03",
+      "name": "Managed Agents vaults - env-var credential injection",
+      "improves_agent": "fleet operations (fixes WOLF lesson #5: launchd jobs lose shell-inherited credentials silently)",
+      "what": "Claude Managed Agents vaults now support environment-variable credentials, securely injecting secrets into the agent sandbox.",
+      "why": "A first-class, audited secrets store removes the exact silent-credential-loss failure mode logged on the WOLF controls.",
+      "scores": {"fit": 5, "impact": 4, "integration": 4, "risk": 5, "pragma": 3, "composite": 4.2},
+      "status": "auto-deployed",
+      "action": "Standard logged: prefer vault/env-var injection over shell-inherited secrets for any scheduled agent. Migrating live WOLF secrets into a vault = NEEDS BOBBY AWARENESS before touching live creds."
+    },
+    {
+      "id": "2026-06-18-04",
+      "name": "Connector observability + Agent-SDK credit-balance heartbeat",
+      "improves_agent": "fleet operations (silent-failure / starvation detection)",
+      "what": "Anthropic connector observability (monitor connector performance) + in-app directory submission; pairs with the 2026-06-15 separate Agent-SDK credit pool.",
+      "why": "Extends 2026-06-17-06 credit-starvation awareness + the 'watch for silence, every control needs a heartbeat' lesson. Learn before a connector degrades or the credit pool empties.",
+      "scores": {"fit": 4, "impact": 4, "integration": 4, "risk": 4, "pragma": 2, "composite": 3.6},
+      "status": "recommend",
+      "action": "Add connector-health + Agent-SDK-credit heartbeat to the daily fleet check."
+    },
+    {
+      "id": "2026-06-18-05",
+      "name": "Self-hosted sandboxes (public beta)",
+      "improves_agent": "fleet infra / Pragma client data-residency work",
+      "what": "Tool execution runs on your own infra or a managed provider (Cloudflare/Daytona/Modal/Vercel); orchestration loop stays on Anthropic.",
+      "why": "Cost + data-control upside, but an infrastructure + security change. Not auto-deployable.",
+      "scores": {"fit": 3, "impact": 3, "integration": 2, "risk": 3, "pragma": 3, "composite": 2.8},
+      "status": "NEEDS BOBBY APPROVAL",
+      "action": "Evaluate only if a client requires data residency or we hit sandbox cost limits."
+    },
+    {
+      "id": "2026-06-18-06",
+      "name": "MCP tunnels (research preview)",
+      "improves_agent": "any agent needing a private/internal data source (e.g. Pragma client internal systems)",
+      "what": "Reach MCP servers inside private networks without public exposure via an encrypted gateway.",
+      "why": "Useful when an agent must reach a private/internal source; no current need.",
+      "scores": {"fit": 3, "impact": 3, "integration": 3, "risk": 4, "pragma": 3, "composite": 3.2},
+      "status": "WATCH",
+      "action": "Revisit when a private-network data source enters scope."
+    }
+  ],
+  "summary": {
+    "candidates_found": 6,
+    "auto_deployed": 3,
+    "awaiting_approval": 1,
+    "awareness_or_recommend": 1,
+    "watch": 1,
+    "top_pick": "2026-06-18-01 Claude Finance pattern-harvest (4.8)"
+  }
+}
