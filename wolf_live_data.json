@@ -1,19 +1,19 @@
 {
-  "last_updated": "2026-06-18T06:28:45.593764",
+  "last_updated": "2026-06-18T06:33:48.727945",
   "update_interval_seconds": 300,
   "account": {
-    "portfolio_value": 95879.58,
+    "portfolio_value": 95899.59,
     "cash": -380.14,
-    "buying_power": 261631.93,
-    "equity": 95879.58,
+    "buying_power": 261691.02,
+    "equity": 95899.59,
     "last_equity": 95367.43827704169,
     "unrealized_pl": 0.0,
     "unrealized_plpc": 0.0,
     "status": "ACTIVE"
   },
   "daily_pnl": {
-    "amount": 512.14,
-    "pct": 0.0054,
+    "amount": 532.15,
+    "pct": 0.0056,
     "circuit_breaker_status": "yellow",
     "circuit_breaker_message": "MANUAL HALT \u2014 WOLF mandate v1.0 enforcement \u2014 portfolio non-compliant (PLTR 47.6%, NVDA/MSFT/TSLA/JPM each over 8%, MDT 25%, cash -$100K margin). Auto-rebalance fires at next market-open via wolf-task-runner.sh \u2192 mandate_rebalance.py. halt_new_entries clears after compliance achieved. Now preserved across polls (poll updated 2026-05-13)."
   },
@@ -38,10 +38,10 @@
       "qty": 24.0,
       "side": "long",
       "avg_entry": 306.73,
-      "current_price": 335.3,
-      "market_value": 8047.2,
-      "unrealized_pl": 685.68,
-      "unrealized_plpc": 0.09314,
+      "current_price": 335.5,
+      "market_value": 8052.0,
+      "unrealized_pl": 690.48,
+      "unrealized_plpc": 0.0938,
       "cost_basis": 7361.52
     },
     {
@@ -60,10 +60,10 @@
       "qty": 20.0,
       "side": "long",
       "avg_entry": 421.673333,
-      "current_price": 382.55,
-      "market_value": 7651.0,
-      "unrealized_pl": -782.46666,
-      "unrealized_plpc": -0.09278,
+      "current_price": 382.0,
+      "market_value": 7640.0,
+      "unrealized_pl": -793.46666,
+      "unrealized_plpc": -0.09409,
       "cost_basis": 8433.46666
     },
     {
@@ -82,10 +82,10 @@
       "qty": 38.0,
       "side": "long",
       "avg_entry": 207.39,
-      "current_price": 207.03,
-      "market_value": 7867.14,
-      "unrealized_pl": -13.68,
-      "unrealized_plpc": -0.00174,
+      "current_price": 207.14,
+      "market_value": 7871.32,
+      "unrealized_pl": -9.5,
+      "unrealized_plpc": -0.00121,
       "cost_basis": 7880.82
     },
     {
@@ -93,10 +93,10 @@
       "qty": 60.0,
       "side": "long",
       "avg_entry": 136.767115,
-      "current_price": 131.55,
-      "market_value": 7893.0,
-      "unrealized_pl": -313.0269,
-      "unrealized_plpc": -0.03815,
+      "current_price": 131.5,
+      "market_value": 7890.0,
+      "unrealized_pl": -316.0269,
+      "unrealized_plpc": -0.03851,
       "cost_basis": 8206.0269
     },
     {
@@ -115,10 +115,10 @@
       "qty": 20.0,
       "side": "long",
       "avg_entry": 442.450455,
-      "current_price": 398.42,
-      "market_value": 7968.4,
-      "unrealized_pl": -880.6091,
-      "unrealized_plpc": -0.09951,
+      "current_price": 398.23,
+      "market_value": 7964.6,
+      "unrealized_pl": -884.4091,
+      "unrealized_plpc": -0.09994,
       "cost_basis": 8849.0091
     },
     {
@@ -126,10 +126,10 @@
       "qty": 14.389693809,
       "side": "long",
       "avg_entry": 694.34,
-      "current_price": 688.14,
-      "market_value": 9902.123898,
-      "unrealized_pl": -89.216101,
-      "unrealized_plpc": -0.00893,
+      "current_price": 687.75,
+      "market_value": 9896.511917,
+      "unrealized_pl": -94.828082,
+      "unrealized_plpc": -0.00949,
       "cost_basis": 9991.339999
     },
     {
@@ -137,10 +137,10 @@
       "qty": 265.0,
       "side": "long",
       "avg_entry": 56.408675,
-      "current_price": 54.36,
-      "market_value": 14405.4,
-      "unrealized_pl": -542.898875,
-      "unrealized_plpc": -0.03632,
+      "current_price": 54.49,
+      "market_value": 14439.85,
+      "unrealized_pl": -508.448875,
+      "unrealized_plpc": -0.03401,
       "cost_basis": 14948.298875
     }
   ],
@@ -452,12 +452,5 @@
         }
       ]
     }
-  },
-  "last_morning_scan": {
-    "timestamp": "2026-06-18T06:30:15.143452",
-    "date": "2026-06-18",
-    "congressional_summary": "\ud83d\udc3a WOLF Congressional Scanner initializing...\n   Watchlist: 64 symbols | Lookback: 7 days\n  Fetching House PTR index (2026)...\n  House PTRs filed in last 7d: 7 members\n\n  [!] No trade-level data (set QUIVER_TOKEN to enable). Showing PTR filings only.\n\n\n\ud83c\udfdb\ufe0f  WOLF CONGRESSIONAL FILING SCAN \u2014 2026-06-18 06:30\n   Lookback: 7 days | Source: House Clerk eFD (official)\n======================================================================\n\n  7 House Periodic Transaction Reports filed in last 7 days:\n\n  2",
-    "technical_summary": "\ud83d\udc3a WOLF scanning 58 symbols on 1Day timeframe...\n================================================================================\n\n  #1 \ud83d\udc3a WOLF SIGNAL\n  \u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n  Instrument:  ROKU\n  Direction:   LONG\n  Strategy:    Momentum Breakout\n  Entry:       $140.86\n  Stop Loss:   $130.42\n  Target:      $161.75\n  R:R:         2.0:1\n  RSI:         61.5\n  Rel Volume:  7.83x\n  Confidence:  8/10\n  \u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\n  #2 \ud83d\udc3a WOLF SIGNAL\n  \u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501",
-    "portfolio_summary": "\ud83d\udc3a WOLF Paper Trading Account\n========================================\n  Status:        ACTIVE\n  Cash:          $-380.14\n  Portfolio:     $95,894.86\n  Buying Power:  $261,673.43\n  Day P&L:       $527.42\n========================================"
   }
 }
