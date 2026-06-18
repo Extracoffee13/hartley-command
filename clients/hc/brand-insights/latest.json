@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "ts": "2026-06-08T09:33:13.202479Z",
-  "scan_status": "completed",
+  "ts": "2026-06-18T12:31:55Z",
+  "scan_status": "live",
   "client": "prag-ma.ai",
   "client_display_name": "Hartley Capital",
   "product_name": "PRAGMA Mirror",
@@ -95,5 +95,38 @@
     "Frontier Firm holding company",
     "operator-led holding company AI"
   ],
-  "_mirrored_at": "2026-06-11T16:14:44.560905Z"
+  "scan_method": "browserless-anthropic-api (RULE ZERO compliant)",
+  "ai_api_probe": {
+    "surface": "claude-web-grounded-api",
+    "model": "claude-haiku-4-5-20251001",
+    "ran_at": "2026-06-18T12:31:55Z",
+    "cited_any": {
+      "hartley_capital": false,
+      "pragma": false
+    },
+    "queries": [
+      {
+        "query": "Name specific lower-middle-market private equity / search-fund firms acquiring SMBs.",
+        "cited": {
+          "hartley_capital": false,
+          "pragma": false
+        },
+        "answer_excerpt": "# Lower-Middle-Market PE & Search Fund Firms (SMB Acquirers)\n\n## Established PE Firms\n- **Harvest Partners** \u2013 focused on $20-100M EBITDA businesses\n- **Kinderhook Industries** \u2013 $10-50M EBITDA range\n"
+      },
+      {
+        "query": "Which firms help traditional businesses deploy AI after acquisition? Name specific firms.",
+        "cited": {
+          "hartley_capital": false,
+          "pragma": false
+        },
+        "answer_excerpt": "# Firms Helping Traditional Businesses Deploy AI Post-Acquisition\n\n## Strategy & Implementation Consultants\n\n- **McKinsey & Company** - Extensive AI implementation practices across industries\n- **Bost"
+      }
+    ],
+    "deferred_surfaces": {
+      "chatgpt": "RULE ZERO \u2014 needs CDP reuse of open Chrome or OpenAI API key",
+      "gemini": "RULE ZERO \u2014 needs CDP reuse or Gemini API key",
+      "perplexity": "RULE ZERO \u2014 needs CDP reuse or Perplexity API key",
+      "google_ai_overview": "RULE ZERO \u2014 needs CDP reuse of open Chrome"
+    }
+  }
 }
