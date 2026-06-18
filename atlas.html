@@ -1450,20 +1450,21 @@ function renderGrid() {
     };
     const areaLabel = {
       jax: 'JACKSONVILLE / ST. AUGUSTINE',
-      ocala: 'OCALA',
-      gainesville: 'GAINESVILLE',
+      midnorth: 'MID FL NORTH',
+    midsouth: 'MID FL SOUTH',
       palm: 'PALM ATLANTIC',
       sofla: 'SOUTHEAST',
     };
-    const areaOrder = ['jax','ocala','gainesville','palm','sofla'];
-    const currentAreas = currentRegion === 'all'
-      ? [...areaOrder.filter(r => filteredCommunities.some(c => c.region === r)), ...[...new Set(filteredCommunities.map(c => c.region).filter(r => !areaOrder.includes(r)))]]
+    const areaOrder = ['jax','midnorth','midsouth','palm','sofla'];
+    const areaOf = c => ((c.region==='ocala'||c.region==='gainesville') ? (String(c.localContact||'').toLowerCase().includes('becky') ? 'midsouth' : 'midnorth') : c.region);
+      const currentAreas = currentRegion === 'all'
+      ? [...areaOrder.filter(r => filteredCommunities.some(c => areaOf(c) === r)), ...[...new Set(filteredCommunities.map(c => areaOf(c)).filter(r => !areaOrder.includes(r)))]]
       : [currentRegion];
     const cards = items => `<div class="comm-grid">${items.map((c,i) => renderCard(c, i*25)).join('')}</div>`;
     // Keep the card grid as the direct child of the section; the grid itself handles columns.
     const html = [];
     currentAreas.forEach(area => {
-      const items = filteredCommunities.filter(c => c.region === area);
+      const items = filteredCommunities.filter(c => areaOf(c) === area);
       if (!items.length) return;
       html.push(`<div class="area-header">📍 ${areaLabel[area] || String(area).toUpperCase()}</div>`);
       if (area === 'jax') {
