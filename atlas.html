@@ -1337,8 +1337,7 @@ function renderCard(c, delay) {
     jax:'JAX/St.Aug',
     ocala:'Ocala',
     gainesville:'Gainesville',
-    palm:'PALM ATL',
-    sofla:'SOUTHEAST',
+    sofla:'South FL',
     'naples-ft-myers':'Naples/Ft.Myers',
     orlando:'Orlando',
     tampa:'Tampa',
@@ -1453,10 +1452,9 @@ function renderGrid() {
       jax: 'JACKSONVILLE / ST. AUGUSTINE',
       ocala: 'OCALA',
       gainesville: 'GAINESVILLE',
-      palm: 'PALM ATLANTIC',
-      sofla: 'SOUTHEAST',
+      sofla: 'SOUTH FLORIDA',
     };
-    const areaOrder = ['jax','ocala','gainesville','palm','sofla'];
+    const areaOrder = ['jax','ocala','gainesville','sofla'];
     const currentAreas = currentRegion === 'all'
       ? [...areaOrder.filter(r => filteredCommunities.some(c => c.region === r)), ...[...new Set(filteredCommunities.map(c => c.region).filter(r => !areaOrder.includes(r)))]]
       : [currentRegion];
@@ -1518,7 +1516,7 @@ function renderRegionActiveBar() {
   COMMUNITIES.forEach(c => {
     counts[c.region] = (counts[c.region] || 0) + 1;
   });
-  const order = ['jax','ocala','gainesville','palm','sofla','naples-ft-myers','orlando','tampa','palm-beach','treasure-coast','space-coast','panama-city','pensacola'];
+  const order = ['jax','ocala','gainesville','sofla','naples-ft-myers','orlando','tampa','palm-beach','treasure-coast','space-coast','panama-city','pensacola'];
   bar.innerHTML = order.map(r => {
     const n = counts[r] || 0;
     const isActive = n > 0;
