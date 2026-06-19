@@ -132,6 +132,24 @@ footer a{color:var(--output-45);margin:0 8px}
   Next 05:30 cycle re-probes &mdash; AIVI trend shows improvement over days/weeks
 </div>
 
+<div class="grid-3" style="margin-top: 16px;">
+  <div class="card">
+    <h4>Monitor</h4>
+    <div class="meta">fresh/stale status, last mirrored timestamp, and whether the loop is alive</div>
+  </div>
+  <div class="card">
+    <h4>Action mode</h4>
+    <div class="meta">observe, recommend, or auto-remediate depending on client policy</div>
+  </div>
+  <div class="card">
+    <h4>Verification</h4>
+    <div class="meta">last action taken and whether verification came back clean</div>
+  </div>
+</div>
+<div class="warn-box">
+  <strong>Mode policy:</strong> Observe-only shows the scan. Recommend surfaces the fix. Auto-remediate can publish pre-approved changes and then re-verify before the next cycle.
+</div>
+
 <div class="warn-box" id="credentials-status">
   <strong>Credentials needed:</strong> Add <code>OPENROUTER_API_KEY</code>, <code>B9_WP_USER</code>, <code>B9_WP_APP_PASSWORD</code> to <code>~/.hermes/.env</code> to unlock AI content generation and WP publishing.
   Run: <code>bash ~/Documents/Claude/Projects/Atlas/hermes-sandbox/wild-ducks-clients/b9-aeo-operator/setup-env.sh</code>

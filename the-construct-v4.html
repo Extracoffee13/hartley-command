@@ -996,7 +996,7 @@ const PragmaMirrorPanel = () => {
   const lastAction = remediation.last_action || remediation.action_taken || remediation.summary || null;
   const lastVerification = remediation.last_verification || remediation.verification_result || null;
   const loopMirroredAt = data && (data._mirrored_at || data.last_scan_ts || data.ts);
-  const loopAgeHours = loopMirroredAt ? ((Date.now() - Date.parse(loopMirroredAt)) / 36e5) : null;
+  const loopAgeHours = loopMirroredAt ? Math.max((Date.now() - Date.parse(loopMirroredAt)) / 36e5, 0) : null;
   const isPending = !data || data.scan_status === "first_scan_pending" || aiviVal === null || aiviVal === undefined;
   const emptyMsg = (data && data.empty_state_message) || "First scan running — check back after the next 05:30 ET cycle.";
 
