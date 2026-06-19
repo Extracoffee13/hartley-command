@@ -1,82 +1,82 @@
 {
-  "generated": "2026-06-18",
+  "generated": "2026-06-19",
   "run_type": "daily",
   "scan_coverage": {
     "mcp_registry": "5 keyword sweeps (trading; alt-data; SEO/marketing/social; automation/orchestration; research/filings); no results, no new connectors beyond known live set (FMP, IBKR, Similarweb, n8n)",
     "skills": "suggest_skills returned nothing addable",
     "plugins": "search_plugins returned nothing addable",
-    "anthropic": "high signal (Claude Finance 10 finance agents; Managed Agents vaults env-var creds; self-hosted sandboxes public beta; MCP tunnels research preview; connector observability + directory submission)",
-    "world_research": "2026 context-engineering / agent-memory literature (store-time organization, context editing -84% tokens, multi-signal retrieval, single-agent ~4x vs multi-agent ~15x token cost)",
-    "lens": "2026-06-18 brief read (agentic-AI-supercharges-startups; AI-as-buyer; frontier-lab data moats; SaaS replacement)"
+    "anthropic": "Managed Agents public beta (cron + CLI + vault env-var creds + browser integrations); Claude Code (deeper sub-agent nesting, searchable plugin marketplace); Opus 4.8 default 1M context; Agent-SDK separate credit pool live since Jun 15; Fable5/Mythos5 export-control suspension confirmed Jun 12",
+    "world_research": "2026 financial-agent cluster: Profit Mirage (information leakage in LLM financial agents, arXiv 2510.07920); FinVault (execution-grounded agent-safety benchmark); QuantEvolve/Alpha-R1 (multi-agent evolutionary alpha); Arbor (Renmin U + Microsoft Research, cumulative-learning optimization); VentureBeat optimization framework ~2.5x vs Claude Code/Codex",
+    "lens": "2026-06-19 brief read (agentic-AI-supercharges-startups; market-to-AI-buyer; capital discipline; SaaS unbundling; learning-loop-as-moat). Markets closed - Juneteenth"
   },
   "candidates": [
     {
-      "id": "2026-06-18-01",
-      "name": "Claude Finance pattern-harvest (adopt the 10 finance agents' workflows/rubrics, NOT 10 new agents)",
-      "improves_agent": "Hartley Capital (Earnings reviewer + Model builder + Market researcher), WOLF (Statement-auditor-style live-state grader), Anvil/Hermes (Month-end closer, Statement auditor), Lens (Market-researcher synthesis loop)",
-      "what": "Anthropic Claude Finance (May 5 2026): 10 predefined finance agents (Pitch builder, Meeting preparer, Earnings reviewer, Model builder, Market researcher, Statement auditor, KYC screener, Month-end closer + ops). Harvest the rubric/step structure into existing agents.",
-      "why": "Vetted, named decompositions of workflows our agents already run by hand. Take the recipes, not the headcount (more agents != better). High Pragma resale value to finance/PE clients.",
+      "id": "2026-06-19-01",
+      "name": "Profit Mirage - audit WOLF signals/backtests for information leakage",
+      "improves_agent": "WOLF (signal validation, backtest/thesis claims), Hartley Capital (model build, earnings-reviewer loop), Prism (alt-data timestamping)",
+      "what": "2026 research (arXiv 2510.07920) shows LLM trading agents post mirage returns that vanish out-of-sample due to lookahead leakage: point-in-time violations, post-revision fundamentals, future-timestamped news/labels, survivorship.",
+      "why": "Fake alpha is worse than no alpha - it sizes positions on a lie. A leakage audit is pure downside-protection needing no new agent, and is directly resaleable as a Pragma diligence service.",
       "scores": {"fit": 5, "impact": 5, "integration": 4, "risk": 5, "pragma": 5, "composite": 4.8},
       "status": "auto-deployed",
-      "action": "Registered as pattern source. Next adoptions: WOLF Statement-auditor grader, Hartley Earnings-reviewer loop. Installing the actual Claude Finance plugin/managed agents = separate NEEDS-APPROVAL step (cost + access)."
+      "action": "Logged as today's lesson + leakage checklist (point-in-time; no post-revision data; no future-timestamped news/labels; survivorship-free universe; train/test time-split). WOLF adopts as a pre-trust gate; same rubric to Pragma diligence. Wiring into live WOLF backtests = NEEDS BOBBY APPROVAL."
     },
     {
-      "id": "2026-06-18-02",
-      "name": "Context-engineering / store-time memory discipline",
-      "improves_agent": "self-improving-loop + all memory-using agents (WOLF, Lens, Prism, Pulse, Keystone)",
-      "what": "Organize/compress memory once at storage time, not per-retrieval; combine vector+graph+temporal signals; context editing/sliding windows (100-turn eval: -84% tokens, no completion loss). Single agent ~4x chat tokens; multi-agent ~15x.",
-      "why": "Quantifies and reinforces 'more agents != better'; extends Fable-5 memory-3x finding into a concrete storage discipline. The 15x figure is the strongest argument for a lean, shared-memory fleet.",
-      "scores": {"fit": 5, "impact": 4, "integration": 4, "risk": 5, "pragma": 4, "composite": 4.4},
-      "status": "auto-deployed",
-      "action": "Logged as today's lesson in agent-lessons.md (store-at-creation; shared-state over re-fetch; context-edit long loops)."
+      "id": "2026-06-19-02",
+      "name": "Managed Agents (public beta) - first-class scheduled-agent runtime",
+      "improves_agent": "Fleet ops (WOLF controls, Lens, ducks - fixes launchd silent-credential-loss, lesson #5)",
+      "what": "Anthropic Managed Agents public beta: cron schedules, CLI tools, vault-stored env-var credentials, browser-capable integrations.",
+      "why": "Productized fix for launchd jobs not inheriting shell env + silent failure. Credentials and heartbeating handled as first-class concerns. Right long-term home for every scheduled job.",
+      "scores": {"fit": 5, "impact": 5, "integration": 3, "risk": 4, "pragma": 4, "composite": 4.2},
+      "status": "auto-deployed-standard",
+      "action": "Standard logged: prefer Managed Agents runtime (vault creds + cron) over shell-inherited launchd for any NEW scheduled agent. Migrating the LIVE fleet off launchd = NEEDS BOBBY APPROVAL (touches live creds; any browser integration must preserve RULE ZERO single-Chrome constraint)."
     },
     {
-      "id": "2026-06-18-03",
-      "name": "Managed Agents vaults - env-var credential injection",
-      "improves_agent": "fleet operations (fixes WOLF lesson #5: launchd jobs lose shell-inherited credentials silently)",
-      "what": "Claude Managed Agents vaults now support environment-variable credentials, securely injecting secrets into the agent sandbox.",
-      "why": "A first-class, audited secrets store removes the exact silent-credential-loss failure mode logged on the WOLF controls.",
-      "scores": {"fit": 5, "impact": 4, "integration": 4, "risk": 5, "pragma": 3, "composite": 4.2},
-      "status": "auto-deployed",
-      "action": "Standard logged: prefer vault/env-var injection over shell-inherited secrets for any scheduled agent. Migrating live WOLF secrets into a vault = NEEDS BOBBY AWARENESS before touching live creds."
-    },
-    {
-      "id": "2026-06-18-04",
-      "name": "Connector observability + Agent-SDK credit-balance heartbeat",
-      "improves_agent": "fleet operations (silent-failure / starvation detection)",
-      "what": "Anthropic connector observability (monitor connector performance) + in-app directory submission; pairs with the 2026-06-15 separate Agent-SDK credit pool.",
-      "why": "Extends 2026-06-17-06 credit-starvation awareness + the 'watch for silence, every control needs a heartbeat' lesson. Learn before a connector degrades or the credit pool empties.",
-      "scores": {"fit": 4, "impact": 4, "integration": 4, "risk": 4, "pragma": 2, "composite": 3.6},
+      "id": "2026-06-19-03",
+      "name": "FinVault - execution-grounded agent-safety benchmark",
+      "improves_agent": "WOLF execution layer (halt/cap/margin invariant testing)",
+      "what": "2026 benchmark testing whether a financial agent obeys constraints (limits, halts, position caps) when actually placing orders, not just in narration.",
+      "why": "External safety yardstick for exactly the controls that failed silently for 33 days in May. Continuous with the Outcomes-grader lesson. Pragma resale to clients running execution agents.",
+      "scores": {"fit": 4, "impact": 4, "integration": 3, "risk": 5, "pragma": 3, "composite": 3.8},
       "status": "recommend",
-      "action": "Add connector-health + Agent-SDK-credit heartbeat to the daily fleet check."
+      "action": "Use FinVault constraint-obedience patterns as a checklist when validating WOLF halt/cap enforcement. No live wiring needed to adopt the rubric."
     },
     {
-      "id": "2026-06-18-05",
-      "name": "Self-hosted sandboxes (public beta)",
-      "improves_agent": "fleet infra / Pragma client data-residency work",
-      "what": "Tool execution runs on your own infra or a managed provider (Cloudflare/Daytona/Modal/Vercel); orchestration loop stays on Anthropic.",
-      "why": "Cost + data-control upside, but an infrastructure + security change. Not auto-deployable.",
+      "id": "2026-06-19-04",
+      "name": "Arbor - cumulative-learning optimization framework",
+      "improves_agent": "self-improving-loop (cumulative nightly pass), Keystone (compounding opportunity-scoring)",
+      "what": "Renmin University + Microsoft Research framework upgrading AI-driven research/optimization from one-shot trial-and-error into a cumulative learning process.",
+      "why": "Mirrors our self-improving-loop thesis with an academic method; reinforces 'compounding learning-loop = moat' (Lens pattern of the day). Technique to study, not a tool to install.",
+      "scores": {"fit": 4, "impact": 4, "integration": 3, "risk": 4, "pragma": 3, "composite": 3.6},
+      "status": "recommend",
+      "action": "Fold the 'build on prior results, don't restart' pattern into the self-improving-loop nightly curation."
+    },
+    {
+      "id": "2026-06-19-05",
+      "name": "Claude Opus 4.8 - default 1M-token context",
+      "improves_agent": "Long-running agents (Lens multi-fire days, WOLF/Hermes long sessions)",
+      "what": "Opus 4.8 (shipped May 28) now defaults to a 1M-token context window across API/Bedrock/Vertex/Claude Code.",
+      "why": "Raises the ceiling for long synthesis runs, but cost still scales with tokens - not a license to drop the store-at-creation / context-edit discipline.",
+      "scores": {"fit": 4, "impact": 3, "integration": 4, "risk": 4, "pragma": 2, "composite": 3.4},
+      "status": "awareness",
+      "action": "Note larger default window; keep context-editing discipline regardless of headroom."
+    },
+    {
+      "id": "2026-06-19-06",
+      "name": "QuantEvolve / Alpha-R1 - multi-agent evolutionary alpha discovery",
+      "improves_agent": "WOLF / Hartley (idea only - evolutionary strategy search, RL-screened factors)",
+      "what": "2026 frameworks spinning up teams of LLM agents to evolve/screen quant strategies (QuantEvolve = multi-agent evolutionary; Alpha-R1 = RL-reasoning alpha screening).",
+      "why": "Interesting, but leans into multi-agent headcount - exactly what the 15x-token lesson warns against. Harvest the idea into existing agents, don't build a swarm.",
       "scores": {"fit": 3, "impact": 3, "integration": 2, "risk": 3, "pragma": 3, "composite": 2.8},
-      "status": "NEEDS BOBBY APPROVAL",
-      "action": "Evaluate only if a client requires data residency or we hit sandbox cost limits."
-    },
-    {
-      "id": "2026-06-18-06",
-      "name": "MCP tunnels (research preview)",
-      "improves_agent": "any agent needing a private/internal data source (e.g. Pragma client internal systems)",
-      "what": "Reach MCP servers inside private networks without public exposure via an encrypted gateway.",
-      "why": "Useful when an agent must reach a private/internal source; no current need.",
-      "scores": {"fit": 3, "impact": 3, "integration": 3, "risk": 4, "pragma": 3, "composite": 3.2},
-      "status": "WATCH",
-      "action": "Revisit when a private-network data source enters scope."
+      "status": "watch",
+      "action": "WATCH - revisit only if single-agent evolutionary search proves out; do not build a swarm."
     }
   ],
   "summary": {
     "candidates_found": 6,
-    "auto_deployed": 3,
-    "awaiting_approval": 1,
-    "awareness_or_recommend": 1,
+    "auto_deployed": 2,
+    "recommend_or_awareness": 3,
     "watch": 1,
-    "top_pick": "2026-06-18-01 Claude Finance pattern-harvest (4.8)"
+    "needs_approval": "live-fleet launchd->Managed-Agents migration (#2); wiring leakage audit into live WOLF backtests (#1)",
+    "top_pick": "2026-06-19-01 Profit Mirage leakage audit (4.8)"
   }
 }
