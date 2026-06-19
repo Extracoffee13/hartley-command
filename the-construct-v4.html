@@ -987,6 +987,16 @@ const PragmaMirrorPanel = () => {
   const sentiment = (data && data.sentiment) || { positive_pct: null, neutral_pct: null, negative_pct: null };
   const topCitations = (data && data.top_citations) || [];
   const competitors = (data && data.competitors) || [];
+  const remediation = (data && data.remediation) || {};
+  const policy = remediation.policy || (data && data.policy) || {};
+  const modeRaw = String(remediation.mode || policy.mode || "observe").toLowerCase();
+  const modeLabel = modeRaw === "auto-remediate" || modeRaw === "auto_remediate" ? "AUTO-REMEDIATE" : modeRaw === "recommend" ? "RECOMMEND" : "OBSERVE";
+  const approvalLabel = remediation.approval_state || policy.approval_state || (modeLabel === "AUTO-REMEDIATE" ? "policy-gated" : "human review");
+  const publishTarget = remediation.publish_target || policy.publish_target || "CMS / deploy";
+  const lastAction = remediation.last_action || remediation.action_taken || remediation.summary || null;
+  const lastVerification = remediation.last_verification || remediation.verification_result || null;
+  const loopMirroredAt = data && (data._mirrored_at || data.last_scan_ts || data.ts);
+  const loopAgeHours = loopMirroredAt ? ((Date.now() - Date.parse(loopMirroredAt)) / 36e5) : null;
   const isPending = !data || data.scan_status === "first_scan_pending" || aiviVal === null || aiviVal === undefined;
   const emptyMsg = (data && data.empty_state_message) || "First scan running — check back after the next 05:30 ET cycle.";
 
@@ -1069,6 +1079,7 @@ const PragmaMirrorPanel = () => {
         <div>
           <div style={{ fontSize: 22, fontWeight: 900, color: C.green, fontFamily: "Georgia, serif", letterSpacing: 1 }}>{productName}</div>
           <div style={{ fontSize: 11, color: C.cyan, marginTop: 2 }}>We don&apos;t just track AI citations &mdash; we engineer them.</div>
+          <div style={{ fontSize: 8, color: C.greenDim, marginTop: 4, letterSpacing: 1.2 }}>Mode: {modeLabel} · Approval: {approvalLabel} · Target: {publishTarget}</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 4 }}>
           <span style={{ fontSize: 9, color: C.green, border: `1px solid ${C.green}`, padding: "2px 8px", letterSpacing: 2 }}>AEO ENGINE · B9 LIVE</span>
@@ -1085,6 +1096,29 @@ const PragmaMirrorPanel = () => {
           </div>
         </div>
       )}
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 14 }}>
+        <div style={{ border: `1px solid ${C.greenDim}`, padding: 10, background: "rgba(0,0,0,0.18)" }}>
+          <div style={{ fontSize: 8, color: C.greenDim, letterSpacing: 1.5 }}>MONITOR</div>
+          <div style={{ fontSize: 12, color: C.green, marginTop: 4, fontWeight: 700 }}>{loopMirroredAt ? (loopAgeHours === null ? "fresh" : loopAgeHours.toFixed(1) + "h old") : "unknown"}</div>
+          <div style={{ fontSize: 8, color: C.greenDim, marginTop: 3 }}>last scan / mirror age</div>
+        </div>
+        <div style={{ border: `1px solid ${C.greenDim}`, padding: 10, background: "rgba(0,0,0,0.18)" }}>
+          <div style={{ fontSize: 8, color: C.greenDim, letterSpacing: 1.5 }}>MODE</div>
+          <div style={{ fontSize: 12, color: C.cyan, marginTop: 4, fontWeight: 700 }}>{modeLabel}</div>
+          <div style={{ fontSize: 8, color: C.greenDim, marginTop: 3 }}>observe / recommend / auto-remediate</div>
+        </div>
+        <div style={{ border: `1px solid ${C.greenDim}`, padding: 10, background: "rgba(0,0,0,0.18)" }}>
+          <div style={{ fontSize: 8, color: C.greenDim, letterSpacing: 1.5 }}>LAST ACTION</div>
+          <div style={{ fontSize: 11, color: lastAction ? C.green : C.greenDim, marginTop: 4, lineHeight: 1.35 }}>{lastAction || "none yet"}</div>
+          <div style={{ fontSize: 8, color: C.greenDim, marginTop: 3 }}>what changed most recently</div>
+        </div>
+        <div style={{ border: `1px solid ${C.greenDim}`, padding: 10, background: "rgba(0,0,0,0.18)" }}>
+          <div style={{ fontSize: 8, color: C.greenDim, letterSpacing: 1.5 }}>VERIFICATION</div>
+          <div style={{ fontSize: 11, color: lastVerification ? C.green : C.greenDim, marginTop: 4, lineHeight: 1.35 }}>{lastVerification || "pending"}</div>
+          <div style={{ fontSize: 8, color: C.greenDim, marginTop: 3 }}>proof after publish</div>
+        </div>
+      </div>
 
       {/* Body grid: AIVI big number + sparkline | surfaces | sentiment + competitors */}
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1.4fr 1fr", gap: 24 }}>
