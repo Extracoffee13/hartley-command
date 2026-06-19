@@ -292,6 +292,8 @@ async function load(slug) {
 
 (async () => {
   let liveCount = 0;
+  let staleCount = 0;
+  const now = Date.now();
   for (const c of CLIENTS) {
     const d = await load(c.slug);
     const aiviEl = document.getElementById(c.slug + '-aivi');
@@ -312,11 +314,16 @@ async function load(slug) {
     if (a < t.red_below) aiviEl.classList.add('red');
     else if (a < t.yellow_below) aiviEl.classList.add('yellow');
     const surfaces = Object.entries(d.surfaces || {}).filter(([k,v])=>v).map(([k])=>k);
-    metaEl.innerHTML = `scan ts ${(d.ts || 'unknown').slice(0,19)}Z · surfaces with data: ${surfaces.join(', ') || 'none'}`;
+    const mirroredAt = d._mirrored_at || d.last_scan_ts || d.ts || null;
+    const mirroredMs = mirroredAt ? Date.parse(mirroredAt) : NaN;
+    const ageHrs = Number.isFinite(mirroredMs) ? (now - mirroredMs) / 36e5 : NaN;
+    const stale = Number.isFinite(ageHrs) && ageHrs > 24;
+    if (stale) { staleCount++; aiviEl.classList.add('yellow'); }
+    metaEl.innerHTML = `scan ts ${(d.ts || 'unknown').slice(0,19)}Z · mirrored ${mirroredAt ? mirroredAt.slice(0,19) + 'Z' : 'unknown'}${Number.isFinite(ageHrs) ? ` · ${ageHrs.toFixed(1)}h old` : ''}${stale ? ' · stale' : ''} · surfaces with data: ${surfaces.join(', ') || 'none'}`;
     liveCount++;
   }
-  document.getElementById('status').textContent = liveCount + '/3 with real data';
-  document.getElementById('status').style.color = liveCount === 3 ? 'var(--signal)' : (liveCount > 0 ? 'var(--yellow)' : 'var(--red)');
+  document.getElementById('status').textContent = `${liveCount}/3 with real data · ${staleCount} stale`;
+  document.getElementById('status').style.color = liveCount === 3 && staleCount === 0 ? 'var(--signal)' : (liveCount > 0 ? 'var(--yellow)' : 'var(--red)');
 })();
 </script>
 </body>
