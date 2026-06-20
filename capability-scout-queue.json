@@ -1,82 +1,70 @@
 {
-  "generated": "2026-06-19",
+  "generated": "2026-06-20",
   "run_type": "daily",
   "scan_coverage": {
-    "mcp_registry": "5 keyword sweeps (trading; alt-data; SEO/marketing/social; automation/orchestration; research/filings); no results, no new connectors beyond known live set (FMP, IBKR, Similarweb, n8n)",
+    "mcp_registry": "7 keyword sweeps (market-data/trading/execution/options; alt-data/foot-traffic/web-analytics; SEO/marketing/social/email; automation/orchestration/workflow; research/filings/news; finance/stocks/quant; CRM/sales); no results, no new connectors beyond known live set (FMP, IBKR, Similarweb, n8n)",
     "skills": "suggest_skills returned nothing addable",
     "plugins": "search_plugins returned nothing addable",
-    "anthropic": "Managed Agents public beta (cron + CLI + vault env-var creds + browser integrations); Claude Code (deeper sub-agent nesting, searchable plugin marketplace); Opus 4.8 default 1M context; Agent-SDK separate credit pool live since Jun 15; Fable5/Mythos5 export-control suspension confirmed Jun 12",
-    "world_research": "2026 financial-agent cluster: Profit Mirage (information leakage in LLM financial agents, arXiv 2510.07920); FinVault (execution-grounded agent-safety benchmark); QuantEvolve/Alpha-R1 (multi-agent evolutionary alpha); Arbor (Renmin U + Microsoft Research, cumulative-learning optimization); VentureBeat optimization framework ~2.5x vs Claude Code/Codex",
-    "lens": "2026-06-19 brief read (agentic-AI-supercharges-startups; market-to-AI-buyer; capital discipline; SaaS unbundling; learning-loop-as-moat). Markets closed - Juneteenth"
+    "anthropic": "Memory for Managed Agents (public beta: cross-session file memory, per-write audit trails, cross-agent sharing in a workspace; Rakuten 97% error cut); Self-Hosted Agent Sandboxes (public beta; own infra / Cloudflare/Daytona/Modal/Vercel); Enterprise MCP connector mgmt (Okta zero-touch); Claude Code Dynamic Workflows (codebase-wide bug hunts/audits/migrations); just-in-time context-engineering guidance. Fable5/Mythos5 export-control suspension still in force",
+    "world_research": "Financial-agent literature shifted from backtest-audit to LIVE evaluation: 'The Alpha Illusion' (arXiv 2605.16895 - reported alpha is not deployment evidence); LiveTradeBench/Alpha Arena/RockAlpha live-eval paradigm; AlphaForgeBench (end-to-end strategy design); 'From Knowing to Doing' memory-controlled trading benchmark (arXiv 2605.28359). Orchestration: AgentOrchestra, plan-execute-verify-replan; field-maturity survey ~1/16 teams at true multi-agent orchestration (discipline > headcount)",
+    "lens": "2026-06-20 brief read (34 items). Patterns: agentic-AI-as-org-X-ray; own-the-touchpoint-not-the-model; PE-CEO/managing-for-value; Fed hold 3.50-3.75% PCE lifted to 3.6%; use-AI-to-grow-not-cut (compounding learning loop = moat). Saturday - no weekly synthesis"
   },
   "candidates": [
     {
-      "id": "2026-06-19-01",
-      "name": "Profit Mirage - audit WOLF signals/backtests for information leakage",
-      "improves_agent": "WOLF (signal validation, backtest/thesis claims), Hartley Capital (model build, earnings-reviewer loop), Prism (alt-data timestamping)",
-      "what": "2026 research (arXiv 2510.07920) shows LLM trading agents post mirage returns that vanish out-of-sample due to lookahead leakage: point-in-time violations, post-revision fundamentals, future-timestamped news/labels, survivorship.",
-      "why": "Fake alpha is worse than no alpha - it sizes positions on a lie. A leakage audit is pure downside-protection needing no new agent, and is directly resaleable as a Pragma diligence service.",
+      "id": "2026-06-20-01",
+      "name": "Live-evaluation gate - stop treating any backtest as deployment evidence",
+      "improves_agent": "WOLF (signal/strategy promotion), Hartley Capital (model-build promotion), Prism (alt-data validation)",
+      "what": "2026 cluster ('The Alpha Illusion' arXiv 2605.16895 + LiveTradeBench/Alpha Arena/RockAlpha) argues reported backtest alpha should NOT be treated as deployment evidence; field shifts to live/paper evaluation. One step past yesterday's Profit Mirage leakage lesson.",
+      "why": "Pure downside protection, no new agent. Converts the leakage audit into a promotion rule: a signal earns live size only after a forward paper/live window, never on backtest numbers alone. Resaleable as Pragma diligence.",
       "scores": {"fit": 5, "impact": 5, "integration": 4, "risk": 5, "pragma": 5, "composite": 4.8},
       "status": "auto-deployed",
-      "action": "Logged as today's lesson + leakage checklist (point-in-time; no post-revision data; no future-timestamped news/labels; survivorship-free universe; train/test time-split). WOLF adopts as a pre-trust gate; same rubric to Pragma diligence. Wiring into live WOLF backtests = NEEDS BOBBY APPROVAL."
+      "action": "Logged as today's lesson + promotion rule (backtest=hypothesis; leakage audit=precondition; forward paper/live window in separate context=verdict before size). WOLF adopts as promotion gate. Wiring into live WOLF code = NEEDS BOBBY APPROVAL."
     },
     {
-      "id": "2026-06-19-02",
-      "name": "Managed Agents (public beta) - first-class scheduled-agent runtime",
-      "improves_agent": "Fleet ops (WOLF controls, Lens, ducks - fixes launchd silent-credential-loss, lesson #5)",
-      "what": "Anthropic Managed Agents public beta: cron schedules, CLI tools, vault-stored env-var credentials, browser-capable integrations.",
-      "why": "Productized fix for launchd jobs not inheriting shell env + silent failure. Credentials and heartbeating handled as first-class concerns. Right long-term home for every scheduled job.",
-      "scores": {"fit": 5, "impact": 5, "integration": 3, "risk": 4, "pragma": 4, "composite": 4.2},
+      "id": "2026-06-20-02",
+      "name": "Memory for Managed Agents - productized cross-session, cross-agent file memory",
+      "improves_agent": "self-improving-loop, Lens + shared corpus, WOLF/Prism/Pulse/Keystone (all memory-using agents)",
+      "what": "Anthropic public beta: agents persist learnings across sessions as files with per-write audit trails and cross-agent sharing within a workspace (Rakuten 97% error-rate cut).",
+      "why": "Managed-runtime version of exactly what Bobby hand-built (shared-corpus reads + nightly self-improving curation), with audit trails and cross-agent propagation first-class. Cleanest long-term home for fleet memory.",
+      "scores": {"fit": 5, "impact": 5, "integration": 3, "risk": 4, "pragma": 4, "composite": 4.4},
       "status": "auto-deployed-standard",
-      "action": "Standard logged: prefer Managed Agents runtime (vault creds + cron) over shell-inherited launchd for any NEW scheduled agent. Migrating the LIVE fleet off launchd = NEEDS BOBBY APPROVAL (touches live creds; any browser integration must preserve RULE ZERO single-Chrome constraint)."
+      "action": "Standard logged: prefer Managed-Agents Memory (audited file memory + cross-agent sharing) as target architecture for shared corpus + self-improving-loop. Migrating LIVE fleet memory = NEEDS BOBBY APPROVAL (touches live state; preserve RULE ZERO + existing file-memory layout)."
     },
     {
-      "id": "2026-06-19-03",
-      "name": "FinVault - execution-grounded agent-safety benchmark",
-      "improves_agent": "WOLF execution layer (halt/cap/margin invariant testing)",
-      "what": "2026 benchmark testing whether a financial agent obeys constraints (limits, halts, position caps) when actually placing orders, not just in narration.",
-      "why": "External safety yardstick for exactly the controls that failed silently for 33 days in May. Continuous with the Outcomes-grader lesson. Pragma resale to clients running execution agents.",
-      "scores": {"fit": 4, "impact": 4, "integration": 3, "risk": 5, "pragma": 3, "composite": 3.8},
+      "id": "2026-06-20-03",
+      "name": "Just-in-time context engineering - lightweight identifiers over pre-loading",
+      "improves_agent": "Lens multi-fire days, WOLF/Hermes long sessions, the Scout itself",
+      "what": "Anthropic guidance: long-horizon agents hold lightweight identifiers (paths, queries, links) and load data at runtime instead of pre-loading; pair with compaction/tool-clearing.",
+      "why": "Concrete mechanism for the standing store-at-creation / context-edit discipline; keeps long runs cheap and on-task.",
+      "scores": {"fit": 4, "impact": 4, "integration": 4, "risk": 4, "pragma": 3, "composite": 4.0},
       "status": "recommend",
-      "action": "Use FinVault constraint-obedience patterns as a checklist when validating WOLF halt/cap enforcement. No live wiring needed to adopt the rubric."
+      "action": "Standardize 'reference then load on demand' across long-running agents; pair with periodic compaction on multi-fire Lens days."
     },
     {
-      "id": "2026-06-19-04",
-      "name": "Arbor - cumulative-learning optimization framework",
-      "improves_agent": "self-improving-loop (cumulative nightly pass), Keystone (compounding opportunity-scoring)",
-      "what": "Renmin University + Microsoft Research framework upgrading AI-driven research/optimization from one-shot trial-and-error into a cumulative learning process.",
-      "why": "Mirrors our self-improving-loop thesis with an academic method; reinforces 'compounding learning-loop = moat' (Lens pattern of the day). Technique to study, not a tool to install.",
-      "scores": {"fit": 4, "impact": 4, "integration": 3, "risk": 4, "pragma": 3, "composite": 3.6},
-      "status": "recommend",
-      "action": "Fold the 'build on prior results, don't restart' pattern into the self-improving-loop nightly curation."
+      "id": "2026-06-20-04",
+      "name": "Self-Hosted Agent Sandboxes - tool execution on your own infra",
+      "improves_agent": "Fleet ops / WOLF execution + ducks (isolation, cost, data residency)",
+      "what": "Anthropic public beta: move tool/code execution to infra you control (own boxes or Cloudflare/Daytona/Modal/Vercel).",
+      "why": "Isolation + cost + data-residency for code-running or client-data agents, but changes execution infrastructure.",
+      "scores": {"fit": 4, "impact": 3, "integration": 2, "risk": 3, "pragma": 3, "composite": 3.6},
+      "status": "NEEDS BOBBY APPROVAL",
+      "action": "Infra change w/ security+cost implications - do not auto-adopt. Option for isolating WOLF execution or any client-data agent."
     },
     {
-      "id": "2026-06-19-05",
-      "name": "Claude Opus 4.8 - default 1M-token context",
-      "improves_agent": "Long-running agents (Lens multi-fire days, WOLF/Hermes long sessions)",
-      "what": "Opus 4.8 (shipped May 28) now defaults to a 1M-token context window across API/Bedrock/Vertex/Claude Code.",
-      "why": "Raises the ceiling for long synthesis runs, but cost still scales with tokens - not a license to drop the store-at-creation / context-edit discipline.",
+      "id": "2026-06-20-05",
+      "name": "Dynamic Workflows (Claude Code) - codebase-wide bug hunts / audits / migrations",
+      "improves_agent": "Maintenance of the agent-ecosystem codebase (launchd runners, skill files, dashboards)",
+      "what": "Claude Code Dynamic Workflows: end-to-end codebase-wide bug hunts, security/hardening audits, large migrations across thousands of files.",
+      "why": "Ready tool for periodic security/hardening passes over the fleet's own code; continuous with the FinVault/execution-safety thread.",
       "scores": {"fit": 4, "impact": 3, "integration": 4, "risk": 4, "pragma": 2, "composite": 3.4},
       "status": "awareness",
-      "action": "Note larger default window; keep context-editing discipline regardless of headroom."
-    },
-    {
-      "id": "2026-06-19-06",
-      "name": "QuantEvolve / Alpha-R1 - multi-agent evolutionary alpha discovery",
-      "improves_agent": "WOLF / Hartley (idea only - evolutionary strategy search, RL-screened factors)",
-      "what": "2026 frameworks spinning up teams of LLM agents to evolve/screen quant strategies (QuantEvolve = multi-agent evolutionary; Alpha-R1 = RL-reasoning alpha screening).",
-      "why": "Interesting, but leans into multi-agent headcount - exactly what the 15x-token lesson warns against. Harvest the idea into existing agents, don't build a swarm.",
-      "scores": {"fit": 3, "impact": 3, "integration": 2, "risk": 3, "pragma": 3, "composite": 2.8},
-      "status": "watch",
-      "action": "WATCH - revisit only if single-agent evolutionary search proves out; do not build a swarm."
+      "action": "Use for a scheduled hardening/bug-hunt pass over the ecosystem codebase when next touching it."
     }
   ],
   "summary": {
-    "candidates_found": 6,
-    "auto_deployed": 2,
-    "recommend_or_awareness": 3,
-    "watch": 1,
-    "needs_approval": "live-fleet launchd->Managed-Agents migration (#2); wiring leakage audit into live WOLF backtests (#1)",
-    "top_pick": "2026-06-19-01 Profit Mirage leakage audit (4.8)"
+    "candidates_found": 5,
+    "auto_deployed": 3,
+    "awaiting_approval": 2,
+    "top_pick": "2026-06-20-01 Live-evaluation gate (composite 4.8)"
   }
 }
