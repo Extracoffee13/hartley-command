@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-20T05:36:57.230027",
+  "last_updated": "2026-06-20T05:42:01.694756",
   "update_interval_seconds": 300,
   "account": {
     "portfolio_value": 93969.93,
@@ -15,7 +15,7 @@
     "amount": 0.0,
     "pct": 0.0,
     "circuit_breaker_status": "green",
-    "circuit_breaker_message": "CLEAR — Daily: +0.0% (buf: 3.0%) | Weekly: -3.0% (buf: 4.0%)"
+    "circuit_breaker_message": "CLEAR \u2014 Daily: +0.0% (buf: 3.0%) | Weekly: -3.0% (buf: 4.0%)"
   },
   "weekly_pnl": {
     "amount": -2911.27,
@@ -196,7 +196,7 @@
     },
     "congress_follower": {
       "name": "Congressional Trade Follower",
-      "status": "ACTIVE_PARTIAL — trade-level data flowing via PDF parser; member-track-record weighting deferred",
+      "status": "ACTIVE_PARTIAL \u2014 trade-level data flowing via PDF parser; member-track-record weighting deferred",
       "trades_today": 0,
       "wins_today": 0,
       "losses_today": 0,
@@ -209,7 +209,7 @@
       "code_path": "strategies/congress_follower.py + congressional_ptr_parser.py (NEW 2026-05-06)",
       "wired_into_scan": true,
       "academic_source": "Ziobrowski et al. (2004, 2011)",
-      "note": "BLOCKED resolved 2026-05-06: built congressional_ptr_parser.py to extract ticker+amount from House PTR PDFs (free, replaces paid Quiver). Tested on last 30d: 5 qualifying ≥$50K equity buys, including Josh Gottheimer's MSFT $500K options buy 3/25. Member-track-record filter (Sharpe vs SPX) is enhancement for later.",
+      "note": "BLOCKED resolved 2026-05-06: built congressional_ptr_parser.py to extract ticker+amount from House PTR PDFs (free, replaces paid Quiver). Tested on last 30d: 5 qualifying \u2265$50K equity buys, including Josh Gottheimer's MSFT $500K options buy 3/25. Member-track-record filter (Sharpe vs SPX) is enhancement for later.",
       "blocker_action": null
     },
     "cross_sectional_momentum": {
@@ -247,7 +247,7 @@
     },
     "mean_reversion_bb_rsi": {
       "name": "Mean Reversion (BB + RSI)",
-      "status": "DISABLED — Sharpe -1.63, Max DD -78.9% (real backtest 2026-05-06)",
+      "status": "DISABLED \u2014 Sharpe -1.63, Max DD -78.9% (real backtest 2026-05-06)",
       "trades_today": 0,
       "wins_today": 0,
       "losses_today": 0,
@@ -259,11 +259,11 @@
       "data_source": null,
       "code_path": "strategies/mean_reversion_bb_rsi.py",
       "wired_into_scan": false,
-      "note": "Backtest 2026-05-06: 2383 trades, blew up to -78.9% return. Bollinger/RSI mean reversion fights trend on this universe. DO NOT ACTIVATE without redesign — possible fix: regime-filter (only trade during VIX < 20)."
+      "note": "Backtest 2026-05-06: 2383 trades, blew up to -78.9% return. Bollinger/RSI mean reversion fights trend on this universe. DO NOT ACTIVATE without redesign \u2014 possible fix: regime-filter (only trade during VIX < 20)."
     },
     "overnight_gap_reversal": {
       "name": "Overnight Gap Reversal",
-      "status": "DISABLED — Sharpe -4.85, Max DD -100% (real backtest 2026-05-06)",
+      "status": "DISABLED \u2014 Sharpe -4.85, Max DD -100% (real backtest 2026-05-06)",
       "trades_today": 0,
       "wins_today": 0,
       "losses_today": 0,
@@ -275,7 +275,7 @@
       "data_source": null,
       "code_path": "strategies/overnight_gap_reversal.py",
       "wired_into_scan": false,
-      "note": "Backtest 2026-05-06: 1763 trades, total wipeout. Gap-fade strategy doesn't survive. DO NOT ACTIVATE — fundamental edge thesis appears wrong on liquid mid-large caps."
+      "note": "Backtest 2026-05-06: 1763 trades, total wipeout. Gap-fade strategy doesn't survive. DO NOT ACTIVATE \u2014 fundamental edge thesis appears wrong on liquid mid-large caps."
     },
     "sector_etf_rotation": {
       "name": "Sector ETF Rotation",
@@ -296,7 +296,7 @@
     },
     "pead_options": {
       "name": "PEAD on Options",
-      "status": "PAPER_PENDING — paper-trade only until 30 days of real option fills inform Sharpe",
+      "status": "PAPER_PENDING \u2014 paper-trade only until 30 days of real option fills inform Sharpe",
       "trades_today": 0,
       "wins_today": 0,
       "losses_today": 0,
@@ -308,7 +308,7 @@
       "data_source": "Alpaca paper options + same gap-up proxy as pead",
       "code_path": "strategies/pead_options.py (NEW 2026-05-06)",
       "wired_into_scan": false,
-      "academic_source": "Bernard & Thomas (1989) — drift edge applied to leveraged option contract",
+      "academic_source": "Bernard & Thomas (1989) \u2014 drift edge applied to leveraged option contract",
       "note": "Built 2026-05-06. Same signal trigger as pead (Sharpe 1.76); buys 30-DTE 5%-OTM call instead of stock. Defined-risk leverage 3-5x. Paper-trade only until Alpaca paper records 30 days of real option fills, then evaluate Sharpe vs stock-PEAD. Position size capped at 1% portfolio per trade."
     }
   },
@@ -318,11 +318,11 @@
     "weekly_triggered": false,
     "halt_new_entries": false,
     "halt_all_activity": false,
-    "message": "CLEAR — Daily: +0.0% (buf: 3.0%) | Weekly: -3.0% (buf: 4.0%)"
+    "message": "CLEAR \u2014 Daily: +0.0% (buf: 3.0%) | Weekly: -3.0% (buf: 4.0%)"
   },
   "backtest": {
     "last_run_date": "2026-04-07",
-    "data_source": "REAL — Alpaca IEX feed (2024-04-07 to 2026-04-07)",
+    "data_source": "REAL \u2014 Alpaca IEX feed (2024-04-07 to 2026-04-07)",
     "strategies_passed": 1,
     "strategies_failed": 7,
     "best_strategy": "Small Cap Catalyst",
@@ -342,7 +342,7 @@
   },
   "wolf_status": {
     "mode": "PAPER",
-    "phase": "Mandate v1.0 enforced · paper through 2026-06-05",
+    "phase": "Mandate v1.0 enforced \u00b7 paper through 2026-06-05",
     "approved_strategies": 3,
     "disabled_strategies": 7,
     "approved_strategy_names": [
@@ -354,7 +354,7 @@
     "total_trades_all_time": 5,
     "total_pnl_all_time": 50.09,
     "win_rate_all_time": 0.0,
-    "mandate_v1_status": "ENFORCED — gate active, rebalance pending at next market-open",
+    "mandate_v1_status": "ENFORCED \u2014 gate active, rebalance pending at next market-open",
     "mandate_enforcement_wired_date": "2026-05-13",
     "day_60_reassess_date": "2026-06-05"
   },
@@ -397,7 +397,7 @@
       },
       {
         "date": "2026-05-12",
-        "lesson": "Paper trading window extended 30 → 60 days. The Day-30 reassess fired 5/7 but did not graduate. Day-60 reassess (2026-06-05) is the next forcing function."
+        "lesson": "Paper trading window extended 30 \u2192 60 days. The Day-30 reassess fired 5/7 but did not graduate. Day-60 reassess (2026-06-05) is the next forcing function."
       },
       {
         "date": "2026-05-05",
@@ -406,10 +406,6 @@
       {
         "date": "2026-04-08",
         "lesson": "WOLF can now enumerate his own 14 scripts for self-aware planning."
-      },
-      {
-        "date": "2026-06-20",
-        "lesson": "HBR: as capital costs rise, reinstate managing-for-value discipline — allocate against rising cost of capital, don't chase flexibility that signals weakness to rivals."
       }
     ],
     "real_money_unlocked": false,
@@ -420,7 +416,7 @@
     },
     "esoteric_strategies": {
       "_meta": {
-        "purpose": "WOLF-ORIGINAL strategies developed in-house via open-source research synthesis (arxiv/SSRN/github/reddit/Lens) + cross-agent inputs. Tracked SEPARATELY from the 8 academic-grounded strategies (52-Week Breakout, PEAD, Insider Cluster, Sector Rotation, Small Cap Catalyst, Congress Follower, Cross-Sectional Momentum, PEAD-on-Options) so Bobby can see what WOLF discovered vs what was borrowed from the literature. Status pipeline: research → backtest → paper_gate → small_allocation → scale.",
+        "purpose": "WOLF-ORIGINAL strategies developed in-house via open-source research synthesis (arxiv/SSRN/github/reddit/Lens) + cross-agent inputs. Tracked SEPARATELY from the 8 academic-grounded strategies (52-Week Breakout, PEAD, Insider Cluster, Sector Rotation, Small Cap Catalyst, Congress Follower, Cross-Sectional Momentum, PEAD-on-Options) so Bobby can see what WOLF discovered vs what was borrowed from the literature. Status pipeline: research \u2192 backtest \u2192 paper_gate \u2192 small_allocation \u2192 scale.",
         "schema_per_strategy": {
           "name": "human-readable strategy name",
           "code_path": "strategies/esoteric/<file>.py",
@@ -434,7 +430,7 @@
           "discovered_date": "YYYY-MM-DD",
           "promoted_date": "YYYY-MM-DD when moved to paper"
         },
-        "graduation_to_real": "Must pass same gates as academic strategies (Sharpe ≥ 1.0 net, max-DD ≤ 12%, 30 mandate-compliant days). No special pass for being WOLF-original.",
+        "graduation_to_real": "Must pass same gates as academic strategies (Sharpe \u2265 1.0 net, max-DD \u2264 12%, 30 mandate-compliant days). No special pass for being WOLF-original.",
         "research_cadence": "wolf-tool-discovery fires daily; wolf-esoteric-research fires weekly Sundays to propose 1 new candidate from the week's research digest."
       },
       "strategies": [
@@ -442,8 +438,8 @@
           "name": "Construct Synthesis Signal",
           "code_path": "strategies/esoteric/construct_synthesis.py",
           "status": "research",
-          "hypothesis": "The Lens daily intelligence brief synthesizes ~5 patterns per day from institutional research (HBR, MIT Sloan, Wharton, Stratechery, NBER, Fed). When ≥3 institutions converge on the same theme in one week, that's a high-conviction directional signal usable for sector/factor allocation. Bobby's Lens is the moat — no other quant uses this input.",
-          "open_source_inspiration": "Bobby's own Lens daily-scan output (Atlas/lens-briefs/) — a proprietary intelligence corpus built from open institutional sources.",
+          "hypothesis": "The Lens daily intelligence brief synthesizes ~5 patterns per day from institutional research (HBR, MIT Sloan, Wharton, Stratechery, NBER, Fed). When \u22653 institutions converge on the same theme in one week, that's a high-conviction directional signal usable for sector/factor allocation. Bobby's Lens is the moat \u2014 no other quant uses this input.",
+          "open_source_inspiration": "Bobby's own Lens daily-scan output (Atlas/lens-briefs/) \u2014 a proprietary intelligence corpus built from open institutional sources.",
           "cross_agent_inputs": "Lens (signal generator), Architect (allocation), Keystone (regime context), Helm (agent-economy theme detection).",
           "backtest_sharpe": null,
           "backtest_max_dd": null,
