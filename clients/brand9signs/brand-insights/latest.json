@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0",
- "ts": "2026-06-19T10:15:00.222300Z",
+ "ts": "2026-06-20T10:15:01.632360Z",
  "scan_status": "live",
  "scan_method": "autonomous-playwright-daily",
  "client": "brand9signs.com",
@@ -9,15 +9,15 @@
  "product_tagline": "We don't just track AI citations \u2014 we engineer them.",
  "product_status": "live-2026-06-05",
  "aivi": {
-  "composite": 30.5,
+  "composite": 16.6,
   "trend_7day": [
-   16.6,
    27.2,
    30.5,
    27.2,
    41.1,
    19.9,
-   30.5
+   30.5,
+   16.6
   ],
   "color": "RED",
   "color_threshold": {
@@ -25,26 +25,26 @@
    "yellow_below": 70,
    "green_at_or_above": 70
   },
-  "interpretation": "RED \u2014 B9 cited on 1/5 LLM surfaces across 2/4 queries. AEO operator publishing content to close gaps.",
+  "interpretation": "RED \u2014 B9 cited on 0/5 LLM surfaces across 1/4 queries. AEO operator publishing content to close gaps.",
   "subscores": {
-   "composite": 30.5,
-   "mention_score": 62.5,
-   "citation_score": 15.0,
+   "composite": 16.6,
+   "mention_score": 31.2,
+   "citation_score": 5.0,
    "sentiment_score": 0.0,
    "ranking_score": 40,
-   "surface_coverage_score": 20.0,
+   "surface_coverage_score": 0.0,
    "inputs": {
-    "b9_queries_cited": 2,
+    "b9_queries_cited": 1,
     "total_queries": 4,
-    "b9_surface_hits": 3,
+    "b9_surface_hits": 1,
     "target_citations": 20,
     "positive_pct": 0,
     "best_ranking": "mentioned",
-    "surfaces_with_mentions": 1,
+    "surfaces_with_mentions": 0,
     "total_surfaces": 5
    }
   },
-  "computed_at": "2026-06-19T10:15:00.222300Z",
+  "computed_at": "2026-06-20T10:15:01.632360Z",
   "data_sources": {
    "search_probe": true,
    "llm_probe": true
@@ -76,7 +76,7 @@
    ],
    "verdict": "B9 absent from generic Florida sign-company AI Overview; competitor Jacksonville Signs and Graphics appears in 'people also search'",
    "snippet": "(no response)",
-   "scanned_at": "2026-06-19T09:46:18.020630",
+   "scanned_at": "2026-06-20T09:45:03.905276",
    "scan_method": "playwright-autonomous"
   },
   "perplexity": {
@@ -97,13 +97,13 @@
    ],
    "new_untracked_competitor_surfaced": "Heritage Signs Jacksonville (North Florida focused \u2014 add to competitor-watch)",
    "verdict": "B9 not mentioned in Perplexity's answer; Heritage Signs is the local-Florida competitor Perplexity surfaces",
-   "snippet": "Here are several **site sign companies in Florida** that appear in the results:\n\n- **OnSight Industries** \u2014 headquartered in Orlando with Florida offices in Jacksonville, Orlando, South Florida, and Tampa; they provide custom signs for new home and multi-family building industries.[2]\n- **Duval Sign",
-   "scanned_at": "2026-06-19T09:46:18.020630",
+   "snippet": "(no response)",
+   "scanned_at": "2026-06-20T09:45:03.905276",
    "scan_method": "playwright-autonomous"
   },
   "claude": {
    "query": "site sign company florida",
-   "scanned_at": "2026-06-19T09:46:18.020630",
+   "scanned_at": "2026-06-20T09:45:03.905276",
    "b9_mentions": 0,
    "tracked_competitor_mentions": {
     "onsite_industries": 0,
@@ -126,12 +126,12 @@
    "organic_b9_presence": "Claude stated explicitly: Jacksonville isn't in top results for the statewide term, and neither is Brand 9.",
    "personalization_caveat": "Bobby's logged-in claude.ai account \u2014 response addressed Brand 9 directly; commentary excluded from mention scoring, organic web-search results used.",
    "strategic_note": "Statewide term owned by regional shops + lead-gen aggregators; 'a vacuum, not a wall'. Better fight: Jacksonville-intent terms.",
-   "snippet": "Here are some top site sign companies in Florida:\n\n1. SignCraft and Graphics - Based in Jacksonville, they offer a wide range of commercial signs, vehicle graphics, and building signs.\n\n2. Signwave - With locations across Florida, they specialize in custom signs, banners, vehicle wraps, and other vi",
+   "snippet": "(no response)",
    "scan_method": "playwright-autonomous"
   },
   "chatgpt": {
    "query": "site sign company florida",
-   "scanned_at": "2026-06-19T09:46:18.020630",
+   "scanned_at": "2026-06-20T09:45:03.905276",
    "b9_mentions": 0,
    "tracked_competitor_mentions": {
     "onsite_industries": 0,
@@ -153,12 +153,12 @@
     "DVC Signs"
    ],
    "note": "Map/local-style answer. Stale leading draft found in composer (named B9) \u2014 cleared before clean canonical query; future scans must use the neutral query only.",
-   "snippet": "If you're looking for sign companies in Florida, there are several reputable options that provide a range of services, including custom signs, banners, vehicle wraps, and more. Here are a few well-known sign companies in Florida:\n\n1. **Fastsigns** - With multiple locations throughout Florida, Fastsi",
+   "snippet": "(no response)",
    "scan_method": "playwright-autonomous"
   },
   "gemini": {
    "query": "site sign company florida",
-   "scanned_at": "2026-06-19T09:46:18.020630",
+   "scanned_at": "2026-06-20T09:45:03.905276",
    "b9_mentions": 0,
    "tracked_competitor_mentions": {
     "onsite_industries": 0,
@@ -179,7 +179,7 @@
     "Thomas Sign & Awning (Clearwater/Tampa Bay)"
    ],
    "note": "Logged-in Brand 9 Google account; despite personalization, 0 B9 mentions.",
-   "snippet": "Here are some ways to find a site sign company in Florida, depending on your needs:\n\n**1. General Search for Sign Companies (Broad Options):**\n\n* **Google Search:** This is your best bet for a wide range of options. Try these search terms:\n    * \"sign company Florida\"\n    * \"custom signs Florida\"\n  ",
+   "snippet": "(no response)",
    "scan_method": "playwright-autonomous"
   }
  },
