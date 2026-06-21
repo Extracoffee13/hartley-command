@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0",
- "ts": "2026-06-20T10:15:01.632360Z",
+ "ts": "2026-06-21T10:15:03.934498Z",
  "scan_status": "live",
  "scan_method": "autonomous-playwright-daily",
  "client": "brand9signs.com",
@@ -9,15 +9,15 @@
  "product_tagline": "We don't just track AI citations \u2014 we engineer them.",
  "product_status": "live-2026-06-05",
  "aivi": {
-  "composite": 16.6,
+  "composite": 27.2,
   "trend_7day": [
-   27.2,
    30.5,
    27.2,
    41.1,
    19.9,
    30.5,
-   16.6
+   16.6,
+   27.2
   ],
   "color": "RED",
   "color_threshold": {
@@ -25,18 +25,18 @@
    "yellow_below": 70,
    "green_at_or_above": 70
   },
-  "interpretation": "RED \u2014 B9 cited on 0/5 LLM surfaces across 1/4 queries. AEO operator publishing content to close gaps.",
+  "interpretation": "RED \u2014 B9 cited on 0/5 LLM surfaces across 2/4 queries. AEO operator publishing content to close gaps.",
   "subscores": {
-   "composite": 16.6,
-   "mention_score": 31.2,
-   "citation_score": 5.0,
+   "composite": 27.2,
+   "mention_score": 62.5,
+   "citation_score": 10.0,
    "sentiment_score": 0.0,
    "ranking_score": 40,
    "surface_coverage_score": 0.0,
    "inputs": {
-    "b9_queries_cited": 1,
+    "b9_queries_cited": 2,
     "total_queries": 4,
-    "b9_surface_hits": 1,
+    "b9_surface_hits": 2,
     "target_citations": 20,
     "positive_pct": 0,
     "best_ranking": "mentioned",
@@ -44,7 +44,7 @@
     "total_surfaces": 5
    }
   },
-  "computed_at": "2026-06-20T10:15:01.632360Z",
+  "computed_at": "2026-06-21T10:15:03.934498Z",
   "data_sources": {
    "search_probe": true,
    "llm_probe": true
@@ -76,7 +76,7 @@
    ],
    "verdict": "B9 absent from generic Florida sign-company AI Overview; competitor Jacksonville Signs and Graphics appears in 'people also search'",
    "snippet": "(no response)",
-   "scanned_at": "2026-06-20T09:45:03.905276",
+   "scanned_at": "2026-06-21T09:45:07.920390",
    "scan_method": "playwright-autonomous"
   },
   "perplexity": {
@@ -98,12 +98,12 @@
    "new_untracked_competitor_surfaced": "Heritage Signs Jacksonville (North Florida focused \u2014 add to competitor-watch)",
    "verdict": "B9 not mentioned in Perplexity's answer; Heritage Signs is the local-Florida competitor Perplexity surfaces",
    "snippet": "(no response)",
-   "scanned_at": "2026-06-20T09:45:03.905276",
+   "scanned_at": "2026-06-21T09:45:07.920390",
    "scan_method": "playwright-autonomous"
   },
   "claude": {
    "query": "site sign company florida",
-   "scanned_at": "2026-06-20T09:45:03.905276",
+   "scanned_at": "2026-06-21T09:45:07.920390",
    "b9_mentions": 0,
    "tracked_competitor_mentions": {
     "onsite_industries": 0,
@@ -131,7 +131,7 @@
   },
   "chatgpt": {
    "query": "site sign company florida",
-   "scanned_at": "2026-06-20T09:45:03.905276",
+   "scanned_at": "2026-06-21T09:45:07.920390",
    "b9_mentions": 0,
    "tracked_competitor_mentions": {
     "onsite_industries": 0,
@@ -158,7 +158,7 @@
   },
   "gemini": {
    "query": "site sign company florida",
-   "scanned_at": "2026-06-20T09:45:03.905276",
+   "scanned_at": "2026-06-21T09:45:07.920390",
    "b9_mentions": 0,
    "tracked_competitor_mentions": {
     "onsite_industries": 0,
