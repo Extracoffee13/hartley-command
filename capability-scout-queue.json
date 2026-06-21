@@ -1,70 +1,82 @@
 {
-  "generated": "2026-06-20",
-  "run_type": "daily",
+  "generated": "2026-06-21",
+  "run_type": "daily+weekly-synthesis",
   "scan_coverage": {
-    "mcp_registry": "7 keyword sweeps (market-data/trading/execution/options; alt-data/foot-traffic/web-analytics; SEO/marketing/social/email; automation/orchestration/workflow; research/filings/news; finance/stocks/quant; CRM/sales); no results, no new connectors beyond known live set (FMP, IBKR, Similarweb, n8n)",
+    "mcp_registry": "7 keyword sweeps (market-data/trading/execution/options/brokerage; alt-data/foot-traffic/web-analytics/consumer-spend; SEO/marketing/social/email/content; automation/orchestration/workflow/agent-framework; research/SEC-filings/news/financial-statements; finance/stocks/quant/portfolio; CRM/sales/outreach/lead-gen); no results, no new connectors beyond known live set (FMP, IBKR, Similarweb, n8n)",
     "skills": "suggest_skills returned nothing addable",
     "plugins": "search_plugins returned nothing addable",
-    "anthropic": "Memory for Managed Agents (public beta: cross-session file memory, per-write audit trails, cross-agent sharing in a workspace; Rakuten 97% error cut); Self-Hosted Agent Sandboxes (public beta; own infra / Cloudflare/Daytona/Modal/Vercel); Enterprise MCP connector mgmt (Okta zero-touch); Claude Code Dynamic Workflows (codebase-wide bug hunts/audits/migrations); just-in-time context-engineering guidance. Fable5/Mythos5 export-control suspension still in force",
-    "world_research": "Financial-agent literature shifted from backtest-audit to LIVE evaluation: 'The Alpha Illusion' (arXiv 2605.16895 - reported alpha is not deployment evidence); LiveTradeBench/Alpha Arena/RockAlpha live-eval paradigm; AlphaForgeBench (end-to-end strategy design); 'From Knowing to Doing' memory-controlled trading benchmark (arXiv 2605.28359). Orchestration: AgentOrchestra, plan-execute-verify-replan; field-maturity survey ~1/16 teams at true multi-agent orchestration (discipline > headcount)",
-    "lens": "2026-06-20 brief read (34 items). Patterns: agentic-AI-as-org-X-ray; own-the-touchpoint-not-the-model; PE-CEO/managing-for-value; Fed hold 3.50-3.75% PCE lifted to 3.6%; use-AI-to-grow-not-cut (compounding learning loop = moat). Saturday - no weekly synthesis"
+    "anthropic": "No new agent-capability drop this week; partnerships/footprint only (Seoul office Jun 17; TCS+DXC regulated-industries Jun 11-12; Claude Corps Jun 11; Glasswing expansion Jun 2; first Public Record Jun 12). Capability stack stable on logged items: Opus 4.8, Managed Agents (vault creds+cron+browser), Memory for Managed Agents (audited cross-agent file memory), Self-Hosted Sandboxes, Dynamic Workflows, Outcomes grader, just-in-time context. Fable5/Mythos5 export-control suspension still in force",
+    "world_research": "Financial-agent literature moved from live-evaluation to COORDINATION ECONOMICS. New: 'Toward Reliable Evaluation of LLM-Based Financial Multi-Agent Systems' (arXiv 2603.27539) - Coordination Primacy Hypothesis + Coordination Breakeven Spread (CBS) net-of-cost metric + five eval failures (look-ahead/survivorship/overfitting/cost-neglect/regime-blindness); 'Benchmarking Multi-Agent LLM Architectures for Financial Document Processing' (arXiv 2603.22651) cost/accuracy tradeoffs; 'Drop the Hierarchy and Roles' (arXiv 2603.28990) self-organizing > designed; PolyBench (arXiv 2604.14199) only 2/7 LLMs positive returns under timestamp-locked live states despite high stated confidence; running live-eval cluster (When Agents Trade/AMA 2510.11695, AI-Trader 2512.10971, LiveTradeBench 2511.03628)",
+    "lens": "2026-06-21 brief read (31 items, markets closed Sunday). Patterns: agentic operating model = unit of competition and favors the small; marketing re-pointed at AI buyers; own-the-touchpoint-or-be-commoditized; capital discipline back (Managing for Value); AI productivity trust-and-atrophy tax (governance gates ROI). HBR Purdy: different-model agent teams beat single-model (coordination > scaling)"
   },
   "candidates": [
     {
-      "id": "2026-06-20-01",
-      "name": "Live-evaluation gate - stop treating any backtest as deployment evidence",
-      "improves_agent": "WOLF (signal/strategy promotion), Hartley Capital (model-build promotion), Prism (alt-data validation)",
-      "what": "2026 cluster ('The Alpha Illusion' arXiv 2605.16895 + LiveTradeBench/Alpha Arena/RockAlpha) argues reported backtest alpha should NOT be treated as deployment evidence; field shifts to live/paper evaluation. One step past yesterday's Profit Mirage leakage lesson.",
-      "why": "Pure downside protection, no new agent. Converts the leakage audit into a promotion rule: a signal earns live size only after a forward paper/live window, never on backtest numbers alone. Resaleable as Pragma diligence.",
+      "id": "2026-06-21-01",
+      "name": "Coordination Breakeven Spread (CBS) - only keep a multi-agent layer when it beats its own cost",
+      "improves_agent": "Whole fleet architecture (WOLF, Hartley Capital, Prism, ducks/calls) + this Scout's gating rule",
+      "what": "arXiv 2603.27539: Coordination Primacy Hypothesis (coordination protocol design drives decision quality more than model scaling) + Coordination Breakeven Spread metric (does multi-agent coordination add value NET of transaction+coordination cost) + five named eval failures (look-ahead, survivorship, overfit, cost-neglect, regime-blindness).",
+      "why": "Quantified form of the standing 'more agents != better' principle. Turns the qualitative ~15x-token tax into a computable gate: a coordination layer/new agent earns its slot only if measured value clears its breakeven. CPH says spend effort on the protocol, not a bigger model. Resaleable as Pragma diligence.",
       "scores": {"fit": 5, "impact": 5, "integration": 4, "risk": 5, "pragma": 5, "composite": 4.8},
       "status": "auto-deployed",
-      "action": "Logged as today's lesson + promotion rule (backtest=hypothesis; leakage audit=precondition; forward paper/live window in separate context=verdict before size). WOLF adopts as promotion gate. Wiring into live WOLF code = NEEDS BOBBY APPROVAL."
+      "action": "Logged as today's lesson + fleet gating rule: estimate CBS before adding any agent/coordination layer; invest in protocol over model scaling. No live code changed."
     },
     {
-      "id": "2026-06-20-02",
-      "name": "Memory for Managed Agents - productized cross-session, cross-agent file memory",
-      "improves_agent": "self-improving-loop, Lens + shared corpus, WOLF/Prism/Pulse/Keystone (all memory-using agents)",
-      "what": "Anthropic public beta: agents persist learnings across sessions as files with per-write audit trails and cross-agent sharing within a workspace (Rakuten 97% error-rate cut).",
-      "why": "Managed-runtime version of exactly what Bobby hand-built (shared-corpus reads + nightly self-improving curation), with audit trails and cross-agent propagation first-class. Cleanest long-term home for fleet memory.",
-      "scores": {"fit": 5, "impact": 5, "integration": 3, "risk": 4, "pragma": 4, "composite": 4.4},
-      "status": "auto-deployed-standard",
-      "action": "Standard logged: prefer Managed-Agents Memory (audited file memory + cross-agent sharing) as target architecture for shared corpus + self-improving-loop. Migrating LIVE fleet memory = NEEDS BOBBY APPROVAL (touches live state; preserve RULE ZERO + existing file-memory layout)."
+      "id": "2026-06-21-02",
+      "name": "PolyBench contamination-proof live standard + overconfidence finding",
+      "improves_agent": "WOLF + Hartley Capital signal/strategy promotion gate; any agent reporting a confidence number",
+      "what": "arXiv 2604.14199: 36,165 predictions from 7 LLMs under timestamp-locked live states; only 2/7 posted positive returns despite uniformly high stated confidence; scored on directional accuracy, Confidence-Weighted Return, APY, Sharpe via realistic order-book execution.",
+      "why": "Hard empirical backing for the live-eval promotion gate, plus a sharp rule: stated confidence is NOT evidence of edge - most confident agents still lost money live. Calibrate on realized net-of-execution returns, never self-reported conviction. Timestamp-locked design = gold-standard eval template.",
+      "scores": {"fit": 5, "impact": 4, "integration": 4, "risk": 5, "pragma": 4, "composite": 4.4},
+      "status": "auto-deployed",
+      "action": "Folded into live-eval gate: promote on realized net-of-execution returns over a timestamp-locked forward window; self-reported confidence carries zero promotion weight. Live WOLF wiring = NEEDS BOBBY APPROVAL."
     },
     {
-      "id": "2026-06-20-03",
-      "name": "Just-in-time context engineering - lightweight identifiers over pre-loading",
-      "improves_agent": "Lens multi-fire days, WOLF/Hermes long sessions, the Scout itself",
-      "what": "Anthropic guidance: long-horizon agents hold lightweight identifiers (paths, queries, links) and load data at runtime instead of pre-loading; pair with compaction/tool-clearing.",
-      "why": "Concrete mechanism for the standing store-at-creation / context-edit discipline; keeps long runs cheap and on-task.",
+      "id": "2026-06-21-03",
+      "name": "Multi-agent financial document-processing cost/accuracy benchmark",
+      "improves_agent": "Hermes (report/inbox), Hartley Capital (statement/filing reads), Anvil (deal docs)",
+      "what": "arXiv 2603.22651: compares orchestration patterns on cost-accuracy tradeoffs and production scaling for financial document workloads.",
+      "why": "Concrete pattern-selection guidance for document-heavy agents - pick the orchestration pattern that hits the accuracy bar at lowest cost rather than defaulting to the most elaborate. Pairs with CBS.",
       "scores": {"fit": 4, "impact": 4, "integration": 4, "risk": 4, "pragma": 3, "composite": 4.0},
       "status": "recommend",
-      "action": "Standardize 'reference then load on demand' across long-running agents; pair with periodic compaction on multi-fire Lens days."
+      "action": "Use as pattern-selection reference when next touching Hermes/Hartley document pipelines; choose cheapest pattern that clears the accuracy bar."
     },
     {
-      "id": "2026-06-20-04",
-      "name": "Self-Hosted Agent Sandboxes - tool execution on your own infra",
-      "improves_agent": "Fleet ops / WOLF execution + ducks (isolation, cost, data residency)",
-      "what": "Anthropic public beta: move tool/code execution to infra you control (own boxes or Cloudflare/Daytona/Modal/Vercel).",
-      "why": "Isolation + cost + data-residency for code-running or client-data agents, but changes execution infrastructure.",
-      "scores": {"fit": 4, "impact": 3, "integration": 2, "risk": 3, "pragma": 3, "composite": 3.6},
-      "status": "NEEDS BOBBY APPROVAL",
-      "action": "Infra change w/ security+cost implications - do not auto-adopt. Option for isolating WOLF execution or any client-data agent."
-    },
-    {
-      "id": "2026-06-20-05",
-      "name": "Dynamic Workflows (Claude Code) - codebase-wide bug hunts / audits / migrations",
-      "improves_agent": "Maintenance of the agent-ecosystem codebase (launchd runners, skill files, dashboards)",
-      "what": "Claude Code Dynamic Workflows: end-to-end codebase-wide bug hunts, security/hardening audits, large migrations across thousands of files.",
-      "why": "Ready tool for periodic security/hardening passes over the fleet's own code; continuous with the FinVault/execution-safety thread.",
-      "scores": {"fit": 4, "impact": 3, "integration": 4, "risk": 4, "pragma": 2, "composite": 3.4},
+      "id": "2026-06-21-04",
+      "name": "Self-organizing > designed structures ('Drop the Hierarchy and Roles')",
+      "improves_agent": "Future fleet-architecture decisions (Keystone/Architect designing any new multi-agent flow)",
+      "what": "arXiv 2603.28990: self-organizing LLM-agent teams outperform manually designed hierarchies/role assignments on some tasks.",
+      "why": "Provocative counter-evidence to heavy org design, but early and task-dependent; would change how flows are built. Awareness, not adoption.",
+      "scores": {"fit": 3, "impact": 3, "integration": 3, "risk": 4, "pragma": 2, "composite": 3.4},
       "status": "awareness",
-      "action": "Use for a scheduled hardening/bug-hunt pass over the ecosystem codebase when next touching it."
+      "action": "Note as a design hypothesis to test small before committing; do not restructure any live flow on it."
+    },
+    {
+      "id": "2026-06-21-05",
+      "name": "Anthropic capability stack - no new drop this week (stable)",
+      "improves_agent": "N/A this run - confirms logged stack is current",
+      "what": "No new agent-capability release this week; partnerships/footprint only (Seoul, TCS, DXC, Claude Corps, Glasswing).",
+      "why": "Recorded so the queue reflects reality: adopt-next list unchanged from last week (Managed Agents + Memory + Outcomes grader + just-in-time context remain the open architecture moves).",
+      "scores": {"fit": 3, "impact": 2, "integration": 5, "risk": 5, "pragma": 2, "composite": 3.0},
+      "status": "awareness",
+      "action": "No change. Carry forward prior NEEDS-APPROVAL items (Managed-Agents memory migration; Self-Hosted Sandboxes for WOLF/client-data execution)."
     }
+  ],
+  "weekly_synthesis": {
+    "theme": "The week composes one doctrine: verify the end state (06-16) -> Outcomes grader in separate context (06-17) -> storage-time memory + shared state + lean fleet (06-18) -> leakage audit (06-19) -> promote on a forward live/paper window not a backtest (06-20) -> quantify with CBS + confidence != edge (06-21).",
+    "doctrine_one_liner": "Trust nothing until it is verified against ground truth, on a forward window, net of cost - and add an agent only when it clears its own breakeven.",
+    "highest_leverage_next": "Adopt the Coordination Breakeven Spread - it converts 'more agents != better' from a repeated principle into a computable gate against fleet bloat.",
+    "pragma_productization": "Agent Fleet Audit: grade a client's multi-agent setup on the four-dimensional taxonomy, run CBS to show which coordination pays for itself net of cost, screen signals/backtests for the five eval failures, return a keep/fix-protocol/collapse-to-single-agent verdict per layer."
+  },
+  "needs_bobby_approval": [
+    "Migrating live fleet memory onto Managed-Agents Memory (touches live state; preserve RULE ZERO single-Chrome + file-memory layout)",
+    "Self-Hosted Sandboxes for WOLF/client-data execution (infra + security/cost)",
+    "Any wiring of the live-eval / CBS gates into live WOLF backtest/promotion code"
   ],
   "summary": {
     "candidates_found": 5,
-    "auto_deployed": 3,
-    "awaiting_approval": 2,
-    "top_pick": "2026-06-20-01 Live-evaluation gate (composite 4.8)"
+    "auto_deployed": 2,
+    "recommend_or_awareness": 3,
+    "awaiting_approval": 3,
+    "top_pick": "2026-06-21-01 Coordination Breakeven Spread (composite 4.8)"
   }
 }
