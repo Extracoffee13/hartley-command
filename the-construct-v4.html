@@ -919,6 +919,15 @@ const HermesPanel = () => (
         </div>
       </div>
     </div>
+    <div style={{ marginTop: 16, padding: 14, border: `1px solid ${C.cyan}66`, background: "rgba(0,212,255,0.04)", borderRadius: 4 }}>
+      <div style={{ fontSize: 9, color: C.cyan, letterSpacing: 3, marginBottom: 8 }}>HERMES SUBAGENT TELEMETRY · LIVE</div>
+      <div style={{ fontSize: 10, color: C.green, lineHeight: 1.55, marginBottom: 8 }}>
+        <span data-live="subagents_count">0</span> worker journals mirrored from <code style={{ color: C.cyan }}>.hermes/webui/sessions/_run_journal</code>
+      </div>
+      <div data-live="subagents_html" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 8 }}>
+        <div style={{ fontSize: 9, color: C.greenDim, fontStyle: "italic" }}>waiting for live worker telemetry…</div>
+      </div>
+    </div>
 
     <div style={{ marginTop: 14, paddingTop: 12, borderTop: `1px solid ${C.greenDim}` }}>
       <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 6 }}>WORKLOADS</div>
@@ -1976,7 +1985,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(<Dashboard />);
 (function hydrateLive() {
   function update(key, val) {
     document.querySelectorAll('[data-live="' + key + '"]').forEach(el => {
-      if (val !== null && val !== undefined && val !== '') el.textContent = String(val);
+      if (val === null || val === undefined || val === '') return;
+      if (key === 'subagents_html') {
+        el.innerHTML = String(val);
+      } else {
+        el.textContent = String(val);
+      }
     });
   }
   const sources = [
