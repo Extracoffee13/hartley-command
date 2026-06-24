@@ -1,130 +1,91 @@
 {
   "_meta": {
     "schema_version": "4.1",
-    "last_write": "2026-06-24T23:00:00Z",
-    "heartbeat_ts": "2026-06-24T22:46:15.258438+00:00",
-    "writer": "hermes-status-writer cron (claude-sonnet-4.6)",
-    "source": "hermes-status-writer / cron job 9761e229a0af"
+    "last_write": "2026-06-24T23:01:47Z",
+    "heartbeat_ts": "2026-06-24T23:00:44.624794Z",
+    "writer": "hermes-status-writer-cron",
+    "source": "hermes-status-job"
   },
   "hermes_gateway": {
     "status": "RUNNING",
     "pid": 3599,
     "telegram": "connected",
     "active_agents": 0,
-    "uptime_note": "gateway running since machine boot, pid 3599",
-    "updated_at": "2026-06-24T21:15:09.922208+00:00"
+    "updated_at": "2026-06-24T21:15:09Z"
   },
   "ecosystem_health": {
-    "verdict": "OK",
+    "verdict": "HEALTHY-IDLE",
     "gateway_ok": true,
     "wild_ducks_ok": true,
-    "degradation_reason": null,
-    "recommended_action": "none — system healthy-idle",
-    "warns": [
-      {"agent": "wolf-state-watcher", "note": "wolf/state.json not found — wolf/ state dir absent", "severity": "advisory"},
-      {"agent": "memory-capture", "note": "hermes-reports/ missing — no reports to capture", "severity": "advisory"},
-      {"agent": "github-pages-build-watcher", "note": "gh api unavailable — advisory only", "severity": "advisory"}
-    ],
-    "health_check_id": "20260624T224615Z",
-    "checked_at": "2026-06-24T22:46:15.258438+00:00"
+    "degradation_reason": "None — 2 advisory warnings: wolf-state-watcher (wolf/state.json not found), memory-capture (hermes-reports/ missing)",
+    "recommended_action": "Monitor; no intervention required"
   },
   "wild_ducks": {
-    "canonical_count": 13,
-    "snapshot_files": 29,
-    "doctor_report": "26 ducks: 26 ok, 0 stale, 0 no-hb",
-    "last_flock_cycle": "2026-06-24T22:22:25Z",
-    "status": "ok",
-    "note": "Flock cycle completed. All agents ran ~22:22Z."
+    "count": 13,
+    "active": 13,
+    "state_snapshots": 29,
+    "note": "29 state snapshots present; canonical Wild Duck count is 13"
   },
   "calls": {
-    "total_cron_jobs": 17,
-    "active": 15,
-    "inactive": 2,
-    "jobs": {
-      "hermes-inbox-poller": {"id": "3688f050cf18", "runs": 5728, "last": "2026-06-24T18:50:28", "next": "2026-06-24T18:51:00", "schedule": "* * * * *"},
-      "construct-5min-health-check": {"id": "143364bcdd24", "runs": 1272, "last": "2026-06-24T18:46:23", "next": "2026-06-24T18:55:00", "schedule": "*/5 * * * *"},
-      "hermes-lens-auth-pull-watcher": {"id": "5b7f07a263e4", "runs": 6393, "last": "2026-06-24T18:50:21", "next": "2026-06-24T18:51:00", "schedule": "* * * * *"},
-      "invh-4x-daily-competitive-monitor": {"id": "da07bb54b0dd", "runs": 22, "last": "2026-06-24T17:20:41", "next": "2026-06-24T20:10:00", "schedule": "10 8,12,16,20 * * *"},
-      "construct-dashboard-autosync": {"id": "a50bfd588adc", "runs": 657, "last": "2026-06-24T18:46:57", "next": "2026-06-24T18:55:00", "schedule": "*/5 * * * *"},
-      "hermes-status-writer": {"id": "9761e229a0af", "runs": 648, "last": "2026-06-24T18:41:53", "next": "2026-06-24T19:00:00", "schedule": "*/10 * * * *"},
-      "wolf-dashboard-autosync": {"id": "b733a650a5ad", "runs": 221, "last": "2026-06-24T18:33:56", "next": "2026-06-24T19:00:00", "schedule": "*/30 * * * *"},
-      "daily-construct-performance-optimization": {"id": "4208bf096ba9", "runs": 4, "last": "2026-06-23T09:00:53", "next": "2026-06-25T09:00:00", "schedule": "0 9 * * *"},
-      "hermes-lens-auth-pull": {"id": "666d3f953cc9", "runs": 5, "last": "2026-06-24T09:25:58", "next": "2026-06-25T09:25:00", "schedule": "25 9 * * *"},
-      "hermes-gsc-daily-review": {"id": "4c600e138257", "runs": 4, "last": "2026-06-23T06:00:34", "next": "2026-06-25T06:00:00", "schedule": "0 6 * * *"},
-      "wolf-discovery-daily-scan": {"id": "1130eef65d2b", "runs": 5, "last": "2026-06-24T08:23:08", "next": "2026-06-25T06:30:00", "schedule": "30 6 * * *"},
-      "GSC-daily-telegram-alert": {"id": "2c6737e38f68", "runs": 5, "last": "2026-06-24T09:24:55", "next": "2026-06-25T09:10:00", "schedule": "10 9 * * *"},
-      "ssh-b9-availability-check": {"id": "7d347535aa1a", "runs": 30, "last": "2026-06-24T17:15:12", "next": "2026-06-24T20:00:00", "schedule": "0 */4 * * *"},
-      "749-pile-change-detector": {"id": "04ee26df2640", "runs": 6, "last": "2026-06-24T17:15:12", "next": "2026-06-25T14:00:00", "schedule": "0 14 * * *"},
-      "construct-dashboard-counts-updater": {"id": "b07198a9c937", "runs": 5, "last": "2026-06-24T08:18:22", "next": "2026-06-25T08:05:00", "schedule": "5 8 * * *"},
-      "pragma-gsc-recovery-monthly": {"id": "0443a23057e7", "runs": 0, "last": null, "next": "2026-07-01T06:00:00", "schedule": "0 6 1 * *"},
-      "telegram-rules-now": {"id": "a85dce3d479f", "runs": 0, "last": null, "next": null, "schedule": "once-2026-06-04 (expired)"}
-    }
+    "count": 17,
+    "cron_jobs": 17
   },
   "memory": {
-    "files_count": 390,
-    "location": "~/.hermes/memories/"
+    "count": 390,
+    "path": "~/.hermes/memories/"
   },
   "skills": {
     "count": 547,
-    "location": "~/.hermes/skills/"
+    "path": "~/.hermes/skills/"
   },
   "tasks": {
     "inbox_pending": 0,
     "reports_today": 0,
-    "adoption_pending": 0,
-    "coordination": {
-      "stuck_tasks": 0,
-      "circular_deps": "none detected",
-      "queue_size": 0
-    }
+    "adoption_pending": 0
   },
   "lens_briefs": {
     "last_7d": 5,
-    "last_run": "2026-06-24T09:25:58",
-    "job_id": "666d3f953cc9",
-    "watcher_runs": 6393
+    "source": "wolf-discovery-daily-scan completed runs (proxy)"
   },
   "competitive_advantage_systems": {
     "invh_monitor": {
       "status": "active",
-      "runs_total": 22,
-      "last_run": "2026-06-24T17:20:41",
-      "next_run": "2026-06-24T20:10:00",
-      "schedule": "10 8,12,16,20 * * * (4x daily)",
       "job_id": "da07bb54b0dd",
-      "note": "Strategic intel monitor for INVH (NYSE: INVH)"
+      "schedule": "10 8,12,16,20 * * * (4x daily)",
+      "last_run": "2026-06-24",
+      "completed_runs": 22,
+      "last_status": "ok"
     },
     "performance_optimizer": {
       "status": "active",
-      "runs_total": 4,
-      "last_run": "2026-06-23T09:00:53",
-      "next_run": "2026-06-25T09:00:00",
-      "schedule": "daily 09:00",
-      "job_id": "4208bf096ba9"
+      "job_id": "4208bf096ba9",
+      "schedule": "0 9 * * * (daily 09:00)",
+      "last_run": "2026-06-24",
+      "completed_runs": 4,
+      "last_status": "ok"
     },
     "failure_mitigation": {
       "status": "active",
-      "runs_total": 1272,
-      "last_run": "2026-06-24T18:46:23",
-      "next_run": "2026-06-24T18:55:00",
-      "schedule": "every 5 min",
       "job_id": "143364bcdd24",
-      "note": "construct-5min-health-check serves as failure mitigation sentinel"
+      "schedule": "*/5 * * * * (every 5 min)",
+      "completed_runs": 1275,
+      "last_status": "ok"
     }
-  },
-  "disk_resources": {
-    "disk_used_pct": 65,
-    "disk_used": "133Gi",
-    "disk_total": "228Gi",
-    "status": "ok"
   },
   "cron_health": {
     "total_jobs": 17,
-    "high_frequency_ok": true,
-    "inbox_poller_runs": 5728,
-    "health_check_runs": 1272,
-    "lens_watcher_runs": 6393,
-    "last_status_write": "2026-06-24T18:41:53"
+    "inbox_poller_runs": 5738,
+    "health_checks_completed": 1275,
+    "invh_ci_runs": 22,
+    "status_writer_runs": 649,
+    "dashboard_autosync_runs": 659,
+    "wolf_discovery_runs": 5,
+    "gsc_daily_last_status": "error",
+    "gsc_telegram_last_status": "error"
+  },
+  "disk_resources": {
+    "disk_root": "14% used (74Gi free of 228Gi)",
+    "pressure": "none"
   },
   "data_live": {
     "wild_duck_count": 13,
@@ -138,9 +99,9 @@
     "invh_ci_runs": 22,
     "performance_optimizer_active": true,
     "failure_mitigation_active": true,
-    "health_checks_completed": 1272,
-    "inbox_poller_runs": 5728,
+    "health_checks_completed": 1275,
+    "inbox_poller_runs": 5738,
     "gateway_status": "RUNNING",
-    "ecosystem_verdict": "OK"
+    "ecosystem_verdict": "HEALTHY-IDLE"
   }
 }
