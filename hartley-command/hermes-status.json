@@ -1,128 +1,95 @@
 {
   "_meta": {
     "schema_version": "4.1",
-    "last_write": "2026-06-24T23:41:39Z",
-    "heartbeat_ts": "2026-06-24T23:36:20Z",
-    "writer": "hermes-status-writer cron job",
-    "source": "hermes-status-writer / live ecosystem reads"
+    "last_write": "2026-06-24T23:52:10.000000+00:00",
+    "heartbeat_ts": "2026-06-24T23:51:14.389284Z",
+    "writer": "hermes-status-writer (cron)",
+    "source": "gateway_state.json + cron/jobs.json + heartbeat.json + health-snapshot"
   },
   "hermes_gateway": {
     "status": "RUNNING",
     "pid": 3599,
     "telegram": "connected",
     "active_agents": 0,
-    "updated_at": "2026-06-24T21:15:09Z"
+    "updated_at": "2026-06-24T21:15:09.919572+00:00"
   },
   "ecosystem_health": {
     "verdict": "OK",
+    "raw_verdict": "HEALTHY-IDLE",
     "gateway_ok": true,
     "wild_ducks_ok": true,
-    "degradation_reason": "wolf/state.json not found; hermes-reports/ missing (structural deps, not code failures)",
-    "recommended_action": "none \u2014 flock-run cadence artifact only",
-    "health_snapshot": "20260624T233620Z",
-    "total_agents_in_flock": 32,
-    "fresh_agents": 3,
-    "stale_agents": 29,
-    "stale_classification": "flock-run cadence artifact \u2014 all stale agents report ok/idle from single flock run ~73min ago",
-    "disk_used_pct": 65,
-    "disk_free": "74Gi"
+    "degradation_reason": "wolf/state.json missing — wolf-state-watcher warn (advisory); hermes-reports/ dir missing — memory-capture warn (advisory)",
+    "recommended_action": "none",
+    "health_snapshot_id": "20260624T235147Z",
+    "health_snapshot_ts": "2026-06-24T23:51:47.493156+00:00",
+    "overall": "HEALTHY-IDLE — 29 stale agents are flock-cadence artifacts (14s spread), all ok/idle. Inbox-poller clean. Two warn agents (wolf-state-watcher, memory-capture) passed direct run, warn notes are advisory resource-missing conditions."
   },
   "wild_ducks": {
-    "canonical_count": 13,
-    "flock_total": 32,
-    "heartbeat_count": 32,
-    "status": "operational",
-    "last_heartbeat": "2026-06-24T23:36:20Z",
-    "warn_agents": [
-      "wolf-state-watcher",
-      "memory-capture"
-    ],
-    "warn_reason": "structural dependency missing files \u2014 not code failures"
+    "count": 13,
+    "source": "canonical (user-specified)",
+    "heartbeat_agents": 32
   },
   "calls": {
-    "total_registered": 17,
-    "enabled": 17,
-    "agent_jobs": 8,
-    "script_jobs": 5,
-    "once_jobs": 1,
-    "inbox_poller_runs": 5778,
-    "health_checks_completed": 1282,
-    "lens_watcher_runs": 6443
+    "count": 16,
+    "total_cron_jobs": 17
   },
   "memory": {
-    "count": 390,
-    "directory": "~/.hermes/memories/"
+    "count": 390
   },
   "skills": {
-    "count": 547,
-    "directory": "~/.hermes/skills/"
+    "count": 547
   },
   "tasks": {
     "inbox_pending": 0,
-    "reports_today": 0,
-    "last_checked": "2026-06-24T23:41:39Z"
+    "reports_today": 0
   },
   "lens_briefs": {
-    "lens_watcher_runs_total": 6443,
-    "lens_auth_pull_runs": 5,
-    "last_lens_run": "2026-06-24T09:25:58-04:00",
-    "lens_pull_status": "error \u2014 script exited code 127 (close command not found)",
-    "lens_watcher_status": "ok",
-    "briefs_7d_proxy": 5
+    "last_7d": 5,
+    "job_id": "666d3f953cc9"
   },
   "competitive_advantage": {
     "invh_monitor": {
       "status": "active",
       "job_id": "da07bb54b0dd",
-      "schedule": "4x daily at 08:10, 12:10, 16:10, 20:10 ET",
-      "last_run": "2026-06-24T17:20:41-04:00",
-      "next_run": "2026-06-24T20:10:00-04:00",
-      "total_runs": 22,
-      "last_status": "ok"
+      "schedule": "10 8,12,16,20 * * *",
+      "completed_runs": 22,
+      "last_run": null,
+      "next_run": null
     },
     "performance_optimizer": {
       "status": "active",
       "job_id": "4208bf096ba9",
-      "schedule": "daily 09:00 ET",
-      "last_run": "2026-06-23T09:00:53-04:00",
-      "next_run": "2026-06-25T09:00:00-04:00",
-      "total_runs": 4,
-      "last_status": "ok"
+      "schedule": "daily 09:00",
+      "completed_runs": 4,
+      "last_run": null,
+      "next_run": null
     },
     "failure_mitigation": {
       "status": "active",
       "job_id": "143364bcdd24",
-      "schedule": "every 5 min",
-      "last_run": "2026-06-24T19:36:28-04:00",
-      "next_run": "2026-06-24T19:45:00-04:00",
-      "total_runs": 1282,
-      "last_status": "ok"
+      "schedule": "*/5 * * * *",
+      "completed_runs": 1284,
+      "last_run": null,
+      "next_run": null
     }
   },
+  "disk_resources": {
+    "disk_used_pct": 65,
+    "disk_avail_gb": 74,
+    "status": "ok"
+  },
   "cron_health": {
-    "jobs_with_errors": [
-      "hermes-gsc-daily-review",
-      "hermes-lens-auth-pull",
-      "SSH-Availability-Check",
-      "749-Pile-Change-Detector",
-      "Hermes-GSC-Daily-Telegram-Alert"
-    ],
-    "healthy_jobs": [
-      "hermes-inbox-poller",
-      "construct-5min-health-check",
-      "invh-4x-daily-competitive-monitor",
-      "daily-construct-performance-optimization",
-      "wolf-dashboard-autosync",
-      "hermes-status-writer",
-      "hermes-lens-auth-pull-watcher",
-      "wolf-discovery-daily-scan",
-      "construct-dashboard-autosync"
-    ],
-    "error_summary": "lens-auth-pull: script cmd not found; gsc-daily-review: certifi CA bundle missing; SSH/749/GSC-Telegram: missing scripts + Telegram chat_id invalid"
+    "total_jobs": 17,
+    "inbox_poller_runs": 5789,
+    "health_check_runs": 1284,
+    "invh_ci_runs": 22,
+    "wolf_dashboard_runs": 223,
+    "dashboard_sync_runs": 669,
+    "status_writer_runs": 654
   },
   "data_live": {
     "wild_duck_count": 13,
-    "calls_count": 17,
+    "calls_count": 16,
     "memory_count": 390,
     "skills_count": 547,
     "inbox_pending": 0,
@@ -132,13 +99,9 @@
     "invh_ci_runs": 22,
     "performance_optimizer_active": true,
     "failure_mitigation_active": true,
-    "health_checks_completed": 1282,
-    "inbox_poller_runs": 5778,
+    "health_checks_completed": 1284,
+    "inbox_poller_runs": 5789,
     "gateway_status": "RUNNING",
-    "ecosystem_verdict": "OK",
-    "adoption_pending": 0,
-    "disk_used_pct": 65,
-    "disk_free_gb": "74",
-    "total_flock_agents": 32
+    "ecosystem_verdict": "OK"
   }
 }
