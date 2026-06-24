@@ -1,8 +1,8 @@
 {
   "_meta": {
     "schema_version": "4.1",
-    "last_write": "2026-06-24T22:04:03.614813+00:00",
-    "heartbeat_ts": "2026-06-24T22:04:03.614813+00:00",
+    "last_write": "2026-06-24T22:11:08.764149+00:00",
+    "heartbeat_ts": "2026-06-24T22:11:08.764149+00:00",
     "writer": "hermes-status-writer cron job",
     "source": "hermes-status-writer"
   },
@@ -11,7 +11,7 @@
     "pid": 3599,
     "telegram": "connected",
     "active_agents": 0,
-    "updated_at": "2026-06-24T22:04:03.614813+00:00"
+    "updated_at": "2026-06-24T22:11:08.764149+00:00"
   },
   "ecosystem_health": {
     "verdict": "DEGRADED",
@@ -20,7 +20,7 @@
     "degradation_reason": "Wild Duck script wipe \u2014 sandbox dirs missing (wild-ducks, calls, state). 6 daemons affected. STRUCTURAL_FAILURE since 2026-06-24 ~13:45. Requires Bobby manual redeploy.",
     "recommended_action": "Playbook 3b: Full ecosystem redeploy \u2014 re-deploy Wild Duck scripts, calls/, state/, workspace/. Do NOT restart daemons until scripts exist.",
     "health_snapshot": "20260624T220108Z.json",
-    "consecutive_failure_reports": 9
+    "consecutive_failure_reports": 10
   },
   "wild_ducks": {
     "count": 13,
