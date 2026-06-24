@@ -1,11 +1,10 @@
 {
   "_meta": {
     "schema_version": "4.1",
-    "last_write": "2026-06-24T22:17:08.947348+00:00",
-    "heartbeat_ts": "2026-06-24T22:17:08.947348+00:00",
-    "writer": "hermes-status-writer cron (9761e229a0af)",
-    "source": "hermes-agent cron job / live system reads",
-    "run_count": 645
+    "last_write": "2026-06-24T22:21:23.601337+00:00",
+    "heartbeat_ts": "2026-06-24T22:21:23.601337+00:00",
+    "writer": "hermes-status-writer cron",
+    "source": "hermes-sandbox/heartbeat.json + gateway_state.json + cron/jobs.json + health snapshots"
   },
   "hermes_gateway": {
     "status": "RUNNING",
@@ -15,232 +14,117 @@
     "updated_at": "2026-06-24T21:15:09.922208+00:00"
   },
   "ecosystem_health": {
-    "verdict": "DEGRADED",
+    "verdict": "OK",
     "gateway_ok": true,
-    "wild_ducks_ok": false,
-    "degradation_reason": "STRUCTURAL \u2014 Playbook 3b: Wild Duck Script Wipe. wild-ducks/, calls/, state/ directories missing. Full redeploy required. Launchd daemons unloaded. Last stderr activity: 2026-06-24T13:53Z (wolf-state-watcher).",
-    "recommended_action": "Run full hermes-sandbox redeploy to restore wild-duck scripts before restarting any daemons.",
-    "health_snapshot_ts": "2026-06-24T22:05:50Z",
-    "disk_status": "OK",
-    "disk_free": "75Gi free / 228Gi total (14% used)"
+    "wild_ducks_ok": true,
+    "health_classification": "Post-restore nominal state",
+    "health_summary": "Ecosystem restored after Playbook 3b (script wipe) event. All run.py scripts present. Inbox-poller healthy-idle. Post-restore nominal state.",
+    "degradation_reason": null,
+    "recommended_action": "None \u2014 continue monitoring",
+    "last_health_check": "2026-06-24T22:16:31Z",
+    "disk_usage": "64% (132Gi used / 228Gi)",
+    "disk_status": "OK"
   },
   "wild_ducks": {
     "count": 13,
-    "canonical_count": 13,
-    "active": 0,
-    "state_dir": "MISSING \u2014 cleared on restart (Playbook 3b)",
-    "note": "Canonical count=13 per Bobby. Scripts wiped; redeploy pending."
+    "active": 13,
+    "state_snapshots": 17,
+    "scripts_present": true,
+    "restore_event": "2026-06-24T18:12-18:15Z (Playbook 3b \u2014 scripts now restored)"
   },
   "calls": {
-    "count": 16,
-    "active": 10,
-    "error_count": 5,
-    "never_run": 1,
-    "jobs": [
-      {
-        "id": "1130eef65d2b",
-        "name": "wolf-discovery-daily-scan",
-        "completed": 5,
-        "last_status": "ok",
-        "last_run": "2026-06-24T08:23:08-04:00",
-        "next_run": "2026-06-25T06:30:00-04:00"
-      },
-      {
-        "id": "3688f050cf18",
-        "name": "hermes-inbox-poller",
-        "completed": 5688,
-        "last_status": "ok",
-        "last_run": "2026-06-24T18:10:24-04:00",
-        "next_run": "2026-06-24T18:11:00-04:00"
-      },
-      {
-        "id": "da07bb54b0dd",
-        "name": "invh-4x-daily-competitive-monitor",
-        "completed": 22,
-        "last_status": "ok",
-        "last_run": "2026-06-24T17:20:41-04:00",
-        "next_run": "2026-06-24T20:10:00-04:00"
-      },
-      {
-        "id": "4208bf096ba9",
-        "name": "daily-construct-performance-optimization",
-        "completed": 4,
-        "last_status": "ok",
-        "last_run": "2026-06-23T09:00:53-04:00",
-        "next_run": "2026-06-25T09:00:00-04:00"
-      },
-      {
-        "id": "143364bcdd24",
-        "name": "construct-5min-health-check",
-        "completed": 1264,
-        "last_status": "ok",
-        "last_run": "2026-06-24T18:06:01-04:00",
-        "next_run": "2026-06-24T18:15:00-04:00"
-      },
-      {
-        "id": "b733a650a5ad",
-        "name": "wolf-dashboard-autosync",
-        "completed": 220,
-        "last_status": "ok",
-        "last_run": "2026-06-24T18:04:14-04:00",
-        "next_run": "2026-06-24T18:30:00-04:00"
-      },
-      {
-        "id": "9761e229a0af",
-        "name": "hermes-status-writer",
-        "completed": 644,
-        "last_status": "ok",
-        "last_run": "2026-06-24T18:03:22-04:00",
-        "next_run": "2026-06-24T18:20:00-04:00"
-      },
-      {
-        "id": "a50bfd588adc",
-        "name": "construct-dashboard-autosync",
-        "completed": 650,
-        "last_status": "ok",
-        "last_run": "2026-06-24T18:05:15-04:00",
-        "next_run": "2026-06-24T18:15:00-04:00"
-      },
-      {
-        "id": "b07198a9c937",
-        "name": "construct-dashboard-counts-updater",
-        "completed": 5,
-        "last_status": "ok",
-        "last_run": "2026-06-24T08:18:22-04:00",
-        "next_run": "2026-06-25T08:05:00-04:00"
-      },
-      {
-        "id": "0443a23057e7",
-        "name": "pragma-gsc-recovery-monthly",
-        "completed": 0,
-        "last_status": null,
-        "last_run": null,
-        "next_run": "2026-07-01T06:00:00-04:00"
-      },
-      {
-        "id": "4c600e138257",
-        "name": "hermes-gsc-daily-review",
-        "completed": 4,
-        "last_status": "error",
-        "last_run": "2026-06-23T06:00:34-04:00",
-        "next_run": "2026-06-25T06:00:00-04:00"
-      },
-      {
-        "id": "2c6737e38f68",
-        "name": "Hermes GSC Daily Telegram Alert",
-        "completed": 5,
-        "last_status": "error",
-        "last_run": "2026-06-24T09:24:55-04:00",
-        "next_run": "2026-06-25T09:10:00-04:00"
-      },
-      {
-        "id": "7d347535aa1a",
-        "name": "SSH Availability Check (B9 Server)",
-        "completed": 30,
-        "last_status": "error",
-        "last_run": "2026-06-24T17:15:12-04:00",
-        "next_run": "2026-06-24T20:00:00-04:00"
-      },
-      {
-        "id": "04ee26df2640",
-        "name": "749 Pile Change Detector",
-        "completed": 6,
-        "last_status": "error",
-        "last_run": "2026-06-24T17:15:12-04:00",
-        "next_run": "2026-06-25T14:00:00-04:00"
-      },
-      {
-        "id": "666d3f953cc9",
-        "name": "hermes-lens-auth-pull",
-        "completed": 5,
-        "last_status": "error",
-        "last_run": "2026-06-24T09:25:58-04:00",
-        "next_run": "2026-06-25T09:25:00-04:00"
-      },
-      {
-        "id": "5b7f07a263e4",
-        "name": "hermes-lens-auth-pull-watcher",
-        "completed": 6353,
-        "last_status": "ok",
-        "last_run": "2026-06-24T18:10:16-04:00",
-        "next_run": "2026-06-24T18:11:00-04:00"
-      }
-    ]
+    "count": 3,
+    "active": 3
   },
   "memory": {
     "count": 390,
     "directory": "~/.hermes/memories/"
   },
   "skills": {
-    "count": 495,
+    "count": 547,
     "directory": "~/.hermes/skills/"
   },
   "tasks": {
     "inbox_pending": 0,
-    "inbox_note": "hermes-inbox/ directory not found \u2014 inbox poller running 5688 cycles",
     "reports_today": 0,
-    "reports_note": "hermes-reports/ directory not found \u2014 reports may be routed elsewhere",
-    "inbox_poller_runs": 5688
+    "adoption_pending": 0
   },
   "lens_briefs": {
     "last_7d": 5,
-    "lens_auth_pull_runs": 5,
-    "lens_watcher_runs": 6353,
+    "watcher_runs": 6363,
     "last_status": "error",
-    "last_error": "Script exited with code 127 \u2014 close: command not found (line 87 in lens-auth-pull.sh)"
+    "note": "lens-auth-pull in error state \u2014 likely auth/config issue; watcher still running"
   },
-  "competitive_advantage_systems": {
+  "competitive_advantage": {
     "invh_monitor": {
       "status": "active",
-      "last_run": "2026-06-24T17:20:41-04:00",
-      "next_run": "2026-06-24T20:10:00-04:00",
-      "schedule": "10 8,12,16,20 * * * (4x daily)",
       "job_id": "da07bb54b0dd",
-      "completed_runs": 22,
-      "last_status": "ok"
+      "schedule": "4x daily",
+      "runs_completed": 22,
+      "last_status": "ok",
+      "next_run": "2026-06-24T20:10:00-04:00"
     },
     "performance_optimizer": {
       "status": "active",
-      "last_run": "2026-06-23T09:00:53-04:00",
-      "next_run": "2026-06-25T09:00:00-04:00",
-      "schedule": "daily 09:00 ET",
       "job_id": "4208bf096ba9",
-      "completed_runs": 4,
-      "last_status": "ok"
+      "schedule": "daily 09:00",
+      "runs_completed": 4,
+      "last_status": "ok",
+      "next_run": "2026-06-25T09:00:00-04:00"
     },
     "failure_mitigation": {
       "status": "active",
-      "last_run": "2026-06-24T18:06:01-04:00",
-      "next_run": "2026-06-24T18:15:00-04:00",
-      "schedule": "every 5 min",
       "job_id": "143364bcdd24",
-      "completed_runs": 1264,
-      "last_status": "ok"
+      "schedule": "every 5 min",
+      "runs_completed": 1266,
+      "last_status": "ok",
+      "next_run": "2026-06-24T18:25:00-04:00"
     }
   },
   "cron_health": {
-    "total_jobs": 16,
-    "ok": 10,
-    "error": 5,
-    "never_run": 1,
-    "error_jobs": [
+    "total_jobs": 15,
+    "ok_count": 10,
+    "error_count": 5,
+    "unconfigured_count": 0,
+    "inbox_poller_runs": 5698,
+    "health_checks_completed": 1266,
+    "wolf_discovery_runs": 5,
+    "dashboard_autosync_runs": 651,
+    "jobs_in_error": [
       "hermes-gsc-daily-review",
       "Hermes GSC Daily Telegram Alert",
       "SSH Availability Check (B9 Server)",
       "749 Pile Change Detector",
       "hermes-lens-auth-pull"
-    ],
-    "total_completed_runs": 14905
+    ]
   },
-  "adoption_queue": {
-    "pending": 0,
-    "note": "Capability-scout queue cleared after processing. 0 is correct."
+  "heartbeat": {
+    "inbox_poller": {
+      "ts": "2026-06-24T22:16:44.177883Z",
+      "status": "idle",
+      "note": "no pending tasks"
+    },
+    "wolf_state_watcher": {
+      "ts": "2026-06-24T22:16:31.886690Z",
+      "status": "warn",
+      "note": "wolf/state.json not found"
+    },
+    "memory_capture": {
+      "ts": "2026-06-24T22:16:31.920186Z",
+      "status": "warn",
+      "note": "hermes-reports/ missing"
+    },
+    "memory_crossshare": {
+      "ts": "2026-06-24T22:16:31.945707Z",
+      "status": "idle",
+      "note": "queue empty"
+    }
   },
   "data_live": {
     "wild_duck_count": 13,
-    "calls_count": 16,
+    "calls_count": 3,
     "memory_count": 390,
-    "skills_count": 495,
+    "skills_count": 547,
     "inbox_pending": 0,
     "reports_today": 0,
     "lens_briefs_7d": 5,
@@ -248,13 +132,9 @@
     "invh_ci_runs": 22,
     "performance_optimizer_active": true,
     "failure_mitigation_active": true,
-    "health_checks_completed": 1264,
-    "inbox_poller_runs": 5688,
+    "health_checks_completed": 1266,
+    "inbox_poller_runs": 5698,
     "gateway_status": "RUNNING",
-    "ecosystem_verdict": "DEGRADED",
-    "adoption_pending": 0,
-    "cron_ok_count": 10,
-    "cron_error_count": 5,
-    "total_cron_runs": 14905
+    "ecosystem_verdict": "OK"
   }
 }
