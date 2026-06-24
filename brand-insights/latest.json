@@ -1,25 +1,26 @@
 {
   "schema_version": "1.0",
-  "ts": "2026-06-11T14:39:44+00:00",
+  "ts": "2026-06-24T22:21:43+00:00",
   "scan_status": "live",
-  "scan_method": "chrome_mcp_session_2026-06-11_AM (Cowork/Lens \u2014 Gemini + ChatGPT + Claude added)",
+  "scan_method": "brand-insights-mirror run.py \u00b7 web-search probe \u00b7 2026-06-24",
   "client": "brand9signs.com",
   "client_display_name": "Brand 9 Signs",
   "product_name": "PRAGMA Mirror",
   "product_tagline": "See your brand the way AI sees it.",
   "product_status": "live-2026-06-05",
   "aivi": {
-    "composite": 38,
+    "composite": 20,
     "trend_7day": [
       38,
-      38
+      38,
+      20
     ],
     "color_threshold": {
       "red_below": 50,
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "RED \u2014 branded discovery strong (Knowledge Panel + #1 organic) but 0 B9 mentions on the generic query across ALL FIVE AI surfaces now measured (AI Overview, Perplexity, Gemini, ChatGPT, Claude). Surface coverage 5/6 complete. Open field confirmed: only Florida Sign Company (2/5) and Thomas Sign & Awning (2/5) get any AI citations; statewide term is aggregator-dominated \u2014 AEO content at Jacksonville-intent terms is the play."
+    "interpretation": "RED \u2014 0/7 surfaces citing brand9signs.com. Score: 20/100."
   },
   "surfaces": {
     "google_branded_search": {
@@ -140,6 +141,12 @@
         "Thomas Sign & Awning (Clearwater/Tampa Bay)"
       ],
       "note": "Logged-in Brand 9 Google account; despite personalization, 0 B9 mentions."
+    },
+    "web-search": {
+      "cited": false,
+      "query": "florida sign company",
+      "snippet": "",
+      "checked_at": "2026-06-24T22:21:43+00:00"
     }
   },
   "sentiment": {
@@ -199,50 +206,10 @@
     "Enable billing on Gemini Google Cloud project to unlock free-tier generateContent (or skip Gemini surface entirely)"
   ],
   "_meta": {
-    "captured_by": "Chrome MCP session 2026-06-05 PM",
-    "real_data": true,
-    "chrome_driven_surfaces_returning_data": 3,
-    "chrome_driven_surfaces_total_implemented": 5,
-    "api_surfaces_blocked": [
-      "gemini_generateContent (billing required)"
-    ]
+    "writer": "brand-insights-mirror call (run.py)",
+    "computed_at": "2026-06-24T22:21:43+00:00"
   },
-  "competitor_benchmark": {
-    "tracked": [
-      "Onsite Industries",
-      "FastSigns St Johns Bluff",
-      "Taylor Signs",
-      "Jacksonville Signs and Graphics",
-      "Heritage Signs Jacksonville",
-      "Florida Sign Company",
-      "Action Signs & Advertising",
-      "Cypress Signs",
-      "Kula Signs"
-    ],
-    "promoted_2026_06_11": [
-      "Heritage Signs Jacksonville",
-      "Florida Sign Company",
-      "Action Signs & Advertising",
-      "Cypress Signs",
-      "Kula Signs"
-    ],
-    "ai_surface_leader": "Florida Sign Company (2/5 surfaces: Gemini + ChatGPT)",
-    "newly_surfaced_for_watch_consideration": [
-      "Thomas Sign & Awning (2 surfaces)",
-      "Mid-Florida Signs & Graphics",
-      "Jacksonville Sign Company",
-      "Creative Signs Inc.",
-      "Don Bell Signs",
-      "Sign Source Solutions",
-      "CG Signs",
-      "DVC Signs",
-      "Cruz Signs",
-      "Acme Signs and Prints",
-      "Lee Designs",
-      "HD Signs & Lighting"
-    ]
-  },
-  "_competitors_note": "aivi column = AI-surface citation count (of 5 surfaces) on canonical query, 2026-06-11; competitor_benchmark holds full analysis",
+  "_mirrored_at": "2026-06-24T22:21:43+00:00",
   "aeo_pages_live": 6,
   "aeo_published_slugs": [
     "best-sign-company-florida:2026-06",
@@ -251,6 +218,5 @@
     "site-sign-company-florida:2026-06",
     "homebuilder-signage-florida:2026-06",
     "jacksonville-sign-company:2026-06"
-  ],
-  "_mirrored_at": "2026-06-24T12:26:05.136013Z"
+  ]
 }
