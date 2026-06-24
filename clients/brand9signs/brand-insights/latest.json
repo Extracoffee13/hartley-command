@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0",
- "ts": "2026-06-23T10:15:04.451486Z",
+ "ts": "2026-06-24T12:26:05.268951Z",
  "scan_status": "live",
  "scan_method": "autonomous-playwright-daily",
  "client": "brand9signs.com",
@@ -9,15 +9,15 @@
  "product_tagline": "We don't just track AI citations \u2014 we engineer them.",
  "product_status": "live-2026-06-05",
  "aivi": {
-  "composite": 30.5,
+  "composite": 33.0,
   "trend_7day": [
-   41.1,
    19.9,
    30.5,
    16.6,
    27.2,
    16.6,
-   30.5
+   30.5,
+   33.0
   ],
   "color": "RED",
   "color_threshold": {
@@ -27,16 +27,16 @@
   },
   "interpretation": "RED \u2014 B9 cited on 1/5 LLM surfaces across 2/4 queries. AEO operator publishing content to close gaps.",
   "subscores": {
-   "composite": 30.5,
+   "composite": 33.0,
    "mention_score": 62.5,
-   "citation_score": 15.0,
+   "citation_score": 25.0,
    "sentiment_score": 0.0,
    "ranking_score": 40,
    "surface_coverage_score": 20.0,
    "inputs": {
     "b9_queries_cited": 2,
     "total_queries": 4,
-    "b9_surface_hits": 3,
+    "b9_surface_hits": 5,
     "target_citations": 20,
     "positive_pct": 0,
     "best_ranking": "mentioned",
@@ -44,7 +44,7 @@
     "total_surfaces": 5
    }
   },
-  "computed_at": "2026-06-23T10:15:04.451486Z",
+  "computed_at": "2026-06-24T12:26:05.268951Z",
   "data_sources": {
    "search_probe": true,
    "llm_probe": true
