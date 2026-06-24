@@ -1,136 +1,120 @@
 {
   "_meta": {
     "schema_version": "4.1",
-    "last_write": "2026-06-24T21:51:43.907884+00:00",
-    "heartbeat_ts": "2026-06-24T21:51:43.907884+00:00",
-    "writer": "hermes-status-writer cron (job 9761e229a0af)",
-    "source": "gateway_state.json + cron/jobs.json + health snapshot 20260624T214546Z"
+    "last_write": "2026-06-24T22:02:59.743917+00:00",
+    "heartbeat_ts": "2026-06-24T22:02:59.743917+00:00",
+    "writer": "hermes-status-writer cron job",
+    "source": "hermes-status-writer"
   },
   "hermes_gateway": {
     "status": "RUNNING",
     "pid": 3599,
     "telegram": "connected",
     "active_agents": 0,
-    "updated_at": "2026-06-24T21:15:09.922208+00:00"
+    "updated_at": "2026-06-24T22:02:59.743917+00:00"
   },
   "ecosystem_health": {
     "verdict": "DEGRADED",
     "gateway_ok": true,
     "wild_ducks_ok": false,
-    "degradation_reason": "Playbook 3b: Wild Duck Script Wipe \u2014 all 15 daemon scripts missing (wild-ducks/, calls/, state/ dirs wiped). Launchd daemons loaded but failing.",
-    "recommended_action": "Full construct ecosystem re-deploy. Restore wild-ducks/, calls/, state/ directories.",
-    "health_snapshot_ts": "20260624T214546Z",
-    "failure_mode": "Playbook 3b: Wild Duck Script Wipe",
-    "affected_daemons": [
+    "degradation_reason": "Wild Duck script wipe \u2014 sandbox dirs missing (wild-ducks, calls, state). 6 daemons affected. STRUCTURAL_FAILURE since 2026-06-24 ~13:45. Requires Bobby manual redeploy.",
+    "recommended_action": "Playbook 3b: Full ecosystem redeploy \u2014 re-deploy Wild Duck scripts, calls/, state/, workspace/. Do NOT restart daemons until scripts exist.",
+    "health_snapshot": "20260624T220108Z.json",
+    "consecutive_failure_reports": 9
+  },
+  "wild_ducks": {
+    "count": 13,
+    "active": 0,
+    "status": "scripts_missing",
+    "heartbeat": "EMPTY",
+    "note": "Canonical count is 13. Scripts wiped \u2014 all daemons failing with FileNotFoundError. State dir missing.",
+    "affected": [
       "inbox-poller",
       "inbox-self-heal",
       "memory-capture",
       "memory-crossshare",
       "model-tier-router",
-      "wolf-state-watcher",
-      "apple-2fa-capture",
-      "claim-verifier-call",
-      "completion-claim-watcher",
-      "content-publish-scheduler",
-      "github-pages-build-watcher",
-      "plugin-load-verifier",
-      "pragma-uptime-guardian",
-      "telegram-listener",
-      "uptime-monitor"
+      "wolf-state-watcher"
     ]
-  },
-  "wild_ducks": {
-    "count": 13,
-    "status": "DEGRADED \u2014 scripts wiped, daemons failing",
-    "note": "Canonical count=13; state/ dir missing after restart"
   },
   "calls": {
-    "count": 17,
-    "active_ok": [
-      "wolf-discovery-daily-scan",
-      "hermes-inbox-poller",
-      "invh-4x-daily-competitive-monitor",
-      "daily-construct-performance-optimization",
-      "construct-5min-health-check",
-      "wolf-dashboard-autosync",
-      "hermes-status-writer",
-      "construct-dashboard-autosync",
-      "construct-dashboard-counts-updater"
-    ],
-    "error": [
-      "hermes-gsc-daily-review",
-      "Hermes GSC Daily Telegram Alert",
-      "SSH Availability Check (B9 Server)",
-      "749 Pile Change Detector",
-      "hermes-lens-auth-pull",
-      "hermes-lens-auth-pull-watcher"
-    ]
+    "count": 14,
+    "ok": 8,
+    "error": 6,
+    "total_completed_runs": 14875
   },
   "memory": {
     "count": 390,
-    "path": "~/.hermes/memories/"
+    "source": "~/.hermes/memories/"
   },
   "skills": {
     "count": 547,
-    "path": "~/.hermes/skills/"
+    "source": "~/.hermes/skills/ (SKILL.md count)"
   },
   "tasks": {
     "inbox_pending": 0,
     "reports_today": 0,
-    "adoption_pending": 0
+    "inbox_dir": "~/Documents/Claude/Projects/Atlas/hermes-inbox/",
+    "reports_dir": "~/Documents/Claude/Projects/Atlas/hermes-reports/"
   },
   "lens_briefs": {
     "last_7d": 5,
-    "job": "hermes-lens-auth-pull",
-    "last_status": "error",
-    "last_error_summary": "lens-auth-pull.sh line 87: close: command not found"
+    "note": "Proxy from hermes-lens-auth-pull cron completed count (5 total runs). Auth pull script erroring (code 127 \u2014 'close' command not found line 87)."
   },
-  "disk_resources": {
-    "disk_used": "131Gi / 228Gi (64%)",
-    "disk_avail": "76Gi",
-    "disk_status": "OK"
+  "adoption_queue": {
+    "pending": 0,
+    "note": "Queue cleared \u2014 0 is expected after processing"
   },
   "competitive_advantage_systems": {
     "invh_monitor": {
       "status": "active",
       "job_id": "da07bb54b0dd",
-      "schedule": "10 8,12,16,20 * * *",
-      "runs_completed": 22,
+      "schedule": "10 8,12,16,20 * * * (4x daily)",
+      "completed_runs": 22,
       "last_run": "2026-06-24T17:20:41.270655-04:00",
-      "last_status": "ok",
-      "next_run": "2026-06-24T20:10:00-04:00"
+      "next_run": "2026-06-24T20:10:00-04:00",
+      "last_status": "ok"
     },
     "performance_optimizer": {
       "status": "active",
       "job_id": "4208bf096ba9",
-      "schedule": "0 9 * * *",
-      "runs_completed": 4,
+      "schedule": "0 9 * * * (daily 09:00)",
+      "completed_runs": 4,
       "last_run": "2026-06-23T09:00:53.046123-04:00",
-      "last_status": "ok",
-      "next_run": "2026-06-25T09:00:00-04:00"
+      "next_run": "2026-06-25T09:00:00-04:00",
+      "last_status": "ok"
     },
     "failure_mitigation": {
       "status": "active",
       "job_id": "143364bcdd24",
-      "schedule": "*/5 * * * *",
-      "runs_completed": 1260,
-      "last_run": "2026-06-24T17:46:08.341464-04:00",
-      "last_status": "ok",
-      "next_run": "within 5 minutes"
+      "schedule": "*/5 * * * * (every 5 min)",
+      "completed_runs": 1262,
+      "last_run": "2026-06-24T17:55:54.271874-04:00",
+      "next_run": "2026-06-24T18:05:00-04:00",
+      "last_status": "ok"
     }
   },
+  "disk_resources": {
+    "used_pct": 64,
+    "available_gb": 75,
+    "status": "OK"
+  },
   "cron_health": {
-    "total_jobs": 17,
-    "jobs_ok": 9,
+    "total_jobs": 14,
+    "jobs_ok": 8,
     "jobs_error": 6,
-    "inbox_poller_runs": 5668,
-    "health_check_runs": 1260,
-    "invh_ci_runs": 22,
-    "updated_at": "2026-06-24T17:50:15.197076-04:00"
+    "notable_errors": [
+      "hermes-lens-auth-pull: script exit 127 \u2014 'close' command not found (line 87)",
+      "hermes-lens-auth-pull-watcher: script not found",
+      "hermes-gsc-daily-review: certifi CA bundle missing",
+      "Hermes GSC Daily Telegram Alert: pages.csv not found + Telegram chat not found",
+      "SSH Availability Check: script not found + Telegram chat not found",
+      "749 Pile Change Detector: script not found + Telegram chat not found"
+    ]
   },
   "data_live": {
     "wild_duck_count": 13,
-    "calls_count": 17,
+    "calls_count": 14,
     "memory_count": 390,
     "skills_count": 547,
     "inbox_pending": 0,
@@ -140,10 +124,9 @@
     "invh_ci_runs": 22,
     "performance_optimizer_active": true,
     "failure_mitigation_active": true,
-    "health_checks_completed": 1260,
-    "inbox_poller_runs": 5668,
+    "health_checks_completed": 1262,
+    "inbox_poller_runs": 5678,
     "gateway_status": "RUNNING",
     "ecosystem_verdict": "DEGRADED"
-  },
-  "heartbeat_ts": "2026-06-24T21:57:05.584076+00:00"
+  }
 }
