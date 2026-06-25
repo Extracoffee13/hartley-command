@@ -1,7 +1,7 @@
 {
   "_meta": {
     "schema_version": "4.1",
-    "last_write": "2026-06-25T06:01:00.000000+00:00",
+    "last_write": "2026-06-25T06:11:43.375496+00:00",
     "heartbeat_ts": "2026-06-25T05:55:35.784152Z",
     "writer": "hermes-status-writer cron job",
     "source": "cron/jobs.json + gateway_state.json + heartbeat.json + workspace/health/"
@@ -36,7 +36,10 @@
     "heartbeat_agent_count": 32,
     "fresh_count": 32,
     "stale_count": 0,
-    "warn_agents": ["wolf-state-watcher", "memory-capture"],
+    "warn_agents": [
+      "wolf-state-watcher",
+      "memory-capture"
+    ],
     "warn_classification": "persistent-missing-path (non-critical)"
   },
   "calls": {
