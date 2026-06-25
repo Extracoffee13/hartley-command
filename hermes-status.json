@@ -1,90 +1,106 @@
 {
   "_meta": {
     "schema_version": "4.1",
-    "last_write": "2026-06-25T07:41:57.467398+00:00",
-    "heartbeat_ts": "2026-06-25T07:40:30.766207Z",
-    "writer": "hermes-status-writer (cron)",
-    "source": "hermes-status-writer skill"
+    "last_write": "2026-06-25T07:51:39.188508+00:00",
+    "heartbeat_ts": "2026-06-25T07:50:38.812777Z",
+    "writer": "hermes-status-writer-cron",
+    "source": "hermes-status.json via execute_code batch read"
   },
   "hermes_gateway": {
     "status": "RUNNING",
     "pid": 3599,
     "telegram": "connected",
     "active_agents": 0,
-    "updated_at": "2026-06-25T07:41:57.467398+00:00"
+    "updated_at": "2026-06-24T21:15:09.922208+00:00"
   },
   "ecosystem_health": {
-    "verdict": "OK",
+    "verdict": "DEGRADED",
     "gateway_ok": true,
     "wild_ducks_ok": true,
-    "degradation_reason": "none",
-    "recommended_action": "none",
-    "warn_agents": {},
-    "health_snapshot_verdict": "HEALTHY-IDLE (flock-gap)",
-    "health_snapshot_ts": "2026-06-25T07:41:09.421795+00:00"
+    "structural": "OK \u2014 all dirs present",
+    "degradation_reason": "4 jobs in error: hermes-gsc-daily-review, Hermes GSC Daily Telegram Alert, 749 Pile Change Detector, hermes-lens-auth-pull",
+    "recommended_action": "Review error jobs",
+    "health_snapshot_ts": "2026-06-25T07:30:56.848523+00:00",
+    "health_verdict": "HEALTHY-IDLE (flock-gap)",
+    "warn_agents": [
+      "wolf-state-watcher",
+      "memory-capture"
+    ],
+    "flock_count": 29,
+    "flock_age_hours": 9.1
   },
   "wild_ducks": {
-    "count": 13,
-    "canonical": true,
-    "state_files": 29,
-    "note": "canonical count per Bobby; state dir has 29 files"
+    "canonical_count": 13,
+    "state_dir_count": 29,
+    "all_ok": true,
+    "note": "13 canonical WDs; state dir shows 29 files (includes launchd/cron workers)"
   },
   "calls": {
     "count": 17,
-    "cron_jobs": 17
+    "active": 11,
+    "error": 4,
+    "total_runs_all_time": 16354
   },
   "memory": {
     "files": 390,
-    "skills": 547
+    "path": "~/.hermes/memories/"
+  },
+  "skills": {
+    "count": 547,
+    "path": "~/.hermes/skills/"
   },
   "tasks": {
     "inbox_pending": 0,
-    "adoption_pending": 0,
-    "reports_today": 0
+    "reports_today": 0,
+    "inbox_poller_runs": 6250
   },
   "lens_briefs": {
     "last_7d": 5,
     "job_id": "666d3f953cc9",
-    "last_run": "",
-    "next_run": ""
+    "last_status": "error",
+    "watcher_runs": 6934
   },
-  "competitive_advantage_systems": {
+  "competitive_advantage": {
     "invh_monitor": {
       "status": "active",
-      "runs": 23,
+      "job_id": "da07bb54b0dd",
+      "runs_completed": 23,
       "last_run": "",
       "next_run": "",
-      "schedule": "10 8,12,16,20 * * *",
-      "job_id": "da07bb54b0dd"
+      "schedule": "4x daily at 08:10, 12:10, 16:10, 20:10"
     },
     "performance_optimizer": {
       "status": "active",
-      "runs": 4,
+      "job_id": "4208bf096ba9",
+      "runs_completed": 4,
       "last_run": "",
       "next_run": "",
-      "schedule": "0 9 * * *",
-      "job_id": "4208bf096ba9"
+      "schedule": "daily at 09:00"
     },
     "failure_mitigation": {
       "status": "active",
-      "runs": 1379,
+      "job_id": "143364bcdd24",
+      "runs_completed": 1381,
       "last_run": "",
-      "next_run": "",
-      "schedule": "*/5 * * * *",
-      "job_id": "143364bcdd24"
+      "schedule": "every 5 min"
     }
   },
   "cron_health": {
     "total_jobs": 17,
-    "inbox_poller_runs": 6240,
-    "health_check_runs": 1379,
-    "status_writer_runs": 701,
-    "error_jobs": [],
-    "jobs_with_errors": 0
+    "ok_jobs": 11,
+    "error_jobs": [
+      "hermes-gsc-daily-review",
+      "Hermes GSC Daily Telegram Alert",
+      "749 Pile Change Detector",
+      "hermes-lens-auth-pull"
+    ],
+    "unrun_jobs": 2,
+    "status_writer_runs": 702
   },
   "disk_resources": {
-    "disk_used_pct": 14,
-    "disk_avail": "75Gi"
+    "disk_line": "/dev/disk2s1s1   228Gi    12Gi    75Gi    14%    459k  783M    0%   /",
+    "disk_avail": "75Gi",
+    "disk_used_pct": "14%"
   },
   "data_live": {
     "wild_duck_count": 13,
@@ -98,9 +114,9 @@
     "invh_ci_runs": 23,
     "performance_optimizer_active": true,
     "failure_mitigation_active": true,
-    "health_checks_completed": 1379,
-    "inbox_poller_runs": 6240,
+    "health_checks_completed": 1381,
+    "inbox_poller_runs": 6250,
     "gateway_status": "RUNNING",
-    "ecosystem_verdict": "OK"
+    "ecosystem_verdict": "DEGRADED"
   }
 }
