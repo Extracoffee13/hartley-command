@@ -1139,6 +1139,22 @@ const PragmaMirrorPanel = () => {
           </div>
           <div style={{ fontSize: 9, color: C.greenDim, marginTop: 6 }}>7-DAY TREND</div>
           <div style={{ marginTop: 4 }}>{sparkSvg()}</div>
+          <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, margin: "10px 0 4px" }}>SEO · AEO · LLM · GEO</div>
+          <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+            {[["SEO", data && data.modules && data.modules.seo && data.modules.seo.score],
+              ["AEO", data && data.modules && data.modules.aeo && data.modules.aeo.score],
+              ["LLM", data && data.modules && data.modules.llm && data.modules.llm.score],
+              ["GEO", data && data.modules && data.modules.geo && data.modules.geo.score]
+             ].map(function(it){ return (
+              <div key={it[0]} style={{ flex: 1, minWidth: 54, background: "rgba(0,0,0,0.3)", padding: 6, borderLeft: "3px solid " + aiviColor(it[1]) }}>
+                <div style={{ fontSize: 8, color: C.greenDim, letterSpacing: 1 }}>{it[0]}</div>
+                <div style={{ fontSize: 20, fontWeight: 900, color: aiviColor(it[1]) }}>{it[1] == null ? "—" : it[1]}</div>
+              </div>
+            ); })}
+          </div>
+          <div style={{ fontSize: 9, color: C.cyan, marginTop: 8 }}>
+            {(data && data.recommendations_count) || 0} fixes queued · {(data && data.recommendations_high) || 0} high · GEO geo-fence + geo-target · recommend-only
+          </div>
           <div style={{ fontSize: 8, color: C.greenDim, marginTop: 8, lineHeight: 1.4 }}>
             Transparent formula:<br/>
             0.30·mention + 0.25·citation + 0.20·sentiment + 0.15·ranking + 0.10·coverage

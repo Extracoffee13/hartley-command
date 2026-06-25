@@ -1,256 +1,239 @@
 {
-  "schema_version": "1.0",
-  "ts": "2026-06-11T14:39:44+00:00",
-  "scan_status": "live",
-  "scan_method": "chrome_mcp_session_2026-06-11_AM (Cowork/Lens \u2014 Gemini + ChatGPT + Claude added)",
-  "client": "brand9signs.com",
+  "schema_version": "2.0",
+  "ts": "2026-06-25T20:02:54.492193Z",
+  "client": "b9",
   "client_display_name": "Brand 9 Signs",
   "product_name": "PRAGMA Mirror",
-  "product_tagline": "See your brand the way AI sees it.",
-  "product_status": "live-2026-06-05",
-  "aivi": {
-    "composite": 38,
+  "scan_status": "live",
+  "visibility_score": {
+    "composite": 23,
     "trend_7day": [
-      38,
-      38
+      29,
+      23,
+      23
     ],
     "color_threshold": {
       "red_below": 50,
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "RED \u2014 branded discovery strong (Knowledge Panel + #1 organic) but 0 B9 mentions on the generic query across ALL FIVE AI surfaces now measured (AI Overview, Perplexity, Gemini, ChatGPT, Claude). Surface coverage 5/6 complete. Open field confirmed: only Florida Sign Company (2/5) and Thomas Sign & Awning (2/5) get any AI citations; statewide term is aggregator-dominated \u2014 AEO content at Jacksonville-intent terms is the play."
+    "interpretation": "RED \u2014 composite brand visibility 23/100 across AEO, SEO, GEO and LLM surfaces."
   },
-  "surfaces": {
-    "google_branded_search": {
-      "query": "Brand 9 Signs Jacksonville",
-      "knowledge_panel_present": true,
-      "owns_first_organic_result": true,
-      "claimable_creator_profile_present": false,
-      "claim_eligible": false,
-      "claim_eligibility_note": "Sub-100K Instagram followers \u2014 claimable profile not yet eligible; install eligibility-watcher per Day-1 V16"
+  "modules": {
+    "aeo": {
+      "score": 0,
+      "cited": false,
+      "queries": [
+        {
+          "query": "commercial sign company jacksonville",
+          "cited": false,
+          "surface": "web-search"
+        },
+        {
+          "query": "sign installation clay county fl",
+          "cited": false,
+          "surface": "web-search"
+        },
+        {
+          "query": "custom business signs st johns",
+          "cited": false,
+          "surface": "web-search"
+        }
+      ]
     },
-    "google_ai_overview": {
-      "query": "best sign company florida",
-      "b9_mentions": 0,
-      "tracked_competitor_mentions": {
-        "onsite_industries": 0,
-        "fastsigns": 0,
-        "taylor_signs": 0,
-        "jacksonville_signs_and_graphics": 0
-      },
-      "people_also_search_competitors": [
-        "Jacksonville Signs and Graphics",
-        "Mid Florida Signs and Graphics",
-        "Florida Sign Group",
-        "South Florida Sign Company"
-      ],
-      "verdict": "B9 absent from generic Florida sign-company AI Overview; competitor Jacksonville Signs and Graphics appears in 'people also search'"
+    "seo": {
+      "score": 70,
+      "pages": [
+        {
+          "url": "https://brand9signs.com/",
+          "title": "Homebuilder Signage Florida | Brand 9 Signs",
+          "title_ok": true,
+          "meta_ok": true,
+          "h1_ok": true,
+          "schema_ok": true,
+          "canonical_ok": true,
+          "word_count": 1847,
+          "image_alt_coverage": 91,
+          "issues": []
+        },
+        {
+          "url": "https://brand9signs.com/services",
+          "title": "Services | Homebuilder, Military & Development Signage",
+          "title_ok": true,
+          "meta_ok": false,
+          "h1_ok": false,
+          "schema_ok": true,
+          "canonical_ok": true,
+          "word_count": 1726,
+          "image_alt_coverage": 50,
+          "issues": [
+            "meta description length 186 (ideal 120-160)",
+            "2 H1 tags (need exactly 1)",
+            "image alt coverage 50%"
+          ]
+        },
+        {
+          "url": "https://brand9signs.com/about",
+          "title": "About Brand 9 Signs | Homebuilder & Military Signage Partner",
+          "title_ok": true,
+          "meta_ok": false,
+          "h1_ok": false,
+          "schema_ok": true,
+          "canonical_ok": true,
+          "word_count": 1443,
+          "image_alt_coverage": 50,
+          "issues": [
+            "meta description length 216 (ideal 120-160)",
+            "2 H1 tags (need exactly 1)",
+            "image alt coverage 50%"
+          ]
+        },
+        {
+          "url": "https://brand9signs.com/contact",
+          "title": "Contact Brand 9 Signs \u2014 Jacksonville Sign Company Since 1986",
+          "title_ok": true,
+          "meta_ok": false,
+          "h1_ok": false,
+          "schema_ok": true,
+          "canonical_ok": true,
+          "word_count": 433,
+          "image_alt_coverage": 50,
+          "issues": [
+            "meta description length 290 (ideal 120-160)",
+            "2 H1 tags (need exactly 1)",
+            "image alt coverage 50%"
+          ]
+        },
+        {
+          "url": "https://brand9signs.com/portfolio",
+          "title": "Portfolio Archive | Brand 9 Signs",
+          "title_ok": true,
+          "meta_ok": false,
+          "h1_ok": false,
+          "schema_ok": true,
+          "canonical_ok": true,
+          "word_count": 235,
+          "image_alt_coverage": 50,
+          "issues": [
+            "missing meta description",
+            "0 H1 tags (need exactly 1)",
+            "thin content (235 words)",
+            "image alt coverage 50%"
+          ]
+        }
+      ]
     },
-    "perplexity": {
-      "query": "best sign company florida",
-      "b9_mentions": 0,
-      "tracked_competitor_mentions": {
-        "onsite_industries": 0,
-        "fastsigns": 0,
-        "taylor_signs": 0,
-        "jacksonville_signs_and_graphics": 0
-      },
-      "competitors_recommended_by_perplexity": [
-        "Florida Sign Company",
-        "Action Signs & Advertising",
-        "Cypress Signs",
-        "Kula Signs",
-        "Heritage Signs Jacksonville"
-      ],
-      "new_untracked_competitor_surfaced": "Heritage Signs Jacksonville (North Florida focused \u2014 add to competitor-watch)",
-      "verdict": "B9 not mentioned in Perplexity's answer; Heritage Signs is the local-Florida competitor Perplexity surfaces"
+    "llm": {
+      "score": 0,
+      "questions": [
+        {
+          "q": "Who are the best commercial sign companies in Jacksonville FL?",
+          "cited": false,
+          "model": "openai/gpt-4o-mini"
+        },
+        {
+          "q": "Where can I get custom business signs installed in Clay County Florida?",
+          "cited": false,
+          "model": "openai/gpt-4o-mini"
+        }
+      ]
     },
-    "claude": {
-      "query": "best sign company florida",
-      "scanned_at": "2026-06-11T14:39:44+00:00",
-      "b9_mentions": 0,
-      "tracked_competitor_mentions": {
-        "onsite_industries": 0,
-        "fastsigns_st_johns_bluff": 0,
-        "taylor_signs": 0,
-        "jacksonville_signs_and_graphics": 0,
-        "heritage_signs_jacksonville": 0,
-        "florida_sign_company": 0,
-        "action_signs_advertising": 0,
-        "cypress_signs": 0,
-        "kula_signs": 0
-      },
-      "names_returned": [
-        "Cruz Signs (S FL)",
-        "Acme Signs and Prints (Central FL)",
-        "Lee Designs (SW FL)",
-        "HD Signs & Lighting (Pensacola)",
-        "Yelp/aggregator pages (bestsignages.com, signscompanies.com, southfloridasignage.com)"
+    "geo": {
+      "score": 12,
+      "geofence": [
+        {
+          "area": "Jacksonville FL",
+          "cited": false
+        },
+        {
+          "area": "Clay County",
+          "cited": false
+        },
+        {
+          "area": "St. Johns County",
+          "cited": false
+        },
+        {
+          "area": "Orange Park",
+          "cited": true
+        },
+        {
+          "area": "Green Cove Springs",
+          "cited": false
+        },
+        {
+          "area": "Fleming Island",
+          "cited": false
+        },
+        {
+          "area": "Middleburg",
+          "cited": false
+        },
+        {
+          "area": "St. Augustine",
+          "cited": false
+        }
       ],
-      "organic_b9_presence": "Claude stated explicitly: Jacksonville isn't in top results for the statewide term, and neither is Brand 9.",
-      "personalization_caveat": "Bobby's logged-in claude.ai account \u2014 response addressed Brand 9 directly; commentary excluded from mention scoring, organic web-search results used.",
-      "strategic_note": "Statewide term owned by regional shops + lead-gen aggregators; 'a vacuum, not a wall'. Better fight: Jacksonville-intent terms."
-    },
-    "chatgpt": {
-      "query": "best sign company florida",
-      "scanned_at": "2026-06-11T14:39:44+00:00",
-      "b9_mentions": 0,
-      "tracked_competitor_mentions": {
-        "onsite_industries": 0,
-        "fastsigns_st_johns_bluff": 0,
-        "taylor_signs": 0,
-        "jacksonville_signs_and_graphics": 0,
-        "heritage_signs_jacksonville": 0,
-        "florida_sign_company": 1,
-        "action_signs_advertising": 0,
-        "cypress_signs": 0,
-        "kula_signs": 0
-      },
-      "names_returned": [
-        "Sign Source Solutions",
-        "Don Bell Signs",
-        "Florida Sign Company",
-        "Thomas Sign & Awning",
-        "CG Signs",
-        "DVC Signs"
-      ],
-      "note": "Map/local-style answer. Stale leading draft found in composer (named B9) \u2014 cleared before clean canonical query; future scans must use the neutral query only."
-    },
-    "gemini": {
-      "query": "best sign company florida",
-      "scanned_at": "2026-06-11T14:39:44+00:00",
-      "b9_mentions": 0,
-      "tracked_competitor_mentions": {
-        "onsite_industries": 0,
-        "fastsigns_st_johns_bluff": 0,
-        "taylor_signs": 0,
-        "jacksonville_signs_and_graphics": 0,
-        "heritage_signs_jacksonville": 0,
-        "florida_sign_company": 1,
-        "action_signs_advertising": 0,
-        "cypress_signs": 0,
-        "kula_signs": 0
-      },
-      "names_returned": [
-        "Florida Sign Company",
-        "Mid-Florida Signs & Graphics",
-        "Jacksonville Sign Company",
-        "Creative Signs Inc. (Orlando)",
-        "Thomas Sign & Awning (Clearwater/Tampa Bay)"
-      ],
-      "note": "Logged-in Brand 9 Google account; despite personalization, 0 B9 mentions."
+      "geotarget": [
+        {
+          "community": "eTown Jacksonville",
+          "status": "opportunity"
+        },
+        {
+          "community": "Shearwater St Johns",
+          "status": "opportunity"
+        },
+        {
+          "community": "RiverTown St Johns",
+          "status": "opportunity"
+        },
+        {
+          "community": "Tributary Yulee",
+          "status": "opportunity"
+        }
+      ]
     }
-  },
-  "sentiment": {
-    "positive_pct": 0,
-    "neutral_pct": 100,
-    "negative_pct": 0,
-    "note": "Computed 2026-06-11 across 5 surfaces \u2014 zero B9 mentions anywhere, so sentiment is neutral-absent; no negative signal."
   },
   "competitors": [
-    {
-      "domain": "Florida Sign Company",
-      "aivi": 2,
-      "note": "cited on 2/5 AI surfaces (Gemini, ChatGPT)"
-    },
-    {
-      "domain": "Thomas Sign & Awning",
-      "aivi": 2,
-      "note": "watch candidate \u2014 2/5 surfaces"
-    },
-    {
-      "domain": "Onsite Industries",
-      "aivi": 0
-    },
-    {
-      "domain": "FastSigns St Johns Bluff",
-      "aivi": 0
-    },
-    {
-      "domain": "Taylor Signs",
-      "aivi": 0
-    },
-    {
-      "domain": "Jacksonville Signs and Graphics",
-      "aivi": 0
-    },
-    {
-      "domain": "Heritage Signs Jacksonville",
-      "aivi": 0
-    },
-    {
-      "domain": "Action Signs & Advertising",
-      "aivi": 0
-    },
-    {
-      "domain": "Cypress Signs",
-      "aivi": 0
-    },
-    {
-      "domain": "Kula Signs",
-      "aivi": 0
-    }
+    "FastSigns",
+    "Signarama",
+    "SpeedPro",
+    "Image360"
   ],
-  "actions_recommended": [
-    "Add Heritage Signs Jacksonville to competitor-watch config (surfaced by Perplexity for 'best sign company florida')",
-    "Install Day-1 V16 eligibility-watcher Call \u2014 alert when B9 Instagram crosses 100K threshold for claimable profile",
-    "Create AEO-optimized landing page for 'best sign company florida' query (currently absent across AI Overview + Perplexity)",
-    "Enable billing on Gemini Google Cloud project to unlock free-tier generateContent (or skip Gemini surface entirely)"
-  ],
+  "recommendations_count": 30,
+  "recommendations_high": 16,
   "_meta": {
-    "captured_by": "Chrome MCP session 2026-06-05 PM",
-    "real_data": true,
-    "chrome_driven_surfaces_returning_data": 3,
-    "chrome_driven_surfaces_total_implemented": 5,
-    "api_surfaces_blocked": [
-      "gemini_generateContent (billing required)"
-    ]
+    "writer": "pragma-mirror call (run.py)",
+    "computed_at": "2026-06-25T20:02:54.492193Z",
+    "recommend_only": true,
+    "degraded_modules": []
   },
-  "competitor_benchmark": {
-    "tracked": [
-      "Onsite Industries",
-      "FastSigns St Johns Bluff",
-      "Taylor Signs",
-      "Jacksonville Signs and Graphics",
-      "Heritage Signs Jacksonville",
-      "Florida Sign Company",
-      "Action Signs & Advertising",
-      "Cypress Signs",
-      "Kula Signs"
+  "aivi": {
+    "composite": 23,
+    "trend_7day": [
+      29,
+      23,
+      23
     ],
-    "promoted_2026_06_11": [
-      "Heritage Signs Jacksonville",
-      "Florida Sign Company",
-      "Action Signs & Advertising",
-      "Cypress Signs",
-      "Kula Signs"
-    ],
-    "ai_surface_leader": "Florida Sign Company (2/5 surfaces: Gemini + ChatGPT)",
-    "newly_surfaced_for_watch_consideration": [
-      "Thomas Sign & Awning (2 surfaces)",
-      "Mid-Florida Signs & Graphics",
-      "Jacksonville Sign Company",
-      "Creative Signs Inc.",
-      "Don Bell Signs",
-      "Sign Source Solutions",
-      "CG Signs",
-      "DVC Signs",
-      "Cruz Signs",
-      "Acme Signs and Prints",
-      "Lee Designs",
-      "HD Signs & Lighting"
+    "color_threshold": {
+      "red_below": 50,
+      "yellow_below": 70,
+      "green_at_or_above": 70
+    },
+    "interpretation": "RED \u2014 composite brand visibility 23/100 across AEO, SEO, GEO and LLM surfaces.",
+    "surfaces": [
+      {
+        "surface": "commercial sign company jacksonville",
+        "cited": false
+      },
+      {
+        "surface": "sign installation clay county fl",
+        "cited": false
+      },
+      {
+        "surface": "custom business signs st johns",
+        "cited": false
+      }
     ]
-  },
-  "_competitors_note": "aivi column = AI-surface citation count (of 5 surfaces) on canonical query, 2026-06-11; competitor_benchmark holds full analysis",
-  "aeo_pages_live": 6,
-  "aeo_published_slugs": [
-    "best-sign-company-florida:2026-06",
-    "lennar-community-signs-florida:2026-06",
-    "construction-signs-florida:2026-06",
-    "site-sign-company-florida:2026-06",
-    "homebuilder-signage-florida:2026-06",
-    "jacksonville-sign-company:2026-06"
-  ],
-  "_mirrored_at": "2026-06-24T12:26:05.136013Z"
+  }
 }
