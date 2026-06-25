@@ -1,101 +1,90 @@
 {
   "_meta": {
     "schema_version": "4.1",
-    "last_write": "2026-06-25T07:32:44.531310+00:00",
-    "heartbeat_ts": "2026-06-25T07:30:40.290082Z",
-    "writer": "hermes-status-writer-cron",
-    "source": "hermes-status-writer"
+    "last_write": "2026-06-25T07:41:57.467398+00:00",
+    "heartbeat_ts": "2026-06-25T07:40:30.766207Z",
+    "writer": "hermes-status-writer (cron)",
+    "source": "hermes-status-writer skill"
   },
   "hermes_gateway": {
     "status": "RUNNING",
     "pid": 3599,
     "telegram": "connected",
     "active_agents": 0,
-    "updated_at": "2026-06-24T21:15:09.922208+00:00"
+    "updated_at": "2026-06-25T07:41:57.467398+00:00"
   },
   "ecosystem_health": {
-    "verdict": "DEGRADED",
+    "verdict": "OK",
     "gateway_ok": true,
     "wild_ducks_ok": true,
+    "degradation_reason": "none",
+    "recommended_action": "none",
+    "warn_agents": {},
     "health_snapshot_verdict": "HEALTHY-IDLE (flock-gap)",
-    "health_snapshot_ts": "2026-06-25T07:30:56.848523+00:00",
-    "degradation_reason": "4 cron jobs in error: hermes-gsc-daily-review, Hermes GSC Daily Telegram Alert, 749 Pile Change Detector, hermes-lens-auth-pull",
-    "recommended_action": "Review error jobs: hermes-gsc-daily-review, Hermes GSC Daily Telegram Alert, 749 Pile Change Detector, hermes-lens-auth-pull"
+    "health_snapshot_ts": "2026-06-25T07:41:09.421795+00:00"
   },
   "wild_ducks": {
     "count": 13,
-    "active": 13,
-    "heartbeat_agents": 32,
+    "canonical": true,
     "state_files": 29,
-    "note": "Canonical count: 13. Heartbeat shows 32 agent entries."
+    "note": "canonical count per Bobby; state dir has 29 files"
   },
   "calls": {
     "count": 17,
-    "active": 15,
-    "error_count": 4,
-    "error_jobs": [
-      "hermes-gsc-daily-review",
-      "Hermes GSC Daily Telegram Alert",
-      "749 Pile Change Detector",
-      "hermes-lens-auth-pull"
-    ]
+    "cron_jobs": 17
   },
   "memory": {
-    "count": 390,
-    "path": "~/.hermes/memories/"
-  },
-  "skills": {
-    "count": 547,
-    "path": "~/.hermes/skills/"
+    "files": 390,
+    "skills": 547
   },
   "tasks": {
     "inbox_pending": 0,
-    "reports_today": 0,
-    "today": "2026-06-25"
+    "adoption_pending": 0,
+    "reports_today": 0
   },
   "lens_briefs": {
     "last_7d": 5,
     "job_id": "666d3f953cc9",
-    "last_status": "error"
+    "last_run": "",
+    "next_run": ""
   },
-  "competitive_advantage": {
+  "competitive_advantage_systems": {
     "invh_monitor": {
       "status": "active",
+      "runs": 23,
       "last_run": "",
       "next_run": "",
       "schedule": "10 8,12,16,20 * * *",
-      "runs": 23,
       "job_id": "da07bb54b0dd"
     },
     "performance_optimizer": {
       "status": "active",
+      "runs": 4,
       "last_run": "",
       "next_run": "",
       "schedule": "0 9 * * *",
-      "runs": 4,
       "job_id": "4208bf096ba9"
     },
     "failure_mitigation": {
       "status": "active",
+      "runs": 1379,
       "last_run": "",
       "next_run": "",
       "schedule": "*/5 * * * *",
-      "runs": 1377,
       "job_id": "143364bcdd24"
     }
   },
-  "disk_resources": {
-    "disk_used_pct": "14%",
-    "disk_avail": "75Gi",
-    "source": "/"
-  },
   "cron_health": {
     "total_jobs": 17,
-    "ok_jobs": 11,
-    "error_jobs_count": 4,
-    "inbox_poller_runs": 6231,
-    "health_check_runs": 1377,
-    "status_writer_runs": 700
+    "inbox_poller_runs": 6240,
+    "health_check_runs": 1379,
+    "status_writer_runs": 701,
+    "error_jobs": [],
+    "jobs_with_errors": 0
+  },
+  "disk_resources": {
+    "disk_used_pct": 14,
+    "disk_avail": "75Gi"
   },
   "data_live": {
     "wild_duck_count": 13,
@@ -109,9 +98,9 @@
     "invh_ci_runs": 23,
     "performance_optimizer_active": true,
     "failure_mitigation_active": true,
-    "health_checks_completed": 1377,
-    "inbox_poller_runs": 6231,
+    "health_checks_completed": 1379,
+    "inbox_poller_runs": 6240,
     "gateway_status": "RUNNING",
-    "ecosystem_verdict": "DEGRADED"
+    "ecosystem_verdict": "OK"
   }
 }
