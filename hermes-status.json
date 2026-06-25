@@ -1,10 +1,10 @@
 {
   "_meta": {
     "schema_version": "4.1",
-    "last_write": "2026-06-25T02:11:11Z",
-    "heartbeat_ts": "2026-06-25T02:06:14.819927Z",
-    "writer": "hermes-status-writer (cron run #669)",
-    "source": "hermes-status-writer cron job"
+    "last_write": "2026-06-25T02:21:14.079059+00:00",
+    "heartbeat_ts": "2026-06-25T02:15:24.492683Z",
+    "writer": "hermes-status-writer cron job (run 9)",
+    "source": "hermes-sandbox/heartbeat.json + gateway_state.json + cron/jobs.json"
   },
   "hermes_gateway": {
     "status": "RUNNING",
@@ -17,74 +17,102 @@
     "verdict": "OK",
     "gateway_ok": true,
     "wild_ducks_ok": true,
-    "degradation_reason": "4 cron jobs in error state",
-    "recommended_action": "Fix certifi bundle for GSC cron; restore 749-change-detector.sh and lens-auth-pull.sh scripts",
-    "health_snapshot_verdict": "HEALTHY-IDLE"
+    "jobs_in_error": [
+      "hermes-gsc-daily-review",
+      "hermes-lens-auth-pull",
+      "749-pile-change-detector",
+      "hermes-gsc-daily-telegram-alert"
+    ],
+    "degradation_reason": "4 cron jobs in error state (certifi CA bundle, missing scripts)",
+    "recommended_action": "Fix certifi: pip install --force-reinstall certifi. Restore missing shell scripts."
   },
   "wild_ducks": {
     "count": 13,
-    "canonical": true,
-    "state_dir_files": 29,
-    "note": "13 canonical Wild Ducks; state dir count reflects all runtime files"
+    "canonical_count": 13,
+    "active": 13,
+    "stale": 0,
+    "note": "Canonical count per Bobby. Heartbeat reports 26 ducks (includes all registered stubs).",
+    "flock_ok": true
   },
   "calls": {
-    "count": 17,
-    "active_jobs": [
-      { "name": "hermes-inbox-poller", "runs": 5923, "last_status": "ok", "next_run": "2026-06-24T22:11:00-04:00" },
-      { "name": "invh-4x-daily-competitive-monitor", "runs": 23, "last_status": "ok", "next_run": "2026-06-25T08:10:00-04:00" },
-      { "name": "construct-5min-health-check", "runs": 1312, "last_status": "ok", "next_run": "2026-06-24T22:15:00-04:00" },
-      { "name": "daily-construct-performance-optimization", "runs": 4, "last_status": "ok", "next_run": "2026-06-25T09:00:00-04:00" },
-      { "name": "hermes-status-writer", "runs": 668, "last_status": "ok", "next_run": "2026-06-24T22:20:00-04:00" },
-      { "name": "hermes-lens-auth-pull", "runs": 5, "last_status": "error", "next_run": "2026-06-25T09:25:00-04:00" },
-      { "name": "wolf-discovery-daily-scan", "runs": 5, "last_status": "ok", "next_run": "2026-06-25T06:30:00-04:00" },
-      { "name": "wolf-dashboard-autosync", "runs": 228, "last_status": "ok", "next_run": "2026-06-24T22:30:00-04:00" },
-      { "name": "hermes-gsc-daily-review", "runs": 4, "last_status": "error", "next_run": "2026-06-25T06:00:00-04:00" },
-      { "name": "construct-dashboard-autosync", "runs": 695, "last_status": "ok", "next_run": "2026-06-24T22:15:00-04:00" }
-    ]
+    "count": 16,
+    "total_cron_jobs": 17,
+    "enabled": 16,
+    "jobs_in_error": 4,
+    "inbox_poller_runs": 5931,
+    "wolf_discovery_runs": 5,
+    "health_check_runs": 1314
   },
-  "memory": { "count": 390, "path": "~/.hermes/memories/" },
-  "skills": { "count": 547, "path": "~/.hermes/skills/" },
-  "tasks": { "inbox_pending": 0, "reports_today": 0, "adoption_pending": 0 },
-  "lens_briefs": { "last_7d": 5, "source": "hermes-lens-auth-pull repeat.completed" },
+  "memory": {
+    "count": 390,
+    "directory": "~/.hermes/memories/"
+  },
+  "skills": {
+    "count": 547,
+    "directory": "~/.hermes/skills/"
+  },
+  "tasks": {
+    "inbox_pending": 0,
+    "reports_today": 0,
+    "archive_ok": true,
+    "note": "Inbox clear. reports_today=0 (no reports matching today's date in hermes-reports/)"
+  },
+  "lens_briefs": {
+    "last_7d": 5,
+    "lens_pull_runs": 5,
+    "last_run": "2026-06-24T09:25:58.089605-04:00",
+    "last_status": "error",
+    "note": "lens-auth-pull job in error (bash 'close' command not found line 87)"
+  },
   "competitive_advantage": {
     "invh_monitor": {
       "status": "active",
       "last_run": "2026-06-24T20:17:15.551255-04:00",
       "next_run": "2026-06-25T08:10:00-04:00",
-      "schedule": "4x daily at 08:10, 12:10, 16:10, 20:10 ET",
-      "job_id": "da07bb54b0dd",
-      "runs_completed": 23
+      "schedule": "10 8,12,16,20 * * *",
+      "total_runs": 23,
+      "last_status": "ok",
+      "job_id": "da07bb54b0dd"
     },
     "performance_optimizer": {
       "status": "active",
       "last_run": "2026-06-23T09:00:53.046123-04:00",
       "next_run": "2026-06-25T09:00:00-04:00",
-      "schedule": "daily 09:00 ET",
-      "job_id": "4208bf096ba9",
-      "runs_completed": 4
+      "schedule": "daily 09:00",
+      "total_runs": 4,
+      "last_status": "ok",
+      "job_id": "4208bf096ba9"
     },
     "failure_mitigation": {
       "status": "active",
-      "last_run": "2026-06-24T22:06:35.494579-04:00",
-      "next_run": "2026-06-24T22:15:00-04:00",
+      "last_run": "2026-06-24T22:15:51.434905-04:00",
+      "next_run": "2026-06-24T22:25:00-04:00",
       "schedule": "every 5 min",
-      "job_id": "143364bcdd24",
-      "runs_completed": 1312
+      "total_runs": 1314,
+      "last_status": "ok",
+      "job_id": "143364bcdd24"
     }
   },
   "disk_resources": {
-    "disk_used_pct": 65,
-    "disk_avail_gb": 74,
-    "hermes_cpu_pct_max": 5.4,
-    "hermes_mem_pct_max": 1.6
+    "volume": "/System/Volumes/Data",
+    "size_gb": 228,
+    "used_gb": 133,
+    "avail_gb": 74,
+    "capacity_pct": 65
   },
   "cron_health": {
     "total_jobs": 17,
-    "error_jobs": ["hermes-gsc-daily-review", "Hermes GSC Daily Telegram Alert", "749 Pile Change Detector", "hermes-lens-auth-pull"],
-    "error_count": 4,
-    "inbox_poller_runs": 5923,
-    "health_checks_completed": 1312,
-    "status_writer_runs": 668
+    "jobs_ok": 13,
+    "jobs_in_error": 4,
+    "error_jobs": [
+      "hermes-gsc-daily-review",
+      "hermes-lens-auth-pull",
+      "749-pile-change-detector",
+      "hermes-gsc-daily-telegram-alert"
+    ],
+    "inbox_poller_ok": true,
+    "health_check_ok": true,
+    "updated_at": "2026-06-24T22:20:06.964009-04:00"
   },
   "data_live": {
     "wild_duck_count": 13,
@@ -98,8 +126,8 @@
     "invh_ci_runs": 23,
     "performance_optimizer_active": true,
     "failure_mitigation_active": true,
-    "health_checks_completed": 1312,
-    "inbox_poller_runs": 5923,
+    "health_checks_completed": 1314,
+    "inbox_poller_runs": 5931,
     "gateway_status": "RUNNING",
     "ecosystem_verdict": "OK"
   }
