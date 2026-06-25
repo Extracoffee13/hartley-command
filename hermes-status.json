@@ -1,10 +1,10 @@
 {
   "_meta": {
     "schema_version": "4.1",
-    "last_write": "2026-06-25T04:31:25.113320+00:00",
-    "heartbeat_ts": "2026-06-25T04:25:28.736560Z",
-    "writer": "hermes-status-writer cron job",
-    "source": "cron/jobs.json + gateway_state.json + heartbeat.json"
+    "last_write": "2026-06-25T04:42:07Z",
+    "heartbeat_ts": "2026-06-25T04:40:34.346606Z",
+    "writer": "hermes-status-writer cron",
+    "source": "hermes-status-writer/SKILL.md"
   },
   "hermes_gateway": {
     "status": "RUNNING",
@@ -17,89 +17,102 @@
     "verdict": "DEGRADED",
     "gateway_ok": true,
     "wild_ducks_ok": true,
-    "health_verdict_raw": "HEALTHY-IDLE",
     "degradation_reason": "4 cron jobs in error: hermes-gsc-daily-review, Hermes GSC Daily Telegram Alert, 749 Pile Change Detector, hermes-lens-auth-pull",
-    "recommended_action": "Fix 4 erroring cron jobs: certifi CA bundle repair, missing script files, GSC CSV path",
-    "warn_agents": ["wolf-state-watcher", "memory-capture"],
-    "disk": "65% used (73Gi avail)"
+    "recommended_action": "Fix erroring cron jobs"
   },
   "wild_ducks": {
     "count": 13,
-    "canonical": true,
-    "state_files": 29,
-    "heartbeat_note": "26 ducks: 26 ok, 0 stale, 0 no-hb",
-    "source": "Bobby-specified canonical count (sandbox state dir cleared on restart)"
+    "active": 13,
+    "stale": 0,
+    "note": "Canonical count per Bobby. State dir cleared on restart."
   },
   "calls": {
-    "count": 16,
-    "active_enabled": 12,
-    "errors": 4,
-    "error_jobs": ["hermes-gsc-daily-review", "Hermes GSC Daily Telegram Alert", "749 Pile Change Detector", "hermes-lens-auth-pull"]
+    "count": 17,
+    "active": 11,
+    "erroring": 4,
+    "error_jobs": [
+      "hermes-gsc-daily-review",
+      "Hermes GSC Daily Telegram Alert",
+      "749 Pile Change Detector",
+      "hermes-lens-auth-pull"
+    ]
   },
-  "memory": {"count": 390, "path": "~/.hermes/memories/"},
-  "skills": {"count": 547, "path": "~/.hermes/skills/"},
+  "memory": {
+    "count": 390,
+    "path": "~/.hermes/memories/"
+  },
+  "skills": {
+    "count": 547,
+    "path": "~/.hermes/skills/"
+  },
   "tasks": {
     "inbox_pending": 0,
     "reports_today": 0,
-    "inbox_poller_runs": 6057,
-    "last_inbox_poll": "2026-06-25T00:30:12.558136-04:00"
+    "adoption_pending": 0
   },
   "lens_briefs": {
     "count_7d": 5,
     "source_job": "hermes-lens-auth-pull",
-    "last_run": "2026-06-24T09:25:58.089605-04:00",
-    "last_status": "error"
+    "last_run": "",
+    "status": "error"
   },
   "competitive_advantage": {
     "invh_monitor": {
       "status": "active",
-      "last_run": "2026-06-24T20:17:15.551255-04:00",
-      "next_run": "2026-06-25T08:10:00-04:00",
-      "schedule": "4x daily (08:10, 12:10, 16:10, 20:10 ET)",
+      "last_run": "",
+      "next_run": "",
+      "schedule": "4x daily",
       "job_id": "da07bb54b0dd",
-      "runs_completed": 23
+      "total_runs": 23
     },
     "performance_optimizer": {
       "status": "active",
-      "last_run": "2026-06-23T09:00:53.046123-04:00",
-      "next_run": "2026-06-25T09:00:00-04:00",
-      "schedule": "daily 09:00 ET",
+      "last_run": "",
+      "next_run": "",
+      "schedule": "daily 09:00",
       "job_id": "4208bf096ba9",
-      "runs_completed": 4
+      "total_runs": 4
     },
     "failure_mitigation": {
       "status": "active",
-      "last_run": "2026-06-25T00:26:11.622384-04:00",
-      "next_run": "2026-06-25T00:35:00-04:00",
+      "last_run": "",
       "schedule": "every 5 min",
       "job_id": "143364bcdd24",
-      "runs_completed": 1340
+      "total_runs": 1343
     }
   },
   "disk_resources": {
     "disk_used_pct": 14,
-    "disk_avail": "73Gi",
-    "raw": "228Gi total, 12Gi used, 73Gi avail, 14% used"
+    "disk_avail": "73Gi"
   },
   "cron_health": {
-    "total_jobs": 16,
+    "total_jobs": 17,
     "jobs_ok": 11,
     "jobs_error": 4,
-    "jobs_never_run": 1,
-    "error_jobs": ["hermes-gsc-daily-review", "Hermes GSC Daily Telegram Alert", "749 Pile Change Detector", "hermes-lens-auth-pull"],
-    "inbox_poller_runs": 6057,
-    "health_checks_completed": 1340,
-    "invh_ci_runs": 23
+    "jobs_pending": 2,
+    "inbox_poller_runs": 6068,
+    "health_check_runs": 1343,
+    "status_writer_runs": 683,
+    "error_job_names": [
+      "hermes-gsc-daily-review",
+      "Hermes GSC Daily Telegram Alert",
+      "749 Pile Change Detector",
+      "hermes-lens-auth-pull"
+    ]
   },
-  "heartbeat_agents": {
-    "total": 7,
-    "ok": 4,
-    "warn": 2,
-    "idle": 1
+  "health_snapshot": {
+    "path": "workspace/health/20260625T043538Z.json",
+    "verdict": "HEALTHY-IDLE",
+    "check_utc": "2026-06-25T04:35:38.770492+00:00",
+    "warn_agents": [
+      "wolf-state-watcher",
+      "memory-capture"
+    ],
+    "notes": "29 stale agents are a bulk flock-cadence artifact (~373min, all ok/idle). 2 warn agents are persistent-missing-path (wolf not deployed, no hermes-reports yet) \u2014 known pattern, no action needed."
   },
   "data_live": {
     "wild_duck_count": 13,
-    "calls_count": 16,
+    "calls_count": 17,
     "memory_count": 390,
     "skills_count": 547,
     "inbox_pending": 0,
@@ -109,8 +122,8 @@
     "invh_ci_runs": 23,
     "performance_optimizer_active": true,
     "failure_mitigation_active": true,
-    "health_checks_completed": 1340,
-    "inbox_poller_runs": 6057,
+    "health_checks_completed": 1343,
+    "inbox_poller_runs": 6068,
     "gateway_status": "RUNNING",
     "ecosystem_verdict": "DEGRADED"
   }
