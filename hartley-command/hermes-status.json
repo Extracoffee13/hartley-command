@@ -2,7 +2,7 @@
   "_meta": {
     "schema_version": "4.1",
     "last_write": "2026-06-25T03:01:33.661264+00:00",
-    "heartbeat_ts": "2026-06-25T02:55:28.703664Z",
+    "heartbeat_ts": "2026-06-25T03:10:37.553021+00:00",
     "writer": "hermes-status-writer cron job (run #674)",
     "source": "gateway_state.json + cron/jobs.json + heartbeat.json + health snapshot"
   },
@@ -57,22 +57,102 @@
     "total_inbox_poller_runs": 5970,
     "total_health_check_runs": 1322,
     "summary": [
-      {"name": "wolf-discovery-daily-scan", "runs": 5, "status": "ok", "next_run": "2026-06-25T06:30:00-04:00"},
-      {"name": "hermes-inbox-poller", "runs": 5970, "status": "ok", "next_run": "2026-06-24T23:01:00-04:00"},
-      {"name": "invh-4x-daily-competitive-monitor", "runs": 23, "status": "ok", "next_run": "2026-06-25T08:10:00-04:00"},
-      {"name": "daily-construct-performance-optimization", "runs": 4, "status": "ok", "next_run": "2026-06-25T09:00:00-04:00"},
-      {"name": "construct-5min-health-check", "runs": 1322, "status": "ok", "next_run": "2026-06-24T23:05:00-04:00"},
-      {"name": "wolf-dashboard-autosync", "runs": 229, "status": "ok", "next_run": "2026-06-24T23:30:00-04:00"},
-      {"name": "hermes-status-writer", "runs": 673, "status": "ok", "next_run": "2026-06-24T23:10:00-04:00"},
-      {"name": "construct-dashboard-autosync", "runs": 705, "status": "ok", "next_run": "2026-06-24T23:05:00-04:00"},
-      {"name": "construct-dashboard-counts-updater", "runs": 5, "status": "ok", "next_run": "2026-06-25T08:05:00-04:00"},
-      {"name": "pragma-gsc-recovery-monthly", "runs": 0, "status": null, "next_run": "2026-07-01T06:00:00-04:00"},
-      {"name": "hermes-gsc-daily-review", "runs": 4, "status": "error", "next_run": "2026-06-25T06:00:00-04:00"},
-      {"name": "Hermes GSC Daily Telegram Alert", "runs": 5, "status": "error", "next_run": "2026-06-25T09:10:00-04:00"},
-      {"name": "SSH Availability Check (B9 Server)", "runs": 31, "status": "ok", "next_run": "2026-06-25T00:00:00-04:00"},
-      {"name": "749 Pile Change Detector", "runs": 6, "status": "error", "next_run": "2026-06-25T14:00:00-04:00"},
-      {"name": "hermes-lens-auth-pull", "runs": 5, "status": "error", "next_run": "2026-06-25T09:25:00-04:00"},
-      {"name": "hermes-lens-auth-pull-watcher", "runs": 6643, "status": "ok", "next_run": "2026-06-24T23:01:00-04:00"}
+      {
+        "name": "wolf-discovery-daily-scan",
+        "runs": 5,
+        "status": "ok",
+        "next_run": "2026-06-25T06:30:00-04:00"
+      },
+      {
+        "name": "hermes-inbox-poller",
+        "runs": 5970,
+        "status": "ok",
+        "next_run": "2026-06-24T23:01:00-04:00"
+      },
+      {
+        "name": "invh-4x-daily-competitive-monitor",
+        "runs": 23,
+        "status": "ok",
+        "next_run": "2026-06-25T08:10:00-04:00"
+      },
+      {
+        "name": "daily-construct-performance-optimization",
+        "runs": 4,
+        "status": "ok",
+        "next_run": "2026-06-25T09:00:00-04:00"
+      },
+      {
+        "name": "construct-5min-health-check",
+        "runs": 1322,
+        "status": "ok",
+        "next_run": "2026-06-24T23:05:00-04:00"
+      },
+      {
+        "name": "wolf-dashboard-autosync",
+        "runs": 229,
+        "status": "ok",
+        "next_run": "2026-06-24T23:30:00-04:00"
+      },
+      {
+        "name": "hermes-status-writer",
+        "runs": 673,
+        "status": "ok",
+        "next_run": "2026-06-24T23:10:00-04:00"
+      },
+      {
+        "name": "construct-dashboard-autosync",
+        "runs": 705,
+        "status": "ok",
+        "next_run": "2026-06-24T23:05:00-04:00"
+      },
+      {
+        "name": "construct-dashboard-counts-updater",
+        "runs": 5,
+        "status": "ok",
+        "next_run": "2026-06-25T08:05:00-04:00"
+      },
+      {
+        "name": "pragma-gsc-recovery-monthly",
+        "runs": 0,
+        "status": null,
+        "next_run": "2026-07-01T06:00:00-04:00"
+      },
+      {
+        "name": "hermes-gsc-daily-review",
+        "runs": 4,
+        "status": "error",
+        "next_run": "2026-06-25T06:00:00-04:00"
+      },
+      {
+        "name": "Hermes GSC Daily Telegram Alert",
+        "runs": 5,
+        "status": "error",
+        "next_run": "2026-06-25T09:10:00-04:00"
+      },
+      {
+        "name": "SSH Availability Check (B9 Server)",
+        "runs": 31,
+        "status": "ok",
+        "next_run": "2026-06-25T00:00:00-04:00"
+      },
+      {
+        "name": "749 Pile Change Detector",
+        "runs": 6,
+        "status": "error",
+        "next_run": "2026-06-25T14:00:00-04:00"
+      },
+      {
+        "name": "hermes-lens-auth-pull",
+        "runs": 5,
+        "status": "error",
+        "next_run": "2026-06-25T09:25:00-04:00"
+      },
+      {
+        "name": "hermes-lens-auth-pull-watcher",
+        "runs": 6643,
+        "status": "ok",
+        "next_run": "2026-06-24T23:01:00-04:00"
+      }
     ]
   },
   "memory": {
