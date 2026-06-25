@@ -1,36 +1,41 @@
 {
   "_meta": {
     "schema_version": "4.1",
-    "last_write": "2026-06-25T04:42:07Z",
-    "heartbeat_ts": "2026-06-25T04:40:34.346606Z",
-    "writer": "hermes-status-writer cron",
-    "source": "hermes-status-writer/SKILL.md"
+    "last_write": "2026-06-25T04:52:17.040483+00:00",
+    "heartbeat_ts": "2026-06-25T04:50:30.939836Z",
+    "writer": "hermes-status-writer cron job",
+    "source": "gateway_state.json + cron/jobs.json + heartbeat.json + health snapshots"
   },
   "hermes_gateway": {
     "status": "RUNNING",
     "pid": 3599,
     "telegram": "connected",
     "active_agents": 0,
-    "updated_at": "2026-06-24T21:15:09.922208+00:00"
+    "updated_at": "2026-06-25T04:52:17.040483+00:00"
   },
   "ecosystem_health": {
     "verdict": "DEGRADED",
     "gateway_ok": true,
-    "wild_ducks_ok": true,
-    "degradation_reason": "4 cron jobs in error: hermes-gsc-daily-review, Hermes GSC Daily Telegram Alert, 749 Pile Change Detector, hermes-lens-auth-pull",
-    "recommended_action": "Fix erroring cron jobs"
+    "wild_ducks_ok": false,
+    "degradation_reason": "Jobs in error: hermes-gsc-daily-review, Hermes GSC Daily Telegram Alert, 749 Pile Change Detector, hermes-lens-auth-pull",
+    "recommended_action": "Investigate error jobs",
+    "warn_agents": [
+      "{'agent': 'wolf-state-watcher', 'note': 'wolf/state.json not found', 'classification': 'persistent-missing-path', 'action': 'none'}",
+      "{'agent': 'memory-capture', 'note': 'hermes-reports/ missing', 'classification': 'persistent-missing-path', 'action': 'none'}"
+    ],
+    "health_snapshot_ts": "2026-06-25T04:50:40.306164+00:00"
   },
   "wild_ducks": {
     "count": 13,
     "active": 13,
     "stale": 0,
-    "note": "Canonical count per Bobby. State dir cleared on restart."
+    "note": "Canonical count 13 (per Bobby); state dir cleared on restart"
   },
   "calls": {
     "count": 17,
     "active": 11,
-    "erroring": 4,
-    "error_jobs": [
+    "in_error": 4,
+    "error_job_names": [
       "hermes-gsc-daily-review",
       "Hermes GSC Daily Telegram Alert",
       "749 Pile Change Detector",
@@ -39,11 +44,11 @@
   },
   "memory": {
     "count": 390,
-    "path": "~/.hermes/memories/"
+    "directory": "~/.hermes/memories/"
   },
   "skills": {
     "count": 547,
-    "path": "~/.hermes/skills/"
+    "directory": "~/.hermes/skills/"
   },
   "tasks": {
     "inbox_pending": 0,
@@ -51,7 +56,7 @@
     "adoption_pending": 0
   },
   "lens_briefs": {
-    "count_7d": 5,
+    "last_7d": 5,
     "source_job": "hermes-lens-auth-pull",
     "last_run": "",
     "status": "error"
@@ -59,56 +64,42 @@
   "competitive_advantage": {
     "invh_monitor": {
       "status": "active",
+      "runs": 23,
       "last_run": "",
       "next_run": "",
       "schedule": "4x daily",
-      "job_id": "da07bb54b0dd",
-      "total_runs": 23
+      "job_id": "da07bb54b0dd"
     },
     "performance_optimizer": {
       "status": "active",
+      "runs": 4,
       "last_run": "",
       "next_run": "",
       "schedule": "daily 09:00",
-      "job_id": "4208bf096ba9",
-      "total_runs": 4
+      "job_id": "4208bf096ba9"
     },
     "failure_mitigation": {
       "status": "active",
+      "runs": 1345,
       "last_run": "",
       "schedule": "every 5 min",
-      "job_id": "143364bcdd24",
-      "total_runs": 1343
+      "job_id": "143364bcdd24"
     }
-  },
-  "disk_resources": {
-    "disk_used_pct": 14,
-    "disk_avail": "73Gi"
   },
   "cron_health": {
     "total_jobs": 17,
-    "jobs_ok": 11,
-    "jobs_error": 4,
-    "jobs_pending": 2,
-    "inbox_poller_runs": 6068,
-    "health_check_runs": 1343,
-    "status_writer_runs": 683,
-    "error_job_names": [
-      "hermes-gsc-daily-review",
-      "Hermes GSC Daily Telegram Alert",
-      "749 Pile Change Detector",
-      "hermes-lens-auth-pull"
-    ]
+    "ok_count": 11,
+    "error_count": 4,
+    "null_count": 2,
+    "inbox_poller_runs": 6079,
+    "health_checks_completed": 1345,
+    "status_writer_runs": 684,
+    "dash_autosync_runs": 727,
+    "wolf_dash_runs": 233
   },
-  "health_snapshot": {
-    "path": "workspace/health/20260625T043538Z.json",
-    "verdict": "HEALTHY-IDLE",
-    "check_utc": "2026-06-25T04:35:38.770492+00:00",
-    "warn_agents": [
-      "wolf-state-watcher",
-      "memory-capture"
-    ],
-    "notes": "29 stale agents are a bulk flock-cadence artifact (~373min, all ok/idle). 2 warn agents are persistent-missing-path (wolf not deployed, no hermes-reports yet) \u2014 known pattern, no action needed."
+  "disk_resources": {
+    "root_used_pct": 14,
+    "root_avail": "73Gi"
   },
   "data_live": {
     "wild_duck_count": 13,
@@ -122,8 +113,8 @@
     "invh_ci_runs": 23,
     "performance_optimizer_active": true,
     "failure_mitigation_active": true,
-    "health_checks_completed": 1343,
-    "inbox_poller_runs": 6068,
+    "health_checks_completed": 1345,
+    "inbox_poller_runs": 6079,
     "gateway_status": "RUNNING",
     "ecosystem_verdict": "DEGRADED"
   }
