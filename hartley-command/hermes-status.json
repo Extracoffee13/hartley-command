@@ -1,109 +1,104 @@
 {
   "_meta": {
     "schema_version": "4.1",
-    "last_write": "2026-06-25T01:22:00.210172+00:00",
-    "heartbeat_ts": "2026-06-25T01:21:11.680573Z",
-    "writer": "hermes-status-writer cron job",
-    "source": "hermes-status-writer/SKILL.md"
+    "last_write": "2026-06-25T01:31:52.562016+00:00",
+    "heartbeat_ts": "2026-06-25T01:31:06.001650Z",
+    "writer": "hermes-status-writer-cron",
+    "source": "hermes-status.json auto-sync"
   },
   "hermes_gateway": {
-    "status": "RUNNING",
+    "status": "running",
     "pid": 3599,
     "telegram": "connected",
     "active_agents": 0,
     "updated_at": "2026-06-24T21:15:09.922208+00:00"
   },
   "ecosystem_health": {
-    "verdict": "OK",
+    "verdict": "HEALTHY-IDLE",
     "gateway_ok": true,
     "wild_ducks_ok": true,
+    "health_snapshot_ts": "2026-06-25T01:31:24.434363+00:00",
+    "health_summary": "",
     "degradation_reason": "",
-    "recommended_action": ""
+    "recommended_action": "monitor"
   },
   "wild_ducks": {
     "count": 13,
-    "active": 13,
-    "note": "canonical count — sandbox state dir cleared on restart"
+    "source": "canonical-count",
+    "state_files_on_disk": 29
   },
   "calls": {
-    "count": 17,
-    "active_cron_jobs": 15
+    "count": 0,
+    "active": 0
   },
   "memory": {
     "count": 390,
-    "directory": "~/.hermes/memories/"
+    "path": "~/.hermes/memories/"
   },
   "skills": {
-    "count": 547,
-    "directory": "~/.hermes/skills/"
+    "count": 495,
+    "path": "~/.hermes/skills/"
   },
   "tasks": {
     "inbox_pending": 0,
-    "adoption_pending": 0,
     "reports_today": 0
   },
   "lens_briefs": {
-    "last_7d": 0,
-    "lens_job_runs": 5,
-    "lens_watcher_runs": 6544
+    "last_7d": 5,
+    "job_id": "666d3f953cc9",
+    "last_run": "",
+    "next_run": ""
   },
-  "competitive_advantage_systems": {
+  "competitive_advantage": {
     "invh_monitor": {
       "status": "active",
-      "job_id": "da07bb54b0dd",
-      "runs_completed": 23,
-      "schedule": "10 8,12,16,20 * * * (4x daily)",
       "last_run": "",
-      "next_run": ""
+      "next_run": "",
+      "schedule": "4x daily",
+      "job_id": "da07bb54b0dd",
+      "runs_completed": 23
     },
     "performance_optimizer": {
       "status": "active",
-      "job_id": "4208bf096ba9",
-      "runs_completed": 4,
-      "schedule": "0 9 * * * (daily 09:00)",
       "last_run": "",
-      "next_run": ""
+      "next_run": "",
+      "schedule": "daily 09:00",
+      "job_id": "4208bf096ba9",
+      "runs_completed": 4
     },
     "failure_mitigation": {
       "status": "active",
-      "job_id": "143364bcdd24",
-      "runs_completed": 1303,
-      "schedule": "*/5 * * * * (every 5 min)",
       "last_run": "",
-      "next_run": ""
+      "next_run": "",
+      "schedule": "every 5 min",
+      "job_id": "143364bcdd24",
+      "runs_completed": 1305
     }
   },
   "cron_health": {
     "total_jobs": 17,
-    "inbox_poller_runs": 5876,
-    "health_checks_completed": 1303,
+    "inbox_poller_runs": 5885,
+    "health_check_runs": 1305,
     "invh_ci_runs": 23,
-    "dashboard_autosync_runs": 685,
-    "wolf_dashboard_runs": 226
-  },
-  "heartbeat_agents": {
-    "count": 32,
-    "inbox_poller": "idle",
-    "wolf_state_watcher": "warn",
-    "dashboard_writer": "ok"
+    "status_writer_runs": 664,
+    "lens_pull_runs": 5,
+    "perf_optimizer_runs": 4
   },
   "data_live": {
     "wild_duck_count": 13,
-    "calls_count": 17,
+    "calls_count": 0,
     "memory_count": 390,
-    "skills_count": 547,
+    "skills_count": 495,
     "inbox_pending": 0,
     "reports_today": 0,
-    "lens_briefs_7d": 0,
+    "lens_briefs_7d": 5,
     "invh_ci_active": true,
     "invh_ci_runs": 23,
     "performance_optimizer_active": true,
     "failure_mitigation_active": true,
-    "health_checks_completed": 1303,
-    "inbox_poller_runs": 5876,
-    "gateway_status": "RUNNING",
-    "telegram_status": "connected",
-    "ecosystem_verdict": "OK",
-    "adoption_pending": 0
+    "health_checks_completed": 1305,
+    "inbox_poller_runs": 5885,
+    "gateway_status": "running",
+    "ecosystem_verdict": "HEALTHY-IDLE"
   }
 }
