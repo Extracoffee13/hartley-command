@@ -1,10 +1,10 @@
 {
   "_meta": {
     "schema_version": "4.1",
-    "last_write": "2026-06-25T04:11:36.939905+00:00",
-    "heartbeat_ts": "2026-06-25T04:10:25.970842Z",
+    "last_write": "2026-06-25T04:22:14.352880+00:00",
+    "heartbeat_ts": "2026-06-25T04:20:29.985978Z",
     "writer": "hermes-status-writer-cron",
-    "source": "hermes-agent-cron-job"
+    "source": "hermes-status-writer-skill v19"
   },
   "hermes_gateway": {
     "status": "RUNNING",
@@ -17,52 +17,52 @@
     "verdict": "DEGRADED",
     "gateway_ok": true,
     "wild_ducks_ok": true,
+    "calls_ok": true,
+    "health_snapshot_verdict": "HEALTHY-IDLE",
+    "health_snapshot_ts": "2026-06-25T04:15:55.821060Z",
+    "degradation_reason": "4 cron jobs in error: hermes-gsc-daily-review, Hermes GSC Daily Telegram Alert, 749 Pile Change Detector, hermes-lens-auth-pull",
+    "recommended_action": "Investigate error jobs; check model config for failed jobs",
+    "error_job_count": 4,
     "error_jobs": [
       "hermes-gsc-daily-review",
       "Hermes GSC Daily Telegram Alert",
       "749 Pile Change Detector",
       "hermes-lens-auth-pull"
-    ],
-    "warn_agents": [
-      "wolf-state-watcher",
-      "memory-capture"
-    ],
-    "degradation_reason": "Error jobs: hermes-gsc-daily-review, Hermes GSC Daily Telegram Alert, 749 Pile Change Detector, hermes-lens-auth-pull",
-    "recommended_action": "Review failed cron jobs",
-    "health_snapshot_verdict": "HEALTHY-IDLE",
-    "health_snapshot_ts": "2026-06-25T04:10:49.305548+00:00"
+    ]
   },
   "wild_ducks": {
     "count": 13,
-    "active": 13,
-    "stale": 0,
-    "note": "Canonical count per Bobby. Sandbox state dir cleared on restart."
+    "source": "canonical-bobby-count",
+    "note": "state/ dir cleared on restart; canonical count is 13",
+    "warn_agents": {
+      "wolf-state-watcher": {
+        "status": "warn",
+        "age_min": 10,
+        "note": "wolf/state.json not found",
+        "classification": "persistent-missing-path \u2014 wolf not deployed, exits 0"
+      },
+      "memory-capture": {
+        "status": "warn",
+        "age_min": 10,
+        "note": "hermes-reports/ missing",
+        "classification": "persistent-missing-path \u2014 no reports dir, exits 0"
+      }
+    }
   },
   "calls": {
     "count": 17,
-    "active": 17,
-    "jobs": [
-      "wolf-discovery-daily-scan",
-      "hermes-inbox-poller",
-      "invh-4x-daily-competitive-monitor",
-      "daily-construct-performance-optimization",
-      "construct-5min-health-check",
-      "wolf-dashboard-autosync",
-      "hermes-status-writer",
-      "construct-dashboard-autosync",
-      "construct-dashboard-counts-updater",
-      "pragma-gsc-recovery-monthly",
+    "active_cron_jobs": 17,
+    "ok_jobs": 11,
+    "error_jobs": 4,
+    "error_job_names": [
       "hermes-gsc-daily-review",
-      "telegram-rules-now",
       "Hermes GSC Daily Telegram Alert",
-      "SSH Availability Check (B9 Server)",
       "749 Pile Change Detector",
-      "hermes-lens-auth-pull",
-      "hermes-lens-auth-pull-watcher"
+      "hermes-lens-auth-pull"
     ]
   },
   "memory": {
-    "count": 390,
+    "total_files": 390,
     "path": "~/.hermes/memories/"
   },
   "skills": {
@@ -71,68 +71,73 @@
   },
   "tasks": {
     "inbox_pending": 0,
-    "reports_today": 0
+    "reports_today": 0,
+    "inbox_path": "~/Documents/Claude/Projects/Atlas/hermes-inbox/",
+    "reports_path": "~/Documents/Claude/Projects/Atlas/hermes-reports/"
   },
   "lens_briefs": {
     "last_7d": 5,
-    "source_job": "hermes-lens-auth-pull",
-    "watcher_runs": 6714
+    "watcher_runs": 6725,
+    "source": "hermes-lens-auth-pull repeat.completed",
+    "job_status": "error"
   },
-  "competitive_advantage": {
+  "competitive_advantage_systems": {
     "invh_monitor": {
       "status": "active",
       "runs": 23,
       "last_run": "",
       "next_run": "",
-      "schedule": "4x daily",
-      "job_id": "da07bb54b0dd"
+      "schedule": {
+        "kind": "cron",
+        "expr": "10 8,12,16,20 * * *",
+        "display": "10 8,12,16,20 * * *"
+      },
+      "job_id": "da07bb54b0dd",
+      "last_status": "ok"
     },
     "performance_optimizer": {
       "status": "active",
       "runs": 4,
       "last_run": "",
       "next_run": "",
-      "schedule": "daily 09:00",
-      "job_id": "4208bf096ba9"
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 9 * * *",
+        "display": "0 9 * * *"
+      },
+      "job_id": "4208bf096ba9",
+      "last_status": "ok"
     },
     "failure_mitigation": {
       "status": "active",
-      "runs": 1337,
+      "runs": 1339,
       "last_run": "",
       "next_run": "",
       "schedule": "every 5 min",
-      "job_id": "143364bcdd24"
+      "job_id": "143364bcdd24",
+      "last_status": "ok"
     }
   },
   "disk_resources": {
-    "disk_used_pct": 14,
-    "disk_avail": "73Gi",
-    "root_mount": "/"
+    "disk_used_pct": 65,
+    "disk_avail_gb": 73,
+    "disk_avail_human": "73Gi",
+    "path": "/"
   },
   "cron_health": {
     "total_jobs": 17,
+    "inbox_poller_runs": 6050,
+    "health_check_runs": 1339,
+    "invh_ci_runs": 23,
+    "perf_optimizer_runs": 4,
+    "status_writer_runs": 681,
+    "lens_briefs_7d": 5,
     "error_jobs": [
       "hermes-gsc-daily-review",
       "Hermes GSC Daily Telegram Alert",
       "749 Pile Change Detector",
       "hermes-lens-auth-pull"
-    ],
-    "ok_jobs": [
-      "wolf-discovery-daily-scan",
-      "hermes-inbox-poller",
-      "invh-4x-daily-competitive-monitor",
-      "daily-construct-performance-optimization",
-      "construct-5min-health-check",
-      "wolf-dashboard-autosync",
-      "hermes-status-writer",
-      "construct-dashboard-autosync",
-      "construct-dashboard-counts-updater",
-      "SSH Availability Check (B9 Server)",
-      "hermes-lens-auth-pull-watcher"
-    ],
-    "status_writer_runs": 680,
-    "inbox_poller_runs": 6040,
-    "health_checks_completed": 1337
+    ]
   },
   "data_live": {
     "wild_duck_count": 13,
@@ -146,8 +151,8 @@
     "invh_ci_runs": 23,
     "performance_optimizer_active": true,
     "failure_mitigation_active": true,
-    "health_checks_completed": 1337,
-    "inbox_poller_runs": 6040,
+    "health_checks_completed": 1339,
+    "inbox_poller_runs": 6050,
     "gateway_status": "RUNNING",
     "ecosystem_verdict": "DEGRADED"
   }
