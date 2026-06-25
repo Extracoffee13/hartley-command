@@ -1,53 +1,51 @@
 {
   "_meta": {
     "schema_version": "4.1",
-    "last_write": "2026-06-25T01:31:52.562016+00:00",
-    "heartbeat_ts": "2026-06-25T01:31:06.001650Z",
+    "last_write": "2026-06-25T01:42:00.987461+00:00",
+    "heartbeat_ts": "2026-06-25T01:41:14.113296Z",
     "writer": "hermes-status-writer-cron",
-    "source": "hermes-status.json auto-sync"
+    "source": "gateway_state.json + cron/jobs.json + heartbeat.json + health_snapshots"
   },
   "hermes_gateway": {
-    "status": "running",
+    "status": "RUNNING",
     "pid": 3599,
     "telegram": "connected",
     "active_agents": 0,
     "updated_at": "2026-06-24T21:15:09.922208+00:00"
   },
   "ecosystem_health": {
-    "verdict": "HEALTHY-IDLE",
+    "verdict": "OK",
     "gateway_ok": true,
     "wild_ducks_ok": true,
-    "health_snapshot_ts": "2026-06-25T01:31:24.434363+00:00",
-    "health_summary": "",
     "degradation_reason": "",
-    "recommended_action": "monitor"
+    "recommended_action": "None — system nominal"
   },
   "wild_ducks": {
     "count": 13,
-    "source": "canonical-count",
-    "state_files_on_disk": 29
+    "active": 13,
+    "note": "Canonical count: 13. State dir may be cleared on restart."
   },
   "calls": {
-    "count": 0,
-    "active": 0
+    "count": 17,
+    "active": 17,
+    "note": "Count of configured cron jobs"
   },
   "memory": {
     "count": 390,
-    "path": "~/.hermes/memories/"
+    "note": "Files in ~/.hermes/memories/"
   },
   "skills": {
-    "count": 495,
-    "path": "~/.hermes/skills/"
+    "count": 547,
+    "note": "SKILL.md files in ~/.hermes/skills/"
   },
   "tasks": {
     "inbox_pending": 0,
-    "reports_today": 0
+    "reports_today": 0,
+    "adoption_pending": 0
   },
   "lens_briefs": {
     "last_7d": 5,
-    "job_id": "666d3f953cc9",
-    "last_run": "",
-    "next_run": ""
+    "watcher_runs": 6564
   },
   "competitive_advantage": {
     "invh_monitor": {
@@ -56,7 +54,7 @@
       "next_run": "",
       "schedule": "4x daily",
       "job_id": "da07bb54b0dd",
-      "runs_completed": 23
+      "runs_total": 23
     },
     "performance_optimizer": {
       "status": "active",
@@ -64,7 +62,7 @@
       "next_run": "",
       "schedule": "daily 09:00",
       "job_id": "4208bf096ba9",
-      "runs_completed": 4
+      "runs_total": 4
     },
     "failure_mitigation": {
       "status": "active",
@@ -72,23 +70,24 @@
       "next_run": "",
       "schedule": "every 5 min",
       "job_id": "143364bcdd24",
-      "runs_completed": 1305
+      "runs_total": 1307
     }
   },
   "cron_health": {
     "total_jobs": 17,
-    "inbox_poller_runs": 5885,
-    "health_check_runs": 1305,
+    "inbox_poller_runs": 5896,
+    "health_check_runs": 1307,
     "invh_ci_runs": 23,
-    "status_writer_runs": 664,
-    "lens_pull_runs": 5,
+    "dashboard_autosync_runs": 689,
+    "status_writer_runs": 665,
+    "wolf_dashboard_runs": 227,
     "perf_optimizer_runs": 4
   },
   "data_live": {
     "wild_duck_count": 13,
-    "calls_count": 0,
+    "calls_count": 17,
     "memory_count": 390,
-    "skills_count": 495,
+    "skills_count": 547,
     "inbox_pending": 0,
     "reports_today": 0,
     "lens_briefs_7d": 5,
@@ -96,9 +95,9 @@
     "invh_ci_runs": 23,
     "performance_optimizer_active": true,
     "failure_mitigation_active": true,
-    "health_checks_completed": 1305,
-    "inbox_poller_runs": 5885,
-    "gateway_status": "running",
-    "ecosystem_verdict": "HEALTHY-IDLE"
+    "health_checks_completed": 1307,
+    "inbox_poller_runs": 5896,
+    "gateway_status": "RUNNING",
+    "ecosystem_verdict": "OK"
   }
 }
