@@ -1,52 +1,51 @@
 {
   "_meta": {
     "schema_version": "4.1",
-    "last_write": "2026-06-25T03:20:51.051655Z",
-    "heartbeat_ts": "2026-06-25T03:20:51.051655Z",
-    "writer": "hermes-status-writer cron (run #674)",
-    "source": "hermes-status-writer v4.1"
+    "last_write": "2026-06-25T03:21:50.837004+00:00",
+    "heartbeat_ts": "2026-06-25T03:20:14.635603Z",
+    "writer": "hermes-status-writer-cron",
+    "source": "hermes-status-writer"
   },
   "hermes_gateway": {
     "status": "RUNNING",
     "pid": 3599,
     "telegram": "connected",
     "active_agents": 0,
-    "updated_at": "2026-06-24T21:15:09.922208+00:00"
+    "updated_at": "2026-06-25T03:21:50.837004+00:00"
   },
   "ecosystem_health": {
     "verdict": "DEGRADED",
     "gateway_ok": true,
     "wild_ducks_ok": true,
-    "degradation_reason": "4 jobs in error: hermes-gsc-daily-review, Hermes GSC Daily Telegram Alert, 749 Pile Change Detector, hermes-lens-auth-pull",
-    "recommended_action": "Investigate: hermes-gsc-daily-review, Hermes GSC Daily Telegram Alert, 749 Pile Change Detector, hermes-lens-auth-pull",
-    "error_jobs": [
-      "hermes-gsc-daily-review",
-      "Hermes GSC Daily Telegram Alert",
-      "749 Pile Change Detector",
-      "hermes-lens-auth-pull"
-    ],
-    "health_snapshot_verdict": "HEALTHY-IDLE",
-    "health_snapshot_ts": ""
+    "degradation_reason": "4 cron jobs in error: hermes-gsc-daily-review, Hermes GSC Daily Telegram Alert, 749 Pile Change Detector, hermes-lens-auth-pull",
+    "recommended_action": "Review and fix erroring cron jobs"
   },
   "wild_ducks": {
     "count": 13,
-    "state_source": "canonical"
+    "active": 13,
+    "stale": 0,
+    "state_files": 29
   },
   "calls": {
-    "count": 17
+    "count": 17,
+    "active_repeating": 17
   },
   "memory": {
-    "count": 390
+    "count": 390,
+    "directory": "~/.hermes/memories/"
   },
   "skills": {
-    "count": 547
+    "count": 547,
+    "directory": "~/.hermes/skills/"
   },
   "tasks": {
     "inbox_pending": 0,
     "reports_today": 0
   },
   "lens_briefs": {
-    "last_7d": 5
+    "last_7d": 5,
+    "job_id": "666d3f953cc9",
+    "last_status": "error"
   },
   "competitive_advantage": {
     "invh_monitor": {
@@ -54,36 +53,43 @@
       "last_run": "",
       "next_run": "",
       "schedule": "4x daily",
-      "job_id": "da07bb54b0dd",
-      "runs_total": 23
+      "runs_total": 23,
+      "job_id": "invh-4x-daily-competitive-monitor"
     },
     "performance_optimizer": {
       "status": "active",
       "last_run": "",
       "next_run": "",
       "schedule": "daily 09:00",
-      "job_id": "4208bf096ba9",
-      "runs_total": 4
+      "runs_total": 4,
+      "job_id": "daily-construct-performance-optimization"
     },
     "failure_mitigation": {
       "status": "active",
       "last_run": "",
+      "next_run": "",
       "schedule": "every 5 min",
-      "job_id": "143364bcdd24",
-      "runs_total": 1325
+      "runs_total": 1327,
+      "job_id": "construct-5min-health-check"
     }
   },
-  "cron_jobs": {
-    "total": 17,
-    "ok": 11,
-    "error": 4,
-    "none": 2,
-    "error_job_names": [
+  "cron_health": {
+    "total_jobs": 17,
+    "error_count": 4,
+    "error_jobs": [
       "hermes-gsc-daily-review",
       "Hermes GSC Daily Telegram Alert",
       "749 Pile Change Detector",
       "hermes-lens-auth-pull"
-    ]
+    ],
+    "inbox_poller_runs": 5991,
+    "health_check_runs": 1327,
+    "status_writer_runs": 675
+  },
+  "disk_resources": {
+    "checked_at": "2026-06-25T03:21:50.837004+00:00",
+    "disk_used_pct": "14%",
+    "disk_avail": "79G"
   },
   "data_live": {
     "wild_duck_count": 13,
@@ -97,8 +103,8 @@
     "invh_ci_runs": 23,
     "performance_optimizer_active": true,
     "failure_mitigation_active": true,
-    "health_checks_completed": 1325,
-    "inbox_poller_runs": 5981,
+    "health_checks_completed": 1327,
+    "inbox_poller_runs": 5991,
     "gateway_status": "RUNNING",
     "ecosystem_verdict": "DEGRADED"
   }
