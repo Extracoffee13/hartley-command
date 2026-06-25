@@ -1,86 +1,103 @@
 {
   "_meta": {
     "schema_version": "4.1",
-    "last_write": "2026-06-25T00:01:58.788760+00:00",
-    "heartbeat_ts": "2026-06-25T00:00:55.250376Z",
-    "writer": "hermes-status-writer cron job",
-    "source": "hermes-status-writer/SKILL.md"
+    "last_write": "2026-06-25T00:12:25.533051+00:00",
+    "heartbeat_ts": "2026-06-25T00:05:51.863150Z",
+    "writer": "hermes-status-writer-cron",
+    "source": "hermes-status-writer skill v2"
   },
   "hermes_gateway": {
     "status": "RUNNING",
     "pid": 3599,
     "telegram": "connected",
     "active_agents": 0,
-    "updated_at": "2026-06-24T21:15:09.922208+00:00"
+    "updated_at": "2026-06-24T21:15:09.919572+00:00"
   },
   "ecosystem_health": {
     "verdict": "HEALTHY-IDLE",
     "gateway_ok": true,
     "wild_ducks_ok": true,
-    "degradation_reason": "inbox-poller clean, 29 flock agents bulk-stale (~94min, cadence artifact), 2 warn agents post-restore healthy (direct runs exit 0)",
-    "recommended_action": "Monitor"
+    "degradation_reason": "",
+    "recommended_action": "none"
   },
   "wild_ducks": {
     "count": 13,
-    "state_files": 29,
-    "note": "Canonical count: 13. State files present in sandbox."
+    "active": 0,
+    "warn": 2,
+    "stale": 0,
+    "warn_list": {
+      "wolf-state-watcher": {
+        "pattern": "persistent-missing-path",
+        "note": "wolf/state.json not found \u2014 wolf not deployed",
+        "age_min": 14.6,
+        "action": "none"
+      },
+      "memory-capture": {
+        "pattern": "persistent-missing-path",
+        "note": "hermes-reports/ missing \u2014 upstream not yet generating reports",
+        "age_min": 14.6,
+        "action": "none"
+      }
+    },
+    "stale_list": []
   },
   "calls": {
     "count": 17,
-    "active_jobs": 17,
-    "note": "17 scheduled cron jobs registered"
+    "active_cron_jobs": 15
   },
   "memory": {
-    "file_count": 390,
-    "directory": "~/.hermes/memories/"
+    "files": 390,
+    "heartbeat_agents": 32,
+    "heartbeat_ts": "2026-06-25T00:05:51.863150Z"
   },
   "skills": {
-    "count": 547,
-    "directory": "~/.hermes/skills/"
+    "count": 547
   },
   "tasks": {
     "inbox_pending": 0,
-    "reports_today": 0,
-    "adoption_pending": 0
+    "reports_today": 0
   },
   "lens_briefs": {
     "last_7d": 5,
-    "lens_pull_runs": 5,
-    "lens_watcher_runs": 6463
+    "watcher_runs": 6474,
+    "last_status": "error"
+  },
+  "cron_health": {
+    "total_jobs": 17,
+    "jobs_ok": 11,
+    "jobs_error": 4,
+    "inbox_poller_runs": 5807,
+    "health_checks_completed": 1289,
+    "status_writer_runs": 656,
+    "wolf_scan_runs": 5
   },
   "competitive_advantage": {
     "invh_monitor": {
       "status": "active",
+      "runs": 22,
+      "schedule": "4x daily",
       "job_id": "da07bb54b0dd",
-      "name": "invh-4x-daily-competitive-monitor",
-      "schedule": "10 8,12,16,20 * * *",
-      "runs_completed": 22,
-      "next_run": "10 8,12,16,20 * * *"
+      "last_status": "ok"
     },
     "performance_optimizer": {
       "status": "active",
+      "runs": 4,
+      "schedule": "daily",
       "job_id": "4208bf096ba9",
-      "name": "daily-construct-performance-optimization",
-      "schedule": "0 9 * * *",
-      "runs_completed": 4,
-      "next_run": "0 9 * * *"
+      "last_status": "ok"
     },
     "failure_mitigation": {
       "status": "active",
-      "note": "Covered by construct-5min-health-check",
+      "runs": 1289,
+      "schedule": "every 5 min",
       "job_id": "143364bcdd24",
-      "runs_completed": 1287,
-      "schedule": "*/5 * * * *"
+      "last_status": "ok"
     }
   },
-  "cron_health": {
-    "total_jobs": 17,
-    "inbox_poller_runs": 5797,
-    "health_check_runs": 1287,
-    "invh_runs": 22,
-    "wolf_autosync_runs": 223,
-    "construct_autosync_runs": 671,
-    "lens_watcher_runs": 6463
+  "resources": {
+    "disk": {},
+    "memory": {},
+    "load": {}
   },
   "data_live": {
     "wild_duck_count": 13,
@@ -94,8 +111,8 @@
     "invh_ci_runs": 22,
     "performance_optimizer_active": true,
     "failure_mitigation_active": true,
-    "health_checks_completed": 1287,
-    "inbox_poller_runs": 5797,
+    "health_checks_completed": 1289,
+    "inbox_poller_runs": 5807,
     "gateway_status": "RUNNING",
     "ecosystem_verdict": "HEALTHY-IDLE"
   }
