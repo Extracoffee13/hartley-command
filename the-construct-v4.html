@@ -1238,6 +1238,74 @@ const PragmaMirrorPanel = () => {
 };
 
 // ═══════════════════════════════════════════════════════════════
+// MIRROR BASE — productized owned-presence Operator · envelops ToplinePro
+// Strategy locked via creative abrasion w/ Hermes (Kimi K2.7) · 2026-06-26
+// Envelope by OUTCOME + OWNERSHIP, not feature-parity SaaS.
+// ═══════════════════════════════════════════════════════════════
+const MirrorBasePanel = () => {
+  const steps = [
+    { n: "01", label: "ToplinePro → client-owned WordPress migrator",
+      note: "site · domain · GBP · photos · reviews move across intact — dissolves their lock-in",
+      status: "BUILD", color: C.gold },
+    { n: "02", label: "Payments-over-Stripe / Square + job-centric CRM glue",
+      note: "wire around existing rails — no PRAGMA wallet, no PCI · lead → quote → job → review on one screen",
+      status: "BUILD", color: C.gold },
+    { n: "03", label: "Managed-host + uptime pairing",
+      note: "pragma-uptime-guardian Flock duck + host partner — keeps the “never think about it” promise",
+      status: "LIVE", color: C.green },
+  ];
+  return (
+    <div style={{ margin: "8px 28px 20px", padding: 18,
+      border: `2px solid ${C.cyan}`, background: "rgba(0,212,255,0.03)", position: "relative" }}>
+      <div style={{ position: "absolute", top: -10, left: 16, padding: "0 8px", background: "#000", fontSize: 10, color: C.cyan, letterSpacing: 4 }}>
+        ◉ MIRROR BASE — OWNED-PRESENCE OPERATOR · ENVELOPE ToplinePro
+      </div>
+
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginTop: 6, marginBottom: 12 }}>
+        <div>
+          <div style={{ fontSize: 22, fontWeight: 900, color: C.cyan, fontFamily: "Georgia, serif", letterSpacing: 1 }}>Mirror Base</div>
+          <div style={{ fontSize: 11, color: C.green, marginTop: 2 }}>Your business HQ &mdash; on your machine, in your voice.</div>
+          <div style={{ fontSize: 8, color: C.greenDim, marginTop: 4, letterSpacing: 1.2 }}>Envelope by OUTCOME + OWNERSHIP — not feature-parity SaaS · abrasion w/ Hermes locked 2026-06-26</div>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 4 }}>
+          <span style={{ fontSize: 9, color: C.cyan, border: `1px solid ${C.cyan}`, padding: "2px 8px", letterSpacing: 2 }}>SMB WEDGE → FULL OS</span>
+          <span style={{ fontSize: 8, color: C.greenDim }}>Pulse productized · client-owned WordPress · vs ToplinePro $199&ndash;249/mo rented</span>
+        </div>
+      </div>
+
+      {/* THE SPEAR */}
+      <div style={{ padding: 12, border: `1px solid ${C.green}`, background: "rgba(57,255,20,0.05)", marginBottom: 14 }}>
+        <div style={{ fontSize: 9, color: C.green, letterSpacing: 2, marginBottom: 5 }}>▸ THE SPEAR — CLOSED-LOOP RANKING REPAIR</div>
+        <div style={{ fontSize: 11, color: C.white, lineHeight: 1.5 }}>
+          Detect ranking / review-velocity / lead drop &rarr; draft the exact fix (page edit, schema, GBP post, review response) &rarr; one-tap approve &rarr; execute on the client&apos;s own WordPress.
+          <span style={{ color: C.cyan }}> ToplinePro can autopost &amp; autoreview &mdash; it cannot rewrite a live page at that depth, because it doesn&apos;t own the site.</span>
+        </div>
+      </div>
+
+      {/* BUILD ORDER */}
+      <div style={{ fontSize: 9, color: C.cyan, letterSpacing: 2, marginBottom: 8 }}>BUILD ORDER — GAPS TO CLOSE</div>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 8, marginBottom: 12 }}>
+        {steps.map((s) => (
+          <div key={s.n} style={{ display: "flex", alignItems: "flex-start", gap: 12, border: `1px solid ${C.greenDim}`, padding: 10, background: "rgba(0,0,0,0.18)" }}>
+            <div style={{ fontSize: 16, fontWeight: 900, color: C.cyan, fontFamily: "Courier New, monospace", minWidth: 26 }}>{s.n}</div>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: 12, color: C.white, fontWeight: 700 }}>{s.label}</div>
+              <div style={{ fontSize: 9, color: C.greenDim, marginTop: 3, lineHeight: 1.4 }}>{s.note}</div>
+            </div>
+            <span style={{ fontSize: 8, color: s.color, border: `1px solid ${s.color}`, padding: "2px 7px", letterSpacing: 1.5, whiteSpace: "nowrap", height: "fit-content" }}>{s.status}</span>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ fontSize: 9, color: C.greenDim, lineHeight: 1.5, borderTop: `1px solid ${C.greenDim}`, paddingTop: 8 }}>
+        <span style={{ color: C.gold }}>KILL CRITERION (90d):</span> can&apos;t convert 3 ToplinePro switchers at target CAC &rarr; SMB wedge is wrong, revert Mirror to OS-attach only.
+        &nbsp;&nbsp;<span style={{ color: C.cyan }}>Don&apos;t build SaaS — glue around the client&apos;s rails; ownership + ranking outcomes are the retention.</span>
+      </div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════════════════
 // WILD DUCKS — IBM/Watson mavericks · Hermes-hosted skill agents
 // ═══════════════════════════════════════════════════════════════
 // Wild Ducks scored same Coca-Cola Test (1-25) as Operators — Keystone re-scores monthly
@@ -1248,7 +1316,7 @@ const PragmaMirrorPanel = () => {
 // Rule: must (a) make judgment calls or synthesize, (b) recur, (c) be
 // non-trivial for a Claude agent + plain skill to replicate.
 // WILD_DUCKS:BEGIN — DO NOT EDIT BY HAND · regenerated by construct-v4-sync Wild Duck from /Atlas/hermes-sandbox/MANIFEST.md
-//   regenerated at: 2026-06-25T19:16:42.296424Z
+//   regenerated at: 2026-06-26T18:17:46.653117Z
 //   source of truth: classify-flock.py output (MANIFEST.md)
 const WILD_DUCKS = [
   { name: "agent-cross-ref-validator", status: "proven", score: 20, domain: "Meta-learning detection", skills: ["Cross-agent citation tracing"] },
@@ -1271,7 +1339,7 @@ const WILD_DUCKS = [
 // Locked 2026-06-01 per Bobby: "duck calls" — predictable instruments, not the rare ducks
 // Listed compactly because they're plumbing, not headliners.
 // CALLS:BEGIN — DO NOT EDIT BY HAND · regenerated by construct-v4-sync Wild Duck from /Atlas/hermes-sandbox/MANIFEST.md
-//   regenerated at: 2026-06-25T19:16:42.296424Z
+//   regenerated at: 2026-06-26T18:17:46.653117Z
 const CALLS = [
   { name: "adoption-reminder", cadence: "daily", group: "ops" },
   { name: "ai-citation-probe", cadence: "weekly", group: "probe" },
@@ -2000,6 +2068,7 @@ const Dashboard = () => (
       <HarvardCorpusPanel />
       <FoundersPlaybookPanel />
       <PragmaMirrorPanel />
+      <MirrorBasePanel />
       <WildDucksBand />
       <HermesMigrationMap />
       <OperatorGrid />
