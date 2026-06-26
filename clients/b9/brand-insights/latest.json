@@ -238,10 +238,36 @@
       }
     ]
   },
-  "last_action": "Published 2 answer hubs (Homebuilder + Developer Signage FL) with FAQ/Service schema, wired internal cluster, set hub meta descriptions, opened AI-crawler access in robots.txt.",
-  "last_verification": "AEO 0\u219233 and AIVI 23\u219233 confirmed on post-publish re-scan.",
+  "last_action": "Auto-fix engine created 6 local landing pages (Clay County, St. Johns County, Green Cove Springs, Fleming Island, Middleburg, St. Augustine) via WP REST \u2014 additive, dup-guarded, logged, reversible.",
+  "last_verification": "All 6 pages live (HTTP 200, FAQPage + LocalBusiness schema verified).",
   "tiers": {
     "reports": "free",
     "auto_fix": "monthly"
-  }
+  },
+  "autofix": {
+    "enabled": true,
+    "mode": "auto-remediate",
+    "tier": "paid",
+    "last_run": "2026-06-26T13:31:04.396276Z",
+    "created_total": 6,
+    "safe_actions": [
+      "local-page"
+    ],
+    "guardrails": [
+      "additive-only",
+      "dup-guard",
+      "rate-limited",
+      "change-logged",
+      "wp-revision-undo"
+    ],
+    "recent": [
+      "signage-clay-county",
+      "signage-st-johns-county",
+      "signage-green-cove-springs",
+      "signage-fleming-island",
+      "signage-middleburg",
+      "signage-st-augustine"
+    ]
+  },
+  "mode": "auto-remediate"
 }
