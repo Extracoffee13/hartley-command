@@ -1,0 +1,37 @@
+{
+  "client": "_template",
+  "name": "Client Name Here",
+  "domain": "clientdomain.com",
+  "category": "the client's category, e.g. 'roofing + storm repair'",
+  "phone": "(000) 000-0000",
+  "phone_tel": "+10000000000",
+  "email": "team@clientdomain.com",
+  "founded": "1900",
+  "hq": "City, ST",
+  "page_slug_prefix": "areas-",
+  "community_slug_prefix": "neighborhood-",
+  "wp": {
+    "user_env": "TEMPLATE_WP_USER",
+    "app_password_env": "TEMPLATE_WP_APP_PASSWORD",
+    "_note": "Store the client's WordPress user + Application Password in ~/.hermes/.env under these names. Paid/auto-remediate clients only."
+  },
+  "tier": "free",
+  "mode": "recommend",
+  "competitors": ["Competitor A", "Competitor B"],
+  "service_areas": ["City One ST", "County Two", "City Three ST"],
+  "geotarget_communities": ["High-value Neighborhood A", "Master-planned Community B"],
+  "key_pages": [
+    "https://clientdomain.com/",
+    "https://clientdomain.com/services",
+    "https://clientdomain.com/about",
+    "https://clientdomain.com/contact"
+  ],
+  "aeo_queries": [
+    "best <category> company <city>",
+    "<service> near <city> <state>"
+  ],
+  "llm_questions": [
+    "Who are the best <category> companies in <city> <state>?",
+    "Where can I get <service> in <city>?"
+  ]
+}
