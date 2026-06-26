@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0",
-  "ts": "2026-06-26T13:07:56.471252Z",
+  "ts": "2026-06-26T13:38:44.267118Z",
   "client": "b9",
   "client_display_name": "Brand 9 Signs",
   "product_name": "PRAGMA Mirror",
@@ -11,6 +11,7 @@
       29,
       23,
       23,
+      33,
       33
     ],
     "color_threshold": {
@@ -129,13 +130,60 @@
       "questions": [
         {
           "q": "Who are the best commercial sign companies in Jacksonville FL?",
-          "cited": false,
-          "model": "openai/gpt-4o-mini"
+          "surfaces": [
+            {
+              "surface": "ChatGPT",
+              "cited": false,
+              "model": "openai/gpt-4o-mini"
+            },
+            {
+              "surface": "Claude",
+              "cited": null,
+              "model": "claude-haiku-4-5-20251001"
+            },
+            {
+              "surface": "Gemini",
+              "cited": null,
+              "model": "gemini-2.0-flash"
+            }
+          ]
         },
         {
           "q": "Where can I get custom business signs installed in Clay County Florida?",
-          "cited": false,
-          "model": "openai/gpt-4o-mini"
+          "surfaces": [
+            {
+              "surface": "ChatGPT",
+              "cited": false,
+              "model": "openai/gpt-4o-mini"
+            },
+            {
+              "surface": "Claude",
+              "cited": null,
+              "model": "claude-haiku-4-5-20251001"
+            },
+            {
+              "surface": "Gemini",
+              "cited": null,
+              "model": "gemini-2.0-flash"
+            }
+          ]
+        }
+      ],
+      "ai_surfaces": [
+        {
+          "surface": "ChatGPT",
+          "mentions": 0,
+          "checks": 2
+        },
+        {
+          "surface": "Claude",
+          "mentions": null,
+          "checks": 0
+        },
+        {
+          "surface": "Gemini",
+          "mentions": null,
+          "checks": 0
         }
       ]
     },
@@ -205,7 +253,7 @@
   "recommendations_high": 15,
   "_meta": {
     "writer": "pragma-mirror call (run.py)",
-    "computed_at": "2026-06-26T13:07:56.471252Z",
+    "computed_at": "2026-06-26T13:38:44.267118Z",
     "recommend_only": true,
     "degraded_modules": []
   },
@@ -215,6 +263,7 @@
       29,
       23,
       23,
+      33,
       33
     ],
     "color_threshold": {
@@ -238,21 +287,31 @@
       }
     ]
   },
-  "last_action": "Auto-fix engine created 6 local landing pages (Clay County, St. Johns County, Green Cove Springs, Fleming Island, Middleburg, St. Augustine) via WP REST \u2014 additive, dup-guarded, logged, reversible.",
-  "last_verification": "All 6 pages live (HTTP 200, FAQPage + LocalBusiness schema verified).",
-  "tiers": {
-    "reports": "free",
-    "auto_fix": "monthly"
-  },
+  "ai_surfaces": [
+    {
+      "surface": "ChatGPT",
+      "mentions": 0,
+      "checks": 2
+    },
+    {
+      "surface": "Claude",
+      "mentions": null,
+      "checks": 0
+    },
+    {
+      "surface": "Gemini",
+      "mentions": null,
+      "checks": 0
+    }
+  ],
+  "last_action": "Auto-fix engine created 10 local landing pages via WP REST \u2014 additive, dup-guarded, logged, reversible.",
+  "last_verification": "10 pages live & verified (HTTP 200, schema).",
   "autofix": {
     "enabled": true,
     "mode": "auto-remediate",
     "tier": "paid",
-    "last_run": "2026-06-26T13:31:04.396276Z",
-    "created_total": 6,
-    "safe_actions": [
-      "local-page"
-    ],
+    "last_run": "2026-06-26T13:45:04.618675Z",
+    "created_total": 10,
     "guardrails": [
       "additive-only",
       "dup-guard",
@@ -261,12 +320,14 @@
       "wp-revision-undo"
     ],
     "recent": [
-      "signage-clay-county",
-      "signage-st-johns-county",
-      "signage-green-cove-springs",
+      "signs-etown-jacksonville",
+      "signs-shearwater-st-johns",
+      "signs-rivertown-st-johns",
+      "signs-tributary-yulee",
       "signage-fleming-island",
       "signage-middleburg",
-      "signage-st-augustine"
+      "signage-st-augustine",
+      "signage-clay-county"
     ]
   },
   "mode": "auto-remediate"
