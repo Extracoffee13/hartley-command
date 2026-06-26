@@ -1164,12 +1164,29 @@ const PragmaMirrorPanel = () => {
 
         {/* Surfaces column */}
         <div>
-          <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 6 }}>AI SURFACES · MENTIONS · RANKING</div>
-          {surfaceRow("claude", "Claude")}
-          {surfaceRow("chatgpt", "ChatGPT")}
-          {surfaceRow("gemini", "Gemini")}
-          {surfaceRow("perplexity", "Perplexity")}
-          {surfaceRow("google_ai_overview", "Google AIO")}
+          <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 6 }}>AI VISIBILITY SURFACES · KEY-FREE</div>
+          {((data && data.ai_surfaces) || []).map(function (s, i) {
+            var has = s.checks > 0;
+            return (
+              <div key={i} style={{ display: "grid", gridTemplateColumns: "150px 1fr", alignItems: "center", padding: "5px 0", borderBottom: "1px dashed " + C.greenDim }}>
+                <span style={{ fontSize: 10, color: C.cyan }}>{s.surface}</span>
+                <span style={{ fontSize: 9, color: has ? C.green : C.greenDim }}>
+                  {has ? (s.mentions + " of " + s.checks + " queries cite Brand 9") : (s.note || s.method)}
+                </span>
+              </div>
+            );
+          })}
+          {(data && data.llm_browser && data.llm_browser.summary) ? Object.keys(data.llm_browser.summary).map(function (k, i) {
+            return (
+              <div key={"b" + i} style={{ display: "grid", gridTemplateColumns: "150px 1fr", alignItems: "center", padding: "5px 0", borderBottom: "1px dashed " + C.greenDim }}>
+                <span style={{ fontSize: 10, color: C.cyan }}>{k} · consumer</span>
+                <span style={{ fontSize: 9, color: C.green }}>{data.llm_browser.summary[k] + " cite Brand 9 (weekly)"}</span>
+              </div>
+            );
+          }) : null}
+          {(!data || !data.ai_surfaces || data.ai_surfaces.length === 0) ? (
+            <div style={{ fontSize: 9, color: C.greenDim, fontStyle: "italic" }}>scan pending</div>
+          ) : null}
           <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginTop: 12, marginBottom: 4 }}>TOP CITATIONS THIS WEEK</div>
           {topCitations.length === 0 ? (
             <div style={{ fontSize: 9, color: C.greenDim, fontStyle: "italic" }}>—</div>
