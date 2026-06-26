@@ -998,12 +998,15 @@ const PragmaMirrorPanel = () => {
   const competitors = (data && data.competitors) || [];
   const remediation = (data && data.remediation) || {};
   const policy = remediation.policy || (data && data.policy) || {};
-  const modeRaw = String(remediation.mode || policy.mode || "observe").toLowerCase();
+  const modeRaw = String((data && data.mode) || remediation.mode || policy.mode || "observe").toLowerCase();
   const modeLabel = modeRaw === "auto-remediate" || modeRaw === "auto_remediate" ? "AUTO-REMEDIATE" : modeRaw === "recommend" ? "RECOMMEND" : "OBSERVE";
   const approvalLabel = remediation.approval_state || policy.approval_state || (modeLabel === "AUTO-REMEDIATE" ? "policy-gated" : "human review");
   const publishTarget = remediation.publish_target || policy.publish_target || "CMS / deploy";
-  const lastAction = remediation.last_action || remediation.action_taken || remediation.summary || null;
-  const lastVerification = remediation.last_verification || remediation.verification_result || null;
+  const lastAction = (data && data.last_action) || remediation.last_action || remediation.action_taken || remediation.summary || null;
+  const lastVerification = (data && data.last_verification) || remediation.last_verification || remediation.verification_result || null;
+  const autofixCount = (data && data.autofix && data.autofix.created_total) || 0;
+  const aiviTrend = (data && data.aivi && data.aivi.trend_7day) || [];
+  const aiviLift = aiviTrend.length >= 2 ? (aiviTrend[aiviTrend.length - 1] - aiviTrend[0]) : null;
   const loopMirroredAt = data && (data._mirrored_at || data.last_scan_ts || data.ts);
   const loopAgeHours = loopMirroredAt ? Math.max((Date.now() - Date.parse(loopMirroredAt)) / 36e5, 0) : null;
   const isPending = !data || data.scan_status === "first_scan_pending" || aiviVal === null || aiviVal === undefined;
@@ -1116,7 +1119,7 @@ const PragmaMirrorPanel = () => {
         <div style={{ border: `1px solid ${C.greenDim}`, padding: 10, background: "rgba(0,0,0,0.18)" }}>
           <div style={{ fontSize: 8, color: C.greenDim, letterSpacing: 1.5 }}>MODE</div>
           <div style={{ fontSize: 12, color: C.cyan, marginTop: 4, fontWeight: 700 }}>{modeLabel}</div>
-          <div style={{ fontSize: 8, color: C.greenDim, marginTop: 3 }}>observe / recommend / auto-remediate</div>
+          <div style={{ fontSize: 8, color: C.greenDim, marginTop: 3 }}>{autofixCount > 0 ? (autofixCount + " auto-fixes applied · paid") : "observe / recommend / auto-remediate"}</div>
         </div>
         <div style={{ border: `1px solid ${C.greenDim}`, padding: 10, background: "rgba(0,0,0,0.18)" }}>
           <div style={{ fontSize: 8, color: C.greenDim, letterSpacing: 1.5 }}>LAST ACTION</div>
@@ -1125,8 +1128,11 @@ const PragmaMirrorPanel = () => {
         </div>
         <div style={{ border: `1px solid ${C.greenDim}`, padding: 10, background: "rgba(0,0,0,0.18)" }}>
           <div style={{ fontSize: 8, color: C.greenDim, letterSpacing: 1.5 }}>VERIFICATION</div>
-          <div style={{ fontSize: 11, color: lastVerification ? C.green : C.greenDim, marginTop: 4, lineHeight: 1.35 }}>{lastVerification || "pending"}</div>
-          <div style={{ fontSize: 8, color: C.greenDim, marginTop: 3 }}>proof after publish</div>
+          <div style={{ fontSize: 11, color: lastVerification ? C.green : C.greenDim, marginTop: 4, lineHeight: 1.35 }}>
+            {aiviLift !== null && aiviLift !== 0 ? <span style={{ fontWeight: 900, color: aiviLift > 0 ? C.green : "#FF4D4F" }}>{(aiviLift > 0 ? "AIVI +" + aiviLift : "AIVI " + aiviLift) + " · "}</span> : null}
+            {lastVerification || "pending"}
+          </div>
+          <div style={{ fontSize: 8, color: C.greenDim, marginTop: 3 }}>measured lift · proof after publish</div>
         </div>
       </div>
 
