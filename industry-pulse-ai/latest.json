@@ -1,49 +1,49 @@
 {
-  "generated": "2026-06-29T13:40:00Z",
+  "generated": "2026-06-29T13:52:00Z",
   "latest_date": "2026-06-29",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Anthropic: Managed Agents bind to private MCP servers + Claude Platform on AWS",
-      "summary": "Managed Agents run in a sandbox you control and connect to private MCP servers; Claude Platform on AWS; Slack tagging. (Fable 5 shipped Jun 9, export-suspended Jun 12.)",
+      "title": "TikTok ships Ads MCP server + Ads Skills — big-four ad platforms now all agent-callable",
+      "summary": "TikTok becomes the last of Google/Meta/Amazon to expose an MCP layer so your own agents plan, launch, and optimize ad campaigns; companion 'Ads Skills' are workflow building blocks. Announced at TikTok World May 12-13; not yet GA.",
       "tag": "yes",
-      "how": "Managed Agents + private MCP is exactly The Construct's wiring.",
-      "url": "https://www.anthropic.com/news"
+      "how": "Maps to Brand 9 Signs paid acquisition + PRAGMA operator wedge: one Construct campaign-ops agent driving all four ad-platform MCPs.",
+      "url": "https://digiday.com/marketing/tiktok-launches-mcp-server-to-let-ai-agents-run-campaigns/"
     },
     {
       "n": 2,
-      "title": "Agent-callable image/video MCP servers — Pixa, Imagine, Higgsfield",
-      "summary": "Pixa MCP exposes 6 tools in Claude (text-to-video via Kling/Luma/Hailuo); Imagine + Higgsfield add 30+ models, 4K stills, 15s video.",
+      "title": "Anthropic: connector observability dashboard + enterprise-managed MCP (Okta) + in-app directory submission",
+      "summary": "Admins provision MCP connectors org-wide via Okta with zero-touch first-login access; a public-beta dashboard tracks adoption, errors, latency, and per-tool calls across Claude / Claude Code / Cowork; devs submit connectors to the directory in-app.",
       "tag": "yes",
-      "how": "Brief-to-signage-video and product shots with zero custom code.",
-      "url": "https://www.pulsemcp.com/servers?q=image"
+      "how": "Real observability over The Construct's MCP fleet and a clean path to publish our internal servers.",
+      "url": "https://www.anthropic.com/news"
     },
     {
       "n": 3,
-      "title": "DeepSeek V4-Pro / V4-Flash (open-weight MoE, 1M context)",
-      "summary": "Hybrid-attention MoE optimized for long-running agentic tasks at sharply lower inference cost.",
-      "tag": "yes",
-      "how": "Cost cut on long-horizon/batch jobs; open-weight self-host option.",
-      "url": "https://www.mindstudio.ai/blog/deepseek-v4-open-source-frontier-model"
+      "title": "OpenAI GPT-5.6 'Sol' — 91.9% Terminal-Bench 2.1; access restored to vetted US orgs Jun 27",
+      "summary": "Sol is OpenAI's strongest coding/agentic model yet (91.9% Terminal-Bench 2.1) at GPT-5.5 pricing ($5/$30 per 1M); access partially restored to vetted US orgs on June 27 after a government preview process.",
+      "tag": "maybe",
+      "how": "Benchmark our coding/computer-use agents against Sol once access clears; watch the export-control overhang.",
+      "url": "https://andrew.ooo/answers/what-is-gpt-5-6-sol-terra-luna-openai-june-2026/"
     },
     {
       "n": 4,
-      "title": "Frontier compression: OpenAI GPT-5.5 + Google Gemini 3.5 Flash",
-      "summary": "GPT-5.5 SOTA on agentic coding/computer-use (Terminal-Bench 2.0 82.7%); Gemini 3.5 Flash agentic-optimized, 4x faster output.",
+      "title": "Google Gemini 3.5 Pro reaches GA in late June — reasoning tier above 3.5 Flash",
+      "summary": "Pro closes the reasoning gap Flash regressed on; Flash is already the default in the Gemini app and AI Mode at $1.50/$9.00 per 1M.",
       "tag": "maybe",
-      "how": "Benchmark our coding/computer-use agents; Gemini Flash for fast batch image/text.",
+      "how": "Flash for cheap high-volume batch text/image, Pro for reasoning-heavy Construct jobs — a clean cost/quality split.",
       "url": "https://llm-stats.com/llm-updates"
     },
     {
       "n": 5,
-      "title": "Convey $38M Series A (a16z) — 'AI teammates' for non-technical operators",
-      "summary": "Lets non-engineers build autonomous workflows (NBCUniversal, Samsara); Taktile raised $110M for AI decisioning.",
-      "tag": "maybe",
-      "how": "Positioning signal for PRAGMA's operator model; watch the non-technical-operator wedge.",
-      "url": "https://techstartups.com/2026/06/24/venture-capital-startup-funding-roundup-june-24-2026/"
+      "title": "arXiv: 'Agent Skills for LLMs — Architecture, Acquisition, Security'",
+      "summary": "Frames capability extension as three paradigms: prompt engineering (2022-23), tool use / function calling (2023-24), skill engineering (2025-present), with a dedicated treatment of skill security and acquisition.",
+      "tag": "yes",
+      "how": "Framework for our daily/weekly new-skills scan and installed-skills registry — treat skills as governed, security-reviewed assets, not loose prompts.",
+      "url": "https://arxiv.org/html/2602.12430v1"
     }
   ],
-  "praxis_lesson": "MCP is now the load-bearing standard on both sides — Anthropic lets Managed Agents bind to private MCP servers, and every gen-media vendor ships one. The Construct's move: expose our own capabilities AS MCP servers (outbound), not just consume them, turning integration from a project into a config line.",
+  "praxis_lesson": "Every major ad platform — Google, Meta, Amazon, now TikTok — has shipped an MCP layer, so agentic campaign ops is becoming table stakes rather than an edge. The Construct's move for Brand 9 Signs / PRAGMA is to wrap all four ad-platform MCP servers behind one operator agent that plans, launches, and optimizes across channels — owning the orchestration layer, not any single platform.",
   "history": ["2026-06-29", "2026-06-28"]
 }

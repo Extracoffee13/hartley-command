@@ -1,0 +1,248 @@
+{
+  "schema_version": "2.0",
+  "ts": "2026-06-26T18:09:43.226666Z",
+  "client": "tlc",
+  "client_display_name": "Total Lawn Care",
+  "product_name": "PRAGMA Mirror",
+  "scan_status": "live",
+  "visibility_score": {
+    "composite": 30,
+    "trend_7day": [
+      30,
+      30
+    ],
+    "color_threshold": {
+      "red_below": 50,
+      "yellow_below": 70,
+      "green_at_or_above": 70
+    },
+    "interpretation": "RED \u2014 composite brand visibility 30/100 across AEO, SEO, GEO and LLM surfaces."
+  },
+  "modules": {
+    "aeo": {
+      "score": 0,
+      "cited": false,
+      "queries": [
+        {
+          "query": "residential lawn care jacksonville",
+          "cited": false,
+          "surface": "web-search"
+        },
+        {
+          "query": "commercial landscaping orange park",
+          "cited": false,
+          "surface": "web-search"
+        },
+        {
+          "query": "lawn care near middleburg fl",
+          "cited": false,
+          "surface": "web-search"
+        }
+      ]
+    },
+    "seo": {
+      "score": 67,
+      "pages": [
+        {
+          "url": "https://tlctotallawncare.com/",
+          "title": "TLC Total Lawn Care | Jacksonville Commercial Lawn & Landscape",
+          "title_ok": false,
+          "meta_ok": true,
+          "h1_ok": true,
+          "schema_ok": false,
+          "canonical_ok": true,
+          "word_count": 1497,
+          "image_alt_coverage": 38,
+          "issues": [
+            "title length 62 (ideal 30-60)",
+            "no FAQ/Article/LocalBusiness ld+json schema",
+            "image alt coverage 38%"
+          ]
+        },
+        {
+          "url": "https://tlctotallawncare.com/services",
+          "title": "Commercial Lawn Care Services - TLC Total Lawn Care",
+          "title_ok": true,
+          "meta_ok": false,
+          "h1_ok": true,
+          "schema_ok": true,
+          "canonical_ok": true,
+          "word_count": 2143,
+          "image_alt_coverage": 45,
+          "issues": [
+            "missing meta description",
+            "image alt coverage 45%"
+          ]
+        },
+        {
+          "url": "https://tlctotallawncare.com/about",
+          "title": null,
+          "title_ok": false,
+          "meta_ok": false,
+          "h1_ok": false,
+          "schema_ok": false,
+          "canonical_ok": false,
+          "word_count": 538,
+          "image_alt_coverage": 100,
+          "issues": [
+            "missing <title>",
+            "missing meta description",
+            "0 H1 tags (need exactly 1)",
+            "missing canonical tag",
+            "no FAQ/Article/LocalBusiness ld+json schema"
+          ]
+        },
+        {
+          "url": "https://tlctotallawncare.com/contact",
+          "title": "Contact Us | TLC Total Lawn Care",
+          "title_ok": true,
+          "meta_ok": true,
+          "h1_ok": true,
+          "schema_ok": true,
+          "canonical_ok": true,
+          "word_count": 1441,
+          "image_alt_coverage": 11,
+          "issues": [
+            "image alt coverage 11%"
+          ]
+        }
+      ]
+    },
+    "llm": {
+      "score": 50,
+      "questions": [
+        {
+          "q": "Who are the best lawn care companies in Jacksonville FL?",
+          "cited": false,
+          "surface": "web-grounded",
+          "in_answer": false,
+          "in_sources": false
+        },
+        {
+          "q": "Where can I get commercial landscaping in Orange Park Florida?",
+          "cited": true,
+          "surface": "web-grounded",
+          "in_answer": true,
+          "in_sources": true
+        }
+      ],
+      "ai_surfaces": [
+        {
+          "surface": "Web-grounded AI (AI Overviews / Perplexity)",
+          "method": "Tavily \u00b7 always-on \u00b7 key-light",
+          "checks": 2,
+          "mentions": 1
+        },
+        {
+          "surface": "ChatGPT / Claude / Gemini (consumer)",
+          "method": "weekly browser pass \u00b7 your own logins \u00b7 $0",
+          "checks": 0,
+          "mentions": null,
+          "note": "populated by browser_probe.py"
+        }
+      ]
+    },
+    "geo": {
+      "score": 0,
+      "geofence": [
+        {
+          "area": "Jacksonville FL",
+          "cited": false
+        },
+        {
+          "area": "Orange Park FL",
+          "cited": false
+        },
+        {
+          "area": "Middleburg FL",
+          "cited": false
+        },
+        {
+          "area": "Clay County FL",
+          "cited": false
+        },
+        {
+          "area": "St. Johns County FL",
+          "cited": false
+        },
+        {
+          "area": "Fleming Island FL",
+          "cited": false
+        }
+      ],
+      "geotarget": [
+        {
+          "community": "eTown Jacksonville",
+          "status": "opportunity"
+        },
+        {
+          "community": "RiverTown St Johns",
+          "status": "opportunity"
+        },
+        {
+          "community": "Nocatee",
+          "status": "opportunity"
+        },
+        {
+          "community": "Oakleaf Plantation",
+          "status": "opportunity"
+        }
+      ]
+    }
+  },
+  "competitors": [
+    "TruGreen",
+    "Weed Man",
+    "Lawn Doctor"
+  ],
+  "recommendations_count": 26,
+  "recommendations_high": 14,
+  "_meta": {
+    "writer": "pragma-mirror call (run.py)",
+    "computed_at": "2026-06-26T18:09:43.226666Z",
+    "recommend_only": true,
+    "degraded_modules": []
+  },
+  "aivi": {
+    "composite": 30,
+    "trend_7day": [
+      30,
+      30
+    ],
+    "color_threshold": {
+      "red_below": 50,
+      "yellow_below": 70,
+      "green_at_or_above": 70
+    },
+    "interpretation": "RED \u2014 composite brand visibility 30/100 across AEO, SEO, GEO and LLM surfaces.",
+    "surfaces": [
+      {
+        "surface": "residential lawn care jacksonville",
+        "cited": false
+      },
+      {
+        "surface": "commercial landscaping orange park",
+        "cited": false
+      },
+      {
+        "surface": "lawn care near middleburg fl",
+        "cited": false
+      }
+    ]
+  },
+  "ai_surfaces": [
+    {
+      "surface": "Web-grounded AI (AI Overviews / Perplexity)",
+      "method": "Tavily \u00b7 always-on \u00b7 key-light",
+      "checks": 2,
+      "mentions": 1
+    },
+    {
+      "surface": "ChatGPT / Claude / Gemini (consumer)",
+      "method": "weekly browser pass \u00b7 your own logins \u00b7 $0",
+      "checks": 0,
+      "mentions": null,
+      "note": "populated by browser_probe.py"
+    }
+  ]
+}
