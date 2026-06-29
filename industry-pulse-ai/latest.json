@@ -1,0 +1,49 @@
+{
+  "generated": "2026-06-29T13:40:00Z",
+  "latest_date": "2026-06-29",
+  "title": "Industry Pulse — AI / Agent Ecosystem",
+  "bullets": [
+    {
+      "n": 1,
+      "title": "Anthropic: Managed Agents bind to private MCP servers + Claude Platform on AWS",
+      "summary": "Managed Agents run in a sandbox you control and connect to private MCP servers; Claude Platform on AWS; Slack tagging. (Fable 5 shipped Jun 9, export-suspended Jun 12.)",
+      "tag": "yes",
+      "how": "Managed Agents + private MCP is exactly The Construct's wiring.",
+      "url": "https://www.anthropic.com/news"
+    },
+    {
+      "n": 2,
+      "title": "Agent-callable image/video MCP servers — Pixa, Imagine, Higgsfield",
+      "summary": "Pixa MCP exposes 6 tools in Claude (text-to-video via Kling/Luma/Hailuo); Imagine + Higgsfield add 30+ models, 4K stills, 15s video.",
+      "tag": "yes",
+      "how": "Brief-to-signage-video and product shots with zero custom code.",
+      "url": "https://www.pulsemcp.com/servers?q=image"
+    },
+    {
+      "n": 3,
+      "title": "DeepSeek V4-Pro / V4-Flash (open-weight MoE, 1M context)",
+      "summary": "Hybrid-attention MoE optimized for long-running agentic tasks at sharply lower inference cost.",
+      "tag": "yes",
+      "how": "Cost cut on long-horizon/batch jobs; open-weight self-host option.",
+      "url": "https://www.mindstudio.ai/blog/deepseek-v4-open-source-frontier-model"
+    },
+    {
+      "n": 4,
+      "title": "Frontier compression: OpenAI GPT-5.5 + Google Gemini 3.5 Flash",
+      "summary": "GPT-5.5 SOTA on agentic coding/computer-use (Terminal-Bench 2.0 82.7%); Gemini 3.5 Flash agentic-optimized, 4x faster output.",
+      "tag": "maybe",
+      "how": "Benchmark our coding/computer-use agents; Gemini Flash for fast batch image/text.",
+      "url": "https://llm-stats.com/llm-updates"
+    },
+    {
+      "n": 5,
+      "title": "Convey $38M Series A (a16z) — 'AI teammates' for non-technical operators",
+      "summary": "Lets non-engineers build autonomous workflows (NBCUniversal, Samsara); Taktile raised $110M for AI decisioning.",
+      "tag": "maybe",
+      "how": "Positioning signal for PRAGMA's operator model; watch the non-technical-operator wedge.",
+      "url": "https://techstartups.com/2026/06/24/venture-capital-startup-funding-roundup-june-24-2026/"
+    }
+  ],
+  "praxis_lesson": "MCP is now the load-bearing standard on both sides — Anthropic lets Managed Agents bind to private MCP servers, and every gen-media vendor ships one. The Construct's move: expose our own capabilities AS MCP servers (outbound), not just consume them, turning integration from a project into a config line.",
+  "history": ["2026-06-29", "2026-06-28"]
+}
