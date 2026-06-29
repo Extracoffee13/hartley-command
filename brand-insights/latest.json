@@ -279,8 +279,26 @@
     }
   ],
   "llm_browser": {
-    "ts": "2026-06-29T11:13:25Z",
+    "ts": "2026-06-29T12:14:55Z",
     "results": [
+      {
+        "surface": "ChatGPT",
+        "query": "Who are the best commercial sign companies in Jacksonville FL?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "surface": "ChatGPT",
+        "query": "Where can I get custom homebuilder community signage in Florida?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "surface": "ChatGPT",
+        "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
+        "mentioned": false,
+        "cited_source": false
+      },
       {
         "surface": "Claude",
         "query": "Who are the best commercial sign companies in Jacksonville FL?",
@@ -313,17 +331,35 @@
       },
       {
         "surface": "Perplexity",
+        "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "surface": "Gemini",
+        "query": "Who are the best commercial sign companies in Jacksonville FL?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "surface": "Gemini",
+        "query": "Where can I get custom homebuilder community signage in Florida?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "surface": "Gemini",
         "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
         "mentioned": false,
         "cited_source": false
       }
     ],
     "summary": {
-      "ChatGPT": "skipped - not logged in",
+      "ChatGPT": "0/3",
       "Claude": "2/3",
       "Perplexity": "0/3",
-      "Gemini": "skipped - not logged in"
+      "Gemini": "1/3"
     },
-    "notes": "Weekly consumer-LLM browser pass via logged-in Chrome profile. ChatGPT and Gemini were not logged in (login required) and skipped per protocol. Claude ran on the user's logged-in account: answers are personalized (account memory knows the user IS Brand 9), but on Q2 and Q3 brand9signs.com surfaced organically in Claude's grounding web search (cited 3x each); on Q1 (best commercial sign companies) Brand 9 did NOT surface in search and Claude explicitly noted the gap. Perplexity ran anonymously (no login wall, web-grounded, representative of consumer experience): Brand 9 did not appear in any answer or source list across all 3 queries."
+    "notes": "Full 4-surface consumer-LLM browser pass via logged-in Chrome profile (all 12 scans completed). ChatGPT (account: Alfred Pennyworth, Free): all 3 web-grounded, neutral account with no Brand 9 personalization, 0/3 - Brand 9 never surfaced. Claude (logged-in personalized account that knows the user is Brand 9): Q2/Q3 named Brand 9 and brand9signs.com surfaced organically in grounding search (cited); Q1 did not surface. 2/3. Perplexity (anonymous, neutral, web-grounded): 0/3 - Brand 9 in no answer or source. Gemini (account: Bobby Hartley, personalized - greeted user by name): Q2 named Brand 9 Signs as a top homebuilder-signage specialist and cited brand9signs.com; Q1/Q3 did not. 1/3. Caveat: Claude and Gemini accounts are personalized and may be biased toward surfacing Brand 9; ChatGPT and Perplexity are the cleaner neutral signals and both returned 0/3."
   }
 }
