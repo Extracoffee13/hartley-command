@@ -1,27 +1,27 @@
 {
   "schema_version": "2.0",
-  "ts": "2026-06-27T19:14:32.399372Z",
+  "ts": "2026-06-29T12:51:11.929426Z",
   "client": "b9",
   "client_display_name": "Brand 9 Signs",
   "product_name": "PRAGMA Mirror",
   "scan_status": "live",
   "visibility_score": {
-    "composite": 43,
+    "composite": 33,
     "trend_7day": [
-      29,
       23,
       23,
       33,
       33,
       43,
-      43
+      43,
+      33
     ],
     "color_threshold": {
       "red_below": 50,
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "RED — composite brand visibility 43/100 across AEO, SEO, GEO and LLM surfaces."
+    "interpretation": "RED — composite brand visibility 33/100 across AEO, SEO, GEO and LLM surfaces."
   },
   "modules": {
     "aeo": {
@@ -128,7 +128,7 @@
       ]
     },
     "llm": {
-      "score": 50,
+      "score": 0,
       "questions": [
         {
           "q": "Who are the best commercial sign companies in Jacksonville FL?",
@@ -139,10 +139,10 @@
         },
         {
           "q": "Where can I get custom business signs installed in Clay County Florida?",
-          "cited": true,
+          "cited": false,
           "surface": "web-grounded",
           "in_answer": false,
-          "in_sources": true
+          "in_sources": false
         }
       ],
       "ai_surfaces": [
@@ -150,7 +150,7 @@
           "surface": "Web-grounded AI (AI Overviews / Perplexity)",
           "method": "Tavily · always-on · key-light",
           "checks": 2,
-          "mentions": 1
+          "mentions": 0
         },
         {
           "surface": "ChatGPT / Claude / Gemini (consumer)",
@@ -223,31 +223,31 @@
     "SpeedPro",
     "Image360"
   ],
-  "recommendations_count": 28,
-  "recommendations_high": 14,
+  "recommendations_count": 29,
+  "recommendations_high": 15,
   "_meta": {
     "writer": "pragma-mirror call (run.py)",
-    "computed_at": "2026-06-27T19:14:32.399372Z",
+    "computed_at": "2026-06-29T12:51:11.929426Z",
     "recommend_only": true,
     "degraded_modules": []
   },
   "aivi": {
-    "composite": 43,
+    "composite": 33,
     "trend_7day": [
-      29,
       23,
       23,
       33,
       33,
       43,
-      43
+      43,
+      33
     ],
     "color_threshold": {
       "red_below": 50,
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "RED — composite brand visibility 43/100 across AEO, SEO, GEO and LLM surfaces.",
+    "interpretation": "RED — composite brand visibility 33/100 across AEO, SEO, GEO and LLM surfaces.",
     "surfaces": [
       {
         "surface": "commercial sign company jacksonville",
@@ -268,7 +268,7 @@
       "surface": "Web-grounded AI (AI Overviews / Perplexity)",
       "method": "Tavily · always-on · key-light",
       "checks": 2,
-      "mentions": 1
+      "mentions": 0
     },
     {
       "surface": "ChatGPT / Claude / Gemini (consumer)",
@@ -279,7 +279,7 @@
     }
   ],
   "llm_browser": {
-    "ts": "2026-06-29T12:14:55Z",
+    "ts": "2026-06-29T12:52:50Z",
     "results": [
       {
         "surface": "ChatGPT",
@@ -360,6 +360,6 @@
       "Perplexity": "0/3",
       "Gemini": "1/3"
     },
-    "notes": "Full 4-surface consumer-LLM browser pass via logged-in Chrome profile (all 12 scans completed). ChatGPT (account: Alfred Pennyworth, Free): all 3 web-grounded, neutral account with no Brand 9 personalization, 0/3 - Brand 9 never surfaced. Claude (logged-in personalized account that knows the user is Brand 9): Q2/Q3 named Brand 9 and brand9signs.com surfaced organically in grounding search (cited); Q1 did not surface. 2/3. Perplexity (anonymous, neutral, web-grounded): 0/3 - Brand 9 in no answer or source. Gemini (account: Bobby Hartley, personalized - greeted user by name): Q2 named Brand 9 Signs as a top homebuilder-signage specialist and cited brand9signs.com; Q1/Q3 did not. 1/3. Caveat: Claude and Gemini accounts are personalized and may be biased toward surfacing Brand 9; ChatGPT and Perplexity are the cleaner neutral signals and both returned 0/3."
+    "notes": "Full 4-surface consumer-LLM browser pass via logged-in Chrome (all 12 scans). ChatGPT (neutral acct) 0/3 web-grounded. Claude (personalized) 2/3, brand9signs.com cited organically on Q2/Q3. Perplexity (anonymous, neutral) 0/3. Gemini (personalized) 1/3, named Brand 9 + cited brand9signs.com on Q2. ChatGPT+Perplexity are the neutral baseline (both 0/3); Claude+Gemini are personalized and biased upward. Re-merged after daily run.py probe refresh."
   }
 }
