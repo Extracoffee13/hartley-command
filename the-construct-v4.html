@@ -1044,7 +1044,15 @@ const PragmaMirrorPanel = () => {
     return C.green;
   };
   const sparkline = (data && data.aivi && data.aivi.trend_7day) || [];
-  const surfaces = (data && data.surfaces) || { claude: null, chatgpt: null, gemini: null, perplexity: null, google_ai_overview: null };
+  // Surface keys are normalized: accept either google_ai_overview or ai_overview from the writer.
+  const surfacesRaw = (data && data.surfaces) || {};
+  const surfaces = {
+    claude: surfacesRaw.claude || null,
+    chatgpt: surfacesRaw.chatgpt || null,
+    gemini: surfacesRaw.gemini || null,
+    perplexity: surfacesRaw.perplexity || null,
+    google_ai_overview: surfacesRaw.google_ai_overview || surfacesRaw.ai_overview || null,
+  };
   const sentiment = (data && data.sentiment) || { positive_pct: null, neutral_pct: null, negative_pct: null };
   const topCitations = (data && data.top_citations) || [];
   const competitors = (data && data.competitors) || [];
@@ -1084,19 +1092,36 @@ const PragmaMirrorPanel = () => {
     );
   };
 
-  // Surface bar: each surface is a row, name + mentions + ranking pill
+  // Surface bar: each surface is a row showing the REAL signal that actually ran —
+  // whether Brand 9 was cited on that surface (s.cited true/false), plus the probe query.
+  // Falls back to mentions/citation counts only if a richer scan ever provides them,
+  // and shows an honest "not yet probed" when the surface has never been checked.
   const surfaceRow = (key, label) => {
     const s = surfaces[key];
-    const mentions = s ? (s.mentions || 0) : null;
-    const rank = s ? (s.best_ranking || s.ranking || "unranked") : "—";
-    const cited = s ? (s.citations || []).length : 0;
+    const probed = s && s.checked_at != null && s.cited != null;
+    // Status: real cited ✓ / not cited, or honest "not yet probed".
+    let statusText, statusColor;
+    if (!s || s.cited == null) {
+      statusText = "not yet probed";
+      statusColor = C.greenDim;
+    } else if (s.cited) {
+      statusText = "cited ✓";
+      statusColor = C.green;
+    } else {
+      statusText = "not cited";
+      statusColor = "#FF4D4F";
+    }
+    // Optional richer detail if a future scan measures it.
+    const mentions = s && s.mentions != null ? s.mentions : null;
+    const citCount = s && Array.isArray(s.citations) ? s.citations.length : null;
+    const detail = (mentions != null || citCount != null)
+      ? ((mentions != null ? mentions + " mentions" : "") + (citCount != null ? (mentions != null ? " · " : "") + citCount + " citations" : ""))
+      : (s && s.query ? s.query : (probed ? "" : "—"));
     return (
       <div key={key} style={{ display: "grid", gridTemplateColumns: "120px 1fr 80px", alignItems: "center", padding: "4px 0", borderBottom: `1px dashed ${C.greenDim}` }}>
         <span style={{ fontSize: 10, color: C.cyan }}>{label}</span>
-        <span style={{ fontSize: 10, color: C.green }}>
-          {mentions === null ? "—" : mentions + " mentions · " + cited + " citations"}
-        </span>
-        <span style={{ fontSize: 9, color: C.green, textAlign: "right", letterSpacing: 1 }}>{rank}</span>
+        <span style={{ fontSize: 9, color: C.greenDim, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }} title={detail}>{detail}</span>
+        <span style={{ fontSize: 9, color: statusColor, textAlign: "right", letterSpacing: 1 }}>{statusText}</span>
       </div>
     );
   };
@@ -1222,7 +1247,9 @@ const PragmaMirrorPanel = () => {
 
         {/* Surfaces column */}
         <div>
-          <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 6 }}>AI VISIBILITY SURFACES · KEY-FREE</div>
+          <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 6 }}>PER-SURFACE CITATION · DID AI NAME BRAND 9?</div>
+          {[["claude", "Claude"], ["chatgpt", "ChatGPT"], ["gemini", "Gemini"], ["perplexity", "Perplexity"], ["google_ai_overview", "Google AI Overview"]].map(function (p) { return surfaceRow(p[0], p[1]); })}
+          <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginTop: 12, marginBottom: 6 }}>AI VISIBILITY SURFACES · KEY-FREE</div>
           {((data && data.ai_surfaces) || []).map(function (s, i) {
             var has = s.checks > 0;
             return (

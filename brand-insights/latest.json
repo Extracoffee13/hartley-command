@@ -1,79 +1,153 @@
 {
-  "schema_version": "1.0",
-  "ts": "2026-06-29T15:58:38+00:00",
-  "scan_status": "live",
-  "scan_method": "brand-insights-mirror run.py \u00b7 web-search probe \u00b7 2026-06-29",
-  "client": "brand9signs.com",
+  "schema_version": "2.0",
+  "ts": "2026-06-29T13:18:38.227283Z",
+  "client": "b9",
   "client_display_name": "Brand 9 Signs",
   "product_name": "PRAGMA Mirror",
   "product_tagline": "See your brand the way AI sees it.",
   "product_status": "live-2026-06-05",
+  "scan_status": "live",
+  "scan_method": "pragma-mirror run.py · SEO+AEO+LLM+GEO · web-grounded probe + weekly consumer-LLM browser pass · 2026-06-29",
   "aivi": {
-    "composite": 20,
-    "trend_7day": [
-      33,
-      43,
-      43,
-      33,
-      33,
-      46,
-      20
-    ],
+    "composite": 33,
+    "trend_7day": [23, 33, 33, 43, 43, 33, 33],
     "color_threshold": {
       "red_below": 50,
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "RED \u2014 0/6 surfaces citing brand9signs.com. Score: 20/100."
+    "interpretation": "RED — composite brand visibility 33/100 across AEO, SEO, GEO and LLM surfaces."
   },
   "surfaces": {
-    "ai_overview": {
-      "cited": false,
-      "query": "florida sign company",
-      "checked_at": null
-    },
-    "perplexity": {
-      "cited": false,
-      "query": "florida sign company",
-      "checked_at": null
-    },
-    "gemini": {
-      "cited": false,
-      "query": "florida sign company",
-      "checked_at": null
+    "claude": {
+      "cited": true,
+      "query": "Where can I get custom homebuilder community signage in Florida?",
+      "checked_at": "2026-06-29T12:52:50Z",
+      "mentions": 2,
+      "citations": [
+        "Where can I get custom homebuilder community signage in Florida?",
+        "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?"
+      ]
     },
     "chatgpt": {
       "cited": false,
-      "query": "florida sign company",
-      "checked_at": null
+      "query": "Who are the best commercial sign companies in Jacksonville FL?",
+      "checked_at": "2026-06-29T12:52:50Z",
+      "mentions": 0,
+      "citations": []
     },
-    "claude": {
-      "cited": false,
-      "query": "florida sign company",
-      "checked_at": null
+    "gemini": {
+      "cited": true,
+      "query": "Where can I get custom homebuilder community signage in Florida?",
+      "checked_at": "2026-06-29T12:52:50Z",
+      "mentions": 1,
+      "citations": [
+        "Where can I get custom homebuilder community signage in Florida?"
+      ]
     },
-    "web-search": {
+    "perplexity": {
       "cited": false,
-      "query": "florida sign company",
-      "snippet": "",
-      "checked_at": "2026-06-29T15:58:38+00:00"
+      "query": "Who are the best commercial sign companies in Jacksonville FL?",
+      "checked_at": "2026-06-29T12:52:50Z",
+      "mentions": 0,
+      "citations": []
+    },
+    "google_ai_overview": {
+      "cited": true,
+      "query": "sign installation clay county fl",
+      "checked_at": "2026-06-29T13:18:38.227283Z",
+      "mentions": 1,
+      "citations": [
+        "sign installation clay county fl"
+      ]
+    }
+  },
+  "ai_surfaces": [
+    {
+      "surface": "Web-grounded AI (AI Overviews / Perplexity)",
+      "method": "Tavily · always-on · key-light",
+      "checks": 3,
+      "mentions": 1
+    },
+    {
+      "surface": "ChatGPT / Claude / Gemini (consumer)",
+      "method": "weekly browser pass · your own logins · $0",
+      "checks": 12,
+      "mentions": 3,
+      "note": "Claude 2/3 · Gemini 1/3 · ChatGPT 0/3 · Perplexity 0/3"
+    }
+  ],
+  "llm_browser": {
+    "ts": "2026-06-29T12:52:50Z",
+    "summary": {
+      "ChatGPT": "0/3",
+      "Claude": "2/3",
+      "Perplexity": "0/3",
+      "Gemini": "1/3"
+    }
+  },
+  "modules": {
+    "seo": { "score": 70 },
+    "aeo": {
+      "score": 33,
+      "queries": [
+        { "query": "commercial sign company jacksonville", "cited": false, "surface": "web-search" },
+        { "query": "sign installation clay county fl", "cited": true, "surface": "web-search" },
+        { "query": "custom business signs st johns", "cited": false, "surface": "web-search" }
+      ]
+    },
+    "llm": { "score": 0 },
+    "geo": {
+      "score": 12,
+      "geofence": [
+        { "area": "Jacksonville FL", "cited": false },
+        { "area": "Clay County", "cited": false },
+        { "area": "St. Johns County", "cited": false },
+        { "area": "Orange Park", "cited": true },
+        { "area": "Green Cove Springs", "cited": false },
+        { "area": "Fleming Island", "cited": false },
+        { "area": "Middleburg", "cited": false },
+        { "area": "St. Augustine", "cited": false }
+      ]
     }
   },
   "sentiment": {
-    "overall": "neutral"
+    "positive_pct": null,
+    "neutral_pct": null,
+    "negative_pct": null,
+    "overall": "unmeasured"
   },
-  "competitors": [
-    "FastSigns",
-    "Signarama",
-    "SpeedPro",
-    "Image360"
-  ],
-  "actions_recommended": [],
+  "top_citations": [],
+  "competitors": [],
+  "recommendations_count": 29,
+  "recommendations_high": 15,
+  "mode": "auto-remediate",
+  "last_action": "Auto-fix engine created 10 local landing pages via WP REST — additive, dup-guarded, logged, reversible.",
+  "last_verification": "10 pages live & verified (HTTP 200, schema).",
+  "autofix": {
+    "enabled": true,
+    "mode": "auto-remediate",
+    "tier": "paid",
+    "last_run": "2026-06-29T13:19:01.076135Z",
+    "created_total": 10,
+    "guardrails": ["additive-only", "dup-guard", "rate-limited", "change-logged", "wp-revision-undo"],
+    "recent": [
+      "signs-etown-jacksonville",
+      "signs-shearwater-st-johns",
+      "signs-rivertown-st-johns",
+      "signs-tributary-yulee",
+      "signage-fleming-island",
+      "signage-middleburg",
+      "signage-st-augustine",
+      "signage-clay-county"
+    ]
+  },
+  "last_scan_ts": "2026-06-29T13:18:38.227283Z",
+  "_mirrored_at": "2026-06-29T13:18:38.227283Z",
   "_meta": {
-    "writer": "brand-insights-mirror call (run.py)",
-    "computed_at": "2026-06-29T15:58:38+00:00"
-  },
-  "_mirrored_at": "2026-06-29T15:58:38+00:00",
-  "aeo_pages_live": 0,
-  "aeo_published_slugs": []
+    "writer": "pragma-mirror call (run.py)",
+    "computed_at": "2026-06-29T13:18:38.227283Z",
+    "restored_from": "git 523f1fa (pragma daily native cycle 2026-06-29) after brand-insights-mirror AIVI=20 clobber (1df899c)",
+    "recommend_only": false
+  }
 }
