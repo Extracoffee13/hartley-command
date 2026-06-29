@@ -1013,6 +1013,120 @@ const IndustryPulsePanel = () => {
   );
 };
 
+// ═══════════════════════════════════════════════════════════════
+// MODEL ARENA — ONGOING CASE STUDY
+// Bake-off leaderboard (controlled harness) + production usage (Hermes logs).
+// Reads ./model-leaderboard.json (from leaderboard.py) and ./model-usage.json
+// (from model-usage-rollup.py). Honest empty state until first bake-off run.
+// Same harness + panel ships as a PRAGMA product — per-client model fit & cost.
+// ═══════════════════════════════════════════════════════════════
+const ModelArenaPanel = () => {
+  const [lb, setLb] = React.useState(null);
+  const [usage, setUsage] = React.useState(null);
+  const [fetched, setFetched] = React.useState(false);
+  React.useEffect(() => {
+    const grab = async (rel) => {
+      const urls = [
+        rel + '?cb=' + Date.now(),
+        'https://extracoffee13.github.io/hartley-command/' + rel.replace(/^\.\//, '') + '?cb=' + Date.now(),
+      ];
+      for (const u of urls) {
+        try { const r = await fetch(u, { cache: 'no-store' }); if (r.ok) return await r.json(); } catch (e) {}
+      }
+      return null;
+    };
+    (async () => {
+      setLb(await grab('./model-leaderboard.json'));
+      setUsage(await grab('./model-usage.json'));
+      setFetched(true);
+    })();
+  }, []);
+
+  const models = (lb && lb.models) || [];
+  const fmt = (v, suffix) => (v === null || v === undefined) ? '—' : (v + (suffix || ''));
+  const fmtTok = (v) => (v === null || v === undefined) ? '—' : v.toLocaleString();
+  const maxRate = Math.max(1, ...models.map(m => m.success_rate_pct || 0));
+  const th = { color: C.cyan, fontSize: 9, textTransform: "uppercase", letterSpacing: 1, textAlign: "right", padding: "4px 8px", borderBottom: "1px solid rgba(0,212,255,0.25)", fontWeight: 700 };
+  const thL = { ...th, textAlign: "left" };
+  const td = { color: "rgba(255,255,255,0.82)", fontSize: 11, textAlign: "right", padding: "5px 8px", borderBottom: "1px solid rgba(255,255,255,0.05)", fontVariantNumeric: "tabular-nums" };
+  const tdL = { ...td, textAlign: "left" };
+
+  return (
+    <div style={{ background: "linear-gradient(135deg, rgba(0,212,255,0.05) 0%, rgba(0,20,40,0.6) 100%)", border: "1px solid rgba(0,212,255,0.35)", borderRadius: 4, padding: 24, margin: "16px 0", position: "relative" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 4 }}>
+        <span style={{ color: C.cyan, fontWeight: 700, fontSize: 15, letterSpacing: 1 }}>⚡ MODEL ARENA — ONGOING CASE STUDY</span>
+        <span style={{ color: C.greenDim, fontSize: 11 }}>{lb && lb.generated ? lb.generated.slice(0, 16).replace('T', ' ') : (fetched ? "no data" : "loading…")}</span>
+      </div>
+      <div style={{ color: "rgba(255,255,255,0.45)", fontSize: 11, marginBottom: 14 }}>Cumulative head-to-head bake-off · {lb ? (lb.summaries_found || 0) : 0} run{(lb && lb.summaries_found) === 1 ? '' : 's'} aggregated · sorted by success % then latency</div>
+
+      {!fetched && <div style={{ color: C.greenDim, fontSize: 12 }}>Loading leaderboard…</div>}
+
+      {fetched && models.length === 0 && (
+        <div style={{ color: C.greenDim, fontSize: 12, padding: "10px 0" }}>
+          ◷ awaiting first bake-off run — harness is executing; the leaderboard populates once a SUMMARY lands.
+        </div>
+      )}
+
+      {models.length > 0 && (
+        <div style={{ overflowX: "auto" }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 640 }}>
+            <thead>
+              <tr>
+                <th style={thL}>Model</th>
+                <th style={th}>Runs</th>
+                <th style={th}>Success %</th>
+                <th style={th}>Avg latency</th>
+                <th style={th}>Out-tokens</th>
+                <th style={th}>Avg tok/task</th>
+                <th style={th}>Last run</th>
+              </tr>
+            </thead>
+            <tbody>
+              {models.map((m, i) => (
+                <tr key={i}>
+                  <td style={tdL}>
+                    <span style={{ color: i === 0 ? C.green : "#fff", fontWeight: i === 0 ? 700 : 500 }}>{i === 0 ? "▲ " : ""}{m.model}</span>
+                  </td>
+                  <td style={td}>{m.runs}</td>
+                  <td style={td}>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 6 }}>
+                      <div style={{ width: 40, height: 5, background: "rgba(255,255,255,0.08)", borderRadius: 2, overflow: "hidden" }}>
+                        <div style={{ width: ((m.success_rate_pct || 0) / maxRate * 100) + "%", height: "100%", background: (m.success_rate_pct >= 80 ? C.green : (m.success_rate_pct >= 50 ? C.cyan : C.orange)) }} />
+                      </div>
+                      <span>{fmt(m.success_rate_pct, "%")}</span>
+                    </div>
+                  </td>
+                  <td style={td}>{fmt(m.avg_latency_s, "s")}</td>
+                  <td style={td}>{fmtTok(m.total_out_tokens)}</td>
+                  <td style={td}>{m.avg_out_tokens_per_task === null || m.avg_out_tokens_per_task === undefined ? "—" : m.avg_out_tokens_per_task}</td>
+                  <td style={td}>{m.last_run ? m.last_run.replace('T', ' ') : "—"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      {usage && usage.totals && (
+        <div style={{ marginTop: 16, padding: 12, background: "rgba(57,255,20,0.04)", borderRadius: 3, borderLeft: "2px solid " + C.green }}>
+          <span style={{ color: C.green, fontWeight: 700, fontSize: 10, letterSpacing: 1 }}>PRODUCTION USAGE</span>
+          <span style={{ color: "rgba(255,255,255,0.5)", fontSize: 9, marginLeft: 8 }}>(real Hermes log rollup)</span>
+          <div style={{ color: "rgba(255,255,255,0.78)", fontSize: 12, marginTop: 4, fontVariantNumeric: "tabular-nums" }}>
+            {usage.totals.requests.toLocaleString()} OpenRouter requests
+            {" · "}<span style={{ color: usage.totals.errors_402 > 0 ? C.orange : C.greenDim }}>{usage.totals.errors_402.toLocaleString()} × 402 (insufficient credits)</span>
+            {usage.totals.out_tokens != null ? " · " + usage.totals.out_tokens.toLocaleString() + " out-tokens" : ""}
+            {usage.note ? " · " + usage.note : ""}
+          </div>
+        </div>
+      )}
+
+      <div style={{ color: C.cyan, fontSize: 10, marginTop: 12, opacity: 0.8 }}>
+        ↳ Same harness + panel ships as a PRAGMA product — per-client model fit and cost.
+      </div>
+    </div>
+  );
+};
+
 const PragmaMirrorPanel = () => {
   const [data, setData] = React.useState(null);
   const [fetched, setFetched] = React.useState(false);
@@ -2146,6 +2260,7 @@ const Dashboard = () => (
       <HermesPanel />
       <HarvardCorpusPanel />
       <FoundersPlaybookPanel />
+      <ModelArenaPanel />
       <IndustryPulsePanel />
       <PragmaMirrorPanel />
       <MirrorBasePanel />

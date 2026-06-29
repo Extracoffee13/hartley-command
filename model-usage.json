@@ -1,0 +1,75 @@
+{
+  "generated": "2026-06-29T19:37:19",
+  "schema_version": 1,
+  "source": "Hermes logs (~/.hermes/logs/agent.log*, errors.log*)",
+  "logs_scanned": [
+    "/sessions/sharp-blissful-brown/mnt/.hermes/logs/agent.log",
+    "/sessions/sharp-blissful-brown/mnt/.hermes/logs/agent.log.1",
+    "/sessions/sharp-blissful-brown/mnt/.hermes/logs/agent.log.2",
+    "/sessions/sharp-blissful-brown/mnt/.hermes/logs/errors.log"
+  ],
+  "status": "ok",
+  "totals": {
+    "requests": 7786,
+    "errors_402": 544,
+    "other_errors": 144,
+    "in_tokens": 370753994,
+    "out_tokens": 3465442
+  },
+  "models": [
+    {
+      "model": "anthropic/claude-sonnet-4.6",
+      "provider": "openrouter",
+      "requests": 6000,
+      "errors_402": 542,
+      "other_errors": 46,
+      "in_tokens": 285007970,
+      "out_tokens": 2816948
+    },
+    {
+      "model": "moonshotai/kimi-k2.7-code",
+      "provider": "openrouter",
+      "requests": 1737,
+      "errors_402": 2,
+      "other_errors": 54,
+      "in_tokens": 84308473,
+      "out_tokens": 635901
+    },
+    {
+      "model": "openai/gpt-4o-mini",
+      "provider": "openrouter",
+      "requests": 49,
+      "errors_402": 0,
+      "other_errors": 26,
+      "in_tokens": 1437551,
+      "out_tokens": 12593
+    },
+    {
+      "model": "claude-haiku-4-5-20251001",
+      "provider": "anthropic",
+      "requests": 0,
+      "errors_402": 0,
+      "other_errors": 10,
+      "in_tokens": 0,
+      "out_tokens": 0
+    },
+    {
+      "model": "deepseek-ai/deepseek-v3.2",
+      "provider": "nvidia",
+      "requests": 0,
+      "errors_402": 0,
+      "other_errors": 6,
+      "in_tokens": 0,
+      "out_tokens": 0
+    },
+    {
+      "model": "gpt-4o-mini",
+      "provider": "openai-api",
+      "requests": 0,
+      "errors_402": 0,
+      "other_errors": 2,
+      "in_tokens": 0,
+      "out_tokens": 0
+    }
+  ]
+}
