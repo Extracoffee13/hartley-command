@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0",
-  "ts": "2026-06-26T14:12:47.704579Z",
+  "ts": "2026-06-27T19:14:32.399372Z",
   "client": "b9",
   "client_display_name": "Brand 9 Signs",
   "product_name": "PRAGMA Mirror",
@@ -13,6 +13,7 @@
       23,
       33,
       33,
+      43,
       43
     ],
     "color_threshold": {
@@ -20,7 +21,7 @@
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "RED \u2014 composite brand visibility 43/100 across AEO, SEO, GEO and LLM surfaces."
+    "interpretation": "RED — composite brand visibility 43/100 across AEO, SEO, GEO and LLM surfaces."
   },
   "modules": {
     "aeo": {
@@ -93,7 +94,7 @@
         },
         {
           "url": "https://brand9signs.com/contact",
-          "title": "Contact Brand 9 Signs \u2014 Jacksonville Sign Company Since 1986",
+          "title": "Contact Brand 9 Signs — Jacksonville Sign Company Since 1986",
           "title_ok": true,
           "meta_ok": false,
           "h1_ok": false,
@@ -147,13 +148,13 @@
       "ai_surfaces": [
         {
           "surface": "Web-grounded AI (AI Overviews / Perplexity)",
-          "method": "Tavily \u00b7 always-on \u00b7 key-light",
+          "method": "Tavily · always-on · key-light",
           "checks": 2,
           "mentions": 1
         },
         {
           "surface": "ChatGPT / Claude / Gemini (consumer)",
-          "method": "weekly browser pass \u00b7 your own logins \u00b7 $0",
+          "method": "weekly browser pass · your own logins · $0",
           "checks": 0,
           "mentions": null,
           "note": "populated by browser_probe.py"
@@ -226,7 +227,7 @@
   "recommendations_high": 14,
   "_meta": {
     "writer": "pragma-mirror call (run.py)",
-    "computed_at": "2026-06-26T14:12:47.704579Z",
+    "computed_at": "2026-06-27T19:14:32.399372Z",
     "recommend_only": true,
     "degraded_modules": []
   },
@@ -238,6 +239,7 @@
       23,
       33,
       33,
+      43,
       43
     ],
     "color_threshold": {
@@ -245,7 +247,7 @@
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "RED \u2014 composite brand visibility 43/100 across AEO, SEO, GEO and LLM surfaces.",
+    "interpretation": "RED — composite brand visibility 43/100 across AEO, SEO, GEO and LLM surfaces.",
     "surfaces": [
       {
         "surface": "commercial sign company jacksonville",
@@ -264,43 +266,64 @@
   "ai_surfaces": [
     {
       "surface": "Web-grounded AI (AI Overviews / Perplexity)",
-      "method": "Tavily \u00b7 always-on \u00b7 key-light",
+      "method": "Tavily · always-on · key-light",
       "checks": 2,
       "mentions": 1
     },
     {
       "surface": "ChatGPT / Claude / Gemini (consumer)",
-      "method": "weekly browser pass \u00b7 your own logins \u00b7 $0",
+      "method": "weekly browser pass · your own logins · $0",
       "checks": 0,
       "mentions": null,
       "note": "populated by browser_probe.py"
     }
   ],
-  "last_action": "Auto-fix engine created 10 local landing pages via WP REST \u2014 additive, dup-guarded, logged, reversible.",
-  "last_verification": "10 pages live & verified (HTTP 200, schema).",
-  "autofix": {
-    "enabled": true,
-    "mode": "auto-remediate",
-    "tier": "paid",
-    "last_run": "2026-06-26T14:13:23.129673Z",
-    "created_total": 10,
-    "guardrails": [
-      "additive-only",
-      "dup-guard",
-      "rate-limited",
-      "change-logged",
-      "wp-revision-undo"
+  "llm_browser": {
+    "ts": "2026-06-29T11:13:25Z",
+    "results": [
+      {
+        "surface": "Claude",
+        "query": "Who are the best commercial sign companies in Jacksonville FL?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "surface": "Claude",
+        "query": "Where can I get custom homebuilder community signage in Florida?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "surface": "Claude",
+        "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "surface": "Perplexity",
+        "query": "Who are the best commercial sign companies in Jacksonville FL?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "surface": "Perplexity",
+        "query": "Where can I get custom homebuilder community signage in Florida?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "surface": "Perplexity",
+        "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
+        "mentioned": false,
+        "cited_source": false
+      }
     ],
-    "recent": [
-      "signs-etown-jacksonville",
-      "signs-shearwater-st-johns",
-      "signs-rivertown-st-johns",
-      "signs-tributary-yulee",
-      "signage-fleming-island",
-      "signage-middleburg",
-      "signage-st-augustine",
-      "signage-clay-county"
-    ]
-  },
-  "mode": "auto-remediate"
+    "summary": {
+      "ChatGPT": "skipped - not logged in",
+      "Claude": "2/3",
+      "Perplexity": "0/3",
+      "Gemini": "skipped - not logged in"
+    },
+    "notes": "Weekly consumer-LLM browser pass via logged-in Chrome profile. ChatGPT and Gemini were not logged in (login required) and skipped per protocol. Claude ran on the user's logged-in account: answers are personalized (account memory knows the user IS Brand 9), but on Q2 and Q3 brand9signs.com surfaced organically in Claude's grounding web search (cited 3x each); on Q1 (best commercial sign companies) Brand 9 did NOT surface in search and Claude explicitly noted the gap. Perplexity ran anonymously (no login wall, web-grounded, representative of consumer experience): Brand 9 did not appear in any answer or source list across all 3 queries."
+  }
 }
