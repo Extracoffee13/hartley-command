@@ -1113,8 +1113,8 @@ const ModelArenaPanel = () => {
           <span style={{ color: "rgba(255,255,255,0.5)", fontSize: 9, marginLeft: 8 }}>(real Hermes log rollup)</span>
           <div style={{ color: "rgba(255,255,255,0.78)", fontSize: 12, marginTop: 4, fontVariantNumeric: "tabular-nums" }}>
             {usage.totals.requests.toLocaleString()} OpenRouter requests
-            {" · "}<span style={{ color: usage.totals.errors_402 > 0 ? C.orange : C.greenDim }}>{usage.totals.errors_402.toLocaleString()} × 402 (insufficient credits)</span>
             {usage.totals.out_tokens != null ? " · " + usage.totals.out_tokens.toLocaleString() + " out-tokens" : ""}
+            {usage.totals.in_tokens != null ? " · " + (usage.totals.in_tokens / 1e6).toFixed(0) + "M in-tokens" : ""}
             {usage.note ? " · " + usage.note : ""}
           </div>
         </div>
