@@ -23,3 +23,15 @@ lesson: Every major ad platform (Google/Meta/Amazon/TikTok) now ships an MCP lay
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-06-30
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: 4 items flagged — MiniMax official multimodal MCP server (TTS/voice-clone/image/video/music agent-callable), Google Gemini Omni Flash any-to-any video in broad rollout, Cognition $1B/$25B with Devin shipping 89% of its code and ARR $37M->$492M, arXiv 'Asynchronous Software Engineering Agents'.
+lesson: The generation layer (voice/image/video/music) is collapsing into MCP — MiniMax + Higgsfield now expose the whole creative stack as agent-callable tools. The Construct's move for B9S is one MCP-backed creative-ops agent with swappable generation backends, owning orchestration instead of paying per-seat for human-driven SaaS.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

@@ -1,49 +1,41 @@
 {
-  "generated": "2026-06-29T13:52:00Z",
-  "latest_date": "2026-06-29",
+  "generated": "2026-06-30T10:15:00Z",
+  "latest_date": "2026-06-30",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "TikTok ships Ads MCP server + Ads Skills — big-four ad platforms now all agent-callable",
-      "summary": "TikTok becomes the last of Google/Meta/Amazon to expose an MCP layer so your own agents plan, launch, and optimize ad campaigns; companion 'Ads Skills' are workflow building blocks. Announced at TikTok World May 12-13; not yet GA.",
+      "title": "MiniMax ships official multimodal MCP server — TTS, voice cloning, image, video, music all agent-callable",
+      "summary": "MiniMax's just-published MCP server exposes text-to-speech, voice cloning, text/image-to-image, text/image-to-video (Hailuo-02, 6s/10s at 768P/1080P), and music-1.5 as one set of tools any MCP client (Claude, Cursor, Cowork) can call.",
       "tag": "yes",
-      "how": "Maps to Brand 9 Signs paid acquisition + PRAGMA operator wedge: one Construct campaign-ops agent driving all four ad-platform MCPs.",
-      "url": "https://digiday.com/marketing/tiktok-launches-mcp-server-to-let-ai-agents-run-campaigns/"
+      "how": "Drop-in generation backend for Brand 9 Signs creative (signage mockups, social video, voiceover) behind one Construct creative-ops agent; a price/quality alternative alongside our connected Higgsfield server.",
+      "url": "https://www.minimax.io/news/minimax-mcp"
     },
     {
       "n": 2,
-      "title": "Anthropic: connector observability dashboard + enterprise-managed MCP (Okta) + in-app directory submission",
-      "summary": "Admins provision MCP connectors org-wide via Okta with zero-touch first-login access; a public-beta dashboard tracks adoption, errors, latency, and per-tool calls across Claude / Claude Code / Cowork; devs submit connectors to the directory in-app.",
+      "title": "Google Gemini Omni Flash (any-to-any video) now in broad rollout across Gemini app, Flow, YouTube Shorts",
+      "summary": "Omni generates and conversationally edits high-quality video from any mix of image/audio/video/text with character and scene consistency across edits, SynthID-watermarked, free on YouTube Shorts/Create. Announced I/O 2026; rollout widening now.",
       "tag": "yes",
-      "how": "Real observability over The Construct's MCP fleet and a clean path to publish our internal servers.",
-      "url": "https://www.anthropic.com/news"
+      "how": "For a signage/visual brand, conversational video editing collapses storyboard-to-cut time; wait for the API (coming weeks) before committing The Construct's video pipeline.",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni/"
     },
     {
       "n": 3,
-      "title": "OpenAI GPT-5.6 'Sol' — 91.9% Terminal-Bench 2.1; access restored to vetted US orgs Jun 27",
-      "summary": "Sol is OpenAI's strongest coding/agentic model yet (91.9% Terminal-Bench 2.1) at GPT-5.5 pricing ($5/$30 per 1M); access partially restored to vetted US orgs on June 27 after a government preview process.",
+      "title": "Cognition economics validate agentic-ops thesis — $1B at $25B, Devin ships 89% of its own code, ARR $37M to $492M in 12 months",
+      "summary": "13x ARR growth and near-total internal autonomy is the clearest public datapoint that autonomous agents now do the bulk of real production work, not demos. Round closed late May; the operating metrics are the signal.",
       "tag": "maybe",
-      "how": "Benchmark our coding/computer-use agents against Sol once access clears; watch the export-control overhang.",
-      "url": "https://andrew.ooo/answers/what-is-gpt-5-6-sol-terra-luna-openai-june-2026/"
+      "how": "Direct validation of PRAGMA's AI-operator thesis; the proof-point to cite when positioning The Construct as the agent layer that runs the work, not assists it.",
+      "url": "https://techcrunch.com/2026/05/27/ai-coding-startup-cognition-raises-1b-at-25b-pre-money-valuation/"
     },
     {
       "n": 4,
-      "title": "Google Gemini 3.5 Pro reaches GA in late June — reasoning tier above 3.5 Flash",
-      "summary": "Pro closes the reasoning gap Flash regressed on; Flash is already the default in the Gemini app and AI Mode at $1.50/$9.00 per 1M.",
-      "tag": "maybe",
-      "how": "Flash for cheap high-volume batch text/image, Pro for reasoning-heavy Construct jobs — a clean cost/quality split.",
-      "url": "https://llm-stats.com/llm-updates"
-    },
-    {
-      "n": 5,
-      "title": "arXiv: 'Agent Skills for LLMs — Architecture, Acquisition, Security'",
-      "summary": "Frames capability extension as three paradigms: prompt engineering (2022-23), tool use / function calling (2023-24), skill engineering (2025-present), with a dedicated treatment of skill security and acquisition.",
+      "title": "arXiv: 'Effective Strategies for Asynchronous Software Engineering Agents'",
+      "summary": "Studies how to run long-horizon background coding agents reliably — task decomposition, async handoffs, recovery — the exact failure modes of fire-and-forget agent runs.",
       "tag": "yes",
-      "how": "Framework for our daily/weekly new-skills scan and installed-skills registry — treat skills as governed, security-reviewed assets, not loose prompts.",
-      "url": "https://arxiv.org/html/2602.12430v1"
+      "how": "Informs how The Construct schedules and supervises overnight/background agents (Hermes, the daily scans) so async jobs degrade gracefully instead of silently failing.",
+      "url": "https://arxiv.org/pdf/2603.21489"
     }
   ],
-  "praxis_lesson": "Every major ad platform — Google, Meta, Amazon, now TikTok — has shipped an MCP layer, so agentic campaign ops is becoming table stakes rather than an edge. The Construct's move for Brand 9 Signs / PRAGMA is to wrap all four ad-platform MCP servers behind one operator agent that plans, launches, and optimizes across channels — owning the orchestration layer, not any single platform.",
-  "history": ["2026-06-29", "2026-06-28"]
+  "praxis_lesson": "The generation layer — voice, image, video, music — is collapsing into MCP: MiniMax and Higgsfield now expose the entire creative stack as agent-callable tools, and Google is pushing conversational video into mass channels. The Construct's move for Brand 9 Signs is to route creative production through one MCP-backed creative-ops agent (with MiniMax/Higgsfield as swappable backends) rather than paying per-seat for human-driven SaaS — own the orchestration, treat the generators as interchangeable.",
+  "history": ["2026-06-30", "2026-06-29", "2026-06-28"]
 }

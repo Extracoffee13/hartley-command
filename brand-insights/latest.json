@@ -10,7 +10,15 @@
   "scan_method": "pragma-mirror run.py · SEO+AEO+LLM+GEO · web-grounded probe + weekly consumer-LLM browser pass · 2026-06-29",
   "aivi": {
     "composite": 33,
-    "trend_7day": [23, 33, 33, 43, 43, 33, 33],
+    "trend_7day": [
+      23,
+      33,
+      33,
+      43,
+      43,
+      33,
+      33
+    ],
     "color_threshold": {
       "red_below": 50,
       "yellow_below": 70,
@@ -79,35 +87,150 @@
   ],
   "llm_browser": {
     "ts": "2026-06-29T12:52:50Z",
+    "results": [
+      {
+        "surface": "ChatGPT",
+        "query": "Who are the best commercial sign companies in Jacksonville FL?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "surface": "ChatGPT",
+        "query": "Where can I get custom homebuilder community signage in Florida?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "surface": "ChatGPT",
+        "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "surface": "Claude",
+        "query": "Who are the best commercial sign companies in Jacksonville FL?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "surface": "Claude",
+        "query": "Where can I get custom homebuilder community signage in Florida?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "surface": "Claude",
+        "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "surface": "Perplexity",
+        "query": "Who are the best commercial sign companies in Jacksonville FL?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "surface": "Perplexity",
+        "query": "Where can I get custom homebuilder community signage in Florida?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "surface": "Perplexity",
+        "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "surface": "Gemini",
+        "query": "Who are the best commercial sign companies in Jacksonville FL?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "surface": "Gemini",
+        "query": "Where can I get custom homebuilder community signage in Florida?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "surface": "Gemini",
+        "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
+        "mentioned": false,
+        "cited_source": false
+      }
+    ],
     "summary": {
       "ChatGPT": "0/3",
       "Claude": "2/3",
       "Perplexity": "0/3",
       "Gemini": "1/3"
-    }
+    },
+    "notes": "Full 4-surface consumer-LLM browser pass via logged-in Chrome (all 12 scans). ChatGPT (neutral acct) 0/3 web-grounded. Claude (personalized) 2/3, brand9signs.com cited organically on Q2/Q3. Perplexity (anonymous, neutral) 0/3. Gemini (personalized) 1/3, named Brand 9 + cited brand9signs.com on Q2. ChatGPT+Perplexity are the neutral baseline (both 0/3); Claude+Gemini are personalized and biased upward. Re-merged after daily run.py probe refresh."
   },
   "modules": {
-    "seo": { "score": 70 },
+    "seo": {
+      "score": 70
+    },
     "aeo": {
       "score": 33,
       "queries": [
-        { "query": "commercial sign company jacksonville", "cited": false, "surface": "web-search" },
-        { "query": "sign installation clay county fl", "cited": true, "surface": "web-search" },
-        { "query": "custom business signs st johns", "cited": false, "surface": "web-search" }
+        {
+          "query": "commercial sign company jacksonville",
+          "cited": false,
+          "surface": "web-search"
+        },
+        {
+          "query": "sign installation clay county fl",
+          "cited": true,
+          "surface": "web-search"
+        },
+        {
+          "query": "custom business signs st johns",
+          "cited": false,
+          "surface": "web-search"
+        }
       ]
     },
-    "llm": { "score": 0 },
+    "llm": {
+      "score": 0
+    },
     "geo": {
       "score": 12,
       "geofence": [
-        { "area": "Jacksonville FL", "cited": false },
-        { "area": "Clay County", "cited": false },
-        { "area": "St. Johns County", "cited": false },
-        { "area": "Orange Park", "cited": true },
-        { "area": "Green Cove Springs", "cited": false },
-        { "area": "Fleming Island", "cited": false },
-        { "area": "Middleburg", "cited": false },
-        { "area": "St. Augustine", "cited": false }
+        {
+          "area": "Jacksonville FL",
+          "cited": false
+        },
+        {
+          "area": "Clay County",
+          "cited": false
+        },
+        {
+          "area": "St. Johns County",
+          "cited": false
+        },
+        {
+          "area": "Orange Park",
+          "cited": true
+        },
+        {
+          "area": "Green Cove Springs",
+          "cited": false
+        },
+        {
+          "area": "Fleming Island",
+          "cited": false
+        },
+        {
+          "area": "Middleburg",
+          "cited": false
+        },
+        {
+          "area": "St. Augustine",
+          "cited": false
+        }
       ]
     }
   },
@@ -128,9 +251,15 @@
     "enabled": true,
     "mode": "auto-remediate",
     "tier": "paid",
-    "last_run": "2026-06-29T13:19:01.076135Z",
+    "last_run": "2026-06-30T10:20:45.465541Z",
     "created_total": 10,
-    "guardrails": ["additive-only", "dup-guard", "rate-limited", "change-logged", "wp-revision-undo"],
+    "guardrails": [
+      "additive-only",
+      "dup-guard",
+      "rate-limited",
+      "change-logged",
+      "wp-revision-undo"
+    ],
     "recent": [
       "signs-etown-jacksonville",
       "signs-shearwater-st-johns",
