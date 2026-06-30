@@ -1,73 +1,29 @@
 {
+  "reports_today": 0,
+  "inbox_pending": 1,
+  "lens_week": 5,
+  "adoption_pending": 0,
+  "last_write": "2026-06-30T12:00:31.148872+00:00",
+  "heartbeat_ts": "2026-06-30T12:00:31.149296+00:00",
+  "os_status": "LIVE 2026-06-30",
+  "memory_files": 351,
+  "wild_ducks_count": 13,
+  "calls_count": 72,
+  "ts": "2026-06-30T12:01:22.254732+00:00",
   "_meta": {
-    "schema_version": "4.1",
-    "last_write": "2026-06-25T19:32:59.319069+00:00",
-    "heartbeat_ts": "2026-06-25T18:00:00Z",
-    "writer": "hermes-status-writer.py (no-agent script)",
-    "ok": true
-  },
-  "hermes_gateway": {
-    "status": "RUNNING",
-    "telegram": "connected",
-    "active_agents": 18,
-    "updated_at": "2026-06-25T19:30:19.911741Z"
-  },
-  "ecosystem_health": {
-    "ok": true,
-    "verdict": "OK",
-    "wild_ducks_ok": true,
-    "degradation_reason": null
-  },
-  "wild_ducks": {
-    "count": 26,
-    "status": "OK"
-  },
-  "calls": {
-    "count": 11,
-    "active_ok": [
-      "gbp-review-monitor",
-      "ssh-availability-check",
-      "749-pile-change-detector",
-      "lens-auth-pull-watcher",
-      "hermes-status-writer",
-      "construct-5min-health-check",
-      "construct-dashboard-autosync",
-      "wolf-dashboard-autosync",
-      "wild-duck-doctor",
-      "praxis-distiller",
-      "telegram-listener",
-      "inbox-self-heal",
-      "uptime-monitor",
-      "pragma-uptime-guardian",
-      "github-pages-build-watcher",
-      "plugin-load-verifier",
-      "completion-claim-watcher",
-      "content-publish-scheduler",
-      "memory-crossshare",
-      "model-tier-router"
-    ],
-    "error": []
-  },
-  "memory": {
-    "count": 439,
-    "path": "~/.hermes/memories/"
-  },
-  "skills": {
-    "count": 549
-  },
-  "tasks": {
-    "inbox_pending": 0,
-    "reports_today": 0,
-    "adoption_pending": 0
-  },
-  "lens_briefs": {
-    "last_7d": 0
-  },
-  "wolf": {
-    "day": 62,
-    "portfolio_value": 100000.0,
-    "last_sync": "2026-06-25T18:00:00Z"
-  },
-  "cron_jobs": 40,
-  "heartbeat_keys": 25
+    "writer": "hermes-status-writer/run.py",
+    "schema_version": "5.0-flat",
+    "generated_at": "2026-06-30T12:01:22.254732+00:00",
+    "flock_source": "/tmp/homeshim/AP-v2/_RECOVERED_2026-06-24/hartley-command/flock-classification.json",
+    "sources": {
+      "reports": "/tmp/homeshim/Documents/Claude/Projects/Atlas/hermes-inbox/reports",
+      "inbox": "/tmp/homeshim/Documents/Claude/Projects/Atlas/hermes-inbox",
+      "lens_briefs": "/tmp/homeshim/Documents/Claude/Projects/Atlas/lens-briefs",
+      "scout_queue": "/tmp/homeshim/AP-v2/_RECOVERED_2026-06-24/hartley-command/capability-scout-queue.json",
+      "state_dir": "/tmp/homeshim/Documents/Claude/Projects/Atlas/hermes-sandbox/state",
+      "heartbeat": "/tmp/homeshim/Documents/Claude/Projects/Atlas/hermes-sandbox/heartbeat.json",
+      "flock": "/tmp/homeshim/AP-v2/_RECOVERED_2026-06-24/hartley-command/flock-classification.json"
+    },
+    "note": "All values computed from on-disk sources. Missing/empty source => honest 0 or 'pending', never fabricated."
+  }
 }
