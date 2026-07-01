@@ -2438,7 +2438,20 @@ ReactDOM.createRoot(document.getElementById("root")).render(<Dashboard />);
     if(cites){ Object.keys(cites).forEach(function(c){ var x=cites[c]||{};
       rows.push(['Citations · '+c, (x.cited_any?Object.keys(x.cited_any).filter(function(k){return x.cited_any[k];}).join(',')||'none cited':'—'), x.ran_at, 30]); }); }
     // WOLF
-    rows.push(['WOLF', wolf?((wolf.market_regime&&wolf.market_regime.current||'?')+' · '+(wolf.account&&'$'+Math.round(wolf.account.equity).toLocaleString())):'—', wolf&&wolf.last_updated, 12]);
+    var thesesHtml='';
+    if(wolf && wolf.research_theses && wolf.research_theses.length){
+      thesesHtml='<div style="margin-top:10px;"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:'+MUT+'">Deep Research Theses</div>'+
+        wolf.research_theses.map(function(t){
+          var v=t.verdict||'UNKNOWN', vc=v==='BULLISH'?GRN:(v==='BEARISH'?RED:AMB);
+          return '<div style="margin:6px 0;padding:6px 8px;background:#151a21;border-left:2px solid '+vc+';border-radius:0 4px 4px 0;">'+
+            '<span style="font-weight:700;">'+(t.ticker||'?')+'</span> '+
+            '<span style="color:'+vc+';font-weight:700;">'+v+'</span>'+
+            '<div style="color:rgba(255,255,255,0.7);font-size:11px;margin-top:2px;">'+((t.one_line||'').replace(/\*/g,''))+'</div>'+
+            '<div style="color:#6b7280;font-size:10px;margin-top:2px;">'+(t.generated||'').slice(0,10)+' · '+(t.source||'?')+'</div>'+
+            '</div>';
+        }).join('')+'</div>';
+    }
+    rows.push(['WOLF', wolf?((wolf.market_regime&&wolf.market_regime.current||'?')+' · '+(wolf.account&&'$'+Math.round(wolf.account.equity).toLocaleString())):'—', wolf&&wolf.last_updated, 12, thesesHtml]);
 
     var anyStale=rows.some(function(r){var a=ageH(r[2]); return a==null||a>r[3];});
     var html='<div style="background:#0f1217;border:1px solid '+(anyStale?RED:GRN)+';border-radius:10px;padding:12px 14px;">'+
@@ -2449,7 +2462,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<Dashboard />);
     rows.forEach(function(r){ html+='<div style="background:#151a21;border:1px solid #1f2630;border-radius:8px;padding:8px 10px;">'+
       '<div style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:'+MUT+'">'+r[0]+'</div>'+
       '<div style="font-size:13px;color:#e6e9ef;margin:2px 0;font-family:ui-monospace,Menlo,monospace;">'+r[1]+'</div>'+
-      '<div style="font-size:11px;font-family:ui-monospace,Menlo,monospace;">'+badge(r[2],r[3])+'</div></div>'; });
+      '<div style="font-size:11px;font-family:ui-monospace,Menlo,monospace;">'+badge(r[2],r[3])+'</div>'+
+      (r[4]||'')+'</div>'; });
     html+='</div>';
     // Scout top picks
     if(scn){ var top=(Array.isArray(sc)?sc:[]).slice(0,3); html+='<div style="margin-top:8px;font-size:11px;color:'+CY+'">Scout top: '+
@@ -2460,7 +2474,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<Dashboard />);
   function load(){
     Promise.all([ gj('./harvard-corpus-stats.json'), gj('./capability-scout-queue.json'),
       gj('./citations-summary.json'),
-      gj('https://raw.githubusercontent.com/Extracoffee13/wolf-dashboards-repo/main/wolf_live_data.json')
+      gj('https://raw.githubusercontent.com/Extracoffee13/hartley-command/main/wolf_live_data.json')
     ]).then(function(a){ render(a[0],a[1],a[2],a[3]); });
   }
   load(); setInterval(load,60000);
