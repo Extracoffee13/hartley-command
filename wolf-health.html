@@ -1,74 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WOLF Health</title>
-<style>
-:root { color-scheme: dark; }
-body { background: #0b0c10; color: #c5c6c7; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 24px; }
-.container { max-width: 720px; margin: 0 auto; }
-h1 { color: #66fcf1; font-weight: 300; letter-spacing: 1px; margin-bottom: 24px; }
-h2 { color: #45a29e; font-weight: 400; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 0; }
-.card { background: #1f2833; border-radius: 8px; padding: 18px 22px; margin-bottom: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
-.metric { font-size: 2rem; color: #66fcf1; margin: 8px 0; }
-.sub { color: #8e8e93; font-size: 0.9rem; }
-.status-row { display: flex; gap: 18px; }
-.status-row .card { flex: 1; }
-.ok { color: #00ff88; font-weight: 600; }
-.warn { color: #ffaa00; font-weight: 600; }
-.crit { color: #ff4444; font-weight: 600; }
-.thesis { border-top: 1px solid #2c353f; padding: 14px 0; }
-.thesis:first-of-type { border-top: none; padding-top: 0; }
-.ticker { font-weight: 700; font-size: 1.2rem; color: #66fcf1; margin-right: 8px; }
-.verdict { font-size: 0.85rem; padding: 2px 8px; border-radius: 4px; background: rgba(255,255,255,0.05); }
-.rationale { margin-top: 8px; color: #c5c6c7; }
-.meta { margin-top: 6px; font-size: 0.8rem; color: #8e8e93; }
-a { color: #45a29e; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WOLF Health</title>
+  <style>
+    body { background:#0b0f19; color:#e2e8f0; font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; margin:0; padding:24px; }
+    h1 { font-size:1.6em; margin-bottom:4px; }
+    .subtitle { color:#94a3b8; margin-bottom:20px; font-size:0.9em; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; max-width:900px; }
+    .card { background:#1e293b; border:1px solid #334155; border-radius:12px; padding:16px; }
+    .card h2 { margin:0 0 10px 0; font-size:1em; color:#94a3b8; font-weight:500; text-transform:uppercase; letter-spacing:0.05em; }
+    .metric { font-size:1.5em; font-weight:700; margin-bottom:4px; }
+    .OK { color:#4ade80; }
+    .WARN { color:#fbbf24; }
+    .alerts { color:#f87171; }
+    .footer { margin-top:20px; color:#64748b; font-size:0.85em; }
+    a { text-decoration:none; }
+  </style>
 </head>
 <body>
-<div class="container">
   <h1>WOLF Health</h1>
-  <div class="status-row">
+  <div class="subtitle">Hartley Capital Alpha — 90-day mission</div>
+  <div class="grid">
     <div class="card">
-      <h2>Day 62/90</h2>
-      <div class="metric">28</div>
-      <div class="sub">days remaining</div>
+      <h2>Day</h2>
+      <div class="metric">62/90</div>
+      <div>28 days remaining</div>
     </div>
     <div class="card">
       <h2>Portfolio</h2>
-      <div class="metric">$100,000.00</div>
-      <div class="sub">live value</div>
+      <div class="metric">$100,000</div>
+      <div>USD</div>
     </div>
-  </div>
-  <div class="status-row">
     <div class="card">
       <h2>Compliance</h2>
-      <div class="metric ok">OK</div>
+      <div class="metric OK">OK</div>
+      <div>30 consecutive compliant days</div>
     </div>
     <div class="card">
       <h2>Infrastructure</h2>
-      <div class="metric ok">OK</div>
+      <div class="metric OK">OK</div>
+      <div>Last check: 2026-07-01T13:30:00Z</div>
+    </div>
+    <div class="card">
+      <h2>Alerts</h2>
+      <div class="metric OK">None</div>
+    </div>
+    
+    <div class="card" style="grid-column:1 / -1">
+      <h2>Research Theses</h2>
+      
+        <div style="border:1px solid #334155;border-radius:8px;padding:12px;margin-bottom:8px;background:#0f172a">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <strong style="font-size:1.1em">ACN</strong>
+            <span style="color:green;font-weight:600">BULLISH</span>
+          </div>
+          <div style="color:#cbd5e1;margin-bottom:6px">**VERDICT: BULLISH (STRONGLY RECOMMEND AVERAGING DOWN)**</div>
+          <div style="font-size:0.85em;color:#94a3b8">gemini-deep-research • 2026-07-01 <a href="./wolf-research/ACN-2026-07-01.md" style="color:#60a5fa">report</a></div>
+        </div>
+        
+    </div>
+    
+    <div class="card footer" style="grid-column:1 / -1">
+      Updated 2026-07-01 17:01 UTC
     </div>
   </div>
-  <div class="card">
-    <h2>Alerts</h2>
-    <div class="alert">None</div>
-  </div>
-  <div class="card"><h2>Deep Research Theses</h2>
-<div class="thesis">
-    <span class="ticker">ACN</span>
-    <span class="verdict ok">BULLISH</span>
-    <div class="rationale">**VERDICT: BULLISH (STRONGLY RECOMMEND AVERAGING DOWN)**</div>
-    <div class="meta">generated 2026-07-01 · source gemini-deep-research · <a href="./wolf-research/ACN-2026-07-01.md">full report</a></div>
-  </div>
-</div>
-
-  <div class="card">
-    <h2>Last Updated</h2>
-    <div class="sub">2026-07-01T16:30:00.803604 UTC</div>
-  </div>
-</div>
 </body>
 </html>
