@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-01T09:47:39",
+  "generated": "2026-07-01T12:31:40",
   "schema_version": 1,
   "source": "Hermes logs (~/.hermes/logs/agent.log*, errors.log*)",
   "logs_scanned": [
@@ -8,21 +8,39 @@
   ],
   "status": "ok",
   "totals": {
-    "requests": 1371,
+    "requests": 1621,
     "errors_402": 334,
-    "other_errors": 94,
-    "in_tokens": 70260051,
-    "out_tokens": 511901
+    "other_errors": 108,
+    "in_tokens": 92650138,
+    "out_tokens": 617588
   },
   "models": [
     {
       "model": "moonshotai/kimi-k2.7-code",
       "provider": "openrouter",
-      "requests": 1371,
+      "requests": 1621,
       "errors_402": 63,
-      "other_errors": 49,
-      "in_tokens": 70260051,
-      "out_tokens": 511901
+      "other_errors": 57,
+      "in_tokens": 92650138,
+      "out_tokens": 617588
+    },
+    {
+      "model": "sparksammy/ornith-1.0-9b:latest",
+      "provider": "custom",
+      "requests": 0,
+      "errors_402": 0,
+      "other_errors": 4,
+      "in_tokens": 0,
+      "out_tokens": 0
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "provider": "nvidia",
+      "requests": 0,
+      "errors_402": 0,
+      "other_errors": 2,
+      "in_tokens": 0,
+      "out_tokens": 0
     },
     {
       "model": "openai/gpt-4o-mini",

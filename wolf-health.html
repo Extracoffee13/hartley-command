@@ -1,153 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WOLF Health</title>
-  <style>
-    :root {
-      --bg: #0b0c10;
-      --card: #1f2833;
-      --text: #c5c6c7;
-      --heading: #66fcf1;
-      --ok: #00ff88;
-      --warn: #ffaa00;
-      --crit: #ff4444;
-    }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      margin: 0;
-      padding: 2rem;
-    }
-    h1 {
-      color: var(--heading);
-      font-size: 2rem;
-      margin-bottom: 0.25rem;
-    }
-    .subtitle {
-      color: #888;
-      margin-bottom: 1.5rem;
-    }
-    .card {
-      background: var(--card);
-      border-radius: 8px;
-      padding: 1.25rem;
-      margin-bottom: 1rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-    }
-    .card h2 {
-      color: var(--heading);
-      margin: 0 0 0.75rem 0;
-      font-size: 1.15rem;
-    }
-    .big {
-      font-size: 1.5rem;
-      font-weight: 600;
-    }
-    .ok { color: var(--ok); }
-    .warn { color: var(--warn); }
-    .crit { color: var(--crit); }
-    .status-row {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-    .status-row div {
-      min-width: 140px;
-    }
-    .label {
-      color: #888;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.25rem;
-    }
-    .alerts {
-      color: #aaa;
-    }
-    .thesis {
-      border-top: 1px solid #333;
-      padding-top: 0.75rem;
-      margin-top: 0.75rem;
-    }
-    .thesis:first-of-type {
-      border-top: none;
-      padding-top: 0;
-      margin-top: 0;
-    }
-    .thesis .ticker {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--heading);
-      margin-right: 0.75rem;
-    }
-    .thesis .verdict {
-      font-weight: 600;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-    }
-    .thesis .rationale {
-      margin: 0.4rem 0;
-      line-height: 1.4;
-    }
-    .thesis .meta {
-      font-size: 0.8rem;
-      color: #888;
-    }
-    .thesis a {
-      color: var(--heading);
-      text-decoration: none;
-    }
-    .thesis a:hover {
-      text-decoration: underline;
-    }
-    .footer {
-      color: #777;
-      font-size: 0.8rem;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WOLF Health</title>
+<style>
+:root { color-scheme: dark; }
+body { background: #0b0c10; color: #c5c6c7; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 24px; }
+.container { max-width: 720px; margin: 0 auto; }
+h1 { color: #66fcf1; font-weight: 300; letter-spacing: 1px; margin-bottom: 24px; }
+h2 { color: #45a29e; font-weight: 400; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 0; }
+.card { background: #1f2833; border-radius: 8px; padding: 18px 22px; margin-bottom: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+.metric { font-size: 2rem; color: #66fcf1; margin: 8px 0; }
+.sub { color: #8e8e93; font-size: 0.9rem; }
+.status-row { display: flex; gap: 18px; }
+.status-row .card { flex: 1; }
+.ok { color: #00ff88; font-weight: 600; }
+.warn { color: #ffaa00; font-weight: 600; }
+.crit { color: #ff4444; font-weight: 600; }
+.thesis { border-top: 1px solid #2c353f; padding: 14px 0; }
+.thesis:first-of-type { border-top: none; padding-top: 0; }
+.ticker { font-weight: 700; font-size: 1.2rem; color: #66fcf1; margin-right: 8px; }
+.verdict { font-size: 0.85rem; padding: 2px 8px; border-radius: 4px; background: rgba(255,255,255,0.05); }
+.rationale { margin-top: 8px; color: #c5c6c7; }
+.meta { margin-top: 6px; font-size: 0.8rem; color: #8e8e93; }
+a { color: #45a29e; }
+</style>
 </head>
 <body>
+<div class="container">
   <h1>WOLF Health</h1>
-  <div class="subtitle">WOLF (Wildcat Operations / Long Floor) — Construct trading floor</div>
-
-  <div class="card">
-    <h2>Status</h2>
-    <div class="status-row">
-      <div>
-        <div class="label">Day</div>
-        <div class="big">Day 62/90</div>
-      </div>
-      <div>
-        <div class="label">Remaining</div>
-        <div class="big">28 days remaining</div>
-      </div>
-      <div>
-        <div class="label">Portfolio</div>
-        <div class="big ok">$100,000</div>
-      </div>
+  <div class="status-row">
+    <div class="card">
+      <h2>Day 62/90</h2>
+      <div class="metric">28</div>
+      <div class="sub">days remaining</div>
+    </div>
+    <div class="card">
+      <h2>Portfolio</h2>
+      <div class="metric">$100,000.00</div>
+      <div class="sub">live value</div>
     </div>
   </div>
-
-  <div class="card">
-    <h2>Compliance</h2>
-    <div class="big ok">OK</div>
-    <p>All checks passed</p>
+  <div class="status-row">
+    <div class="card">
+      <h2>Compliance</h2>
+      <div class="metric ok">OK</div>
+    </div>
+    <div class="card">
+      <h2>Infrastructure</h2>
+      <div class="metric ok">OK</div>
+    </div>
   </div>
-
-  <div class="card">
-    <h2>Infrastructure</h2>
-    <div class="big ok">OK</div>
-    <p>All systems operational</p>
-  </div>
-
   <div class="card">
     <h2>Alerts</h2>
-    <p class="alerts">None</p>
+    <div class="alert">None</div>
   </div>
-
   <div class="card"><h2>Deep Research Theses</h2>
 <div class="thesis">
     <span class="ticker">ACN</span>
@@ -157,9 +65,10 @@
   </div>
 </div>
 
-
-  <div class="card footer">
-    Updated 2026-07-01T16:00:05.541995 UTC
+  <div class="card">
+    <h2>Last Updated</h2>
+    <div class="sub">2026-07-01T16:30:00.803604 UTC</div>
   </div>
+</div>
 </body>
 </html>
