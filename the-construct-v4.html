@@ -1046,6 +1046,13 @@ const ModelArenaPanel = () => {
   const fmt = (v, suffix) => (v === null || v === undefined) ? '—' : (v + (suffix || ''));
   const fmtTok = (v) => (v === null || v === undefined) ? '—' : v.toLocaleString();
   const maxRate = Math.max(1, ...models.map(m => m.success_rate_pct || 0));
+  const bestLatency = Math.min(...models.map(m => m.avg_latency_s || Infinity).filter(v => v !== Infinity && v > 0));
+  const flagModel = (m) => {
+    if ((m.runs || 0) >= 3 && (m.success_rate_pct || 0) < 95) return { label: 'DROP', color: '#ff4d4d' };
+    if ((m.runs || 0) >= 3 && (m.avg_latency_s || 0) > bestLatency * 2) return { label: 'SLOW', color: '#ffaa33' };
+    if ((m.runs || 0) === 1) return { label: 'NEW', color: C.cyan };
+    return null;
+  };
   const th = { color: C.cyan, fontSize: 9, textTransform: "uppercase", letterSpacing: 1, textAlign: "right", padding: "4px 8px", borderBottom: "1px solid rgba(0,212,255,0.25)", fontWeight: 700 };
   const thL = { ...th, textAlign: "left" };
   const td = { color: "rgba(255,255,255,0.82)", fontSize: 11, textAlign: "right", padding: "5px 8px", borderBottom: "1px solid rgba(255,255,255,0.05)", fontVariantNumeric: "tabular-nums" };
@@ -1085,7 +1092,15 @@ const ModelArenaPanel = () => {
               {models.map((m, i) => (
                 <tr key={i}>
                   <td style={tdL}>
-                    <span style={{ color: i === 0 ? C.green : "#fff", fontWeight: i === 0 ? 700 : 500 }}>{i === 0 ? "▲ " : ""}{m.model}</span>
+                    {(() => {
+                      const flag = flagModel(m);
+                      return (
+                        <span style={{ color: i === 0 ? C.green : "#fff", fontWeight: i === 0 ? 700 : 500 }}>
+                          {i === 0 ? "▲ " : ""}{m.model}
+                          {flag && <span style={{ fontSize: 8, marginLeft: 6, padding: "1px 5px", borderRadius: 3, background: flag.color + "33", color: flag.color, border: "1px solid " + flag.color, position: "relative", top: -1, fontWeight: 700 }}>{flag.label}</span>}
+                        </span>
+                      );
+                    })()}
                   </td>
                   <td style={td}>{m.runs}</td>
                   <td style={td}>
@@ -1120,7 +1135,11 @@ const ModelArenaPanel = () => {
         </div>
       )}
 
-      <div style={{ color: C.cyan, fontSize: 10, marginTop: 12, opacity: 0.8 }}>
+      <div style={{ color: "rgba(255,255,255,0.35)", fontSize: 10, marginTop: 12, lineHeight: 1.5 }}>
+        Flags: <span style={{ color: "#ff4d4d" }}>DROP</span> = &lt;95% success over 3+ runs · <span style={{ color: "#ffaa33" }}>SLOW</span> = &gt;2× leader latency over 3+ runs · <span style={{ color: C.cyan }}>NEW</span> = first bake-off run only.
+      </div>
+
+      <div style={{ color: C.cyan, fontSize: 10, marginTop: 8, opacity: 0.8 }}>
         ↳ Same harness + panel ships as a PRAGMA product — per-client model fit and cost.
       </div>
     </div>
