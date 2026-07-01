@@ -1,25 +1,89 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8">
-<title>WOLF Health Dashboard</title>
+<html lang="en">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WOLF Health</title>
 <style>
-body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",monospace;padding:2rem}
-h1{color:#00ff88;font-weight:600}
-.card{background:#111;border:1px solid #333;padding:1rem;margin:1rem 0;border-radius:6px}
-h2{margin:0 0 .5rem;font-size:.9rem;color:#00d4ff;text-transform:uppercase;letter-spacing:.04em}
-.ok{color:#00ff88} .warn{color:#ffaa00} .crit{color:#ff4444}
-a{color:#00d4ff}
-.thesis{border-left:3px solid #333;padding-left:.75rem;margin:.75rem 0}
-.ticker{font-weight:700;font-size:1.1rem;margin-right:.75rem}
-.verdict{font-weight:700;font-size:.9rem}
-.rationale{margin:.35rem 0;color:#cfcfcf;line-height:1.4}
-.meta{font-size:.8rem;color:#888}
-</style></head><body>
-<h1>WOLF Health Dashboard</h1>
-<div class="card"><b>Day 62/90</b> &bull; 28 days to kill-crit &bull; Portfolio: $100,000</div>
-<div class="card">Compliance: <span class="ok">OK</span></div>
-<div class="card">Infrastructure: <span class="ok">OK</span></div>
-<div class="card">Alerts: None</div>
-<div class="card"><h2>Deep Research Theses</h2><div class="thesis"><span class="ticker">ACN</span><span class="verdict ok">BULLISH</span><div class="rationale">**VERDICT: BULLISH (STRONGLY RECOMMEND AVERAGING DOWN)**</div><div class="meta">generated 2026-07-01 · source gemini-deep-research · <a href="./wolf-research/ACN-2026-07-01.md" target="_blank">full report</a></div></div></div>
-<div class="card" style="font-size:0.8rem">Updated: 2026-07-01 18:30 UTC by wolf-dashboard-autosync</div>
-</body></html>
+:root { color-scheme: dark; }
+body { background: #0b0c10; color: #c5c6c7; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 24px; }
+.container { max-width: 720px; margin: 0 auto; }
+h1 { color: #66fcf1; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 6px; }
+.subtitle { color: #7f8c8d; margin-bottom: 24px; font-size: 14px; }
+.card { background: #1f2833; border-radius: 10px; padding: 18px 20px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.35); }
+.card h2 { margin: 0 0 12px 0; font-size: 15px; text-transform: uppercase; letter-spacing: 0.8px; color: #45a29e; }
+.status-row { display: flex; gap: 18px; flex-wrap: wrap; }
+.status-item { flex: 1 1 180px; }
+.status-label { font-size: 12px; color: #7f8c8d; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+.status-value { font-size: 22px; font-weight: 700; color: #edf5e1; }
+.ok { color: #00ff88; }
+.warn { color: #ffaa00; }
+.crit { color: #ff4444; }
+.alert-none { color: #7f8c8d; font-style: italic; }
+ul.alerts { margin: 0; padding-left: 18px; }
+ul.alerts li { margin-bottom: 4px; }
+.footer { margin-top: 8px; font-size: 12px; color: #5c6b73; }
+.thesis { border-top: 1px solid #2c3e50; padding: 12px 0; }
+.thesis:first-of-type { border-top: none; padding-top: 0; }
+.thesis-header { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.ticker { font-weight: 700; color: #66fcf1; font-size: 16px; }
+.verdict { font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; padding: 2px 8px; border-radius: 4px; background: rgba(0,0,0,0.25); }
+.rationale { color: #c5c6c7; margin-bottom: 4px; line-height: 1.4; }
+.meta { font-size: 12px; color: #7f8c8d; }
+.meta a { color: #45a29e; text-decoration: none; }
+.meta a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>WOLF Health</h1>
+<div class="subtitle">Construct alpha portfolio tracker · v</div>
+
+<div class="card">
+<h2>Status</h2>
+<div class="status-row">
+<div class="status-item">
+<div class="status-label">Day</div>
+<div class="status-value">62/90</div>
+</div>
+<div class="status-item">
+<div class="status-label">Days Remaining</div>
+<div class="status-value">28</div>
+</div>
+<div class="status-item">
+<div class="status-label">Portfolio Value</div>
+<div class="status-value">$100,000.00</div>
+</div>
+
+
+<div class="status-item"><div class="status-label">Market Regime</div><div class="status-value">{'current': '?', 'vix': 0}</div></div>
+</div>
+</div>
+
+<div class="card">
+<h2>Compliance</h2>
+<div class="status-value ok">OK</div>
+</div>
+
+<div class="card">
+<h2>Infrastructure</h2>
+<div class="status-value ok">OK</div>
+</div>
+
+<div class="card">
+<h2>Alerts</h2>
+<p class="alert-none">None</p>
+</div>
+
+<div class="card"><h2>Deep Research Theses (1)</h2><div class="thesis">
+  <div class="thesis-header"><span class="ticker">ACN</span><span class="verdict ok">BULLISH</span></div>
+  <div class="rationale">**VERDICT: BULLISH (STRONGLY RECOMMEND AVERAGING DOWN)**</div>
+  <div class="meta">generated 2026-07-01 · source gemini-deep-research · <a target="_blank" href="./wolf-research/ACN-2026-07-01.md">full report</a></div>
+</div></div>
+
+<div class="card footer">
+Updated 2026-07-01T19:00:04.430387 UTC
+</div>
+</div>
+</body>
+</html>
