@@ -1044,7 +1044,18 @@ const ModelArenaPanel = () => {
 
   const models = (lb && lb.models) || [];
   const fmt = (v, suffix) => (v === null || v === undefined) ? '—' : (v + (suffix || ''));
+  const fmtNum = (v, d=1) => (v === null || v === undefined) ? '—' : Number(v).toFixed(d);
   const fmtTok = (v) => (v === null || v === undefined) ? '—' : v.toLocaleString();
+  const fmtCost = (v) => {
+    if (v === null || v === undefined) return '—';
+    if (v === 0) return '$0';
+    if (v < 0.0001) return '$' + v.toExponential(1);
+    return '$' + v.toFixed(5).replace(/\.?0+$/, '');
+  };
+  const fmtRange = (lo, hi) => {
+    if ((lo === null || lo === undefined) || (hi === null || hi === undefined)) return '—';
+    return lo.toFixed(1) + '–' + hi.toFixed(1) + 's';
+  };
   const maxRate = Math.max(1, ...models.map(m => m.success_rate_pct || 0));
   const bestLatency = Math.min(...models.map(m => m.avg_latency_s || Infinity).filter(v => v !== Infinity && v > 0));
   const flagModel = (m) => {
@@ -1053,9 +1064,9 @@ const ModelArenaPanel = () => {
     if ((m.runs || 0) === 1) return { label: 'NEW', color: C.cyan };
     return null;
   };
-  const th = { color: C.cyan, fontSize: 9, textTransform: "uppercase", letterSpacing: 1, textAlign: "right", padding: "4px 8px", borderBottom: "1px solid rgba(0,212,255,0.25)", fontWeight: 700 };
+  const th = { color: C.cyan, fontSize: 8, textTransform: "uppercase", letterSpacing: 0.8, textAlign: "right", padding: "4px 6px", borderBottom: "1px solid rgba(0,212,255,0.25)", fontWeight: 700 };
   const thL = { ...th, textAlign: "left" };
-  const td = { color: "rgba(255,255,255,0.82)", fontSize: 11, textAlign: "right", padding: "5px 8px", borderBottom: "1px solid rgba(255,255,255,0.05)", fontVariantNumeric: "tabular-nums" };
+  const td = { color: "rgba(255,255,255,0.82)", fontSize: 10, textAlign: "right", padding: "5px 6px", borderBottom: "1px solid rgba(255,255,255,0.05)", fontVariantNumeric: "tabular-nums" };
   const tdL = { ...td, textAlign: "left" };
 
   return (
@@ -1064,7 +1075,7 @@ const ModelArenaPanel = () => {
         <span style={{ color: C.cyan, fontWeight: 700, fontSize: 15, letterSpacing: 1 }}>⚡ MODEL ARENA — ONGOING CASE STUDY</span>
         <span style={{ color: C.greenDim, fontSize: 11 }}>{lb && lb.generated ? lb.generated.slice(0, 16).replace('T', ' ') : (fetched ? "no data" : "loading…")}</span>
       </div>
-      <div style={{ color: "rgba(255,255,255,0.45)", fontSize: 11, marginBottom: 14 }}>Cumulative head-to-head bake-off · {lb ? (lb.summaries_found || 0) : 0} run{(lb && lb.summaries_found) === 1 ? '' : 's'} aggregated · sorted by success % then latency</div>
+      <div style={{ color: "rgba(255,255,255,0.45)", fontSize: 11, marginBottom: 14 }}>Cumulative head-to-head bake-off · {lb ? (lb.summaries_found || 0) : 0} run{(lb && lb.summaries_found) === 1 ? '' : 's'} aggregated · sorted by success %, quality, latency, cost</div>
 
       {!fetched && <div style={{ color: C.greenDim, fontSize: 12 }}>Loading leaderboard…</div>}
 
@@ -1076,15 +1087,19 @@ const ModelArenaPanel = () => {
 
       {models.length > 0 && (
         <div style={{ overflowX: "auto" }}>
-          <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 640 }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 900 }}>
             <thead>
               <tr>
+                <th style={thL}>Rank</th>
                 <th style={thL}>Model</th>
                 <th style={th}>Runs</th>
                 <th style={th}>Success %</th>
-                <th style={th}>Avg latency</th>
-                <th style={th}>Out-tokens</th>
+                <th style={th}>Quality</th>
+                <th style={th}>Avg lat</th>
+                <th style={th}>Lat range</th>
                 <th style={th}>Avg tok/task</th>
+                <th style={th}>Avg cost/task</th>
+                <th style={th}>Total cost</th>
                 <th style={th}>Last run</th>
               </tr>
             </thead>
@@ -1092,11 +1107,16 @@ const ModelArenaPanel = () => {
               {models.map((m, i) => (
                 <tr key={i}>
                   <td style={tdL}>
+                    <span style={{ color: i === 0 ? C.green : (i === 1 ? C.cyan : "rgba(255,255,255,0.5)"), fontWeight: i < 3 ? 800 : 500, fontSize: 12 }}>
+                      {i === 0 ? "▲ 1" : i + 1}
+                    </span>
+                  </td>
+                  <td style={tdL}>
                     {(() => {
                       const flag = flagModel(m);
                       return (
-                        <span style={{ color: i === 0 ? C.green : "#fff", fontWeight: i === 0 ? 700 : 500 }}>
-                          {i === 0 ? "▲ " : ""}{m.model}
+                        <span style={{ color: i === 0 ? C.green : "#fff", fontWeight: i === 0 ? 700 : 500, fontSize: 11 }}>
+                          {m.model}
                           {flag && <span style={{ fontSize: 8, marginLeft: 6, padding: "1px 5px", borderRadius: 3, background: flag.color + "33", color: flag.color, border: "1px solid " + flag.color, position: "relative", top: -1, fontWeight: 700 }}>{flag.label}</span>}
                         </span>
                       );
@@ -1111,9 +1131,12 @@ const ModelArenaPanel = () => {
                       <span>{fmt(m.success_rate_pct, "%")}</span>
                     </div>
                   </td>
+                  <td style={td}>{fmtNum(m.avg_quality)}</td>
                   <td style={td}>{fmt(m.avg_latency_s, "s")}</td>
-                  <td style={td}>{fmtTok(m.total_out_tokens)}</td>
-                  <td style={td}>{m.avg_out_tokens_per_task === null || m.avg_out_tokens_per_task === undefined ? "—" : m.avg_out_tokens_per_task}</td>
+                  <td style={td}>{fmtRange(m.latency_min_s, m.latency_max_s)}</td>
+                  <td style={td}>{fmtNum(m.avg_out_tokens_per_task)}</td>
+                  <td style={td}>{fmtCost(m.avg_cost_per_task)}</td>
+                  <td style={td}>{fmtCost(m.total_cost)}</td>
                   <td style={td}>{m.last_run ? m.last_run.replace('T', ' ') : "—"}</td>
                 </tr>
               ))}
@@ -1137,6 +1160,7 @@ const ModelArenaPanel = () => {
 
       <div style={{ color: "rgba(255,255,255,0.35)", fontSize: 10, marginTop: 12, lineHeight: 1.5 }}>
         Flags: <span style={{ color: "#ff4d4d" }}>DROP</span> = &lt;95% success over 3+ runs · <span style={{ color: "#ffaa33" }}>SLOW</span> = &gt;2× leader latency over 3+ runs · <span style={{ color: C.cyan }}>NEW</span> = first bake-off run only.
+        <br/>Quality score is a 0–100 heuristic (parseability, code structure, required keys). Cost uses listed OpenRouter pricing; local models = $0.
       </div>
 
       <div style={{ color: C.cyan, fontSize: 10, marginTop: 8, opacity: 0.8 }}>
