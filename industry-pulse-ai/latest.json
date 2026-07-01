@@ -1,41 +1,49 @@
 {
-  "generated": "2026-06-30T10:15:00Z",
-  "latest_date": "2026-06-30",
+  "generated": "2026-07-01T10:05:00Z",
+  "latest_date": "2026-07-01",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "MiniMax ships official multimodal MCP server — TTS, voice cloning, image, video, music all agent-callable",
-      "summary": "MiniMax's just-published MCP server exposes text-to-speech, voice cloning, text/image-to-image, text/image-to-video (Hailuo-02, 6s/10s at 768P/1080P), and music-1.5 as one set of tools any MCP client (Claude, Cursor, Cowork) can call.",
+      "title": "X ships an official hosted MCP server — 200+ endpoints, agents can search/read/analyze X in real time (read-only for now)",
+      "summary": "Launched June 30, X's hosted MCP server exposes 200+ API endpoints (post search, timelines, profile lookup, bookmarks, likes/retweets, plus a docs hub) to any MCP client via browser OAuth; it is NOT wired to the Write API, so agents can read and analyze but cannot post autonomously.",
       "tag": "yes",
-      "how": "Drop-in generation backend for Brand 9 Signs creative (signage mockups, social video, voiceover) behind one Construct creative-ops agent; a price/quality alternative alongside our connected Higgsfield server.",
-      "url": "https://www.minimax.io/news/minimax-mcp"
+      "how": "Drop-in social-listening + trend-analysis backend for Pulse / Brand 9 Signs without maintaining API plumbing; posting still routes through our existing multi-channel browser flow.",
+      "url": "https://techcrunch.com/2026/06/30/x-now-offers-an-mcp-server-to-make-its-platform-easier-for-ai-tools-to-use/"
     },
     {
       "n": 2,
-      "title": "Google Gemini Omni Flash (any-to-any video) now in broad rollout across Gemini app, Flow, YouTube Shorts",
-      "summary": "Omni generates and conversationally edits high-quality video from any mix of image/audio/video/text with character and scene consistency across edits, SynthID-watermarked, free on YouTube Shorts/Create. Announced I/O 2026; rollout widening now.",
+      "title": "Anthropic — Claude Sonnet 5 becomes Claude Code's default with native 1M-token context + 'dynamic workflows' research preview",
+      "summary": "Claude Code now defaults to Sonnet 5 with a 1M-token window (promo pricing to Aug 31) and adds dynamic workflows that let Claude plan large tasks, spin up many parallel subagents, and verify results before reporting back, plus org default models and background-session reliability fixes.",
       "tag": "yes",
-      "how": "For a signage/visual brand, conversational video editing collapses storyboard-to-cut time; wait for the API (coming weeks) before committing The Construct's video pipeline.",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni/"
+      "how": "Directly upgrades The Construct's own agent substrate: bigger context for whole-repo/whole-corpus jobs and native parallel-subagent orchestration for the daily scans and Hermes-driven background work.",
+      "url": "https://releasebot.io/updates/anthropic/claude-code"
     },
     {
       "n": 3,
-      "title": "Cognition economics validate agentic-ops thesis — $1B at $25B, Devin ships 89% of its own code, ARR $37M to $492M in 12 months",
-      "summary": "13x ARR growth and near-total internal autonomy is the clearest public datapoint that autonomous agents now do the bulk of real production work, not demos. Round closed late May; the operating metrics are the signal.",
+      "title": "Salesforce ships Agentic B2C Developer Toolkit (June '26) — CLI + MCP server + agent skills, CRM Contact ID embedded in the storefront auth token",
+      "summary": "Agentforce Commerce's largest release yet gives shopper agents secure, instant access to full customer context by baking the CRM Contact ID into the storefront authentication token, exposed through a unified CLI, MCP server, and IDE extension.",
       "tag": "maybe",
-      "how": "Direct validation of PRAGMA's AI-operator thesis; the proof-point to cite when positioning The Construct as the agent layer that runs the work, not assists it.",
-      "url": "https://techcrunch.com/2026/05/27/ai-coding-startup-cognition-raises-1b-at-25b-pre-money-valuation/"
+      "how": "Reference pattern for PRAGMA's AI-operator work: how to hand an agent authenticated, per-customer CRM context safely; relevant if/when a Construct client runs on Salesforce commerce.",
+      "url": "https://www.salesforce.com/blog/b2c-commerce-june-26-release/"
     },
     {
       "n": 4,
-      "title": "arXiv: 'Effective Strategies for Asynchronous Software Engineering Agents'",
-      "summary": "Studies how to run long-horizon background coding agents reliably — task decomposition, async handoffs, recovery — the exact failure modes of fire-and-forget agent runs.",
+      "title": "DeepSeek V4 preview — 1.6T-param mixture-of-experts frontier reasoner tuned for long-context coding and analysis",
+      "summary": "DeepSeek's V4 preview lands as a 1.6-trillion-parameter MoE built for long-context reasoning with strong coding/analysis, extending the low-cost open-weight pressure on the frontier labs.",
+      "tag": "maybe",
+      "how": "Candidate cheap high-context backend to benchmark against Sonnet 5 for The Construct's long-corpus reasoning jobs; validate quality and data-governance before routing any client work to it.",
+      "url": "https://llm-stats.com/llm-updates"
+    },
+    {
+      "n": 5,
+      "title": "arXiv: 'Environment-Grounded Automated Prompt Optimization for LLM Game Agents'",
+      "summary": "Decomposes an agent's observation-to-action pipeline into a goal-conditioned descriptor agent and an action-selection agent, then auto-refines each module's prompt through an LLM-driven evolutionary loop scored by environment returns.",
       "tag": "yes",
-      "how": "Informs how The Construct schedules and supervises overnight/background agents (Hermes, the daily scans) so async jobs degrade gracefully instead of silently failing.",
-      "url": "https://arxiv.org/pdf/2603.21489"
+      "how": "Concrete method for tuning Construct agents that operate in a loop (the scans, browser-automation flows): split perception from decision and let outcome signal drive prompt refinement instead of hand-editing.",
+      "url": "https://arxiv.org/html/2606.17838v1"
     }
   ],
-  "praxis_lesson": "The generation layer — voice, image, video, music — is collapsing into MCP: MiniMax and Higgsfield now expose the entire creative stack as agent-callable tools, and Google is pushing conversational video into mass channels. The Construct's move for Brand 9 Signs is to route creative production through one MCP-backed creative-ops agent (with MiniMax/Higgsfield as swappable backends) rather than paying per-seat for human-driven SaaS — own the orchestration, treat the generators as interchangeable.",
-  "history": ["2026-06-30", "2026-06-29", "2026-06-28"]
+  "praxis_lesson": "The distribution platforms are now racing to become agent-callable — X (June 30) and Salesforce (June '26) join TikTok, GitHub, Slack, Stripe and the ad platforms in shipping official MCP servers, but most, like X, expose READ before WRITE. The Construct's edge for Brand 9 Signs is to treat these read-MCPs as a unified sensing layer (listen, analyze, decide) while keeping our own governed write path for anything that publishes or spends — own the decision + action layer, let the platforms commoditize the reads.",
+  "history": ["2026-07-01", "2026-06-30", "2026-06-29", "2026-06-28"]
 }

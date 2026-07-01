@@ -35,3 +35,15 @@ lesson: The generation layer (voice/image/video/music) is collapsing into MCP â€
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-01
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: 5 items flagged â€” X official hosted MCP server (200+ endpoints, read-only, no Write API), Anthropic Claude Sonnet 5 default in Claude Code (1M context) + dynamic-workflows preview, Salesforce Agentic B2C Developer Toolkit (CLI+MCP+skills, CRM Contact ID in storefront token), DeepSeek V4 preview (1.6T MoE long-context reasoner), arXiv 'Environment-Grounded Automated Prompt Optimization for LLM Game Agents'.
+lesson: Distribution platforms are racing to become agent-callable but expose READ before WRITE (X's MCP has no Write API). The Construct's edge for B9S is to treat these read-MCPs as a unified sensing layer while keeping our own governed write path for anything that publishes or spends.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
