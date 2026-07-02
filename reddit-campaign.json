@@ -1,18 +1,19 @@
 {
-  "updated": "2026-07-02T17:15:00Z",
+  "updated": "2026-07-02T17:25:00Z",
   "account": {
     "username": "established (Bobby's personal account)",
     "created": "established",
     "karma": "established",
     "phase": "active",
-    "phase_note": "Bobby logged his established Reddit account in Chrome. No warm-up needed — posts should go through immediately. Avoids the spam filter / rate-limit issues that blocked the new account."
+    "phase_note": "Bobby logged his established Reddit account — posts go through immediately. No spam filter issues."
   },
   "starter_posts": [
     {
       "topic": "homebuilder",
-      "subreddit": "CommercialRealEstate",
-      "status": "ready_to_post",
+      "subreddit": "digitalrealestate",
+      "status": "live",
       "title": "A field guide to signage for a new home community — what to budget, when to order, and the stuff that trips builders up",
+      "url": "https://www.reddit.com/r/digitalrealestate/comments/1ulomzm/a_field_guide_to_signage_for_a_new_home_community/",
       "thumbnail": "b9-thumb-homebuilder-v2.png",
       "action": "posted by Bobby via Chrome"
     },
@@ -22,7 +23,7 @@
       "status": "ready_to_post",
       "title": "The wayfinding + ADA sign mistakes I see constantly in offices and campuses (and how to avoid them)",
       "thumbnail": "b9-thumb-wayfinding-v2.png",
-      "action": "posted by Bobby via Chrome"
+      "action": "post next — r/CommercialRealEstate or r/digitalrealestate"
     },
     {
       "topic": "govmil",
@@ -30,7 +31,7 @@
       "status": "ready_to_post",
       "title": "Signage on federal/military projects: the compliance stuff that surprises first-time primes and subs",
       "thumbnail": "b9-thumb-govmil-v2.png",
-      "action": "posted by Bobby via Chrome"
+      "action": "post after Post 2"
     }
   ],
   "posting_attempts": [
@@ -38,24 +39,23 @@
       "date": "2026-07-02",
       "agent": "Claude Code (Anthropic)",
       "account": "Hefty_Internal3402",
-      "result": "2 attempts — 0 successful. 1 removed by spam filter (r/Homebuilding), 1 blocked by private sub (r/FacilitiesManagement), 1 alternate silently dropped (r/CommercialRealEstate). Confirmed: new account = invisible to Reddit."
+      "result": "2 attempts — 0 successful. Spam filter + private sub + silent block."
     },
     {
       "date": "2026-07-02",
       "agent": "Bobby (manual via Chrome)",
       "account": "established personal account",
-      "result": "3 posts queued for manual posting — r/CommercialRealEstate (×2), r/govcon (×1). No automation blocking. Awaiting confirmation of live posts.",
-      "subreddit_correction": "r/Homebuilding removed from targets — B9 serves production home builders, not handymen/DIY. Replaced with r/CommercialRealEstate."
+      "result": "Post 1 live on r/digitalrealestate. Posts 2-3 pending."
     }
   ],
   "auto_drafts": {
     "total": 209,
-    "decision": "hold until Bobby confirms the 3 starter posts are live and getting engagement. Then drip 2-3/day from the reply draft queue."
+    "decision": "hold until starters are live and getting engagement. Then drip 2-3/day."
   },
   "next_actions": [
-    "Bobby posts 3 starters manually via Chrome: (1) r/CommercialRealEstate — homebuilder signage, (2) r/CommercialRealEstate — wayfinding/ADA, (3) r/govcon — federal signage compliance",
-    "After posting, drop me the URLs so I can update the campaign status + verify live",
-    "Request r/FacilitiesManagement membership so that option is available later",
-    "Monitor engagement on the 3 posts — decide if reply-drip from 209 draft queue makes sense"
+    "Post 2: r/CommercialRealEstate — wayfinding/ADA (or r/digitalrealestate again)",
+    "Post 3: r/govcon — federal signage compliance",
+    "Drop me the URLs after each and I'll update the dashboard",
+    "Monitor engagement on the 3 posts — decide if reply-drip makes sense"
   ]
 }
