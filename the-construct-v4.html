@@ -1594,6 +1594,117 @@ const SlmVisibilityPanel = () => {
   );
 };
 // ═══════════════════════════════════════════════════════════════
+// REDDIT MONITOR — brand-mention tracker & draft approval queue
+// MONITOR ONLY — never posts autonomously. Reads ./reddit-monitor.json.
+// ═══════════════════════════════════════════════════════════════
+const RedditMonitorPanel = () => {
+  const [data, setData] = React.useState(null);
+  const [fetched, setFetched] = React.useState(false);
+  React.useEffect(() => {
+    const tryFetch = async () => {
+      const urls = [
+        './reddit-monitor.json?cb=' + Date.now(),
+        'https://extracoffee13.github.io/hartley-command/reddit-monitor.json?cb=' + Date.now(),
+      ];
+      for (const u of urls) {
+        try { const r = await fetch(u, { cache: 'no-store' }); if (r.ok) { setData(await r.json()); setFetched(true); return; } } catch (e) {}
+      }
+      setFetched(true);
+    };
+    tryFetch();
+  }, []);
+  const mentions = (data && data.mentions) || [];
+  const byEntity = (data && data.by_entity) || {};
+  const pendingDrafts = (data && data.pending_drafts) || 0;
+  const recent24h = (data && data.recent_24h) || 0;
+
+  const classificationColor = (cls) => cls === 'positive' ? C.green : cls === 'negative' ? C.red : cls === 'neutral' ? C.cyan : C.greenDim;
+
+  return (
+    <div style={{ background: "linear-gradient(135deg, rgba(255,100,0,0.06) 0%, rgba(40,20,0,0.6) 100%)", border: "1px solid rgba(255,150,50,0.35)", borderRadius: 4, padding: 24, margin: "16px 0", position: "relative" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 4 }}>
+        <span style={{ color: C.orange, fontWeight: 700, fontSize: 15, letterSpacing: 1 }}>◉ REDDIT MONITOR — BRAND MENTIONS</span>
+        <span style={{ color: C.greenDim, fontSize: 11 }}>{data && data.generated ? data.generated.slice(0, 16).replace('T', ' ') : (fetched ? "no data" : "loading…")}</span>
+      </div>
+      <div style={{ color: "rgba(255,255,255,0.45)", fontSize: 11, marginBottom: 14 }}>MONITOR ONLY — drafts await approval · never posts autonomously · Tavily + site:reddit.com</div>
+
+      {!fetched && <div style={{ color: C.greenDim, fontSize: 12 }}>Checking Reddit…</div>}
+      {fetched && !data && <div style={{ color: C.greenDim, fontSize: 12 }}>Reddit monitor not yet published.</div>}
+
+      {data && (
+        <div>
+          {/* Summary cards */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10, marginBottom: 14 }}>
+            <div style={{ border: "1px solid " + C.orange, padding: 10, background: "rgba(0,0,0,0.18)" }}>
+              <div style={{ fontSize: 8, color: C.greenDim, letterSpacing: 1 }}>TOTAL MENTIONS</div>
+              <div style={{ fontSize: 22, fontWeight: 900, color: C.orange, marginTop: 2 }}>{(data && data.total_mentions) || 0}</div>
+              <div style={{ fontSize: 8, color: C.greenDim, marginTop: 2 }}>lifetime tracked</div>
+            </div>
+            <div style={{ border: "1px solid " + C.cyan, padding: 10, background: "rgba(0,0,0,0.18)" }}>
+              <div style={{ fontSize: 8, color: C.greenDim, letterSpacing: 1 }}>RECENT 24H</div>
+              <div style={{ fontSize: 22, fontWeight: 900, color: C.cyan, marginTop: 2 }}>{recent24h}</div>
+              <div style={{ fontSize: 8, color: C.greenDim, marginTop: 2 }}>new mentions</div>
+            </div>
+            <div style={{ border: "1px solid " + C.gold, padding: 10, background: "rgba(0,0,0,0.18)" }}>
+              <div style={{ fontSize: 8, color: C.greenDim, letterSpacing: 1 }}>PENDING DRAFTS</div>
+              <div style={{ fontSize: 22, fontWeight: 900, color: pendingDrafts > 0 ? C.gold : C.greenDim, marginTop: 2 }}>{pendingDrafts}</div>
+              <div style={{ fontSize: 8, color: C.greenDim, marginTop: 2 }}>awaiting your review</div>
+            </div>
+            <div style={{ border: "1px solid " + C.gold, padding: 10, background: "rgba(0,0,0,0.18)" }}>
+              <div style={{ fontSize: 8, color: C.greenDim, letterSpacing: 1 }}>APPROVAL DIR</div>
+              <div style={{ fontSize: 9, fontWeight: 700, color: C.gold, marginTop: 2 }}>/Atlas/reddit-drafts/</div>
+              <div style={{ fontSize: 8, color: C.greenDim, marginTop: 2 }}>review drafts via Telegram or here</div>
+            </div>
+          </div>
+
+          {/* Entity breakdown */}
+          {Object.keys(byEntity).length > 0 && (
+            <div style={{ marginBottom: 14 }}>
+              <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 6 }}>BY ENTITY</div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 8 }}>
+                {Object.entries(byEntity).map(([entity, stats]) => (
+                  <div key={entity} style={{ border: "1px solid " + C.greenDim, padding: 8, background: "rgba(0,0,0,0.15)" }}>
+                    <div style={{ fontSize: 10, color: C.cyan, fontWeight: 600, marginBottom: 2 }}>{entity}</div>
+                    <div style={{ fontSize: 9, color: C.greenDim }}>{stats.count} mentions</div>
+                    <div style={{ display: "flex", gap: 8, fontSize: 8, marginTop: 2 }}>
+                      {stats.positive > 0 && <span style={{ color: C.green }}>▲{stats.positive}</span>}
+                      {stats.neutral > 0 && <span style={{ color: C.cyan }}>●{stats.neutral}</span>}
+                      {stats.negative > 0 && <span style={{ color: C.red }}>▼{stats.negative}</span>}
+                      {stats.opportunity > 0 && <span style={{ color: C.greenDim }}>◇{stats.opportunity}</span>}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Recent mentions */}
+          {mentions.length > 0 && (
+            <div>
+              <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 6 }}>RECENT MENTIONS</div>
+              {mentions.slice(0, 8).map((m, i) => (
+                <div key={i} style={{ padding: "5px 0", borderBottom: "1px dashed rgba(255,255,255,0.06)" }}>
+                  <div style={{ display: "flex", gap: 6, alignItems: "baseline" }}>
+                    <span style={{ fontSize: 8, color: classificationColor(m.classification), border: "1px solid " + classificationColor(m.classification), borderRadius: 2, padding: "0 4px", textTransform: "uppercase", fontWeight: 700 }}>{m.classification}</span>
+                    {m.subreddit && <span style={{ fontSize: 8, color: C.orange }}>r/{m.subreddit}</span>}
+                    <span style={{ fontSize: 8, color: C.greenDim }}>{m.entity}</span>
+                  </div>
+                  <a href={m.url} target="_blank" rel="noopener" style={{ fontSize: 10, color: "#fff", textDecoration: "none", display: "block", marginTop: 2 }}>{m.title || m.url}</a>
+                </div>
+              ))}
+              {mentions.length > 8 && <div style={{ fontSize: 9, color: C.greenDim, marginTop: 4 }}>…and {mentions.length - 8} more</div>}
+            </div>
+          )}
+        </div>
+      )}
+
+      <div style={{ color: "rgba(255,255,255,0.35)", fontSize: 10, marginTop: 10, lineHeight: 1.5 }}>
+        Queries: 9 entity+category searches across 9 subreddits · Auth: Tavily + site:reddit.com ({data && data.auth_note ? "upgrade path: " + data.auth_note : ""})
+      </div>
+    </div>
+  );
+};
+// ═══════════════════════════════════════════════════════════════
 // MIRROR BASE — productized owned-presence Operator · envelops ToplinePro
 // Strategy locked via creative abrasion w/ Hermes (Kimi K2.7) · 2026-06-26
 // Envelope by OUTCOME + OWNERSHIP, not feature-parity SaaS.
@@ -2426,6 +2537,7 @@ const Dashboard = () => (
       <ModelArenaPanel />
       <IndustryPulsePanel />
       <SlmVisibilityPanel />
+      <RedditMonitorPanel />
       <PragmaMirrorPanel />
       <MirrorBasePanel />
       <WildDucksBand />
