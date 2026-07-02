@@ -1474,6 +1474,126 @@ const PragmaMirrorPanel = () => {
 };
 
 // ═══════════════════════════════════════════════════════════════
+// SLM VISIBILITY — Small Language Model visibility scan
+// Probes tiny/on-device, small, and mid-size open models on OpenRouter
+// for each entity's category questions. Sourced from ./slm-mirror.json.
+// ═══════════════════════════════════════════════════════════════
+const SlmVisibilityPanel = () => {
+  const [data, setData] = React.useState(null);
+  const [fetched, setFetched] = React.useState(false);
+  React.useEffect(() => {
+    const tryFetch = async () => {
+      const urls = [
+        './slm-mirror.json?cb=' + Date.now(),
+        'https://extracoffee13.github.io/hartley-command/slm-mirror.json?cb=' + Date.now(),
+      ];
+      for (const u of urls) {
+        try { const r = await fetch(u, { cache: 'no-store' }); if (r.ok) { setData(await r.json()); setFetched(true); return; } } catch (e) {}
+      }
+      setFetched(true);
+    };
+    tryFetch();
+  }, []);
+  const overallScore = (data && data.overall_slm_score) ?? null;
+  const tierScores = (data && data.tier_scores) || {};
+  const tiers = (data && data.tiers) || {};
+  const proxyTracked = (data && data.on_device_proxy) || [];
+
+  const scoreColor = (v) => {
+    if (v === null || v === undefined) return C.greenDim;
+    if (v === 0) return C.greenDim;
+    if (v < 33) return C.orange;
+    if (v < 66) return C.gold;
+    return C.green;
+  };
+
+  const tierIcons = { "tiny-on-device": "▫", "small": "◆", "mid": "▲" };
+
+  return (
+    <div style={{ background: "linear-gradient(135deg, rgba(79,0,255,0.06) 0%, rgba(20,0,40,0.6) 100%)", border: "1px solid rgba(180,130,255,0.35)", borderRadius: 4, padding: 24, margin: "16px 0", position: "relative" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 4 }}>
+        <span style={{ color: "#b388ff", fontWeight: 700, fontSize: 15, letterSpacing: 1 }}>◇ SLM VISIBILITY — SMALL MODEL SCAN</span>
+        <span style={{ color: C.greenDim, fontSize: 11 }}>{data && data.generated ? data.generated.slice(0, 16).replace('T', ' ') : (fetched ? "no data" : "loading…")}</span>
+      </div>
+      <div style={{ color: "rgba(255,255,255,0.45)", fontSize: 11, marginBottom: 14 }}>Probes tiny→mid SLMs on OpenRouter · 8 models across 3 tiers · entity=brand mentions</div>
+
+      {!fetched && <div style={{ color: C.greenDim, fontSize: 12 }}>Loading SLM visibility…</div>}
+
+      {fetched && !data && <div style={{ color: C.greenDim, fontSize: 12 }}>SLM scan not yet published — run slm_mirror.py.</div>}
+
+      {data && (
+        <div>
+          {/* Overall score */}
+          <div style={{ display: "flex", alignItems: "baseline", gap: 16, marginBottom: 16 }}>
+            <div>
+              <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 2 }}>OVERALL SLM SCORE</div>
+              <div style={{ fontSize: 48, fontWeight: 900, color: scoreColor(overallScore), fontFamily: "Georgia, serif", lineHeight: 1 }}>
+                {overallScore === null ? "—" : overallScore}
+              </div>
+            </div>
+            <div style={{ fontSize: 9, color: C.greenDim, lineHeight: 1.5 }}>
+              {overallScore !== null && overallScore < 33 ? "Brand 9 is not cited by most SLMs — content gap for small-model surfaces." :
+               overallScore !== null && overallScore < 66 ? "Partial SLM visibility — cited by 1–2 tiers." :
+               overallScore !== null ? "Brand 9 visible across SLM tiers." : ""}
+            </div>
+          </div>
+
+          {/* Tier grid */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, marginBottom: 14 }}>
+            {Object.entries(tiers).map(([key, tier]) => {
+              const ts = tierScores[key];
+              const modelCount = (tier.models || []).length;
+              const checked = tier.total_checks || 0;
+              const cited = tier.total_cited || 0;
+              return (
+                <div key={key} style={{ border: "1px solid " + scoreColor(ts), padding: 12, background: "rgba(0,0,0,0.25)", borderLeft: "3px solid " + scoreColor(ts) }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 4 }}>
+                    <span style={{ fontSize: 11, color: "#b388ff", fontWeight: 700 }}>{tierIcons[key] || "◈"} {tier.label}</span>
+                    <span style={{ fontSize: 16, fontWeight: 900, color: scoreColor(ts) }}>{ts === null ? "—" : ts + "%"}</span>
+                  </div>
+                  <div style={{ fontSize: 8, color: C.greenDim, marginBottom: 6 }}>{modelCount} models · {checked} checks · {cited} entity-cited</div>
+                  {(tier.models || []).map((m, mi) => (
+                    <div key={mi} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "2px 0", borderBottom: mi < modelCount - 1 ? "1px dashed rgba(255,255,255,0.05)" : "none" }}>
+                      <span style={{ fontSize: 8, color: C.cyan, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", maxWidth: 130, title: m.model }}>{m.model.split("/").pop()}</span>
+                      <span style={{ fontSize: 9, fontWeight: 700, color: scoreColor(m.score) }}>{m.score === null ? "—" : m.score + "%"}</span>
+                    </div>
+                  ))}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* On-device proxy note */}
+          {proxyTracked.length > 0 && (
+            <div style={{ padding: 10, background: "rgba(180,130,255,0.06)", borderRadius: 3, borderLeft: "2px solid #b388ff", marginBottom: 10 }}>
+              <span style={{ color: "#b388ff", fontWeight: 700, fontSize: 9 }}>ON-DEVICE PROXY TRACKED</span>
+              {proxyTracked.map((p, i) => (
+                <div key={i} style={{ fontSize: 9, color: C.greenDim, marginTop: 3, lineHeight: 1.4 }}>
+                  <span style={{ color: C.cyan }}>{p.name}</span>: {p.note}
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Questions */
+          data.questions && (
+            <details style={{ marginTop: 6 }}>
+              <summary style={{ fontSize: 9, color: C.greenDim, cursor: "pointer" }}>Probe questions ({data.questions.length})</summary>
+              <div style={{ fontSize: 8, color: C.greenDim, marginTop: 4, lineHeight: 1.6 }}>
+                {data.questions.map((q, i) => <div key={i} style={{ padding: "2px 0" }}>{i + 1}. {q}</div>)}
+              </div>
+            </details>
+          )}
+        </div>
+      )}
+
+      <div style={{ color: "rgba(255,255,255,0.35)", fontSize: 10, marginTop: 10 }}>
+        Models: 2 tiny (Gemma 4B, Phi-4, Llama 3.2 3B) · 3 small (Ministral 8B, Qwen 7B, Llama 3.1 8B) · 2 mid (DeepSeek V4 Flash, Llama 70B). Apple Intelligence + Gemini Nano: proxy-tracked.
+      </div>
+    </div>
+  );
+};
+// ═══════════════════════════════════════════════════════════════
 // MIRROR BASE — productized owned-presence Operator · envelops ToplinePro
 // Strategy locked via creative abrasion w/ Hermes (Kimi K2.7) · 2026-06-26
 // Envelope by OUTCOME + OWNERSHIP, not feature-parity SaaS.
@@ -2305,6 +2425,7 @@ const Dashboard = () => (
       <FoundersPlaybookPanel />
       <ModelArenaPanel />
       <IndustryPulsePanel />
+      <SlmVisibilityPanel />
       <PragmaMirrorPanel />
       <MirrorBasePanel />
       <WildDucksBand />
