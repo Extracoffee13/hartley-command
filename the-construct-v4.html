@@ -967,58 +967,7 @@ const HermesPanel = () => (
 // mirrored to /dashboards-deploy/brand-insights/latest.json on each cycle.
 // Locked 2026-06-04 per Bobby — Path 1: build, don't buy.
 // ═══════════════════════════════════════════════════════════════
-// INDUSTRY PULSE — daily AI/agent ecosystem scan (Pulse → The Construct)
-// Sourced from ./industry-pulse-ai/latest.json (committed + pushed headless daily)
-// ═══════════════════════════════════════════════════════════════
-const IndustryPulsePanel = () => {
-  const [data, setData] = React.useState(null);
-  const [fetched, setFetched] = React.useState(false);
-  React.useEffect(() => {
-    const tryFetch = async () => {
-      const urls = [
-        './industry-pulse-ai/latest.json?cb=' + Date.now(),
-        'https://extracoffee13.github.io/hartley-command/industry-pulse-ai/latest.json?cb=' + Date.now(),
-      ];
-      for (const u of urls) {
-        try { const r = await fetch(u, { cache: 'no-store' }); if (r.ok) { setData(await r.json()); setFetched(true); return; } } catch (e) {}
-      }
-      setFetched(true);
-    };
-    tryFetch();
-  }, []);
-  const tagColor = (t) => t === 'yes' ? C.green : (t === 'maybe' ? C.cyan : C.greenDim);
-  const bullets = (data && data.bullets) || [];
-  return (
-    <div style={{ background: "linear-gradient(135deg, rgba(0,212,255,0.04) 0%, rgba(0,20,40,0.6) 100%)", border: "1px solid rgba(0,212,255,0.3)", borderRadius: 4, padding: 24, margin: "16px 0", position: "relative" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 4 }}>
-        <span style={{ color: C.cyan, fontWeight: 700, fontSize: 15, letterSpacing: 1 }}>◉ INDUSTRY PULSE — AI / AGENT ECOSYSTEM</span>
-        <span style={{ color: C.greenDim, fontSize: 11 }}>{data && data.latest_date ? data.latest_date : (fetched ? "no data" : "loading…")}</span>
-      </div>
-      <div style={{ color: "rgba(255,255,255,0.45)", fontSize: 11, marginBottom: 14 }}>Daily scan for The Construct · committed + pushed headless (no Allow-once)</div>
-      {!fetched && <div style={{ color: C.greenDim, fontSize: 12 }}>Loading latest pulse…</div>}
-      {fetched && bullets.length === 0 && <div style={{ color: C.greenDim, fontSize: 12 }}>No pulse report found yet.</div>}
-      {bullets.map((b, i) => (
-        <div key={i} style={{ borderLeft: "2px solid " + tagColor(b.tag), paddingLeft: 12, marginBottom: 12 }}>
-          <div style={{ display: "flex", gap: 8, alignItems: "baseline" }}>
-            <span style={{ color: tagColor(b.tag), fontWeight: 700, fontSize: 10, textTransform: "uppercase", border: "1px solid " + tagColor(b.tag), borderRadius: 3, padding: "1px 5px" }}>{b.tag}</span>
-            <span style={{ color: "#fff", fontWeight: 600, fontSize: 13 }}>{b.title}</span>
-          </div>
-          <div style={{ color: "rgba(255,255,255,0.7)", fontSize: 12, marginTop: 3 }}>{b.summary}</div>
-          {b.how && <div style={{ color: C.cyan, fontSize: 11, marginTop: 2 }}>↳ {b.how}</div>}
-          {b.url && <a href={b.url} target="_blank" rel="noopener" style={{ color: C.greenDim, fontSize: 10 }}>{b.url}</a>}
-        </div>
-      ))}
-      {data && data.praxis_lesson && (
-        <div style={{ marginTop: 14, padding: 12, background: "rgba(57,255,20,0.05)", borderRadius: 3, borderLeft: "2px solid " + C.green }}>
-          <span style={{ color: C.green, fontWeight: 700, fontSize: 11 }}>PRAXIS LESSON</span>
-          <div style={{ color: "rgba(255,255,255,0.75)", fontSize: 12, marginTop: 3 }}>{data.praxis_lesson}</div>
-        </div>
-      )}
-    </div>
-  );
-};
 
-// ═══════════════════════════════════════════════════════════════
 // MODEL ARENA — ONGOING CASE STUDY
 // Bake-off leaderboard (controlled harness) + production usage (Hermes logs).
 // Reads ./model-leaderboard.json (from leaderboard.py) and ./model-usage.json
@@ -2615,9 +2564,8 @@ const Dashboard = () => (
       <HarvardCorpusPanel />
       <FoundersPlaybookPanel />
       <ModelArenaPanel />
-      <IndustryPulsePanel />
-      <SlmVisibilityPanel />
       <RedditMonitorPanel />
+      <SlmVisibilityPanel />
       <PragmaMirrorPanel />
       <MirrorBasePanel />
       <WildDucksBand />
