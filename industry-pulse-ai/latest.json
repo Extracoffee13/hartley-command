@@ -1,49 +1,41 @@
 {
-  "generated": "2026-07-01T10:05:00Z",
-  "latest_date": "2026-07-01",
+  "generated": "2026-07-02T10:01:16Z",
+  "latest_date": "2026-07-02",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "X ships an official hosted MCP server — 200+ endpoints, agents can search/read/analyze X in real time (read-only for now)",
-      "summary": "Launched June 30, X's hosted MCP server exposes 200+ API endpoints (post search, timelines, profile lookup, bookmarks, likes/retweets, plus a docs hub) to any MCP client via browser OAuth; it is NOT wired to the Write API, so agents can read and analyze but cannot post autonomously.",
+      "title": "Anthropic redeploys Claude Fable 5 globally (July 1) after US lifts export controls — its most capable, longest-autonomy model, now on Cowork + Claude Code",
+      "summary": "Commerce lifted the June 12 export-control order; Fable 5 and Mythos 5 returned July 1 to the Claude Platform, Claude.ai, Claude Code, and Cowork with new cybersecurity-targeting classifiers, and can work autonomously longer than any prior Claude; Pro/Max/Team/select Enterprise get it for up to 50% of weekly limits through July 7, then via usage credits, with some routine coding falling back to Opus 4.8.",
       "tag": "yes",
-      "how": "Drop-in social-listening + trend-analysis backend for Pulse / Brand 9 Signs without maintaining API plumbing; posting still routes through our existing multi-channel browser flow.",
-      "url": "https://techcrunch.com/2026/06/30/x-now-offers-an-mcp-server-to-make-its-platform-easier-for-ai-tools-to-use/"
+      "how": "This is The Construct's own substrate: longer unattended autonomy is what the daily/weekly scans and Hermes background jobs need — route heavy-reasoning/long-run tasks to Fable 5, keep Opus 4.8 as the coding fallback, and mind credit burn after July 7.",
+      "url": "https://www.anthropic.com/news/redeploying-fable-5"
     },
     {
       "n": 2,
-      "title": "Anthropic — Claude Sonnet 5 becomes Claude Code's default with native 1M-token context + 'dynamic workflows' research preview",
-      "summary": "Claude Code now defaults to Sonnet 5 with a 1M-token window (promo pricing to Aug 31) and adds dynamic workflows that let Claude plan large tasks, spin up many parallel subagents, and verify results before reporting back, plus org default models and background-session reliability fixes.",
+      "title": "MCP ships its biggest revision since launch — the 2026-07-28 spec release candidate: stateless core, Tasks, MCP Apps, OAuth-aligned auth",
+      "summary": "The final spec lands July 28 with a stateless protocol core that scales on ordinary HTTP, an Extensions framework, a Tasks extension for long-running work, MCP Apps for server-rendered UIs, authorization aligned to OAuth/OpenID Connect, and a formal deprecation policy; the 10-week window is for SDK maintainers and Tier-1 SDKs to validate (9,400+ public servers, 80%+ of the Fortune 500 already on MCP).",
       "tag": "yes",
-      "how": "Directly upgrades The Construct's own agent substrate: bigger context for whole-repo/whole-corpus jobs and native parallel-subagent orchestration for the daily scans and Hermes-driven background work.",
-      "url": "https://releasebot.io/updates/anthropic/claude-code"
+      "how": "The Construct runs its own MCP fleet: the Tasks extension formalizes our long-running scan/Hermes pattern, MCP Apps let our servers render UI back into Cowork, and the stateless core plus OAuth changes are plumbing to pilot before July 28, not after.",
+      "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/"
     },
     {
       "n": 3,
-      "title": "Salesforce ships Agentic B2C Developer Toolkit (June '26) — CLI + MCP server + agent skills, CRM Contact ID embedded in the storefront auth token",
-      "summary": "Agentforce Commerce's largest release yet gives shopper agents secure, instant access to full customer context by baking the CRM Contact ID into the storefront authentication token, exposed through a unified CLI, MCP server, and IDE extension.",
+      "title": "The new enterprise-ready MCP spec also widens the attack surface — security teams flag fresh risks in the RC",
+      "summary": "As MCP hardens for enterprise (stateless HTTP, delegated OAuth, server-rendered Apps), analysts warn the same changes introduce new authorization, token-handling, and UI-injection risks that most current deployments aren't yet configured for.",
       "tag": "maybe",
-      "how": "Reference pattern for PRAGMA's AI-operator work: how to hand an agent authenticated, per-customer CRM context safely; relevant if/when a Construct client runs on Salesforce commerce.",
-      "url": "https://www.salesforce.com/blog/b2c-commerce-june-26-release/"
+      "how": "Governance input for PRAGMA and The Construct: before adopting the new auth/Apps surface, treat each internal MCP server as a security-reviewed asset (scoped tokens, least-privilege, no blind UI rendering) — the skills-as-governed-assets posture extended to servers.",
+      "url": "https://www.securityweek.com/new-enterprise-ready-mcp-specification-brings-new-security-challenges/"
     },
     {
       "n": 4,
-      "title": "DeepSeek V4 preview — 1.6T-param mixture-of-experts frontier reasoner tuned for long-context coding and analysis",
-      "summary": "DeepSeek's V4 preview lands as a 1.6-trillion-parameter MoE built for long-context reasoning with strong coding/analysis, extending the low-cost open-weight pressure on the frontier labs.",
-      "tag": "maybe",
-      "how": "Candidate cheap high-context backend to benchmark against Sonnet 5 for The Construct's long-corpus reasoning jobs; validate quality and data-governance before routing any client work to it.",
-      "url": "https://llm-stats.com/llm-updates"
-    },
-    {
-      "n": 5,
-      "title": "arXiv: 'Environment-Grounded Automated Prompt Optimization for LLM Game Agents'",
-      "summary": "Decomposes an agent's observation-to-action pipeline into a goal-conditioned descriptor agent and an action-selection agent, then auto-refines each module's prompt through an LLM-driven evolutionary loop scored by environment returns.",
+      "title": "arXiv: 'Context Engineering: From Prompts to Corporate Multi-Agent Architecture'",
+      "summary": "Frames context engineering as its own discipline (design and manage the whole informational environment an agent decides in) with five quality criteria — relevance, sufficiency, isolation, economy, provenance — plus intent engineering (encode org goals/values into infra) and specification engineering (a machine-readable corpus of corporate policy for autonomous multi-agent systems).",
       "tag": "yes",
-      "how": "Concrete method for tuning Construct agents that operate in a loop (the scans, browser-automation flows): split perception from decision and let outcome signal drive prompt refinement instead of hand-editing.",
-      "url": "https://arxiv.org/html/2606.17838v1"
+      "how": "The theory under what we already do: CLAUDE.md as working memory, ~/.hermes/memories/ as the corpus, PRAXIS as provenance; score every agent's context against the five criteria and treat our locked rules as the specification-engineering layer.",
+      "url": "https://arxiv.org/abs/2603.09619v1"
     }
   ],
-  "praxis_lesson": "The distribution platforms are now racing to become agent-callable — X (June 30) and Salesforce (June '26) join TikTok, GitHub, Slack, Stripe and the ad platforms in shipping official MCP servers, but most, like X, expose READ before WRITE. The Construct's edge for Brand 9 Signs is to treat these read-MCPs as a unified sensing layer (listen, analyze, decide) while keeping our own governed write path for anything that publishes or spends — own the decision + action layer, let the platforms commoditize the reads.",
-  "history": ["2026-07-01", "2026-06-30", "2026-06-29", "2026-06-28"]
+  "praxis_lesson": "July is a protocol-and-substrate inflection, not a shiny-model one — Fable 5 lifts the ceiling on unattended autonomy while the July 28 MCP spec rewrites how our own servers authenticate, run long tasks, and render UI. The Construct's move is to prep the plumbing now: pilot the MCP RC on one internal server, formalize scans/Hermes as MCP Tasks, and govern context and servers as security-reviewed assets — own the orchestration and governance layer while the model and protocol commoditize underneath us.",
+  "history": ["2026-07-02", "2026-07-01", "2026-06-30", "2026-06-29", "2026-06-28"]
 }

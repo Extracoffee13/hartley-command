@@ -47,3 +47,15 @@ lesson: Distribution platforms are racing to become agent-callable but expose RE
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-02
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: 4 items flagged — Anthropic redeploys Claude Fable 5 globally July 1 (export controls lifted; longest-autonomy model now on Cowork + Claude Code), the MCP 2026-07-28 spec release candidate (stateless core + Tasks + MCP Apps + OAuth-aligned auth), SecurityWeek flags new enterprise-security risks in that same MCP spec, arXiv 'Context Engineering: From Prompts to Corporate Multi-Agent Architecture'.
+lesson: July is a protocol-and-substrate inflection, not a shiny-model one — Fable 5 raises the autonomy ceiling while the July 28 MCP spec rewrites how our own servers authenticate, run long tasks, and render UI. Prep the plumbing now: pilot the MCP RC on one internal server, formalize scans/Hermes as MCP Tasks, and govern context and servers as security-reviewed assets.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
