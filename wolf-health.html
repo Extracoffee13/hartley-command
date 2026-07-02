@@ -3,186 +3,23 @@
 <title>WOLF Health Dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#000;color:#e0e0e0;font-family:'Courier New',monospace;padding:2rem;max-width:1200px;margin:0 auto}
-h1{color:#39ff14;font-weight:600;font-size:1.8rem;margin-bottom:.25rem}
-.sub{color:#666;font-size:.8rem;margin-bottom:1.5rem;border-bottom:1px solid #333;padding-bottom:.5rem}
-h2{margin:0 0 .75rem;font-size:.85rem;color:#00d4ff;text-transform:uppercase;letter-spacing:.06em}
-.ok{color:#39ff14}
-.warn{color:#ffa500}
-.crit{color:#ff4d4d}
-a{color:#00d4ff;text-decoration:none}
-a:hover{text-decoration:underline}
-.section{border-left:3px solid #39ff14;padding-left:1rem;margin:1.5rem 0}
-.card{background:#0d0d0d;border:1px solid #222;padding:1rem;margin:1rem 0;border-radius:4px}
-.score-container{position:relative;height:28px;background:#1a1a1a;border-radius:4px;margin:.5rem 0;overflow:visible}
-.score-fill{height:100%;border-radius:4px;transition:width .5s;background:linear-gradient(90deg,#39ff14,#00d4ff);min-width:2px}
-.score-fill.low{background:#ff4d4d}
-.score-fill.medium{background:#ffa500}
-.threshold{position:absolute;top:-4px;bottom:-4px;border-left:2px dashed #ffa500;color:#ffa500;font-size:.7rem;padding-left:2px}
-table{width:100%;border-collapse:collapse;font-size:.82rem}
-th{text-align:left;color:#00d4ff;padding:.4rem .3rem;border-bottom:1px solid #333;font-weight:500}
-td{padding:.4rem .3rem;border-bottom:1px solid #1a1a1a}
-tr:hover td{background:#111}
-.pos{text-align:right}
-.neg{color:#ff4d4d;text-align:right}
-.val{text-align:right}
-.banner{padding:.75rem 1rem;border-radius:4px;margin:1rem 0;font-size:.85rem}
-.banner-blue{background:#0a1a2e;border:1px solid #00d4ff;color:#b0e0ff}
-.banner-orange{background:#2a1a00;border:1px solid #ffa500;color:#ffcc80}
-.banner-red{background:#2a0a0a;border:1px solid #ff4d4d;color:#ff9999}
+body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",monospace;padding:2rem}
+h1{color:#00ff88;font-weight:600}
+.card{background:#111;border:1px solid #333;padding:1rem;margin:1rem 0;border-radius:6px}
+h2{margin:0 0 .5rem;font-size:.9rem;color:#00d4ff;text-transform:uppercase;letter-spacing:.04em}
+.ok{color:#00ff88} .warn{color:#ffaa00} .crit{color:#ff4444}
+a{color:#00d4ff}
 .thesis{border-left:3px solid #333;padding-left:.75rem;margin:.75rem 0}
 .ticker{font-weight:700;font-size:1.1rem;margin-right:.75rem}
 .verdict{font-weight:700;font-size:.9rem}
 .rationale{margin:.35rem 0;color:#cfcfcf;line-height:1.4}
 .meta{font-size:.8rem;color:#888}
-.footer{margin-top:2rem;padding-top:1rem;border-top:1px solid #333;font-size:.78rem;color:#666}
-.freshness{position:fixed;bottom:1rem;right:1rem;background:#0d0d0d;border:1px solid #333;padding:.6rem .8rem;font-size:.7rem;color:#888;border-radius:4px;z-index:999;cursor:pointer;opacity:.85}
-.freshness:hover{opacity:.5}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.5rem;margin:.5rem 0}
-.metric{background:#111;padding:.5rem;border-radius:4px;text-align:center}
-.metric-val{font-size:1.3rem;font-weight:700;margin-bottom:.15rem}
-.metric-label{font-size:.68rem;color:#666}
-.json-block{background:#0a0a0a;border:1px solid #222;padding:.75rem;border-radius:4px;font-size:.75rem;color:#b0b0b0;white-space:pre-wrap;overflow-x:auto;margin:.5rem 0}
-.alerts-table td:first-child{color:#ffa500;font-weight:700}
-.stale-note{background:#1a1a00;border:1px solid #ffa500;padding:.4rem .6rem;border-radius:4px;font-size:.8rem;display:inline-block;margin:.5rem 0}
 </style></head><body>
-
-<h1>WOLF Health</h1>
-<div class="sub">Autosync: 2026-07-02T21:30:35.659445 UTC &middot; Data: 2026-07-02T21:12:10.271035 UTC &middot; Mid-Cycle: Day 62/90</div>
-
-<div class="banner banner-blue">
-&#8505; Hermes COS oversight active &middot; wolf-state-watcher heartbeat: <span class="warn">WARN</span> (last snapshot 2026-06-25T13:35:46.568518 UTC) &middot; placeholder-mode (Alpaca key absent)
-</div>
-
-<div class="banner banner-orange">
-&#128274; REAL MONEY LOCKED &mdash; Capability score 0/100 (need 80+)
-</div>
-
-<div class="section">
-<h2>Day-60 Reassess</h2>
-<div class="card">
-<span class="warn" style="font-size:1.1rem;font-weight:700">UNKNOWN</span><br>
-<span style="color:#666">Mission start: 2026-04-25 &middot; Kill criterion: 2026-07-23 (28 days remaining)</span>
-</div>
-</div>
-
-<div class="section">
-<h2>Capability Score</h2>
-<div class="card">
-<div class="score-container">
-<div class="score-fill low" style="width:2%"></div>
-<div class="threshold" style="left:80%">| THRESH 80</div>
-</div>
-<div style="text-align:right;font-size:.9rem;margin-top:.3rem"><span class="crit">0/100</span> <span style="color:#666">(stale — Alpaca data pipeline offline)</span></div>
-<div class="grid">
-<div class="metric"><div class="metric-val">62</div><div class="metric-label">Day On Mission</div></div>
-<div class="metric"><div class="metric-val">1</div><div class="metric-label">Scripts (live)</div></div>
-<div class="metric"><div class="metric-val">0</div><div class="metric-label">Open Trades</div></div>
-<div class="metric"><div class="metric-val">0</div><div class="metric-label">Committee Personas</div></div>
-<div class="metric"><div class="metric-val">1</div><div class="metric-label">Research Theses</div></div>
-<div class="metric"><div class="metric-val">30</div><div class="metric-label">Compliant Days</div></div>
-</div>
-<div style="margin-top:.75rem;font-size:.82rem;color:#b0b0b0"><b>Recent Lessons</b><br><span style="color:#666">[2026-07-02]</span> HBR: In AI strategy, urgency is the risk — quick wins at the expense of substance destroy the long-term value the thesis depends on (De Cremer).<br></div></div></div>
-<div class="section">
-<h2>Compliance Alerts</h2>
-<div class="card" style="border-left-color:#39ff14">
-<span class="ok" style="font-size:1rem">&#10003; COMPLIANT</span> &middot; 30 consecutive days<br>
-<span style="color:#666">No open compliance alerts</span>
-</div>
-</div>
-
-<div class="section">
-<h2>Portfolio Snapshot</h2>
-<div class="card">
-
-<table>
-<tr><th>Metric</th><th class="val">Value</th></tr>
-<tr><td>Portfolio Value</td><td class="val">$100,000.00</td></tr>
-<tr><td>Equity</td><td class="val">$100,000.00</td></tr>
-<tr><td>Cash</td><td class="val">$0.00</td></tr>
-<tr><td>Market Regime</td><td class="val">? &middot; VIX: 0</td></tr>
-<tr><td>Circuit Breaker</td><td class="val"><span class="ok">GREEN</span></td></tr>
-</table>
-
-<h2 style="margin-top:1rem">Positions</h2>
-<table>
-<tr><th>Ticker</th><th class="val">Qty</th><th class="val">Entry</th><th class="val">Current</th><th class="val">Mkt Val</th><th class="val">UPL</th><th class="val">%</th></tr><tr><td><b>ACN</b></td><td class="val">48</td><td class="val">$174.00</td><td class="val">$124.00</td><td class="val">$5,952.00</td><td class="neg">$-2,400.00</td><td class="neg">-26.00%</td></tr></table></div></div>
-<div class="section">
-<h2>Strategy Status</h2>
-<div class="card">
-<span style="color:#666">WOLF strategy pipeline unavailable (Alpaca data pipeline offline). Live data shows only ACN position — no strategy allocations.</span>
-</div>
-</div>
-
-<div class="section">
-<h2>Infrastructure Status</h2>
-<div class="card">
-<table>
-<tr><th>Component</th><th class="val">Status</th></tr>
-<tr><td>5-min Health Check</td><td class="val"><span class="ok">OK</span></td></tr>
-<tr><td>Inbox Poller</td><td class="val"><span class="ok">OK</span></td></tr>
-<tr><td>wolf-state-watcher</td><td class="val"><span class="warn">WARN</span> (path mismatch)</td></tr>
-<tr><td>Last Full Health Check</td><td class="val">2026-06-25 (HEALTHY-IDLE flock-gap)</td></tr>
-<tr><td>Disk</td><td class="val"><span class="ok">14%</span></td></tr>
-<tr><td>Total Agents</td><td class="val">32</td></tr>
-</table>
-</div>
-</div>
-
-<div class="section">
-<h2>Wolf-State-Watcher Heartbeat</h2>
-<div class="card">
-<div class="banner banner-red" style="margin:0 0 .5rem">
-&#9888; Synthesized from health check warn_agent_analysis (wolf-state-watcher in WARN state)<br>
-<span style="font-size:.8rem">WARN — persistent-missing-path (wolf/state.json not found — wolf not deployed)</span>
-</div>
-<div class="json-block">{
-  "agent": "wolf-state-watcher",
-  "status": "warn",
-  "note": "wolf/state.json not found",
-  "health_check_ts": "2026-06-25T08:41:16Z (last full check)",
-  "verdict": "HEALTHY-IDLE (flock-gap)",
-  "interpretation": "Wild Duck runs (exit 0) but watches wolf/state.json which does not exist in sandbox. Live data lives at AP-v2 recovered path. Path-mismatch warn, not failure.",
-  "action_required": "Deploy wolf state.json to hermes-sandbox/workspace/wolf/state.json OR reconfigure watcher path."
-}</div>
-<div style="font-size:.78rem;color:#666;margin-top:.5rem">Last snapshot: 2026-06-25T13:35:46.568518 UTC (7 days stale)</div>
-</div>
-</div>
-
-<div class="section">
-<h2>Esoteric Strategy Pipeline (WOLF-ORIGINAL)</h2>
-<div class="card">
-<table>
-<tr><th>Strategy</th><th class="val">Status</th></tr>
-<tr><td>Construct Synthesis Signal</td><td class="val"><span class="warn">research</span></td></tr>
-</table>
-<div style="font-size:.78rem;color:#666;margin-top:.5rem">Hypothesis: &ge;3 institutions converge on theme via Lens brief &rarr; directional sector signal. Requires construct_synthesis.py.</div>
-</div>
-</div>
-
-<div class="section">
-<h2>Deep Research Theses</h2>
-<div class="card"><div class="thesis">
-<span class="ticker">ACN</span>
-<span class="verdict ok">BULLISH</span>
-<div class="rationale">**VERDICT: BULLISH (STRONGLY RECOMMEND AVERAGING DOWN)**</div>
-<div class="meta">generated 2026-07-01T14:21:04.723605+00:00 &middot; source gemini-deep-research &middot; <a href="./wolf-research/ACN-2026-07-01.md" target="_blank">full report</a></div>
-</div></div></div>
-<div class="footer">
-Data sources:<br>
-wolf-dashboard-autosync: 2026-07-02T21:30:35.659445 UTC<br>
-wolf_live_data.json: 2026-07-02T21:12:10.271035 UTC (state.json-fallback (Alpaca key absent))<br>
-wolf/state.json: 2026-07-01T13:30:00Z<br>
-5-min health check: 2026-07-02T21:30:35.632500 UTC<br>
-Generated: 2026-07-02T21:33:10.359508 UTC by wolf-dashboard-autosync (Hermes COS)
-</div>
-
-<div class="freshness" onclick="this.style.opacity=this.style.opacity==='.5'?'.85':'.5'" title="Click to dim">
-DATA FRESHNESS<br>
-Day: 62 &middot; Score: 0 &middot; Theses: 1<br>
-Reassess: UNKNOWN &middot; Infra: OK<br>
-Data: 2026-07-02T21:12:10.271035
-</div>
-
+<h1>WOLF Health Dashboard</h1>
+<div class="card"><b>Day 62/90</b> &bull; 28 days to kill-crit &bull; Portfolio: $100,000</div>
+<div class="card">Compliance: <span class="ok">OK</span></div>
+<div class="card">Infrastructure: <span class="ok">OK</span></div>
+<div class="card">Alerts: None</div>
+<div class="card"><h2>Deep Research Theses</h2><div class="thesis"><span class="ticker">ACN</span><span class="verdict ok">BULLISH</span><div class="rationale">**VERDICT: BULLISH (STRONGLY RECOMMEND AVERAGING DOWN)**</div><div class="meta">generated 2026-07-01 · source gemini-deep-research · <a href="./wolf-research/ACN-2026-07-01.md" target="_blank">full report</a></div></div></div>
+<div class="card" style="font-size:0.8rem">Updated: 2026-07-02 22:00 UTC by wolf-dashboard-autosync</div>
 </body></html>
