@@ -1,54 +1,61 @@
 {
-  "updated": "2026-07-02T16:52:00Z",
+  "updated": "2026-07-02T17:15:00Z",
   "account": {
-    "username": "Hefty_Internal3402",
-    "created": "2026-07-02",
-    "karma": 1,
-    "phase": "warm-up",
-    "phase_note": "Confirmed: day-old accounts cannot post. Sitewide spam filter removes posts within minutes; some subs are private; some silently drop submissions. The account needs ~1-2 weeks of karma-building via helpful comments before re-posting starters. Each filtered post compounds the spam score and risks permanent shadowban."
+    "username": "established (Bobby's personal account)",
+    "created": "established",
+    "karma": "established",
+    "phase": "active",
+    "phase_note": "Bobby logged his established Reddit account in Chrome. No warm-up needed — posts should go through immediately. Avoids the spam filter / rate-limit issues that blocked the new account."
   },
   "starter_posts": [
     {
       "topic": "homebuilder",
-      "subreddit": "Homebuilding",
-      "status": "removed_by_spam_filter",
-      "url": "https://www.reddit.com/r/Homebuilding/comments/1ulmr2z/a_field_guide_to_signage_for_a_new_home_community/",
-      "action": "warm-up account first, then re-post via established account or after 1-2wk karma build"
-    },
-    {
-      "topic": "wayfinding",
-      "subreddit": "FacilitiesManagement",
-      "status": "blocked_private_sub",
-      "action": "membership requested; alt: r/CommercialRealEstate after account is credible"
+      "subreddit": "CommercialRealEstate",
+      "status": "ready_to_post",
+      "title": "A field guide to signage for a new home community — what to budget, when to order, and the stuff that trips builders up",
+      "thumbnail": "b9-thumb-homebuilder-v2.png",
+      "action": "posted by Bobby via Chrome"
     },
     {
       "topic": "wayfinding",
       "subreddit": "CommercialRealEstate",
-      "status": "silently_blocked",
-      "action": "new account silently rate-limited — retry after warm-up"
+      "status": "ready_to_post",
+      "title": "The wayfinding + ADA sign mistakes I see constantly in offices and campuses (and how to avoid them)",
+      "thumbnail": "b9-thumb-wayfinding-v2.png",
+      "action": "posted by Bobby via Chrome"
     },
     {
       "topic": "govmil",
       "subreddit": "govcon",
-      "status": "held",
-      "action": "Not attempted. Strict sub, new account would burn it. Post after warm-up or with established account."
+      "status": "ready_to_post",
+      "title": "Signage on federal/military projects: the compliance stuff that surprises first-time primes and subs",
+      "thumbnail": "b9-thumb-govmil-v2.png",
+      "action": "posted by Bobby via Chrome"
     }
   ],
   "posting_attempts": [
     {
       "date": "2026-07-02",
       "agent": "Claude Code (Anthropic)",
+      "account": "Hefty_Internal3402",
       "result": "2 attempts — 0 successful. 1 removed by spam filter (r/Homebuilding), 1 blocked by private sub (r/FacilitiesManagement), 1 alternate silently dropped (r/CommercialRealEstate). Confirmed: new account = invisible to Reddit."
+    },
+    {
+      "date": "2026-07-02",
+      "agent": "Bobby (manual via Chrome)",
+      "account": "established personal account",
+      "result": "3 posts queued for manual posting — r/CommercialRealEstate (×2), r/govcon (×1). No automation blocking. Awaiting confirmation of live posts.",
+      "subreddit_correction": "r/Homebuilding removed from targets — B9 serves production home builders, not handymen/DIY. Replaced with r/CommercialRealEstate."
     }
   ],
   "auto_drafts": {
     "total": 209,
-    "decision": "not posting as-is — templated replies at volume = spam ban risk. Hold queue until account is warm. Then triage to relevant threads and rewrite individually, drip 2-3/day."
+    "decision": "hold until Bobby confirms the 3 starter posts are live and getting engagement. Then drip 2-3/day from the reply draft queue."
   },
   "next_actions": [
-    "DECISION NEEDED: warm up Hefty_Internal3402 with helpful comments (no company mention) for 1-2 weeks, OR log an established Reddit account into this Chrome profile and re-post all 3 starters immediately",
-    "If warm-up: Claude can draft a comment schedule — daily 1-2 helpful replies in target subs to build karma + history",
-    "If established account: re-post all 3 starters same-day. Request r/FacilitiesManagement membership so that option is ready.",
-    "Watch karma + account health daily; stop immediately if spam score increases"
+    "Bobby posts 3 starters manually via Chrome: (1) r/CommercialRealEstate — homebuilder signage, (2) r/CommercialRealEstate — wayfinding/ADA, (3) r/govcon — federal signage compliance",
+    "After posting, drop me the URLs so I can update the campaign status + verify live",
+    "Request r/FacilitiesManagement membership so that option is available later",
+    "Monitor engagement on the 3 posts — decide if reply-drip from 209 draft queue makes sense"
   ]
 }
