@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-01T15:38:44",
+  "generated": "2026-07-02T04:47:05",
   "schema_version": 1,
   "source": "Hermes logs (~/.hermes/logs/agent.log*, errors.log*)",
   "logs_scanned": [
@@ -8,48 +8,21 @@
   ],
   "status": "ok",
   "totals": {
-    "requests": 1924,
-    "errors_402": 334,
-    "other_errors": 116,
-    "in_tokens": 120114034,
-    "out_tokens": 733898
+    "requests": 6,
+    "errors_402": 303,
+    "other_errors": 94,
+    "in_tokens": 211244,
+    "out_tokens": 1962
   },
   "models": [
     {
-      "model": "moonshotai/kimi-k2.7-code",
+      "model": "deepseek/deepseek-v4-flash",
       "provider": "openrouter",
-      "requests": 1924,
-      "errors_402": 63,
-      "other_errors": 59,
-      "in_tokens": 120114034,
-      "out_tokens": 733898
-    },
-    {
-      "model": "sparksammy/ornith-1.0-9b:latest",
-      "provider": "custom",
-      "requests": 0,
+      "requests": 6,
       "errors_402": 0,
-      "other_errors": 4,
-      "in_tokens": 0,
-      "out_tokens": 0
-    },
-    {
-      "model": "nvidia/nemotron-3-super-120b-a12b",
-      "provider": "nvidia",
-      "requests": 0,
-      "errors_402": 0,
-      "other_errors": 2,
-      "in_tokens": 0,
-      "out_tokens": 0
-    },
-    {
-      "model": "deepseek-ai/deepseek-v3.2",
-      "provider": "nvidia",
-      "requests": 0,
-      "errors_402": 0,
-      "other_errors": 9,
-      "in_tokens": 0,
-      "out_tokens": 0
+      "other_errors": 3,
+      "in_tokens": 211244,
+      "out_tokens": 1962
     },
     {
       "model": "openai/gpt-4o-mini",
@@ -79,8 +52,44 @@
       "out_tokens": 0
     },
     {
+      "model": "deepseek-ai/deepseek-v3.2",
+      "provider": "nvidia",
+      "requests": 0,
+      "errors_402": 0,
+      "other_errors": 6,
+      "in_tokens": 0,
+      "out_tokens": 0
+    },
+    {
       "model": "gpt-4o-mini",
       "provider": "openai-api",
+      "requests": 0,
+      "errors_402": 0,
+      "other_errors": 1,
+      "in_tokens": 0,
+      "out_tokens": 0
+    },
+    {
+      "model": "moonshotai/kimi-k2.7-code",
+      "provider": "openrouter",
+      "requests": 0,
+      "errors_402": 32,
+      "other_errors": 40,
+      "in_tokens": 0,
+      "out_tokens": 0
+    },
+    {
+      "model": "sparksammy/ornith-1.0-9b:latest",
+      "provider": "custom",
+      "requests": 0,
+      "errors_402": 0,
+      "other_errors": 2,
+      "in_tokens": 0,
+      "out_tokens": 0
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "provider": "nvidia",
       "requests": 0,
       "errors_402": 0,
       "other_errors": 1,
