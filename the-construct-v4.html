@@ -1177,7 +1177,9 @@ const ModelArenaPanel = () => {
 
 const PragmaMirrorPanel = () => {
   const [data, setData] = React.useState(null);
+  const [historyData, setHistoryData] = React.useState(null);
   const [fetched, setFetched] = React.useState(false);
+  const [histFetched, setHistFetched] = React.useState(false);
   React.useEffect(() => {
     const tryFetch = async () => {
       const urls = [
@@ -1192,7 +1194,21 @@ const PragmaMirrorPanel = () => {
       }
       setFetched(true);
     };
+    const tryHistory = async () => {
+      const urls = [
+        './clients/b9/brand-insights/history.json?cb=' + Date.now(),
+        'https://extracoffee13.github.io/hartley-command/clients/b9/brand-insights/history.json?cb=' + Date.now(),
+      ];
+      for (const u of urls) {
+        try {
+          const r = await fetch(u, { cache: 'no-store' });
+          if (r.ok) { setHistoryData(await r.json()); setHistFetched(true); return; }
+        } catch (e) {}
+      }
+      setHistFetched(true);
+    };
     tryFetch();
+    tryHistory();
   }, []);
 
   const productName = (data && data.product_name) || "PRAGMA Mirror";
@@ -1233,6 +1249,34 @@ const PragmaMirrorPanel = () => {
   const loopAgeHours = loopMirroredAt ? Math.max((Date.now() - Date.parse(loopMirroredAt)) / 36e5, 0) : null;
   const isPending = !data || data.scan_status === "first_scan_pending" || aiviVal === null || aiviVal === undefined;
   const emptyMsg = (data && data.empty_state_message) || "First scan running — check back after the next 05:30 ET cycle.";
+
+  // 7-day delta helper
+  const getDelta = (metricKey) => {
+    if (!historyData || !historyData.snapshots || historyData.snapshots.length < 2) return null;
+    const snaps = historyData.snapshots;
+    const latest = snaps[snaps.length - 1];
+    const metricMap = { "seo_score": "seo_score", "aeo_score": "aeo_score", "llm_score": "llm_score", "geo_score": "geo_score", "slm_score": "slm_score" };
+    const mappedKey = metricMap[metricKey] || metricKey;
+    if (!latest || !latest[mappedKey]) return null;
+    // Find earliest snapshot in range for comparison
+    const cutoff = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+    let past = null;
+    for (let i = snaps.length - 2; i >= 0; i--) {
+      if (snaps[i].date <= cutoff) { past = snaps[i]; break; }
+    }
+    if (!past) past = snaps[0];
+    const pv = past[mappedKey];
+    const cv = latest[mappedKey];
+    if (pv == null || cv == null) return null;
+    const d = cv - pv;
+    return { delta: d, pct: pv !== 0 ? ((d / pv) * 100).toFixed(1) : null, from: past.date, to: latest.date };
+  };
+  const deltaArrow = (d) => {
+    if (!d || d.delta === null) return null;
+    if (d.delta > 0) return <span style={{ color: C.green, fontSize: 9, marginLeft: 2 }}>▲{d.delta}</span>;
+    if (d.delta < 0) return <span style={{ color: "#FF4D4F", fontSize: 9, marginLeft: 2 }}>▼{Math.abs(d.delta)}</span>;
+    return <span style={{ color: C.greenDim, fontSize: 9, marginLeft: 2 }}>—</span>;
+  };
 
   // Sparkline SVG inline (no chart libs — locked rule)
   const sparkSvg = () => {
