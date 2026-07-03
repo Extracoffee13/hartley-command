@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-02T06:10:05",
+  "generated": "2026-07-03T06:10:05",
   "schema_version": 1,
   "source": "Hermes logs (~/.hermes/logs/agent.log*, errors.log*)",
   "logs_scanned": [
@@ -8,21 +8,57 @@
   ],
   "status": "ok",
   "totals": {
-    "requests": 30,
+    "requests": 973,
     "errors_402": 303,
-    "other_errors": 94,
-    "in_tokens": 989286,
-    "out_tokens": 12337
+    "other_errors": 146,
+    "in_tokens": 132127462,
+    "out_tokens": 455156
   },
   "models": [
     {
       "model": "deepseek/deepseek-v4-flash",
       "provider": "openrouter",
-      "requests": 30,
+      "requests": 961,
       "errors_402": 0,
-      "other_errors": 3,
-      "in_tokens": 989286,
-      "out_tokens": 12337
+      "other_errors": 21,
+      "in_tokens": 131091457,
+      "out_tokens": 453777
+    },
+    {
+      "model": "moonshotai/kimi-k2.7-code",
+      "provider": "openrouter",
+      "requests": 12,
+      "errors_402": 32,
+      "other_errors": 64,
+      "in_tokens": 1036005,
+      "out_tokens": 1379
+    },
+    {
+      "model": "deepseek-ai/deepseek-v3.2",
+      "provider": "nvidia",
+      "requests": 0,
+      "errors_402": 0,
+      "other_errors": 12,
+      "in_tokens": 0,
+      "out_tokens": 0
+    },
+    {
+      "model": "moonshotai/kimi-k2.6",
+      "provider": "nvidia",
+      "requests": 0,
+      "errors_402": 0,
+      "other_errors": 2,
+      "in_tokens": 0,
+      "out_tokens": 0
+    },
+    {
+      "model": "claude-sonnet-5",
+      "provider": "anthropic",
+      "requests": 0,
+      "errors_402": 0,
+      "other_errors": 2,
+      "in_tokens": 0,
+      "out_tokens": 0
     },
     {
       "model": "openai/gpt-4o-mini",
@@ -52,29 +88,11 @@
       "out_tokens": 0
     },
     {
-      "model": "deepseek-ai/deepseek-v3.2",
-      "provider": "nvidia",
-      "requests": 0,
-      "errors_402": 0,
-      "other_errors": 6,
-      "in_tokens": 0,
-      "out_tokens": 0
-    },
-    {
       "model": "gpt-4o-mini",
       "provider": "openai-api",
       "requests": 0,
       "errors_402": 0,
       "other_errors": 1,
-      "in_tokens": 0,
-      "out_tokens": 0
-    },
-    {
-      "model": "moonshotai/kimi-k2.7-code",
-      "provider": "openrouter",
-      "requests": 0,
-      "errors_402": 32,
-      "other_errors": 40,
       "in_tokens": 0,
       "out_tokens": 0
     },
