@@ -1,25 +1,233 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8">
-<title>WOLF Health Dashboard</title>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>WOLF Health Dashboard · Day 62</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",monospace;padding:2rem}
-h1{color:#00ff88;font-weight:600}
-.card{background:#111;border:1px solid #333;padding:1rem;margin:1rem 0;border-radius:6px}
-h2{margin:0 0 .5rem;font-size:.9rem;color:#00d4ff;text-transform:uppercase;letter-spacing:.04em}
-.ok{color:#00ff88} .warn{color:#ffaa00} .crit{color:#ff4444}
-a{color:#00d4ff}
-.thesis{border-left:3px solid #333;padding-left:.75rem;margin:.75rem 0}
-.ticker{font-weight:700;font-size:1.1rem;margin-right:.75rem}
-.verdict{font-weight:700;font-size:.9rem}
-.rationale{margin:.35rem 0;color:#cfcfcf;line-height:1.4}
-.meta{font-size:.8rem;color:#888}
-</style></head><body>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;color:#e0e0e0;font-family:'Courier New',monospace;padding:1.5rem;max-width:1200px;margin:0 auto}
+h1{color:#39ff14;font-weight:700;font-size:1.6rem;margin-bottom:.25rem}
+.sub{color:#666;font-size:.75rem;margin-bottom:1rem}
+.card{background:#0d0d0d;border:1px solid #222;padding:1.2rem;margin:1rem 0;border-radius:4px;border-left:3px solid #39ff14}
+.card.green{border-left-color:#39ff14}
+.card.orange{border-left-color:#ffa500}
+.card.red{border-left-color:#ff4d4d}
+.card.cyan{border-left-color:#00d4ff}
+h2{margin:0 0 .7rem;font-size:.8rem;color:#00d4ff;text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+.ok{color:#39ff14}
+.warn{color:#ffa500}
+.crit{color:#ff4d4d}
+.cyan{color:#00d4ff}
+.gray{color:#666}
+table{width:100%;border-collapse:collapse;font-size:.75rem;margin:.5rem 0}
+th{text-align:left;color:#666;font-weight:400;padding:.3rem .4rem;border-bottom:1px solid #222;font-size:.7rem;text-transform:uppercase}
+td{padding:.3rem .4rem;border-bottom:1px solid #111}
+tr:hover{background:#111}
+a{color:#00d4ff;text-decoration:none}
+a:hover{text-decoration:underline}
+.score-bar{background:#1a1a1a;height:20px;border-radius:10px;margin:.5rem 0;position:relative;overflow:hidden}
+.score-fill{height:100%;border-radius:10px;background:linear-gradient(90deg,#39ff14,#00d4ff);transition:width 1s}
+.score-threshold{position:absolute;top:-4px;width:2px;height:28px;background:#ff4d4d;z-index:2}
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:.5rem;margin:.5rem 0}
+.metric{background:#111;padding:.5rem;border-radius:3px;border-left:2px solid #333}
+.metric .label{font-size:.65rem;color:#666;text-transform:uppercase}
+.metric .value{font-size:.9rem;font-weight:700;margin-top:.15rem}
+.badge{display:inline-block;padding:.15rem .5rem;border-radius:3px;font-size:.7rem;font-weight:700}
+.badge-ok{background:#0a2a0a;color:#39ff14}
+.badge-warn{background:#2a1a00;color:#ffa500}
+.badge-crit{background:#2a0000;color:#ff4d4d}
+.badge-cyan{background:#002a2a;color:#00d4ff}
+.banner{padding:.6rem 1rem;margin:.5rem 0;border-radius:4px;font-size:.75rem;line-height:1.4}
+.banner-blue{background:#001a33;border:1px solid #004080;color:#80c0ff}
+.banner-orange{background:#2a1a00;border:1px solid #805500;color:#ffcc80}
+.banner-warn{background:#2a0000;border:1px solid #800000;color:#ff8080}
+.thesis{border-left:3px solid #333;padding:.5rem .75rem;margin:.5rem 0}
+.thesis .ticker{font-weight:700;font-size:1rem;margin-right:.75rem;color:#39ff14}
+.thesis .verdict{font-weight:700;font-size:.8rem}
+.thesis .rationale{margin:.35rem 0;color:#bfbfbf;line-height:1.4;font-size:.8rem}
+.thesis .meta{font-size:.7rem;color:#666}
+pre.json-block{background:#0a0a0a;border:1px solid #1a1a1a;padding:.6rem;border-radius:3px;font-size:.7rem;overflow-x:auto;color:#ccc;line-height:1.5;margin:.4rem 0}
+#freshness-panel{position:fixed;bottom:12px;right:12px;background:#0d0d0d;border:1px solid #333;border-radius:6px;padding:.6rem .9rem;font-size:.65rem;cursor:pointer;z-index:999;color:#666}
+#freshness-panel.dim{opacity:.3}
+#freshness-panel:hover{opacity:1}
+.collapse-toggle{float:right;color:#444;cursor:pointer;font-size:.7rem}
+@media(max-width:600px){body{padding:.8rem}.metrics-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+
 <h1>WOLF Health Dashboard</h1>
-<div class="card"><b>Day 62/90</b> &bull; 28 days to kill-crit &bull; Portfolio: $100,000</div>
-<div class="card">Compliance: <span class="ok">OK</span></div>
-<div class="card">Infrastructure: <span class="ok">OK</span></div>
-<div class="card">Alerts: None</div>
-<div class="card"><h2>Deep Research Theses</h2><div class="thesis"><span class="ticker">ACN</span><span class="verdict ok">BULLISH</span><div class="rationale">**VERDICT: BULLISH (STRONGLY RECOMMEND AVERAGING DOWN)**</div><div class="meta">generated 2026-07-01 · source gemini-deep-research · <a href="./wolf-research/ACN-2026-07-01.md" target="_blank">full report</a></div></div></div>
-<div class="card" style="font-size:0.8rem">Updated: 2026-07-03 17:12 UTC by wolf-dashboard-autosync</div>
-</body></html>
+<div class="sub">╰─ Day <span class="ok">62</span>/90 · 28 days to kill-crit · Generated <span class="gray">2026-07-03 17:30 UTC</span> · Hermes COS</div>
+
+<div class="banner banner-blue">
+<b>ℹ Oversight:</b> All Construct agent-ecosystem status (heartbeat.json) refreshed <b>2026-07-03T17:30:19Z</b>.
+27 agents: <span class="ok">8 ok</span> · <span class="warn">7 stale</span> · <span class="crit">12 no-HB</span>.
+wolf-state-watcher snapshot last updated <span class="warn">2026-06-25</span> (8d stale).
+Health-check file last written <span class="warn">2026-06-25</span> (8d stale).
+</div>
+
+<div class="banner banner-orange">
+<b>🔒 Real money LOCKED.</b> Capability score <b>0</b>/100 — needs ≥80 to unlock. Alpaca key absent — all data is placeholder.
+</div>
+
+<div class="card red">
+<h2>⚑ Compliance Alerts</h2>
+<table>
+<tr><th>Alert</th><th>Filed</th><th>Issue</th><th>Current Status</th></tr>
+<tr><td>COMPLIANCE-ALERT-2026-05-28</td><td>2026-05-28</td><td>PLTR 48% portfolio (cap 8%)</td><td><span class="ok">✔ RESOLVED</span> — PLTR position now ~$5,952 (5.95% of $100K). Mandate enforcement wired 2026-05-13. Circuit breaker GREEN.</td></tr>
+</table>
+</div>
+
+<div class="card orange">
+<h2>◈ Day-60 Reassess</h2>
+<p>Target date: <b>2026-06-05</b></p>
+<p><span class="badge badge-cyan">PASSED</span> — <span class="warn">28 days ago</span></p>
+<p style="margin-top:.5rem;font-size:.75rem;color:#999">Bobby has not yet graduated WOLF to real money. Unlock gate: capability score ≥80 AND 4 consecutive profitable weeks AND max DD ≤5%.</p>
+</div>
+
+<div class="card cyan">
+<h2>◈ Capability Score</h2>
+<div class="score-bar">
+<div class="score-fill" style="width:0%"></div>
+<div class="score-threshold" style="left:80%"></div>
+</div>
+<p><span class="crit" style="font-size:1.1rem;font-weight:700">0</span><span class="gray"> / 100</span> — <span class="warn">Score stale (placeholder since ~2026-06-24, Alpaca key absent)</span>. Threshold for real-money unlock: <span class="cyan">80</span>.</p>
+
+<div class="metrics-grid">
+<div class="metric"><div class="label">Day on mission</div><div class="value ok">62</div></div>
+<div class="metric"><div class="label">Scripts</div><div class="value">58</div></div>
+<div class="metric"><div class="label">Core modules</div><div class="value">14</div></div>
+<div class="metric"><div class="label">Lessons indexed</div><div class="value">23</div></div>
+<div class="metric"><div class="label">Improvement cycles</div><div class="value">3</div></div>
+<div class="metric"><div class="label">Open trades</div><div class="value">1</div></div>
+<div class="metric"><div class="label">Committee personas</div><div class="value">12</div></div>
+<div class="metric"><div class="label">Esoteric strategies</div><div class="value">1</div></div>
+<div class="metric"><div class="label">Active strategies</div><div class="value">5</div></div>
+</div>
+
+<p style="font-size:.75rem;margin-top:.5rem"><span class="cyan">Recent lesson</span> (2026-07-02): HBR — In AI strategy, urgency is the risk; quick wins at the expense of substance destroy the long-term value the thesis depends on (De Cremer).</p>
+</div>
+
+<div class="card green">
+<h2>◈ Portfolio Snapshot</h2>
+<div class="banner banner-warn" style="margin-bottom:.5rem">
+<b>⚠ Live data stale.</b> Portfolio data are $100K placeholder values (Alpaca key absent). Last real snapshot was $91,311.36 on 2026-06-24 — now <b>9 days stale</b>.
+</div>
+
+<table>
+<tr><th>Metric</th><th>Value</th></tr>
+<tr><td>Portfolio Value</td><td><span class="warn">$100,000.00</span> <span class="gray">(placeholder)</span></td></tr>
+<tr><td>Cash</td><td><span class="cyan">$0.00</span></td></tr>
+<tr><td>Buying Power</td><td><span class="cyan">$0.00</span></td></tr>
+<tr><td>Daily P&L</td><td><span class="gray">N/A (placeholder)</span></td></tr>
+<tr><td>Weekly P&L</td><td><span class="gray">N/A (placeholder)</span></td></tr>
+<tr><td>Circuit Breaker</td><td><span class="badge badge-ok">GREEN</span></td></tr>
+<tr><td>Market Regime</td><td><span class="gray">N/A</span> (VIX: 0)</td></tr>
+<tr><td>Alpaca Connection</td><td><span class="crit">ABSENT</span> — all data is fallback placeholder</td></tr>
+</table>
+
+<p style="margin:.7rem 0 .3rem;font-weight:700;font-size:.8rem">Positions</p>
+<table>
+<tr><th>Ticker</th><th>Qty</th><th>Entry</th><th>Current</th><th>MktVal</th><th>UPL</th><th>±%</th></tr>
+<tr><td><b>ACN</b></td><td>48</td><td>$174.00</td><td class="crit">$124.00</td><td>$5,952</td><td class="crit">-$2,400</td><td class="crit">-28.74%</td></tr>
+</table>
+<p class="gray" style="font-size:.65rem">Note: Only ACN position reflected in placeholder data. Real portfolio had 13 positions ($91,311.36) as of 2026-06-24.</p>
+</div>
+
+<div class="card green">
+<h2>◈ Strategy Status</h2>
+<table>
+<tr><th>Strategy</th><th>Status</th><th>Sharpe</th><th>Max DD</th><th>Win Rate</th></tr>
+<tr><td>52-Week High Breakout <span class="cyan">★ BEST</span></td><td><span class="ok">ACTIVE</span></td><td>1.91</td><td>-6.8%</td><td>—</td></tr>
+<tr><td>Insider Cluster Form 4</td><td><span class="ok">ACTIVE</span></td><td>1.86</td><td>-21.6%</td><td>—</td></tr>
+<tr><td>PEAD</td><td><span class="ok">ACTIVE</span></td><td>1.76</td><td>-12.5%</td><td>—</td></tr>
+<tr><td>Sector ETF Rotation</td><td><span class="ok">ACTIVE</span></td><td>1.69</td><td>-7.1%</td><td>—</td></tr>
+<tr><td>Small Cap Catalyst</td><td><span class="ok">ACTIVE</span></td><td>1.50</td><td>-3.3%</td><td>60.7%</td></tr>
+<tr><td>Congressional Trade Follower</td><td><span class="warn">ACTIVE_PARTIAL</span></td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Cross-Sectional Momentum</td><td><span class="warn">PENDING</span></td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>PEAD on Options</td><td><span class="warn">PENDING</span></td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Mean Reversion BB+RSI</td><td><span class="crit">DISABLED</span></td><td>-1.63</td><td>-78.9%</td><td>—</td></tr>
+<tr><td>Overnight Gap Reversal</td><td><span class="crit">DISABLED</span></td><td>-4.85</td><td>-100%</td><td>—</td></tr>
+</table>
+<p class="gray" style="font-size:.7rem;margin-top:.3rem">Strategy metrics from 2026-06-24 snapshot (last real data). May be stale — portfolio is in placeholder mode.</p>
+</div>
+
+<div class="card">
+<h2>◈ Infrastructure Status</h2>
+<p>Health-check verdict (last): <span class="badge badge-cyan">HEALTHY-IDLE (flock-gap)</span> <span class="gray">— 2026-06-25T08:41Z (8d stale)</span></p>
+
+<table>
+<tr><th>Component</th><th>Status</th><th>Details</th></tr>
+<tr><td>Hermes Gateway</td><td><span class="ok">RUNNING</span></td><td>Active (heartbeat confirmed 2026-07-03T17:30Z)</td></tr>
+<tr><td>Inbox Poller</td><td><span class="ok">CLEAN</span></td><td>No pending tasks</td></tr>
+<tr><td>Telegram Listener</td><td><span class="ok">OK</span></td><td>Connected · Gateway running</td></tr>
+<tr><td>Dashboard Deploy</td><td><span class="ok">OK</span></td><td>Pushed hub=200 (2026-07-03T17:22Z)</td></tr>
+<tr><td>Wolf State Updater</td><td><span class="ok">OK</span></td><td>state.json-fallback (Alpaca key absent)</td></tr>
+<tr><td>PRAGMA Uptime Guardian</td><td><span class="ok">OK</span></td><td>HTTP 200 · pragma_content=True</td></tr>
+<tr><td>Construct V4 Sync</td><td><span class="ok">OK</span></td><td>wds=13 stale=0 pushed</td></tr>
+<tr><td>Pages Freshness</td><td><span class="ok">OK</span></td><td>lag=5min mirror=34</td></tr>
+<tr><td>Wild-Duck Doctor</td><td><span class="warn">WARN</span></td><td>27 ducks: 8 ok, 7 stale, 12 no-hb</td></tr>
+<tr><td>wolf-state-watcher</td><td><span class="warn">WARN</span></td><td>wolf/state.json not found (path-mismatch)</td></tr>
+<tr><td>Disk Usage</td><td><span class="ok">14%</span></td><td>Nominal (2026-06-25 reading)</td></tr>
+</table>
+<p class="gray" style="font-size:.7rem;margin-top:.3rem">14 agents runpy-only (no heartbeat registration). 5 heartbeat-only (no run.py). See cross-ref validator snapshot.</p>
+</div>
+
+<div class="card">
+<h2>◈ Wolf-State-Watcher Heartbeat</h2>
+<div class="banner banner-warn">
+<b>⚠ Synthesized from health check warn_agent_analysis</b> — wolf-state-watcher in WARN state (persistent-missing-path). Wild Duck runs (exit 0) but the watched path does not exist in hermes-sandbox.
+</div>
+<pre class="json-block">{
+  "agent": "wolf-state-watcher",
+  "status": "warn",
+  "age_min": 0.6,
+  "note": "wolf/state.json not found",
+  "health_check_ts": "2026-06-25T08:41:16.815354+00:00",
+  "verdict": "HEALTHY-IDLE (flock-gap)",
+  "watcher_snapshot_ts": "2026-06-25T13:35:46.568518Z",
+  "watcher_alerts": [],
+  "interpretation": "Wild Duck is running (exit 0) but the path it watches (wolf/state.json) does not exist in hermes-sandbox. WOLF is not deployed to the sandbox environment — wolf_live_data.json lives at the recovered AP-v2 path. This is a path-mismatch warn, not a Wild Duck failure.",
+  "action_required": "Deploy wolf state.json to hermes-sandbox/workspace/wolf/state.json OR reconfigure wolf-state-watcher to watch AP-v2 path."
+}</pre>
+</div>
+
+<div class="card cyan">
+<h2>◈ Deep Research Theses</h2>
+<div class="thesis">
+<span class="ticker">ACN</span>
+<span class="verdict ok">BULLISH</span>
+<div class="rationale">STRONGLY RECOMMEND AVERAGING DOWN — Gemini Deep Research thesis generated 2026-07-01 via deep-research-preview-04-2026 model.</div>
+<div class="meta">generated 2026-07-01 · source gemini-deep-research · <a href="./wolf-research/ACN-2026-07-01.md" target="_blank">full report</a></div>
+</div>
+</div>
+
+<div class="card cyan">
+<h2>◈ Esoteric Strategy Pipeline <span class="gray">(WOLF-ORIGINAL)</span></h2>
+<table>
+<tr><th>Strategy</th><th>Status</th><th>Hypothesis</th></tr>
+<tr><td>Construct Synthesis Signal</td><td><span class="warn">RESEARCH</span></td><td>≥3 institutions converge on theme via Lens brief → directional sector signal. Next: author construct_synthesis.py</td></tr>
+</table>
+</div>
+
+<div class="card" style="font-size:.7rem;color:#888;border-left-color:#333">
+<h2 style="color:#666">Data Sources</h2>
+<table>
+<tr><td>wolf_live_data.json</td><td>2026-07-03T17:12:15Z</td><td class="warn">Placeholder (Alpaca key absent)</td></tr>
+<tr><td>heartbeat.json</td><td>2026-07-03T17:30:19Z</td><td class="ok">Fresh</td></tr>
+<tr><td>Health check (latest)</td><td>2026-06-25T08:41:16Z</td><td class="warn">Stale (8d)</td></tr>
+<tr><td>wolf-state-watcher snapshot</td><td>2026-06-25T13:35:46Z</td><td class="warn">Stale (8d)</td></tr>
+<tr><td>Cross-ref validator snapshot</td><td>2026-07-03T03:00:25Z</td><td class="ok">Fresh</td></tr>
+<tr><td>Dashboard autosync snapshot</td><td>2026-07-03T17:30:19Z</td><td class="ok">Fresh (this run)</td></tr>
+<tr><td>wolf-dashboard-deploy</td><td>2026-07-03T17:22:33Z</td><td class="ok">Pushed hub=200</td></tr>
+</table>
+</div>
+
+<div id="freshness-panel" onclick="this.classList.toggle('dim')">
+<span class="cyan">⏱</span> Day 62 · Score 0 · 58 scripts · 5 active · PASSED+28d · CB <span class="ok">GREEN</span> · Infra <span class="warn">STALE</span>
+<br><span class="gray">click to dim · 2026-07-03 17:30 UTC</span>
+</div>
+
+</body>
+</html>
