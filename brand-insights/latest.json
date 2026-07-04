@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0",
-  "ts": "2026-07-03T10:20:05.281912Z",
+  "ts": "2026-07-04T10:20:04.676124Z",
   "client": "b9",
   "client_display_name": "Brand 9 Signs",
   "product_name": "PRAGMA Mirror",
@@ -8,12 +8,12 @@
   "visibility_score": {
     "composite": 34,
     "trend_7day": [
-      46,
       48,
       41,
       51,
       51,
       53,
+      34,
       34
     ],
     "color_threshold": {
@@ -21,11 +21,11 @@
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "RED — composite brand visibility 34/100 across AEO, SEO, GEO and LLM surfaces."
+    "interpretation": "RED \u2014 composite brand visibility 34/100 across AEO, SEO, GEO and LLM surfaces."
   },
   "modules": {
     "aeo": {
-      "score": 20,
+      "score": 10,
       "cited": true,
       "queries": [
         {
@@ -35,7 +35,7 @@
         },
         {
           "query": "sign installation clay county fl",
-          "cited": true,
+          "cited": false,
           "surface": "web-search"
         },
         {
@@ -129,7 +129,7 @@
         },
         {
           "url": "https://brand9signs.com/contact",
-          "title": "Contact Brand 9 Signs — Jacksonville Sign Company Since 1986",
+          "title": "Contact Brand 9 Signs \u2014 Jacksonville Sign Company Since 1986",
           "title_ok": true,
           "meta_ok": false,
           "h1_ok": false,
@@ -163,7 +163,7 @@
       ]
     },
     "llm": {
-      "score": 12,
+      "score": 38,
       "questions": [
         {
           "q": "Who are the best commercial sign companies in Jacksonville FL?",
@@ -174,17 +174,17 @@
         },
         {
           "q": "Where can I get custom business signs installed in Clay County Florida?",
-          "cited": false,
+          "cited": true,
           "surface": "web-grounded",
           "in_answer": false,
-          "in_sources": false
+          "in_sources": true
         },
         {
           "q": "What are the top home builder signage companies in Florida?",
-          "cited": false,
+          "cited": true,
           "surface": "web-grounded",
           "in_answer": false,
-          "in_sources": false
+          "in_sources": true
         },
         {
           "q": "Who does model home display signage in Jacksonville?",
@@ -225,13 +225,13 @@
       "ai_surfaces": [
         {
           "surface": "Web-grounded AI (AI Overviews / Perplexity)",
-          "method": "Tavily · always-on · key-light",
+          "method": "Tavily \u00b7 always-on \u00b7 key-light",
           "checks": 8,
-          "mentions": 1
+          "mentions": 3
         },
         {
           "surface": "ChatGPT / Claude / Gemini (consumer)",
-          "method": "weekly browser pass · your own logins · $0",
+          "method": "weekly browser pass \u00b7 your own logins \u00b7 $0",
           "checks": 12,
           "mentions": 3,
           "note": "Full 4-surface consumer-LLM browser pass via logged-in Chrome (all 12 scans). ChatGPT (neutral acct) 0/3 web-grounded. Claude (personalized) 2/3, brand9signs.com cited organically on Q2/Q3. Perplexity (anonymous, neutral) 0/3. Gemini (personalized) 1/3, named Brand 9 + cited brand9signs.com on Q2. ChatGPT+Perplexity are the neutral baseline (both 0/3); Claude+Gemini are personalized and biased upward. Re-merged after daily run.py probe refresh."
@@ -239,7 +239,7 @@
       ]
     },
     "geo": {
-      "score": 25,
+      "score": 12,
       "geofence": [
         {
           "area": "Jacksonville FL",
@@ -263,7 +263,7 @@
         },
         {
           "area": "Fleming Island",
-          "cited": true
+          "cited": false
         },
         {
           "area": "Middleburg",
@@ -304,19 +304,19 @@
   "recommendations_high": 25,
   "_meta": {
     "writer": "pragma-mirror call (run.py)",
-    "computed_at": "2026-07-03T10:20:05.281912Z",
+    "computed_at": "2026-07-04T10:20:04.676124Z",
     "recommend_only": true,
     "degraded_modules": []
   },
   "aivi": {
     "composite": 34,
     "trend_7day": [
-      46,
       48,
       41,
       51,
       51,
       53,
+      34,
       34
     ],
     "color_threshold": {
@@ -324,18 +324,18 @@
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "RED — composite brand visibility 34/100 across AEO, SEO, GEO and LLM surfaces."
+    "interpretation": "RED \u2014 composite brand visibility 34/100 across AEO, SEO, GEO and LLM surfaces."
   },
   "ai_surfaces": [
     {
       "surface": "Web-grounded AI (AI Overviews / Perplexity)",
-      "method": "Tavily · always-on · key-light",
+      "method": "Tavily \u00b7 always-on \u00b7 key-light",
       "checks": 8,
-      "mentions": 1
+      "mentions": 3
     },
     {
       "surface": "ChatGPT / Claude / Gemini (consumer)",
-      "method": "weekly browser pass · your own logins · $0",
+      "method": "weekly browser pass \u00b7 your own logins \u00b7 $0",
       "checks": 12,
       "mentions": 3,
       "note": "Full 4-surface consumer-LLM browser pass via logged-in Chrome (all 12 scans). ChatGPT (neutral acct) 0/3 web-grounded. Claude (personalized) 2/3, brand9signs.com cited organically on Q2/Q3. Perplexity (anonymous, neutral) 0/3. Gemini (personalized) 1/3, named Brand 9 + cited brand9signs.com on Q2. ChatGPT+Perplexity are the neutral baseline (both 0/3); Claude+Gemini are personalized and biased upward. Re-merged after daily run.py probe refresh."
@@ -377,11 +377,10 @@
     },
     "google_ai_overview": {
       "cited": true,
-      "query": "sign installation clay county fl",
-      "checked_at": "2026-07-03T10:20:05.281912Z",
-      "mentions": 2,
+      "query": "home builder signage company florida",
+      "checked_at": "2026-07-04T10:20:04.676124Z",
+      "mentions": 1,
       "citations": [
-        "sign installation clay county fl",
         "home builder signage company florida"
       ]
     }
@@ -477,7 +476,7 @@
     "overall": "unmeasured"
   },
   "mode": "auto-remediate",
-  "last_action": "Auto-fix engine created 10 local landing pages via WP REST — additive, dup-guarded, logged, reversible.",
+  "last_action": "Auto-fix engine created 10 local landing pages via WP REST \u2014 additive, dup-guarded, logged, reversible.",
   "last_verification": "10 pages live & verified (HTTP 200, schema).",
   "autofix": {
     "enabled": true,
@@ -503,6 +502,6 @@
       "signage-clay-county"
     ]
   },
-  "last_scan_ts": "2026-07-03T10:20:05.281912Z",
-  "_mirrored_at": "2026-07-03T10:20:05.281912Z"
+  "last_scan_ts": "2026-07-04T10:20:04.676124Z",
+  "_mirrored_at": "2026-07-04T10:20:04.676124Z"
 }
