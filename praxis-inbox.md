@@ -59,3 +59,15 @@ lesson: July is a protocol-and-substrate inflection, not a shiny-model one — F
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-04
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: 5 items flagged — Claude Sonnet 5 GA (near-Opus-4.8 agentic performance at $2/$10 intro pricing), Claude Enterprise admin analytics + model entitlements + spend alerts, Microsoft 'Frontier Company' ($2.5B, ~6,000 forward-deployed engineers) alongside ServiceNow+Accenture's forward-deployed program, Profound 'Aim' always-on AI-search-visibility agent (PRAGMA Mirror competitor), arXiv survey on agent system and harness design.
+lesson: Value is migrating from models to deployment — Sonnet 5 collapses the price of agentic capability while Microsoft and Accenture/ServiceNow industrialize forward-deployed AI operators for enterprises. PRAGMA should own the SMB/mid-market operator tier the giants won't serve; cheaper substrate widens margins and the harness/governance layer is the defensible part.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

@@ -1,41 +1,49 @@
 {
-  "generated": "2026-07-02T10:01:16Z",
-  "latest_date": "2026-07-02",
+  "generated": "2026-07-04T10:01:00Z",
+  "latest_date": "2026-07-04",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Anthropic redeploys Claude Fable 5 globally (July 1) after US lifts export controls — its most capable, longest-autonomy model, now on Cowork + Claude Code",
-      "summary": "Commerce lifted the June 12 export-control order; Fable 5 and Mythos 5 returned July 1 to the Claude Platform, Claude.ai, Claude Code, and Cowork with new cybersecurity-targeting classifiers, and can work autonomously longer than any prior Claude; Pro/Max/Team/select Enterprise get it for up to 50% of weekly limits through July 7, then via usage credits, with some routine coding falling back to Opus 4.8.",
+      "title": "Claude Sonnet 5 goes GA — Anthropic's most agentic Sonnet, near-Opus-4.8 performance at $2/$10 per 1M intro pricing",
+      "summary": "Launched June 30 as the default model for Free/Pro (available to Max/Team/Enterprise), Sonnet 5 plans, drives browsers and terminals, and runs autonomously at a level that recently required larger models, at $2/$10 per 1M tokens through Aug 31 (then $3/$15); safety evals show fewer undesirable behaviors than Sonnet 4.6 in agentic contexts.",
       "tag": "yes",
-      "how": "This is The Construct's own substrate: longer unattended autonomy is what the daily/weekly scans and Hermes background jobs need — route heavy-reasoning/long-run tasks to Fable 5, keep Opus 4.8 as the coding fallback, and mind credit burn after July 7.",
-      "url": "https://www.anthropic.com/news/redeploying-fable-5"
+      "how": "The cost floor dropping under The Construct: route high-volume routine jobs (daily scans, drafting, browser ops) to Sonnet 5 and reserve Fable 5 credits for long-autonomy reasoning — the intro-pricing window is a free margin experiment through August.",
+      "url": "https://www.anthropic.com/news/claude-sonnet-5"
     },
     {
       "n": 2,
-      "title": "MCP ships its biggest revision since launch — the 2026-07-28 spec release candidate: stateless core, Tasks, MCP Apps, OAuth-aligned auth",
-      "summary": "The final spec lands July 28 with a stateless protocol core that scales on ordinary HTTP, an Extensions framework, a Tasks extension for long-running work, MCP Apps for server-rendered UIs, authorization aligned to OAuth/OpenID Connect, and a formal deprecation policy; the 10-week window is for SDK maintainers and Tier-1 SDKs to validate (9,400+ public servers, 80%+ of the Fortune 500 already on MCP).",
-      "tag": "yes",
-      "how": "The Construct runs its own MCP fleet: the Tasks extension formalizes our long-running scan/Hermes pattern, MCP Apps let our servers render UI back into Cowork, and the stateless core plus OAuth changes are plumbing to pilot before July 28, not after.",
-      "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/"
+      "title": "Claude Enterprise adds admin analytics, model-level entitlements, and spend alerts",
+      "summary": "Early-July release notes add richer usage/cost/productivity analytics for admins, per-model access controls, and alerts to avoid surprise overages.",
+      "tag": "maybe",
+      "how": "With Fable 5 moving to usage credits after July 7 and Sonnet 5 repricing in September, this is exactly the governance tooling to watch; also a feature PRAGMA can point client orgs at when deploying agent fleets on their Claude tenancy.",
+      "url": "https://support.claude.com/en/articles/12138966-release-notes"
     },
     {
       "n": 3,
-      "title": "The new enterprise-ready MCP spec also widens the attack surface — security teams flag fresh risks in the RC",
-      "summary": "As MCP hardens for enterprise (stateless HTTP, delegated OAuth, server-rendered Apps), analysts warn the same changes introduce new authorization, token-handling, and UI-injection risks that most current deployments aren't yet configured for.",
-      "tag": "maybe",
-      "how": "Governance input for PRAGMA and The Construct: before adopting the new auth/Apps surface, treat each internal MCP server as a security-reviewed asset (scoped tokens, least-privilege, no blind UI rendering) — the skills-as-governed-assets posture extended to servers.",
-      "url": "https://www.securityweek.com/new-enterprise-ready-mcp-specification-brings-new-security-challenges/"
+      "title": "Microsoft stands up 'Frontier Company' — $2.5B and ~6,000 forward-deployed engineers; ServiceNow + Accenture launch a parallel program",
+      "summary": "Microsoft's new operating unit embeds engineers, industry specialists, and salespeople directly inside enterprise clients to co-design, deploy, and optimize AI systems at scale, the same week ServiceNow and Accenture announced a forward-deployed engineering program for agentic AI.",
+      "tag": "yes",
+      "how": "Strongest validation yet of PRAGMA's AI-operator consulting wedge: the giants are industrializing 'humans who deploy agents' for the Fortune 500, leaving the SMB/mid-market tier wide open for PRAGMA to own with faster, cheaper, agent-first delivery.",
+      "url": "https://techstartups.com/2026/07/03/top-tech-news-today-july-3-2026/"
     },
     {
       "n": 4,
-      "title": "arXiv: 'Context Engineering: From Prompts to Corporate Multi-Agent Architecture'",
-      "summary": "Frames context engineering as its own discipline (design and manage the whole informational environment an agent decides in) with five quality criteria — relevance, sufficiency, isolation, economy, provenance — plus intent engineering (encode org goals/values into infra) and specification engineering (a machine-readable corpus of corporate policy for autonomous multi-agent systems).",
+      "title": "Profound ships 'Aim' — an always-on background agent that turns AI-search visibility signals into prioritized marketing work",
+      "summary": "Announced July 2, Aim continuously monitors prompt trends, AI citations, sentiment, and competitive benchmarks across AI search and converts them into a prioritized workstream for marketing teams.",
       "tag": "yes",
-      "how": "The theory under what we already do: CLAUDE.md as working memory, ~/.hermes/memories/ as the corpus, PRAXIS as provenance; score every agent's context against the five criteria and treat our locked rules as the specification-engineering layer.",
-      "url": "https://arxiv.org/abs/2603.09619v1"
+      "how": "A funded competitor in exactly the PRAGMA Mirror lane (consumer-LLM brand-visibility scanning → action); study its signal taxonomy and sharpen Mirror's differentiator: we don't just report visibility, our agents (Pulse) execute the fixes on the client's owned presence.",
+      "url": "https://agentic.ai/news"
+    },
+    {
+      "n": 5,
+      "title": "arXiv: 'From Question Answering to Task Completion: A Survey on Agent System and Harness Design'",
+      "summary": "Surveys how agent capability increasingly comes from harness design (orchestration, tool interfaces, memory, verification loops) rather than the base model alone, mapping the design space from QA-style assistants to full task-completion systems.",
+      "tag": "yes",
+      "how": "A direct framework for The Construct's architecture reviews: our edge is the harness (locked rules, PRAXIS, memory tiers, scheduled scans) — use it to audit each agent's orchestration/verification loop as models commoditize.",
+      "url": "https://arxiv.org/abs/2606.20683"
     }
   ],
-  "praxis_lesson": "July is a protocol-and-substrate inflection, not a shiny-model one — Fable 5 lifts the ceiling on unattended autonomy while the July 28 MCP spec rewrites how our own servers authenticate, run long tasks, and render UI. The Construct's move is to prep the plumbing now: pilot the MCP RC on one internal server, formalize scans/Hermes as MCP Tasks, and govern context and servers as security-reviewed assets — own the orchestration and governance layer while the model and protocol commoditize underneath us.",
-  "history": ["2026-07-02", "2026-07-01", "2026-06-30", "2026-06-29", "2026-06-28"]
+  "praxis_lesson": "The week's pattern is value migrating from models to deployment: Sonnet 5 collapses the price of agentic capability while Microsoft ($2.5B, 6,000 people) and Accenture/ServiceNow industrialize forward-deployed AI operators for enterprises. PRAGMA's move is to be the forward-deployed operator for the SMB/mid-market tier the giants won't touch — cheaper substrate widens our margins, and the harness/governance layer we already run is the defensible part.",
+  "history": ["2026-07-04", "2026-07-02", "2026-07-01", "2026-06-30", "2026-06-29", "2026-06-28"]
 }

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-03T06:10:05",
+  "generated": "2026-07-04T06:10:05",
   "schema_version": 1,
   "source": "Hermes logs (~/.hermes/logs/agent.log*, errors.log*)",
   "logs_scanned": [
@@ -8,21 +8,21 @@
   ],
   "status": "ok",
   "totals": {
-    "requests": 973,
+    "requests": 1287,
     "errors_402": 303,
-    "other_errors": 146,
-    "in_tokens": 132127462,
-    "out_tokens": 455156
+    "other_errors": 148,
+    "in_tokens": 143840581,
+    "out_tokens": 605712
   },
   "models": [
     {
       "model": "deepseek/deepseek-v4-flash",
       "provider": "openrouter",
-      "requests": 961,
+      "requests": 1275,
       "errors_402": 0,
       "other_errors": 21,
-      "in_tokens": 131091457,
-      "out_tokens": 453777
+      "in_tokens": 142804576,
+      "out_tokens": 604333
     },
     {
       "model": "moonshotai/kimi-k2.7-code",
@@ -61,20 +61,20 @@
       "out_tokens": 0
     },
     {
+      "model": "claude-haiku-4-5-20251001",
+      "provider": "anthropic",
+      "requests": 0,
+      "errors_402": 0,
+      "other_errors": 7,
+      "in_tokens": 0,
+      "out_tokens": 0
+    },
+    {
       "model": "openai/gpt-4o-mini",
       "provider": "openrouter",
       "requests": 0,
       "errors_402": 0,
       "other_errors": 13,
-      "in_tokens": 0,
-      "out_tokens": 0
-    },
-    {
-      "model": "claude-haiku-4-5-20251001",
-      "provider": "anthropic",
-      "requests": 0,
-      "errors_402": 0,
-      "other_errors": 5,
       "in_tokens": 0,
       "out_tokens": 0
     },
