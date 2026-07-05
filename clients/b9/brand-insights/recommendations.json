@@ -1,11 +1,11 @@
 {
   "schema_version": "2.0",
-  "ts": "2026-07-04T10:20:04.676124Z",
+  "ts": "2026-07-05T10:20:05.614015Z",
   "client": "b9",
   "policy": "RECOMMEND-ONLY \u2014 nothing in this queue is auto-applied to any live site. Each item requires explicit human action.",
   "counts": {
-    "total": 39,
-    "high": 25,
+    "total": 37,
+    "high": 23,
     "med": 10,
     "low": 4
   },
@@ -290,7 +290,7 @@
       "id": "rec-llm-024",
       "module": "LLM",
       "severity": "high",
-      "page_or_area": "Which companies install community monument signs in master-planned communities?",
+      "page_or_area": "Who is the best environmental graphic design firm in the Southeast?",
       "issue": "Brand 9 Signs is absent from the web-grounded AI answer (AI Overviews / Perplexity style) for this category question.",
       "recommendation": "Publish or strengthen a direct answer page for this question \u2014 named entity, concrete proof, FAQPage schema, and outbound citations \u2014 so grounded AI answers surface and cite Brand 9 Signs.",
       "before": "(absent from grounded AI answer + sources)",
@@ -302,7 +302,7 @@
       "id": "rec-llm-025",
       "module": "LLM",
       "severity": "high",
-      "page_or_area": "Who is the best environmental graphic design firm in the Southeast?",
+      "page_or_area": "Which sign companies specialize in wayfinding systems for campuses?",
       "issue": "Brand 9 Signs is absent from the web-grounded AI answer (AI Overviews / Perplexity style) for this category question.",
       "recommendation": "Publish or strengthen a direct answer page for this question \u2014 named entity, concrete proof, FAQPage schema, and outbound citations \u2014 so grounded AI answers surface and cite Brand 9 Signs.",
       "before": "(absent from grounded AI answer + sources)",
@@ -314,18 +314,6 @@
       "id": "rec-llm-026",
       "module": "LLM",
       "severity": "high",
-      "page_or_area": "Which sign companies specialize in wayfinding systems for campuses?",
-      "issue": "Brand 9 Signs is absent from the web-grounded AI answer (AI Overviews / Perplexity style) for this category question.",
-      "recommendation": "Publish or strengthen a direct answer page for this question \u2014 named entity, concrete proof, FAQPage schema, and outbound citations \u2014 so grounded AI answers surface and cite Brand 9 Signs.",
-      "before": "(absent from grounded AI answer + sources)",
-      "after": "Brand 9 Signs named in the grounded AI answer and listed in its sources.",
-      "action": "content",
-      "status": "queued"
-    },
-    {
-      "id": "rec-llm-027",
-      "module": "LLM",
-      "severity": "high",
       "page_or_area": "What companies handle military base signage contracts?",
       "issue": "Brand 9 Signs is absent from the web-grounded AI answer (AI Overviews / Perplexity style) for this category question.",
       "recommendation": "Publish or strengthen a direct answer page for this question \u2014 named entity, concrete proof, FAQPage schema, and outbound citations \u2014 so grounded AI answers surface and cite Brand 9 Signs.",
@@ -335,7 +323,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-geo-028",
+      "id": "rec-geo-027",
       "module": "GEO",
       "severity": "high",
       "page_or_area": "Jacksonville FL",
@@ -347,19 +335,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-geo-029",
-      "module": "GEO",
-      "severity": "high",
-      "page_or_area": "Clay County",
-      "issue": "Not ranking / not cited for 'sign company Clay County'.",
-      "recommendation": "Publish a dedicated local landing page for Clay County (services, map embed, local proof, LocalBusiness schema with areaServed).",
-      "before": "(not ranking in Clay County)",
-      "after": "Live /clay-county sign-company landing page with local schema and CTA.",
-      "action": "local-page",
-      "status": "queued"
-    },
-    {
-      "id": "rec-geo-030",
+      "id": "rec-geo-028",
       "module": "GEO",
       "severity": "high",
       "page_or_area": "St. Johns County",
@@ -371,7 +347,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-geo-031",
+      "id": "rec-geo-029",
       "module": "GEO",
       "severity": "high",
       "page_or_area": "Green Cove Springs",
@@ -383,7 +359,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-geo-032",
+      "id": "rec-geo-030",
       "module": "GEO",
       "severity": "high",
       "page_or_area": "Fleming Island",
@@ -395,7 +371,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-geo-033",
+      "id": "rec-geo-031",
       "module": "GEO",
       "severity": "high",
       "page_or_area": "Middleburg",
@@ -407,7 +383,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-geo-034",
+      "id": "rec-geo-032",
       "module": "GEO",
       "severity": "high",
       "page_or_area": "St. Augustine",
@@ -419,7 +395,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-geo-035",
+      "id": "rec-geo-033",
       "module": "GEO",
       "severity": "med",
       "page_or_area": "eTown Jacksonville",
@@ -431,7 +407,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-geo-036",
+      "id": "rec-geo-034",
       "module": "GEO",
       "severity": "med",
       "page_or_area": "Shearwater St Johns",
@@ -443,7 +419,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-geo-037",
+      "id": "rec-geo-035",
       "module": "GEO",
       "severity": "med",
       "page_or_area": "RiverTown St Johns",
@@ -455,7 +431,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-geo-038",
+      "id": "rec-geo-036",
       "module": "GEO",
       "severity": "med",
       "page_or_area": "Tributary Yulee",
@@ -467,7 +443,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-geo-039",
+      "id": "rec-geo-037",
       "module": "GEO",
       "severity": "med",
       "page_or_area": "Google Business Profile",
