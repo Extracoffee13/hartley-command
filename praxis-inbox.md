@@ -83,3 +83,15 @@ lesson: The moat keeps migrating to the harness and the integration surface, not
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-06
+decision: Refreshed the day's AI/agent ecosystem scan (10:00 ET re-fire) to lead with the item the 08:25 backfill missed.
+outcome: 5 items flagged — 2026-07-28 MCP Spec Release Candidate (biggest protocol revision since launch: stateless core, MCP Apps UI, Tasks extension, OAuth/OIDC auth, beta SDKs out), Claude Sonnet 5 now Claude Code default (1M context, $2/$10 promo through Aug 31), Anthropic Claude Science for pharma/research labs, arXiv 'Agentic AI: Architectures, Taxonomies, Evaluation' (CLASSic rubric), agent-platform capital concentration (Cognition $1B/$25B, Perplexity ~$21B).
+lesson: The integration surface is now versioned software in its own right — the MCP spec RC makes protocol migration scheduled maintenance, not an emergency, and the same discipline governs Sonnet 5 promo economics and model routing. Treat protocol upgrades and model tiering as routine planned ops so the harness stays the durable asset while the substrate churns.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
