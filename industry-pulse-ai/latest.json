@@ -1,49 +1,49 @@
 {
-  "generated": "2026-07-04T10:01:00Z",
-  "latest_date": "2026-07-04",
+  "generated": "2026-07-06T12:30:00Z",
+  "latest_date": "2026-07-06",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Claude Sonnet 5 goes GA — Anthropic's most agentic Sonnet, near-Opus-4.8 performance at $2/$10 per 1M intro pricing",
-      "summary": "Launched June 30 as the default model for Free/Pro (available to Max/Team/Enterprise), Sonnet 5 plans, drives browsers and terminals, and runs autonomously at a level that recently required larger models, at $2/$10 per 1M tokens through Aug 31 (then $3/$15); safety evals show fewer undesirable behaviors than Sonnet 4.6 in agentic contexts.",
+      "title": "Anthropic redeploys Claude Fable 5 globally with deeper cyber safeguards, a jailbreak severity framework, and a HackerOne cyber-bounty",
+      "summary": "Fable 5 (longest-autonomy model) came back online globally July 1 across the Claude Platform, Claude.ai, Claude Code, and Cowork, now wrapped in stronger cyber controls and a public researcher bounty for cyber jailbreaks.",
       "tag": "yes",
-      "how": "The cost floor dropping under The Construct: route high-volume routine jobs (daily scans, drafting, browser ops) to Sonnet 5 and reserve Fable 5 credits for long-autonomy reasoning — the intro-pricing window is a free margin experiment through August.",
-      "url": "https://www.anthropic.com/news/claude-sonnet-5"
+      "how": "Fable 5 is The Construct's advisor/judge and hardest-work tier; the redeploy stabilizes that tier, but the imminent shift to usage-based credits means reserve Fable for long-autonomy reasoning and route routine scans/drafting to Sonnet 5 to protect margin.",
+      "url": "https://www.anthropic.com/news/redeploying-fable-5"
     },
     {
       "n": 2,
-      "title": "Claude Enterprise adds admin analytics, model-level entitlements, and spend alerts",
-      "summary": "Early-July release notes add richer usage/cost/productivity analytics for admins, per-model access controls, and alerts to avoid surprise overages.",
+      "title": "xAI's Grok 4.3 lands on Amazon Bedrock at $1.25 / $2.50 per 1M tokens, 131K context",
+      "summary": "Grok 4.3 is now a first-class Bedrock model at aggressive pricing, giving AWS-native shops a cheap frontier option alongside Claude and Gemini.",
       "tag": "maybe",
-      "how": "With Fable 5 moving to usage credits after July 7 and Sonnet 5 repricing in September, this is exactly the governance tooling to watch; also a feature PRAGMA can point client orgs at when deploying agent fleets on their Claude tenancy.",
-      "url": "https://support.claude.com/en/articles/12138966-release-notes"
+      "how": "Our stack is Claude-centric, but a sub-$3 blended frontier price on Bedrock is a useful fallback/benchmark for cost-sensitive client deployments where we don't control the tenancy.",
+      "url": "https://llm-stats.com/llm-updates"
     },
     {
       "n": 3,
-      "title": "Microsoft stands up 'Frontier Company' — $2.5B and ~6,000 forward-deployed engineers; ServiceNow + Accenture launch a parallel program",
-      "summary": "Microsoft's new operating unit embeds engineers, industry specialists, and salespeople directly inside enterprise clients to co-design, deploy, and optimize AI systems at scale, the same week ServiceNow and Accenture announced a forward-deployed engineering program for agentic AI.",
+      "title": "X launches a hosted MCP server — read-only agent access to posts, users, conversations, and trends via the user's own account",
+      "summary": "Announced June 30, it lets Claude/Cursor/Grok connect to X and search posts, read content, look up users, and analyze conversations/trends in real time with no write access and no separate API keys.",
       "tag": "yes",
-      "how": "Strongest validation yet of PRAGMA's AI-operator consulting wedge: the giants are industrializing 'humans who deploy agents' for the Fortune 500, leaving the SMB/mid-market tier wide open for PRAGMA to own with faster, cheaper, agent-first delivery.",
-      "url": "https://techstartups.com/2026/07/03/top-tech-news-today-july-3-2026/"
+      "how": "A real, key-free social-signal source for Pulse and Mirror: B9/PRAGMA can wire brand- and competitor-mention monitoring on X into the agent ecosystem without buying X API access.",
+      "url": "https://fourweekmba.com/ai-x-mcp-server-ai-agent-distribution/"
     },
     {
       "n": 4,
-      "title": "Profound ships 'Aim' — an always-on background agent that turns AI-search visibility signals into prioritized marketing work",
-      "summary": "Announced July 2, Aim continuously monitors prompt trends, AI citations, sentiment, and competitive benchmarks across AI search and converts them into a prioritized workstream for marketing teams.",
-      "tag": "yes",
-      "how": "A funded competitor in exactly the PRAGMA Mirror lane (consumer-LLM brand-visibility scanning → action); study its signal taxonomy and sharpen Mirror's differentiator: we don't just report visibility, our agents (Pulse) execute the fixes on the client's owned presence.",
-      "url": "https://agentic.ai/news"
+      "title": "Perplexity's CTO signals a shift away from MCP toward APIs and CLIs, launching a multi-model Agent API",
+      "summary": "Citing high context usage and auth friction, Perplexity is de-emphasizing MCP in favor of direct APIs/CLIs for agent integration.",
+      "tag": "maybe",
+      "how": "A caution against building The Construct MCP-only; keep the integration layer protocol-agnostic (MCP where clean, direct API/CLI where MCP is heavy) so we're not exposed if protocol consensus wobbles.",
+      "url": "https://awesomeagents.ai/news/perplexity-agent-api-mcp-shift/"
     },
     {
       "n": 5,
-      "title": "arXiv: 'From Question Answering to Task Completion: A Survey on Agent System and Harness Design'",
-      "summary": "Surveys how agent capability increasingly comes from harness design (orchestration, tool interfaces, memory, verification loops) rather than the base model alone, mapping the design space from QA-style assistants to full task-completion systems.",
+      "title": "arXiv 'agent harness engineering' hardens into a named field — survey work now catalogs 110+ papers and 23 systems",
+      "summary": "Research consensus continues to shift agent capability away from the base model and toward harness design: orchestration, tool interfaces, memory tiers, and verification loops.",
       "tag": "yes",
-      "how": "A direct framework for The Construct's architecture reviews: our edge is the harness (locked rules, PRAXIS, memory tiers, scheduled scans) — use it to audit each agent's orchestration/verification loop as models commoditize.",
-      "url": "https://arxiv.org/abs/2606.20683"
+      "how": "Extends July 4's harness theme; use the survey taxonomy to audit each Construct agent's orchestration/verification loop, since that layer — not the model — is our durable edge as models commoditize.",
+      "url": "https://github.com/Gloriaameng/Awesome-Agent-Harness"
     }
   ],
-  "praxis_lesson": "The week's pattern is value migrating from models to deployment: Sonnet 5 collapses the price of agentic capability while Microsoft ($2.5B, 6,000 people) and Accenture/ServiceNow industrialize forward-deployed AI operators for enterprises. PRAGMA's move is to be the forward-deployed operator for the SMB/mid-market tier the giants won't touch — cheaper substrate widens our margins, and the harness/governance layer we already run is the defensible part.",
-  "history": ["2026-07-04", "2026-07-02", "2026-07-01", "2026-06-30", "2026-06-29", "2026-06-28"]
+  "praxis_lesson": "The moat keeps migrating to the harness and the integration surface, not the model. Fable 5's global redeploy plus Grok-4.3-on-Bedrock commoditize the model layer, while X's MCP server and Perplexity's API pivot show the integration surface diversifying. The Construct should treat its harness as the asset, stay integration-agnostic across MCP and direct APIs, and tier models ruthlessly — Sonnet 5 for volume, Fable 5 for long-autonomy reasoning.",
+  "history": ["2026-07-06", "2026-07-04", "2026-07-02", "2026-07-01", "2026-06-30", "2026-06-29", "2026-06-28"]
 }

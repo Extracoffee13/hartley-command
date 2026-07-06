@@ -71,3 +71,15 @@ lesson: Value is migrating from models to deployment — Sonnet 5 collapses the 
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-06
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (manual backfill — scheduled job fired but wrote no output).
+outcome: 5 items flagged — Anthropic redeploys Claude Fable 5 globally July 1 with cyber safeguards + HackerOne bounty, xAI Grok 4.3 on Amazon Bedrock at $1.25/$2.50 (131K ctx), X launches a read-only hosted MCP server (key-free social signal), Perplexity CTO shifts away from MCP toward APIs/CLIs, arXiv agent-harness-engineering survey hardens into a named field (110+ papers, 23 systems).
+lesson: The moat keeps migrating to the harness and the integration surface, not the model — Fable 5's redeploy and Grok-on-Bedrock commoditize the model layer while X's MCP and Perplexity's API pivot diversify integration. Treat the harness as the asset, stay integration-agnostic across MCP + direct APIs, and tier models ruthlessly (Sonnet 5 for volume, Fable 5 for long-autonomy).
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
