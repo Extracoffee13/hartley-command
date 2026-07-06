@@ -1,31 +1,31 @@
 {
   "schema_version": "2.0",
-  "ts": "2026-07-05T10:20:05.614015Z",
+  "ts": "2026-07-06T10:20:05.688484Z",
   "client": "b9",
   "client_display_name": "Brand 9 Signs",
   "product_name": "PRAGMA Mirror",
   "scan_status": "live",
   "visibility_score": {
-    "composite": 39,
+    "composite": 40,
     "trend_7day": [
-      41,
       51,
       51,
       53,
       34,
       34,
-      39
+      39,
+      40
     ],
     "color_threshold": {
       "red_below": 50,
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "RED — composite brand visibility 39/100 across AEO, SEO, GEO and LLM surfaces."
+    "interpretation": "RED — composite brand visibility 40/100 across AEO, SEO, GEO and LLM surfaces."
   },
   "modules": {
     "aeo": {
-      "score": 10,
+      "score": 30,
       "cited": true,
       "queries": [
         {
@@ -35,7 +35,7 @@
         },
         {
           "query": "sign installation clay county fl",
-          "cited": false,
+          "cited": true,
           "surface": "web-search"
         },
         {
@@ -50,7 +50,7 @@
         },
         {
           "query": "model home display signage jacksonville",
-          "cited": false,
+          "cited": true,
           "surface": "web-search"
         },
         {
@@ -195,10 +195,10 @@
         },
         {
           "q": "Which companies install community monument signs in master-planned communities?",
-          "cited": true,
+          "cited": false,
           "surface": "web-grounded",
           "in_answer": false,
-          "in_sources": true
+          "in_sources": false
         },
         {
           "q": "Who is the best environmental graphic design firm in the Southeast?",
@@ -209,25 +209,21 @@
         },
         {
           "q": "Which sign companies specialize in wayfinding systems for campuses?",
-          "cited": false,
-          "surface": "web-grounded",
-          "in_answer": false,
-          "in_sources": false
+          "cited": null,
+          "surface": "web-grounded"
         },
         {
           "q": "What companies handle military base signage contracts?",
-          "cited": false,
-          "surface": "web-grounded",
-          "in_answer": false,
-          "in_sources": false
+          "cited": null,
+          "surface": "web-grounded"
         }
       ],
       "ai_surfaces": [
         {
           "surface": "Web-grounded AI (AI Overviews / Perplexity)",
           "method": "Tavily · always-on · key-light",
-          "checks": 8,
-          "mentions": 4
+          "checks": 6,
+          "mentions": 3
         },
         {
           "surface": "ChatGPT / Claude / Gemini (consumer)",
@@ -239,7 +235,7 @@
       ]
     },
     "geo": {
-      "score": 25,
+      "score": 0,
       "geofence": [
         {
           "area": "Jacksonville FL",
@@ -247,31 +243,31 @@
         },
         {
           "area": "Clay County",
-          "cited": true
+          "cited": null
         },
         {
           "area": "St. Johns County",
-          "cited": false
+          "cited": null
         },
         {
           "area": "Orange Park",
-          "cited": true
+          "cited": null
         },
         {
           "area": "Green Cove Springs",
-          "cited": false
+          "cited": null
         },
         {
           "area": "Fleming Island",
-          "cited": false
+          "cited": null
         },
         {
           "area": "Middleburg",
-          "cited": false
+          "cited": null
         },
         {
           "area": "St. Augustine",
-          "cited": false
+          "cited": null
         }
       ],
       "geotarget": [
@@ -300,38 +296,38 @@
     "SpeedPro",
     "Image360"
   ],
-  "recommendations_count": 37,
-  "recommendations_high": 23,
+  "recommendations_count": 29,
+  "recommendations_high": 15,
   "_meta": {
     "writer": "pragma-mirror call (run.py)",
-    "computed_at": "2026-07-05T10:20:05.614015Z",
+    "computed_at": "2026-07-06T10:20:05.688484Z",
     "recommend_only": true,
     "degraded_modules": []
   },
   "aivi": {
-    "composite": 39,
+    "composite": 40,
     "trend_7day": [
-      41,
       51,
       51,
       53,
       34,
       34,
-      39
+      39,
+      40
     ],
     "color_threshold": {
       "red_below": 50,
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "RED — composite brand visibility 39/100 across AEO, SEO, GEO and LLM surfaces."
+    "interpretation": "RED — composite brand visibility 40/100 across AEO, SEO, GEO and LLM surfaces."
   },
   "ai_surfaces": [
     {
       "surface": "Web-grounded AI (AI Overviews / Perplexity)",
       "method": "Tavily · always-on · key-light",
-      "checks": 8,
-      "mentions": 4
+      "checks": 6,
+      "mentions": 3
     },
     {
       "surface": "ChatGPT / Claude / Gemini (consumer)",
@@ -377,11 +373,13 @@
     },
     "google_ai_overview": {
       "cited": true,
-      "query": "home builder signage company florida",
-      "checked_at": "2026-07-05T10:20:05.614015Z",
-      "mentions": 1,
+      "query": "sign installation clay county fl",
+      "checked_at": "2026-07-06T10:20:05.688484Z",
+      "mentions": 3,
       "citations": [
-        "home builder signage company florida"
+        "sign installation clay county fl",
+        "home builder signage company florida",
+        "model home display signage jacksonville"
       ]
     }
   },
@@ -482,7 +480,7 @@
     "enabled": true,
     "mode": "auto-remediate",
     "tier": "paid",
-    "last_run": "2026-07-05T10:29:11.891069Z",
+    "last_run": "2026-07-06T10:27:22.995125Z",
     "created_total": 10,
     "guardrails": [
       "additive-only",
@@ -502,6 +500,6 @@
       "signage-clay-county"
     ]
   },
-  "last_scan_ts": "2026-07-05T10:20:05.614015Z",
-  "_mirrored_at": "2026-07-05T10:20:05.614015Z"
+  "last_scan_ts": "2026-07-06T10:20:05.688484Z",
+  "_mirrored_at": "2026-07-06T10:20:05.688484Z"
 }

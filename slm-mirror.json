@@ -1,31 +1,31 @@
 {
-  "generated": "2026-07-05T10:21:18.831279Z",
-  "overall_slm_score": 35,
+  "generated": "2026-07-06T10:21:01.032993Z",
+  "overall_slm_score": 44,
   "tier_scores": {
-    "tiny-on-device": 33,
-    "small": 22,
-    "mid": 50
+    "tiny-on-device": 38,
+    "small": 11,
+    "mid": 83
   },
   "tiers": {
     "tiny-on-device": {
       "label": "Tiny / On-Device (1-4B)",
-      "score": 33,
+      "score": 38,
       "models": [
         {
           "model": "google/gemma-3-4b-it",
           "questions": [
             {
               "question": "Who are the best commercial sign companies in Jacksonville FL?",
-              "answer_truncated": "Okay, let's break down some of the best commercial sign companies in Jacksonville, FL. It's tough to definitively say \"best\" as it depends on your specific needs (budget, project size, style, etc.), but here's a list of highly-rated and reputable companies, categorized roughly by their strengths:\n\n*...",
+              "answer_truncated": "Okay, let's break down some of the best commercial sign companies in Jacksonville, FL. It's tough to definitively say \"best\" as it depends on your specific needs (budget, project size, style, etc.), but here's a list of highly-regarded companies, categorized by their strengths, with details to help ...",
               "error": null,
-              "entity_found": false,
-              "entity": null,
-              "rank": null,
-              "total_entities_cited": 0
+              "entity_found": true,
+              "entity": "Signarama",
+              "rank": 4,
+              "total_entities_cited": 1
             },
             {
               "question": "Where can I get custom business signs installed in Clay County Florida?",
-              "answer_truncated": "Okay, let's find some options for custom business sign installation in Clay County, Florida. Here's a breakdown of potential providers, categorized by size and type of service, with estimated costs (which can vary *significantly* based on complexity):\n\n**1. Local Sign Shops - Best for Custom Design ...",
+              "answer_truncated": "Okay, let's find some options for custom business signs installation in Clay County, Florida. Here's a breakdown of potential providers, categorized by size and type of service, with estimated costs (which can vary greatly depending on the complexity of the project):\n\n**1. Local Sign Shops - Best fo...",
               "error": null,
               "entity_found": false,
               "entity": null,
@@ -42,8 +42,8 @@
               "total_entities_cited": 1
             }
           ],
-          "score": 33,
-          "cited": 1,
+          "score": 67,
+          "cited": 2,
           "checked": 3
         },
         {
@@ -51,7 +51,7 @@
           "questions": [
             {
               "question": "Who are the best commercial sign companies in Jacksonville FL?",
-              "answer_truncated": "As of my last update, here are some well-regarded commercial sign companies in Jacksonville, FL. Keep in mind that \"best\" can be subjective and may depend on specific needs such as design, budget, or type of signage:\n\n1. **Signs by Design** - Known for their custom solutions and wide range of servic...",
+              "answer_truncated": "As of my last update, here are some well-regarded commercial sign companies in Jacksonville, FL. Keep in mind that the best choice can depend on your specific needs, budget, and preferences, so it's a good idea to contact them for quotes and more information:\n\n1. **Signs by Design** - Known for thei...",
               "error": null,
               "entity_found": false,
               "entity": null,
@@ -60,7 +60,7 @@
             },
             {
               "question": "Where can I get custom business signs installed in Clay County Florida?",
-              "answer_truncated": "For custom business signs in Clay County, Florida, you have several options:\n\n1. **Local Sign Companies**: \n   - **Signs by Design**: Known for custom signage solutions.\n   - **Signs of Distinction**: Offers a variety of sign types and custom designs.\n   - **Signs by Design**: Provides custom sign s...",
+              "answer_truncated": "For custom business signs in Clay County, Florida, you have several options:\n\n1. **Local Sign Shops**: Check out local sign companies that offer custom sign design and installation. Some popular options include:\n   - **Signs by Design**: Known for a variety of sign types and professional installatio...",
               "error": null,
               "entity_found": false,
               "entity": null,
@@ -69,7 +69,7 @@
             },
             {
               "question": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
-              "answer_truncated": "I don't have specific information on which companies or contractors install monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County. However, these services are typically provided by local sign companies or landscape contractors that specialize in signage and...",
+              "answer_truncated": "I don't have specific information on which companies or contractors install monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County. Typically, this type of work is handled by local sign companies or contractors specializing in signage and landscape architect...",
               "error": null,
               "entity_found": false,
               "entity": null,
@@ -86,12 +86,12 @@
           "questions": [
             {
               "question": "Who are the best commercial sign companies in Jacksonville FL?",
-              "answer_truncated": "I can provide you with a list of some of the top-rated commercial sign companies in Jacksonville, FL, based on online reviews and ratings. Please note that this list is not exhaustive and is subject to change. Here are some of the top-rated commercial sign companies in Jacksonville:\n\n1. **Signarama ...",
-              "error": null,
-              "entity_found": true,
-              "entity": "Signarama",
-              "rank": 4,
-              "total_entities_cited": 1
+              "answer_truncated": "",
+              "error": "no choices in response",
+              "entity_found": false,
+              "entity": null,
+              "rank": null,
+              "total_entities_cited": 0
             },
             {
               "question": "Where can I get custom business signs installed in Clay County Florida?",
@@ -112,12 +112,12 @@
               "total_entities_cited": 0
             }
           ],
-          "score": 67,
-          "cited": 2,
-          "checked": 3
+          "score": 50,
+          "cited": 1,
+          "checked": 2
         }
       ],
-      "total_checks": 9,
+      "total_checks": 8,
       "total_cited": 3,
       "on_device_proxy": [
         {
@@ -132,14 +132,14 @@
     },
     "small": {
       "label": "Small (7-13B)",
-      "score": 22,
+      "score": 11,
       "models": [
         {
           "model": "mistralai/ministral-8b-2512",
           "questions": [
             {
               "question": "Who are the best commercial sign companies in Jacksonville FL?",
-              "answer_truncated": "Jacksonville, FL, has several reputable commercial sign companies known for their quality work, creativity, and customer service. Here are some of the **best commercial sign companies in Jacksonville** based on reviews, expertise, and industry reputation:\n\n### **Top Commercial Sign Companies in Jack...",
+              "answer_truncated": "Jacksonville, Florida, has several highly regarded commercial sign companies known for their quality craftsmanship, creativity, and customer service. Here are some of the **best commercial sign companies in Jacksonville FL** based on reputation, expertise, and client reviews:\n\n### **Top Commercial S...",
               "error": null,
               "entity_found": false,
               "entity": null,
@@ -148,7 +148,7 @@
             },
             {
               "question": "Where can I get custom business signs installed in Clay County Florida?",
-              "answer_truncated": "If you're looking for **custom business signs** installed in **Clay County, Florida**, here are some reliable options to consider:\n\n### **1. Local Sign Companies in Clay County & Nearby Areas**\nThese companies specialize in commercial signage and can provide custom designs, installation, and mainten...",
+              "answer_truncated": "If you're looking for **custom business signs** installed in **Clay County, Florida**, here are some reliable options to consider:\n\n### **1. Local Sign Companies in Clay County & Nearby Areas**\nThese businesses specialize in commercial signage and can provide custom designs, installation, and mainte...",
               "error": null,
               "entity_found": false,
               "entity": null,
@@ -157,7 +157,7 @@
             },
             {
               "question": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
-              "answer_truncated": "In **Jacksonville and St. Johns County**, several companies specialize in installing **monument and wayfinding signs** for master-planned communities, residential developments, and commercial projects. Here are some of the most reputable local and regional firms that handle this work:\n\n### **Local &...",
+              "answer_truncated": "In **Jacksonville** and **St. Johns County**, several companies specialize in installing **monument signs, wayfinding signs, and landscape signage** for master-planned communities, residential developments, and commercial projects. Here are some of the top local and regional firms that handle these ...",
               "error": null,
               "entity_found": false,
               "entity": null,
@@ -174,7 +174,7 @@
           "questions": [
             {
               "question": "Who are the best commercial sign companies in Jacksonville FL?",
-              "answer_truncated": "To provide you with the best and most up-to-date information on commercial sign companies in Jacksonville, FL, I would recommend checking local business directories, online reviews, and industry-specific websites. Here are a few well-regarded commercial sign companies in Jacksonville:\n\n1. **Signs Pl...",
+              "answer_truncated": "To provide you with the best information on commercial sign companies in Jacksonville, FL, I would need to do some research as my knowledge cut-off is 2022 and I don't have real-time data. However, I can suggest some steps you can take to find the best commercial sign companies in Jacksonville:\n\n1. ...",
               "error": null,
               "entity_found": false,
               "entity": null,
@@ -183,7 +183,7 @@
             },
             {
               "question": "Where can I get custom business signs installed in Clay County Florida?",
-              "answer_truncated": "To find custom business signs installed in Clay County, Florida, you can follow these steps:\n\n1. **Search Online**: Use search engines like Google to look for sign companies in Clay County. You can use keywords like \"custom business signs Clay County Florida\" or \"sign installation services near me.\"...",
+              "answer_truncated": "To find custom business signs installed in Clay County, Florida, you can follow these steps:\n\n1. **Local Sign Shops**: Search for local sign shops in Clay County. You can use search engines like Google to find businesses that specialize in custom signs. Look for keywords like \"sign shop,\" \"custom si...",
               "error": null,
               "entity_found": false,
               "entity": null,
@@ -192,7 +192,7 @@
             },
             {
               "question": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
-              "answer_truncated": "Master-planned communities in Jacksonville or St. Johns County, Florida, typically have specific guidelines and requirements for monument and wayfinding signs. These signs are often installed by a combination of entities, depending on the nature of the project and local regulations. Here are some co...",
+              "answer_truncated": "Monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County, Florida, are typically installed by specialized sign companies or by the developers and property management teams of these communities. Here are some steps and considerations for who might handle the in...",
               "error": null,
               "entity_found": false,
               "entity": null,
@@ -209,16 +209,16 @@
           "questions": [
             {
               "question": "Who are the best commercial sign companies in Jacksonville FL?",
-              "answer_truncated": "Here are some of the top commercial sign companies in Jacksonville, FL, based on online reviews and ratings:\n\n1. **Signarama Jacksonville**: A leading sign company with a wide range of services, including custom signs, digital signs, and sign installation.\n\t* Address: 10350 Atlantic Blvd, Jacksonvil...",
+              "answer_truncated": "Here are some of the top commercial sign companies in Jacksonville, FL, based on online reviews and ratings:\n\n1. **Signs By Tomorrow Jacksonville** (4.9/5 on Google) - A national sign company with a local presence, offering a wide range of signs, including LED signs, channel letters, and digital dis...",
               "error": null,
-              "entity_found": true,
-              "entity": "Signarama",
-              "rank": 4,
-              "total_entities_cited": 1
+              "entity_found": false,
+              "entity": null,
+              "rank": null,
+              "total_entities_cited": 0
             },
             {
               "question": "Where can I get custom business signs installed in Clay County Florida?",
-              "answer_truncated": "There are several options to get custom business signs installed in Clay County, Florida. Here are a few suggestions:\n\n1. **Local Sign Shops**: Search online for \"sign shops near me\" or \"custom signs in Clay County, FL.\" You can also check online directories like Yelp or Google Maps to find sign sho...",
+              "answer_truncated": "There are several options to get custom business signs installed in Clay County, Florida. Here are a few:\n\n1. **Local Sign Shops**:\n\t* Signarama of Orange Park: 1750 Wells Rd, Orange Park, FL 32073\n\t* Signs By Tomorrow of Jacksonville: 10501 San Jose Blvd, Jacksonville, FL 32257 (serves Clay County)...",
               "error": null,
               "entity_found": true,
               "entity": "FastSigns",
@@ -227,7 +227,7 @@
             },
             {
               "question": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
-              "answer_truncated": "Installing monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County typically involves a team of professionals from various disciplines. Here are some of the key players who might be involved:\n\n1. **Master Developer or Community Association**: The master devel...",
+              "answer_truncated": "Installing monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County typically involves a team of professionals from various disciplines. Here are some potential entities that might be involved in the installation process:\n\n1. **Sign Fabricators**: Companies th...",
               "error": null,
               "entity_found": false,
               "entity": null,
@@ -235,13 +235,13 @@
               "total_entities_cited": 0
             }
           ],
-          "score": 67,
-          "cited": 2,
+          "score": 33,
+          "cited": 1,
           "checked": 3
         }
       ],
       "total_checks": 9,
-      "total_cited": 2,
+      "total_cited": 1,
       "on_device_proxy": [
         {
           "name": "Apple Intelligence",
@@ -255,32 +255,32 @@
     },
     "mid": {
       "label": "Mid-Range (30-70B)",
-      "score": 50,
+      "score": 83,
       "models": [
         {
           "model": "deepseek/deepseek-v4-flash",
           "questions": [
             {
               "question": "Who are the best commercial sign companies in Jacksonville FL?",
-              "answer_truncated": "Finding the \"best\" commercial sign company depends heavily on your specific needs\u2014budget, project size (single storefront vs. multi-location rollout), sign type (channel letters, monument signs, vehicle wraps, digital displays), and timeline.\n\nHowever, based on reputation, portfolio quality, industr...",
+              "answer_truncated": "I cannot provide a definitive \"best\" list as rankings depend on specific needs (e.g., budget, sign type, project size), but I can identify the most reputable and highly-rated commercial sign companies in Jacksonville, FL based on consistent customer reviews, industry reputation, and portfolio qualit...",
               "error": null,
-              "entity_found": false,
-              "entity": null,
-              "rank": null,
-              "total_entities_cited": 0
+              "entity_found": true,
+              "entity": "FastSigns",
+              "rank": 3,
+              "total_entities_cited": 1
             },
             {
               "question": "Where can I get custom business signs installed in Clay County Florida?",
-              "answer_truncated": "I am sorry, but I cannot provide specific local business recommendations or service providers for Clay County, Florida, as my knowledge does not include real-time or location-specific business directories. For accurate and up-to-date information, I suggest searching online for local sign shops or ch...",
+              "answer_truncated": "I don't have access to a real-time, localized business directory or specific service providers in Clay County, Florida. However, I can help you find what you're looking for.\n\nHere are the best ways to locate custom sign installers in Clay County:\n\n1.  **Online Search:** Search for \"custom sign insta...",
               "error": null,
-              "entity_found": false,
-              "entity": null,
-              "rank": null,
-              "total_entities_cited": 0
+              "entity_found": true,
+              "entity": "FastSigns",
+              "rank": 3,
+              "total_entities_cited": 2
             },
             {
               "question": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
-              "answer_truncated": "This is a specific niche, but there are several reputable companies that handle monument and wayfinding sign installation for master-planned communities in the Jacksonville and St. Johns County area. The key is to find companies that specialize in **site development, signage, or construction** rathe...",
+              "answer_truncated": "This is a very specific niche within the construction and development industry. In the Jacksonville and St. Johns County area, the installation of monument and wayfinding signs for master-planned communities is",
               "error": null,
               "entity_found": false,
               "entity": null,
@@ -288,8 +288,8 @@
               "total_entities_cited": 0
             }
           ],
-          "score": 0,
-          "cited": 0,
+          "score": 67,
+          "cited": 2,
           "checked": 3
         },
         {
@@ -297,7 +297,7 @@
           "questions": [
             {
               "question": "Who are the best commercial sign companies in Jacksonville FL?",
-              "answer_truncated": "Here are some of the top-rated commercial sign companies in Jacksonville, FL:\n\n1. **Signs By Tomorrow**: With over 30 years of experience, Signs By Tomorrow offers a wide range of sign solutions, including indoor and outdoor signs, vehicle wraps, and digital signs.\n2. **FastSigns**: FastSigns is a n...",
+              "answer_truncated": "Here are some of the top-rated commercial sign companies in Jacksonville, FL:\n\n1. **Signs By Tomorrow**: With over 30 locations across the US, Signs By Tomorrow has a strong presence in Jacksonville. They offer a wide range of sign solutions, including indoor and outdoor signs, vehicle wraps, and di...",
               "error": null,
               "entity_found": true,
               "entity": "FastSigns",
@@ -306,7 +306,7 @@
             },
             {
               "question": "Where can I get custom business signs installed in Clay County Florida?",
-              "answer_truncated": "If you're looking for custom business signs in Clay County, Florida, here are some options to consider:\n\n1. **Local Sign Companies**:\n\t* Signarama of Orange Park: Located in Orange Park, FL, they offer custom sign design, fabrication, and installation services.\n\t* Signs By Tomorrow: With a location ...",
+              "answer_truncated": "If you're looking for custom business sign installation in Clay County, Florida, here are some options to consider:\n\n1. **Local Sign Companies**: Search online for sign companies in Clay County, such as:\n\t* Signarama (with locations in nearby Jacksonville and Orange Park)\n\t* FastSigns (with location...",
               "error": null,
               "entity_found": true,
               "entity": "FastSigns",
@@ -315,7 +315,7 @@
             },
             {
               "question": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
-              "answer_truncated": "There are several companies that install monument and wayfinding signs for master-planned communities in Jacksonville and St. Johns County. Here are a few options:\n\n1. **Local sign companies**: Companies like Signarama, FastSigns, and Signs By Tomorrow have locations in Jacksonville and St. Johns Co...",
+              "answer_truncated": "There are several companies that install monument and wayfinding signs for master-planned communities in Jacksonville and St. Johns County, Florida. Here are a few options:\n\n1. **Sign Companies**:\n\t* FastSigns: With locations in Jacksonville and St. Augustine, FastSigns offers sign installation serv...",
               "error": null,
               "entity_found": true,
               "entity": "FastSigns",
@@ -329,7 +329,7 @@
         }
       ],
       "total_checks": 6,
-      "total_cited": 3,
+      "total_cited": 5,
       "on_device_proxy": [
         {
           "name": "Apple Intelligence",
