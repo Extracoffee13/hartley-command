@@ -49,6 +49,29 @@
       }
     ]
   },
+  "signal_overlay": {
+    "generated": "2026-07-06T19:31:52Z",
+    "source": "LunarCrush + FMP",
+    "status": "connectors_unavailable",
+    "note": "LunarCrush and FMP MCP connectors returned HTTP 503 on all attempts this run; signal fields recorded as null rather than guessed. Re-run when connectors recover.",
+    "positions": [
+      {
+        "ticker": "ACN",
+        "sentiment_pct": null,
+        "galaxy_score": null,
+        "alt_rank": null,
+        "social_dominance": null,
+        "rsi14": null,
+        "price": null,
+        "flags": [],
+        "note": "No signal data — LunarCrush/FMP 503. Position context from book: avg_entry 174.0, current 138.0, unrealized -20.7% (deep drawdown; ACN thesis = BULLISH/average-down)."
+      }
+    ],
+    "book_flags": {
+      "divergence_warnings": [],
+      "capitulation_watch": []
+    }
+  },
   "last_updated": "2026-07-06T19:12:31.880094Z",
   "data_source": "state.json-fallback (Alpaca key absent)",
   "day": 62,
