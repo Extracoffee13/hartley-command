@@ -1,11 +1,11 @@
 {
   "schema_version": "2.0",
-  "ts": "2026-07-07T17:39:33.550117Z",
+  "ts": "2026-07-07T17:59:56.009541Z",
   "client": "pragma",
   "policy": "RECOMMEND-ONLY \u2014 nothing in this queue is auto-applied to any live site. Each item requires explicit human action.",
   "counts": {
-    "total": 20,
-    "high": 12,
+    "total": 25,
+    "high": 17,
     "med": 8,
     "low": 0
   },
@@ -95,7 +95,19 @@
       "status": "queued"
     },
     {
-      "id": "rec-seo-008",
+      "id": "rec-aeo-008",
+      "module": "AEO",
+      "severity": "high",
+      "page_or_area": "open and closed AI agents on your own hardware",
+      "issue": "prag-ma.ai not cited in AI/web search results for category query.",
+      "recommendation": "Publish an FAQ/answer-style landing section targeting this query so AI surfaces and search engines can extract a direct citation.",
+      "before": "(not cited)",
+      "after": "Add an H2 'open and closed AI agents on your own hardware' with a 40-60 word direct answer naming PRAGMA, service area, and a CTA, wrapped in FAQPage schema.",
+      "action": "content",
+      "status": "queued"
+    },
+    {
+      "id": "rec-seo-009",
       "module": "SEO",
       "severity": "med",
       "page_or_area": "https://prag-ma.ai/",
@@ -107,7 +119,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-seo-009",
+      "id": "rec-seo-010",
       "module": "SEO",
       "severity": "high",
       "page_or_area": "https://prag-ma.ai/",
@@ -119,7 +131,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-seo-010",
+      "id": "rec-seo-011",
       "module": "SEO",
       "severity": "med",
       "page_or_area": "https://prag-ma.ai/offerings/",
@@ -131,7 +143,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-seo-011",
+      "id": "rec-seo-012",
       "module": "SEO",
       "severity": "high",
       "page_or_area": "https://prag-ma.ai/offerings/",
@@ -143,7 +155,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-seo-012",
+      "id": "rec-seo-013",
       "module": "SEO",
       "severity": "med",
       "page_or_area": "https://prag-ma.ai/about/",
@@ -155,7 +167,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-seo-013",
+      "id": "rec-seo-014",
       "module": "SEO",
       "severity": "high",
       "page_or_area": "https://prag-ma.ai/about/",
@@ -167,7 +179,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-seo-014",
+      "id": "rec-seo-015",
       "module": "SEO",
       "severity": "high",
       "page_or_area": "https://prag-ma.ai/apply/",
@@ -179,7 +191,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-seo-015",
+      "id": "rec-seo-016",
       "module": "SEO",
       "severity": "med",
       "page_or_area": "https://prag-ma.ai/apply/",
@@ -191,7 +203,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-seo-016",
+      "id": "rec-seo-017",
       "module": "SEO",
       "severity": "high",
       "page_or_area": "https://prag-ma.ai/apply/",
@@ -203,7 +215,55 @@
       "status": "queued"
     },
     {
-      "id": "rec-geo-017",
+      "id": "rec-geo-018",
+      "module": "GEO",
+      "severity": "high",
+      "page_or_area": "United States",
+      "issue": "Not ranking / not cited for 'AI United States'.",
+      "recommendation": "Publish a dedicated local landing page for United States (services, map embed, local proof, LocalBusiness schema with areaServed).",
+      "before": "(not ranking in United States)",
+      "after": "Live /united-states landing page with local schema and CTA.",
+      "action": "local-page",
+      "status": "queued"
+    },
+    {
+      "id": "rec-geo-019",
+      "module": "GEO",
+      "severity": "high",
+      "page_or_area": "Jacksonville FL",
+      "issue": "Not ranking / not cited for 'AI Jacksonville FL'.",
+      "recommendation": "Publish a dedicated local landing page for Jacksonville FL (services, map embed, local proof, LocalBusiness schema with areaServed).",
+      "before": "(not ranking in Jacksonville FL)",
+      "after": "Live /jacksonville-fl landing page with local schema and CTA.",
+      "action": "local-page",
+      "status": "queued"
+    },
+    {
+      "id": "rec-geo-020",
+      "module": "GEO",
+      "severity": "high",
+      "page_or_area": "St. Johns County FL",
+      "issue": "Not ranking / not cited for 'AI St. Johns County FL'.",
+      "recommendation": "Publish a dedicated local landing page for St. Johns County FL (services, map embed, local proof, LocalBusiness schema with areaServed).",
+      "before": "(not ranking in St. Johns County FL)",
+      "after": "Live /st.-johns-county-fl landing page with local schema and CTA.",
+      "action": "local-page",
+      "status": "queued"
+    },
+    {
+      "id": "rec-geo-021",
+      "module": "GEO",
+      "severity": "high",
+      "page_or_area": "Northeast Florida",
+      "issue": "Not ranking / not cited for 'AI Northeast Florida'.",
+      "recommendation": "Publish a dedicated local landing page for Northeast Florida (services, map embed, local proof, LocalBusiness schema with areaServed).",
+      "before": "(not ranking in Northeast Florida)",
+      "after": "Live /northeast-florida landing page with local schema and CTA.",
+      "action": "local-page",
+      "status": "queued"
+    },
+    {
+      "id": "rec-geo-022",
       "module": "GEO",
       "severity": "med",
       "page_or_area": "Jacksonville FL",
@@ -215,7 +275,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-geo-018",
+      "id": "rec-geo-023",
       "module": "GEO",
       "severity": "med",
       "page_or_area": "Northeast Florida",
@@ -227,7 +287,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-geo-019",
+      "id": "rec-geo-024",
       "module": "GEO",
       "severity": "med",
       "page_or_area": "United States",
@@ -239,7 +299,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-geo-020",
+      "id": "rec-geo-025",
       "module": "GEO",
       "severity": "med",
       "page_or_area": "Google Business Profile",

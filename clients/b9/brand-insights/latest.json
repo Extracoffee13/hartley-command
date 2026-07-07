@@ -1,164 +1,196 @@
 {
   "schema_version": "2.0",
-  "ts": "2026-07-07T12:51:06.569267Z",
+  "ts": "2026-07-07T18:04:13.333199Z",
   "client": "b9",
   "client_display_name": "Brand 9 Signs",
   "product_name": "PRAGMA Mirror",
   "scan_status": "live",
   "visibility_score": {
-    "composite": 69,
+    "composite": 22,
     "trend_7day": [
-      51,
-      53,
-      34,
       34,
       39,
       40,
-      69
+      69,
+      22,
+      22,
+      22
     ],
     "color_threshold": {
       "red_below": 50,
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "RED — composite brand visibility 40/100 across AEO, SEO, GEO and LLM surfaces."
+    "interpretation": "RED \u2014 composite brand visibility 22/100 across AEO, SEO, GEO and LLM surfaces."
   },
   "modules": {
     "aeo": {
-      "score": null,
-      "cited": false,
+      "score": 30,
+      "cited": true,
       "queries": [
         {
           "query": "commercial sign company jacksonville",
-          "cited": null,
-          "surface": "web-search"
+          "cited": false,
+          "surface": "web-search",
+          "source": "serpapi_fallback"
         },
         {
           "query": "sign installation clay county fl",
-          "cited": null,
-          "surface": "web-search"
+          "cited": true,
+          "surface": "web-search",
+          "source": "serpapi_fallback"
         },
         {
           "query": "custom business signs st johns",
-          "cited": null,
-          "surface": "web-search"
+          "cited": false,
+          "surface": "web-search",
+          "source": "serpapi_fallback"
         },
         {
           "query": "home builder signage company florida",
-          "cited": null,
-          "surface": "web-search"
+          "cited": true,
+          "surface": "web-search",
+          "source": "serpapi_fallback"
         },
         {
           "query": "model home display signage jacksonville",
-          "cited": null,
-          "surface": "web-search"
+          "cited": true,
+          "surface": "web-search",
+          "source": "serpapi_fallback"
         },
         {
           "query": "environmental graphic design firm florida",
-          "cited": null,
-          "surface": "web-search"
+          "cited": false,
+          "surface": "web-search",
+          "source": "serpapi_fallback"
         },
         {
           "query": "wayfinding signage company southeast",
-          "cited": null,
-          "surface": "web-search"
+          "cited": false,
+          "surface": "web-search",
+          "source": "serpapi_fallback"
         },
         {
           "query": "monument signs for communities florida",
-          "cited": null,
-          "surface": "web-search"
+          "cited": false,
+          "surface": "web-search",
+          "source": "serpapi_fallback"
         },
         {
           "query": "construction site signs installation",
-          "cited": null,
-          "surface": "web-search"
+          "cited": false,
+          "surface": "web-search",
+          "source": "serpapi_fallback"
         },
         {
           "query": "military base signage contractor",
-          "cited": null,
-          "surface": "web-search"
+          "cited": false,
+          "surface": "web-search",
+          "source": "serpapi_fallback"
         }
       ],
-      "note": "AEO degraded: no Tavily key/network."
+      "sources": [
+        "serpapi_fallback"
+      ],
+      "note": "Tavily unavailable \u2014 serpapi fallback used.",
+      "fallback": true
     },
     "seo": {
-      "score": 70,
+      "score": 0,
       "pages": [
         {
           "url": "https://brand9signs.com/",
-          "title": "Homebuilder Signage Florida | Brand 9 Signs",
-          "title_ok": true,
-          "meta_ok": true,
-          "h1_ok": true,
-          "schema_ok": true,
-          "canonical_ok": true,
-          "word_count": 1851,
-          "image_alt_coverage": 91,
-          "issues": []
+          "title": null,
+          "title_ok": false,
+          "meta_ok": false,
+          "h1_ok": false,
+          "schema_ok": false,
+          "canonical_ok": false,
+          "word_count": 0,
+          "image_alt_coverage": 100,
+          "issues": [
+            "missing <title>",
+            "missing meta description",
+            "0 H1 tags (need exactly 1)",
+            "missing canonical tag",
+            "no FAQ/Article/LocalBusiness ld+json schema",
+            "thin content (0 words)"
+          ]
         },
         {
           "url": "https://brand9signs.com/services",
-          "title": "Services | Homebuilder, Military & Development Signage",
-          "title_ok": true,
+          "title": null,
+          "title_ok": false,
           "meta_ok": false,
           "h1_ok": false,
-          "schema_ok": true,
-          "canonical_ok": true,
-          "word_count": 1726,
-          "image_alt_coverage": 50,
+          "schema_ok": false,
+          "canonical_ok": false,
+          "word_count": 0,
+          "image_alt_coverage": 100,
           "issues": [
-            "meta description length 186 (ideal 120-160)",
-            "2 H1 tags (need exactly 1)",
-            "image alt coverage 50%"
+            "missing <title>",
+            "missing meta description",
+            "0 H1 tags (need exactly 1)",
+            "missing canonical tag",
+            "no FAQ/Article/LocalBusiness ld+json schema",
+            "thin content (0 words)"
           ]
         },
         {
           "url": "https://brand9signs.com/about",
-          "title": "About Brand 9 Signs | Homebuilder & Military Signage Partner",
-          "title_ok": true,
+          "title": null,
+          "title_ok": false,
           "meta_ok": false,
           "h1_ok": false,
-          "schema_ok": true,
-          "canonical_ok": true,
-          "word_count": 1443,
-          "image_alt_coverage": 50,
+          "schema_ok": false,
+          "canonical_ok": false,
+          "word_count": 0,
+          "image_alt_coverage": 100,
           "issues": [
-            "meta description length 216 (ideal 120-160)",
-            "2 H1 tags (need exactly 1)",
-            "image alt coverage 50%"
+            "missing <title>",
+            "missing meta description",
+            "0 H1 tags (need exactly 1)",
+            "missing canonical tag",
+            "no FAQ/Article/LocalBusiness ld+json schema",
+            "thin content (0 words)"
           ]
         },
         {
           "url": "https://brand9signs.com/contact",
-          "title": "Contact Brand 9 Signs — Jacksonville Sign Company Since 1986",
-          "title_ok": true,
+          "title": null,
+          "title_ok": false,
           "meta_ok": false,
           "h1_ok": false,
-          "schema_ok": true,
-          "canonical_ok": true,
-          "word_count": 433,
-          "image_alt_coverage": 50,
+          "schema_ok": false,
+          "canonical_ok": false,
+          "word_count": 0,
+          "image_alt_coverage": 100,
           "issues": [
-            "meta description length 290 (ideal 120-160)",
-            "2 H1 tags (need exactly 1)",
-            "image alt coverage 50%"
+            "missing <title>",
+            "missing meta description",
+            "0 H1 tags (need exactly 1)",
+            "missing canonical tag",
+            "no FAQ/Article/LocalBusiness ld+json schema",
+            "thin content (0 words)"
           ]
         },
         {
           "url": "https://brand9signs.com/portfolio",
-          "title": "Portfolio Archive | Brand 9 Signs",
-          "title_ok": true,
+          "title": null,
+          "title_ok": false,
           "meta_ok": false,
           "h1_ok": false,
-          "schema_ok": true,
-          "canonical_ok": true,
-          "word_count": 235,
-          "image_alt_coverage": 50,
+          "schema_ok": false,
+          "canonical_ok": false,
+          "word_count": 0,
+          "image_alt_coverage": 100,
           "issues": [
+            "missing <title>",
             "missing meta description",
             "0 H1 tags (need exactly 1)",
-            "thin content (235 words)",
-            "image alt coverage 50%"
+            "missing canonical tag",
+            "no FAQ/Article/LocalBusiness ld+json schema",
+            "thin content (0 words)"
           ]
         }
       ]
@@ -210,13 +242,13 @@
       "ai_surfaces": [
         {
           "surface": "Web-grounded AI (AI Overviews / Perplexity)",
-          "method": "Tavily · always-on · key-light",
+          "method": "Tavily \u00b7 always-on \u00b7 key-light",
           "checks": 0,
           "mentions": 0
         },
         {
           "surface": "ChatGPT / Claude / Gemini (consumer)",
-          "method": "weekly browser pass · your own logins · $0",
+          "method": "weekly browser pass \u00b7 your own logins \u00b7 $0",
           "checks": 12,
           "mentions": 8,
           "note": "Perplexity run anonymous (cleanest organic read). ChatGPT free logged-in. Gemini logged-in Google acct, GBP not connected. Claude results are account-personalized (memory knows Bobby owns Brand 9) and should NOT be read as organic consumer visibility."
@@ -225,39 +257,79 @@
       "note": "AI-answer uses consumer-LLM browser sidecar (Tavily unavailable)."
     },
     "geo": {
-      "score": null,
+      "score": 0,
       "geofence": [
         {
           "area": "Jacksonville FL",
-          "cited": null
+          "query": "commercial Jacksonville FL",
+          "cited": false,
+          "source": "serpapi_fallback"
         },
         {
           "area": "Clay County",
-          "cited": null
+          "query": "commercial Clay County",
+          "cited": false,
+          "source": "serpapi_fallback"
         },
         {
           "area": "St. Johns County",
-          "cited": null
+          "query": "commercial St. Johns County",
+          "cited": false,
+          "source": "serpapi_fallback"
         },
         {
           "area": "Orange Park",
-          "cited": null
+          "query": "commercial Orange Park",
+          "cited": false,
+          "source": "serpapi_fallback"
         },
         {
           "area": "Green Cove Springs",
-          "cited": null
+          "query": "commercial Green Cove Springs",
+          "cited": false,
+          "source": "serpapi_fallback"
         },
         {
           "area": "Fleming Island",
-          "cited": null
+          "query": "commercial Fleming Island",
+          "cited": false,
+          "source": "serpapi_fallback"
         },
         {
           "area": "Middleburg",
-          "cited": null
+          "query": "commercial Middleburg",
+          "cited": false,
+          "source": "serpapi_fallback"
         },
         {
           "area": "St. Augustine",
-          "cited": null
+          "query": "commercial St. Augustine",
+          "cited": false,
+          "source": "serpapi_fallback"
+        },
+        {
+          "area": "eTown Jacksonville",
+          "query": "commercial eTown Jacksonville",
+          "cited": false,
+          "source": "serpapi_fallback"
+        },
+        {
+          "area": "Shearwater St Johns",
+          "query": "commercial Shearwater St Johns",
+          "cited": false,
+          "source": "serpapi_fallback"
+        },
+        {
+          "area": "RiverTown St Johns",
+          "query": "commercial RiverTown St Johns",
+          "cited": false,
+          "source": "serpapi_fallback"
+        },
+        {
+          "area": "Tributary Yulee",
+          "query": "commercial Tributary Yulee",
+          "cited": false,
+          "source": "serpapi_fallback"
         }
       ],
       "geotarget": [
@@ -278,7 +350,11 @@
           "status": "opportunity"
         }
       ],
-      "note": "GEO degraded: no Tavily key/network."
+      "sources": [
+        "serpapi_fallback"
+      ],
+      "note": "Tavily unavailable \u2014 serpapi fallback used.",
+      "fallback": true
     }
   },
   "competitors": [
@@ -287,88 +363,93 @@
     "SpeedPro",
     "Image360"
   ],
-  "recommendations_count": 29,
-  "recommendations_high": 15,
+  "recommendations_count": 54,
+  "recommendations_high": 29,
   "_meta": {
     "writer": "pragma-mirror call (run.py)",
-    "computed_at": "2026-07-07T12:51:06.569267Z",
+    "computed_at": "2026-07-07T18:04:13.333199Z",
     "recommend_only": true,
-    "degraded_modules": [
-      "aeo",
-      "geo"
-    ]
+    "tavily_status": "suspended",
+    "degraded_modules": []
   },
   "aivi": {
-    "composite": 69,
+    "composite": 22,
     "trend_7day": [
-      51,
-      53,
-      34,
       34,
       39,
       40,
-      69
+      69,
+      22,
+      22,
+      22
     ],
     "color_threshold": {
       "red_below": 50,
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "RED — composite brand visibility 40/100 across AEO, SEO, GEO and LLM surfaces."
+    "interpretation": "RED \u2014 composite brand visibility 22/100 across AEO, SEO, GEO and LLM surfaces.",
+    "subscores": {
+      "mention_score": 30,
+      "citation_score": 0,
+      "sentiment_score": 50,
+      "ranking_score": 0,
+      "surface_coverage_score": 67
+    }
   },
   "ai_surfaces": [
     {
       "surface": "Web-grounded AI (AI Overviews / Perplexity)",
-      "method": "Tavily · always-on · key-light",
-      "checks": 6,
-      "mentions": 3
+      "method": "Tavily \u00b7 always-on \u00b7 key-light",
+      "checks": 0,
+      "mentions": 0
     },
     {
       "surface": "ChatGPT / Claude / Gemini (consumer)",
-      "method": "weekly browser pass · your own logins · $0",
+      "method": "weekly browser pass \u00b7 your own logins \u00b7 $0",
       "checks": 12,
-      "mentions": 3,
-      "note": "Full 4-surface consumer-LLM browser pass via logged-in Chrome (all 12 scans). ChatGPT (neutral acct) 0/3 web-grounded. Claude (personalized) 2/3, brand9signs.com cited organically on Q2/Q3. Perplexity (anonymous, neutral) 0/3. Gemini (personalized) 1/3, named Brand 9 + cited brand9signs.com on Q2. ChatGPT+Perplexity are the neutral baseline (both 0/3); Claude+Gemini are personalized and biased upward. Re-merged after daily run.py probe refresh."
+      "mentions": 8,
+      "note": "Perplexity run anonymous (cleanest organic read). ChatGPT free logged-in. Gemini logged-in Google acct, GBP not connected. Claude results are account-personalized (memory knows Bobby owns Brand 9) and should NOT be read as organic consumer visibility."
     }
   ],
   "surfaces": {
     "claude": {
       "cited": true,
       "query": "Who are the best commercial sign companies in Jacksonville FL?",
-      "checked_at": "2026-06-29T12:52:50Z",
+      "checked_at": "2026-07-06T13:16:33Z",
+      "mentions": 3,
+      "citations": [
+        "Where can I get custom homebuilder community signage in Florida?"
+      ]
+    },
+    "chatgpt": {
+      "cited": true,
+      "query": "Who are the best commercial sign companies in Jacksonville FL?",
+      "checked_at": "2026-07-06T13:16:33Z",
+      "mentions": 1,
+      "citations": []
+    },
+    "gemini": {
+      "cited": true,
+      "query": "Who are the best commercial sign companies in Jacksonville FL?",
+      "checked_at": "2026-07-06T13:16:33Z",
+      "mentions": 2,
+      "citations": []
+    },
+    "perplexity": {
+      "cited": true,
+      "query": "Who are the best commercial sign companies in Jacksonville FL?",
+      "checked_at": "2026-07-06T13:16:33Z",
       "mentions": 2,
       "citations": [
         "Where can I get custom homebuilder community signage in Florida?",
         "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?"
       ]
     },
-    "chatgpt": {
-      "cited": false,
-      "query": "Who are the best commercial sign companies in Jacksonville FL?",
-      "checked_at": "2026-06-29T12:52:50Z",
-      "mentions": 0,
-      "citations": []
-    },
-    "gemini": {
-      "cited": true,
-      "query": "Who are the best commercial sign companies in Jacksonville FL?",
-      "checked_at": "2026-06-29T12:52:50Z",
-      "mentions": 1,
-      "citations": [
-        "Where can I get custom homebuilder community signage in Florida?"
-      ]
-    },
-    "perplexity": {
-      "cited": false,
-      "query": "Who are the best commercial sign companies in Jacksonville FL?",
-      "checked_at": "2026-06-29T12:52:50Z",
-      "mentions": 0,
-      "citations": []
-    },
     "google_ai_overview": {
       "cited": true,
       "query": "sign installation clay county fl",
-      "checked_at": "2026-07-06T10:20:05.688484Z",
+      "checked_at": "2026-07-07T18:04:13.333199Z",
       "mentions": 3,
       "citations": [
         "sign installation clay county fl",
@@ -462,7 +543,7 @@
     ],
     "summary": {
       "ChatGPT": "1/3",
-      "Claude": "3/3 (personalized — Bobby's logged-in account, not organic)",
+      "Claude": "3/3 (personalized \u2014 Bobby's logged-in account, not organic)",
       "Perplexity": "2/3 (anonymous/organic)",
       "Gemini": "2/3 (organic)"
     },
@@ -475,7 +556,7 @@
     "overall": "unmeasured"
   },
   "mode": "auto-remediate",
-  "last_action": "Auto-fix engine created 10 local landing pages via WP REST — additive, dup-guarded, logged, reversible.",
+  "last_action": "Auto-fix engine created 10 local landing pages via WP REST \u2014 additive, dup-guarded, logged, reversible.",
   "last_verification": "10 pages live & verified (HTTP 200, schema).",
   "autofix": {
     "enabled": true,
@@ -501,6 +582,6 @@
       "signage-clay-county"
     ]
   },
-  "last_scan_ts": "2026-07-07T12:51:06.569267Z",
-  "_mirrored_at": "2026-07-07T12:51:06.569267Z"
+  "last_scan_ts": "2026-07-07T18:04:13.333199Z",
+  "_mirrored_at": "2026-07-07T18:04:13.333199Z"
 }
