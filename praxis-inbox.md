@@ -107,3 +107,15 @@ lesson: The integration substrate is now shared industry infrastructure — MCP 
 tags: pulse,mcp,ecosystem,governance,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-07
+decision: 13:59 ET re-fire — refreshed the day's AI/agent scan to lead with the Cowork mobile/web launch, which broke after this morning's 08:11 self-heal run.
+outcome: 5 items flagged — Anthropic expands Cowork to mobile/web (cross-device sync, background + scheduled execution with no device online, phone approvals; Max-first beta, doubled limits through Aug 5), the 2026-07-28 MCP Spec Release Candidate (stateless core, MCP Apps UIs, Tasks extension for long-running work, OAuth/OIDC auth), MCP donated to the neutral AAIF under the Linux Foundation, Google Gemini 3.5 Pro delayed to Jul 17 for a full rebuild (2M context, Deep Think layer), and continued capital into long-running-agent infra (Sail $80M, Baseten $1.5B Series F).
+lesson: Today the platform shipped the autonomy we hand-built — Cowork background/scheduled execution and cross-device approvals plus the MCP Tasks extension are now product features, not Construct differentiators. Let the platform own the plumbing (sync, scheduling, protocol, auth) and concentrate our build in the orchestration + verification + memory loop nothing commoditizes for us.
+tags: pulse,mcp,cowork,ecosystem,daily
+confidence: 0.8
+~~~

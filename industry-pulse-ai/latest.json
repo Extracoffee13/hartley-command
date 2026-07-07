@@ -1,50 +1,50 @@
 {
-  "generated": "2026-07-07T12:15:00Z",
+  "generated": "2026-07-07T18:05:00Z",
   "latest_date": "2026-07-07",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Anthropic donates MCP to the new Agentic AI Foundation (AAIF) under the Linux Foundation",
-      "summary": "MCP becomes a neutrally-governed project alongside Block's goose and OpenAI's AGENTS.md; Platinum backers AWS, Anthropic, Block, Bloomberg, Cloudflare, Google, Microsoft, OpenAI; 10,000+ active public MCP servers.",
+      "title": "Anthropic expands Claude Cowork to mobile and web — cross-device sync, background/scheduled execution, phone approvals",
+      "summary": "Announced Jul 7: sessions sync across devices, tasks run in the background with no device online, work can be scheduled for a set time, and Claude surfaces human-judgment decisions to your phone; beta starts on Max, doubled usage limits extended through Aug 5.",
       "tag": "yes",
-      "how": "Governs The Construct's entire MCP fleet; neutral stewardship de-risks our all-in MCP bet and pairs with the 07-28 spec RC — treat protocol evolution as planned standards-body maintenance and keep our integration layer spec-current.",
-      "url": "https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation"
+      "how": "This is the exact background/scheduled/long-running autonomy The Construct built by hand; the platform now ships sync and phone approvals natively — re-evaluate what's still worth owning vs. handing to the platform, and lean on scheduled/background execution for our daily scans.",
+      "url": "https://techcrunch.com/2026/07/07/the-coding-agent-wars-are-spilling-into-the-rest-of-the-office-claude-cowork/"
     },
     {
       "n": 2,
-      "title": "OpenAI closes record $122B round at ~$852B post-money; Anthropic's ~$965B Series H now exceeds it; both filed confidentially for IPOs",
-      "summary": "Amazon, NVIDIA, SoftBank and a16z anchor OpenAI's raise; frontier capital keeps compounding.",
-      "tag": "maybe",
-      "how": "Validates the agent-operator thesis but raises the competitive bar; keep a build-vs-buy read on frontier models and lean into the SMB/mid-market operator tier these platforms won't serve directly.",
-      "url": "https://openai.com/index/accelerating-the-next-phase-ai/"
+      "title": "The 2026-07-28 MCP Specification Release Candidate is out — biggest protocol revision since launch",
+      "summary": "Stateless core that scales on ordinary HTTP, an MCP Apps extension for server-rendered UIs, a Tasks extension for long-running work, and OAuth/OIDC-aligned authorization; final ships Jul 28.",
+      "tag": "yes",
+      "how": "The Tasks extension standardizes our multi-hour/multi-day agent pattern; stateless HTTP + OIDC simplify hosting and securing our own servers — plan the RC→final migration as scheduled maintenance ahead of Jul 28.",
+      "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/"
     },
     {
       "n": 3,
-      "title": "Capital floods the long-running-agent infra layer — Sail Research $80M ($450M val); Baseten $1.5B Series F",
-      "summary": "Investors funding the durable-autonomy substrate for agents that run hours-to-days ('run models, not build them').",
+      "title": "Anthropic donates MCP to the neutral Agentic AI Foundation (AAIF) under the Linux Foundation",
+      "summary": "MCP becomes vendor-neutral alongside Block's goose and OpenAI's AGENTS.md; backers AWS, Anthropic, Block, Bloomberg, Cloudflare, Google, Microsoft, OpenAI; 10,000+ public MCP servers live.",
       "tag": "yes",
-      "how": "Exactly the multi-hour/multi-day autonomy layer The Construct's harness depends on; cheaper long-run inference directly enables our Fable/Opus long-autonomy tiers — track as a cost lever for scheduled scans and agent loops.",
-      "url": "https://www.crescendo.ai/news/latest-vc-investment-deals-in-ai-startups"
+      "how": "Governs The Construct's entire MCP fleet; neutral stewardship de-risks our all-in MCP bet and pairs with the Jul 28 spec RC — treat protocol evolution as planned standards-body maintenance.",
+      "url": "https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation"
     },
     {
       "n": 4,
-      "title": "Google's Gemini 3.5 Pro expected in July with advanced coding/agentic capabilities; Google in government talks",
-      "summary": "After missing its June I/O date, Google positions Gemini 3.5 Pro as a coding/agent contender.",
+      "title": "Google delays Gemini 3.5 Pro to July 17 for a full architectural rebuild — 2M context, 'Deep Think' layer",
+      "summary": "Google scrapped the 2.5 Pro architecture and rebuilt for math reasoning, SVG/image quality and autonomous workflows to compete with GPT-5.6 and Fable 5.",
       "tag": "maybe",
-      "how": "A live build-vs-buy and model-tiering option for coding-heavy Construct work; benchmark against Sonnet 5 before committing routing.",
-      "url": "https://www.buildfastwithai.com/blogs/ai-news-today-july-3-2026"
+      "how": "A live build-vs-buy and model-routing option for reasoning- and coding-heavy Construct work; benchmark against Sonnet 5 once it ships, and note the 2M context for long-document jobs.",
+      "url": "https://finance.biggo.com/news/6f0c6bb2-795f-4c57-9d09-6db691d7638a"
     },
     {
       "n": 5,
-      "title": "Anthropic in custom-silicon talks with Samsung to reduce Nvidia dependence",
-      "summary": "A supply-chain move to bend the long-run inference cost curve as the paid base grows.",
-      "tag": "maybe",
-      "how": "Downward pressure on inference cost improves the economics of running Sonnet 5 at volume while reserving Fable/Opus for long autonomy — a tailwind for our tiering strategy, not an action item.",
-      "url": "https://techcrunch.com/2026/07/06/"
+      "title": "Capital keeps flooding the long-running-agent infra layer — Sail Research $80M ($450M val), Baseten $1.5B Series F",
+      "summary": "Investors funding the durable-autonomy substrate for agents that run hours-to-days ('run models, not build them').",
+      "tag": "yes",
+      "how": "The multi-hour/multi-day autonomy layer our harness depends on; cheaper long-run inference directly enables our Fable/Opus long-autonomy tiers — track as a cost lever for scheduled scans and agent loops.",
+      "url": "https://www.crescendo.ai/news/latest-vc-investment-deals-in-ai-startups"
     }
   ],
-  "praxis_lesson": "The integration substrate just became shared industry infrastructure — donating MCP to a neutral Linux Foundation body makes the protocol a commodity standard, not a vendor asset, which de-risks our MCP bet but confirms the durable moat sits one layer up in the harness (orchestration, verification, memory tiers, scheduled scans). Meanwhile fresh capital is pouring into the long-running-agent infra layer where our multi-hour autonomy lives. Stay integration-agnostic on the now-commoditized protocol and concentrate investment in the orchestration + verification loop nothing commoditizes for us.",
+  "praxis_lesson": "Today the platform shipped the autonomy we hand-built — Cowork's background/scheduled execution and cross-device approvals, plus the MCP Tasks extension for long-running work, are now first-class product features, not Construct differentiators. The durable moat moves up another layer: orchestration logic, verification loops, memory tiers, and the domain-specific judgment in our scheduled scans. Let the platform own the plumbing (sync, scheduling, protocol, auth) and concentrate our build where no vendor commoditizes it for us.",
   "history": [
     "2026-07-07",
     "2026-07-06",

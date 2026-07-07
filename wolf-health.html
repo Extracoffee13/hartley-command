@@ -1,52 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
 <title>WOLF Health</title>
 <style>
-body { background:#0b0f19; color:#e5e7eb; font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; margin:0; padding:1rem; }
-.container { max-width:800px; margin:0 auto; }
-h1 { margin:0 0 1rem; font-size:1.75rem; }
-.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; margin-bottom:1rem; }
-.card { background:#111827; border:1px solid #1f2937; border-radius:0.75rem; padding:1rem; }
-.card h2 { margin:0 0 0.5rem; font-size:1rem; color:#93c5fd; }
-.big { font-size:1.5rem; font-weight:700; }
-.OK { color:#4ade80; }
-.WARN { color:#f87171; }
-a { color:#60a5fa; }
+body { background: #0a0a0a; color: #eee; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 2rem; }
+h1 { font-size: 1.6rem; margin-bottom: 1rem; }
+.card { background: #141414; border: 1px solid #222; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
+.card h2 { margin-top: 0; font-size: 1rem; color: #aaa; text-transform: uppercase; letter-spacing: 0.05em; }
+.big { font-size: 1.4rem; font-weight: 600; }
+.ok { color: #00ff88; }
+.warn { color: #ffaa00; }
+.crit { color: #ff4444; }
+.muted { color: #777; }
+.thesis { margin: 0.75rem 0; padding: 0.75rem; background: #0f0f0f; border-radius: 6px; }
+.ticker { font-weight: 700; font-size: 1.1rem; }
+.verdict { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-left: 0.5rem; }
+.rationale { margin-top: 0.4rem; color: #ccc; }
+.meta { margin-top: 0.4rem; font-size: 0.8rem; color: #777; }
+a { color: #66b2ff; }
 </style>
 </head>
 <body>
-<div class="container">
 <h1>WOLF Health</h1>
-<div class="grid">
 <div class="card">
-<h2>Mission</h2>
-<div class="big">Day 62/90</div>
-<div>28 days remaining</div>
-</div>
-<div class="card">
-<h2>Portfolio</h2>
-<div class="big">$98,272</div>
+<h2>Status</h2>
+<div class="big">Day 62/90 <span class="muted">(28 days remaining)</span></div>
+<div class="big">Portfolio: $98,272.00</div>
 </div>
 <div class="card">
 <h2>Compliance</h2>
-<div class="big OK">OK</div>
+<p><span class="ok">OK</span></p>
+<p>Checks: all clear</p>
 </div>
 <div class="card">
 <h2>Infrastructure</h2>
-<div class="big OK">OK</div>
-</div>
+<p><span class="ok">OK</span> <span class="muted">capability 0.00</span></p>
+<p>Regime: moderate-bear, VIX 18.00</p>
+<p>Checks: all clear</p>
 </div>
 <div class="card">
 <h2>Alerts</h2>
-<div>None</div>
+<p>None</p>
 </div>
-<div class="card"><h2>Deep Research Theses</h2><div style="margin:0.75rem 0;"><div style="display:flex;align-items:center;gap:0.5rem;"><strong>ACN</strong><span style="color:#4ade80;font-weight:600;">BULLISH</span></div><div style="margin:0.25rem 0;color:#e5e7eb;">**VERDICT: BULLISH (STRONGLY RECOMMEND AVERAGING DOWN)**</div><div style="font-size:0.8rem;color:#9ca3af;">generated 2026-07-01 · source gemini-deep-research · <a href="./wolf-research/ACN-2026-07-01.md" style="color:#60a5fa;">full report</a></div></div></div>
-<div class="card" style="font-size:0.8rem">
-Updated: 2026-07-07 17:30 UTC by wolf-dashboard-autosync
-</div>
-</div>
+<div class="card"><h2>Deep Research Theses</h2><div class="thesis"><span class="ticker">ACN</span> <span class="verdict ok">BULLISH</span><div class="rationale">**VERDICT: BULLISH (STRONGLY RECOMMEND AVERAGING DOWN)**</div><div class="meta">generated 2026-07-01 · source gemini-deep-research · <a href="./wolf-research/ACN-2026-07-01.md">full report</a></div></div></div>
+<div class="card" style="font-size:0.8rem">Updated: 2026-07-07 18:05 UTC by wolf-dashboard-autosync</div>
 </body>
 </html>
