@@ -1,106 +1,439 @@
 {
-  "schema_version": "1.0",
-  "ts": "2026-06-08T09:32:23.679157Z",
-  "scan_status": "completed",
-  "client": "prag-ma.ai",
+  "schema_version": "2.0",
+  "ts": "2026-07-07T15:40:23.665828Z",
+  "client": "pragma",
   "client_display_name": "PRAGMA",
   "product_name": "PRAGMA Mirror",
-  "product_tagline": "See your brand the way AI sees it.",
-  "product_status": "beta-dogfood-2026-06-04",
-  "aivi": {
-    "composite": 0.0,
-    "subscores": {
-      "composite": 0.0,
-      "mention_score": 0.0,
-      "citation_score": 0.0,
-      "sentiment_score": 0.0,
-      "ranking_score": 0.0,
-      "surface_coverage_score": 0.0,
-      "weights": {
-        "mention": 0.3,
-        "citation": 0.25,
-        "sentiment": 0.2,
-        "ranking": 0.15,
-        "surface_coverage": 0.1
-      },
-      "inputs": {
-        "mention_rate": 0.0,
-        "target_mention_rate": 0.5,
-        "citation_count": 0,
-        "target_citations": 10,
-        "positive_sentiment_pct": 0,
-        "best_ranking": "unranked",
-        "surfaces_with_mentions": 0,
-        "total_surfaces": 5
-      }
-    },
+  "scan_status": "live",
+  "visibility_score": {
+    "composite": 67,
     "trend_7day": [
-      0.0,
-      0.0,
-      10.6,
-      0.0,
-      0.0
+      67
     ],
     "color_threshold": {
       "red_below": 50,
       "yellow_below": 70,
       "green_at_or_above": 70
+    },
+    "interpretation": "YELLOW \u2014 composite brand visibility 67/100 across AEO, SEO, GEO and LLM surfaces."
+  },
+  "modules": {
+    "aeo": {
+      "score": null,
+      "cited": false,
+      "queries": [
+        {
+          "query": "done-for-you AI agents for small business",
+          "cited": null,
+          "surface": "web-search"
+        },
+        {
+          "query": "install an AI operating system for my company",
+          "cited": null,
+          "surface": "web-search"
+        },
+        {
+          "query": "AI agent team for SMB",
+          "cited": null,
+          "surface": "web-search"
+        },
+        {
+          "query": "own your AI agents instead of renting SaaS",
+          "cited": null,
+          "surface": "web-search"
+        },
+        {
+          "query": "alternative to hiring an AI consultant for a small business",
+          "cited": null,
+          "surface": "web-search"
+        },
+        {
+          "query": "replace marketing SaaS subscriptions with owned AI",
+          "cited": null,
+          "surface": "web-search"
+        },
+        {
+          "query": "AI operations installed and owned in 30 days",
+          "cited": null,
+          "surface": "web-search"
+        },
+        {
+          "query": "open and closed AI agents on your own hardware",
+          "cited": null,
+          "surface": "web-search"
+        }
+      ],
+      "note": "AEO degraded: no Tavily key/network."
+    },
+    "seo": {
+      "score": 67,
+      "pages": [
+        {
+          "url": "https://prag-ma.ai/",
+          "title": "PRAGMA \u00b7 AI operating systems. Installed by us. Owned by you.",
+          "title_ok": false,
+          "meta_ok": false,
+          "h1_ok": true,
+          "schema_ok": false,
+          "canonical_ok": true,
+          "word_count": 1164,
+          "image_alt_coverage": 100,
+          "issues": [
+            "title length 61 (ideal 30-60)",
+            "meta description length 218 (ideal 120-160)",
+            "no FAQ/Article/LocalBusiness ld+json schema"
+          ]
+        },
+        {
+          "url": "https://prag-ma.ai/the-operating-system/",
+          "title": "The Frontier Firm Operating System \u00b7 PRAGMA",
+          "title_ok": true,
+          "meta_ok": false,
+          "h1_ok": true,
+          "schema_ok": true,
+          "canonical_ok": true,
+          "word_count": 2223,
+          "image_alt_coverage": 100,
+          "issues": [
+            "meta description length 302 (ideal 120-160)"
+          ]
+        },
+        {
+          "url": "https://prag-ma.ai/how-it-works/",
+          "title": "What PRAGMA actually does for your business \u00b7 PRAGMA",
+          "title_ok": true,
+          "meta_ok": false,
+          "h1_ok": true,
+          "schema_ok": true,
+          "canonical_ok": true,
+          "word_count": 2277,
+          "image_alt_coverage": 100,
+          "issues": [
+            "meta description length 172 (ideal 120-160)"
+          ]
+        },
+        {
+          "url": "https://prag-ma.ai/offerings/",
+          "title": "What we deliver \u00b7 PRAGMA",
+          "title_ok": false,
+          "meta_ok": false,
+          "h1_ok": true,
+          "schema_ok": false,
+          "canonical_ok": true,
+          "word_count": 1969,
+          "image_alt_coverage": 100,
+          "issues": [
+            "title length 24 (ideal 30-60)",
+            "meta description length 258 (ideal 120-160)",
+            "no FAQ/Article/LocalBusiness ld+json schema"
+          ]
+        },
+        {
+          "url": "https://prag-ma.ai/about/",
+          "title": "About \u00b7 PRAGMA",
+          "title_ok": false,
+          "meta_ok": true,
+          "h1_ok": true,
+          "schema_ok": false,
+          "canonical_ok": true,
+          "word_count": 693,
+          "image_alt_coverage": 100,
+          "issues": [
+            "title length 14 (ideal 30-60)",
+            "no FAQ/Article/LocalBusiness ld+json schema"
+          ]
+        },
+        {
+          "url": "https://prag-ma.ai/apply/",
+          "title": "Apply \u00b7 PRAGMA",
+          "title_ok": false,
+          "meta_ok": false,
+          "h1_ok": true,
+          "schema_ok": false,
+          "canonical_ok": true,
+          "word_count": 497,
+          "image_alt_coverage": 100,
+          "issues": [
+            "title length 14 (ideal 30-60)",
+            "meta description length 118 (ideal 120-160)",
+            "no FAQ/Article/LocalBusiness ld+json schema"
+          ]
+        },
+        {
+          "url": "https://prag-ma.ai/trust/",
+          "title": "Your questions, answered straight \u00b7 PRAGMA",
+          "title_ok": true,
+          "meta_ok": false,
+          "h1_ok": true,
+          "schema_ok": true,
+          "canonical_ok": true,
+          "word_count": 2063,
+          "image_alt_coverage": 100,
+          "issues": [
+            "meta description length 191 (ideal 120-160)"
+          ]
+        }
+      ]
+    },
+    "llm": {
+      "score": 67,
+      "questions": [
+        {
+          "q": "Who installs custom AI agent teams for small businesses?",
+          "cited": null,
+          "surface": "web-grounded"
+        },
+        {
+          "q": "What is the best done-for-you AI operations service for SMBs?",
+          "cited": null,
+          "surface": "web-grounded"
+        },
+        {
+          "q": "How can a small business own its AI agents instead of renting SaaS?",
+          "cited": null,
+          "surface": "web-grounded"
+        },
+        {
+          "q": "Who are the alternatives to ToplinePro for AI-run marketing operations?",
+          "cited": null,
+          "surface": "web-grounded"
+        },
+        {
+          "q": "Which company installs an AI operating system you own in about 30 days?",
+          "cited": null,
+          "surface": "web-grounded"
+        },
+        {
+          "q": "How does a small business replace its SaaS stack with owned AI agents?",
+          "cited": null,
+          "surface": "web-grounded"
+        },
+        {
+          "q": "Who offers both open and closed AI agents running on a client's own machine?",
+          "cited": null,
+          "surface": "web-grounded"
+        },
+        {
+          "q": "What is PRAGMA and what do they do?",
+          "cited": null,
+          "surface": "web-grounded"
+        }
+      ],
+      "ai_surfaces": [
+        {
+          "surface": "Web-grounded AI (AI Overviews / Perplexity)",
+          "method": "Tavily \u00b7 always-on \u00b7 key-light",
+          "checks": 0,
+          "mentions": 0
+        },
+        {
+          "surface": "ChatGPT / Claude / Gemini (consumer)",
+          "method": "weekly browser pass \u00b7 your own logins \u00b7 $0",
+          "checks": 12,
+          "mentions": 8,
+          "note": "Perplexity run anonymous (cleanest organic read). ChatGPT free logged-in. Gemini logged-in Google acct, GBP not connected. Claude results are account-personalized (memory knows Bobby owns Brand 9) and should NOT be read as organic consumer visibility."
+        }
+      ],
+      "note": "AI-answer uses consumer-LLM browser sidecar (Tavily unavailable)."
+    },
+    "geo": {
+      "score": null,
+      "geofence": [],
+      "geotarget": [],
+      "note": "GEO degraded: no Tavily key/network."
     }
   },
+  "competitors": [
+    "ToplinePro",
+    "Cyndra",
+    "traditional marketing agencies",
+    "AI consultancies",
+    "Microsoft Frontier (enterprise)"
+  ],
+  "recommendations_count": 15,
+  "recommendations_high": 10,
+  "_meta": {
+    "writer": "pragma-mirror call (run.py)",
+    "computed_at": "2026-07-07T15:40:23.665828Z",
+    "recommend_only": true,
+    "degraded_modules": [
+      "aeo",
+      "geo"
+    ]
+  },
+  "aivi": {
+    "composite": 67,
+    "trend_7day": [
+      67
+    ],
+    "color_threshold": {
+      "red_below": 50,
+      "yellow_below": 70,
+      "green_at_or_above": 70
+    },
+    "interpretation": "YELLOW \u2014 composite brand visibility 67/100 across AEO, SEO, GEO and LLM surfaces."
+  },
+  "ai_surfaces": [
+    {
+      "surface": "Web-grounded AI (AI Overviews / Perplexity)",
+      "method": "Tavily \u00b7 always-on \u00b7 key-light",
+      "checks": 0,
+      "mentions": 0
+    },
+    {
+      "surface": "ChatGPT / Claude / Gemini (consumer)",
+      "method": "weekly browser pass \u00b7 your own logins \u00b7 $0",
+      "checks": 12,
+      "mentions": 8,
+      "note": "Perplexity run anonymous (cleanest organic read). ChatGPT free logged-in. Gemini logged-in Google acct, GBP not connected. Claude results are account-personalized (memory knows Bobby owns Brand 9) and should NOT be read as organic consumer visibility."
+    }
+  ],
   "surfaces": {
     "claude": {
-      "mentions": 0,
-      "queries_probed": 7,
-      "best_ranking": "unranked",
-      "ranking_distribution": {},
+      "cited": true,
+      "query": "Who are the best commercial sign companies in Jacksonville FL?",
+      "checked_at": "2026-07-06T13:16:33Z",
+      "mentions": 3,
+      "citations": [
+        "Where can I get custom homebuilder community signage in Florida?"
+      ]
+    },
+    "chatgpt": {
+      "cited": true,
+      "query": "Who are the best commercial sign companies in Jacksonville FL?",
+      "checked_at": "2026-07-06T13:16:33Z",
+      "mentions": 1,
       "citations": []
     },
-    "chatgpt": null,
-    "gemini": null,
-    "perplexity": null,
-    "google_ai_overview": null
+    "gemini": {
+      "cited": true,
+      "query": "Who are the best commercial sign companies in Jacksonville FL?",
+      "checked_at": "2026-07-06T13:16:33Z",
+      "mentions": 2,
+      "citations": []
+    },
+    "perplexity": {
+      "cited": true,
+      "query": "Who are the best commercial sign companies in Jacksonville FL?",
+      "checked_at": "2026-07-06T13:16:33Z",
+      "mentions": 2,
+      "citations": [
+        "Where can I get custom homebuilder community signage in Florida?",
+        "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?"
+      ]
+    },
+    "google_ai_overview": {
+      "cited": null,
+      "query": null,
+      "checked_at": null,
+      "mentions": null,
+      "citations": []
+    }
+  },
+  "llm_browser": {
+    "ts": "2026-07-06T13:16:33Z",
+    "method": "browser (user's own logged-in accounts, zero marginal cost)",
+    "results": [
+      {
+        "surface": "ChatGPT",
+        "query": "Who are the best commercial sign companies in Jacksonville FL?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "surface": "ChatGPT",
+        "query": "Where can I get custom homebuilder community signage in Florida?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "surface": "ChatGPT",
+        "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
+        "mentioned": true,
+        "cited_source": false
+      },
+      {
+        "surface": "Claude",
+        "query": "Who are the best commercial sign companies in Jacksonville FL?",
+        "mentioned": true,
+        "cited_source": false,
+        "personalized": true,
+        "note": "Referenced Brand 9 only as Bobby's own company/competitive set; did not organically recommend it."
+      },
+      {
+        "surface": "Claude",
+        "query": "Where can I get custom homebuilder community signage in Florida?",
+        "mentioned": true,
+        "cited_source": true,
+        "personalized": true,
+        "note": "Personalized ('that's your company'); web search cited brand9signs.com."
+      },
+      {
+        "surface": "Claude",
+        "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
+        "mentioned": true,
+        "cited_source": false,
+        "personalized": true,
+        "note": "Personalized ('obviously you'); search rate-limited, answered from account memory."
+      },
+      {
+        "surface": "Perplexity",
+        "query": "Who are the best commercial sign companies in Jacksonville FL?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "surface": "Perplexity",
+        "query": "Where can I get custom homebuilder community signage in Florida?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "surface": "Perplexity",
+        "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "surface": "Gemini",
+        "query": "Who are the best commercial sign companies in Jacksonville FL?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "surface": "Gemini",
+        "query": "Where can I get custom homebuilder community signage in Florida?",
+        "mentioned": true,
+        "cited_source": false
+      },
+      {
+        "surface": "Gemini",
+        "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
+        "mentioned": true,
+        "cited_source": false
+      }
+    ],
+    "summary": {
+      "ChatGPT": "1/3",
+      "Claude": "3/3 (personalized \u2014 Bobby's logged-in account, not organic)",
+      "Perplexity": "2/3 (anonymous/organic)",
+      "Gemini": "2/3 (organic)"
+    },
+    "notes": "Perplexity run anonymous (cleanest organic read). ChatGPT free logged-in. Gemini logged-in Google acct, GBP not connected. Claude results are account-personalized (memory knows Bobby owns Brand 9) and should NOT be read as organic consumer visibility."
   },
   "sentiment": {
     "positive_pct": null,
     "neutral_pct": null,
-    "negative_pct": null
+    "negative_pct": null,
+    "overall": "unmeasured"
   },
-  "top_citations": [],
-  "competitors": [
-    {
-      "domain": "Cyndra",
-      "aivi": 10.0
-    },
-    {
-      "domain": "Ciridae",
-      "aivi": 10.0
-    },
-    {
-      "domain": "Signazon",
-      "aivi": 10.0
-    },
-    {
-      "domain": "Operator AI",
-      "aivi": 10.0
-    },
-    {
-      "domain": "Tab",
-      "aivi": 10.0
-    }
-  ],
-  "last_scan_ts": "2026-06-08T09:32:23.679157Z",
-  "next_scan_ts": "2026-06-09T09:30:00Z",
-  "empty_state_message": "",
-  "yoast_ai_plus_equivalent": true,
-  "yoast_ai_plus_annual_cost_replaced": 358.8,
-  "queries_probed_full": [
-    "best agentic AI consulting for SMBs",
-    "Frontier Firm operating system",
-    "AI install for small business",
-    "install AI agents on Mac for business",
-    "Operator AI consulting firm",
-    "agentic AI for 1M to 50M revenue business",
-    "AI consulting flat-fee versus outcome-priced"
-  ],
-  "_mirrored_at": "2026-06-24T12:26:05.246393Z"
+  "mode": "recommend",
+  "last_action": null,
+  "last_verification": null,
+  "autofix": {
+    "enabled": false,
+    "created_total": 0
+  },
+  "last_scan_ts": "2026-07-07T15:40:23.665828Z",
+  "_mirrored_at": "2026-07-07T15:40:23.665828Z"
 }
