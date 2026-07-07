@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-06T06:10:05",
+  "generated": "2026-07-07T06:10:04",
   "schema_version": 1,
   "source": "Hermes logs (~/.hermes/logs/agent.log*, errors.log*)",
   "logs_scanned": [
@@ -8,55 +8,28 @@
   ],
   "status": "ok",
   "totals": {
-    "requests": 1942,
+    "requests": 292,
     "errors_402": 303,
-    "other_errors": 154,
-    "in_tokens": 168282726,
-    "out_tokens": 899451
+    "other_errors": 128,
+    "in_tokens": 10062310,
+    "out_tokens": 102537
   },
   "models": [
     {
-      "model": "deepseek/deepseek-v4-flash",
-      "provider": "openrouter",
-      "requests": 1930,
-      "errors_402": 0,
-      "other_errors": 27,
-      "in_tokens": 167246721,
-      "out_tokens": 898072
-    },
-    {
       "model": "moonshotai/kimi-k2.7-code",
       "provider": "openrouter",
-      "requests": 12,
+      "requests": 292,
       "errors_402": 32,
-      "other_errors": 64,
-      "in_tokens": 1036005,
-      "out_tokens": 1379
+      "other_errors": 52,
+      "in_tokens": 10062310,
+      "out_tokens": 102537
     },
     {
-      "model": "deepseek-ai/deepseek-v3.2",
-      "provider": "nvidia",
+      "model": "openai/gpt-4o-mini",
+      "provider": "openrouter",
       "requests": 0,
       "errors_402": 0,
-      "other_errors": 12,
-      "in_tokens": 0,
-      "out_tokens": 0
-    },
-    {
-      "model": "moonshotai/kimi-k2.6",
-      "provider": "nvidia",
-      "requests": 0,
-      "errors_402": 0,
-      "other_errors": 2,
-      "in_tokens": 0,
-      "out_tokens": 0
-    },
-    {
-      "model": "claude-sonnet-5",
-      "provider": "anthropic",
-      "requests": 0,
-      "errors_402": 0,
-      "other_errors": 2,
+      "other_errors": 13,
       "in_tokens": 0,
       "out_tokens": 0
     },
@@ -70,20 +43,20 @@
       "out_tokens": 0
     },
     {
-      "model": "openai/gpt-4o-mini",
-      "provider": "openrouter",
-      "requests": 0,
-      "errors_402": 0,
-      "other_errors": 13,
-      "in_tokens": 0,
-      "out_tokens": 0
-    },
-    {
       "model": "anthropic/claude-sonnet-4.6",
       "provider": "openrouter",
       "requests": 0,
       "errors_402": 271,
       "other_errors": 23,
+      "in_tokens": 0,
+      "out_tokens": 0
+    },
+    {
+      "model": "deepseek-ai/deepseek-v3.2",
+      "provider": "nvidia",
+      "requests": 0,
+      "errors_402": 0,
+      "other_errors": 9,
       "in_tokens": 0,
       "out_tokens": 0
     },
@@ -108,6 +81,33 @@
     {
       "model": "nvidia/nemotron-3-super-120b-a12b",
       "provider": "nvidia",
+      "requests": 0,
+      "errors_402": 0,
+      "other_errors": 1,
+      "in_tokens": 0,
+      "out_tokens": 0
+    },
+    {
+      "model": "deepseek/deepseek-v4-flash",
+      "provider": "openrouter",
+      "requests": 0,
+      "errors_402": 0,
+      "other_errors": 18,
+      "in_tokens": 0,
+      "out_tokens": 0
+    },
+    {
+      "model": "moonshotai/kimi-k2.6",
+      "provider": "nvidia",
+      "requests": 0,
+      "errors_402": 0,
+      "other_errors": 1,
+      "in_tokens": 0,
+      "out_tokens": 0
+    },
+    {
+      "model": "claude-sonnet-5",
+      "provider": "anthropic",
       "requests": 0,
       "errors_402": 0,
       "other_errors": 1,
