@@ -1,27 +1,27 @@
 {
   "schema_version": "2.0",
-  "ts": "2026-07-07T18:04:13.333199Z",
+  "ts": "2026-07-07T21:28:12.719495Z",
   "client": "b9",
   "client_display_name": "Brand 9 Signs",
   "product_name": "PRAGMA Mirror",
   "scan_status": "live",
   "visibility_score": {
-    "composite": 43,
+    "composite": 22,
     "trend_7day": [
-      53,
-      34,
-      34,
       39,
       40,
       69,
-      43
+      22,
+      22,
+      22,
+      22
     ],
     "color_threshold": {
       "red_below": 50,
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "RED \u2014 composite brand visibility 43/100 across AEO, SEO, GEO and LLM surfaces."
+    "interpretation": "RED \u2014 composite brand visibility 22/100 across AEO, SEO, GEO and LLM surfaces."
   },
   "modules": {
     "aeo": {
@@ -92,7 +92,7 @@
       "sources": [
         "serpapi_fallback"
       ],
-      "note": "Tavily API suspended; serpapi fallback active \u2014 restore key/credits when ready.",
+      "note": "Tavily API unavailable; serpapi fallback active.",
       "fallback": true
     },
     "seo": {
@@ -345,87 +345,95 @@
     "SpeedPro",
     "Image360"
   ],
-  "recommendations_count": 29,
-  "recommendations_high": 15,
+  "recommendations_count": 54,
+  "recommendations_high": 29,
   "_meta": {
     "writer": "pragma-mirror call (run.py)",
-    "computed_at": "2026-07-07T18:04:13.333199Z",
+    "computed_at": "2026-07-07T21:28:12.719495Z",
     "recommend_only": true,
-    "degraded_modules": [],
     "tavily_status": "suspended",
-    "merged_at": "2026-07-07T18:04:13.333199Z"
+    "degraded_modules": []
   },
   "aivi": {
-    "composite": 43,
+    "composite": 51,
     "trend_7day": [
-      53,
-      34,
-      34,
       39,
       40,
       69,
-      43
+      22,
+      22,
+      22,
+      22
     ],
     "color_threshold": {
       "red_below": 50,
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "RED \u2014 composite brand visibility 43/100 across AEO, SEO, GEO and LLM surfaces."
+    "interpretation": "RED \u2014 composite brand visibility 22/100 across AEO, SEO, GEO and LLM surfaces.",
+    "subscores": {
+      "mention_score": 30,
+      "citation_score": 0,
+      "sentiment_score": 50,
+      "ranking_score": 0,
+      "surface_coverage_score": 67
+    },
+    "color": "red",
+    "explanation": "AIVI composite 51 (live Tavily unavailable; SerpAPI fallback)"
   },
   "ai_surfaces": [
     {
       "surface": "Web-grounded AI (AI Overviews / Perplexity)",
       "method": "Tavily \u00b7 always-on \u00b7 key-light",
-      "checks": 6,
-      "mentions": 3
+      "checks": 0,
+      "mentions": 0
     },
     {
       "surface": "ChatGPT / Claude / Gemini (consumer)",
       "method": "weekly browser pass \u00b7 your own logins \u00b7 $0",
       "checks": 12,
-      "mentions": 3,
-      "note": "Full 4-surface consumer-LLM browser pass via logged-in Chrome (all 12 scans). ChatGPT (neutral acct) 0/3 web-grounded. Claude (personalized) 2/3, brand9signs.com cited organically on Q2/Q3. Perplexity (anonymous, neutral) 0/3. Gemini (personalized) 1/3, named Brand 9 + cited brand9signs.com on Q2. ChatGPT+Perplexity are the neutral baseline (both 0/3); Claude+Gemini are personalized and biased upward. Re-merged after daily run.py probe refresh."
+      "mentions": 8,
+      "note": "Perplexity run anonymous (cleanest organic read). ChatGPT free logged-in. Gemini logged-in Google acct, GBP not connected. Claude results are account-personalized (memory knows Bobby owns Brand 9) and should NOT be read as organic consumer visibility."
     }
   ],
   "surfaces": {
     "claude": {
       "cited": true,
       "query": "Who are the best commercial sign companies in Jacksonville FL?",
-      "checked_at": "2026-06-29T12:52:50Z",
+      "checked_at": "2026-07-06T13:16:33Z",
+      "mentions": 3,
+      "citations": [
+        "Where can I get custom homebuilder community signage in Florida?"
+      ]
+    },
+    "chatgpt": {
+      "cited": true,
+      "query": "Who are the best commercial sign companies in Jacksonville FL?",
+      "checked_at": "2026-07-06T13:16:33Z",
+      "mentions": 1,
+      "citations": []
+    },
+    "gemini": {
+      "cited": true,
+      "query": "Who are the best commercial sign companies in Jacksonville FL?",
+      "checked_at": "2026-07-06T13:16:33Z",
+      "mentions": 2,
+      "citations": []
+    },
+    "perplexity": {
+      "cited": true,
+      "query": "Who are the best commercial sign companies in Jacksonville FL?",
+      "checked_at": "2026-07-06T13:16:33Z",
       "mentions": 2,
       "citations": [
         "Where can I get custom homebuilder community signage in Florida?",
         "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?"
       ]
     },
-    "chatgpt": {
-      "cited": false,
-      "query": "Who are the best commercial sign companies in Jacksonville FL?",
-      "checked_at": "2026-06-29T12:52:50Z",
-      "mentions": 0,
-      "citations": []
-    },
-    "gemini": {
-      "cited": true,
-      "query": "Who are the best commercial sign companies in Jacksonville FL?",
-      "checked_at": "2026-06-29T12:52:50Z",
-      "mentions": 1,
-      "citations": [
-        "Where can I get custom homebuilder community signage in Florida?"
-      ]
-    },
-    "perplexity": {
-      "cited": false,
-      "query": "Who are the best commercial sign companies in Jacksonville FL?",
-      "checked_at": "2026-06-29T12:52:50Z",
-      "mentions": 0,
-      "citations": []
-    },
     "google_ai_overview": {
       "cited": true,
       "query": "sign installation clay county fl",
-      "checked_at": "2026-07-07T18:04:13.333199Z",
+      "checked_at": "2026-07-07T21:28:12.719495Z",
       "mentions": 3,
       "citations": [
         "sign installation clay county fl",
@@ -558,6 +566,6 @@
       "signage-clay-county"
     ]
   },
-  "last_scan_ts": "2026-07-07T18:04:13.333199Z",
-  "_mirrored_at": "2026-07-07T18:04:13.333199Z"
+  "last_scan_ts": "2026-07-07T21:28:12.719495Z",
+  "_mirrored_at": "2026-07-07T21:28:12.719495Z"
 }
