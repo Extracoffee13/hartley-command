@@ -1,50 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WOLF Health</title>
+<html lang="en"><head><meta charset="utf-8">
+<title>WOLF Health Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body { background:#0b0d10; color:#e8eaed; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; margin:0; padding:2rem; }
-.container { max-width:720px; margin:0 auto; }
-h1 { font-size:1.6rem; margin-bottom:1rem; }
-.card { background:#13161b; border-radius:12px; padding:1rem 1.25rem; margin:0.75rem 0; }
-.card h2 { font-size:0.9rem; text-transform:uppercase; letter-spacing:0.05em; color:#9aa0a6; margin:0 0 0.5rem 0; }
-.big { font-size:1.8rem; font-weight:600; }
-.ok { color:#00ff88; }
-.warn { color:#ffaa00; }
-.crit { color:#ff4444; }
-.status-line { display:flex; justify-content:space-between; align-items:center; }
-.thesis { margin:0.75rem 0 0.5rem 0; padding:0.75rem; background:#0b0d10; border-radius:8px; }
-.ticker { font-weight:700; font-size:1.1rem; margin-right:0.75rem; }
-.verdict { font-weight:600; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.03em; }
-.rationale { margin-top:0.5rem; font-size:0.95rem; color:#c4c7ca; }
-.meta { margin-top:0.4rem; font-size:0.8rem; color:#9aa0a6; }
-.meta a { color:#8ab4f8; }
-</style>
-</head>
-<body>
-<div class="container">
-<h1>WOLF Health</h1>
-<div class="card">
-<h2>Run Status</h2>
-<div class="status-line"><span>Day <span class="big">62</span>/90</span><span>28 days remaining</span></div>
-<div class="big" style="margin-top:0.5rem">Portfolio: $98,272</div>
-</div>
-<div class="card">
-<div class="status-line"><h2 style="margin:0">Compliance</h2><span class="ok">OK</span></div>
-<p>All checks passed</p>
-</div>
-<div class="card">
-<div class="status-line"><h2 style="margin:0">Infrastructure</h2><span class="ok">OK</span></div>
-<p>All systems operational</p>
-</div>
-<div class="card">
-<h2>Alerts</h2>
-<p>None</p>
-</div>
-<div class="card"><h2>Deep Research Theses</h2><div class="thesis"><span class="ticker">ACN</span><span class="verdict ok">BULLISH</span><div class="rationale">**VERDICT: BULLISH (STRONGLY RECOMMEND AVERAGING DOWN)**</div><div class="meta">generated 2026-07-01 · source gemini-deep-research · <a href="./wolf-research/ACN-2026-07-01.md">full report</a></div></div></div>
-<div class="card" style="font-size:0.8rem">Updated: 2026-07-07 03:00 UTC by wolf-dashboard-autosync</div>
-</div>
-</body>
-</html>
+body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",monospace;padding:2rem}
+h1{color:#00ff88;font-weight:600}
+.card{background:#111;border:1px solid #333;padding:1rem;margin:1rem 0;border-radius:6px}
+h2{margin:0 0 .5rem;font-size:.9rem;color:#00d4ff;text-transform:uppercase;letter-spacing:.04em}
+.ok{color:#00ff88} .warn{color:#ffaa00} .crit{color:#ff4444}
+a{color:#00d4ff}
+.thesis{border-left:3px solid #333;padding-left:.75rem;margin:.75rem 0}
+.ticker{font-weight:700;font-size:1.1rem;margin-right:.75rem}
+.verdict{font-weight:700;font-size:.9rem}
+.rationale{margin:.35rem 0;color:#cfcfcf;line-height:1.4}
+.meta{font-size:.8rem;color:#888}
+</style></head><body>
+<h1>WOLF Health Dashboard</h1>
+<div class="card"><b>Day 62/90</b> &bull; 28 days to kill-crit &bull; Portfolio: $98,272</div>
+<div class="card">Compliance: <span class="ok">OK</span></div>
+<div class="card">Infrastructure: <span class="ok">OK</span></div>
+<div class="card">Alerts: None</div>
+<div class="card"><h2>Deep Research Theses</h2><div class="thesis"><span class="ticker">ACN</span><span class="verdict ok">BULLISH</span><div class="rationale">**VERDICT: BULLISH (STRONGLY RECOMMEND AVERAGING DOWN)**</div><div class="meta">generated 2026-07-01 · source gemini-deep-research · <a href="./wolf-research/ACN-2026-07-01.md" target="_blank">full report</a></div></div></div>
+<div class="card" style="font-size:0.8rem">Updated: 2026-07-07 03:12 UTC by wolf-dashboard-autosync</div>
+</body></html>
