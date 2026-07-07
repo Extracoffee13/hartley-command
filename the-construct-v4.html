@@ -986,6 +986,97 @@ const HermesPanel = () => (
 // (from model-usage-rollup.py). Honest empty state until first bake-off run.
 // Same harness + panel ships as a PRAGMA product — per-client model fit & cost.
 // ═══════════════════════════════════════════════════════════════
+
+// ═══════════════════════════════════════════════════════════════
+// CLAUDE TOKEN METER — Cowork token burn + model grading over time
+// Reads ./claude-token-meter.json (seed; wire to a claude-token-rollup Call for live).
+// Purpose: track Claude weekly-limit burn and grade every model in use.
+// ═══════════════════════════════════════════════════════════════
+const ClaudeTokenMeterPanel = () => {
+  const [data, setData] = React.useState(null);
+  const [fetched, setFetched] = React.useState(false);
+  React.useEffect(() => {
+    (async () => {
+      const urls = [
+        './claude-token-meter.json?cb=' + Date.now(),
+        'https://extracoffee13.github.io/hartley-command/claude-token-meter.json?cb=' + Date.now(),
+      ];
+      for (const u of urls) {
+        try { const r = await fetch(u, { cache: 'no-store' }); if (r.ok) { setData(await r.json()); setFetched(true); return; } } catch (e) {}
+      }
+      setFetched(true);
+    })();
+  }, []);
+
+  const wl = (data && data.weekly_limit) || {};
+  const pct = wl.pct_used;
+  const pctColor = pct == null ? C.greenDim : (pct >= 80 ? C.red : pct >= 60 ? C.gold : C.green);
+  const models = (data && data.models) || [];
+  const gradeColor = (g) => g == null ? C.greenDim : (String(g).startsWith('A') ? C.green : String(g).startsWith('B') ? C.cyan : String(g).startsWith('C') ? C.gold : C.red);
+  const fmt = (v) => (v == null ? '—' : Number(v).toLocaleString());
+  const fmtCost = (v) => (v == null ? '—' : (v === 0 ? '$0' : '$' + Number(v).toFixed(4)));
+  const th = { color: C.gold, fontSize: 8, textTransform: 'uppercase', letterSpacing: 0.8, textAlign: 'right', padding: '4px 6px', borderBottom: '1px solid rgba(255,215,0,0.25)', fontWeight: 700 };
+  const thL = { ...th, textAlign: 'left' };
+  const td = { color: 'rgba(255,255,255,0.82)', fontSize: 10, textAlign: 'right', padding: '5px 6px', borderBottom: '1px solid rgba(255,255,255,0.05)', fontVariantNumeric: 'tabular-nums' };
+  const tdL = { ...td, textAlign: 'left' };
+
+  return (
+    <div style={{ margin: '20px 28px', padding: 18, border: `2px solid ${C.gold}`, background: 'rgba(255,215,0,0.03)', position: 'relative' }}>
+      <div style={{ position: 'absolute', top: -10, left: 16, padding: '0 8px', background: '#000', fontSize: 10, color: C.gold, letterSpacing: 4 }}>
+        ⏱ CLAUDE TOKEN METER — MODEL GRADING OVER TIME
+      </div>
+
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginTop: 6, marginBottom: 12 }}>
+        <div>
+          <div style={{ fontSize: 20, fontWeight: 900, color: C.gold, fontFamily: 'Georgia, serif' }}>Weekly Claude Budget</div>
+          <div style={{ fontSize: 9, color: C.greenDim, marginTop: 2 }}>{wl.window || 'rolling 7d'} · {(data && data.source) || ''}</div>
+        </div>
+        <div style={{ textAlign: 'right' }}>
+          <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2 }}>WEEKLY LIMIT USED</div>
+          <div style={{ fontSize: 36, fontWeight: 900, color: pctColor, fontFamily: 'monospace' }}>{pct == null ? '--' : pct + '%'}</div>
+        </div>
+      </div>
+
+      <div style={{ height: 12, background: 'rgba(255,255,255,0.08)', borderRadius: 6, overflow: 'hidden', marginBottom: 4 }}>
+        <div style={{ width: (pct == null ? 0 : Math.min(pct, 100)) + '%', height: '100%', background: pctColor, transition: 'width .4s' }} />
+      </div>
+      <div style={{ fontSize: 8, color: C.greenDim, marginBottom: 14 }}>{wl.note || ''}</div>
+
+      <div style={{ fontSize: 9, color: C.gold, letterSpacing: 2, marginBottom: 6 }}>MODELS IN USE — TOKENS · COST · GRADE</div>
+      {!fetched && <div style={{ color: C.greenDim, fontSize: 12 }}>Loading token meter…</div>}
+      {fetched && models.length === 0 && <div style={{ color: C.greenDim, fontSize: 12 }}>No model data yet — seed ./claude-token-meter.json.</div>}
+      {models.length > 0 && (
+        <div style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 720 }}>
+            <thead><tr>
+              <th style={thL}>Model</th><th style={thL}>Surface</th>
+              <th style={th}>Requests</th><th style={th}>In tok</th><th style={th}>Out tok</th>
+              <th style={th}>Cost</th><th style={th}>Quality</th><th style={th}>Grade</th>
+            </tr></thead>
+            <tbody>
+              {models.map(function (m, i) { return (
+                <tr key={i}>
+                  <td style={tdL}>{m.model}</td>
+                  <td style={tdL}>{m.surface || m.provider}</td>
+                  <td style={td}>{fmt(m.requests != null ? m.requests : m.runs)}</td>
+                  <td style={td}>{fmt(m.in_tokens)}</td>
+                  <td style={td}>{fmt(m.out_tokens)}</td>
+                  <td style={td}>{fmtCost(m.cost_usd)}</td>
+                  <td style={td}>{m.quality == null ? '—' : m.quality}</td>
+                  <td style={{ ...td, color: gradeColor(m.grade), fontWeight: 700 }}>{m.grade == null ? '—' : m.grade}</td>
+                </tr>
+              ); })}
+            </tbody>
+          </table>
+        </div>
+      )}
+      <div style={{ fontSize: 8, color: C.greenDim, marginTop: 10, lineHeight: 1.5, borderTop: `1px solid ${C.greenDim}`, paddingTop: 8 }}>
+        {(data && data.grading_scale) || 'A ≥ 90 · B 80–89 · C 70–79 · D < 70'} · Claude Cowork token feed wires to a claude-token-rollup Call for live grading over time.
+      </div>
+    </div>
+  );
+};
+
 const ModelArenaPanel = () => {
   const [lb, setLb] = React.useState(null);
   const [usage, setUsage] = React.useState(null);
@@ -2797,6 +2888,7 @@ const Dashboard = () => (
       <HermesPanel />
       <HarvardCorpusPanel />
       <FoundersPlaybookPanel />
+      <ClaudeTokenMeterPanel />
       <ModelArenaPanel />
       <RedditMonitorPanel />
       <SlmVisibilityPanel />
