@@ -1,49 +1,58 @@
 {
-  "generated": "2026-07-06T14:00:51Z",
-  "latest_date": "2026-07-06",
+  "generated": "2026-07-07T12:15:00Z",
+  "latest_date": "2026-07-07",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "The 2026-07-28 MCP Specification Release Candidate lands — the biggest protocol revision since launch",
-      "summary": "The RC ships a stateless core over ordinary HTTP, an MCP Apps extension for server-rendered UIs, a Tasks extension for long-running work, OAuth/OpenID-Connect-aligned auth, and a formal deprecation policy, with beta Python/TS/Go/C# SDKs already supporting it ahead of the July 28 final.",
+      "title": "Anthropic donates MCP to the new Agentic AI Foundation (AAIF) under the Linux Foundation",
+      "summary": "MCP becomes a neutrally-governed project alongside Block's goose and OpenAI's AGENTS.md; Platinum backers AWS, Anthropic, Block, Bloomberg, Cloudflare, Google, Microsoft, OpenAI; 10,000+ active public MCP servers.",
       "tag": "yes",
-      "how": "Directly governs The Construct's entire MCP fleet; schedule migration testing now since stateless transport and the new OAuth/OIDC auth are breaking, and design toward the MCP Apps (native UI) and Tasks (durable long-running jobs) extensions.",
-      "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/"
+      "how": "Governs The Construct's entire MCP fleet; neutral stewardship de-risks our all-in MCP bet and pairs with the 07-28 spec RC — treat protocol evolution as planned standards-body maintenance and keep our integration layer spec-current.",
+      "url": "https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation"
     },
     {
       "n": 2,
-      "title": "Anthropic makes Claude Sonnet 5 the Claude Code default — 1M context, $2/$10 promo through Aug 31",
-      "summary": "The most agentic Sonnet yet (big gains over 4.6 in reasoning, tool use, and coding) is now the default coding/agent model with a native 1M-token context window at temporary promo pricing.",
-      "tag": "yes",
-      "how": "Route The Construct's high-volume scans and drafting to Sonnet 5 during the promo window to protect margin, reserving Fable/Opus for long-autonomy reasoning; the 1M context also simplifies our memory-tier handoffs.",
-      "url": "https://www.anthropic.com/news"
+      "title": "OpenAI closes record $122B round at ~$852B post-money; Anthropic's ~$965B Series H now exceeds it; both filed confidentially for IPOs",
+      "summary": "Amazon, NVIDIA, SoftBank and a16z anchor OpenAI's raise; frontier capital keeps compounding.",
+      "tag": "maybe",
+      "how": "Validates the agent-operator thesis but raises the competitive bar; keep a build-vs-buy read on frontier models and lean into the SMB/mid-market operator tier these platforms won't serve directly.",
+      "url": "https://openai.com/index/accelerating-the-next-phase-ai/"
     },
     {
       "n": 3,
-      "title": "Anthropic launches Claude Science for research and pharma lab operations",
-      "summary": "Announced June 30, Claude Science tunes the model for scientific labs and pharmaceutical research-operations workflows.",
-      "tag": "maybe",
-      "how": "Not a tool we consume, but a live template for Anthropic's verticalized-operator playbook that validates PRAGMA's thesis of packaging an AI operator per industry — worth studying as a productization pattern for signage/SMB verticals.",
-      "url": "https://www.statnews.com/2026/06/30/anthropic-release-claude-science-ceo-dario-amodei/"
+      "title": "Capital floods the long-running-agent infra layer — Sail Research $80M ($450M val); Baseten $1.5B Series F",
+      "summary": "Investors funding the durable-autonomy substrate for agents that run hours-to-days ('run models, not build them').",
+      "tag": "yes",
+      "how": "Exactly the multi-hour/multi-day autonomy layer The Construct's harness depends on; cheaper long-run inference directly enables our Fable/Opus long-autonomy tiers — track as a cost lever for scheduled scans and agent loops.",
+      "url": "https://www.crescendo.ai/news/latest-vc-investment-deals-in-ai-startups"
     },
     {
       "n": 4,
-      "title": "arXiv 'Agentic AI: Architectures, Taxonomies, and Evaluation' formalizes a CLASSic evaluation rubric",
-      "summary": "The survey maps architectural choices (hierarchical planning, code execution, graph controllers, computer-use) to concrete failure modes and scores them on cost, latency, accuracy, security, and stability.",
-      "tag": "yes",
-      "how": "A ready-made audit rubric for each Construct agent's orchestration/verification loop — extends our running harness theme with a per-agent scoring framework.",
-      "url": "https://arxiv.org/html/2601.12560v1"
+      "title": "Google's Gemini 3.5 Pro expected in July with advanced coding/agentic capabilities; Google in government talks",
+      "summary": "After missing its June I/O date, Google positions Gemini 3.5 Pro as a coding/agent contender.",
+      "tag": "maybe",
+      "how": "A live build-vs-buy and model-tiering option for coding-heavy Construct work; benchmark against Sonnet 5 before committing routing.",
+      "url": "https://www.buildfastwithai.com/blogs/ai-news-today-july-3-2026"
     },
     {
       "n": 5,
-      "title": "Capital keeps concentrating in agent platforms — Cognition $1B at $25B pre-money; Perplexity ~$21B",
-      "summary": "Coding- and search-agent leaders are compounding valuation and revenue fast (Cognition at ~$492M ARR), funding forward-deployed go-to-market.",
+      "title": "Anthropic in custom-silicon talks with Samsung to reduce Nvidia dependence",
+      "summary": "A supply-chain move to bend the long-run inference cost curve as the paid base grows.",
       "tag": "maybe",
-      "how": "Validates the agent-operator thesis but raises the competitive bar; keep a live build-vs-buy read on coding agents and lean into the SMB/mid-market operator tier these platforms won't serve directly.",
-      "url": "https://techcrunch.com/2026/05/27/ai-coding-startup-cognition-raises-1b-at-25b-pre-money-valuation/"
+      "how": "Downward pressure on inference cost improves the economics of running Sonnet 5 at volume while reserving Fable/Opus for long autonomy — a tailwind for our tiering strategy, not an action item.",
+      "url": "https://techcrunch.com/2026/07/06/"
     }
   ],
-  "praxis_lesson": "The integration surface is now versioned software in its own right — the MCP 2026-07-28 RC means protocol migration is scheduled maintenance, not an emergency, and the same discipline applies to Sonnet 5's promo economics and model tiering. Treat protocol upgrades and model routing as routine, planned ops so The Construct's harness (locked rules, PRAXIS, memory tiers, scheduled scans) stays the durable asset while the substrate underneath it churns.",
-  "history": ["2026-07-06", "2026-07-04", "2026-07-02", "2026-07-01", "2026-06-30", "2026-06-29", "2026-06-28"]
+  "praxis_lesson": "The integration substrate just became shared industry infrastructure — donating MCP to a neutral Linux Foundation body makes the protocol a commodity standard, not a vendor asset, which de-risks our MCP bet but confirms the durable moat sits one layer up in the harness (orchestration, verification, memory tiers, scheduled scans). Meanwhile fresh capital is pouring into the long-running-agent infra layer where our multi-hour autonomy lives. Stay integration-agnostic on the now-commoditized protocol and concentrate investment in the orchestration + verification loop nothing commoditizes for us.",
+  "history": [
+    "2026-07-07",
+    "2026-07-06",
+    "2026-07-04",
+    "2026-07-02",
+    "2026-07-01",
+    "2026-06-30",
+    "2026-06-29",
+    "2026-06-28"
+  ]
 }

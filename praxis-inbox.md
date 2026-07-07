@@ -95,3 +95,15 @@ lesson: The integration surface is now versioned software in its own right — t
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-07
+decision: Watchdog self-heal — scanned the last 24-48h of the AI/agent ecosystem for The Construct (scheduled job fired but wrote no output; Cowork was closed at the 05:50 fire window).
+outcome: 5 items flagged — Anthropic donates MCP to the neutral Agentic AI Foundation (AAIF) under the Linux Foundation (Platinum: AWS/Anthropic/Block/Bloomberg/Cloudflare/Google/Microsoft/OpenAI, 10k+ public servers), OpenAI closes record $122B at ~$852B post-money while Anthropic's ~$965B Series H tops it (both filed confidentially for IPOs), capital floods long-running-agent infra (Sail Research $80M, Baseten $1.5B Series F), Google Gemini 3.5 Pro expected in July with agentic/coding gains, Anthropic in Samsung custom-silicon talks to cut Nvidia dependence.
+lesson: The integration substrate is now shared industry infrastructure — MCP donated to a neutral body is a commodity standard, not a vendor asset, which de-risks our MCP bet but confirms the durable moat is one layer up in the harness (orchestration, verification, memory tiers, scheduled scans). With fresh capital pouring into the long-running-agent infra layer where our multi-hour autonomy lives, stay integration-agnostic on the commoditized protocol and concentrate investment in the orchestration + verification loop nothing commoditizes for us.
+tags: pulse,mcp,ecosystem,governance,daily
+confidence: 0.8
+~~~
