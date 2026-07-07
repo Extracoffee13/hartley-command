@@ -62,26 +62,28 @@
   "day": 62,
   "days_remaining": 28,
   "signal_overlay": {
-    "generated": "2026-07-06T19:31:52Z",
+    "generated": "2026-07-07T19:32:29Z",
     "source": "LunarCrush + FMP",
-    "status": "connectors_unavailable",
-    "note": "LunarCrush and FMP MCP connectors returned HTTP 503 on all attempts this run; signal fields recorded as null rather than guessed. Re-run when connectors recover.",
     "positions": [
       {
         "ticker": "ACN",
-        "sentiment_pct": null,
+        "sentiment_pct": 77,
         "galaxy_score": null,
         "alt_rank": null,
         "social_dominance": null,
-        "rsi14": null,
-        "price": null,
-        "flags": [],
-        "note": "No signal data \u2014 LunarCrush/FMP 503. Position context from book: avg_entry 174.0, current 138.0, unrealized -20.7% (deep drawdown; ACN thesis = BULLISH/average-down)."
+        "rsi14": 44.7,
+        "price": 142.86,
+        "flags": [
+          "capitulation_watch"
+        ],
+        "note": "Deep drawdown (unrealized -20.7%, entry 174 vs ~138 book / 142.86 live) BUT mentions 758 = +174% vs daily avg and sentiment 77% > 71% daily avg (up 16% MoM). Classic bottoming/capitulation context, not a panic-cut. RSI 44.7 recovering off late-June oversold (was 25)."
       }
     ],
     "book_flags": {
       "divergence_warnings": [],
-      "capitulation_watch": []
+      "capitulation_watch": [
+        "ACN"
+      ]
     }
   }
 }
