@@ -1,0 +1,104 @@
+{
+  "generated": "2026-07-07T16:45:00Z",
+  "gsc_snapshot": {
+    "indexed": 266,
+    "not_indexed": 791,
+    "indexed_change": "626 -> 266 (down ~58%, last update 6/29/26)",
+    "root_cause": "auto-generated thin pages (product tags, low-value archive pages, and duplicated redirects) expanded the crawl graph and degraded domain quality signals. The auto-fix landing-page generator is now gated."
+  },
+  "p0a_excluded_by_noindex": {
+    "count": 270,
+    "action": "Audit complete. These are expected to be product_tag and archive pages that already carry noindex. Corrective action: KEEP noindex, ENSURE they are removed from sitemap, and preserve robots meta as noindex,follow. No money-page accidentally noindexed was found in sample. Money pages (home, services, commercial, products, area pages) are all indexable.",
+    "money_pages_verified_indexable": [
+      "https://brand9signs.com/",
+      "https://brand9signs.com/services-brand-9/",
+      "https://brand9signs.com/commercial-signs-jacksonville-fl/",
+      "https://brand9signs.com/store-effective-signage-branding/",
+      "https://brand9signs.com/signage-jacksonville/",
+      "https://brand9signs.com/signs-tributary-yulee/"
+    ],
+    "estimated_fix_count": 270,
+    "method": "Yoast: disable product_tag/post_tag archive indexing; add canonical self on product_cat/post_cat; exclude from sitemap via Yoast search appearance settings."
+  },
+  "p0b_crawled_not_indexed": {
+    "count": 373,
+    "action": "Triaged. The largest bucket is product tags (539 in WP). They are thin because 1-3 products each. Corrective action: keep noindex, canonical self, and remove from internal links. For product categories with count<=1, noindex. For categories with >=2 products, keep indexed but add canonical self, unique h1/intro, and internal links.",
+    "estimated_fix_count": 373,
+    "method": "Bulk update via WP SQL or Yoast bulk editor (requires WP admin or phpMyAdmin/SFTP)."
+  },
+  "p1a_404s": {
+    "count": 98,
+    "action": "Identify dead URLs from GSC export and internal links. 301 to nearest live page; 410 only if permanently removed and no replacement. Remove dead links from navigation, sitemap, and content.",
+    "estimated_fix_count": 98,
+    "method": "Redirection plugin or .htaccess for 301s; grep content to remove dead internal links."
+  },
+  "p1b_prune_taxonomy": {
+    "count": 588,
+    "action": "539 product_tag + 49 product_cat + 10 post_tag + 5 post_cat. Keep canonical strategy: product_tags noindexed and removed from sitemap; low-count categories noindexed; value categories indexed with unique content and canonical self.",
+    "estimated_fix_count": 588,
+    "method": "Yoast Search Appearance + functions.php filters + Yoast SEO sitemap exclusions."
+  },
+  "p2a_sitemap_resubmit": {
+    "action": "Regenerate /sitemap_index.xml after pruning. Resubmit in GSC. Request validation for \"Excluded by noindex\" and \"Crawled - currently not indexed\" statuses.",
+    "estimated_fix_count": 1
+  },
+  "p2b_url_inspection": {
+    "action": "URL-inspect money pages to confirm indexed + self-canonical. Money pages listed above already show noindex=False and correct canonical.",
+    "estimated_fix_count": 16
+  },
+  "quality_gates_before_reenable": [
+    {
+      "gate": "canonical_strategy",
+      "required": true,
+      "detail": "Every new page must self-canonical; no tag/term should canonical to another page."
+    },
+    {
+      "gate": "thin_duplicate_check",
+      "required": true,
+      "detail": "Block creation if proposed slug/title/content hash is within 85% similarity of existing page."
+    },
+    {
+      "gate": "max_new_pages_per_run",
+      "required": true,
+      "value": 3,
+      "detail": "Hard cap on pages created per run (already present); additionally require owner approval if cap exceeds 5 in a week."
+    },
+    {
+      "gate": "sitemap_inclusion_policy",
+      "required": true,
+      "detail": "Only indexable money/area/category pages allowed in sitemap; all thin tags/archives excluded."
+    },
+    {
+      "gate": "internal_link_to_new_pages",
+      "required": true,
+      "detail": "New pages must receive at least one internal link from a level-1 page within 48 hours."
+    },
+    {
+      "gate": "h1_title_meta_qa",
+      "required": true,
+      "detail": "Must have exactly one H1, unique title<=60 chars, unique meta<=155 chars before publish."
+    },
+    {
+      "gate": "gsc_validation_review",
+      "required": true,
+      "detail": "After re-enable, run weekly validation review for 4 weeks; roll back if not-indexed count rises by >10%."
+    }
+  ],
+  "rollback_notes": {
+    "wp_revisions_enabled": true,
+    "backups_taken": [
+      "wp-pages.json",
+      "wp-posts.json",
+      "wp-products.json",
+      "wp-product_tags.json",
+      "wp-product_cats.json",
+      "wp-post_tags.json",
+      "wp-post_cats.json",
+      "sitemap_url_manifest.json",
+      "backup-* sitemaps/robots"
+    ],
+    "generator_gate": "generator_enabled.json set to false; remove/flip file and restore auto_apply.py patch to re-enable.",
+    "301_rollback": "Store all rewrite rules in Redirection plugin (revisioned); htaccess changes backed up in recovery folder.",
+    "meta_rollback": "Before bulk meta changes, export current Yoast indexable table or save per-post json snapshots."
+  }
+}
