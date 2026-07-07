@@ -1141,7 +1141,20 @@ const PragmaMirrorPanel = () => {
   const [historyData, setHistoryData] = React.useState(null);
   const [fetched, setFetched] = React.useState(false);
   const [histFetched, setHistFetched] = React.useState(false);
+  const [slmScore, setSlmScore] = React.useState(null);
   React.useEffect(() => {
+    const trySlm = async () => {
+      const urls = [
+        './slm-mirror.json?cb=' + Date.now(),
+        'https://extracoffee13.github.io/hartley-command/slm-mirror.json?cb=' + Date.now(),
+      ];
+      for (const u of urls) {
+        try {
+          const r = await fetch(u, { cache: 'no-store' });
+          if (r.ok) { const j = await r.json(); setSlmScore(j && j.overall_slm_score != null ? j.overall_slm_score : null); return; }
+        } catch (e) {}
+      }
+    };
     const tryFetch = async () => {
       const urls = [
         './brand-insights/latest.json?cb=' + Date.now(),
@@ -1170,6 +1183,7 @@ const PragmaMirrorPanel = () => {
     };
     tryFetch();
     tryHistory();
+    trySlm();
   }, []);
 
   const productName = (data && data.product_name) || "PRAGMA Mirror";
@@ -1396,7 +1410,7 @@ const PragmaMirrorPanel = () => {
               ["AEO", data && data.modules && data.modules.aeo && data.modules.aeo.score, "aeo_score"],
               ["LLM", data && data.modules && data.modules.llm && data.modules.llm.score, "llm_score"],
               ["GEO", data && data.modules && data.modules.geo && data.modules.geo.score, "geo_score"],
-              ["SLM", data && data.slm_score, "slm_score"]
+              ["SLM", (data && data.slm_score != null) ? data.slm_score : slmScore, "slm_score"]
              ].map(function(it){ return (
               <div key={it[0]} style={{ flex: 1, minWidth: 54, background: "rgba(0,0,0,0.3)", padding: 6, borderLeft: "3px solid " + aiviColor(it[1]) }}>
                 <div style={{ fontSize: 8, color: C.greenDim, letterSpacing: 1 }}>{it[0]} {deltaArrow(getDelta(it[2]))}</div>
@@ -1740,7 +1754,7 @@ const RedditMonitorPanel = () => {
       )}
 
       <div style={{ color: "rgba(255,255,255,0.35)", fontSize: 10, marginTop: 10, lineHeight: 1.5 }}>
-        Queries: 9 entity+category searches across 9 subreddits · Auth: Tavily + site:reddit.com ({data && data.auth_note ? "upgrade path: " + data.auth_note : ""})
+        Queries: {(data && data.niche_queries_issued) || 0} entity+category searches across {(data && data.profile && data.profile.niche_count) || 0} niches · {(data && data.total_mentions) || 0} mentions ({(data && data.recent_24h) || 0} in 24h) · Auth: Tavily + site:reddit.com ({data && data.auth_note ? "upgrade path: " + data.auth_note : ""})
       </div>
     </div>
   );
