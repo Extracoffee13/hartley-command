@@ -1,29 +1,101 @@
 {
   "schema_version": "2.0",
-  "ts": "2026-07-07T15:40:23.665828Z",
+  "ts": "2026-07-07T17:39:33.550117Z",
   "client": "pragma",
   "policy": "RECOMMEND-ONLY \u2014 nothing in this queue is auto-applied to any live site. Each item requires explicit human action.",
   "counts": {
-    "total": 15,
-    "high": 10,
-    "med": 5,
+    "total": 20,
+    "high": 12,
+    "med": 8,
     "low": 0
   },
   "recommendations": [
     {
-      "id": "rec-seo-001",
-      "module": "SEO",
+      "id": "rec-aeo-001",
+      "module": "AEO",
       "severity": "high",
-      "page_or_area": "https://prag-ma.ai/",
-      "issue": "Missing or mis-sized meta description.",
-      "recommendation": "Publish a 120-160 char meta description with category + geo + CTA.",
-      "before": "PRAGMA installs a custom AI operating system directly on your business \u2014 20 to 30 agents running your marketing, operations, intelligence, and finance. Installed in 30 days, tuned and evolved on retainer. Inbound only.",
-      "after": "PRAGMA provides AI operating systems \u2014 installed, owned AI agent teams for SMBs across Jacksonville and the surrounding area. Request a fast quote today.",
-      "action": "wp-meta",
+      "page_or_area": "done-for-you AI agents for small business",
+      "issue": "prag-ma.ai not cited in AI/web search results for category query.",
+      "recommendation": "Publish an FAQ/answer-style landing section targeting this query so AI surfaces and search engines can extract a direct citation.",
+      "before": "(not cited)",
+      "after": "Add an H2 'done-for-you AI agents for small business' with a 40-60 word direct answer naming PRAGMA, service area, and a CTA, wrapped in FAQPage schema.",
+      "action": "content",
       "status": "queued"
     },
     {
-      "id": "rec-seo-002",
+      "id": "rec-aeo-002",
+      "module": "AEO",
+      "severity": "high",
+      "page_or_area": "install an AI operating system for my company",
+      "issue": "prag-ma.ai not cited in AI/web search results for category query.",
+      "recommendation": "Publish an FAQ/answer-style landing section targeting this query so AI surfaces and search engines can extract a direct citation.",
+      "before": "(not cited)",
+      "after": "Add an H2 'install an AI operating system for my company' with a 40-60 word direct answer naming PRAGMA, service area, and a CTA, wrapped in FAQPage schema.",
+      "action": "content",
+      "status": "queued"
+    },
+    {
+      "id": "rec-aeo-003",
+      "module": "AEO",
+      "severity": "high",
+      "page_or_area": "AI agent team for SMB",
+      "issue": "prag-ma.ai not cited in AI/web search results for category query.",
+      "recommendation": "Publish an FAQ/answer-style landing section targeting this query so AI surfaces and search engines can extract a direct citation.",
+      "before": "(not cited)",
+      "after": "Add an H2 'AI agent team for SMB' with a 40-60 word direct answer naming PRAGMA, service area, and a CTA, wrapped in FAQPage schema.",
+      "action": "content",
+      "status": "queued"
+    },
+    {
+      "id": "rec-aeo-004",
+      "module": "AEO",
+      "severity": "high",
+      "page_or_area": "own your AI agents instead of renting SaaS",
+      "issue": "prag-ma.ai not cited in AI/web search results for category query.",
+      "recommendation": "Publish an FAQ/answer-style landing section targeting this query so AI surfaces and search engines can extract a direct citation.",
+      "before": "(not cited)",
+      "after": "Add an H2 'own your AI agents instead of renting SaaS' with a 40-60 word direct answer naming PRAGMA, service area, and a CTA, wrapped in FAQPage schema.",
+      "action": "content",
+      "status": "queued"
+    },
+    {
+      "id": "rec-aeo-005",
+      "module": "AEO",
+      "severity": "high",
+      "page_or_area": "alternative to hiring an AI consultant for a small business",
+      "issue": "prag-ma.ai not cited in AI/web search results for category query.",
+      "recommendation": "Publish an FAQ/answer-style landing section targeting this query so AI surfaces and search engines can extract a direct citation.",
+      "before": "(not cited)",
+      "after": "Add an H2 'alternative to hiring an AI consultant for a small business' with a 40-60 word direct answer naming PRAGMA, service area, and a CTA, wrapped in FAQPage schema.",
+      "action": "content",
+      "status": "queued"
+    },
+    {
+      "id": "rec-aeo-006",
+      "module": "AEO",
+      "severity": "high",
+      "page_or_area": "replace marketing SaaS subscriptions with owned AI",
+      "issue": "prag-ma.ai not cited in AI/web search results for category query.",
+      "recommendation": "Publish an FAQ/answer-style landing section targeting this query so AI surfaces and search engines can extract a direct citation.",
+      "before": "(not cited)",
+      "after": "Add an H2 'replace marketing SaaS subscriptions with owned AI' with a 40-60 word direct answer naming PRAGMA, service area, and a CTA, wrapped in FAQPage schema.",
+      "action": "content",
+      "status": "queued"
+    },
+    {
+      "id": "rec-aeo-007",
+      "module": "AEO",
+      "severity": "high",
+      "page_or_area": "AI operations installed and owned in 30 days",
+      "issue": "prag-ma.ai not cited in AI/web search results for category query.",
+      "recommendation": "Publish an FAQ/answer-style landing section targeting this query so AI surfaces and search engines can extract a direct citation.",
+      "before": "(not cited)",
+      "after": "Add an H2 'AI operations installed and owned in 30 days' with a 40-60 word direct answer naming PRAGMA, service area, and a CTA, wrapped in FAQPage schema.",
+      "action": "content",
+      "status": "queued"
+    },
+    {
+      "id": "rec-seo-008",
       "module": "SEO",
       "severity": "med",
       "page_or_area": "https://prag-ma.ai/",
@@ -35,7 +107,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-seo-003",
+      "id": "rec-seo-009",
       "module": "SEO",
       "severity": "high",
       "page_or_area": "https://prag-ma.ai/",
@@ -47,43 +119,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-seo-004",
-      "module": "SEO",
-      "severity": "high",
-      "page_or_area": "https://prag-ma.ai/the-operating-system/",
-      "issue": "Missing or mis-sized meta description.",
-      "recommendation": "Publish a 120-160 char meta description with category + geo + CTA.",
-      "before": "The Frontier Firm Operating System deploys a specialized bench of Operators \u2014 strategy, brand, operations, intelligence, research, owned presence, alt-data, and finance \u2014 plus custom domain-specific Operators, installed on your own AI platform. Thirty days from kickoff to running; evolved on retainer.",
-      "after": "PRAGMA provides AI operating systems \u2014 installed, owned AI agent teams for SMBs across Jacksonville and the surrounding area. Request a fast quote today.",
-      "action": "wp-meta",
-      "status": "queued"
-    },
-    {
-      "id": "rec-seo-005",
-      "module": "SEO",
-      "severity": "high",
-      "page_or_area": "https://prag-ma.ai/how-it-works/",
-      "issue": "Missing or mis-sized meta description.",
-      "recommendation": "Publish a 120-160 char meta description with category + geo + CTA.",
-      "before": "20 to 30 agents. One firm. Your business runs differently in 30 days. Plain English \u2014 what each Operator does for you, the apps it replaces, and the hires it stands in for.",
-      "after": "PRAGMA provides AI operating systems \u2014 installed, owned AI agent teams for SMBs across Jacksonville and the surrounding area. Request a fast quote today.",
-      "action": "wp-meta",
-      "status": "queued"
-    },
-    {
-      "id": "rec-seo-006",
-      "module": "SEO",
-      "severity": "high",
-      "page_or_area": "https://prag-ma.ai/offerings/",
-      "issue": "Missing or mis-sized meta description.",
-      "recommendation": "Publish a 120-160 char meta description with category + geo + CTA.",
-      "before": "PRAGMA installs the Operator OS \u2014 a multi-agent operating system \u2014 on your business. SMB clients via PRAGMA Install (starting at $7,500). Enterprise via PRAGMA Build (by inquiry). The experience of running differently, with the work that experience produces.",
-      "after": "PRAGMA provides AI operating systems \u2014 installed, owned AI agent teams for SMBs across Jacksonville and the surrounding area. Request a fast quote today.",
-      "action": "wp-meta",
-      "status": "queued"
-    },
-    {
-      "id": "rec-seo-007",
+      "id": "rec-seo-010",
       "module": "SEO",
       "severity": "med",
       "page_or_area": "https://prag-ma.ai/offerings/",
@@ -95,7 +131,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-seo-008",
+      "id": "rec-seo-011",
       "module": "SEO",
       "severity": "high",
       "page_or_area": "https://prag-ma.ai/offerings/",
@@ -107,7 +143,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-seo-009",
+      "id": "rec-seo-012",
       "module": "SEO",
       "severity": "med",
       "page_or_area": "https://prag-ma.ai/about/",
@@ -119,7 +155,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-seo-010",
+      "id": "rec-seo-013",
       "module": "SEO",
       "severity": "high",
       "page_or_area": "https://prag-ma.ai/about/",
@@ -131,7 +167,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-seo-011",
+      "id": "rec-seo-014",
       "module": "SEO",
       "severity": "high",
       "page_or_area": "https://prag-ma.ai/apply/",
@@ -143,7 +179,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-seo-012",
+      "id": "rec-seo-015",
       "module": "SEO",
       "severity": "med",
       "page_or_area": "https://prag-ma.ai/apply/",
@@ -155,7 +191,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-seo-013",
+      "id": "rec-seo-016",
       "module": "SEO",
       "severity": "high",
       "page_or_area": "https://prag-ma.ai/apply/",
@@ -167,19 +203,43 @@
       "status": "queued"
     },
     {
-      "id": "rec-seo-014",
-      "module": "SEO",
-      "severity": "high",
-      "page_or_area": "https://prag-ma.ai/trust/",
-      "issue": "Missing or mis-sized meta description.",
-      "recommendation": "Publish a 120-160 char meta description with category + geo + CTA.",
-      "before": "Security, data ownership, what we need from you, what an engagement looks like, what happens if we cease operations. Honest answers to the questions an SMB owner actually asks before signing.",
-      "after": "PRAGMA provides AI operating systems \u2014 installed, owned AI agent teams for SMBs across Jacksonville and the surrounding area. Request a fast quote today.",
-      "action": "wp-meta",
+      "id": "rec-geo-017",
+      "module": "GEO",
+      "severity": "med",
+      "page_or_area": "Jacksonville FL",
+      "issue": "High-value geo target 'Jacksonville FL' not yet targeted.",
+      "recommendation": "Create a community-specific landing page to capture early local intent.",
+      "before": "(no page)",
+      "after": "Community page: 'Jacksonville FL' with neighborhood-specific copy + schema.",
+      "action": "local-page",
       "status": "queued"
     },
     {
-      "id": "rec-geo-015",
+      "id": "rec-geo-018",
+      "module": "GEO",
+      "severity": "med",
+      "page_or_area": "Northeast Florida",
+      "issue": "High-value geo target 'Northeast Florida' not yet targeted.",
+      "recommendation": "Create a community-specific landing page to capture early local intent.",
+      "before": "(no page)",
+      "after": "Community page: 'Northeast Florida' with neighborhood-specific copy + schema.",
+      "action": "local-page",
+      "status": "queued"
+    },
+    {
+      "id": "rec-geo-019",
+      "module": "GEO",
+      "severity": "med",
+      "page_or_area": "United States",
+      "issue": "High-value geo target 'United States' not yet targeted.",
+      "recommendation": "Create a community-specific landing page to capture early local intent.",
+      "before": "(no page)",
+      "after": "Community page: 'United States' with neighborhood-specific copy + schema.",
+      "action": "local-page",
+      "status": "queued"
+    },
+    {
+      "id": "rec-geo-020",
       "module": "GEO",
       "severity": "med",
       "page_or_area": "Google Business Profile",
