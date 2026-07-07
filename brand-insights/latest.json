@@ -1,20 +1,20 @@
 {
   "schema_version": "2.0",
-  "ts": "2026-07-06T10:20:05.688484Z",
+  "ts": "2026-07-07T12:51:06.569267Z",
   "client": "b9",
   "client_display_name": "Brand 9 Signs",
   "product_name": "PRAGMA Mirror",
   "scan_status": "live",
   "visibility_score": {
-    "composite": 40,
+    "composite": 69,
     "trend_7day": [
-      51,
       51,
       53,
       34,
       34,
       39,
-      40
+      40,
+      69
     ],
     "color_threshold": {
       "red_below": 50,
@@ -25,60 +25,61 @@
   },
   "modules": {
     "aeo": {
-      "score": 30,
-      "cited": true,
+      "score": null,
+      "cited": false,
       "queries": [
         {
           "query": "commercial sign company jacksonville",
-          "cited": false,
+          "cited": null,
           "surface": "web-search"
         },
         {
           "query": "sign installation clay county fl",
-          "cited": true,
+          "cited": null,
           "surface": "web-search"
         },
         {
           "query": "custom business signs st johns",
-          "cited": false,
+          "cited": null,
           "surface": "web-search"
         },
         {
           "query": "home builder signage company florida",
-          "cited": true,
+          "cited": null,
           "surface": "web-search"
         },
         {
           "query": "model home display signage jacksonville",
-          "cited": true,
+          "cited": null,
           "surface": "web-search"
         },
         {
           "query": "environmental graphic design firm florida",
-          "cited": false,
+          "cited": null,
           "surface": "web-search"
         },
         {
           "query": "wayfinding signage company southeast",
-          "cited": false,
+          "cited": null,
           "surface": "web-search"
         },
         {
           "query": "monument signs for communities florida",
-          "cited": false,
+          "cited": null,
           "surface": "web-search"
         },
         {
           "query": "construction site signs installation",
-          "cited": false,
+          "cited": null,
           "surface": "web-search"
         },
         {
           "query": "military base signage contractor",
-          "cited": false,
+          "cited": null,
           "surface": "web-search"
         }
-      ]
+      ],
+      "note": "AEO degraded: no Tavily key/network."
     },
     "seo": {
       "score": 70,
@@ -163,49 +164,37 @@
       ]
     },
     "llm": {
-      "score": 50,
+      "score": 67,
       "questions": [
         {
           "q": "Who are the best commercial sign companies in Jacksonville FL?",
-          "cited": false,
-          "surface": "web-grounded",
-          "in_answer": false,
-          "in_sources": false
+          "cited": null,
+          "surface": "web-grounded"
         },
         {
           "q": "Where can I get custom business signs installed in Clay County Florida?",
-          "cited": true,
-          "surface": "web-grounded",
-          "in_answer": false,
-          "in_sources": true
+          "cited": null,
+          "surface": "web-grounded"
         },
         {
           "q": "What are the top home builder signage companies in Florida?",
-          "cited": true,
-          "surface": "web-grounded",
-          "in_answer": false,
-          "in_sources": true
+          "cited": null,
+          "surface": "web-grounded"
         },
         {
           "q": "Who does model home display signage in Jacksonville?",
-          "cited": true,
-          "surface": "web-grounded",
-          "in_answer": false,
-          "in_sources": true
+          "cited": null,
+          "surface": "web-grounded"
         },
         {
           "q": "Which companies install community monument signs in master-planned communities?",
-          "cited": false,
-          "surface": "web-grounded",
-          "in_answer": false,
-          "in_sources": false
+          "cited": null,
+          "surface": "web-grounded"
         },
         {
           "q": "Who is the best environmental graphic design firm in the Southeast?",
-          "cited": false,
-          "surface": "web-grounded",
-          "in_answer": false,
-          "in_sources": false
+          "cited": null,
+          "surface": "web-grounded"
         },
         {
           "q": "Which sign companies specialize in wayfinding systems for campuses?",
@@ -222,24 +211,25 @@
         {
           "surface": "Web-grounded AI (AI Overviews / Perplexity)",
           "method": "Tavily · always-on · key-light",
-          "checks": 6,
-          "mentions": 3
+          "checks": 0,
+          "mentions": 0
         },
         {
           "surface": "ChatGPT / Claude / Gemini (consumer)",
           "method": "weekly browser pass · your own logins · $0",
           "checks": 12,
-          "mentions": 3,
-          "note": "Full 4-surface consumer-LLM browser pass via logged-in Chrome (all 12 scans). ChatGPT (neutral acct) 0/3 web-grounded. Claude (personalized) 2/3, brand9signs.com cited organically on Q2/Q3. Perplexity (anonymous, neutral) 0/3. Gemini (personalized) 1/3, named Brand 9 + cited brand9signs.com on Q2. ChatGPT+Perplexity are the neutral baseline (both 0/3); Claude+Gemini are personalized and biased upward. Re-merged after daily run.py probe refresh."
+          "mentions": 8,
+          "note": "Perplexity run anonymous (cleanest organic read). ChatGPT free logged-in. Gemini logged-in Google acct, GBP not connected. Claude results are account-personalized (memory knows Bobby owns Brand 9) and should NOT be read as organic consumer visibility."
         }
-      ]
+      ],
+      "note": "AI-answer uses consumer-LLM browser sidecar (Tavily unavailable)."
     },
     "geo": {
-      "score": 0,
+      "score": null,
       "geofence": [
         {
           "area": "Jacksonville FL",
-          "cited": false
+          "cited": null
         },
         {
           "area": "Clay County",
@@ -287,7 +277,8 @@
           "community": "Tributary Yulee",
           "status": "opportunity"
         }
-      ]
+      ],
+      "note": "GEO degraded: no Tavily key/network."
     }
   },
   "competitors": [
@@ -300,20 +291,23 @@
   "recommendations_high": 15,
   "_meta": {
     "writer": "pragma-mirror call (run.py)",
-    "computed_at": "2026-07-06T10:20:05.688484Z",
+    "computed_at": "2026-07-07T12:51:06.569267Z",
     "recommend_only": true,
-    "degraded_modules": []
+    "degraded_modules": [
+      "aeo",
+      "geo"
+    ]
   },
   "aivi": {
-    "composite": 40,
+    "composite": 69,
     "trend_7day": [
-      51,
       51,
       53,
       34,
       34,
       39,
-      40
+      40,
+      69
     ],
     "color_threshold": {
       "red_below": 50,
@@ -507,6 +501,6 @@
       "signage-clay-county"
     ]
   },
-  "last_scan_ts": "2026-07-06T10:20:05.688484Z",
-  "_mirrored_at": "2026-07-06T10:20:05.688484Z"
+  "last_scan_ts": "2026-07-07T12:51:06.569267Z",
+  "_mirrored_at": "2026-07-07T12:51:06.569267Z"
 }
