@@ -1855,6 +1855,99 @@ const RedditMonitorPanel = () => {
 // Strategy locked via creative abrasion w/ Hermes (Kimi K2.7) · 2026-06-26
 // Envelope by OUTCOME + OWNERSHIP, not feature-parity SaaS.
 // ═══════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════
+// PRAGMA OWN-SITE MIRROR — the B9 web / AEO / LLM / GEO / SLM + Site-Health
+// suite, pointed at prag-ma.ai (PRAGMA's own site). Multi-tenant client=pragma.
+// Reads clients/pragma/brand-insights/latest.json (AI-visibility) +
+// clients/pragma/brand-insights/site-health.json (owned crawl).
+// ═══════════════════════════════════════════════════════════════
+const PragmaOwnSiteMirrorPanel = () => {
+  const [ai, setAi] = React.useState(null);
+  const [sh, setSh] = React.useState(null);
+  const [fetched, setFetched] = React.useState(false);
+  React.useEffect(() => {
+    const grab = async (rel) => {
+      const urls = [rel + '?cb=' + Date.now(), 'https://extracoffee13.github.io/hartley-command/' + rel.replace(/^\.\//, '') + '?cb=' + Date.now()];
+      for (const u of urls) { try { const r = await fetch(u, { cache: 'no-store' }); if (r.ok) return await r.json(); } catch (e) {} }
+      return null;
+    };
+    (async () => {
+      setAi(await grab('./clients/pragma/brand-insights/latest.json'));
+      setSh(await grab('./clients/pragma/brand-insights/site-health.json'));
+      setFetched(true);
+    })();
+  }, []);
+
+  const P = C.purple;
+  const aivi = (ai && ai.aivi) || {};
+  const comp = aivi.composite;
+  const thr = aivi.color_threshold || { red_below: 50, yellow_below: 70 };
+  const vColor = (v) => (v == null ? C.greenDim : (v < (thr.red_below || 50) ? '#FF4D4F' : v < (thr.yellow_below || 70) ? '#FFC53D' : C.green));
+  const ss = aivi.subscores || {};
+  const subs = [['Mention', 'mention_score'], ['Citation', 'citation_score'], ['Sentiment', 'sentiment_score'], ['Ranking', 'ranking_score'], ['Coverage', 'surface_coverage_score']];
+  const surfaces = (ai && ai.surfaces) || {};
+  const surfRows = [['claude', 'Claude'], ['chatgpt', 'ChatGPT'], ['gemini', 'Gemini'], ['perplexity', 'Perplexity'], ['google_ai_overview', 'Google AI Overview']];
+  const aiTs = ai && ai.ts;
+  const aiAgeH = aiTs ? Math.floor((Date.now() - Date.parse(aiTs)) / 36e5) : null;
+  const aiStale = aiAgeH != null && aiAgeH > 48;
+
+  const hs = (sh && sh.health_score);
+  const hbd = (sh && sh.health_score_breakdown) || {};
+  const ded = Object.entries(hbd.deductions || {}).map(([k, v]) => ({ k: k, c: v.count || 0, p: v.penalty || 0 })).filter(x => x.c > 0).sort((a, b) => b.p - a.p);
+  const crawl = (sh && sh.crawl) || {};
+  const shTs = sh && sh.generated;
+  const shAgeH = shTs ? Math.floor((Date.now() - Date.parse(shTs)) / 36e5) : null;
+  const hColor = hs == null ? C.greenDim : (hs >= 90 ? C.green : hs >= 70 ? '#FFC53D' : '#FF4D4F');
+
+  return (
+    <div style={{ margin: '20px 28px', padding: 18, border: `2px solid ${P}`, background: 'rgba(179,136,255,0.04)', position: 'relative' }}>
+      <div style={{ position: 'absolute', top: -10, left: 16, padding: '0 8px', background: '#000', fontSize: 10, color: P, letterSpacing: 4 }}>◈ PRAGMA — OWN-SITE MIRROR · prag-ma.ai</div>
+      <div style={{ fontSize: 9, color: C.greenDim, marginTop: 6, marginBottom: 12 }}>The same web / AEO / LLM / GEO / SLM + Site-Health suite we run on Brand 9, pointed at PRAGMA's own site · client=pragma (multi-tenant)</div>
+      {!fetched && <div style={{ color: C.greenDim, fontSize: 12 }}>Loading prag-ma.ai mirror…</div>}
+      {fetched && (
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18 }}>
+        <div>
+          <div style={{ fontSize: 9, color: P, letterSpacing: 2, marginBottom: 6 }}>AI VISIBILITY (AIVI)</div>
+          <div style={{ fontSize: 42, fontWeight: 900, color: vColor(comp), fontFamily: 'Georgia, serif', lineHeight: 1 }}>{comp == null ? '--' : Math.round(comp)}</div>
+          <div style={{ fontSize: 8, color: aiStale ? '#FFC53D' : C.greenDim, letterSpacing: 1, marginTop: 3 }}>{aiStale ? '⚠ STALE — rescan via flock · ' : ''}{aiTs ? ('scan ' + aiTs.slice(0, 10)) : 'no scan yet'}</div>
+          <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap', marginTop: 8 }}>
+            {subs.map(function (s) { var v = ss[s[1]]; return (
+              <div key={s[0]} style={{ flex: 1, minWidth: 52, background: 'rgba(0,0,0,0.3)', padding: 5, borderLeft: '3px solid ' + vColor(v) }}>
+                <div style={{ fontSize: 8, color: C.greenDim }}>{s[0]}</div>
+                <div style={{ fontSize: 15, fontWeight: 800, color: vColor(v) }}>{v == null ? '—' : Math.round(v)}</div>
+              </div>); })}
+          </div>
+          <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginTop: 10, marginBottom: 4 }}>PER-SURFACE · DID AI NAME PRAGMA?</div>
+          {surfRows.map(function (p) { var s = surfaces[p[0]]; var cited = s && s.mentions > 0; return (
+            <div key={p[0]} style={{ display: 'grid', gridTemplateColumns: '110px 1fr', padding: '3px 0', borderBottom: '1px dashed ' + C.greenDim }}>
+              <span style={{ fontSize: 10, color: P }}>{p[1]}</span>
+              <span style={{ fontSize: 9, color: cited ? C.green : C.greenDim }}>{s ? (cited ? (s.mentions + ' of ' + (s.queries_probed || '?') + ' cite PRAGMA') : ('probed ' + (s.queries_probed || 0) + ' · unranked')) : 'not probed'}</span>
+            </div>); })}
+        </div>
+        <div>
+          <div style={{ fontSize: 9, color: C.cyan, letterSpacing: 2, marginBottom: 6 }}>SITE HEALTH · OWNED CRAWL</div>
+          <div style={{ fontSize: 42, fontWeight: 900, color: hColor, fontFamily: 'monospace', lineHeight: 1 }}>{hs == null ? '--' : hs}</div>
+          <div style={{ fontSize: 8, color: C.greenDim, letterSpacing: 1, marginTop: 3 }}>{shTs ? ('crawl ' + shTs.slice(0, 10) + (shAgeH != null ? (' · ' + shAgeH + 'h old') : '')) : 'crawl pending'}</div>
+          <div style={{ fontSize: 11, lineHeight: 1.6, marginTop: 8 }}>
+            <div>{crawl.pages_crawled || 0} pages · all {Object.keys(crawl.status_codes || {}).join('/') || '—'}</div>
+            <div>avg {crawl.avg_load_time_s != null ? crawl.avg_load_time_s + 's' : '—'} load · {crawl['slow_pages_over_2.0s'] || 0} slow</div>
+          </div>
+          <div style={{ fontSize: 9, color: hColor, letterSpacing: 2, marginTop: 8, marginBottom: 4 }}>DEDUCTIONS</div>
+          {ded.length === 0 && <div style={{ fontSize: 10, color: C.green }}>Clean — no scored issues.</div>}
+          {ded.map(function (x) { return (
+            <div key={x.k} style={{ display: 'grid', gridTemplateColumns: '1fr auto', fontSize: 9, padding: '2px 0', borderBottom: '1px dashed ' + C.greenDim }}>
+              <span style={{ color: 'rgba(255,255,255,0.7)' }}>{x.k.replace(/_/g, ' ')}</span>
+              <span style={{ color: '#FFC53D' }}>{x.c} · −{x.p}</span>
+            </div>); })}
+        </div>
+      </div>)}
+      <div style={{ fontSize: 8, color: C.greenDim, marginTop: 12, lineHeight: 1.5, borderTop: `1px solid ${C.greenDim}`, paddingTop: 8 }}>
+        Site-Health = owned crawl (live). AI-visibility + SLM rescan runs on the flock: <span style={{ color: C.cyan }}>run.py --client pragma</span> (config-driven, open models, $0). Add to run_daily.sh to keep prag-ma.ai fresh alongside b9.
+      </div>
+    </div>
+  );
+};
+
 const MirrorBasePanel = () => {
   const steps = [
     { n: "01", label: "ToplinePro → client-owned WordPress migrator",
@@ -1929,7 +2022,7 @@ const MirrorBasePanel = () => {
 // Rule: must (a) make judgment calls or synthesize, (b) recur, (c) be
 // non-trivial for a Claude agent + plain skill to replicate.
 // WILD_DUCKS:BEGIN — DO NOT EDIT BY HAND · regenerated by construct-v4-sync Wild Duck from /Atlas/hermes-sandbox/MANIFEST.md
-//   regenerated at: 2026-07-07T15:30:15.919463Z
+//   regenerated at: 2026-07-07T15:35:16.255572Z
 //   source of truth: classify-flock.py output (MANIFEST.md)
 const WILD_DUCKS = [
   { name: "agent-cross-ref-validator", status: "proven", score: 20, domain: "Meta-learning detection", skills: ["Cross-agent citation tracing"] },
@@ -1952,7 +2045,7 @@ const WILD_DUCKS = [
 // Locked 2026-06-01 per Bobby: "duck calls" — predictable instruments, not the rare ducks
 // Listed compactly because they're plumbing, not headliners.
 // CALLS:BEGIN — DO NOT EDIT BY HAND · regenerated by construct-v4-sync Wild Duck from /Atlas/hermes-sandbox/MANIFEST.md
-//   regenerated at: 2026-07-07T15:30:15.919463Z
+//   regenerated at: 2026-07-07T15:35:16.255572Z
 const CALLS = [
   { name: "adoption-reminder", cadence: "daily", group: "ops" },
   { name: "ai-citation-probe", cadence: "weekly", group: "probe" },
@@ -2895,6 +2988,7 @@ const Dashboard = () => (
       <PragmaMirrorPanel />
       <SiteHealthPanel />
       <MirrorBasePanel />
+      <PragmaOwnSiteMirrorPanel />
       <WildDucksBand />
       <HermesMigrationMap />
       <OperatorGrid />
