@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-08T16:13:13.493716Z",
+  "generated": "2026-07-08T16:45:09.652765Z",
   "headline": "Shared approval queue \u2014 every module drafts here; you approve; Construct executes on the client's own rails",
   "policy": "PREP ONLY \u2014 nothing publishes without Bobby's one-tap approval. No autonomous posting.",
   "pending_total": 41,
@@ -66,24 +66,6 @@
       "channel": "gbp",
       "iso_week": 28,
       "needs_image": true
-    },
-    {
-      "id": "email-b110e21b60",
-      "module": "email",
-      "type": "email-campaign",
-      "client": "Brand 9 Signs",
-      "target": "recent customers",
-      "preview": "Quick favor \u2014 how did your Brand 9 Signs project turn out?  \u2014  Hi {first},",
-      "thumbnail": null,
-      "url": null,
-      "created": "2026-07-08T13:54:24.180184Z",
-      "channel": "apple-mail / gmail-chrome",
-      "from": "ap@brand9signs.com",
-      "subject": "Quick favor \u2014 how did your Brand 9 Signs project turn out?",
-      "body": "Hi {first},\n\nThank you again for trusting Brand 9 Signs with your recent project. If it turned out the way you hoped, would you mind leaving us a quick Google review? It genuinely helps other Northeast Florida businesses find us.\n\n[Google review link]\n\nIt takes about 30 seconds, and we read every one.\n\nThanks so much,\nBrand 9 Signs",
-      "campaign_type": "review-request",
-      "iso_week": 28,
-      "send_note": "Bobby sends from ap@brand9signs.com (Apple Mail or Gmail in Chrome) after approval."
     },
     {
       "id": "reviews-9df34e3895",
@@ -644,6 +626,24 @@
       "lead_email": "ap@brand9signs.com",
       "guardrails": "Answers come only from this knowledge base. Never quotes a firm price or promises a date \u2014 gives ranges and routes to a human for anything specific.",
       "deploy_note": "On approval: embed on WordPress via website MCP; upgradeable to LLM-backed later."
+    },
+    {
+      "id": "email-b110e21b60",
+      "module": "email",
+      "type": "email-campaign",
+      "client": "Brand 9 Signs",
+      "target": "recent customers",
+      "preview": "Quick favor \u2014 how did your Brand 9 Signs project turn out?  \u2014  Hi {first},",
+      "thumbnail": null,
+      "url": null,
+      "created": "2026-07-08T16:45:09.650921Z",
+      "channel": "apple-mail / gmail-chrome",
+      "from": "ap@brand9signs.com",
+      "subject": "Quick favor \u2014 how did your Brand 9 Signs project turn out?",
+      "body": "Hi {first},\n\nThank you again for trusting Brand 9 Signs with your recent project. If it turned out the way you hoped, would you mind leaving us a quick Google review? It genuinely helps other Northeast Florida businesses find us.\n\n[Google review link]\n\nIt takes about 30 seconds, and we read every one.\n\nThanks so much,\nBrand 9 Signs",
+      "campaign_type": "review-request",
+      "iso_week": 28,
+      "send_note": "Bobby sends from ap@brand9signs.com (Apple Mail or Gmail in Chrome) after approval."
     }
   ],
   "sources": [
