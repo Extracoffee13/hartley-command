@@ -20,12 +20,12 @@
       "id": "gbp",
       "label": "Google Business Profile",
       "status": "BUILD",
-      "metric_label": "Posts/mo · Q&A · GEO",
+      "metric_label": "Weekly post · auto-publish",
       "posts_month": null,
       "qa_answered": null,
       "geo_naming_rate": null,
-      "source": "apple-maps-listing-watcher · gbp-review-monitor · Mirror GEO",
-      "gap": "scheduled GBP-post generator + Q&A/photo cadence",
+      "source": "gbp_writer (weekly post draft) · gbp_post API auto-publish (pending auth) · Mirror GEO",
+      "gap": "auto-publish goes live once GBP API authorized; add Q&A/photo cadence",
       "price": "$200–400/mo"
     },
     {
@@ -58,8 +58,8 @@
       "metric_label": "New leads · Median response",
       "leads_week": null,
       "median_response_min": null,
-      "source": "inbound-lead-router (live) · serp-tracker · google-search-intel-watcher · Prism void-prospector",
-      "gap": "<5-min auto-responder (shares email rail) + booking/CRM glue",
+      "source": "leads-inbox-scan → ap@brand9signs.com (Gmail-Chrome) · speed-to-lead drafts",
+      "gap": "confirm B9 lead inbox; drafts ready (PREP) — you send",
       "price": "$500–1,500/mo + performance"
     }
   ],
