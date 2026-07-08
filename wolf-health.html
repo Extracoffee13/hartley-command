@@ -1,25 +1,74 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8">
-<title>WOLF Health Dashboard</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WOLF Health</title>
 <style>
-body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",monospace;padding:2rem}
-h1{color:#00ff88;font-weight:600}
-.card{background:#111;border:1px solid #333;padding:1rem;margin:1rem 0;border-radius:6px}
-h2{margin:0 0 .5rem;font-size:.9rem;color:#00d4ff;text-transform:uppercase;letter-spacing:.04em}
-.ok{color:#00ff88} .warn{color:#ffaa00} .crit{color:#ff4444}
-a{color:#00d4ff}
-.thesis{border-left:3px solid #333;padding-left:.75rem;margin:.75rem 0}
-.ticker{font-weight:700;font-size:1.1rem;margin-right:.75rem}
-.verdict{font-weight:700;font-size:.9rem}
-.rationale{margin:.35rem 0;color:#cfcfcf;line-height:1.4}
-.meta{font-size:.8rem;color:#888}
-</style></head><body>
-<h1>WOLF Health Dashboard</h1>
-<div class="card"><b>Day 62/90</b> &bull; 28 days to kill-crit &bull; Portfolio: $98,272</div>
-<div class="card">Compliance: <span class="ok">OK</span></div>
-<div class="card">Infrastructure: <span class="ok">OK</span></div>
-<div class="card">Alerts: None</div>
-<div class="card"><h2>Deep Research Theses</h2><div class="thesis"><span class="ticker">ACN</span><span class="verdict ok">BULLISH</span><div class="rationale">**VERDICT: BULLISH (STRONGLY RECOMMEND AVERAGING DOWN)**</div><div class="meta">generated 2026-07-01 · source gemini-deep-research · <a href="./wolf-research/ACN-2026-07-01.md" target="_blank">full report</a></div></div></div>
-<div class="card" style="font-size:0.8rem">Updated: 2026-07-08 00:08 UTC by wolf-dashboard-autosync</div>
-</body></html>
+:root { color-scheme: dark; }
+body { background: #0b0c10; color: #c5c6c7; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 2rem; }
+h1 { color: #66fcf1; margin-bottom: 1rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.card { background: #1f2833; border-radius: 10px; padding: 1.25rem; box-shadow: 0 2px 6px rgba(0,0,0,0.4); }
+.card h2 { margin: 0 0 0.5rem 0; font-size: 0.85rem; text-transform: uppercase; color: #45a29e; letter-spacing: 0.06em; }
+.card .value { font-size: 1.6rem; font-weight: 700; color: #66fcf1; margin-bottom: 0.25rem; }
+.card .sub { font-size: 0.85rem; color: #8892b0; }
+.OK { color: #66fcf1; }
+.WARN { color: #fca311; }
+.NONE { color: #8892b0; font-style: italic; }
+.thesis-card { background: #1f2833; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.thesis-card h2 { margin: 0 0 0.75rem 0; font-size: 0.9rem; text-transform: uppercase; color: #45a29e; letter-spacing: 0.06em; }
+.thesis { display: flex; align-items: baseline; gap: 1rem; border-bottom: 1px solid #2c3e50; padding: 0.6rem 0; }
+.thesis:last-child { border-bottom: none; }
+.ticker { font-weight: 700; color: #66fcf1; min-width: 50px; }
+.verdict { font-weight: 600; min-width: 80px; }
+.verdict.BULLISH { color: #4ade80; }
+.verdict.BEARISH { color: #f87171; }
+.verdict.NEUTRAL { color: #facc15; }
+.oneline { flex: 1; color: #c5c6c7; }
+.meta { font-size: 0.75rem; color: #8892b0; white-space: nowrap; }
+.footer { font-size: 0.8rem; color: #8892b0; text-align: right; margin-top: 2rem; }
+</style>
+</head>
+<body>
+<h1>WOLF Health</h1>
+<div class="grid">
+<div class="card">
+<h2>Day</h2>
+<div class="value">62/90</div>
+<div class="sub">28 days remaining</div>
+</div>
+<div class="card">
+<h2>Portfolio</h2>
+<div class="value">$98,272</div>
+<div class="sub">moderate-bear · VIX 18.00</div>
+</div>
+<div class="card">
+<h2>Compliance</h2>
+<div class="value OK">OK</div>
+</div>
+<div class="card">
+<h2>Infrastructure</h2>
+<div class="value WARN">WARN</div>
+</div>
+</div>
+<div class="card" style="margin-bottom:1.5rem;">
+<h2>Alerts</h2>
+<div style="color:#fca311;">
+Alpaca live feed offline; using state.json fallback.
+</div>
+</div>
+<div class="thesis-card">
+<h2>Research Theses</h2>
+<div class="thesis">
+<span class="ticker">ACN</span>
+<span class="verdict BULLISH">BULLISH</span>
+<span class="oneline">VERDICT: BULLISH (STRONGLY RECOMMEND AVERAGING DOWN)</span>
+<span class="meta">gemini-deep-research · 2026-07-01 · <a href="./wolf-research/ACN-2026-07-01.md" style="color:#66fcf1;">report</a></span>
+</div>
+</div>
+<div class="footer">
+Updated: 2026-07-08 00:35 UTC by wolf-dashboard-autosync
+</div>
+</body>
+</html>
