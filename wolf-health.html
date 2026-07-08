@@ -1,90 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WOLF Health</title>
+<html lang="en"><head><meta charset="utf-8">
+<title>WOLF Health Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-:root { color-scheme: dark; }
-body {
-  background: #0b0c10;
-  color: #c5c6c7;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  margin: 0;
-  padding: 2rem;
-}
-h1 { color: #66fcf1; margin-bottom: 0.2rem; }
-.subtitle { color: #45a29e; margin-bottom: 1.5rem; }
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1rem;
-  max-width: 900px;
-}
-.card {
-  background: #1f2833;
-  border-radius: 12px;
-  padding: 1.25rem;
-  border: 1px solid #2c3e50;
-}
-.card h2 { margin-top: 0; color: #66fcf1; font-size: 1.1rem; }
-.card h3 { margin-top: 0; color: #66fcf1; font-size: 1rem; }
-.big { font-size: 2rem; font-weight: 700; color: #edf5e1; }
-.OK { color: #66fcf1; }
-.WARN { color: #f39c12; }
-.bullish { color: #2ecc71; }
-.bearish { color: #e74c3c; }
-.neutral { color: #f1c40f; }
-.badge {
-  display: inline-block;
-  padding: 0.15rem 0.5rem;
-  border-radius: 4px;
-  font-weight: 600;
-  font-size: 0.85rem;
-  background: rgba(255,255,255,0.1);
-}
-.meta { font-size: 0.85rem; color: #888; margin-top: 0.5rem; }
-a { color: #66fcf1; }
-.footer {
-  margin-top: 1.5rem;
-  color: #777;
-  font-size: 0.85rem;
-}
-</style>
-</head>
-<body>
-<h1>WOLF Health</h1>
-<p class="subtitle">Hartley Capital Alpha &mdash; 90-day mission</p>
-<div class="grid">
-  <div class="card">
-    <h2>Mission Status</h2>
-    <div class="big">Day 62/90</div>
-    <p>28 days remaining</p>
-    <p>Portfolio: $98,272</p>
-  </div>
-  <div class="card">
-    <h2>Compliance</h2>
-    <div class="big OK">OK</div>
-    <p>30 consecutive compliant days</p>
-  </div>
-  <div class="card">
-    <h2>Infrastructure</h2>
-    <div class="big OK">OK</div>
-    <p>Last check: 2026-07-04T12:30:00Z</p>
-  </div>
-  <div class="card">
-    <h2>Alerts</h2>
-    <p>None</p>
-  </div>
-</div>
-    <div class="card thesis-card">
-      <h3>Research Thesis: ACN</h3>
-      <p><span class="badge bullish">BULLISH</span> **VERDICT: BULLISH (STRONGLY RECOMMEND AVERAGING DOWN)**</p>
-      <p class="meta">Generated 2026-07-01 &middot; Source: gemini-deep-research &middot; <a href="./wolf-research/ACN-2026-07-01.md">Report</a></p>
-    </div>
-
-<div class="footer">
-  Updated: 2026-07-08 15:30 UTC by wolf-dashboard-autosync
-</div>
-</body>
-</html>
+body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",monospace;padding:2rem}
+h1{color:#00ff88;font-weight:600}
+.card{background:#111;border:1px solid #333;padding:1rem;margin:1rem 0;border-radius:6px}
+h2{margin:0 0 .5rem;font-size:.9rem;color:#00d4ff;text-transform:uppercase;letter-spacing:.04em}
+.ok{color:#00ff88} .warn{color:#ffaa00} .crit{color:#ff4444}
+a{color:#00d4ff}
+.thesis{border-left:3px solid #333;padding-left:.75rem;margin:.75rem 0}
+.ticker{font-weight:700;font-size:1.1rem;margin-right:.75rem}
+.verdict{font-weight:700;font-size:.9rem}
+.rationale{margin:.35rem 0;color:#cfcfcf;line-height:1.4}
+.meta{font-size:.8rem;color:#888}
+</style></head><body>
+<h1>WOLF Health Dashboard</h1>
+<div class="card"><b>Day 62/90</b> &bull; 28 days to kill-crit &bull; Portfolio: $98,272</div>
+<div class="card">Compliance: <span class="ok">OK</span></div>
+<div class="card">Infrastructure: <span class="ok">OK</span></div>
+<div class="card">Alerts: None</div>
+<div class="card"><h2>Deep Research Theses</h2><div class="thesis"><span class="ticker">ACN</span><span class="verdict ok">BULLISH</span><div class="rationale">**VERDICT: BULLISH (STRONGLY RECOMMEND AVERAGING DOWN)**</div><div class="meta">generated 2026-07-01 · source gemini-deep-research · <a href="./wolf-research/ACN-2026-07-01.md" target="_blank">full report</a></div></div></div>
+<div class="card" style="font-size:0.8rem">Updated: 2026-07-08 16:08 UTC by wolf-dashboard-autosync</div>
+</body></html>
