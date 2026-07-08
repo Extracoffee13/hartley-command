@@ -119,3 +119,15 @@ lesson: Today the platform shipped the autonomy we hand-built — Cowork backgro
 tags: pulse,mcp,cowork,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-08
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: 5 items flagged — Claude Code's July harness update (background agents auto commit/push/open draft PR, Explore inherits session model capped at opus, subagents inherit extended-thinking config, new /dataviz skill), Claude gains Microsoft 365 write tools (email/calendar/OneDrive/SharePoint), Bespoke Labs $40M Series A for agent test/eval environments, Taktile $110M Series C for an auditable human-in-the-loop agentic decision platform, and frontier model routing in flux (Gemini 3.5 Pro delayed to Jul 17 with 2M context, GPT-5.6 broad access expected mid-July).
+lesson: The platform keeps swallowing harness plumbing (background agents that commit/push/open their own PRs, subagents inheriting model + thinking config) while fresh capital flows one layer up into verification and governed autonomy (Bespoke $40M, Taktile $110M). Retire our custom plumbing for the native flow and concentrate build in the eval/verification loop and domain-specific human-checkpoint design nothing commoditizes for us.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
