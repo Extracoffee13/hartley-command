@@ -2028,6 +2028,97 @@ const MirrorBasePanel = () => {
 };
 
 // ═══════════════════════════════════════════════════════════════
+// SERVICE MODULES — Tier 1 owned-presence, productized off Mirror Base
+// ═══════════════════════════════════════════════════════════════
+const ServiceModulesPanel = () => {
+  const [d, setD] = React.useState(null);
+  React.useEffect(() => {
+    (async () => {
+      const urls = ['./service-modules.json?cb=' + Date.now(), 'https://extracoffee13.github.io/hartley-command/service-modules.json?cb=' + Date.now()];
+      for (const u of urls) { try { const r = await fetch(u, { cache: 'no-store' }); if (r.ok) { setD(await r.json()); return; } } catch (e) {} }
+    })();
+  }, []);
+  const mods = (d && d.modules) || [];
+  const chip = (s) => s === 'LIVE' ? C.green : s === 'BUILD' ? C.gold : C.cyan;
+  const metricFor = (m) => {
+    if (m.id === 'reviews') return (m.count != null ? m.count + ' · ' + (m.rating || '—') + '★' : 'awaiting GBP data');
+    if (m.id === 'gbp') return (m.posts_month != null ? m.posts_month + ' posts · GEO ' + (m.geo_naming_rate != null ? m.geo_naming_rate + '%' : '—') : 'awaiting data');
+    if (m.id === 'social') return (m.published_week != null ? m.published_week + ' pub/wk' : 'via daily-pack');
+    if (m.id === 'email') return (m.sends_week != null ? m.sends_week + ' sends/wk' : 'rail: Klaviyo (scope)');
+    if (m.id === 'leads') return (m.leads_week != null ? m.leads_week + ' leads · ' + (m.median_response_min != null ? m.median_response_min + 'm' : '—') : 'router live · responder build');
+    return '—';
+  };
+  return (
+    <div style={{ margin: "8px 28px 20px", padding: 18, border: "2px solid " + C.gold, background: "rgba(255,200,0,0.03)", position: "relative" }}>
+      <div style={{ position: "absolute", top: -10, left: 16, padding: "0 8px", background: "#000", fontSize: 10, color: C.gold, letterSpacing: 4 }}>◉ SERVICE MODULES — OWNED-PRESENCE PRODUCTIZED</div>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginTop: 6, marginBottom: 4 }}>
+        <div style={{ fontSize: 16, fontWeight: 800, color: C.gold }}>Tier 1 SMB modules</div>
+        <div style={{ fontSize: 9, color: C.greenDim }}>{d && d.bundle}</div>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 8, marginTop: 10 }}>
+        {mods.map((m) => (
+          <div key={m.id} style={{ border: "1px solid " + chip(m.status), padding: 10, background: "rgba(0,0,0,0.2)" }}>
+            <span style={{ fontSize: 8, color: chip(m.status), border: "1px solid " + chip(m.status), padding: "1px 5px", letterSpacing: 1 }}>{m.status}</span>
+            <div style={{ fontSize: 11, color: C.white, fontWeight: 700, marginTop: 6, lineHeight: 1.25 }}>{m.label}</div>
+            <div style={{ fontSize: 13, fontWeight: 900, color: chip(m.status), marginTop: 6 }}>{metricFor(m)}</div>
+            <div style={{ fontSize: 8, color: C.greenDim, marginTop: 4, lineHeight: 1.35 }}>{m.metric_label}</div>
+            <div style={{ fontSize: 8, color: C.cyan, marginTop: 6 }}>{m.price}</div>
+            <div style={{ fontSize: 7.5, color: "rgba(255,255,255,0.4)", marginTop: 4, lineHeight: 1.35 }}>gap: {m.gap}</div>
+          </div>
+        ))}
+      </div>
+      <div style={{ fontSize: 8, color: C.greenDim, marginTop: 10 }}>All modules draft into the shared Approval Queue below · nothing publishes without one-tap approval</div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════════════════
+// APPROVAL QUEUE — shared one-screen approve for every module
+// ═══════════════════════════════════════════════════════════════
+const ApprovalQueuePanel = () => {
+  const [d, setD] = React.useState(null);
+  const [fetched, setFetched] = React.useState(false);
+  React.useEffect(() => {
+    (async () => {
+      const urls = ['./approval-queue.json?cb=' + Date.now(), 'https://extracoffee13.github.io/hartley-command/approval-queue.json?cb=' + Date.now()];
+      for (const u of urls) { try { const r = await fetch(u, { cache: 'no-store' }); if (r.ok) { setD(await r.json()); setFetched(true); return; } } catch (e) {} }
+      setFetched(true);
+    })();
+  }, []);
+  const items = (d && d.items) || [];
+  const by = (d && d.by_module) || {};
+  const modColor = (m) => ({ reviews: C.green, gbp: C.cyan, social: C.orange, email: C.gold, leads: C.red })[m] || C.greenDim;
+  return (
+    <div style={{ margin: "8px 28px 20px", padding: 18, border: "2px solid " + C.green, background: "rgba(57,255,20,0.03)", position: "relative" }}>
+      <div style={{ position: "absolute", top: -10, left: 16, padding: "0 8px", background: "#000", fontSize: 10, color: C.green, letterSpacing: 4 }}>◉ APPROVAL QUEUE — ONE SCREEN · ONE-TAP APPROVE</div>
+      <div style={{ fontSize: 9, color: "rgba(255,255,255,0.5)", marginTop: 6, marginBottom: 10 }}>{d && d.policy}</div>
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 12, alignItems: "baseline" }}>
+        {Object.keys(by).map((m) => (
+          <span key={m} style={{ fontSize: 9, color: modColor(m), border: "1px solid " + modColor(m), padding: "2px 8px", letterSpacing: 1 }}>{m}: {by[m]}</span>
+        ))}
+        <span style={{ fontSize: 9, color: C.white, marginLeft: "auto" }}>pending total: <b style={{ color: C.green }}>{(d && d.pending_total) || 0}</b></span>
+      </div>
+      {items.length === 0 && (
+        <div style={{ fontSize: 10, color: C.greenDim, lineHeight: 1.6 }}>
+          {fetched ? "Queue empty — per-module writers append here as drafts are generated." : "Loading…"}
+          <div style={{ fontSize: 8, color: "rgba(255,255,255,0.35)", marginTop: 8 }}>{((d && d.sources) || []).map((s, i) => (<div key={i}>· {s}</div>))}</div>
+        </div>
+      )}
+      {items.map((it, i) => (
+        <div key={i} style={{ borderBottom: "1px dashed rgba(255,255,255,0.08)", padding: "6px 0" }}>
+          <div style={{ display: "flex", gap: 6, alignItems: "baseline" }}>
+            <span style={{ fontSize: 8, color: modColor(it.module), border: "1px solid " + modColor(it.module), padding: "0 5px", textTransform: "uppercase" }}>{it.module}</span>
+            <span style={{ fontSize: 8, color: C.greenDim }}>{it.type}</span>
+            {it.target && <span style={{ fontSize: 8, color: C.cyan }}>{it.target}</span>}
+          </div>
+          <div style={{ fontSize: 10, color: "#fff", marginTop: 3 }}>{it.preview}</div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════════════════
 // WILD DUCKS — IBM/Watson mavericks · Hermes-hosted skill agents
 // ═══════════════════════════════════════════════════════════════
 // Wild Ducks scored same Coca-Cola Test (1-25) as Operators — Keystone re-scores monthly
@@ -3004,6 +3095,8 @@ const Dashboard = () => (
       <PragmaMirrorPanel />
       <SiteHealthPanel />
       <MirrorBasePanel />
+      <ServiceModulesPanel />
+      <ApprovalQueuePanel />
       <PragmaOwnSiteMirrorPanel />
       <WildDucksBand />
       <HermesMigrationMap />
