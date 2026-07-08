@@ -131,3 +131,15 @@ lesson: The platform keeps swallowing harness plumbing (background agents that c
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-08
+decision: 13:59 ET re-fire — refreshed the day's AI/agent scan to lead with breaking news the 06:01 run missed.
+outcome: 5 items flagged — China's MIIT issues a Claude Code "back-door" security alert (versions 2.1.91–2.1.196 can exfiltrate location/identity without consent; uninstall/upgrade) amid the Anthropic–Alibaba rift (Alibaba bans Claude Code from Jul 10), Featured launches an MCP server for PR/earned-media agencies, Anthropic opens the Cowork beta to web + mobile (cross-device sync, remote/background continuation, phone approvals; Max-first), Anthropic begins age/identity verification for Claude effective Jul 8, and model routing stays in flux (Gemini 3.5 Pro delayed to Jul 17 with 2M context + Deep Think, GPT-5.6 "Sol" still gated preview).
+lesson: The risk isn't only that the platform commoditizes our plumbing — the model/tool runtime we build on is itself a live, geopolitically-exposed dependency (a nation-state flagged specific Claude Code builds for data exfiltration). Version pinning, provider-agnostic routing, and treating the agent runtime as a monitored, patchable asset are now first-class parts of the harness, not deferrable hygiene.
+tags: pulse,mcp,ecosystem,security,daily
+confidence: 0.8
+~~~

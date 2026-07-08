@@ -6,14 +6,14 @@
     {
       "id": "reviews",
       "label": "Reviews & Reputation",
-      "status": "BUILD",
-      "metric_label": "Reviews · Rating",
-      "count": null,
-      "rating": null,
+      "status": "LIVE",
+      "metric_label": "Rating · replies to send",
+      "count": 40,
+      "rating": 5.0,
       "velocity_30d": null,
-      "pending_drafts": 0,
-      "source": "gbp-review-monitor · review-velocity-tracker",
-      "gap": "response-approval queue + Yelp/FB/BBB coverage",
+      "pending_drafts": 33,
+      "source": "business.google.com/reviews (logged-in Chrome, all pages) → reviews_writer",
+      "gap": "add Yelp/FB/BBB; auto-refresh needs a browser pass",
       "price": "$150–300/mo"
     },
     {
@@ -43,12 +43,12 @@
     {
       "id": "email",
       "label": "Email / SMS Lifecycle",
-      "status": "SCOPE",
-      "metric_label": "Active sequences · Sends (wk)",
+      "status": "BUILD",
+      "metric_label": "Campaign drafts · Send from inbox",
       "sequences": null,
       "sends_week": null,
-      "source": "inbound-lead-router · quiet-hours-digest · email-sequence skill",
-      "gap": "send rail — wire Klaviyo/HubSpot (OAuth) + CAN-SPAM/TCPA",
+      "source": "email_writer → ap@brand9signs.com (Apple Mail / Gmail-Chrome)",
+      "gap": "list source + unsubscribe tracking; Bobby sends on approval (no paid connector)",
       "price": "$300–600/mo"
     },
     {
