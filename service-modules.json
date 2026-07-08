@@ -1,0 +1,68 @@
+{
+  "generated": "2026-07-08T13:39:11Z",
+  "headline": "Owned-Presence service modules — productized off Mirror Base",
+  "bundle": "Local Visibility (Reviews + GBP + Social) · $799–1,499/mo · envelops ToplinePro",
+  "modules": [
+    {
+      "id": "reviews",
+      "label": "Reviews & Reputation",
+      "status": "BUILD",
+      "metric_label": "Reviews · Rating",
+      "count": null,
+      "rating": null,
+      "velocity_30d": null,
+      "pending_drafts": 0,
+      "source": "gbp-review-monitor · review-velocity-tracker",
+      "gap": "response-approval queue + Yelp/FB/BBB coverage",
+      "price": "$150–300/mo"
+    },
+    {
+      "id": "gbp",
+      "label": "Google Business Profile",
+      "status": "BUILD",
+      "metric_label": "Posts/mo · Q&A · GEO",
+      "posts_month": null,
+      "qa_answered": null,
+      "geo_naming_rate": null,
+      "source": "apple-maps-listing-watcher · gbp-review-monitor · Mirror GEO",
+      "gap": "scheduled GBP-post generator + Q&A/photo cadence",
+      "price": "$200–400/mo"
+    },
+    {
+      "id": "social",
+      "label": "Done-for-You Social",
+      "status": "LIVE",
+      "metric_label": "Scheduled · Published (wk)",
+      "scheduled_week": null,
+      "published_week": null,
+      "platforms": ["X", "IG", "FB", "LinkedIn", "Threads"],
+      "source": "social-cross-post · content-publish-scheduler · Vector · reddit-daily-pack",
+      "gap": "monthly content-calendar generator (generalize Reddit daily-pack)",
+      "price": "$400–800/mo"
+    },
+    {
+      "id": "email",
+      "label": "Email / SMS Lifecycle",
+      "status": "SCOPE",
+      "metric_label": "Active sequences · Sends (wk)",
+      "sequences": null,
+      "sends_week": null,
+      "source": "inbound-lead-router · quiet-hours-digest · email-sequence skill",
+      "gap": "send rail — wire Klaviyo/HubSpot (OAuth) + CAN-SPAM/TCPA",
+      "price": "$300–600/mo"
+    },
+    {
+      "id": "leads",
+      "label": "Local Lead-Gen + Speed-to-Lead",
+      "status": "BUILD",
+      "metric_label": "New leads · Median response",
+      "leads_week": null,
+      "median_response_min": null,
+      "source": "inbound-lead-router (live) · serp-tracker · google-search-intel-watcher · Prism void-prospector",
+      "gap": "<5-min auto-responder (shares email rail) + booking/CRM glue",
+      "price": "$500–1,500/mo + performance"
+    }
+  ],
+  "data_source": "hermes state snapshots + per-module writers (populate as fetch rails wire)",
+  "approval_queue": "approval-queue.json"
+}

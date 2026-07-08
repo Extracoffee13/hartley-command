@@ -1,0 +1,16 @@
+{
+  "generated": "2026-07-08T13:39:11Z",
+  "headline": "Shared approval queue — every module drafts here; you approve; Construct executes on the client's own rails",
+  "policy": "PREP ONLY — nothing publishes without Bobby's one-tap approval. No autonomous posting.",
+  "pending_total": 0,
+  "by_module": { "reviews": 0, "gbp": 0, "social": 0, "email": 0, "leads": 0 },
+  "items": [],
+  "sources": [
+    "reviews → gbp-review-monitor (response drafts)",
+    "gbp → content-publish-scheduler (GBP post drafts)",
+    "social → reddit-daily-pack / social-cross-post (post drafts)",
+    "email → email-sequence (sequence drafts, once Klaviyo wired)",
+    "leads → inbound-lead-router (speed-to-lead reply drafts)"
+  ],
+  "note": "Empty until per-module writers begin appending. Item shape: {id, module, type, client, target, preview, thumbnail, created}."
+}
