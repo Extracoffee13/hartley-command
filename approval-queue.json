@@ -1,8 +1,8 @@
 {
-  "generated": "2026-07-08T16:05:39.717101Z",
+  "generated": "2026-07-08T16:13:13.493716Z",
   "headline": "Shared approval queue \u2014 every module drafts here; you approve; Construct executes on the client's own rails",
   "policy": "PREP ONLY \u2014 nothing publishes without Bobby's one-tap approval. No autonomous posting.",
-  "pending_total": 40,
+  "pending_total": 41,
   "by_module": {
     "reviews": 33,
     "gbp": 1,
@@ -10,7 +10,8 @@
     "email": 1,
     "leads": 0,
     "content": 1,
-    "landing": 1
+    "landing": 1,
+    "assistant": 1
   },
   "items": [
     {
@@ -627,6 +628,22 @@
       "cta": "Get my quote",
       "form_to": "ap@brand9signs.com",
       "deploy_note": "On approval: deploy via website MCP / deploy-brand9-wp; form emails ap@brand9signs.com \u2192 leads-inbox-scan drafts the speed-to-lead reply."
+    },
+    {
+      "id": "assistant-d4f125e317",
+      "module": "assistant",
+      "type": "site-assistant",
+      "client": "Brand 9 Signs",
+      "target": "brand9signs.com (embed)",
+      "preview": "24/7 site assistant \u2014 answers from KB, routes quotes to lead-capture \u2192 ap@brand9signs.com",
+      "thumbnail": null,
+      "url": null,
+      "created": "2026-07-08T16:13:13.492781Z",
+      "file": "/sessions/hopeful-peaceful-einstein/mnt/Atlas/website-assistant/b9-assistant.html",
+      "intents": 8,
+      "lead_email": "ap@brand9signs.com",
+      "guardrails": "Answers come only from this knowledge base. Never quotes a firm price or promises a date \u2014 gives ranges and routes to a human for anything specific.",
+      "deploy_note": "On approval: embed on WordPress via website MCP; upgradeable to LLM-backed later."
     }
   ],
   "sources": [
