@@ -143,3 +143,18 @@ lesson: The risk isn't only that the platform commoditizes our plumbing — the 
 tags: pulse,mcp,ecosystem,security,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-09
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: 5 items flagged — Anthropic ships agent-fleet platform infra (MCP tunnels in Research Preview, self-hosted Managed-Agent sandboxes, Okta-managed enterprise MCP, Microsoft 365 write tools); the MCP 2026 spec hits release candidate (stateless core, MCP Apps server-rendered UIs, a Tasks extension for long-running work, OAuth/OIDC auth, final July 28); frontier "model day" (xAI Grok 4.5 co-trained with Cursor, OpenAI GPT-Live full-duplex voice, GPT-5.6 Sol/Terra/Luna now GA in ChatGPT/API/Codex, Gemini 3.5 Pro still no GA); Prime Intellect raises $130M Series A at a $1B valuation for enterprises to train their own agents without frontier labs; and an accelerating arXiv skill-engineering wave (SkillAxe, Skill-MAS, ClawTrace).
+lesson: The platform layer and the protocol layer moved together — Anthropic shipped the private-network + self-hosted-sandbox + Okta-governed plumbing for agent fleets the same week the MCP 2026 RC makes servers stateless and gives long-running work a native Tasks primitive. Stop building that plumbing; be ready to migrate onto it fast (a pre-July-28 MCP compatibility pass) and concentrate original work in the eval/verification gate for skills that neither the platform nor the protocol commoditizes for us.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+## 2026-07-09 — Industry Pulse PRAXIS
+Two of today's five items (MCP EMA going stable, the stateless 2026-07-28 spec) point at the same fix for the fragility that makes this watchdog necessary: auth and protocol state are moving from per-server, session-bound, silently-breakable plumbing to centralized, governed, stateless infrastructure. Get ahead of it — adopt IdP-governed connector auth, pin and schedule the MCP version migration, and keep treating the agent runtime (models, connectors, protocol) as a monitored, patchable dependency rather than fire-and-forget wiring.

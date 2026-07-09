@@ -1,51 +1,52 @@
 {
-  "generated": "2026-07-08T14:00:43Z",
-  "latest_date": "2026-07-08",
+  "generated": "2026-07-09T11:52:25Z",
+  "latest_date": "2026-07-09",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "China's MIIT issues a 'back-door' security alert on Claude Code — flags versions 2.1.91–2.1.196 for exfiltrating location/identity without consent",
-      "summary": "China's cybersecurity threat platform said specific Claude Code builds (2.1.91–2.1.196) can send sensitive data — including user location and identity — to a remote server without consent, urging uninstall/upgrade, amid the wider Anthropic–Alibaba rift (Alibaba bans Claude Code from July 10).",
+      "title": "MCP promotes Enterprise-Managed Authorization to stable — one IdP login now governs every connected server",
+      "summary": "The Model Context Protocol team moved its Enterprise-Managed Authorization (EMA) extension to stable: orgs centrally control MCP-server access through their IdP and users reach all connected servers via one login. Okta is first (Cross App Access); Asana, Atlassian, Canva, Figma, Granola, Linear, Supabase support it, Slack in progress.",
       "tag": "yes",
-      "how": "Direct op-sec action: audit the Claude Code version Hermes and every Construct agent runs on, confirm we're above 2.1.196, and treat the model/tool runtime as a governed, monitored, patchable dependency — plus read the US-China tooling split as another reason to keep routing provider-agnostic.",
-      "url": "https://www.cnbc.com/2026/07/08/china-anthropic-ai-claude-code-backdoor-security-threat.html"
+      "how": "The Construct runs on a fleet of MCP connectors. IdP-governed central auth is the fix for the exact fragility this watchdog catches (connectors silently needing re-auth). Plan a migration so Bobby's connectors renew through one governed login instead of per-server OAuth that breaks scans when it lapses.",
+      "url": "https://www.infoq.com/news/2026/07/mcp-ema-enterprise-auth/"
     },
     {
       "n": 2,
-      "title": "Featured launches an MCP server, bringing AI agents into PR / earned-media workflows",
-      "summary": "The PR co-pilot Featured hit GA on its MCP server, letting Claude, Cursor, VS Code, and any MCP client connect directly to source expert quotes, pitch, and manage earned-media placements.",
-      "tag": "maybe",
-      "how": "A ready earned-media surface for PRAGMA's owned-/earned-presence stack and Brand 9 Signs PR: wire it behind Pulse so one operator agent sources and places expert commentary alongside the social/GBP/SEO tools it already drives.",
-      "url": "https://www.globenewswire.com/news-release/2026/07/07/3323391/0/en/Featured-Launches-an-MCP-Server-Bringing-AI-Agents-to-PR-Agencies.html"
+      "title": "The 2026-07-28 MCP spec goes stateless at the protocol layer — 12-month deprecation window opens",
+      "summary": "The next MCP version (2026-07-28) makes the protocol stateless with a 12-month window to migrate off legacy versions; adoption is deep (~78% of enterprise AI teams run MCP-backed agents in production, ~97M monthly SDK downloads).",
+      "tag": "yes",
+      "how": "A stateless protocol layer is friendly to our failure mode: scheduled scans dying when a session/host closes. Pin the version the Construct agents speak, schedule the migration before the legacy window bites, and treat the runtime spec as a governed dependency.",
+      "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/"
     },
     {
       "n": 3,
-      "title": "Anthropic opens the Claude Cowork beta to web and mobile — start on one device, run remotely, approve from your phone",
-      "summary": "Cowork's delegated-work assistant expands beyond desktop with cross-device sync, background/remote continuation, and phone-based step approvals; Max users first (from Jul 7), broader plans over the coming weeks.",
+      "title": "OpenAI clears Commerce review for a broad GPT-5.6 launch this week — Sol / Terra / Luna + Ultra mode",
+      "summary": "GPT-5.6 ships as three tiers — Sol (frontier), Terra (~5.5-level intelligence at roughly half the cost), Luna (small/fast) — plus an Ultra mode with a Max reasoning level and heavier sub-agent use; Commerce green-lit a wide release expected this week.",
       "tag": "maybe",
-      "how": "The platform now natively does the cross-device, background, approve-from-anywhere pattern we hand-built; let it own device sync + approvals, keep our build in the orchestration/verification/memory loop, and validate our scheduled scans survive the mobile/web execution model.",
-      "url": "https://winbuzzer.com/2026/07/08/anthropic-opens-claude-cowork-beta-to-mobile-and-web-xcxwbn/"
+      "how": "Routing-layer input, not a rebuild. Terra's '5.5-level at half cost' is worth benching against Sonnet 5 and Haiku for fan-out/verify tiers where we split cheap vs. hardest work. Keep routing provider-agnostic; don't re-architect around a just-GA'd model.",
+      "url": "https://thursdai.news/releases/2026-07"
     },
     {
       "n": 4,
-      "title": "Anthropic begins age/identity verification for Claude, effective July 8",
-      "summary": "An updated privacy policy lets Anthropic ask users to prove age or identity rather than relying on email alone.",
+      "title": "Anthropic opens Claude for Government (Code + Cowork, FedRAMP High) as Cowork mobile/web beta keeps rolling",
+      "summary": "Claude launched a public beta of Claude Code and Cowork inside Claude for Government Desktop (FedRAMP High, tamper-evident audit logs, spend governance), while consumer Cowork mobile/web keeps rolling out on paid plans (Max first).",
       "tag": "maybe",
-      "how": "Minor but real ops note: expect possible verification prompts on Construct/agent service accounts and make sure our automated logins won't silently break on a new identity gate.",
-      "url": "https://www.it-connect.tech/claude-anthropic-will-start-verifying-users-age-and-identity-on-july-8/"
+      "how": "(a) FedRAMP-High Cowork is a credible public-sector wedge for Construct/B9 gov-adjacent SMB work; (b) as execution moves cross-device, re-confirm our scheduled scans survive it — this watchdog is the standing test.",
+      "url": "https://9to5mac.com/2026/07/07/anthropic-expanding-claude-cowork-to-mobile-and-web-details-here/"
     },
     {
       "n": 5,
-      "title": "Model routing stays in flux — Gemini 3.5 Pro delayed to July 17 (2M context, 'Deep Think', full rebuild); GPT-5.6 'Sol' still in gated preview",
-      "summary": "Google scrapped the 2.5 Pro architecture for a ground-up rebuild targeting math/SVG/image quality; OpenAI's Codex-tuned Sol remains in gated preview, not GA.",
-      "tag": "maybe",
-      "how": "Keep the routing layer provider-agnostic (doubly important given the China/Claude Code overhang), benchmark both against Sonnet 5 on release, and reserve 2M-context calls for long-document Construct jobs — but don't re-architect around unreleased models.",
-      "url": "https://finance.biggo.com/news/6f0c6bb2-795f-4c57-9d09-6db691d7638a"
+      "title": "The 2026 SMB-agent verdict: integration depth wins, and 'personal AI marketing team' is now a named category",
+      "summary": "Round-ups converge that agents connecting directly into Shopify, HubSpot, Stripe, calendars, email and shipping beat isolated tools, with SMBs reportedly cutting opex 35–45% within 90 days; competitors (e.g. NoimosAI) position as a 'unified squad of agents' handling strategy, SEO, social and GEO.",
+      "tag": "yes",
+      "how": "This is Brand 9 Signs' own thesis sold back to the market. The moat is integration depth + owned-presence/GEO — exactly Pulse's stack. Sharpen B9 positioning against the 'AI marketing team' framing and make connector depth (GBP, social, WP/Yoast, reviews) the visible proof.",
+      "url": "https://noimosai.com/en/blog/2026-edition-10-best-ai-marketing-agents-for-small-businesses"
     }
   ],
-  "praxis_lesson": "Today's lead item flips the usual signal: the risk isn't just that the platform commoditizes our plumbing — it's that the model/tool runtime we build on is itself a live, geopolitically-exposed dependency (a nation-state flagged specific Claude Code builds for data exfiltration). Version pinning, provider-agnostic routing, and treating the agent runtime as a monitored, patchable asset are now first-class parts of the harness, not hygiene we can defer.",
+  "praxis_lesson": "Two of today's five items (MCP EMA going stable, the stateless 2026-07-28 spec) point at the same fix for the fragility that makes this watchdog necessary: auth and protocol state are moving from per-server, session-bound, silently-breakable plumbing to centralized, governed, stateless infrastructure. Get ahead of it — adopt IdP-governed connector auth, pin and schedule the MCP version migration, and keep treating the agent runtime (models, connectors, protocol) as a monitored, patchable dependency rather than fire-and-forget wiring.",
   "history": [
+    "2026-07-09",
     "2026-07-08",
     "2026-07-07",
     "2026-07-06",
