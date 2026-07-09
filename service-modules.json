@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-08T13:39:11Z",
+  "generated": "2026-07-09T18:44:38Z",
   "headline": "Owned-Presence service modules — productized off Mirror Base",
   "bundle": "Local Visibility (Reviews + GBP + Social) · $799–1,499/mo · envelops ToplinePro",
   "modules": [
@@ -26,7 +26,8 @@
       "geo_naming_rate": null,
       "source": "gbp_writer (weekly post draft) · gbp_post API auto-publish (pending access) · Mirror GEO",
       "gap": "auto-publish pending GBP API access (Google case 9-2128000040668, ~Jul 18–22); add Q&A/photo",
-      "price": "$200–400/mo"
+      "price": "$200–400/mo",
+      "pending_drafts": 1
     },
     {
       "id": "social",
@@ -35,10 +36,17 @@
       "metric_label": "Scheduled · Published (wk)",
       "scheduled_week": null,
       "published_week": null,
-      "platforms": ["X", "IG", "FB", "LinkedIn", "Threads"],
+      "platforms": [
+        "X",
+        "IG",
+        "FB",
+        "LinkedIn",
+        "Threads"
+      ],
       "source": "social-cross-post · content-publish-scheduler · Vector · reddit-daily-pack",
       "gap": "monthly content-calendar generator (generalize Reddit daily-pack)",
-      "price": "$400–800/mo"
+      "price": "$400–800/mo",
+      "pending_drafts": 3
     },
     {
       "id": "email",
@@ -49,7 +57,8 @@
       "sends_week": null,
       "source": "email_writer → ap@brand9signs.com (Apple Mail / Gmail-Chrome)",
       "gap": "list source + unsubscribe tracking; Bobby sends on approval (no paid connector)",
-      "price": "$300–600/mo"
+      "price": "$300–600/mo",
+      "pending_drafts": 1
     },
     {
       "id": "leads",
@@ -60,7 +69,8 @@
       "median_response_min": null,
       "source": "leads-inbox-scan → ap@brand9signs.com (Gmail-Chrome) · speed-to-lead drafts",
       "gap": "confirm B9 lead inbox; drafts ready (PREP) — you send",
-      "price": "$500–1,500/mo + performance"
+      "price": "$500–1,500/mo + performance",
+      "pending_drafts": 0
     },
     {
       "id": "content",
@@ -71,7 +81,8 @@
       "source": "content-engine → Mirror gaps → AEO draft + Vector image → Yoast publish",
       "gap": "generalize per-client cadence; track ranking/citation lift",
       "price": "$600–1,500/mo",
-      "tier": 2
+      "tier": 2,
+      "pending_drafts": 6
     },
     {
       "id": "landing",
@@ -82,7 +93,8 @@
       "source": "landing-pages/generate → HTML page (Vector) → deploy via website MCP; form emails ap@brand9signs.com → Leads duck",
       "gap": "deploy on approval + per-niche template library",
       "price": "$500–1,200/mo + per-campaign",
-      "tier": 2
+      "tier": 2,
+      "pending_drafts": 1
     },
     {
       "id": "assistant",
@@ -93,9 +105,22 @@
       "source": "website-assistant/build_widget → embeddable widget (KB-guardrailed) → deploy via website MCP; lead form → ap@brand9signs.com → Leads duck",
       "gap": "embed on approval; optional upgrade to LLM-backed",
       "price": "$300–800/mo",
-      "tier": 2
+      "tier": 2,
+      "pending_drafts": 1
     }
   ],
   "data_source": "hermes state snapshots + per-module writers (populate as fetch rails wire)",
-  "approval_queue": "approval-queue.json"
+  "approval_queue": {
+    "pending_total": 46,
+    "by_module": {
+      "reviews": 33,
+      "gbp": 1,
+      "social": 3,
+      "email": 1,
+      "leads": 0,
+      "content": 6,
+      "landing": 1,
+      "assistant": 1
+    }
+  }
 }
