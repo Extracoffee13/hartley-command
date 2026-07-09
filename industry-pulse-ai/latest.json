@@ -1,50 +1,50 @@
 {
-  "generated": "2026-07-09T11:52:25Z",
+  "generated": "2026-07-09T14:01:19Z",
   "latest_date": "2026-07-09",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "MCP promotes Enterprise-Managed Authorization to stable — one IdP login now governs every connected server",
-      "summary": "The Model Context Protocol team moved its Enterprise-Managed Authorization (EMA) extension to stable: orgs centrally control MCP-server access through their IdP and users reach all connected servers via one login. Okta is first (Cross App Access); Asana, Atlassian, Canva, Figma, Granola, Linear, Supabase support it, Slack in progress.",
-      "tag": "yes",
-      "how": "The Construct runs on a fleet of MCP connectors. IdP-governed central auth is the fix for the exact fragility this watchdog catches (connectors silently needing re-auth). Plan a migration so Bobby's connectors renew through one governed login instead of per-server OAuth that breaks scans when it lapses.",
-      "url": "https://www.infoq.com/news/2026/07/mcp-ema-enterprise-auth/"
+      "title": "xAI ships Grok 4.5 — co-trained with Cursor and aimed squarely at code + agentic work",
+      "summary": "Grok 4.5 (Jul 8) is xAI's smartest model yet, explicitly tuned for coding, agentic tasks and knowledge work, and trained jointly with Cursor — the latest sign that frontier labs are optimizing directly for agent runtimes rather than chat.",
+      "tag": "maybe",
+      "how": "A routing-layer input, not a rebuild: bench Grok 4.5 against Sonnet 5 / Opus 4.8 for Construct coding + computer-use jobs, but keep provider-agnostic routing.",
+      "url": "https://jls42.org/en/news/ia-actualites-8-jul-2026"
     },
     {
       "n": 2,
-      "title": "The 2026-07-28 MCP spec goes stateless at the protocol layer — 12-month deprecation window opens",
-      "summary": "The next MCP version (2026-07-28) makes the protocol stateless with a 12-month window to migrate off legacy versions; adoption is deep (~78% of enterprise AI teams run MCP-backed agents in production, ~97M monthly SDK downloads).",
-      "tag": "yes",
-      "how": "A stateless protocol layer is friendly to our failure mode: scheduled scans dying when a session/host closes. Pin the version the Construct agents speak, schedule the migration before the legacy window bites, and treat the runtime spec as a governed dependency.",
-      "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/"
+      "title": "OpenAI launches GPT-Live — a full-duplex voice architecture replacing Advanced Voice Mode",
+      "summary": "GPT-Live (Jul 8) is a native full-duplex voice stack (real-time interrupt/overlap) that supersedes turn-based Advanced Voice Mode.",
+      "tag": "maybe",
+      "how": "Voice is the missing modality for Brand 9 Signs client-facing agents (front-desk, kiosk/signage, review-response callbacks); watch for an MCP/voice-agent surface before committing.",
+      "url": "https://jls42.org/en/news/ia-actualites-8-jul-2026"
     },
     {
       "n": 3,
-      "title": "OpenAI clears Commerce review for a broad GPT-5.6 launch this week — Sol / Terra / Luna + Ultra mode",
-      "summary": "GPT-5.6 ships as three tiers — Sol (frontier), Terra (~5.5-level intelligence at roughly half the cost), Luna (small/fast) — plus an Ultra mode with a Max reasoning level and heavier sub-agent use; Commerce green-lit a wide release expected this week.",
+      "title": "Prime Intellect raises $130M Series A to let enterprises train their OWN agents",
+      "summary": "Radical-led round (Jul 8) funds infra for organizations to build/train bespoke agentic systems in-house rather than renting them.",
       "tag": "maybe",
-      "how": "Routing-layer input, not a rebuild. Terra's '5.5-level at half cost' is worth benching against Sonnet 5 and Haiku for fan-out/verify tiers where we split cheap vs. hardest work. Keep routing provider-agnostic; don't re-architect around a just-GA'd model.",
-      "url": "https://thursdai.news/releases/2026-07"
+      "how": "This is PRAGMA's exact competitive frame ('own your operator, don't rent it'). Positive signal the build-your-own-agent thesis is capitalized; a potential infra reference point and positioning benchmark.",
+      "url": "https://techcrunch.com/2026/07/08/prime-intellect-raises-130m-series-a-to-help-enterprises-build-their-own-ai-agents/"
     },
     {
       "n": 4,
-      "title": "Anthropic opens Claude for Government (Code + Cowork, FedRAMP High) as Cowork mobile/web beta keeps rolling",
-      "summary": "Claude launched a public beta of Claude Code and Cowork inside Claude for Government Desktop (FedRAMP High, tamper-evident audit logs, spend governance), while consumer Cowork mobile/web keeps rolling out on paid plans (Max first).",
-      "tag": "maybe",
-      "how": "(a) FedRAMP-High Cowork is a credible public-sector wedge for Construct/B9 gov-adjacent SMB work; (b) as execution moves cross-device, re-confirm our scheduled scans survive it — this watchdog is the standing test.",
-      "url": "https://9to5mac.com/2026/07/07/anthropic-expanding-claude-cowork-to-mobile-and-web-details-here/"
+      "title": "Featured ships an MCP server for PR agencies — vertical agency MCPs are now landing",
+      "summary": "Featured (AI co-pilot for PR) made its MCP server GA (Jul 7), letting Claude/Cursor/VS Code drive PR/earned-media workflows directly from an MCP-compatible client.",
+      "tag": "yes",
+      "how": "First-mover proof that agency-vertical MCPs are appearing; maps straight to B9/PRAGMA's owned-presence + earned-media wedge. Evaluate wrapping it behind Pulse for client PR ops.",
+      "url": "https://www.globenewswire.com/news-release/2026/07/07/3323391/0/en/Featured-Launches-an-MCP-Server-Bringing-AI-Agents-to-PR-Agencies.html"
     },
     {
       "n": 5,
-      "title": "The 2026 SMB-agent verdict: integration depth wins, and 'personal AI marketing team' is now a named category",
-      "summary": "Round-ups converge that agents connecting directly into Shopify, HubSpot, Stripe, calendars, email and shipping beat isolated tools, with SMBs reportedly cutting opex 35–45% within 90 days; competitors (e.g. NoimosAI) position as a 'unified squad of agents' handling strategy, SEO, social and GEO.",
+      "title": "MCP 2026-07-28 spec RC + beta SDKs land — stateless core, MCP Apps (server-rendered UI), Tasks, deprecation policy",
+      "summary": "The biggest protocol revision since launch is now RC with beta SDKs; the stateless core runs behind plain HTTP load balancers, and Claude, ChatGPT, VS Code/Copilot and Goose already run MCP Apps.",
       "tag": "yes",
-      "how": "This is Brand 9 Signs' own thesis sold back to the market. The moat is integration depth + owned-presence/GEO — exactly Pulse's stack. Sharpen B9 positioning against the 'AI marketing team' framing and make connector depth (GBP, social, WP/Yoast, reviews) the visible proof.",
-      "url": "https://noimosai.com/en/blog/2026-edition-10-best-ai-marketing-agents-for-small-businesses"
+      "how": "The stateless core is friendly to our failure mode (scans dying when a session/host closes), and MCP Apps means server-rendered UI could feed the V4 dashboard directly. Pin the version Construct agents speak and schedule the migration inside the 12-month window.",
+      "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/"
     }
   ],
-  "praxis_lesson": "Two of today's five items (MCP EMA going stable, the stateless 2026-07-28 spec) point at the same fix for the fragility that makes this watchdog necessary: auth and protocol state are moving from per-server, session-bound, silently-breakable plumbing to centralized, governed, stateless infrastructure. Get ahead of it — adopt IdP-governed connector auth, pin and schedule the MCP version migration, and keep treating the agent runtime (models, connectors, protocol) as a monitored, patchable dependency rather than fire-and-forget wiring.",
+  "praxis_lesson": "Two things moved on the same day (Jul 8): frontier labs are now co-training models with agent tools (Grok 4.5 x Cursor) while capital floods 'build-your-own-agent' infra (Prime Intellect). Both point the same direction — the durable moat is not the model but the orchestration + integration layer you own. The Construct's edge is to stay provider-agnostic at the model tier and go deep on owned MCP orchestration (wrap vertical MCPs like Featured behind Pulse), so a model swap or a new voice/agent surface is a config change, not a rebuild.",
   "history": [
     "2026-07-09",
     "2026-07-08",

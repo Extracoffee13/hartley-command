@@ -158,3 +158,15 @@ confidence: 0.8
 
 ## 2026-07-09 — Industry Pulse PRAXIS
 Two of today's five items (MCP EMA going stable, the stateless 2026-07-28 spec) point at the same fix for the fragility that makes this watchdog necessary: auth and protocol state are moving from per-server, session-bound, silently-breakable plumbing to centralized, governed, stateless infrastructure. Get ahead of it — adopt IdP-governed connector auth, pin and schedule the MCP version migration, and keep treating the agent runtime (models, connectors, protocol) as a monitored, patchable dependency rather than fire-and-forget wiring.
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-09
+decision: Midday refresh of the 24h AI/agent scan for The Construct (folded in the Jul 8 frontier-model batch the morning fire missed).
+outcome: 5 items flagged — xAI Grok 4.5 (co-trained with Cursor, code/agentic), OpenAI GPT-Live (full-duplex voice replaces Advanced Voice Mode), Prime Intellect $130M Series A for enterprises to train their own agents, Featured ships a PR-agency MCP server (first vertical agency MCP), and the MCP 2026-07-28 spec RC + beta SDKs (stateless core, MCP Apps server-rendered UI, Tasks, deprecation policy).
+lesson: Frontier labs are co-training models with agent tools (Grok 4.5 x Cursor) while capital floods build-your-own-agent infra (Prime Intellect) — the durable moat is the orchestration + integration layer you own, not the model. Stay provider-agnostic at the model tier and go deep on owned MCP orchestration (wrap vertical MCPs like Featured behind Pulse) so a model swap or new voice surface is a config change, not a rebuild.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
