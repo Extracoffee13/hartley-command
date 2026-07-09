@@ -170,3 +170,15 @@ lesson: Frontier labs are co-training models with agent tools (Grok 4.5 x Cursor
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-09
+decision: Afternoon refresh of the 24h AI/agent scan for The Construct (folded in three Jul 9 items the earlier passes missed).
+outcome: 5 items flagged — Anthropic ships Reflect (Claude usage-insight dashboard), OpenAI GPT-5.6 Sol/Terra/Luna now fully GA across ChatGPT/API/Codex, Apple ships a Safari MCP server (agent-driven web QA), Featured's PR-agency MCP server (first vertical agency MCP), and the MCP 2026-07-28 spec RC (stateless core, MCP Apps, Tasks, deprecation policy).
+lesson: Jul 9 was the first day three frontier labs each had a GA model live at once, so the model tier is commoditizing weekly while platform vendors (Anthropic Reflect, Apple Safari MCP) race to own usage-observability and browser-agent QA. Adopt those surfaces rather than rebuild them; keep original work in provider-agnostic routing and owned MCP orchestration (wrap vertical MCPs like Featured behind Pulse).
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

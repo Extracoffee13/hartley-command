@@ -1,31 +1,31 @@
 {
-  "generated": "2026-07-09T14:01:19Z",
+  "generated": "2026-07-09T18:01:23Z",
   "latest_date": "2026-07-09",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "xAI ships Grok 4.5 — co-trained with Cursor and aimed squarely at code + agentic work",
-      "summary": "Grok 4.5 (Jul 8) is xAI's smartest model yet, explicitly tuned for coding, agentic tasks and knowledge work, and trained jointly with Cursor — the latest sign that frontier labs are optimizing directly for agent runtimes rather than chat.",
+      "title": "Anthropic ships \"Reflect\" — a usage-insight dashboard inside Claude",
+      "summary": "Reflect (Jul 9, beta for Free/Pro/Max with memory on) visualizes what you use Claude for, your AI-usage patterns, and adds quiet-hours / break nudges.",
       "tag": "maybe",
-      "how": "A routing-layer input, not a rebuild: bench Grok 4.5 against Sonnet 5 / Opus 4.8 for Construct coding + computer-use jobs, but keep provider-agnostic routing.",
-      "url": "https://jls42.org/en/news/ia-actualites-8-jul-2026"
+      "how": "The consumer framing isn't ours, but the primitive — per-user/agent usage analytics over a memory store — is exactly the observability layer The Construct needs across its own agent fleet; watch for an export/API surface we can point at Construct usage.",
+      "url": "https://techcrunch.com/2026/07/09/anthropics-new-claude-feature-is-quietly-selling-you-on-ai/"
     },
     {
       "n": 2,
-      "title": "OpenAI launches GPT-Live — a full-duplex voice architecture replacing Advanced Voice Mode",
-      "summary": "GPT-Live (Jul 8) is a native full-duplex voice stack (real-time interrupt/overlap) that supersedes turn-based Advanced Voice Mode.",
+      "title": "OpenAI's GPT-5.6 (Sol/Terra/Luna) goes fully GA across ChatGPT, API, and Codex",
+      "summary": "Jul 9 ends a 13-day government-coordinated preview; Sol is OpenAI's strongest coding/agentic tier and is now callable from the API and Codex.",
       "tag": "maybe",
-      "how": "Voice is the missing modality for Brand 9 Signs client-facing agents (front-desk, kiosk/signage, review-response callbacks); watch for an MCP/voice-agent surface before committing.",
-      "url": "https://jls42.org/en/news/ia-actualites-8-jul-2026"
+      "how": "A routing-layer input: bench Sol against Sonnet 5 / Opus 4.8 and Grok 4.5 for Construct coding + computer-use jobs, but keep provider-agnostic routing so it's a config change, not a rebuild.",
+      "url": "https://www.buildfastwithai.com/blogs/ai-news-today-july-9-2026"
     },
     {
       "n": 3,
-      "title": "Prime Intellect raises $130M Series A to let enterprises train their OWN agents",
-      "summary": "Radical-led round (Jul 8) funds infra for organizations to build/train bespoke agentic systems in-house rather than renting them.",
+      "title": "Apple ships a Safari MCP server (Safari Technology Preview 247)",
+      "summary": "The built-in MCP server lets an AI agent emulate what a real user experiences on a site and feed that back for debugging.",
       "tag": "maybe",
-      "how": "This is PRAGMA's exact competitive frame ('own your operator, don't rent it'). Positive signal the build-your-own-agent thesis is capitalized; a potential infra reference point and positioning benchmark.",
-      "url": "https://techcrunch.com/2026/07/08/prime-intellect-raises-130m-series-a-to-help-enterprises-build-their-own-ai-agents/"
+      "how": "A browser-native agent QA loop maps to Brand 9 Signs web + digital-signage front-ends: an agent could validate rendering/UX of client microsites and kiosk pages without a bespoke harness.",
+      "url": "https://www.macrumors.com/2026/07/01/apple-releases-safari-technology-preview-247/"
     },
     {
       "n": 4,
@@ -40,11 +40,11 @@
       "title": "MCP 2026-07-28 spec RC + beta SDKs land — stateless core, MCP Apps (server-rendered UI), Tasks, deprecation policy",
       "summary": "The biggest protocol revision since launch is now RC with beta SDKs; the stateless core runs behind plain HTTP load balancers, and Claude, ChatGPT, VS Code/Copilot and Goose already run MCP Apps.",
       "tag": "yes",
-      "how": "The stateless core is friendly to our failure mode (scans dying when a session/host closes), and MCP Apps means server-rendered UI could feed the V4 dashboard directly. Pin the version Construct agents speak and schedule the migration inside the 12-month window.",
+      "how": "The stateless core is friendly to our failure mode (scans dying when a session/host closes), and MCP Apps means server-rendered UI could feed the V4 dashboard directly. Pin the version Construct agents speak and schedule the migration ahead of the Jul 28 final.",
       "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/"
     }
   ],
-  "praxis_lesson": "Two things moved on the same day (Jul 8): frontier labs are now co-training models with agent tools (Grok 4.5 x Cursor) while capital floods 'build-your-own-agent' infra (Prime Intellect). Both point the same direction — the durable moat is not the model but the orchestration + integration layer you own. The Construct's edge is to stay provider-agnostic at the model tier and go deep on owned MCP orchestration (wrap vertical MCPs like Featured behind Pulse), so a model swap or a new voice/agent surface is a config change, not a rebuild.",
+  "praxis_lesson": "Jul 9 was the first day three frontier labs each had a GA model live at once (OpenAI Sol, xAI Grok 4.5, with Gemini 3.5 Pro slipping to Jul 17) — the model tier is commoditizing on a weekly cadence, so the durable edge stays in the orchestration + integration layer we own. Meanwhile Anthropic's Reflect and Apple's Safari MCP show platform vendors racing to own two layers we depend on — usage observability and browser-agent QA — so adopt those surfaces where they exist rather than rebuild them, and concentrate original work on provider-agnostic routing and owned MCP orchestration (wrap vertical MCPs like Featured behind Pulse).",
   "history": [
     "2026-07-09",
     "2026-07-08",
