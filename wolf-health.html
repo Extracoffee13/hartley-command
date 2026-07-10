@@ -1,25 +1,76 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8">
-<title>WOLF Health Dashboard</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WOLF Health</title>
 <style>
-body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",monospace;padding:2rem}
-h1{color:#00ff88;font-weight:600}
-.card{background:#111;border:1px solid #333;padding:1rem;margin:1rem 0;border-radius:6px}
-h2{margin:0 0 .5rem;font-size:.9rem;color:#00d4ff;text-transform:uppercase;letter-spacing:.04em}
-.ok{color:#00ff88} .warn{color:#ffaa00} .crit{color:#ff4444}
-a{color:#00d4ff}
-.thesis{border-left:3px solid #333;padding-left:.75rem;margin:.75rem 0}
-.ticker{font-weight:700;font-size:1.1rem;margin-right:.75rem}
-.verdict{font-weight:700;font-size:.9rem}
-.rationale{margin:.35rem 0;color:#cfcfcf;line-height:1.4}
-.meta{font-size:.8rem;color:#888}
-</style></head><body>
-<h1>WOLF Health Dashboard</h1>
-<div class="card"><b>Day 62/90</b> &bull; 28 days to kill-crit &bull; Portfolio: $98,272</div>
-<div class="card">Compliance: <span class="ok">OK</span></div>
-<div class="card">Infrastructure: <span class="ok">OK</span></div>
-<div class="card">Alerts: None</div>
-<div class="card"><h2>Deep Research Theses</h2><div class="thesis"><span class="ticker">ACN</span><span class="verdict ok">BULLISH</span><div class="rationale">**VERDICT: BULLISH (STRONGLY RECOMMEND AVERAGING DOWN)**</div><div class="meta">generated 2026-07-01 · source gemini-deep-research · <a href="./wolf-research/ACN-2026-07-01.md" target="_blank">full report</a></div></div></div>
-<div class="card" style="font-size:0.8rem">Updated: 2026-07-10 11:17 UTC by wolf-dashboard-autosync</div>
-</body></html>
+:root { color-scheme: dark; }
+body { background: #0b0c10; color: #c5c6c7; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 2rem; }
+.container { max-width: 700px; margin: 0 auto; }
+h1 { color: #66fcf1; margin-bottom: 0.2rem; }
+.subtitle { color: #45a29e; margin-top: 0; margin-bottom: 1.5rem; }
+.card { background: #1f2833; border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.35); }
+.card h2 { margin-top: 0; color: #66fcf1; font-size: 1.1rem; }
+.metric { font-size: 2rem; color: #ffffff; margin: 0.25rem 0; }
+.status { font-weight: bold; }
+.OK { color: #45a29e; }
+.WARN { color: #f3a316; }
+.bull { color: #4caf50; }
+.bear { color: #f44336; }
+.neutral { color: #ffb300; }
+ul { padding-left: 1.2rem; }
+li { margin-bottom: 0.5rem; }
+.ticker { font-weight: bold; }
+.verdict { font-weight: bold; text-transform: uppercase; font-size: 0.85rem; }
+.footer { color: #6f7d8c; font-size: 0.85rem; margin-top: 2rem; text-align: center; }
+a { color: #66fcf1; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>WOLF Health</h1>
+<p class="subtitle">Hartley Capital Alpha — Mission Control</p>
+
+<div class="card">
+<h2>Mission Status</h2>
+<div class="metric">Day 62/90</div>
+<p>28 days remaining · Kill criterion: 2026-07-23</p>
+</div>
+
+<div class="card">
+<h2>Portfolio</h2>
+<div class="metric">$98,272</div>
+</div>
+
+<div class="card">
+<h2>Compliance</h2>
+<p class="status OK">OK</p>
+<p>30 consecutive compliant days</p>
+</div>
+
+<div class="card">
+<h2>Infrastructure</h2>
+<p class="status OK">OK</p>
+<p>Last check: 2026-07-04T12:30:00Z</p>
+</div>
+
+<div class="card">
+<h2>Alerts</h2>
+<ul><li>None</li></ul>
+</div>
+
+<div class="card">
+<h2>Research Theses</h2>
+<ul class="theses">
+  <li><span class="ticker bull">ACN</span> <span class="verdict bull">BULLISH</span> — **VERDICT: BULLISH (STRONGLY RECOMMEND AVERAGING DOWN)**<br/><small>gemini-deep-research · 2026-07-01 · <a href="./wolf-research/ACN-2026-07-01.md">report</a></small></li>
+</ul>
+</div>
+
+
+<div class="footer">
+<p>Updated: 2026-07-04 12:30 UTC by wolf-dashboard-autosync</p>
+</div>
+</div>
+</body>
+</html>
