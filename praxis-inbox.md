@@ -194,3 +194,15 @@ lesson: Anthropic deepened the two layers The Construct stands on — the defaul
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-10
+decision: Later-fire refresh of the 24h AI/agent scan for The Construct (folded in Jul 9-10 items the morning fire missed).
+outcome: 5 items flagged — Omneky ships a public API + MCP server for autonomous ad creative (URL in, finished multi-format ads out), Anthropic adds enterprise-managed MCP connector access via Okta (provision once, zero-touch across chat/Code/Cowork), Meta ships Muse Spark 1.1 (first paid model, low-cost agentic coder), Claude Code + Cowork reach Government in a FedRAMP High environment, and an arXiv "Context Engineering — From Prompts to Corporate Multi-Agent Architecture" paper framing context as the agent OS with five quality criteria + intent/specification engineering.
+lesson: The headline platform items land in the morning, but the operator-level plumbing shows up later — a vertical creative MCP (Omneky) that collapses ad production to one call, and admin-provisioned connector governance (Okta) that makes a large MCP fleet manageable. Adopt vertical MCPs behind Pulse and lean on Anthropic's connector-governance layer instead of hand-rolling auth; keep original work in provider-agnostic routing and owned orchestration.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
