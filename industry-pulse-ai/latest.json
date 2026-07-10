@@ -1,51 +1,52 @@
 {
-  "generated": "2026-07-09T18:01:23Z",
-  "latest_date": "2026-07-09",
+  "generated": "2026-07-10T10:01:19Z",
+  "latest_date": "2026-07-10",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Anthropic ships \"Reflect\" — a usage-insight dashboard inside Claude",
-      "summary": "Reflect (Jul 9, beta for Free/Pro/Max with memory on) visualizes what you use Claude for, your AI-usage patterns, and adds quiet-hours / break nudges.",
-      "tag": "maybe",
-      "how": "The consumer framing isn't ours, but the primitive — per-user/agent usage analytics over a memory store — is exactly the observability layer The Construct needs across its own agent fleet; watch for an export/API surface we can point at Construct usage.",
-      "url": "https://techcrunch.com/2026/07/09/anthropics-new-claude-feature-is-quietly-selling-you-on-ai/"
+      "title": "Anthropic ships Claude Sonnet 5 as the new default — \"most agentic Sonnet yet\"",
+      "summary": "Sonnet 5 is now the default on Free/Pro, built to plan and drive tools (browsers, terminals) autonomously, at intro pricing of $2/M in and $10/M out through Aug 31.",
+      "tag": "yes",
+      "how": "A direct routing-layer input: bench Sonnet 5 against Opus 4.8 / OpenAI Sol / Grok 4.5 for Construct coding + computer-use jobs, but keep provider-agnostic routing so adoption is a config change, not a rebuild.",
+      "url": "https://www.anthropic.com/news/claude-sonnet-5"
     },
     {
       "n": 2,
-      "title": "OpenAI's GPT-5.6 (Sol/Terra/Luna) goes fully GA across ChatGPT, API, and Codex",
-      "summary": "Jul 9 ends a 13-day government-coordinated preview; Sol is OpenAI's strongest coding/agentic tier and is now callable from the API and Codex.",
-      "tag": "maybe",
-      "how": "A routing-layer input: bench Sol against Sonnet 5 / Opus 4.8 and Grok 4.5 for Construct coding + computer-use jobs, but keep provider-agnostic routing so it's a config change, not a rebuild.",
-      "url": "https://www.buildfastwithai.com/blogs/ai-news-today-july-9-2026"
+      "title": "Anthropic expands Cowork to mobile and web — sessions and files follow you across devices",
+      "summary": "Cowork now spans mobile + web with background work, scheduled tasks, shared chat/projects, and mobile approvals (beta starting with Max).",
+      "tag": "yes",
+      "how": "This is the platform The Construct runs on; cross-device sessions + mobile approvals mean scans survive Cowork closing on desktop and Bobby can approve write-actions from the iPhone. Pressure-test our scheduled tasks against the new background/mobile execution model.",
+      "url": "https://techcrunch.com/2026/07/09/anthropics-new-claude-feature-is-quietly-selling-you-on-ai/"
     },
     {
       "n": 3,
-      "title": "Apple ships a Safari MCP server (Safari Technology Preview 247)",
-      "summary": "The built-in MCP server lets an AI agent emulate what a real user experiences on a site and feed that back for debugging.",
-      "tag": "maybe",
-      "how": "A browser-native agent QA loop maps to Brand 9 Signs web + digital-signage front-ends: an agent could validate rendering/UX of client microsites and kiosk pages without a bespoke harness.",
-      "url": "https://www.macrumors.com/2026/07/01/apple-releases-safari-technology-preview-247/"
+      "title": "Claude Code makes Claude-in-Chrome GA and adds a /dataviz skill + draft-PR handoff",
+      "summary": "Claude in Chrome ships GA with background notifications, draft-PR handoff, improved failover, better session handling, and a new /dataviz skill for chart/dashboard design.",
+      "tag": "yes",
+      "how": "Browser-agent GA maps to Brand 9 Signs web + kiosk/signage front-end QA and Pulse owned-presence automation; /dataviz assists the V4 dashboard panels; improved failover/session handling targets our exact failure mode (scans dying when a session closes).",
+      "url": "https://releasebot.io/updates/anthropic/claude-code"
     },
     {
       "n": 4,
-      "title": "Featured ships an MCP server for PR agencies — vertical agency MCPs are now landing",
-      "summary": "Featured (AI co-pilot for PR) made its MCP server GA (Jul 7), letting Claude/Cursor/VS Code drive PR/earned-media workflows directly from an MCP-compatible client.",
+      "title": "Press Ranger launches the first MCP server for press-release distribution",
+      "summary": "The V1 server (Jul 9) connects Claude/ChatGPT/Codex to Press Ranger, turning a plain-language announcement into an on-brand release written into the account.",
       "tag": "yes",
-      "how": "First-mover proof that agency-vertical MCPs are appearing; maps straight to B9/PRAGMA's owned-presence + earned-media wedge. Evaluate wrapping it behind Pulse for client PR ops.",
-      "url": "https://www.globenewswire.com/news-release/2026/07/07/3323391/0/en/Featured-Launches-an-MCP-Server-Bringing-AI-Agents-to-PR-Agencies.html"
+      "how": "Pairs with yesterday's Featured (PR-agency) MCP to complete an earned-media stack — find query/journalist via Featured, draft + distribute via Press Ranger. Maps to B9/PRAGMA's owned-presence + earned-media wedge; wrap both behind Pulse for end-to-end client PR ops.",
+      "url": "https://www.globenewswire.com/news-release/2026/07/09/3325174/0/en/Press-Ranger-Launches-the-First-MCP-Server-for-Press-Release-Distribution.html"
     },
     {
       "n": 5,
-      "title": "MCP 2026-07-28 spec RC + beta SDKs land — stateless core, MCP Apps (server-rendered UI), Tasks, deprecation policy",
-      "summary": "The biggest protocol revision since launch is now RC with beta SDKs; the stateless core runs behind plain HTTP load balancers, and Claude, ChatGPT, VS Code/Copilot and Goose already run MCP Apps.",
-      "tag": "yes",
-      "how": "The stateless core is friendly to our failure mode (scans dying when a session/host closes), and MCP Apps means server-rendered UI could feed the V4 dashboard directly. Pin the version Construct agents speak and schedule the migration ahead of the Jul 28 final.",
-      "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/"
+      "title": "arXiv review: \"Externalization in LLM Agents — Memory, Skills, Protocols and Harness Engineering\"",
+      "summary": "A unified review framing agent capability as externalized layers (memory, skills, MCP-style protocols, code harness) rather than in-weights ability.",
+      "tag": "maybe",
+      "how": "A recent (not this-week) framework, but the cleanest map for our new-skills scan and installed-skills registry: treat skills, memory, and MCP connectors as governed, versioned external assets and instrument each layer separately.",
+      "url": "https://github.com/VoltAgent/awesome-ai-agent-papers"
     }
   ],
-  "praxis_lesson": "Jul 9 was the first day three frontier labs each had a GA model live at once (OpenAI Sol, xAI Grok 4.5, with Gemini 3.5 Pro slipping to Jul 17) — the model tier is commoditizing on a weekly cadence, so the durable edge stays in the orchestration + integration layer we own. Meanwhile Anthropic's Reflect and Apple's Safari MCP show platform vendors racing to own two layers we depend on — usage observability and browser-agent QA — so adopt those surfaces where they exist rather than rebuild them, and concentrate original work on provider-agnostic routing and owned MCP orchestration (wrap vertical MCPs like Featured behind Pulse).",
+  "praxis_lesson": "Anthropic spent this cycle deepening the two layers The Construct stands on — the default agent model (Sonnet 5) and the substrate it runs in (Cowork on mobile/web, Claude-in-Chrome GA, better failover) — while the earned-media MCP stack filled in beneath us (Featured + now Press Ranger). Ride the platform improvements directly (cross-device execution, browser QA, /dataviz) instead of rebuilding them, and keep concentrating original work where we own it: provider-agnostic model routing and owned MCP orchestration that wraps vertical MCPs like Featured and Press Ranger behind Pulse into one client PR/owned-presence operator.",
   "history": [
+    "2026-07-10",
     "2026-07-09",
     "2026-07-08",
     "2026-07-07",

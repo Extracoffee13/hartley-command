@@ -182,3 +182,15 @@ lesson: Jul 9 was the first day three frontier labs each had a GA model live at 
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-10
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: 5 items flagged — Anthropic ships Claude Sonnet 5 as the new agentic default, Cowork expands to mobile + web (background work, mobile approvals), Claude Code makes Claude-in-Chrome GA and adds a /dataviz skill + draft-PR handoff, Press Ranger launches the first press-release-distribution MCP server (completes an earned-media stack with Featured), and an arXiv "Externalization in LLM Agents" review framing memory/skills/protocols/harness as governed external layers.
+lesson: Anthropic deepened the two layers The Construct stands on — the default agent model (Sonnet 5) and the substrate it runs in (Cowork mobile/web, Claude-in-Chrome GA, better failover) — while the earned-media MCP stack filled in beneath us (Featured + Press Ranger). Ride the platform improvements directly instead of rebuilding them, and keep original work in provider-agnostic routing and owned MCP orchestration that wraps vertical MCPs behind Pulse.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
