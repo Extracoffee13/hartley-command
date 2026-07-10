@@ -1,58 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>WOLF Health</title>
+<html lang="en"><head><meta charset="utf-8">
+<title>WOLF Health Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-  body { background:#0d0d0d; color:#e7e7e7; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; padding:24px; }
-  h1 { font-weight:600; margin-bottom:4px; }
-  h2 { font-size:1rem; color:#999; font-weight:400; margin-top:0; margin-bottom:24px; }
-  .card { background:#1a1a1a; border-radius:12px; padding:18px; margin-bottom:16px; box-shadow:0 2px 8px rgba(0,0,0,.35); }
-  .card h3 { margin:0 0 12px; font-size:1.05rem; color:#f2f2f2; }
-  .status-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap:12px; }
-  .status-item { display:flex; justify-content:space-between; }
-  .OK { color:#4ade80; font-weight:600; }
-  .WARN { color:#facc15; font-weight:600; }
-  .value { font-variant-numeric: tabular-nums; }
-  ul { padding-left:20px; margin:0; }
-  li { margin-bottom:12px; line-height:1.4; }
-  a { color:#60a5fa; }
-  .footer { color:#666; font-size:.85rem; margin-top:24px; }
-</style>
-</head>
-<body>
-  <h1>WOLF Health</h1>
-  <h2>90-day $100k → $1m mission</h2>
-
-  <div class="card">
-    <h3>Status</h3>
-    <div class="status-grid">
-      <div class="status-item"><span>Day</span><span class="value">62/90</span></div>
-      <div class="status-item"><span>Days remaining</span><span class="value">28</span></div>
-      <div class="status-item"><span>Portfolio</span><span class="value">$98,272</span></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>System Health</h3>
-    <div class="status-grid">
-      <div class="status-item"><span>Compliance</span><span class="OK">OK (30 days)</span></div>
-      <div class="status-item"><span>Infrastructure</span><span class="OK">OK</span></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>Alerts</h3>
-    <p>None</p>
-  </div>
-
-    <div class="card theses">
-      <h3>Research Theses</h3>
-      <ul><li><strong>ACN</strong>&nbsp;<span style="color:#4ade80">BULLISH</span><br>
-            Bullish on ACN; recommend averaging down.<br>
-            <small>2026-07-01 · gemini-deep-research · <a href="./wolf-research/ACN-2026-07-01.md">report</a></small></li></ul>
-    </div>
-    
-  <p class="footer">Updated: 2026-07-10 08:00 UTC by wolf-dashboard-autosync</p>
-</body>
-</html>
+body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",monospace;padding:2rem}
+h1{color:#00ff88;font-weight:600}
+.card{background:#111;border:1px solid #333;padding:1rem;margin:1rem 0;border-radius:6px}
+h2{margin:0 0 .5rem;font-size:.9rem;color:#00d4ff;text-transform:uppercase;letter-spacing:.04em}
+.ok{color:#00ff88} .warn{color:#ffaa00} .crit{color:#ff4444}
+a{color:#00d4ff}
+.thesis{border-left:3px solid #333;padding-left:.75rem;margin:.75rem 0}
+.ticker{font-weight:700;font-size:1.1rem;margin-right:.75rem}
+.verdict{font-weight:700;font-size:.9rem}
+.rationale{margin:.35rem 0;color:#cfcfcf;line-height:1.4}
+.meta{font-size:.8rem;color:#888}
+</style></head><body>
+<h1>WOLF Health Dashboard</h1>
+<div class="card"><b>Day 62/90</b> &bull; 28 days to kill-crit &bull; Portfolio: $98,272</div>
+<div class="card">Compliance: <span class="ok">OK</span></div>
+<div class="card">Infrastructure: <span class="ok">OK</span></div>
+<div class="card">Alerts: None</div>
+<div class="card"><h2>Deep Research Theses</h2><div class="thesis"><span class="ticker">ACN</span><span class="verdict ok">BULLISH</span><div class="rationale">**VERDICT: BULLISH (STRONGLY RECOMMEND AVERAGING DOWN)**</div><div class="meta">generated 2026-07-01 · source gemini-deep-research · <a href="./wolf-research/ACN-2026-07-01.md" target="_blank">full report</a></div></div></div>
+<div class="card" style="font-size:0.8rem">Updated: 2026-07-10 08:17 UTC by wolf-dashboard-autosync</div>
+</body></html>
