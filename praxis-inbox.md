@@ -218,3 +218,15 @@ lesson: Today's signal was infrastructure, not headlines — the MCP protocol it
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-11
+decision: Afternoon re-fire refresh of the 24h AI/agent scan for The Construct (folded in Jul 11 platform items the morning fire missed).
+outcome: 5 items flagged — Cowork rolls out to web + mobile with cloud-hosted remote sessions where scheduled tasks run with no device online (usage limits doubled through Aug 5), Claude adds Microsoft 365 WRITE tools (draft email, manage calendar, edit OneDrive/SharePoint), the MCP 2026-07-28 spec RC goes stateless + adds Extensions/Tasks/MCP-Apps, a frontier-model shuffle (GPT-5.6 GA as ChatGPT default, Grok 4.5 tops agentic tool-use at $2/$6 but 54% hallucination, Gemini 3.5 Pro now ~Jul 17), and an arXiv survey on agent system + harness design.
+lesson: The afternoon's real story is substrate, not models — Cowork moving to cloud-hosted cross-device sessions where scheduled tasks fire with no machine awake, plus connectors graduating from read to write (M365) and the Jul 28 stateless-MCP RC, remove the "is a Mac on?" and "is this server stateful?" fragilities from the fleet. Migrate our scan/deploy schedule onto remote sessions, keep the durable edge in the harness (memory, orchestration, verification), and treat frontier-model churn as swappable config behind provider-agnostic routing.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

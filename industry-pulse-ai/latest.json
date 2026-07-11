@@ -1,50 +1,50 @@
 {
-  "generated": "2026-07-11T10:01:03Z",
+  "generated": "2026-07-11T18:01:00Z",
   "latest_date": "2026-07-11",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "MCP 2026-07-28 spec Release Candidate lands — stateless core + MCP Apps + Tasks + Extensions",
-      "summary": "The RC (final ships Jul 28) drops the initialize handshake and Mcp-Session-Id header so every request is self-contained, adds a first-class Extensions framework, a Tasks lifecycle for long-running server-directed jobs, and MCP Apps that let servers ship sandboxed interactive HTML UIs over the same JSON-RPC consent path.",
+      "title": "Cowork goes cross-device: web + mobile with remote sessions that run when your laptop is closed",
+      "summary": "Anthropic is rolling Claude Cowork out to web and mobile (starting with Max), running sessions remotely in beta so sessions and files live in your Claude account and follow you across devices; work continues after you close the laptop and scheduled tasks run with no device online. Doubled Cowork usage limits extended through Aug 5.",
       "tag": "yes",
-      "how": "A structural change to the substrate the whole MCP fleet runs on; stateless simplifies our connector orchestration and Tasks/MCP-Apps map onto how agents run long jobs and render dashboards. Audit each server against the six breaking changes before Jul 28; eye MCP Apps as a native replacement for hand-built dashboard panels.",
-      "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/"
+      "how": "This is the platform The Construct runs on. Cloud-hosted, always-on scheduled tasks mean our daily scans (Pulse, Lens, PRAGMA Mirror), Hermes hand-offs, and dashboard refreshes no longer depend on a Mac being awake — the single biggest reliability upgrade to the fleet's cadence. Migrate the scan/deploy schedule to remote sessions and verify the V4 dashboard flow still lands.",
+      "url": "https://claude.com/blog/cowork-web-mobile"
     },
     {
       "n": 2,
-      "title": "Anthropic ships MCP Tunnels as a Research Preview — reach MCP servers inside private networks",
-      "summary": "Connect Claude to MCP servers behind a firewall / on a private LAN without exposing them publicly, alongside Sonnet 5's promotional $2/$10 per-Mtok pricing through Aug 31.",
-      "tag": "yes",
-      "how": "The Construct runs local services (V4 dashboard on 10.1.10.195:8081, Hermes, internal repos); tunnels are the sanctioned path to wire private/on-prem tooling into the fleet instead of pushing everything to public endpoints. Pilot against one internal service before leaning on it for client work.",
-      "url": "https://releasebot.io/updates/anthropic/claude"
+      "title": "Claude adds Microsoft 365 write tools — draft email, manage calendar, edit OneDrive/SharePoint",
+      "summary": "The M365 connector moves from read to write: agents can now draft email, create/manage calendar events, and update OneDrive and SharePoint files directly.",
+      "tag": "maybe",
+      "how": "If any Construct/Brand 9 Signs workflow touches a Microsoft stack, this closes the loop from 'read context' to 'take action' without a human relay; low priority while we're Google/iCloud-centric, but the pattern — connectors graduating to write access — is the one to watch across our whole registry.",
+      "url": "https://support.claude.com/en/articles/12138966-release-notes"
     },
     {
       "n": 3,
-      "title": "Frontier model shuffle: GPT-5.6 hits GA as ChatGPT's default; Grok 4.5 tops agentic tool-use but hallucinates more; Gemini 3.5 Pro slips",
-      "summary": "OpenAI opened GPT-5.6 (Sol/Terra/Luna) to GA Jul 9 and made it ChatGPT's default; Grok 4.5 (Jul 8) ranked #4 on Artificial Analysis with the best agentic tool-use score but hallucination jumped 25%->54%; Gemini 3.5 Pro remains in limited Vertex preview, ~6 weeks late.",
-      "tag": "maybe",
-      "how": "Pure routing-layer input: GPT-5.6 is a fresh default to bench; Grok 4.5 is tempting for tool-heavy loops but the 54% hallucination rate makes it unsafe for anything unverified. Keep provider-agnostic routing so each is a config change; gate high-hallucination models behind verification steps.",
-      "url": "https://llm-stats.com/llm-updates"
+      "title": "MCP 2026-07-28 spec Release Candidate — stateless core + MCP Apps + Tasks + Extensions",
+      "summary": "The RC (final ships Jul 28) drops the initialize handshake and Mcp-Session-Id header so every request is self-contained, adds an Extensions framework, a Tasks lifecycle for long-running server-directed jobs, MCP Apps for sandboxed interactive HTML UIs over the same JSON-RPC consent path, and OAuth/OIDC-aligned auth plus a formal deprecation policy.",
+      "tag": "yes",
+      "how": "A structural change to the substrate our whole MCP fleet runs on; stateless simplifies connector orchestration and Tasks/MCP-Apps map onto how our agents run long jobs and render dashboards. Audit each server against the breaking changes before Jul 28, and eye MCP Apps as a native replacement for hand-built dashboard panels.",
+      "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/"
     },
     {
       "n": 4,
-      "title": "Prime Intellect raises $130M Series A to help enterprises build their own AI agents",
-      "summary": "Announced Jul 8; the round funds tooling for enterprises to stand up in-house agent stacks rather than buy off-the-shelf.",
+      "title": "Frontier shuffle: GPT-5.6 GA as ChatGPT default; Grok 4.5 tops agentic tool-use at $2/$6 but hallucinates more; Gemini 3.5 Pro now targeting Jul 17",
+      "summary": "OpenAI opened GPT-5.6 to GA Jul 9 and made it the ChatGPT default; SpaceXAI's Grok 4.5 (Jul 9, trained with Cursor) ranked #4 on Artificial Analysis with the best agentic tool-use score at $2/$6 per-Mtok but its hallucination rate jumped from 25% to 54%; Gemini 3.5 Pro's GA now points to ~Jul 17.",
       "tag": "maybe",
-      "how": "A PRAGMA market signal: capital is flowing into 'build-your-own-agent' enablement, validating the AI-operator consulting thesis and naming a DIY-tooling category PRAGMA will be measured against. Position PRAGMA as the operator layer on top (strategy, orchestration, owned MCPs), not a competitor to raw agent-builder tooling.",
-      "url": "https://techcrunch.com/2026/07/08/prime-intellect-raises-130m-series-a-to-help-enterprises-build-their-own-ai-agents/"
+      "how": "Routing-layer input: GPT-5.6 is a fresh default to bench, Grok 4.5 is tempting for cheap tool-heavy loops but 54% hallucination makes it unsafe for anything unverified. Keep provider-agnostic routing so each is a config change, and gate high-hallucination models behind verification steps.",
+      "url": "https://llm-stats.com/llm-updates"
     },
     {
       "n": 5,
       "title": "arXiv: \"From Question Answering to Task Completion — A Survey on Agent System and Harness Design\"",
       "summary": "Surveys how agent 'harnesses' (memory, tools, control flow, verification) determine task-completion reliability, moving the frame from model quality to system design.",
       "tag": "maybe",
-      "how": "Our edge is the harness (CLAUDE.md locked rules, agent memories, connector registry, verification steps), not the base model. Use the survey's taxonomy to find harness gaps — especially verification and failure-recovery — and treat harness design as the durable moat as base models commoditize.",
+      "how": "Our edge is the harness (CLAUDE.md locked rules, agent memories, connector registry, verification steps), not the base model. Use the taxonomy to find harness gaps — especially verification and failure-recovery — and treat harness design as the durable moat as base models commoditize.",
       "url": "https://arxiv.org/pdf/2606.20683"
     }
   ],
-  "praxis_lesson": "Today's signal was infrastructure, not headlines — the MCP protocol itself is going stateless (Jul 28) and Anthropic shipped tunnels to reach private servers, both of which change how The Construct's connector fleet is wired rather than what any single agent can do. The move: harden the plumbing (audit servers against the RC's breaking changes, pilot tunnels for our on-prem services) and keep the durable edge in the harness — memory, orchestration, verification — while treating frontier-model churn (GPT-5.6 GA, Grok 4.5's 54% hallucination rate) as swappable config behind provider-agnostic routing.",
+  "praxis_lesson": "The afternoon's real story is that The Construct's own substrate got sturdier: Cowork is moving to cloud-hosted, cross-device sessions where scheduled tasks fire with no machine awake, and connectors keep graduating from read to write (M365). Combined with the Jul 28 stateless-MCP RC, the platform is quietly removing the 'is a Mac on?' and 'is this server stateful?' fragilities from the fleet. The move: migrate our scan/deploy schedule onto remote sessions, keep the durable edge in the harness (memory, orchestration, verification), and treat frontier-model churn (GPT-5.6 GA, Grok 4.5's 54% hallucination rate) as swappable config behind provider-agnostic routing.",
   "history": [
     "2026-07-11",
     "2026-07-10",
