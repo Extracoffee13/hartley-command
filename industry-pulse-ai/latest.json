@@ -1,51 +1,52 @@
 {
-  "generated": "2026-07-10T18:05:00Z",
-  "latest_date": "2026-07-10",
+  "generated": "2026-07-11T10:01:03Z",
+  "latest_date": "2026-07-11",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Omneky ships a public API + MCP server for autonomous ad creative — URL in, finished ads out",
-      "summary": "Launched Jul 10; an agent (incl. Claude) passes a brand URL and Omneky returns on-brand creative in every aspect ratio (1:1, 4:5, 9:16, 16:9) plus UGC + short-form video, with performance-driven regeneration.",
+      "title": "MCP 2026-07-28 spec Release Candidate lands — stateless core + MCP Apps + Tasks + Extensions",
+      "summary": "The RC (final ships Jul 28) drops the initialize handshake and Mcp-Session-Id header so every request is self-contained, adds a first-class Extensions framework, a Tasks lifecycle for long-running server-directed jobs, and MCP Apps that let servers ship sandboxed interactive HTML UIs over the same JSON-RPC consent path.",
       "tag": "yes",
-      "how": "A drop-in creative engine for Brand 9 Signs and PRAGMA client ad ops; wrap it behind Pulse so 'make launch ads for this product page' is one agent call. Pressure-test its multi-format output against our signage/social deliverables before committing.",
-      "url": "https://www.prnewswire.com/news-releases/omneky-launches-public-api-and-mcp-server-bringing-autonomous-ad-creative-generation-to-any-platform-or-ai-agent-302822766.html"
+      "how": "A structural change to the substrate the whole MCP fleet runs on; stateless simplifies our connector orchestration and Tasks/MCP-Apps map onto how agents run long jobs and render dashboards. Audit each server against the six breaking changes before Jul 28; eye MCP Apps as a native replacement for hand-built dashboard panels.",
+      "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/"
     },
     {
       "n": 2,
-      "title": "Anthropic adds enterprise-managed MCP connector access (starting with Okta)",
-      "summary": "Admins provision connectors once and users get zero-touch access on first login, with centralized authorization across Claude chat, Claude Code, and Cowork for Team/Enterprise.",
+      "title": "Anthropic ships MCP Tunnels as a Research Preview — reach MCP servers inside private networks",
+      "summary": "Connect Claude to MCP servers behind a firewall / on a private LAN without exposing them publicly, alongside Sonnet 5's promotional $2/$10 per-Mtok pricing through Aug 31.",
       "tag": "yes",
-      "how": "The governance layer The Construct's growing connector fleet needs: provision + authorize MCPs once, centrally, not per-agent. Maps to our installed-skills / connector registry — treat connector auth as an admin-provisioned asset.",
+      "how": "The Construct runs local services (V4 dashboard on 10.1.10.195:8081, Hermes, internal repos); tunnels are the sanctioned path to wire private/on-prem tooling into the fleet instead of pushing everything to public endpoints. Pilot against one internal service before leaning on it for client work.",
       "url": "https://releasebot.io/updates/anthropic/claude"
     },
     {
       "n": 3,
-      "title": "Meta ships Muse Spark 1.1 — its first paid model, a low-cost agentic coder",
-      "summary": "Released Jul 9 at $1.25/$4.25 per 1M tokens, positioned as an agentic coding model — Meta's first move to monetize the Muse line.",
+      "title": "Frontier model shuffle: GPT-5.6 hits GA as ChatGPT's default; Grok 4.5 tops agentic tool-use but hallucinates more; Gemini 3.5 Pro slips",
+      "summary": "OpenAI opened GPT-5.6 (Sol/Terra/Luna) to GA Jul 9 and made it ChatGPT's default; Grok 4.5 (Jul 8) ranked #4 on Artificial Analysis with the best agentic tool-use score but hallucination jumped 25%->54%; Gemini 3.5 Pro remains in limited Vertex preview, ~6 weeks late.",
       "tag": "maybe",
-      "how": "Another routing-layer input alongside Sonnet 5 / GPT-5.6 / Grok 4.5; the aggressive price point makes it a candidate for high-volume, low-stakes coding jobs. Bench it, but keep provider-agnostic routing so it's a config change, not a rebuild.",
-      "url": "https://www.euronews.com/next/2026/07/08/openai-meta-and-spacexai-push-new-ai-models-in-a-week-of-major-releases"
+      "how": "Pure routing-layer input: GPT-5.6 is a fresh default to bench; Grok 4.5 is tempting for tool-heavy loops but the 54% hallucination rate makes it unsafe for anything unverified. Keep provider-agnostic routing so each is a config change; gate high-hallucination models behind verification steps.",
+      "url": "https://llm-stats.com/llm-updates"
     },
     {
       "n": 4,
-      "title": "Anthropic brings Claude Code + Cowork to Government in a FedRAMP High environment",
-      "summary": "Announced Jul 7; Claude Code and Cowork are in public beta via Claude for Government Desktop, delivered under FedRAMP High authorization.",
+      "title": "Prime Intellect raises $130M Series A to help enterprises build their own AI agents",
+      "summary": "Announced Jul 8; the round funds tooling for enterprises to stand up in-house agent stacks rather than buy off-the-shelf.",
       "tag": "maybe",
-      "how": "Not a direct B9 need, but a PRAGMA signal: the same agent substrate The Construct runs on is now credentialed for regulated/public-sector buyers, widening the addressable market for AI-operator consulting.",
-      "url": "https://letsdatascience.com/news/anthropic-brings-claude-code-and-cowork-to-government-06df8bbb"
+      "how": "A PRAGMA market signal: capital is flowing into 'build-your-own-agent' enablement, validating the AI-operator consulting thesis and naming a DIY-tooling category PRAGMA will be measured against. Position PRAGMA as the operator layer on top (strategy, orchestration, owned MCPs), not a competitor to raw agent-builder tooling.",
+      "url": "https://techcrunch.com/2026/07/08/prime-intellect-raises-130m-series-a-to-help-enterprises-build-their-own-ai-agents/"
     },
     {
       "n": 5,
-      "title": "arXiv: \"Context Engineering — From Prompts to Corporate Multi-Agent Architecture\"",
-      "summary": "Proposes five context-quality criteria (relevance, sufficiency, isolation, economy, provenance), frames context as the agent's OS, and introduces intent engineering + specification engineering for autonomous multi-agent operation at scale.",
+      "title": "arXiv: \"From Question Answering to Task Completion — A Survey on Agent System and Harness Design\"",
+      "summary": "Surveys how agent 'harnesses' (memory, tools, control flow, verification) determine task-completion reliability, moving the frame from model quality to system design.",
       "tag": "maybe",
-      "how": "A clean framework for hardening The Construct's memory + CLAUDE.md governance: treat locked rules, agent memories, and connector policies as a versioned, machine-readable spec corpus and grade each context source against the five criteria.",
-      "url": "https://arxiv.org/abs/2603.09619"
+      "how": "Our edge is the harness (CLAUDE.md locked rules, agent memories, connector registry, verification steps), not the base model. Use the survey's taxonomy to find harness gaps — especially verification and failure-recovery — and treat harness design as the durable moat as base models commoditize.",
+      "url": "https://arxiv.org/pdf/2606.20683"
     }
   ],
-  "praxis_lesson": "The morning's big-platform items (Sonnet 5, Cowork mobile/web, Claude-in-Chrome GA) were the headline, but the later fire is where the operator-level plumbing showed up — a vertical creative MCP (Omneky) that collapses ad production to one call, and admin-provisioned connector governance (Okta) that finally makes a large MCP fleet manageable. The move is the same both ways: adopt vertical MCPs behind Pulse and lean on Anthropic's new connector-governance layer rather than hand-rolling auth, while keeping original work in provider-agnostic model routing and owned orchestration.",
+  "praxis_lesson": "Today's signal was infrastructure, not headlines — the MCP protocol itself is going stateless (Jul 28) and Anthropic shipped tunnels to reach private servers, both of which change how The Construct's connector fleet is wired rather than what any single agent can do. The move: harden the plumbing (audit servers against the RC's breaking changes, pilot tunnels for our on-prem services) and keep the durable edge in the harness — memory, orchestration, verification — while treating frontier-model churn (GPT-5.6 GA, Grok 4.5's 54% hallucination rate) as swappable config behind provider-agnostic routing.",
   "history": [
+    "2026-07-11",
     "2026-07-10",
     "2026-07-09",
     "2026-07-08",

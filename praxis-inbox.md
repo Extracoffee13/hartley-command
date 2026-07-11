@@ -206,3 +206,15 @@ lesson: The headline platform items land in the morning, but the operator-level 
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-11
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: 5 items flagged — MCP 2026-07-28 spec RC goes stateless and adds Extensions/Tasks/MCP-Apps (final ships Jul 28), Anthropic ships MCP Tunnels (Research Preview) to reach private-network MCP servers, a frontier-model shuffle (GPT-5.6 GA as ChatGPT default, Grok 4.5 tops agentic tool-use but hallucination jumps to 54%, Gemini 3.5 Pro slips again), Prime Intellect raises $130M Series A for enterprise DIY-agent tooling, and an arXiv survey on agent system + harness design.
+lesson: Today's signal was infrastructure, not headlines — the MCP protocol itself is going stateless (Jul 28) and Anthropic shipped tunnels to reach private servers, both changing how The Construct's connector fleet is wired rather than what any single agent can do. Harden the plumbing (audit servers against the RC's breaking changes, pilot tunnels for on-prem services) and keep the durable edge in the harness (memory, orchestration, verification), while treating frontier-model churn as swappable config behind provider-agnostic routing.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
