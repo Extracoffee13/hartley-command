@@ -2,7 +2,7 @@
   "legit_target": 208,
   "indexed_today": 0,
   "remaining": 208,
-  "last_run": "2026-07-11T14:00:41.550334Z",
+  "last_run": "2026-07-12T14:00:23.991196Z",
   "BLOCKED": true,
   "diagnosis_2026-07-09": {
     "root_cause": "All WooCommerce /product/ and /product-category/ pages carry a 'noindex' robots meta tag. GSC live test: Crawl allowed=Yes, Page fetch=Successful, Indexing allowed=NO ('noindex' detected in robots meta tag) -> 'Page cannot be indexed: Excluded by noindex tag'. Request Indexing is REJECTED for these URLs, and they are excluded from the XML sitemap ('No referring sitemaps detected').",
@@ -15,16 +15,7 @@
     "consideration": "Confirm these pages SHOULD be indexed (they are core service/category landing pages: monument-signs, dimensional-letters, home-builder-marketing, etc., not thin SKUs) before flipping site-wide.",
     "action_taken": "b9-daily-reindex-drip scheduled task PAUSED 2026-07-09 to stop firing rejected requests each morning; resume once noindex removed."
   },
-  "batch_urls": [
-    "https://brand9signs.com/us-government-approved-contractor-why-its-important",
-    "https://brand9signs.com/wayfinding-signs-visitor-experience",
-    "https://brand9signs.com/what-are-branded-environments",
-    "https://brand9signs.com/what-is-school-branding",
-    "https://brand9signs.com/what-makes-wayfinding-signage-effective",
-    "https://brand9signs.com/why-corporate-wall-branding-is-crucial-for-marketing",
-    "https://brand9signs.com/why-custom-lighted-signs-matter-business",
-    "https://brand9signs.com/why-is-branding-important-its-complicated"
-  ],
+  "batch_urls": [],
   "complete": false,
   "requested_ok": [
     "https://brand9signs.com",
