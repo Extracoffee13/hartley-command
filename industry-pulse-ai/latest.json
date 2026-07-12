@@ -1,51 +1,52 @@
 {
-  "generated": "2026-07-11T18:01:00Z",
-  "latest_date": "2026-07-11",
+  "generated": "2026-07-12T10:02:00Z",
+  "latest_date": "2026-07-12",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Cowork goes cross-device: web + mobile with remote sessions that run when your laptop is closed",
-      "summary": "Anthropic is rolling Claude Cowork out to web and mobile (starting with Max), running sessions remotely in beta so sessions and files live in your Claude account and follow you across devices; work continues after you close the laptop and scheduled tasks run with no device online. Doubled Cowork usage limits extended through Aug 5.",
+      "title": "Beta SDKs for the 2026-07-28 stateless-MCP spec are here — all four Tier 1 SDKs testable now",
+      "summary": "You can now validate the forthcoming stateless core, Extensions, Tasks, MCP Apps, and OAuth/OIDC-aligned auth against real workloads: Python v2 and TypeScript v2 (new package names, so installing them is the opt-in) plus Go and C# betas (Go/C# streamable-HTTP accepts 2026-07-28 only with Stateless=true). Final spec ships Jul 28; the ten-week window is for testing before then.",
       "tag": "yes",
-      "how": "This is the platform The Construct runs on. Cloud-hosted, always-on scheduled tasks mean our daily scans (Pulse, Lens, PRAGMA Mirror), Hermes hand-offs, and dashboard refreshes no longer depend on a Mac being awake — the single biggest reliability upgrade to the fleet's cadence. Migrate the scan/deploy schedule to remote sessions and verify the V4 dashboard flow still lands.",
-      "url": "https://claude.com/blog/cowork-web-mobile"
+      "how": "Yesterday's item was the RC announcement; this is the actionable follow-through. We now have a concrete way to test each Construct MCP server against the breaking changes before Jul 28 rather than waiting for GA. Stand up a beta-SDK harness this week, run the fleet through it, and fix anything that breaks under stateless before the deadline goes hard.",
+      "url": "https://blog.modelcontextprotocol.io/posts/sdk-betas-2026-07-28/"
     },
     {
       "n": 2,
-      "title": "Claude adds Microsoft 365 write tools — draft email, manage calendar, edit OneDrive/SharePoint",
-      "summary": "The M365 connector moves from read to write: agents can now draft email, create/manage calendar events, and update OneDrive and SharePoint files directly.",
+      "title": "Pipedrive ships a native MCP server — CRM data becomes agent-callable with permissions + audit trail",
+      "summary": "Pipedrive's native MCP server lets ChatGPT, Claude, and other MCP clients read and act on live CRM data in real time while respecting existing user permissions and keeping a full audit trail of every action.",
       "tag": "maybe",
-      "how": "If any Construct/Brand 9 Signs workflow touches a Microsoft stack, this closes the loop from 'read context' to 'take action' without a human relay; low priority while we're Google/iCloud-centric, but the pattern — connectors graduating to write access — is the one to watch across our whole registry.",
-      "url": "https://support.claude.com/en/articles/12138966-release-notes"
+      "how": "The CRM layer graduating to MCP is exactly the plumbing PRAGMA's operator wedge needs: one Construct agent that reads pipeline state and takes governed, audited actions. Not our current CRM, but the pattern — vertical SaaS exposing permissioned, audited MCP surfaces — is the one to wrap behind Pulse rather than hand-rolling integrations.",
+      "url": "https://finance.yahoo.com/technology/ai/articles/pipedrive-launches-native-mcp-server-122300050.html"
     },
     {
       "n": 3,
-      "title": "MCP 2026-07-28 spec Release Candidate — stateless core + MCP Apps + Tasks + Extensions",
-      "summary": "The RC (final ships Jul 28) drops the initialize handshake and Mcp-Session-Id header so every request is self-contained, adds an Extensions framework, a Tasks lifecycle for long-running server-directed jobs, MCP Apps for sandboxed interactive HTML UIs over the same JSON-RPC consent path, and OAuth/OIDC-aligned auth plus a formal deprecation policy.",
-      "tag": "yes",
-      "how": "A structural change to the substrate our whole MCP fleet runs on; stateless simplifies connector orchestration and Tasks/MCP-Apps map onto how our agents run long jobs and render dashboards. Audit each server against the breaking changes before Jul 28, and eye MCP Apps as a native replacement for hand-built dashboard panels.",
-      "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/"
+      "title": "AVCLabs launches an MCP server bringing AI video enhancement + image segmentation into agent workflows",
+      "summary": "Upscaling, enhancement, and precise image segmentation (cutouts/masking) are now callable as MCP tools inside an agent pipeline rather than manual desktop steps.",
+      "tag": "maybe",
+      "how": "Maps to Brand 9 Signs creative production: an agent that segments a subject, cleans a plate, and upscales assets for large-format signage without a human in the editor. Bank it alongside Omneky as a candidate vertical-creative MCP behind Pulse; test output quality at signage resolution before committing.",
+      "url": "https://www.openpr.com/news/4522710/avclabs-launches-mcp-server-to-bring-ai-video-enhancement"
     },
     {
       "n": 4,
-      "title": "Frontier shuffle: GPT-5.6 GA as ChatGPT default; Grok 4.5 tops agentic tool-use at $2/$6 but hallucinates more; Gemini 3.5 Pro now targeting Jul 17",
-      "summary": "OpenAI opened GPT-5.6 to GA Jul 9 and made it the ChatGPT default; SpaceXAI's Grok 4.5 (Jul 9, trained with Cursor) ranked #4 on Artificial Analysis with the best agentic tool-use score at $2/$6 per-Mtok but its hallucination rate jumped from 25% to 54%; Gemini 3.5 Pro's GA now points to ~Jul 17.",
+      "title": "Agent-startup funding keeps flowing but tilts to infrastructure — LinqAlpha leads early July with a $22M Series A",
+      "summary": "Early July logged ~$37M across three disclosed agent rounds (LinqAlpha $22M Series A in front), trailing late June's heavier prints (8090 $135M, Trase $107M, Sail Research $80M), with the week's dollars concentrating in AI infrastructure over application agents.",
       "tag": "maybe",
-      "how": "Routing-layer input: GPT-5.6 is a fresh default to bench, Grok 4.5 is tempting for cheap tool-heavy loops but 54% hallucination makes it unsafe for anything unverified. Keep provider-agnostic routing so each is a config change, and gate high-hallucination models behind verification steps.",
-      "url": "https://llm-stats.com/llm-updates"
+      "how": "Market signal, not a tool: capital is rewarding the infra/harness layer (where our durable edge sits) while the 'two people can ship a real agent product' dynamic keeps commoditizing single-purpose app agents. Reinforces staying in owned orchestration + memory rather than competing as one more vertical agent.",
+      "url": "https://gravity.fast/blog/ai-agent-funding-tracker-q3-2026/"
     },
     {
       "n": 5,
-      "title": "arXiv: \"From Question Answering to Task Completion — A Survey on Agent System and Harness Design\"",
-      "summary": "Surveys how agent 'harnesses' (memory, tools, control flow, verification) determine task-completion reliability, moving the frame from model quality to system design.",
+      "title": "arXiv: Bridging Requirements and Architecture — Multi-Agent Orchestration with External Knowledge and Hierarchical Memory",
+      "summary": "Proposes a planner/executor/reviewer orchestration that grounds agents in external knowledge and a hierarchical memory, with explicit protocols for cache-sharing and consistency so shared context stays coherent and critics check claims against tool outputs.",
       "tag": "maybe",
-      "how": "Our edge is the harness (CLAUDE.md locked rules, agent memories, connector registry, verification steps), not the base model. Use the taxonomy to find harness gaps — especially verification and failure-recovery — and treat harness design as the durable moat as base models commoditize.",
-      "url": "https://arxiv.org/pdf/2606.20683"
+      "how": "Direct map to The Construct's harness: ~/.hermes/memories/ (hierarchical memory), CLAUDE.md locked rules (external knowledge/spec), and our verification steps (the reviewer/critic role). Use the cache-sharing + consistency framing to tighten how agents share memory without contaminating each other, and treat the reviewer role as a first-class step.",
+      "url": "https://arxiv.org/html/2606.01385v1"
     }
   ],
-  "praxis_lesson": "The afternoon's real story is that The Construct's own substrate got sturdier: Cowork is moving to cloud-hosted, cross-device sessions where scheduled tasks fire with no machine awake, and connectors keep graduating from read to write (M365). Combined with the Jul 28 stateless-MCP RC, the platform is quietly removing the 'is a Mac on?' and 'is this server stateful?' fragilities from the fleet. The move: migrate our scan/deploy schedule onto remote sessions, keep the durable edge in the harness (memory, orchestration, verification), and treat frontier-model churn (GPT-5.6 GA, Grok 4.5's 54% hallucination rate) as swappable config behind provider-agnostic routing.",
+  "praxis_lesson": "On a slow Sunday the signal is continuity, not novelty — the MCP substrate keeps hardening (beta SDKs now let us test the stateless fleet before Jul 28) and the CRM/creative layers keep exposing permissioned, audited MCP surfaces (Pipedrive, AVCLabs). The move is unchanged and now overdue for execution: run every Construct server through the beta-SDK harness this week so nothing goes dark on Jul 28, wrap vertical MCPs (CRM, creative) behind Pulse instead of hand-building integrations, and keep the durable edge in the harness — hierarchical memory, owned orchestration, and a real reviewer/verification step — as base models and app agents commoditize.",
   "history": [
+    "2026-07-12",
     "2026-07-11",
     "2026-07-10",
     "2026-07-09",

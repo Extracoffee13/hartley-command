@@ -230,3 +230,15 @@ lesson: The afternoon's real story is substrate, not models — Cowork moving to
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-12
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: 5 items flagged — Beta SDKs for the 2026-07-28 stateless-MCP spec RC are now available (Python v2, TypeScript v2, Go + C# betas) so servers can be tested before the Jul 28 deadline, Pipedrive ships a native permissioned + audited CRM MCP server, AVCLabs ships an MCP server for AI video enhancement + image segmentation, agent-startup funding tilts to infrastructure (LinqAlpha $22M Series A leads a light early-July), and an arXiv paper on multi-agent orchestration with external knowledge + hierarchical memory.
+lesson: On a slow Sunday the signal is continuity, not novelty — the MCP substrate keeps hardening (beta SDKs now let us test the stateless fleet before Jul 28) and the CRM/creative layers keep exposing permissioned, audited MCP surfaces. Run every Construct server through the beta-SDK harness this week so nothing goes dark on Jul 28, wrap vertical MCPs (CRM, creative) behind Pulse instead of hand-building integrations, and keep the durable edge in the harness — hierarchical memory, owned orchestration, verification.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
