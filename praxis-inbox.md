@@ -242,3 +242,15 @@ lesson: On a slow Sunday the signal is continuity, not novelty — the MCP subst
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-12
+decision: Afternoon re-fire refresh of the 24h AI/agent scan for The Construct (folded in the platform + governance items the morning fire missed).
+outcome: 5 items flagged — Anthropic ships the governance layer (Enterprise per-user/per-skill/per-connector cost analytics + model-level entitlements + spend alerts, a FedRAMP-High Claude for Government desktop with tamper-evident audit logs, and Claude Desktop for Linux), Press Ranger launches the first press-release-distribution MCP server, an arXiv paper shows in-context prompting beats orchestration frameworks for procedural tasks, a frontier shuffle (Gemini 3.5 Pro rebuilt from scratch + slipped to ~Jul 17 with a 2M-token window; Apple sues OpenAI over trade secrets Jul 11), and agent funding rewarding the harness/eval layer (Lyzr $100M B raised by its own agent, Bespoke Labs $40M A, Taktile $110M C).
+lesson: The afternoon's real story is governance graduating onto the platform — cost analytics by user/skill/connector, model-level entitlements, spend alerts, tamper-evident audit logs, and a Linux desktop mean the Construct fleet can now be metered, gated, and run on cheap hardware, and the FedRAMP-grade audit posture is itself the PRAGMA sales story. Don't over-build the harness (in-context prompting beats orchestration for procedural tasks) — keep procedural agents as one well-specified prompt + verification, wire vertical MCPs like Press Ranger behind Pulse, and treat frontier churn as swappable config behind provider-agnostic routing.
+tags: pulse,mcp,ecosystem,daily,governance
+confidence: 0.8
+~~~

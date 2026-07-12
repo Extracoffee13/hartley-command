@@ -1,50 +1,50 @@
 {
-  "generated": "2026-07-12T10:02:00Z",
+  "generated": "2026-07-12T18:02:19Z",
   "latest_date": "2026-07-12",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Beta SDKs for the 2026-07-28 stateless-MCP spec are here — all four Tier 1 SDKs testable now",
-      "summary": "You can now validate the forthcoming stateless core, Extensions, Tasks, MCP Apps, and OAuth/OIDC-aligned auth against real workloads: Python v2 and TypeScript v2 (new package names, so installing them is the opt-in) plus Go and C# betas (Go/C# streamable-HTTP accepts 2026-07-28 only with Stateless=true). Final spec ships Jul 28; the ten-week window is for testing before then.",
+      "title": "Anthropic ships the governance layer — Enterprise admin analytics + model-level entitlements + spend alerts, a FedRAMP-High Claude for Government desktop, and Claude Desktop for Linux",
+      "summary": "The Enterprise admin dashboard now breaks usage/cost down by group and user (artifacts, files edited, skills/connectors shown next to cost); model-level entitlements + spend alerts meter which models run where; Claude Code + Cowork land in a FedRAMP-High government desktop with tamper-evident audit logs and local history; and Claude Desktop hits Linux (Ubuntu 22.04+/Debian 12+, x86_64 + arm64).",
       "tag": "yes",
-      "how": "Yesterday's item was the RC announcement; this is the actionable follow-through. We now have a concrete way to test each Construct MCP server against the breaking changes before Jul 28 rather than waiting for GA. Stand up a beta-SDK harness this week, run the fleet through it, and fix anything that breaks under stateless before the deadline goes hard.",
-      "url": "https://blog.modelcontextprotocol.io/posts/sdk-betas-2026-07-28/"
+      "how": "This is the observability + cost-governance the Construct fleet has lacked — per-agent, per-skill, per-connector spend, plus model gating by entitlement. The tamper-evident audit-log + local-history pattern is the compliance story PRAGMA sells to regulated operators, and Linux desktop lets us run the same harness on cheap server hardware, not just the Mac.",
+      "url": "https://www.anthropic.com/news"
     },
     {
       "n": 2,
-      "title": "Pipedrive ships a native MCP server — CRM data becomes agent-callable with permissions + audit trail",
-      "summary": "Pipedrive's native MCP server lets ChatGPT, Claude, and other MCP clients read and act on live CRM data in real time while respecting existing user permissions and keeping a full audit trail of every action.",
-      "tag": "maybe",
-      "how": "The CRM layer graduating to MCP is exactly the plumbing PRAGMA's operator wedge needs: one Construct agent that reads pipeline state and takes governed, audited actions. Not our current CRM, but the pattern — vertical SaaS exposing permissioned, audited MCP surfaces — is the one to wrap behind Pulse rather than hand-rolling integrations.",
-      "url": "https://finance.yahoo.com/technology/ai/articles/pipedrive-launches-native-mcp-server-122300050.html"
+      "title": "Press Ranger ships the first MCP server for press-release distribution — PR becomes an agent-callable workflow",
+      "summary": "The V1 server connects Claude, ChatGPT, and OpenAI Codex directly to Press Ranger so an AI conversation becomes a complete PR workflow: draft, target the media list, and distribute without leaving the agent.",
+      "tag": "yes",
+      "how": "Direct fit for Pulse's owned-presence remit and Brand 9 Signs earned media: one Construct agent that drafts in brand voice and pushes a release to targeted outlets. Bank it as a candidate owned-presence MCP behind Pulse; the SaaS-replacement wedge is real, but vet media-list quality before trusting distribution.",
+      "url": "https://www.globenewswire.com/news-release/2026/07/09/3325174/0/en/press-ranger-launches-the-first-mcp-server-for-press-release-distribution.html"
     },
     {
       "n": 3,
-      "title": "AVCLabs launches an MCP server bringing AI video enhancement + image segmentation into agent workflows",
-      "summary": "Upscaling, enhancement, and precise image segmentation (cutouts/masking) are now callable as MCP tools inside an agent pipeline rather than manual desktop steps.",
+      "title": "arXiv: In-Context Prompting Obsoletes Agent Orchestration for Procedural Tasks",
+      "summary": "For procedural tasks, putting the entire procedure in the system prompt and letting the model self-orchestrate dominates orchestration frameworks (LangGraph, CrewAI, Google ADK, OpenAI Agents SDK), which add coordination overhead without accuracy gains.",
       "tag": "maybe",
-      "how": "Maps to Brand 9 Signs creative production: an agent that segments a subject, cleans a plate, and upscales assets for large-format signage without a human in the editor. Bank it alongside Omneky as a candidate vertical-creative MCP behind Pulse; test output quality at signage resolution before committing.",
-      "url": "https://www.openpr.com/news/4522710/avclabs-launches-mcp-server-to-bring-ai-video-enhancement"
+      "how": "A counterweight to over-building the harness: for well-specified procedural jobs (a fixed scan-and-write pipeline like this one) our CLAUDE.md-in-the-prompt approach is likely already optimal. Reserve multi-agent orchestration for open-ended work; keep procedural agents as a single well-specified prompt with verification.",
+      "url": "https://arxiv.org/abs/2604.27891"
     },
     {
       "n": 4,
-      "title": "Agent-startup funding keeps flowing but tilts to infrastructure — LinqAlpha leads early July with a $22M Series A",
-      "summary": "Early July logged ~$37M across three disclosed agent rounds (LinqAlpha $22M Series A in front), trailing late June's heavier prints (8090 $135M, Trase $107M, Sail Research $80M), with the week's dollars concentrating in AI infrastructure over application agents.",
+      "title": "Frontier shuffle — Gemini 3.5 Pro rebuilt from scratch and slipped to Jul 17 with a 2M-token window; Apple sues OpenAI over trade secrets",
+      "summary": "Google scrapped the 2.5 Pro architecture for a full pretraining rebuild (math reasoning, SVG, image quality), now shipping ~Jul 17 with a 2M-token context and Deep Think gated behind a $250/mo Ultra tier; separately, on Jul 11 Apple sued OpenAI for trade-secret theft citing 400+ ex-Apple staff now at OpenAI.",
       "tag": "maybe",
-      "how": "Market signal, not a tool: capital is rewarding the infra/harness layer (where our durable edge sits) while the 'two people can ship a real agent product' dynamic keeps commoditizing single-purpose app agents. Reinforces staying in owned orchestration + memory rather than competing as one more vertical agent.",
-      "url": "https://gravity.fast/blog/ai-agent-funding-tracker-q3-2026/"
+      "how": "The 2M-token window is worth testing for whole-corpus jobs (Harvard library, full brand-context passes) once GA. Treat model churn as swappable config behind provider-agnostic routing and don't re-tool around any single vendor while the field reshuffles and litigates.",
+      "url": "https://finance.biggo.com/news/6f0c6bb2-795f-4c57-9d09-6db691d7638a"
     },
     {
       "n": 5,
-      "title": "arXiv: Bridging Requirements and Architecture — Multi-Agent Orchestration with External Knowledge and Hierarchical Memory",
-      "summary": "Proposes a planner/executor/reviewer orchestration that grounds agents in external knowledge and a hierarchical memory, with explicit protocols for cache-sharing and consistency so shared context stays coherent and critics check claims against tool outputs.",
+      "title": "Agent funding rewards the agent-runs-its-own-raise story — Lyzr $100M Series B, Bespoke Labs $40M Series A, Taktile $110M Series C",
+      "summary": "Lyzr (enterprise agents) raised a $100M Series B at ~$500M by letting its own agent run the round; Bespoke Labs took $40M Series A for safe environments where agents learn before production; Taktile pulled $110M Series C for an agentic decision platform for banks and insurers.",
       "tag": "maybe",
-      "how": "Direct map to The Construct's harness: ~/.hermes/memories/ (hierarchical memory), CLAUDE.md locked rules (external knowledge/spec), and our verification steps (the reviewer/critic role). Use the cache-sharing + consistency framing to tighten how agents share memory without contaminating each other, and treat the reviewer role as a first-class step.",
-      "url": "https://arxiv.org/html/2606.01385v1"
+      "how": "Signal, not a tool: capital is funding agent training/eval environments (Bespoke) and governed decision platforms (Taktile) — the harness and safety layer, not one-off app agents. Reinforces the thesis: durable edge is owned orchestration, memory, and a real reviewer/verification step; Lyzr's agent-run raise is a proof point to show clients.",
+      "url": "https://techcrunch.com/2026/07/09/an-ai-agent-startup-just-let-its-agent-run-its-100-million-fundraise/"
     }
   ],
-  "praxis_lesson": "On a slow Sunday the signal is continuity, not novelty — the MCP substrate keeps hardening (beta SDKs now let us test the stateless fleet before Jul 28) and the CRM/creative layers keep exposing permissioned, audited MCP surfaces (Pipedrive, AVCLabs). The move is unchanged and now overdue for execution: run every Construct server through the beta-SDK harness this week so nothing goes dark on Jul 28, wrap vertical MCPs (CRM, creative) behind Pulse instead of hand-building integrations, and keep the durable edge in the harness — hierarchical memory, owned orchestration, and a real reviewer/verification step — as base models and app agents commoditize.",
+  "praxis_lesson": "The afternoon's real story is governance graduating onto the platform — per-user/per-skill/per-connector cost analytics, model-level entitlements, spend alerts, tamper-evident audit logs, and a Linux desktop mean the Construct fleet can now be metered, gated, and run on cheap hardware, and the FedRAMP-grade audit posture is itself the PRAGMA sales story. Meanwhile the research (in-context prompting beating orchestration for procedural tasks) says don't over-build: keep procedural agents as one well-specified prompt + verification, reserve orchestration for open-ended work, wire vertical MCPs like Press Ranger behind Pulse instead of hand-rolling, and treat frontier-model churn (Gemini 3.5 Pro's rebuild, Apple v. OpenAI) as swappable config behind provider-agnostic routing.",
   "history": [
     "2026-07-12",
     "2026-07-11",
