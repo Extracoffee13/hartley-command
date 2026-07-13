@@ -1,17 +1,17 @@
 {
-  "generated": "2026-07-07T14:30:00Z",
-  "source": "seed — wire to a claude-token-rollup Call to keep live",
+  "generated": "2026-07-13T14:59:18.129376Z",
+  "source": "live \u2014 claude-token-rollup from model-usage.json (Hermes/OpenRouter measured)",
   "weekly_limit": {
-    "pct_used": 75,
-    "window": "rolling 7d ending 2026-07-07",
-    "note": "2-day Cowork build session drove the spike — see token-economy plan"
+    "pct_used": 78,
+    "window": "measured Hermes/OpenRouter usage as of 2026-07-13",
+    "note": "% = measured tokens (77,552,465) vs a 100,000,000-token soft budget. Claude Cowork usage is not API-exposed and is not counted here."
   },
   "claude_totals": {
     "in_tokens": null,
     "out_tokens": null,
     "note": "Cowork usage feed pending tracker"
   },
-  "grading_scale": "A ≥ 90 · B 80–89 · C 70–79 · D < 70 — quality from Model Arena bake-off",
+  "grading_scale": "A \u2265 90 \u00b7 B 80\u201389 \u00b7 C 70\u201379 \u00b7 D < 70 \u2014 quality from Model Arena bake-off",
   "models": [
     {
       "model": "claude-opus-4-8",
@@ -23,19 +23,19 @@
       "cost_usd": null,
       "quality": null,
       "grade": null,
-      "note": "primary Cowork driver — heavy 2-day session"
+      "note": "primary Cowork driver \u2014 heavy 2-day session"
     },
     {
       "model": "moonshotai/kimi-k2.7-code",
       "provider": "openrouter",
       "surface": "Hermes flock",
-      "requests": 292,
-      "in_tokens": 10062310,
-      "out_tokens": 102537,
+      "requests": 2745,
+      "in_tokens": 76611715,
+      "out_tokens": 940750,
       "cost_usd": 0.0377,
       "quality": 92.2,
       "grade": "A",
-      "note": "bake-off 60/60 ok · avg 14.2s · ~$0.0006/task"
+      "note": "bake-off 60/60 ok \u00b7 avg 14.2s \u00b7 ~$0.0006/task"
     },
     {
       "model": "z-ai/glm-5.2",
@@ -47,7 +47,8 @@
       "cost_usd": null,
       "quality": null,
       "grade": null,
-      "note": "bake-off 42/42 ok · avg 18.2s · quality pending rollup"
+      "note": "bake-off 42/42 ok \u00b7 avg 18.2s \u00b7 quality pending rollup"
     }
-  ]
+  ],
+  "coverage_note": "Claude Cowork (Opus) token usage is NOT API-exposed and is therefore uncounted; figures below are measured Hermes/OpenRouter spend."
 }
