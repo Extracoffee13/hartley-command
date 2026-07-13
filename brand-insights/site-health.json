@@ -1,99 +1,107 @@
 {
-  "generated": "2026-07-13T17:13:22.993903Z",
+  "generated": "2026-07-13T17:33:11.523149Z",
   "data_source": "PRAGMA Site-Health Operator \u2014 owned crawl (key-free); GSC enrichment pending project access",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "phase": "1",
   "domain": "brand9signs.com",
-  "health_score": 94,
+  "health_score": 88,
   "health_score_breakdown": {
-    "method": "Ahrefs-equivalent \u2014 base 100, deducted for real issues affecting SERP performance (owned crawl)",
+    "method": "Ahrefs-equivalent \u2014 base 100, deducted for real issues (owned crawl, entity-decoded lengths)",
     "deductions": {
       "title_tags_over_60_chars": {
         "count": 2,
         "penalty": 1.0
       },
       "meta_descriptions_over_155_chars": {
-        "count": 2,
-        "penalty": 0.6
+        "count": 5,
+        "penalty": 1.5
       },
       "missing_h1_on_content_pages": {
-        "count": 2,
-        "penalty": 4.0
+        "count": 0,
+        "penalty": 0.0
       },
       "multiple_h1s_on_money_pages": {
         "count": 0,
         "penalty": 0.0
       },
       "pages_over_2s_load": {
-        "count": 0,
-        "penalty": 0.0
+        "count": 4,
+        "penalty": 10
       },
       "broken_links_404": {
         "count": 0,
         "penalty": 0.0
       }
     },
-    "final_score": 94.4
+    "final_score": 87.5
   },
   "crawl": {
-    "timestamp": "2026-07-13T17:13:22.993903Z",
-    "duration_s": 119.1,
+    "timestamp": "2026-07-13T17:33:11.523149Z",
+    "duration_s": 8.6,
     "pages_crawled": 120,
     "status_codes": {
       "200": 120
     },
-    "avg_load_time_s": 1.541,
-    "slow_pages_over_1.5s": 3,
-    "slow_pages_over_2.0s": 0,
+    "avg_load_time_s": 2.497,
+    "slow_pages_over_2.0s": 4,
     "slowest_pages": [
       {
-        "url": "https://brand9signs.com/construction-signs-florida-2/",
-        "load_s": 1.725
+        "url": "https://brand9signs.com/advantages-of-effective-signs-in-a-recession/",
+        "load_s": 3.14
       },
       {
-        "url": "https://brand9signs.com/model-home-signs-florida/",
-        "load_s": 1.672
+        "url": "https://brand9signs.com/the-human-side-of-branding/",
+        "load_s": 3.083
       },
       {
-        "url": "https://brand9signs.com/the-ringling-sarasota-cad-zan-museum-history/",
-        "load_s": 1.661
+        "url": "https://brand9signs.com/how-new-york-city-understands-branding/",
+        "load_s": 2.274
       },
       {
-        "url": "https://brand9signs.com/what-is-a-branded-environment-and-why-does-it-matter-for-homebuilders/",
-        "load_s": 1.382
+        "url": "https://brand9signs.com/michelangelos-david-focus-on-the-lord/",
+        "load_s": 2.011
       },
       {
-        "url": "https://brand9signs.com/5-ways-strong-corporate-identity-enhances-your-brand-visibility/",
-        "load_s": 1.267
+        "url": "https://brand9signs.com/the-power-of-campus-branding-schools-colleges-universities/",
+        "load_s": 1.978
       }
     ]
   },
   "issues_detail": {
     "title_over_60": [
       {
-        "url": "https://brand9signs.com/dimensional-channel-letters/",
-        "title_len": 63
+        "url": "https://brand9signs.com/signage-orlando/",
+        "title_len": 91
       },
       {
-        "url": "https://brand9signs.com/see-why-americas-top-builders-trust-brand-9-for-signage-and-interior-displays/",
-        "title_len": 61
+        "url": "https://brand9signs.com/locations/",
+        "title_len": 66
       }
     ],
     "meta_over_155": [
+      {
+        "url": "https://brand9signs.com/about-us-brand-9/",
+        "meta_len": 216
+      },
+      {
+        "url": "https://brand9signs.com/signage-orlando/",
+        "meta_len": 200
+      },
       {
         "url": "https://brand9signs.com/homebuilder-signage-florida/",
         "meta_len": 199
       },
       {
-        "url": "https://brand9signs.com/what-is-school-branding/",
-        "meta_len": 158
+        "url": "https://brand9signs.com/developer-signage-display-florida/",
+        "meta_len": 194
+      },
+      {
+        "url": "https://brand9signs.com/marketing-services/",
+        "meta_len": 157
       }
     ],
     "multiple_h1": [],
-    "missing_h1": [
-      "https://brand9signs.com/blog-news/",
-      "https://brand9signs.com/store-effective-signage-branding/"
-    ],
+    "missing_h1": [],
     "not_found_404": []
   },
   "gsc": {
