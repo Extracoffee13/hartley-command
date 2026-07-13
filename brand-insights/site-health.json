@@ -1,10 +1,10 @@
 {
-  "generated": "2026-07-13T15:45:17.190282Z",
-  "data_source": "PRAGMA Site-Health Operator \u2014 owned crawl + real GSC (browser-read URL-prefix property)",
+  "generated": "2026-07-13T16:10:03.988133Z",
+  "data_source": "PRAGMA Site-Health Operator \u2014 owned crawl (key-free); GSC enrichment pending project access",
   "version": "1.1.0",
   "phase": "1",
   "domain": "brand9signs.com",
-  "health_score": 51,
+  "health_score": 48,
   "health_score_breakdown": {
     "method": "Ahrefs-equivalent \u2014 base 100, deducted for real issues affecting SERP performance (owned crawl)",
     "deductions": {
@@ -25,48 +25,721 @@
         "penalty": 20
       },
       "pages_over_2s_load": {
-        "count": 0,
-        "penalty": 0.0
+        "count": 1,
+        "penalty": 3.0
       },
       "broken_links_404": {
         "count": 0,
         "penalty": 0.0
       }
     },
-    "final_score": 50.8
+    "final_score": 47.8
   },
   "crawl": {
-    "timestamp": "2026-07-13T15:45:17.190282Z",
-    "duration_s": 117.6,
+    "timestamp": "2026-07-13T16:10:03.988133Z",
+    "duration_s": 126.1,
     "pages_crawled": 120,
     "status_codes": {
       "200": 120
     },
-    "avg_load_time_s": 1.555,
-    "slow_pages_over_1.5s": 3,
-    "slow_pages_over_2.0s": 0,
+    "avg_load_time_s": 1.972,
+    "slow_pages_over_1.5s": 8,
+    "slow_pages_over_2.0s": 1,
     "slowest_pages": [
       {
-        "url": "https://brand9signs.com/brand-9-now-serving-south-florida/",
-        "load_s": 1.786
+        "url": "https://brand9signs.com/the-psychology-of-signage-property-management/",
+        "load_s": 2.655
       },
       {
-        "url": "https://brand9signs.com/dr-horton-signs-florida/",
-        "load_s": 1.63
+        "url": "https://brand9signs.com/high-quality-modern-name-signs-business-appearance-functionality/",
+        "load_s": 1.854
+      },
+      {
+        "url": "https://brand9signs.com/",
+        "load_s": 1.824
+      },
+      {
+        "url": "https://brand9signs.com/what-is-school-branding/",
+        "load_s": 1.765
+      },
+      {
+        "url": "https://brand9signs.com/brand-audit-embed/",
+        "load_s": 1.762
+      }
+    ]
+  },
+  "issues_detail": {
+    "title_over_60": [
+      {
+        "url": "https://brand9signs.com/how-to-build-a-unicorn-business-leveraging-consumer-behavior-and-technology-for-disruptive-growth/",
+        "title_len": 114
+      },
+      {
+        "url": "https://brand9signs.com/high-quality-modern-name-signs-business-appearance-functionality/",
+        "title_len": 107
+      },
+      {
+        "url": "https://brand9signs.com/see-why-americas-top-builders-trust-brand-9-for-signage-and-interior-displays/",
+        "title_len": 99
+      },
+      {
+        "url": "https://brand9signs.com/the-psychology-of-signage-property-management/",
+        "title_len": 99
+      },
+      {
+        "url": "https://brand9signs.com/why-homebuilder-cmos-rethink-signage-2026/",
+        "title_len": 97
+      },
+      {
+        "url": "https://brand9signs.com/signage-jacksonville/",
+        "title_len": 97
+      },
+      {
+        "url": "https://brand9signs.com/how-do-businesses-benefit-from-signs-leveraging-the-power-of-sight-and-branding/",
+        "title_len": 96
+      },
+      {
+        "url": "https://brand9signs.com/the-secret-behind-effective-wall-signage-what-makes-people-remember-your-brand/",
+        "title_len": 95
+      },
+      {
+        "url": "https://brand9signs.com/signage-orlando/",
+        "title_len": 95
+      },
+      {
+        "url": "https://brand9signs.com/transforming-patient-experience-with-innovative-hospital-wayfinding-solutions/",
+        "title_len": 93
+      },
+      {
+        "url": "https://brand9signs.com/the-impact-of-well-designed-hospital-wayfinding-on-patient-care-in-atlanta-hospitals/",
+        "title_len": 92
+      },
+      {
+        "url": "https://brand9signs.com/navigating-through-design-the-role-of-wall-signage-in-wayfinding-solutions/",
+        "title_len": 91
+      },
+      {
+        "url": "https://brand9signs.com/sistine-chapel-best-viewpoint/",
+        "title_len": 89
+      },
+      {
+        "url": "https://brand9signs.com/the-importance-of-expert-branding-in-government-communication-strategies/",
+        "title_len": 88
+      },
+      {
+        "url": "https://brand9signs.com/signage-miami/",
+        "title_len": 88
+      },
+      {
+        "url": "https://brand9signs.com/incorporating-environmental-graphics-into-your-university-campus-design/",
+        "title_len": 87
+      },
+      {
+        "url": "https://brand9signs.com/the-power-of-property-branding/",
+        "title_len": 86
+      },
+      {
+        "url": "https://brand9signs.com/maximizing-your-space-with-effective-visual-identification-strategies/",
+        "title_len": 85
+      },
+      {
+        "url": "https://brand9signs.com/unlocking-the-secrets-to-effective-signage-what-makes-a-sign-great/",
+        "title_len": 83
+      },
+      {
+        "url": "https://brand9signs.com/the-power-of-color-unlocking-the-psychology-of-color-in-marketing/",
+        "title_len": 82
+      },
+      {
+        "url": "https://brand9signs.com/why-custom-lighted-signs-matter-business/",
+        "title_len": 81
+      },
+      {
+        "url": "https://brand9signs.com/5-ways-strong-corporate-identity-enhances-your-brand-visibility/",
+        "title_len": 79
+      },
+      {
+        "url": "https://brand9signs.com/wayfinding-signs-visitor-experience/",
+        "title_len": 78
+      },
+      {
+        "url": "https://brand9signs.com/what-are-branded-environments/",
+        "title_len": 78
+      },
+      {
+        "url": "https://brand9signs.com/using-design-thinking-to-drive-success-in-homebuilder-signage/",
+        "title_len": 77
+      },
+      {
+        "url": "https://brand9signs.com/meeting-room-aesthetics/",
+        "title_len": 77
+      },
+      {
+        "url": "https://brand9signs.com/us-government-approved-contractor-why-its-important/",
+        "title_len": 74
+      },
+      {
+        "url": "https://brand9signs.com/the-importance-of-interior-environments-in-business-today/",
+        "title_len": 73
       },
       {
         "url": "https://brand9signs.com/aces-boom-box-chronicles-a-brief-history-of-the-boombox/",
-        "load_s": 1.551
+        "title_len": 73
       },
       {
-        "url": "https://brand9signs.com/brandmaxxing-the-art-of-identity/",
-        "load_s": 1.453
+        "url": "https://brand9signs.com/ai-transformative-impact-on-future-graphic-design/",
+        "title_len": 72
+      },
+      {
+        "url": "https://brand9signs.com/church-branding-being-relevant-for-the-new-generation/",
+        "title_len": 70
+      },
+      {
+        "url": "https://brand9signs.com/mastering-school-branding-top-strategies-for-success/",
+        "title_len": 69
+      },
+      {
+        "url": "https://brand9signs.com/why-corporate-wall-branding-is-crucial-for-marketing/",
+        "title_len": 68
+      },
+      {
+        "url": "https://brand9signs.com/lennar-community-signs-florida/",
+        "title_len": 68
+      },
+      {
+        "url": "https://brand9signs.com/hospital-wayfinding-technologies/",
+        "title_len": 66
+      },
+      {
+        "url": "https://brand9signs.com/hibernia-plantation-history-clay-county-florida/",
+        "title_len": 66
+      },
+      {
+        "url": "https://brand9signs.com/design-principles-for-creating-high-impact-signage/",
+        "title_len": 66
+      },
+      {
+        "url": "https://brand9signs.com/the-evolution-of-brand-9-signs/",
+        "title_len": 66
+      },
+      {
+        "url": "https://brand9signs.com/led-signs-jacksonville-florida/",
+        "title_len": 66
+      },
+      {
+        "url": "https://brand9signs.com/locations/",
+        "title_len": 66
+      },
+      {
+        "url": "https://brand9signs.com/see-why-americas-top-builders-trust-brand-9/",
+        "title_len": 65
+      },
+      {
+        "url": "https://brand9signs.com/signal-science-environmental-graphic-design/",
+        "title_len": 65
+      },
+      {
+        "url": "https://brand9signs.com/environmental-graphics-defined/",
+        "title_len": 65
+      },
+      {
+        "url": "https://brand9signs.com/a-timeless-icon-reimagined-1-hanover-square-nyc/",
+        "title_len": 65
+      },
+      {
+        "url": "https://brand9signs.com/brand-9-north-florida-headquarters/",
+        "title_len": 64
+      },
+      {
+        "url": "https://brand9signs.com/ada-signs-florida-commercial/",
+        "title_len": 64
+      },
+      {
+        "url": "https://brand9signs.com/about-us-brand-9/",
+        "title_len": 64
+      },
+      {
+        "url": "https://brand9signs.com/brand-9-council-ai-strategic-advisor-small-business/",
+        "title_len": 63
+      },
+      {
+        "url": "https://brand9signs.com/vizcaya-museum-gardens-miami/",
+        "title_len": 62
+      },
+      {
+        "url": "https://brand9signs.com/what-makes-wayfinding-signage-effective/",
+        "title_len": 62
+      },
+      {
+        "url": "https://brand9signs.com/dr-horton-signs-florida/",
+        "title_len": 62
+      },
+      {
+        "url": "https://brand9signs.com/construction-signs-florida-2/",
+        "title_len": 61
+      }
+    ],
+    "meta_over_155": [
+      {
+        "url": "https://brand9signs.com/contact/",
+        "meta_len": 295
+      },
+      {
+        "url": "https://brand9signs.com/frequently-asked-questions/",
+        "meta_len": 295
+      },
+      {
+        "url": "https://brand9signs.com/what-are-branded-environments/",
+        "meta_len": 261
+      },
+      {
+        "url": "https://brand9signs.com/about-us-brand-9/",
+        "meta_len": 226
+      },
+      {
+        "url": "https://brand9signs.com/signage-orlando/",
+        "meta_len": 205
+      },
+      {
+        "url": "https://brand9signs.com/brand-9-now-serving-south-florida/",
+        "meta_len": 204
+      },
+      {
+        "url": "https://brand9signs.com/signage-jacksonville/",
+        "meta_len": 204
+      },
+      {
+        "url": "https://brand9signs.com/sistine-chapel-best-viewpoint/",
+        "meta_len": 202
+      },
+      {
+        "url": "https://brand9signs.com/homebuilder-signage-florida/",
+        "meta_len": 199
+      },
+      {
+        "url": "https://brand9signs.com/signage-miami/",
+        "meta_len": 197
+      },
+      {
+        "url": "https://brand9signs.com/developer-signage-display-florida/",
+        "meta_len": 194
+      },
+      {
+        "url": "https://brand9signs.com/services-brand-9/",
+        "meta_len": 186
+      },
+      {
+        "url": "https://brand9signs.com/aces-boom-box-chronicles-a-brief-history-of-the-boombox/",
+        "meta_len": 179
+      },
+      {
+        "url": "https://brand9signs.com/brand-9-now-serving-tampa-bay/",
+        "meta_len": 178
+      },
+      {
+        "url": "https://brand9signs.com/brand-9-now-serving-central-florida/",
+        "meta_len": 178
+      },
+      {
+        "url": "https://brand9signs.com/40-years-of-signs-marketing-lessons/",
+        "meta_len": 178
+      },
+      {
+        "url": "https://brand9signs.com/what-is-a-branded-environment-and-why-does-it-matter-for-homebuilders/",
+        "meta_len": 178
+      },
+      {
+        "url": "https://brand9signs.com/kingsley-plantation-fort-george-island-history/",
+        "meta_len": 174
+      },
+      {
+        "url": "https://brand9signs.com/using-design-thinking-to-drive-success-in-homebuilder-signage/",
+        "meta_len": 174
+      },
+      {
+        "url": "https://brand9signs.com/lennar-case-study-building-brand-equity-through-superior-community-signage/",
+        "meta_len": 172
+      },
+      {
+        "url": "https://brand9signs.com/the-complete-guide-to-community-entrance-signage-for-homebuilders/",
+        "meta_len": 171
       },
       {
         "url": "https://brand9signs.com/wayfinding-signs-florida-homebuilder/",
-        "load_s": 1.354
+        "meta_len": 166
+      },
+      {
+        "url": "https://brand9signs.com/vizcaya-museum-gardens-miami/",
+        "meta_len": 164
+      },
+      {
+        "url": "https://brand9signs.com/signal-science-environmental-graphic-design/",
+        "meta_len": 164
+      },
+      {
+        "url": "https://brand9signs.com/helping-people-find-the-way-the-art-of-wayfinding/",
+        "meta_len": 164
+      },
+      {
+        "url": "https://brand9signs.com/ybor-city-tampa-cigar-history/",
+        "meta_len": 163
+      },
+      {
+        "url": "https://brand9signs.com/edison-ford-winter-estates-fort-myers-florida-history/",
+        "meta_len": 161
+      },
+      {
+        "url": "https://brand9signs.com/model-home-signs-florida/",
+        "meta_len": 161
+      },
+      {
+        "url": "https://brand9signs.com/hibernia-plantation-history-clay-county-florida/",
+        "meta_len": 160
+      },
+      {
+        "url": "https://brand9signs.com/best-sign-company-florida/",
+        "meta_len": 159
+      },
+      {
+        "url": "https://brand9signs.com/what-is-school-branding/",
+        "meta_len": 158
+      },
+      {
+        "url": "https://brand9signs.com/marketing-services/",
+        "meta_len": 157
+      },
+      {
+        "url": "https://brand9signs.com/maximizing-your-space-with-effective-visual-identification-strategies/",
+        "meta_len": 156
+      },
+      {
+        "url": "https://brand9signs.com/the-ringling-sarasota-cad-zan-museum-history/",
+        "meta_len": 156
       }
-    ]
+    ],
+    "multiple_h1": [
+      {
+        "url": "https://brand9signs.com/kingsley-plantation-fort-george-island-history/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/ybor-city-tampa-cigar-history/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/vizcaya-museum-gardens-miami/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/brand-9-now-serving-tampa-bay/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/brand-9-north-florida-headquarters/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/brand-9-now-serving-central-florida/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/brand-9-now-serving-south-florida/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/40-years-of-signs-marketing-lessons/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/what-is-a-branded-environment-and-why-does-it-matter-for-homebuilders/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/the-complete-guide-to-community-entrance-signage-for-homebuilders/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/lennar-case-study-building-brand-equity-through-superior-community-signage/",
+        "h1_count": 3
+      },
+      {
+        "url": "https://brand9signs.com/see-why-americas-top-builders-trust-brand-9-for-signage-and-interior-displays/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/why-homebuilder-cmos-rethink-signage-2026/",
+        "h1_count": 3
+      },
+      {
+        "url": "https://brand9signs.com/see-why-americas-top-builders-trust-brand-9/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/using-design-thinking-to-drive-success-in-homebuilder-signage/",
+        "h1_count": 3
+      },
+      {
+        "url": "https://brand9signs.com/hospital-wayfinding-technologies/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/wayfinding-signs-visitor-experience/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/the-secret-behind-effective-wall-signage-what-makes-people-remember-your-brand/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/transforming-patient-experience-with-innovative-hospital-wayfinding-solutions/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/maximizing-your-space-with-effective-visual-identification-strategies/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/5-ways-strong-corporate-identity-enhances-your-brand-visibility/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/the-impact-of-well-designed-hospital-wayfinding-on-patient-care-in-atlanta-hospitals/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/a-tale-of-two-signs-in-gator-country/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/brand-identity/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/signal-science-environmental-graphic-design/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/brand-love-language-explained/",
+        "h1_count": 3
+      },
+      {
+        "url": "https://brand9signs.com/navigating-through-design-the-role-of-wall-signage-in-wayfinding-solutions/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/incorporating-environmental-graphics-into-your-university-campus-design/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/the-importance-of-expert-branding-in-government-communication-strategies/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/personal-branding-mastery-9-steps/",
+        "h1_count": 3
+      },
+      {
+        "url": "https://brand9signs.com/the-importance-of-interior-environments-in-business-today/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/9-rules-for-branding-in-2024/",
+        "h1_count": 3
+      },
+      {
+        "url": "https://brand9signs.com/brandmaxxing-the-art-of-identity/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/branding-vs-marketing-founders-guide/",
+        "h1_count": 3
+      },
+      {
+        "url": "https://brand9signs.com/what-makes-wayfinding-signage-effective/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/what-are-branded-environments/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/how-new-york-city-understands-branding/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/global-brand-building/",
+        "h1_count": 3
+      },
+      {
+        "url": "https://brand9signs.com/michelangelos-david-focus-on-the-lord/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/environmental-graphics-defined/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/helping-people-find-the-way-the-art-of-wayfinding/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/church-branding-being-relevant-for-the-new-generation/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/the-history-of-margarets-walk/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/what-is-school-branding/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/hibernia-plantation-history-clay-county-florida/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/the-human-side-of-branding/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/a-timeless-icon-reimagined-1-hanover-square-nyc/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/mastering-school-branding-top-strategies-for-success/",
+        "h1_count": 3
+      },
+      {
+        "url": "https://brand9signs.com/the-power-of-color-unlocking-the-psychology-of-color-in-marketing/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/ai-transformative-impact-on-future-graphic-design/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/design-principles-for-creating-high-impact-signage/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/how-to-build-a-unicorn-business-leveraging-consumer-behavior-and-technology-for-disruptive-growth/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/how-do-businesses-benefit-from-signs-leveraging-the-power-of-sight-and-branding/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/why-is-branding-important-its-complicated/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/why-corporate-wall-branding-is-crucial-for-marketing/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/why-custom-lighted-signs-matter-business/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/high-quality-modern-name-signs-business-appearance-functionality/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/the-psychology-of-signage-property-management/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/the-power-of-campus-branding-schools-colleges-universities/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/sistine-chapel-best-viewpoint/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/us-government-approved-contractor-why-its-important/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/the-power-of-property-branding/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/meeting-room-aesthetics/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/advantages-of-effective-signs-in-a-recession/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/how-to-install-vinyl-graphics-dry-method/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/unlocking-the-secrets-to-effective-signage-what-makes-a-sign-great/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/aces-boom-box-chronicles-a-brief-history-of-the-boombox/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/the-evolution-of-brand-9-signs/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/corporate-office-branding/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/edison-ford-winter-estates-fort-myers-florida-history/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/bok-tower-gardens-history-lake-wales-florida/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/the-ringling-sarasota-cad-zan-museum-history/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/site-sign-company-florida-2/",
+        "h1_count": 3
+      },
+      {
+        "url": "https://brand9signs.com/construction-signs-florida-2/",
+        "h1_count": 3
+      },
+      {
+        "url": "https://brand9signs.com/lennar-community-signs-florida/",
+        "h1_count": 3
+      },
+      {
+        "url": "https://brand9signs.com/jacksonville-sign-company/",
+        "h1_count": 3
+      },
+      {
+        "url": "https://brand9signs.com/homebuilder-signage-florida/",
+        "h1_count": 2
+      },
+      {
+        "url": "https://brand9signs.com/best-sign-company-florida/",
+        "h1_count": 3
+      },
+      {
+        "url": "https://brand9signs.com/ada-signs-florida-commercial/",
+        "h1_count": 3
+      },
+      {
+        "url": "https://brand9signs.com/sign-company-orange-park-fl/",
+        "h1_count": 3
+      }
+    ],
+    "not_found_404": []
   },
   "gsc": {
     "window": "3mo",
