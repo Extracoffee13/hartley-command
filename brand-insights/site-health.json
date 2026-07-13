@@ -1,20 +1,20 @@
 {
-  "generated": "2026-07-13T16:54:59.676596Z",
+  "generated": "2026-07-13T17:13:22.993903Z",
   "data_source": "PRAGMA Site-Health Operator \u2014 owned crawl (key-free); GSC enrichment pending project access",
   "version": "1.1.0",
   "phase": "1",
   "domain": "brand9signs.com",
-  "health_score": 93,
+  "health_score": 94,
   "health_score_breakdown": {
     "method": "Ahrefs-equivalent \u2014 base 100, deducted for real issues affecting SERP performance (owned crawl)",
     "deductions": {
       "title_tags_over_60_chars": {
-        "count": 3,
-        "penalty": 1.5
+        "count": 2,
+        "penalty": 1.0
       },
       "meta_descriptions_over_155_chars": {
-        "count": 6,
-        "penalty": 1.8
+        "count": 2,
+        "penalty": 0.6
       },
       "missing_h1_on_content_pages": {
         "count": 2,
@@ -33,38 +33,38 @@
         "penalty": 0.0
       }
     },
-    "final_score": 92.7
+    "final_score": 94.4
   },
   "crawl": {
-    "timestamp": "2026-07-13T16:54:59.676596Z",
-    "duration_s": 119.8,
+    "timestamp": "2026-07-13T17:13:22.993903Z",
+    "duration_s": 119.1,
     "pages_crawled": 120,
     "status_codes": {
       "200": 120
     },
-    "avg_load_time_s": 1.583,
-    "slow_pages_over_1.5s": 4,
+    "avg_load_time_s": 1.541,
+    "slow_pages_over_1.5s": 3,
     "slow_pages_over_2.0s": 0,
     "slowest_pages": [
       {
-        "url": "https://brand9signs.com/",
-        "load_s": 1.649
+        "url": "https://brand9signs.com/construction-signs-florida-2/",
+        "load_s": 1.725
       },
       {
-        "url": "https://brand9signs.com/the-power-of-campus-branding-schools-colleges-universities/",
-        "load_s": 1.613
+        "url": "https://brand9signs.com/model-home-signs-florida/",
+        "load_s": 1.672
       },
       {
-        "url": "https://brand9signs.com/helping-people-find-the-way-the-art-of-wayfinding/",
-        "load_s": 1.608
+        "url": "https://brand9signs.com/the-ringling-sarasota-cad-zan-museum-history/",
+        "load_s": 1.661
       },
       {
-        "url": "https://brand9signs.com/brand-9-now-serving-south-florida/",
-        "load_s": 1.555
+        "url": "https://brand9signs.com/what-is-a-branded-environment-and-why-does-it-matter-for-homebuilders/",
+        "load_s": 1.382
       },
       {
-        "url": "https://brand9signs.com/signs-tributary-yulee/",
-        "load_s": 1.492
+        "url": "https://brand9signs.com/5-ways-strong-corporate-identity-enhances-your-brand-visibility/",
+        "load_s": 1.267
       }
     ]
   },
@@ -72,14 +72,10 @@
     "title_over_60": [
       {
         "url": "https://brand9signs.com/dimensional-channel-letters/",
-        "title_len": 62
+        "title_len": 63
       },
       {
         "url": "https://brand9signs.com/see-why-americas-top-builders-trust-brand-9-for-signage-and-interior-displays/",
-        "title_len": 61
-      },
-      {
-        "url": "https://brand9signs.com/led-lighted-signs/",
         "title_len": 61
       }
     ],
@@ -89,27 +85,15 @@
         "meta_len": 199
       },
       {
-        "url": "https://brand9signs.com/monument-signs-jacksonville/",
-        "meta_len": 164
-      },
-      {
-        "url": "https://brand9signs.com/led-lighted-signs/",
-        "meta_len": 161
-      },
-      {
-        "url": "https://brand9signs.com/banners-graphics/",
-        "meta_len": 160
-      },
-      {
         "url": "https://brand9signs.com/what-is-school-branding/",
-        "meta_len": 158
-      },
-      {
-        "url": "https://brand9signs.com/wayfinding-directional-signage/",
         "meta_len": 158
       }
     ],
     "multiple_h1": [],
+    "missing_h1": [
+      "https://brand9signs.com/blog-news/",
+      "https://brand9signs.com/store-effective-signage-branding/"
+    ],
     "not_found_404": []
   },
   "gsc": {
