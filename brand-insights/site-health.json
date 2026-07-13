@@ -1,10 +1,10 @@
 {
-  "generated": "2026-07-13T17:37:43.650419Z",
+  "generated": "2026-07-13T18:06:47.071133Z",
   "data_source": "PRAGMA Site-Health Operator \u2014 owned crawl (key-free); GSC enrichment pending project access",
   "version": "1.2.0",
   "phase": "1",
   "domain": "brand9signs.com",
-  "health_score": 99,
+  "health_score": 100,
   "health_score_breakdown": {
     "method": "Ahrefs-equivalent \u2014 base 100, deducted for real issues (owned crawl, entity-decoded lengths)",
     "deductions": {
@@ -13,8 +13,8 @@
         "penalty": 0.0
       },
       "meta_descriptions_over_155_chars": {
-        "count": 2,
-        "penalty": 0.6
+        "count": 0,
+        "penalty": 0.0
       },
       "missing_h1_on_content_pages": {
         "count": 0,
@@ -33,52 +33,43 @@
         "penalty": 0.0
       }
     },
-    "final_score": 99.4
+    "final_score": 100.0
   },
   "crawl": {
-    "timestamp": "2026-07-13T17:37:43.650419Z",
-    "duration_s": 28.2,
+    "timestamp": "2026-07-13T18:06:47.071133Z",
+    "duration_s": 26.3,
     "pages_crawled": 120,
     "status_codes": {
       "200": 120
     },
-    "avg_load_time_s": 1.258,
+    "avg_load_time_s": 1.185,
     "slow_pages_over_2.0s": 0,
     "slowest_pages": [
       {
-        "url": "https://brand9signs.com/aces-boom-box-chronicles-a-brief-history-of-the-boombox/",
-        "load_s": 1.3
+        "url": "https://brand9signs.com/signage-fleming-island/",
+        "load_s": 1.735
       },
       {
-        "url": "https://brand9signs.com/us-government-approved-contractor-why-its-important/",
-        "load_s": 1.272
+        "url": "https://brand9signs.com/",
+        "load_s": 1.12
       },
       {
-        "url": "https://brand9signs.com/mastering-school-branding-top-strategies-for-success/",
-        "load_s": 1.26
+        "url": "https://brand9signs.com/brand-9-now-serving-south-florida/",
+        "load_s": 1.04
       },
       {
-        "url": "https://brand9signs.com/developer-signage-florida/",
-        "load_s": 1.245
+        "url": "https://brand9signs.com/the-psychology-of-signage-property-management/",
+        "load_s": 1.022
       },
       {
-        "url": "https://brand9signs.com/sales-center-signage-florida/",
-        "load_s": 1.213
+        "url": "https://brand9signs.com/the-importance-of-expert-branding-in-government-communication-strategies/",
+        "load_s": 1.006
       }
     ]
   },
   "issues_detail": {
     "title_over_60": [],
-    "meta_over_155": [
-      {
-        "url": "https://brand9signs.com/homebuilder-signage-florida/",
-        "meta_len": 199
-      },
-      {
-        "url": "https://brand9signs.com/developer-signage-display-florida/",
-        "meta_len": 194
-      }
-    ],
+    "meta_over_155": [],
     "multiple_h1": [],
     "missing_h1": [],
     "not_found_404": []

@@ -266,3 +266,15 @@ lesson: The week's structural story is the MCP RC — stateless core, first-clas
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-13
+decision: Afternoon re-fire refresh of the 24h AI/agent scan for The Construct (folded in two items that landed after the 06:02 ET morning run).
+outcome: 5 items flagged — Anthropic officially brings Cowork to web + mobile with remote sessions (scheduled tasks run with no device online) plus enterprise-managed MCP (Okta zero-touch), Microsoft 365 write tools, and Claude Code fixes (confirmed Jul 13 via 9to5Mac/NBC); Omneky launches a public API + MCP server exposing autonomous ad-creative generation (UGC + short-form video) to any AI agent including Claude; the MCP 2026-07-28 spec RC (stateless core + Tasks + MCP Apps) is now 15 days out; Lyzr closed a ~$100M Series B run end-to-end by its own AI agent (SivaClaw); and the model-efficiency race stays live (Grok 4.5 ~4x token efficiency, GPT-5.6 Sol/Terra/Luna).
+lesson: Today's fresh signal is creative generation becoming an agent-callable primitive — Omneky's MCP server puts ad/UGC/short-form video behind one MCP call, so Brand 9 Signs should wrap it (plus the four ad-platform MCPs) behind a single creative-ops agent that makes and launches in one loop instead of treating creative as a manual step. Underneath, keep upgrading the harness (pilot the MCP RC beta SDKs, move scans onto Tasks, lean on remote Cowork to kill the Mac-must-be-awake fragility) and keep model routing provider-agnostic so Grok/GPT efficiency gains stay cost options to benchmark, not platforms to marry.
+tags: pulse,mcp,ecosystem,daily,creative
+confidence: 0.8
+~~~
