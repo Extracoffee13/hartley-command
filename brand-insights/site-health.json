@@ -1,253 +1,71 @@
 {
-  "generated": "2026-07-06T19:21:01Z",
-  "data_source": "PRAGMA Site-Health Operator \u2014 owned crawl + GSC structural (API pending)",
-  "version": "1.0.0",
+  "generated": "2026-07-13T15:45:17.190282Z",
+  "data_source": "PRAGMA Site-Health Operator \u2014 owned crawl (key-free); GSC enrichment pending project access",
+  "version": "1.1.0",
   "phase": "1",
   "domain": "brand9signs.com",
-  "health_score": 48,
+  "health_score": 51,
   "health_score_breakdown": {
-    "method": "Ahrefs-equivalent \u2014 base 100, deducted for real issues affecting SERP performance",
+    "method": "Ahrefs-equivalent \u2014 base 100, deducted for real issues affecting SERP performance (owned crawl)",
     "deductions": {
       "title_tags_over_60_chars": {
-        "count": 23,
-        "penalty": 11.5
+        "count": 52,
+        "penalty": 15
       },
       "meta_descriptions_over_155_chars": {
         "count": 34,
         "penalty": 10.2
       },
       "missing_h1_on_content_pages": {
-        "count": 1,
-        "penalty": 2.0
+        "count": 2,
+        "penalty": 4.0
       },
       "multiple_h1s_on_money_pages": {
-        "count": 69,
+        "count": 112,
         "penalty": 20
       },
       "pages_over_2s_load": {
-        "count": 1,
-        "penalty": 3.0
+        "count": 0,
+        "penalty": 0.0
       },
       "broken_links_404": {
         "count": 0,
-        "penalty": 5
+        "penalty": 0.0
       }
     },
-    "final_score": 48
+    "final_score": 50.8
   },
   "crawl": {
-    "timestamp": "2026-07-06T19:13:08Z",
-    "duration_s": 155.9,
+    "timestamp": "2026-07-13T15:45:17.190282Z",
+    "duration_s": 117.6,
     "pages_crawled": 120,
-    "money_pages": 103,
-    "archive_tag_pages": 17,
     "status_codes": {
       "200": 120
     },
-    "avg_load_time_s": 1.08,
-    "slow_pages_over_1.5s": 10,
-    "slow_pages_over_2.0s": 1,
+    "avg_load_time_s": 1.555,
+    "slow_pages_over_1.5s": 3,
+    "slow_pages_over_2.0s": 0,
     "slowest_pages": [
       {
-        "url": "https://brand9signs.com/my-account/lost-password/",
-        "load_s": 2.195
+        "url": "https://brand9signs.com/brand-9-now-serving-south-florida/",
+        "load_s": 1.786
       },
       {
-        "url": "https://brand9signs.com/product-category/marketing-branding/",
-        "load_s": 1.995
+        "url": "https://brand9signs.com/dr-horton-signs-florida/",
+        "load_s": 1.63
       },
       {
-        "url": "https://brand9signs.com/product-category/wayfinding-signage/",
-        "load_s": 1.897
+        "url": "https://brand9signs.com/aces-boom-box-chronicles-a-brief-history-of-the-boombox/",
+        "load_s": 1.551
       },
       {
-        "url": "https://brand9signs.com/product-category/hotel-signs/",
-        "load_s": 1.864
+        "url": "https://brand9signs.com/brandmaxxing-the-art-of-identity/",
+        "load_s": 1.453
       },
       {
-        "url": "https://brand9signs.com/product-category/homebuilder-and-development-signage/",
-        "load_s": 1.859
+        "url": "https://brand9signs.com/wayfinding-signs-florida-homebuilder/",
+        "load_s": 1.354
       }
     ]
-  },
-  "issues": {
-    "errors": {
-      "count": 0,
-      "items": [
-        {
-          "type": "404_not_found",
-          "count": 0,
-          "urls": []
-        }
-      ]
-    },
-    "warnings": {
-      "count": 71,
-      "items": [
-        {
-          "type": "slow_page_over_2s",
-          "count": 1,
-          "severity": "warning",
-          "urls": [
-            "https://brand9signs.com/my-account/lost-password/"
-          ]
-        },
-        {
-          "type": "h1_zero_content_pages",
-          "count": 1,
-          "severity": "warning",
-          "detail": "Content pages without any H1 \u2014 weak page structure",
-          "urls": [
-            "https://brand9signs.com/blog-news/"
-          ]
-        },
-        {
-          "type": "multiple_h1s_on_money_pages",
-          "count": 69,
-          "severity": "warning",
-          "detail": "Money pages with 2+ H1s \u2014 theme/plugin adds header H1",
-          "urls": [
-            "https://brand9signs.com",
-            "https://brand9signs.com/",
-            "https://brand9signs.com/services-brand-9/",
-            "https://brand9signs.com/case-studies/",
-            "https://brand9signs.com/locations/"
-          ]
-        }
-      ]
-    },
-    "notices": {
-      "count": 67,
-      "items": [
-        {
-          "type": "title_tag_too_long_gt_60",
-          "count": 23,
-          "severity": "notice",
-          "detail": "Title tags exceed 60 chars \u2014 risk of SERP truncation",
-          "urls": [
-            "https://brand9signs.com/locations/",
-            "https://brand9signs.com/signage-jacksonville/",
-            "https://brand9signs.com/signage-orlando/",
-            "https://brand9signs.com/signage-miami/",
-            "https://brand9signs.com/product/home-builder-exterior-signs/",
-            "https://brand9signs.com/using-design-thinking-to-drive-success-in-homebuilder-signage/",
-            "https://brand9signs.com/signal-science-environmental-graphic-design/",
-            "https://brand9signs.com/product/church-branding/",
-            "https://brand9signs.com/product/outdoor-wayfinding-signage/",
-            "https://brand9signs.com/product/home-builder-marketing/"
-          ]
-        },
-        {
-          "type": "meta_description_too_long_gt_155",
-          "count": 34,
-          "severity": "notice",
-          "detail": "Meta descriptions exceed 155 chars \u2014 risk of SERP truncation",
-          "urls": [
-            "https://brand9signs.com/frequently-asked-questions/",
-            "https://brand9signs.com/services-brand-9/",
-            "https://brand9signs.com/signage-jacksonville/",
-            "https://brand9signs.com/signage-orlando/",
-            "https://brand9signs.com/signage-miami/",
-            "https://brand9signs.com/about-us-brand-9/",
-            "https://brand9signs.com/contact/",
-            "https://brand9signs.com/product/home-builder-exterior-signs/",
-            "https://brand9signs.com/using-design-thinking-to-drive-success-in-homebuilder-signage/",
-            "https://brand9signs.com/signal-science-environmental-graphic-design/"
-          ]
-        },
-        {
-          "type": "slow_page_over_1.5s_under_2",
-          "count": 9,
-          "severity": "notice",
-          "detail": "Pages loading between 1.5-2.0s",
-          "urls": [
-            "https://brand9signs.com/product-category/marketing-branding/",
-            "https://brand9signs.com/product/dimensional-letters/",
-            "https://brand9signs.com/product-category/homebuilder-and-development-signage/",
-            "https://brand9signs.com/product-category/wayfinding-signage/",
-            "https://brand9signs.com/product-category/architectural-signage/"
-          ]
-        }
-      ]
-    },
-    "pages_dropped_from_top_10": {
-      "status": "pending_gsc_api"
-    },
-    "organic_traffic_dropped": {
-      "status": "pending_gsc_api"
-    },
-    "title_tag_changed": {
-      "status": "pending_historical_crawl"
-    },
-    "external_4xx": {
-      "count": 0,
-      "status": "spot_check_clean"
-    }
-  },
-  "vs_ahrefs": {
-    "note": "Every signal from the Ahrefs email reproduced from GSC + owned crawl",
-    "health_score": {
-      "ahrefs": 85,
-      "pragma": 48,
-      "note": "Different methodology \u2014 PRAGMA stricter on H1 + title length"
-    },
-    "errors": {
-      "ahrefs": 591,
-      "pragma_showing_errors": 0,
-      "note": "Ahrefs aggregates GSC coverage errors; PRAGMA shows crawl-detected errors"
-    },
-    "warnings": {
-      "ahrefs": 850,
-      "pragma_showing": 71
-    },
-    "notices": {
-      "ahrefs": 817,
-      "pragma_showing": 66
-    },
-    "meta_description_too_long": {
-      "ahrefs": 47,
-      "pragma": 34
-    },
-    "title_tag_too_long": {
-      "ahrefs": 44,
-      "pragma": 23
-    },
-    "slow_pages": {
-      "ahrefs": 373,
-      "pragma": 1,
-      "note": "Ahrefs uses PageSpeed API; PRAGMA uses own load timing"
-    },
-    "external_4xx": {
-      "ahrefs": 13,
-      "pragma": 0,
-      "note": "Full external link check requires deeper crawl"
-    }
-  },
-  "gsc": {
-    "connected": false,
-    "status": "API scope required \u2014 GSC page accessible in browser but API not yet scoped",
-    "structural_data": {
-      "indexable_urls": 284,
-      "sitemap_urls": 235,
-      "noindexed_tags": 539,
-      "valid_page_types": {
-        "pages": 40,
-        "posts": 93,
-        "products": 104,
-        "product_cat": 49,
-        "product_tag": 539
-      }
-    },
-    "performance_28d": null
-  },
-  "saas_saved": {
-    "tool_replaced": "Ahrefs",
-    "monthly_cost": 249,
-    "annual_cost": 2988,
-    "plus_rank_tracking_monthly": 50,
-    "plus_site_audit_monthly": 20,
-    "total_monthly_replaced": 319,
-    "total_annual_replaced": 3828,
-    "notes": "From PRAGMA_Subscription_Teardown.xlsx. Ahrefs $249/mo + $50 rank tracking + $20 site audit = $319/mo replaced by owned stack."
   }
 }
