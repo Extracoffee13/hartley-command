@@ -1,20 +1,20 @@
 {
-  "generated": "2026-07-13T17:33:11.523149Z",
+  "generated": "2026-07-13T17:37:43.650419Z",
   "data_source": "PRAGMA Site-Health Operator \u2014 owned crawl (key-free); GSC enrichment pending project access",
   "version": "1.2.0",
   "phase": "1",
   "domain": "brand9signs.com",
-  "health_score": 88,
+  "health_score": 99,
   "health_score_breakdown": {
     "method": "Ahrefs-equivalent \u2014 base 100, deducted for real issues (owned crawl, entity-decoded lengths)",
     "deductions": {
       "title_tags_over_60_chars": {
-        "count": 2,
-        "penalty": 1.0
+        "count": 0,
+        "penalty": 0.0
       },
       "meta_descriptions_over_155_chars": {
-        "count": 5,
-        "penalty": 1.5
+        "count": 2,
+        "penalty": 0.6
       },
       "missing_h1_on_content_pages": {
         "count": 0,
@@ -25,68 +25,51 @@
         "penalty": 0.0
       },
       "pages_over_2s_load": {
-        "count": 4,
-        "penalty": 10
+        "count": 0,
+        "penalty": 0.0
       },
       "broken_links_404": {
         "count": 0,
         "penalty": 0.0
       }
     },
-    "final_score": 87.5
+    "final_score": 99.4
   },
   "crawl": {
-    "timestamp": "2026-07-13T17:33:11.523149Z",
-    "duration_s": 8.6,
+    "timestamp": "2026-07-13T17:37:43.650419Z",
+    "duration_s": 28.2,
     "pages_crawled": 120,
     "status_codes": {
       "200": 120
     },
-    "avg_load_time_s": 2.497,
-    "slow_pages_over_2.0s": 4,
+    "avg_load_time_s": 1.258,
+    "slow_pages_over_2.0s": 0,
     "slowest_pages": [
       {
-        "url": "https://brand9signs.com/advantages-of-effective-signs-in-a-recession/",
-        "load_s": 3.14
+        "url": "https://brand9signs.com/aces-boom-box-chronicles-a-brief-history-of-the-boombox/",
+        "load_s": 1.3
       },
       {
-        "url": "https://brand9signs.com/the-human-side-of-branding/",
-        "load_s": 3.083
+        "url": "https://brand9signs.com/us-government-approved-contractor-why-its-important/",
+        "load_s": 1.272
       },
       {
-        "url": "https://brand9signs.com/how-new-york-city-understands-branding/",
-        "load_s": 2.274
+        "url": "https://brand9signs.com/mastering-school-branding-top-strategies-for-success/",
+        "load_s": 1.26
       },
       {
-        "url": "https://brand9signs.com/michelangelos-david-focus-on-the-lord/",
-        "load_s": 2.011
+        "url": "https://brand9signs.com/developer-signage-florida/",
+        "load_s": 1.245
       },
       {
-        "url": "https://brand9signs.com/the-power-of-campus-branding-schools-colleges-universities/",
-        "load_s": 1.978
+        "url": "https://brand9signs.com/sales-center-signage-florida/",
+        "load_s": 1.213
       }
     ]
   },
   "issues_detail": {
-    "title_over_60": [
-      {
-        "url": "https://brand9signs.com/signage-orlando/",
-        "title_len": 91
-      },
-      {
-        "url": "https://brand9signs.com/locations/",
-        "title_len": 66
-      }
-    ],
+    "title_over_60": [],
     "meta_over_155": [
-      {
-        "url": "https://brand9signs.com/about-us-brand-9/",
-        "meta_len": 216
-      },
-      {
-        "url": "https://brand9signs.com/signage-orlando/",
-        "meta_len": 200
-      },
       {
         "url": "https://brand9signs.com/homebuilder-signage-florida/",
         "meta_len": 199
@@ -94,10 +77,6 @@
       {
         "url": "https://brand9signs.com/developer-signage-display-florida/",
         "meta_len": 194
-      },
-      {
-        "url": "https://brand9signs.com/marketing-services/",
-        "meta_len": 157
       }
     ],
     "multiple_h1": [],
