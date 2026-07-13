@@ -254,3 +254,15 @@ lesson: The afternoon's real story is governance graduating onto the platform �
 tags: pulse,mcp,ecosystem,daily,governance
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-13
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: 5 items flagged — the MCP 2026-07-28 spec Release Candidate lands (stateless core + Extensions framework + Tasks for long-running work + MCP Apps server-rendered UIs + OAuth/OIDC auth hardening + formal deprecation policy; beta SDKs already out), SpaceXAI ships Grok 4.5 (Opus-class coding/agentic model, Terminal-Bench 2.1 83.3% vs Opus 4.8's 78.9%, ~4.2x more token-efficient at $2/$6 per 1M), Anthropic moves Cowork to web + mobile with remote sessions (scheduled tasks run with no device online) plus Microsoft 365 write tools, an arXiv paper (Context Engineering) frames context as the agent's OS with a five-criterion rubric + maturity pyramid, and vertical read-the-filings agents keep drawing capital (LinqAlpha $22M Series A).
+lesson: The week's structural story is the MCP RC — stateless core, first-class Tasks, and MCP Apps — so upgrade the harness itself: pilot the beta SDKs now, move our scans onto Tasks, let servers render their own dashboards, and lean on remote Cowork sessions to kill the Mac-must-be-awake fragility. Keep model routing provider-agnostic (Grok 4.5's 4x token efficiency is a cost option to benchmark, not a platform to marry) and let the Context Engineering rubric — economy, provenance, isolation — discipline how we fill every agent's context window.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
