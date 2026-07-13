@@ -1,6 +1,6 @@
 {
   "generated": "2026-07-13T15:45:17.190282Z",
-  "data_source": "PRAGMA Site-Health Operator \u2014 owned crawl (key-free); GSC enrichment pending project access",
+  "data_source": "PRAGMA Site-Health Operator \u2014 owned crawl + real GSC (browser-read URL-prefix property)",
   "version": "1.1.0",
   "phase": "1",
   "domain": "brand9signs.com",
@@ -67,5 +67,42 @@
         "load_s": 1.354
       }
     ]
+  },
+  "gsc": {
+    "window": "3mo",
+    "clicks": 249,
+    "impressions": 86300,
+    "ctr": 0.3,
+    "avg_position": 25.8,
+    "indexed": 266,
+    "not_indexed": 791,
+    "not_indexed_reasons": {
+      "not_found_404": 98,
+      "crawled_not_indexed": 373,
+      "noindex": 270,
+      "redirect": 30,
+      "blocked_robots": 4,
+      "other": 16
+    },
+    "top_queries": [
+      {
+        "q": "brand 9 signs",
+        "clicks": 17,
+        "impr": 113
+      },
+      {
+        "q": "school branding",
+        "clicks": 5,
+        "impr": 2063
+      },
+      {
+        "q": "directory signage",
+        "clicks": 3,
+        "impr": 543
+      }
+    ],
+    "source": "GSC URL-prefix property (browser-read)",
+    "captured": "2026-07-13",
+    "last_gsc_update": "2026-06-29"
   }
 }

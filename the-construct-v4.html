@@ -2941,6 +2941,9 @@ const SiteHealthPanel = () => {
           {shGenTs && <div style={{ fontSize: 8, color: shStale ? '#FFC53D' : C.greenDim, marginTop: 3, letterSpacing: 1 }}>
             {shStale ? '⚠ STALE · ' : ''}source {shAgeH}h old ({shGenTs.slice(0, 10)}){shStale ? ' · site-health.json writer not refreshing — rewire b9-rescore + grant GSC API scope' : ''}
           </div>}
+          {sh.gsc && <div style={{ fontSize: 9, color: C.cyan, marginTop: 5, letterSpacing: 0.4 }}>
+            GSC {sh.gsc.window || '3mo'}: {sh.gsc.clicks} clicks · {(sh.gsc.impressions || 0).toLocaleString()} impr · CTR {sh.gsc.ctr}% · pos {sh.gsc.avg_position} · {sh.gsc.indexed} indexed / {sh.gsc.not_indexed} not-indexed{sh.gsc.source ? ' · ' + sh.gsc.source : ''}
+          </div>}
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 4 }}>
           <div style={{ fontSize: 10, color: C.greenDim, letterSpacing: 2 }}>HEALTH SCORE</div>
