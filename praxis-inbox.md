@@ -278,3 +278,15 @@ lesson: Today's fresh signal is creative generation becoming an agent-callable p
 tags: pulse,mcp,ecosystem,daily,creative
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-14
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Quieter day (no fresh frontier-model drop after the Jul 8-9 Grok 4.5 / GPT-5.6 / Muse Spark wave). 4 items flagged — the creative-generation MCP layer is consolidating into a category (Higgsfield MCP 30+ image/video models via one connector URL, Scenario MCP 79 tools/550+ models, Imagine MCP one-session chains, following Omneky Jul 10); arXiv "From Prompts to Contracts: Harness Engineering for Auditable Enterprise LLM Agents" (Jul 9) moves deterministic behavior into code/manifests/schemas/validation for reproducible, auditable traces; AgentPrizm launched AgentMemory + AgentSkills (Jul 9, persistent cross-session memory + skills via REST+MCP); and Featured shipped an MCP server for PR agencies (Jul 7) making earned-media discovery agent-callable.
+lesson: Two threads converge — agent-callable creative generation is now a category (Higgsfield/Scenario/Imagine/Omneky), so Brand 9 Signs should standardize on ONE creative-ops MCP behind graphic-designer/Pulse rather than collecting connectors; and the "Prompts to Contracts" paper names PRAGMA's real moat — the enterprise deliverable is an auditable agent (deterministic logic in code/manifests/schemas + reproducible traces), not a prompt demo, a discipline that should also govern The Construct's own fleet. Keep memory/skills (AgentPrizm) and earned-media (Featured) MCPs as cheap benchmarks behind existing agents, not forced re-tooling.
+tags: pulse,mcp,ecosystem,daily,creative
+confidence: 0.8
+~~~
