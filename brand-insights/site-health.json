@@ -1,12 +1,12 @@
 {
-  "generated": "2026-07-13T18:06:47.071133Z",
+  "generated": "2026-07-14T11:26:52.364825Z",
   "data_source": "PRAGMA Site-Health Operator \u2014 owned crawl (key-free); GSC enrichment pending project access",
-  "version": "1.2.0",
+  "version": "1.1.0",
   "phase": "1",
   "domain": "brand9signs.com",
   "health_score": 100,
   "health_score_breakdown": {
-    "method": "Ahrefs-equivalent \u2014 base 100, deducted for real issues (owned crawl, entity-decoded lengths)",
+    "method": "Ahrefs-equivalent \u2014 base 100, deducted for real issues affecting SERP performance (owned crawl)",
     "deductions": {
       "title_tags_over_60_chars": {
         "count": 0,
@@ -36,34 +36,35 @@
     "final_score": 100.0
   },
   "crawl": {
-    "timestamp": "2026-07-13T18:06:47.071133Z",
-    "duration_s": 26.3,
+    "timestamp": "2026-07-14T11:26:52.364825Z",
+    "duration_s": 116.0,
     "pages_crawled": 120,
     "status_codes": {
       "200": 120
     },
-    "avg_load_time_s": 1.185,
+    "avg_load_time_s": 1.244,
+    "slow_pages_over_1.5s": 0,
     "slow_pages_over_2.0s": 0,
     "slowest_pages": [
       {
-        "url": "https://brand9signs.com/signage-fleming-island/",
-        "load_s": 1.735
+        "url": "https://brand9signs.com/model-home-signs-florida/",
+        "load_s": 1.351
+      },
+      {
+        "url": "https://brand9signs.com/the-power-of-property-branding/",
+        "load_s": 1.298
+      },
+      {
+        "url": "https://brand9signs.com/high-quality-modern-name-signs-business-appearance-functionality/",
+        "load_s": 1.234
       },
       {
         "url": "https://brand9signs.com/",
-        "load_s": 1.12
+        "load_s": 1.206
       },
       {
-        "url": "https://brand9signs.com/brand-9-now-serving-south-florida/",
-        "load_s": 1.04
-      },
-      {
-        "url": "https://brand9signs.com/the-psychology-of-signage-property-management/",
-        "load_s": 1.022
-      },
-      {
-        "url": "https://brand9signs.com/the-importance-of-expert-branding-in-government-communication-strategies/",
-        "load_s": 1.006
+        "url": "https://brand9signs.com/sign-company-orange-park-fl/",
+        "load_s": 1.13
       }
     ]
   },
