@@ -290,3 +290,15 @@ lesson: Two threads converge — agent-callable creative generation is now a cat
 tags: pulse,mcp,ecosystem,daily,creative
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-14
+decision: Afternoon re-fire refresh of the 24h AI/agent scan for The Construct (leads with the item that most outweighs the quieter morning brief).
+outcome: 4 items flagged — the MCP 2026-07-28 spec release candidate is now available (stateless core removes the handshake + Mcp-Session-Id session pinning so any instance serves any request behind a plain load balancer; MCP Apps ships sandboxed HTML UIs; Tasks extension handles long-running work; OAuth/OIDC-aligned enterprise auth; 10-week window to the Jul 28 final); the creative-generation MCP layer keeps consolidating into a category (Higgsfield 30+ models, Scenario 79 tools/550+ models, Imagine one-session chains); arXiv "From Prompts to Contracts" (Jul 9) moves deterministic agent behavior into code/manifests/schemas for auditable traces; and the cheap coding-agent field keeps stacking (Grok 4.5 $2/$6, Meta Muse Spark 1.1 $1.25/$4.25, GPT-5.6 Sol).
+lesson: Today's headline is infrastructure, not models — the MCP 2026-07-28 RC removes exactly the sticky-session fragility that bites our remote/scheduled fleet, makes Tasks the correct home for long scans like this one, and gives MCP Apps as a governed path to ship V4-style UI from a server. Pilot the RC beta SDKs now so The Construct is spec-current before the Jul 28 final, and let it reinforce the "Prompts to Contracts" discipline: deterministic behavior in code/manifests/schemas executed on the current protocol is what makes PRAGMA's deliverable auditable rather than a demo. Keep one creative-ops MCP for the make-and-launch loop and keep model routing provider-agnostic so Grok/Muse Spark stay benchmarks, not marriages.
+tags: pulse,mcp,ecosystem,daily,infra
+confidence: 0.8
+~~~
