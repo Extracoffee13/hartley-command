@@ -1,10 +1,18 @@
 {
-  "generated": "2026-07-14T10:01:04Z",
+  "generated": "2026-07-14T18:00:49Z",
   "latest_date": "2026-07-14",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
+      "title": "The MCP 2026-07-28 spec release candidate is now available — stateless core, MCP Apps, Tasks extension, and OAuth/OIDC-aligned enterprise authorization",
+      "summary": "Largest MCP revision since launch: drops the initialize/initialized handshake and Mcp-Session-Id header (version/capabilities travel inline per request), so any server instance can serve any request behind a plain load balancer; MCP Apps (SEP-1865) ships sandboxed HTML UIs hosts prefetch and security-review; the Tasks extension moves long-running work to task handles; 10-week window to the final 2026-07-28 publish for Tier-1 SDKs.",
+      "tag": "yes",
+      "how": "Rewrites the foundation The Construct's whole MCP fleet runs on. Stateless core kills sticky-session fragility for remote/scheduled agents, Tasks is the right home for long scans like this one, and MCP Apps gives a governed way to ship dashboard-style UI (V4) from a server. Pilot the RC beta SDKs now so we're not retrofitting after Jul 28, and make it a PRAGMA talking point: agents on the current spec, auditable and load-balanced.",
+      "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/"
+    },
+    {
+      "n": 2,
       "title": "The creative-generation MCP layer is consolidating — Higgsfield, Scenario, and Imagine each expose dozens-to-hundreds of image/video/3D/audio models behind one agent-callable connector",
       "summary": "Higgsfield MCP ships agentic access to 30+ image/video models (Seedance 2.0, Sora 2, Veo, Kling, Nano Banana Pro) through one connector URL; Scenario MCP exposes 79 tools and 550+ models for image/video/3D/audio; Imagine MCP chains generate to upscale to background-removal to video in one agent session. Same shift Omneky signaled Jul 10, now a clear category.",
       "tag": "yes",
@@ -12,31 +20,23 @@
       "url": "https://mcp.directory/blog/higgsfield-mcp-guide"
     },
     {
-      "n": 2,
+      "n": 3,
       "title": "arXiv: 'From Prompts to Contracts — Harness Engineering for Auditable Enterprise LLM Agents' reframes production agents as code, manifests, schemas, and validation artifacts, not clever prompts",
       "summary": "Submitted Jul 9: enterprise agents start as prompt-carried prototypes but productizing them demands source boundaries, entity routing, answer contracts, and reproducible traces; the paper moves deterministic behavior out of the prompt and into code/manifests/schemas/validation so every answer is traceable and auditable.",
       "tag": "yes",
-      "how": "PRAGMA's durable moat stated plainly: the sellable deliverable for AI-operator clients is an AUDITABLE agent (deterministic logic in code + reproducible traces), not a prompt-clever demo. It also disciplines The Construct's own fleet — push each agent's non-negotiable behavior into manifests/schemas and keep the prompt for judgment only.",
+      "how": "PRAGMA's durable moat stated plainly: the sellable deliverable for AI-operator clients is an AUDITABLE agent (deterministic logic in code + reproducible traces), not a prompt-clever demo. Disciplines The Construct's own fleet too — push each agent's non-negotiable behavior into manifests/schemas and reserve the prompt for judgment. Pairs with the MCP RC's Tasks/Apps: contracts in code, execution on the current spec.",
       "url": "https://arxiv.org/abs/2607.08028"
     },
     {
-      "n": 3,
-      "title": "AgentPrizm launches AgentMemory + AgentSkills — persistent cross-session memory and reusable skills via a REST API paired with MCP infrastructure",
-      "summary": "Launched Jul 9 for developers and enterprise teams: durable agent memory that survives across sessions plus a packaged, reusable skills layer.",
-      "tag": "maybe",
-      "how": "The Construct already runs a two-tier memory system (CLAUDE.md + ~/.hermes/memories/) and a skills fleet, so this is a benchmark, not a buy. Worth checking whether a managed memory/skills backend beats our file-based approach for cross-agent recall, but our stack is bespoke and switching cost is high. Watch, don't adopt.",
-      "url": "https://agentic.ai/news"
-    },
-    {
       "n": 4,
-      "title": "Featured launches an MCP server for PR agencies — agents find media queries, journalists, podcasts, byline outlets, influencers, speaking calls, and awards from one natural-language request",
-      "summary": "Announced Jul 7: the earned-media discovery surface is now agent-callable from Claude, Cursor, or any MCP client.",
+      "title": "The coding-agent model field keeps stacking cheap challengers — Grok 4.5 ($2/$6, Cursor-trained), Meta Muse Spark 1.1 ($1.25/$4.25, first paid, tops tool-use benchmarks), GPT-5.6 Sol",
+      "summary": "xAI shipped Grok 4.5 publicly Jul 8 (Opus-class reasoning, native X grounding, permissive guardrails); Meta launched Muse Spark 1.1 Jul 9 as an agentic coder leading tool-use benchmarks at a rock-bottom price; GPT-5.6 Sol remains OpenAI's strongest agentic/coding flagship.",
       "tag": "maybe",
-      "how": "A natural extension of Pulse's owned-presence remit into earned media: a Construct agent could source podcast/speaking/byline opportunities for Bobby (Robert Louis Hartley) and Brand 9 Signs on a schedule. Low-cost to test behind Pulse; validate the media database actually covers signage/local-B2B before leaning on it.",
-      "url": "https://www.globenewswire.com/news-release/2026/07/07/3323391/0/en/Featured-Launches-an-MCP-Server-Bringing-AI-Agents-to-PR-Agencies.html"
+      "how": "Keep The Construct's model routing provider-agnostic so these efficiency gains are cost options to benchmark, never platforms to marry. Worth a controlled bake-off of Muse Spark / Grok 4.5 on our high-volume batch and computer-use jobs against current Claude routing.",
+      "url": "https://llm-stats.com/llm-updates"
     }
   ],
-  "praxis_lesson": "Two threads converge today. First, agent-callable creative generation has gone from a single vendor to a category (Higgsfield/Scenario/Imagine/Omneky) — so Brand 9 Signs should pick one creative-ops MCP and standardize the make-and-launch loop behind graphic-designer/Pulse instead of collecting connectors. Second, the 'Prompts to Contracts' paper names PRAGMA's real moat: the enterprise deliverable is an auditable agent — deterministic behavior in code/manifests/schemas with reproducible traces — not a prompt demo, and that discipline should govern The Construct's own fleet too. Keep memory/skills platforms (AgentPrizm) and earned-media MCPs (Featured) as benchmarks to test cheaply behind existing agents, never as forced re-tooling.",
+  "praxis_lesson": "The most important thread today is infrastructure, not models: the MCP 2026-07-28 release candidate is live, and it removes exactly the fragility that bites our remote/scheduled fleet — stateless core kills sticky sessions, Tasks is the correct home for long scans, and MCP Apps gives a governed path to ship UI from a server. Pilot the RC beta SDKs now so The Construct is spec-current before the Jul 28 final, and let it reinforce the 'Prompts to Contracts' discipline — deterministic behavior in code/manifests/schemas, executed on the current protocol, is what makes PRAGMA's deliverable auditable rather than a demo. Underneath, standardize on ONE creative-ops MCP for the make-and-launch loop and keep model routing provider-agnostic so Grok/Muse Spark stay benchmarks, not marriages.",
   "history": [
     "2026-07-14",
     "2026-07-13",
