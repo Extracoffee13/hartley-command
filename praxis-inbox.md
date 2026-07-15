@@ -302,3 +302,15 @@ lesson: Today's headline is infrastructure, not models — the MCP 2026-07-28 RC
 tags: pulse,mcp,ecosystem,daily,infra
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-15
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Quiet frontier day (no new flagship since the Jul 8-9 Grok 4.5 / GPT-5.6 / Muse Spark wave). 4 items flagged - Claude Code/Cowork shipped fleet-hygiene fixes that hit our exact failure modes (/doctor now diagnoses AND repairs, auditing unused skills/MCP servers/plugins against their context cost, deduping CLAUDE.md, flagging slow hooks; plus a fix for scheduled tasks duplicate-firing on wake from sleep and Cowork VM-mode login failures on CLI 2.1.203+); Anthropic launched Claude for Teachers (Jul 14) bundling teaching skills + 50-state curriculum connections + a FERPA-compliant K-12 DPA, free; Norm Ai raised $120M at a $1.2B valuation (Khosla-led) for "supervisory agents" that audit other AI deployments with full audit trails; and GPT-5.6 became the preferred M365 Copilot model with mandatory opt-out enablement Jul 24.
+lesson: On a quiet frontier day the useful signal is housekeeping and packaging. /doctor's new context-cost audit and the duplicate-fire-on-wake fix mean The Construct's fleet should be pruned and verified this week rather than extended - unused skills and MCP servers are a tax we've been paying silently, and our sleep-straddling scheduled scans (this brief, Lens, PRAGMA visibility) were a real duplicate-run risk. Meanwhile Claude for Teachers and Norm Ai's $1.2B say the same thing from opposite ends: the sellable unit is never the model - it's a bounded skill pack plus a written governance posture (Anthropic) or a full audit trail (Norm). PRAGMA should sell the instrument, not the intelligence.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
