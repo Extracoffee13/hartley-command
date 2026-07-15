@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-14T11:26:52.364825Z",
+  "generated": "2026-07-15T12:48:03.075702Z",
   "data_source": "PRAGMA Site-Health Operator \u2014 owned crawl (key-free); GSC enrichment pending project access",
   "version": "1.1.0",
   "phase": "1",
@@ -13,8 +13,8 @@
         "penalty": 0.0
       },
       "meta_descriptions_over_155_chars": {
-        "count": 0,
-        "penalty": 0.0
+        "count": 1,
+        "penalty": 0.3
       },
       "missing_h1_on_content_pages": {
         "count": 0,
@@ -33,44 +33,49 @@
         "penalty": 0.0
       }
     },
-    "final_score": 100.0
+    "final_score": 99.7
   },
   "crawl": {
-    "timestamp": "2026-07-14T11:26:52.364825Z",
-    "duration_s": 116.0,
+    "timestamp": "2026-07-15T12:48:03.075702Z",
+    "duration_s": 122.7,
     "pages_crawled": 120,
     "status_codes": {
       "200": 120
     },
-    "avg_load_time_s": 1.244,
+    "avg_load_time_s": 1.42,
     "slow_pages_over_1.5s": 0,
     "slow_pages_over_2.0s": 0,
     "slowest_pages": [
       {
-        "url": "https://brand9signs.com/model-home-signs-florida/",
-        "load_s": 1.351
+        "url": "https://brand9signs.com/why-homebuilder-cmos-rethink-signage-2026/",
+        "load_s": 1.46
       },
       {
-        "url": "https://brand9signs.com/the-power-of-property-branding/",
-        "load_s": 1.298
+        "url": "https://brand9signs.com/aces-boom-box-chronicles-a-brief-history-of-the-boombox/",
+        "load_s": 1.425
       },
       {
-        "url": "https://brand9signs.com/high-quality-modern-name-signs-business-appearance-functionality/",
-        "load_s": 1.234
+        "url": "https://brand9signs.com/signage-fleming-island/",
+        "load_s": 1.424
       },
       {
-        "url": "https://brand9signs.com/",
-        "load_s": 1.206
+        "url": "https://brand9signs.com/mastering-school-branding-top-strategies-for-success/",
+        "load_s": 1.412
       },
       {
-        "url": "https://brand9signs.com/sign-company-orange-park-fl/",
-        "load_s": 1.13
+        "url": "https://brand9signs.com/commercial-signs-jacksonville-fl/",
+        "load_s": 1.381
       }
     ]
   },
   "issues_detail": {
     "title_over_60": [],
-    "meta_over_155": [],
+    "meta_over_155": [
+      {
+        "url": "https://brand9signs.com/services-brand-9/",
+        "meta_len": 186
+      }
+    ],
     "multiple_h1": [],
     "missing_h1": [],
     "not_found_404": []
@@ -111,20 +116,5 @@
     "source": "GSC URL-prefix property (browser-read)",
     "captured": "2026-07-13",
     "last_gsc_update": "2026-06-29"
-  },
-  "schema_check": {
-    "has_schema": true,
-    "source": "live fetch",
-    "note": "application/ld+json present on homepage"
-  },
-  "llms_txt": {
-    "has_llms_txt": true,
-    "url": "https://brand9signs.com/llms.txt",
-    "source": "live fetch"
-  },
-  "nap": {
-    "phone": "(904) 272-3395",
-    "phone_normalized": "9042723395",
-    "source": "live fetch"
   }
 }
