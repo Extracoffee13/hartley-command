@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-15T12:48:03.075702Z",
+  "generated": "2026-07-15T16:15:41.180318Z",
   "data_source": "PRAGMA Site-Health Operator \u2014 owned crawl (key-free); GSC enrichment pending project access",
   "version": "1.1.0",
   "phase": "1",
@@ -36,35 +36,35 @@
     "final_score": 99.7
   },
   "crawl": {
-    "timestamp": "2026-07-15T12:48:03.075702Z",
-    "duration_s": 122.7,
+    "timestamp": "2026-07-15T16:15:41.180318Z",
+    "duration_s": 117.8,
     "pages_crawled": 120,
     "status_codes": {
       "200": 120
     },
-    "avg_load_time_s": 1.42,
-    "slow_pages_over_1.5s": 0,
+    "avg_load_time_s": 1.419,
+    "slow_pages_over_1.5s": 2,
     "slow_pages_over_2.0s": 0,
     "slowest_pages": [
       {
-        "url": "https://brand9signs.com/why-homebuilder-cmos-rethink-signage-2026/",
-        "load_s": 1.46
+        "url": "https://brand9signs.com/signs-shearwater-st-johns/",
+        "load_s": 1.654
       },
       {
-        "url": "https://brand9signs.com/aces-boom-box-chronicles-a-brief-history-of-the-boombox/",
-        "load_s": 1.425
+        "url": "https://brand9signs.com/advantages-of-effective-signs-in-a-recession/",
+        "load_s": 1.541
       },
       {
-        "url": "https://brand9signs.com/signage-fleming-island/",
-        "load_s": 1.424
+        "url": "https://brand9signs.com/",
+        "load_s": 1.334
       },
       {
-        "url": "https://brand9signs.com/mastering-school-branding-top-strategies-for-success/",
-        "load_s": 1.412
+        "url": "https://brand9signs.com/lennar-community-signs-florida/",
+        "load_s": 1.289
       },
       {
-        "url": "https://brand9signs.com/commercial-signs-jacksonville-fl/",
-        "load_s": 1.381
+        "url": "https://brand9signs.com/see-why-americas-top-builders-trust-brand-9-for-signage-and-interior-displays/",
+        "load_s": 1.277
       }
     ]
   },
@@ -116,5 +116,19 @@
     "source": "GSC URL-prefix property (browser-read)",
     "captured": "2026-07-13",
     "last_gsc_update": "2026-06-29"
+  },
+  "nap": {
+    "phone": "(904) 272-3395",
+    "consistent": true
+  },
+  "schema_check": {
+    "has_schema": true,
+    "source": "live fetch",
+    "note": "application/ld+json present on homepage"
+  },
+  "llms_txt": {
+    "has_llms_txt": true,
+    "url": "https://brand9signs.com/llms.txt",
+    "source": "live fetch"
   }
 }
