@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-14T12:07:01Z",
+  "updated": "2026-07-15T12:10:00Z",
   "account": {
     "username": "established (Bobby's personal account)",
     "created": "established",
@@ -72,7 +72,7 @@
   ],
   "posted_to_date": 3,
   "drafts_remaining": 392,
-  "cadence_note": "2-3/day, rotating subs + niches, 14-day per-sub spacing. All 3 today (RealEstate, graphic_design, InteriorDesign) are first-touch subs. Cooldown 2026-07-10: digitalrealestate, govcon (live); CommercialRealEstate, Construction, architecture, homebuilding, FacilitiesManagement, realestateinvesting (prepped 07-08/07-09, avoid re-prep).",
+  "cadence_note": "TARGET 2-3/day is currently UNREACHABLE — verified-open pool is down to ONE sub (RealEstateDevelopment). Cooldown as of 2026-07-15: digitalrealestate clears ~Jul 24; govcon downgraded (mod removal Jul 13). KNOWN-BLOCKED (do not re-vet): FacilitiesManagement (private/approved-only), Construction (No Commercial Content), homebuilding (wrong audience/DIY), realestateinvesting (off-topic + flair + no-self-promo), GovernmentContracting (Rules 1/8/9), CommercialRealEstate, PropertyManagement, smallbusiness, HOA (vendor/self-promo bans), signmaking (nonexistent), CommercialConstruction (nonexistent), MultifamilyRealEstate (submit forbidden + dead), urbanplanning (Rule 6 self-promo + no images). Pool fix required — see today_2026-07-15_result.note.",
   "verification_2026-07-09": {
     "method": "Chrome open of live URL",
     "found": "1ulomzm live, author Hefty_Internal3402, 7d ago, thumbnail rendered OK, 1 upvote/20 views",
@@ -130,5 +130,25 @@
       "govcon": "still downgraded (starter removed by mods Jul 13)",
       "thumbnail_devphasing": "renders OK, on-brand, topic matches"
     }
+  },
+  "today_2026-07-15_result": {
+    "prepped": 1,
+    "posted": 0,
+    "carry_count": 5,
+    "note": "5TH CONSECUTIVE CARRY of the r/RealEstateDevelopment devphasing post (first prepped 07-11, never posted). Re-verified viable in Chrome today: public, /submit?selftext=true loads a working text form, /about/rules lists exactly ONE rule ('No posts specifically advertising the sale or investment for particular lot or opportunity') which does not bar a signage vendor's phase-planning field guide. Caveat logged: evidence is 'no rule bans vendors', not 'rules explicitly permit' — the weaker form, and the same posture that lost govcon. FOUR new candidates vetted and ALL FOUR FAILED: r/signmaking = DOES NOT EXIST; r/CommercialConstruction = DOES NOT EXIST; r/MultifamilyRealEstate = submit forbidden (restricted) + dead sub (newest posts 6-8 yrs old); r/urbanplanning = Rule 6 No Self-Promotion + 'no direct image submissions' kills the thumbnail format. digitalrealestate on cooldown to ~Jul 24; govcon still downgraded. Canaries 1ulomzm + 1uloq30 both LIVE via JSON API (removed_by_category=null) = account healthy, no shadowban indicators. govcon 1ulorl6 still removed_by_category='moderator'. Thumbnail b9-thumb-devphasing-20260711.png re-confirmed via Read (un-clipped, WHITE/BLACK/#0090D0, 3D-9 + 40th badge; landscape 1200x630, NOT square/MOTION blog spec). Monitor refresh did NOT complete (run.py exceeds sandbox 45s cap, bg procs don't survive) — reddit-monitor.json intentionally LEFT at 07-14 data rather than overwritten with zeros. ESCALATION: the pack is not the bottleneck. Verified-open pool is down to ONE sub; 2-3/day cadence is unreachable. Bobby must decide: post-or-kill the carried post, and pick a pool fix (LinkedIn cross-post / earn into gated subs via comments / vet r/Jacksonville local angle / lower cadence to 2-3 per week).",
+    "verification_2026-07-15": {
+      "method": "Chrome (old.reddit + /about/rules + /submit?selftext=true) + Reddit JSON API removed_by_category + Read of thumbnail",
+      "RealEstateDevelopment": "VIABLE — public, text form loads, only rule bans lot/investment ads",
+      "signmaking": "BLOCKED — subreddit does not exist",
+      "CommercialConstruction": "BLOCKED — subreddit does not exist",
+      "MultifamilyRealEstate": "BLOCKED — submit forbidden (approved-only) + dead (posts 6-8 yrs old)",
+      "urbanplanning": "BLOCKED — Rule 6 No Self-Promotion/Blogspam + no direct image submissions",
+      "digitalrealestate_1ulomzm": "LIVE (removed_by_category=null, score 1, 12-13d)",
+      "digitalrealestate_1uloq30": "LIVE (removed_by_category=null, score 1, 12-13d)",
+      "govcon_1ulorl6": "STILL REMOVED (removed_by_category='moderator')",
+      "shadowban_read": "no indicators — all 6 submissions visible on /user/Hefty_Internal3402/submitted; caveat: logged-out check not possible (anon fetch 403, browser logged in as account) so read is indirect",
+      "thumbnail_devphasing": "PASS — renders, un-clipped, on-brand, topic matches; landscape not square"
+    },
+    "known_blocked_added": ["signmaking (nonexistent)", "CommercialConstruction (nonexistent)", "MultifamilyRealEstate (restricted + dead)", "urbanplanning (no self-promo + no images)"]
   }
 }
