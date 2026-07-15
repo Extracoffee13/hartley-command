@@ -314,3 +314,27 @@ lesson: On a quiet frontier day the useful signal is housekeeping and packaging.
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-15
+decision: Mid-morning re-fire of the 24h AI/agent scan. The 06:01 brief already stood; verified against fresh searches rather than rewritten, and refreshed in place with the two items that postdated it.
+outcome: Frontier confirmed still quiet — nothing new since the Jul 8-9 Grok 4.5 / GPT-5.6 / Muse Spark wave, so the morning's four items were preserved rather than clobbered. Added: Rafay's managed MCP server (announced today) enforcing existing RBAC and project boundaries at the server rather than handing agents an unscoped connection — governed MCP as a product category; and noted PixVerse's $439M Series C extension at $2B+ (Jul 13-14, video/world models) as watch-only, not flagged. Dropped nothing.
+lesson: A re-fire's job is to verify, not to manufacture novelty — when the frontier is quiet, rewriting a good brief with thinner material is a regression, so refresh in place and keep what earned its slot. The day's substance is a sequence: /doctor's context-cost audit says prune the fleet, Rafay says bound what survives with the permission model the client already trusts, and Norm Ai's $1.2B plus Claude for Teachers' FERPA addendum say package the result with a written governance instrument. Audit, then bound, then package — PRAGMA sells the instrument, not the intelligence.
+tags: pulse,mcp,ecosystem,daily,governance
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-15
+decision: Third fire of the 24h AI/agent scan. Verified the 10:05 brief against fresh searches rather than rewriting it; refreshed in place with one swap.
+outcome: Frontier still quiet — nothing new in the last 24h beyond the existing brief, so four of five items were preserved verbatim. One swap: the MCP 2026-07-28 stateless spec release candidate replaces the Norm Ai round. The spec removes the initialize/initialized handshake and the Mcp-Session-Id header, moves protocol version/client info/capabilities into _meta on every request, adds server/discover, makes extensions (MCP Apps, Tasks) first-class, hardens auth, and lets any request hit any server instance — no sticky routing, no shared session store. Six SEPs; Tier 1 SDKs expected to ship support inside the ten-week validation window; final spec publishes Jul 28, 13 days out. Rejected as stale on date-check: AWS MCP Server GA (May 6) and Claude in Chrome GA + /dataviz skill (week of Jul 3).
+lesson: A re-fire verifies rather than manufactures novelty — but preserving a brief is not the same as leaving it correct. Norm Ai was a week-old MAYBE already captured in praxis twice; the Jul 28 stateless spec is a dated breaking change against infrastructure we actually run and it had gone unflagged for eight weeks because it was never "news" on any single day. Deadline items don't announce themselves in a 24h window — they just arrive. The scan should date-check the calendar, not only the wire. Today's sequence now has dates on it: audit (/doctor), bound (Rafay), and a floor that moves Jul 28 — with Jul 24 flipping every client's Copilot on the way. PRAGMA sells the instrument, not the intelligence, and an instrument nobody has calibrated is a liability.
+tags: pulse,mcp,ecosystem,daily,protocol,deadline
+confidence: 0.8
+~~~
