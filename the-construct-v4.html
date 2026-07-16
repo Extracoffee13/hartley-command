@@ -1233,6 +1233,7 @@ const PragmaMirrorPanel = () => {
   const [fetched, setFetched] = React.useState(false);
   const [histFetched, setHistFetched] = React.useState(false);
   const [slmScore, setSlmScore] = React.useState(null);
+  const [slmDetail, setSlmDetail] = React.useState(null);
   React.useEffect(() => {
     const trySlm = async () => {
       const urls = [
@@ -1242,7 +1243,12 @@ const PragmaMirrorPanel = () => {
       for (const u of urls) {
         try {
           const r = await fetch(u, { cache: 'no-store' });
-          if (r.ok) { const j = await r.json(); setSlmScore(j && j.overall_slm_score != null ? j.overall_slm_score : null); return; }
+          if (r.ok) {
+            const j = await r.json();
+            setSlmScore(j && j.overall_slm_score != null ? j.overall_slm_score : null);
+            setSlmDetail(j || null);
+            return;
+          }
         } catch (e) {}
       }
     };
@@ -1509,6 +1515,11 @@ const PragmaMirrorPanel = () => {
               </div>
             ); })}
           </div>
+          <div style={{ fontSize: 9, color: C.greenDim, marginTop: 6 }}>
+            {slmDetail && (slmDetail.no_read > 0 || slmDetail.slm_total_no_read > 0)
+              ? <span style={{ color: "#FFAA33" }}>{slmDetail.scored != null ? slmDetail.scored : slmDetail.slm_total_scored} scored · {(slmDetail.no_read != null ? slmDetail.no_read : slmDetail.slm_total_no_read)} no-read</span>
+              : (slmDetail ? <span>{slmDetail.scored != null ? slmDetail.scored : slmDetail.slm_total_scored} scored · 0 no-read</span> : null)}
+          </div>
           <div style={{ fontSize: 9, color: C.cyan, marginTop: 8 }}>
             {(data && data.recommendations_count) || 0} fixes queued · {(data && data.recommendations_high) || 0} high · GEO geo-fence + geo-target · recommend-only
           </div>
@@ -1650,22 +1661,28 @@ const ModelRosterPanel = ({ client, title, subtitle }) => {
     return id.split('/').pop();
   };
 
-  const tile = (m, i, groupLen) => (
+  const tile = (m, i, groupLen) => {
+    const allNoRead = m.attempted != null && m.scored === 0 && m.no_read > 0;
+    return (
     <div key={i} style={{ border: '1px solid rgba(180,130,255,0.25)', padding: 8, background: 'rgba(0,0,0,0.25)' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 3 }}>
         <span style={{ fontSize: 9, color: '#b388ff', fontWeight: 700 }}>{m.kind === 'proxy' ? m.name : formatShortId(m.model)}</span>
-        <span style={{ fontSize: 9, fontWeight: 700, color: scoreColor(m.score) }}>{m.score === undefined || m.score === null ? '—' : m.score + '%'}</span>
+        {allNoRead
+          ? <span style={{ fontSize: 9, fontWeight: 700, color: '#FF4D4F' }}>NO READ</span>
+          : <span style={{ fontSize: 9, fontWeight: 700, color: scoreColor(m.score) }}>{m.score === undefined || m.score === null ? '—' : m.score + '%'}</span>}
       </div>
       <div style={{ fontSize: 7.5, color: C.cyan, marginBottom: 3, lineHeight: 1.3 }}>{m.harness}</div>
       {m.model && <div style={{ fontSize: 7.5, color: C.greenDim, marginBottom: 3 }}>{m.model}</div>}
       <div style={{ fontSize: 7, color: 'rgba(255,255,255,0.35)', lineHeight: 1.4 }}>
+        {m.attempted != null ? (m.scored + '/' + m.attempted + ' scored' + (m.no_read > 0 ? ' · ' + m.no_read + ' no-read' : '')) : ''}
+        {m.attempted != null && (m.temp !== undefined || m.max_tokens !== undefined || m.checked_at) ? ' · ' : ''}
         {m.temp !== undefined ? 't=' + m.temp + ' · ' : ''}
         {m.max_tokens !== undefined ? 'max=' + m.max_tokens : ''}
         {m.checked_at ? (' · ' + m.checked_at.slice(0, 19).replace('T', ' ')) : ''}
       </div>
       {m.note && <div style={{ fontSize: 7, color: C.greenDim, marginTop: 4, lineHeight: 1.3 }}>{m.note}</div>}
     </div>
-  );
+  );};
 
   return (
     <div style={{ background: 'linear-gradient(135deg, rgba(79,0,255,0.06) 0%, rgba(20,0,40,0.6) 100%)', border: '1px solid rgba(180,130,255,0.35)', borderRadius: 4, padding: 24, margin: '16px 0', position: 'relative' }}>
@@ -1687,6 +1704,11 @@ const ModelRosterPanel = ({ client, title, subtitle }) => {
             <div style={{ fontSize: 9, color: C.greenDim, lineHeight: 1.5, maxWidth: 520 }}>
               {summaryText()}
             </div>
+          </div>
+          <div style={{ fontSize: 9, color: '#FFAA33', marginBottom: 12 }}>
+            {data.no_read != null || data.slm_total_no_read != null
+              ? ("Valid scan: " + (data.scored != null ? data.scored : data.slm_total_scored) + "/" + (data.attempted != null ? data.attempted : data.slm_total_attempted) + " scored · " + (data.no_read != null ? data.no_read : data.slm_total_no_read) + " no-read")
+              : null}
           </div>
 
           {Object.entries(harnessGroups).map(([harness, models]) => (
@@ -2132,7 +2154,7 @@ const ApprovalQueuePanel = () => {
 // Rule: must (a) make judgment calls or synthesize, (b) recur, (c) be
 // non-trivial for a Claude agent + plain skill to replicate.
 // WILD_DUCKS:BEGIN — DO NOT EDIT BY HAND · regenerated by construct-v4-sync Wild Duck from /Atlas/hermes-sandbox/MANIFEST.md
-//   regenerated at: 2026-07-16T13:20:50.603666Z
+//   regenerated at: 2026-07-16T13:25:50.744265Z
 //   source of truth: classify-flock.py output (MANIFEST.md)
 const WILD_DUCKS = [
   { name: "agent-cross-ref-validator", status: "stale", score: 20, domain: "Meta-learning detection", skills: ["Cross-agent citation tracing"] },
@@ -2155,7 +2177,7 @@ const WILD_DUCKS = [
 // Locked 2026-06-01 per Bobby: "duck calls" — predictable instruments, not the rare ducks
 // Listed compactly because they're plumbing, not headliners.
 // CALLS:BEGIN — DO NOT EDIT BY HAND · regenerated by construct-v4-sync Wild Duck from /Atlas/hermes-sandbox/MANIFEST.md
-//   regenerated at: 2026-07-16T13:20:50.603666Z
+//   regenerated at: 2026-07-16T13:25:50.744265Z
 const CALLS = [
   { name: "adoption-reminder", cadence: "daily", group: "ops" },
   { name: "ai-citation-probe", cadence: "weekly", group: "probe" },
