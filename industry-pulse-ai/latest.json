@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-16T10:01:35Z",
+  "generated": "2026-07-16T14:05:00Z",
   "latest_date": "2026-07-16",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
@@ -29,14 +29,22 @@
     },
     {
       "n": 4,
-      "title": "Featured ships an MCP server for PR workflows — vertical MCP keeps arriving one industry at a time",
-      "summary": "Connects Claude, Cursor, VS Code, or any MCP client to a Featured account; an agent can find media queries, podcasts, journalists, byline publications, LinkedIn influencers, speaking engagements with open CFPs, and awards from one natural-language request. The server exposes workflow templates plus a single opportunity-search tool. A companion 'Workflows' always-on automation launch followed Jul 14.",
+      "title": "Oak exits stealth with $60M seed to govern non-human identities — the agent permission problem is now a funded category",
+      "summary": "Founded by Shai Morag and Tal Marom, co-led by Accel, Greylock, and CRV, already GA and deployed in enterprises. Oak replaces the fragmented legacy IAM stack with a single control plane governing every identity — human, machine, or AI agent — building a live identity graph from raw evidence via an AI connector framework spanning on-prem, cloud, SaaS, and homegrown apps. The founding research is the tell: 100+ CISOs and IAM leaders reported the same three problems — too many disconnected tools, no visibility into how access is actually used, and no way to govern AI agents at all.",
+      "tag": "yes",
+      "how": "The same thread as Rafay's managed MCP server from Jul 15, now with a seed round attached and a sharper frame: the unit of governance is the identity, not the server. The Construct runs a fleet of agents against client systems with credentials that were designed for humans. 'No way to govern AI agents' is not a market gap someone else has — it is a description of our own posture, and PRAGMA cannot sell an operator wedge into a client's stack without an answer to who the agent is when it authenticates.",
+      "url": "https://techcrunch.com/2026/07/15/backed-by-60m-in-funding-oak-steps-out-of-stealth-to-fix-the-identity-mess-that-ai-agents-are-making-worse/"
+    },
+    {
+      "n": 5,
+      "title": "Claude ships self-serve HIPAA configuration — and the exclusion list is the part that matters",
+      "summary": "An Enterprise Primary Owner can now open Organization settings → Data and privacy → HIPAA Compliance, review the BAA and implementation guide, and accept in one flow. The BAA is standard and unmodifiable; Anthropic notes the activation is a one-way decision that cannot be reversed from admin settings. The carve-outs are specific: the BAA covers only the single organization that accepted it and excludes Workbench, Claude Console, Claude Cowork, and beta features such as Claude in Office and Claude Design. Claude Code is covered only with zero data retention enabled, and only on qualified accounts.",
       "tag": "maybe",
-      "how": "Not a tool we need, but a data point on the pattern we keep tracking: the sellable unit in a vertical is a small number of well-chosen tools over proprietary data, not a model. Featured's whole MCP surface is three tool sets. That is the shape of a PRAGMA vertical pack for signage or real estate — and the restraint is the lesson, since a narrow surface is what makes it explicable to a client.",
-      "url": "https://www.globenewswire.com/news-release/2026/07/07/3323391/0/en/Featured-Launches-an-MCP-Server-Bringing-AI-Agents-to-PR-Agencies.html"
+      "how": "No PHI in our current book, so this is not a today problem. But read the exclusion list against our own architecture: Cowork is not covered, and Cowork is where The Construct actually runs. Any future PRAGMA engagement touching a healthcare-adjacent client cannot be delivered through the surface we use for everything else. Worth knowing before a prospect asks, not during.",
+      "url": "https://support.claude.com/en/articles/13296973-hipaa-ready-enterprise-plans"
     }
   ],
-  "praxis_lesson": "The most important thing found today was our own error. Yesterday's brief turned a spec publication date into a countdown to breakage, and the primary source says plainly that nothing switches off on Jul 28. Nobody fact-checks the scan, which means the scan must fact-check itself — and it is most dangerous exactly when it is most useful, because an urgent-sounding deadline is the kind of item that gets acted on without being re-read. Note the asymmetry in today's four items: the two that matter (a silent MEMORY.md truncation, an agent that reached the wrong git checkout) were quiet bugfix lines in a changelog, while the loud calendar item was overstated. Signal and volume are uncorrelated. Verify the claim, then set the temperature — in that order, because a scan that inflates is worse than a scan that misses.",
+  "praxis_lesson": "The morning's lesson holds and today's additions sharpen it. The MCP 'deadline' was loud and wrong; the items that matter were quiet — a silent MEMORY.md truncation, an agent reaching the wrong git checkout, and now an exclusion list buried in a help-center article that says the surface we run on is the one a BAA won't cover. Note what Oak's 100-CISO finding actually is: not a market insight but a mirror. 'No way to govern AI agents' describes The Construct as accurately as it describes their prospects, and it is easier to read that sentence as a market signal than as an audit finding. The sequence stands — audit, then bound, then package — but the audit is of ourselves first. A scan that only ever finds opportunities in other people's problems isn't scanning.",
   "history": [
     "2026-07-16",
     "2026-07-15",

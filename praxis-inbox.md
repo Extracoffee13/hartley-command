@@ -350,3 +350,15 @@ lesson: The most important thing found today was our own error. Yesterday's brie
 tags: pulse,mcp,ecosystem,daily,correction,security
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-16
+decision: Second fire of the 24h AI/agent scan, 10:00 ET. The 06:01 brief already stood; verified against fresh searches rather than rewritten, and refreshed in place with two items that postdated it.
+outcome: Frontier confirmed still quiet — nothing new since the Jul 8-9 GPT-5.6 / Muse Spark wave, so items 1-3 (the MCP Jul 28 correction, Claude Code 2.1.210 security/memory fixes, Cowork remote sessions) were preserved verbatim. One drop, two adds. Dropped Featured's PR MCP server (MAYBE, weakest slot). Added: Oak out of stealth with $60M seed co-led by Accel/Greylock/CRV (Jul 15) building an identity control plane governing human, machine, and AI-agent identities — 100+ CISOs told them they have no way to govern AI agents at all; flagged YES because that sentence describes The Construct's own posture, not just their market. Added Claude's self-serve HIPAA configuration (MAYBE) — the flow is one-way and unmodifiable, but the exclusion list is the substance: the BAA excludes Workbench, Console, Cowork, and beta features, and Claude Code is covered only with ZDR on qualified accounts. Rejected on date-check: a claimed Jul 17 Gemini 3.5 Pro launch — one aggregator claims a delayed Jul 17 debut while llm-stats shows GA in late June; the conflict is unresolved so it was not flagged. Also seen and not flagged: SnapLogic MCP + SnapCode GA (Jul 14), Symmetry payroll-tax MCP (Jul 15), Emergent's $130M Series C at $1.5B (Jul 15) — all real, none load-bearing for us.
+lesson: The morning's lesson holds and today's additions sharpen it. The MCP "deadline" was loud and wrong; the items that matter were quiet — a silent MEMORY.md truncation, an agent reaching the wrong git checkout, and now an exclusion list buried in a help-center article that says the surface we run on is the one a BAA will not cover. Note what Oak's 100-CISO finding actually is: not a market insight but a mirror. "No way to govern AI agents" describes The Construct as accurately as it describes their prospects, and it is easier to read that sentence as a market signal than as an audit finding. The sequence stands — audit, then bound, then package — but the audit is of ourselves first. A scan that only ever finds opportunities in other people's problems isn't scanning.
+tags: pulse,mcp,ecosystem,daily,governance,identity
+confidence: 0.8
+~~~
