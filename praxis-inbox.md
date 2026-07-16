@@ -362,3 +362,15 @@ lesson: The morning's lesson holds and today's additions sharpen it. The MCP "de
 tags: pulse,mcp,ecosystem,daily,governance,identity
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-16
+decision: Third fire of the 24h AI/agent scan, 14:00 ET. Verified the standing brief against fresh searches rather than rewriting it; refreshed in place with one substantive fold-in.
+outcome: Frontier confirmed still quiet — nothing new since the Jul 8-9 GPT-5.6 / Muse Spark wave, so items 1, 3, 4, 5 (the MCP Jul 28 correction, Cowork remote sessions, Oak's $60M identity round, Claude self-serve HIPAA) were preserved. One real catch that both earlier fires missed: Claude Code 2.1.211 shipped Jul 15, roughly 25 hours after the 2.1.210 we flagged as landing on our exact configuration. It adds --forward-subagent-text and CLAUDE_CODE_FORWARD_SUBAGENT_TEXT, forwarding subagent assistant text and thinking into stream-json output correlated to the parent via parent_tool_use_id — previously only a subagent's final result was observable under claude -p --output-format stream-json. Folded into item 2. Also folded into item 1: the MCP 2026-07-28 release candidate is now published and confirms the stateless core, Mcp-Method/Mcp-Name routing headers, and ttlMs/cacheScope on list and read results. Rejected on date-check: the claimed Jul 17 Gemini 3.5 Pro launch remains unresolved (BigGo reports a delayed Jul 17 debut with rebuilt architecture and 2M context; llm-stats still shows GA in late June) — conflict stands, not flagged. Rejected as unverifiable: July AI-agent funding totals from SEO aggregators ($1.8B across 12+ deals, Harvey $200M Series C, Lovable $200M, Glean $180M) — same class of source that contradicted itself on Perplexity's valuation. Seen and not flagged: Claude for Teachers (Jul 14), real but not load-bearing for us.
+lesson: Both of today's earlier fires reported the frontier quiet, and this one found the thing they walked past. The scan read the changelog entry it already knew about and stopped — 2.1.211 was one row above it. This fire also wrote itself up as the fourth of the day before checking the log; it was the third. Same reflex, caught in the act. That is yesterday's fabricated MCP deadline wearing different clothes: yesterday the scan over-read one item, today it under-read the next one, and both times the error was treating a source as finished. Note what 2.1.211 actually offers: --forward-subagent-text makes visible the subagent reasoning that has always been dark, and every brief this fleet writes comes out of that dark region. We now have four days of praxis lessons about verifying claims, written by a process nobody can watch. Instrument the scan before trusting the next lesson it teaches us.
+tags: pulse,mcp,ecosystem,daily,observability,miss
+confidence: 0.8
+~~~
