@@ -11,7 +11,8 @@
     ],
     "prompt_set_version": "b9-high-intent-v1",
     "disclaimer": "Measurement only \u2014 no site content changed.",
-    "generated_at": "2026-07-14T19:26:33.641082Z"
+    "generated_at": "2026-07-14T19:26:33.641082Z",
+    "valid_basis_note": "2026-07-15 restatement on valid-only denominator: no-read cells are excluded, not counted as absence. Original Day-0 headline is unchanged (5/256 = 1.95 \u2192 2; 5/250 = 2.00 \u2192 2; SLM 0/96 = 0 and 0/92 = 0). Principle: every denominator is counted from scored results at write time; never derive fractions from panel dimensions."
   },
   "summary": {
     "composite_aair_0_100": 2,
@@ -20,18 +21,36 @@
     "fraction": "5/256",
     "tier1_presence_count": 5,
     "any_presence_count": 5,
-    "prompt_count": 16
+    "prompt_count": 16,
+    "named_cells_valid_basis": 5,
+    "total_cells_valid_basis": 250,
+    "composite_aair_valid_basis": 2,
+    "no_read_cells": 6,
+    "attempted_cells": 256,
+    "fraction_valid_basis": "5/250"
   },
   "tier_subtotals": {
     "mirror_cloud": {
       "hits": 5,
       "total": 160,
-      "pct": 3
+      "pct": 3,
+      "attempted": 160,
+      "scored": 158,
+      "no_read": 2,
+      "hits_valid_basis": 5,
+      "total_valid_basis": 158,
+      "pct_valid_basis": 3
     },
     "slm_on_device": {
       "hits": 0,
       "total": 96,
-      "pct": 0
+      "pct": 0,
+      "attempted": 96,
+      "scored": 92,
+      "no_read": 4,
+      "hits_valid_basis": 0,
+      "total_valid_basis": 92,
+      "pct_valid_basis": 0
     }
   },
   "per_engine": [
@@ -59,7 +78,12 @@
         false,
         false,
         false
-      ]
+      ],
+      "attempted": 16,
+      "scored": 16,
+      "no_read": 0,
+      "cited": 0,
+      "pct_valid_basis": 0
     },
     {
       "key": "gpt4omini",
@@ -85,7 +109,12 @@
         false,
         false,
         false
-      ]
+      ],
+      "attempted": 16,
+      "scored": 16,
+      "no_read": 0,
+      "cited": 0,
+      "pct_valid_basis": 0
     },
     {
       "key": "claudesonnet",
@@ -111,7 +140,12 @@
         false,
         false,
         false
-      ]
+      ],
+      "attempted": 16,
+      "scored": 16,
+      "no_read": 0,
+      "cited": 0,
+      "pct_valid_basis": 0
     },
     {
       "key": "claudehaiku",
@@ -137,7 +171,12 @@
         false,
         false,
         false
-      ]
+      ],
+      "attempted": 16,
+      "scored": 16,
+      "no_read": 0,
+      "cited": 0,
+      "pct_valid_basis": 0
     },
     {
       "key": "gemini",
@@ -163,7 +202,12 @@
         false,
         false,
         false
-      ]
+      ],
+      "attempted": 16,
+      "scored": 16,
+      "no_read": 0,
+      "cited": 0,
+      "pct_valid_basis": 0
     },
     {
       "key": "perplexity",
@@ -189,7 +233,12 @@
         false,
         true,
         false
-      ]
+      ],
+      "attempted": 16,
+      "scored": 16,
+      "no_read": 0,
+      "cited": 5,
+      "pct_valid_basis": 31
     },
     {
       "key": "grok",
@@ -215,7 +264,12 @@
         false,
         false,
         false
-      ]
+      ],
+      "attempted": 16,
+      "scored": 16,
+      "no_read": 0,
+      "cited": 0,
+      "pct_valid_basis": 0
     },
     {
       "key": "deepseek",
@@ -241,7 +295,12 @@
         false,
         false,
         false
-      ]
+      ],
+      "attempted": 16,
+      "scored": 16,
+      "no_read": 0,
+      "cited": 0,
+      "pct_valid_basis": 0
     },
     {
       "key": "llama4",
@@ -267,7 +326,12 @@
         false,
         false,
         false
-      ]
+      ],
+      "attempted": 16,
+      "scored": 16,
+      "no_read": 0,
+      "cited": 0,
+      "pct_valid_basis": 0
     },
     {
       "key": "qwen72b",
@@ -293,7 +357,12 @@
         false,
         false,
         false
-      ]
+      ],
+      "attempted": 16,
+      "scored": 14,
+      "no_read": 2,
+      "cited": 0,
+      "pct_valid_basis": 0
     },
     {
       "key": "llama3b",
@@ -319,7 +388,12 @@
         false,
         false,
         false
-      ]
+      ],
+      "attempted": 16,
+      "scored": 16,
+      "no_read": 0,
+      "cited": 0,
+      "pct_valid_basis": 0
     },
     {
       "key": "llama8b",
@@ -345,7 +419,12 @@
         false,
         false,
         false
-      ]
+      ],
+      "attempted": 16,
+      "scored": 16,
+      "no_read": 0,
+      "cited": 0,
+      "pct_valid_basis": 0
     },
     {
       "key": "gemma4b",
@@ -371,7 +450,12 @@
         false,
         false,
         false
-      ]
+      ],
+      "attempted": 16,
+      "scored": 12,
+      "no_read": 4,
+      "cited": 0,
+      "pct_valid_basis": 0
     },
     {
       "key": "phi4",
@@ -397,7 +481,12 @@
         false,
         false,
         false
-      ]
+      ],
+      "attempted": 16,
+      "scored": 16,
+      "no_read": 0,
+      "cited": 0,
+      "pct_valid_basis": 0
     },
     {
       "key": "qwen7b",
@@ -423,7 +512,12 @@
         false,
         false,
         false
-      ]
+      ],
+      "attempted": 16,
+      "scored": 16,
+      "no_read": 0,
+      "cited": 0,
+      "pct_valid_basis": 0
     },
     {
       "key": "ministral8b",
@@ -449,7 +543,12 @@
         false,
         false,
         false
-      ]
+      ],
+      "attempted": 16,
+      "scored": 16,
+      "no_read": 0,
+      "cited": 0,
+      "pct_valid_basis": 0
     }
   ],
   "per_prompt": [
@@ -465,7 +564,10 @@
         "Signarama": 0,
         "SpeedPro": 0,
         "Image360": 0
-      }
+      },
+      "attempted": 16,
+      "scored": 16,
+      "no_read": 0
     },
     {
       "index": 1,
@@ -479,7 +581,10 @@
         "Signarama": 2,
         "SpeedPro": 0,
         "Image360": 0
-      }
+      },
+      "attempted": 16,
+      "scored": 16,
+      "no_read": 0
     },
     {
       "index": 2,
@@ -493,7 +598,10 @@
         "Signarama": 6,
         "SpeedPro": 1,
         "Image360": 3
-      }
+      },
+      "attempted": 16,
+      "scored": 15,
+      "no_read": 1
     },
     {
       "index": 3,
@@ -507,7 +615,10 @@
         "Signarama": 5,
         "SpeedPro": 0,
         "Image360": 0
-      }
+      },
+      "attempted": 16,
+      "scored": 16,
+      "no_read": 0
     },
     {
       "index": 4,
@@ -521,7 +632,10 @@
         "Signarama": 7,
         "SpeedPro": 0,
         "Image360": 2
-      }
+      },
+      "attempted": 16,
+      "scored": 16,
+      "no_read": 0
     },
     {
       "index": 5,
@@ -535,7 +649,10 @@
         "Signarama": 5,
         "SpeedPro": 0,
         "Image360": 0
-      }
+      },
+      "attempted": 16,
+      "scored": 16,
+      "no_read": 0
     },
     {
       "index": 6,
@@ -549,7 +666,10 @@
         "Signarama": 2,
         "SpeedPro": 0,
         "Image360": 0
-      }
+      },
+      "attempted": 16,
+      "scored": 16,
+      "no_read": 0
     },
     {
       "index": 7,
@@ -563,7 +683,10 @@
         "Signarama": 6,
         "SpeedPro": 0,
         "Image360": 0
-      }
+      },
+      "attempted": 16,
+      "scored": 15,
+      "no_read": 1
     },
     {
       "index": 8,
@@ -577,7 +700,10 @@
         "Signarama": 6,
         "SpeedPro": 1,
         "Image360": 3
-      }
+      },
+      "attempted": 16,
+      "scored": 14,
+      "no_read": 2
     },
     {
       "index": 9,
@@ -591,7 +717,10 @@
         "Signarama": 4,
         "SpeedPro": 0,
         "Image360": 0
-      }
+      },
+      "attempted": 16,
+      "scored": 15,
+      "no_read": 1
     },
     {
       "index": 10,
@@ -605,7 +734,10 @@
         "Signarama": 1,
         "SpeedPro": 0,
         "Image360": 0
-      }
+      },
+      "attempted": 16,
+      "scored": 16,
+      "no_read": 0
     },
     {
       "index": 11,
@@ -619,7 +751,10 @@
         "Signarama": 7,
         "SpeedPro": 0,
         "Image360": 2
-      }
+      },
+      "attempted": 16,
+      "scored": 15,
+      "no_read": 1
     },
     {
       "index": 12,
@@ -633,7 +768,10 @@
         "Signarama": 1,
         "SpeedPro": 0,
         "Image360": 0
-      }
+      },
+      "attempted": 16,
+      "scored": 16,
+      "no_read": 0
     },
     {
       "index": 13,
@@ -647,7 +785,10 @@
         "Signarama": 2,
         "SpeedPro": 0,
         "Image360": 0
-      }
+      },
+      "attempted": 16,
+      "scored": 16,
+      "no_read": 0
     },
     {
       "index": 14,
@@ -661,7 +802,10 @@
         "Signarama": 3,
         "SpeedPro": 0,
         "Image360": 1
-      }
+      },
+      "attempted": 16,
+      "scored": 16,
+      "no_read": 0
     },
     {
       "index": 15,
@@ -675,7 +819,10 @@
         "Signarama": 1,
         "SpeedPro": 0,
         "Image360": 0
-      }
+      },
+      "attempted": 16,
+      "scored": 16,
+      "no_read": 0
     }
   ],
   "surfaces_citing_b9": [
