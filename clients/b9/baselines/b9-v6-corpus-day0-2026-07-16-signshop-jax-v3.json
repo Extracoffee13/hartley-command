@@ -1,0 +1,60 @@
+{
+  "schema_version": "v6",
+  "instrument": "aair-v6",
+  "frozen_at": "2026-07-16T18:56:00Z",
+  "source": "principal-run chunked scan",
+  "chunks": "15 chunks \u00d7 98 cells, 0 errors",
+  "headline": {
+    "aair_retrieval_top3": 8,
+    "fraction": "31/399",
+    "ci_95": "5.5%..10.8%"
+  },
+  "tiers": {
+    "retrieval": {
+      "attempted": 400,
+      "scored": 399,
+      "no_read": 1,
+      "named_top3": 31,
+      "named_anywhere": 37,
+      "pct_top3": 8,
+      "ci_95_top3": "5.5%..10.8%",
+      "ci_lo": 5.5,
+      "ci_hi": 10.8,
+      "fraction_top3": "31/399"
+    },
+    "parametric": {
+      "attempted": 553,
+      "scored": 553,
+      "no_read": 0,
+      "named_top3": 0,
+      "named_anywhere": 0,
+      "pct_top3": 0,
+      "ci_95_top3": "0.0%..0.7%",
+      "ci_lo": 0.0,
+      "ci_hi": 0.7,
+      "fraction_top3": "0/553"
+    },
+    "ondevice": {
+      "attempted": 368,
+      "scored": 368,
+      "no_read": 0,
+      "named_top3": 0,
+      "named_anywhere": 0,
+      "pct_top3": 0,
+      "ci_95_top3": "0.0%..1.0%",
+      "ci_lo": 0.0,
+      "ci_hi": 1.0,
+      "fraction_top3": "0/368"
+    }
+  },
+  "corpus_meta": {
+    "corpus_version": "signshop-jax-market-v3",
+    "seed": 20260716,
+    "n_prompts": 100,
+    "cells_per_scan_retrieval_tier": 399,
+    "built": "2026-07-16",
+    "provenance": "Google autocomplete for category \u00d7 metro. CLIENT-BLIND."
+  },
+  "no_read_total": 80,
+  "total_cells_gross": 1400
+}
