@@ -1,51 +1,44 @@
 {
-  "generated": "2026-07-15T18:07:00Z",
-  "latest_date": "2026-07-15",
+  "generated": "2026-07-16T10:01:35Z",
+  "latest_date": "2026-07-16",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Claude Code / Cowork ship fleet-hygiene fixes that hit our exact failure modes — /doctor now diagnoses and repairs, scheduled tasks no longer duplicate-fire on wake, Cowork VM-mode login fixed",
-      "summary": "/doctor moved from a read-only report to interactive repair: checks installation health, finds unused skills / MCP servers / plugins weighed against their context cost, deduplicates local CLAUDE.md against checked-in ones, proposes trimming derivable CLAUDE.md content, and flags slow hooks — asking before it changes anything. Alongside: a fix for scheduled tasks firing many duplicate runs at once when the computer wakes from sleep, and a fix for Cowork VM-mode local-agent sessions failing with 'Not logged in / Please run /login' on CLI 2.1.203+.",
+      "title": "Correction to yesterday's brief — the Jul 28 MCP spec is not a breaking deadline, and the beta SDKs to test it have been out since Jun 29",
+      "summary": "The official SDK announcement is explicit: 'for existing clients and servers nothing breaks today, and nothing breaks on July 28 either. This is merely the date when the normative specification text is published and is not a switch-off for any implementers relying on the current protocol version.' Betas are available for all four Tier 1 SDKs — Python mcp v2 (2.0.0b1), TypeScript v2 (split packages, ESM-only, @beta), Go (v1.7.0-pre.1), C# (2.0.0-preview.1) — and opting in is deliberate at every step: unpinned installs still resolve to stable, TypeScript/Go don't change what they speak over HTTP until you wire the transport, and clients speaking 2026-07-28 fall back to the initialize handshake against 2025-11-25 servers. The SDK v2 majors are a separate breaking change on your own schedule; TS v1.x gets bugfixes and security patches for at least six months. Also worth pinning: standard error codes change (missing resource returns JSON-RPC -32602, not the MCP-custom -32002) and MRTR lets tools return InputRequiredResult to ask mid-call with no long-lived stream.",
       "tag": "yes",
-      "how": "Maintenance for The Construct's own fleet, not theory. We run a large installed-skills registry and a wide MCP surface, and the context-cost audit is exactly the pruning signal the daily/weekly new-skills scan lacks. The duplicate-fire-on-wake fix matters directly — this brief, the Lens Harvard scan, and the PRAGMA visibility scan are all sleep-straddling scheduled tasks that stood to double-run. Run /doctor against the Construct config this week and let it flag the dead weight.",
-      "url": "https://releasebot.io/updates/anthropic/claude-code"
+      "how": "Our Jul 15 brief said every MCP server we run 'has 13 days to be ready' and 'either follows its SDK through the window or breaks.' That was wrong, and it was wrong in the direction that manufactures urgency. Nothing switches off. The real action is smaller and duller: add mcp>=1.27,<2 upper bounds now so the stable Python v2 doesn't surprise us, pin exact versions if we test a beta, and check whether anything in our fleet string-matches -32002.",
+      "url": "https://blog.modelcontextprotocol.io/posts/sdk-betas-2026-07-28/"
     },
     {
       "n": 2,
-      "title": "The MCP spec goes stateless on July 28 — the handshake and session ID are removed, and every server we run has 13 days to be ready",
-      "summary": "The release candidate is locked and the final spec publishes Jul 28. The initialize/initialized handshake is gone; protocol version, client info and client capabilities now travel in _meta on every request, with a new server/discover method for clients that want capabilities up front. The Mcp-Session-Id header and the protocol-level session are removed, so any request can land on any server instance — no sticky routing, no shared session store, plain round-robin works. Six SEPs deliver the change; extensions (MCP Apps, Tasks) become first-class, plus auth hardening and a real deprecation policy. Tier 1 SDKs are expected to ship support inside the ten-week validation window.",
+      "title": "Claude Code 2.1.210 is a security + memory-integrity release that lands on our exact configuration",
+      "summary": "Four fixes hit The Construct specifically. The Agent tool is now hardened against indirect prompt injection via content a subagent read. isolation:'worktree' subagents could run git-mutating commands against the main repo checkout instead of their own worktree — fixed. The ultracode keyword opt-in was firing on non-human-originated input such as webhook payloads and relayed PR comments — fixed. And memory writes that leave a MEMORY.md index over its read limit now produce an explicit error instead of silently truncating. Alongside: plugin-provided MCP servers no longer torn down when MCP servers re-sync mid-session, unmatched $1/$2 placeholders in skills and commands are preserved instead of silently stripped, and the auto-mode permission classifier defaults to Sonnet 5 for external sessions.",
       "tag": "yes",
-      "how": "This is the floor moving under bullets 1 and 3. Not breaking news (the RC locked in May), but it earns the slot today because it is 13 days out and nobody has checked our surface against it. Every MCP server The Construct depends on — and every one we'd put in front of a PRAGMA client — either follows its SDK through the window or breaks. Pairs with /doctor: prune the fleet first, then pin which survivors are on Tier 1 SDKs and which are hand-rolled and now our problem. The stateless move is also quietly good news — it makes a client-hosted managed MCP dramatically cheaper to run.",
-      "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/"
+      "how": "The MEMORY.md fix is the one to sit with. ~/.hermes/memories/MEMORY.md is our index, it grows every day, and until this release an oversized index truncated silently — meaning agents may have been reading a partial memory and none of us would have seen an error. The worktree-escape fix matters given the standing rule that only Hermes holds the Mac GitHub credential; a worktree subagent reaching the main checkout is exactly the boundary that rule exists to protect. And the ultracode-on-webhook fix is a reminder that scheduled and relayed input is not human input — this brief is itself non-human-originated.",
+      "url": "https://releasebot.io/updates/anthropic/claude-code"
     },
     {
       "n": 3,
-      "title": "Rafay ships a managed MCP server that enforces existing RBAC and project boundaries — governed MCP arrives as a product category",
-      "summary": "Announced yesterday: Rafay connects AI assistants to its governed operational context through a standard protocol while enforcing the same RBAC and project boundaries teams already use, rather than handing agents an unscoped connection.",
+      "title": "Cowork on web and mobile runs on Anthropic-hosted remote sessions — scheduled tasks now run with no device online at all",
+      "summary": "Announced Jul 7 and rolling out in beta over several weeks starting with Max: Cowork sessions move to claude.ai and iOS/Android, saved to your Claude account, with work continuing in the background after you close the laptop. The execution model is the change, not the surface: remote sessions hosted on Anthropic's servers can keep working — and run scheduled tasks — with no device online. Chat and Cowork now share one home tab, sidebar, search, and Projects & Artifacts. Doubled Cowork usage limits are extended through Aug 5. Related, same day: Claude Code and Cowork went to public beta in a FedRAMP High environment via Claude for Government Desktop.",
       "tag": "yes",
-      "how": "This is the shape our own MCP fleet should take. We currently authorize connectors per-surface with no unified boundary model — fine at our size, indefensible at a client's. 'Managed MCP with the client's existing permission model enforced at the server' is a concrete PRAGMA deliverable, and it pairs with /doctor's audit: prune the surface, then bound what's left.",
-      "url": "https://www.prnewswire.com/news-releases/rafay-systems-introduces-a-managed-mcp-server-offering-to-bring-governed-ai-assistance-to-infrastructure-operations-302825892.html"
+      "how": "A structural fix for a constraint we designed around rather than solved. lens-daily-scan carries 'survives Cowork being closed overnight' in its own description, and the multi-fire 5:34/9:34/13:34 schedule with idempotent skip exists precisely because we could not trust a fire to happen when the machine was asleep. Remote-hosted scheduled tasks remove the premise. Worth testing before we simplify anything — but if it holds, the whole multi-fire-plus-skip pattern is scaffolding we can take down.",
+      "url": "https://claude.com/blog/cowork-web-mobile"
     },
     {
       "n": 4,
-      "title": "Anthropic ships Claude for Teachers — the sellable unit is a skills pack + curriculum connections + a data-governance addendum, given away free",
-      "summary": "Verified US K-12 educators get free premium Claude access bundled with teaching skills and curriculum connections aligned to standards in all 50 states; Teachers data is excluded from model training and student data is governed by a FERPA-compliant K-12 Data Processing Addendum, with a pilot evaluation in Detroit Public Schools Community District.",
+      "title": "Featured ships an MCP server for PR workflows — vertical MCP keeps arriving one industry at a time",
+      "summary": "Connects Claude, Cursor, VS Code, or any MCP client to a Featured account; an agent can find media queries, podcasts, journalists, byline publications, LinkedIn influencers, speaking engagements with open CFPs, and awards from one natural-language request. The server exposes workflow templates plus a single opportunity-search tool. A companion 'Workflows' always-on automation launch followed Jul 14.",
       "tag": "maybe",
-      "how": "Read it as packaging, not education. The vertical bundle is skills + domain data connections + an explicit data-governance instrument — and the governance instrument is what makes it adoptable inside a regulated institution. That's the template for a PRAGMA vertical pack (signage, real estate, contractors): a named skill set, wired-in domain sources, and a written data posture. The addendum is a feature, not paperwork.",
-      "url": "https://www.chalkbeat.org/2026/07/14/anthropic-launches-claude-for-teachers-as-ai-companies-battle-for-classrooms/"
-    },
-    {
-      "n": 5,
-      "title": "GPT-5.6 becomes the preferred model in Microsoft 365 Copilot and auto-enables for all eligible commercial users on July 24 unless an admin blocks it",
-      "summary": "The Sol/Terra/Luna family is now default across Word, Excel, PowerPoint and Chat; rollout is opt-out rather than opt-in, with mandatory enablement Jul 24.",
-      "tag": "maybe",
-      "how": "The point isn't the model, it's the default. Every SMB client of ours on M365 gets a materially different AI in their Office apps on Jul 24 without asking for it, and most won't notice until output changes. That's a free PRAGMA conversation opener — 'do you know what changed in your Copilot last week, and who decided?' — and a reminder that our own routing stays provider-agnostic precisely so nobody flips our defaults for us.",
-      "url": "https://techcrunch.com/2026/07/09/openai-says-gpt-5-6-is-the-preferred-model-for-microsoft-copilot-amid-breakup-chatter/"
+      "how": "Not a tool we need, but a data point on the pattern we keep tracking: the sellable unit in a vertical is a small number of well-chosen tools over proprietary data, not a model. Featured's whole MCP surface is three tool sets. That is the shape of a PRAGMA vertical pack for signage or real estate — and the restraint is the lesson, since a narrow surface is what makes it explicable to a client.",
+      "url": "https://www.globenewswire.com/news-release/2026/07/07/3323391/0/en/Featured-Launches-an-MCP-Server-Bringing-AI-Agents-to-PR-Agencies.html"
     }
   ],
-  "praxis_lesson": "Today's items are one sequence, and the calendar just put dates on it: audit, bound, package. /doctor's context-cost audit says prune the fleet; the Jul 28 stateless spec says the protocol under that fleet changes in 13 days whether or not we look; Rafay says bound what survives with the permission model the client already trusts; Claude for Teachers says the sellable unit is never the model — it's a bounded skill pack plus a written governance posture. The quiet frontier is the tell: when no new flagship lands, the work that pays is infrastructure you already own and forgot to inspect. Two hard dates now sit inside two weeks — Jul 24 flips our clients' Copilot, Jul 28 moves our own floor. PRAGMA sells the instrument, not the intelligence, and an instrument nobody has calibrated is a liability.",
+  "praxis_lesson": "The most important thing found today was our own error. Yesterday's brief turned a spec publication date into a countdown to breakage, and the primary source says plainly that nothing switches off on Jul 28. Nobody fact-checks the scan, which means the scan must fact-check itself — and it is most dangerous exactly when it is most useful, because an urgent-sounding deadline is the kind of item that gets acted on without being re-read. Note the asymmetry in today's four items: the two that matter (a silent MEMORY.md truncation, an agent that reached the wrong git checkout) were quiet bugfix lines in a changelog, while the loud calendar item was overstated. Signal and volume are uncorrelated. Verify the claim, then set the temperature — in that order, because a scan that inflates is worse than a scan that misses.",
   "history": [
+    "2026-07-16",
     "2026-07-15",
     "2026-07-14",
     "2026-07-13",
@@ -58,7 +51,6 @@
     "2026-07-06",
     "2026-07-04",
     "2026-07-02",
-    "2026-07-01",
-    "2026-06-30"
+    "2026-07-01"
   ]
 }

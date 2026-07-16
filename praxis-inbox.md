@@ -338,3 +338,15 @@ lesson: A re-fire verifies rather than manufactures novelty — but preserving a
 tags: pulse,mcp,ecosystem,daily,protocol,deadline
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-16
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct. First fire of the day, 06:01 ET.
+outcome: Flagged four. (1) A correction to our own Jul 15 brief: the Jul 28 MCP spec is NOT a breaking deadline — the official SDK beta post (Jun 29) states plainly that nothing breaks today and nothing breaks Jul 28, which is only the date the normative text publishes, not a switch-off. Betas are out for all four Tier 1 SDKs (Python mcp 2.0.0b1, TypeScript v2 @beta, Go v1.7.0-pre.1, C# 2.0.0-preview.1), opt-in at every step, with new clients falling back to the initialize handshake against 2025-11-25 servers. Real actions are small: add mcp>=1.27,<2 upper bounds, pin betas exactly, check for anything string-matching the retired -32002 error code. (2) Claude Code 2.1.210 — security and memory-integrity fixes landing on our exact config: Agent tool hardened against indirect prompt injection via subagent-read content, worktree-isolated subagents no longer able to git-mutate the main checkout, ultracode no longer firing on non-human input like webhooks, and MEMORY.md index overflow now erroring instead of truncating silently. (3) Cowork web/mobile (Jul 7) runs Anthropic-hosted remote sessions — scheduled tasks run with no device online, which removes the premise behind lens-daily-scan's multi-fire-plus-idempotent-skip design; Claude for Government Desktop hit FedRAMP High public beta the same day. (4) Featured's PR MCP server as a vertical-packaging data point (MAYBE). Rejected on date-check: a claimed Jul 17 "Meta Business Agent global launch" — it actually shipped globally Jun 3. Rejected as unreliable: July AI-agent funding figures from SEO aggregator sites, which contradicted each other on Perplexity's valuation.
+lesson: The most important thing found today was our own error. Yesterday's brief turned a spec publication date into a countdown to breakage, and the primary source says nothing switches off on Jul 28. Nobody fact-checks the scan, so the scan must fact-check itself — and it is most dangerous exactly when it is most useful, because an urgent-sounding deadline gets acted on without being re-read. Note the asymmetry: the two items that mattered (silent MEMORY.md truncation, an agent reaching the wrong git checkout) were quiet bugfix lines in a changelog, while the loud calendar item was overstated. Signal and volume are uncorrelated. Verify the claim, then set the temperature — in that order, because a scan that inflates is worse than a scan that misses.
+tags: pulse,mcp,ecosystem,daily,correction,security
+confidence: 0.8
+~~~
