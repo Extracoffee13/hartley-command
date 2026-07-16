@@ -1602,14 +1602,33 @@ const PragmaMirrorPanel = () => {
 
 
 // ═══════════════════════════════════════════════════════════════
-// B9 AAIR RULER — frozen Day-0 baseline vs live aair-checker.php v5
-// Includes no-reads, valid-only denominators, and the Day-0 restatement.
+// ═══════════════════════════════════════════════════════════════
+// AAIR helper: Wilson 95% CI for a proportion. A score without an interval is a claim.
+// ═══════════════════════════════════════════════════════════════
+const wilsonCI = (k, n, digits) => {
+  const d = digits == null ? 1 : digits;
+  if (!n) return { low: null, high: null };
+  const p = k / n;
+  const z = 1.96;
+  const denom = 1 + (z * z) / n;
+  const center = (p + (z * z) / (2 * n)) / denom;
+  const margin = (z * Math.sqrt((p * (1 - p) + (z * z) / (4 * n)) / n)) / denom;
+  const fmt = (x) => (Math.max(0, Math.min(1, x)) * 100).toFixed(d);
+  return { low: fmt(center - margin), high: fmt(center + margin) };
+};
+
+const fmtCI = (ci) => (ci && ci.low != null ? ci.low + '%–' + ci.high + '%' : '—');
+
+// ═══════════════════════════════════════════════════════════════
+// B9 AAIR RULER — v5 · FROZEN PARAMETRIC RULER
+// v5 measured base OpenRouter models = parametric recall. It is NOT customer visibility.
+// Kept frozen and live for Day-7/Day-14 continuity. Every score shown with attempted / scored / no_read and Wilson CI.
 // ═══════════════════════════════════════════════════════════════
 const B9AairRulerPanel = () => {
   const [day0, setDay0] = React.useState(null);
   const [live, setLive] = React.useState(null);
   const [liveErr, setLiveErr] = React.useState(null);
-  const [fetched, setFetched] = React.useState(false);
+  const [loaded, setLoaded] = React.useState(false);
 
   React.useEffect(() => {
     const grab = async (rel) => {
@@ -1634,168 +1653,165 @@ const B9AairRulerPanel = () => {
       } catch (e) { setLiveErr(e.message); return null; }
     };
     (async () => {
-      const d0 = await grab('/clients/b9/baselines/b9-day0-2026-07-14.json');
-      const lv = await fetchLive();
-      setDay0(d0);
-      setLive(lv);
-      setFetched(true);
+      setDay0(await grab('/clients/b9/baselines/b9-day0-2026-07-14.json'));
+      setLive(await fetchLive());
+      setLoaded(true);
     })();
   }, []);
 
-  const color = (v) => (v == null ? C.greenDim : v === 0 ? C.greenDim : v < 33 ? '#FF4D4F' : v < 66 ? '#FFC53D' : C.green);
-  const pct = (n, d) => d ? Math.round((100 * n) / d) : 0;
+  const color = (v) => v == null ? C.greenDim : v === 0 ? C.greenDim : v < 33 ? '#FF4D4F' : v < 66 ? '#FFC53D' : C.green;
 
-  const d0Summary = day0 && day0.summary;
-  const d0Mirror = day0 && day0.tier_subtotals && day0.tier_subtotals.mirror_cloud;
-  const d0Slm = day0 && day0.tier_subtotals && day0.tier_subtotals.slm_on_device;
+  const ScoreBlock = ({ title, score, k, n, attempted, scored, noRead, extra, warn }) => {
+    const ci = (k != null && n) ? wilsonCI(k, n) : null;
+    return (
+      <div style={{ border: '1px solid ' + C.greenDim, padding: 10, background: 'rgba(0,0,0,0.2)' }}>
+        <div style={{ fontSize: 9, color: warn ? '#FFAA33' : C.greenDim, letterSpacing: 1.5, marginBottom: 4 }}>{title}</div>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
+          <span style={{ fontSize: 30, fontWeight: 900, color: color(score), fontFamily: 'Georgia, serif', lineHeight: 1 }}>{score == null ? '—' : score}</span>
+          <span style={{ fontSize: 9, color: C.greenDim }}>/100</span>
+        </div>
+        <div style={{ fontSize: 9, color: C.cyan, marginTop: 2 }}>{k != null ? k : '—'}/{scored || '—'} scored · CI {fmtCI(ci)}</div>
+        <div style={{ display: 'flex', gap: 8, marginTop: 6 }}>
+          <div style={{ textAlign: 'center', flex: 1, background: 'rgba(0,0,0,0.25)', padding: 4 }}><div style={{ fontSize: 7, color: C.greenDim }}>ATT</div><div style={{ fontSize: 13, fontWeight: 800 }}>{attempted || '—'}</div></div>
+          <div style={{ textAlign: 'center', flex: 1, background: 'rgba(0,0,0,0.25)', padding: 4 }}><div style={{ fontSize: 7, color: C.greenDim }}>SCORED</div><div style={{ fontSize: 13, fontWeight: 800, color: C.green }}>{scored || '—'}</div></div>
+          <div style={{ textAlign: 'center', flex: 1, background: 'rgba(0,0,0,0.25)', padding: 4 }}><div style={{ fontSize: 7, color: C.greenDim }}>NO-READ</div><div style={{ fontSize: 13, fontWeight: 800, color: (noRead || 0) > 0 ? '#FFAA33' : C.greenDim }}>{noRead || 0}</div></div>
+        </div>
+        {extra && <div style={{ fontSize: 8, color: C.greenDim, marginTop: 5, lineHeight: 1.35 }}>{extra}</div>}
+      </div>
+    );
+  };
 
-  const liveEngines = live ? Object.values(live.engines || {}).sort((a, b) => {
-    if (a.tier === 'llm' && b.tier !== 'llm') return -1;
-    if (a.tier !== 'llm' && b.tier === 'llm') return 1;
-    return a.label.localeCompare(b.label);
-  }) : [];
+  const d0 = day0 || {};
+  const d0s = d0.summary || {};
+  const d0m = (d0.tier_subtotals || {}).mirror_cloud || {};
+  const d0sl = (d0.tier_subtotals || {}).slm_on_device || {};
+  const lv = live || {};
+  const llm = lv.llm || {};
+  const slm = lv.slm || {};
+  const engines = lv.engines ? Object.values(lv.engines).sort((a, b) => (a.tier === 'llm' ? -1 : 1) || a.label.localeCompare(b.label)) : [];
 
   return (
     <div style={{ margin: '20px 28px', padding: 18, border: '2px solid ' + C.cyan, background: 'rgba(0,212,255,0.03)', position: 'relative' }}>
-      <div style={{ position: 'absolute', top: -10, left: 16, padding: '0 8px', background: '#000', fontSize: 10, color: C.cyan, letterSpacing: 4 }}>◉ B9 — FROZEN AAIR RULER · v5</div>
-      <div style={{ fontSize: 9, color: C.greenDim, marginTop: 6, marginBottom: 14 }}>Frozen panel: POST prag-ma.ai/aair-checker.php · v5 only. Used for Day-7/Day-14 continuity. Not comparable to v6.</div>
+      <div style={{ position: 'absolute', top: -10, left: 16, padding: '0 8px', background: '#000', fontSize: 10, color: C.cyan, letterSpacing: 4 }}>◉ B9 — PARAMETRIC · FROZEN RULER · Day-0 7/14</div>
+      <div style={{ fontSize: 9, color: '#FFAA33', marginTop: 6, marginBottom: 14 }}>WARNING: v5 measured base OpenRouter models with no web access. This is training-data recall, NOT what customers see. Live only for Day-7/Day-14 continuity. Not comparable to v6.</div>
 
-      {!fetched && <div style={{ color: C.greenDim, fontSize: 12 }}>Loading AAIR ruler data…</div>}
-      {fetched && liveErr && (
-        <div style={{ color: '#FF4D4F', fontSize: 11, marginBottom: 10 }}>Live checker error: {liveErr}</div>
-      )}
+      {!loaded && <div style={{ color: C.greenDim, fontSize: 12 }}>Loading v5 frozen ruler…</div>}
+      {loaded && liveErr && <div style={{ color: '#FF4D4F', fontSize: 11, marginBottom: 10 }}>Live v5 error: {liveErr}</div>}
 
-      {fetched && (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
-          {/* Day-0 baseline card */}
-          <div style={{ border: '1px solid ' + C.greenDim, padding: 12, background: 'rgba(0,0,0,0.2)' }}>
-            <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 6 }}>DAY-0 BASELINE · 2026-07-14</div>
-            {day0 ? (
-              <div>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 4 }}>
-                  <span style={{ fontSize: 36, fontWeight: 900, color: color(d0Summary.composite_aair_0_100), fontFamily: 'Georgia, serif', lineHeight: 1 }}>{d0Summary.composite_aair_0_100}</span>
-                  <span style={{ fontSize: 9, color: C.greenDim }}>/100</span>
-                </div>
-                <div style={{ fontSize: 10, color: C.cyan, marginBottom: 8 }}>Original {d0Summary.fraction} · valid-only {d0Summary.fraction_valid_basis}</div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 6, fontSize: 9, color: C.greenDim }}>
-                  <div>Mirror: {d0Mirror.hits}/{d0Mirror.total} = {d0Mirror.pct}%</div>
-                  <div>Mirror valid: {d0Mirror.hits_valid_basis}/{d0Mirror.total_valid_basis} = {d0Mirror.pct_valid_basis}%</div>
-                  <div>SLM: {d0Slm.hits}/{d0Slm.total} = {d0Slm.pct}%</div>
-                  <div>SLM valid: {d0Slm.hits_valid_basis}/{d0Slm.total_valid_basis} = {d0Slm.pct_valid_basis}%</div>
-                </div>
-                <div style={{ fontSize: 8, color: C.greenDim, marginTop: 8, lineHeight: 1.4 }}>Original fields frozen; *_valid_basis added 2026-07-15.</div>
-              </div>
-            ) : (
-              <div style={{ fontSize: 10, color: C.greenDim }}>Baseline not found.</div>
-            )}
+      {loaded && (
+        <div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 12 }}>
+            <ScoreBlock title='Day-0 composite (reported)' score={d0s.composite_aair_0_100} k={d0s.named_cells} n={d0s.total_cells} attempted={d0s.total_cells} scored={d0s.total_cells} noRead={0} extra='Original denominator = grid size. Immutably frozen.' />
+            <ScoreBlock title='Day-0 composite (valid-only)' score={d0s.composite_aair_valid_basis} k={d0s.named_cells_valid_basis} n={d0s.total_cells_valid_basis} attempted={d0s.total_cells} scored={d0s.total_cells_valid_basis} noRead={(d0s.total_cells || 0) - (d0s.total_cells_valid_basis || d0s.total_cells)} extra='Denominator counted from scored cells. Headline unchanged at 2.' />
+            <ScoreBlock title='Live composite' score={lv.aair_pct} k={lv.cited} n={lv.scored} attempted={lv.attempted} scored={lv.scored} noRead={lv.no_read} />
+            <ScoreBlock title='Live Mirror (parametric)' score={lv.llm_pct} k={llm.cited} n={llm.scored} attempted={llm.attempted} scored={llm.scored} noRead={llm.no_read} />
+            <ScoreBlock title='Live SLM (parametric)' score={lv.slm_pct} k={slm.cited} n={slm.scored} attempted={slm.attempted} scored={slm.scored} noRead={slm.no_read} />
           </div>
 
-          {/* Live scan card */}
-          <div style={{ border: '1px solid ' + C.cyan, padding: 12, background: 'rgba(0,0,0,0.2)' }}>
-            <div style={{ fontSize: 9, color: C.cyan, letterSpacing: 2, marginBottom: 6 }}>LIVE SCAN · aair-checker.php v5</div>
-            {live ? (
-              <div>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 4 }}>
-                  <span style={{ fontSize: 36, fontWeight: 900, color: color(live.aair_pct), fontFamily: 'Georgia, serif', lineHeight: 1 }}>{live.aair_pct}</span>
-                  <span style={{ fontSize: 9, color: C.greenDim }}>/100</span>
-                </div>
-                <div style={{ fontSize: 10, color: C.cyan, marginBottom: 8 }}>{live.fraction} valid-only · {live.cited}/{live.scored}</div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 6, marginBottom: 8 }}>
-                  <div style={{ textAlign: 'center', background: 'rgba(0,0,0,0.3)', padding: 6 }}>
-                    <div style={{ fontSize: 8, color: C.greenDim }}>ATTEMPTED</div>
-                    <div style={{ fontSize: 18, fontWeight: 800, color: C.white }}>{live.attempted}</div>
-                  </div>
-                  <div style={{ textAlign: 'center', background: 'rgba(0,0,0,0.3)', padding: 6 }}>
-                    <div style={{ fontSize: 8, color: C.greenDim }}>SCORED</div>
-                    <div style={{ fontSize: 18, fontWeight: 800, color: C.green }}>{live.scored}</div>
-                  </div>
-                  <div style={{ textAlign: 'center', background: 'rgba(0,0,0,0.3)', padding: 6 }}>
-                    <div style={{ fontSize: 8, color: C.greenDim }}>NO-READ</div>
-                    <div style={{ fontSize: 18, fontWeight: 800, color: live.no_read > 0 ? '#FFAA33' : C.greenDim }}>{live.no_read}</div>
-                  </div>
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 6, fontSize: 9, color: C.greenDim }}>
-                  <div>Mirror LLM {live.llm_pct}% · {live.llm && live.llm.cited}/{live.llm && live.llm.scored}</div>
-                  <div>SLM {live.slm_pct}% · {live.slm && live.slm.cited}/{live.slm && live.slm.scored}</div>
-                </div>
-              </div>
-            ) : (
-              <div style={{ fontSize: 10, color: C.greenDim }}>{liveErr ? 'Live scan failed.' : 'No live data.'}</div>
-            )}
-          </div>
-
-          {/* Per-engine live table */}
-          <div style={{ border: '1px solid ' + C.greenDim, padding: 12, background: 'rgba(0,0,0,0.2)', gridColumn: '1 / -1' }}>
-            <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 8 }}>PER-ENGINE LIVE STATE</div>
-            {liveEngines.length > 0 ? (
+          {engines.length > 0 && (
+            <div style={{ border: '1px solid ' + C.greenDim, padding: 12, background: 'rgba(0,0,0,0.2)', marginTop: 14 }}>
+              <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 8 }}>PER-ENGINE v5 STATE · scored / attempted · no-read · cited · CI</div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 8 }}>
-                {liveEngines.map((e, i) => {
+                {engines.map((e, i) => {
                   const allNoRead = e.scored === 0 && e.no_read > 0;
-                  const engineScore = e.scored ? pct(e.cited, e.scored) : null;
+                  const s = e.scored ? Math.round(100 * e.cited / e.scored) : null;
+                  const ci = wilsonCI(e.cited, e.scored);
                   return (
                     <div key={i} style={{ border: '1px solid rgba(57,255,20,0.2)', padding: 8, background: 'rgba(0,0,0,0.25)' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
                         <span style={{ fontSize: 10, color: e.tier === 'llm' ? C.cyan : C.purple, fontWeight: 700 }}>{e.label}</span>
-                        <span style={{ fontSize: 10, fontWeight: 800, color: allNoRead ? '#FF4D4F' : color(engineScore) }}>
-                          {allNoRead ? 'NO READ' : engineScore + '%'}
-                        </span>
+                        <span style={{ fontSize: 10, fontWeight: 800, color: allNoRead ? '#FF4D4F' : color(s) }}>{allNoRead ? 'NO READ' : s + '%'}</span>
                       </div>
-                      <div style={{ fontSize: 8, color: C.greenDim, marginTop: 3 }}>
-                        {e.scored}/{e.attempted} scored · {e.no_read > 0 ? <span style={{ color: '#FFAA33' }}>{e.no_read} no-read</span> : '0 no-read'} · {e.cited} cited
-                      </div>
+                      <div style={{ fontSize: 8, color: C.greenDim, marginTop: 3 }}>{e.cited}/{e.scored} cited · CI {fmtCI(ci)} · {e.no_read > 0 ? <span style={{ color: '#FFAA33' }}>{e.no_read} no-read</span> : '0 no-read'}</div>
                     </div>
                   );
                 })}
               </div>
-            ) : (
-              <div style={{ fontSize: 10, color: C.greenDim }}>No engine detail.</div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       )}
 
       <div style={{ fontSize: 8, color: C.greenDim, marginTop: 12, lineHeight: 1.5, borderTop: '1px solid ' + C.greenDim, paddingTop: 8 }}>
-        Principle locked 2026-07-15: every denominator is counted from scored results at write time; no-reads are excluded, not absences. Day-0 headline unchanged under the new rule. See <span style={{ color: C.cyan }}>B9_AAIR_lift_tracker.md</span>.
+        Principle locked 2026-07-15: every denominator is counted from scored results; no-reads are excluded, not absences. See <span style={{ color: C.cyan }}>B9_AAIR_lift_tracker.md</span>.
       </div>
     </div>
   );
 };
 
-
 // ═══════════════════════════════════════════════════════════════
-// B9 AAIR RULER v6 — retrieval (web-grounded) vs parametric vs ondevice
-// NB: v6 is a new instrument. Its numbers are NOT continuous with frozen v5.
+// B9 AAIR RULER v6 — retrieval / parametric / on-device
+// Primary measurement = client-blind market corpus (100 prompts, sign shop x JAX).
+// Two-clock demo = single-word query flip ('homebuilder signage' 100%, 'sign shop' 0%).
+// v6 is a new instrument; NOT continuous with frozen v5.
+// Every score shown with attempted / scored / no_read and Wilson 95% CI.
 // ═══════════════════════════════════════════════════════════════
 const B9AairV6Panel = () => {
-  const [lv, setLv] = React.useState(null);
-  const [liveErr, setLiveErr] = React.useState(null);
-  const [fetched, setFetched] = React.useState(false);
+  const [corpus, setCorpus] = React.useState(null);
+  const [corpusProv, setCorpusProv] = React.useState(null);
+  const [hb, setHb] = React.useState(null);
+  const [ss, setSs] = React.useState(null);
+  const [running, setRunning] = React.useState(false);
+  const [loaded, setLoaded] = React.useState(false);
 
   React.useEffect(() => {
+    const grab = async (rel) => {
+      const urls = ['.' + rel + '?cb=' + Date.now(), 'https://extracoffee13.github.io/hartley-command' + rel + '?cb=' + Date.now()];
+      try { for (const u of urls) { const r = await fetch(u, { cache: 'no-store' }); if (r.ok) return await r.json(); } } catch (e) {}
+      return null;
+    };
     (async () => {
-      try {
-        const controller = new AbortController();
-        const t = setTimeout(() => controller.abort(), 160000);
-        const r = await fetch('https://prag-ma.ai/aair-v6.php', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ business: 'Brand 9 Signs', city: 'Jacksonville, FL', service: 'homebuilder signage', email: 'ap@brand9signs.com' }),
-          signal: controller.signal,
-          cache: 'no-store',
-        });
-        clearTimeout(t);
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        const j = await r.json();
-        setLv(j);
-      } catch (e) { setLiveErr(e.message); }
-      setFetched(true);
+      const cb = await grab('/clients/b9/baselines/b9-v6-corpus-day0-2026-07-16-signshop-jax-v3.json');
+      if (cb) {
+        setCorpus(cb);
+        try { setCorpusProv(cb.corpus); } catch (e) {}
+      }
+      setHb(await grab('/clients/b9/baselines/b9-v6-day0-2026-07-16-homebuilder-signage.json'));
+      setSs(await grab('/clients/b9/baselines/b9-v6-day0-2026-07-16-sign-shop.json'));
+      setLoaded(true);
     })();
   }, []);
 
-  const color = (v) => (v == null ? C.greenDim : v === 0 ? C.greenDim : v < 33 ? '#FF4D4F' : v < 66 ? '#FFC53D' : C.green);
+  const color = (v) => v == null ? C.greenDim : v === 0 ? C.greenDim : v < 33 ? '#FF4D4F' : v < 66 ? '#FFC53D' : C.green;
   const tierColor = { retrieval: C.cyan, parametric: C.gold, ondevice: C.purple };
+  const tierLabel = {
+    retrieval: 'RETRIEVAL · where customers actually are (fast clock)',
+    parametric: 'PARAMETRIC · training-data presence (slow clock, months)',
+    ondevice: 'ON-DEVICE · local SLM recall (no live web)'
+  };
 
-  const engines = lv ? Object.entries(lv.engines || {}).sort(([, a], [, b]) => {
+  const TierCard = ({ tier, data }) => {
+    if (!data) return null;
+    const ci = { low: data.ci_lo != null ? data.ci_lo.toFixed(1) : null, high: data.ci_hi != null ? data.ci_hi.toFixed(1) : null };
+    return (
+      <div style={{ border: '1px solid ' + (tierColor[tier] || C.greenDim), padding: 12, background: 'rgba(0,0,0,0.2)' }}>
+        <div style={{ fontSize: 9, color: tierColor[tier], letterSpacing: 1.5, marginBottom: 6, lineHeight: 1.3 }}>{tierLabel[tier]}</div>
+        <div style={{ fontSize: 28, fontWeight: 900, color: color(data.pct_top3), fontFamily: 'Georgia, serif', lineHeight: 1 }}>{data.pct_top3}%</div>
+        <div style={{ fontSize: 10, color: C.cyan }}>{data.named_top3}/{data.scored} top-3 · CI {fmtCI(ci)}</div>
+        <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
+          <div style={{ textAlign: 'center', flex: 1, background: 'rgba(0,0,0,0.25)', padding: 4 }}><div style={{ fontSize: 7, color: C.greenDim }}>ATT</div><div style={{ fontSize: 13, fontWeight: 800 }}>{data.attempted}</div></div>
+          <div style={{ textAlign: 'center', flex: 1, background: 'rgba(0,0,0,0.25)', padding: 4 }}><div style={{ fontSize: 7, color: C.greenDim }}>SCORED</div><div style={{ fontSize: 13, fontWeight: 800, color: C.green }}>{data.scored}</div></div>
+          <div style={{ textAlign: 'center', flex: 1, background: 'rgba(0,0,0,0.25)', padding: 4 }}><div style={{ fontSize: 7, color: C.greenDim }}>NO-READ</div><div style={{ fontSize: 13, fontWeight: 800, color: data.no_read > 0 ? '#FFAA33' : C.greenDim }}>{data.no_read}</div></div>
+        </div>
+      </div>
+    );
+  };
+
+  const QueryCard = ({ label, baseline }) => {
+    if (!baseline) return <div style={{ border: '1px solid ' + C.greenDim, padding: 12, background: 'rgba(0,0,0,0.2)' }}><div style={{ fontSize: 10, color: C.greenDim }}>{label} — no data</div></div>;
+    const r = baseline.tiers && baseline.tiers.retrieval;
+    const ci = r ? { low: r.ci_lo.toFixed(1), high: r.ci_hi.toFixed(1) } : null;
+    return (
+      <div style={{ border: '1px solid ' + (r && r.pct_top3 === 100 ? C.green : r && r.pct_top3 === 0 ? '#FF4D4F' : C.cyan), padding: 12, background: 'rgba(0,0,0,0.2)' }}>
+        <div style={{ fontSize: 10, color: C.cyan, fontWeight: 700, marginBottom: 6 }}>{label}</div>
+        <div style={{ fontSize: 28, fontWeight: 900, color: color(r && r.pct_top3), fontFamily: 'Georgia, serif', lineHeight: 1 }}>{r ? r.pct_top3 : '—'}</div>
+        <div style={{ fontSize: 9, color: C.cyan }}>{r && r.fraction_top3} top-3 · CI {fmtCI(ci)}</div>
+        <div style={{ fontSize: 8, color: C.greenDim, marginTop: 4 }}>attempted {r && r.attempted} · scored {r && r.scored} · no-read {r && r.no_read}</div>
+      </div>
+    );
+  };
+
+  const engines = corpus ? Object.entries(corpus.engines || {}).sort(([, a], [, b]) => {
     const o = { retrieval: 0, parametric: 1, ondevice: 2 };
     if (o[a.tier] !== o[b.tier]) return o[a.tier] - o[b.tier];
     return a.label.localeCompare(b.label);
@@ -1804,72 +1820,79 @@ const B9AairV6Panel = () => {
   return (
     <div style={{ margin: '20px 28px', padding: 18, border: '2px dashed ' + C.cyan, background: 'rgba(0,212,255,0.06)', position: 'relative' }}>
       <div style={{ position: 'absolute', top: -10, left: 16, padding: '0 8px', background: '#000', fontSize: 10, color: C.cyan, letterSpacing: 4 }}>◉ B9 — AAIR v6 · NEW INSTRUMENT</div>
-      <div style={{ fontSize: 9, color: '#FFAA33', marginTop: 6, marginBottom: 14 }}>DISCONTINUOUS from v5: different surface, different models. Do not trend against the 2026-07-14 Day-0 baseline.</div>
+      <div style={{ fontSize: 9, color: '#FFAA33', marginTop: 6, marginBottom: 14 }}>DISCONTINUOUS from v5: different surface, different models, market corpus. Do not trend against the 2026-07-14 Day-0 baseline.</div>
 
-      {!fetched && <div style={{ color: C.greenDim, fontSize: 12 }}>Loading AAIR v6…</div>}
-      {fetched && liveErr && <div style={{ color: '#FF4D4F', fontSize: 11, marginBottom: 10 }}>v6 error: {liveErr}</div>}
+      {!loaded && <div style={{ color: C.greenDim, fontSize: 12 }}>Loading v6 data…</div>}
 
-      {fetched && lv && (
+      {loaded && !corpus && (
+        <div style={{ color: '#FFAA33', fontSize: 11, marginBottom: 10 }}>Market corpus scan is still running or failed. Results will appear here once frozen.</div>
+      )}
+
+      {loaded && corpus && (
         <div>
-          {/* Headline */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 14, marginBottom: 16 }}>
-            <div style={{ border: '1px solid ' + color(lv.headline && lv.headline.aair_retrieval_top3), padding: 12, background: 'rgba(0,0,0,0.25)' }}>
-              <div style={{ fontSize: 9, color: C.cyan, letterSpacing: 2, marginBottom: 6 }}>HEADLINE RETRIEVAL TOP-3</div>
-              <div style={{ fontSize: 42, fontWeight: 900, color: color(lv.headline && lv.headline.aair_retrieval_top3), fontFamily: 'Georgia, serif', lineHeight: 1 }}>{lv.headline ? lv.headline.aair_retrieval_top3 : '—'}</div>
-              <div style={{ fontSize: 10, color: C.cyan, marginTop: 4 }}>{lv.headline && lv.headline.fraction} · 95% CI {lv.headline && lv.headline.ci_95}</div>
-              <div style={{ fontSize: 8, color: C.greenDim, marginTop: 4 }}>{lv.headline && lv.headline.note}</div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 14, marginBottom: 14 }}>
+            <div style={{ border: '1px solid ' + color(corpus.headline && corpus.headline.aair_retrieval_top3), padding: 12, background: 'rgba(0,0,0,0.25)' }}>
+              <div style={{ fontSize: 9, color: C.cyan, letterSpacing: 2, marginBottom: 6 }}>HEADLINE · RETRIEVAL TOP-3</div>
+              <div style={{ fontSize: 42, fontWeight: 900, color: color(corpus.headline && corpus.headline.aair_retrieval_top3), fontFamily: 'Georgia, serif', lineHeight: 1 }}>{corpus.headline ? corpus.headline.aair_retrieval_top3 : '—'}</div>
+              <div style={{ fontSize: 10, color: C.cyan, marginTop: 4 }}>{corpus.headline && corpus.headline.fraction} · 95% CI {corpus.headline && corpus.headline.ci_95}</div>
+              <div style={{ fontSize: 8, color: C.greenDim, marginTop: 4 }}>{corpus.headline && corpus.headline.note}</div>
             </div>
-
-            {['retrieval','parametric','ondevice'].map((tier) => {
-              const t = lv.tiers && lv.tiers[tier];
-              if (!t) return null;
-              return (
-                <div key={tier} style={{ border: '1px solid ' + (tierColor[tier] || C.greenDim), padding: 12, background: 'rgba(0,0,0,0.2)' }}>
-                  <div style={{ fontSize: 9, color: tierColor[tier], letterSpacing: 2, marginBottom: 6, textTransform: 'uppercase' }}>{tier}</div>
-                  <div style={{ fontSize: 28, fontWeight: 900, color: color(t.pct_top3), fontFamily: 'Georgia, serif', lineHeight: 1 }}>{t.pct_top3}%</div>
-                  <div style={{ fontSize: 10, color: C.cyan }}>{t.named_top3}/{t.scored} top-3 · CI {t.ci_95_top3}</div>
-                  <div style={{ fontSize: 8, color: C.greenDim, marginTop: 4 }}>attempted {t.attempted} · scored {t.scored} · no-read {t.no_read}</div>
-                </div>
-              );
-            })}
+            <TierCard tier='retrieval' data={corpus.tiers && corpus.tiers.retrieval} />
+            <TierCard tier='parametric' data={corpus.tiers && corpus.tiers.parametric} />
+            <TierCard tier='ondevice' data={corpus.tiers && corpus.tiers.ondevice} />
           </div>
 
-          {/* Engines */}
-          <div style={{ border: '1px solid ' + C.greenDim, padding: 12, background: 'rgba(0,0,0,0.2)' }}>
-            <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 8 }}>PER-ENGINE v6 STATE · named / top3 by tier</div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 8 }}>
-              {engines.map(([name, e]) => {
-                const allNoRead = e.scored === 0 && e.no_read > 0;
-                return (
-                  <div key={name} style={{ border: '1px solid rgba(57,255,20,0.2)', padding: 8, background: 'rgba(0,0,0,0.25)' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                      <span style={{ fontSize: 10, color: tierColor[e.tier] || C.white, fontWeight: 700 }}>{e.label}</span>
-                      <span style={{ fontSize: 10, fontWeight: 800, color: allNoRead ? '#FF4D4F' : color(e.scored ? Math.round(100 * e.top3 / e.scored) : null) }}>
-                        {allNoRead ? 'NO READ' : (e.scored ? Math.round(100 * e.top3 / e.scored) + '%' : '—')}
-                      </span>
-                    </div>
-                    <div style={{ fontSize: 8, color: C.greenDim, marginTop: 3 }}>
-                      {e.top3}/{e.scored} top3 · {e.named}/{e.scored} named · {e.no_read > 0 ? <span style={{ color: '#FFAA33' }}>{e.no_read} no-read</span> : '0 no-read'}
-                    </div>
-                  </div>
-                );
-              })}
+          {corpusProv && (
+            <div style={{ border: '1px solid ' + C.greenDim, padding: 10, background: 'rgba(0,0,0,0.2)', marginBottom: 14 }}>
+              <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 1.5, marginBottom: 4 }}>CORPUS PROVENANCE</div>
+              <div style={{ fontSize: 10, color: C.white, lineHeight: 1.45 }}>
+                <span style={{ color: C.cyan }}>{corpusProv.corpus_version}</span> · seed {corpusProv.seed} · {corpusProv.n_prompts} prompts · {corpusProv['cells_per_scan_retrieval_tier']} retrieval cells · {corpusProv.built}
+              </div>
+              <div style={{ fontSize: 8, color: C.greenDim, lineHeight: 1.35, marginTop: 3 }}>Market-derived / client-blind. {corpusProv.provenance}</div>
+            </div>
+          )}
+
+          <div style={{ border: '1px solid ' + C.greenDim, padding: 12, background: 'rgba(0,0,0,0.2)', marginBottom: 14 }}>
+            <div style={{ fontSize: 10, color: C.cyan, letterSpacing: 1.5, marginBottom: 8 }}>THE TWO-CLOCK MODEL · Same instrument, same hour, two queries</div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 12 }}>
+              <QueryCard label='Query: "homebuilder signage"' baseline={hb} />
+              <QueryCard label='Query: "sign shop"' baseline={ss} />
+            </div>
+            <div style={{ fontSize: 9, color: C.greenDim, lineHeight: 1.45, marginTop: 8 }}>
+              AI visibility is not a scalar. It is a <span style={{ color: C.white }}>business × query × surface</span> tuple. B9 is present when buyers search "homebuilder signage" and absent when they search "sign shop". The corpus replaces both with 100 market-derived prompts so the score is not hostage to one wording.
             </div>
           </div>
 
-          {lv.corpus && lv.corpus.warning && (
-            <div style={{ fontSize: 8, color: '#FFAA33', marginTop: 10, lineHeight: 1.4 }}>⚠ {lv.corpus.warning}</div>
+          {engines.length > 0 && (
+            <div style={{ border: '1px solid ' + C.greenDim, padding: 12, background: 'rgba(0,0,0,0.2)' }}>
+              <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 8 }}>PER-ENGINE CORPUS STATE · top-3/named · CI · no-read</div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 8 }}>
+                {engines.map(([name, e]) => {
+                  const allNoRead = e.scored === 0 && e.no_read > 0;
+                  const s = e.scored ? Math.round(100 * e.top3 / e.scored) : null;
+                  const ci = wilsonCI(e.top3, e.scored);
+                  return (
+                    <div key={name} style={{ border: '1px solid rgba(57,255,20,0.2)', padding: 8, background: 'rgba(0,0,0,0.25)' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                        <span style={{ fontSize: 10, color: tierColor[e.tier] || C.white, fontWeight: 700 }}>{e.label}</span>
+                        <span style={{ fontSize: 10, fontWeight: 800, color: allNoRead ? '#FF4D4F' : color(s) }}>{allNoRead ? 'NO READ' : s + '%'}</span>
+                      </div>
+                      <div style={{ fontSize: 8, color: C.greenDim, marginTop: 3 }}>{e.top3}/{e.scored} top3 · {e.named}/{e.scored} named · CI {fmtCI(ci)} · {e.no_read > 0 ? <span style={{ color: '#FFAA33' }}>{e.no_read} no-read</span> : '0 no-read'}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           )}
         </div>
       )}
 
       <div style={{ fontSize: 8, color: C.greenDim, marginTop: 12, lineHeight: 1.5, borderTop: '1px solid ' + C.greenDim, paddingTop: 8 }}>
-        v5 remains frozen and live at /aair-checker.php for Day-7/Day-14 continuity. v6 is a separate instrument: retrieval tier measures what customers actually see, parametric tier measures training-data recall, ondevice tier measures SLM parametric recall. <span style={{ color: C.cyan }}>B9_AAIR_lift_tracker.md</span> records both.
+        v5 remains frozen and live at /aair-checker.php for Day-7/Day-14 continuity. v6 measures retrieval (what customers see), parametric (training-data), and on-device (local SLM) as separate clocks. All intervals are Wilson 95% CIs. <span style={{ color: C.cyan }}>B9_AAIR_lift_tracker.md</span>.
       </div>
     </div>
   );
 };
-
 // ═══════════════════════════════════════════════════════════════
 // ═══════════════════════════════════════════════════════════════
 // ALL MODELS WE READ — Mirror + SLM + On-device roster
@@ -2424,7 +2447,7 @@ const ApprovalQueuePanel = () => {
 // Rule: must (a) make judgment calls or synthesize, (b) recur, (c) be
 // non-trivial for a Claude agent + plain skill to replicate.
 // WILD_DUCKS:BEGIN — DO NOT EDIT BY HAND · regenerated by construct-v4-sync Wild Duck from /Atlas/hermes-sandbox/MANIFEST.md
-//   regenerated at: 2026-07-16T19:10:58.798792Z
+//   regenerated at: 2026-07-16T19:15:58.999894Z
 //   source of truth: classify-flock.py output (MANIFEST.md)
 const WILD_DUCKS = [
   { name: "agent-cross-ref-validator", status: "stale", score: 20, domain: "Meta-learning detection", skills: ["Cross-agent citation tracing"] },
@@ -2447,7 +2470,7 @@ const WILD_DUCKS = [
 // Locked 2026-06-01 per Bobby: "duck calls" — predictable instruments, not the rare ducks
 // Listed compactly because they're plumbing, not headliners.
 // CALLS:BEGIN — DO NOT EDIT BY HAND · regenerated by construct-v4-sync Wild Duck from /Atlas/hermes-sandbox/MANIFEST.md
-//   regenerated at: 2026-07-16T19:10:58.798792Z
+//   regenerated at: 2026-07-16T19:15:58.999894Z
 const CALLS = [
   { name: "adoption-reminder", cadence: "daily", group: "ops" },
   { name: "ai-citation-probe", cadence: "weekly", group: "probe" },
