@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-15T10:10:00.524345+00:00",
+  "updated_at": "2026-07-16T10:10:04.807688+00:00",
   "skills": [
     {
       "slug": "aair-snapshot",
@@ -406,6 +406,13 @@
       "has_skill_md": true,
       "has_description_md": false,
       "description_excerpt": "---\nname: hermes-configuration-and-setup\ndescription: Procedures for setting up and configuring the Hermes Agent environment, including tool installations, system requirements, provider selection, and"
+    },
+    {
+      "slug": "hermes-desktop-plugins",
+      "path": "/Users/alfredpennyworth/.hermes/skills/hermes-desktop-plugins",
+      "has_skill_md": true,
+      "has_description_md": false,
+      "description_excerpt": "---\nname: hermes-desktop-plugins\ndescription: Write desktop app plugins that add UI panes and commands.\nversion: 1.0.0\nplatforms: [linux, macos, windows]\nmetadata:\n  hermes:\n    tags: [desktop, plugin"
     },
     {
       "slug": "hermes-error-handling-updates",
@@ -1028,7 +1035,7 @@
       "path": "/Users/alfredpennyworth/.hermes/skills/wolf-state-management",
       "has_skill_md": true,
       "has_description_md": false,
-      "description_excerpt": "---\nname: wolf-state-management\ndescription: Requires strict adherence to JSON formatting rules with verification processes for all state changes.\n---\n\n## Overview\nThis skill governs the state managem"
+      "description_excerpt": "---\nname: wolf-state-management\ndescription: WOLF canonical state verification \u2014 check freshness, reconcile portfolio/positions/cash, and catch kill-criterion key drift before downstream dashboards or"
     },
     {
       "slug": "wolf-state-updater",
@@ -1050,17 +1057,51 @@
       "has_skill_md": true,
       "has_description_md": false,
       "description_excerpt": "---\nname: yuanbao\ndescription: \"Yuanbao (\u5143\u5b9d) groups: @mention users, query info/members.\"\nversion: 1.0.0\nplatforms: [linux, macos, windows]\nmetadata:\n  hermes:\n    tags: [yuanbao, mention, at, group, "
+    },
+    {
+      "slug": "figma",
+      "path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/skills/figma",
+      "has_skill_md": true,
+      "has_description_md": false,
+      "description_excerpt": "---\nname: figma\ndescription: \"Vector's Figma skill (auto layout). Layout systems, component/variant structure, design handoff. Part of Vector's 15-skill loadout (V4 dashboard).\"\nmetadata:\n  node_type:"
+    },
+    {
+      "slug": "ideogram",
+      "path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/skills/ideogram",
+      "has_skill_md": true,
+      "has_description_md": false,
+      "description_excerpt": "---\nname: ideogram\ndescription: \"Vector's typography skill. Type selection, pairing, lettering, typographic hierarchy and craft for PRAGMA and Brand 9. Part of Vector's 15-skill loadout (V4 dashboard)"
+    },
+    {
+      "slug": "kittl",
+      "path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/skills/kittl",
+      "has_skill_md": true,
+      "has_description_md": false,
+      "description_excerpt": "---\nname: kittl\ndescription: \"Vector's type-craft skill. Display lettering, wordmark exploration, badge and seal lettering. Part of Vector's 15-skill loadout (V4 dashboard).\"\nmetadata:\n  node_type: sk"
+    },
+    {
+      "slug": "recraft",
+      "path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/skills/recraft",
+      "has_skill_md": true,
+      "has_description_md": false,
+      "description_excerpt": "---\nname: recraft\ndescription: \"Vector's vector-artwork skill. Scalable vector illustration and iconography, brand-exact and editable. The vector path for PRAGMA/Brand 9 artwork. Part of Vector's 15-s"
     }
   ],
   "_counts": {
-    "hermes_skills": 150,
+    "hermes_skills": 151,
     "hermes_agent_skills": 0,
-    "atlas_skills": 0,
-    "total": 150
+    "atlas_skills": 4,
+    "total": 155
   },
-  "_new_since_last_build": [],
+  "_new_since_last_build": [
+    "figma",
+    "hermes-desktop-plugins",
+    "ideogram",
+    "kittl",
+    "recraft"
+  ],
   "_dropped_since_last_build": [],
   "_roots_missing": [],
-  "_mirrored_at": "2026-07-15T10:10:00.524345Z",
+  "_mirrored_at": "2026-07-16T10:10:04.807688Z",
   "_builder": "skills-registry-scan"
 }
