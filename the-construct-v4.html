@@ -1657,8 +1657,8 @@ const B9AairRulerPanel = () => {
 
   return (
     <div style={{ margin: '20px 28px', padding: 18, border: '2px solid ' + C.cyan, background: 'rgba(0,212,255,0.03)', position: 'relative' }}>
-      <div style={{ position: 'absolute', top: -10, left: 16, padding: '0 8px', background: '#000', fontSize: 10, color: C.cyan, letterSpacing: 4 }}>◉ B9 — FROZEN AAIR RULER</div>
-      <div style={{ fontSize: 9, color: C.greenDim, marginTop: 6, marginBottom: 14 }}>Frozen panel: POST prag-ma.ai/aair-checker.php · business="Brand 9 Signs" · city="Jacksonville, FL" · service="homebuilder signage"</div>
+      <div style={{ position: 'absolute', top: -10, left: 16, padding: '0 8px', background: '#000', fontSize: 10, color: C.cyan, letterSpacing: 4 }}>◉ B9 — FROZEN AAIR RULER · v5</div>
+      <div style={{ fontSize: 9, color: C.greenDim, marginTop: 6, marginBottom: 14 }}>Frozen panel: POST prag-ma.ai/aair-checker.php · v5 only. Used for Day-7/Day-14 continuity. Not comparable to v6.</div>
 
       {!fetched && <div style={{ color: C.greenDim, fontSize: 12 }}>Loading AAIR ruler data…</div>}
       {fetched && liveErr && (
@@ -1756,6 +1756,115 @@ const B9AairRulerPanel = () => {
 
       <div style={{ fontSize: 8, color: C.greenDim, marginTop: 12, lineHeight: 1.5, borderTop: '1px solid ' + C.greenDim, paddingTop: 8 }}>
         Principle locked 2026-07-15: every denominator is counted from scored results at write time; no-reads are excluded, not absences. Day-0 headline unchanged under the new rule. See <span style={{ color: C.cyan }}>B9_AAIR_lift_tracker.md</span>.
+      </div>
+    </div>
+  );
+};
+
+
+// ═══════════════════════════════════════════════════════════════
+// B9 AAIR RULER v6 — retrieval (web-grounded) vs parametric vs ondevice
+// NB: v6 is a new instrument. Its numbers are NOT continuous with frozen v5.
+// ═══════════════════════════════════════════════════════════════
+const B9AairV6Panel = () => {
+  const [lv, setLv] = React.useState(null);
+  const [liveErr, setLiveErr] = React.useState(null);
+  const [fetched, setFetched] = React.useState(false);
+
+  React.useEffect(() => {
+    (async () => {
+      try {
+        const controller = new AbortController();
+        const t = setTimeout(() => controller.abort(), 160000);
+        const r = await fetch('https://prag-ma.ai/aair-v6.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ business: 'Brand 9 Signs', city: 'Jacksonville, FL', service: 'homebuilder signage', email: 'ap@brand9signs.com' }),
+          signal: controller.signal,
+          cache: 'no-store',
+        });
+        clearTimeout(t);
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        const j = await r.json();
+        setLv(j);
+      } catch (e) { setLiveErr(e.message); }
+      setFetched(true);
+    })();
+  }, []);
+
+  const color = (v) => (v == null ? C.greenDim : v === 0 ? C.greenDim : v < 33 ? '#FF4D4F' : v < 66 ? '#FFC53D' : C.green);
+  const tierColor = { retrieval: C.cyan, parametric: C.gold, ondevice: C.purple };
+
+  const engines = lv ? Object.entries(lv.engines || {}).sort(([, a], [, b]) => {
+    const o = { retrieval: 0, parametric: 1, ondevice: 2 };
+    if (o[a.tier] !== o[b.tier]) return o[a.tier] - o[b.tier];
+    return a.label.localeCompare(b.label);
+  }) : [];
+
+  return (
+    <div style={{ margin: '20px 28px', padding: 18, border: '2px dashed ' + C.cyan, background: 'rgba(0,212,255,0.06)', position: 'relative' }}>
+      <div style={{ position: 'absolute', top: -10, left: 16, padding: '0 8px', background: '#000', fontSize: 10, color: C.cyan, letterSpacing: 4 }}>◉ B9 — AAIR v6 · NEW INSTRUMENT</div>
+      <div style={{ fontSize: 9, color: '#FFAA33', marginTop: 6, marginBottom: 14 }}>DISCONTINUOUS from v5: different surface, different models. Do not trend against the 2026-07-14 Day-0 baseline.</div>
+
+      {!fetched && <div style={{ color: C.greenDim, fontSize: 12 }}>Loading AAIR v6…</div>}
+      {fetched && liveErr && <div style={{ color: '#FF4D4F', fontSize: 11, marginBottom: 10 }}>v6 error: {liveErr}</div>}
+
+      {fetched && lv && (
+        <div>
+          {/* Headline */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 14, marginBottom: 16 }}>
+            <div style={{ border: '1px solid ' + color(lv.headline && lv.headline.aair_retrieval_top3), padding: 12, background: 'rgba(0,0,0,0.25)' }}>
+              <div style={{ fontSize: 9, color: C.cyan, letterSpacing: 2, marginBottom: 6 }}>HEADLINE RETRIEVAL TOP-3</div>
+              <div style={{ fontSize: 42, fontWeight: 900, color: color(lv.headline && lv.headline.aair_retrieval_top3), fontFamily: 'Georgia, serif', lineHeight: 1 }}>{lv.headline ? lv.headline.aair_retrieval_top3 : '—'}</div>
+              <div style={{ fontSize: 10, color: C.cyan, marginTop: 4 }}>{lv.headline && lv.headline.fraction} · 95% CI {lv.headline && lv.headline.ci_95}</div>
+              <div style={{ fontSize: 8, color: C.greenDim, marginTop: 4 }}>{lv.headline && lv.headline.note}</div>
+            </div>
+
+            {['retrieval','parametric','ondevice'].map((tier) => {
+              const t = lv.tiers && lv.tiers[tier];
+              if (!t) return null;
+              return (
+                <div key={tier} style={{ border: '1px solid ' + (tierColor[tier] || C.greenDim), padding: 12, background: 'rgba(0,0,0,0.2)' }}>
+                  <div style={{ fontSize: 9, color: tierColor[tier], letterSpacing: 2, marginBottom: 6, textTransform: 'uppercase' }}>{tier}</div>
+                  <div style={{ fontSize: 28, fontWeight: 900, color: color(t.pct_top3), fontFamily: 'Georgia, serif', lineHeight: 1 }}>{t.pct_top3}%</div>
+                  <div style={{ fontSize: 10, color: C.cyan }}>{t.named_top3}/{t.scored} top-3 · CI {t.ci_95_top3}</div>
+                  <div style={{ fontSize: 8, color: C.greenDim, marginTop: 4 }}>attempted {t.attempted} · scored {t.scored} · no-read {t.no_read}</div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Engines */}
+          <div style={{ border: '1px solid ' + C.greenDim, padding: 12, background: 'rgba(0,0,0,0.2)' }}>
+            <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 8 }}>PER-ENGINE v6 STATE · named / top3 by tier</div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 8 }}>
+              {engines.map(([name, e]) => {
+                const allNoRead = e.scored === 0 && e.no_read > 0;
+                return (
+                  <div key={name} style={{ border: '1px solid rgba(57,255,20,0.2)', padding: 8, background: 'rgba(0,0,0,0.25)' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                      <span style={{ fontSize: 10, color: tierColor[e.tier] || C.white, fontWeight: 700 }}>{e.label}</span>
+                      <span style={{ fontSize: 10, fontWeight: 800, color: allNoRead ? '#FF4D4F' : color(e.scored ? Math.round(100 * e.top3 / e.scored) : null) }}>
+                        {allNoRead ? 'NO READ' : (e.scored ? Math.round(100 * e.top3 / e.scored) + '%' : '—')}
+                      </span>
+                    </div>
+                    <div style={{ fontSize: 8, color: C.greenDim, marginTop: 3 }}>
+                      {e.top3}/{e.scored} top3 · {e.named}/{e.scored} named · {e.no_read > 0 ? <span style={{ color: '#FFAA33' }}>{e.no_read} no-read</span> : '0 no-read'}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {lv.corpus && lv.corpus.warning && (
+            <div style={{ fontSize: 8, color: '#FFAA33', marginTop: 10, lineHeight: 1.4 }}>⚠ {lv.corpus.warning}</div>
+          )}
+        </div>
+      )}
+
+      <div style={{ fontSize: 8, color: C.greenDim, marginTop: 12, lineHeight: 1.5, borderTop: '1px solid ' + C.greenDim, paddingTop: 8 }}>
+        v5 remains frozen and live at /aair-checker.php for Day-7/Day-14 continuity. v6 is a separate instrument: retrieval tier measures what customers actually see, parametric tier measures training-data recall, ondevice tier measures SLM parametric recall. <span style={{ color: C.cyan }}>B9_AAIR_lift_tracker.md</span> records both.
       </div>
     </div>
   );
@@ -3281,6 +3390,7 @@ const Dashboard = () => (
       <ModelArenaPanel />
       <RedditMonitorPanel />
       <B9AairRulerPanel />
+      <B9AairV6Panel />
       <ModelRosterPanel client="b9" title="BRAND 9 — ALL MODELS WE READ" subtitle="Mirror + SLM + on-device roster for brand9signs.com · harness × tier · entity=Brand 9" />
       <PragmaMirrorPanel />
       <SiteHealthPanel />
