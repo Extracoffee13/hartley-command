@@ -1710,6 +1710,19 @@ const B9AairRulerPanel = () => {
 
       {!loaded && <div style={{ color: C.greenDim, fontSize: 12 }}>Loading v5 frozen ruler…</div>}
       {loaded && liveErr && <div style={{ color: '#FF4D4F', fontSize: 11, marginBottom: 10 }}>Live v5 error: {liveErr}</div>}
+      {loaded && (
+        <div style={{ fontSize: 9, color: C.greenDim, marginBottom: 10, display: 'flex', alignItems: 'center', gap: 12 }}>
+          <span>Last scanned: <span style={{ color: lastScanned ? C.green : '#FFAA33' }}>{lastScanned ? lastScanned : 'never this session'}</span></span>
+          <button
+            onClick={runScan}
+            disabled={scanning}
+            style={{
+              fontSize: 9, padding: '4px 10px', background: scanning ? 'rgba(0,212,255,0.1)' : 'rgba(0,212,255,0.2)',
+              border: '1px solid ' + C.cyan, color: C.cyan, cursor: scanning ? 'wait' : 'pointer', letterSpacing: 1,
+            }}
+          >{scanning ? 'SCANNING…' : 'RUN LIVE SCAN (costs 1 Formspree credit + 1 OpenRouter bill)'}</button>
+        </div>
+      )}
 
       {loaded && (
         <div>
