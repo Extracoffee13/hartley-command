@@ -386,3 +386,15 @@ lesson: Ode is the item that matters, and the reason is uncomfortable rather tha
 tags: pulse,mcp,ecosystem,daily,competition,pragma
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-17
+decision: Second fire of the 24h AI/agent scan, 10:00 ET. The 06:02 brief already stood; verified it against fresh searches rather than rewriting, and refreshed in place with one drop and one add.
+outcome: Items 1 (Ode with Anthropic), 2 (Anthropic IPO investor meetings), and 5 (arXiv 2603.09619 Context Engineering) preserved verbatim — re-checked, nothing moved. Item 3 resolved rather than replaced: today was the rumored Gemini 3.5 Pro ship date, re-checked at 10:00 ET, and there is still no model card, no pricing page, and no gemini-3.5-pro listing in the public Gemini API docs; the only new material is aggregators citing each other and now quoting a ~$15/$60 per 1M price Google has never published. Three fires have now declined to report it and the date arrived empty. Dropped Affinity's CRM MCP server (MAYBE, weakest slot, Hartley-Capital-adjacent at best). Added as YES: Claude Code v2.1.212 — session-wide WebSearch cap defaulting to 200 calls (CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION), /fork now forking into a background session with the in-session subagent renamed /subtask, MCP calls over 2 minutes auto-backgrounding (CLAUDE_CODE_MCP_AUTO_BACKGROUND_MS), and /resume opening a session picker. Verified against the anthropics/claude-code v2.1.212 release tag, not the aggregator summaries that surfaced it — the code.claude.com what's-new index still only lists through Week 28, so the "Week 29" digest the aggregators quote is not yet a citable source.
+lesson: The morning brief asked what PRAGMA is that Ode structurally cannot be, and that question is still owed an answer in specifics. But today's add is the one to act on, because it is the first item in a week that constrains this scan rather than describing its market: a 200-call WebSearch ceiling does not fail loudly — it returns a thinner brief that reads exactly like a quiet news day, which is the sentence three of this week's fires have already written in good faith. Set the cap deliberately for the scan fleet before it sets itself. Note the near-miss in method: the aggregators had the v2.1.212 substance right, and the temptation was to cite their tidy "Week 29" digest, which the official index does not yet publish. Right facts, wrong provenance — Jul 15's fabricated MCP deadline started the same way.
+tags: pulse,mcp,ecosystem,daily,observability,provenance
+confidence: 0.8
+~~~

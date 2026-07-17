@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-17T10:12:00Z",
+  "generated": "2026-07-17T14:03:30Z",
   "latest_date": "2026-07-17",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
@@ -21,19 +21,19 @@
     },
     {
       "n": 3,
-      "title": "Gemini 3.5 Pro's rumored launch date is today — and Google has confirmed none of it",
-      "summary": "Third-party reporting says Google scrapped the original base model after engineers found structural failures in recursive tool-calling and SVG generation, restarted pretraining, and targeted Jul 17. The circulated specs (2M-token context, a 'Deep Think' reasoning layer, autonomous workflow capability) trace to unnamed sources. As of Jul 13 there was no model card, no pricing page, and no gemini-3.5-pro listing in the public Gemini API docs.",
+      "title": "Gemini 3.5 Pro's rumored launch date was today — it came and went with nothing shipped",
+      "summary": "Third-party reporting said Google scrapped the original base model after engineers found structural failures in recursive tool-calling and SVG generation, restarted pretraining, and targeted Jul 17. The circulated specs (2M-token context, a 'Deep Think' reasoning layer, autonomous workflow capability) all traced to unnamed sources. Re-checked at 10:00 ET on the rumored date itself: still no model card, no pricing page, no gemini-3.5-pro listing in the public Gemini API docs. The only 'confirmations' available are the same aggregators citing each other, now quoting a ~$15/$60 per 1M price Google has never published.",
       "tag": "maybe",
-      "how": "Our Jul 15 and Jul 16 fires both flagged this date conflict and declined to report it; that call holds and today is the test of it. Do not benchmark against, plan around, or cite leaked specs. If it ships, it ships with release notes and a pricing page — that is the artifact to scan for, not the rumor that preceded it. One note regardless: recursive tool-calling is where a frontier lab found its own architecture structurally broken, and it is exactly what our nested-subagent scans do all day.",
+      "how": "The Jul 15 and Jul 16 fires both declined to report this, and the date arriving empty is what that discipline was for. Do not benchmark against, plan around, or cite leaked specs. If it ships, it ships with release notes and a pricing page — that is the artifact to scan for. The reported failure mode is worth one note regardless: recursive tool-calling is where a frontier lab found its own architecture structurally broken, and it is exactly what our nested-subagent scans do all day.",
       "url": "https://www.techtimes.com/articles/320308/20260713/gemini-35-pro-targets-july-17-after-full-rebuild-every-spec-remains-unconfirmed.htm"
     },
     {
       "n": 4,
-      "title": "Affinity ships a hosted CRM MCP server with write-back — read/write live CRM from Claude, ChatGPT, Gemini, or Copilot",
-      "summary": "Paste a hosted server URL, no local setup and no engineering resources, and agents can both query relationship data and write to it: create a note on an open opportunity, add a company to a pipeline list, pull a call transcript from the last meeting. Affinity frames it as turning the CRM from a system of record into a system of action.",
-      "tag": "maybe",
-      "how": "Affinity is private-capital-focused, so it fits Hartley Capital's own dealflow rather than Brand 9 Signs. The transferable part is the pattern: hosted URL, zero-install, write-scoped — the shape every CRM will ship, and the shape PRAGMA will be asked to install into client stacks. Note the tension with the Oak item from Jul 15: a write-capable CRM connector anyone with account access can wire up in minutes is precisely the ungoverned non-human identity that item described. Convenience and the governance gap are the same feature.",
-      "url": "https://www.affinity.co/blog/affinity-mcp-server-beta"
+      "title": "Claude Code v2.1.212 caps WebSearch per session and moves /fork and slow MCP calls into the background",
+      "summary": "A session-wide WebSearch limit now defaults to 200 calls, tunable via CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION, explicitly to stop runaway search loops. /fork now copies the conversation into a new background session with its own row in claude agents while you keep working, and the in-session subagent it used to launch is renamed /subtask. MCP tool calls running longer than 2 minutes auto-background so the session stays usable, with the threshold set by CLAUDE_CODE_MCP_AUTO_BACKGROUND_MS. /resume in the agent view now opens a picker of past sessions including deleted ones.",
+      "tag": "yes",
+      "how": "This lands on the scan's own machinery rather than the market. A 200-search session cap is a ceiling on exactly what Pulse and Lens do all day, and a fan-out scan that silently hits it will not fail loudly — it will just return a thinner brief that reads like a quiet news day. Set the env var deliberately for the scan fleet rather than discovering the default the hard way. The MCP 2-minute auto-background threshold deserves the same treatment: slow connector calls will now return control before returning results, which changes what 'the tool call finished' means in every skill that assumes otherwise.",
+      "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.212"
     },
     {
       "n": 5,
@@ -44,7 +44,7 @@
       "url": "https://arxiv.org/abs/2603.09619"
     }
   ],
-  "praxis_lesson": "Ode is the item that matters, and the reason is uncomfortable rather than exciting: Anthropic, Blackstone, and Hellman & Friedman just funded and staffed the exact sentence PRAGMA uses to describe itself — helping midsize enterprises get past pilots and into day-to-day operations. Four days of praxis lessons have been about whether this scan reports accurately; this one is about whether the thing being reported on has a reason to exist. Note the reflex worth resisting: the easy move is to file Ode as validation ('the thesis is real, look who's funding it') and move on. Validation and displacement look identical from the outside and are distinguished only by what you can do that they can't. Write that answer down this week, in specifics, or concede the wedge was never one.",
+  "praxis_lesson": "Ode is the item that matters, and the reason is uncomfortable rather than exciting: Anthropic, Blackstone, and Hellman & Friedman just funded and staffed the exact sentence PRAGMA uses to describe itself — helping midsize enterprises get past pilots and into day-to-day operations. Four days of praxis lessons have been about whether this scan reports accurately; this one is about whether the thing being reported on has a reason to exist. Note the reflex worth resisting: the easy move is to file Ode as validation ('the thesis is real, look who's funding it') and move on. Validation and displacement look identical from the outside and are distinguished only by what you can do that they can't. Write that answer down this week, in specifics, or concede the wedge was never one. Second note, now settled: three fires declined to report the Gemini rumor and the rumored date arrived empty, which is the first time this week's discipline has been paid rather than just praised. Bank it and move on — the same restraint is owed to the next loud story, not to a victory lap.",
   "history": [
     "2026-07-17",
     "2026-07-16",
