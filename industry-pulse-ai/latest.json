@@ -1,51 +1,52 @@
 {
-  "generated": "2026-07-16T18:05:00Z",
-  "latest_date": "2026-07-16",
+  "generated": "2026-07-17T10:12:00Z",
+  "latest_date": "2026-07-17",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Correction to yesterday's brief — the Jul 28 MCP spec is not a breaking deadline, and the beta SDKs to test it have been out since Jun 29",
-      "summary": "The official SDK announcement is explicit: 'for existing clients and servers nothing breaks today, and nothing breaks on July 28 either. This is merely the date when the normative specification text is published and is not a switch-off for any implementers relying on the current protocol version.' Betas are available for all four Tier 1 SDKs — Python mcp v2 (2.0.0b1), TypeScript v2 (split packages, ESM-only, @beta), Go (v1.7.0-pre.1), C# (2.0.0-preview.1) — and opting in is deliberate at every step: unpinned installs still resolve to stable, TypeScript/Go don't change what they speak over HTTP until you wire the transport, and clients speaking 2026-07-28 fall back to the initialize handshake against 2025-11-25 servers. The release candidate is now published and confirms the shape: stateless core, Mcp-Method and Mcp-Name headers so gateways route without inspecting the body, ttlMs and cacheScope on list/read results, extensions (MCP Apps, Tasks) first-class, and a formal deprecation policy. Standard error codes change (missing resource returns JSON-RPC -32602, not the MCP-custom -32002).",
+      "title": "Ode with Anthropic launches — Anthropic, Blackstone, and Hellman & Friedman put a funded AI-services firm directly on PRAGMA's wedge",
+      "summary": "Announced Jul 15, Ode is a standalone company combining Anthropic's frontier models with a team of AI engineers and operators, built on the foundation of Fractional AI (acquired May 2026), led by Chris Taylor (CEO) and Eddie Siegel (CTO) who co-founded Fractional in the same roles. The investor consortium beyond the three founding partners includes Goldman Sachs, General Atlantic, Leonard Green & Partners, Apollo Global Management, GIC, and Sequoia Capital. Its stated focus: midsize enterprises looking to move beyond AI pilots and embed the technology into day-to-day operations.",
       "tag": "yes",
-      "how": "Our Jul 15 brief said every MCP server we run 'has 13 days to be ready' and 'either follows its SDK through the window or breaks.' That was wrong, and it was wrong in the direction that manufactures urgency. Nothing switches off. The real action is smaller and duller: add mcp>=1.27,<2 upper bounds now so the stable Python v2 doesn't surprise us, pin exact versions if we test a beta, and check whether anything in our fleet string-matches -32002.",
-      "url": "https://blog.modelcontextprotocol.io/posts/sdk-betas-2026-07-28/"
+      "how": "That focus statement is PRAGMA's positioning written by someone else with a private-equity consortium behind it. This is the AI-operator consulting thesis being industrialized top-down, with the model vendor as a shareholder. The question is not whether we compete — it's what PRAGMA is that Ode structurally cannot be. Likely answers: we operate inside the client's owned stack rather than selling a build, we're small enough for engagements Ode's economics won't take, and we're model-agnostic where Ode is definitionally not. None of those are tested. They are now urgent.",
+      "url": "https://www.businesswire.com/news/home/20260715205134/en/Anthropic-Blackstone-and-Hellman-Friedman-Introduce-Ode-with-Anthropic-an-Enterprise-AI-Services-Firm"
     },
     {
       "n": 2,
-      "title": "Claude Code 2.1.210 + 2.1.211 — security and memory-integrity fixes, then subagent text streaming lands 25 hours later",
-      "summary": "2.1.210 shipped four fixes that hit The Construct specifically: the Agent tool hardened against indirect prompt injection via content a subagent read; isolation:'worktree' subagents no longer able to run git-mutating commands against the main repo checkout; the ultracode keyword opt-in no longer firing on non-human-originated input such as webhook payloads and relayed PR comments; and memory writes that leave a MEMORY.md index over its read limit now producing an explicit error instead of silently truncating. 2.1.211 followed roughly 25 hours later (Jul 15) and adds --forward-subagent-text plus CLAUDE_CODE_FORWARD_SUBAGENT_TEXT, which forwards subagent assistant text and thinking into stream-json output, correlated to the parent via parent_tool_use_id. Previously, under claude -p --output-format stream-json, only a subagent's final returned result was observable — everything it reasoned on the way there was dark.",
-      "tag": "yes",
-      "how": "The MEMORY.md fix is the one to sit with: ~/.hermes/memories/MEMORY.md is our index, it grows every day, and until 2.1.210 an oversized index truncated silently — agents may have been reading a partial memory with no error raised. The worktree-escape fix guards exactly the boundary the Hermes-only-GitHub-credential rule exists to protect. And --forward-subagent-text is the direct instrument for a gap we have: every scan and brief this fleet produces is written by subagents whose reasoning we have never been able to see, only whose conclusions we accept. Yesterday's fabricated MCP deadline was produced somewhere inside that dark region.",
-      "url": "https://code.claude.com/docs/en/changelog"
+      "title": "Anthropic lines up IPO investor meetings — listing possible as soon as October",
+      "summary": "Bankers are arranging investor meetings ahead of a potential public listing as early as October, positioning Anthropic to reach the public markets ahead of OpenAI.",
+      "tag": "maybe",
+      "how": "No action today, but note the compounding: within one week Anthropic has stood up an enterprise services arm (item 1) and moved toward a listing. Every agent in The Construct runs on this vendor's surface. A pre-IPO vendor optimizes for enterprise revenue legibility, and the Cowork/Claude Code surfaces we depend on are the ones with the least enterprise-contract weight behind them. Hold as a dependency risk, not a headline.",
+      "url": "https://www.cnbc.com/2026/07/15/anthropic-ipo-banks-investor-meetings.html"
     },
     {
       "n": 3,
-      "title": "Cowork on web and mobile runs on Anthropic-hosted remote sessions — scheduled tasks now run with no device online at all",
-      "summary": "Announced Jul 7 and rolling out in beta over several weeks starting with Max: Cowork sessions move to claude.ai and iOS/Android, saved to your Claude account, with work continuing in the background after you close the laptop. The execution model is the change, not the surface: remote sessions hosted on Anthropic's servers can keep working — and run scheduled tasks — with no device online. Chat and Cowork now share one home tab, sidebar, search, and Projects & Artifacts. Doubled Cowork usage limits are extended through Aug 5. Related, same day: Claude Code and Cowork went to public beta in a FedRAMP High environment via Claude for Government Desktop.",
-      "tag": "yes",
-      "how": "A structural fix for a constraint we designed around rather than solved. lens-daily-scan carries 'survives Cowork being closed overnight' in its own description, and the multi-fire 5:34/9:34/13:34 schedule with idempotent skip exists precisely because we could not trust a fire to happen when the machine was asleep. Remote-hosted scheduled tasks remove the premise. Worth testing before we simplify anything — but if it holds, the whole multi-fire-plus-skip pattern is scaffolding we can take down.",
-      "url": "https://claude.com/blog/cowork-web-mobile"
+      "title": "Gemini 3.5 Pro's rumored launch date is today — and Google has confirmed none of it",
+      "summary": "Third-party reporting says Google scrapped the original base model after engineers found structural failures in recursive tool-calling and SVG generation, restarted pretraining, and targeted Jul 17. The circulated specs (2M-token context, a 'Deep Think' reasoning layer, autonomous workflow capability) trace to unnamed sources. As of Jul 13 there was no model card, no pricing page, and no gemini-3.5-pro listing in the public Gemini API docs.",
+      "tag": "maybe",
+      "how": "Our Jul 15 and Jul 16 fires both flagged this date conflict and declined to report it; that call holds and today is the test of it. Do not benchmark against, plan around, or cite leaked specs. If it ships, it ships with release notes and a pricing page — that is the artifact to scan for, not the rumor that preceded it. One note regardless: recursive tool-calling is where a frontier lab found its own architecture structurally broken, and it is exactly what our nested-subagent scans do all day.",
+      "url": "https://www.techtimes.com/articles/320308/20260713/gemini-35-pro-targets-july-17-after-full-rebuild-every-spec-remains-unconfirmed.htm"
     },
     {
       "n": 4,
-      "title": "Oak exits stealth with $60M seed to govern non-human identities — the agent permission problem is now a funded category",
-      "summary": "Founded by Shai Morag and Tal Marom, co-led by Accel, Greylock, and CRV, already GA and deployed in enterprises. Oak replaces the fragmented legacy IAM stack with a single control plane governing every identity — human, machine, or AI agent — building a live identity graph from raw evidence via an AI connector framework spanning on-prem, cloud, SaaS, and homegrown apps. The founding research is the tell: 100+ CISOs and IAM leaders reported the same three problems — too many disconnected tools, no visibility into how access is actually used, and no way to govern AI agents at all.",
-      "tag": "yes",
-      "how": "The same thread as Rafay's managed MCP server from Jul 15, now with a seed round attached and a sharper frame: the unit of governance is the identity, not the server. The Construct runs a fleet of agents against client systems with credentials that were designed for humans. 'No way to govern AI agents' is not a market gap someone else has — it is a description of our own posture, and PRAGMA cannot sell an operator wedge into a client's stack without an answer to who the agent is when it authenticates.",
-      "url": "https://techcrunch.com/2026/07/15/backed-by-60m-in-funding-oak-steps-out-of-stealth-to-fix-the-identity-mess-that-ai-agents-are-making-worse/"
+      "title": "Affinity ships a hosted CRM MCP server with write-back — read/write live CRM from Claude, ChatGPT, Gemini, or Copilot",
+      "summary": "Paste a hosted server URL, no local setup and no engineering resources, and agents can both query relationship data and write to it: create a note on an open opportunity, add a company to a pipeline list, pull a call transcript from the last meeting. Affinity frames it as turning the CRM from a system of record into a system of action.",
+      "tag": "maybe",
+      "how": "Affinity is private-capital-focused, so it fits Hartley Capital's own dealflow rather than Brand 9 Signs. The transferable part is the pattern: hosted URL, zero-install, write-scoped — the shape every CRM will ship, and the shape PRAGMA will be asked to install into client stacks. Note the tension with the Oak item from Jul 15: a write-capable CRM connector anyone with account access can wire up in minutes is precisely the ungoverned non-human identity that item described. Convenience and the governance gap are the same feature.",
+      "url": "https://www.affinity.co/blog/affinity-mcp-server-beta"
     },
     {
       "n": 5,
-      "title": "Claude ships self-serve HIPAA configuration — and the exclusion list is the part that matters",
-      "summary": "An Enterprise Primary Owner can now open Organization settings → Data and privacy → HIPAA Compliance, review the BAA and implementation guide, and accept in one flow. The BAA is standard and unmodifiable; Anthropic notes the activation is a one-way decision that cannot be reversed from admin settings. The carve-outs are specific: the BAA covers only the single organization that accepted it and excludes Workbench, Claude Console, Claude Cowork, and beta features such as Claude in Office and Claude Design. Claude Code is covered only with zero data retention enabled, and only on qualified accounts.",
-      "tag": "maybe",
-      "how": "No PHI in our current book, so this is not a today problem. But read the exclusion list against our own architecture: Cowork is not covered, and Cowork is where The Construct actually runs. Any future PRAGMA engagement touching a healthcare-adjacent client cannot be delivered through the surface we use for everything else. Worth knowing before a prospect asks, not during.",
-      "url": "https://support.claude.com/en/articles/13296973-hipaa-ready-enterprise-plans"
+      "title": "arXiv: 'Context Engineering — From Prompts to Corporate Multi-Agent Architecture' names provenance as a first-class context criterion",
+      "summary": "Vishnyakova proposes five context quality criteria — relevance, sufficiency, isolation, economy, and provenance — framing context as the agent's operating system, drawing on vendor architectures (Google ADK, Anthropic, LangChain) and academic work including the ACE framework. It also introduces 'Intent Engineering,' encoding organizational goals, values, and trade-off hierarchies into agent infrastructure.",
+      "tag": "yes",
+      "how": "Provenance is the criterion this fleet keeps failing, and now there is a vocabulary for it. The Jul 15 fabricated MCP deadline was a provenance failure; the Jul 16 miss of Claude Code 2.1.211 was a sufficiency failure; the recurring 'seen and not flagged' list is economy working correctly. Score ~/.hermes/memories/MEMORY.md and the CLAUDE.md working cache against all five — the weak axes will be the ones our praxis lessons already name.",
+      "url": "https://arxiv.org/abs/2603.09619"
     }
   ],
-  "praxis_lesson": "Both of today's earlier fires reported the frontier quiet, and this one found the thing they walked past: Claude Code 2.1.211 shipped Jul 15, twenty-five hours after the 2.1.210 we flagged as landing on our exact configuration, and neither earlier fire caught it. The scan read the changelog entry it already knew about and stopped — 2.1.211 was one row above it. That is the same failure as yesterday's fabricated MCP deadline wearing different clothes: yesterday the scan over-read one item, today it under-read the next one, and both times the error was treating a source as finished. This fire also miscounted itself as the fourth of the day before checking the log — the same reflex, caught in the act. Note what 2.1.211 actually offers: --forward-subagent-text makes visible the subagent reasoning that has always been dark, and every brief this fleet writes comes out of that dark region. We have four days of praxis lessons about verifying claims, written by a process nobody can watch. Instrument the scan before trusting the next lesson it teaches us.",
+  "praxis_lesson": "Ode is the item that matters, and the reason is uncomfortable rather than exciting: Anthropic, Blackstone, and Hellman & Friedman just funded and staffed the exact sentence PRAGMA uses to describe itself — helping midsize enterprises get past pilots and into day-to-day operations. Four days of praxis lessons have been about whether this scan reports accurately; this one is about whether the thing being reported on has a reason to exist. Note the reflex worth resisting: the easy move is to file Ode as validation ('the thesis is real, look who's funding it') and move on. Validation and displacement look identical from the outside and are distinguished only by what you can do that they can't. Write that answer down this week, in specifics, or concede the wedge was never one.",
   "history": [
+    "2026-07-17",
     "2026-07-16",
     "2026-07-15",
     "2026-07-14",
@@ -58,7 +59,6 @@
     "2026-07-07",
     "2026-07-06",
     "2026-07-04",
-    "2026-07-02",
-    "2026-07-01"
+    "2026-07-02"
   ]
 }
