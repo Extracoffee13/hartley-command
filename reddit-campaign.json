@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-16T12:05:00Z",
+  "updated": "2026-07-17T12:11:23Z",
   "account": {
     "username": "established (Bobby's personal account)",
     "created": "established",
@@ -55,27 +55,32 @@
     "decision": "hold until starters are live and getting engagement. Then drip 2-3/day."
   },
   "next_actions": [
-    "POST 1: r/ConstructionManagers — signage scope gap (NEW verified-open, no cooldown)",
-    "POST 2: r/RealEstateDevelopment — devphasing (6th carry — post it or kill it)",
-    "DECIDE: cadence 2-3/week (realistic on a 3-sub pool) vs continue vetting adjacent trade subs",
+    "POST 1: r/ConstructionManagers — signage scope gap — AS A TEXT POST, paste the body (pack file has it)",
+    "POST 2: r/RealEstateDevelopment — devphasing (7th carry) — TEXT ONLY, sub rejects image posts",
+    "ROOT CAUSE: past posts went up as bare images with no body — fix the method before re-litigating sub selection",
+    "DECIDE: cadence 2-3/WEEK (3-sub pool x 14-day rule caps ~1.5/wk) vs vet more adjacent trade subs",
     "Drop me the URLs after each and I'll update the dashboard"
   ],
   "today_pack": [
     {
       "subreddit": "ConstructionManagers",
       "title": "The signage scope gap I see on almost every commercial job — who owns it, and when it should hit your schedule",
-      "thumbnail": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/b9-brand/thumbnails/b9-thumb-scopegap-20260716.png",
+      "thumbnail": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/b9-brand/thumbnails/b9-thumb-scopegap-20260717-sq.png",
       "thumbnail_ok": true,
       "verified_prior": true,
-      "sub_viable": true
+      "sub_viable": true,
+      "post_type": "TEXT",
+      "evidence": "affirmative-permission (Rule 3 permits naming a company)"
     },
     {
       "subreddit": "RealEstateDevelopment",
       "title": "A phase-by-phase signage plan for a new development — what to order at each stage, and the lead times that quietly blow up your timeline",
-      "thumbnail": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/b9-brand/thumbnails/b9-thumb-devphasing-20260711.png",
+      "thumbnail": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/b9-brand/thumbnails/b9-thumb-devphasing-20260717-sq.png",
       "thumbnail_ok": true,
       "verified_prior": true,
-      "sub_viable": true
+      "sub_viable": true,
+      "post_type": "TEXT-MANDATORY (submission_type=self; image posts rejected)",
+      "evidence": "weak (no rule bans us)"
     }
   ],
   "posted_to_date": 4,
@@ -194,5 +199,21 @@
     "verified_open_added": [
       "ConstructionManagers (55k, Rule 3 explicitly permits company mention)"
     ]
+  },
+  "today_2026-07-17_result": {
+    "prepped": 2,
+    "posted": 0,
+    "carry_count": 7,
+    "note": "MATERIAL FINDING — THE POSTS THAT WENT LIVE WERE POSTED WRONG. Raw JSON on 1ulomzm + 1uloq30 shows is_self=false, post_hint='image', url=i.redd.it/*.png, selftext EMPTY. All 4 'live' posts are bare IMAGE posts: the thumbnail went up, the field-guide body never did. Score=1 each (author auto-upvote), 0 comments. This reframes 15 days of 'prepped but not posted' notes — 4 posts DID go up, as images with no argument attached. Pack now instructs TEXT post + paste body, and reproduces both bodies inline so nothing needs looking up. r/RealEstateDevelopment is submission_type=self and would REJECT an image post outright — the carried post may have failed on method, not merit. SECOND DEFECT: both carried thumbnails were 1200x630, not square — a standing-rule violation that survived 6 days of thumbnail_ok=true because prior passes checked palette+clipping but never dimensions. Rebuilt both at 1080x1080 (b9_thumb_daily_20260717.py, auto-fitting headline so type provably fits); both re-verified by opening the PNGs. MONITOR: run.py timed out twice (exit 124, no route to reddit.com from sandbox); reddit-monitor.json left UNTOUCHED per the don't-overwrite-with-zeros rule; all verification done via Chrome/public JSON instead. No new subs vetted today. Bobby to post manually.",
+    "verification_2026-07-17": {
+      "method": "public Reddit JSON endpoints via Chrome (no login needed) + Read of PNGs",
+      "ConstructionManagers": "PASS — public, submission_type=any, 55163 subs. Rule 3 verbatim: 'Mentioning the name of a construction company or software is acceptable, but attempting to sell a service/product is a violation.' AFFIRMATIVE PERMISSION.",
+      "RealEstateDevelopment": "PASS but WEAK — public, submission_type=self, 8768 subs. Only rule: 'No posts specifically advertising the sale or investment for particular lot or opportunity.' Evidence is 'no rule bans us', not 'rules permit'.",
+      "1ulomzm": "LIVE (removed_by_category=null) BUT image post, empty selftext, score 1, 0 comments",
+      "1uloq30": "LIVE (removed_by_category=null) BUT image post, empty selftext, score 1, 0 comments",
+      "1ulorl6": "REMOVED (removed_by_category='moderator') — confirmed still removed",
+      "view_counts": "UNVERIFIED — view_count=null on unauthenticated JSON",
+      "thumbnails": "both rebuilt square 1080x1080 and confirmed by opening PNGs: render, un-clipped, WHITE/BLACK/#0090D0, 3D-9 mark + 40th badge"
+    }
   }
 }
