@@ -410,3 +410,15 @@ lesson: Two days ago this scan invented an MCP deadline and got caught, and the 
 tags: pulse,mcp,ecosystem,daily,provenance,deadline,video
 confidence: 0.85
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-18
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct. Fresh-weighted the board: two new items (Kimi K3, Claude Code Jul 17 install-health pass), carried two load-bearing standing items (MCP spec Jul 28, Ode).
+outcome: Flagged (1) Kimi K3 — 2.8T open-weight, #1 Frontend Code Arena beating Claude Fable 5, open weights promised Jul 27 [MAYBE]; (2) Claude Code Jul 17 installation-health check that audits unused skills/MCP/plugins vs context cost and dedupes CLAUDE.md [YES]; (3) MCP spec 2026-07-28 now 10 days out, breaking [YES]; (4) Ode with Anthropic still unanswered in specifics [YES, carried]. Provenance flagged, not faked: GitHub releases served a stale cache, so the Claude Code version tag for the health feature is unconfirmed — reported the feature from the aggregator and named the gap.
+lesson: The two fresh items both turn on provenance. K3's self-reported benchmarks beat Claude Fable 5; the disciplined move is to bank the one dated verifiable fact (open weights Jul 27) and treat the leaderboard as an unverified vendor claim until we run it. The health pass had a real dated feature but an unconfirmable version tag; I named the gap rather than inventing a tag — the Jul 15 error run in reverse. A claim is not a result; the fix for a provenance gap is to name it. Concrete action: pair the install-health pass with the Jul-28 MCP deadline and run one pass that yields both the unused-server list and the migration inventory before the deadline.
+tags: pulse,mcp,ecosystem,daily,provenance,open-weights,governance
+confidence: 0.8
+~~~
