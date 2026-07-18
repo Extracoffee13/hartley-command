@@ -422,3 +422,15 @@ lesson: The two fresh items both turn on provenance. K3's self-reported benchmar
 tags: pulse,mcp,ecosystem,daily,provenance,open-weights,governance
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-18
+decision: Second fire of the 24h AI/agent scan, 14:00 ET. The 06:03 brief stood on re-check; verified against fresh searches rather than rewriting, and refreshed in place — one item upgraded, one corroborated, no drops or adds.
+outcome: Items 1 (Kimi K3), 3 (MCP spec Jul 28), and 4 (Ode) preserved — Ode re-checked and unmoved, MCP deadline now 10 days out, unchanged. Item 1 refreshed: independent testing (VentureBeat, TrendingTopics, Constellation) now corroborates K3 fourth among frontier models past Opus 4.8, so the ranking is no longer only a self-reported claim; the load-bearing fact stays the Jul 27 open-weight drop. Item 2 upgraded and its provenance gap CLOSED: the 06:03 fire flagged that it could not confirm the Claude Code install-health version tag because GitHub served a stale cache; fresh search identified the feature as the /doctor command, sourced to the Claude Code changelog (code.claude.com/docs/en/changelog), and retired the caveat. Seen and not flagged: Cowork's web/mobile + remote-sessions + M365 write-tools expansion (~Jul 7, on-surface but off-window, standing capability not news); new MCP servers Revenera / Featured / Salesforce Headless 360 (real, off-window, off-surface); July agent-funding roundup (Harvey $200M, Lovable $200M, Glean $180M, Perplexity $60M ext — market context only); arXiv skill-engineering cluster (SkillGenBench, Generative Skill Composition, Meta Context Engineering) parked pending one load-bearing paper.
+lesson: This fire is the clean counterpart to the Jul 15 fabricated-deadline error. The morning did the disciplined thing — reported a real feature but named the provenance gap instead of inventing a version tag. Ten minutes of searching on the next fire closed it: the feature is /doctor, sourced to the changelog. The loop works as designed when a gap is named in the morning and resolved against a primary source in the afternoon, so no unconfirmed detail ages quietly into fact. Concrete action, now with a command attached: run one /doctor pass across the fleet that yields both the unused-server list and the Jul-28 MCP migration inventory before the deadline.
+tags: pulse,mcp,ecosystem,daily,provenance,governance,resolved
+confidence: 0.85
+~~~
