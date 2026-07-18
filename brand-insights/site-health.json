@@ -1,20 +1,20 @@
 {
-  "generated": "2026-07-17T11:25:12.326453Z",
+  "generated": "2026-07-18T11:24:28.535400Z",
   "data_source": "PRAGMA Site-Health Operator \u2014 owned crawl (key-free); GSC enrichment pending project access",
   "version": "1.1.0",
   "phase": "1",
   "domain": "brand9signs.com",
-  "health_score": 94,
+  "health_score": 98,
   "health_score_breakdown": {
     "method": "Ahrefs-equivalent \u2014 base 100, deducted for real issues affecting SERP performance (owned crawl)",
     "deductions": {
       "title_tags_over_60_chars": {
-        "count": 2,
-        "penalty": 1.0
+        "count": 3,
+        "penalty": 1.5
       },
       "meta_descriptions_over_155_chars": {
-        "count": 5,
-        "penalty": 1.5
+        "count": 3,
+        "penalty": 0.9
       },
       "missing_h1_on_content_pages": {
         "count": 0,
@@ -25,46 +25,46 @@
         "penalty": 0.0
       },
       "pages_over_2s_load": {
-        "count": 1,
-        "penalty": 3.0
+        "count": 0,
+        "penalty": 0.0
       },
       "broken_links_404": {
         "count": 0,
         "penalty": 0.0
       }
     },
-    "final_score": 94.5
+    "final_score": 97.6
   },
   "crawl": {
-    "timestamp": "2026-07-17T11:25:12.326453Z",
-    "duration_s": 119.6,
+    "timestamp": "2026-07-18T11:24:28.535400Z",
+    "duration_s": 123.0,
     "pages_crawled": 120,
     "status_codes": {
       "200": 120
     },
-    "avg_load_time_s": 1.552,
-    "slow_pages_over_1.5s": 2,
-    "slow_pages_over_2.0s": 1,
+    "avg_load_time_s": 1.575,
+    "slow_pages_over_1.5s": 4,
+    "slow_pages_over_2.0s": 0,
     "slowest_pages": [
       {
-        "url": "https://brand9signs.com/florida-heritage/",
-        "load_s": 2.03
+        "url": "https://brand9signs.com/meeting-room-aesthetics/",
+        "load_s": 1.782
       },
       {
-        "url": "https://brand9signs.com/high-quality-modern-name-signs-business-appearance-functionality/",
-        "load_s": 1.95
+        "url": "https://brand9signs.com/community-monument-sign-cost/",
+        "load_s": 1.552
       },
       {
-        "url": "https://brand9signs.com/a-tale-of-two-signs-in-gator-country/",
-        "load_s": 1.293
+        "url": "https://brand9signs.com/brand-lab-ai/marketing-plan/",
+        "load_s": 1.536
       },
       {
-        "url": "https://brand9signs.com/how-do-businesses-benefit-from-signs-leveraging-the-power-of-sight-and-branding/",
-        "load_s": 1.246
+        "url": "https://brand9signs.com/brand-love-language-explained/",
+        "load_s": 1.527
       },
       {
-        "url": "https://brand9signs.com/",
-        "load_s": 1.239
+        "url": "https://brand9signs.com/store-effective-signage-branding/",
+        "load_s": 1.478
       }
     ]
   },
@@ -77,15 +77,15 @@
       {
         "url": "https://brand9signs.com/signage-miami/",
         "title_len": 84
+      },
+      {
+        "url": "https://brand9signs.com/community-monument-sign-cost/",
+        "title_len": 65
       }
     ],
     "meta_over_155": [
       {
         "url": "https://brand9signs.com/frequently-asked-questions/",
-        "meta_len": 290
-      },
-      {
-        "url": "https://brand9signs.com/contact/",
         "meta_len": 290
       },
       {
@@ -95,10 +95,6 @@
       {
         "url": "https://brand9signs.com/signage-miami/",
         "meta_len": 192
-      },
-      {
-        "url": "https://brand9signs.com/services-brand-9/",
-        "meta_len": 186
       }
     ],
     "multiple_h1": [],
