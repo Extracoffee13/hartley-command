@@ -458,3 +458,15 @@ lesson: The clean second-fire discipline is to let the freshest primary source o
 tags: pulse,mcp,ecosystem,daily,provenance,governance,second-fire
 confidence: 0.85
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-19
+decision: Third fire of the 24h AI/agent scan, 14:01 ET. Re-checked the 06:01 and 10:01 briefs against fresh searches and refreshed in place — item 1 upgraded again, item 2 promoted, deadline carried, research vein preserved.
+outcome: Item 1 upgraded to the newest Claude Code changelog items — reserved Claude Browser MCP server name (ahead of the Desktop pane rename), fixed Cowork VM-mode local-agent sessions failing to start with /login on CLI 2.1.203+, fixed MCP transient errors wiping slash commands, fixed SessionStart hooks not streaming in headless sessions [YES]; the Cowork VM-mode fix is dead-on since The Construct runs its scans as Cowork local-agent sessions. Item 2 promoted to Omneky's public API + MCP server — one brand URL to a full on-brand multi-format ad set (incl. UGC + short-form video), agent-callable including by Claude, with performance-driven regeneration — the most B9S/PRAGMA-relevant item all day; paired with Revid.ai's video MCP (Jul 16) as the video counterpart [YES]. Item 3 MCP spec 2026-07-28 now 9 days out, breaking, pair with /doctor [YES, carried]. Item 4 arXiv orchestration cluster (AdaptOrch task-adaptive routing + Dynamic Attentional Context Scoping) as a governance frame for the fleet [MAYBE]. Not flagged: GPT-5.6 / Sonnet 5 / Grok 4.5 / Gemini 3.5 Pro (off-window), Kimi K3 topping Frontend Code Arena (benchmark, off-window), July agent-funding roundup (market context).
+lesson: Two MCP servers in one week — Omneky (URL to full ad set) and Revid.ai (script to published video) — collapse the ad-creative and short-form-video pipelines into a single agent call, which is exactly B9S/PRAGMA's surface. The render is becoming a commodity API; The Construct's durable edge is owning the orchestration and brand layer, not any single generator. Bench Omneky on a real B9S URL before adopting, and still run the one /doctor pass that yields both the unused-server list and the Jul-28 migration inventory before the deadline.
+tags: pulse,mcp,ecosystem,daily,creative-pipeline,orchestration,third-fire
+confidence: 0.85
+~~~
