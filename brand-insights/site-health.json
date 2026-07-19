@@ -1,10 +1,10 @@
 {
-  "generated": "2026-07-18T11:24:28.535400Z",
+  "generated": "2026-07-19T11:25:22.009063Z",
   "data_source": "PRAGMA Site-Health Operator \u2014 owned crawl (key-free); GSC enrichment pending project access",
   "version": "1.1.0",
   "phase": "1",
   "domain": "brand9signs.com",
-  "health_score": 98,
+  "health_score": 97,
   "health_score_breakdown": {
     "method": "Ahrefs-equivalent \u2014 base 100, deducted for real issues affecting SERP performance (owned crawl)",
     "deductions": {
@@ -21,8 +21,8 @@
         "penalty": 0.0
       },
       "multiple_h1s_on_money_pages": {
-        "count": 0,
-        "penalty": 0.0
+        "count": 1,
+        "penalty": 0.3
       },
       "pages_over_2s_load": {
         "count": 0,
@@ -33,38 +33,38 @@
         "penalty": 0.0
       }
     },
-    "final_score": 97.6
+    "final_score": 97.3
   },
   "crawl": {
-    "timestamp": "2026-07-18T11:24:28.535400Z",
-    "duration_s": 123.0,
+    "timestamp": "2026-07-19T11:25:22.009063Z",
+    "duration_s": 119.0,
     "pages_crawled": 120,
     "status_codes": {
       "200": 120
     },
-    "avg_load_time_s": 1.575,
-    "slow_pages_over_1.5s": 4,
+    "avg_load_time_s": 1.35,
+    "slow_pages_over_1.5s": 1,
     "slow_pages_over_2.0s": 0,
     "slowest_pages": [
       {
-        "url": "https://brand9signs.com/meeting-room-aesthetics/",
-        "load_s": 1.782
+        "url": "https://brand9signs.com/the-power-of-color-unlocking-the-psychology-of-color-in-marketing/",
+        "load_s": 1.741
       },
       {
-        "url": "https://brand9signs.com/community-monument-sign-cost/",
-        "load_s": 1.552
+        "url": "https://brand9signs.com/church-branding-being-relevant-for-the-new-generation/",
+        "load_s": 1.289
       },
       {
-        "url": "https://brand9signs.com/brand-lab-ai/marketing-plan/",
-        "load_s": 1.536
+        "url": "https://brand9signs.com/led-lighted-signs/",
+        "load_s": 1.259
       },
       {
-        "url": "https://brand9signs.com/brand-love-language-explained/",
-        "load_s": 1.527
+        "url": "https://brand9signs.com/unlocking-the-secrets-to-effective-signage-what-makes-a-sign-great/",
+        "load_s": 1.249
       },
       {
-        "url": "https://brand9signs.com/store-effective-signage-branding/",
-        "load_s": 1.478
+        "url": "https://brand9signs.com/corporate-office-branding/",
+        "load_s": 1.212
       }
     ]
   },
@@ -97,7 +97,12 @@
         "meta_len": 192
       }
     ],
-    "multiple_h1": [],
+    "multiple_h1": [
+      {
+        "url": "https://brand9signs.com/",
+        "h1_count": 2
+      }
+    ],
     "missing_h1": [],
     "not_found_404": []
   },
