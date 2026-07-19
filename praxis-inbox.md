@@ -434,3 +434,15 @@ lesson: This fire is the clean counterpart to the Jul 15 fabricated-deadline err
 tags: pulse,mcp,ecosystem,daily,provenance,governance,resolved
 confidence: 0.85
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-19
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct. Fresh first fire: two new items, the MCP Jul-28 deadline carried (now 9 days out), one arXiv research vein flagged, three off-window releases seen and not flagged.
+outcome: Flagged (1) Claude Code Jul 18 changelog — background /fork sessions, session-wide WebSearch cap, subagent/Bash safeguards, and the fix for returning to claude silently killing subagents [YES]; (2) Gemini Omni Flash now in Google Vids (Jul 17) — conversational video editing + avatars at $0.10/sec, a bench candidate for B9S/Vector [MAYBE]; (3) MCP spec 2026-07-28 now 9 days out, breaking, pair with /doctor [YES, carried]; (4) arXiv 'Context Engineering: From Prompts to Corporate Multi-Agent Architecture' — five context-quality criteria (relevance/sufficiency/isolation/economy/provenance) + intent engineering, a governance frame for the installed-skills registry [MAYBE]. Not flagged: GPT-5.6 / Gemini 3.5 Flash / Grok 4.5 (off-window), July agent-funding roundup (market context), Cowork web/mobile expansion (off-window, standing capability).
+lesson: Two of four items are bench-not-adopt — /fork background sessions and Omni Flash in Vids both look useful, but 'useful in a launch post' and 'useful on a real B9S/Construct job' are different claims and only the second earns a fleet slot. Do double duty this week: one /doctor pass yields both the unused-MCP-server list and the Jul-28 migration inventory before the deadline; use the arXiv economy/provenance criteria to decide what stays.
+tags: pulse,mcp,ecosystem,daily,governance,bench-not-adopt
+confidence: 0.8
+~~~

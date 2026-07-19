@@ -1,43 +1,44 @@
 {
-  "generated": "2026-07-18T18:01:38Z",
-  "latest_date": "2026-07-18",
+  "generated": "2026-07-19T10:01:21Z",
+  "latest_date": "2026-07-19",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Moonshot ships Kimi K3 — a 2.8T open-weight model that takes #1 on Frontend Code Arena, beating Claude Fable 5",
-      "summary": "Announced Jul 16 and covered by Bloomberg Jul 17, Kimi K3 is a 2.8-trillion-parameter Mixture-of-Experts model (896 experts, 16 active per token) on Kimi Delta Attention, with native vision and a 1M-token context. It placed #1 on Arena's Frontend Code Arena — a 17-place jump from K2.6 — winning six of seven frontend domains. Re-checked at 14:00 ET, independent testing now corroborates the headline: VentureBeat, TrendingTopics, and Constellation place K3 fourth among all frontier models, past Claude Opus 4.8 and behind only Claude Fable 5 and GPT-5.6 Sol — the leaderboard is no longer only a self-reported claim. Open weights remain promised for July 27, 2026 on Hugging Face; app/API only until then, at $3/$15 per 1M.",
-      "tag": "maybe",
-      "how": "The load-bearing fact is still the Jul 27 open-weight drop, not the ranking. A frontier-adjacent model we can run on our own infrastructure at zero per-token cost is directly relevant to high-volume Construct jobs and to the frontend/site work behind Brand 9 Signs, where '#1 on Frontend Code Arena' is the exact axis that matters. Independent corroboration raises the priority a notch, but nothing is actionable until the weights are real and the license is read — flag Jul 27, verify the license, and bench one real B9S frontend task before it earns a slot in the fleet.",
-      "url": "https://simonwillison.net/2026/Jul/16/kimi-k3/"
-    },
-    {
-      "n": 2,
-      "title": "The Claude Code install-health feature has a name and a primary source: it's the /doctor command",
-      "summary": "The provenance gap the 06:03 brief flagged is now closed. This fire's fresh search confirms the install-health pass ships as the /doctor command: it checks installation health, finds unused skills / MCP servers / plugins versus their context cost, deduplicates local CLAUDE.md files against checked-in ones, proposes trimming CLAUDE.md content the model could derive from the codebase, and flags slow hooks. It lands alongside /fork now copying the conversation into its own background session (the in-session subagent renamed /subtask), the session-wide WebSearch cap (default 200, CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION), a smarter /resume picker, and a startup-hang fix when the Claude-in-Chrome extension is enabled but Chrome isn't running.",
+      "title": "Claude Code Jul 18 changelog — /fork runs as a background session, plus a session-wide WebSearch cap and new subagent/Bash safeguards",
+      "summary": "The Jul 18 Claude Code release lets /fork copy the conversation into its own background session so the main session keeps working, adds a session-wide WebSearch limit (default 200, tunable via CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION), hardens safeguards around WebSearch/subagent spawns/Bash, and fixes the bug where returning to claude silently killed running subagents and re-ran the prompt from scratch — plus reliability fixes across MCP, worktrees, telemetry, and remote sessions.",
       "tag": "yes",
-      "how": "This is a governance tool aimed squarely at the problem The Construct keeps naming in its own praxis lessons: a fleet of skills, plugins, and MCP servers whose context cost nobody has audited. It is also the right instrument for the MCP-migration inventory item 3's Jul 28 deadline demands — run /doctor across the fleet, and the 'unused MCP server' list and the 'servers that break on Jul 28' list should be reconciled in the same sitting. The 06:03 caveat (unconfirmed version tag, stale GitHub cache) is retired: the command name and behavior are now sourced to the Claude Code changelog, not an aggregator.",
+      "how": "The Construct runs fan-out subagent jobs where 'silently stopped and restarted from scratch' is exactly the failure that wastes a run; the fix plus the background-/fork model is directly useful to our fleet, and the WebSearch cap is a real governance lever for scans like this one. Set CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION deliberately rather than inheriting the 200 default.",
       "url": "https://code.claude.com/docs/en/changelog"
     },
     {
+      "n": 2,
+      "title": "Gemini Omni Flash lands in Google Vids (Jul 17) — conversational video editing + personal avatars from a text prompt",
+      "summary": "Google put Omni Flash inside Google Vids on Jul 17: edit existing video with plain-text prompts and generate new clips with an avatar that looks and sounds like you. The underlying model (developer API since Jun 30) takes any mix of text/image/audio/video in and outputs physics-aware video at $0.10 per second, with conversational editing as its differentiator versus every other API video model.",
+      "tag": "maybe",
+      "how": "Squarely on Brand 9 Signs' surface (short-form video for signage clients, social cuts) and on Vector's remit in The Construct, but we already route generative video/image through the Higgsfield MCP fleet. Worth one bench: does conversational text-prompt editing at $0.10/sec beat our current pipeline on a real B9S social cut, or is it a second vendor we don't need? Test, don't adopt on a launch post.",
+      "url": "https://workspace.google.com/blog/product-announcements/introducing-gemini-omni-flash-in-google-vids"
+    },
+    {
       "n": 3,
-      "title": "MCP specification 2026-07-28 goes final in 10 days — the largest breaking revision since launch",
-      "summary": "From the maintainers' own post: the RC locked May 21 and the final spec publishes July 28. The core goes stateless — the initialize/initialized handshake and Mcp-Session-Id header are removed (SEP-2575, SEP-2567), with protocol version and client info moving into _meta; Streamable HTTP now requires Mcp-Method and Mcp-Name headers; Extensions become first-class with MCP Apps (server-rendered UIs) and a reshaped Tasks extension (anyone on the 2025-11-25 experimental Tasks API must migrate); authorization aligns more closely with OAuth/OpenID Connect; Roots, Sampling, and Logging are deprecated annotation-only with a 12-month floor; tool schemas lift to full JSON Schema 2020-12; and the missing-resource error moves from MCP-custom -32002 to standard -32602.",
+      "title": "MCP specification 2026-07-28 goes final in 9 days — the largest breaking revision since launch (carried)",
+      "summary": "The maintainers' RC stands: the core goes stateless (the initialize/initialized handshake and Mcp-Session-Id header are removed; any request can land on any instance), Streamable HTTP now requires Mcp-Method and Mcp-Name routing headers, list/read results carry ttlMs and cacheScope, authorization aligns to OAuth/OpenID Connect, and the missing-resource error moves from custom -32002 to standard -32602. SDK betas (Python v2 FastMCP->MCPServer; TypeScript v2 ESM-only, split into server/client packages; Go v1.7.0-pre.1; C# 2.0.0-preview.1) are out now.",
       "tag": "yes",
-      "how": "Every MCP server The Construct runs sits on the far side of a breaking change in 10 days. Two concrete exposures remain: any code matching the literal -32002, and any skill assuming session-scoped state the transport will no longer carry. Pair this with item 2 — the same /doctor pass that lists unused servers should be the vehicle for the migration inventory. Do it this week, not on Jul 29.",
+      "how": "Every MCP server The Construct runs is on the far side of a breaking change in 9 days. Two exposures remain live: any code matching the literal -32002, and any skill assuming session-scoped state the transport will no longer carry. The /doctor pass is the vehicle — produce the unused-server list and the Jul-28 migration inventory in one sitting, before the deadline, not on Jul 29.",
       "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/"
     },
     {
       "n": 4,
-      "title": "Ode with Anthropic — the funded, PE-backed AI-services firm sitting directly on PRAGMA's wedge (Jul 15, carried)",
-      "summary": "Re-checked at 14:00 ET, nothing has moved the read: Ode is a standalone company built on Fractional AI (acquired May 2026), combining Anthropic's models with a team of engineers and operators, backed by Blackstone, Hellman & Friedman, Goldman Sachs, General Atlantic, Apollo, GIC, and Sequoia, targeting 'midsize enterprises looking to move beyond AI pilots and embed the technology into day-to-day operations.'",
-      "tag": "yes",
-      "how": "That is PRAGMA's positioning written by someone else with a private-equity consortium behind it. Carried because it is still the item that matters strategically and the question it forces is still unanswered in specifics: what is PRAGMA that Ode structurally cannot be? The candidates — we operate inside the client's owned stack, we take engagements Ode's economics won't, we're model-agnostic where Ode is definitionally not — remain untested. Continuity, not news; stays on the board until the answer exists in specifics.",
-      "url": "https://www.businesswire.com/news/home/20260715205134/en/Anthropic-Blackstone-and-Hellman-Friedman-Introduce-Ode-with-Anthropic-an-Enterprise-AI-Services-Firm"
+      "title": "arXiv 'Context Engineering: From Prompts to Corporate Multi-Agent Architecture' — five context-quality criteria for a governed fleet",
+      "summary": "The paper reframes context management for enterprise agent fleets around five quality criteria — relevance, sufficiency, isolation, economy, provenance — and introduces 'intent engineering': encoding organizational goals, values, and trade-off hierarchies into the agent infrastructure itself rather than into individual prompts.",
+      "tag": "maybe",
+      "how": "A clean vocabulary for what The Construct already does ad hoc across its skill/MCP fleet; 'economy' and 'provenance' map exactly onto the two things this scan keeps relearning (context cost of unused servers; never letting an unconfirmed detail age into fact). A framework to borrow for the installed-skills registry and memory system — read it against our CLAUDE.md governance and the /doctor output, not a tool to install.",
+      "url": "https://arxiv.org/abs/2603.09619"
     }
   ],
-  "praxis_lesson": "This second fire is the clean counterpart to the Jul 15 error. Twelve days ago this scan invented an MCP deadline; this morning it did the disciplined thing — reported a real Claude Code feature but flagged that it could not confirm the version tag because GitHub served a stale cache. Ten minutes of fresh searching on this fire closed the gap: the feature is the /doctor command, sourced to the Claude Code changelog, not an aggregator. That is the whole loop working as designed — name the provenance gap in the morning, resolve it by reading the primary source in the afternoon, and never let an unconfirmed detail age quietly into fact. The action that ties the day together is unchanged and now has a command attached to it: run one /doctor pass across the fleet that produces both the unused-server list and the Jul-28 MCP migration inventory, before the deadline, not after.",
+  "praxis_lesson": "Two of today's four items are things we should bench, not adopt — the Claude Code /fork background model and Gemini Omni Flash in Vids both look useful, but 'useful in a launch post' and 'useful on a real B9S/Construct job' are different claims, and only the second earns a slot in the fleet. The disciplined move this week is one instrument doing double duty: run a single /doctor pass that yields both the unused-MCP-server list and the Jul-28 migration inventory before the deadline, and use the arXiv five-criteria frame (economy, provenance) to decide what actually stays.",
   "history": [
+    "2026-07-19",
     "2026-07-18",
     "2026-07-17",
     "2026-07-16",
@@ -50,7 +51,6 @@
     "2026-07-09",
     "2026-07-08",
     "2026-07-07",
-    "2026-07-06",
-    "2026-07-04"
+    "2026-07-06"
   ]
 }
