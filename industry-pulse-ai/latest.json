@@ -1,20 +1,20 @@
 {
-  "generated": "2026-07-19T10:01:21Z",
+  "generated": "2026-07-19T14:01:42Z",
   "latest_date": "2026-07-19",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Claude Code Jul 18 changelog — /fork runs as a background session, plus a session-wide WebSearch cap and new subagent/Bash safeguards",
-      "summary": "The Jul 18 Claude Code release lets /fork copy the conversation into its own background session so the main session keeps working, adds a session-wide WebSearch limit (default 200, tunable via CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION), hardens safeguards around WebSearch/subagent spawns/Bash, and fixes the bug where returning to claude silently killed running subagents and re-ran the prompt from scratch — plus reliability fixes across MCP, worktrees, telemetry, and remote sessions.",
+      "title": "Claude Code — latest changelog adds EndConversation tool + progress heartbeats and makes /verify and /code-review invoke-only, with tighter permission scoping",
+      "summary": "The newest Claude Code release (checked this fire, fresher than the Jul-18 /fork-background entry the morning cited) is a broad stability-and-safety pass: an EndConversation tool (no-op in background forks), a periodic progress heartbeat for long-running tool calls that previously went silent, tighter permission checks, and safer Bash/PowerShell handling. Two changes lead: /verify and /code-review now run only when invoked directly (Claude no longer fires them on its own), and the single-segment dir/** allow-rule bug is fixed so Edit(src/**) no longer auto-approves writes to nested dir/ directories anywhere in the tree.",
       "tag": "yes",
-      "how": "The Construct runs fan-out subagent jobs where 'silently stopped and restarted from scratch' is exactly the failure that wastes a run; the fix plus the background-/fork model is directly useful to our fleet, and the WebSearch cap is a real governance lever for scans like this one. Set CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION deliberately rather than inheriting the 200 default.",
+      "how": "The invoke-only change for /verify and /code-review is confirmed live in this very session's tooling — first-hand provenance, not a vendor-page claim — and the tightened dir/** scoping is a real safety improvement for our fan-out subagent jobs; progress heartbeats close the 'long job went silent' gap on scans like this one. Audit our permission allow-rules against the new scoping before the next big fleet run.",
       "url": "https://code.claude.com/docs/en/changelog"
     },
     {
       "n": 2,
       "title": "Gemini Omni Flash lands in Google Vids (Jul 17) — conversational video editing + personal avatars from a text prompt",
-      "summary": "Google put Omni Flash inside Google Vids on Jul 17: edit existing video with plain-text prompts and generate new clips with an avatar that looks and sounds like you. The underlying model (developer API since Jun 30) takes any mix of text/image/audio/video in and outputs physics-aware video at $0.10 per second, with conversational editing as its differentiator versus every other API video model.",
+      "summary": "Google put Omni Flash inside Google Vids on Jul 17: edit existing video with plain-text prompts and generate new clips with an avatar that looks and sounds like you. The underlying model (developer API since Jun 30) takes any mix of text/image/audio/video in and outputs physics-aware video at $0.10 per second, with conversational editing as its differentiator versus every other API video model. New this fire: Revid.ai shipped a video-production MCP Jul 16 (script-to-video, schedule_publish/publish_now) — a closer-to-B9S, agent-callable bench candidate, parked for the same video bench.",
       "tag": "maybe",
       "how": "Squarely on Brand 9 Signs' surface (short-form video for signage clients, social cuts) and on Vector's remit in The Construct, but we already route generative video/image through the Higgsfield MCP fleet. Worth one bench: does conversational text-prompt editing at $0.10/sec beat our current pipeline on a real B9S social cut, or is it a second vendor we don't need? Test, don't adopt on a launch post.",
       "url": "https://workspace.google.com/blog/product-announcements/introducing-gemini-omni-flash-in-google-vids"
@@ -32,11 +32,11 @@
       "title": "arXiv 'Context Engineering: From Prompts to Corporate Multi-Agent Architecture' — five context-quality criteria for a governed fleet",
       "summary": "The paper reframes context management for enterprise agent fleets around five quality criteria — relevance, sufficiency, isolation, economy, provenance — and introduces 'intent engineering': encoding organizational goals, values, and trade-off hierarchies into the agent infrastructure itself rather than into individual prompts.",
       "tag": "maybe",
-      "how": "A clean vocabulary for what The Construct already does ad hoc across its skill/MCP fleet; 'economy' and 'provenance' map exactly onto the two things this scan keeps relearning (context cost of unused servers; never letting an unconfirmed detail age into fact). A framework to borrow for the installed-skills registry and memory system — read it against our CLAUDE.md governance and the /doctor output, not a tool to install.",
+      "how": "A clean vocabulary for what The Construct already does ad hoc across its skill/MCP fleet; 'economy' and 'provenance' map exactly onto the two things this scan keeps relearning (context cost of unused servers; never letting an unconfirmed detail age into fact). A framework to borrow for the installed-skills registry and memory system, read against our CLAUDE.md governance and the /doctor output, not a tool to install.",
       "url": "https://arxiv.org/abs/2603.09619"
     }
   ],
-  "praxis_lesson": "Two of today's four items are things we should bench, not adopt — the Claude Code /fork background model and Gemini Omni Flash in Vids both look useful, but 'useful in a launch post' and 'useful on a real B9S/Construct job' are different claims, and only the second earns a slot in the fleet. The disciplined move this week is one instrument doing double duty: run a single /doctor pass that yields both the unused-MCP-server list and the Jul-28 migration inventory before the deadline, and use the arXiv five-criteria frame (economy, provenance) to decide what actually stays.",
+  "praxis_lesson": "The clean second-fire move is to let the freshest primary source overwrite the morning's placeholder: the 06:01 brief cited the Jul-18 /fork changelog, but the newest Claude Code release is a safety pass whose most load-bearing change — /verify and /code-review now invoke-only — is confirmable live in this session's own tooling, so it replaces a vendor-page claim with a first-hand fact. Bank what you can verify first-hand, and still run one /doctor pass that does double duty: the unused-MCP-server list and the Jul-28 migration inventory, before the deadline.",
   "history": [
     "2026-07-19",
     "2026-07-18",

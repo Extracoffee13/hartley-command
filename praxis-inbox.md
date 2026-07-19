@@ -446,3 +446,15 @@ lesson: Two of four items are bench-not-adopt — /fork background sessions and 
 tags: pulse,mcp,ecosystem,daily,governance,bench-not-adopt
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-19
+decision: Second fire of the 24h AI/agent scan, 10:01 ET. Re-checked the 06:01 brief against fresh searches and refreshed in place — one item upgraded, three preserved, no drops.
+outcome: Item 1 upgraded — the morning cited the Jul-18 Claude Code /fork-background changelog; the newest release is a broader safety pass (EndConversation tool, progress heartbeats for long-running tasks, tighter permission checks) whose load-bearing change is that /verify and /code-review now run only when invoked directly and the single-segment dir/** allow-rule bug is fixed. Provenance: the invoke-only behavior is confirmable live in this session's own tooling, so it replaces a vendor-page claim with a first-hand fact. Items 2 (Gemini Omni Flash in Google Vids, Jul 17 — plus Revid.ai video MCP Jul 16 added as a closer-to-B9S bench candidate) [MAYBE], 3 (MCP spec Jul 28, now 9 days out, breaking) [YES, carried], and 4 (arXiv Context Engineering five criteria) [MAYBE] preserved. Seen and not flagged: GPT-5.6 / Gemini 3.5 Flash / Grok 4.5 (off-window), Kimi K3 (Jul 16, open weights Jul 27), July agent-funding roundup (market context).
+lesson: The clean second-fire discipline is to let the freshest primary source overwrite the morning's placeholder. The 06:01 fire reported the Jul-18 changelog; this fire found a newer release whose most important change is verifiable first-hand in the session's own tooling, so it swaps a vendor claim for a fact. Bank what you can confirm first-hand, and still run one /doctor pass that yields both the unused-MCP-server list and the Jul-28 migration inventory before the deadline.
+tags: pulse,mcp,ecosystem,daily,provenance,governance,second-fire
+confidence: 0.85
+~~~
