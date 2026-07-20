@@ -1,18 +1,26 @@
 {
-  "generated": "2026-07-20T14:01:21Z",
+  "generated": "2026-07-20T18:05:00Z",
   "latest_date": "2026-07-20",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
+      "title": "Anthropic reintroduces Fable 5 to Max and Team Premium plans (Jul 20) at 50% of usage limits, with Pro / Team Standard on credits plus a one-time $100 credit",
+      "summary": "Freshest dated item this window: starting today Claude Fable 5, Anthropic's most advanced model, is included in Max and Team Premium at 50% of limits, while Pro and Team Standard keep Fable access via usage credits and receive a one-time $100 credit — a model-entitlement change, not a new model.",
+      "tag": "maybe",
+      "how": "This is about which top-tier model The Construct's agents may call and at what cost, not a new capability; worth a note in the model-selection policy (Fable 5 for the heaviest strategy/venture jobs, Sonnet 5 for volume), but nothing to migrate today.",
+      "url": "https://www.dawn.com/news/2016483"
+    },
+    {
+      "n": 2,
       "title": "Claude Code — /verify and /code-review are now invoke-only, plus a broad safety pass and live MCP connector data for published artifacts",
-      "summary": "The freshest release (first seen Jul 19) stops Claude from auto-running the /verify and /code-review skills unless invoked directly, ships tighter permission checks and safer Bash/PowerShell handling with the EndConversation tool and progress heartbeats for long-running tasks, and adds live MCP connector data to published artifacts so an artifact can pull fresh connector data each time it is opened.",
+      "summary": "Stops Claude from auto-running the /verify and /code-review skills unless invoked directly, ships tighter permission checks and safer Bash/PowerShell handling with the EndConversation tool and progress heartbeats for long-running tasks, and adds live MCP connector data to published artifacts so an artifact can pull fresh connector data each time it is opened.",
       "tag": "yes",
       "how": "The invoke-only change touches how our scan agents run skills (confirmable first-hand this session), and live-connector artifacts fit The Construct dashboard surface directly: a published view should refresh from brand-insights/latest.json rather than freeze at publish time.",
       "url": "https://releasebot.io/updates/anthropic/claude-code"
     },
     {
-      "n": 2,
+      "n": 3,
       "title": "MCP spec 2026-07-28 is now 8 days out — final adds MCP Apps (server-rendered UIs) and a Tasks extension for long-running work on top of the stateless core",
       "summary": "Beyond the breaking stateless rewrite already flagged (initialize/initialized handshake and Mcp-Session-Id gone, Mcp-Method routing headers, ttlMs/cacheScope on list/read, OAuth/OpenID auth, -32002 to -32602), the final spec formally lands MCP Apps for server-rendered UI inside the client and a Tasks extension for long-running jobs.",
       "tag": "yes",
@@ -20,15 +28,15 @@
       "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/"
     },
     {
-      "n": 3,
+      "n": 4,
       "title": "arXiv — The Orchestration of Multi-Agent Systems: Architectures, Protocols, and Enterprise Adoption unifies MCP tool access with the Agent2Agent protocol",
-      "summary": "Formalizes a single architectural frame where agents reach tools via MCP and coordinate with each other via A2A, with explicit delegation and policy-enforcement layers — the current live research vein alongside AdaptOrch, Uno-Orchestra, and DyTopo in the same cluster.",
+      "summary": "Formalizes a single architectural frame where agents reach tools via MCP and coordinate with each other via A2A, with explicit delegation and policy-enforcement layers — the current live research vein alongside AdaptOrch, MASPO joint prompt optimization, and RL-over-orchestration-traces in the same cluster.",
       "tag": "maybe",
       "how": "Vocabulary and a governance frame for the fleet: The Construct already routes skills per task via MCP, but A2A (agent-to-agent) is a protocol dimension we do not yet use and should watch as the installed-skills registry grows. Borrow against CLAUDE.md governance, do not install today.",
       "url": "https://arxiv.org/abs/2601.13671"
     }
   ],
-  "praxis_lesson": "Quiet primary-release window — no new frontier model in the last 24h (GPT-5.6, Sonnet 5, Grok 4.5, Kimi K3 all off-window), so the load-bearing item is a deadline, not a launch: the Jul-28 MCP breaking change is now 8 days out and the final spec adds MCP Apps + Tasks on top of the stateless rewrite. On a slow day the disciplined move is to spend it on the migration inventory you already owe, and to note that live MCP connector data for published artifacts is the exact mechanism that would keep the V4 dashboard fresh from latest.json instead of frozen at publish.",
+  "praxis_lesson": "Still a quiet primary-release window — no new frontier model in the last 24h (GPT-5.6, Sonnet 5, Grok 4.5 all off-window) — but this later fire earns its keep by catching one genuinely fresh dated item the morning brief missed: the Jul-20 Fable 5 entitlement change into Max / Team Premium. Bank the dated fact and re-rank, don't manufacture novelty. The load-bearing action is still the /doctor pass yielding the unused-server list and the Jul-28 migration inventory (now 8 days out, adding MCP Apps + Tasks), and 'live MCP connector data for published artifacts' remains the exact mechanism that would keep the V4 dashboard fresh from latest.json instead of frozen at publish.",
   "history": [
     "2026-07-20",
     "2026-07-19",
@@ -42,7 +50,6 @@
     "2026-07-11",
     "2026-07-10",
     "2026-07-09",
-    "2026-07-08",
-    "2026-07-07"
+    "2026-07-08"
   ]
 }

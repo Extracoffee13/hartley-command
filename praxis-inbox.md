@@ -494,3 +494,15 @@ lesson: A re-verification fire on a quiet day should confirm-in-place and log th
 tags: pulse,mcp,ecosystem,daily,reverify,deadline
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-20
+decision: Later same-day fire (~14:00 ET) — re-ran fresh searches across Anthropic/frontier/MCP/agent-funding/arXiv against the 06:01 and 10:00 briefs for The Construct.
+outcome: One upgrade — caught a genuinely fresh dated item the morning missed and promoted it to slot 1: (1) Anthropic reintroduces Fable 5 to Max / Team Premium at 50% of limits (Pro / Team Standard on credits + one-time $100 credit), a Jul-20 model-entitlement change, not a new model [MAYBE]; (2) Claude Code /verify & /code-review invoke-only + safety pass + live MCP connector data for published artifacts [YES, carried]; (3) MCP spec 2026-07-28 now 8 days out — MCP Apps + Tasks on the stateless rewrite [YES, carried]; (4) arXiv 'Orchestration of Multi-Agent Systems' unifying MCP + Agent2Agent [MAYBE, carried]. Confirmed off-window and not re-flagged: GPT-5.6 / Sonnet 5 / Grok 4.5 (frontier wave), Revid.ai video MCP (Jul 16), Perplexity $60M / Glean $180M / July agent-funding roundup (market context), Claude for Teachers & Claude for Government (adjacent, not Construct-applicable).
+lesson: A later-day re-fire on a quiet window still earns its keep when it catches a dated primary fact the morning brief missed — the Fable 5 entitlement change is exactly that. Bank the dated fact and re-rank; don't manufacture novelty. The standing action item is unchanged: the /doctor pass yielding the unused-server list and the Jul-28 migration inventory before the breaking deadline, and 'live MCP connector data for published artifacts' remains the mechanism that keeps the V4 dashboard fresh from latest.json instead of frozen at publish.
+tags: pulse,mcp,ecosystem,daily,reverify,entitlements,deadline
+confidence: 0.8
+~~~
