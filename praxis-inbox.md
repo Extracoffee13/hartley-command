@@ -470,3 +470,15 @@ lesson: Two MCP servers in one week — Omneky (URL to full ad set) and Revid.ai
 tags: pulse,mcp,ecosystem,daily,creative-pipeline,orchestration,third-fire
 confidence: 0.85
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-20
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct. Quiet primary-release window — no new frontier model; the load-bearing item is a deadline, not a launch.
+outcome: Flagged (1) Claude Code — /verify and /code-review now invoke-only, broad safety pass (EndConversation, progress heartbeats, tighter permission checks) + live MCP connector data for published artifacts [YES]; (2) MCP spec 2026-07-28 now 8 days out — final adds MCP Apps (server-rendered UIs) + Tasks extension on top of the stateless rewrite [YES, carried]; (3) arXiv 'The Orchestration of Multi-Agent Systems' unifies MCP tool access with the Agent2Agent (A2A) protocol — governance frame for the fleet [MAYBE]. Not flagged: GPT-5.6 / Sonnet 5 / Grok 4.5 / Kimi K3 (all off-window), July agent-funding roundup (market context), Revid.ai/Omneky MCPs (already flagged Jul 19).
+lesson: On a slow day the disciplined move is to spend it on the migration inventory you already owe — the Jul-28 MCP breaking change is 8 days out and now adds MCP Apps + Tasks. And 'live MCP connector data for published artifacts' is the exact mechanism that keeps the V4 dashboard fresh from latest.json instead of frozen at publish; A2A is the one new protocol dimension to watch as the installed-skills registry grows.
+tags: pulse,mcp,ecosystem,daily,deadline,artifacts,a2a
+confidence: 0.8
+~~~

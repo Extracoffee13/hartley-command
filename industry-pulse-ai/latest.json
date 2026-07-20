@@ -1,43 +1,36 @@
 {
-  "generated": "2026-07-19T18:01:28Z",
-  "latest_date": "2026-07-19",
+  "generated": "2026-07-20T10:04:00Z",
+  "latest_date": "2026-07-20",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Claude Code — newest changelog reserves the Claude Browser MCP server name, fixes Cowork VM-mode local-agent sessions failing to start, and adds login-expiry warnings + clearer agent/manual-mode badges",
-      "summary": "The freshest Claude Code release (checked this third fire, newer than the mid-morning EndConversation/heartbeat entry) is a reliability-and-integration pass: it reserves the Claude Browser MCP server name (alongside Claude Preview) ahead of the Claude Desktop pane rename so user-configured servers can no longer register under either name, fixes Cowork VM-mode local-agent sessions that failed to start with 'Not logged in / Please run /login' on CLI 2.1.203+, fixes MCP transient errors during prompts/resources refresh that were wiping a server's slash commands, and fixes SessionStart hook events not streaming in headless sessions (which idle-reaped remote workers mid-hook). Plus login-expiry warnings, clearer agent-status/manual-mode badges, smoother background sessions, and a VS Code remote-control setting.",
+      "title": "Claude Code — /verify and /code-review are now invoke-only, plus a broad safety pass and live MCP connector data for published artifacts",
+      "summary": "The freshest release (first seen Jul 19) stops Claude from auto-running the /verify and /code-review skills unless invoked directly, ships tighter permission checks and safer Bash/PowerShell handling with the EndConversation tool and progress heartbeats for long-running tasks, and adds live MCP connector data to published artifacts so an artifact can pull fresh connector data each time it is opened.",
       "tag": "yes",
-      "how": "The Cowork VM-mode start fix is dead-on: The Construct runs its scans (this one included) as Cowork local-agent sessions and the 2.1.203+ '/login' failure is exactly the class of silent-death we've hit. Confirm our CLI is past the fix and audit for any MCP server we named Claude Browser / Claude Preview before the Desktop rename lands.",
-      "url": "https://code.claude.com/docs/en/changelog"
+      "how": "The invoke-only change touches how our scan agents run skills (confirmable first-hand this session), and live-connector artifacts fit The Construct dashboard surface directly: a published view should refresh from brand-insights/latest.json rather than freeze at publish time.",
+      "url": "https://releasebot.io/updates/anthropic/claude-code"
     },
     {
       "n": 2,
-      "title": "Omneky ships a public API + MCP server: one brand URL to a full, on-brand, multi-format ad set, agent-callable including by Claude",
-      "summary": "Send Omneky a single URL and its agent reads the brand's positioning, colors and fonts, writes headline + CTA, and composes the product into finished ads in every major aspect ratio (1:1, 4:5, 9:16, 16:9), including UGC-style and short-form video, with automatic regeneration driven by performance/creative scoring to fight ad fatigue. The MCP server exposes this to any MCP client — a founder can tell their assistant 'make launch ads for our new product page' and get finished multi-format creative, no dashboard or prompt engineering. Paired video counterpart, same wedge: Revid.ai's video-production MCP (Jul 16) — script/prompt/audio-to-video with render_video/schedule_publish/publish_now.",
+      "title": "MCP spec 2026-07-28 is now 8 days out — final adds MCP Apps (server-rendered UIs) and a Tasks extension for long-running work on top of the stateless core",
+      "summary": "Beyond the breaking stateless rewrite already flagged (initialize/initialized handshake and Mcp-Session-Id gone, Mcp-Method routing headers, ttlMs/cacheScope on list/read, OAuth/OpenID auth, -32002 to -32602), the final spec formally lands MCP Apps for server-rendered UI inside the client and a Tasks extension for long-running jobs.",
       "tag": "yes",
-      "how": "Closest thing all day to Brand 9 Signs' and PRAGMA's core surface: zero-prompt, on-brand, multi-format ad creative from a URL, callable by our own Construct operator agent rather than a human in a design tool. Bench-and-possibly-adopt: run one real B9S brand URL through it and compare output + the ad-fatigue regeneration loop against our current Higgsfield + manual pipeline.",
-      "url": "https://www.prnewswire.com/news-releases/omneky-launches-public-api-and-mcp-server-bringing-autonomous-ad-creative-generation-to-any-platform-or-ai-agent-302822766.html"
-    },
-    {
-      "n": 3,
-      "title": "MCP specification 2026-07-28 goes final in 9 days — the largest breaking revision since launch (carried)",
-      "summary": "The maintainers' RC stands: the core goes stateless (the initialize/initialized handshake and Mcp-Session-Id header are removed; any request can land on any instance), Streamable HTTP now requires Mcp-Method and Mcp-Name routing headers, list/read results carry ttlMs and cacheScope, authorization aligns to OAuth/OpenID Connect, and the missing-resource error moves from custom -32002 to standard -32602. SDK betas (Python v2 FastMCP->MCPServer; TypeScript v2 ESM-only, split into server/client packages; Go v1.7.0-pre.1; C# 2.0.0-preview.1) are out now.",
-      "tag": "yes",
-      "how": "Every MCP server The Construct runs is on the far side of a breaking change in 9 days. Two exposures remain live: any code matching the literal -32002, and any skill assuming session-scoped state the transport will no longer carry. The /doctor pass is the vehicle — produce the unused-server list and the Jul-28 migration inventory in one sitting, before the deadline, not on Jul 29.",
+      "how": "Every MCP server The Construct runs is 8 days from a breaking change; MCP Apps is a genuinely new capability (an agent-callable server can render its own UI) and the Tasks extension maps to our long-running scan jobs. Run the one /doctor pass that yields both the unused-server list and the Jul-28 migration inventory before the deadline.",
       "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/"
     },
     {
-      "n": 4,
-      "title": "arXiv orchestration cluster — task-adaptive routing + isolated per-agent context scoping, a governance frame for the fleet",
-      "summary": "A live research vein this week on how enterprise agent fleets should route and isolate: 'AdaptOrch' argues that as base-model performance converges the differentiator shifts from model choice to task-adaptive orchestration (which agent, how much delegation), and 'Dynamic Attentional Context Scoping' gives each sub-agent a triggered, isolated focus session so context from one job doesn't bleed into another.",
+      "n": 3,
+      "title": "arXiv — The Orchestration of Multi-Agent Systems: Architectures, Protocols, and Enterprise Adoption unifies MCP tool access with the Agent2Agent protocol",
+      "summary": "Formalizes a single architectural frame where agents reach tools via MCP and coordinate with each other via A2A, with explicit delegation and policy-enforcement layers — the current live research vein alongside AdaptOrch, Uno-Orchestra, and DyTopo in the same cluster.",
       "tag": "maybe",
-      "how": "Vocabulary for what The Construct already does ad hoc: route the right skill/agent per task and keep each scan's context clean. Read against our CLAUDE.md governance and the /doctor output as a frame for the installed-skills registry — a framework to borrow, not a tool to install.",
-      "url": "https://arxiv.org/pdf/2602.16873"
+      "how": "Vocabulary and a governance frame for the fleet: The Construct already routes skills per task via MCP, but A2A (agent-to-agent) is a protocol dimension we do not yet use and should watch as the installed-skills registry grows. Borrow against CLAUDE.md governance, do not install today.",
+      "url": "https://arxiv.org/abs/2601.13671"
     }
   ],
-  "praxis_lesson": "Two MCP servers in one week — Omneky (URL to full ad set) and Revid.ai (script to published video) — collapse the ad-creative and short-form-video pipelines into a single agent call, which is exactly Brand 9 Signs' and PRAGMA's surface. Same lesson the ad-platform MCP wave taught: the render is becoming a commodity API, so The Construct's durable edge is owning the orchestration and brand layer — the operator agent that decides which URL, which brand rules, which platform, and when to regenerate — not any single generator. Bench Omneky on a real B9S URL before adopting, and still run the one /doctor pass that yields both the unused-server list and the Jul-28 migration inventory before the deadline.",
+  "praxis_lesson": "Quiet primary-release window — no new frontier model in the last 24h (GPT-5.6, Sonnet 5, Grok 4.5, Kimi K3 all off-window), so the load-bearing item is a deadline, not a launch: the Jul-28 MCP breaking change is now 8 days out and the final spec adds MCP Apps + Tasks on top of the stateless rewrite. On a slow day the disciplined move is to spend it on the migration inventory you already owe, and to note that live MCP connector data for published artifacts is the exact mechanism that would keep the V4 dashboard fresh from latest.json instead of frozen at publish.",
   "history": [
+    "2026-07-20",
     "2026-07-19",
     "2026-07-18",
     "2026-07-17",
@@ -50,7 +43,6 @@
     "2026-07-10",
     "2026-07-09",
     "2026-07-08",
-    "2026-07-07",
-    "2026-07-06"
+    "2026-07-07"
   ]
 }
