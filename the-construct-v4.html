@@ -2226,7 +2226,13 @@ const PragmaOwnSiteMirrorPanel = () => {
       return null;
     };
     (async () => {
-      setAi(await grab('./clients/pragma/brand-insights/latest.json'));
+      const aiData = await grab('./clients/pragma/brand-insights/latest.json');
+      // Safety: if the pragma feed is missing or carries the wrong client slug, show a pending state instead of duplicating Brand 9.
+      if (aiData && aiData.client === 'pragma') {
+        setAi(aiData);
+      } else if (aiData) {
+        setAi({ _client_mismatch: true, expected: 'pragma', got: aiData.client || 'unknown', ts: aiData.ts });
+      }
       setSh(await grab('./clients/pragma/brand-insights/site-health.json'));
       setFetched(true);
     })();
@@ -2258,7 +2264,17 @@ const PragmaOwnSiteMirrorPanel = () => {
       <div style={{ position: 'absolute', top: -10, left: 16, padding: '0 8px', background: '#000', fontSize: 10, color: P, letterSpacing: 4 }}>◈ PRAGMA — OWN-SITE MIRROR · prag-ma.ai</div>
       <div style={{ fontSize: 9, color: C.greenDim, marginTop: 6, marginBottom: 12 }}>The same web / AEO / LLM / GEO / SLM + Site-Health suite we run on Brand 9, pointed at PRAGMA's own site · client=pragma (multi-tenant)</div>
       {!fetched && <div style={{ color: C.greenDim, fontSize: 12 }}>Loading prag-ma.ai mirror…</div>}
-      {fetched && (
+      {fetched && ai && ai._client_mismatch && (
+        <div style={{ color: '#FF4D4F', fontSize: 13, marginTop: 8, marginBottom: 8 }}>
+          PRAGMA scan pending — feed belongs to {ai.got || 'unknown'} ({ai.ts ? 'scan ' + ai.ts.slice(0, 10) : 'no scan'}).
+        </div>
+      )}
+      {fetched && !ai && (
+        <div style={{ color: '#FFAA33', fontSize: 13, marginTop: 8, marginBottom: 8 }}>
+          PRAGMA scan pending — run <code>run.py --client pragma</code> to generate clients/pragma/brand-insights/latest.json.
+        </div>
+      )}
+      {fetched && ai && !ai._client_mismatch && (
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18 }}>
         <div>
           <div style={{ fontSize: 9, color: P, letterSpacing: 2, marginBottom: 6 }}>AI VISIBILITY (AIVI)</div>
