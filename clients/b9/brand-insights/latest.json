@@ -295,8 +295,8 @@
     }
   },
   "llm_browser": {
-    "ts": "2026-07-06T13:16:33Z",
-    "method": "browser (user's own logged-in accounts, zero marginal cost)",
+    "ts": "2026-07-20T11:19:37Z",
+    "method": "browser_own_logged_in_accounts",
     "results": [
       {
         "surface": "ChatGPT",
@@ -313,32 +313,26 @@
       {
         "surface": "ChatGPT",
         "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
-        "mentioned": true,
+        "mentioned": false,
         "cited_source": false
       },
       {
         "surface": "Claude",
         "query": "Who are the best commercial sign companies in Jacksonville FL?",
-        "mentioned": true,
-        "cited_source": false,
-        "personalized": true,
-        "note": "Referenced Brand 9 only as Bobby's own company/competitive set; did not organically recommend it."
+        "mentioned": false,
+        "cited_source": false
       },
       {
         "surface": "Claude",
         "query": "Where can I get custom homebuilder community signage in Florida?",
         "mentioned": true,
-        "cited_source": true,
-        "personalized": true,
-        "note": "Personalized ('that's your company'); web search cited brand9signs.com."
+        "cited_source": true
       },
       {
         "surface": "Claude",
         "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
         "mentioned": true,
-        "cited_source": false,
-        "personalized": true,
-        "note": "Personalized ('obviously you'); search rate-limited, answered from account memory."
+        "cited_source": true
       },
       {
         "surface": "Perplexity",
@@ -378,12 +372,17 @@
       }
     ],
     "summary": {
-      "ChatGPT": "1/3",
-      "Claude": "3/3 (personalized \u2014 Bobby's logged-in account, not organic)",
-      "Perplexity": "2/3 (anonymous/organic)",
-      "Gemini": "2/3 (organic)"
+      "ChatGPT": "0/3",
+      "Claude": "2/3",
+      "Perplexity": "2/3",
+      "Gemini": "2/3"
     },
-    "notes": "Perplexity run anonymous (cleanest organic read). ChatGPT free logged-in. Gemini logged-in Google acct, GBP not connected. Claude results are account-personalized (memory knows Bobby owns Brand 9) and should NOT be read as organic consumer visibility."
+    "notes": {
+      "ChatGPT": "Logged in (ap@brand9signs.com). Web-grounded. Brand 9 absent from all 3 answers.",
+      "Claude": "Logged in as Bobby (Max). CONFOUNDED: account recalled a personal 'Brand 9 Competitive Intel' memory each query and addressed Bobby as the owner, so mentions are NOT a neutral-consumer signal. Q1 named Brand 9 only as 'notably absent' (counted as not mentioned).",
+      "Perplexity": "Logged OUT / anonymous (no login attempted). Cleanest neutral-consumer signal. Brand 9 top-listed and cited on Q2 and Q3.",
+      "Gemini": "Logged in as Bobby, Flash model. No source citations shown by Flash (cited_source=false throughout). Brand 9 ranked #1 on Q2 and #2 on Q3."
+    }
   },
   "sentiment": {
     "positive_pct": null,
