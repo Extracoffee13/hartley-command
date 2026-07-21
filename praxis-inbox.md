@@ -506,3 +506,15 @@ lesson: A later-day re-fire on a quiet window still earns its keep when it catch
 tags: pulse,mcp,ecosystem,daily,reverify,entitlements,deadline
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-21
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct; quiet primary-release window, so re-ranked around the maturing MCP layer rather than a new frontier model.
+outcome: Flagged four items — (1) MCP security hardens fleet-wide: NSA official MCP hardening guidance + critical auto-execution/prompt-injection CVEs (Amazon Q) [YES, new]; (2) Revid.ai video-production MCP (render/clone_voice/schedule_publish/publish_now, 9 workflows) promoted to a bullet for the first time, direct Brand 9 Signs content-ops fit [YES]; (3) MCP spec 2026-07-28 now 7 days out — stateless rewrite + MCP Apps + Tasks [YES, carried, deadline tightening]; (4) arXiv 'Context Engineering: From Prompts to Corporate Multi-Agent Architecture' five context-quality criteria [MAYBE, new]. Confirmed off-window and not re-flagged: GPT-5.6/Sonnet 5/Grok 4.5 (Jul 8-9 wave), Perplexity/Glean/Cognition funding (market context), Cowork web/mobile (Jul 7).
+lesson: The MCP layer is maturing on three fronts at once — security (NSA hardening + live CVEs), protocol (Jul-28 stateless rewrite with Apps + Tasks), and governance vocabulary (context-engineering rubrics) — so the load-bearing move this week is one /doctor pass yielding the unused-server list, the Jul-28 migration inventory, AND a hardening checklist; the concrete Brand 9 Signs app on top of that governed fleet is a domain MCP like Revid.ai's video server.
+tags: pulse,mcp,ecosystem,daily,security,deadline
+confidence: 0.8
+~~~
