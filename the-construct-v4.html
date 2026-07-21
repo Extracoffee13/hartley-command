@@ -3126,7 +3126,8 @@ const HarvardCorpusPanel = () => (
       <div>
         <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 6 }}>SOURCES ON DISK</div>
         <div style={{ fontSize: 11, color: C.green, lineHeight: 1.7 }}>
-          <div><span style={{ color: C.cyan }}>d3.harvard.edu:</span> <span data-live="hc_d3_total">389</span> URLs total · <span data-live="hc_d3_recovery">multi-strategy recovery 2026-06-08</span></div>
+          <div><span style={{ color: C.cyan }}>d3.harvard.edu:</span> <span data-live="hc_d3_total">2</span> non-HBS-AI files</div>
+          <div><span style={{ color: C.cyan }}>HBS AI Institute:</span> <span data-live="hc_hbsai">389</span> relevant articles</div>
           <div><span style={{ color: C.cyan }}>HBS Working Knowledge:</span> <span data-live="hc_hbswk">2,667</span> articles (full back-catalog, 2026-06-25)</div>
           <div><span style={{ color: C.cyan }}>HBR:</span> 7 metadata snapshots + canonical PRAGMA-cite list (full bodies = copyright)</div>
           <div><span style={{ color: C.cyan }}>HBS AI Institute Sana:</span> auto-capture when Bobby's foreground tab is d3.sana.ai</div>
@@ -3516,6 +3517,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<Dashboard />);
         update('hc_faclinks', (hc.total_faculty_links || 0).toLocaleString());
         update('hc_topiclinks', (hc.total_topic_links || 0).toLocaleString());
         update('hc_hbswk', hc.by_source && hc.by_source.hbswk);
+        update('hc_hbsai', hc.by_source && hc.by_source['hbs-ai-institute']);
+        update('hc_d3_total', hc.by_source && hc.by_source.d3);
         return;
       }
       const hc = await r.json();
@@ -3525,6 +3528,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<Dashboard />);
       update('hc_faclinks', (hc.total_faculty_links || 0).toLocaleString());
       update('hc_topiclinks', (hc.total_topic_links || 0).toLocaleString());
       update('hc_hbswk', hc.by_source && hc.by_source.hbswk);
+      update('hc_hbsai', hc.by_source && hc.by_source['hbs-ai-institute']);
+      update('hc_d3_total', hc.by_source && hc.by_source.d3);
     } catch (e) { /* fallback to static */ }
   })();
 
