@@ -1792,8 +1792,8 @@ const B9AairV6Panel = () => {
         setCorpus(cb);
         try { setCorpusProv(cb.corpus_meta); } catch (e) {}
       }
-      setHb(await grab('/clients/b9/baselines/b9-v6-day0-2026-07-16-homebuilder-signage.json'));
-      setSs(await grab('/clients/b9/baselines/b9-v6-day0-2026-07-16-sign-shop.json'));
+      setHb(await grab('/clients/b9/baselines/b9-v6-current-homebuilder-signage.json'));
+      setSs(await grab('/clients/b9/baselines/b9-v6-current-sign-shop.json'));
       setLoaded(true);
     })();
   }, []);
