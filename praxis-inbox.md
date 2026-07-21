@@ -518,3 +518,15 @@ lesson: The MCP layer is maturing on three fronts at once — security (NSA hard
 tags: pulse,mcp,ecosystem,daily,security,deadline
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-21
+decision: Same-day re-fire (~10:00 ET) — re-ran fresh searches across Anthropic/frontier/MCP/agent-funding/arXiv against the 06:02 brief for The Construct. No upgrade found; left 2026-07-21.md and latest.json unchanged rather than manufacture novelty.
+outcome: Zero new dated items clearing the 24h bar. Candidates checked and rejected as off-window: Affinity CRM MCP server (hosted MCP for private-capital relationship intelligence, launched 2026-04-28, not new); Legatics deal-data MCP server (Jul 15, legal transaction management, thin fit for B9S/PRAGMA); X hosted MCP server (Jun 30); Meta Muse Spark 1.1 (1M-token agentic model + Meta's first paid developer API in public preview) and OpenAI Sol/Terra/Luna general rollout (Jul 8-9 frontier wave, already confirmed and excluded); July agent-funding roundup — Harvey $200M Series C at $2.1B, Lovable $200M Series B at $2.8B, Glean $180M Series D, Hebbia $130M Series B, ~$1.8B across 12+ deals (market context, not actionable). The four standing bullets hold: NSA MCP hardening + Amazon Q auto-exec CVEs [YES]; Revid.ai video-production MCP [YES]; MCP spec 2026-07-28 now 7 days out [YES]; arXiv Context Engineering five context-quality criteria [MAYBE].
+lesson: A re-fire that finds nothing earns its keep by proving the morning brief was complete — the discipline is to verify the dates of every tempting candidate (Affinity looked fresh, was three months old) and then leave the files alone. The week's load-bearing action is unchanged and now urgent: one /doctor pass yielding the unused-server list, the Jul-28 migration inventory, and the MCP hardening checklist before the breaking spec lands in 7 days.
+tags: pulse,mcp,ecosystem,daily,reverify,no-change,deadline
+confidence: 0.85
+~~~
