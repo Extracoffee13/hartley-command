@@ -1787,7 +1787,7 @@ const B9AairV6Panel = () => {
       return null;
     };
     (async () => {
-      const cb = await grab('/clients/b9/baselines/b9-v6-corpus-day0-2026-07-16-signshop-jax-v3.json');
+      const cb = await grab('/clients/b9/baselines/b9-v6-current-signshop-jax-v3.json');
       if (cb) {
         setCorpus(cb);
         try { setCorpusProv(cb.corpus_meta); } catch (e) {}
