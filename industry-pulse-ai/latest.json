@@ -1,43 +1,52 @@
 {
-  "generated": "2026-07-21T10:02:00Z",
-  "latest_date": "2026-07-21",
+  "generated": "2026-07-22T10:01:00Z",
+  "latest_date": "2026-07-22",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "MCP security hardens fleet-wide — NSA publishes official MCP hardening guidance the same month a critical auto-execution flaw hits Amazon Q",
-      "summary": "July's MCP security cycle produced formal NSA hardening guidelines alongside disclosure of critical auto-execution / prompt-injection vulnerabilities in agent tooling (Amazon Q among them) — the ecosystem now treats MCP servers as a governed attack surface, not free plumbing.",
+      "title": "MCP spec 2026-07-28 is now 6 days out — the breaking stateless rewrite lands final next Tuesday",
+      "summary": "The stateless core (no handshake/session id, any request to any instance, OAuth-aligned auth, formal deprecation policy) plus MCP Apps (server-rendered UI) and the Tasks extension (tasks/get, tasks/update, tasks/cancel) become the ratified spec on Jul 28.",
       "tag": "yes",
-      "how": "The Construct runs its own MCP fleet; pair the security review with the mandatory Jul-28 migration inventory so one /doctor pass yields the unused-server list AND a hardening checklist (auth, no auto-exec, provenance) before we expose any internal server more widely.",
-      "url": "https://adversa.ai/blog/top-mcp-security-resources-july-2026/"
+      "how": "Every MCP server The Construct runs is 6 days from a breaking change; close the migration inventory + hardening checklist this week. Tasks maps directly onto our long-running scan jobs. Load-bearing action, clock tighter than yesterday.",
+      "url": "https://workos.com/blog/mcp-2026-spec-agent-authentication"
     },
     {
       "n": 2,
-      "title": "Revid.ai ships a video-production MCP — render, voiceover, caption, schedule, and publish are now agent-callable tools",
-      "summary": "Launched Jul 16 (slightly off the 24h window but not previously flagged as a bullet); the server exposes stable tools — render_video, clone_voice, schedule_publish, publish_now, export_video, get_project_status — across nine production workflows (script-to-video, prompt-to-video, audio-to-video).",
-      "tag": "yes",
-      "how": "Directly maps to Brand 9 Signs signage/social video and PRAGMA's operator wedge: one Construct content-ops agent that scripts, renders, captions, schedules, and publishes with no editor in the loop. Evaluate against Higgsfield (already connected) on cost/quality per finished clip.",
-      "url": "https://martechseries.com/video/leading-ai-video-generation-platform-revid-ai-launches-mcp-server-and-command-line-tool-giving-ai-agents-direct-access-to-video-production/"
+      "title": "Google ships Gemini 3.6 Flash (Jul 21) — the cheap, high-volume tier gets another refresh",
+      "summary": "Google released Gemini 3.6 Flash on Jul 21, continuing the fast/low-cost lane below its Pro reasoning tier and keeping Flash the default in the Gemini app and AI Mode.",
+      "tag": "maybe",
+      "how": "Flash is the natural engine for high-volume, low-stakes Construct batch work (bulk classification, first-pass drafts); worth a cost/quality spot-check against our default for the visibility-scan and content-draft jobs, no re-architecture.",
+      "url": "https://llm-stats.com/llm-updates"
     },
     {
       "n": 3,
-      "title": "MCP spec 2026-07-28 is now 7 days out — stateless core plus MCP Apps (server-rendered UI) and Tasks as first-class extensions",
-      "summary": "The breaking stateless rewrite (no handshake / session id, any request to any instance, OAuth-aligned auth, formal deprecation policy) lands final on Jul 28, with MCP Apps letting a tool return a sandboxed-iframe UI and the Tasks extension modeling long-running jobs via tasks/get, tasks/update, tasks/cancel.",
-      "tag": "yes",
-      "how": "Every MCP server The Construct runs is 7 days from a breaking change; Tasks maps onto our long-running scan jobs and MCP Apps could render a server's own dashboard tile. Finish the migration inventory this week.",
-      "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/"
+      "title": "Axonius launches an AI Agent + MCP Server for asset intelligence (Jul 21)",
+      "summary": "Axonius exposed a hosted MCP server so trusted asset/security context flows into any MCP client, letting teams ask cybersecurity and asset questions in plain English — another enterprise vendor turning its product into agent-callable plumbing.",
+      "tag": "maybe",
+      "how": "Thin direct fit for signage, but reinforces the 'every SaaS ships an MCP' thesis PRAGMA sells; treat client SaaS tools as MCP endpoints an agent orchestrates rather than dashboards a human logs into.",
+      "url": "https://www.manilatimes.net/2026/07/21/tmt-newswire/globenewswire/axonius-launches-ai-agent-and-mcp-server-to-seamlessly-connect-asset-intelligence-to-enterprise-ai/2388560"
     },
     {
       "n": 4,
-      "title": "arXiv — 'Context Engineering: From Prompts to Corporate Multi-Agent Architecture' gives the fleet a governance vocabulary",
-      "summary": "Proposes five context-quality criteria (relevance, sufficiency, isolation, economy, provenance), frames context as the agent's operating system, and adds intent engineering (encode org goals) plus specification engineering (machine-readable corporate policy) to run multi-agent systems at scale.",
+      "title": "Syncfusion ships BoldDesk AI 2.0 with a hosted MCP server for support workflows (Jul 21)",
+      "summary": "BoldDesk AI 2.0 adds a hosted MCP server that gives outside AI tools secure, direct access to help-desk/support workflows, so an agent can read tickets and drive support actions without the vendor UI.",
       "tag": "maybe",
-      "how": "A clean rubric to grade what we load into each Construct agent's context and a frame for turning CLAUDE.md-style memory into governed, machine-readable policy; adopt the five criteria as a review checklist, don't re-architect today.",
-      "url": "https://arxiv.org/abs/2603.09619"
+      "how": "A clean PRAGMA / Pulse SaaS-subscription-replacement wedge: if a client's support desk is agent-callable, one Construct support-ops agent can triage, respond, and resolve; log as reference architecture for 'replace [SaaS tool]' plays.",
+      "url": "https://www.globenewswire.com/news-release/2026/07/21/3330745/0/en/Syncfusion-Unveils-BoldDesk-AI-2-0-Named-Finalist-in-SaaS-Awards.html"
+    },
+    {
+      "n": 5,
+      "title": "arXiv — 'Effective Strategies for Asynchronous Software Engineering Agents' formalizes how to run background agents",
+      "summary": "The paper studies agents that work asynchronously (fire-and-forget, long-running, revisited later) and lays out strategies for task decomposition, checkpointing, and reconciling results from parallel background runs.",
+      "tag": "maybe",
+      "how": "The Construct already runs scheduled/background jobs (this Pulse scan, the Harvard and visibility scans); the async-agent strategies are a checklist for making those runs idempotent and self-reconciling, pairing with the Jul-28 Tasks extension.",
+      "url": "https://arxiv.org/pdf/2603.21489"
     }
   ],
-  "praxis_lesson": "The MCP layer is maturing on three fronts at once — security (NSA hardening + live CVEs), protocol (the Jul-28 stateless rewrite with Apps + Tasks), and governance vocabulary (context-engineering rubrics) — so the load-bearing Construct move this week is a single /doctor pass that produces the unused-server list, the Jul-28 migration inventory, AND a hardening checklist. The concrete Brand 9 Signs application on top of that governed fleet is a domain MCP like Revid.ai's video server: own the content-ops orchestration, keep the plumbing secure and migrated.",
+  "praxis_lesson": "The dominant signal is unchanged but now urgent — the Jul-28 stateless MCP rewrite is six days out, and the same week keeps producing new hosted MCP servers (Axonius, BoldDesk) that prove 'every SaaS becomes agent-callable plumbing.' The disciplined Construct move is to finish the migration + hardening inventory before the spec lands, and to catalog each new domain MCP as a potential PRAGMA SaaS-replacement wedge rather than chasing the frontier-model refresh (Gemini 3.6 Flash) that changes nothing structural.",
   "history": [
+    "2026-07-22",
     "2026-07-21",
     "2026-07-20",
     "2026-07-19",
@@ -49,7 +58,6 @@
     "2026-07-13",
     "2026-07-12",
     "2026-07-11",
-    "2026-07-10",
-    "2026-07-09"
+    "2026-07-10"
   ]
 }

@@ -530,3 +530,15 @@ lesson: A re-fire that finds nothing earns its keep by proving the morning brief
 tags: pulse,mcp,ecosystem,daily,reverify,no-change,deadline
 confidence: 0.85
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-22
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct; refreshed the board with genuinely new Jul-21 items rather than re-run yesterday's carried MCP-security/Revid.ai/Context-Engineering bullets.
+outcome: Flagged five items — (1) MCP spec 2026-07-28 now 6 days out, stateless rewrite + MCP Apps + Tasks, deadline tightening [YES]; (2) Google Gemini 3.6 Flash shipped Jul 21, cheap high-volume tier [MAYBE]; (3) Axonius AI Agent + hosted MCP server for asset intelligence, Jul 21 [MAYBE]; (4) Syncfusion BoldDesk AI 2.0 hosted MCP server for support workflows, Jul 21 [MAYBE]; (5) arXiv 'Effective Strategies for Asynchronous Software Engineering Agents' [MAYBE]. Confirmed off-window and not re-flagged: Cowork web/mobile (Jul 7, already excluded), GPT-5.6 Sol/Terra/Luna + Grok 4.5 + Muse Spark 1.1 (Jul 8-9 wave), Perplexity/Glean/Cognition funding (market context).
+lesson: The Jul-28 stateless MCP rewrite is six days out and the same week keeps producing new hosted MCP servers (Axonius, BoldDesk) — proof that 'every SaaS becomes agent-callable plumbing.' Finish the migration + hardening inventory before the spec lands, and catalog each new domain MCP as a potential PRAGMA SaaS-replacement wedge rather than chasing the Gemini 3.6 Flash refresh that changes nothing structural.
+tags: pulse,mcp,ecosystem,daily,deadline,saas-replacement
+confidence: 0.8
+~~~
