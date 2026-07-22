@@ -542,3 +542,15 @@ lesson: The Jul-28 stateless MCP rewrite is six days out and the same week keeps
 tags: pulse,mcp,ecosystem,daily,deadline,saas-replacement
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-22
+decision: Same-day re-fire (~10:00 ET) — re-ran fresh Anthropic/frontier/MCP searches against the 06:01 brief. Found one genuinely new dated item (Anthropic 'Record a Skill', Jul 22) that cleared the 24h bar, so updated 2026-07-22.md + latest.json rather than leave them; promoted it to bullet 1 and collapsed the Axonius/BoldDesk pair into one MCP bullet to hold at five.
+outcome: Refreshed board: (1) Anthropic 'Record a Skill' — screen-record a workflow, Claude mints a reusable skill, Jul 22 [YES, feeds skills-scan/registry]; (2) MCP spec 2026-07-28 now 6 days out [YES]; (3) Gemini 3.6 Flash Jul 21 [MAYBE]; (4) Axonius + Syncfusion BoldDesk AI 2.0 hosted MCP servers, Jul 21 [MAYBE]; (5) arXiv async SWE agents [MAYBE]. Nothing else new since morning; frontier-wave and funding items confirmed off-window.
+lesson: A re-fire earns its keep when a real new item lands — 'Record a Skill' collapses skill authoring to a single demonstration, so the discipline is to run every recorded skill through the same governance the skills-scan applies (security review + registry entry) rather than let demonstration-minted macros accumulate ungoverned. Load-bearing action stays the Jul-28 stateless-MCP migration + hardening inventory, six days out.
+tags: pulse,mcp,ecosystem,daily,refire,record-a-skill,deadline
+confidence: 0.8
+~~~

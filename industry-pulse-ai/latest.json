@@ -1,18 +1,26 @@
 {
-  "generated": "2026-07-22T10:01:00Z",
+  "generated": "2026-07-22T14:02:02Z",
   "latest_date": "2026-07-22",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "MCP spec 2026-07-28 is now 6 days out — the breaking stateless rewrite lands final next Tuesday",
-      "summary": "The stateless core (no handshake/session id, any request to any instance, OAuth-aligned auth, formal deprecation policy) plus MCP Apps (server-rendered UI) and the Tasks extension (tasks/get, tasks/update, tasks/cancel) become the ratified spec on Jul 28.",
+      "title": "Anthropic ships 'Record a Skill' — teach Claude a workflow by screen-recording it (Jul 22)",
+      "summary": "A new demonstration-based setup flow in the Claude desktop app: pick 'Record a skill' from the '+' menu, screen-record yourself doing a task while narrating, and Claude turns it into a reusable, rerunnable skill.",
       "tag": "yes",
-      "how": "Every MCP server The Construct runs is 6 days from a breaking change; close the migration inventory + hardening checklist this week. Tasks maps directly onto our long-running scan jobs. Load-bearing action, clock tighter than yesterday.",
-      "url": "https://workos.com/blog/mcp-2026-spec-agent-authentication"
+      "how": "Fastest path yet to feed The Construct's new-skills scan and installed-skills registry: repeated B9S/PRAGMA workflows can be minted into governed skills by demonstration instead of hand-authoring prompt files. Route it into the skills-adoption scan.",
+      "url": "https://releasebot.io/updates/anthropic/claude"
     },
     {
       "n": 2,
+      "title": "MCP spec 2026-07-28 is now 6 days out — the breaking stateless rewrite lands final next Tuesday",
+      "summary": "The stateless core (no handshake/session id, any request to any instance, OAuth-aligned auth, formal deprecation policy) plus MCP Apps (server-rendered UI) and the Tasks extension (tasks/get, tasks/update, tasks/cancel) become the ratified spec on Jul 28.",
+      "tag": "yes",
+      "how": "Every MCP server The Construct runs is 6 days from a breaking change; close the migration inventory + hardening checklist this week. Tasks maps directly onto our long-running scan jobs. Load-bearing action.",
+      "url": "https://workos.com/blog/mcp-2026-spec-agent-authentication"
+    },
+    {
+      "n": 3,
       "title": "Google ships Gemini 3.6 Flash (Jul 21) — the cheap, high-volume tier gets another refresh",
       "summary": "Google released Gemini 3.6 Flash on Jul 21, continuing the fast/low-cost lane below its Pro reasoning tier and keeping Flash the default in the Gemini app and AI Mode.",
       "tag": "maybe",
@@ -20,20 +28,12 @@
       "url": "https://llm-stats.com/llm-updates"
     },
     {
-      "n": 3,
-      "title": "Axonius launches an AI Agent + MCP Server for asset intelligence (Jul 21)",
-      "summary": "Axonius exposed a hosted MCP server so trusted asset/security context flows into any MCP client, letting teams ask cybersecurity and asset questions in plain English — another enterprise vendor turning its product into agent-callable plumbing.",
-      "tag": "maybe",
-      "how": "Thin direct fit for signage, but reinforces the 'every SaaS ships an MCP' thesis PRAGMA sells; treat client SaaS tools as MCP endpoints an agent orchestrates rather than dashboards a human logs into.",
-      "url": "https://www.manilatimes.net/2026/07/21/tmt-newswire/globenewswire/axonius-launches-ai-agent-and-mcp-server-to-seamlessly-connect-asset-intelligence-to-enterprise-ai/2388560"
-    },
-    {
       "n": 4,
-      "title": "Syncfusion ships BoldDesk AI 2.0 with a hosted MCP server for support workflows (Jul 21)",
-      "summary": "BoldDesk AI 2.0 adds a hosted MCP server that gives outside AI tools secure, direct access to help-desk/support workflows, so an agent can read tickets and drive support actions without the vendor UI.",
+      "title": "Two more enterprise vendors ship hosted MCP servers — Axonius (asset intelligence) and Syncfusion BoldDesk AI 2.0 (support desk), both Jul 21",
+      "summary": "Axonius exposed a hosted MCP server so asset/security context flows into any MCP client in plain English; BoldDesk AI 2.0 added a hosted MCP server giving outside AI tools direct access to help-desk workflows without the vendor UI.",
       "tag": "maybe",
-      "how": "A clean PRAGMA / Pulse SaaS-subscription-replacement wedge: if a client's support desk is agent-callable, one Construct support-ops agent can triage, respond, and resolve; log as reference architecture for 'replace [SaaS tool]' plays.",
-      "url": "https://www.globenewswire.com/news-release/2026/07/21/3330745/0/en/Syncfusion-Unveils-BoldDesk-AI-2-0-Named-Finalist-in-SaaS-Awards.html"
+      "how": "Thin direct fit for signage, but both reinforce the 'every SaaS ships an MCP' thesis PRAGMA sells; treat client SaaS tools (support desks especially) as MCP endpoints one Construct agent orchestrates — a 'replace [SaaS tool]' reference architecture for the Pulse wedge.",
+      "url": "https://www.manilatimes.net/2026/07/21/tmt-newswire/globenewswire/axonius-launches-ai-agent-and-mcp-server-to-seamlessly-connect-asset-intelligence-to-enterprise-ai/2388560"
     },
     {
       "n": 5,
@@ -44,7 +44,7 @@
       "url": "https://arxiv.org/pdf/2603.21489"
     }
   ],
-  "praxis_lesson": "The dominant signal is unchanged but now urgent — the Jul-28 stateless MCP rewrite is six days out, and the same week keeps producing new hosted MCP servers (Axonius, BoldDesk) that prove 'every SaaS becomes agent-callable plumbing.' The disciplined Construct move is to finish the migration + hardening inventory before the spec lands, and to catalog each new domain MCP as a potential PRAGMA SaaS-replacement wedge rather than chasing the frontier-model refresh (Gemini 3.6 Flash) that changes nothing structural.",
+  "praxis_lesson": "Anthropic's 'Record a Skill' collapses skill authoring from writing prompt files to demonstrating a task once — route every recorded skill through the same governance the skills-scan already applies (security review, registry entry) so demonstration-minted skills are assets, not loose macros. Meanwhile the Jul-28 stateless MCP rewrite is six days out and vendors keep shipping hosted MCP servers (Axonius, BoldDesk), so finishing the migration + hardening inventory before the spec lands stays the load-bearing action, not the Gemini 3.6 Flash refresh.",
   "history": [
     "2026-07-22",
     "2026-07-21",
