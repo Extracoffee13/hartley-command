@@ -554,3 +554,15 @@ lesson: A re-fire earns its keep when a real new item lands — 'Record a Skill'
 tags: pulse,mcp,ecosystem,daily,refire,record-a-skill,deadline
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-22
+decision: Third same-day re-fire (~14:01 ET). Re-ran fresh Anthropic/frontier/MCP/arXiv searches against the 10:00 board to check for anything that cleared the 24h bar since. Nothing new landed, so left 2026-07-22.md + latest.json intact rather than churn them.
+outcome: Board unchanged and current — (1) Anthropic 'Record a Skill' Jul 22 [YES]; (2) MCP spec 2026-07-28 now 6 days out [YES]; (3) Gemini 3.6 Flash Jul 21 [MAYBE]; (4) Axonius + BoldDesk hosted MCP servers Jul 21 [MAYBE]; (5) arXiv async SWE agents [MAYBE]. Confirmed off-window / not re-flagged: Cowork web+mobile (Jul 7), GPT-5.6 Sol default + Grok 4.5 (Jul 8-9), Perplexity/Glean/Cognition funding (market context). Noted but not swapped in: arXiv 'SkillCorpus' (2607.15557) — a stronger on-thesis skills-registry paper to promote at the next scheduled brief, not a new dated item justifying a third rewrite.
+lesson: A re-fire only earns a rewrite when a genuinely new dated item clears the window; absent that, the discipline is to leave the board and log the check rather than reshuffle equivalent items. Load-bearing action stays the Jul-28 stateless-MCP migration + hardening inventory — six days out — with 'Record a Skill' governance (security review + registry entry) as the standing skills-scan hook.
+tags: pulse,mcp,ecosystem,daily,refire,idempotent,deadline
+confidence: 0.8
+~~~
