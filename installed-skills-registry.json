@@ -1,12 +1,26 @@
 {
-  "updated_at": "2026-07-21T10:10:01.225610+00:00",
+  "updated_at": "2026-07-22T10:10:03.471834+00:00",
   "skills": [
+    {
+      "slug": "aair-market-baseline-scanning",
+      "path": "/Users/alfredpennyworth/.hermes/skills/aair-market-baseline-scanning",
+      "has_skill_md": true,
+      "has_description_md": false,
+      "description_excerpt": "---\nname: aair-market-baseline-scanning\ndescription: Run a reproducible AAIR v6 market-baseline scan using a frozen client-blind corpus, aggregate chunked API responses, and produce a timestamped base"
+    },
     {
       "slug": "aair-snapshot",
       "path": "/Users/alfredpennyworth/.hermes/skills/aair-snapshot",
       "has_skill_md": true,
       "has_description_md": false,
       "description_excerpt": "---\nname: aair-snapshot\ndescription: \"PRAGMA AAIR Snapshot pipeline \u2014 end-to-end lead capture, AI-visibility scoring, and market-baseline assembly.\"\nversion: 1.2.0\nauthor: hermes\ntags: [pragma, aair, "
+    },
+    {
+      "slug": "aair-v6-dashboard-baseline",
+      "path": "/Users/alfredpennyworth/.hermes/skills/aair-v6-dashboard-baseline",
+      "has_skill_md": true,
+      "has_description_md": false,
+      "description_excerpt": "---\nname: aair-v6-dashboard-baseline\ndescription: \"Run, publish, and maintain the Brand 9 AAIR v6 dashboard baseline \u2014 chunked corpus scan, two-clock single-query demos, stable-pointer files, and week"
     },
     {
       "slug": "adobe-mcp",
@@ -464,6 +478,13 @@
       "description_excerpt": "---\nname: hermes-skill-authoring-enhancements\ndescription: Techniques for enhancing authoring quality in Hermes skills.\n---\n\n## Overview\n\nFocus on effective skill crafting that incorporates user feedb"
     },
     {
+      "slug": "hermes-themes",
+      "path": "/Users/alfredpennyworth/.hermes/skills/hermes-themes",
+      "has_skill_md": true,
+      "has_description_md": false,
+      "description_excerpt": "---\nname: hermes-themes\ndescription: \"Author a Hermes color theme that skins every surface.\"\nversion: 1.0.0\nplatforms: [linux, macos, windows]\nmetadata:\n  hermes:\n    tags: [theme, skin, appearance, c"
+    },
+    {
       "slug": "hermes-updates",
       "path": "/Users/alfredpennyworth/.hermes/skills/hermes-updates",
       "has_skill_md": true,
@@ -905,6 +926,13 @@
       "description_excerpt": "---\nname: ten-dimension-scoring\ndescription: \"Wild Duck capability (pragma-engagement-audit): weekly engagement score on 10 dimensions for PRAGMA clients.\"\nmetadata:\n  node_type: skill\n  reconstructio"
     },
     {
+      "slug": "terminal-oauth-device-flow",
+      "path": "/Users/alfredpennyworth/.hermes/skills/terminal-oauth-device-flow",
+      "has_skill_md": true,
+      "has_description_md": false,
+      "description_excerpt": "---\nname: terminal-oauth-device-flow\ndescription: Run long-lived OAuth device-code logins (gh, gcloud, ollama) inside the Hermes terminal tool, which forbids shell-level backgrounding.\nversion: 1.0.0\n"
+    },
+    {
       "slug": "theme-factory",
       "path": "/Users/alfredpennyworth/.hermes/skills/theme-factory",
       "has_skill_md": true,
@@ -1088,14 +1116,19 @@
     }
   ],
   "_counts": {
-    "hermes_skills": 151,
+    "hermes_skills": 155,
     "hermes_agent_skills": 0,
     "atlas_skills": 4,
-    "total": 155
+    "total": 159
   },
-  "_new_since_last_build": [],
+  "_new_since_last_build": [
+    "aair-market-baseline-scanning",
+    "aair-v6-dashboard-baseline",
+    "hermes-themes",
+    "terminal-oauth-device-flow"
+  ],
   "_dropped_since_last_build": [],
   "_roots_missing": [],
-  "_mirrored_at": "2026-07-21T10:10:01.225610Z",
+  "_mirrored_at": "2026-07-22T10:10:03.471834Z",
   "_builder": "skills-registry-scan"
 }
