@@ -578,3 +578,15 @@ lesson: Anthropic keeps converting read surfaces into action surfaces (M365 writ
 tags: pulse,mcp,ecosystem,daily,connectors,write-tools,deadline
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-23
+decision: Same-day re-fire (~10:00 ET). Re-ran fresh Anthropic/MCP/frontier/funding/arXiv searches against the 06:01 board to check for anything that cleared the 24h bar since morning. Nothing genuinely new landed, so left 2026-07-23.md + latest.json intact rather than reshuffle equivalent items.
+outcome: Board unchanged and current — (1) Anthropic Economic Index connector Jul 22 [MAYBE]; (2) Anthropic M365 connector write tools [YES]; (3) MCP 2026-07-28 stateless spec now 5 days out [YES, load-bearing]; (4) CRM-MCP wave — NetHunt + Pipedrive + Reel Estate MCP [YES]; (5) arXiv 'Harnessing Agent Skills' 2606.20631 + 'Towards Secure Agent Skills' 2604.02837 [YES]. Confirmed off-window / not swapped: X hosted MCP (Jul 1) + Legatics MCP (mid-Jul) — same 'every SaaS ships an MCP' thesis already carried by bullet 4; Gemini 3.6 Flash (Jul 21, covered); agent funding (Cognition $26B late May, Perplexity, Glean Sequoia $180M — market context, off-window); arXiv context/agentic-architecture papers all Feb–Jun, none new-dated.
+lesson: A re-fire only earns a rewrite when a genuinely new dated item clears the window; absent that, the discipline is to leave the board and log the check rather than churn equivalent MCP/frontier items. Load-bearing action stays the Jul-28 stateless-MCP migration + hardening inventory — 5 days out — with least-authority scoping on every new write-capable connector as the standing governance hook.
+tags: pulse,mcp,ecosystem,daily,refire,idempotent,deadline
+confidence: 0.8
+~~~
