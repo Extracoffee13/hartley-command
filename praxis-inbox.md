@@ -566,3 +566,15 @@ lesson: A re-fire only earns a rewrite when a genuinely new dated item clears th
 tags: pulse,mcp,ecosystem,daily,refire,idempotent,deadline
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-23
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged 5 — (1) Anthropic Economic Index connector, Jul 22 [MAYBE, PRAGMA client-diagnostic data source]; (2) Anthropic M365 connector gains write tools — email/calendar/OneDrive/SharePoint [YES, read surface becomes action surface for B9S ops]; (3) MCP 2026-07-28 stateless spec now 5 days out [YES, load-bearing migration]; (4) CRM-MCP wave — NetHunt + Pipedrive native MCP, Reel Estate MCP for plain-language listing video [YES, PRAGMA replace-SaaS + closest B9S creative-ops analog]; (5) arXiv 'Harnessing Agent Skills' 2606.20631 + 'Towards Secure Agent Skills' 2604.02837 [YES, installed-skills-registry blueprint]. Off-window / not swapped: Record a Skill + Gemini 3.6 Flash (covered Jul 22), Physical Intelligence robotics acquisition talks (low applicability), frontier wave (GPT-5.6 Sol/Grok 4.5, early July).
+lesson: Anthropic keeps converting read surfaces into action surfaces (M365 write tools), so the bottleneck shifts from 'can it act' to 'is it governed to act' — scope every new write-capable connector and skill to least authority before switching it on. Load-bearing action stays the Jul-28 stateless-MCP migration + hardening inventory, 5 days out.
+tags: pulse,mcp,ecosystem,daily,connectors,write-tools,deadline
+confidence: 0.8
+~~~

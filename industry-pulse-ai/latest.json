@@ -1,51 +1,52 @@
 {
-  "generated": "2026-07-22T14:02:02Z",
-  "latest_date": "2026-07-22",
+  "generated": "2026-07-23T10:00:50Z",
+  "latest_date": "2026-07-23",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Anthropic ships 'Record a Skill' — teach Claude a workflow by screen-recording it (Jul 22)",
-      "summary": "A new demonstration-based setup flow in the Claude desktop app: pick 'Record a skill' from the '+' menu, screen-record yourself doing a task while narrating, and Claude turns it into a reusable, rerunnable skill.",
-      "tag": "yes",
-      "how": "Fastest path yet to feed The Construct's new-skills scan and installed-skills registry: repeated B9S/PRAGMA workflows can be minted into governed skills by demonstration instead of hand-authoring prompt files. Route it into the skills-adoption scan.",
-      "url": "https://releasebot.io/updates/anthropic/claude"
+      "title": "Anthropic ships the Economic Index connector — its labor-impact dataset is now callable inside Claude (Jul 22)",
+      "summary": "Enable it from the claude.ai connectors directory (no install, any model) and ask which occupations use AI most or which tasks are being automated, with answers drawn directly from Anthropic's public Economic Index data.",
+      "tag": "maybe",
+      "how": "A ready-made, citable data source for PRAGMA's AI-operator pitch; wire it into client diagnostics so the 'why an operator agent now' case rests on Anthropic's own numbers, not our assertions.",
+      "url": "https://www.anthropic.com/news/anthropic-economic-index-connector"
     },
     {
       "n": 2,
-      "title": "MCP spec 2026-07-28 is now 6 days out — the breaking stateless rewrite lands final next Tuesday",
-      "summary": "The stateless core (no handshake/session id, any request to any instance, OAuth-aligned auth, formal deprecation policy) plus MCP Apps (server-rendered UI) and the Tasks extension (tasks/get, tasks/update, tasks/cancel) become the ratified spec on Jul 28.",
+      "title": "Anthropic's Microsoft 365 connector gains write tools — Claude can now draft/send email, manage calendar, and write OneDrive & SharePoint files (July)",
+      "summary": "The M365 connector moves from read-only to actionable: compose and send mail, manage calendar events, change mailbox settings, and create/update files across OneDrive and SharePoint.",
       "tag": "yes",
-      "how": "Every MCP server The Construct runs is 6 days from a breaking change; close the migration inventory + hardening checklist this week. Tasks maps directly onto our long-running scan jobs. Load-bearing action.",
-      "url": "https://workos.com/blog/mcp-2026-spec-agent-authentication"
+      "how": "Turns M365 from a lookup surface into an execution surface for The Construct/B9S back-office ops; one Construct agent can run inbox triage, scheduling, and doc drafting end-to-end instead of handing steps back to a human.",
+      "url": "https://releasebot.io/updates/anthropic"
     },
     {
       "n": 3,
-      "title": "Google ships Gemini 3.6 Flash (Jul 21) — the cheap, high-volume tier gets another refresh",
-      "summary": "Google released Gemini 3.6 Flash on Jul 21, continuing the fast/low-cost lane below its Pro reasoning tier and keeping Flash the default in the Gemini app and AI Mode.",
-      "tag": "maybe",
-      "how": "Flash is the natural engine for high-volume, low-stakes Construct batch work (bulk classification, first-pass drafts); worth a cost/quality spot-check against our default for the visibility-scan and content-draft jobs, no re-architecture.",
-      "url": "https://llm-stats.com/llm-updates"
+      "title": "MCP 2026-07-28 stateless spec is now 5 days out — the breaking rewrite ratifies next Tuesday",
+      "summary": "The stateless core (no session id, any request to any instance, OAuth-aligned auth, formal deprecation policy) plus MCP Apps (server-rendered UI) and the Tasks extension land as the ratified spec on Jul 28; beta SDKs are already out.",
+      "tag": "yes",
+      "how": "Every MCP server The Construct runs is 5 days from a breaking change; close the migration inventory + hardening checklist before Tuesday. The Tasks extension maps directly onto our long-running scan jobs. Load-bearing action.",
+      "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/"
     },
     {
       "n": 4,
-      "title": "Two more enterprise vendors ship hosted MCP servers — Axonius (asset intelligence) and Syncfusion BoldDesk AI 2.0 (support desk), both Jul 21",
-      "summary": "Axonius exposed a hosted MCP server so asset/security context flows into any MCP client in plain English; BoldDesk AI 2.0 added a hosted MCP server giving outside AI tools direct access to help-desk workflows without the vendor UI.",
-      "tag": "maybe",
-      "how": "Thin direct fit for signage, but both reinforce the 'every SaaS ships an MCP' thesis PRAGMA sells; treat client SaaS tools (support desks especially) as MCP endpoints one Construct agent orchestrates — a 'replace [SaaS tool]' reference architecture for the Pulse wedge.",
-      "url": "https://www.manilatimes.net/2026/07/21/tmt-newswire/globenewswire/axonius-launches-ai-agent-and-mcp-server-to-seamlessly-connect-asset-intelligence-to-enterprise-ai/2388560"
+      "title": "'Every SaaS ships an MCP' wave keeps landing — NetHunt CRM and Pipedrive go native MCP, and Reel Estate MCP turns listing video into plain-language agent calls",
+      "summary": "NetHunt and Pipedrive join HubSpot/Zoho/Close/Affinity with native read-write MCP; separately, Reel Estate MCP lets an agent generate motion clips, virtual-stage photos, add voiceover, and render finished listing videos in plain language.",
+      "tag": "yes",
+      "how": "The CRM MCPs are the PRAGMA 'replace [SaaS tool]' reference architecture, and Reel Estate is the closest analog yet to a Brand 9 Signs creative-ops MCP: a plain-language pipeline from asset to finished signage/spot one Construct agent could own.",
+      "url": "https://nethunt.com/blog/crm-mcp/"
     },
     {
       "n": 5,
-      "title": "arXiv — 'Effective Strategies for Asynchronous Software Engineering Agents' formalizes how to run background agents",
-      "summary": "The paper studies agents that work asynchronously (fire-and-forget, long-running, revisited later) and lays out strategies for task decomposition, checkpointing, and reconciling results from parallel background runs.",
-      "tag": "maybe",
-      "how": "The Construct already runs scheduled/background jobs (this Pulse scan, the Harvard and visibility scans); the async-agent strategies are a checklist for making those runs idempotent and self-reconciling, pairing with the Jul-28 Tasks extension.",
-      "url": "https://arxiv.org/pdf/2603.21489"
+      "title": "arXiv — 'Harnessing Agent Skills: A Reference Architecture for Skill-Mediated LLM Agents' (2606.20631), paired with 'Towards Secure Agent Skills' (2604.02837)",
+      "summary": "Frames skills as persistent, discoverable artifacts bound to context and authority constraints at run time; the security companion defines the filesystem-based skill package plus its threat taxonomy.",
+      "tag": "yes",
+      "how": "A direct blueprint for The Construct's installed-skills registry and skills-scan: treat every skill (including demonstration-minted 'Record a Skill' outputs) as a governed, security-reviewed, authority-scoped asset rather than a loose macro.",
+      "url": "https://arxiv.org/abs/2606.20631"
     }
   ],
-  "praxis_lesson": "Anthropic's 'Record a Skill' collapses skill authoring from writing prompt files to demonstrating a task once — route every recorded skill through the same governance the skills-scan already applies (security review, registry entry) so demonstration-minted skills are assets, not loose macros. Meanwhile the Jul-28 stateless MCP rewrite is six days out and vendors keep shipping hosted MCP servers (Axonius, BoldDesk), so finishing the migration + hardening inventory before the spec lands stays the load-bearing action, not the Gemini 3.6 Flash refresh.",
+  "praxis_lesson": "Anthropic keeps converting read surfaces into action surfaces — the M365 connector's new write tools mean a Construct agent can now execute inbox, calendar, and document work end-to-end, so the bottleneck shifts from 'can it act' to 'is it governed to act.' The load-bearing move stays the Jul-28 stateless-MCP migration + hardening inventory (5 days out); the standing discipline is to scope every new write-capable connector and every new skill to least authority before switching it on.",
   "history": [
+    "2026-07-23",
     "2026-07-22",
     "2026-07-21",
     "2026-07-20",
@@ -57,7 +58,6 @@
     "2026-07-14",
     "2026-07-13",
     "2026-07-12",
-    "2026-07-11",
-    "2026-07-10"
+    "2026-07-11"
   ]
 }
