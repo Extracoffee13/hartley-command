@@ -590,3 +590,15 @@ lesson: A re-fire only earns a rewrite when a genuinely new dated item clears th
 tags: pulse,mcp,ecosystem,daily,refire,idempotent,deadline
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-23
+decision: Second same-day re-fire (~14:00 ET). Re-ran fresh Anthropic/MCP/frontier/funding/arXiv searches against the 06:01 + 10:00 board to check for anything that cleared the 24h bar since. One near-miss surfaced — Claude Opus 5 is rumored/expected TODAY (Polymarket ~88%, 'Honeycomb EAP' leak, Thursday-launch chatter) but NOT officially confirmed on anthropic.com/news at fire time — so it is not yet a confirmed dated item. Left 2026-07-23.md + latest.json intact rather than rewrite the board on a rumor.
+outcome: Board unchanged and current — (1) Anthropic Economic Index connector Jul 22 [MAYBE]; (2) Anthropic M365 connector write tools [YES]; (3) MCP 2026-07-28 stateless spec now 5 days out [YES, load-bearing]; (4) CRM-MCP wave — NetHunt + Pipedrive + Reel Estate MCP [YES]; (5) arXiv 'Harnessing Agent Skills' 2606.20631 + 'Towards Secure Agent Skills' 2604.02837 [YES]. Watch item promoted for next fire: Claude Opus 5 flagship (1M context, extra-high-effort tier per Honeycomb EAP leak) — capture as a confirmed dated item the moment Anthropic posts it; it would be the single biggest Construct item of the week (re-benchmark all agent tiers, re-cost Opus jobs). Confirmed off-window / not swapped: Gemini 3.6 Flash (Jul 21, covered); agent funding (Cognition $26B late May, Perplexity $3.5B ext, Glean $180M Sequoia — market context, off-window); arXiv skills corpus (2602.12430 / 2606.20631 already carried, plus SkillAxe/SkillGenBench/SkillFlow — same thesis, none new-dated).
+lesson: A re-fire earns a rewrite only when a genuinely NEW confirmed dated item clears the window — a rumored-but-unannounced flagship (Opus 5, 88% market odds) is a watch item, not a board entry; log it and promote it so the next fire captures it cleanly the instant it ships. Load-bearing action stays the Jul-28 stateless-MCP migration + hardening inventory — 5 days out — with least-authority scoping on every new write-capable connector as the standing governance hook.
+tags: pulse,mcp,ecosystem,daily,refire,idempotent,opus5,watch,deadline
+confidence: 0.8
+~~~
