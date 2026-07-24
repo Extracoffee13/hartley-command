@@ -626,3 +626,15 @@ lesson: A re-fire earns a rewrite only when a genuinely NEW confirmed dated item
 tags: pulse,mcp,ecosystem,daily,refire,idempotent,opus5,watch,deadline
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-24
+decision: Same-day re-fire (~14:01 ET) against today's 06:01/10:01/14:01 board. This time a genuinely new confirmed dated item cleared the 24h bar — Claude Opus 5 shipped today (Jul 24), closing the watch item that had been open since Jul 23 — so I rewrote 2026-07-24.md + latest.json to lead with it.
+outcome: Board rewritten, now led by (1) Claude Opus 5 GA, Jul 24 — $5/$25, ~half Fable 5 price, new Max default, headline low/med/high effort toggle + Fast mode ~2.5x, >2x Opus 4.8 on internal Frontier-Bench v0.1 [YES, single most important item]; (2) MCP 2026-07-28 stateless spec now 4 days out [YES, load-bearing]; (3) Claude Developer Platform Managed Agents effort settings + webhooks + session seeding [YES]; (4) Claude voice mode Sonnet/Opus + reasoning, Jul 23 [MAYBE]; (5) Revid.ai MCP + CLI end-to-end AI video, Jul 16 [YES, B9S creative ops]. Dropped the arXiv 'Context Engineering' paper (2603.09619) to keep 5-max and seat Opus 5. Watch item CLOSED: Opus 5 now confirmed on anthropic.com/news. Also seen but off-window/not swapped in: Crunchbase native MCP (Jul 21), OpenAI ~$110B round at ~$730B valuation (funding, not a product/agent item).
+lesson: A re-fire earns a rewrite the moment a genuinely NEW confirmed dated item clears the 24h window — today Opus 5 did exactly that, converting a standing watch item into the board's #1. The per-call effort-control thesis the board carried all week is now fully realized in a shipped flagship (Opus 5's headline effort toggle), so the discipline shift from 'which model' to 'govern how much effort per job' is no longer a prediction but the operating default at Opus quality. Load-bearing action stays the Jul-28 stateless-MCP migration + hardening inventory (4 days out).
+tags: pulse,mcp,ecosystem,daily,refire,opus5,confirmed,effort-control,deadline
+confidence: 0.85
+~~~
