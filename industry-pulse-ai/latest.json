@@ -1,51 +1,52 @@
 {
-  "generated": "2026-07-23T10:00:50Z",
-  "latest_date": "2026-07-23",
+  "generated": "2026-07-24T10:01:12Z",
+  "latest_date": "2026-07-24",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Anthropic ships the Economic Index connector — its labor-impact dataset is now callable inside Claude (Jul 22)",
-      "summary": "Enable it from the claude.ai connectors directory (no install, any model) and ask which occupations use AI most or which tasks are being automated, with answers drawn directly from Anthropic's public Economic Index data.",
+      "title": "Anthropic ships model selection + reasoning into Claude voice mode (Jul 23)",
+      "summary": "Voice mode is no longer hard-wired to Haiku: it inherits the last model used in text chat (Opus/Sonnet/Haiku), can think through hard problems out loud, and defaults to the fastest variant of the chosen tier.",
       "tag": "maybe",
-      "how": "A ready-made, citable data source for PRAGMA's AI-operator pitch; wire it into client diagnostics so the 'why an operator agent now' case rests on Anthropic's own numbers, not our assertions.",
-      "url": "https://www.anthropic.com/news/anthropic-economic-index-connector"
+      "how": "Makes hands-free operation of a Construct agent viable for real work (dictated triage, on-the-go strategy) rather than only quick lookups; useful for Bobby's mobile workflow, less so for headless jobs.",
+      "url": "https://techcrunch.com/2026/07/23/anthropic-updates-claude-voice-mode-with-more-capable-models/"
     },
     {
       "n": 2,
-      "title": "Anthropic's Microsoft 365 connector gains write tools — Claude can now draft/send email, manage calendar, and write OneDrive & SharePoint files (July)",
-      "summary": "The M365 connector moves from read-only to actionable: compose and send mail, manage calendar events, change mailbox settings, and create/update files across OneDrive and SharePoint.",
+      "title": "MCP 2026-07-28 stateless spec is now 4 days out — the breaking rewrite ratifies Tuesday",
+      "summary": "The stateless core (no session id, any request to any instance, OAuth-aligned auth, formal deprecation policy) plus MCP Apps (server-rendered UI) and the Tasks extension ratify Jul 28; beta SDKs are already shipping.",
       "tag": "yes",
-      "how": "Turns M365 from a lookup surface into an execution surface for The Construct/B9S back-office ops; one Construct agent can run inbox triage, scheduling, and doc drafting end-to-end instead of handing steps back to a human.",
-      "url": "https://releasebot.io/updates/anthropic"
-    },
-    {
-      "n": 3,
-      "title": "MCP 2026-07-28 stateless spec is now 5 days out — the breaking rewrite ratifies next Tuesday",
-      "summary": "The stateless core (no session id, any request to any instance, OAuth-aligned auth, formal deprecation policy) plus MCP Apps (server-rendered UI) and the Tasks extension land as the ratified spec on Jul 28; beta SDKs are already out.",
-      "tag": "yes",
-      "how": "Every MCP server The Construct runs is 5 days from a breaking change; close the migration inventory + hardening checklist before Tuesday. The Tasks extension maps directly onto our long-running scan jobs. Load-bearing action.",
+      "how": "Every MCP server The Construct runs is 4 days from a breaking change; close the migration inventory + hardening checklist before Tuesday. The Tasks extension maps directly onto our long-running scan jobs. Load-bearing action of the week.",
       "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/"
     },
     {
-      "n": 4,
-      "title": "'Every SaaS ships an MCP' wave keeps landing — NetHunt CRM and Pipedrive go native MCP, and Reel Estate MCP turns listing video into plain-language agent calls",
-      "summary": "NetHunt and Pipedrive join HubSpot/Zoho/Close/Affinity with native read-write MCP; separately, Reel Estate MCP lets an agent generate motion clips, virtual-stage photos, add voiceover, and render finished listing videos in plain language.",
+      "n": 3,
+      "title": "Claude Developer Platform — Managed Agents gain model-effort settings, expanded webhooks, and session seeding (July)",
+      "summary": "You can set an effort level on a Managed Agents model config, get webhook coverage for environment + memory-store events, seed a session with initial events, and add optional version checks on updates.",
       "tag": "yes",
-      "how": "The CRM MCPs are the PRAGMA 'replace [SaaS tool]' reference architecture, and Reel Estate is the closest analog yet to a Brand 9 Signs creative-ops MCP: a plain-language pipeline from asset to finished signage/spot one Construct agent could own.",
-      "url": "https://nethunt.com/blog/crm-mcp/"
+      "how": "Direct control surface for The Construct's agent fleet: dial effort (cost/quality) per job, wire memory/env events into our dashboards, and seed context so scan agents start warm instead of cold.",
+      "url": "https://releasebot.io/updates/anthropic"
+    },
+    {
+      "n": 4,
+      "title": "Revid.ai launches an MCP server + CLI for end-to-end AI video production (Jul 16)",
+      "summary": "Stable-named tools (render_video, clone_voice, schedule_publish, publish_now) let an agent run script -> render -> voiceover -> caption -> publish in one call across nine workflows, with OAuth 2.1 for hosted clients.",
+      "tag": "yes",
+      "how": "Closest off-the-shelf analog to a Brand 9 Signs creative-ops pipeline: one Construct agent turns a signage brief into finished motion/spot assets and schedules the post, no editor in the loop.",
+      "url": "https://finance.yahoo.com/technology/ai/articles/leading-ai-video-generation-platform-183300269.html"
     },
     {
       "n": 5,
-      "title": "arXiv — 'Harnessing Agent Skills: A Reference Architecture for Skill-Mediated LLM Agents' (2606.20631), paired with 'Towards Secure Agent Skills' (2604.02837)",
-      "summary": "Frames skills as persistent, discoverable artifacts bound to context and authority constraints at run time; the security companion defines the filesystem-based skill package plus its threat taxonomy.",
+      "title": "arXiv — 'Context Engineering: From Prompts to Corporate Multi-Agent Architecture' (2603.09619)",
+      "summary": "Frames capability maturity as a four-level pyramid — intent engineering -> specification engineering -> prompt engineering -> context engineering — for scaling from single prompts to governed corporate multi-agent systems.",
       "tag": "yes",
-      "how": "A direct blueprint for The Construct's installed-skills registry and skills-scan: treat every skill (including demonstration-minted 'Record a Skill' outputs) as a governed, security-reviewed, authority-scoped asset rather than a loose macro.",
-      "url": "https://arxiv.org/abs/2606.20631"
+      "how": "A clean maturity model for where The Construct sits: past prompt-level, operating at the context/architecture tier — a useful audit lens for which agents still write prompts vs. engineer context.",
+      "url": "https://arxiv.org/pdf/2603.09619"
     }
   ],
-  "praxis_lesson": "Anthropic keeps converting read surfaces into action surfaces — the M365 connector's new write tools mean a Construct agent can now execute inbox, calendar, and document work end-to-end, so the bottleneck shifts from 'can it act' to 'is it governed to act.' The load-bearing move stays the Jul-28 stateless-MCP migration + hardening inventory (5 days out); the standing discipline is to scope every new write-capable connector and every new skill to least authority before switching it on.",
+  "praxis_lesson": "The through-line this week is per-call effort control — voice mode inheriting a model tier, Managed Agents exposing an effort setting — so the same Construct agent now spans cost/quality tiers on demand, and the discipline shifts from 'which model' to 'govern how much effort each job is allowed to spend.' The load-bearing move stays the Jul-28 stateless-MCP migration + hardening inventory (4 days out); the standing hook is least-authority scoping on every new write-capable connector. Watch: Claude Opus 5 still rumored, not confirmed on anthropic.com/news as of this fire — capture it as a dated item the instant it ships.",
   "history": [
+    "2026-07-24",
     "2026-07-23",
     "2026-07-22",
     "2026-07-21",
@@ -57,7 +58,6 @@
     "2026-07-15",
     "2026-07-14",
     "2026-07-13",
-    "2026-07-12",
-    "2026-07-11"
+    "2026-07-12"
   ]
 }

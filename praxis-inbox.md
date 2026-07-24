@@ -602,3 +602,15 @@ lesson: A re-fire earns a rewrite only when a genuinely NEW confirmed dated item
 tags: pulse,mcp,ecosystem,daily,refire,idempotent,opus5,watch,deadline
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-24
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (first fire, 06:01 ET). Refreshed board with genuinely new dated items and carried the load-bearing MCP-28 countdown.
+outcome: Flagged five: (1) Anthropic ships model selection + reasoning into Claude voice mode, Jul 23 [MAYBE]; (2) MCP 2026-07-28 stateless spec now 4 days out, ratifies Tuesday [YES, load-bearing]; (3) Claude Developer Platform — Managed Agents gain model-effort settings + expanded webhooks + session seeding [YES]; (4) Revid.ai MCP + CLI for end-to-end AI video production, Jul 16 [YES, B9S creative ops]; (5) arXiv 'Context Engineering: From Prompts to Corporate Multi-Agent Architecture' 2603.09619 [YES]. Watch item still open: Claude Opus 5 rumored but NOT confirmed on anthropic.com/news at fire time — capture the instant it posts.
+lesson: The week's through-line is per-call effort control (voice mode inherits a model tier; Managed Agents expose an effort setting), so the same agent now spans cost/quality tiers on demand and the discipline shifts from 'which model' to 'govern how much effort each job may spend.' Load-bearing action stays the Jul-28 stateless-MCP migration + hardening inventory (4 days out), with least-authority scoping on every new write-capable connector as the standing governance hook.
+tags: pulse,mcp,ecosystem,daily,deadline,effort-control,opus5,watch
+confidence: 0.8
+~~~
