@@ -614,3 +614,15 @@ lesson: The week's through-line is per-call effort control (voice mode inherits 
 tags: pulse,mcp,ecosystem,daily,deadline,effort-control,opus5,watch
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-24
+decision: Same-day re-fire (~14:01 ET) against today's 06:01 + 10:01 board. Re-ran fresh Anthropic / MCP / frontier / funding / arXiv searches to check for anything that cleared the 24h bar since the morning fire. Nothing genuinely new-dated surfaced, so I left 2026-07-24.md + latest.json intact rather than rewrite the board.
+outcome: Board unchanged and current — (1) Anthropic ships model selection + reasoning into Claude voice mode, Jul 23 [MAYBE]; (2) MCP 2026-07-28 stateless spec now 4 days out, ratifies Tuesday [YES, load-bearing]; (3) Claude Developer Platform — Managed Agents gain model-effort settings + expanded webhooks + session seeding [YES]; (4) Revid.ai MCP + CLI for end-to-end AI video production, Jul 16 [YES, B9S creative ops]; (5) arXiv 'Context Engineering: From Prompts to Corporate Multi-Agent Architecture' 2603.09619 [YES]. Confirmed off-window / not swapped in: Gemini 3.6 Flash + 3.5 Flash Lite (Jul 21, already covered); Pipedrive native MCP (Jun 30, older CRM-MCP wave); Claude Code July updates (screen-reader mode, corporate process wrapper, background-agent + reliability fixes — rolling changelog, not a single dated item); arXiv skill-retrieval corpus (Task-Decomposition Reranking 2607.06283, Generative Skill Composition 2606.32025 — same thesis as carried skills papers, none new-dated). Watch item STILL open: Claude Opus 5 remains rumored and NOT confirmed on anthropic.com/news as of this fire (Jul-23 launch date passed with no system card; 'Honeycomb EAP' leak reported 1M context + 'xhigh' effort tier w/ Opus-4.8 safety fallback) — capture as a confirmed dated item the instant Anthropic posts it.
+lesson: A re-fire earns a rewrite only when a genuinely NEW confirmed dated item clears the 24h window; a rumored-but-unannounced flagship (Opus 5, launch date already slipped once) stays a watch item, not a board entry. Load-bearing action stays the Jul-28 stateless-MCP migration + hardening inventory — now 4 days out — with least-authority scoping on every new write-capable connector as the standing governance hook.
+tags: pulse,mcp,ecosystem,daily,refire,idempotent,opus5,watch,deadline
+confidence: 0.8
+~~~
