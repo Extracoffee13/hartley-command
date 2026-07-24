@@ -1,101 +1,27 @@
 <!DOCTYPE html>
-<html lang='en'><head><meta charset='utf-8'>
+<html lang="en"><head><meta charset="utf-8">
 <title>WOLF Health Dashboard</title>
-<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body{background:#000;color:#e0e0e0;font-family:'Courier New',monospace;padding:2rem;max-width:960px;margin:0 auto}
-h1{color:#39ff14;font-weight:600} h2{margin:0 0 .5rem;font-size:.9rem;color:#00d4ff;text-transform:uppercase;letter-spacing:.04em}
-.ok{color:#39ff14} .warn{color:#ffa500} .crit{color:#ff4d4d} .muted{color:#888}
-.card{background:#0a0a0a;border-left:3px solid #39ff14;padding:1rem;margin:1rem 0}
-.wcard{border-color:#ffa500} .rcard{border-color:#ff4d4d}
+body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",monospace;padding:2rem}
+h1{color:#00ff88;font-weight:600}
+.card{background:#111;border:1px solid #333;padding:1rem;margin:1rem 0;border-radius:6px}
+h2{margin:0 0 .5rem;font-size:.9rem;color:#00d4ff;text-transform:uppercase;letter-spacing:.04em}
+.ok{color:#00ff88} .warn{color:#ffaa00} .crit{color:#ff4444}
 a{color:#00d4ff}
-table{width:100%;border-collapse:collapse;font-size:.85rem;margin:.5rem 0}
-th{text-align:left;color:#00d4ff;border-bottom:1px solid #333;padding:.3rem}
-td{padding:.35rem 0;border-bottom:1px solid #1a1a1a}
 .thesis{border-left:3px solid #333;padding-left:.75rem;margin:.75rem 0}
 .ticker{font-weight:700;font-size:1.1rem;margin-right:.75rem}
 .verdict{font-weight:700;font-size:.9rem}
-.rationale{margin:.35rem 0;color:#cfcfcf;line-height:1.4;font-size:.85rem}
-.meta{font-size:.78rem;color:#888}
-.scorebar{width:100%;height:.8rem;background:#222;position:relative;margin:.4rem 0}
-.scorefill{height:100%;background:#39ff14;width:0%}
-.scoreline{position:absolute;left:80%;top:0;bottom:0;width:2px;background:#ff4d4d}
-footer{margin-top:2rem;font-size:.75rem;color:#666;border-top:1px solid #222;padding-top:1rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.75rem}
-.tile{background:#0f0f0f;border-left:2px solid #39ff14;padding:.6rem .8rem}
+.rationale{margin:.35rem 0;color:#cfcfcf;line-height:1.4}
+.meta{font-size:.8rem;color:#888}
 </style></head><body>
 <h1>WOLF Health Dashboard</h1>
-<div style='font-size:.8rem;color:#888;margin-bottom:1rem'>Hermes COS oversight · sync 2026-07-24 20:35 UTC</div>
-
-<div class='card wcard'>
-  <b>Day 62/90</b> · kill criterion date 2026-07-23 · <span class='warn'>PASSED (1 day ago)</span><br>
-  Portfolio: $98,272 · equity $98,272 · cash $0
-  <div class='meta'>Data source: state.json-fallback (Alpaca key absent) · state.json days_remaining=28 is stale relative to calendar</div>
-</div>
-
-<div class='card rcard'>
-  <h2>Real-money lock</h2>
-  Capability score <b>0/100</b> <span class='warn'>(fallback source — Alpaca key absent)</span><br>
-  Real-money trading remains locked until capability score ≥ 80. Score is currently reporting from fallback state, not live Alpaca data.
-</div>
-
-<div class='card'>
-  <h2>Compliance</h2>
-  Status: <span class='ok'>OK</span><br>
-  Consecutive compliant days: 30<br>
-  Active alerts: None
-</div>
-
-<div class='card rcard'>
-  <h2>Infrastructure</h2>
-  Verdict: <span class='warn'>WARN</span><br>
-  state.json infra status: OK<br>
-  Wild-duck-doctor: 28 ducks: 9 ok, 7 stale, 12 no-hb (total ducks 28, stale 7, missing heartbeat 12)
-  <br><span class='muted'>Note: wild-duck-doctor: 28 ducks: 9 ok, 7 stale, 12 no-hb</span>
-</div>
-
-<div class='card'>
-  <h2>Capability score</h2>
-  <b>0/100</b> <span class='warn'>(fallback source — Alpaca key absent)</span>
-  <div class='scorebar'><div class='scorefill'></div><div class='scoreline'></div></div>
-  <div class='grid' style='margin-top:.75rem'>
-    <div class='tile'><div class='meta'>market regime</div><div>moderate-bear · VIX 18</div></div>
-    <div class='tile'><div class='meta'>active theses</div><div>1</div></div>
-    <div class='tile'><div class='meta'>positions</div><div>1</div></div>
-    <div class='tile'><div class='meta'>cap score source</div><div>fallback</div></div>
-  </div>
-</div>
-
-<div class='card'>
-  <h2>Portfolio snapshot</h2>
-  <table><tr><th>Ticker</th><th>Shares</th><th>Avg entry</th><th>Current</th><th>Unrealized</th></tr>
-  <tr><td>ACN</td><td>48</td><td>$174.0</td><td>$138.0</td><td class='crit'>-20.7%</td></tr>
-  </table>
-  <div class='meta'>Account: value $98,272 · equity $98,272 · cash $0</div>
-</div>
-
-<div class='card'>
-  <h2>Deep research theses</h2>
-  <div class='thesis'><span class='ticker'>ACN</span><span class='verdict ok'>BULLISH</span>
-<div class='rationale'>**VERDICT: BULLISH (STRONGLY RECOMMEND AVERAGING DOWN)**</div>
-<div class='meta'>generated 2026-07-01 · source gemini-deep-research · <a href='./wolf-research/ACN-2026-07-01.md' target='_blank'>full report</a></div></div>
-</div>
-
-<div class='card'>
-  <h2>Recent capability lessons</h2>
-  <div class='thesis'><div class='meta'>2026-07-24</div><div class='rationale'>HBR/HBS: value accrues to AI deployers not builders (1.8M-patent study, Srinivasan) — as the capex selloff broadens (Nasdaq -2.15%, TSLA -14.5%), price AI on demonstrated returns.</div></div><div class='thesis'><div class='meta'>2026-07-23</div><div class='rationale'>Lens tape: AI-capex 'spending shock' repriced the trade — GOOGL sank on a $205B 2026 capex guide despite a Q2 beat; CNBC read it 'spending shock disappoints Wall Street.' Signal: markets now price AI on demonstrated ROI, not optionality. WOLF bias — fade high-capex/low-return-visibility AI names into guidance, favor deployers capturing value.</div></div><div class='thesis'><div class='meta'>2026-07-22</div><div class='rationale'>Lens tape (CNBC): AI-trade capital rotated down-stack from compute to memory/storage/test — Sandisk +14.3%, WDC +12.5%, Micron +12.2%, Teradyne +12.1%, Coherent +11.1% led a broad risk-on session (S&P +0.89%, Nasdaq +1.29%). WOLF read: when GPU names cool, the marginal AI bid migrates to the physical substrate of inference (memory/storage/test) — watch that sub-sector for momentum continuation before assuming the AI trade is fading.</div></div><div class='thesis'><div class='meta'>2026-07-21</div><div class='rationale'>HBS WK (Kang): banks turn marketing-grade customer telemetry into a regional macro-forecasting signal — validates alt-data-as-signal; operationalize proprietary customer exhaust as a WOLF/Prism edge. Market read Jul 21: chip rebound failed in US cash (S&P 7,443 -0.19%) while Asia ripped overnight (KOSPI +3.56%, Taiwan +4.2%) — opposite signs across sessions is a timezone/liquidity artifact, not conviction; don't initiate on the overnight gap. Defensive bid corroborated (Dimon won't buy stocks or Treasurys; 10Y 4.60%; gold +1.29% $4,068, silver +4.17%). Keep AI-hardware longs short-leashed into Alphabet + Tesla prints.</div></div><div class='thesis'><div class='meta'>2026-07-20</div><div class='rationale'>Mon Jul 20 — tape is trading headlines, not a regime. The war-risk premium whipsawed fully out inside 48h (Iran halts strikes, WTI eases to $81.9 off the $82.47 spike; CNBC flips 'surge' → 'panic to pricing in'). Lesson for WOLF: fade single-headline geopolitical spikes that lack a durable supply/demand mechanism — size down, don't chase. Standing structural read into a heavy earnings week (Alphabet + Tesla): the silicon→systems AI rotation still owns the tape; chip names (Synopsys/Cadence/Intuitive) sit at the bottom of the movers board. Treat this week's mega-cap prints as the live test of whether that repricing is rotation or top; keep AI-hardware longs on a short leash until the prints confirm.</div></div>
-</div>
-
-<div class='card'>
-  <h2>Signal overlay</h2>
-  <div class='meta'>Generated 2026-07-14T11:32:00Z · source LunarCrush + FMP</div>
-  <p class='meta'>Deep drawdown (unrealized -20.7%, entry 174 vs 134.77 live, -2.71% on day, ~8% above 1-yr low 124.40; 30d -18.42%) BUT mentions 1238 = +293% vs 315 daily avg and sentiment 83% vs 74% daily avg (+9, up from 80% last run, near 52-wk-high engagement) on NATO AI momentum + AI-outsourcing thesis; breach/insider chatter is the near-term price drag. Classic capitulation/bottoming context (spiking mentions + rising sentiment into a drawdown), not a panic-cut and not a buy signal. RSI 40.47 (down from 42.76 last run), oversold-adjacent, well below overbought.</p>
-</div>
-
-<footer>
-  WOLF state file: 2026-07-24T18:30:19<br>
-  wolf_live_data.json: 2026-07-24T18:30:19<br>
-  Dashboard refreshed: 2026-07-24T20:35:39Z<br>
-  Data source caveat: state.json-fallback; Alpaca API key absent. Portfolio, positions and cash may not reflect live market data.
-</footer>
+<div class="card"><b>Day 62/90</b> &bull; 28 days to kill-crit &bull; Portfolio: $98,272</div>
+<div class="card">Compliance: <span class="ok">OK</span></div>
+<div class="card">Infrastructure: <span class="ok">OK</span></div>
+<div class="card">Alerts: None</div>
+<div class="card"><h2>Positions</h2><div><span class="ticker">ACN</span> 48 @ $174.0 · current $138.0 · <span class="crit">-20.7%</span></div></div>
+<div class="card"><h2>Market Regime</h2><div>moderate-bear · VIX 18</div></div>
+<div class="card"><h2>Deep Research Theses</h2><div class="thesis"><span class="ticker">ACN</span><span class="verdict ok">BULLISH</span><div class="rationale">**VERDICT: BULLISH (STRONGLY RECOMMEND AVERAGING DOWN)**</div><div class="meta">generated 2026-07-01 · source gemini-deep-research · <a href="./wolf-research/ACN-2026-07-01.md" target="_blank">full report</a></div></div></div>
+<div class="card" style="font-size:0.8rem">Updated: 2026-07-24 20:47 UTC by wolf-dashboard-autosync</div>
 </body></html>
