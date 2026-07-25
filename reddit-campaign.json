@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-24T12:10:25Z",
+  "updated": "2026-07-25T16:41:28Z",
   "account": {
     "username": "established (Bobby's personal account)",
     "created": "established",
@@ -80,7 +80,7 @@
       "verified_prior": true,
       "sub_viable": true,
       "post_type": "TEXT-MANDATORY (submission_type=self; image posts rejected)",
-      "evidence": "weak (no rule bans us) \u2014 logged 14th time"
+      "evidence": "weak (no rule bans us) \u2014 logged 15th time; post-or-retire"
     },
     {
       "subreddit": "digitalrealestate",
@@ -90,7 +90,7 @@
       "verified_prior": true,
       "sub_viable": true,
       "post_type": "TEXT",
-      "evidence": "safe-but-off-audience (214 subs, digital-RE-investing theme); cooldown cleared today"
+      "evidence": "safe-but-off-audience (214 subs); off-cooldown"
     }
   ],
   "posted_to_date": 4,
@@ -335,6 +335,19 @@
       "thumbnail_scopegap": "PASS \u2014 renders, un-clipped, on-brand v3, topic matches",
       "thumbnail_devphasing": "PASS \u2014 renders, un-clipped, on-brand v3, topic matches",
       "thumbnail_signcost": "PASS (NEW) \u2014 renders, un-clipped, on-brand v3, headline matches topic"
+    }
+  },
+  "today_2026-07-25_result": {
+    "prepped": 3,
+    "posted": 0,
+    "note": "3-post pack \u2014 all three verified-open subs available today (digitalrealestate off-cooldown; ConstructionManagers + RealEstateDevelopment never posted). Re-verified today via public Reddit JSON in logged-in Chrome: ConstructionManagers subreddit_type=public, submission_type=any, allow_images=true, 55,565 subs \u2014 Rule 3 affirmative permission. RealEstateDevelopment subreddit_type=public, submission_type=self, allow_images=false, 8,860 subs \u2014 single rule bans lot/investment ads only (weak 'no rule bans' evidence, 15th carry of devphasing). digitalrealestate subreddit_type=public, submission_type=any, allow_images=true, 214 subs \u2014 safe-but-off-audience. All 3 square thumbnails re-verified on-brand via Read (b9-thumb-scopegap-20260717-sq, b9-thumb-devphasing-20260717-sq, b9-thumb-signcost-20260724-sq \u2014 WHITE/BLACK/#0090D0, 3D-9 + 40th badge, un-clipped, topic-matched). ACCOUNT HEALTH GREEN: exactly 6 submissions, UNCHANGED since Jul 10 (confirms yesterday's 3-post pack was NOT posted); 4 live (1ustpyy score2, 1ulolfn, 1ulomzm, 1uloq30 \u2014 removed_by_category=null, is_robot_indexable=true), 2 old mod-removals (govcon 1ulorl6, Homebuilding 1ulmr2z). No shadowban indicators. Monitor fresh (reddit-monitor.json generated 2026-07-25T16:05Z, 50 mentions/20 drafts, no zeros) \u2014 run.py NOT re-run (exceeds sandbox cap; good data preserved). NOTHING POSTED AUTONOMOUSLY. Standing recommendation: post devphasing as text or retire it (day 15); set cadence to 2-3/WEEK (3-sub pool x 14-day rule = ~1.5/week ceiling) or approve vetting adjacent real-audience trade subs.",
+    "verification_2026-07-25": {
+      "method": "public Reddit JSON (about.json + user/submitted.json) via logged-in Chrome + Read of 3 thumbnails",
+      "ConstructionManagers": "VIABLE \u2014 public, submission_type=any, allow_images=true, 55565 subs, Rule 3 affirmative permission",
+      "RealEstateDevelopment": "VIABLE \u2014 public, submission_type=self, allow_images=false, 8860 subs, single rule bans lot/investment ads only",
+      "digitalrealestate": "VIABLE \u2014 public, submission_type=any, allow_images=true, 214 subs, safe-but-off-audience",
+      "account_health": "GREEN \u2014 6 submissions unchanged since Jul 10; 4 live (removed_by_category=null), 2 mod-removed (govcon, Homebuilding); no shadowban indicators",
+      "thumbnails": "PASS x3 \u2014 scopegap-sq, devphasing-sq, signcost-sq all render, un-clipped, on-brand, topic-matched"
     }
   }
 }
