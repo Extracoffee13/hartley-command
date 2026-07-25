@@ -638,3 +638,15 @@ lesson: A re-fire earns a rewrite the moment a genuinely NEW confirmed dated ite
 tags: pulse,mcp,ecosystem,daily,refire,opus5,confirmed,effort-control,deadline
 confidence: 0.85
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-25
+decision: Same-day re-fire (~12:05 ET). Ran fresh Anthropic/MCP/frontier/funding/arXiv searches, then found an earlier fire of today's task had already written a stronger, current 2026-07-25 board into latest.json (led by the MCP->Agentic AI Foundation donation, a bigger Jul-25 item than my draft's MCP-28-countdown lead). Per the board's idempotency discipline I did NOT overwrite the stronger latest.json; instead I reconciled the archived 2026-07-25.md to match the authoritative latest.json so the panel and the archive agree.
+outcome: Board (authoritative, unchanged): (1) Anthropic donates MCP to the Agentic AI Foundation / Linux Foundation, 75+ connectors, API gains Tool Search + Programmatic Tool Calling, Jul 25 [YES]; (2) MCP 2026-07-28 stateless spec now 3 days out [YES, load-bearing]; (3) OpenAI Presence — scoped, policy-governed enterprise agents, Jul 22 [YES]; (4) Claude Enterprise admin analytics + model-level entitlements + spend alerts [MAYBE]; (5) SMB reality check "AI drafts, human approves" [YES]. Reconciled 2026-07-25.md to this. My own fresh finds not swapped in (weaker/older than the seated board): Guideline Ad Intelligence MCP (Jul 22), xAI Grok STT 1.0 (Jul 23-24), Axonius AI Agent + MCP (Jul 21), Pixazo image/video MCP servers (Jul 16) — parked for a future fire if a slot opens. Opus 5 (Jul 24) now folded into context as the shipped fleet default, not re-listed.
+lesson: When a same-day fire has already seated a stronger, correctly-dated board, do not regress it with a weaker rewrite — reconcile the archive .md to the live latest.json instead so the dashboard and the daily archive never disagree. Governance is the week's throughline: MCP is now vendor-neutral (AAIF) AND its stateless rewrite ratifies Jul-28, so the load-bearing action stays the migration + least-authority hardening inventory before Tuesday, and "AI drafts, human approves" is the validated market default to lead sales positioning with.
+tags: pulse,mcp,ecosystem,daily,refire,idempotent,reconcile,aaif,governance,deadline
+confidence: 0.8
+~~~
