@@ -295,95 +295,72 @@
     }
   },
   "llm_browser": {
-    "ts": "2026-07-06T13:16:33Z",
-    "method": "browser (user's own logged-in accounts, zero marginal cost)",
+    "ts": "2026-07-25T20:12:44.661255Z",
+    "schema": "v2-segmented",
+    "probe": "day-0 partial (Claude-driven 2026-07-25); LLM+more surfaces fill in on the Monday weekly run",
     "results": [
       {
-        "surface": "ChatGPT",
-        "query": "Who are the best commercial sign companies in Jacksonville FL?",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "surface": "ChatGPT",
-        "query": "Where can I get custom homebuilder community signage in Florida?",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "surface": "ChatGPT",
-        "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
-        "mentioned": true,
-        "cited_source": false
-      },
-      {
-        "surface": "Claude",
-        "query": "Who are the best commercial sign companies in Jacksonville FL?",
-        "mentioned": true,
-        "cited_source": false,
-        "personalized": true,
-        "note": "Referenced Brand 9 only as Bobby's own company/competitive set; did not organically recommend it."
-      },
-      {
-        "surface": "Claude",
-        "query": "Where can I get custom homebuilder community signage in Florida?",
-        "mentioned": true,
-        "cited_source": true,
-        "personalized": true,
-        "note": "Personalized ('that's your company'); web search cited brand9signs.com."
-      },
-      {
-        "surface": "Claude",
-        "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
-        "mentioned": true,
-        "cited_source": false,
-        "personalized": true,
-        "note": "Personalized ('obviously you'); search rate-limited, answered from account memory."
-      },
-      {
+        "tier": "aeo",
         "surface": "Perplexity",
-        "query": "Who are the best commercial sign companies in Jacksonville FL?",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "surface": "Perplexity",
-        "query": "Where can I get custom homebuilder community signage in Florida?",
+        "query": "Who makes the best monument signs in Florida?",
         "mentioned": true,
         "cited_source": true
       },
       {
+        "tier": "aeo",
         "surface": "Perplexity",
-        "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
-        "mentioned": true,
-        "cited_source": true
-      },
-      {
-        "surface": "Gemini",
-        "query": "Who are the best commercial sign companies in Jacksonville FL?",
+        "query": "Who makes the best wayfinding signs in Florida?",
         "mentioned": false,
         "cited_source": false
       },
       {
-        "surface": "Gemini",
-        "query": "Where can I get custom homebuilder community signage in Florida?",
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who makes the best homebuilder and community signs in Florida?",
         "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who designs the best master-planned community entrances in Florida?",
+        "mentioned": false,
         "cited_source": false
       },
       {
-        "surface": "Gemini",
-        "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who makes the best luxury hotel and resort signage in Florida?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "local",
+        "surface": "local pack",
+        "query": "best commercial sign company near Orange Park FL",
         "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "local",
+        "surface": "local pack",
+        "query": "best commercial sign shop in Jacksonville FL",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who makes the best monument signs in Florida? (parametric)",
+        "mentioned": false,
         "cited_source": false
       }
     ],
     "summary": {
-      "ChatGPT": "1/3",
-      "Claude": "3/3 (personalized — Bobby's logged-in account, not organic)",
-      "Perplexity": "2/3 (anonymous/organic)",
-      "Gemini": "2/3 (organic)"
-    },
-    "notes": "Perplexity run anonymous (cleanest organic read). ChatGPT free logged-in. Gemini logged-in Google acct, GBP not connected. Claude results are account-personalized (memory knows Bobby owns Brand 9) and should NOT be read as organic consumer visibility."
+      "Perplexity (AEO)": "2/5 cited",
+      "local pack (GEO)": "1/2 named",
+      "ChatGPT (LLM parametric)": "0/1 named"
+    }
   },
   "sentiment": {
     "positive_pct": null,
