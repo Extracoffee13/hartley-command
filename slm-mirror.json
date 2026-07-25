@@ -1,35 +1,35 @@
 {
-  "generated": "2026-07-24T20:23:50.126568+00:00Z",
+  "generated": "2026-07-25T16:03:26.487223+00:00Z",
   "client": "b9",
   "schema_version": "v5",
   "overall_slm_score": 29,
-  "slm_total_cited": 12,
-  "slm_total_checks": 41,
+  "slm_total_cited": 14,
+  "slm_total_checks": 48,
   "slm_total_attempted": 48,
-  "slm_total_scored": 41,
-  "slm_total_no_read": 7,
+  "slm_total_scored": 48,
+  "slm_total_no_read": 0,
   "tier_scores": {
-    "tiny-on-device": 41,
-    "small": 21
+    "tiny-on-device": 33,
+    "small": 25
   },
-  "tier_average": 31,
+  "tier_average": 29,
   "tiers": {
     "tiny-on-device": {
       "label": "Tiny / On-Device (1-4B)",
-      "score": 41,
+      "score": 33,
       "models": [
         {
           "model": "google/gemma-3-4b-it",
           "harness": "OpenRouter",
           "temp": 0.2,
           "max_tokens": 350,
-          "checked_at": "2026-07-24T20:23:50.126568+00:00Z",
+          "checked_at": "2026-07-25T16:03:26.487223+00:00Z",
           "questions": [
             {
               "question": "Who are the best commercial sign companies in Jacksonville FL?",
-              "answer_truncated": "",
-              "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-3-4b-it is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/",
-              "status": "no_read",
+              "answer_truncated": "Okay, let's break down some of the best commercial sign companies in Jacksonville, FL. It's tough to definitively say \"best\" as it depends on your specific needs (budget, project size, style, etc.), but here's a list of highly-regarded companies, categorized by their strengths, with details to help ...",
+              "error": null,
+              "status": "scored",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -37,9 +37,9 @@
             },
             {
               "question": "Where can I get custom business signs installed in Clay County Florida?",
-              "answer_truncated": "",
-              "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-3-4b-it is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/",
-              "status": "no_read",
+              "answer_truncated": "Okay, let's find some options for custom business sign installation in Clay County, Florida. Here's a breakdown of potential providers, categorized by size and type of service, with estimated costs (these can vary *significantly* based on complexity):\n\n**1. Local Sign Shops - Best for Custom Design ...",
+              "error": null,
+              "status": "scored",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -47,17 +47,7 @@
             },
             {
               "question": "What are the top home builder signage companies in Florida?",
-              "answer_truncated": "",
-              "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-3-4b-it is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/",
-              "status": "no_read",
-              "entity_found": false,
-              "entity": null,
-              "rank": null,
-              "total_entities_cited": 0
-            },
-            {
-              "question": "Who does model home display signage in Jacksonville?",
-              "answer_truncated": "Okay, let's break down who typically handles model home signage in Jacksonville, Florida. It's a mix of professional companies and sometimes, the builders themselves. Here's a breakdown of the most common players:\n\n**1. Leading Signage Companies (Most Common):**\n\n* **Sign Solutions, Inc.:** This is ...",
+              "answer_truncated": "Okay, let's break down some of the top home builder signage companies in Florida. The \"best\" really depends on your specific needs (budget, scale, design preferences, etc.), but here's a list of well-regarded companies, categorized roughly by size and specialization, with estimated price ranges (the...",
               "error": null,
               "status": "scored",
               "entity_found": true,
@@ -66,20 +56,30 @@
               "total_entities_cited": 1
             },
             {
-              "question": "Which companies install community monument signs in master-planned communities?",
-              "answer_truncated": "",
-              "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-3-4b-it is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/",
-              "status": "no_read",
+              "question": "Who does model home display signage in Jacksonville?",
+              "answer_truncated": "Okay, let's break down who typically handles model home signage in Jacksonville, Florida. It's a mix of companies and often, individual real estate teams. Here's a breakdown of the most common players:\n\n**1. Leading Real Estate Brokerages (These are the primary drivers of signage):**\n\n* **RE/MAX:** ...",
+              "error": null,
+              "status": "scored",
               "entity_found": false,
               "entity": null,
               "rank": null,
               "total_entities_cited": 0
             },
             {
+              "question": "Which companies install community monument signs in master-planned communities?",
+              "answer_truncated": "Okay, let's break down the companies that frequently install community monument signs in master-planned communities. This is a specialized field, and the landscape can shift, but here's a breakdown of the key players, categorized for clarity:\n\n**1. Large, Established Monument Sign Specialists (Most ...",
+              "error": null,
+              "status": "scored",
+              "entity_found": true,
+              "entity": "Signarama",
+              "rank": 4,
+              "total_entities_cited": 1
+            },
+            {
               "question": "Who is the best environmental graphic design firm in the Southeast?",
-              "answer_truncated": "",
-              "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-3-4b-it is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/",
-              "status": "no_read",
+              "answer_truncated": "Okay, this is a great question, and a tricky one to answer definitively! \"Best\" is always subjective and depends on your specific needs and priorities. However, based on reputation, awards, client lists, and overall quality, here's a breakdown of some of the top Environmental Graphic Design (EGD) fi...",
+              "error": null,
+              "status": "scored",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -87,9 +87,9 @@
             },
             {
               "question": "Which sign companies specialize in wayfinding systems for campuses?",
-              "answer_truncated": "",
-              "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-3-4b-it is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/",
-              "status": "no_read",
+              "answer_truncated": "Okay, let's break down some sign companies that specialize in wayfinding systems for campuses. This is a specialized area, so these firms have developed expertise in the scale, complexity, and branding requirements of university environments. Here's a breakdown, categorized by size and focus, with e...",
+              "error": null,
+              "status": "scored",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -97,31 +97,31 @@
             },
             {
               "question": "What companies handle military base signage contracts?",
-              "answer_truncated": "",
-              "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-3-4b-it is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/",
-              "status": "no_read",
+              "answer_truncated": "Okay, let's break down the companies that frequently handle military base signage contracts. It's a surprisingly complex market with a mix of large national firms and smaller, specialized regional players. Here's a categorized breakdown, with estimated prominence and areas of expertise:\n\n**1. Major ...",
+              "error": null,
+              "status": "scored",
               "entity_found": false,
               "entity": null,
               "rank": null,
               "total_entities_cited": 0
             }
           ],
-          "score": 100,
-          "cited": 1,
-          "scored": 1,
+          "score": 25,
+          "cited": 2,
+          "scored": 8,
           "attempted": 8,
-          "no_read": 7
+          "no_read": 0
         },
         {
           "model": "microsoft/phi-4",
           "harness": "OpenRouter",
           "temp": 0.2,
           "max_tokens": 350,
-          "checked_at": "2026-07-24T20:23:50.126568+00:00Z",
+          "checked_at": "2026-07-25T16:03:26.487223+00:00Z",
           "questions": [
             {
               "question": "Who are the best commercial sign companies in Jacksonville FL?",
-              "answer_truncated": "As of my last update, here are some well-regarded commercial sign companies in Jacksonville, FL. Keep in mind that the best choice can depend on your specific needs, budget, and preferences, so it's a good idea to contact them for quotes and more information:\n\n1. **Signs by Design** - Known for thei...",
+              "answer_truncated": "As of my last update, here are some well-regarded commercial sign companies in Jacksonville, FL. Keep in mind that \"best\" can be subjective and may depend on specific needs such as design, budget, or type of sign:\n\n1. **Signs by Design** - Known for their custom sign solutions and a wide range of se...",
               "error": null,
               "status": "scored",
               "entity_found": false,
@@ -131,7 +131,7 @@
             },
             {
               "question": "Where can I get custom business signs installed in Clay County Florida?",
-              "answer_truncated": "For custom business signs in Clay County, Florida, you have several options:\n\n1. **Local Sign Shops**: Check out local businesses like Signs Plus, Sign Guys, or Clay County Signs. They offer custom sign design and installation services.\n\n2. **Online Directories**: Use platforms like Yelp or Google M...",
+              "answer_truncated": "For custom business signs in Clay County, Florida, you have several options:\n\n1. **Local Sign Shops**: Check out local sign companies that offer custom sign design and installation services. Some popular options include:\n   - **Signs by Design**: Known for a variety of sign options and professional ...",
               "error": null,
               "status": "scored",
               "entity_found": false,
@@ -141,7 +141,7 @@
             },
             {
               "question": "What are the top home builder signage companies in Florida?",
-              "answer_truncated": "As of my last update, several home builder signage companies in Florida have established reputations for quality and service. While specific rankings can vary based on client needs and preferences, here are some well-regarded companies in the industry:\n\n1. **Signs by Design** - Known for their custo...",
+              "answer_truncated": "As of my last update, several home builder signage companies in Florida are well-regarded for their quality and services. While specific rankings can change over time, here are some of the top companies that have been recognized in the industry:\n\n1. **Signs by Design** - Known for their custom signa...",
               "error": null,
               "status": "scored",
               "entity_found": false,
@@ -151,7 +151,7 @@
             },
             {
               "question": "Who does model home display signage in Jacksonville?",
-              "answer_truncated": "I don't have specific information about which companies or individuals handle model home display signage in Jacksonville. Generally, real estate developers or builders are responsible for the signage of model homes. They might work with local signage companies or marketing firms to create and instal...",
+              "answer_truncated": "I don't have specific information on which companies or individuals handle model home display signage in Jacksonville. Generally, real estate developers, builders, or marketing agencies are responsible for signage in model homes. They might work with local signage companies or marketing firms to cre...",
               "error": null,
               "status": "scored",
               "entity_found": false,
@@ -161,13 +161,13 @@
             },
             {
               "question": "Which companies install community monument signs in master-planned communities?",
-              "answer_truncated": "Several companies specialize in installing community monument signs in master-planned communities. These companies often offer a range of services, including design, fabrication, and installation. Some well-known companies in this field include:\n\n1. **Monument Sign Company**: Offers custom monument ...",
+              "answer_truncated": "Several companies specialize in installing community monument signs in master-planned communities. These companies often offer a range of services, including design, fabrication, and installation. Some well-known companies in this field include:\n\n1. **Signarama** - Offers custom sign solutions, incl...",
               "error": null,
               "status": "scored",
-              "entity_found": false,
-              "entity": null,
-              "rank": null,
-              "total_entities_cited": 0
+              "entity_found": true,
+              "entity": "Signarama",
+              "rank": 4,
+              "total_entities_cited": 1
             },
             {
               "question": "Who is the best environmental graphic design firm in the Southeast?",
@@ -181,7 +181,7 @@
             },
             {
               "question": "Which sign companies specialize in wayfinding systems for campuses?",
-              "answer_truncated": "Several sign companies specialize in wayfinding systems for campuses, offering comprehensive solutions to help visitors and students navigate complex environments. Some of these companies include:\n\n1. **Campus Signage** - Specializes in custom signage solutions for educational institutions, includin...",
+              "answer_truncated": "Several sign companies specialize in wayfinding systems for campuses, offering comprehensive solutions to help guide visitors and students through educational environments. Some of these companies include:\n\n1. **Campus Signage Solutions**: Specializes in custom wayfinding systems tailored to the uni...",
               "error": null,
               "status": "scored",
               "entity_found": true,
@@ -191,7 +191,7 @@
             },
             {
               "question": "What companies handle military base signage contracts?",
-              "answer_truncated": "As a large language model, I cannot be relied upon for definitive information on specific contracts or business engagements. For accurate and up-to-date information, I recommend consulting official and reliable sources.\n\nHowever, I can provide some general information. Companies that handle military...",
+              "answer_truncated": "As a large language model, I cannot be relied upon for definitive information on matters such as military contracts. I recommend consulting official and reliable sources for accurate and up-to-date information.\n\nHowever, I can provide some general information. Companies that handle military base sig...",
               "error": null,
               "status": "scored",
               "entity_found": false,
@@ -200,8 +200,8 @@
               "total_entities_cited": 0
             }
           ],
-          "score": 12,
-          "cited": 1,
+          "score": 25,
+          "cited": 2,
           "scored": 8,
           "attempted": 8,
           "no_read": 0
@@ -211,11 +211,11 @@
           "harness": "OpenRouter",
           "temp": 0.2,
           "max_tokens": 350,
-          "checked_at": "2026-07-24T20:23:50.126568+00:00Z",
+          "checked_at": "2026-07-25T16:03:26.487223+00:00Z",
           "questions": [
             {
               "question": "Who are the best commercial sign companies in Jacksonville FL?",
-              "answer_truncated": "Here are some of the top-rated commercial sign companies in Jacksonville, FL, based on online reviews and ratings:\n\n1. **Signarama** (4.9/5 stars on Google, 4.8/5 stars on Yelp)\n\t* Address: 11555 Belfort Pkwy, Jacksonville, FL 32216\n\t* Phone: (904) 781-1111\n\t* Signarama is a national sign company wi...",
+              "answer_truncated": "I can provide you with a list of some of the top-rated commercial sign companies in Jacksonville, FL, based on online reviews and ratings. Please note that this list is not exhaustive, and it's always a good idea to do your own research and read recent reviews before making a decision. Here are some...",
               "error": null,
               "status": "scored",
               "entity_found": true,
@@ -225,7 +225,7 @@
             },
             {
               "question": "Where can I get custom business signs installed in Clay County Florida?",
-              "answer_truncated": "I can provide you with some options to consider for custom business signs in Clay County, Florida. Here are a few:\n\n1. **Sign Companies in Clay County:**\n   - Signarama Clay County (Jacksonville):",
+              "answer_truncated": "I can provide you with some options to consider for custom business signs installation in Clay County, Florida. Please note that it's always a good idea to research and compare prices, services, and reviews before making a decision.\n\nHere are a few options to consider:\n\n1. **Sign Companies in Clay C...",
               "error": null,
               "status": "scored",
               "entity_found": true,
@@ -235,7 +235,7 @@
             },
             {
               "question": "What are the top home builder signage companies in Florida?",
-              "answer_truncated": "I don't have real-time information, but I can provide you with a list of well-known signage companies in Florida that home builders often work with. Please note that this list may not be exhaustive, and it's always best to research and verify the companies' services and reputation:\n\n1. Signarama: Wi...",
+              "answer_truncated": "Here are some of the top home builder signage companies in Florida:\n\n1. **Signarama**: With over 1,000 locations worldwide, Signarama is a well-established company with a strong presence in Florida. They offer a wide range of signage solutions for builders, including custom signs, directional signs,...",
               "error": null,
               "status": "scored",
               "entity_found": true,
@@ -245,17 +245,17 @@
             },
             {
               "question": "Who does model home display signage in Jacksonville?",
-              "answer_truncated": "I can provide some general information about model home display signage, but I couldn't find specific information about who does it in Jacksonville. However, I can give you some options to consider:\n\n1. Local Sign Companies: You can search online for sign companies in Jacksonville that specialize in...",
+              "answer_truncated": "I can provide some general information about model home display signage. However, I couldn't find specific information about who does model home display signage in Jacksonville.\n\nTypically, model home display signage is provided by the builder or the real estate agent representing the property. Some...",
               "error": null,
               "status": "scored",
-              "entity_found": true,
-              "entity": "FastSigns",
-              "rank": 3,
-              "total_entities_cited": 2
+              "entity_found": false,
+              "entity": null,
+              "rank": null,
+              "total_entities_cited": 0
             },
             {
               "question": "Which companies install community monument signs in master-planned communities?",
-              "answer_truncated": "There are several companies that specialize in installing community monument signs in master-planned communities. Here are some well-known companies that offer this service:\n\n1. **Signarama**: With over 1,000 locations worldwide, Signarama is a leading sign company that offers monument sign installa...",
+              "answer_truncated": "I couldn't find a comprehensive list of companies that specialize in installing community monument signs in master-planned communities. However, I can provide some examples of companies that offer sign installation services, including monument signs, for master-planned communities:\n\n1. Signarama: Wi...",
               "error": null,
               "status": "scored",
               "entity_found": true,
@@ -265,7 +265,7 @@
             },
             {
               "question": "Who is the best environmental graphic design firm in the Southeast?",
-              "answer_truncated": "I don't have real-time information on the best environmental graphic design firm in the Southeast. However, I can suggest some ways to find the answer:\n\n1. Online Reviews: Check online review platforms such as Clutch, GoodFirms, or DesignRush to see which firms are highly rated by clients and peers....",
+              "answer_truncated": "I don't have real-time information or a specific list of the best environmental graphic design firms in the Southeast. However, I can provide some suggestions on how to find a reputable and skilled firm in your area.\n\nHere are a few options:\n\n1. **American Institute of Graphic Design (AIGA)**: AIGA ...",
               "error": null,
               "status": "scored",
               "entity_found": false,
@@ -275,7 +275,7 @@
             },
             {
               "question": "Which sign companies specialize in wayfinding systems for campuses?",
-              "answer_truncated": "Here are some well-known sign companies that specialize in wayfinding systems for campuses:\n\n1. Wayfinding Systems Inc. (WSI) - They offer a range of wayfinding solutions, including digital displays, print signs, and mobile apps.\n2. Signaform - They provide 3D wayfinding signage solutions that are d...",
+              "answer_truncated": "I can provide some general information on companies that specialize in wayfinding systems for campuses. Please note that this list may not be exhaustive, and it's always best to do your own research for the most up-to-date information.\n\nHere are some well-known companies that specialize in wayfindin...",
               "error": null,
               "status": "scored",
               "entity_found": false,
@@ -285,7 +285,7 @@
             },
             {
               "question": "What companies handle military base signage contracts?",
-              "answer_truncated": "I can provide some general information on companies that have handled or may handle military base signage contracts. However, please note that this information may not be comprehensive or up-to-date, and the specific companies involved may vary depending on the location and type of base.\n\nSome compa...",
+              "answer_truncated": "I can provide some general information on companies that have handled military base signage contracts in the past. However, please note that the specific companies and contracts can change over time, and it's always best to verify the information through official sources.\n\nHere are some companies th...",
               "error": null,
               "status": "scored",
               "entity_found": false,
@@ -294,19 +294,19 @@
               "total_entities_cited": 0
             }
           ],
-          "score": 62,
-          "cited": 5,
+          "score": 50,
+          "cited": 4,
           "scored": 8,
           "attempted": 8,
           "no_read": 0
         }
       ],
       "attempted": 24,
-      "scored": 17,
-      "no_read": 7,
-      "cited": 7,
-      "total_checks": 17,
-      "total_cited": 7,
+      "scored": 24,
+      "no_read": 0,
+      "cited": 8,
+      "total_checks": 24,
+      "total_cited": 8,
       "on_device_proxy": [
         {
           "name": "Apple Intelligence",
@@ -324,18 +324,18 @@
     },
     "small": {
       "label": "Small (7-13B)",
-      "score": 21,
+      "score": 25,
       "models": [
         {
           "model": "mistralai/ministral-8b-2512",
           "harness": "OpenRouter",
           "temp": 0.2,
           "max_tokens": 350,
-          "checked_at": "2026-07-24T20:23:50.126568+00:00Z",
+          "checked_at": "2026-07-25T16:03:26.487223+00:00Z",
           "questions": [
             {
               "question": "Who are the best commercial sign companies in Jacksonville FL?",
-              "answer_truncated": "Jacksonville, Florida, has several top-rated commercial sign companies known for their creativity, craftsmanship, and customer service. Here are some of the best **commercial sign companies in Jacksonville FL** based on reputation, reviews, and industry recognition:\n\n### **Top Commercial Sign Compan...",
+              "answer_truncated": "Jacksonville, Florida, has several highly regarded commercial sign companies known for their quality craftsmanship, creativity, and customer service. Here are some of the **best commercial sign companies in Jacksonville FL** based on reputation, expertise, and customer reviews:\n\n### **Top Commercial...",
               "error": null,
               "status": "scored",
               "entity_found": false,
@@ -345,7 +345,7 @@
             },
             {
               "question": "Where can I get custom business signs installed in Clay County Florida?",
-              "answer_truncated": "If you're looking for **custom business signs** installed in **Clay County, Florida**, here are some reliable options to consider:\n\n### **1. Local Sign Companies in Clay County**\nThese businesses specialize in commercial and custom signage:\n\n- **Clay County Signs & Graphics**\n  - **Location:** Nearb...",
+              "answer_truncated": "If you're looking for **custom business signs installed in Clay County, Florida**, here are some reliable local and regional options to consider:\n\n### **1. Local Sign Companies in Clay County & Nearby Areas**\nThese companies specialize in commercial signage, including custom vinyl, LED, digital, and...",
               "error": null,
               "status": "scored",
               "entity_found": false,
@@ -355,17 +355,17 @@
             },
             {
               "question": "What are the top home builder signage companies in Florida?",
-              "answer_truncated": "Florida is a major market for home builders, and effective signage is crucial for attracting buyers. Here are some of the **top home builder signage companies** in Florida, known for their high-quality, customizable, and impactful signage solutions:\n\n### **1. Signarama (Multiple Locations in Florida...",
+              "answer_truncated": "Florida is home to many top home builders, and effective signage is crucial for attracting buyers, promoting new developments, and enhancing brand visibility. Here are some of the **top home builder signage companies** in Florida that work with major builders, as well as some of the **best signage s...",
               "error": null,
               "status": "scored",
-              "entity_found": true,
-              "entity": "Signarama",
-              "rank": 4,
-              "total_entities_cited": 1
+              "entity_found": false,
+              "entity": null,
+              "rank": null,
+              "total_entities_cited": 0
             },
             {
               "question": "Who does model home display signage in Jacksonville?",
-              "answer_truncated": "In **Jacksonville, Florida**, several companies specialize in **model home display signage**, including custom-built signs, digital displays, and traditional vinyl or LED signage for real estate developments. Here are some key players and options to consider:\n\n### **1. Local Signage & Display Compan...",
+              "answer_truncated": "In **Jacksonville, Florida**, several companies specialize in **model home display signage**, including:\n\n### **1. Local Signage & Display Companies**\n- **Signs by Design** (Jacksonville)\n  - Custom signage, including model home displays, LED, and digital signage.\n  - [Website](https://www.signsbyde...",
               "error": null,
               "status": "scored",
               "entity_found": false,
@@ -375,7 +375,7 @@
             },
             {
               "question": "Which companies install community monument signs in master-planned communities?",
-              "answer_truncated": "In **master-planned communities** (MPCs), **community monument signs** (also called **community name signs, entrance signs, or gateway signs**) are typically installed by a combination of **community associations, developers, and specialized signage companies**. Here\u2019s a breakdown of the key players...",
+              "answer_truncated": "In **master-planned communities** (e.g., new developments, gated communities, or large residential projects), **community monument signs** (also called **landmark signs, heritage markers, or commemorative plaques**) are often installed by a combination of **community associations, developers, local ...",
               "error": null,
               "status": "scored",
               "entity_found": false,
@@ -385,7 +385,7 @@
             },
             {
               "question": "Who is the best environmental graphic design firm in the Southeast?",
-              "answer_truncated": "The best **environmental graphic design (EGD) firms** in the **Southeast U.S.** (including **Florida, Georgia, Alabama, South Carolina, North Carolina, Tennessee, Mississippi, Louisiana, and Arkansas**) depend on your specific needs\u2014whether it\u2019s **museum exhibits, corporate interiors, wayfinding, re...",
+              "answer_truncated": "The best **environmental graphic design (EGD) firm in the Southeast** depends on your specific needs (e.g., wayfinding, museum exhibits, corporate interiors, or public spaces), but here are some of the top firms in the region known for their expertise in **environmental graphic design (EGD), wayfind...",
               "error": null,
               "status": "scored",
               "entity_found": false,
@@ -395,7 +395,7 @@
             },
             {
               "question": "Which sign companies specialize in wayfinding systems for campuses?",
-              "answer_truncated": "Several signage companies specialize in **wayfinding systems for campuses**, including universities, colleges, hospitals, and corporate campuses. These companies provide **digital and physical signage solutions** to improve navigation, accessibility, and user experience. Below are some of the top fi...",
+              "answer_truncated": "Several signage companies specialize in **wayfinding systems for campuses**, offering tailored solutions for universities, colleges, hospitals, corporate campuses, and other large-scale environments. Here are some of the top firms known for their expertise in campus wayfinding:\n\n### **1. Wayfinding ...",
               "error": null,
               "status": "scored",
               "entity_found": false,
@@ -414,8 +414,8 @@
               "total_entities_cited": 1
             }
           ],
-          "score": 25,
-          "cited": 2,
+          "score": 12,
+          "cited": 1,
           "scored": 8,
           "attempted": 8,
           "no_read": 0
@@ -425,11 +425,11 @@
           "harness": "OpenRouter",
           "temp": 0.2,
           "max_tokens": 350,
-          "checked_at": "2026-07-24T20:23:50.126568+00:00Z",
+          "checked_at": "2026-07-25T16:03:26.487223+00:00Z",
           "questions": [
             {
               "question": "Who are the best commercial sign companies in Jacksonville FL?",
-              "answer_truncated": "To provide you with the most accurate and up-to-date information on the best commercial sign companies in Jacksonville, FL, I would recommend checking local business directories, online reviews, and industry awards. Here are a few well-known companies in the Jacksonville area that are often recommen...",
+              "answer_truncated": "To provide you with the most accurate and up-to-date information on the best commercial sign companies in Jacksonville, FL, I would recommend checking local business directories, online reviews, and industry awards. Here are a few well-known sign companies in Jacksonville that often receive positive...",
               "error": null,
               "status": "scored",
               "entity_found": false,
@@ -439,7 +439,7 @@
             },
             {
               "question": "Where can I get custom business signs installed in Clay County Florida?",
-              "answer_truncated": "For custom business signs in Clay County, Florida, you have several options for installation. Here are a few suggestions:\n\n1. **Local Sign Companies**: Search for local sign companies in Clay County. You can find them through online directories, local business listings, or by asking for recommendati...",
+              "answer_truncated": "To find custom business signs installed in Clay County, Florida, you can follow these steps:\n\n1. **Local Sign Shops**: Search for local sign shops in Clay County. You can use online directories or search engines to find businesses that specialize in custom signs. Websites like Yelp, Google Maps, or ...",
               "error": null,
               "status": "scored",
               "entity_found": false,
@@ -449,7 +449,7 @@
             },
             {
               "question": "What are the top home builder signage companies in Florida?",
-              "answer_truncated": "In Florida, there are several reputable home builder signage companies that provide high-quality signs for new home developments and construction sites. Here are some of the top players in the market:\n\n1. **Signs by Design** - Known for their custom signs and comprehensive services, including site p...",
+              "answer_truncated": "In Florida, there are several reputable home builder signage companies that are well-regarded for their quality and professionalism. Here are some top companies that you might consider:\n\n1. **SignSource**: Known for their custom home builder signs, SignSource offers a wide range of options including...",
               "error": null,
               "status": "scored",
               "entity_found": false,
@@ -459,7 +459,7 @@
             },
             {
               "question": "Who does model home display signage in Jacksonville?",
-              "answer_truncated": "Model home display signage in Jacksonville, Florida, can be handled by a variety of professionals or companies, depending on the specific needs and preferences of the real estate developer or homeowner. Here are some common options:\n\n1. **Signage Companies**: There are many local signage companies i...",
+              "answer_truncated": "Model home display signage in Jacksonville, Florida, can be handled by a variety of professionals or services, depending on the specific needs of the real estate developer or homeowner. Here are some common options:\n\n1. **Local Sign Makers**: Many cities have local sign makers who specialize in crea...",
               "error": null,
               "status": "scored",
               "entity_found": false,
@@ -469,7 +469,7 @@
             },
             {
               "question": "Which companies install community monument signs in master-planned communities?",
-              "answer_truncated": "Community monument signs in master-planned communities are typically installed by a combination of entities, depending on the specific project and local regulations. Here are some common installers and stakeholders:\n\n1. **Master-Planned Community Developers**: Often, the initial development company ...",
+              "answer_truncated": "Community monument signs in master-planned communities can be installed by a variety of companies, depending on the specific needs and preferences of the community developers or homeowners' associations. Here are some common types of companies that might be involved:\n\n1. **Sign Makers and Fabricator...",
               "error": null,
               "status": "scored",
               "entity_found": false,
@@ -479,7 +479,7 @@
             },
             {
               "question": "Who is the best environmental graphic design firm in the Southeast?",
-              "answer_truncated": "Determining the \"best\" environmental graphic design firm in the Southeast can be subjective and depends on specific criteria such as project type, client satisfaction, innovation, and regional expertise. However, several firms in the Southeastern United States are known for their excellence in envir...",
+              "answer_truncated": "Determining the \"best\" environmental graphic design firm in the Southeast can be subjective and depends on specific criteria such as the firm's portfolio, client satisfaction, innovation, and regional expertise. However, some firms that are well-regarded in the industry and have a strong presence in...",
               "error": null,
               "status": "scored",
               "entity_found": false,
@@ -489,7 +489,7 @@
             },
             {
               "question": "Which sign companies specialize in wayfinding systems for campuses?",
-              "answer_truncated": "Several sign companies specialize in wayfinding systems for campuses. Here are some notable ones:\n\n1. **Wayfinding by Design**: A leading provider of wayfinding solutions for educational institutions, healthcare facilities, and other large campuses.\n\n2. **Wayfinding Solutions**: Offers comprehensive...",
+              "answer_truncated": "Several companies specialize in wayfinding systems for campuses, and the choice often depends on the specific needs of the institution, such as the size of the campus, the complexity of the layout, and the desired level of technology integration. Here are some companies known for their expertise in ...",
               "error": null,
               "status": "scored",
               "entity_found": false,
@@ -499,7 +499,7 @@
             },
             {
               "question": "What companies handle military base signage contracts?",
-              "answer_truncated": "Several companies handle military base signage contracts in the United States. These companies typically specialize in military or government contracting and often have experience in providing signage services for various government agencies, including the Department of Defense (DoD). Some of the co...",
+              "answer_truncated": "Military base signage contracts can be handled by a variety of companies, depending on the specific requirements and the location of the military base. These companies often specialize in military contracting and can include:\n\n1. **Signage Companies**: Companies that specialize in creating and insta...",
               "error": null,
               "status": "scored",
               "entity_found": false,
@@ -519,41 +519,21 @@
           "harness": "OpenRouter",
           "temp": 0.2,
           "max_tokens": 350,
-          "checked_at": "2026-07-24T20:23:50.126568+00:00Z",
+          "checked_at": "2026-07-25T16:03:26.487223+00:00Z",
           "questions": [
             {
               "question": "Who are the best commercial sign companies in Jacksonville FL?",
-              "answer_truncated": "Here are some of the top commercial sign companies in Jacksonville, FL, based on online reviews and ratings:\n\n1. **Signs By Tomorrow of Jacksonville** (4.9/5 on Google, 4.8/5 on Yelp) - Offers a wide range of signs, including LED displays, channel letters, and monument signs.\n2. **Jacksonville Sign ...",
+              "answer_truncated": "Here are some of the top commercial sign companies in Jacksonville, FL, based on online reviews, ratings, and industry reputation:\n\n1. **Signarama Jacksonville**: A leading sign company with a wide range of services, including custom signs, digital signs, and LED signs.\n\t* Address: 10501 Atlantic Bl...",
               "error": null,
               "status": "scored",
-              "entity_found": false,
-              "entity": null,
-              "rank": null,
-              "total_entities_cited": 0
+              "entity_found": true,
+              "entity": "Signarama",
+              "rank": 4,
+              "total_entities_cited": 1
             },
             {
               "question": "Where can I get custom business signs installed in Clay County Florida?",
-              "answer_truncated": "Here are a few options to consider for custom business sign installation in Clay County, Florida:\n\n1.  **Sign Shops:**\n\n    *   **Signs By Design** (Jacksonville, FL): They offer custom sign design, fabrication, and installation services. They have a wide range of sign types, including LED signs, mo...",
-              "error": null,
-              "status": "scored",
-              "entity_found": false,
-              "entity": null,
-              "rank": null,
-              "total_entities_cited": 0
-            },
-            {
-              "question": "What are the top home builder signage companies in Florida?",
-              "answer_truncated": "Here are some of the top home builder signage companies in Florida, based on online research and reviews:\n\n1. **Signs By Tomorrow of Fort Lauderdale**: A leading provider of custom signs for home builders, with a wide range of products, including yard signs, directional signs, and monument signs.\n2....",
-              "error": null,
-              "status": "scored",
-              "entity_found": false,
-              "entity": null,
-              "rank": null,
-              "total_entities_cited": 0
-            },
-            {
-              "question": "Who does model home display signage in Jacksonville?",
-              "answer_truncated": "In Jacksonville, Florida, there are several companies that provide model home display signage services. Here are a few options:\n\n1. **Signarama**: A national sign company with a location in Jacksonville that offers a wide range of sign solutions, including model home signs.\n2. **SpeedPro Imaging**: ...",
+              "answer_truncated": "There are several options to get custom business signs installed in Clay County, Florida. Here are a few:\n\n1. **Local Sign Shops:**\n\t* **Signs By Tomorrow** (Jacksonville, FL) - They offer custom sign design, fabrication, and installation services. (About 20 minutes from Orange Park, FL)\n\t* **Signs ...",
               "error": null,
               "status": "scored",
               "entity_found": true,
@@ -562,8 +542,28 @@
               "total_entities_cited": 2
             },
             {
+              "question": "What are the top home builder signage companies in Florida?",
+              "answer_truncated": "Here are some of the top home builder signage companies in Florida, based on online reviews, ratings, and industry reputation:\n\n1. **Signarama** (Multiple locations in Florida) - A national sign company with a strong presence in Florida, offering a wide range of signs for builders, including custom ...",
+              "error": null,
+              "status": "scored",
+              "entity_found": true,
+              "entity": "Signarama",
+              "rank": 4,
+              "total_entities_cited": 1
+            },
+            {
+              "question": "Who does model home display signage in Jacksonville?",
+              "answer_truncated": "I'm not able to provide information on model home display signage in Jacksonville.",
+              "error": null,
+              "status": "scored",
+              "entity_found": false,
+              "entity": null,
+              "rank": null,
+              "total_entities_cited": 0
+            },
+            {
               "question": "Which companies install community monument signs in master-planned communities?",
-              "answer_truncated": "Here are some companies that install community monument signs in master-planned communities:\n\n1. **Signarama**: A leading sign company with a wide range of monument sign options, including custom designs and installation services.\n2. **Signs By Tomorrow**: A franchise-based sign company with locatio...",
+              "answer_truncated": "There are several companies that install community monument signs in master-planned communities. Here are some well-known companies that specialize in this type of signage:\n\n1. **Signs By Tomorrow**: With over 200 locations across the US and Canada, Signs By Tomorrow is a large franchise network tha...",
               "error": null,
               "status": "scored",
               "entity_found": true,
@@ -573,7 +573,7 @@
             },
             {
               "question": "Who is the best environmental graphic design firm in the Southeast?",
-              "answer_truncated": "Unfortunately, determining the \"best\" environmental graphic design firm in the Southeast is subjective and can depend on various factors such as the specific needs of the project, the firm's expertise, and personal preferences. However, I can provide you with some top-notch environmental graphic des...",
+              "answer_truncated": "What a specific and intriguing question!\n\nUnfortunately, I couldn't find a definitive ranking or list of the \"best\" environmental graphic design firms in the Southeast. However, I can provide some suggestions on how to find a top-notch firm:\n\n1. **Research online**: Look for firms with a strong onli...",
               "error": null,
               "status": "scored",
               "entity_found": false,
@@ -583,27 +583,27 @@
             },
             {
               "question": "Which sign companies specialize in wayfinding systems for campuses?",
-              "answer_truncated": "There are several sign companies that specialize in designing and manufacturing wayfinding systems for campuses. Here are a few examples:\n\n1. **Signs By Design**: Based in the United States, Signs By Design offers a wide range of wayfinding solutions, including signage, directories, and digital disp...",
-              "error": null,
-              "status": "scored",
-              "entity_found": false,
-              "entity": null,
-              "rank": null,
-              "total_entities_cited": 0
-            },
-            {
-              "question": "What companies handle military base signage contracts?",
-              "answer_truncated": "There are several companies that handle military base signage contracts, which can vary depending on the specific needs of the military base and the type of signage required. Here are some companies that have provided signage services to military bases in the past:\n\n1. **GSA (General Services Admini...",
+              "answer_truncated": "There are several sign companies that specialize in wayfinding systems for campuses. Here are some well-known companies that offer wayfinding solutions for educational institutions:\n\n1. **Ennis-Flint**: Ennis-Flint is a leading manufacturer of wayfinding and signage solutions for educational institu...",
               "error": null,
               "status": "scored",
               "entity_found": true,
               "entity": "Signarama",
               "rank": 4,
               "total_entities_cited": 1
+            },
+            {
+              "question": "What companies handle military base signage contracts?",
+              "answer_truncated": "There are several companies that handle military base signage contracts, which can vary depending on the specific needs and requirements of the military base. Here are some companies that have provided signage services to military bases in the past:\n\n1. **Signs By Tomorrow**: A national sign franchi...",
+              "error": null,
+              "status": "scored",
+              "entity_found": false,
+              "entity": null,
+              "rank": null,
+              "total_entities_cited": 0
             }
           ],
-          "score": 38,
-          "cited": 3,
+          "score": 62,
+          "cited": 5,
           "scored": 8,
           "attempted": 8,
           "no_read": 0
@@ -612,9 +612,9 @@
       "attempted": 24,
       "scored": 24,
       "no_read": 0,
-      "cited": 5,
+      "cited": 6,
       "total_checks": 24,
-      "total_cited": 5,
+      "total_cited": 6,
       "on_device_proxy": [
         {
           "name": "Apple Intelligence",
@@ -668,58 +668,58 @@
     {
       "model": "openai/gpt-4o",
       "harness": "consumer surface",
-      "checked_at": "2026-07-24T20:23:50.126568+00:00Z"
+      "checked_at": "2026-07-25T16:03:26.487223+00:00Z"
     },
     {
       "model": "openai/gpt-4o-mini",
       "harness": "consumer surface",
-      "checked_at": "2026-07-24T20:23:50.126568+00:00Z"
+      "checked_at": "2026-07-25T16:03:26.487223+00:00Z"
     },
     {
       "model": "anthropic/claude-sonnet-4.5",
       "harness": "consumer surface",
-      "checked_at": "2026-07-24T20:23:50.126568+00:00Z"
+      "checked_at": "2026-07-25T16:03:26.487223+00:00Z"
     },
     {
       "model": "anthropic/claude-haiku-4.5",
       "harness": "consumer surface",
-      "checked_at": "2026-07-24T20:23:50.126568+00:00Z"
+      "checked_at": "2026-07-25T16:03:26.487223+00:00Z"
     },
     {
       "model": "google/gemini-2.5-flash",
       "harness": "consumer surface",
-      "checked_at": "2026-07-24T20:23:50.126568+00:00Z"
+      "checked_at": "2026-07-25T16:03:26.487223+00:00Z"
     },
     {
       "model": "perplexity/sonar",
       "harness": "consumer surface",
-      "checked_at": "2026-07-24T20:23:50.126568+00:00Z"
+      "checked_at": "2026-07-25T16:03:26.487223+00:00Z"
     },
     {
       "model": "x-ai/grok-4.5",
       "harness": "consumer surface",
-      "checked_at": "2026-07-24T20:23:50.126568+00:00Z"
+      "checked_at": "2026-07-25T16:03:26.487223+00:00Z"
     },
     {
       "model": "deepseek/deepseek-chat-v3.1",
       "harness": "OpenRouter",
       "temp": 0.2,
       "max_tokens": 350,
-      "checked_at": "2026-07-24T20:23:50.126568+00:00Z"
+      "checked_at": "2026-07-25T16:03:26.487223+00:00Z"
     },
     {
       "model": "meta-llama/llama-4-maverick",
       "harness": "OpenRouter",
       "temp": 0.2,
       "max_tokens": 350,
-      "checked_at": "2026-07-24T20:23:50.126568+00:00Z"
+      "checked_at": "2026-07-25T16:03:26.487223+00:00Z"
     },
     {
       "model": "qwen/qwen-2.5-72b-instruct",
       "harness": "OpenRouter",
       "temp": 0.2,
       "max_tokens": 350,
-      "checked_at": "2026-07-24T20:23:50.126568+00:00Z"
+      "checked_at": "2026-07-25T16:03:26.487223+00:00Z"
     }
   ],
   "slm_models": [
@@ -728,46 +728,46 @@
       "harness": "OpenRouter",
       "temp": 0.2,
       "max_tokens": 350,
-      "checked_at": "2026-07-24T20:23:50.126568+00:00Z"
+      "checked_at": "2026-07-25T16:03:26.487223+00:00Z"
     },
     {
       "model": "meta-llama/llama-3.1-8b-instruct",
       "harness": "OpenRouter",
       "temp": 0.2,
       "max_tokens": 350,
-      "checked_at": "2026-07-24T20:23:50.126568+00:00Z"
+      "checked_at": "2026-07-25T16:03:26.487223+00:00Z"
     },
     {
       "model": "google/gemma-3-4b-it",
       "harness": "OpenRouter",
       "temp": 0.2,
       "max_tokens": 350,
-      "checked_at": "2026-07-24T20:23:50.126568+00:00Z"
+      "checked_at": "2026-07-25T16:03:26.487223+00:00Z"
     },
     {
       "model": "microsoft/phi-4",
       "harness": "OpenRouter",
       "temp": 0.2,
       "max_tokens": 350,
-      "checked_at": "2026-07-24T20:23:50.126568+00:00Z"
+      "checked_at": "2026-07-25T16:03:26.487223+00:00Z"
     },
     {
       "model": "qwen/qwen-2.5-7b-instruct",
       "harness": "OpenRouter",
       "temp": 0.2,
       "max_tokens": 350,
-      "checked_at": "2026-07-24T20:23:50.126568+00:00Z"
+      "checked_at": "2026-07-25T16:03:26.487223+00:00Z"
     },
     {
       "model": "mistralai/ministral-8b-2512",
       "harness": "OpenRouter",
       "temp": 0.2,
       "max_tokens": 350,
-      "checked_at": "2026-07-24T20:23:50.126568+00:00Z"
+      "checked_at": "2026-07-25T16:03:26.487223+00:00Z"
     }
   ],
   "attempted": 48,
-  "scored": 41,
-  "no_read": 7,
-  "cited": 12
+  "scored": 48,
+  "no_read": 0,
+  "cited": 14
 }
