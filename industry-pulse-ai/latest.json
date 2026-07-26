@@ -1,50 +1,50 @@
 {
-  "generated": "2026-07-26T10:00:04Z",
+  "generated": "2026-07-26T18:05:00Z",
   "latest_date": "2026-07-26",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "MCP 2026-07-28 stateless spec is now 2 days out — the breaking rewrite ratifies Tuesday",
-      "summary": "The final spec publishes Jul 28 and removes the session handshake, so a remote MCP server can sit behind a plain round-robin load balancer and scale horizontally like any web API; it also brings Extensions/Tasks/MCP Apps, auth hardening and a formal deprecation policy. Scale context: 10,000+ public MCP servers in production, 97M+ monthly SDK downloads.",
+      "title": "Claude Opus 5 shipped Friday (Jul 24) — near-Fable-5 intelligence at half the price, now the Max default",
+      "summary": "Opus 5 lands with a 1M-token context, up to 128K output, adaptive thinking on by default and a five-level effort ladder; Anthropic says it approaches Fable 5's intelligence at half the price ($5/$25 per M tok), sets a new Anthropic SOTA on Frontier-Bench and GDPval-AA, and becomes the default on Claude Max / strongest on Pro. Ships with two beta Platform features: mid-conversation tool changes (swap tools without invalidating the prompt cache) and automatic API fallbacks.",
       "tag": "yes",
-      "how": "Every MCP server The Construct runs is 2 days from a breaking change; the migration + least-authority hardening inventory has to close before Tuesday, and the Tasks extension maps straight onto our long-running scan jobs. Load-bearing action of the week.",
-      "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/"
+      "how": "This is the model layer the whole Construct fleet runs on; Opus 5 is the new price/performance default to standardize the agents on, and mid-conversation tool changes map directly onto our long-running scan loops that add/drop connectors mid-run without paying to rebuild the cache. The Anthropic drop the morning board under-weighted.",
+      "url": "https://www.axios.com/2026/07/24/anthropic-releases-new-model-opus-5"
     },
     {
       "n": 2,
-      "title": "arXiv: 'LLM Agents Are Latent Context Managers' (VISTA) — updated Jul 23",
-      "summary": "VISTA (Visible Internal State for Tool Agents) is a training-free, model-agnostic layer that represents an agent's working memory as typed, addressable blocks, attacking the failure mode where long-horizon tool agents degrade as context grows toward the window limit.",
+      "title": "MCP 2026-07-28 stateless spec is now 2 days out — the breaking rewrite ratifies Tuesday",
+      "summary": "The final spec publishes Jul 28 and removes the session handshake, so a remote MCP server can sit behind a plain round-robin load balancer and scale horizontally like any web API; it also brings Extensions/Tasks/MCP Apps, OAuth/OIDC-aligned auth hardening and a formal deprecation policy. Scale context: 10,000+ public MCP servers, 97M+ monthly SDK downloads.",
       "tag": "yes",
-      "how": "Our daily/weekly scan agents are exactly long-horizon tool loops that bloat context; typed, addressable working-memory blocks are a concrete pattern to keep the Lens/Prism/Pulse jobs coherent across many tool calls without dumping everything into one context.",
-      "url": "https://arxiv.org/abs/2606.30005"
+      "how": "Every MCP server The Construct runs is 2 days from a breaking change; the migration + least-authority hardening inventory has to close before Tuesday, and the Tasks extension maps straight onto our long-running scan jobs. Still the load-bearing plumbing action of the week.",
+      "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/"
     },
     {
       "n": 3,
-      "title": "Axonius ships an AI Agent + MCP Server for asset intelligence (Jul 21)",
-      "summary": "Axonius connects asset-inventory and security-posture data to enterprise AI so an agent can query what's deployed and where the exposures are.",
-      "tag": "maybe",
-      "how": "The pattern, not the product, is the lesson: an asset/tool inventory + posture check is exactly what our own MCP fleet needs as the Jul-28 migration lands — treat every connector as a governed asset with least-authority scoping and a migration checklist.",
-      "url": "https://www.globenewswire.com/news-release/2026/07/21/3330527/0/en/Axonius-Launches-AI-Agent-and-MCP-Server-to-Seamlessly-Connect-Asset-Intelligence-to-Enterprise-AI.html"
+      "title": "arXiv: 'Context Engineering: From Prompts to Corporate Multi-Agent Architecture' (2603.09619)",
+      "summary": "Proposes five context-quality criteria — relevance, sufficiency, isolation, economy, provenance — and frames context as the agent's operating system, synthesizing vendor architectures with the academic literature.",
+      "tag": "yes",
+      "how": "A concrete rubric for the exact failure mode our scan agents hit (context bloat over long tool loops); 'economy' and 'isolation' are directly actionable for keeping Lens/Prism/Pulse coherent without dumping everything into one window — the design-side complement to Opus 5's mid-conversation tool changes.",
+      "url": "https://arxiv.org/abs/2603.09619"
     },
     {
       "n": 4,
-      "title": "Google ships a series of cheaper Gemini models, incl. Gemini 3.6 Flash (Jul 21)",
-      "summary": "Google widened the Gemini line with lower-cost tiers aimed at high-volume workloads, with 3.6 Flash the newest fast/cheap default.",
+      "title": "Agent/search funding stays revenue-backed: Perplexity $60M ext at $3.5B (Bezos + NVIDIA), Glean $180M ext",
+      "summary": "July saw $1.8B+ across 12+ agent deals, now underwritten by hard metrics (coding agents at $50M+ ARR / 150%+ NRR, enterprise workflow agents closing six-figure F500 contracts) rather than narrative.",
       "tag": "maybe",
-      "how": "Keeps the cost/quality split clean for the fleet: cheap Flash for high-volume batch text/image passes, a reasoning tier only for jobs that need it; benchmark against current defaults before rewiring anything load-bearing.",
-      "url": "https://www.axios.com/2026/07/21/google-gemini-ai-models"
+      "how": "Market context, not a tool: it validates PRAGMA's 'AI-operator' thesis that buyers now pay for outcome-backed agents, and sets the bar for how we frame the owned-presence/operator wedge to SMB clients. No build action.",
+      "url": "https://aifunding.me/insights/ai-agent-funding-july-2026"
     },
     {
       "n": 5,
-      "title": "Featured launches an MCP server bringing AI agents to PR agencies (GA Jul 2026)",
-      "summary": "Featured connects Claude/Cursor/VS Code to a Featured account so one natural-language request surfaces media queries, journalists, podcasts, byline publications, LinkedIn influencers, speaking engagements with open CFPs, and awards.",
+      "title": "Google's cheaper Gemini line, incl. Gemini 3.6 Flash (Jul 21), holds the low-cost tier",
+      "summary": "Google widened the Gemini family with lower-cost tiers aimed at high-volume workloads, 3.6 Flash the newest fast/cheap default.",
       "tag": "maybe",
-      "how": "A ready-made earned-media/PR data source for the Brand 9 Signs + PRAGMA owned-presence wedge: a Construct comms agent could pull relevant queries and CFPs before drafting outreach, extending the 'AI drafts, human approves' module into PR.",
-      "url": "https://www.globenewswire.com/news-release/2026/07/07/3323391/0/en/Featured-Launches-an-MCP-Server-Bringing-AI-Agents-to-PR-Agencies.html"
+      "how": "Keeps the cost/quality split clean for the fleet: cheap Flash for high-volume batch text/image passes, a reasoning tier (now Opus 5) only where it earns its cost; benchmark before rewiring anything load-bearing.",
+      "url": "https://www.axios.com/2026/07/21/google-gemini-ai-models"
     }
   ],
-  "praxis_lesson": "On a quiet Sunday with no new Anthropic drop since Friday's MCP-to-Agentic-AI-Foundation donation, the board's center of gravity stays the plumbing, not the models: the stateless rewrite ratifies in 2 days and touches every write-capable connector we run, so the single load-bearing action remains the migration + least-authority hardening inventory before Tuesday. The supporting theme is context discipline — VISTA's typed, addressable working memory is the research-grade version of the same problem our long-running scan agents already hit, and the governance-as-assets framing (Axonius) is how to walk into the migration clean.",
+  "praxis_lesson": "The morning board rolled forward on the assumption of 'no new Anthropic drop,' but Friday's Claude Opus 5 was exactly that — a flagship model release, directly load-bearing because it's the layer the fleet runs on, and it should have led from 06:00. The reconcile correction: a same-day re-fire earns no rewrite only when it surfaces already-seated or older items — but a genuine miss of a flagship release always earns the rewrite. The week's throughline holds underneath: standardize the agents on Opus 5 (new default, mid-conversation tool changes), close the Jul-28 stateless-MCP migration + least-authority inventory before Tuesday, and treat context as a governed resource.",
   "history": [
     "2026-07-26",
     "2026-07-25",

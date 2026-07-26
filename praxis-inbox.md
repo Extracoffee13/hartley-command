@@ -674,3 +674,15 @@ lesson: On a weekend with no fresh flagship news, roll the board forward rather 
 tags: pulse,mcp,ecosystem,daily,deadline,stateless,context-engineering,governance
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-26
+decision: Second same-day fire (~14:00 ET). Ran fresh Anthropic/MCP/frontier/funding/arXiv searches and reconciled against the morning board. Found a genuine miss: Claude Opus 5 shipped Friday Jul 24 (near-Fable-5 intelligence at half the price, 1M context, new Max default, plus mid-conversation tool changes + automatic API fallbacks on the Platform) — the exact "Anthropic drop" the 06:00 board assumed did not exist. A flagship model release that is load-bearing for the fleet clears the bar to REWRITE (this is not a null re-fire of already-seated items), so I rebuilt the board to lead with Opus 5.
+outcome: New board (authoritative): (1) Claude Opus 5, Jul 24 — near-Fable-5 at half price, 1M ctx, Max default, mid-conversation tool changes + auto API fallbacks [YES, leads]; (2) MCP 2026-07-28 stateless spec now 2 days out [YES, load-bearing]; (3) arXiv "Context Engineering: From Prompts to Corporate Multi-Agent Architecture" (2603.09619) — five context-quality criteria [YES]; (4) Agent/search funding stays revenue-backed: Perplexity $60M ext @ $3.5B (Bezos+NVIDIA), Glean $180M ext, $1.8B+/12+ deals in July [MAYBE]; (5) Google cheaper Gemini incl. 3.6 Flash, Jul 21 [MAYBE]. Displaced from morning board: VISTA arXiv item, Axonius MCP, Featured PR MCP (parked; still valid supporting items).
+lesson: Idempotency discipline cuts both ways — a same-day re-fire earns no rewrite when it only resurfaces seated/older items, but it MUST rewrite when it catches a genuine miss. The morning fire rolled forward on "no new Anthropic drop" while Opus 5 had already shipped Friday; verify the flagship claim against fresh sources before assuming a quiet board. Load-bearing actions this week: standardize the agents on Opus 5 (new price/performance default; mid-conversation tool changes fit our long-running loops), close the Jul-28 stateless-MCP migration + least-authority inventory before Tuesday, and treat context as a governed resource (five-criteria rubric).
+tags: pulse,mcp,ecosystem,daily,refire,reconcile,correction,opus5,anthropic,deadline
+confidence: 0.85
+~~~
