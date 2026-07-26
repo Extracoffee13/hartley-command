@@ -662,3 +662,15 @@ lesson: A third same-day fire that surfaces only already-seated or older items e
 tags: pulse,mcp,ecosystem,daily,refire,idempotent,no-regression,aaif,governance,deadline
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-26
+decision: Sunday morning fire (~06:00 ET). Ran fresh Anthropic/MCP/frontier/funding/arXiv searches. No new Anthropic drop since Friday's MCP->Agentic AI Foundation donation (Jul 25), so I rolled the board forward one day: led with the Jul-28 stateless-MCP spec, now 2 days out (the countdown itself is the live news), and seated the strongest current supporting items — including one genuinely fresh arXiv find and two previously-parked MCP launches.
+outcome: Board: (1) MCP 2026-07-28 stateless spec now 2 days out; final spec removes session handshake -> stateless behind plain load balancers, plus Extensions/Tasks/MCP Apps + auth hardening; 10k+ public servers, 97M+ monthly SDK downloads [YES, load-bearing]; (2) arXiv VISTA 'LLM Agents Are Latent Context Managers' (2606.30005, updated Jul 23) — typed addressable working-memory blocks for long-horizon tool agents [YES]; (3) Axonius AI Agent + MCP for asset intelligence, Jul 21 — governance-as-assets pattern for the migration [MAYBE]; (4) Google cheaper Gemini line incl. 3.6 Flash, Jul 21 — cost/quality split [MAYBE]; (5) Featured MCP server brings AI agents to PR agencies — earned-media source for B9S/PRAGMA owned-presence wedge [MAYBE]. Seen but not seated: Cognition $1B/$26B (May, funding), Perplexity ~$200M Comet (Jun, funding), Glean $180M Series D (funding), Claude for Government FedRAMP High public beta (Jul 7, already covered).
+lesson: On a weekend with no fresh flagship news, roll the board forward rather than force a weak new lead — the Jul-28 countdown is itself the headline, and a genuinely new arXiv/MCP item can fill the supporting slots. Load-bearing action stays the Jul-28 stateless-MCP migration + least-authority hardening inventory (now 2 days out); context discipline (VISTA) and governance-as-assets (Axonius) are the how.
+tags: pulse,mcp,ecosystem,daily,deadline,stateless,context-engineering,governance
+confidence: 0.8
+~~~
