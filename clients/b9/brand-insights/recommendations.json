@@ -1,11 +1,11 @@
 {
   "schema_version": "2.0",
-  "ts": "2026-07-26T11:00:27.112483Z",
+  "ts": "2026-07-26T17:22:20.660141Z",
   "client": "b9",
   "policy": "RECOMMEND-ONLY \u2014 nothing in this queue is auto-applied to any live site. Each item requires explicit human action.",
   "counts": {
-    "total": 11,
-    "high": 5,
+    "total": 14,
+    "high": 8,
     "med": 6,
     "low": 0
   },
@@ -83,7 +83,43 @@
       "status": "queued"
     },
     {
-      "id": "rec-geo-007",
+      "id": "rec-llm-007",
+      "module": "LLM",
+      "severity": "high",
+      "page_or_area": "Who makes the best wayfinding signs in Florida? (parametric)",
+      "issue": "Brand 9 Signs is absent from ChatGPT's answer for this question.",
+      "recommendation": "Strengthen a direct answer page \u2014 named entity, concrete proof, FAQPage schema, outbound citations \u2014 so assistants name Brand 9 Signs.",
+      "before": "(absent)",
+      "after": "Brand 9 Signs named by the assistant for this question.",
+      "action": "content",
+      "status": "queued"
+    },
+    {
+      "id": "rec-llm-008",
+      "module": "LLM",
+      "severity": "high",
+      "page_or_area": "Who makes the best homebuilder and community signs in Florida? (parametric)",
+      "issue": "Brand 9 Signs is absent from ChatGPT's answer for this question.",
+      "recommendation": "Strengthen a direct answer page \u2014 named entity, concrete proof, FAQPage schema, outbound citations \u2014 so assistants name Brand 9 Signs.",
+      "before": "(absent)",
+      "after": "Brand 9 Signs named by the assistant for this question.",
+      "action": "content",
+      "status": "queued"
+    },
+    {
+      "id": "rec-llm-009",
+      "module": "LLM",
+      "severity": "high",
+      "page_or_area": "Who makes the best homebuilder and community signs in Florida? (parametric)",
+      "issue": "Brand 9 Signs is absent from Claude's answer for this question.",
+      "recommendation": "Strengthen a direct answer page \u2014 named entity, concrete proof, FAQPage schema, outbound citations \u2014 so assistants name Brand 9 Signs.",
+      "before": "(absent)",
+      "after": "Brand 9 Signs named by the assistant for this question.",
+      "action": "content",
+      "status": "queued"
+    },
+    {
+      "id": "rec-geo-010",
       "module": "GEO",
       "severity": "med",
       "page_or_area": "eTown Jacksonville",
@@ -95,7 +131,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-geo-008",
+      "id": "rec-geo-011",
       "module": "GEO",
       "severity": "med",
       "page_or_area": "Shearwater St Johns",
@@ -107,7 +143,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-geo-009",
+      "id": "rec-geo-012",
       "module": "GEO",
       "severity": "med",
       "page_or_area": "RiverTown St Johns",
@@ -119,7 +155,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-geo-010",
+      "id": "rec-geo-013",
       "module": "GEO",
       "severity": "med",
       "page_or_area": "Tributary Yulee",
@@ -131,7 +167,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-geo-011",
+      "id": "rec-geo-014",
       "module": "GEO",
       "severity": "med",
       "page_or_area": "Google Business Profile",
