@@ -1,20 +1,20 @@
 {
-  "generated": "2026-07-25T16:28:56.400904Z",
+  "generated": "2026-07-26T11:25:06.089584Z",
   "data_source": "PRAGMA Site-Health Operator \u2014 owned crawl (key-free); GSC enrichment pending project access",
   "version": "1.1.0",
   "phase": "1",
   "domain": "brand9signs.com",
-  "health_score": 96,
+  "health_score": 73,
   "health_score_breakdown": {
     "method": "Ahrefs-equivalent \u2014 base 100, deducted for real issues affecting SERP performance (owned crawl)",
     "deductions": {
       "title_tags_over_60_chars": {
-        "count": 8,
-        "penalty": 4.0
+        "count": 30,
+        "penalty": 15.0
       },
       "meta_descriptions_over_155_chars": {
-        "count": 0,
-        "penalty": 0.0
+        "count": 39,
+        "penalty": 11.7
       },
       "missing_h1_on_content_pages": {
         "count": 0,
@@ -33,43 +33,123 @@
         "penalty": 0.0
       }
     },
-    "final_score": 95.7
+    "final_score": 73.0
   },
   "crawl": {
-    "timestamp": "2026-07-25T16:28:56.400904Z",
-    "duration_s": 124.2,
-    "pages_crawled": 120,
+    "timestamp": "2026-07-26T11:25:06.089584Z",
+    "duration_s": 260.2,
+    "pages_crawled": 261,
     "status_codes": {
-      "200": 120
+      "200": 261
     },
-    "avg_load_time_s": 1.594,
+    "avg_load_time_s": 1.639,
     "slow_pages_over_1.5s": 4,
     "slow_pages_over_2.0s": 0,
     "slowest_pages": [
       {
-        "url": "https://brand9signs.com/",
+        "url": "https://brand9signs.com/branding-vs-marketing-founders-guide/",
+        "load_s": 1.877
+      },
+      {
+        "url": "https://brand9signs.com/signage-jacksonville/",
         "load_s": 1.767
       },
       {
-        "url": "https://brand9signs.com/who-does-the-best-environmental-graphic-design-in-florida/",
-        "load_s": 1.642
+        "url": "https://brand9signs.com/product/community-readerboard-signage/",
+        "load_s": 1.651
       },
       {
-        "url": "https://brand9signs.com/the-history-of-margarets-walk/",
-        "load_s": 1.57
+        "url": "https://brand9signs.com/signage-clay-county/",
+        "load_s": 1.647
       },
       {
-        "url": "https://brand9signs.com/the-power-of-campus-branding-schools-colleges-universities/",
-        "load_s": 1.561
-      },
-      {
-        "url": "https://brand9signs.com/jacksonville-sign-company/",
-        "load_s": 1.431
+        "url": "https://brand9signs.com/what-makes-wayfinding-signage-effective/",
+        "load_s": 1.254
       }
     ]
   },
   "issues_detail": {
     "title_over_60": [
+      {
+        "url": "https://brand9signs.com/signage-jacksonville/",
+        "title_len": 93
+      },
+      {
+        "url": "https://brand9signs.com/product/home-builder-exterior-signs/",
+        "title_len": 88
+      },
+      {
+        "url": "https://brand9signs.com/product/military-base-signs/",
+        "title_len": 88
+      },
+      {
+        "url": "https://brand9signs.com/product/home-builder-marketing/",
+        "title_len": 87
+      },
+      {
+        "url": "https://brand9signs.com/signage-miami/",
+        "title_len": 84
+      },
+      {
+        "url": "https://brand9signs.com/product/outdoor-wayfinding-signage/",
+        "title_len": 82
+      },
+      {
+        "url": "https://brand9signs.com/product/brand-identity-2/",
+        "title_len": 80
+      },
+      {
+        "url": "https://brand9signs.com/product/brand-strategy/",
+        "title_len": 79
+      },
+      {
+        "url": "https://brand9signs.com/product/motion-graphics-brand-visuals/",
+        "title_len": 78
+      },
+      {
+        "url": "https://brand9signs.com/product/hotel-signs/",
+        "title_len": 78
+      },
+      {
+        "url": "https://brand9signs.com/product/church-branding/",
+        "title_len": 77
+      },
+      {
+        "url": "https://brand9signs.com/product/premium-graphic-design-services/",
+        "title_len": 76
+      },
+      {
+        "url": "https://brand9signs.com/product/marketing-strategy/",
+        "title_len": 76
+      },
+      {
+        "url": "https://brand9signs.com/product/school-branding/",
+        "title_len": 75
+      },
+      {
+        "url": "https://brand9signs.com/product/corporate-investor-pitch-decks/",
+        "title_len": 74
+      },
+      {
+        "url": "https://brand9signs.com/product/custom-podiums/",
+        "title_len": 73
+      },
+      {
+        "url": "https://brand9signs.com/product/motion-films/",
+        "title_len": 72
+      },
+      {
+        "url": "https://brand9signs.com/product/ai-business-development-services/",
+        "title_len": 71
+      },
+      {
+        "url": "https://brand9signs.com/product/interior-directory-signage/",
+        "title_len": 71
+      },
+      {
+        "url": "https://brand9signs.com/product/exterior-wayfinding/",
+        "title_len": 69
+      },
       {
         "url": "https://brand9signs.com/who-makes-the-best-luxury-hotel-and-resort-signage-in-fort-lauderdale/",
         "title_len": 68
@@ -80,6 +160,14 @@
       },
       {
         "url": "https://brand9signs.com/who-makes-the-best-luxury-hotel-and-resort-signage-in-marco-island/",
+        "title_len": 65
+      },
+      {
+        "url": "https://brand9signs.com/community-monument-sign-cost/",
+        "title_len": 65
+      },
+      {
+        "url": "https://brand9signs.com/product/builder-barricades/",
         "title_len": 65
       },
       {
@@ -103,7 +191,164 @@
         "title_len": 61
       }
     ],
-    "meta_over_155": [],
+    "meta_over_155": [
+      {
+        "url": "https://brand9signs.com/frequently-asked-questions/",
+        "meta_len": 290
+      },
+      {
+        "url": "https://brand9signs.com/contact/",
+        "meta_len": 290
+      },
+      {
+        "url": "https://brand9signs.com/product/home-builder-exterior-signs/",
+        "meta_len": 287
+      },
+      {
+        "url": "https://brand9signs.com/product/hotel-signs/",
+        "meta_len": 276
+      },
+      {
+        "url": "https://brand9signs.com/product/home-builder-marketing/",
+        "meta_len": 243
+      },
+      {
+        "url": "https://brand9signs.com/product/school-branding/",
+        "meta_len": 236
+      },
+      {
+        "url": "https://brand9signs.com/product/custom-podiums/",
+        "meta_len": 223
+      },
+      {
+        "url": "https://brand9signs.com/product/exterior-wayfinding/",
+        "meta_len": 213
+      },
+      {
+        "url": "https://brand9signs.com/product/military-base-signs/",
+        "meta_len": 208
+      },
+      {
+        "url": "https://brand9signs.com/product/builder-barricades/",
+        "meta_len": 203
+      },
+      {
+        "url": "https://brand9signs.com/signage-jacksonville/",
+        "meta_len": 199
+      },
+      {
+        "url": "https://brand9signs.com/product/interior-directory-signage/",
+        "meta_len": 197
+      },
+      {
+        "url": "https://brand9signs.com/product/church-branding/",
+        "meta_len": 196
+      },
+      {
+        "url": "https://brand9signs.com/signage-miami/",
+        "meta_len": 192
+      },
+      {
+        "url": "https://brand9signs.com/product/outdoor-wayfinding-signage/",
+        "meta_len": 190
+      },
+      {
+        "url": "https://brand9signs.com/services-brand-9/",
+        "meta_len": 186
+      },
+      {
+        "url": "https://brand9signs.com/product/brand-strategy/",
+        "meta_len": 178
+      },
+      {
+        "url": "https://brand9signs.com/product/ai-business-development-services/",
+        "meta_len": 177
+      },
+      {
+        "url": "https://brand9signs.com/in-room-guest-experience-signage-2/",
+        "meta_len": 176
+      },
+      {
+        "url": "https://brand9signs.com/product/brand-identity-2/",
+        "meta_len": 172
+      },
+      {
+        "url": "https://brand9signs.com/product/motion-graphics-brand-visuals/",
+        "meta_len": 171
+      },
+      {
+        "url": "https://brand9signs.com/product/marketing-strategy/",
+        "meta_len": 169
+      },
+      {
+        "url": "https://brand9signs.com/luxury-hospitality-resort-signage-2/",
+        "meta_len": 168
+      },
+      {
+        "url": "https://brand9signs.com/product/corporate-investor-pitch-decks/",
+        "meta_len": 167
+      },
+      {
+        "url": "https://brand9signs.com/hotel-signage-cost-2/",
+        "meta_len": 165
+      },
+      {
+        "url": "https://brand9signs.com/signage-middleburg/",
+        "meta_len": 165
+      },
+      {
+        "url": "https://brand9signs.com/signs-tributary-yulee/",
+        "meta_len": 164
+      },
+      {
+        "url": "https://brand9signs.com/signage-clay-county/",
+        "meta_len": 164
+      },
+      {
+        "url": "https://brand9signs.com/product/vinyl-banners-custom/",
+        "meta_len": 164
+      },
+      {
+        "url": "https://brand9signs.com/product/boulevard-banners/",
+        "meta_len": 164
+      },
+      {
+        "url": "https://brand9signs.com/signage-fleming-island/",
+        "meta_len": 163
+      },
+      {
+        "url": "https://brand9signs.com/signs-etown-jacksonville/",
+        "meta_len": 162
+      },
+      {
+        "url": "https://brand9signs.com/product/motion-films/",
+        "meta_len": 161
+      },
+      {
+        "url": "https://brand9signs.com/product/mesh-banners/",
+        "meta_len": 160
+      },
+      {
+        "url": "https://brand9signs.com/signage-st-johns-county/",
+        "meta_len": 159
+      },
+      {
+        "url": "https://brand9signs.com/signage-st-augustine/",
+        "meta_len": 159
+      },
+      {
+        "url": "https://brand9signs.com/product/premium-graphic-design-services/",
+        "meta_len": 159
+      },
+      {
+        "url": "https://brand9signs.com/signage-green-cove-springs/",
+        "meta_len": 158
+      },
+      {
+        "url": "https://brand9signs.com/signs-rivertown-st-johns/",
+        "meta_len": 156
+      }
+    ],
     "multiple_h1": [
       {
         "url": "https://brand9signs.com/",
