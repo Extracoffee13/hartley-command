@@ -686,3 +686,15 @@ lesson: Idempotency discipline cuts both ways — a same-day re-fire earns no re
 tags: pulse,mcp,ecosystem,daily,refire,reconcile,correction,opus5,anthropic,deadline
 confidence: 0.85
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-26
+decision: Third same-day fire (~14:17 ET), immediately after the 14:00 reconcile fire that already rewrote the board to lead with Claude Opus 5. Ran fresh Anthropic/frontier/MCP/funding/arXiv searches and reconciled against the live board. Nothing new cleared the 24h bar since the 14:00 fire: every item resurfaced is already seated or older — Opus 5 (Jul 24, already #1), Gemini 3.6 Flash (Jul 21, already #5), MCP 2026-07-28 stateless spec (already #2), July agent funding $1.8B+/12+ deals (already #4), and MCP-server launches (Revid.ai Jul 16, Pipedrive Jun 30, Axonius Jul 21) that are older and thematically already covered.
+outcome: Board unchanged (authoritative from the 14:00 reconcile fire): (1) Claude Opus 5, Jul 24 — near-Fable-5 at half price, 1M ctx, Max default, mid-conversation tool changes + auto API fallbacks [YES, leads]; (2) MCP 2026-07-28 stateless spec now 2 days out [YES, load-bearing]; (3) arXiv "Context Engineering: From Prompts to Corporate Multi-Agent Architecture" (2603.09619) [YES]; (4) agent/search funding stays revenue-backed, Perplexity $60M ext @ $3.5B + Glean $180M ext [MAYBE]; (5) Google cheaper Gemini incl. 3.6 Flash, Jul 21 [MAYBE]. Did NOT regress latest.json or 2026-07-26.md.
+lesson: A same-day re-fire immediately behind a reconcile that already caught the day's flagship miss earns NO rewrite — verify against the live board, confirm the strongest item is already #1, and leave it. Rewriting only to re-say Opus 5 would churn the dashboard for no new signal. Load-bearing actions hold: standardize the fleet on Opus 5, close the Jul-28 stateless-MCP migration + least-authority inventory before Tuesday, treat context as a governed resource.
+tags: pulse,mcp,ecosystem,daily,refire,idempotent,no-regression,opus5,deadline
+confidence: 0.8
+~~~
