@@ -1,12 +1,12 @@
 {
   "schema_version": "2.0",
-  "ts": "2026-07-25T16:03:26.409074Z",
+  "ts": "2026-07-27T11:00:37.352921Z",
   "client": "pragma",
   "client_display_name": "PRAGMA",
   "product_name": "PRAGMA Mirror",
   "scan_status": "live",
   "visibility_score": {
-    "composite": 58,
+    "composite": 39,
     "trend_7day": [
       58,
       58,
@@ -14,35 +14,47 @@
       58,
       58,
       58,
-      58
+      39
     ],
     "color_threshold": {
       "red_below": 50,
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "YELLOW \u2014 composite brand visibility 58/100 across AEO, SEO, GEO and LLM surfaces."
+    "interpretation": "RED \u2014 composite brand visibility 39/100 across AEO, SEO, GEO and LLM surfaces."
   },
   "modules": {
     "aeo": {
-      "score": 67,
+      "score": 40,
       "cited": true,
       "queries": [
         {
-          "query": "Who are the best commercial sign companies in Jacksonville FL?",
+          "query": "Who makes the best monument signs in Florida?",
+          "cited": true,
+          "surface": "Perplexity",
+          "source": "browser_probe"
+        },
+        {
+          "query": "Who makes the best wayfinding signs in Florida?",
           "cited": false,
           "surface": "Perplexity",
           "source": "browser_probe"
         },
         {
-          "query": "Where can I get custom homebuilder community signage in Florida?",
+          "query": "Who makes the best homebuilder and community signs in Florida?",
           "cited": true,
           "surface": "Perplexity",
           "source": "browser_probe"
         },
         {
-          "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
-          "cited": true,
+          "query": "Who designs the best master-planned community entrances in Florida?",
+          "cited": false,
+          "surface": "Perplexity",
+          "source": "browser_probe"
+        },
+        {
+          "query": "Who makes the best luxury hotel and resort signage in Florida?",
+          "cited": false,
           "surface": "Perplexity",
           "source": "browser_probe"
         }
@@ -56,125 +68,105 @@
       "pages": []
     },
     "llm": {
-      "score": 67,
+      "score": 27,
       "questions": [
         {
-          "q": "Who are the best commercial sign companies in Jacksonville FL?",
+          "q": "Who makes the best monument signs in Florida? (parametric)",
           "cited": false,
           "surface": "ChatGPT"
         },
         {
-          "q": "Where can I get custom homebuilder community signage in Florida?",
+          "q": "Who makes the best wayfinding signs in Florida? (parametric)",
           "cited": false,
           "surface": "ChatGPT"
         },
         {
-          "q": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
-          "cited": true,
+          "q": "Who makes the best homebuilder and community signs in Florida? (parametric)",
+          "cited": false,
           "surface": "ChatGPT"
         },
         {
-          "q": "Who are the best commercial sign companies in Jacksonville FL?",
-          "cited": true,
-          "surface": "Claude"
+          "q": "Who designs the best master-planned community entrances in Florida? (parametric)",
+          "cited": false,
+          "surface": "ChatGPT"
         },
         {
-          "q": "Where can I get custom homebuilder community signage in Florida?",
-          "cited": true,
-          "surface": "Claude"
+          "q": "Who makes the best luxury hotel and resort signage in Florida? (parametric)",
+          "cited": false,
+          "surface": "ChatGPT"
         },
         {
-          "q": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
-          "cited": true,
-          "surface": "Claude"
-        },
-        {
-          "q": "Who are the best commercial sign companies in Jacksonville FL?",
+          "q": "Who makes the best monument signs in Florida? (parametric)",
           "cited": false,
           "surface": "Gemini"
         },
         {
-          "q": "Where can I get custom homebuilder community signage in Florida?",
+          "q": "Who makes the best wayfinding signs in Florida? (parametric)",
           "cited": true,
           "surface": "Gemini"
         },
         {
-          "q": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
+          "q": "Who makes the best homebuilder and community signs in Florida? (parametric)",
           "cited": true,
           "surface": "Gemini"
+        },
+        {
+          "q": "Who designs the best master-planned community entrances in Florida? (parametric)",
+          "cited": true,
+          "surface": "Gemini"
+        },
+        {
+          "q": "Who makes the best luxury hotel and resort signage in Florida? (parametric)",
+          "cited": true,
+          "surface": "Gemini"
+        },
+        {
+          "q": "Who makes the best monument signs in Florida? (parametric)",
+          "cited": false,
+          "surface": "Claude"
+        },
+        {
+          "q": "Who makes the best wayfinding signs in Florida? (parametric)",
+          "cited": false,
+          "surface": "Claude"
+        },
+        {
+          "q": "Who makes the best homebuilder and community signs in Florida? (parametric)",
+          "cited": false,
+          "surface": "Claude"
+        },
+        {
+          "q": "Who designs the best master-planned community entrances in Florida? (parametric)",
+          "cited": false,
+          "surface": "Claude"
+        },
+        {
+          "q": "Who makes the best luxury hotel and resort signage in Florida? (parametric)",
+          "cited": false,
+          "surface": "Claude"
         }
       ],
       "ai_surfaces": [
         {
           "surface": "ChatGPT / Claude / Gemini (consumer)",
           "method": "browser pass \u00b7 your own logins \u00b7 $0 \u00b7 key-free",
-          "checks": 9,
-          "mentions": 6
+          "checks": 15,
+          "mentions": 4
         }
       ]
     },
     "geo": {
-      "score": 67,
+      "score": 50,
       "geofence": [
         {
-          "query": "Who are the best commercial sign companies in Jacksonville FL?",
-          "surface": "ChatGPT",
+          "query": "best commercial sign company near Orange Park FL",
+          "surface": "local pack",
+          "cited": true
+        },
+        {
+          "query": "best commercial sign shop in Jacksonville FL",
+          "surface": "local pack",
           "cited": false
-        },
-        {
-          "query": "Where can I get custom homebuilder community signage in Florida?",
-          "surface": "ChatGPT",
-          "cited": false
-        },
-        {
-          "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
-          "surface": "ChatGPT",
-          "cited": true
-        },
-        {
-          "query": "Who are the best commercial sign companies in Jacksonville FL?",
-          "surface": "Claude",
-          "cited": true
-        },
-        {
-          "query": "Where can I get custom homebuilder community signage in Florida?",
-          "surface": "Claude",
-          "cited": true
-        },
-        {
-          "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
-          "surface": "Claude",
-          "cited": true
-        },
-        {
-          "query": "Who are the best commercial sign companies in Jacksonville FL?",
-          "surface": "Perplexity",
-          "cited": false
-        },
-        {
-          "query": "Where can I get custom homebuilder community signage in Florida?",
-          "surface": "Perplexity",
-          "cited": true
-        },
-        {
-          "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
-          "surface": "Perplexity",
-          "cited": true
-        },
-        {
-          "query": "Who are the best commercial sign companies in Jacksonville FL?",
-          "surface": "Gemini",
-          "cited": false
-        },
-        {
-          "query": "Where can I get custom homebuilder community signage in Florida?",
-          "surface": "Gemini",
-          "cited": true
-        },
-        {
-          "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
-          "surface": "Gemini",
-          "cited": true
         }
       ],
       "geotarget": [
@@ -203,18 +195,18 @@
     "AI consultancies",
     "Microsoft Frontier (enterprise)"
   ],
-  "recommendations_count": 10,
-  "recommendations_high": 5,
+  "recommendations_count": 20,
+  "recommendations_high": 15,
   "_meta": {
     "writer": "pragma-mirror call (run.py)",
-    "computed_at": "2026-07-25T16:03:26.409074Z",
+    "computed_at": "2026-07-27T11:00:37.352921Z",
     "recommend_only": true,
     "data_source": "GSC + browser-probe (key-free)",
     "paid_apis": "none \u2014 Tavily/SerpAPI retired 2026-07-08",
     "degraded_modules": []
   },
   "aivi": {
-    "composite": 58,
+    "composite": 39,
     "trend_7day": [
       58,
       58,
@@ -222,165 +214,241 @@
       58,
       58,
       58,
-      58
+      39
     ],
     "color_threshold": {
       "red_below": 50,
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "YELLOW \u2014 composite brand visibility 58/100 across AEO, SEO, GEO and LLM surfaces.",
+    "interpretation": "RED \u2014 composite brand visibility 39/100 across AEO, SEO, GEO and LLM surfaces.",
     "subscores": {
-      "mention_score": 67,
-      "citation_score": 67,
+      "mention_score": 40,
+      "citation_score": 50,
       "sentiment_score": 50,
       "ranking_score": 36,
-      "surface_coverage_score": 67
+      "surface_coverage_score": 27
     }
   },
   "ai_surfaces": [
     {
       "surface": "ChatGPT / Claude / Gemini (consumer)",
       "method": "browser pass \u00b7 your own logins \u00b7 $0 \u00b7 key-free",
-      "checks": 9,
-      "mentions": 6
+      "checks": 15,
+      "mentions": 4
     }
   ],
   "surfaces": {
     "claude": {
-      "cited": true,
-      "query": "Who are the best commercial sign companies in Jacksonville FL?",
-      "checked_at": "2026-07-06T13:16:33Z",
-      "mentions": 3,
-      "citations": [
-        "Where can I get custom homebuilder community signage in Florida?"
-      ]
+      "cited": false,
+      "query": "Who makes the best monument signs in Florida? (parametric)",
+      "checked_at": "2026-07-27T09:57:06Z",
+      "mentions": 0,
+      "citations": []
     },
     "chatgpt": {
-      "cited": true,
-      "query": "Who are the best commercial sign companies in Jacksonville FL?",
-      "checked_at": "2026-07-06T13:16:33Z",
-      "mentions": 1,
+      "cited": false,
+      "query": "Who makes the best monument signs in Florida? (parametric)",
+      "checked_at": "2026-07-27T09:57:06Z",
+      "mentions": 0,
       "citations": []
     },
     "gemini": {
       "cited": true,
-      "query": "Who are the best commercial sign companies in Jacksonville FL?",
-      "checked_at": "2026-07-06T13:16:33Z",
-      "mentions": 2,
+      "query": "Who makes the best monument signs in Florida? (parametric)",
+      "checked_at": "2026-07-27T09:57:06Z",
+      "mentions": 4,
       "citations": []
     },
     "perplexity": {
       "cited": true,
-      "query": "Who are the best commercial sign companies in Jacksonville FL?",
-      "checked_at": "2026-07-06T13:16:33Z",
+      "query": "Who makes the best monument signs in Florida?",
+      "checked_at": "2026-07-27T09:57:06Z",
       "mentions": 2,
       "citations": [
-        "Where can I get custom homebuilder community signage in Florida?",
-        "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?"
+        "Who makes the best monument signs in Florida?",
+        "Who makes the best homebuilder and community signs in Florida?"
       ]
     },
     "google_ai_overview": {
       "cited": true,
-      "query": "Where can I get custom homebuilder community signage in Florida?",
-      "checked_at": "2026-07-25T16:03:26.409074Z",
+      "query": "Who makes the best monument signs in Florida?",
+      "checked_at": "2026-07-27T11:00:37.352921Z",
       "mentions": 2,
       "citations": [
-        "Where can I get custom homebuilder community signage in Florida?",
-        "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?"
+        "Who makes the best monument signs in Florida?",
+        "Who makes the best homebuilder and community signs in Florida?"
       ]
     }
   },
   "llm_browser": {
-    "ts": "2026-07-06T13:16:33Z",
-    "method": "browser (user's own logged-in accounts, zero marginal cost)",
+    "ts": "2026-07-27T09:57:06Z",
+    "schema": "v2-segmented",
+    "probe": "weekly multi-surface parametric probe 2026-07-27; ChatGPT/Claude/Gemini, browsing OFF, own logins. ChatGPT temporary chats named only competitors (0/5). Gemini (Flash) named Brand 9 on wayfinding, homebuilder/community, master-planned entrances, and luxury hotel/resort (4/5; missed monument). Claude.ai (Opus 5) recalled account-memory 'Brand 9 Competitive Intel' on all 5 chats but never named Brand 9 in the answer set \u2014 it explicitly stated Brand 9 is NOT in cold parametric recall \u2014 so scored mentioned=false (parametric recall only).",
     "results": [
       {
-        "surface": "ChatGPT",
-        "query": "Who are the best commercial sign companies in Jacksonville FL?",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "surface": "ChatGPT",
-        "query": "Where can I get custom homebuilder community signage in Florida?",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "surface": "ChatGPT",
-        "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
-        "mentioned": true,
-        "cited_source": false
-      },
-      {
-        "surface": "Claude",
-        "query": "Who are the best commercial sign companies in Jacksonville FL?",
-        "mentioned": true,
-        "cited_source": false,
-        "personalized": true,
-        "note": "Referenced Brand 9 only as Bobby's own company/competitive set; did not organically recommend it."
-      },
-      {
-        "surface": "Claude",
-        "query": "Where can I get custom homebuilder community signage in Florida?",
-        "mentioned": true,
-        "cited_source": true,
-        "personalized": true,
-        "note": "Personalized ('that's your company'); web search cited brand9signs.com."
-      },
-      {
-        "surface": "Claude",
-        "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
-        "mentioned": true,
-        "cited_source": false,
-        "personalized": true,
-        "note": "Personalized ('obviously you'); search rate-limited, answered from account memory."
-      },
-      {
+        "tier": "aeo",
         "surface": "Perplexity",
-        "query": "Who are the best commercial sign companies in Jacksonville FL?",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "surface": "Perplexity",
-        "query": "Where can I get custom homebuilder community signage in Florida?",
+        "query": "Who makes the best monument signs in Florida?",
         "mentioned": true,
         "cited_source": true
       },
       {
+        "tier": "aeo",
         "surface": "Perplexity",
-        "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
-        "mentioned": true,
-        "cited_source": true
-      },
-      {
-        "surface": "Gemini",
-        "query": "Who are the best commercial sign companies in Jacksonville FL?",
+        "query": "Who makes the best wayfinding signs in Florida?",
         "mentioned": false,
         "cited_source": false
       },
       {
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who makes the best homebuilder and community signs in Florida?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who designs the best master-planned community entrances in Florida?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who makes the best luxury hotel and resort signage in Florida?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "local",
+        "surface": "local pack",
+        "query": "best commercial sign company near Orange Park FL",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "local",
+        "surface": "local pack",
+        "query": "best commercial sign shop in Jacksonville FL",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who makes the best monument signs in Florida? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who makes the best wayfinding signs in Florida? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who makes the best homebuilder and community signs in Florida? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who designs the best master-planned community entrances in Florida? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who makes the best luxury hotel and resort signage in Florida? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
         "surface": "Gemini",
-        "query": "Where can I get custom homebuilder community signage in Florida?",
+        "query": "Who makes the best monument signs in Florida? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Gemini",
+        "query": "Who makes the best wayfinding signs in Florida? (parametric)",
         "mentioned": true,
         "cited_source": false
       },
       {
+        "tier": "llm",
         "surface": "Gemini",
-        "query": "Who installs monument and wayfinding signs for master-planned communities in Jacksonville or St. Johns County?",
+        "query": "Who makes the best homebuilder and community signs in Florida? (parametric)",
         "mentioned": true,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Gemini",
+        "query": "Who designs the best master-planned community entrances in Florida? (parametric)",
+        "mentioned": true,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Gemini",
+        "query": "Who makes the best luxury hotel and resort signage in Florida? (parametric)",
+        "mentioned": true,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Claude",
+        "query": "Who makes the best monument signs in Florida? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Claude",
+        "query": "Who makes the best wayfinding signs in Florida? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Claude",
+        "query": "Who makes the best homebuilder and community signs in Florida? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Claude",
+        "query": "Who designs the best master-planned community entrances in Florida? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Claude",
+        "query": "Who makes the best luxury hotel and resort signage in Florida? (parametric)",
+        "mentioned": false,
         "cited_source": false
       }
     ],
     "summary": {
-      "ChatGPT": "1/3",
-      "Claude": "3/3 (personalized \u2014 Bobby's logged-in account, not organic)",
-      "Perplexity": "2/3 (anonymous/organic)",
-      "Gemini": "2/3 (organic)"
-    },
-    "notes": "Perplexity run anonymous (cleanest organic read). ChatGPT free logged-in. Gemini logged-in Google acct, GBP not connected. Claude results are account-personalized (memory knows Bobby owns Brand 9) and should NOT be read as organic consumer visibility."
+      "Perplexity (AEO)": "2/5 cited",
+      "local pack (GEO)": "1/2 named",
+      "ChatGPT (LLM parametric)": "0/5 named",
+      "Gemini (LLM parametric)": "4/5 named",
+      "Claude (LLM parametric)": "0/5 named",
+      "LLM parametric (all surfaces)": "4/15 named"
+    }
   },
   "sentiment": {
     "positive_pct": null,
@@ -395,6 +463,123 @@
     "enabled": false,
     "created_total": 0
   },
-  "last_scan_ts": "2026-07-25T16:03:26.409074Z",
-  "_mirrored_at": "2026-07-25T16:03:26.409074Z"
+  "last_scan_ts": "2026-07-27T11:00:37.352921Z",
+  "_mirrored_at": "2026-07-27T11:00:37.352921Z",
+  "answer_units": [
+    {
+      "question": "Who installs custom AI agent teams for small businesses?",
+      "url": "https://brand9signs.com/who-installs-custom-ai-agent-teams-for-small-businesses/",
+      "cited_by": [],
+      "traffic": null,
+      "inquiries": 0,
+      "status": "targeting"
+    },
+    {
+      "question": "What is the best done-for-you AI operations service for SMBs?",
+      "url": "https://brand9signs.com/what-is-the-best-done-for-you-ai-operations-service-for-smbs/",
+      "cited_by": [],
+      "traffic": null,
+      "inquiries": 0,
+      "status": "targeting"
+    },
+    {
+      "question": "How can a small business own its AI agents instead of renting SaaS?",
+      "url": "https://brand9signs.com/how-can-a-small-business-own-its-ai-agents-instead-of-renting-saas/",
+      "cited_by": [],
+      "traffic": null,
+      "inquiries": 0,
+      "status": "targeting"
+    },
+    {
+      "question": "Who are the alternatives to ToplinePro for AI-run marketing operations?",
+      "url": "https://brand9signs.com/who-are-the-alternatives-to-toplinepro-for-ai-run-marketing-operations/",
+      "cited_by": [],
+      "traffic": null,
+      "inquiries": 0,
+      "status": "targeting"
+    },
+    {
+      "question": "Which company installs an AI operating system you own in about 30 days?",
+      "url": "https://brand9signs.com/which-company-installs-an-ai-operating-system-you-own-in-about-30-days/",
+      "cited_by": [],
+      "traffic": null,
+      "inquiries": 0,
+      "status": "targeting"
+    },
+    {
+      "question": "How does a small business replace its SaaS stack with owned AI agents?",
+      "url": "https://brand9signs.com/how-does-a-small-business-replace-its-saas-stack-with-owned-ai-agents/",
+      "cited_by": [],
+      "traffic": null,
+      "inquiries": 0,
+      "status": "targeting"
+    },
+    {
+      "question": "Who offers both open and closed AI agents running on a client's own machine?",
+      "url": "https://brand9signs.com/who-offers-both-open-and-closed-ai-agents-running-on-a-client-s-own-machine/",
+      "cited_by": [],
+      "traffic": null,
+      "inquiries": 0,
+      "status": "targeting"
+    },
+    {
+      "question": "What is PRAGMA and what do they do?",
+      "url": "https://brand9signs.com/what-is-pragma-and-what-do-they-do/",
+      "cited_by": [],
+      "traffic": null,
+      "inquiries": 0,
+      "status": "targeting"
+    },
+    {
+      "question": "Who makes the best monument signs in Florida?",
+      "url": "https://brand9signs.com/who-makes-the-best-monument-signs-in-florida/",
+      "cited_by": [
+        "Perplexity"
+      ],
+      "traffic": null,
+      "inquiries": 0,
+      "status": "cited"
+    },
+    {
+      "question": "Who makes the best wayfinding signs in Florida?",
+      "url": "https://brand9signs.com/who-makes-the-best-wayfinding-signs-in-florida/",
+      "cited_by": [
+        "Gemini"
+      ],
+      "traffic": null,
+      "inquiries": 0,
+      "status": "cited"
+    },
+    {
+      "question": "Who makes the best homebuilder and community signs in Florida?",
+      "url": "https://brand9signs.com/who-makes-the-best-homebuilder-and-community-signs-in-florida/",
+      "cited_by": [
+        "Gemini",
+        "Perplexity"
+      ],
+      "traffic": null,
+      "inquiries": 0,
+      "status": "cited"
+    },
+    {
+      "question": "Who designs the best master-planned community entrances in Florida?",
+      "url": "https://brand9signs.com/who-designs-the-best-master-planned-community-entrances-in-florida/",
+      "cited_by": [
+        "Gemini"
+      ],
+      "traffic": null,
+      "inquiries": 0,
+      "status": "cited"
+    },
+    {
+      "question": "Who makes the best luxury hotel and resort signage in Florida?",
+      "url": "https://brand9signs.com/who-makes-the-best-luxury-hotel-and-resort-signage-in-florida/",
+      "cited_by": [
+        "Gemini"
+      ],
+      "traffic": null,
+      "inquiries": 0,
+      "status": "cited"
+    }
+  ]
 }

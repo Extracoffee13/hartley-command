@@ -1,11 +1,11 @@
 {
   "schema_version": "2.0",
-  "ts": "2026-07-26T11:00:27.162904Z",
+  "ts": "2026-07-27T11:00:37.352921Z",
   "client": "pragma",
   "policy": "RECOMMEND-ONLY \u2014 nothing in this queue is auto-applied to any live site. Each item requires explicit human action.",
   "counts": {
-    "total": 10,
-    "high": 5,
+    "total": 20,
+    "high": 15,
     "med": 5,
     "low": 0
   },
@@ -83,7 +83,127 @@
       "status": "queued"
     },
     {
-      "id": "rec-geo-007",
+      "id": "rec-llm-007",
+      "module": "LLM",
+      "severity": "high",
+      "page_or_area": "Who makes the best wayfinding signs in Florida? (parametric)",
+      "issue": "PRAGMA is absent from ChatGPT's answer for this question.",
+      "recommendation": "Strengthen a direct answer page \u2014 named entity, concrete proof, FAQPage schema, outbound citations \u2014 so assistants name PRAGMA.",
+      "before": "(absent)",
+      "after": "PRAGMA named by the assistant for this question.",
+      "action": "content",
+      "status": "queued"
+    },
+    {
+      "id": "rec-llm-008",
+      "module": "LLM",
+      "severity": "high",
+      "page_or_area": "Who makes the best homebuilder and community signs in Florida? (parametric)",
+      "issue": "PRAGMA is absent from ChatGPT's answer for this question.",
+      "recommendation": "Strengthen a direct answer page \u2014 named entity, concrete proof, FAQPage schema, outbound citations \u2014 so assistants name PRAGMA.",
+      "before": "(absent)",
+      "after": "PRAGMA named by the assistant for this question.",
+      "action": "content",
+      "status": "queued"
+    },
+    {
+      "id": "rec-llm-009",
+      "module": "LLM",
+      "severity": "high",
+      "page_or_area": "Who designs the best master-planned community entrances in Florida? (parametric)",
+      "issue": "PRAGMA is absent from ChatGPT's answer for this question.",
+      "recommendation": "Strengthen a direct answer page \u2014 named entity, concrete proof, FAQPage schema, outbound citations \u2014 so assistants name PRAGMA.",
+      "before": "(absent)",
+      "after": "PRAGMA named by the assistant for this question.",
+      "action": "content",
+      "status": "queued"
+    },
+    {
+      "id": "rec-llm-010",
+      "module": "LLM",
+      "severity": "high",
+      "page_or_area": "Who makes the best luxury hotel and resort signage in Florida? (parametric)",
+      "issue": "PRAGMA is absent from ChatGPT's answer for this question.",
+      "recommendation": "Strengthen a direct answer page \u2014 named entity, concrete proof, FAQPage schema, outbound citations \u2014 so assistants name PRAGMA.",
+      "before": "(absent)",
+      "after": "PRAGMA named by the assistant for this question.",
+      "action": "content",
+      "status": "queued"
+    },
+    {
+      "id": "rec-llm-011",
+      "module": "LLM",
+      "severity": "high",
+      "page_or_area": "Who makes the best monument signs in Florida? (parametric)",
+      "issue": "PRAGMA is absent from Gemini's answer for this question.",
+      "recommendation": "Strengthen a direct answer page \u2014 named entity, concrete proof, FAQPage schema, outbound citations \u2014 so assistants name PRAGMA.",
+      "before": "(absent)",
+      "after": "PRAGMA named by the assistant for this question.",
+      "action": "content",
+      "status": "queued"
+    },
+    {
+      "id": "rec-llm-012",
+      "module": "LLM",
+      "severity": "high",
+      "page_or_area": "Who makes the best monument signs in Florida? (parametric)",
+      "issue": "PRAGMA is absent from Claude's answer for this question.",
+      "recommendation": "Strengthen a direct answer page \u2014 named entity, concrete proof, FAQPage schema, outbound citations \u2014 so assistants name PRAGMA.",
+      "before": "(absent)",
+      "after": "PRAGMA named by the assistant for this question.",
+      "action": "content",
+      "status": "queued"
+    },
+    {
+      "id": "rec-llm-013",
+      "module": "LLM",
+      "severity": "high",
+      "page_or_area": "Who makes the best wayfinding signs in Florida? (parametric)",
+      "issue": "PRAGMA is absent from Claude's answer for this question.",
+      "recommendation": "Strengthen a direct answer page \u2014 named entity, concrete proof, FAQPage schema, outbound citations \u2014 so assistants name PRAGMA.",
+      "before": "(absent)",
+      "after": "PRAGMA named by the assistant for this question.",
+      "action": "content",
+      "status": "queued"
+    },
+    {
+      "id": "rec-llm-014",
+      "module": "LLM",
+      "severity": "high",
+      "page_or_area": "Who makes the best homebuilder and community signs in Florida? (parametric)",
+      "issue": "PRAGMA is absent from Claude's answer for this question.",
+      "recommendation": "Strengthen a direct answer page \u2014 named entity, concrete proof, FAQPage schema, outbound citations \u2014 so assistants name PRAGMA.",
+      "before": "(absent)",
+      "after": "PRAGMA named by the assistant for this question.",
+      "action": "content",
+      "status": "queued"
+    },
+    {
+      "id": "rec-llm-015",
+      "module": "LLM",
+      "severity": "high",
+      "page_or_area": "Who designs the best master-planned community entrances in Florida? (parametric)",
+      "issue": "PRAGMA is absent from Claude's answer for this question.",
+      "recommendation": "Strengthen a direct answer page \u2014 named entity, concrete proof, FAQPage schema, outbound citations \u2014 so assistants name PRAGMA.",
+      "before": "(absent)",
+      "after": "PRAGMA named by the assistant for this question.",
+      "action": "content",
+      "status": "queued"
+    },
+    {
+      "id": "rec-llm-016",
+      "module": "LLM",
+      "severity": "high",
+      "page_or_area": "Who makes the best luxury hotel and resort signage in Florida? (parametric)",
+      "issue": "PRAGMA is absent from Claude's answer for this question.",
+      "recommendation": "Strengthen a direct answer page \u2014 named entity, concrete proof, FAQPage schema, outbound citations \u2014 so assistants name PRAGMA.",
+      "before": "(absent)",
+      "after": "PRAGMA named by the assistant for this question.",
+      "action": "content",
+      "status": "queued"
+    },
+    {
+      "id": "rec-geo-017",
       "module": "GEO",
       "severity": "med",
       "page_or_area": "Jacksonville FL",
@@ -95,7 +215,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-geo-008",
+      "id": "rec-geo-018",
       "module": "GEO",
       "severity": "med",
       "page_or_area": "Northeast Florida",
@@ -107,7 +227,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-geo-009",
+      "id": "rec-geo-019",
       "module": "GEO",
       "severity": "med",
       "page_or_area": "United States",
@@ -119,7 +239,7 @@
       "status": "queued"
     },
     {
-      "id": "rec-geo-010",
+      "id": "rec-geo-020",
       "module": "GEO",
       "severity": "med",
       "page_or_area": "Google Business Profile",
