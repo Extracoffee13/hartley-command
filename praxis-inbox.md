@@ -698,3 +698,15 @@ lesson: A same-day re-fire immediately behind a reconcile that already caught th
 tags: pulse,mcp,ecosystem,daily,refire,idempotent,no-regression,opus5,deadline
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-27
+decision: First fire of the day (~06:01 ET). Ran fresh Anthropic/MCP/frontier/funding/arXiv searches and reconciled against the Jul-26 board. Opus 5 (Jul 24) is now 3 days old and seated on prior boards, so it drops from the lead into context; the MCP 2026-07-28 stateless spec that read "2 days out" yesterday is now T-1 (ratifies tomorrow) and escalates to #1 as the load-bearing due-today action. Surfaced the fresher vertical-MCP wave (Revid.ai video, Pipedrive/Affinity CRM, d1g1t wealth) and Anthropic's skill-by-screen-recording capability, which had been parked, plus a fresher async-agent arXiv item (2603.21489) instead of re-running the Context Engineering paper.
+outcome: New board (authoritative): (1) MCP 2026-07-28 stateless spec ratifies TOMORROW, T-1 [YES, leads]; (2) vertical MCP-server wave — Revid.ai video, Pipedrive+Affinity CRM, d1g1t wealth [YES]; (3) Anthropic skill-by-screen-recording + Cowork offline scheduled tasks [YES]; (4) arXiv "Effective Strategies for Asynchronous Software Engineering Agents" 2603.21489 [MAYBE]; (5) frontier field — Meta Muse Spark 1.1 + xAI V9 MoE [MAYBE]. Wrote 2026-07-27.md, overwrote latest.json, appended this block.
+lesson: A countdown item must escalate to the lead position the day it comes due, not stay parked mid-board — the Jul-28 stateless-MCP migration + least-authority inventory has to close today. The week's throughline: the ecosystem is shipping pre-built operator surfaces (video, CRM, recorded-skill capture), so the Construct's edge is orchestration — wrap these MCPs behind one client-facing agent rather than rebuild what vendors now ship natively.
+tags: pulse,mcp,ecosystem,daily,deadline,verticals,skills,orchestration
+confidence: 0.8
+~~~

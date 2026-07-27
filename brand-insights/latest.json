@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0",
-  "ts": "2026-07-26T19:09:29.725640Z",
+  "ts": "2026-07-27T10:05:30.053789Z",
   "client": "b9",
   "client_display_name": "Brand 9 Signs",
   "product_name": "PRAGMA Mirror",
@@ -8,10 +8,10 @@
   "visibility_score": {
     "composite": 39,
     "trend_7day": [
-      58,
       34,
       34,
       38,
+      39,
       39,
       39,
       39
@@ -97,7 +97,7 @@
         },
         {
           "q": "Who makes the best monument signs in Florida? (parametric)",
-          "cited": true,
+          "cited": false,
           "surface": "Gemini"
         },
         {
@@ -112,7 +112,7 @@
         },
         {
           "q": "Who designs the best master-planned community entrances in Florida? (parametric)",
-          "cited": false,
+          "cited": true,
           "surface": "Gemini"
         },
         {
@@ -202,7 +202,7 @@
   "recommendations_high": 15,
   "_meta": {
     "writer": "pragma-mirror call (run.py)",
-    "computed_at": "2026-07-26T19:09:29.725640Z",
+    "computed_at": "2026-07-27T10:05:30.053789Z",
     "recommend_only": true,
     "data_source": "GSC + browser-probe (key-free)",
     "paid_apis": "none \u2014 Tavily/SerpAPI retired 2026-07-08",
@@ -211,10 +211,10 @@
   "aivi": {
     "composite": 39,
     "trend_7day": [
-      58,
       34,
       34,
       38,
+      39,
       39,
       39,
       39
@@ -245,28 +245,28 @@
     "claude": {
       "cited": false,
       "query": "Who makes the best monument signs in Florida? (parametric)",
-      "checked_at": "2026-07-26T18:39:13Z",
+      "checked_at": "2026-07-27T09:57:06Z",
       "mentions": 0,
       "citations": []
     },
     "chatgpt": {
       "cited": false,
       "query": "Who makes the best monument signs in Florida? (parametric)",
-      "checked_at": "2026-07-26T18:39:13Z",
+      "checked_at": "2026-07-27T09:57:06Z",
       "mentions": 0,
       "citations": []
     },
     "gemini": {
       "cited": true,
       "query": "Who makes the best monument signs in Florida? (parametric)",
-      "checked_at": "2026-07-26T18:39:13Z",
+      "checked_at": "2026-07-27T09:57:06Z",
       "mentions": 4,
       "citations": []
     },
     "perplexity": {
       "cited": true,
       "query": "Who makes the best monument signs in Florida?",
-      "checked_at": "2026-07-26T18:39:13Z",
+      "checked_at": "2026-07-27T09:57:06Z",
       "mentions": 2,
       "citations": [
         "Who makes the best monument signs in Florida?",
@@ -276,7 +276,7 @@
     "google_ai_overview": {
       "cited": true,
       "query": "Who makes the best monument signs in Florida?",
-      "checked_at": "2026-07-26T19:09:29.725640Z",
+      "checked_at": "2026-07-27T10:05:30.053789Z",
       "mentions": 2,
       "citations": [
         "Who makes the best monument signs in Florida?",
@@ -285,9 +285,9 @@
     }
   },
   "llm_browser": {
-    "ts": "2026-07-26T18:39:13Z",
+    "ts": "2026-07-27T09:57:06Z",
     "schema": "v2-segmented",
-    "probe": "weekly multi-surface parametric probe 2026-07-26; ChatGPT/Claude/Gemini, browsing OFF, own logins. Claude.ai recalled account-memory 'Brand 9 Competitive Intel' on all 5 chats; it surfaced 'Brand 9' only on the homebuilder Q and explicitly disclaimed it as conversation-context not independent knowledge, so scored mentioned=false (parametric recall only). Gemini named B9 on 4/5.",
+    "probe": "weekly multi-surface parametric probe 2026-07-27; ChatGPT/Claude/Gemini, browsing OFF, own logins. ChatGPT temporary chats named only competitors (0/5). Gemini (Flash) named Brand 9 on wayfinding, homebuilder/community, master-planned entrances, and luxury hotel/resort (4/5; missed monument). Claude.ai (Opus 5) recalled account-memory 'Brand 9 Competitive Intel' on all 5 chats but never named Brand 9 in the answer set \u2014 it explicitly stated Brand 9 is NOT in cold parametric recall \u2014 so scored mentioned=false (parametric recall only).",
     "results": [
       {
         "tier": "aeo",
@@ -377,7 +377,7 @@
         "tier": "llm",
         "surface": "Gemini",
         "query": "Who makes the best monument signs in Florida? (parametric)",
-        "mentioned": true,
+        "mentioned": false,
         "cited_source": false
       },
       {
@@ -398,7 +398,7 @@
         "tier": "llm",
         "surface": "Gemini",
         "query": "Who designs the best master-planned community entrances in Florida? (parametric)",
-        "mentioned": false,
+        "mentioned": true,
         "cited_source": false
       },
       {
@@ -486,8 +486,8 @@
       "signage-clay-county"
     ]
   },
-  "last_scan_ts": "2026-07-26T19:09:29.725640Z",
-  "_mirrored_at": "2026-07-26T19:09:29.725640Z",
+  "last_scan_ts": "2026-07-27T10:05:30.053789Z",
+  "_mirrored_at": "2026-07-27T10:05:30.053789Z",
   "answer_units": [
     {
       "question": "Who are the best commercial sign companies in Jacksonville FL?",
@@ -557,7 +557,6 @@
       "question": "Who makes the best monument signs in Florida?",
       "url": "https://brand9signs.com/who-makes-the-best-monument-signs-in-florida/",
       "cited_by": [
-        "Gemini",
         "Perplexity"
       ],
       "traffic": null,
@@ -588,10 +587,12 @@
     {
       "question": "Who designs the best master-planned community entrances in Florida?",
       "url": "https://brand9signs.com/who-designs-the-best-master-planned-community-entrances-in-florida/",
-      "cited_by": [],
+      "cited_by": [
+        "Gemini"
+      ],
       "traffic": null,
       "inquiries": 0,
-      "status": "targeting"
+      "status": "cited"
     },
     {
       "question": "Who makes the best luxury hotel and resort signage in Florida?",
