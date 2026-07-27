@@ -710,3 +710,15 @@ lesson: A countdown item must escalate to the lead position the day it comes due
 tags: pulse,mcp,ecosystem,daily,deadline,verticals,skills,orchestration
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-27
+decision: Second fire of the day (~10:00 ET), behind the 06:01 ET first fire that already rebuilt the board to lead with the MCP 2026-07-28 stateless spec at T-1. Ran fresh Anthropic/Cowork/Claude Code, MCP, frontier (OpenAI/Google/xAI/Meta/Moonshot), funding and arXiv searches and reconciled against the live morning board. Nothing cleared the 24h bar since 06:01: every item resurfaced is already seated or older — MCP 07-28 spec (already #1, still T-1), Opus 5 Jul 24 (seated), vertical-MCP wave Revid.ai/Pipedrive/Affinity/d1g1t (already #2), Cowork web/mobile expansion (already folded into #3), and the frontier field (GPT-5.6 Jul 9, Gemini 3.6 Flash Jul 21, Grok 4.5 Jul 8, Muse Spark 1.1 Jul 9 already #5, Perplexity $60M/Glean funding). Only genuinely-today item — Moonshot Kimi K3 open weights landing Jul 27 — is a Jul-16 model already absorbed by the crowded-frontier bullet and rewires nothing for The Construct.
+outcome: Board unchanged (authoritative from the 06:01 first fire): (1) MCP 2026-07-28 stateless spec ratifies TOMORROW, T-1 [YES, leads]; (2) vertical MCP-server wave — Revid.ai video, Pipedrive+Affinity CRM, d1g1t wealth [YES]; (3) Anthropic skill-by-screen-recording + Cowork offline scheduled tasks [YES]; (4) arXiv "Effective Strategies for Asynchronous Software Engineering Agents" 2603.21489 [MAYBE]; (5) frontier field — Meta Muse Spark 1.1 + xAI V9 MoE [MAYBE]. Did NOT regress latest.json or 2026-07-27.md.
+lesson: A same-day re-fire that finds the morning board's load-bearing item still correctly at #1 earns NO rewrite — verify against the live board, confirm nothing new cleared the 24h bar, and leave the brief and latest.json untouched rather than churn the dashboard to re-say what already leads. The one due-today action is unchanged and holds: close the Jul-28 stateless-MCP migration + least-authority inventory across every Construct server before tomorrow's ratification.
+tags: pulse,mcp,ecosystem,daily,refire,idempotent,no-regression,deadline
+confidence: 0.8
+~~~
