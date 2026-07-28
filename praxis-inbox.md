@@ -746,3 +746,15 @@ lesson: A countdown item does not just escalate to the lead as it comes due — 
 tags: pulse,mcp,ecosystem,daily,deadline,verticals,orchestration
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-28
+decision: Second fire of the day (~10:00 ET), behind the 06:01 first fire that rebuilt the board to lead with the MCP 2026-07-28 stateless spec now due-today (framing already flipped from "ratifies tomorrow" to "migrate now"). Ran fresh Anthropic/Cowork/Claude Code, MCP-server, frontier (OpenAI/Google/xAI/Meta/Moonshot/DeepSeek), agent-funding and arXiv searches and reconciled against the live morning board. Nothing cleared the 24h bar since 06:01: every item resurfaced is already seated or older — MCP 07-28 spec (already #1, ships today), Opus 5 Jul 24 (seated, still fleet default), vertical-MCP wave Revid.ai Jul 16 / Pipedrive CRM / Sprinklr (already #2, 10,000+ servers milestone intact), arXiv prompt-optimization descriptor+action-selection 2606.17838 (already #4), and the crowded frontier (GPT-5.6 Sol/Terra/Luna Jul 9, Grok 4.5 Jul 8, Muse Spark 1.1, Gemini 3.6 Flash Jul 21) + funding (Perplexity ~$200M, Cognition $1B, Glean $180M) already #5. Only genuinely-today item — Moonshot Kimi K3 open-weights commitment (Jul 27) — is a Jul-16 model already absorbed by the crowded-frontier bullet and rewires nothing for The Construct.
+outcome: Board unchanged (authoritative from the 06:01 first fire): (1) MCP 2026-07-28 stateless spec ships TODAY, migration due now [YES, leads]; (2) vertical MCP-server wave — Pipedrive CRM Jul 24, Revid.ai video, Sprinklr, 10,000+ servers [YES]; (3) Anthropic Opus 5 default + unified Cowork home + FedRAMP High [YES]; (4) arXiv automated prompt optimization for LLM agents 2606.17838 [MAYBE]; (5) frontier field + agent funding wave [MAYBE]. Did NOT regress latest.json or 2026-07-28.md.
+lesson: A same-day re-fire that finds the morning board's load-bearing item still correctly at #1 earns NO rewrite — verify against the live board, confirm nothing new cleared the 24h bar, and leave the brief and latest.json untouched rather than churn the dashboard to re-say what already leads. The one due-today action is unchanged and holds: close the Jul-28 stateless-MCP migration + least-authority inventory across every Construct server today, before the ecosystem's other pre-built operator surfaces (CRM, video, social) get wired in against the new stateless contract.
+tags: pulse,mcp,ecosystem,daily,refire,idempotent,no-regression,deadline
+confidence: 0.8
+~~~
