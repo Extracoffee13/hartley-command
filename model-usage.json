@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-27T07:25:20",
+  "generated": "2026-07-28T07:25:54",
   "schema_version": 1,
   "source": "Hermes logs (~/.hermes/logs/agent.log*, errors.log*)",
   "logs_scanned": [
@@ -8,30 +8,30 @@
   ],
   "status": "ok",
   "totals": {
-    "requests": 1218,
+    "requests": 2860,
     "errors_402": 0,
-    "other_errors": 327,
-    "in_tokens": 74115374,
-    "out_tokens": 550061
+    "other_errors": 33,
+    "in_tokens": 187075693,
+    "out_tokens": 1306676
   },
   "models": [
     {
       "model": "moonshotai/kimi-k2.7-code",
       "provider": "openrouter",
-      "requests": 1218,
+      "requests": 2735,
       "errors_402": 0,
-      "other_errors": 195,
-      "in_tokens": 74115374,
-      "out_tokens": 550061
+      "other_errors": 26,
+      "in_tokens": 166557311,
+      "out_tokens": 1240293
     },
     {
       "model": "moonshotai/kimi-k3",
       "provider": "openrouter",
-      "requests": 0,
+      "requests": 125,
       "errors_402": 0,
-      "other_errors": 132,
-      "in_tokens": 0,
-      "out_tokens": 0
+      "other_errors": 7,
+      "in_tokens": 20518382,
+      "out_tokens": 66383
     }
   ]
 }
