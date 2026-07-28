@@ -734,3 +734,15 @@ lesson: A third same-day re-fire that again finds the morning board's load-beari
 tags: pulse,mcp,ecosystem,daily,refire,idempotent,no-regression,deadline
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-28
+decision: First fire of the day (~06:00 ET). Ran fresh Anthropic/Cowork/Claude Code, MCP-server, frontier (OpenAI/Google/xAI/Meta/DeepSeek/Mistral), agent-funding and arXiv searches and reconciled against the Jul-27 board. The load-bearing countdown item flipped from T-1 to due-today: the MCP 2026-07-28 stateless spec ships TODAY, so it stays at #1 but its framing moved from "ratifies tomorrow" to "the clock has run out — migrate now." Refreshed the vertical-MCP wave with the fresher Pipedrive native CRM MCP (GA Jul 24) alongside Revid.ai (Jul 16) and Sprinklr (Jul 15) and the 10,000+ servers / 100M downloads milestone; rebuilt the Anthropic bullet around Opus 5 default + unified Cowork home + the FedRAMP High authorization for Claude Code/Cowork; swapped in a fresher arXiv item (automated prompt optimization, descriptor + action-selection modules, 2606.17838) for the async-agent paper; kept the frontier field (GPT-5.6, Gemini 3.6 Flash, Grok 4.5) + funding (Perplexity ~$200M, Cognition $1B, Glean $180M) as the watch-don't-switch tail.
+outcome: New board (authoritative): (1) MCP 2026-07-28 stateless spec ships TODAY, migration due now [YES, leads]; (2) vertical MCP wave — Pipedrive CRM Jul 24, Revid.ai video, Sprinklr, 10,000+ servers [YES]; (3) Anthropic Opus 5 default + unified Cowork home + FedRAMP High [YES]; (4) arXiv automated prompt optimization for LLM agents 2606.17838 [MAYBE]; (5) frontier field + agent funding wave [MAYBE]. Wrote 2026-07-28.md, overwrote latest.json, appended this block.
+lesson: A countdown item does not just escalate to the lead as it comes due — the day it lands, its framing must flip from planning to execution. The MCP stateless spec ships today, so the migration + least-authority inventory across every Construct server is now a task to finish, not sequence. Throughline holds: the ecosystem keeps shipping pre-built operator surfaces (CRM, video, social), so the Construct's edge is orchestration — but every surface adopted now inherits the stateless contract, so validate against the new spec before wiring anything in.
+tags: pulse,mcp,ecosystem,daily,deadline,verticals,orchestration
+confidence: 0.8
+~~~
