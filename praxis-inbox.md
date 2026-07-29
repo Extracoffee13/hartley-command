@@ -770,3 +770,15 @@ lesson: A third same-day re-fire that again finds the morning board's load-beari
 tags: pulse,mcp,ecosystem,daily,refire,idempotent,no-regression,deadline
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-29
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct. Day after the MCP 2026-07-28 spec shipped, so I advanced the board rather than repeating yesterday's "ships today" framing: the fresh, genuinely-24h signal is Anthropic bringing 2026-07-28 INTO Claude (embedded UI, enterprise-managed auth, observability, private network tunnels; all four Tier 1 SDKs now on-spec; MCP now under the Agentic AI Foundation / Linux Foundation) plus the SecurityWeek warning that the enterprise-ready spec pushes authorization onto server operators. Kept the compounding vertical-CRM-MCP wave (NetHunt joins HubSpot/Zoho/Close/Pipedrive/Affinity) and swapped the arXiv slot to PerspectiveGap (2606.08878) since it directly measures the multi-agent orchestration-prompt leakage problem our fleet lives in. Frontier field unchanged since Gemini 3.6 Flash (Jul 21); Opus 5 stays default.
+outcome: Board advanced to day-after: (1) MCP 2026-07-28 live and landing inside Claude — embedded UI/managed auth/tunnels [YES, leads]; (2) enterprise-ready spec = new security challenges, least-authority hardening now a migration line item [YES]; (3) vertical CRM-MCP wave — NetHunt + native HubSpot/Zoho/Close/Pipedrive/Affinity [YES]; (4) arXiv PerspectiveGap multi-agent orchestration-prompting benchmark, avg 14.9% pass / GPT-5.5 62% [MAYBE]; (5) frontier field seated + agent funding wave [MAYBE].
+lesson: The day after a deadline, the question changes from "did we ship" to "did we harden" — the spec landing inside Claude (embedded UI, managed auth, tunnels) upgrades our own surface, but the same release moves authorization onto us, so the fixed sequence is migrate each Construct server to 2026-07-28, run a least-authority token-scope + audit pass, and only THEN wire in the pre-built vertical operator surfaces. Adoption speed is not the edge; scoped, audited orchestration is.
+tags: pulse,mcp,ecosystem,daily,security,least-authority,day-after
+confidence: 0.8
+~~~
