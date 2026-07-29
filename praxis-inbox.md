@@ -782,3 +782,15 @@ lesson: The day after a deadline, the question changes from "did we ship" to "di
 tags: pulse,mcp,ecosystem,daily,security,least-authority,day-after
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-29
+decision: Second/afternoon re-fire (~14:00 ET) behind the authoritative 06:01 first fire that built today's day-after board. Ran fresh 24h searches — Anthropic/Cowork/Claude Code, new MCP servers, frontier (OpenAI/Google/xAI), agent funding, arXiv — and reconciled against the standing board. Nothing cleared the 24h bar to displace it: the only genuinely-today signal is the Jul-28 VC roundup (Telli $15M seed, Paper.xyz $34M A, Arrakis Clean $38M A, plus agent-identity security rounds Act Security $60M and Hush Security $30M), all of which fold into the item #5 funding-wave tail — and the two agent-identity/governance rounds actually reinforce item #2's least-authority/security thesis rather than opening a new lane. Frontier field unchanged since Gemini 3.6 Flash (Jul 21) / Grok STT 1.0 (Jul 23); Cowork web/mobile is Jul 7 (older); vertical MCP servers Featured (Jul 7) and Axonius (Jul 21) already covered by item #3.
+outcome: Board unchanged and authoritative from the 06:01 fire: (1) MCP 2026-07-28 live and landing inside Claude — embedded UI/managed auth/observability/tunnels [YES, leads]; (2) enterprise-ready spec = new security challenges, least-authority hardening a migration line item [YES]; (3) vertical CRM-MCP wave — NetHunt + native HubSpot/Zoho/Close/Pipedrive/Affinity [YES]; (4) arXiv PerspectiveGap orchestration-prompt benchmark, avg 14.9% / GPT-5.5 62% [MAYBE]; (5) frontier field seated + agent funding wave [MAYBE]. Did NOT regress latest.json or 2026-07-29.md.
+lesson: An afternoon re-fire that finds the morning board's load-bearing item still correctly at #1 earns NO rewrite — new same-day agent-security funding (Act Security, Hush Security governing non-human identities) is confirmation that the board's least-authority throughline is right, not new signal that displaces it. Leave the brief and latest.json untouched; the standing day-after action holds — migrate each Construct server to 2026-07-28, run the least-authority token-scope + audit pass, then wire in vertical operator MCPs.
+tags: pulse,mcp,ecosystem,daily,refire,idempotent,no-regression,security
+confidence: 0.8
+~~~
