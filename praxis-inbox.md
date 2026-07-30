@@ -794,3 +794,15 @@ lesson: An afternoon re-fire that finds the morning board's load-bearing item st
 tags: pulse,mcp,ecosystem,daily,refire,idempotent,no-regression,security
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-07-30
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct. T+2 after the MCP 2026-07-28 spec, so I advanced the board off the migrate/harden throughline (which ran 07-28/07-29) and onto adoption & distribution: the genuinely-fresh signal is that MCP is now an institution — governed by the Agentic AI Foundation under the Linux Foundation, 400M+ monthly SDK downloads (4x YoY), 10,000+ servers — plus Guideline's Ad Intelligence MCP server making proprietary ad-spend/pricing/competitive-media data agent-callable across Claude/ChatGPT/Gemini/Copilot (a direct Brand 9 Signs / PRAGMA paid-media play). Kept Anthropic distribution (Opus 5 default day-one on Bedrock/Vertex/Foundry + Cognizant partnership Jul 27), the seated frontier field, and swapped the arXiv slot to Context Engineering (2603.09619) five-criteria context rubric for our fleet.
+outcome: 5 items flagged — (1) MCP now Linux-Foundation-governed, 400M+ SDK downloads [YES, leads]; (2) Guideline Ad Intelligence MCP server, ad-spend/pricing agent-callable [YES]; (3) Anthropic distribution consolidation — Opus 5 default + Cognizant [YES]; (4) frontier field seated since Opus 5 [MAYBE]; (5) arXiv Context Engineering 2603.09619 five context-quality criteria [YES].
+lesson: The MCP migration-and-harden window is closing behind us — with the spec now a Linux-Foundation institution and 10,000+ servers live, the edge is no longer adoption speed or security hygiene but sequencing which vertical operator surfaces you wire in first. Ad-intelligence (Guideline) and CRM MCPs are the highest-leverage Brand 9 Signs / PRAGMA data sources; run each through the least-authority scope pass we already built and stand up one media-and-pipeline operator agent on top — own the orchestration and the context discipline, not any one feed.
+tags: pulse,mcp,ecosystem,daily,adoption,distribution,vertical-operator
+confidence: 0.8
+~~~

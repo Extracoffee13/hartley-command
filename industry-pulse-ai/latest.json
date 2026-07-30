@@ -1,51 +1,52 @@
 {
-  "generated": "2026-07-29T10:05:00Z",
-  "latest_date": "2026-07-29",
+  "generated": "2026-07-30T10:05:00Z",
+  "latest_date": "2026-07-30",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Day after: MCP 2026-07-28 is live and Anthropic is bringing it INTO Claude — embedded UI, managed auth, observability, private tunnels",
-      "summary": "Yesterday's countdown shipped; today the story flips from 'migrate now' to 'the platform is rolling it in.' Claude is expanding support for the 2026-07-28 spec with a stateless core, stronger OAuth 2.0/OIDC authorization, and versioned Apps + Tasks extensions, plus new connector features: embedded UI rendered alongside tool results, enterprise-managed auth (Entra/Okta, no workarounds), observability, and private network tunnels. All four Tier 1 SDKs (TS, Python, Go, C#) now speak 2026-07-28; MCP is now hosted by the Agentic AI Foundation under the Linux Foundation.",
+      "title": "MCP crosses from spec fight to institution — now governed by the Agentic AI Foundation under the Linux Foundation, 400M+ monthly SDK downloads",
+      "summary": "Two days after the 2026-07-28 stateless spec shipped, the story moves off migration mechanics and onto governance: MCP is now a neutral, foundation-owned standard (AAIF / Linux Foundation) with 400M+ monthly SDK downloads (4x YoY) and 10,000+ published servers. That is the signal the protocol is durable infrastructure, not a vendor bet.",
       "tag": "yes",
-      "how": "This is the concrete landing of yesterday's plumbing action in the exact host The Construct runs on. Stateless Tasks maps onto our long-running Lens/Prism/Pulse scans, embedded-UI tool results fit client-facing dashboards, and private tunnels + enterprise-managed auth are the credibility layer PRAGMA needs to wire a client's own identity system into a Construct agent. Migration is now execution-in-progress, not planning.",
-      "url": "https://claude.com/blog/bringing-mcp-2026-07-28-to-claude"
+      "how": "Settles the 'is MCP safe to standardize The Construct on' question in our favor. We can commit the whole fleet to the spec knowing it now has neutral stewardship and won't be yanked by any single vendor.",
+      "url": "https://aaif.io/blog/mcp-is-growing-up"
     },
     {
       "n": 2,
-      "title": "The enterprise-ready spec brings NEW security challenges — least-authority hardening is not optional",
-      "summary": "The same stateless/OAuth-2.1 changes that make MCP serverless-and-edge deployable also widen the attack surface: header-based routing and inline _meta identity mean every request must be independently authorized, and the shift to production OAuth/OIDC pushes token-scoping, audience-binding and consent handling onto server operators who previously leaned on the session handshake.",
+      "title": "Guideline ships an Ad Intelligence MCP server — proprietary ad-spend, pricing, and market intel now agent-callable across Claude/ChatGPT/Gemini/Copilot",
+      "summary": "Guideline (ad intelligence + media-plan management) exposes its ad-spend / pricing / competitive-media dataset through an MCP layer any compliant agent can query, following its March 2026 Media Plan Management MCP. The paid-media stack is becoming a set of agent-readable data surfaces, not just dashboards.",
       "tag": "yes",
-      "how": "Directly gates our migration: every Construct MCP server we move to the new spec needs a least-authority token-scope + audit pass BEFORE we adopt any pre-built vertical server (item 3). Security review is now a line item in the migration, not a follow-up.",
-      "url": "https://www.securityweek.com/new-enterprise-ready-mcp-specification-brings-new-security-challenges/"
+      "how": "Direct Brand 9 Signs / PRAGMA play: a single Construct media-ops agent that reads competitive ad-spend and pricing to plan signage-adjacent paid campaigns, and an operator-wedge data source PRAGMA can resell as insight.",
+      "url": "https://www.prnewswire.com/news-releases/guideline-launches-its-ad-intelligence-mcp-server-to-power-ai-agents-with-its-leading-global-advertising-data-302832328.html"
     },
     {
       "n": 3,
-      "title": "Vertical MCP-server wave keeps compounding — NetHunt CRM MCP (July) joins native support from HubSpot, Zoho, Close, Pipedrive, Affinity",
-      "summary": "NetHunt's new MCP gives agents read/write access to folders (Leads/Deals/Companies), records, and full timeline history; the native-CRM MCP roster now spans HubSpot, Zoho, Close, Pipedrive and Affinity as of mid-2026.",
+      "title": "Anthropic consolidates distribution — Opus 5 holds fleet default with day-one hyperscaler availability; Cognizant partnership (Jul 27) pushes Claude into enterprise delivery",
+      "summary": "No new model this cycle: Opus 5 (Jul 24) stays newest and shipped day-one across Bedrock / Vertex / Microsoft Foundry, while the expanded Cognizant partnership (Jul 27) embeds Claude in large-enterprise delivery workflows.",
       "tag": "yes",
-      "how": "CRM MCPs are exactly the operator wedge PRAGMA sells: one Construct agent driving a client's whole sales pipeline in natural language. But per item 2, any of these gets a least-authority scope pass against the new stateless contract before we wire it into a client stack.",
-      "url": "https://nethunt.com/blog/crm-mcp/"
+      "how": "Opus 5 stays The Construct default with no rewire, and the hyperscaler + SI distribution is the credibility rail PRAGMA rides when a client asks 'who else runs this in production.'",
+      "url": "https://www.anthropic.com/news"
     },
     {
       "n": 4,
-      "title": "arXiv PerspectiveGap: multi-agent orchestration prompting is HARD and now measurable (avg 14.9% pass; GPT-5.5 leads at 62%)",
-      "summary": "A 110-scenario benchmark testing whether an LLM can compose orchestration prompts that distribute the right context to sub-agents WITHOUT information leakage; across 27 commercial models the average combined pass rate was just 14.9%, with GPT-5.5 substantially ahead at 62.0%.",
+      "title": "Frontier field stays seated — no drop cleared the 24h bar; Opus 5 (Jul 24) newest above Gemini 3.6 Flash, GPT-5.6 Sol/Terra/Luna, Grok 4.5, Muse Spark 1.1",
+      "summary": "The frontier has been quiet since Opus 5. The cost/quality split is unchanged: Opus 5 for reasoning-heavy Construct jobs, Gemini 3.6 Flash for cheap high-volume batch text/image.",
       "tag": "maybe",
-      "how": "The Construct is a multi-agent fleet (Lens/Prism/Pulse/Keystone under one orchestrator), so 'can the orchestrator hand each agent exactly the context it needs and nothing more' is our core reliability question. This gives us a concrete way to test our delegation prompts instead of eyeballing them, tied to the item-2 leakage/least-authority theme.",
-      "url": "https://arxiv.org/abs/2606.08878"
+      "how": "Watch, don't switch; nothing here changes the fleet's model routing.",
+      "url": "https://llm-stats.com/llm-updates"
     },
     {
       "n": 5,
-      "title": "Frontier field stays seated — Opus 5 holds fleet default; GPT-5.6, Gemini 3.6 Flash, Grok 4.5, Muse Spark 1.1 all in market",
-      "summary": "No new frontier drop cleared the 24h bar; the field is unchanged since Gemini 3.6 Flash (Jul 21), against a July that saw ~$1.8B raised across 12+ agent deals (Perplexity +$60M ext at $3.5B, Cognition's $1B seated).",
-      "tag": "maybe",
-      "how": "Watch, don't switch: Opus 5 stays default, Gemini 3.6 Flash stays the cheap-batch option, and the funding wave keeps confirming the operator-agent thesis PRAGMA is built on. No rewire.",
-      "url": "https://gravity.fast/blog/ai-agent-funding-tracker-q3-2026/"
+      "title": "arXiv framework: Context Engineering — From Prompts to Corporate Multi-Agent Architecture (2603.09619) frames context as the agent's operating system",
+      "summary": "Synthesizing Google ADK, Anthropic and LangChain patterns, it proposes five context-quality criteria — relevance, sufficiency, isolation, economy, provenance — as the discipline for feeding a multi-agent fleet.",
+      "tag": "yes",
+      "how": "A direct rubric for how our orchestrator hands each Construct agent (Lens/Prism/Pulse/Keystone) exactly the context it needs and nothing more; 'isolation' and 'economy' are the least-authority + token-budget instincts we already run, now named and measurable.",
+      "url": "https://arxiv.org/abs/2603.09619"
     }
   ],
-  "praxis_lesson": "The day after a deadline, the question changes from 'did we ship' to 'did we harden.' The stateless spec landing inside Claude itself (embedded UI, managed auth, tunnels) is a gift that upgrades the exact surface our agents run on, but the same release that makes MCP enterprise-ready also moves authorization onto us, so the sequence is now fixed: migrate each Construct server to 2026-07-28, run a least-authority token-scope + audit pass on it, and only THEN wire in the pre-built vertical operator surfaces (CRM, video, social) the ecosystem keeps handing us. Adoption speed is not the edge; scoped, audited orchestration is.",
+  "praxis_lesson": "The MCP migration-and-harden window is closing behind us; with the spec now a Linux-Foundation institution and 10,000+ servers live, the edge is no longer adoption speed or even security hygiene — it's sequencing which vertical operator surfaces you wire in first. For The Construct that ordering is now legible: ad-intelligence (Guideline) and CRM MCPs are the highest-leverage Brand 9 Signs / PRAGMA data sources, so the move is to run each through the least-authority scope pass we already built and stand up a single media-and-pipeline operator agent on top — owning the orchestration and the context discipline (2603.09619's five criteria), not any one data feed.",
   "history": [
+    "2026-07-30",
     "2026-07-29",
     "2026-07-28",
     "2026-07-27",
@@ -58,7 +59,6 @@
     "2026-07-20",
     "2026-07-19",
     "2026-07-18",
-    "2026-07-17",
-    "2026-07-16"
+    "2026-07-17"
   ]
 }
