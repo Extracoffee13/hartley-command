@@ -1,34 +1,34 @@
 {
-  "generated": "2026-07-30T11:00:20.377656+00:00Z",
+  "generated": "2026-07-31T12:10:54.902563+00:00Z",
   "client": "b9",
   "schema_version": "v5",
-  "overall_slm_score": 24,
-  "slm_total_cited": 10,
-  "slm_total_checks": 42,
+  "overall_slm_score": null,
+  "slm_total_cited": 0,
+  "slm_total_checks": 0,
   "slm_total_attempted": 48,
-  "slm_total_scored": 42,
-  "slm_total_no_read": 6,
+  "slm_total_scored": 0,
+  "slm_total_no_read": 48,
   "tier_scores": {
-    "tiny-on-device": 28,
-    "small": 21
+    "tiny-on-device": null,
+    "small": null
   },
-  "tier_average": 24,
+  "tier_average": null,
   "tiers": {
     "tiny-on-device": {
       "label": "Tiny / On-Device (1-4B)",
-      "score": 28,
+      "score": null,
       "models": [
         {
           "model": "google/gemma-3-4b-it",
           "harness": "OpenRouter",
           "temp": 0.2,
           "max_tokens": 350,
-          "checked_at": "2026-07-30T11:00:20.377656+00:00Z",
+          "checked_at": "2026-07-31T12:10:54.902563+00:00Z",
           "questions": [
             {
               "question": "Who are the best commercial sign companies in Jacksonville FL?",
               "answer_truncated": "",
-              "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-3-4b-it is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
               "status": "no_read",
               "entity_found": false,
               "entity": null,
@@ -38,7 +38,7 @@
             {
               "question": "Where can I get custom business signs installed in Clay County Florida?",
               "answer_truncated": "",
-              "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-3-4b-it is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
               "status": "no_read",
               "entity_found": false,
               "entity": null,
@@ -48,7 +48,7 @@
             {
               "question": "What are the top home builder signage companies in Florida?",
               "answer_truncated": "",
-              "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-3-4b-it is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
               "status": "no_read",
               "entity_found": false,
               "entity": null,
@@ -58,7 +58,7 @@
             {
               "question": "Who does model home display signage in Jacksonville?",
               "answer_truncated": "",
-              "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-3-4b-it is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
               "status": "no_read",
               "entity_found": false,
               "entity": null,
@@ -68,7 +68,7 @@
             {
               "question": "Which companies install community monument signs in master-planned communities?",
               "answer_truncated": "",
-              "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-3-4b-it is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
               "status": "no_read",
               "entity_found": false,
               "entity": null,
@@ -77,9 +77,9 @@
             },
             {
               "question": "Who is the best environmental graphic design firm in the Southeast?",
-              "answer_truncated": "Okay, this is a great question, and a tricky one to answer definitively! \"Best\" is always subjective and depends on your specific needs and priorities. However, based on reputation, awards, client lists, and overall quality of work, here's a breakdown of some of the top Environmental Graphic Design ...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -87,9 +87,9 @@
             },
             {
               "question": "Which sign companies specialize in wayfinding systems for campuses?",
-              "answer_truncated": "Okay, let's break down some sign companies that specialize in wayfinding systems for campuses. This is a specialized area, so these firms have developed expertise in the scale, complexity, and branding requirements of university environments. Here's a breakdown, categorized by size and focus, with e...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -98,7 +98,7 @@
             {
               "question": "What companies handle military base signage contracts?",
               "answer_truncated": "",
-              "error": "HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-3-4b-it is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
               "status": "no_read",
               "entity_found": false,
               "entity": null,
@@ -106,24 +106,24 @@
               "total_entities_cited": 0
             }
           ],
-          "score": 0,
+          "score": null,
           "cited": 0,
-          "scored": 2,
+          "scored": 0,
           "attempted": 8,
-          "no_read": 6
+          "no_read": 8
         },
         {
           "model": "microsoft/phi-4",
           "harness": "OpenRouter",
           "temp": 0.2,
           "max_tokens": 350,
-          "checked_at": "2026-07-30T11:00:20.377656+00:00Z",
+          "checked_at": "2026-07-31T12:10:54.902563+00:00Z",
           "questions": [
             {
               "question": "Who are the best commercial sign companies in Jacksonville FL?",
-              "answer_truncated": "As of the latest information, Jacksonville, FL, has several reputable commercial sign companies known for their quality work and customer service. While specific rankings can change over time, here are some well-regarded options:\n\n1. **Signs by Design** - Known for their custom signage solutions, Si...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -131,9 +131,9 @@
             },
             {
               "question": "Where can I get custom business signs installed in Clay County Florida?",
-              "answer_truncated": "For custom business signs in Clay County, Florida, you have several options:\n\n1. **Local Sign Shops**: Check out local businesses like Clay County Sign Company or Signs by Design. They often offer custom sign design and installation services.\n\n2. **Online Directories**: Use platforms like Yelp or Go...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -141,9 +141,9 @@
             },
             {
               "question": "What are the top home builder signage companies in Florida?",
-              "answer_truncated": "As a large language model, I cannot be relied upon for definitive information on election- or politics-related matters. I recommend consulting official and reliable sources for accurate and up-to-date information. \n\nHowever, I can provide some general information about well-known home builder signag...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -151,9 +151,9 @@
             },
             {
               "question": "Who does model home display signage in Jacksonville?",
-              "answer_truncated": "In Jacksonville, as in many other cities, model home display signage is typically regulated by local zoning ordinances and sign codes. These regulations can vary depending on the specific area within the city, so it's important to consult the local government or planning department for precise guide...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -161,9 +161,9 @@
             },
             {
               "question": "Which companies install community monument signs in master-planned communities?",
-              "answer_truncated": "In master-planned communities, the installation of community monument signs is often handled by a combination of entities, including:\n\n1. **Community Associations or Homeowners Associations (HOAs):** These organizations typically oversee the aesthetic and functional aspects of the community, includi...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -171,9 +171,9 @@
             },
             {
               "question": "Who is the best environmental graphic design firm in the Southeast?",
-              "answer_truncated": "Identifying the \"best\" environmental graphic design firm in the Southeast is subjective and can vary based on specific criteria such as creativity, technical expertise, client satisfaction, and innovation. However, several firms have gained recognition in the region for their work in environmental g...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -181,83 +181,83 @@
             },
             {
               "question": "Which sign companies specialize in wayfinding systems for campuses?",
-              "answer_truncated": "Wayfinding systems for campuses are specialized and require companies that have expertise in designing clear, navigable, and aesthetically pleasing signage and information systems. Some companies that specialize in wayfinding systems, including those for campuses, include:\n\n1. **Grafix Signs**: Know...",
-              "error": null,
-              "status": "scored",
-              "entity_found": true,
-              "entity": "Signarama",
-              "rank": 4,
-              "total_entities_cited": 1
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
+              "entity_found": false,
+              "entity": null,
+              "rank": null,
+              "total_entities_cited": 0
             },
             {
               "question": "What companies handle military base signage contracts?",
-              "answer_truncated": "While I don't have access to specific databases or the ability to provide real-time information, I can offer some general guidance on the topic. Companies that handle military base signage contracts are typically specialized in government and defense contracting. These companies often have the neces...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
               "total_entities_cited": 0
             }
           ],
-          "score": 12,
-          "cited": 1,
-          "scored": 8,
+          "score": null,
+          "cited": 0,
+          "scored": 0,
           "attempted": 8,
-          "no_read": 0
+          "no_read": 8
         },
         {
           "model": "meta-llama/llama-3.2-3b-instruct",
           "harness": "OpenRouter",
           "temp": 0.2,
           "max_tokens": 350,
-          "checked_at": "2026-07-30T11:00:20.377656+00:00Z",
+          "checked_at": "2026-07-31T12:10:54.902563+00:00Z",
           "questions": [
             {
               "question": "Who are the best commercial sign companies in Jacksonville FL?",
-              "answer_truncated": "I can provide you with a list of some of the top-rated commercial sign companies in Jacksonville, FL, based on online reviews and ratings. Please note that this list is not exhaustive, and it's always best to do your own research and compare different companies before making a decision.\n\n1. **Signar...",
-              "error": null,
-              "status": "scored",
-              "entity_found": true,
-              "entity": "Signarama",
-              "rank": 4,
-              "total_entities_cited": 1
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
+              "entity_found": false,
+              "entity": null,
+              "rank": null,
+              "total_entities_cited": 0
             },
             {
               "question": "Where can I get custom business signs installed in Clay County Florida?",
-              "answer_truncated": "I can provide you with some options to consider for custom business signs in Clay County, Florida. Please note that it's always a good idea to research and compare prices, services, and reviews before making a decision.\n\nHere are a few options to consider:\n\n1. **Sign Companies in Clay County:**\n\t* S...",
-              "error": null,
-              "status": "scored",
-              "entity_found": true,
-              "entity": "Signarama",
-              "rank": 4,
-              "total_entities_cited": 1
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
+              "entity_found": false,
+              "entity": null,
+              "rank": null,
+              "total_entities_cited": 0
             },
             {
               "question": "What are the top home builder signage companies in Florida?",
-              "answer_truncated": "Here are some top home builder signage companies in Florida:\n\n1. **Signarama** (Multiple locations in Florida) - A leading sign company with a wide range of services, including custom signs, banners, and more.\n2. **Signarama of Central Florida** (Orlando) - A full-service sign company offering custo...",
-              "error": null,
-              "status": "scored",
-              "entity_found": true,
-              "entity": "Signarama",
-              "rank": 4,
-              "total_entities_cited": 1
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
+              "entity_found": false,
+              "entity": null,
+              "rank": null,
+              "total_entities_cited": 0
             },
             {
               "question": "Who does model home display signage in Jacksonville?",
-              "answer_truncated": "I can provide some general information about model home display signage in Jacksonville. However, I couldn't find any specific information about a single company that handles model home display signage in Jacksonville.\n\nThat being said, there are several companies in the Jacksonville area that speci...",
-              "error": null,
-              "status": "scored",
-              "entity_found": true,
-              "entity": "Signarama",
-              "rank": 4,
-              "total_entities_cited": 1
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
+              "entity_found": false,
+              "entity": null,
+              "rank": null,
+              "total_entities_cited": 0
             },
             {
               "question": "Which companies install community monument signs in master-planned communities?",
-              "answer_truncated": "I'm not aware of a comprehensive list of companies that install community monument signs in master-planned communities. However, here are a few companies that specialize in signage and monument installation:",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -265,9 +265,9 @@
             },
             {
               "question": "Who is the best environmental graphic design firm in the Southeast?",
-              "answer_truncated": "I don't have real-time information or a current list of the best environmental graphic design firms in the Southeast. However, I can suggest some ways to find the best firm for your needs:\n\n1. **Check online directories**: Look up online directories like Behance, Dribbble, or Houzz to find environme...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -275,9 +275,9 @@
             },
             {
               "question": "Which sign companies specialize in wayfinding systems for campuses?",
-              "answer_truncated": "I can provide some general information on companies that specialize in wayfinding systems for campuses. Please note that this list may not be exhaustive, and it's always best to research and verify the information.\n\nHere are some companies that specialize in wayfinding systems for campuses:\n\n1. Wayf...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -285,28 +285,28 @@
             },
             {
               "question": "What companies handle military base signage contracts?",
-              "answer_truncated": "There are several companies that handle military base signage contracts, including:\n\n1. **General Dynamics Information Technology (GDIT)**: A leading provider of IT services, including signage and wayfinding solutions for military bases.\n2. **BAE Systems**: A global defense, security, and aerospace ...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
               "total_entities_cited": 0
             }
           ],
-          "score": 50,
-          "cited": 4,
-          "scored": 8,
+          "score": null,
+          "cited": 0,
+          "scored": 0,
           "attempted": 8,
-          "no_read": 0
+          "no_read": 8
         }
       ],
       "attempted": 24,
-      "scored": 18,
-      "no_read": 6,
-      "cited": 5,
-      "total_checks": 18,
-      "total_cited": 5,
+      "scored": 0,
+      "no_read": 24,
+      "cited": 0,
+      "total_checks": 0,
+      "total_cited": 0,
       "on_device_proxy": [
         {
           "name": "Apple Intelligence",
@@ -324,20 +324,20 @@
     },
     "small": {
       "label": "Small (7-13B)",
-      "score": 21,
+      "score": null,
       "models": [
         {
           "model": "mistralai/ministral-8b-2512",
           "harness": "OpenRouter",
           "temp": 0.2,
           "max_tokens": 350,
-          "checked_at": "2026-07-30T11:00:20.377656+00:00Z",
+          "checked_at": "2026-07-31T12:10:54.902563+00:00Z",
           "questions": [
             {
               "question": "Who are the best commercial sign companies in Jacksonville FL?",
-              "answer_truncated": "Jacksonville, Florida, has several highly regarded commercial sign companies known for their quality craftsmanship, creativity, and customer service. Here are some of the **best commercial sign companies in Jacksonville FL** based on reputation, expertise, and client reviews:\n\n### **Top Commercial S...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -345,9 +345,9 @@
             },
             {
               "question": "Where can I get custom business signs installed in Clay County Florida?",
-              "answer_truncated": "If you're looking for **custom business signs installed in Clay County, Florida**, here are some reliable local and regional options to consider:\n\n### **1. Local Sign Companies in Clay County & Nearby Areas**\nThese companies specialize in commercial signage, including custom vinyl, LED, backlit, and...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -355,19 +355,19 @@
             },
             {
               "question": "What are the top home builder signage companies in Florida?",
-              "answer_truncated": "Florida is a major market for home builders, and effective signage is crucial for attracting buyers. Here are some of the **top home builder signage companies** in Florida, known for their high-quality, customizable, and impactful signage solutions:\n\n### **1. Signarama (Multiple Locations in Florida...",
-              "error": null,
-              "status": "scored",
-              "entity_found": true,
-              "entity": "Signarama",
-              "rank": 4,
-              "total_entities_cited": 1
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
+              "entity_found": false,
+              "entity": null,
+              "rank": null,
+              "total_entities_cited": 0
             },
             {
               "question": "Who does model home display signage in Jacksonville?",
-              "answer_truncated": "In **Jacksonville, Florida**, several companies specialize in **model home display signage**, including custom signage, digital displays, and traditional vinyl/wrap solutions for real estate developers and builders. Here are some key players to consider:\n\n### **1. Local Signage & Display Companies**...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -375,9 +375,9 @@
             },
             {
               "question": "Which companies install community monument signs in master-planned communities?",
-              "answer_truncated": "In **master-planned communities** (such as those developed by **The Pinnacle Companies, Lennar, Toll Brothers, PulteGroup, or other large homebuilders**), **community monument signs** (also called **community name signs, entrance signs, or landmark signs**) are typically installed by a combination o...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -385,9 +385,9 @@
             },
             {
               "question": "Who is the best environmental graphic design firm in the Southeast?",
-              "answer_truncated": "The best **environmental graphic design (EGD) firm in the Southeast** depends on your specific needs (e.g., wayfinding, museum exhibits, corporate interiors, public spaces, or sustainability-focused projects). However, several firms in the region are highly regarded for their expertise in **environm...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -395,9 +395,9 @@
             },
             {
               "question": "Which sign companies specialize in wayfinding systems for campuses?",
-              "answer_truncated": "Several signage and wayfinding companies specialize in designing and implementing **campus wayfinding systems**, combining digital and physical signage to improve navigation for students, faculty, and visitors. Here are some of the top firms known for their expertise in **campus wayfinding**:\n\n### *...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -405,33 +405,33 @@
             },
             {
               "question": "What companies handle military base signage contracts?",
-              "answer_truncated": "Military base signage contracts are typically awarded through competitive bidding processes managed by the **U.S. Department of Defense (DoD)**, **General Services Administration (GSA)**, or individual military branches (Army, Navy, Air Force, Marine Corps, Coast Guard). The following companies and ...",
-              "error": null,
-              "status": "scored",
-              "entity_found": true,
-              "entity": "Signarama",
-              "rank": 4,
-              "total_entities_cited": 1
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
+              "entity_found": false,
+              "entity": null,
+              "rank": null,
+              "total_entities_cited": 0
             }
           ],
-          "score": 25,
-          "cited": 2,
-          "scored": 8,
+          "score": null,
+          "cited": 0,
+          "scored": 0,
           "attempted": 8,
-          "no_read": 0
+          "no_read": 8
         },
         {
           "model": "qwen/qwen-2.5-7b-instruct",
           "harness": "OpenRouter",
           "temp": 0.2,
           "max_tokens": 350,
-          "checked_at": "2026-07-30T11:00:20.377656+00:00Z",
+          "checked_at": "2026-07-31T12:10:54.902563+00:00Z",
           "questions": [
             {
               "question": "Who are the best commercial sign companies in Jacksonville FL?",
-              "answer_truncated": "To provide you with the most accurate and up-to-date information on the best commercial sign companies in Jacksonville, FL, I would recommend checking local business directories, online reviews, and industry awards. Here are a few well-regarded commercial sign companies in Jacksonville:\n\n1. **Signs ...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -439,9 +439,9 @@
             },
             {
               "question": "Where can I get custom business signs installed in Clay County Florida?",
-              "answer_truncated": "To find custom business signs installed in Clay County, Florida, you can follow these steps:\n\n1. **Search Online**: Use search engines like Google to look for sign companies in Clay County. You can use keywords like \"custom business signs Clay County Florida\" or \"sign installation services Clay Coun...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -449,9 +449,9 @@
             },
             {
               "question": "What are the top home builder signage companies in Florida?",
-              "answer_truncated": "In Florida, there are several reputable home builder signage companies that provide high-quality signs for new home developments, sales offices, and other real estate-related signage needs. Here are some top companies known for their services in the state:\n\n1. **SignSource** - Known for their custom...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -459,9 +459,9 @@
             },
             {
               "question": "Who does model home display signage in Jacksonville?",
-              "answer_truncated": "Model home display signage in Jacksonville, Florida, can be handled by a variety of professionals or companies depending on the specific needs of the real estate developer or builder. Here are some common options:\n\n1. **Signage Companies**: Local signage companies specialize in creating and installi...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -469,9 +469,9 @@
             },
             {
               "question": "Which companies install community monument signs in master-planned communities?",
-              "answer_truncated": "Community monument signs in master-planned communities can be installed by a variety of companies, depending on the specific needs and preferences of the community developers or homeowners' associations. Here are some common types of companies that might be involved:\n\n1. **Sign Manufacturers and Ins...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -479,9 +479,9 @@
             },
             {
               "question": "Who is the best environmental graphic design firm in the Southeast?",
-              "answer_truncated": "Determining the \"best\" environmental graphic design firm in the Southeast can be subjective and depends on specific criteria such as the firm's portfolio, client satisfaction, innovation, and geographic focus. However, some firms in the region are known for their excellence in environmental graphic ...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -489,9 +489,9 @@
             },
             {
               "question": "Which sign companies specialize in wayfinding systems for campuses?",
-              "answer_truncated": "Several companies specialize in wayfinding systems for campuses, and the choice often depends on the specific needs of the institution, such as the size of the campus, the complexity of the layout, and the desired level of technology integration. Here are some companies known for their expertise in ...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -499,33 +499,33 @@
             },
             {
               "question": "What companies handle military base signage contracts?",
-              "answer_truncated": "Military base signage contracts can be handled by a variety of companies, depending on the specific needs of the military installation and the requirements of the contract. These companies often specialize in military or government contracting and may include:\n\n1. **Signage Manufacturers**: Companie...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
               "total_entities_cited": 0
             }
           ],
-          "score": 0,
+          "score": null,
           "cited": 0,
-          "scored": 8,
+          "scored": 0,
           "attempted": 8,
-          "no_read": 0
+          "no_read": 8
         },
         {
           "model": "meta-llama/llama-3.1-8b-instruct",
           "harness": "OpenRouter",
           "temp": 0.2,
           "max_tokens": 350,
-          "checked_at": "2026-07-30T11:00:20.377656+00:00Z",
+          "checked_at": "2026-07-31T12:10:54.902563+00:00Z",
           "questions": [
             {
               "question": "Who are the best commercial sign companies in Jacksonville FL?",
-              "answer_truncated": "Here are some of the top commercial sign companies in Jacksonville, FL, based on online reviews and ratings:\n\n1. **Signs By Tomorrow of Jacksonville** (4.9/5 on Google) - A franchise location offering custom signs, banners, and graphics for businesses.\n2. **Jacksonville Sign Company** (4.8/5 on Goog...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -533,19 +533,19 @@
             },
             {
               "question": "Where can I get custom business signs installed in Clay County Florida?",
-              "answer_truncated": "There are several options to get custom business signs installed in Clay County, Florida. Here are a few:\n\n1. **Local Sign Shops:**\n\t* **Signarama** (Jacksonville, FL): They offer custom sign design, fabrication, and installation services. ( approx. 20 miles from Orange Park, FL)\n\t* **Signs By Tomor...",
-              "error": null,
-              "status": "scored",
-              "entity_found": true,
-              "entity": "Signarama",
-              "rank": 4,
-              "total_entities_cited": 1
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
+              "entity_found": false,
+              "entity": null,
+              "rank": null,
+              "total_entities_cited": 0
             },
             {
               "question": "What are the top home builder signage companies in Florida?",
-              "answer_truncated": "I can provide you with a list of top home builder signage companies in Florida based on available data up to 2023. Please note that this information may not be up-to-date or exhaustive.\n\n1. **Signs By Tomorrow** - With multiple locations throughout Florida, Signs By Tomorrow offers a wide range of s...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -553,29 +553,29 @@
             },
             {
               "question": "Who does model home display signage in Jacksonville?",
-              "answer_truncated": "In Jacksonville, Florida, there are several companies that provide model home display signage services. Here are a few options:\n\n1. **Signarama**: Signarama is a national sign company with a location in Jacksonville. They offer a wide range of sign services, including model home display signs.\n2. **...",
-              "error": null,
-              "status": "scored",
-              "entity_found": true,
-              "entity": "Signarama",
-              "rank": 4,
-              "total_entities_cited": 2
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
+              "entity_found": false,
+              "entity": null,
+              "rank": null,
+              "total_entities_cited": 0
             },
             {
               "question": "Which companies install community monument signs in master-planned communities?",
-              "answer_truncated": "There are several companies that install community monument signs in master-planned communities. Here are a few examples:\n\n1. **Signs By Tomorrow**: With over 400 locations across the US and Canada, Signs By Tomorrow is a large sign company that offers a wide range of sign solutions, including commu...",
-              "error": null,
-              "status": "scored",
-              "entity_found": true,
-              "entity": "Signarama",
-              "rank": 4,
-              "total_entities_cited": 1
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
+              "entity_found": false,
+              "entity": null,
+              "rank": null,
+              "total_entities_cited": 0
             },
             {
               "question": "Who is the best environmental graphic design firm in the Southeast?",
-              "answer_truncated": "What a specific and intriguing question!\n\nUnfortunately, I couldn't find a definitive ranking or list of the best environmental graphic design firms in the Southeast. However, I can suggest some ways to narrow down your search:\n\n1. **Research local design firms**: Look up design firms in the Southea...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -583,9 +583,9 @@
             },
             {
               "question": "Which sign companies specialize in wayfinding systems for campuses?",
-              "answer_truncated": "Here are some sign companies that specialize in wayfinding systems for campuses:\n\n1. **Eclipse Systems**: A leading provider of wayfinding systems for educational institutions, Eclipse Systems offers a range of products, including digital signage, kiosks, and wayfinding software.\n2. **Environics**: ...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
@@ -593,28 +593,28 @@
             },
             {
               "question": "What companies handle military base signage contracts?",
-              "answer_truncated": "There are several companies that handle military base signage contracts, which can vary depending on the specific needs and requirements of the military base. Here are some companies that have provided signage services to military bases in the past:\n\n1. **Gannett Fleming**: A global infrastructure c...",
-              "error": null,
-              "status": "scored",
+              "answer_truncated": "",
+              "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+              "status": "no_read",
               "entity_found": false,
               "entity": null,
               "rank": null,
               "total_entities_cited": 0
             }
           ],
-          "score": 38,
-          "cited": 3,
-          "scored": 8,
+          "score": null,
+          "cited": 0,
+          "scored": 0,
           "attempted": 8,
-          "no_read": 0
+          "no_read": 8
         }
       ],
       "attempted": 24,
-      "scored": 24,
-      "no_read": 0,
-      "cited": 5,
-      "total_checks": 24,
-      "total_cited": 5,
+      "scored": 0,
+      "no_read": 24,
+      "cited": 0,
+      "total_checks": 0,
+      "total_cited": 0,
       "on_device_proxy": [
         {
           "name": "Apple Intelligence",
@@ -668,58 +668,58 @@
     {
       "model": "openai/gpt-4o",
       "harness": "consumer surface",
-      "checked_at": "2026-07-30T11:00:20.377656+00:00Z"
+      "checked_at": "2026-07-31T12:10:54.902563+00:00Z"
     },
     {
       "model": "openai/gpt-4o-mini",
       "harness": "consumer surface",
-      "checked_at": "2026-07-30T11:00:20.377656+00:00Z"
+      "checked_at": "2026-07-31T12:10:54.902563+00:00Z"
     },
     {
       "model": "anthropic/claude-sonnet-4.5",
       "harness": "consumer surface",
-      "checked_at": "2026-07-30T11:00:20.377656+00:00Z"
+      "checked_at": "2026-07-31T12:10:54.902563+00:00Z"
     },
     {
       "model": "anthropic/claude-haiku-4.5",
       "harness": "consumer surface",
-      "checked_at": "2026-07-30T11:00:20.377656+00:00Z"
+      "checked_at": "2026-07-31T12:10:54.902563+00:00Z"
     },
     {
       "model": "google/gemini-2.5-flash",
       "harness": "consumer surface",
-      "checked_at": "2026-07-30T11:00:20.377656+00:00Z"
+      "checked_at": "2026-07-31T12:10:54.902563+00:00Z"
     },
     {
       "model": "perplexity/sonar",
       "harness": "consumer surface",
-      "checked_at": "2026-07-30T11:00:20.377656+00:00Z"
+      "checked_at": "2026-07-31T12:10:54.902563+00:00Z"
     },
     {
       "model": "x-ai/grok-4.5",
       "harness": "consumer surface",
-      "checked_at": "2026-07-30T11:00:20.377656+00:00Z"
+      "checked_at": "2026-07-31T12:10:54.902563+00:00Z"
     },
     {
       "model": "deepseek/deepseek-chat-v3.1",
       "harness": "OpenRouter",
       "temp": 0.2,
       "max_tokens": 350,
-      "checked_at": "2026-07-30T11:00:20.377656+00:00Z"
+      "checked_at": "2026-07-31T12:10:54.902563+00:00Z"
     },
     {
       "model": "meta-llama/llama-4-maverick",
       "harness": "OpenRouter",
       "temp": 0.2,
       "max_tokens": 350,
-      "checked_at": "2026-07-30T11:00:20.377656+00:00Z"
+      "checked_at": "2026-07-31T12:10:54.902563+00:00Z"
     },
     {
       "model": "qwen/qwen-2.5-72b-instruct",
       "harness": "OpenRouter",
       "temp": 0.2,
       "max_tokens": 350,
-      "checked_at": "2026-07-30T11:00:20.377656+00:00Z"
+      "checked_at": "2026-07-31T12:10:54.902563+00:00Z"
     }
   ],
   "slm_models": [
@@ -728,46 +728,46 @@
       "harness": "OpenRouter",
       "temp": 0.2,
       "max_tokens": 350,
-      "checked_at": "2026-07-30T11:00:20.377656+00:00Z"
+      "checked_at": "2026-07-31T12:10:54.902563+00:00Z"
     },
     {
       "model": "meta-llama/llama-3.1-8b-instruct",
       "harness": "OpenRouter",
       "temp": 0.2,
       "max_tokens": 350,
-      "checked_at": "2026-07-30T11:00:20.377656+00:00Z"
+      "checked_at": "2026-07-31T12:10:54.902563+00:00Z"
     },
     {
       "model": "google/gemma-3-4b-it",
       "harness": "OpenRouter",
       "temp": 0.2,
       "max_tokens": 350,
-      "checked_at": "2026-07-30T11:00:20.377656+00:00Z"
+      "checked_at": "2026-07-31T12:10:54.902563+00:00Z"
     },
     {
       "model": "microsoft/phi-4",
       "harness": "OpenRouter",
       "temp": 0.2,
       "max_tokens": 350,
-      "checked_at": "2026-07-30T11:00:20.377656+00:00Z"
+      "checked_at": "2026-07-31T12:10:54.902563+00:00Z"
     },
     {
       "model": "qwen/qwen-2.5-7b-instruct",
       "harness": "OpenRouter",
       "temp": 0.2,
       "max_tokens": 350,
-      "checked_at": "2026-07-30T11:00:20.377656+00:00Z"
+      "checked_at": "2026-07-31T12:10:54.902563+00:00Z"
     },
     {
       "model": "mistralai/ministral-8b-2512",
       "harness": "OpenRouter",
       "temp": 0.2,
       "max_tokens": 350,
-      "checked_at": "2026-07-30T11:00:20.377656+00:00Z"
+      "checked_at": "2026-07-31T12:10:54.902563+00:00Z"
     }
   ],
   "attempted": 48,
-  "scored": 42,
-  "no_read": 6,
-  "cited": 10
+  "scored": 0,
+  "no_read": 48,
+  "cited": 0
 }
