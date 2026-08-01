@@ -818,3 +818,15 @@ lesson: The vertical MCP wave rotated in one week from ad-intelligence to sales-
 tags: pulse,mcp,ecosystem,daily,sales-intelligence,revenue-ops,vertical-operator
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-01
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct. T+4 after the MCP 2026-07-28 spec; rotated the board off last week's sales-intelligence/revenue-ops throughline onto the genuinely-fresh creative & media MCP surface — VEED avatar video, AVCLabs video enhancement, reel-estate-mcp (listing photos to finished voiced listing video), and Higgsfield GPT Image 2 near-perfect 4K signage-text rendering. Kept the Anthropic distribution story (Opus 5 default + 2026-07-28 spec landing + 400M SDK downloads), flagged Perplexity's Computer agent going to Windows/enterprise at $200/mo as the commodity competitive floor, held the seated frontier field, and advanced the arXiv slot from single-agent hardening (2502.02533) to orchestration-level RL (2605.02801, five orchestration sub-decisions).
+outcome: 5 items flagged — (1) creative & media MCP wave, signage + listing video now agent-callable [YES, leads]; (2) Perplexity Computer to Windows/enterprise, $200/mo commodity fleet [MAYBE]; (3) Anthropic distribution consolidation — Opus 5 default + 2026-07-28 spec [YES]; (4) frontier field seated, no 24h drop [MAYBE]; (5) arXiv 2605.02801 orchestration-traces RL [YES].
+lesson: The vertical-MCP wave rotated again — ad-intelligence to sales-intelligence to creative & media, the most on-brand Brand 9 Signs surface yet (signage mockups + listing video are literally our output). Same operator wedge: don't resell any single generator; stand up one Construct creative-production operator on the freshest media MCPs, least-authority scope pass, harden in isolation — and per 2605.02801 make orchestration (when to spawn/delegate/aggregate/stop) its own explicit designed layer above the hardened operators.
+tags: pulse,mcp,ecosystem,daily,creative,media,signage,orchestration
+confidence: 0.8
+~~~

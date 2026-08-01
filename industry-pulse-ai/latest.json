@@ -1,51 +1,52 @@
 {
-  "generated": "2026-07-31T18:05:00Z",
-  "latest_date": "2026-07-31",
+  "generated": "2026-08-01T10:05:00Z",
+  "latest_date": "2026-08-01",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Seamless.AI ships a sales-intelligence MCP server — 'prompt to closed-won,' with prospecting, enrichment, outreach, and pipeline all agent-callable",
-      "summary": "Seamless.AI's new MCP server exposes its real-time B2B contact/enrichment engine to Claude, ChatGPT, Perplexity, Gemini, n8n, Gumloop, and ActivePieces, so a single prompt can find prospects, enrich records, launch personalized campaigns, and book meetings without tool-switching.",
+      "title": "The vertical-MCP wave rotates to creative & media — video generation, listing video, DAM, and 4K signage text are now agent-callable",
+      "summary": "VEED generates avatar videos from inside Claude/ChatGPT/Make, AVCLabs exposes AI video enhancement + image segmentation as agent tools, reel-estate-mcp turns listing photos into finished voiced listing videos from plain-language prompts, and Higgsfield's GPT Image 2 does near-perfect 4K text rendering flagged for posters, product labels, and signage.",
       "tag": "yes",
-      "how": "Leads today: top-of-funnel sourcing/enrichment is now agent-callable — the raw material a Construct sales-and-pipeline operator agent needs for Brand 9 Signs / PRAGMA. Wire Seamless as the sourcing feed, not a standalone reseller line.",
-      "url": "https://www.prweb.com/releases/seamlessais-new-mcp-server-takes-you-from-prompt-to-closed-won-deal-302839077.html"
+      "how": "Leads today and it is the most on-brand surface yet: signage mockups and real-estate listing video are exactly Brand 9 Signs' output, now producible by an agent. Stand up one Construct creative-production operator that reads these media MCPs; don't resell any single tool.",
+      "url": "https://www.veed.io/tools/veed-mcp"
     },
     {
       "n": 2,
-      "title": "Clari + Salesloft open the revenue layer to external AI — MCP expansion puts forecasting, deal inspection, and Copilot call intelligence into every major AI ecosystem, natively in Claude's connector directory",
-      "summary": "The July 9 expansion connects execution data, conversation intelligence, and forecasting signals across the full revenue lifecycle, building on the April 2026 MCP launch and rolling to ChatGPT/Microsoft Copilot/Gemini through late summer.",
-      "tag": "yes",
-      "how": "Completes the go-to-market picture: Seamless for sourcing, Clari/Salesloft for forecast and deal-health. One operator agent reading both is the affordable 'build' SMBs buy from us instead of an enterprise RevOps stack.",
-      "url": "https://www.salesloft.com/company/newsroom/salesloft-mcp-server-revenue-data-ai-ecosystem"
+      "title": "Perplexity pushes its 'Computer' agent to Windows and into the enterprise — a $200/mo desktop fleet routing across ~20 models, aimed at Microsoft and Salesforce",
+      "summary": "The July 28 Windows launch extends Perplexity's agentic desktop platform from Mac to ~1.4B devices, reads local files, coordinates 19-20 frontier models, and carries a 'Brain' cross-session memory graph.",
+      "tag": "maybe",
+      "how": "A general-purpose desktop agent fleet is now a $200/mo commodity; The Construct's edge is vertical operator depth (signage, owned-presence, alt-data) and orchestration discipline, not 'we have agents.' Watch it as the competitive floor, not a build target.",
+      "url": "https://venturebeat.com/technology/perplexity-takes-its-computer-ai-agent-into-the-enterprise-taking-aim-at"
     },
     {
       "n": 3,
-      "title": "Anthropic distribution consolidation holds — Opus 5 default day-one on Bedrock/Vertex/Foundry, the 2026-07-28 MCP spec (stateless core + MCP Apps + Tasks) landed, Cognizant partnership (Jul 27)",
-      "summary": "The platform story is standardization and reach, not a new model tier; the finalized spec makes MCP Apps and Tasks the stable substrate to build the fleet on.",
+      "title": "Anthropic distribution consolidation holds — Opus 5 the default tier, the 2026-07-28 MCP spec (stateless core + Apps + Tasks + hardened OAuth/OIDC) landing inside Claude, MCP past 400M monthly SDK downloads",
+      "summary": "The platform story remains standardization and reach, not a new model tier; the finalized 2026-07-28 spec is the stable substrate to build the fleet on, with MCP SDK downloads up 4x YoY.",
       "tag": "yes",
-      "how": "Build The Construct's operator agents against the finalized spec now; the distribution surface (three clouds + SI channel) is where our internal servers get leverage.",
+      "how": "Keep migrating The Construct's internal servers to 2026-07-28 and run the least-authority token-scope pass; the standardized substrate is where our own MCPs get leverage.",
       "url": "https://www.anthropic.com/news"
     },
     {
       "n": 4,
-      "title": "Frontier prices move even though the model tier is seated — OpenAI cut GPT-5.6 Luna -80% and Terra -20% (Jul 30-31) with >15% better token efficiency; no new drop cleared the 24h bar",
-      "summary": "Opus 5 (Jul 24) is still the newest tier above GPT-5.6 Sol/Terra/Luna, Gemini 3.6 Flash, Grok 4.5, and Muse Spark 1.1, but competition shifted from capability to unit cost: Luna is now an aggressively cheap high-volume option beside Gemini 3.6 Flash (~17% fewer tokens on comparable jobs).",
+      "title": "Frontier field stays seated — no new model cleared the 24h bar; Opus 5 (Jul 24) still newest tier, Gemini 3.6 Flash and price-cut GPT-5.6 Luna/Terra the cheap workhorses",
+      "summary": "Competition is on unit cost and fit, not capability; Mistral's open-weight MoE remains in early access rather than a formal release.",
       "tag": "maybe",
-      "how": "Field is 'best fit wins,' not 'best model wins'; re-price high-volume batch routing (Luna/Flash for cheap bulk, Opus 5 for reasoning-heavy) but hold the reasoning tier — no switch this cycle.",
+      "how": "Hold the reasoning tier (Opus 5) and route cheap bulk to Flash/Luna; 'best fit wins,' no model switch this cycle.",
       "url": "https://llm-stats.com/llm-updates"
     },
     {
       "n": 5,
-      "title": "arXiv: 'Multi-Agent Design — Optimizing Agents with Better Prompts and Topologies' (2502.02533, MASS framework)",
-      "summary": "Shows MAS performance is dominated by per-agent prompt quality and interaction topology, and proposes a staged search (block-level prompts → topology → global) rather than naively stacking agents.",
+      "title": "arXiv: 'Reinforcement Learning for LLM-based Multi-Agent Systems through Orchestration Traces' (2605.02801)",
+      "summary": "Learns orchestration from interaction graphs, decomposing the controller into five explicit sub-decisions: when to spawn, whom to delegate to, how to communicate, how to aggregate, and when to stop.",
       "tag": "yes",
-      "how": "The build-order rubric for The Construct: harden each operator agent's prompt and scope in isolation before composing it into the swarm; more agents without topology discipline regresses performance.",
-      "url": "https://arxiv.org/abs/2502.02533"
+      "how": "The next layer above yesterday's 'harden the single agent first' rubric: once each operator is hardened in isolation, the orchestration decisions become their own designed, measurable layer of The Construct.",
+      "url": "https://arxiv.org/abs/2605.02801"
     }
   ],
-  "praxis_lesson": "The vertical MCP wave rotated in one week from ad-intelligence (Guideline) to sales-intelligence and revenue-ops — the whole go-to-market data stack is going agent-callable (Seamless for sourcing/enrichment, Clari + Salesloft for forecast and deal-health, both natively in Claude's directory). The operator wedge is the same shape each time: don't resell any single feed; stand up one Construct sales-and-pipeline operator agent that reads the freshest MCPs, run each through the least-authority scope pass, and — per 2502.02533 — harden that single agent in isolation before composing it into the swarm. Own the orchestration and context discipline, not any one data source.",
+  "praxis_lesson": "In one more week the vertical-MCP wave rotated again — from ad-intelligence to sales-intelligence/revenue-ops to now creative & media (video, listing video, DAM, 4K signage text), the most on-brand Brand 9 Signs surface it has hit. The operator wedge is unchanged: don't resell any single media tool; stand up one Construct creative-production operator that reads the freshest media MCPs, run each through the least-authority scope pass, harden it in isolation — and now, per 2605.02801, treat orchestration itself (when to spawn, delegate, aggregate, stop) as an explicit designed layer above the hardened operators. Own the production pipeline and the orchestration discipline, not any one generator.",
   "history": [
+    "2026-08-01",
     "2026-07-31",
     "2026-07-30",
     "2026-07-29",
@@ -58,7 +59,6 @@
     "2026-07-22",
     "2026-07-21",
     "2026-07-20",
-    "2026-07-19",
-    "2026-07-18"
+    "2026-07-19"
   ]
 }
