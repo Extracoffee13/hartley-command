@@ -830,3 +830,15 @@ lesson: The vertical-MCP wave rotated again — ad-intelligence to sales-intelli
 tags: pulse,mcp,ecosystem,daily,creative,media,signage,orchestration
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-02
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct. Quiet cycle — no new frontier model in 24h. Kept the vertical-MCP throughline with the freshest surface (GetHookd ecommerce ad-research API+MCP, Jul 31), but rotated the lead insight off "another feed" and onto the runtime: Cowork's web+mobile launch with offline background tasks + phone-approval (doubled limits through Aug 5) is the substrate our own scheduled operators run on. Held the seated frontier field and advanced the arXiv slot from orchestration-traces RL (2605.02801) to skill co-evolution (Skill-MAS 2606.18837) plus the agent-harness design survey (2606.20683).
+outcome: 5 items flagged — (1) GetHookd ecommerce ad-research API+MCP server [YES, leads the vertical-MCP surface]; (2) Anthropic Cowork web+mobile, offline background tasks + phone-approval, doubled limits to Aug 5 [YES, runtime]; (3) frontier field seated, no 24h drop [MAYBE]; (4) arXiv Skill-MAS meta-skill co-evolution 2606.18837 [YES]; (5) arXiv agent-harness design survey 2606.20683 [MAYBE].
+lesson: The vertical-MCP wave keeps rotating in fresh surfaces, but the genuinely new leverage this cycle is the runtime, not another feed — Cowork's offline background-task + phone-approval model makes The Construct's scheduled operators first-class always-on agents with a human gate. Redesign the fleet around offline-survivable, approval-gated tasks, and per 2606.18837 treat the installed-skills registry as a co-evolving asset (promote/deprecate meta-skills), not a static list.
+tags: pulse,mcp,ecosystem,daily,runtime,cowork,skill-evolution
+confidence: 0.8
+~~~

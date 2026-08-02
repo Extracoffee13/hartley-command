@@ -1,51 +1,52 @@
 {
-  "generated": "2026-08-01T10:05:00Z",
-  "latest_date": "2026-08-01",
+  "generated": "2026-08-02T10:00:00Z",
+  "latest_date": "2026-08-02",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "The vertical-MCP wave rotates to creative & media — video generation, listing video, DAM, and 4K signage text are now agent-callable",
-      "summary": "VEED generates avatar videos from inside Claude/ChatGPT/Make, AVCLabs exposes AI video enhancement + image segmentation as agent tools, reel-estate-mcp turns listing photos into finished voiced listing videos from plain-language prompts, and Higgsfield's GPT Image 2 does near-perfect 4K text rendering flagged for posters, product labels, and signage.",
+      "title": "The vertical-MCP wave keeps adding creative/ad surfaces — GetHookd ships an API + MCP server for AI-powered ecommerce ad research",
+      "summary": "GetHookd (Jul 31) exposes ad-research and creative-generation as agent-callable tools, letting an agent pull competitor ad creative and generate new concepts from a plain-language request across any MCP client.",
       "tag": "yes",
-      "how": "Leads today and it is the most on-brand surface yet: signage mockups and real-estate listing video are exactly Brand 9 Signs' output, now producible by an agent. Stand up one Construct creative-production operator that reads these media MCPs; don't resell any single tool.",
-      "url": "https://www.veed.io/tools/veed-mcp"
+      "how": "A paid-media/creative surface adjacent to Brand 9 Signs' output; wire it into one Construct creative-and-paid-media operator alongside the media MCPs already flagged (VEED, Higgsfield), don't resell it standalone.",
+      "url": "https://www.newsfilecorp.com/release/306914/GetHookd-Releases-API-MCP-Server-for-AIPowered-Ecommerce-Ad-Research"
     },
     {
       "n": 2,
-      "title": "Perplexity pushes its 'Computer' agent to Windows and into the enterprise — a $200/mo desktop fleet routing across ~20 models, aimed at Microsoft and Salesforce",
-      "summary": "The July 28 Windows launch extends Perplexity's agentic desktop platform from Mac to ~1.4B devices, reads local files, coordinates 19-20 frontier models, and carries a 'Brain' cross-session memory graph.",
-      "tag": "maybe",
-      "how": "A general-purpose desktop agent fleet is now a $200/mo commodity; The Construct's edge is vertical operator depth (signage, owned-presence, alt-data) and orchestration discipline, not 'we have agents.' Watch it as the competitive floor, not a build target.",
-      "url": "https://venturebeat.com/technology/perplexity-takes-its-computer-ai-agent-into-the-enterprise-taking-aim-at"
+      "title": "Anthropic runtime shift is the real story — Cowork now on web + mobile (iOS/Android) with offline background tasks and phone-approval, doubled usage limits through Aug 5",
+      "summary": "Scheduled Cowork tasks now run even when none of the user's devices are online and push a phone notification when something needs review or approval; usage data shows most Cowork users aren't coding.",
+      "tag": "yes",
+      "how": "This is the substrate The Construct's own scheduled operators run on: our agents are now first-class always-on background workers with a human-approval gate on the phone, not desktop-tethered jobs. Redesign the fleet around offline-survivable, approval-gated tasks.",
+      "url": "https://claude.com/blog/cowork-web-mobile"
     },
     {
       "n": 3,
-      "title": "Anthropic distribution consolidation holds — Opus 5 the default tier, the 2026-07-28 MCP spec (stateless core + Apps + Tasks + hardened OAuth/OIDC) landing inside Claude, MCP past 400M monthly SDK downloads",
-      "summary": "The platform story remains standardization and reach, not a new model tier; the finalized 2026-07-28 spec is the stable substrate to build the fleet on, with MCP SDK downloads up 4x YoY.",
-      "tag": "yes",
-      "how": "Keep migrating The Construct's internal servers to 2026-07-28 and run the least-authority token-scope pass; the standardized substrate is where our own MCPs get leverage.",
-      "url": "https://www.anthropic.com/news"
-    },
-    {
-      "n": 4,
-      "title": "Frontier field stays seated — no new model cleared the 24h bar; Opus 5 (Jul 24) still newest tier, Gemini 3.6 Flash and price-cut GPT-5.6 Luna/Terra the cheap workhorses",
-      "summary": "Competition is on unit cost and fit, not capability; Mistral's open-weight MoE remains in early access rather than a formal release.",
+      "title": "Frontier field stays seated — no new model cleared the 24h bar; Opus 5 (Jul 24) still newest tier, Gemini 3.6 Flash and the price-cut GPT-5.6 line the cheap workhorses",
+      "summary": "Competition remains on unit cost and fit, not raw capability; nothing dropped in the last 24h.",
       "tag": "maybe",
-      "how": "Hold the reasoning tier (Opus 5) and route cheap bulk to Flash/Luna; 'best fit wins,' no model switch this cycle.",
+      "how": "Hold Opus 5 for reasoning-heavy Construct jobs and route cheap bulk to Flash/GPT-5.6; no model switch this cycle.",
       "url": "https://llm-stats.com/llm-updates"
     },
     {
-      "n": 5,
-      "title": "arXiv: 'Reinforcement Learning for LLM-based Multi-Agent Systems through Orchestration Traces' (2605.02801)",
-      "summary": "Learns orchestration from interaction graphs, decomposing the controller into five explicit sub-decisions: when to spawn, whom to delegate to, how to communicate, how to aggregate, and when to stop.",
+      "n": 4,
+      "title": "arXiv: 'Skill-MAS — Evolving Meta-Skill for Automatic Multi-Agent Systems' (2606.18837)",
+      "summary": "Treats skills as objects that co-evolve across a multi-agent system rather than static prompts, learning meta-skills that generalize across tasks and agents.",
       "tag": "yes",
-      "how": "The next layer above yesterday's 'harden the single agent first' rubric: once each operator is hardened in isolation, the orchestration decisions become their own designed, measurable layer of The Construct.",
-      "url": "https://arxiv.org/abs/2605.02801"
+      "how": "Direct framework for our daily/weekly new-skills scan and the installed-skills registry: treat the registry as a living, co-evolving asset with promotion/deprecation, not a frozen list.",
+      "url": "https://arxiv.org/pdf/2606.18837"
+    },
+    {
+      "n": 5,
+      "title": "arXiv: 'From Question Answering to Task Completion — A Survey on Agent System and Harness Design' (2606.20683)",
+      "summary": "Maps the agent-harness design space (memory, tools, verification, control loop) as the layer that turns a model into a task-completing system.",
+      "tag": "maybe",
+      "how": "A design reference for The Construct's own harness; useful checklist as we standardize each operator's memory/tool/verification scaffolding.",
+      "url": "https://arxiv.org/pdf/2606.20683"
     }
   ],
-  "praxis_lesson": "In one more week the vertical-MCP wave rotated again — from ad-intelligence to sales-intelligence/revenue-ops to now creative & media (video, listing video, DAM, 4K signage text), the most on-brand Brand 9 Signs surface it has hit. The operator wedge is unchanged: don't resell any single media tool; stand up one Construct creative-production operator that reads the freshest media MCPs, run each through the least-authority scope pass, harden it in isolation — and now, per 2605.02801, treat orchestration itself (when to spawn, delegate, aggregate, stop) as an explicit designed layer above the hardened operators. Own the production pipeline and the orchestration discipline, not any one generator.",
+  "praxis_lesson": "The vertical-MCP wave keeps rotating in fresh surfaces (now ecommerce ad research), but the genuinely new leverage this cycle is the runtime, not another feed: Cowork's offline background-task + phone-approval model makes The Construct's scheduled operators first-class always-on agents with a human gate. Redesign the fleet around offline-survivable, approval-gated tasks — and per 2606.18837 treat the installed-skills registry as a co-evolving asset (promote/deprecate meta-skills), not a static list. Own the runtime discipline and the living skill layer, not any one generator.",
   "history": [
+    "2026-08-02",
     "2026-08-01",
     "2026-07-31",
     "2026-07-30",
@@ -58,7 +59,6 @@
     "2026-07-23",
     "2026-07-22",
     "2026-07-21",
-    "2026-07-20",
-    "2026-07-19"
+    "2026-07-20"
   ]
 }
