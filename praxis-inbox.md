@@ -854,3 +854,15 @@ lesson: The control plane and the runtime just converged — stateless-and-obser
 tags: pulse,mcp,ecosystem,daily,control-plane,runtime,skill-composition
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-03
+decision: Morning scan (06:00 ET). Rotated the lead off frontier/runtime (yesterday's throughline) onto the vertical that hits B9 directly — digital-signage CMS platforms have gone agent-native (Screenly, Revel Digital, Korbyt MCP servers now in production), while Runway's hosted MCP puts the full generation stack (Gen-4.5/Seedance 2.0/Kling 3.0/Veo 3.1/GPT Image 2/Nano Banana Pro) one call from Claude. Held Pipedrive native CRM MCP as the permission-scoped+audited bar, advanced the arXiv slot to harness-engineering / auditable-contract agents (2607.08028), and kept the frontier field seated (no new 24h tier).
+outcome: 5 items flagged — (1) digital-signage MCP layer matures, B9's own category goes operator-driven [YES, leads]; (2) Runway hosted MCP full generation stack into Claude/Cursor [YES]; (3) Pipedrive native CRM MCP, permissioned + audited [MAYBE]; (4) arXiv 'From Prompts to Contracts' harness engineering 2607.08028 [YES]; (5) frontier seated, cheap workhorses hold post Jul-30 cut [MAYBE].
+lesson: The leverage this cycle is vertical, not frontier — B9's own industry (digital signage) is now agent-callable and the generation stack is one MCP call away. Own the signage-ops + creative operator that drives both the client's CMS and the generation stack, built as an auditable harness-contract (per 2607.08028), not a resell of any single vendor. The orchestration + governance layer is the moat, not the tool.
+tags: pulse,mcp,ecosystem,daily,signage,brand9signs,creative-stack,governance
+confidence: 0.8
+~~~

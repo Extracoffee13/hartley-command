@@ -1,51 +1,52 @@
 {
-  "generated": "2026-08-02T18:01:01Z",
-  "latest_date": "2026-08-02",
+  "generated": "2026-08-03T06:01:38Z",
+  "latest_date": "2026-08-03",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "The 2026-07-28 MCP spec is now landing in Claude — stateless core plus connector observability, enterprise-managed auth, embedded UI, and private network tunnels",
-      "summary": "Claude expands support for the fifth MCP spec: a request/response stateless core (remote servers run serverless/edge behind a plain load balancer), stronger OAuth/OIDC, versioned Apps/Tasks extensions, and first-class connector features — embedded UI, org-managed auth, observability, private tunnels; 950+ servers in the directory, MCP past 400M monthly SDK downloads.",
+      "title": "Brand 9 Signs' own category goes agent-native — digital-signage CMS platforms now ship MCP servers (Screenly, Revel Digital, Korbyt)",
+      "summary": "A year after zero production vendors, multiple production signage MCP servers are live; Korbyt's exposes media, players, content, schedules, users, analytics and data adapters as agent-callable tools, so an agent can push content, set schedules, and read player analytics by natural-language request.",
       "tag": "yes",
-      "how": "This is the deployment + governance layer for The Construct's own MCP fleet: stateless lets our internal servers go serverless/horizontally scaled, and built-in observability + enterprise-managed auth + private tunnels are exactly the control plane to run the fleet safely instead of hand-rolling it.",
-      "url": "https://claude.com/blog/bringing-mcp-2026-07-28-to-claude"
+      "how": "This is B9's literal industry becoming operator-driven: a single Construct signage-ops agent can drive content + scheduling + player health across whichever CMS a client runs — the PRAGMA operator wedge applied directly to signage.",
+      "url": "https://cast-hub.com/digital-signage-mcp-vendors/"
     },
     {
       "n": 2,
-      "title": "Anthropic runtime shift still the substrate — Cowork on web + mobile with offline background tasks and phone-approval, doubled usage limits through Aug 5",
-      "summary": "Scheduled Cowork tasks now run even when none of the user's devices are online and push a phone notification when something needs review or approval; usage shows most Cowork users aren't coding.",
+      "title": "Runway ships a hosted MCP server routing its full generation stack (Gen-4.5, Seedance 2.0, Kling 3.0, Veo 3.1, GPT Image 2, Nano Banana Pro) into Claude / Cursor / ChatGPT",
+      "summary": "Pass a product URL, reference image, or text prompt in-conversation and get product images, hero assets, and marketing video without leaving the agent; one connector fans out to the whole model library by plan.",
       "tag": "yes",
-      "how": "The layer this Pulse scan itself runs on; our scheduled operators are now always-on background workers with a human-approval gate on the phone. Pair with item 1: offline-survivable, approval-gated tasks running on stateless, observable connectors.",
-      "url": "https://claude.com/blog/cowork-web-mobile"
+      "how": "A first-class creative surface for Brand 9 Signs output; wire it into one Construct creative operator alongside the media MCPs already flagged (Higgsfield, VEED), don't run it as a standalone tool.",
+      "url": "https://runwayml.com/news/mcp"
     },
     {
       "n": 3,
-      "title": "Frontier stays seated on capability, war moves to unit cost — OpenAI cut Luna -80% / Terra -20% on Jul 30; Gemini 3.6 Flash and the GPT-5.6 line are the cheap workhorses",
-      "summary": "No new frontier tier cleared the 24h bar; Opus 5 (Jul 24) remains the newest reasoning tier while the everyday/bulk tiers keep repricing downward after the Jul 30 cut.",
+      "title": "Pipedrive ships a native MCP server — live CRM read/write from Claude with permission-scoping and a full audit trail (Jun 30)",
+      "summary": "AI assistants interact with live pipeline data in real time while respecting existing user permissions and logging every action performed.",
       "tag": "maybe",
-      "how": "Hold Opus 5 for reasoning-heavy Construct jobs, route high-volume bulk to Luna/Flash and re-check the routing math after the Jul 30 cut; no top-tier switch this cycle.",
-      "url": "https://llm-stats.com/llm-updates"
+      "how": "A CRM-ops surface for the B9 / PRAGMA pipeline; adopt directly if we standardize on Pipedrive, otherwise treat permission-scoped + audited CRM MCP as the bar any CRM connector we wire in must clear.",
+      "url": "https://www.pipedrive.com/en/newsroom/pipedrive-launches-native-mcp-server-bringing-crm-workflows-directly-into-ai-assistants"
     },
     {
       "n": 4,
-      "title": "Vertical-MCP wave keeps rotating creative/ad surfaces in — GetHookd ships an API + MCP server for AI-powered ecommerce ad research (Jul 31)",
-      "summary": "GetHookd exposes ad-research and creative-generation as agent-callable tools: pull competitor ad creative and generate new concepts from a plain-language request across any MCP client.",
+      "title": "arXiv: 'From Prompts to Contracts — Harness Engineering for Auditable Enterprise LLM Agents' (2607.08028)",
+      "summary": "Reconstructs prompt-carried prototypes into a traceable, auditable agent architecture: deterministic behavior moves into code, manifests, schemas, and validation artifacts around a replaceable composition boundary.",
       "tag": "yes",
-      "how": "A paid-media/creative surface adjacent to Brand 9 Signs' output; wire it into one Construct creative-and-paid-media operator alongside the media MCPs already flagged (VEED, Higgsfield), don't resell it standalone.",
-      "url": "https://www.newsfilecorp.com/release/306914/GetHookd-Releases-API-MCP-Server-for-AIPowered-Ecommerce-Ad-Research"
+      "how": "The governance blueprint for The Construct's operator fleet: make each agent an auditable contract (manifest + schema + validation), not a prompt blob, so we can swap models/tools behind a stable boundary and prove what ran.",
+      "url": "https://arxiv.org/abs/2607.08028v1"
     },
     {
       "n": 5,
-      "title": "arXiv: 'Generative Skill Composition for LLM Agents' (2606.32025) + SkillBench",
-      "summary": "Frames capability as composed skills rather than monolithic prompts, with a benchmark of multi-skill synthetic tasks covering compositions of 2-5 skills — how well an agent chains skills it already holds.",
-      "tag": "yes",
-      "how": "Direct framework for our new-skills scan and installed-skills registry: the value isn't the count of skills, it's composability; score and promote skills by how well they compose, not just whether they trigger.",
-      "url": "https://arxiv.org/pdf/2606.32025"
+      "title": "Frontier field stays seated — no new tier cleared the 24h bar; the cheap workhorses (OpenAI Luna post Jul 30 -80% cut, Gemini 3.6 Flash, Grok 4.5) hold",
+      "summary": "Opus 5 (Jul 24) remains the newest reasoning tier; the everyday/bulk tiers keep repricing downward with no capability jump this cycle.",
+      "tag": "maybe",
+      "how": "Routing math unchanged: hold Opus 5 for reasoning-heavy Construct jobs, route high-volume bulk to Luna/Flash; no top-tier switch to make.",
+      "url": "https://llm-stats.com/llm-updates"
     }
   ],
-  "praxis_lesson": "Two Anthropic layers now converge into one operating discipline for The Construct: the 2026-07-28 stateless MCP spec (serverless deploy + built-in observability, enterprise-managed auth, private tunnels) is the control plane, and Cowork's offline background-task + phone-approval model is the runtime. Stop hand-rolling fleet plumbing — run our internal MCP servers stateless-and-observable on managed auth, run our operators as offline-survivable, approval-gated Cowork tasks, and per 2606.32025 treat the skill registry as a composability graph to be scored and promoted, not a static list. Own the control-plane + runtime discipline, not any single generator or feed.",
+  "praxis_lesson": "The signals that matter this cycle are vertical, not frontier — Brand 9 Signs' own category (digital signage) has gone agent-native while the generation stack (Runway's full model library) is now one MCP call away. The Construct's move is to own the signage-ops + creative operator that drives both CMS platforms and the generation stack for clients, and to build it as an auditable harness-contract (per 2607.08028) rather than reselling any single vendor — the orchestration + governance layer is the defensible position, not the tool.",
   "history": [
+    "2026-08-03",
     "2026-08-02",
     "2026-08-01",
     "2026-07-31",
@@ -58,7 +59,6 @@
     "2026-07-24",
     "2026-07-23",
     "2026-07-22",
-    "2026-07-21",
-    "2026-07-20"
+    "2026-07-21"
   ]
 }
