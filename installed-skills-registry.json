@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-02T10:10:00.165198+00:00",
+  "updated_at": "2026-08-03T10:10:05.116445+00:00",
   "skills": [
     {
       "slug": "aair-market-baseline-scanning",
@@ -1031,48 +1031,6 @@
       "description_excerpt": "---\nname: white-space-analysis\ndescription: \"Scout+Prism capability: White Space analysis \u2014 unrealized expansion opportunity across 5 canonical dimensions (Geographic / Product / Customer / Channel / "
     },
     {
-      "slug": "wolf",
-      "path": "/Users/alfredpennyworth/.hermes/skills/wolf",
-      "has_skill_md": true,
-      "has_description_md": false,
-      "description_excerpt": "---\nname: wolf\ndescription: \"WOLF (Hartley Capital Alpha) is The Construct's quant / portfolio agent, operating under WOLF Mandate v1.0 \u2014 the generational-wealth charter with hard sizing rules (8% sin"
-    },
-    {
-      "slug": "wolf-dashboard-surface-sync",
-      "path": "/Users/alfredpennyworth/.hermes/skills/wolf-dashboard-surface-sync",
-      "has_skill_md": true,
-      "has_description_md": false,
-      "description_excerpt": "---\nname: wolf-dashboard-surface-sync\ndescription: Sync WOLF summaries on Pages and iCloud.\n---\n\n## Trigger\n\nUse this skill whenever `wolf-health.html` has been refreshed but the WOLF summary on the h"
-    },
-    {
-      "slug": "wolf-feed-append",
-      "path": "/Users/alfredpennyworth/.hermes/skills/wolf-feed-append",
-      "has_skill_md": true,
-      "has_description_md": false,
-      "description_excerpt": "---\nname: wolf-feed-append\ndescription: \"Lens capability: append daily-scan signal to WOLF's wolf_live_data.json feed. Sub-capability of lens-daily-scan; consumed by WOLF (quant).\"\nmetadata:\n  node_ty"
-    },
-    {
-      "slug": "wolf-health-dashboard-management",
-      "path": "/Users/alfredpennyworth/.hermes/skills/wolf-health-dashboard-management",
-      "has_skill_md": true,
-      "has_description_md": false,
-      "description_excerpt": "---\nname: wolf-health-dashboard-management\ndescription: Generate and maintain the WOLF health dashboard HTML from live JSON state snapshots, with cron-aware silent-delivery rules and deterministic fil"
-    },
-    {
-      "slug": "wolf-state-management",
-      "path": "/Users/alfredpennyworth/.hermes/skills/wolf-state-management",
-      "has_skill_md": true,
-      "has_description_md": false,
-      "description_excerpt": "---\nname: wolf-state-management\ndescription: WOLF canonical state verification \u2014 check freshness, reconcile portfolio/positions/cash, and catch kill-criterion key drift before downstream dashboards or"
-    },
-    {
-      "slug": "wolf-state-updater",
-      "path": "/Users/alfredpennyworth/.hermes/skills/wolf-state-updater",
-      "has_skill_md": true,
-      "has_description_md": false,
-      "description_excerpt": "---\nname: wolf-state-updater\ndescription: Keep the WOLF dashboard tile live by regenerating wolf_live_data.json from current wolf/state.json, with an honest fallback when Alpaca live data is unavailab"
-    },
-    {
       "slug": "wordpress-yoast-publishing",
       "path": "/Users/alfredpennyworth/.hermes/skills/wordpress-yoast-publishing",
       "has_skill_md": true,
@@ -1113,17 +1071,36 @@
       "has_skill_md": true,
       "has_description_md": false,
       "description_excerpt": "---\nname: recraft\ndescription: \"Vector's vector-artwork skill. Scalable vector illustration and iconography, brand-exact and editable. The vector path for PRAGMA/Brand 9 artwork. Part of Vector's 15-s"
+    },
+    {
+      "slug": "wolf",
+      "path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/skills/wolf",
+      "has_skill_md": true,
+      "has_description_md": false,
+      "description_excerpt": "---\nname: wolf\ndescription: \"WOLF (Hartley Capital Alpha) is The Construct's quant / portfolio agent, operating under WOLF Mandate v1.0 \u2014 the generational-wealth charter with hard sizing rules (8% sin"
+    },
+    {
+      "slug": "wolf-feed-append",
+      "path": "/Users/alfredpennyworth/Documents/Claude/Projects/Atlas/skills/wolf-feed-append",
+      "has_skill_md": true,
+      "has_description_md": false,
+      "description_excerpt": "---\nname: wolf-feed-append\ndescription: \"Lens capability: append daily-scan signal to WOLF's wolf_live_data.json feed. Sub-capability of lens-daily-scan; consumed by WOLF (quant).\"\nmetadata:\n  node_ty"
     }
   ],
   "_counts": {
-    "hermes_skills": 155,
+    "hermes_skills": 149,
     "hermes_agent_skills": 0,
-    "atlas_skills": 4,
-    "total": 159
+    "atlas_skills": 6,
+    "total": 155
   },
   "_new_since_last_build": [],
-  "_dropped_since_last_build": [],
+  "_dropped_since_last_build": [
+    "wolf-dashboard-surface-sync",
+    "wolf-health-dashboard-management",
+    "wolf-state-management",
+    "wolf-state-updater"
+  ],
   "_roots_missing": [],
-  "_mirrored_at": "2026-08-02T10:10:00.165198Z",
+  "_mirrored_at": "2026-08-03T10:10:05.116445Z",
   "_builder": "skills-registry-scan"
 }
