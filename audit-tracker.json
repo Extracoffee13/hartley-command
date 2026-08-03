@@ -1,0 +1,58 @@
+{
+  "generated": "2026-08-02",
+  "note": "Keep/kill/consolidate + structural fixes from the ecosystem audit.",
+  "structural": [
+    {
+      "id": "S3",
+      "item": "Model routing (K2.7 dead \u2192 deepseek default)",
+      "status": "DONE",
+      "detail": "config repointed 2026-08-02; restart gateway"
+    },
+    {
+      "id": "S1",
+      "item": "Single source of truth for state",
+      "status": "OPEN",
+      "detail": "state split across .hermes / hartley-command / AP-v2/_RECOVERED / Documents/Atlas; status writer reads _RECOVERED backup"
+    },
+    {
+      "id": "S2",
+      "item": "One flock roster (counts agree)",
+      "status": "OPEN",
+      "detail": "duck/call counts disagree across sources"
+    }
+  ],
+  "consolidate": [
+    {
+      "cluster": "lens personas",
+      "from": 11,
+      "to": 2,
+      "status": "PLANNED"
+    },
+    {
+      "cluster": "dashboard-*",
+      "from": 11,
+      "to": 3,
+      "status": "PLANNED"
+    },
+    {
+      "cluster": "hermes-* meta",
+      "from": 16,
+      "to": 3,
+      "status": "PLANNED"
+    },
+    {
+      "cluster": "wolf-*",
+      "from": 6,
+      "to": 2,
+      "status": "PLANNED"
+    },
+    {
+      "cluster": "task-*",
+      "from": 5,
+      "to": 2,
+      "status": "PLANNED"
+    }
+  ],
+  "skills_total": 192,
+  "skills_target": "~110-120"
+}

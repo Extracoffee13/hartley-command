@@ -842,3 +842,15 @@ lesson: The vertical-MCP wave keeps rotating in fresh surfaces, but the genuinel
 tags: pulse,mcp,ecosystem,daily,runtime,cowork,skill-evolution
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-02
+decision: Afternoon re-scan (14:00 ET) after the 06:20 push. One material item firmed up since the morning brief — the 2026-07-28 MCP spec now landing in Claude (stateless core + connector observability, enterprise-managed auth, embedded UI, private network tunnels, 950+ servers, 400M+ monthly SDK downloads). Rewrote today's brief + latest.json to lead on it, keeping the Cowork offline/approval runtime item, the seated frontier field (OpenAI Luna -80%/Terra -20% Jul 30), the GetHookd vertical-MCP surface, and advancing the arXiv slot to Generative Skill Composition + SkillBench (2606.32025).
+outcome: 5 items flagged — (1) 2026-07-28 MCP spec landing in Claude, stateless control plane [YES, leads]; (2) Cowork web+mobile offline background tasks + phone-approval [YES, runtime]; (3) frontier seated, war on unit cost, Luna/Terra cuts Jul 30 [MAYBE]; (4) GetHookd ecommerce ad-research API+MCP [YES]; (5) arXiv Generative Skill Composition + SkillBench 2606.32025 [YES].
+lesson: The control plane and the runtime just converged — stateless-and-observable MCP connectors (managed auth, private tunnels) plus Cowork's offline, approval-gated background tasks are one operating discipline. Stop hand-rolling fleet plumbing: run The Construct's internal MCP servers stateless/observable on managed auth, run operators as offline-survivable approval-gated tasks, and per 2606.32025 score the skill registry on composability, not count.
+tags: pulse,mcp,ecosystem,daily,control-plane,runtime,skill-composition
+confidence: 0.8
+~~~

@@ -1,50 +1,50 @@
 {
-  "generated": "2026-08-02T10:00:00Z",
+  "generated": "2026-08-02T18:01:01Z",
   "latest_date": "2026-08-02",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "The vertical-MCP wave keeps adding creative/ad surfaces — GetHookd ships an API + MCP server for AI-powered ecommerce ad research",
-      "summary": "GetHookd (Jul 31) exposes ad-research and creative-generation as agent-callable tools, letting an agent pull competitor ad creative and generate new concepts from a plain-language request across any MCP client.",
+      "title": "The 2026-07-28 MCP spec is now landing in Claude — stateless core plus connector observability, enterprise-managed auth, embedded UI, and private network tunnels",
+      "summary": "Claude expands support for the fifth MCP spec: a request/response stateless core (remote servers run serverless/edge behind a plain load balancer), stronger OAuth/OIDC, versioned Apps/Tasks extensions, and first-class connector features — embedded UI, org-managed auth, observability, private tunnels; 950+ servers in the directory, MCP past 400M monthly SDK downloads.",
+      "tag": "yes",
+      "how": "This is the deployment + governance layer for The Construct's own MCP fleet: stateless lets our internal servers go serverless/horizontally scaled, and built-in observability + enterprise-managed auth + private tunnels are exactly the control plane to run the fleet safely instead of hand-rolling it.",
+      "url": "https://claude.com/blog/bringing-mcp-2026-07-28-to-claude"
+    },
+    {
+      "n": 2,
+      "title": "Anthropic runtime shift still the substrate — Cowork on web + mobile with offline background tasks and phone-approval, doubled usage limits through Aug 5",
+      "summary": "Scheduled Cowork tasks now run even when none of the user's devices are online and push a phone notification when something needs review or approval; usage shows most Cowork users aren't coding.",
+      "tag": "yes",
+      "how": "The layer this Pulse scan itself runs on; our scheduled operators are now always-on background workers with a human-approval gate on the phone. Pair with item 1: offline-survivable, approval-gated tasks running on stateless, observable connectors.",
+      "url": "https://claude.com/blog/cowork-web-mobile"
+    },
+    {
+      "n": 3,
+      "title": "Frontier stays seated on capability, war moves to unit cost — OpenAI cut Luna -80% / Terra -20% on Jul 30; Gemini 3.6 Flash and the GPT-5.6 line are the cheap workhorses",
+      "summary": "No new frontier tier cleared the 24h bar; Opus 5 (Jul 24) remains the newest reasoning tier while the everyday/bulk tiers keep repricing downward after the Jul 30 cut.",
+      "tag": "maybe",
+      "how": "Hold Opus 5 for reasoning-heavy Construct jobs, route high-volume bulk to Luna/Flash and re-check the routing math after the Jul 30 cut; no top-tier switch this cycle.",
+      "url": "https://llm-stats.com/llm-updates"
+    },
+    {
+      "n": 4,
+      "title": "Vertical-MCP wave keeps rotating creative/ad surfaces in — GetHookd ships an API + MCP server for AI-powered ecommerce ad research (Jul 31)",
+      "summary": "GetHookd exposes ad-research and creative-generation as agent-callable tools: pull competitor ad creative and generate new concepts from a plain-language request across any MCP client.",
       "tag": "yes",
       "how": "A paid-media/creative surface adjacent to Brand 9 Signs' output; wire it into one Construct creative-and-paid-media operator alongside the media MCPs already flagged (VEED, Higgsfield), don't resell it standalone.",
       "url": "https://www.newsfilecorp.com/release/306914/GetHookd-Releases-API-MCP-Server-for-AIPowered-Ecommerce-Ad-Research"
     },
     {
-      "n": 2,
-      "title": "Anthropic runtime shift is the real story — Cowork now on web + mobile (iOS/Android) with offline background tasks and phone-approval, doubled usage limits through Aug 5",
-      "summary": "Scheduled Cowork tasks now run even when none of the user's devices are online and push a phone notification when something needs review or approval; usage data shows most Cowork users aren't coding.",
-      "tag": "yes",
-      "how": "This is the substrate The Construct's own scheduled operators run on: our agents are now first-class always-on background workers with a human-approval gate on the phone, not desktop-tethered jobs. Redesign the fleet around offline-survivable, approval-gated tasks.",
-      "url": "https://claude.com/blog/cowork-web-mobile"
-    },
-    {
-      "n": 3,
-      "title": "Frontier field stays seated — no new model cleared the 24h bar; Opus 5 (Jul 24) still newest tier, Gemini 3.6 Flash and the price-cut GPT-5.6 line the cheap workhorses",
-      "summary": "Competition remains on unit cost and fit, not raw capability; nothing dropped in the last 24h.",
-      "tag": "maybe",
-      "how": "Hold Opus 5 for reasoning-heavy Construct jobs and route cheap bulk to Flash/GPT-5.6; no model switch this cycle.",
-      "url": "https://llm-stats.com/llm-updates"
-    },
-    {
-      "n": 4,
-      "title": "arXiv: 'Skill-MAS — Evolving Meta-Skill for Automatic Multi-Agent Systems' (2606.18837)",
-      "summary": "Treats skills as objects that co-evolve across a multi-agent system rather than static prompts, learning meta-skills that generalize across tasks and agents.",
-      "tag": "yes",
-      "how": "Direct framework for our daily/weekly new-skills scan and the installed-skills registry: treat the registry as a living, co-evolving asset with promotion/deprecation, not a frozen list.",
-      "url": "https://arxiv.org/pdf/2606.18837"
-    },
-    {
       "n": 5,
-      "title": "arXiv: 'From Question Answering to Task Completion — A Survey on Agent System and Harness Design' (2606.20683)",
-      "summary": "Maps the agent-harness design space (memory, tools, verification, control loop) as the layer that turns a model into a task-completing system.",
-      "tag": "maybe",
-      "how": "A design reference for The Construct's own harness; useful checklist as we standardize each operator's memory/tool/verification scaffolding.",
-      "url": "https://arxiv.org/pdf/2606.20683"
+      "title": "arXiv: 'Generative Skill Composition for LLM Agents' (2606.32025) + SkillBench",
+      "summary": "Frames capability as composed skills rather than monolithic prompts, with a benchmark of multi-skill synthetic tasks covering compositions of 2-5 skills — how well an agent chains skills it already holds.",
+      "tag": "yes",
+      "how": "Direct framework for our new-skills scan and installed-skills registry: the value isn't the count of skills, it's composability; score and promote skills by how well they compose, not just whether they trigger.",
+      "url": "https://arxiv.org/pdf/2606.32025"
     }
   ],
-  "praxis_lesson": "The vertical-MCP wave keeps rotating in fresh surfaces (now ecommerce ad research), but the genuinely new leverage this cycle is the runtime, not another feed: Cowork's offline background-task + phone-approval model makes The Construct's scheduled operators first-class always-on agents with a human gate. Redesign the fleet around offline-survivable, approval-gated tasks — and per 2606.18837 treat the installed-skills registry as a co-evolving asset (promote/deprecate meta-skills), not a static list. Own the runtime discipline and the living skill layer, not any one generator.",
+  "praxis_lesson": "Two Anthropic layers now converge into one operating discipline for The Construct: the 2026-07-28 stateless MCP spec (serverless deploy + built-in observability, enterprise-managed auth, private tunnels) is the control plane, and Cowork's offline background-task + phone-approval model is the runtime. Stop hand-rolling fleet plumbing — run our internal MCP servers stateless-and-observable on managed auth, run our operators as offline-survivable, approval-gated Cowork tasks, and per 2606.32025 treat the skill registry as a composability graph to be scored and promoted, not a static list. Own the control-plane + runtime discipline, not any single generator or feed.",
   "history": [
     "2026-08-02",
     "2026-08-01",
