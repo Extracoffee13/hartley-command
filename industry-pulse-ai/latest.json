@@ -1,50 +1,50 @@
 {
-  "generated": "2026-08-06T14:02:02Z",
+  "generated": "2026-08-06T18:05:00Z",
   "latest_date": "2026-08-06",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Anthropic ships the August Claude Code build — screen-reader mode, hardened background agents, corporate-proxy support, and a raft of CLI/SDK reliability + session-memory fixes",
-      "summary": "The August release improves background-agent behavior and session reliability, adds accessibility and corporate process-wrapper support, and cuts memory use while fixing many CLI/SDK bugs.",
+      "title": "Claude for Government in public beta — Claude Code + Cowork inside FedRAMP High, tamper-evident audit logs, ATO docs, $1/agency through August",
+      "summary": "The same desktop agent stack The Construct runs, now packaged with the security, spend, and audit controls regulated buyers require, deployable via agency MDM with no separate cloud contract.",
       "tag": "yes",
-      "how": "The substrate The Construct's own operators run on: more reliable background agents and durable sessions harden long-running scheduled operators like this Pulse job, and corporate-proxy support lets us run the same stack inside a client's network.",
-      "url": "https://releasebot.io/updates/anthropic/claude-code"
+      "how": "PRAGMA's regulated-client wedge: our operator hierarchies become sellable into government and compliance-bound enterprises the moment they sit inside a FedRAMP-High, tamper-evident-audited shell — governance and provenance become the product, not the tools.",
+      "url": "https://claude.com/blog/bringing-claude-code-and-claude-cowork-to-government"
     },
     {
       "n": 2,
-      "title": "Claude Code's /usage now attributes MCP-server cost correctly — a server's share reflects only the requests that actually consumed its tool results",
-      "summary": "The overattribution bug that inflated per-server usage is fixed, so cost/latency now maps cleanly to the specific tool that produced results.",
+      "title": "Claude Opus 5 still the newest frontier weight (Jul 24) — matches/beats Fable 5 at half price, record ARC-AGI-3 jump to 30.2%, outright OSWorld 2.0 computer-use lead",
+      "summary": "$5/$25 per 1M (same as Opus 4.8), default on Max and strongest on Pro, clearing Fable 5's peak computer-use score on roughly a third of the budget.",
       "tag": "yes",
-      "how": "Real per-server observability is the cost-accounting layer The Construct needs to price governed operators per client: prove which MCP server drove which spend and you can bill orchestration as a metered product instead of a flat retainer.",
-      "url": "https://releasebot.io/updates/anthropic/claude-code"
+      "how": "The model to default The Construct's computer-use and agentic-terminal operators onto: frontier-class task-learning and OSWorld performance at half the top-tier cost improves the browser/desktop-driving operators (Pulse, Hermes, the visibility scans) with no pricing hit.",
+      "url": "https://officechai.com/ai/claude-opus-5-benchmarks/"
     },
     {
       "n": 3,
-      "title": "Claude Cowork now runs remote background sessions on web + mobile (beta) — server-side files and session state, scheduled tasks that run with no device online",
-      "summary": "Sessions and file state persist to your Claude account and keep running detached from any one machine, synced across desktop/web/phone.",
+      "title": "MCP crosses 10,000+ servers as all five majors ship the stateless 2026-07-28 spec — servers now run in a bare Worker with no session infrastructure",
+      "summary": "The biggest spec update since 2024 makes MCP stateless with auth hardening and a formal extensions framework; Bedrock AgentCore already hosts it on standard scalable infra.",
       "tag": "yes",
-      "how": "Directly upgrades how The Construct's scheduled operators run: detached, durable, resumable across devices, so long-running agent work no longer depends on a laptop staying awake — the reliability floor under the whole scheduled-agent fleet.",
-      "url": "https://the-decoder.com/anthropics-claude-cowork-ai-agent-is-now-available-on-mobile-and-web/"
+      "how": "The substrate we build on just got cheaper and more portable to host: rebuild internal servers on the stateless 2.0 spec so client-facing operators deploy as disposable, horizontally-scalable Workers behind hardened auth — no stateful boxes to babysit.",
+      "url": "https://www.theregister.com/ai-and-ml/2026/07/29/mcp-gets-an-enterprise-makeover/"
     },
     {
       "n": 4,
-      "title": "Pipedrive's native MCP server makes the SDR-first CRM fully agent-callable — search deals, create records, update contacts, schedule activities, automate pipeline from any MCP client",
-      "summary": "Natural-language read/write over the full CRM surface from Claude/ChatGPT, aimed at high-velocity sales teams; the pipeline-first entrant alongside HubSpot and Salesforce MCPs.",
-      "tag": "yes",
-      "how": "Completes the CRM-tier map for Hartley/PRAGMA deal-ops (Salesforce=enterprise, HubSpot=mid-market, Pipedrive=SDR); The Construct's move is one revenue-ops operator that routes across whichever CRM MCP the client already runs, owning the workflow above all three.",
-      "url": "https://www.pipedrive.com/en/newsroom/pipedrive-launches-native-mcp-server-bringing-crm-workflows-directly-into-ai-assistants"
+      "title": "Reka raises $110M Series B (Snowflake + Nvidia, ~$1B valuation, Jul 22) — a fresh, well-capitalized efficient-model lab",
+      "summary": "Another independent lab funded to push cheap-capable models, with strategic infra (Snowflake data, Nvidia compute) behind it.",
+      "tag": "maybe",
+      "how": "Reinforces the model-portability thesis: keep operators model-agnostic so we route high-volume, low-stakes steps to whichever efficient lab (Reka, Flash, Luna) wins on cost-per-token while reserving Opus 5 for hard reasoning/computer-use jobs.",
+      "url": "https://tracxn.com/d/companies/perplexity/__V2BE-5ihMWJ1hNb2_u1W7Gry25JzPFCBg-iNWi94XI8/funding-and-investors"
     },
     {
       "n": 5,
-      "title": "arXiv 'Reinforcement Learning for LLM-based Multi-Agent Systems through Orchestration Traces' (2605.02801) — treats spawn/delegate/return/aggregate/stop as a learnable temporal graph, flags the stopping decision as untrained",
-      "summary": "Frames a whole multi-agent run as an orchestration trace you can optimize, not a pile of isolated calls, and identifies the stopping decision as the piece with no explicit RL method yet.",
+      "title": "arXiv 'Design and Implementation of Agentic Orchestrations and Orchestration of Agents' (2606.31518) — classification framework: task specificity, traceability/tractability, autonomy/reactivity, correctness assurance",
+      "summary": "Separates orchestrating agentic steps from orchestrating whole agents and gives named axes to reason about each.",
       "tag": "maybe",
-      "how": "A direct architecture pointer for The Construct's operator hierarchies: instrument every sub-agent spawn/delegation/stop as a trace so we can measure and tune where hierarchies over-run or under-delegate — the knob that decides whether deep operators are cheap or ruinous.",
-      "url": "https://arxiv.org/abs/2605.02801"
+      "how": "A design vocabulary for our operator hierarchies: score each operator on traceability and correctness-assurance up front to know which jobs run fully autonomous vs. need a human gate — the same governance spine that makes the regulated-deployment wedge (item 1) sellable.",
+      "url": "https://arxiv.org/html/2606.31518v1"
     }
   ],
-  "praxis_lesson": "Frontier held today (GPT-5.6 Jul 9, Gemini 3.6 Flash Jul 21 still newest), so the real signal is substrate reliability and cost-attribution, not new weights — the August Claude Code build hardens background agents and durable sessions while /usage finally maps spend to the exact MCP server that earned it. That combination turns a scheduled agent fleet from a demo into a billable product: The Construct's edge is a governed, observable, per-server-metered orchestration layer that keeps running detached across devices and can prove which tool drove which dollar.",
+  "praxis_lesson": "Frontier held again today (Opus 5 Jul 24 still newest, GPT-5.6 and Gemini 3.6 Flash unchanged), so the day's real signal is that the whole stack is hardening toward governed, portable deployment — Claude for Government wraps the exact agent stack we run in a FedRAMP-High, tamper-evident-audited shell, MCP goes stateless-and-hosted-anywhere at 10,000+ servers, and fresh capital (Reka) keeps the efficient-model tier competitive. The Construct's edge compounds in the same direction: build model-agnostic operators on the stateless 2.0 spec, score each on traceability and correctness up front, and the same hierarchy sells into a signage SMB and a federal agency alike — governance and provenance are the product while weights and tools commoditize beneath it.",
   "history": [
     "2026-08-06",
     "2026-08-05",

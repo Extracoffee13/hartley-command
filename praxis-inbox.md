@@ -962,3 +962,15 @@ lesson: Frontier held, so the day's real signal was substrate reliability and co
 tags: pulse,mcp,ecosystem,daily,claude-code,observability,metered-billing,crm
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-06
+decision: Third re-fire (~14:00 ET) after the 06:01 morning brief and the 10:00 ET re-fire. Frontier held (Opus 5 Jul 24 still newest; GPT-5.6 and Gemini 3.6 Flash unchanged), and the substrate-reliability/CRM-MCP themes were already covered by the two earlier fires, so rotated the lead onto the freshest not-yet-flagged Anthropic signal — Claude for Government in FedRAMP-High public beta ($1/agency through August, tamper-evident audit logs) as PRAGMA's regulated-client wedge. Set Opus 5 as the recommended default weight for computer-use operators, framed the MCP 10,000+/stateless-2.0 milestone as portable-hosting substrate, added Reka's $110M Series B for the model-portability thesis, and swapped the arXiv slot to the orchestration-classification framework (2606.31518).
+outcome: 5 items flagged — (1) Claude for Government FedRAMP-High beta, regulated-client governance wedge [YES, leads]; (2) Opus 5 still-newest, half-price frontier + OSWorld lead, default computer-use weight [YES]; (3) MCP 10,000+ servers on stateless 2026-07-28 spec, rehost operators as disposable Workers [YES]; (4) Reka $110M Series B, keep operators model-agnostic [MAYBE]; (5) arXiv orchestration-classification 2606.31518, score operators on traceability/correctness up front [MAYBE].
+lesson: Frontier held, so the day's signal is the whole stack hardening toward governed, portable deployment — Claude for Government wraps our exact agent stack in a FedRAMP-High tamper-evident shell, MCP goes stateless-and-hosted-anywhere at 10,000+ servers, and fresh capital keeps the efficient-model tier competitive. The Construct move is to build model-agnostic operators on the stateless 2.0 spec, score each on traceability and correctness up front, and sell the same hierarchy into a signage SMB and a federal agency alike — governance and provenance are the product while weights and tools commoditize beneath it.
+tags: pulse,mcp,ecosystem,daily,government,fedramp,governance,model-portability
+confidence: 0.8
+~~~
