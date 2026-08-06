@@ -1,51 +1,54 @@
 {
-  "generated": "2026-08-03T06:01:38Z",
-  "latest_date": "2026-08-03",
+  "generated": "2026-08-06T14:02:02Z",
+  "latest_date": "2026-08-06",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Brand 9 Signs' own category goes agent-native — digital-signage CMS platforms now ship MCP servers (Screenly, Revel Digital, Korbyt)",
-      "summary": "A year after zero production vendors, multiple production signage MCP servers are live; Korbyt's exposes media, players, content, schedules, users, analytics and data adapters as agent-callable tools, so an agent can push content, set schedules, and read player analytics by natural-language request.",
+      "title": "Anthropic ships the August Claude Code build — screen-reader mode, hardened background agents, corporate-proxy support, and a raft of CLI/SDK reliability + session-memory fixes",
+      "summary": "The August release improves background-agent behavior and session reliability, adds accessibility and corporate process-wrapper support, and cuts memory use while fixing many CLI/SDK bugs.",
       "tag": "yes",
-      "how": "This is B9's literal industry becoming operator-driven: a single Construct signage-ops agent can drive content + scheduling + player health across whichever CMS a client runs — the PRAGMA operator wedge applied directly to signage.",
-      "url": "https://cast-hub.com/digital-signage-mcp-vendors/"
+      "how": "The substrate The Construct's own operators run on: more reliable background agents and durable sessions harden long-running scheduled operators like this Pulse job, and corporate-proxy support lets us run the same stack inside a client's network.",
+      "url": "https://releasebot.io/updates/anthropic/claude-code"
     },
     {
       "n": 2,
-      "title": "Runway ships a hosted MCP server routing its full generation stack (Gen-4.5, Seedance 2.0, Kling 3.0, Veo 3.1, GPT Image 2, Nano Banana Pro) into Claude / Cursor / ChatGPT",
-      "summary": "Pass a product URL, reference image, or text prompt in-conversation and get product images, hero assets, and marketing video without leaving the agent; one connector fans out to the whole model library by plan.",
+      "title": "Claude Code's /usage now attributes MCP-server cost correctly — a server's share reflects only the requests that actually consumed its tool results",
+      "summary": "The overattribution bug that inflated per-server usage is fixed, so cost/latency now maps cleanly to the specific tool that produced results.",
       "tag": "yes",
-      "how": "A first-class creative surface for Brand 9 Signs output; wire it into one Construct creative operator alongside the media MCPs already flagged (Higgsfield, VEED), don't run it as a standalone tool.",
-      "url": "https://runwayml.com/news/mcp"
+      "how": "Real per-server observability is the cost-accounting layer The Construct needs to price governed operators per client: prove which MCP server drove which spend and you can bill orchestration as a metered product instead of a flat retainer.",
+      "url": "https://releasebot.io/updates/anthropic/claude-code"
     },
     {
       "n": 3,
-      "title": "Pipedrive ships a native MCP server — live CRM read/write from Claude with permission-scoping and a full audit trail (Jun 30)",
-      "summary": "AI assistants interact with live pipeline data in real time while respecting existing user permissions and logging every action performed.",
-      "tag": "maybe",
-      "how": "A CRM-ops surface for the B9 / PRAGMA pipeline; adopt directly if we standardize on Pipedrive, otherwise treat permission-scoped + audited CRM MCP as the bar any CRM connector we wire in must clear.",
-      "url": "https://www.pipedrive.com/en/newsroom/pipedrive-launches-native-mcp-server-bringing-crm-workflows-directly-into-ai-assistants"
+      "title": "Claude Cowork now runs remote background sessions on web + mobile (beta) — server-side files and session state, scheduled tasks that run with no device online",
+      "summary": "Sessions and file state persist to your Claude account and keep running detached from any one machine, synced across desktop/web/phone.",
+      "tag": "yes",
+      "how": "Directly upgrades how The Construct's scheduled operators run: detached, durable, resumable across devices, so long-running agent work no longer depends on a laptop staying awake — the reliability floor under the whole scheduled-agent fleet.",
+      "url": "https://the-decoder.com/anthropics-claude-cowork-ai-agent-is-now-available-on-mobile-and-web/"
     },
     {
       "n": 4,
-      "title": "arXiv: 'From Prompts to Contracts — Harness Engineering for Auditable Enterprise LLM Agents' (2607.08028)",
-      "summary": "Reconstructs prompt-carried prototypes into a traceable, auditable agent architecture: deterministic behavior moves into code, manifests, schemas, and validation artifacts around a replaceable composition boundary.",
+      "title": "Pipedrive's native MCP server makes the SDR-first CRM fully agent-callable — search deals, create records, update contacts, schedule activities, automate pipeline from any MCP client",
+      "summary": "Natural-language read/write over the full CRM surface from Claude/ChatGPT, aimed at high-velocity sales teams; the pipeline-first entrant alongside HubSpot and Salesforce MCPs.",
       "tag": "yes",
-      "how": "The governance blueprint for The Construct's operator fleet: make each agent an auditable contract (manifest + schema + validation), not a prompt blob, so we can swap models/tools behind a stable boundary and prove what ran.",
-      "url": "https://arxiv.org/abs/2607.08028v1"
+      "how": "Completes the CRM-tier map for Hartley/PRAGMA deal-ops (Salesforce=enterprise, HubSpot=mid-market, Pipedrive=SDR); The Construct's move is one revenue-ops operator that routes across whichever CRM MCP the client already runs, owning the workflow above all three.",
+      "url": "https://www.pipedrive.com/en/newsroom/pipedrive-launches-native-mcp-server-bringing-crm-workflows-directly-into-ai-assistants"
     },
     {
       "n": 5,
-      "title": "Frontier field stays seated — no new tier cleared the 24h bar; the cheap workhorses (OpenAI Luna post Jul 30 -80% cut, Gemini 3.6 Flash, Grok 4.5) hold",
-      "summary": "Opus 5 (Jul 24) remains the newest reasoning tier; the everyday/bulk tiers keep repricing downward with no capability jump this cycle.",
+      "title": "arXiv 'Reinforcement Learning for LLM-based Multi-Agent Systems through Orchestration Traces' (2605.02801) — treats spawn/delegate/return/aggregate/stop as a learnable temporal graph, flags the stopping decision as untrained",
+      "summary": "Frames a whole multi-agent run as an orchestration trace you can optimize, not a pile of isolated calls, and identifies the stopping decision as the piece with no explicit RL method yet.",
       "tag": "maybe",
-      "how": "Routing math unchanged: hold Opus 5 for reasoning-heavy Construct jobs, route high-volume bulk to Luna/Flash; no top-tier switch to make.",
-      "url": "https://llm-stats.com/llm-updates"
+      "how": "A direct architecture pointer for The Construct's operator hierarchies: instrument every sub-agent spawn/delegation/stop as a trace so we can measure and tune where hierarchies over-run or under-delegate — the knob that decides whether deep operators are cheap or ruinous.",
+      "url": "https://arxiv.org/abs/2605.02801"
     }
   ],
-  "praxis_lesson": "The signals that matter this cycle are vertical, not frontier — Brand 9 Signs' own category (digital signage) has gone agent-native while the generation stack (Runway's full model library) is now one MCP call away. The Construct's move is to own the signage-ops + creative operator that drives both CMS platforms and the generation stack for clients, and to build it as an auditable harness-contract (per 2607.08028) rather than reselling any single vendor — the orchestration + governance layer is the defensible position, not the tool.",
+  "praxis_lesson": "Frontier held today (GPT-5.6 Jul 9, Gemini 3.6 Flash Jul 21 still newest), so the real signal is substrate reliability and cost-attribution, not new weights — the August Claude Code build hardens background agents and durable sessions while /usage finally maps spend to the exact MCP server that earned it. That combination turns a scheduled agent fleet from a demo into a billable product: The Construct's edge is a governed, observable, per-server-metered orchestration layer that keeps running detached across devices and can prove which tool drove which dollar.",
   "history": [
+    "2026-08-06",
+    "2026-08-05",
+    "2026-08-04",
     "2026-08-03",
     "2026-08-02",
     "2026-08-01",
@@ -56,9 +59,6 @@
     "2026-07-27",
     "2026-07-26",
     "2026-07-25",
-    "2026-07-24",
-    "2026-07-23",
-    "2026-07-22",
-    "2026-07-21"
+    "2026-07-24"
   ]
 }

@@ -866,3 +866,99 @@ lesson: The leverage this cycle is vertical, not frontier — B9's own industry 
 tags: pulse,mcp,ecosystem,daily,signage,brand9signs,creative-stack,governance
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-03
+decision: Re-scan (14:00 ET) after the 06:00 morning brief. Rotated the lead off the signage/creative vertical onto the item that firmed up since morning — the connector layer itself commoditizing: MCP crossed 10,000+ servers and the 2026-07-28 stateless-core spec is shipping across Anthropic/OpenAI/Google/Microsoft/AWS, now runnable behind standard load balancers on Bedrock AgentCore with no session state. Kept digital-signage as the B9 vertical anchor, rotated the CRM surface from Pipedrive to the fresher NetHunt read/write MCP (Jul 2026), advanced the arXiv slot to multi-tool orchestration (2603.22862), and held the frontier field seated (no new 24h tier).
+outcome: 5 items flagged — (1) MCP 10k+ servers, 2026-07-28 stateless core commoditizes the connector layer [YES, leads]; (2) digital-signage MCP surface deepens, Revel Digital 46 tools/14 categories [YES]; (3) NetHunt CRM read/write MCP joins Pipedrive as commodity CRM-ops surface [MAYBE]; (4) arXiv 'Evolution of Tool Use — Single-Tool to Multi-Tool Orchestration' 2603.22862 [YES]; (5) frontier seated, cheap workhorses hold post Jul-30 cut [MAYBE].
+lesson: The connector layer just commoditized — stateless MCP behind standard load balancers plus 10k+ servers means running any single server (signage, CRM, creative) is table stakes, not an edge. The Construct's moat is the orchestration + governance layer above them: one auditable operator that composes many MCPs (multi-tool orchestration per 2603.22862) for B9 / PRAGMA clients. Own the composition boundary, not the tool.
+tags: pulse,mcp,ecosystem,daily,control-plane,orchestration,signage
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-04
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct. Rotated the lead onto the freshest 24h item — Alibaba's Qwen3.8-Max (Aug 3), a 2.4T-param open-weights MoE benching at/above Fable 5 and GPT-5.6 Sol on several tasks, un-seating the "frontier is quiet" throughline. Kept Cowork's web+mobile/offline runtime as the operating substrate, anchored the B9 vertical on Higgsfield MCP calling out signage as a first-class GPT Image 2 use case, advanced the arXiv slot to in-context-beats-orchestration for procedural tasks (2604.27891), and used the Cognition/Glean funding as market confirmation of the composition-over-tool thesis.
+outcome: 5 items flagged — (1) Alibaba Qwen3.8-Max 2.4T open-weights near-frontier, weights next week [MAYBE, leads]; (2) Cowork web+mobile server-side remote/offline sessions + plugin bundling [YES, runtime]; (3) Higgsfield MCP, GPT Image 2 signage/4K text one call from Claude [YES, B9]; (4) arXiv 2604.27891 in-context prompting obsoletes orchestration for procedures [YES]; (5) agent app layer compounds (Cognition ~$26B, Glean $200M ARR) while connectors commoditize [MAYBE].
+lesson: The frontier moved from a direction nobody was routing for (open-weights Qwen3.8-Max) and a controlled study says in-context prompting beats an orchestration graph for fixed procedures — both say don't over-engineer. The Construct's edge is the auditable, model-portable operator that routes to whatever's cheapest-capable and keeps procedures in-context, not a heavier stack or a bet on one model. Stay light, stay portable, own the composition boundary.
+tags: pulse,mcp,ecosystem,daily,frontier,open-weights,orchestration,signage
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-04
+decision: Re-scan (14:00 ET) after the 06:00 morning brief. Rotated the lead off the freshest-but-already-flagged item (Qwen3.8-Max) onto the connector-standard event that firmed up the migration reality — the MCP 2026-07-28 spec is now final (stateless core, Extensions, Tasks/MCP Apps, DCR deprecated for CIMD, Roots/Sampling/Logging on a 12-month clock). Paired it with an arXiv harness-engineering paper that reads as PRAGMA's thesis, advanced the cheap-workhorse slot to DeepSeek V4-Flash-0731 GA (MIT weights, ~$0.06 blended), held Opus 5 + Claude Code auth hardening as the reliability substrate, and rotated the CRM surface from NetHunt back to Pipedrive's native server.
+outcome: 5 items flagged — (1) MCP 2026-07-28 final spec: stateless core + deprecation clock, migrate the fleet [YES, leads]; (2) arXiv 'From Prompts to Contracts: Harness Engineering for Auditable Enterprise LLM Agents' 2607.08028 [YES]; (3) DeepSeek V4-Flash-0731 GA, MIT weights ~$0.06 blended, TB2.1 82.7 [MAYBE]; (4) Opus 5 + 2026-07-28 auth hardening = mid-run tool swaps + safety fallbacks, our substrate [YES]; (5) SMB CRM commoditizes to agent-callable MCPs, Pipedrive native joins NetHunt [MAYBE].
+lesson: The connector standard froze into a stateless, contract-shaped spec on the same day a paper argued the winning enterprise agent is an auditable harness with contracts — both say the durable edge is the governed, inspectable composition layer above the tools and models, not the tools or models themselves. Migrate our fleet to the new spec, speak 'auditable harness' to buyers, and route cheap-capable models (V4-Flash) under an operator a diligence team could read line by line.
+tags: pulse,mcp,ecosystem,daily,spec,harness,auditable,composition
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-05
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct. No new 24h frontier release, so rotated the lead onto the freshest operating-substrate item — Claude Code's August build shipping fleet-hierarchy primitives (nested subagents to depth 3, a concurrency cap, /code-review as a background subagent). Paired it with the Context Engineering arXiv paper (2603.09619) that makes context a measurable, provenance-scored asset, anchored the B9 vertical on Korbyt's digital-signage MCP (CMS becomes agent-callable), advanced the creative slot to reel-estate-mcp (plain-language listing video/voiceover as a one-call MCP pattern), and seated the frontier as held with app-layer valuations compounding.
+outcome: 5 items flagged — (1) Claude Code Aug build: nested subagents depth 3 + concurrency cap + background /code-review, fleet-hierarchy primitives [YES, leads]; (2) arXiv 'Context Engineering' 2603.09619, five context-quality criteria (relevance/sufficiency/isolation/economy/provenance) [YES]; (3) Korbyt digital-signage MCP exposes media/players/schedules/analytics to Claude [YES, B9 wedge]; (4) reel-estate-mcp, photo-in to narrated listing video out in one call [MAYBE, B9 creative pattern]; (5) frontier held (Qwen3.8-Max Aug 2 newest), app layer compounds — Cognition ~$26B, Glean $200M ARR, Perplexity ~$20B [MAYBE].
+lesson: Two signals point the same way — Claude Code shipped hierarchy-and-governance primitives and a paper made context a measurable, provenance-scored asset. The edge is structural: run Construct operators as governed hierarchies with audited context, not flatter/bigger prompt chains, and point that machinery at concrete verticals (signage-CMS, creative-video MCPs) where a plain-language operator owns the whole workflow.
+tags: pulse,mcp,ecosystem,daily,subagents,context-engineering,signage,composition
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-05
+decision: Re-fire (~10:00 ET) after the 06:01 morning brief. Frontier held (Qwen3.8-Max Aug 2 still newest), so rotated the lead off the already-flagged reel-estate-mcp/Korbyt vertical items onto the freshest genuinely-dated last-24h news — two named vertical SaaS platforms turning their whole workflow into one agent-callable MCP: Rechat (real estate, contacts/marketing/transactions, announced Aug 4) and Revid.ai (video, render/clone_voice/schedule/publish). Kept Claude Code's Aug hierarchy primitives and swapped the arXiv slot to the fresh 'Scaling LLM-Driven Multi-Agent Systems' paper (2607.27942); held frontier with app-layer valuations compounding.
+outcome: 5 items flagged — (1) Rechat real-estate MCP, Aug 4, Hartley/real-estate deal-ops wedge [YES, leads]; (2) Revid.ai video MCP+CLI, B9 creative brief-to-published pattern [YES]; (3) Claude Code Aug build: nested subagents depth 3 + concurrency cap + background /code-review [YES]; (4) arXiv 'Scaling LLM-Driven Multi-Agent Systems' 2607.27942, four design principles + directed workflow [YES]; (5) frontier held, app layer compounds — Cognition ~$26B, Glean $200M ARR, Perplexity ~$20B [MAYBE].
+lesson: In one day two more verticals (real estate, video) collapsed their entire workflow into a single agent-callable MCP, right after signage CMSs did the same. The Construct's durable move isn't building any one of them — it's running a plain-language operator that drives each vertical's own MCP end-to-end as a governed, depth-limited hierarchy, owning the orchestration layer while vendors commoditize the tools beneath it.
+tags: pulse,mcp,ecosystem,daily,vertical-mcp,real-estate,video,orchestration
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-05
+decision: Second re-fire (~14:00 ET) after the 06:01 morning brief and the 10:00 ET re-fire. Frontier still held (Qwen3.8-Max Aug 2 newest), so rotated the lead off the already-flagged Rechat/Revid vertical items onto the freshest last-24h creative/GTM-MCP news — Omneky opening its ad-creative engine as a public API + MCP (brand-in, finished creative-out) and 6sense's MCP hitting GA. Added the ecosystem-substrate signal (MCP ~400M monthly SDK downloads + Claude adopting the 2026-07-28 stateless/OAuth-hardened spec with Apps/Tasks extensions), swapped the arXiv slot to the 'Mixture-of-Models' small-model-ensemble architecture, and held frontier with app-layer valuations compounding.
+outcome: 5 items flagged — (1) Omneky ad-creative API+MCP, B9 brief-to-creative wedge [YES, leads]; (2) 6sense MCP GA, PRAGMA/Hartley GTM revenue-ops wedge [YES]; (3) MCP ~400M monthly downloads + Claude 2026-07-28 spec, substrate hardening [YES]; (4) arXiv 'Mixture-of-Models' broker+quadratic-voting small-model ensemble [YES, model-portability thesis]; (5) frontier held, app layer compounds — Cognition ~$26B, Glean $200M ARR, Perplexity ~$20B [MAYBE].
+lesson: A third straight day of the same signal — Omneky (ad creative) and 6sense (GTM intelligence) each collapsed a whole workflow into one agent-callable MCP, on a protocol that just crossed 400M monthly downloads and hardened its auth. The durable Construct move is over-confirmed: run a plain-language, MCP-native operator that drives each vertical's own MCP end-to-end as a governed hierarchy, routing across cheap-capable small models, and own the orchestration layer while vendors and weights commoditize beneath you.
+tags: pulse,mcp,ecosystem,daily,ad-creative,gtm,model-portability,composition
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-06
+decision: 06:01 ET morning fire. Frontier held (Gemini 3.6 Flash Jul 21 / ChatGPT Work Jul 9 still newest, no last-24h weight), so rotated the lead off the now-saturated vertical-MCP theme (Rechat/Revid/Omneky/6sense over the prior three days) onto the freshest substrate-hardening news: Anthropic enterprise inference hooks / DLP across chat+Code+Cowork, the OpenAI Assistants API Aug-26 sunset making MCP the default, the MCP 2.0 stateless SDKs, Cowork remote web/mobile sessions, and a fresh arXiv infra paper (Workflow-Aware Serving Layer, 2607.02942) swapped in for yesterday's multi-agent-scaling slot.
+outcome: 5 items flagged — (1) Anthropic inference hooks / real-time DLP across all Claude surfaces, governance-layer wedge [YES, leads]; (2) OpenAI Assistants API dark Aug 26, MCP-migration wedge for B9/PRAGMA prospects [YES]; (3) MCP 2.0 stateless/OAuth-hardened SDKs, rebuild Construct servers [YES]; (4) Cowork remote web/mobile detached sessions, durable scheduled operators [YES]; (5) arXiv Workflow-Aware Serving Layer 2607.02942, plan the workflow graph up front [MAYBE].
+lesson: Today's signals are all substrate-hardening, not new verticals — MCP going stateless/2.0, the last proprietary tool API (OpenAI Assistants) sunsetting Aug 26, and Anthropic wrapping DLP inference hooks around every Claude surface. The edge is shifting from which tools you call to how governed and portable your orchestration is, so the Construct move is to build client-facing operators on the 2.0 stateless spec behind an inference/DLP gate — making governance and protocol-portability the product while the tools beneath commoditize.
+tags: pulse,mcp,ecosystem,daily,governance,dlp,protocol,stateless
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-06
+decision: 10:00 ET re-fire after the 06:01 morning brief. Frontier held (GPT-5.6 Jul 9 / Gemini 3.6 Flash Jul 21 still newest, no last-24h weight) and the vertical-MCP theme is saturated from the prior three days, so rotated the lead off the morning's inference-hooks/Assistants-sunset substrate items onto the freshest concrete Anthropic release + observability: the August Claude Code build (background-agent + session reliability, accessibility, corporate-proxy) and the /usage per-MCP-server cost-attribution fix. Kept Cowork remote sessions, added Pipedrive's native CRM MCP to complete the CRM-tier map, and swapped the arXiv slot to 'RL for Multi-Agent Systems through Orchestration Traces' (2605.02801).
+outcome: 5 items flagged — (1) Anthropic August Claude Code build, hardens Construct's own scheduled operators [YES, leads]; (2) /usage per-MCP-server attribution fix, the metered-billing/observability layer [YES]; (3) Cowork remote web/mobile detached sessions, durable operators [YES]; (4) Pipedrive native CRM MCP, completes Salesforce/HubSpot/Pipedrive tier map for revenue-ops operator [YES]; (5) arXiv orchestration-traces 2605.02801, instrument spawn/delegate/stop [MAYBE].
+lesson: Frontier held, so the day's real signal was substrate reliability and cost-attribution, not new weights — the August Claude Code build hardens background agents and durable sessions while /usage finally maps spend to the exact MCP server that earned it. That combination is what turns a scheduled agent fleet from a demo into a billable product: The Construct's edge is a governed, observable, per-server-metered orchestration layer that keeps running detached across devices and can prove which tool drove which dollar.
+tags: pulse,mcp,ecosystem,daily,claude-code,observability,metered-billing,crm
+confidence: 0.8
+~~~
