@@ -1,51 +1,44 @@
 {
-  "generated": "2026-08-06T18:05:00Z",
-  "latest_date": "2026-08-06",
+  "generated": "2026-08-07T10:05:00Z",
+  "latest_date": "2026-08-07",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Claude for Government in public beta — Claude Code + Cowork inside FedRAMP High, tamper-evident audit logs, ATO docs, $1/agency through August",
-      "summary": "The same desktop agent stack The Construct runs, now packaged with the security, spend, and audit controls regulated buyers require, deployable via agency MDM with no separate cloud contract.",
+      "title": "Claude Code ships self-hosted environments (public beta Aug 6, Team/Enterprise), removes the subagent spawn cap (nested subagents now depth 3 vs 1), and gates cross-session SendMessage through the permission classifier",
+      "summary": "Sessions from web/mobile/desktop/terminal/scheduled routines can now run inside the org's own network next to its internal services and security controls, while operator hierarchies get deeper and inter-agent messaging gets a safety gate.",
       "tag": "yes",
-      "how": "PRAGMA's regulated-client wedge: our operator hierarchies become sellable into government and compliance-bound enterprises the moment they sit inside a FedRAMP-High, tamper-evident-audited shell — governance and provenance become the product, not the tools.",
-      "url": "https://claude.com/blog/bringing-claude-code-and-claude-cowork-to-government"
+      "how": "The data-residency wedge: run the exact scheduled-operator fleet we build on a client's own infrastructure so a signage SMB or compliance-bound PRAGMA client keeps every byte on-prem; deeper nested subagents (depth 3, no cap) build richer operator trees and classifier-gated SendMessage makes multi-operator hand-offs safe in auto mode.",
+      "url": "https://code.claude.com/docs/en/changelog"
     },
     {
       "n": 2,
-      "title": "Claude Opus 5 still the newest frontier weight (Jul 24) — matches/beats Fable 5 at half price, record ARC-AGI-3 jump to 30.2%, outright OSWorld 2.0 computer-use lead",
-      "summary": "$5/$25 per 1M (same as Opus 4.8), default on Max and strongest on Pro, clearing Fable 5's peak computer-use score on roughly a third of the budget.",
+      "title": "Claude Sonnet 5 promo pricing ($2/$10 per 1M) ends Aug 31 — standard $3/$15 takes effect Sept 1",
+      "summary": "A 50% jump on the workhorse model most high-volume agent steps run on.",
       "tag": "yes",
-      "how": "The model to default The Construct's computer-use and agentic-terminal operators onto: frontier-class task-learning and OSWorld performance at half the top-tier cost improves the browser/desktop-driving operators (Pulse, Hermes, the visibility scans) with no pricing hit.",
-      "url": "https://officechai.com/ai/claude-opus-5-benchmarks/"
+      "how": "A direct Ledger line item: audit which Construct operators default to Sonnet 5 for bulk/low-stakes work and, before Sept 1, re-route those steps to a cheaper efficient tier (Gemini 3.5 Flash-Lite, Haiku) or budget the increase; reserve Sonnet/Opus 5 for steps that actually need the reasoning.",
+      "url": "https://releasebot.io/updates/anthropic/claude"
     },
     {
       "n": 3,
-      "title": "MCP crosses 10,000+ servers as all five majors ship the stateless 2026-07-28 spec — servers now run in a bare Worker with no session infrastructure",
-      "summary": "The biggest spec update since 2024 makes MCP stateless with auth hardening and a formal extensions framework; Bedrock AgentCore already hosts it on standard scalable infra.",
-      "tag": "yes",
-      "how": "The substrate we build on just got cheaper and more portable to host: rebuild internal servers on the stateless 2.0 spec so client-facing operators deploy as disposable, horizontally-scalable Workers behind hardened auth — no stateful boxes to babysit.",
-      "url": "https://www.theregister.com/ai-and-ml/2026/07/29/mcp-gets-an-enterprise-makeover/"
+      "title": "Homesage.ai real-estate MCP (July 2026) wires AI assistants to 155M+ U.S. property records across 33 tools, extending the Rechat/real-estate agentic push",
+      "summary": "Valuations, comps, rental projections, renovation estimates, and condition red flags become agent-callable tools for a whole records-heavy industry.",
+      "tag": "maybe",
+      "how": "A live template for PRAGMA's vertical land-grab: real estate is exactly the records-heavy, locally-fragmented market where an AI-visibility + operator layer sits on top of a data MCP; watch these as substrate our owned-presence/visibility operators plug into rather than rebuild.",
+      "url": "https://www.milehightitleguy.com/post/real-estate-mcps-the-ai-upgrade-denver-agents-have-not-heard-of-yet"
     },
     {
       "n": 4,
-      "title": "Reka raises $110M Series B (Snowflake + Nvidia, ~$1B valuation, Jul 22) — a fresh, well-capitalized efficient-model lab",
-      "summary": "Another independent lab funded to push cheap-capable models, with strategic infra (Snowflake data, Nvidia compute) behind it.",
+      "title": "arXiv 'Multi-Agent LLM Orchestration Achieves Deterministic, High-Quality Decision Support for Incident Response' (2511.15755) — 100% actionable vs 1.7% single-agent across 348 trials, zero quality variance",
+      "summary": "The paper argues the determinism of a well-structured multi-agent flow, not raw model strength, is what makes production SLA commitments possible.",
       "tag": "maybe",
-      "how": "Reinforces the model-portability thesis: keep operators model-agnostic so we route high-volume, low-stakes steps to whichever efficient lab (Reka, Flash, Luna) wins on cost-per-token while reserving Opus 5 for hard reasoning/computer-use jobs.",
-      "url": "https://tracxn.com/d/companies/perplexity/__V2BE-5ihMWJ1hNb2_u1W7Gry25JzPFCBg-iNWi94XI8/funding-and-investors"
-    },
-    {
-      "n": 5,
-      "title": "arXiv 'Design and Implementation of Agentic Orchestrations and Orchestration of Agents' (2606.31518) — classification framework: task specificity, traceability/tractability, autonomy/reactivity, correctness assurance",
-      "summary": "Separates orchestrating agentic steps from orchestrating whole agents and gives named axes to reason about each.",
-      "tag": "maybe",
-      "how": "A design vocabulary for our operator hierarchies: score each operator on traceability and correctness-assurance up front to know which jobs run fully autonomous vs. need a human gate — the same governance spine that makes the regulated-deployment wedge (item 1) sellable.",
-      "url": "https://arxiv.org/html/2606.31518v1"
+      "how": "Empirical backing for the Construct thesis: a governed operator hierarchy delivers consistency a single mega-prompt can't, which is what lets us sell an operator fleet with an SLA (uptime, actionability); pair with item 1's self-hosting to pitch a data-resident, SLA-backed operator layer.",
+      "url": "https://arxiv.org/abs/2511.15755"
     }
   ],
-  "praxis_lesson": "Frontier held again today (Opus 5 Jul 24 still newest, GPT-5.6 and Gemini 3.6 Flash unchanged), so the day's real signal is that the whole stack is hardening toward governed, portable deployment — Claude for Government wraps the exact agent stack we run in a FedRAMP-High, tamper-evident-audited shell, MCP goes stateless-and-hosted-anywhere at 10,000+ servers, and fresh capital (Reka) keeps the efficient-model tier competitive. The Construct's edge compounds in the same direction: build model-agnostic operators on the stateless 2.0 spec, score each on traceability and correctness up front, and the same hierarchy sells into a signage SMB and a federal agency alike — governance and provenance are the product while weights and tools commoditize beneath it.",
+  "praxis_lesson": "Frontier held again (Opus 5 Jul 24 still the newest weight; GPT-5.6 and Gemini 3.6 Flash unchanged), so today's real signal is deployment control, not capability — Claude Code now runs the full session stack inside the client's network with deeper, safer operator hierarchies, and the research (2511.15755) says the determinism of that hierarchy, not model horsepower, is what makes an SLA sellable. The Construct move: package a data-resident, self-hosted, SLA-backed operator fleet as the product, keep bulk steps model-agnostic ahead of the Sept 1 Sonnet price hike, and let vertical data-MCPs (real estate and next) be the substrate our visibility and owned-presence operators sit on top of — governance, residency, and consistency are the moat while weights and tools commoditize beneath.",
   "history": [
+    "2026-08-07",
     "2026-08-06",
     "2026-08-05",
     "2026-08-04",
@@ -58,7 +51,6 @@
     "2026-07-28",
     "2026-07-27",
     "2026-07-26",
-    "2026-07-25",
-    "2026-07-24"
+    "2026-07-25"
   ]
 }

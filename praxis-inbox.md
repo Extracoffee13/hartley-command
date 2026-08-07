@@ -974,3 +974,15 @@ lesson: Frontier held, so the day's signal is the whole stack hardening toward g
 tags: pulse,mcp,ecosystem,daily,government,fedramp,governance,model-portability
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-07
+decision: 06:00 ET morning fire. Frontier held (Opus 5 Jul 24 still newest; GPT-5.6 and Gemini 3.6 Flash unchanged, no last-24h weight), so led on the freshest concrete Anthropic release — the Aug 6-7 Claude Code build (self-hosted environments in public beta for Team/Enterprise, subagent spawn cap removed + nested subagents to depth 3, cross-session SendMessage gated by the permission classifier). Added the Sonnet 5 Sept-1 price hike as a Ledger action item, the Homesage.ai 155M-record real-estate MCP as the vertical land-grab template, and swapped the arXiv slot to the deterministic multi-agent incident-response paper (2511.15755) for the SLA thesis.
+outcome: 4 items flagged — (1) Claude Code self-hosted environments + deeper/safer subagent hierarchies, data-residency wedge [YES, leads]; (2) Sonnet 5 promo ends Aug 31, $2/$10 to $3/$15 Sept 1, re-route bulk steps [YES]; (3) Homesage.ai real-estate MCP 155M records/33 tools, vertical-MCP substrate for PRAGMA [MAYBE]; (4) arXiv 2511.15755 deterministic multi-agent -> production SLAs [MAYBE].
+lesson: Frontier held, so today's signal is deployment control, not capability — Claude Code now runs the full session stack inside the client's own network with deeper, classifier-gated operator hierarchies, and 2511.15755 argues it's the determinism of that hierarchy, not model horsepower, that makes an SLA sellable. The Construct move is to package a data-resident, self-hosted, SLA-backed operator fleet as the product, keep bulk steps model-agnostic ahead of the Sept 1 Sonnet hike, and let vertical data-MCPs be the substrate our operators sit on — governance, residency, and consistency are the moat while weights and tools commoditize beneath.
+tags: pulse,mcp,ecosystem,daily,self-hosted,data-residency,pricing,sla
+confidence: 0.8
+~~~
