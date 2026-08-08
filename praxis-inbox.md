@@ -986,3 +986,39 @@ lesson: Frontier held, so today's signal is deployment control, not capability �
 tags: pulse,mcp,ecosystem,daily,self-hosted,data-residency,pricing,sla
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-07
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged the Aug 6 Agent Plugins open cross-vendor standard, Cloudflare WebMCP (any website becomes agent-callable) + Cloudflare Wallets from Agents Week, MapQuest's location MCP, and frontier holding (Muse Spark 1.2 / Qwen3.8-Max newest) with arXiv Context Engineering (2603.09619).
+lesson: The industry standardized the rails this week (portable Agent Plugins + WebMCP making every site agent-reachable), so package operators as portable plugins, make client sites answer-shaped and agent-transactable, and win on context engineering and governance — own the operator and the front door, not the weight or the wire.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-07
+decision: 14:00 ET fire. Frontier still held (Muse Spark 1.2 Aug 5 newest weight), and the two earlier fires today already used the Claude Code build and the Agent Plugins/WebMCP rails, so I rotated the lead onto the Anthropic runtime+governance layer under The Construct itself: Cowork now web+mobile with server-side sessions and scheduled tasks that run with no device online; Claude Code adds self-hosted environments + cross-session messaging and removes the subagent spawn cap; Enterprise inference hooks do real-time DLP on prompts/tool calls before the model. Kept MapQuest location MCP and the Context Engineering arXiv paper (2603.09619) as the context-discipline anchor.
+outcome: 5 items flagged — (1) Cowork server-side sessions + scheduled tasks, no device online [YES, leads — migrate the fleet off desktop cron]; (2) Claude Code uncapped subagents + cross-session messaging + self-hosted envs [YES — swarm substrate + data-residency]; (3) Enterprise inference-hook DLP [YES — governance-as-a-feature for PRAGMA]; (4) MapQuest location MCP, 1B free txns [MAYBE — B9 site selection]; (5) frontier holds + arXiv 2603.09619 context-quality criteria [YES].
+lesson: Anthropic moved the substrate The Construct runs on — server-side always-on Cowork tasks, uncapped/cross-talking subagents, self-hosted environments, and pre-model DLP hooks. The moat shifts from clever prompts to always-on, self-hosted, DLP-governed operator infrastructure: make the fleet cloud-native and cross-device, wire the swarm on native cross-session messaging, and sell provable governance and data-residency as the product while weights and tools commoditize beneath.
+tags: pulse,mcp,ecosystem,daily,cowork,self-hosted,governance,dlp
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-08
+decision: 10:00 ET refresh. Re-scanned the last 24h; morning fire held up, but two fresher/more actionable items surfaced so I re-led the pulse on them.
+outcome: 5 items flagged — (1) Sonnet 5 promo pricing ($2/$10) ends Aug 31, standard $3/$15 hits Sep 1, opus-4-7 fast-mode errored out — dated 50% cost cliff [YES, leads — lock routing economics before Sep 1]; (2) stateless MCP 2026-07-28 spec now shipping in the ecosystem, Agentgateway 1.4 (Aug 3) + Google stateless-scaling guidance [YES — migration validated, front the fleet with a gateway]; (3) Anthropic Enterprise governance: skill/plugin scanning + Claude Code self-hosted envs + inference-hook DLP + uncapped subagents [YES]; (4) frontier holds, GPT-5.6 default, Gemini 4 still pre-training [MAYBE]; (5) agent-economy capital wave — Glean $150M/$7.2B (100M+ agent actions/yr), Cognition ~$25B, Perplexity $200M/~$20B [MAYBE — PRAGMA competitive signal].
+lesson: The rails are done hardening and pricing is normalizing — stateless MCP is shipping in real gateways/clouds and the cheap-inference window now has an expiry date (Sonnet 5 promo ends Aug 31). Two moves: lock the fleet's routing economics before the Sep 1 price step so margin doesn't leak, and keep the moat one layer up from both model and protocol — scanned, spec-defined, portable operators whose governance is the product while weights, protocol, and inference price all commoditize beneath.
+tags: pulse,mcp,ecosystem,daily,pricing,stateless,governance
+confidence: 0.8
+~~~

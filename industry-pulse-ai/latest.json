@@ -1,43 +1,52 @@
 {
-  "generated": "2026-08-07T10:05:00Z",
-  "latest_date": "2026-08-07",
+  "generated": "2026-08-08T14:00:44Z",
+  "latest_date": "2026-08-08",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Claude Code ships self-hosted environments (public beta Aug 6, Team/Enterprise), removes the subagent spawn cap (nested subagents now depth 3 vs 1), and gates cross-session SendMessage through the permission classifier",
-      "summary": "Sessions from web/mobile/desktop/terminal/scheduled routines can now run inside the org's own network next to its internal services and security controls, while operator hierarchies get deeper and inter-agent messaging gets a safety gate.",
+      "title": "The cheap-inference window is closing on a date — Sonnet 5's promo pricing ($2/$10) ends Aug 31; standard $3/$15 hits Sep 1",
+      "summary": "Anthropic confirmed Claude Sonnet 5's promotional token pricing expires at month-end (a 50% step-up on input and output) and errored out claude-opus-4-7 fast-mode, pushing migration to Opus 5 / Opus 4.8.",
       "tag": "yes",
-      "how": "The data-residency wedge: run the exact scheduled-operator fleet we build on a client's own infrastructure so a signage SMB or compliance-bound PRAGMA client keeps every byte on-prem; deeper nested subagents (depth 3, no cap) build richer operator trees and classifier-gated SendMessage makes multi-operator hand-offs safe in auto mode.",
-      "url": "https://code.claude.com/docs/en/changelog"
-    },
-    {
-      "n": 2,
-      "title": "Claude Sonnet 5 promo pricing ($2/$10 per 1M) ends Aug 31 — standard $3/$15 takes effect Sept 1",
-      "summary": "A 50% jump on the workhorse model most high-volume agent steps run on.",
-      "tag": "yes",
-      "how": "A direct Ledger line item: audit which Construct operators default to Sonnet 5 for bulk/low-stakes work and, before Sept 1, re-route those steps to a cheaper efficient tier (Gemini 3.5 Flash-Lite, Haiku) or budget the increase; reserve Sonnet/Opus 5 for steps that actually need the reasoning.",
+      "how": "Hard, dated cost event for the whole fleet: re-baseline Ledger's routing economics now, push high-volume batch to Flash-class / cache-heavy paths before Sep 1, and lock the model-routing table so the 50% Sonnet bump doesn't quietly raise every operator's unit cost.",
       "url": "https://releasebot.io/updates/anthropic/claude"
     },
     {
+      "n": 2,
+      "title": "The stateless MCP spec (2026-07-28) is now shipping across the ecosystem — Agentgateway 1.4 supports it and Google published stateless-scaling guidance",
+      "summary": "Within a week of the spec, gateways and clouds are moving: Agentgateway shipped 1.4 with full 2026-07-28 support (Aug 3) and Google published a stateless-scaling playbook, confirming the 'server in a single Worker, no session store' pattern is real infra now.",
+      "tag": "yes",
+      "how": "The migration path for The Construct's MCP fleet is validated in the wild; re-target internal servers at the stateless core and put an Agentgateway-class layer in front rather than hand-rolling session glue.",
+      "url": "https://agentgateway.dev/blog/2026-08-03-new-mcp-spec-revision/"
+    },
+    {
       "n": 3,
-      "title": "Homesage.ai real-estate MCP (July 2026) wires AI assistants to 155M+ U.S. property records across 33 tools, extending the Rechat/real-estate agentic push",
-      "summary": "Valuations, comps, rental projections, renovation estimates, and condition red flags become agent-callable tools for a whole records-heavy industry.",
-      "tag": "maybe",
-      "how": "A live template for PRAGMA's vertical land-grab: real estate is exactly the records-heavy, locally-fragmented market where an AI-visibility + operator layer sits on top of a data MCP; watch these as substrate our owned-presence/visibility operators plug into rather than rebuild.",
-      "url": "https://www.milehightitleguy.com/post/real-estate-mcps-the-ai-upgrade-denver-agents-have-not-heard-of-yet"
+      "title": "Anthropic keeps hardening the Enterprise runtime — skill/plugin security scanning + Claude Code self-hosted environments + inference-hook DLP",
+      "summary": "Automatic malware scanning of third-party skills/plugins on upload/edit, public-beta self-hosted Claude Code environments (own infra, internal network, compliance controls), cross-session messaging, removal of the subagent spawn cap, and Enterprise inference hooks doing real-time DLP on prompts/tool calls before the model.",
+      "tag": "yes",
+      "how": "Governance-as-substrate for exactly what we do: gate the installed-skills registry on 'scanned + signed', move the swarm onto uncapped cross-talking subagents, and sell provable DLP + data-residency as a PRAGMA feature.",
+      "url": "https://releasebot.io/updates/anthropic/claude-code"
     },
     {
       "n": 4,
-      "title": "arXiv 'Multi-Agent LLM Orchestration Achieves Deterministic, High-Quality Decision Support for Incident Response' (2511.15755) — 100% actionable vs 1.7% single-agent across 348 trials, zero quality variance",
-      "summary": "The paper argues the determinism of a well-structured multi-agent flow, not raw model strength, is what makes production SLA commitments possible.",
+      "title": "Frontier holds — GPT-5.6 is OpenAI's rolling default across ChatGPT/Codex/API; Gemini 4 remains in pre-training with no benchmarks, price, or date",
+      "summary": "No new flagship weight in the last 24h; GPT-5.6 (88.8% Terminal-Bench 2.1, 91.9% ultra) is the freshest shipping default alongside Claude Opus 5 and stable Gemini 3.6 Flash, while Gemini 4 is unreleased.",
       "tag": "maybe",
-      "how": "Empirical backing for the Construct thesis: a governed operator hierarchy delivers consistency a single mega-prompt can't, which is what lets us sell an operator fleet with an SLA (uptime, actionability); pair with item 1's self-hosting to pitch a data-resident, SLA-backed operator layer.",
-      "url": "https://arxiv.org/abs/2511.15755"
+      "how": "Hold the cost/quality routing split and pre-wire an eval harness so we can benchmark Gemini 4 the day it drops rather than scrambling.",
+      "url": "https://llm-stats.com/llm-updates"
+    },
+    {
+      "n": 5,
+      "title": "The agent-economy capital wave is a competitive signal for PRAGMA — Glean $150M Series F at $7.2B (100M+ agent actions/yr), Cognition near $25B, Perplexity $200M near $20B",
+      "summary": "Horizontal 'deploy agents at scale' platforms (Glean Agents) and coding-agent shops (Cognition) are raising at agentic-platform multiples, and the surface where an agent starts and finishes a task is where the capital is going.",
+      "tag": "maybe",
+      "how": "These are the incumbents PRAGMA's operator-as-plugin wedge sells against; the differentiator isn't 'we have agents' but governed, scanned, spec-defined operators packaged as a client's own function — sell the guardrails and packaging the platform players don't.",
+      "url": "https://newmarketpitch.com/blogs/news/agentic-ai-top-startups-fundraising"
     }
   ],
-  "praxis_lesson": "Frontier held again (Opus 5 Jul 24 still the newest weight; GPT-5.6 and Gemini 3.6 Flash unchanged), so today's real signal is deployment control, not capability — Claude Code now runs the full session stack inside the client's network with deeper, safer operator hierarchies, and the research (2511.15755) says the determinism of that hierarchy, not model horsepower, is what makes an SLA sellable. The Construct move: package a data-resident, self-hosted, SLA-backed operator fleet as the product, keep bulk steps model-agnostic ahead of the Sept 1 Sonnet price hike, and let vertical data-MCPs (real estate and next) be the substrate our visibility and owned-presence operators sit on top of — governance, residency, and consistency are the moat while weights and tools commoditize beneath.",
+  "praxis_lesson": "The rails are done hardening and pricing is normalizing — the stateless MCP spec is shipping in real gateways/clouds this week, Anthropic keeps adding scanning/self-hosting/DLP, and the cheap-inference window has an expiry date (Sonnet 5 promo ends Aug 31). Two moves fall out: lock the fleet's routing economics before the Sep 1 price step so margin doesn't leak, and keep building the moat one layer up from both the model and the protocol — scanned, spec-defined, portable operators whose governance is the product while weights, protocol, and now even inference price commoditize beneath.",
   "history": [
+    "2026-08-08",
     "2026-08-07",
     "2026-08-06",
     "2026-08-05",
@@ -50,7 +59,6 @@
     "2026-07-29",
     "2026-07-28",
     "2026-07-27",
-    "2026-07-26",
-    "2026-07-25"
+    "2026-07-26"
   ]
 }
