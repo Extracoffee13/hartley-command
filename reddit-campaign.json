@@ -1,5 +1,5 @@
 {
- "updated": "2026-08-08T08:07:30Z",
+ "updated": "2026-08-09T12:08:28Z",
  "account": {
   "username": "established (Bobby's personal account)",
   "created": "established",
@@ -70,7 +70,7 @@
    "verified_prior": true,
    "sub_viable": true,
    "post_type": "TEXT",
-   "evidence": "affirmative-permission (Rule 3 permits naming a company); public/submission_type=any/allow_images=true/56,371 subs/user_is_banned=false (live Aug 8)"
+   "evidence": "affirmative-permission (Rule 3 permits naming a company); public/submission_type=any/allow_images=true/56,425 subs/user_is_banned=false (live Aug 9)"
   },
   {
    "subreddit": "RealEstateDevelopment",
@@ -80,7 +80,7 @@
    "verified_prior": true,
    "sub_viable": true,
    "post_type": "TEXT-MANDATORY (submission_type=self; allow_images=false)",
-   "evidence": "weak (no rule bans) — 29th carry; post-or-retire; public/8,998 subs/user_is_banned=false (live Aug 8)"
+   "evidence": "weak (no rule bans) — 30th carry; post-or-retire; public/9,007 subs/user_is_banned=false (live Aug 9)"
   },
   {
    "subreddit": "digitalrealestate",
@@ -90,7 +90,7 @@
    "verified_prior": true,
    "sub_viable": true,
    "post_type": "TEXT",
-   "evidence": "safe-but-off-audience (216 subs); off-cooldown (last Jul 10, +29d); public/submission_type=any/user_is_banned=false (live Aug 8)"
+   "evidence": "safe-but-off-audience (216 subs); off-cooldown (last Jul 10, +30d); public/submission_type=any/user_is_banned=false (live Aug 9)"
   }
  ],
  "posted_to_date": 4,
@@ -543,6 +543,20 @@
    "digitalrealestate": "VIABLE (off-audience) — public, submission_type=any, allow_images=true, 216 subs",
    "account_health": "GREEN — 1ustpyy/1ulomzm/1uloq30 all removed_by_category=null (live); 1ulorl6 govcon still moderator-removed",
    "thumbnails": "PASS — scopegap/devphasing/signcost all render, un-clipped, on-brand, topics match"
+  }
+ },
+ "today_2026-08-09_result": {
+  "prepped": 3,
+  "posted": 0,
+  "carry_count": 30,
+  "note": "Same 3-post pack carried forward (day 30). Verified-open pool unchanged: r/ConstructionManagers (56,425, affirmative-permission), r/RealEstateDevelopment (9,007, weak evidence, 30th carry), r/digitalrealestate (216, off-cooldown, safe-but-off-audience). All three re-verified LIVE via Reddit JSON in Chrome today (public + not banned; RED=self/text-only). 14-day cooldown clear for all (nothing posted since Jul 10). Account health GREEN: 4 submissions live (1ustpyy score2, 1ulolfn, 1ulomzm, 1uloq30 — all removed_by_category=null), no shadowban indicators; known removals 1ulorl6 (govcon) + 1ulmr2z (Homebuilding) still moderator-removed. No new submissions since Jul 10 confirms Jul 11–Aug 8 packs unposted. Three square thumbnails re-confirmed on-brand via Read (WHITE/BLACK/#0090D0 + 3D-9 + 40th badge, un-clipped, topic-matched). Monitor refresh SKIPPED (run.py exceeds sandbox cap; reddit-monitor.json left at Aug 1 data, not zeroed). NOTHING POSTED AUTONOMOUSLY — Bobby posts manually. DECISION unchanged: post-or-kill the 30x-carried devphasing post; set cadence to 2-3/WEEK or approve vetting adjacent real-audience trade subs.",
+  "verification_2026-08-09": {
+   "method": "Reddit JSON API (user/submitted.json + about.json) via logged-in Chrome + Read of 3 thumbnails",
+   "ConstructionManagers": "VIABLE — public, submission_type=any, allow_images=true, 56425 subs, user_is_banned=false",
+   "RealEstateDevelopment": "VIABLE (weak) — public, submission_type=self, allow_images=false, 9007 subs, rule bans specific-deal soliciting + low-effort AI only",
+   "digitalrealestate": "VIABLE — public, submission_type=any, 216 subs, off-cooldown (last Jul 10, +30d)",
+   "account_health": "GREEN — 1ustpyy/1ulolfn/1ulomzm/1uloq30 live (removed_by_category=null); 1ulorl6 + 1ulmr2z moderator-removed (known)",
+   "thumbnails": "PASS — scopegap, devphasing, signcost all render, un-clipped, on-brand, topic-matched"
   }
  }
 }
