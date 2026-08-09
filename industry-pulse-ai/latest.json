@@ -1,51 +1,52 @@
 {
-  "generated": "2026-08-08T14:00:44Z",
-  "latest_date": "2026-08-08",
+  "generated": "2026-08-09T10:00:24Z",
+  "latest_date": "2026-08-09",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "The cheap-inference window is closing on a date — Sonnet 5's promo pricing ($2/$10) ends Aug 31; standard $3/$15 hits Sep 1",
-      "summary": "Anthropic confirmed Claude Sonnet 5's promotional token pricing expires at month-end (a 50% step-up on input and output) and errored out claude-opus-4-7 fast-mode, pushing migration to Opus 5 / Opus 4.8.",
+      "title": "Cowork is now a server-side agent runtime — remote sessions + scheduled tasks run with no device online",
+      "summary": "Anthropic's Cowork rollout put sessions, files, and Projects in the cloud with background work and scheduled tasks that fire with nothing on the user's machine — this Industry Pulse run is one of them.",
       "tag": "yes",
-      "how": "Hard, dated cost event for the whole fleet: re-baseline Ledger's routing economics now, push high-volume batch to Flash-class / cache-heavy paths before Sep 1, and lock the model-routing table so the 50% Sonnet bump doesn't quietly raise every operator's unit cost.",
-      "url": "https://releasebot.io/updates/anthropic/claude"
+      "how": "This is the substrate The Construct's fleet already runs on; lean into server-side scheduled tasks for Lens, Pulse, Mallard, and the visibility scans instead of anything that assumes a laptop is awake.",
+      "url": "https://claude.com/blog/cowork-web-mobile"
     },
     {
       "n": 2,
-      "title": "The stateless MCP spec (2026-07-28) is now shipping across the ecosystem — Agentgateway 1.4 supports it and Google published stateless-scaling guidance",
-      "summary": "Within a week of the spec, gateways and clouds are moving: Agentgateway shipped 1.4 with full 2026-07-28 support (Aug 3) and Google published a stateless-scaling playbook, confirming the 'server in a single Worker, no session store' pattern is real infra now.",
+      "title": "Skills 2.0 role library — Anthropic ships pre-built, executable Skill packs across 11 knowledge-work roles",
+      "summary": "Skills are now full workflow packages with executable scripts and an official multi-role library (sales, legal, finance, data, etc.), not loose prompts.",
       "tag": "yes",
-      "how": "The migration path for The Construct's MCP fleet is validated in the wild; re-target internal servers at the stateless core and put an Agentgateway-class layer in front rather than hand-rolling session glue.",
-      "url": "https://agentgateway.dev/blog/2026-08-03-new-mcp-spec-revision/"
+      "how": "Direct competitive read for our installed-skills registry: benchmark Construct operator skills against Anthropic's role packs, adopt the executable-script pattern, and keep the daily/weekly new-skills scan pointed at this library as the moving baseline.",
+      "url": "https://suprmind.ai/hub/claude/features/"
     },
     {
       "n": 3,
-      "title": "Anthropic keeps hardening the Enterprise runtime — skill/plugin security scanning + Claude Code self-hosted environments + inference-hook DLP",
-      "summary": "Automatic malware scanning of third-party skills/plugins on upload/edit, public-beta self-hosted Claude Code environments (own infra, internal network, compliance controls), cross-session messaging, removal of the subagent spawn cap, and Enterprise inference hooks doing real-time DLP on prompts/tool calls before the model.",
+      "title": "Runway ships an MCP server — image/video generation callable from inside any agent, no context switch",
+      "summary": "Runway MCP lets an agent generate polished images and video in-workflow; it joins AVCLabs and a widening set of media-generation MCPs.",
       "tag": "yes",
-      "how": "Governance-as-substrate for exactly what we do: gate the installed-skills registry on 'scanned + signed', move the swarm onto uncapped cross-talking subagents, and sell provable DLP + data-residency as a PRAGMA feature.",
-      "url": "https://releasebot.io/updates/anthropic/claude-code"
+      "how": "A native path for Brand 9 Signs signage mockups and PRAGMA operator creative to be produced by an agent rather than a human in a separate tool; wire a media-gen MCP behind a Construct creative operator alongside the Higgsfield browser path.",
+      "url": "https://runwayml.com/news/mcp"
     },
     {
       "n": 4,
-      "title": "Frontier holds — GPT-5.6 is OpenAI's rolling default across ChatGPT/Codex/API; Gemini 4 remains in pre-training with no benchmarks, price, or date",
-      "summary": "No new flagship weight in the last 24h; GPT-5.6 (88.8% Terminal-Bench 2.1, 91.9% ultra) is the freshest shipping default alongside Claude Opus 5 and stable Gemini 3.6 Flash, while Gemini 4 is unreleased.",
+      "title": "Frontier ships like patches — Meta Muse Spark 1.2 (Aug 5) and DeepSeek V4-Flash (Jul 31) now beating its own V4-Pro on agent/coding tasks at no price change",
+      "summary": "The newest weights are incremental fast-follows: Meta's Muse Spark image/video line and a DeepSeek Flash tier that out-agents the larger Pro model with no cost bump.",
       "tag": "maybe",
-      "how": "Hold the cost/quality routing split and pre-wire an eval harness so we can benchmark Gemini 4 the day it drops rather than scrambling.",
-      "url": "https://llm-stats.com/llm-updates"
+      "how": "DeepSeek V4-Flash is a cheap agentic-inference candidate for high-volume Construct jobs; keep the cost/quality routing split and pre-wire the eval harness so a Flash-class model can be swapped in the day it clears our bar.",
+      "url": "https://llm-stats.com/ai-news"
     },
     {
       "n": 5,
-      "title": "The agent-economy capital wave is a competitive signal for PRAGMA — Glean $150M Series F at $7.2B (100M+ agent actions/yr), Cognition near $25B, Perplexity $200M near $20B",
-      "summary": "Horizontal 'deploy agents at scale' platforms (Glean Agents) and coding-agent shops (Cognition) are raising at agentic-platform multiples, and the surface where an agent starts and finishes a task is where the capital is going.",
-      "tag": "maybe",
-      "how": "These are the incumbents PRAGMA's operator-as-plugin wedge sells against; the differentiator isn't 'we have agents' but governed, scanned, spec-defined operators packaged as a client's own function — sell the guardrails and packaging the platform players don't.",
-      "url": "https://newmarketpitch.com/blogs/news/agentic-ai-top-startups-fundraising"
+      "title": "arXiv — 'Context Engineering: From Prompts to Corporate Multi-Agent Architecture' frames context as the agent's operating system",
+      "summary": "Proposes five context-quality criteria (relevance, sufficiency, isolation, economy, provenance) and treats the informational environment, not the prompt, as the design surface for multi-agent systems.",
+      "tag": "yes",
+      "how": "A governance rubric for the swarm: score every operator's context payload on those five criteria, and use 'isolation' + 'provenance' as the guardrail language PRAGMA sells that platform players don't.",
+      "url": "https://arxiv.org/abs/2603.09619"
     }
   ],
-  "praxis_lesson": "The rails are done hardening and pricing is normalizing — the stateless MCP spec is shipping in real gateways/clouds this week, Anthropic keeps adding scanning/self-hosting/DLP, and the cheap-inference window has an expiry date (Sonnet 5 promo ends Aug 31). Two moves fall out: lock the fleet's routing economics before the Sep 1 price step so margin doesn't leak, and keep building the moat one layer up from both the model and the protocol — scanned, spec-defined, portable operators whose governance is the product while weights, protocol, and now even inference price commoditize beneath.",
+  "praxis_lesson": "The value keeps migrating up-stack — weights and even media generation are commoditizing into patch-cadence releases and callable MCPs, while the durable surface is the runtime and the context discipline around it. The Construct's edge isn't owning a model or a generator; it's running governed, well-contexted operators on the server-side Cowork runtime and packaging that discipline (isolation, provenance, scanned skills) as the product.",
   "history": [
+    "2026-08-09",
     "2026-08-08",
     "2026-08-07",
     "2026-08-06",
@@ -58,7 +59,6 @@
     "2026-07-30",
     "2026-07-29",
     "2026-07-28",
-    "2026-07-27",
-    "2026-07-26"
+    "2026-07-27"
   ]
 }
