@@ -1,51 +1,52 @@
 {
-  "generated": "2026-08-09T10:00:24Z",
-  "latest_date": "2026-08-09",
+  "generated": "2026-08-10T10:01:27Z",
+  "latest_date": "2026-08-10",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Cowork is now a server-side agent runtime — remote sessions + scheduled tasks run with no device online",
-      "summary": "Anthropic's Cowork rollout put sessions, files, and Projects in the cloud with background work and scheduled tasks that fire with nothing on the user's machine — this Industry Pulse run is one of them.",
+      "title": "Anthropic — Managed Agents load Skills from a GitHub repo; Enterprise gets beta security-scanning of third-party skills/plugins",
+      "summary": "Skills in a repo's root .claude/skills are auto-discovered at session start, and Enterprise plans can now automatically screen uploaded/edited third-party skills and plugins for malicious content.",
       "tag": "yes",
-      "how": "This is the substrate The Construct's fleet already runs on; lean into server-side scheduled tasks for Lens, Pulse, Mallard, and the visibility scans instead of anything that assumes a laptop is awake.",
-      "url": "https://claude.com/blog/cowork-web-mobile"
+      "how": "Exact plumbing for our installed-skills registry: version-control the swarm's skills in a repo and let the platform enforce the security-review gate we run manually.",
+      "url": "https://releasebot.io/updates/anthropic"
     },
     {
       "n": 2,
-      "title": "Skills 2.0 role library — Anthropic ships pre-built, executable Skill packs across 11 knowledge-work roles",
-      "summary": "Skills are now full workflow packages with executable scripts and an official multi-role library (sales, legal, finance, data, etc.), not loose prompts.",
+      "title": "Anthropic — Claude Code adds marketplace allow/block controls (strictKnownMarketplaces / blockedMarketplaces, owner/* wildcards) plus /teleport for cloud-to-local sessions",
+      "summary": "Admins can pin exactly which plugin marketplaces are trusted org-wide, and cloud sessions can be pulled down to a local machine on demand.",
       "tag": "yes",
-      "how": "Direct competitive read for our installed-skills registry: benchmark Construct operator skills against Anthropic's role packs, adopt the executable-script pattern, and keep the daily/weekly new-skills scan pointed at this library as the moving baseline.",
-      "url": "https://suprmind.ai/hub/claude/features/"
+      "how": "Direct governance for The Construct's plugin marketplace: lock the swarm to a known-good owner list, and /teleport gives a clean escape hatch for credentialed local work (Hermes).",
+      "url": "https://releasebot.io/updates/anthropic/claude-code"
     },
     {
       "n": 3,
-      "title": "Runway ships an MCP server — image/video generation callable from inside any agent, no context switch",
-      "summary": "Runway MCP lets an agent generate polished images and video in-workflow; it joins AVCLabs and a widening set of media-generation MCPs.",
-      "tag": "yes",
-      "how": "A native path for Brand 9 Signs signage mockups and PRAGMA operator creative to be produced by an agent rather than a human in a separate tool; wire a media-gen MCP behind a Construct creative operator alongside the Higgsfield browser path.",
-      "url": "https://runwayml.com/news/mcp"
+      "title": "ByteDance opens the Seedance 2.5 developer API (Aug 7) — native single-shot video up to 30s with native audio and up to 50 multimodal references",
+      "summary": "Full 30-second clips with scene changes and tempo shifts, no stitching, native multi-language audio, now callable via API (paid; no free quota).",
+      "tag": "maybe",
+      "how": "A strong option for Brand 9 Signs social/site video and PRAGMA client content, but benchmark against our existing browser-based generation stack (Higgsfield) before adding another paid pipe.",
+      "url": "https://www.techtimes.com/articles/318975/20260624/bytedance-seedance-25-native-30-second-ai-video-no-stitching-required.htm"
     },
     {
       "n": 4,
-      "title": "Frontier ships like patches — Meta Muse Spark 1.2 (Aug 5) and DeepSeek V4-Flash (Jul 31) now beating its own V4-Pro on agent/coding tasks at no price change",
-      "summary": "The newest weights are incremental fast-follows: Meta's Muse Spark image/video line and a DeepSeek Flash tier that out-agents the larger Pro model with no cost bump.",
+      "title": "DeepSeek ships V4-Flash-0731 — retrained 284B MoE that now beats its own V4-Pro-Preview on nine agent benchmarks and speaks the OpenAI Responses API natively",
+      "summary": "82.7 on Terminal-Bench 2.1 and 79% SWE-bench Verified at ~$0.28/M output (roughly 1/90th the price of Claude Opus 4.8), and a drop-in Codex backend.",
       "tag": "maybe",
-      "how": "DeepSeek V4-Flash is a cheap agentic-inference candidate for high-volume Construct jobs; keep the cost/quality routing split and pre-wire the eval harness so a Flash-class model can be swapped in the day it clears our bar.",
-      "url": "https://llm-stats.com/ai-news"
+      "how": "Worth a bench for high-volume Construct codegen/build jobs, but weigh governance and vendor lock before routing anything real off our Claude spine.",
+      "url": "https://www.marktechpost.com/2026/07/31/deepseek-upgrades-deepseek-v4-flash-0731-with-major-agentic-and-coding-gains/"
     },
     {
       "n": 5,
-      "title": "arXiv — 'Context Engineering: From Prompts to Corporate Multi-Agent Architecture' frames context as the agent's operating system",
-      "summary": "Proposes five context-quality criteria (relevance, sufficiency, isolation, economy, provenance) and treats the informational environment, not the prompt, as the design surface for multi-agent systems.",
+      "title": "arXiv — 'MAS-PromptBench: When Does Prompt Optimization Improve Multi-Agent LLM Systems?' treats system prompts as the core optimization surface",
+      "summary": "Systematically studies system-prompt optimization across task, workflow, communication protocol, and team size, showing gains are real but highly conditional on the MAS setup.",
       "tag": "yes",
-      "how": "A governance rubric for the swarm: score every operator's context payload on those five criteria, and use 'isolation' + 'provenance' as the guardrail language PRAGMA sells that platform players don't.",
-      "url": "https://arxiv.org/abs/2603.09619"
+      "how": "A field guide for tuning our operator agents' system prompts without finetuning, and a caution that blanket 'optimize every agent' is not free — measure per-topology before rolling changes across the swarm.",
+      "url": "https://arxiv.org/abs/2606.23664"
     }
   ],
-  "praxis_lesson": "The value keeps migrating up-stack — weights and even media generation are commoditizing into patch-cadence releases and callable MCPs, while the durable surface is the runtime and the context discipline around it. The Construct's edge isn't owning a model or a generator; it's running governed, well-contexted operators on the server-side Cowork runtime and packaging that discipline (isolation, provenance, scanned skills) as the product.",
+  "praxis_lesson": "Skills and plugins are becoming governed, version-controlled, security-scanned assets at the platform layer (repo-loaded skills, Enterprise malware scanning, marketplace allow-lists) — the same registry discipline The Construct enforces by hand. Lift our installed-skills registry into a repo the platform can scan and pin, then package that curated-and-audited skill/plugin governance as an outcome PRAGMA sells, rather than a chore we absorb.",
   "history": [
+    "2026-08-10",
     "2026-08-09",
     "2026-08-08",
     "2026-08-07",
@@ -58,7 +59,6 @@
     "2026-07-31",
     "2026-07-30",
     "2026-07-29",
-    "2026-07-28",
-    "2026-07-27"
+    "2026-07-28"
   ]
 }

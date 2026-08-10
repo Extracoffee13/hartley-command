@@ -1034,3 +1034,39 @@ lesson: Value keeps migrating up-stack — weights and media generation are comm
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-09
+decision: Second-fire refresh — re-scanned the last ~24h and updated today's report with fresher Aug 8 Anthropic releases the 06:00 run missed.
+outcome: Flagged mid-conversation tool changes (dynamic tool loading, cache-safe), Enterprise inference hooks / real-time DLP, the MCP 2026-07-28 spec rewrite adopted by OpenAI Codex, Claude for Government beta, and the file-native context-engineering arXiv paper (2602.05447).
+lesson: The platform is absorbing the guardrail and tool-routing layers operator shops treated as moat (DLP hooks, dynamic tools now ship free); the durable edge is governed, file-native operators that turn platform primitives into audited outcomes — the discipline PRAGMA sells.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-09
+decision: Third-fire refresh — re-scanned the last ~24h with fresher, non-duplicative angles the earlier runs missed.
+outcome: Flagged Cowork web+mobile with server-side scheduled tasks + Zoom MCP, the "Context Engineering" five-criteria multi-agent paper (2603.09619), Meta Muse Code / Muse Spark 1.2 cheap coding tier, ecosystem-wide MCP 2026-07-28 statelessness (Cloudflare MCP v2 + X MCP), and the mid-Aug-to-late-Sep frontier release cluster (GPT-6/Gemini 4/Grok 5/DeepSeek V5).
+lesson: The reliability and context layers are consolidating onto the platform (server-side Cowork runtime; isolation/provenance now named as first-class design criteria); the durable Construct edge is governed, file-native operators that turn those primitives into audited outcomes — the discipline PRAGMA sells.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-10
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Anthropic repo-loaded Skills + Enterprise skill/plugin security scanning, Claude Code marketplace allow/block controls + /teleport, ByteDance Seedance 2.5 dev API (native 30s video+audio), DeepSeek V4-Flash-0731 (beats V4-Pro on nine agent benchmarks, ~1/90th Opus price, native Responses API), and the MAS-PromptBench multi-agent prompt-optimization paper.
+lesson: Skills/plugins are becoming governed, version-controlled, security-scanned platform assets (repo skills, malware scanning, marketplace allow-lists) — the registry discipline The Construct enforces by hand; lift our installed-skills registry into a scannable repo and sell curated-and-audited governance as a PRAGMA outcome.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
