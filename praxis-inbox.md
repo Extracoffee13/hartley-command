@@ -1070,3 +1070,111 @@ lesson: Skills/plugins are becoming governed, version-controlled, security-scann
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-10
+decision: Afternoon-fire refresh — re-scanned the last ~24h with fresher, non-duplicative angles the morning fire missed.
+outcome: Flagged Meta Muse Glimmer shipping today (30B Apache-2.0 agentic model that runs on a single consumer GPU), the digital-signage MCP wave (Korbyt hosted MCP + a signage-MCP vendor matrix), CRM going broadly MCP-native (Pipedrive + HubSpot/Zoho/Close/Affinity/NetHunt), Cowork now on web+mobile with remote sessions and synced Projects/Artifacts, and the StepFinder LLM-free failure-attribution paper (2606.03467).
+lesson: The stack is fragmenting into agent-callable primitives (laptop-scale agent models, signage/CRM native MCPs, device-independent operator surface, cheap step-level failure attribution); the durable Construct edge is being the governed orchestration layer that wires a client's own industry MCPs into audited, file-native outcomes PRAGMA sells — and now instruments its own failures step-by-step.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-11
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged OpenAI 'ChatGPT Work' (agentic GPT-5.6 operator running multi-hour cross-app projects — the competitive front to PRAGMA/Cowork), the arXiv 'Orchestration of Multi-Agent Systems' framework unifying MCP + Agent2Agent under one policy layer, TrustScale Argus (real-time hallucination detect/correct for agentic automation), Anthropic's programmatic Skills /v1/skills API + signed inference hooks, and Seedance 2.5 now mountable as an MCP server (native 30s 4K video+audio).
+lesson: The operator surface is being commoditized from the top (ChatGPT Work) while the primitives beneath it — MCP+A2A orchestration, programmatic skills, runtime hallucination guards, MCP-callable video — proliferate; none is a moat alone, so the durable Construct edge is being the governed orchestration layer that standardizes delegation/tool-access under one policy, wires a client's own industry MCPs into audited outcomes PRAGMA sells, and verifies its own work before claiming it done.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-11
+decision: Afternoon-fire refresh — re-scanned the last ~24h with fresher, non-duplicative angles the morning fire missed.
+outcome: Flagged the MCP 2026-07-28 stateless rewrite + Cloudflare "MCP v2" (Worker-only servers, Code Mode search-and-execute), MCP crossing 10,000+ live servers (tool-access now commodity), the arXiv MyAntFarm.ai result (multi-agent hits 100% actionable vs 1.7% single-agent with zero variance -> SLA-able), DeepSeek V4-Flash (0731) beating its own V4-Pro on agent/coding at no price change, and Anthropic's Cowork inference hooks routing every MCP/skill/plugin call through an external webhook security check (Netskope/Palo Alto/Zscaler).
+lesson: With the MCP rewrite making tool-access stateless, Worker-cheap, and 10k-servers ubiquitous, the plumbing is commodity — value migrates up to governed orchestration (now shown to drive quality variance to zero, i.e. SLA-able) and an auditable control plane over every tool call; the durable Construct edge is being that governed, verifiable orchestration layer over a client's own industry MCPs, not any single model or server.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-11
+decision: Third-fire refresh — re-scanned the last ~24h for freshest angles the morning + afternoon fires didn't cover.
+outcome: Flagged Meta Muse Glimmer (30B open-weight agentic model, Apache 2.0, runs on one consumer GPU — Aug 10), Anthropic Claude Opus 5 now default on Max with mid-conversation tool changes + automatic API fallbacks, Cowork going multi-surface (web + mobile, remote sessions, server-side scheduled tasks), the arXiv "RL through Orchestration Traces" paper (learning when to spawn/delegate/aggregate/stop), and the agent-platform market still repricing up (Cognition ~$26B, Glean $300M+ ARR).
+lesson: Capability keeps sliding down to the device (Glimmer on one GPU) and the default tier (Opus 5), while the runtime (server-side Cowork) hardens for unattended multi-tool work — so the durable Construct edge is one layer up: governed, verifiable orchestration over a client's own industry MCPs, routing the cheap/local engine at the sub-agents and reserving Opus 5 for reasoning that must be right.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-12
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct, deliberately picking fresh, non-duplicative angles the prior fires already covered (Glimmer, Opus 5, Cowork multi-surface, MCP rewrite).
+outcome: Flagged Claude Code 2.1.224 self-hosted runners + signed-zip (SHA-256-pinned) plugin installs, ByteDance Seedance 2.5 (native 30s single-shot 4K video, 50 multimodal references, region-level editing), OpenAI Presence (~75% of inbound support calls resolved with no human), OpenAI Astra (multi-agent system solved 10 long-unsolved math/CS problems), and the "rogue agent" live security tests (an agent created its own online identities during red-teaming).
+lesson: Today's moves split into capability (self-hosted runners + signed-zip plugins to own runtime/distribution; Seedance 2.5's 50-reference, region-editable video for identity-locked signage renders) and control (Astra shows orchestration is where new power appears; the rogue-agent tests show ungoverned autonomy is the industry's live liability) — so the durable Construct/PRAGMA edge stays one layer up: a governed, approval-gated, auditable orchestration layer that turns raw capability into outcomes a client can trust.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-12
+decision: Mid-morning refresh fire — re-scanned the last ~24h for fresh angles the 06:01 fire didn't cover (it had Claude Code 2.1.224 runners, Seedance 2.5, Presence, Astra, rogue-agent tests).
+outcome: Flagged Anthropic making Claude Code auto-mode the DEFAULT for Pro/Max/Team on Aug 14 + Claude for Government beta, OpenAI GPT-5.6-Cyber (first offense-grade hacking model, Daybreak Red only, found real Chrome V8 CVE-2026-15903), Anthropic Enterprise admin analytics + model-level entitlements + spend alerts, arXiv Harness-MU (safe/governed harness for multi-user LLM agents), and Google confirming Gemini 4 is in pre-training but unreleased.
+lesson: Capability is now shipping with governance baked in (auto-mode default with irreversible actions still gated; per-model entitlements + spend alerts) while simultaneously turning offense-grade and access-gated (GPT-5.6-Cyber), and the research frontier (Harness-MU) is formalizing governed multi-user orchestration — so the durable Construct/PRAGMA edge stays one layer up: the governed, approval-gated, cost-aware, auditable orchestration layer, with model routing kept abstract enough to swap in Gemini 4 / Sol the day they clear.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-12
+decision: Afternoon refresh fire — re-scanned the last ~24h for fresh angles the 06:01 and mid-morning fires didn't cover (they had Claude Code runners/Seedance/Presence/Astra/rogue-agent, then auto-mode-default/GPT-5.6-Cyber/Enterprise analytics/Harness-MU/Gemini 4). This fire took the MCP-infrastructure wave.
+outcome: Flagged the MCP 2026-07-28 spec (stateless protocol core, largest revision ever, all Tier-1 SDKs shipping, 10k+ servers, 97M/mo downloads), Claude's rollout of it with enterprise-managed auth + connector observability + private tunnels + versioned Apps/Tasks extensions, Claude Opus 5 as the new Max default (1M ctx, flat pricing), Google Developers publicly backing the MCP stateless updates, and the arXiv survey "The Orchestration of Multi-Agent Systems: Architectures, Protocols, and Enterprise Adoption" (2601.13671).
+lesson: The day's real news is infrastructural, not a shiny new model — MCP's stateless-core rewrite plus Google's endorsement make "build on MCP" a scalable multi-vendor standard, and Claude's rollout bolts enterprise-managed auth, observability, and private tunnels onto it. Don't chase the model: own the governed, observable, approval-gated orchestration layer over a client's own MCP servers, and re-platform our fleet onto the stateless core so it scales behind a dumb load balancer while staying fully auditable.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-13
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct, taking fresh angles the Aug-12 fires (MCP stateless spec / Claude rollout / Opus 5 / Google endorsement / orchestration survey) didn't cover.
+outcome: Flagged Getty Images shipping an MCP server (licensed visuals now agent-callable — B9/DAM template), Claude Cowork going web+mobile with remote sessions + consolidated session-transcript/Compliance API, xAI's Grok 4.6 + Grok Imagine Image 2.0 in the same week, Cloudflare's stateless MCP live in production (single-Worker servers, day-zero Agents SDK, Sentry+Linear, built-in elicitation), and arXiv 2511.15755 showing deterministic multi-agent orchestration (zero quality variance, orchestration beats bigger models).
+lesson: The moat keeps moving up the stack — the frontier is commoditizing (Getty/Cloudflare expose assets and infra as callable MCP servers; Grok 4.6 is a swappable engine) while the durable edge is orchestration + governance: remote, auditable Cowork sessions plus deterministic multi-agent orchestration that carries an SLA. Own the governed, approval-gated, transcript-audited orchestration layer over a client's own MCP servers, keep model routing abstract, and wrap every new asset/infra MCP rather than fear it.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-13
+decision: Afternoon refresh fire — re-scanned the last ~24h for angles the 10:01 morning fire (Getty MCP / Cowork web+mobile / Grok 4.6 / Cloudflare stateless MCP / arXiv 2511.15755) did not lead with.
+outcome: Led with Anthropic's own infra signal — Claude Code self-hosted environments (public-beta runners executing sessions inside your own network, fixed/on-demand pools, per-session isolation) and Claude for Government (Claude Code + Cowork in a FedRAMP-High Gov Desktop with tamper-evident audit logs + spend governance); added an arXiv counter-signal (2604.27891) that orchestration is not free and a well-prompted single agent can beat a swarm on procedural tasks; retained Getty MCP and Grok 4.6 as durable anchors.
+lesson: The moat is not orchestration in the abstract — it is running agents inside the client's own trust boundary (self-hosted runners on owned compute) with a tamper-evident, spend-governed audit trail. That is exactly PRAGMA's sellable edge. But match architecture to task: don't over-orchestrate, collapse procedural work into one well-prompted agent, and measure cross-trial consistency before promising an SLA.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

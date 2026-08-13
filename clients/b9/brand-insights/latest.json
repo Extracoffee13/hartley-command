@@ -1,31 +1,31 @@
 {
   "schema_version": "2.0",
-  "ts": "2026-08-10T10:05:38.542910Z",
+  "ts": "2026-08-13T10:05:38.866919Z",
   "client": "b9",
   "client_display_name": "Brand 9 Signs",
   "product_name": "PRAGMA Mirror",
   "scan_status": "live",
   "visibility_score": {
-    "composite": 48,
+    "composite": 43,
     "trend_7day": [
       47,
       47,
       47,
-      47,
-      47,
-      47,
-      48
+      48,
+      43,
+      43,
+      43
     ],
     "color_threshold": {
       "red_below": 50,
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "RED \u2014 composite brand visibility 48/100 across AEO, SEO, GEO and LLM surfaces."
+    "interpretation": "RED — composite brand visibility 48/100 across AEO, SEO, GEO and LLM surfaces."
   },
   "modules": {
     "aeo": {
-      "score": 79,
+      "score": 62,
       "cited": true,
       "queries": [
         {
@@ -48,7 +48,7 @@
         },
         {
           "query": "Who designs the best master-planned community entrances in Florida?",
-          "cited": true,
+          "cited": false,
           "surface": "Perplexity",
           "source": "browser_probe"
         },
@@ -72,7 +72,7 @@
         },
         {
           "query": "What are the top home builder signage companies in Florida?",
-          "cited": false,
+          "cited": true,
           "surface": "Perplexity",
           "source": "browser_probe"
         },
@@ -138,7 +138,7 @@
         },
         {
           "query": "Who are the best commercial sign companies in Jacksonville FL?",
-          "cited": true,
+          "cited": false,
           "surface": "Google AI Overview",
           "source": "browser_probe"
         },
@@ -174,7 +174,7 @@
         },
         {
           "query": "Which sign companies specialize in wayfinding systems for campuses?",
-          "cited": true,
+          "cited": false,
           "surface": "Google AI Overview",
           "source": "browser_probe"
         },
@@ -182,84 +182,6 @@
           "query": "What companies handle military base signage contracts?",
           "cited": true,
           "surface": "Google AI Overview",
-          "source": "browser_probe"
-        },
-        {
-          "query": "Who makes the best monument signs in Florida?",
-          "cited": true,
-          "surface": "Grok",
-          "source": "browser_probe"
-        },
-        {
-          "query": "Who makes the best wayfinding signs in Florida?",
-          "cited": true,
-          "surface": "Grok",
-          "source": "browser_probe"
-        },
-        {
-          "query": "Who makes the best homebuilder and community signs in Florida?",
-          "cited": true,
-          "surface": "Grok",
-          "source": "browser_probe"
-        },
-        {
-          "query": "Who designs the best master-planned community entrances in Florida?",
-          "cited": true,
-          "surface": "Grok",
-          "source": "browser_probe"
-        },
-        {
-          "query": "Who makes the best luxury hotel and resort signage in Florida?",
-          "cited": true,
-          "surface": "Grok",
-          "source": "browser_probe"
-        },
-        {
-          "query": "Who are the best commercial sign companies in Jacksonville FL?",
-          "cited": true,
-          "surface": "Grok",
-          "source": "browser_probe"
-        },
-        {
-          "query": "Where can I get custom business signs installed in Clay County Florida?",
-          "cited": true,
-          "surface": "Grok",
-          "source": "browser_probe"
-        },
-        {
-          "query": "What are the top home builder signage companies in Florida?",
-          "cited": true,
-          "surface": "Grok",
-          "source": "browser_probe"
-        },
-        {
-          "query": "Who does model home display signage in Jacksonville?",
-          "cited": true,
-          "surface": "Grok",
-          "source": "browser_probe"
-        },
-        {
-          "query": "Which companies install community monument signs in master-planned communities?",
-          "cited": true,
-          "surface": "Grok",
-          "source": "browser_probe"
-        },
-        {
-          "query": "Who is the best environmental graphic design firm in the Southeast?",
-          "cited": true,
-          "surface": "Grok",
-          "source": "browser_probe"
-        },
-        {
-          "query": "Which sign companies specialize in wayfinding systems for campuses?",
-          "cited": true,
-          "surface": "Grok",
-          "source": "browser_probe"
-        },
-        {
-          "query": "What companies handle military base signage contracts?",
-          "cited": true,
-          "surface": "Grok",
           "source": "browser_probe"
         }
       ],
@@ -272,7 +194,7 @@
       "pages": []
     },
     "llm": {
-      "score": 13,
+      "score": 15,
       "questions": [
         {
           "q": "Who makes the best monument signs in Florida? (parametric)",
@@ -371,7 +293,7 @@
         },
         {
           "q": "Where can I get custom business signs installed in Clay County Florida? (parametric)",
-          "cited": false,
+          "cited": true,
           "surface": "Gemini"
         },
         {
@@ -473,9 +395,9 @@
       "ai_surfaces": [
         {
           "surface": "ChatGPT / Claude / Gemini (consumer)",
-          "method": "browser pass \u00b7 your own logins \u00b7 $0 \u00b7 key-free",
+          "method": "browser pass · your own logins · $0 · key-free",
           "checks": 39,
-          "mentions": 5
+          "mentions": 6
         }
       ]
     },
@@ -512,7 +434,7 @@
         }
       ],
       "sources": [
-        "browser_probe \u00b7 local queries (key-free)"
+        "browser_probe · local queries (key-free)"
       ]
     }
   },
@@ -526,31 +448,31 @@
   "recommendations_high": 43,
   "_meta": {
     "writer": "pragma-mirror call (run.py)",
-    "computed_at": "2026-08-10T10:05:38.542910Z",
+    "computed_at": "2026-08-13T10:05:38.866919Z",
     "recommend_only": true,
     "data_source": "GSC + browser-probe (key-free)",
-    "paid_apis": "none \u2014 Tavily/SerpAPI retired 2026-07-08",
+    "paid_apis": "none — Tavily/SerpAPI retired 2026-07-08",
     "degraded_modules": [],
     "run_at": "2026-08-09T22:19:51.424554Z",
     "source": "PRAGMA AI Visibility scan"
   },
   "aivi": {
-    "composite": 48,
+    "composite": 43,
     "trend_7day": [
       47,
       47,
       47,
-      47,
-      47,
       48,
-      48
+      43,
+      43,
+      43
     ],
     "color_threshold": {
       "red_below": 50,
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "RED \u2014 composite brand visibility 48/100 across AEO, SEO, GEO and LLM surfaces.",
+    "interpretation": "RED — composite brand visibility 48/100 across AEO, SEO, GEO and LLM surfaces.",
     "subscores": {
       "mention_score": 79,
       "citation_score": 50,
@@ -562,7 +484,7 @@
   "ai_surfaces": [
     {
       "surface": "ChatGPT / Claude / Gemini (consumer)",
-      "method": "browser pass \u00b7 your own logins \u00b7 $0 \u00b7 key-free",
+      "method": "browser pass · your own logins · $0 · key-free",
       "checks": 39,
       "mentions": 5
     }
@@ -1249,7 +1171,7 @@
     "overall": "unmeasured"
   },
   "mode": "auto-remediate",
-  "last_action": "Auto-fix engine created 10 local landing pages via WP REST \u2014 additive, dup-guarded, logged, reversible.",
+  "last_action": "Auto-fix engine created 10 local landing pages via WP REST — additive, dup-guarded, logged, reversible.",
   "last_verification": "10 pages live & verified (HTTP 200, schema).",
   "autofix": {
     "enabled": true,
@@ -1275,8 +1197,8 @@
       "signage-clay-county"
     ]
   },
-  "last_scan_ts": "2026-08-10T10:05:38.542910Z",
-  "_mirrored_at": "2026-08-10T10:05:38.542910Z",
+  "last_scan_ts": "2026-08-13T10:05:38.866919Z",
+  "_mirrored_at": "2026-08-13T10:05:38.866919Z",
   "answer_units": [
     {
       "question": "What are the top home builder signage companies in Florida?",

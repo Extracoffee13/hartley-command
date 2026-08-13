@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-10T10:10:00.520814+00:00",
+  "updated_at": "2026-08-13T10:10:00.139779+00:00",
   "skills": [
     {
       "slug": "aair-market-baseline-scanning",
@@ -51,6 +51,20 @@
       "description_excerpt": "---\nname: am-briefing-generation\ndescription: \"Atlas capability: generate Bobby's AM briefing / morning view from the day's synthesized state. Use for the morning briefing.\"\nmetadata:\n  node_type: ski"
     },
     {
+      "slug": "ans-autodesk-team",
+      "path": "/Users/alfredpennyworth/.hermes/skills/ans-autodesk-team",
+      "has_skill_md": true,
+      "has_description_md": false,
+      "description_excerpt": "---\nname: ans-autodesk-team\ndescription: >-\n  The roster for the ANS Autodesk team \u2014 the Hermes/Claude agents and Wild Ducks that run the\n  operator-free cloud-Revit business. Names each agent, the sk"
+    },
+    {
+      "slug": "ans-cloud-revit-pipeline",
+      "path": "/Users/alfredpennyworth/.hermes/skills/ans-cloud-revit-pipeline",
+      "has_skill_md": true,
+      "has_description_md": false,
+      "description_excerpt": "---\nname: ans-cloud-revit-pipeline\ndescription: >-\n  The orchestration index for the ANS cloud-Revit engine \u2014 how the swarm composes the APS skills\n  into the operator-free plan \u2192 model \u2192 docs \u2192 rende"
+    },
+    {
       "slug": "anthropic-lens",
       "path": "/Users/alfredpennyworth/.hermes/skills/anthropic-lens",
       "has_skill_md": true,
@@ -63,6 +77,76 @@
       "has_skill_md": true,
       "has_description_md": false,
       "description_excerpt": "---\nname: anvil\ndescription: \"Anvil: Chief Integration \u2014 plugin wiring and connector integration across the Construct. Tier-1.5 internal agent.\"\nmetadata:\n  node_type: skill\n  reconstruction: true\n  r"
+    },
+    {
+      "slug": "aps-authentication",
+      "path": "/Users/alfredpennyworth/.hermes/skills/aps-authentication",
+      "has_skill_md": true,
+      "has_description_md": false,
+      "description_excerpt": "---\nname: aps-authentication\ndescription: >-\n  Authenticate to Autodesk Platform Services (APS). Covers the 2-legged client_credentials token\n  used by Design Automation + OSS (the default), and the s"
+    },
+    {
+      "slug": "aps-data-management",
+      "path": "/Users/alfredpennyworth/.hermes/skills/aps-data-management",
+      "has_skill_md": true,
+      "has_description_md": false,
+      "description_excerpt": "---\nname: aps-data-management\ndescription: >-\n  Browse and manage Autodesk-hosted design data \u2014 hubs, projects, folders, items, versions \u2014 via the\n  APS Data Management API (ACC / BIM 360 / Fusion). T"
+    },
+    {
+      "slug": "aps-design-automation",
+      "path": "/Users/alfredpennyworth/.hermes/skills/aps-design-automation",
+      "has_skill_md": true,
+      "has_description_md": false,
+      "description_excerpt": "---\nname: aps-design-automation\ndescription: >-\n  The engine-agnostic Design Automation v3 pattern shared by AutoCAD, Revit, Inventor, and 3ds Max \u2014\n  AppBundle \u2192 Activity \u2192 WorkItem. Read this for th"
+    },
+    {
+      "slug": "aps-design-automation-revit",
+      "path": "/Users/alfredpennyworth/.hermes/skills/aps-design-automation-revit",
+      "has_skill_md": true,
+      "has_description_md": false,
+      "description_excerpt": "---\nname: aps-design-automation-revit\ndescription: >-\n  Run headless Revit in Autodesk's cloud via the Design Automation (DA) v3 API \u2014 the operator-free\n  ANS modeling engine. Covers listing engines, "
+    },
+    {
+      "slug": "aps-hub-app-setup",
+      "path": "/Users/alfredpennyworth/.hermes/skills/aps-hub-app-setup",
+      "has_skill_md": true,
+      "has_description_md": false,
+      "description_excerpt": "---\nname: aps-hub-app-setup\ndescription: >-\n  Create and manage the Autodesk Platform Services (APS) Developer Hub + app that the ANS\n  cloud-Revit engine runs on. Covers the redesigned hub-model port"
+    },
+    {
+      "slug": "aps-model-derivative",
+      "path": "/Users/alfredpennyworth/.hermes/skills/aps-model-derivative",
+      "has_skill_md": true,
+      "has_description_md": false,
+      "description_excerpt": "---\nname: aps-model-derivative\ndescription: >-\n  Translate a design file (.rvt/.dwg/.ipt/.nwd\u2026) into viewable + queryable derivatives via the APS\n  Model Derivative API \u2014 SVF2 for the Viewer, a thumbn"
+    },
+    {
+      "slug": "aps-oss-object-storage",
+      "path": "/Users/alfredpennyworth/.hermes/skills/aps-oss-object-storage",
+      "has_skill_md": true,
+      "has_description_md": false,
+      "description_excerpt": "---\nname: aps-oss-object-storage\ndescription: >-\n  Move files in and out of the APS cloud via OSS (Object Storage Service, part of Data Management) \u2014\n  the buckets that feed Design Automation workitem"
+    },
+    {
+      "slug": "aps-revit-appbundle-dev",
+      "path": "/Users/alfredpennyworth/.hermes/skills/aps-revit-appbundle-dev",
+      "has_skill_md": true,
+      "has_description_md": false,
+      "description_excerpt": "---\nname: aps-revit-appbundle-dev\ndescription: >-\n  Build and publish the headless Revit .NET plugin (AppBundle) that Design Automation runs in the\n  cloud \u2014 the Phase-1 ANS IP that turns structured p"
+    },
+    {
+      "slug": "aps-viewer",
+      "path": "/Users/alfredpennyworth/.hermes/skills/aps-viewer",
+      "has_skill_md": true,
+      "has_description_md": false,
+      "description_excerpt": "---\nname: aps-viewer\ndescription: >-\n  Load a translated model (SVF2) in the Autodesk Viewer \u2014 a client-side WebGL viewer that renders\n  the model in any browser, no Revit/CAD install. This is the \"se"
+    },
+    {
+      "slug": "aps-webhooks",
+      "path": "/Users/alfredpennyworth/.hermes/skills/aps-webhooks",
+      "has_skill_md": true,
+      "has_description_md": false,
+      "description_excerpt": "---\nname: aps-webhooks\ndescription: >-\n  Get event callbacks from APS instead of polling \u2014 fire a webhook when a Model Derivative\n  translation finishes, a Design Automation workitem completes, or an "
     },
     {
       "slug": "architect",
@@ -1095,14 +1179,14 @@
     }
   ],
   "_counts": {
-    "hermes_skills": 150,
+    "hermes_skills": 162,
     "hermes_agent_skills": 0,
     "atlas_skills": 6,
-    "total": 156
+    "total": 168
   },
   "_new_since_last_build": [],
   "_dropped_since_last_build": [],
   "_roots_missing": [],
-  "_mirrored_at": "2026-08-10T10:10:00.520814Z",
+  "_mirrored_at": "2026-08-13T10:10:00.139779Z",
   "_builder": "skills-registry-scan"
 }
