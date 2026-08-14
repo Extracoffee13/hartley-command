@@ -1178,3 +1178,15 @@ lesson: The moat is not orchestration in the abstract — it is running agents i
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-14
+decision: Scanned the last ~24h of the AI/agent ecosystem for The Construct, taking fresh angles that yesterday's fires (Getty MCP / Cowork web+mobile+Compliance API / Grok 4.6 / Cloudflare stateless MCP / self-hosted runners / Claude-for-Gov / orchestration papers) did not lead with.
+outcome: Flagged Anthropic bringing the MCP 2026-07-28 stateless core to Claude (session-ID removed, serverless/edge, hardened auth, 400M monthly downloads), Google's Gemini 3.7 Flash reaching GA while OpenAI's GPT-5.6 Sol Ultrafast stays invite-only, Perplexity closing a $300M Series E on enterprise-research strength, and arXiv PlanBench-XL on long-horizon tool-selection in large MCP ecosystems.
+lesson: The plumbing is standardizing under us (stateless MCP in Claude) and the frontier is a swappable commodity (Gemini 3.7 Flash GA); the durable edge stays one level up — keep model routing abstract, migrate our own servers to the stateless/auth-hardened spec, and scope which tools each sub-agent sees (per PlanBench-XL) rather than exposing the whole fleet, so orchestration stays reliable as tool count grows.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

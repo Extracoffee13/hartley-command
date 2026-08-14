@@ -1,51 +1,44 @@
 {
-  "generated": "2026-08-13T18:01:17Z",
-  "latest_date": "2026-08-13",
+  "generated": "2026-08-14T10:00:28Z",
+  "latest_date": "2026-08-14",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Claude Code self-hosted environments — public-beta runners execute sessions inside your own network",
-      "summary": "Anthropic's public beta (v2.1.224) lets Team/Enterprise orgs run `claude self-hosted-runner` on their own machines/containers; sessions started from claude.ai, mobile, desktop, or `claude --cloud` then execute inside your network with internal-service access, in fixed or on-demand pools, each session isolated to its own repo checkout.",
+      "title": "MCP 2026-07-28 stateless core is coming to Claude — the 5th spec release drops sessions for request/response",
+      "summary": "Anthropic is bringing the newest MCP spec to Claude: a stateless request/response core (handshake + session-ID removed) that lets servers run on serverless/edge, with hardened authorization and graduated official extensions; MCP has now crossed 400M monthly SDK downloads (4x this year).",
       "tag": "yes",
-      "how": "The compute model The Construct needs: Hermes's credentialed jobs (DreamHost SSH, GSC, GitHub) must run on Bobby's own Mac/network — self-hosted runners keep Cowork/Claude Code work inside that trust boundary with per-session isolation instead of Anthropic's cloud.",
-      "url": "https://claude.com/blog/run-claude-code-sessions-on-your-own-compute"
+      "how": "Our Construct MCP fleet (Hermes, B9, PRAGMA connectors) can move to cheap stateless serverless deploys with cleaner auth; re-check each internal server against the 2026-07-28 auth hardening before publishing any to the directory.",
+      "url": "https://claude.com/blog/bringing-mcp-2026-07-28-to-claude"
     },
     {
       "n": 2,
-      "title": "Claude for Government — Claude Code + Cowork now public beta in a FedRAMP-High Gov Desktop with tamper-evident audit logs",
-      "summary": "The agentic file-work stack ships to public-sector teams with stronger admin controls, tamper-evident audit logs, and spend governance; Anthropic stays the contracted/billing party so agencies need no separate cloud relationship.",
+      "title": "Google ships Gemini 3.7 Flash to GA; OpenAI opens GPT-5.6 'Sol Ultrafast' invite-only preview",
+      "summary": "Gemini 3.7 Flash is generally available (1M-token input, tool-calling + computer-control, tuned for coding and autonomous business workflows), while OpenAI's GPT-5.6 Sol Ultrafast tier (~750 output tokens/sec) is still invite-only — so only Google's is shippable today.",
       "tag": "maybe",
-      "how": "Proof the exact bundle PRAGMA sells — agentic execution + tamper-evident audit trail + spend governance — is what regulated buyers pay a premium for; a positioning template for the governed-operator pitch and an eventual public-sector lane for B9/PRAGMA.",
-      "url": "https://claude.com/blog/bringing-claude-code-and-claude-cowork-to-government"
+      "how": "Route high-volume B9 batch text/image and computer-use jobs to Gemini 3.7 Flash now (GA + cheap + tool-calling); keep Sol Ultrafast benched until access clears, and keep model routing abstract under the sub-agents so we swap the best-of-week engine.",
+      "url": "https://decrypt.co/375580/google-openai-super-fast-ai-models-gemini-flash-gpt-ultrafast"
     },
     {
       "n": 3,
-      "title": "arXiv counter-signal — orchestration is not free; for procedural tasks a well-prompted single agent can beat a swarm",
-      "summary": "The paper documents orchestration's reliability costs (cascading errors, routing failures, poor cross-trial consistency — 60% pass@1 yielding only ~25% consistency across trials) and shows in-context prompting matching or obsoleting multi-agent orchestration on procedural work.",
-      "tag": "yes",
-      "how": "A corrective to the 'orchestration is the moat' read: reserve multi-agent orchestration for heterogeneous, high-value jobs, collapse simple procedural steps into one well-prompted agent, and measure cross-trial consistency (not just pass@1) before promising a client an SLA.",
-      "url": "https://arxiv.org/abs/2604.27891"
+      "title": "Perplexity closes a $300M Series E — enterprise research outgrowing consumer",
+      "summary": "Perplexity raised $300M Series E, with enterprise subscriptions (Deep Research for competitive intel, technical research, regulatory monitoring) outgrowing the consumer product and the raise funding the enterprise roadmap plus direct API access.",
+      "tag": "maybe",
+      "how": "Validates PRAGMA's 'AI research/monitoring as a paid enterprise workflow' thesis and gives Scout/Lens a benchmark; watch Perplexity's Deep Research API as a possible sourced-answer engine for our visibility scans.",
+      "url": "https://skycrumbs.com/blog/ai-startup-funding-august-2026"
     },
     {
       "n": 4,
-      "title": "Getty Images ships an MCP server — licensed creative, editorial, and archival visuals now agent-callable",
-      "summary": "Announced Aug 12, the Getty MCP server gives agents a standardized way to discover, retrieve, and license Getty's creative/news/sport/entertainment/archival library inside AI workflows and products.",
+      "title": "arXiv — PlanBench-XL: long-horizon planning of tool-use agents in large-scale tool ecosystems",
+      "summary": "A benchmark for how well LLM agents plan and select the right tools when the ecosystem is large (hundreds of MCP tools), exposing where agents mis-route or lose the thread over long horizons.",
       "tag": "yes",
-      "how": "A rights-clean image source B9 agents can pull for mockups, headers, and social without licensing risk, and the cleanest template yet for the PRAGMA pitch — a client's own DAM exposed as one governed MCP server the operator agent calls.",
-      "url": "https://www.globenewswire.com/news-release/2026/08/12/3344005/0/en/getty-images-launches-mcp-server-to-connect-creative-and-editorial-content-to-ai-workflows-and-products.html"
-    },
-    {
-      "n": 5,
-      "title": "xAI ships Grok 4.6 (Aug 12) plus Grok Imagine Image 2.0 (Aug 8) — another frontier tier + image engine in one week",
-      "summary": "Grok 4.6 lands as xAI's newest frontier model and Grok Imagine Image 2.0 as a fresh text-to-image engine, days apart.",
-      "tag": "maybe",
-      "how": "Bench Grok 4.6 as a routing option for reasoning/computer-use jobs and Grok Imagine 2.0 against Higgsfield for B9 creative; keep model routing abstract so we can swap the best-of-week engine under the sub-agents.",
-      "url": "https://aireleasetracker.com/latest"
+      "how": "Directly on-point as our MCP tool count balloons: it argues for tool-scoping / retrieval over 'expose everything,' the discipline our sub-agents need to avoid mis-routing across the growing Construct fleet.",
+      "url": "https://arxiv.org/pdf/2606.22388"
     }
   ],
-  "praxis_lesson": "The afternoon's fresh signal sharpens the moat thesis: it isn't just 'orchestration' in the abstract — it's running agents inside the client's own trust boundary (self-hosted Claude Code runners on owned compute) with a tamper-evident, spend-governed audit trail (the Claude-for-Government bundle). That is precisely PRAGMA's sellable edge. The arXiv counter-signal is the discipline check — don't over-orchestrate; match architecture to task, collapse procedural work into one well-prompted agent, and measure cross-trial consistency before promising an SLA.",
+  "praxis_lesson": "The plumbing is standardizing under us — MCP's stateless 2026-07-28 core is landing in Claude and clearing 400M downloads, and the frontier (Gemini 3.7 Flash GA, Sol Ultrafast) is a swappable, commoditizing layer. The durable edge stays one level up: keep model routing abstract, move our own servers to the new stateless/auth-hardened spec, and — per PlanBench-XL — scope which tools each agent sees rather than exposing the whole fleet, so orchestration stays reliable as the tool count grows.",
   "history": [
+    "2026-08-14",
     "2026-08-13",
     "2026-08-12",
     "2026-08-11",
@@ -58,7 +51,6 @@
     "2026-08-04",
     "2026-08-03",
     "2026-08-02",
-    "2026-08-01",
-    "2026-07-31"
+    "2026-08-01"
   ]
 }
