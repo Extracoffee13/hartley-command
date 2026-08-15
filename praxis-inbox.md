@@ -1190,3 +1190,63 @@ lesson: The plumbing is standardizing under us (stateless MCP in Claude) and the
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-14
+decision: Refresh fire — re-scanned the last ~24h for angles the 10:00Z morning fire (MCP 2026-07-28 stateless core in Claude / Gemini 3.7 Flash GA vs Sol Ultrafast / Perplexity $300M Series E / PlanBench-XL) did not lead with.
+outcome: Flagged Anthropic's inference hooks (an openly published allow/deny DLP checkpoint in front of every prompt AND tool response across chat, Claude Code, Cowork, MCP connectors and plugins) plus Enterprise auto-scanning of third-party skills and plugins; Claude in Chrome's side panel becoming a full Cowork session with skills/connectors/plugins and cross-device handoff; DeepSeek V4 Pro 0813 going GA with Terminal-Bench 2.1 at 87.9 but API prices up to 12x higher; Cognition in talks at a ~$40B valuation; and arXiv 2603.09619 on context engineering, intent engineering and specification engineering.
+lesson: Anthropic just put the policy gate and skill-scanning inside the platform, and the context-engineering paper says autonomy comes from a machine-readable corpus of intent and specification rather than bigger models — so the durable Construct/PRAGMA edge is the codified spec layer: scanned and signed skills, explicit per-agent tool scoping, and every action passing a policy checkpoint with traceable provenance. Capability is being bought from above (Cognition at $40B, DeepSeek's price hike); governance and domain proof are what cannot be.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-14
+decision: Afternoon fire — re-scanned the last ~24h for angles the 06:00 and 10:05 ET fires did not lead with (those covered MCP 2026-07-28 stateless core, Gemini 3.7 Flash GA, Sol Ultrafast, Perplexity Series E, PlanBench-XL, Anthropic inference hooks, the Chrome side-panel Cowork session, DeepSeek V4 Pro 0813, Cognition at ~$40B and arXiv 2603.09619).
+outcome: Flagged Claude Code auto mode becoming the DEFAULT today on Pro/Max/Team (proceeds unless an action is irreversible, destructive, or aimed outside your environment; 89% vs 13.6% dangerous-command catch rate); Getty Images shipping an MCP server that makes licensed creative, editorial and archival visual content agent-callable; roughly $270M into AI-agent security in one week (Zenity $125M Series C, Corma $60M from Sequoia/Khosla/Coatue); Claude Tag for Slack gaining proactive replies at no extra cost alongside Claude for Government entering beta; and Z.ai's GLM-5.3 landing one day after Gemini 3.7 Flash and DeepSeek V4 Pro 0813.
+lesson: Today's real event is not a model — it is that Claude Code's default flipped from ask-first to act-within-guardrails, with automated review catching a dangerous command 89% of the time against a human's 13.6%. That inverts where our care goes: stop writing skills that lean on a human approval beat, and start writing skills that define the environment boundary and the irreversible-action list precisely, because that specification is now the only thing standing between the agent and the action.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-15
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct, deliberately skipping angles the Aug 14 fires already led with (Claude Code auto mode default, Getty MCP, the ~$270M agent-security week, Claude Tag/Claude for Government, GLM-5.3, MCP 2026-07-28 stateless core).
+outcome: Flagged Claude Code v2.1.232 shipping Aug 14 with subagent forking on by default, cross-session @-mention messaging via SendMessage, per-session worktrees on /fork, the 200-subagent cap removed and Remote Control auto-connect no longer settable from a checked-in repo config; Xnurta's retail-media MCP going GA with an explicit roadmap from answers to governed actions; the real-estate stack going agentic via Rechat's MCP server and Reel Estate's listing-to-video MCP; Anthropic's Claude for Teachers shipping a vertical with all-50-state academic standards as first-class context; and arXiv SmoothAgent on long-horizon agent serving with lookahead context engineering.
+lesson: Anthropic just absorbed the orchestration layer we had been hand-building — fork-with-inherited-context, session-to-session messaging, per-session worktrees, no spawn cap — so our custom handoff scaffolding is maintenance debt rather than differentiation. Rebuild the swarm on the native primitives and spend the reclaimed effort on the domain corpus (signage codes, permits, brand standards, client history) the platform will never ship.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-15
+decision: Mid-morning fire — re-scanned the last 24h for angles today's 06:05 ET fire did not lead with (Claude Code v2.1.232 fork-by-default, Xnurta retail-media MCP, Rechat/Reel Estate real-estate MCPs, Claude for Teachers, arXiv SmoothAgent), and skipping the Aug 14 items (auto mode default, Getty MCP, the ~$270M agent-security week, Claude Tag/Claude for Government, GLM-5.3).
+outcome: Flagged Claude Code self-hosted environments entering public beta for Team/Enterprise with fixed or on-demand runners inside your own network (and the reported caveat that prompts still transit Anthropic); the Aug 14 desktop update adding auto-continue on usage-limit reset plus GitLab merge requests and tighter gateway/plugin validation; Alteryx 2026 IT Leader Research showing 53% cannot translate business context into their AI systems while 77% call that context essential; IBM pairing GPT-5.6/Codex/ChatGPT Work with its consulting reach alongside the Agentic AI Foundation adding 57 members and NVIDIA Nemotron 3.5 Lightning arriving on OCI for always-on agents; and the arXiv survey on agent system and harness design.
+lesson: Anthropic shipped self-hosted execution so agents can sit inside a client's systems, and on the same day enterprises reported that translating business context into those systems is precisely what 53% of them cannot do. The runtime plumbing is now off-the-shelf, so the scarce good is context and harness work — the domain corpus, the environment boundary, the recovery path — and that is where our effort belongs.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-15
+decision: Afternoon fire — re-scanned the last 24h and found two items neither earlier fire had (the Anthropic October IPO reporting and the stateless MCP 2026-07-28 spec), so I consolidated the day's report around them rather than duplicating the morning pass.
+outcome: Flagged Anthropic investors targeting a $2T+ October IPO on expected $100-120B annualized revenue; the MCP 2026-07-28 spec going fully stateless with Cloudflare day-zero Agents SDK support and an ~83% smaller, ~25% faster SDK v2; Claude Code self-hosted environments in public beta; the Aug 14-15 Claude Code releases turning subagent forking on by default and adding cross-session mentions, GitLab MRs and auto-continue on usage-limit reset; and the Alteryx finding that 53% cannot translate business context into their AI systems while 77% call it essential.
+lesson: Today's two biggest items point the same direction: MCP became stateless and cheap to host, and Anthropic is heading to a $2T listing on the strength of agent demand. Runtime plumbing keeps commoditizing while the money moves toward whoever holds the context, which is the same thing the Alteryx number says from the buyer's side. Concretely: author every new MCP against the stateless spec, keep the model layer swappable so a post-IPO pricing change is a config edit, and spend the saved effort on the client context corpus that no vendor can ship for us.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
