@@ -1250,3 +1250,15 @@ lesson: Today's two biggest items point the same direction: MCP became stateless
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-16
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct, deliberately skipping items already flagged Aug 14-15 (Gemini 3.7 Flash, Getty Images MCP, the stateless MCP 2026-07-28 spec, Claude Code self-hosted environments, the Anthropic October IPO reporting, the Aug 14-15 Claude Code changelog).
+outcome: Flagged four new Claude Managed Agents controls shipped this week — hard session budgets that pause with a budget_reached stop reason, advisor models consulted mid-turn from the multiagent roster, model.inference_geo pinning to us at a 1.1x rate or global at standard, and automatic discovery of skills from a mounted repository's root .claude/skills directory; Compliance API coverage extending to Cowork and Claude Code sessions as consolidated server-hosted transcripts on the existing access key, alongside self-serve HIPAA configuration for Enterprise and API orgs; the OpenAI/Cerebras Ultrafast preview running GPT-5.6 Sol at a claimed 750 output tokens per second with no price, GA date or model ID; and arXiv 2608.02683 (S-cubed) arguing agent defenses belong at every workflow stage rather than at the prompt boundary.
+lesson: Every meaningful item today is governance, not capability — spend caps, geo pinning, audit transcripts, skills under version control, staged defenses. The constraint on running a large agent fleet has shifted from "can the agent do it" to "can you prove what it did and bound what it costs," so move the installed-skills registry into a Git-backed repo the sessions mount, put a budget on every unattended job, and treat the Compliance API transcript as a PRAGMA deliverable rather than an internal log.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

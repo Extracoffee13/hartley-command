@@ -1,51 +1,44 @@
 {
-  "generated": "2026-08-15T18:01:07Z",
-  "latest_date": "2026-08-15",
+  "generated": "2026-08-16T10:05:00Z",
+  "latest_date": "2026-08-16",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Anthropic investors target a $2T+ IPO in October — the single largest offering ever, on expected annualized revenue of $100–120B",
-      "summary": "Half a dozen backers told reporters they expect Anthropic to list in October above a $2 trillion valuation, surpassing SpaceX's $1.77T June debut, with annualized revenue landing between $100B and $120B before year-end versus $47B in May; Morgan Stanley, Goldman Sachs and JPMorgan lead, though the figures come from investors and executives have set no internal target.",
+      "title": "Claude Managed Agents ships four governance primitives in one week — session budgets, advisor models, inference geo pinning, and GitHub-hosted skills",
+      "summary": "A session can now carry a hard spend cap that pauses it with a budget_reached stop reason instead of starting new model requests; an advisor entry in the multiagent roster lets the primary thread consult a model at least as capable as the agent's own for mid-turn strategic guidance; model.inference_geo pins inference to us (in-region, 1.1x rate) or global (standard rate); and a session that mounts a repository auto-discovers any skills in its root .claude/skills directory at session start.",
       "tag": "yes",
-      "how": "The Construct, Brand 9's answer-page factory, PRAGMA's delivery layer and Hermes all run on one vendor. A listing at this size is mostly good news for continuity and roadmap funding, but it also converts Anthropic into a public company with quarterly pricing pressure and enterprise-tier gravity. Two concrete actions: keep the per-agent model layer swappable so a pricing change is a config edit rather than a rebuild, and use the revenue trajectory as the market-size proof in the PRAGMA deck — agent operations is no longer a category we have to argue exists.",
-      "url": "https://qz.com/anthropic-ipo-2-trillion-valuation-october-081326"
+      "how": "This is the fleet-governance layer The Construct has been hand-rolling. GitHub-hosted skills is the big one: our installed-skills registry can move out of a local plugin cache and into a version-controlled repo where a skill edit is a commit with a diff and a rollback, which is exactly the discipline the registry has been missing. Session budgets end the failure mode where an unattended job (this scan, lens-daily-scan, the visibility passes) burns an unbounded amount before anyone looks. Advisor models are a cheap upgrade path for swarm-strategy-review — an escalation channel instead of a full second agent. Geo pinning is a PRAGMA sales answer for any client who asks where inference runs, at a stated 10% premium.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview"
     },
     {
       "n": 2,
-      "title": "MCP goes fully stateless in the 2026-07-28 spec — no initialize handshake, no session header, servers run in a single worker",
-      "summary": "The specification, interaction model and SDKs were rewritten around a stateless protocol that drops the initialize handshake and session header and adds required method and tool-name headers so gateways can route agent traffic without parsing JSON; Cloudflare's Agents SDK shipped day-zero support, SDK v2 cut package size ~83% and runs ~25% faster, and InfoQ notes developers asking whether this just makes MCP an API again.",
+      "title": "Compliance API coverage extends to Cowork and Claude Code, and HIPAA configuration goes self-serve",
+      "summary": "Enterprise compliance teams can pull Cowork sessions (desktop, web, mobile) and Claude Code sessions (CLI, desktop) through the same Compliance API they already use for chats, with new session endpoints returning a consolidated server-hosted transcript per session — prompts, responses and tool activity in one record — using the existing Compliance Access Key; separately, eligible Enterprise and API admins can review the BAA and enable HIPAA configuration in a single self-serve flow. Beta excludes Claude Code on the web, Claude Code via the Claude Platform, and sessions on Bedrock, Vertex AI or Microsoft Foundry.",
       "tag": "yes",
-      "how": "This is the most consequential infrastructure change for our stack this month and it explains the Claude Code fix for MCP v2 connections endlessly reopening subscription streams. Every MCP we depend on gets cheaper and more reliable to host, and anything we author ourselves should target the stateless spec now rather than carry sticky-session assumptions. For PRAGMA client work it lowers the cost of standing up a per-client MCP to the price of a worker, which makes a bespoke context server per engagement newly economic.",
-      "url": "https://blog.cloudflare.com/mcp-v2/"
+      "how": "Agent work becomes auditable as a first-class artifact rather than something we reconstruct from logs, and that is a sales object for PRAGMA, not just an ops nicety: the objection from any regulated buyer is 'we cannot show an auditor what your agent did,' and the answer is now a vendor-supported transcript endpoint. Self-serve HIPAA removes the legal-cycle delay that would otherwise gate a healthcare or medical-practice engagement. Note the exclusion list before promising coverage — anything we run through a cloud reseller path is outside the beta.",
+      "url": "https://claude.com/blog/compliance-api-cowork-and-claude-code"
     },
     {
       "n": 3,
-      "title": "Claude Code self-hosted environments hit public beta — agent sessions run inside your own network",
-      "summary": "Team and Enterprise orgs can run sessions started from web, mobile, desktop or a routine on runners they control, sitting beside internal databases, registries and security controls without public exposure; fixed pools or on-demand runners, disabled by default and admin-enabled, with reporting noting prompts still transit Anthropic during the beta.",
-      "tag": "yes",
-      "how": "The missing piece for the credentialed jobs we route through Hermes because only the Mac holds the GitHub, DreamHost and GSC secrets. A self-hosted runner lets a session reach those systems directly instead of being handed off, collapsing the Cowork-to-Hermes relay for deploys and the ANS/APS engine queue. Read the caveat before treating it as a data-residency answer: execution is local, the prompt path is not.",
-      "url": "https://claude.com/blog/run-claude-code-sessions-on-your-own-compute"
+      "title": "OpenAI and Cerebras preview Ultrafast — GPT-5.6 Sol at a vendor-claimed 750 output tokens/sec, ~14x Standard, with no price and no GA date",
+      "summary": "Announced Aug 13, the tier runs full GPT-5.6 Sol on Cerebras hardware with no stated quality trade-off; on GDP-Val it delivered a 5.6x end-to-end speedup with no quality degradation, and it cleared the 2,500-question Humanity's Last Exam set in just over 11 hours. Limited preview to select customers, no published price, no model ID string.",
+      "tag": "maybe",
+      "how": "Latency is the constraint on anything client-facing and interactive, which is the STRUCTA/HyperCube operator surface and any live PRAGMA demo, and 750 tps changes what feels possible there. But there is no price, no GA date and no model ID, so this is a watch item and nothing to design against yet. The useful read today is directional: inference speed is becoming a purchasable tier separate from model choice, so our agent designs should stop assuming latency is fixed by which model we picked.",
+      "url": "https://openai.com/index/previewing-ultrafast/"
     },
     {
       "n": 4,
-      "title": "Claude Code ships subagent forking on by default, cross-session mentions and SendMessage upgrades, GitLab MR support, and auto-continue on usage-limit reset",
-      "summary": "The Aug 14–15 releases turn subagent forking on by default, upgrade cross-session mentions and SendMessage, add GitLab merge request URLs to the worktree flag and agents view, add a resume-on-usage-window-reset option, a WebFetch cache TTL variable, an opt-in forward_user_identity gateway setting, Linux memory cgroup support for Bash, plus tighter gateway and plugin validation.",
-      "tag": "yes",
-      "how": "Directly upgrades the Construct fleet. Auto-continue removes the failure mode where a long job (lens-daily-scan, the visibility passes, this scan) dies mid-window and waits for a human restart. Forking-by-default plus cross-session mentions means our swarm reviews can hand context between agents without re-priming each one, which is the mechanic swarm-strategy-review was hand-rolling. Plugin and gateway validation matters now that we run a large installed-skills registry from mixed sources — expect some of ours to need cleanup.",
-      "url": "https://code.claude.com/docs/en/changelog"
-    },
-    {
-      "n": 5,
-      "title": "Alteryx 2026 IT Leader Research puts a number on the context gap — 53% cannot translate business context into their AI systems, 77% call that context essential",
-      "summary": "The bottleneck enterprises report is not model capability but getting their own operating context into a form an agent can act on.",
-      "tag": "yes",
-      "how": "The PRAGMA pitch stated by the buyer rather than by us, with a figure attached. The 24-point gap between 'essential' and 'we can do it' is the market. Put it in the deck: the deliverable is not an agent, it is the client's context rendered machine-actionable, and three in four buyers already agree that is what determines whether their AI works.",
-      "url": "https://solutionsreview.com/ai-news-for-the-week-of-august-14-updates-from-ai-trust-security-consortium-illumio-rackspace-more/"
+      "title": "arXiv: \"S³: Improving Agent Safety through Multi-Stage Defense\" (2608.02683, submitted Aug 3)",
+      "summary": "Treats the agentic workflow as a chain of stages — memory, planning, tool execution — and argues defenses belong at each stage rather than at the prompt boundary alone, because a compromise introduced at one stage propagates through the rest.",
+      "tag": "maybe",
+      "how": "Relevant precisely because of item 1: the moment our skills load from a mounted GitHub repo and our agents call mixed-source MCPs, the attack surface is the pipeline, not the prompt. Worth pairing with the plugin and gateway validation Claude Code tightened this week. Concretely, it argues for a review gate on any skill entering the registry from outside our own repo — which is a policy we do not currently have written down.",
+      "url": "https://arxiv.org/abs/2608.02683"
     }
   ],
-  "praxis_lesson": "Today's two biggest items point the same direction: MCP became stateless and cheap to host, and Anthropic is heading to a $2T listing on the strength of agent demand. Runtime plumbing keeps commoditizing while the money moves toward whoever holds the context, which is the same thing the Alteryx number says from the buyer's side. Concretely: author every new MCP against the stateless spec, keep the model layer swappable so a post-IPO pricing change is a config edit, and spend the saved effort on the client context corpus that no vendor can ship for us.",
+  "praxis_lesson": "Every meaningful item today is governance, not capability — spend caps, geo pinning, audit transcripts, skills under version control, staged defenses. The platform is telling us that the constraint on running a large agent fleet has shifted from 'can the agent do it' to 'can you prove what it did and bound what it costs.' Move the installed-skills registry into a Git-backed repo the sessions mount, put a budget on every unattended job, and treat the Compliance API transcript as a PRAGMA deliverable rather than an internal log.",
   "history": [
+    "2026-08-16",
     "2026-08-15",
     "2026-08-14",
     "2026-08-13",
@@ -58,7 +51,6 @@
     "2026-08-06",
     "2026-08-05",
     "2026-08-04",
-    "2026-08-03",
-    "2026-08-02"
+    "2026-08-03"
   ]
 }
