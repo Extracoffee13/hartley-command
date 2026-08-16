@@ -1262,3 +1262,15 @@ lesson: Every meaningful item today is governance, not capability — spend caps
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-16
+decision: Later fire — re-scanned the last 24h against the 06:01 report and found one item the morning pass missed, so I appended it to today's report rather than duplicating the day.
+outcome: Added Qwen3.8-27B — Alibaba's Apache-2.0, 27.78B dense vision-language model released Aug 14 at 15:00 UTC on Hugging Face, ModelScope and OpenRouter, with a native 262,144-token context, consumer-GPU footprint, and large agentic gains over Qwen3.6-27B (Terminal-Bench 2.1 63.4 to 73.0, DeepSWE 1.1 13.3 to 42.2, OSWorld-Verified 63.9 to 84.3, SWE-MM 25.7 to 38.6). Confirmed the rest of the surface was already covered or out of window: Gemini 3.7 Flash (Aug 13), Getty Images MCP (Aug 12), Betterworks MCP v0.74.0 write tools (Aug 13), Fable 5 biology safeguards (Aug 7), Claude for Government desktop beta (July 7). No qualifying agent-platform fundraise in the window.
+lesson: The governance items still dominate, but the one capability item cuts the same direction — an Apache-2.0 27B that drives a screen at 84.3 on OSWorld-Verified and runs on hardware we own is a data-residency answer as much as a performance one, because the cheapest way to prove where client data went is for it never to leave. Pilot it on the high-volume, low-stakes legs of the fleet (B9 drafting, image triage, abrasion scraping); keep Opus/Fable on anything client-facing.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
