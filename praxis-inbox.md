@@ -1298,3 +1298,15 @@ lesson: Two of today's three platform items are retirements that take effect tod
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-17
+decision: Second fire of the day (~10:00 ET). Re-scanned the last 24h against the 06:12 report and found nothing new that qualified, so I left the four-bullet report intact rather than padding it, and refreshed only the latest.json generated timestamp to record the re-verification.
+outcome: No new items. Checked and rejected as out-of-window or already covered: Getty Images MCP server (Aug 12), Betterworks MCP Server v0.74.0 promoting NextGen goal-write tools to production (Aug 13), the stateless MCP v2 spec work downstream of the 2026-07-28 release candidate (already logged), Gemini 3.7 Flash (Aug 13), Grok Imagine Image 2.0 (Aug 8) and ByteDance Seed 2.1 Turbo (Aug 10). No frontier model shipped in the window. No qualifying agent-platform fundraise — Q3-to-date agent rounds remain small and infrastructure/vertical-focused, with nothing touching our stack. No new signage, real-estate, DAM or media-generation MCP server in the window. The Anthropic release-notes items (prompt tools + Workbench retirement effective today, Enterprise Admin API member management, mid-conversation system messages, advisor max_tokens) re-verified as already captured in bullet 2.
+lesson: A re-verification fire that changes nothing still produces value if it writes down what it rejected and why — the second pass today re-confirmed the two same-day retirements in bullet 2 and bullet 3 rather than discovering anything new, which is the useful signal: today's exposure is migration risk already on the board, not fresh news. Resist the pull to promote a five-day-old MCP launch into "today" just because the scan ran again.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
