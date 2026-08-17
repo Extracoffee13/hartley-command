@@ -1310,3 +1310,15 @@ lesson: A re-verification fire that changes nothing still produces value if it w
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-17
+decision: Third fire of the day (~14:00 ET). Re-scanned the last 24h against the 06:12 report and the 10:00 re-verification, found no new same-day news, but caught a genuine coverage gap from three days back and backfilled it as bullet 5 rather than logging another no-change pass.
+outcome: Added bullet 5 — Anthropic's global SynthID-Text-style watermarking of all Claude text output plus C2PA content credentials on .png/.jpg/.svg files Claude produces, published Aug 14 under the EU Code of Practice on Transparency of AI-Generated Content and Article 50 enforceable Aug 2; verified against the primary Anthropic explainer and confirmed absent from every prior Industry Pulse report. No new frontier model in the window (Gemini 3.7 Flash Aug 13 already logged; OpenAI's latest tracked release remains ChatGPT Work, Jul 9). Rejected as out-of-window or already covered: Xnurta retail-media MCP (Aug 14), Getty Images MCP (Aug 12), Betterworks MCP v0.74.0 (Aug 13), the stateless MCP v2 spec work, Cognition's reported $1B raise (Aug 13). No qualifying agent-platform fundraise, no new signage, real-estate or DAM MCP server in the window. Bullets 1-4 re-confirmed intact.
+lesson: Two of today's platform items are retirements that take effect today — the prompt tools APIs and Workbench, and the Imagen 4 endpoints with generate_images() removed — and neither would announce itself as a failure until a job breaks in production; the governance layer we have been building toward is incomplete without a deprecation calendar that names every external endpoint the fleet calls, its end-of-life, and a migration owner. The third fire today surfaced something worse than a missed headline: Anthropic's global text watermarking and C2PA file credentials went live three days ago and never entered this report, because a daily scan tuned to the last 24 hours is structurally blind to a slow-burn compliance change that no single day treats as news. Add a weekly backfill sweep over provenance, licensing and regulatory items — the ones that arrive as policy rather than as launches. Meanwhile the Stripe-OpenRouter deal prices the orchestration layer above the model layer at $7B, which validates the PRAGMA thesis and warns that any routing layer we rent can be bought out from under us, so keep every gateway behind our own adapter.
+tags: pulse,mcp,ecosystem,daily,provenance,backfill
+confidence: 0.85
+~~~
