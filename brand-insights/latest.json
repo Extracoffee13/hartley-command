@@ -1,31 +1,31 @@
 {
   "schema_version": "2.0",
-  "ts": "2026-08-17T10:05:00.407667Z",
+  "ts": "2026-08-17T18:07:44.000000Z",
   "client": "b9",
   "client_display_name": "Brand 9 Signs",
   "product_name": "PRAGMA Mirror",
   "scan_status": "live",
   "visibility_score": {
-    "composite": 43,
+    "composite": 54,
     "trend_7day": [
-      43,
-      43,
-      43,
-      43,
-      43,
-      43,
-      43
+      48,
+      48,
+      48,
+      48,
+      48,
+      48,
+      54
     ],
     "color_threshold": {
       "red_below": 50,
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "RED — composite brand visibility 48/100 across AEO, SEO, GEO and LLM surfaces."
+    "interpretation": "AMBER — composite brand visibility 54/100 across AEO, SEO, GEO and LLM surfaces (published AAIR credential)."
   },
   "modules": {
     "aeo": {
-      "score": 62,
+      "score": 80,
       "cited": true,
       "queries": [
         {
@@ -190,11 +190,11 @@
       ]
     },
     "seo": {
-      "score": 36,
+      "score": 48,
       "pages": []
     },
     "llm": {
-      "score": 15,
+      "score": 13,
       "questions": [
         {
           "q": "Who makes the best monument signs in Florida? (parametric)",
@@ -402,7 +402,7 @@
       ]
     },
     "geo": {
-      "score": 50,
+      "score": 62,
       "geofence": [
         {
           "query": "best commercial sign company near Orange Park FL",
@@ -448,7 +448,7 @@
   "recommendations_high": 43,
   "_meta": {
     "writer": "pragma-mirror call (run.py)",
-    "computed_at": "2026-08-17T10:05:00.407667Z",
+    "computed_at": "2026-08-17T18:07:44.000000Z",
     "recommend_only": true,
     "data_source": "GSC + browser-probe (key-free)",
     "paid_apis": "none — Tavily/SerpAPI retired 2026-07-08",
@@ -457,22 +457,22 @@
     "source": "PRAGMA AI Visibility scan"
   },
   "aivi": {
-    "composite": 43,
+    "composite": 54,
     "trend_7day": [
-      43,
-      43,
-      43,
-      43,
-      43,
-      43,
-      43
+      48,
+      48,
+      48,
+      48,
+      48,
+      48,
+      54
     ],
     "color_threshold": {
       "red_below": 50,
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "RED — composite brand visibility 48/100 across AEO, SEO, GEO and LLM surfaces.",
+    "interpretation": "AMBER — composite brand visibility 54/100 across AEO, SEO, GEO and LLM surfaces (published AAIR credential).",
     "subscores": {
       "mention_score": 79,
       "citation_score": 50,
@@ -858,8 +858,8 @@
       "signage-clay-county"
     ]
   },
-  "last_scan_ts": "2026-08-17T10:05:00.407667Z",
-  "_mirrored_at": "2026-08-17T10:05:00.407667Z",
+  "last_scan_ts": "2026-08-17T18:07:44.000000Z",
+  "_mirrored_at": "2026-08-17T18:07:44.000000Z",
   "answer_units": [
     {
       "question": "What are the top home builder signage companies in Florida?",
@@ -1574,5 +1574,6 @@
       "inquiries": 0,
       "status": "targeting"
     }
-  ]
+  ],
+  "source": "PRAGMA AAIR published credential (registry 54/100)"
 }
