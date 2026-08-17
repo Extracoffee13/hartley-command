@@ -1286,3 +1286,15 @@ lesson: A daily scan that fires three times needs a no-op result to be a legitim
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-17
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged four items — Stripe's finalized >$7B acquisition of OpenRouter (Bloomberg/TechCrunch, Aug 16; >5x the $1.3B valuation from 82 days earlier, 400+ models, ~8M developers, ~1.5 quadrillion tokens/yr); Anthropic retiring the experimental prompt tools APIs and the Workbench effective today plus Enterprise Admin API member/group management, mid-conversation system messages on Fable 5 / Mythos 5 / Opus 4.8, and a max_tokens cap on the advisor tool; Google shutting down the three Imagen 4 endpoints on the Gemini API today with generate_images() removed entirely in favor of generate_content() on Gemini 3.1 Flash Image (Nano Banana 2); and arXiv 2608.07169 Agent Memory Distillation, a training-free Workflow/Subtask/Function hierarchical memory transfer from a large teacher agent to a small student agent. Checked and rejected as out-of-window or already covered: Cognition's reported $1B raise at a $40B valuation (Aug 13), Getty Images MCP (Aug 12), Rechat real-estate MCP (Aug 4), Gemini 3.7 Flash (Aug 13), Qwen3.8-27B (Aug 14, already in yesterday's report). No qualifying new signage-industry MCP server in the window.
+lesson: Two of today's three platform items are retirements that take effect today — the prompt tools APIs and Workbench, and the Imagen 4 endpoints with generate_images() removed — and neither would announce itself as a failure until a job breaks in production. The governance layer we have been building toward is incomplete without a deprecation calendar: someone or something must own the list of every external endpoint the fleet calls, its announced end-of-life, and the migration owner. Meanwhile the Stripe-OpenRouter deal prices the orchestration layer above the model layer at $7B, which validates the PRAGMA thesis and simultaneously warns that any routing layer we rent can be bought out from under us — so keep every gateway behind our own adapter.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

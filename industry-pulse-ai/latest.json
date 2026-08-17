@@ -1,51 +1,44 @@
 {
-  "generated": "2026-08-16T18:01:07Z",
-  "latest_date": "2026-08-16",
+  "generated": "2026-08-17T10:12:00Z",
+  "latest_date": "2026-08-17",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Claude Managed Agents ships four governance primitives in one week — session budgets, advisor models, inference geo pinning, and GitHub-hosted skills",
-      "summary": "A session can now carry a hard spend cap that pauses it with a budget_reached stop reason instead of starting new model requests; an advisor entry in the multiagent roster lets the primary thread consult a model at least as capable as the agent's own for mid-turn strategic guidance; model.inference_geo pins inference to us (in-region, 1.1x rate) or global (standard rate); and a session that mounts a repository auto-discovers any skills in its root .claude/skills directory at session start.",
+      "title": "Stripe finalizes a deal to buy OpenRouter for more than $7B — the neutral model-routing layer is now owned by a payments company",
+      "summary": "Bloomberg reported Aug 16 that Stripe has agreed to acquire OpenRouter for over $7 billion, more than 5x the $1.3B valuation from its funding round 82 days earlier. OpenRouter routes across 400+ models from OpenAI, Anthropic, Google, Meta and DeepSeek for roughly 8 million developers and reportedly processed about 1.5 quadrillion tokens in the past year; CEO Alex Atallah has described it as 'Stripe for AI' — one access point across systems, explicitly sold as anti-lock-in.",
       "tag": "yes",
-      "how": "This is the fleet-governance layer The Construct has been hand-rolling. GitHub-hosted skills is the big one: our installed-skills registry can move out of a local plugin cache and into a version-controlled repo where a skill edit is a commit with a diff and a rollback, which is exactly the discipline the registry has been missing. Session budgets end the failure mode where an unattended job (this scan, lens-daily-scan, the visibility passes) burns an unbounded amount before anyone looks. Advisor models are a cheap upgrade path for swarm-strategy-review — an escalation channel instead of a full second agent. Geo pinning is a PRAGMA sales answer for any client who asks where inference runs, at a stated 10% premium.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview"
+      "how": "The Construct is a multi-model fleet and every multi-model fleet either owns its routing or rents it. The strategic read is that the routing layer is now a consolidation target, not neutral infrastructure: a gateway owned by a payments company will optimize for take-rate and billing surface, and today's neutrality is a promise from an acquirer, not a property of the product. Two concrete moves — keep any OpenRouter dependency behind our own thin adapter so a pricing or terms change is a config edit rather than a rewrite, and note that the acquisition premium is itself the market pricing the orchestration layer above the model layer, which is exactly PRAGMA's thesis and now has a $7B comp behind it.",
+      "url": "https://techcrunch.com/2026/08/16/stripe-will-reportedly-acquire-ai-gateway-startup-openrouter-for-7b/"
     },
     {
       "n": 2,
-      "title": "Compliance API coverage extends to Cowork and Claude Code, and HIPAA configuration goes self-serve",
-      "summary": "Enterprise compliance teams can pull Cowork sessions (desktop, web, mobile) and Claude Code sessions (CLI, desktop) through the same Compliance API they already use for chats, with new session endpoints returning a consolidated server-hosted transcript per session — prompts, responses and tool activity in one record — using the existing Compliance Access Key; separately, eligible Enterprise and API admins can review the BAA and enable HIPAA configuration in a single self-serve flow. Beta excludes Claude Code on the web, Claude Code via the Claude Platform, and sessions on Bedrock, Vertex AI or Microsoft Foundry.",
+      "title": "Anthropic retires the prompt tools APIs and the Workbench today, and ships Enterprise member management via the Admin API",
+      "summary": "The experimental prompt tools APIs for generating, improving and templatizing prompts are retired along with the Workbench effective Aug 17; requests to those endpoints now return an error. In the same window, Claude Enterprise organizations can manage people through the Admin API — list members, look them up by email, change roles, remove members, send and withdraw invites, manage groups and membership, and read custom roles; mid-conversation system messages are available on Claude Fable 5, Mythos 5 and Opus 4.8 across the Claude API, Bedrock and Google Cloud; and the advisor tool flagged yesterday now takes a max_tokens parameter to cap advisor output per call.",
       "tag": "yes",
-      "how": "Agent work becomes auditable as a first-class artifact rather than something we reconstruct from logs, and that is a sales object for PRAGMA, not just an ops nicety: the objection from any regulated buyer is 'we cannot show an auditor what your agent did,' and the answer is now a vendor-supported transcript endpoint. Self-serve HIPAA removes the legal-cycle delay that would otherwise gate a healthcare or medical-practice engagement. Note the exclusion list before promising coverage — anything we run through a cloud reseller path is outside the beta.",
-      "url": "https://claude.com/blog/compliance-api-cowork-and-claude-code"
+      "how": "Check today whether anything in the fleet still calls the prompt tools endpoints; that is a live breakage, not a roadmap item. The Admin API member endpoints are the piece that makes agent-fleet onboarding scriptable instead of clicked — a new Construct agent operator can be provisioned, grouped and de-provisioned from code, which is the missing half of the governance story that ran through last week's releases. Mid-conversation system messages are the practical one for our long-running jobs: we can re-assert standing instructions mid-session instead of hoping the opening system prompt survives a long tool chain. And max_tokens on advisor makes the escalation channel cheap enough to actually default on in swarm-strategy-review.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview"
     },
     {
       "n": 3,
-      "title": "OpenAI and Cerebras preview Ultrafast — GPT-5.6 Sol at a vendor-claimed 750 output tokens/sec, ~14x Standard, with no price and no GA date",
-      "summary": "Announced Aug 13, the tier runs full GPT-5.6 Sol on Cerebras hardware with no stated quality trade-off; on GDP-Val it delivered a 5.6x end-to-end speedup with no quality degradation, and it cleared the 2,500-question Humanity's Last Exam set in just over 11 hours. Limited preview to select customers, no published price, no model ID string.",
-      "tag": "maybe",
-      "how": "Latency is the constraint on anything client-facing and interactive, which is the STRUCTA/HyperCube operator surface and any live PRAGMA demo, and 750 tps changes what feels possible there. But there is no price, no GA date and no model ID, so this is a watch item and nothing to design against yet. The useful read today is directional: inference speed is becoming a purchasable tier separate from model choice, so our agent designs should stop assuming latency is fixed by which model we picked.",
-      "url": "https://openai.com/index/previewing-ultrafast/"
+      "title": "Google shuts down the Imagen 4 endpoints on the Gemini API today — and generate_images() goes with them",
+      "summary": "imagen-4.0-generate-001, imagen-4.0-fast-generate-001 and imagen-4.0-ultra-generate-001 are shut down Aug 17 (already deprecated on Vertex AI since Mar 24), with image work routed to the Gemini-native models — Gemini 3.1 Flash Image, the checkpoint commonly called Nano Banana 2. This is not a drop-in swap: the generate_images() method is gone entirely and image generation now runs through generate_content().",
+      "tag": "yes",
+      "how": "Direct operational hit on any B9 or Vector visual path that touches Google image generation, and the method removal means a model-string swap will not fix it; the call shape changes. Audit the b9-brand-visual-system pipeline and anything in the graphic-designer skill that calls Google for generation, and confirm it is either on the Gemini generate_content() path or on Higgsfield-via-browser, which is our documented primary. Broader lesson for the fleet: our image dependencies are now spread across three vendors with independent deprecation calendars, and nobody owns that calendar.",
+      "url": "https://ai.google.dev/gemini-api/docs/models/imagen"
     },
     {
       "n": 4,
-      "title": "arXiv: \"S³: Improving Agent Safety through Multi-Stage Defense\" (2608.02683, submitted Aug 3)",
-      "summary": "Treats the agentic workflow as a chain of stages — memory, planning, tool execution — and argues defenses belong at each stage rather than at the prompt boundary alone, because a compromise introduced at one stage propagates through the rest.",
+      "title": "arXiv: \"Agent Memory Distillation: Empowering Small LLM Agents with Hierarchical Teacher Memory\" (2608.07169, submitted Aug 7)",
+      "summary": "A training-free framework that transfers structured knowledge from a large teacher agent to a small student agent through three memory types built from successful teacher trajectories: Workflow memory (task-level strategy), Subtask memory (concrete behavioral examples at intermediate granularity) and Function memory (per-function calling conventions and common pitfalls). Workflow and Subtask memories are injected proactively at task start; Function memory is retrieved reactively when a tool call errors. Noted as the strongest agent-architecture paper in the weekly window — nothing newer qualified.",
       "tag": "maybe",
-      "how": "Relevant precisely because of item 1: the moment our skills load from a mounted GitHub repo and our agents call mixed-source MCPs, the attack surface is the pipeline, not the prompt. Worth pairing with the plugin and gateway validation Claude Code tightened this week. Concretely, it argues for a review gate on any skill entering the registry from outside our own repo — which is a policy we do not currently have written down.",
-      "url": "https://arxiv.org/abs/2608.02683"
-    },
-    {
-      "n": 5,
-      "title": "Alibaba drops Qwen3.8-27B under Apache 2.0 — a dense 27B vision-language model with a 262k context that fits on a consumer GPU and posts an 84.3 on OSWorld-Verified",
-      "summary": "Weights went up on Hugging Face and ModelScope on Aug 14 at 15:00 UTC with same-day OpenRouter availability; the checkpoint is 27.78B parameters, accepts text, images and video, and ships a native 262,144-token context. Against Qwen3.6-27B the agentic numbers move hard without growing the decoder: Terminal-Bench 2.1 63.4 to 73.0, DeepSWE 1.1 13.3 to 42.2, OSWorld-Verified 63.9 to 84.3, SWE-MM 25.7 to 38.6.",
-      "tag": "maybe",
-      "how": "The computer-use jump is the number that matters for us: an Apache-2.0 model that drives a screen at 84.3 and runs on one consumer GPU is a credible local executor for the high-volume, low-stakes end of the fleet — B9 answer-page drafting, image triage, the scraping legs of creative abrasion — where per-token cost and data residency matter more than frontier judgment. Vision-language on-prem is also directly interesting for B9 sign photo review. Not a swap for Opus/Fable on anything client-facing or strategic, and the benchmark deltas are Qwen's own; treat as a pilot candidate, not a migration.",
-      "url": "https://aireleasetracker.com/model/qwen/qwen3.8-27b"
+      "how": "This is the missing method for the cheap-local-executor plan from yesterday's Qwen3.8-27B item: it describes how a small model inherits a large model's operating procedure without fine-tuning, which is precisely the gap between '27B runs on our hardware' and '27B runs our jobs correctly.' The reactive Function-memory-on-tool-error pattern is the immediately stealable piece — our agents fail tool calls the same way repeatedly, and a retrieved note on the failing function's conventions is a smaller change than a skill rewrite. Treat as a design pattern for the installed-skills registry, not a paper to implement wholesale.",
+      "url": "https://arxiv.org/abs/2608.07169"
     }
   ],
-  "praxis_lesson": "Every meaningful item today is governance, not capability — spend caps, geo pinning, audit transcripts, skills under version control, staged defenses. The platform is telling us that the constraint on running a large agent fleet has shifted from 'can the agent do it' to 'can you prove what it did and bound what it costs.' Move the installed-skills registry into a Git-backed repo the sessions mount, put a budget on every unattended job, and treat the Compliance API transcript as a PRAGMA deliverable rather than an internal log. The one capability item that lands cuts the same way — an Apache-2.0 27B that drives a screen at 84.3 on hardware we own is a governance story as much as a performance one, because the cheapest way to prove where the data went is for it never to leave.",
+  "praxis_lesson": "Two of today's three platform items are retirements that take effect today — the prompt tools APIs and Workbench, and the Imagen 4 endpoints with generate_images() removed — and neither would announce itself as a failure until a job breaks in production. The governance layer we have been building toward is incomplete without a deprecation calendar: someone or something must own the list of every external endpoint the fleet calls, its announced end-of-life, and the migration owner. Meanwhile the Stripe-OpenRouter deal prices the orchestration layer above the model layer at $7B, which validates the PRAGMA thesis and simultaneously warns that any routing layer we rent can be bought out from under us — so keep every gateway behind our own adapter.",
   "history": [
+    "2026-08-17",
     "2026-08-16",
     "2026-08-15",
     "2026-08-14",
@@ -58,7 +51,6 @@
     "2026-08-07",
     "2026-08-06",
     "2026-08-05",
-    "2026-08-04",
-    "2026-08-03"
+    "2026-08-04"
   ]
 }
