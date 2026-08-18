@@ -1334,3 +1334,15 @@ lesson: Today's 24-hour window contained almost no launches — the Claude Code 
 tags: pulse,mcp,ecosystem,daily,deprecation,backfill,policy
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-18
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Later fire (~10:00 ET) re-scanned the window against the 06:03 report. No new same-day launches, but the sweep caught a loud four-day-old miss and backfilled it as bullet 5 — SpaceX closed its $60B all-stock acquisition of Anysphere/Cursor on Aug 14, the largest startup acquisition on record, Cursor now a SpaceXAI subsidiary on Colossus with ~150M lines of code a day feeding Grok training. Also surfaced and flagged in the lesson rather than slotted: arXiv 2604.08224 'Externalization in LLM Agents' (Apr 10), a published architecture for the memory/skills/protocols/harness stack The Construct is building by hand. Re-verified and rejected as already covered or out of window: Getty Images MCP (Aug 12), Xnurta retail-media MCP (Aug 14), Gemini 3.7 Flash (Aug 13), GPT-5.6 Sol Ultrafast on Cerebras, Cognition's reported raise at ~$40B, Stripe-OpenRouter. Bullets 1-4 re-confirmed intact.
+lesson: Today's 24-hour window contained almost no launches — the Claude Code point release was the only genuine same-day platform item — and the honest read is that a scan tuned exclusively to new announcements would have returned nearly nothing. The value today came entirely from backfill: first the MCP stateless spec, final since July 28 with a migration deadline around October 6, and then, on a later fire, the $60B SpaceX-Anysphere close from Aug 14 — the largest startup acquisition ever recorded, in our own tooling category, four days stale and never reported here. The MCP miss was defensible because specs do not announce themselves. The Cursor miss was not: it was covered by Forbes, Yahoo Finance and the trade press, and it was missed purely because a 24-hour lookback window does not catch an item whose news cycle peaked the day before the window opened. So the operating change is firmer than this morning's version: stop measuring this scan by how much is new and start measuring it by how much is due, and make the backfill sweep a step in every fire rather than a weekly chore — because the sweep just caught a headline, not an obscurity, and whatever else it is missing is probably that loud too. One reading assignment out of the same sweep: arXiv 2604.08224, 'Externalization in LLM Agents: A Unified Review of Memory, Skills, Protocols and Harness Engineering' (https://arxiv.org/abs/2604.08224), frames capability as externalized into memory stores, reusable skills, interaction protocols and a governing harness — which is a published architecture for precisely the thing The Construct is assembling by hand, and it is worth reading before we design any more of the skills registry on instinct.
+tags: pulse,mcp,ecosystem,daily,backfill,consolidation
+confidence: 0.8
+~~~
