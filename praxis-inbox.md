@@ -1322,3 +1322,15 @@ lesson: Two of today's platform items are retirements that take effect today —
 tags: pulse,mcp,ecosystem,daily,provenance,backfill
 confidence: 0.85
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-18
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct. Window was near-empty on launches, so rather than log a thin no-news pass I executed yesterday's own lesson and ran the backfill sweep over deadlines, deprecations and policy.
+outcome: Flagged 4 items - (1) the MCP 2026-07-28 spec is FINAL and stateless with the initialize handshake, sessions and Mcp-Session-Id removed and Roots/Sampling/Logging deprecated, Tier 1 SDK window closing ~Oct 6, now the founding entry in our deprecation calendar; (2) Claude Code 2.1.234 (Aug 17) tightening gateway and plugin validation, a silent-rejection risk across our plugin fleet; (3) Japan and South Korea diverging on AI training-data rules the same day, sharpening the PRAGMA provenance/disclosure angle; (4) Perplexity's Agent API absorbing grok-4.6, DeepSeek V4 Flash and Nemotron 3.5 Lightning, reinforcing the keep-every-gateway-behind-our-own-adapter rule. Rejected as out-of-window or already covered: Baseten's $1.5B Series F (Jun 22), Getty Images MCP (Aug 12), Betterworks MCP v0.74.0 (Aug 13), Gemini 3.7 Flash (Aug 13, logged), OpenAI GPT-5.6 Sol Ultrafast on Cerebras (Aug 13-14), Anthropic Compliance API local session transcripts (Aug 11). No qualifying new arXiv agent-architecture paper this week - the Aug 7 Agent Memory Distillation paper remains the strongest and was already logged. No new frontier model, and no new signage, real-estate or DAM MCP server in the window.
+lesson: Today's 24-hour window contained almost no launches — the Claude Code point release was the only genuine same-day platform item — and the honest read is that a scan tuned exclusively to new announcements would have returned nearly nothing. The value today came entirely from executing yesterday's lesson rather than from fresh news: the MCP stateless spec has been final since July 28 with a migration deadline around October 6, and it never entered this report because no single day treated it as news. That is the whole argument for the deprecation calendar in one item. So the operating change is to stop measuring this scan by how much is new and start measuring it by how much is due — a slow week is precisely when the backfill sweep over deadlines, deprecations and policy earns its keep, because those items never announce themselves and they are the ones that break production. Second observation, minor but real: two days running, the most strategically significant item arrived as regulation rather than as a product, which suggests the provenance-and-disclosure thread deserves a standing watch rather than opportunistic coverage.
+tags: pulse,mcp,ecosystem,daily,deprecation,backfill,policy
+confidence: 0.8
+~~~
