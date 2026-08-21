@@ -1406,3 +1406,15 @@ lesson: Cursor made autonomy a product and CoSnitch proved what autonomy plus pe
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-21
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged five items — Claude Code's Aug 21 release, which hardens the skills/plugin trust surface directly (synced skill BODIES do not run locally, descriptions sanitized and labeled, no shadowing of local commands or MCP prompts, headersHelper mints short-lived tokens for plugin catalog fetches, Linux sandbox protected-path bypass closed, PermissionRequest hooks re-check the MUTATED input, "Open in editor" hardened against command injection); Claude Academy opening Aug 20 with ~20 free certificated courses including MCP implementation, which commoditizes the fluency-transfer half of a PRAGMA engagement; Gemini Enterprise Agent Platform GA with per-agent Identity credentials, minimized permissions, per-operation logging and multi-day agent state, plus Gemini Spark now driving desktop Chrome on logged-in accounts and saved passwords while returning control at the payment step; ~$633M of agent funding in twelve days (Cognition >$1B at $40B+, HappyRobot $150M at $1.2B, Zenity $125M at agent security) selecting on measurable operational outcomes; and — marked explicitly out-of-window since arXiv produced nothing new in 24h — the Context Engineering framework (arXiv 2603.09619) whose five criteria include the two we currently fail, isolation and provenance. No new frontier model from OpenAI, Google, Meta, Mistral, xAI, DeepSeek or Cohere in the window. No new proprietary-data vertical MCP server since Impala on Aug 19, and still none in signage.
+lesson: Anthropic shipped the patch for the exact write-path hole this report named 24 hours earlier, and Google and Cursor implemented the same two principles — provenance and isolation — in the same week. When a vendor patches the surface you identified, upgrade in the same week: publishing the fix also publishes the vulnerability to everyone who has not applied it. A public skill and a fetched web page still enter a Construct agent's context with the same authority as a memory file Bobby wrote himself, and that is now the fleet's clearest measurable gap.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
