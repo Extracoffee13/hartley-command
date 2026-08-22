@@ -1430,3 +1430,15 @@ lesson: Four vendors in four days have now converged on the write path as the re
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-22
+decision: Afternoon re-scan (14:00 ET) of the AI/agent ecosystem for The Construct; today's 06:15 ET report already existed and was valid, so this run VERIFIED it and BACKFILLED rather than overwriting five already-published bullets.
+outcome: Verified the morning report — 2026-08-22.md present, latest.json valid JSON with 5 bullets and a 14-entry history, praxis block already appended. Re-scan surfaced one real gap and appended it as bullet 6: computer use, the new BROWSER USE tool, the Skills API and the Files API went generally available on the Claude Platform on Aug 20 (Skills + Files also on Microsoft Foundry; computer/browser use coming to Vertex AI) — missed by the Aug 20, 21 and 22 scans. Checked and rejected two candidates as out-of-window and already stale: Cloudflare Kitesurf, the agent-first Rust/WASM browser runtime on V8 isolates, which shipped Aug 6-7, and the routine Aug 22 Claude Code release notes (cost estimates, cloud sessions, Bedrock and Alpine support). No new frontier model in the window — fourth consecutive scan. Still no signage-industry MCP server.
+lesson: The scan's own source list is a failure surface. A list that catches Cloudflare's blog and AWS's ML blog but not Anthropic's engineering blog and platform changelog will systematically under-report the vendor The Construct is most dependent on — a GA of this size should never arrive as a two-day-late backfill, so add both sources. Substantively, VERSIONED API-addressable skills turn our skill corpus from configuration into a pinnable, diffable, rollback-able ASSET, which is the missing half of the productization case (a PRAGMA engagement that ships versioned skills is software; one that ships a copied folder is consulting) and the precondition for the per-agent attribution this whole week has argued for. Operationally: when a scheduled job finds its own output already written and valid, verify and append — never overwrite already-published work with a partial re-scan.
+tags: pulse,mcp,ecosystem,daily,backfill,skills-api
+confidence: 0.8
+~~~
