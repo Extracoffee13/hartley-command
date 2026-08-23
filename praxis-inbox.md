@@ -1442,3 +1442,15 @@ lesson: The scan's own source list is a failure surface. A list that catches Clo
 tags: pulse,mcp,ecosystem,daily,backfill,skills-api
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-23
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged five items — Slack Code (Aug 21, missed by the Aug 21 and Aug 22 scans), which makes third-party coding agents (Claude Code, Devin, Copilot, Vercel) first-class members of a dedicated Slack CHANNEL with its own conversation, plan, code-diff and live-preview tabs, free on every Slack plan, with the channel APIs opening to any developer and marketing campaigns and legal review named as the next channel types; Google Antigravity leaving its own destination IDE to run as an extension inside VS Code, Visual Studio 2026 preview, the JetBrains suite from 2026.2.1 and Zed, carrying one account plus Gemini Enterprise per-agent identity and per-operation logging across every surface; OpenAI cutting GPT-5.6 Sol more than 20 percent to $4/$20 through at least Nov 21, the third of four frontier price moves in a fortnight to go down (Anthropic made Sonnet 5's $2/$10 permanent and cancelled the Sept 1 hike to $3/$15; Gemini 3.7 Flash halved but doubles Jan 1; DeepSeek raised some output tokens up to 1,100 percent); arXiv 2607.00151 (SmoothAgent, marked out-of-window) showing that context offloading, reduction and isolation each invalidate the KV cache and force a re-prefill, so the quality move carries a latency bill, fixable by lookahead transformation for up to 11.9x lower TTFT; and a logged NEGATIVE — no new frontier model from OpenAI, Google, Meta, Mistral, xAI, DeepSeek or Cohere in the window, fifth consecutive scan, and still no signage-industry MCP server.
+lesson: Two vendors on the same day conceded that the agent goes to where the work already happens rather than demanding its own destination — Slack put the agent in a channel, Google put Antigravity in everyone else's IDE — and in both cases IDENTITY and GOVERNANCE travel with the agent, not with the window it opened in. Slack Code is the commercial validation of the buzz-agent-flock architecture, shipped free into the workspace Bobby already uses, and its plan-tab-before-diff-tab shape is the tier-3 approval gate rendered as UI rather than policy: adopt that shape for Hermes dispatch, which today is invisible to anyone but Bobby and leaves no per-step artifact. The uncomfortable corollary for PRAGMA is that a client-facing agent living in the client's existing Slack, GBP editor or inbox beats a PRAGMA dashboard the client must remember to open. Second, this job missed a major distribution story for the second consecutive day; yesterday's fix (add Anthropic's blog and changelog) was too narrow — add Slack, Salesforce, Microsoft 365 and Google Workspace, because a source list built only from AI-lab blogs reports capability and misses distribution, which is where the week's actual decisions were made.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
