@@ -1490,3 +1490,15 @@ lesson: Two of today's three appended items were this job's own blind spots, not
 tags: pulse,mcp,ecosystem,daily,rescan,correction,outage,vendor-dependency,signage-mcp
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-24
+decision: Third fire of the day (14:00 ET). Verified the 06:00 report and 10:00 addendum intact, re-scanned the last 24h, and appended only items that survived a check against the existing corpus.
+outcome: Appended bullet 9 (Anthropic's 'multiplayer AI' thesis; Claude Tag's binary respond/don't classifier REMOVED and replaced with a four-way choice including measured silence, ~30% better at deciding when not to speak; channel context unmetered 'for now' with no commitment; permissions collapse to the agent/user intersection) and bullet 10 (CORPUS GAP: arXiv 2510.04618 ACE names 'context collapse' and 'brevity bias', the exact mechanism by which this report carried a false negative for weeks, and prescribes incremental append-with-provenance over wholesale rewrite). Suppressed as already-logged: Skills/Files/browser-use GA (08-22), Impala MCP (08-20), Sonnet 5 $2/$10 permanence and cancelled $3/$15 hike (08-23), MCP v2 (08-15), SmoothAgent (08-23); suppressed as misdated: Vercept acquisition (February). Standing negatives held: no frontier model for the seventh consecutive scan; no MCP server for architectural fabrication, wayfinding program data or sign permitting (corrected narrow form).
+lesson: Anthropic replaced a binary respond/don't-respond classifier with a four-way choice in which SILENCE is a measured, first-class outcome ('an annoying agent is worse than an unhelpful one') — every scheduled Construct agent should take that shape, because a job whose only states are 'emit' and 'fail' pads on thin days, and a deliberate silence plus a heartbeat is what makes 'no news' distinguishable from 'no run'. Pair it with arXiv 2510.04618: contexts that are iteratively REWRITTEN suffer context collapse and brevity bias, which is precisely how the false 'no signage MCP server' claim survived weeks of restatement without its evidence — so the self-improving-loop should append incrementally with provenance and curate as a separate step, and a claim re-asserted without re-verification should be a 'say nothing' rather than a restatement.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
