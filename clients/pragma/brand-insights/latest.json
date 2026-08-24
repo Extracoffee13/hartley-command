@@ -1,31 +1,31 @@
 {
   "schema_version": "2.0",
-  "ts": "2026-08-01T11:00:07.869693Z",
+  "ts": "2026-08-24T14:24:51.494791Z",
   "client": "pragma",
   "client_display_name": "PRAGMA",
   "product_name": "PRAGMA Mirror",
   "scan_status": "live",
   "visibility_score": {
-    "composite": 44,
+    "composite": 50,
     "trend_7day": [
-      58,
       39,
       44,
       44,
       44,
       44,
-      44
+      44,
+      50
     ],
     "color_threshold": {
       "red_below": 50,
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "RED \u2014 composite brand visibility 44/100 across AEO, SEO, GEO and LLM surfaces."
+    "interpretation": "YELLOW \u2014 composite brand visibility 50/100 across AEO, SEO, GEO and LLM surfaces."
   },
   "modules": {
     "aeo": {
-      "score": 65,
+      "score": 74,
       "cited": true,
       "queries": [
         {
@@ -36,7 +36,7 @@
         },
         {
           "query": "Who makes the best wayfinding signs in Florida?",
-          "cited": false,
+          "cited": true,
           "surface": "Perplexity",
           "source": "browser_probe"
         },
@@ -66,7 +66,7 @@
         },
         {
           "query": "Where can I get custom business signs installed in Clay County Florida?",
-          "cited": false,
+          "cited": true,
           "surface": "Perplexity",
           "source": "browser_probe"
         },
@@ -84,13 +84,13 @@
         },
         {
           "query": "Which companies install community monument signs in master-planned communities?",
-          "cited": false,
+          "cited": true,
           "surface": "Perplexity",
           "source": "browser_probe"
         },
         {
           "query": "Who is the best environmental graphic design firm in the Southeast?",
-          "cited": false,
+          "cited": true,
           "surface": "Perplexity",
           "source": "browser_probe"
         },
@@ -102,7 +102,7 @@
         },
         {
           "query": "What companies handle military base signage contracts?",
-          "cited": false,
+          "cited": true,
           "surface": "Perplexity",
           "source": "browser_probe"
         },
@@ -144,7 +144,7 @@
         },
         {
           "query": "Where can I get custom business signs installed in Clay County Florida?",
-          "cited": true,
+          "cited": false,
           "surface": "Google AI Overview",
           "source": "browser_probe"
         },
@@ -182,6 +182,84 @@
           "query": "What companies handle military base signage contracts?",
           "cited": true,
           "surface": "Google AI Overview",
+          "source": "browser_probe"
+        },
+        {
+          "query": "Who makes the best monument signs in Florida?",
+          "cited": true,
+          "surface": "Grok",
+          "source": "browser_probe"
+        },
+        {
+          "query": "Who makes the best wayfinding signs in Florida?",
+          "cited": true,
+          "surface": "Grok",
+          "source": "browser_probe"
+        },
+        {
+          "query": "Who makes the best homebuilder and community signs in Florida?",
+          "cited": true,
+          "surface": "Grok",
+          "source": "browser_probe"
+        },
+        {
+          "query": "Who designs the best master-planned community entrances in Florida?",
+          "cited": false,
+          "surface": "Grok",
+          "source": "browser_probe"
+        },
+        {
+          "query": "Who makes the best luxury hotel and resort signage in Florida?",
+          "cited": true,
+          "surface": "Grok",
+          "source": "browser_probe"
+        },
+        {
+          "query": "Who are the best commercial sign companies in Jacksonville FL?",
+          "cited": false,
+          "surface": "Grok",
+          "source": "browser_probe"
+        },
+        {
+          "query": "Where can I get custom business signs installed in Clay County Florida?",
+          "cited": true,
+          "surface": "Grok",
+          "source": "browser_probe"
+        },
+        {
+          "query": "What are the top home builder signage companies in Florida?",
+          "cited": true,
+          "surface": "Grok",
+          "source": "browser_probe"
+        },
+        {
+          "query": "Who does model home display signage in Jacksonville?",
+          "cited": true,
+          "surface": "Grok",
+          "source": "browser_probe"
+        },
+        {
+          "query": "Which companies install community monument signs in master-planned communities?",
+          "cited": false,
+          "surface": "Grok",
+          "source": "browser_probe"
+        },
+        {
+          "query": "Who is the best environmental graphic design firm in the Southeast?",
+          "cited": false,
+          "surface": "Grok",
+          "source": "browser_probe"
+        },
+        {
+          "query": "Which sign companies specialize in wayfinding systems for campuses?",
+          "cited": false,
+          "surface": "Grok",
+          "source": "browser_probe"
+        },
+        {
+          "query": "What companies handle military base signage contracts?",
+          "cited": true,
+          "surface": "Grok",
           "source": "browser_probe"
         }
       ],
@@ -194,7 +272,7 @@
       "pages": []
     },
     "llm": {
-      "score": 13,
+      "score": 30,
       "questions": [
         {
           "q": "Who makes the best monument signs in Florida? (parametric)",
@@ -208,7 +286,7 @@
         },
         {
           "q": "Who makes the best homebuilder and community signs in Florida? (parametric)",
-          "cited": false,
+          "cited": true,
           "surface": "ChatGPT"
         },
         {
@@ -233,17 +311,17 @@
         },
         {
           "q": "What are the top home builder signage companies in Florida? (parametric)",
-          "cited": false,
+          "cited": true,
           "surface": "ChatGPT"
         },
         {
           "q": "Who does model home display signage in Jacksonville? (parametric)",
-          "cited": false,
+          "cited": true,
           "surface": "ChatGPT"
         },
         {
           "q": "Which companies install community monument signs in master-planned communities? (parametric)",
-          "cited": false,
+          "cited": true,
           "surface": "ChatGPT"
         },
         {
@@ -282,51 +360,6 @@
           "surface": "Gemini"
         },
         {
-          "q": "Who makes the best luxury hotel and resort signage in Florida? (parametric)",
-          "cited": true,
-          "surface": "Gemini"
-        },
-        {
-          "q": "Who are the best commercial sign companies in Jacksonville FL? (parametric)",
-          "cited": false,
-          "surface": "Gemini"
-        },
-        {
-          "q": "Where can I get custom business signs installed in Clay County Florida? (parametric)",
-          "cited": false,
-          "surface": "Gemini"
-        },
-        {
-          "q": "What are the top home builder signage companies in Florida? (parametric)",
-          "cited": true,
-          "surface": "Gemini"
-        },
-        {
-          "q": "Who does model home display signage in Jacksonville? (parametric)",
-          "cited": true,
-          "surface": "Gemini"
-        },
-        {
-          "q": "Which companies install community monument signs in master-planned communities? (parametric)",
-          "cited": false,
-          "surface": "Gemini"
-        },
-        {
-          "q": "Who is the best environmental graphic design firm in the Southeast? (parametric)",
-          "cited": false,
-          "surface": "Gemini"
-        },
-        {
-          "q": "Which sign companies specialize in wayfinding systems for campuses? (parametric)",
-          "cited": false,
-          "surface": "Gemini"
-        },
-        {
-          "q": "What companies handle military base signage contracts? (parametric)",
-          "cited": false,
-          "surface": "Gemini"
-        },
-        {
           "q": "Who makes the best monument signs in Florida? (parametric)",
           "cited": false,
           "surface": "Claude"
@@ -337,57 +370,7 @@
           "surface": "Claude"
         },
         {
-          "q": "Who makes the best homebuilder and community signs in Florida? (parametric)",
-          "cited": false,
-          "surface": "Claude"
-        },
-        {
           "q": "Who designs the best master-planned community entrances in Florida? (parametric)",
-          "cited": false,
-          "surface": "Claude"
-        },
-        {
-          "q": "Who makes the best luxury hotel and resort signage in Florida? (parametric)",
-          "cited": false,
-          "surface": "Claude"
-        },
-        {
-          "q": "Who are the best commercial sign companies in Jacksonville FL? (parametric)",
-          "cited": false,
-          "surface": "Claude"
-        },
-        {
-          "q": "Where can I get custom business signs installed in Clay County Florida? (parametric)",
-          "cited": false,
-          "surface": "Claude"
-        },
-        {
-          "q": "What are the top home builder signage companies in Florida? (parametric)",
-          "cited": false,
-          "surface": "Claude"
-        },
-        {
-          "q": "Who does model home display signage in Jacksonville? (parametric)",
-          "cited": false,
-          "surface": "Claude"
-        },
-        {
-          "q": "Which companies install community monument signs in master-planned communities? (parametric)",
-          "cited": false,
-          "surface": "Claude"
-        },
-        {
-          "q": "Who is the best environmental graphic design firm in the Southeast? (parametric)",
-          "cited": false,
-          "surface": "Claude"
-        },
-        {
-          "q": "Which sign companies specialize in wayfinding systems for campuses? (parametric)",
-          "cited": false,
-          "surface": "Claude"
-        },
-        {
-          "q": "What companies handle military base signage contracts? (parametric)",
           "cited": false,
           "surface": "Claude"
         }
@@ -396,8 +379,8 @@
         {
           "surface": "ChatGPT / Claude / Gemini (consumer)",
           "method": "browser pass \u00b7 your own logins \u00b7 $0 \u00b7 key-free",
-          "checks": 39,
-          "mentions": 5
+          "checks": 20,
+          "mentions": 6
         }
       ]
     },
@@ -441,115 +424,563 @@
     "AI consultancies",
     "Microsoft Frontier (enterprise)"
   ],
-  "recommendations_count": 49,
-  "recommendations_high": 44,
+  "recommendations_count": 30,
+  "recommendations_high": 25,
   "_meta": {
     "writer": "pragma-mirror call (run.py)",
-    "computed_at": "2026-08-01T11:00:07.869693Z",
+    "computed_at": "2026-08-24T14:24:51.494791Z",
     "recommend_only": true,
     "data_source": "GSC + browser-probe (key-free)",
     "paid_apis": "none \u2014 Tavily/SerpAPI retired 2026-07-08",
     "degraded_modules": []
   },
   "aivi": {
-    "composite": 44,
+    "composite": 50,
     "trend_7day": [
-      58,
       39,
       44,
       44,
       44,
       44,
-      44
+      44,
+      50
     ],
     "color_threshold": {
       "red_below": 50,
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "RED \u2014 composite brand visibility 44/100 across AEO, SEO, GEO and LLM surfaces.",
+    "interpretation": "YELLOW \u2014 composite brand visibility 50/100 across AEO, SEO, GEO and LLM surfaces.",
     "subscores": {
-      "mention_score": 65,
+      "mention_score": 74,
       "citation_score": 50,
       "sentiment_score": 50,
       "ranking_score": 36,
-      "surface_coverage_score": 13
+      "surface_coverage_score": 30
     }
   },
   "ai_surfaces": [
     {
       "surface": "ChatGPT / Claude / Gemini (consumer)",
       "method": "browser pass \u00b7 your own logins \u00b7 $0 \u00b7 key-free",
-      "checks": 39,
-      "mentions": 5
+      "checks": 20,
+      "mentions": 6
     }
   ],
   "surfaces": {
     "claude": {
       "cited": false,
       "query": "Who makes the best monument signs in Florida? (parametric)",
-      "checked_at": "2026-07-27T17:47:15Z",
+      "checked_at": "2026-08-24T10:58:38.155019Z",
       "mentions": 0,
       "citations": []
     },
     "chatgpt": {
-      "cited": false,
+      "cited": true,
       "query": "Who makes the best monument signs in Florida? (parametric)",
-      "checked_at": "2026-07-27T17:47:15Z",
-      "mentions": 0,
+      "checked_at": "2026-08-24T10:58:38.155019Z",
+      "mentions": 4,
       "citations": []
     },
     "gemini": {
       "cited": true,
       "query": "Who makes the best monument signs in Florida? (parametric)",
-      "checked_at": "2026-07-27T17:47:15Z",
-      "mentions": 5,
+      "checked_at": "2026-08-24T10:58:38.155019Z",
+      "mentions": 2,
       "citations": []
     },
     "perplexity": {
       "cited": true,
       "query": "Who makes the best monument signs in Florida?",
-      "checked_at": "2026-07-27T17:47:15Z",
-      "mentions": 6,
+      "checked_at": "2026-08-24T10:58:38.155019Z",
+      "mentions": 10,
       "citations": [
-        "Who makes the best monument signs in Florida?",
-        "Who makes the best homebuilder and community signs in Florida?",
-        "Who makes the best luxury hotel and resort signage in Florida?",
-        "What are the top home builder signage companies in Florida?",
-        "Who does model home display signage in Jacksonville?"
-      ]
-    },
-    "google_ai_overview": {
-      "cited": true,
-      "query": "Who makes the best monument signs in Florida?",
-      "checked_at": "2026-08-01T11:00:07.869693Z",
-      "mentions": 17,
-      "citations": [
-        "Who makes the best monument signs in Florida?",
-        "Who makes the best homebuilder and community signs in Florida?",
-        "Who makes the best luxury hotel and resort signage in Florida?",
-        "What are the top home builder signage companies in Florida?",
-        "Who does model home display signage in Jacksonville?",
         "Who makes the best monument signs in Florida?",
         "Who makes the best wayfinding signs in Florida?",
         "Who makes the best homebuilder and community signs in Florida?",
-        "Who designs the best master-planned community entrances in Florida?",
         "Who makes the best luxury hotel and resort signage in Florida?",
         "Where can I get custom business signs installed in Clay County Florida?",
         "What are the top home builder signage companies in Florida?",
         "Who does model home display signage in Jacksonville?",
         "Which companies install community monument signs in master-planned communities?",
         "Who is the best environmental graphic design firm in the Southeast?",
+        "What companies handle military base signage contracts?"
+      ]
+    },
+    "google_ai_overview": {
+      "cited": true,
+      "query": "Who makes the best monument signs in Florida?",
+      "checked_at": "2026-08-24T14:24:51.494791Z",
+      "mentions": 29,
+      "citations": [
+        "Who makes the best monument signs in Florida?",
+        "Who makes the best wayfinding signs in Florida?",
+        "Who makes the best homebuilder and community signs in Florida?",
+        "Who makes the best luxury hotel and resort signage in Florida?",
+        "Where can I get custom business signs installed in Clay County Florida?",
+        "What are the top home builder signage companies in Florida?",
+        "Who does model home display signage in Jacksonville?",
+        "Which companies install community monument signs in master-planned communities?",
+        "Who is the best environmental graphic design firm in the Southeast?",
+        "What companies handle military base signage contracts?",
+        "Who makes the best monument signs in Florida?",
+        "Who makes the best wayfinding signs in Florida?",
+        "Who makes the best homebuilder and community signs in Florida?",
+        "Who designs the best master-planned community entrances in Florida?",
+        "Who makes the best luxury hotel and resort signage in Florida?",
+        "What are the top home builder signage companies in Florida?",
+        "Who does model home display signage in Jacksonville?",
+        "Which companies install community monument signs in master-planned communities?",
+        "Who is the best environmental graphic design firm in the Southeast?",
         "Which sign companies specialize in wayfinding systems for campuses?",
+        "What companies handle military base signage contracts?",
+        "Who makes the best monument signs in Florida?",
+        "Who makes the best wayfinding signs in Florida?",
+        "Who makes the best homebuilder and community signs in Florida?",
+        "Who makes the best luxury hotel and resort signage in Florida?",
+        "Where can I get custom business signs installed in Clay County Florida?",
+        "What are the top home builder signage companies in Florida?",
+        "Who does model home display signage in Jacksonville?",
+        "What companies handle military base signage contracts?"
+      ]
+    },
+    "grok": {
+      "cited": true,
+      "query": "Who makes the best monument signs in Florida?",
+      "checked_at": "2026-08-24T10:58:38.155019Z",
+      "mentions": 9,
+      "citations": [
+        "Who makes the best monument signs in Florida?",
+        "Who makes the best wayfinding signs in Florida?",
+        "Who makes the best homebuilder and community signs in Florida?",
+        "Who makes the best luxury hotel and resort signage in Florida?",
+        "Where can I get custom business signs installed in Clay County Florida?",
+        "What are the top home builder signage companies in Florida?",
+        "Who does model home display signage in Jacksonville?",
         "What companies handle military base signage contracts?"
       ]
     }
   },
   "llm_browser": {
-    "ts": "2026-07-27T17:47:15Z",
+    "ts": "2026-08-24T10:58:38.155019Z",
     "schema": "v2-segmented",
-    "probe": "supplemental full 13-question multi-surface probe 2026-07-27 (all tracked answer-unit pages, re-measured after 2026-07-26/27 article proof edits). AEO web-grounded: Perplexity 5/13 cite brand9signs.com (monument, homebuilder/community, luxury hotel/resort, top-homebuilder, model-home-Jax); Google AI Overview/featured-snippet 12/13 cite brand9signs.com (all but Jacksonville-commercial; master-planned-entrances cited-but-not-named). LLM parametric (browsing OFF, own logins): ChatGPT 0/13 named (Q military-base named B9 but web-grounded w/ source chips = not cold recall -> false); Claude 0/13 (Opus 5 recalled account-memory every chat and explicitly stated B9 is NOT in training data -> scored false, parametric only); Gemini (Flash) 5/13 named (wayfinding, homebuilder/community, luxury hotel/resort, top-homebuilder, model-home-Jax). Note: computer-use unavailable in scheduled run, so Hermes state not visually verified; used isolated Chrome MCP tab group to avoid collision.",
+    "probe": "weekly PARAMETRIC LLM + AEO citation probe 2026-08-24 (browser, own Chrome logins). AEO measured FRESH on all three surfaces (Perplexity, Google AI Overview, Grok) across the full 13-question tracked set -- Grok is a live re-probe this week, NOT carried forward from a backup as it was on 2026-08-21. LLM parametric: ChatGPT complete (13/13). Gemini and Claude are PARTIAL this week -- the chat composers repeatedly failed to submit (Gemini 4/13 submitted, Claude 3/13 submitted); unsubmitted questions were OMITTED rather than scored 0, so the LLM denominator is 20 this week, not 39. Do not read the LLM pillar as a week-over-week trend.",
     "results": [
+      {
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who makes the best monument signs in Florida? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who makes the best wayfinding signs in Florida? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who makes the best homebuilder and community signs in Florida? (parametric)",
+        "mentioned": true,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who designs the best master-planned community entrances in Florida? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who makes the best luxury hotel and resort signage in Florida? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who are the best commercial sign companies in Jacksonville FL? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Where can I get custom business signs installed in Clay County Florida? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "What are the top home builder signage companies in Florida? (parametric)",
+        "mentioned": true,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who does model home display signage in Jacksonville? (parametric)",
+        "mentioned": true,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Which companies install community monument signs in master-planned communities? (parametric)",
+        "mentioned": true,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who is the best environmental graphic design firm in the Southeast? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Which sign companies specialize in wayfinding systems for campuses? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "What companies handle military base signage contracts? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Gemini",
+        "query": "Who makes the best monument signs in Florida? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Gemini",
+        "query": "Who makes the best wayfinding signs in Florida? (parametric)",
+        "mentioned": true,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Gemini",
+        "query": "Who makes the best homebuilder and community signs in Florida? (parametric)",
+        "mentioned": true,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Gemini",
+        "query": "Who designs the best master-planned community entrances in Florida? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Claude",
+        "query": "Who makes the best monument signs in Florida? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Claude",
+        "query": "Who makes the best wayfinding signs in Florida? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Claude",
+        "query": "Who designs the best master-planned community entrances in Florida? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who makes the best monument signs in Florida?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who makes the best wayfinding signs in Florida?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who makes the best homebuilder and community signs in Florida?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who designs the best master-planned community entrances in Florida?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who makes the best luxury hotel and resort signage in Florida?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who are the best commercial sign companies in Jacksonville FL?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Where can I get custom business signs installed in Clay County Florida?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "What are the top home builder signage companies in Florida?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who does model home display signage in Jacksonville?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Which companies install community monument signs in master-planned communities?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who is the best environmental graphic design firm in the Southeast?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Which sign companies specialize in wayfinding systems for campuses?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "What companies handle military base signage contracts?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Google AI Overview",
+        "query": "Who makes the best monument signs in Florida?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Google AI Overview",
+        "query": "Who makes the best wayfinding signs in Florida?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Google AI Overview",
+        "query": "Who makes the best homebuilder and community signs in Florida?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Google AI Overview",
+        "query": "Who designs the best master-planned community entrances in Florida?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Google AI Overview",
+        "query": "Who makes the best luxury hotel and resort signage in Florida?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Google AI Overview",
+        "query": "Who are the best commercial sign companies in Jacksonville FL?",
+        "mentioned": false,
+        "cited_source": false,
+        "note": "no AI Overview box returned for this query"
+      },
+      {
+        "tier": "aeo",
+        "surface": "Google AI Overview",
+        "query": "Where can I get custom business signs installed in Clay County Florida?",
+        "mentioned": false,
+        "cited_source": false,
+        "note": "no AI Overview box returned for this query"
+      },
+      {
+        "tier": "aeo",
+        "surface": "Google AI Overview",
+        "query": "What are the top home builder signage companies in Florida?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Google AI Overview",
+        "query": "Who does model home display signage in Jacksonville?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Google AI Overview",
+        "query": "Which companies install community monument signs in master-planned communities?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Google AI Overview",
+        "query": "Who is the best environmental graphic design firm in the Southeast?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Google AI Overview",
+        "query": "Which sign companies specialize in wayfinding systems for campuses?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Google AI Overview",
+        "query": "What companies handle military base signage contracts?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Grok",
+        "query": "Who makes the best monument signs in Florida?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Grok",
+        "query": "Who makes the best wayfinding signs in Florida?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Grok",
+        "query": "Who makes the best homebuilder and community signs in Florida?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Grok",
+        "query": "Who designs the best master-planned community entrances in Florida?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "aeo",
+        "surface": "Grok",
+        "query": "Who makes the best luxury hotel and resort signage in Florida?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Grok",
+        "query": "Who are the best commercial sign companies in Jacksonville FL?",
+        "mentioned": true,
+        "cited_source": false
+      },
+      {
+        "tier": "aeo",
+        "surface": "Grok",
+        "query": "Where can I get custom business signs installed in Clay County Florida?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Grok",
+        "query": "What are the top home builder signage companies in Florida?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Grok",
+        "query": "Who does model home display signage in Jacksonville?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Grok",
+        "query": "Which companies install community monument signs in master-planned communities?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "aeo",
+        "surface": "Grok",
+        "query": "Who is the best environmental graphic design firm in the Southeast?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "aeo",
+        "surface": "Grok",
+        "query": "Which sign companies specialize in wayfinding systems for campuses?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "aeo",
+        "surface": "Grok",
+        "query": "What companies handle military base signage contracts?",
+        "mentioned": true,
+        "cited_source": true
+      },
       {
         "tier": "local",
         "surface": "local pack",
@@ -563,473 +994,20 @@
         "query": "best commercial sign shop in Jacksonville FL",
         "mentioned": false,
         "cited_source": false
-      },
-      {
-        "tier": "aeo",
-        "surface": "Perplexity",
-        "query": "Who makes the best monument signs in Florida?",
-        "mentioned": true,
-        "cited_source": true
-      },
-      {
-        "tier": "aeo",
-        "surface": "Perplexity",
-        "query": "Who makes the best wayfinding signs in Florida?",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "aeo",
-        "surface": "Perplexity",
-        "query": "Who makes the best homebuilder and community signs in Florida?",
-        "mentioned": true,
-        "cited_source": true
-      },
-      {
-        "tier": "aeo",
-        "surface": "Perplexity",
-        "query": "Who designs the best master-planned community entrances in Florida?",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "aeo",
-        "surface": "Perplexity",
-        "query": "Who makes the best luxury hotel and resort signage in Florida?",
-        "mentioned": true,
-        "cited_source": true
-      },
-      {
-        "tier": "aeo",
-        "surface": "Perplexity",
-        "query": "Who are the best commercial sign companies in Jacksonville FL?",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "aeo",
-        "surface": "Perplexity",
-        "query": "Where can I get custom business signs installed in Clay County Florida?",
-        "mentioned": true,
-        "cited_source": false
-      },
-      {
-        "tier": "aeo",
-        "surface": "Perplexity",
-        "query": "What are the top home builder signage companies in Florida?",
-        "mentioned": true,
-        "cited_source": true
-      },
-      {
-        "tier": "aeo",
-        "surface": "Perplexity",
-        "query": "Who does model home display signage in Jacksonville?",
-        "mentioned": true,
-        "cited_source": true
-      },
-      {
-        "tier": "aeo",
-        "surface": "Perplexity",
-        "query": "Which companies install community monument signs in master-planned communities?",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "aeo",
-        "surface": "Perplexity",
-        "query": "Who is the best environmental graphic design firm in the Southeast?",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "aeo",
-        "surface": "Perplexity",
-        "query": "Which sign companies specialize in wayfinding systems for campuses?",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "aeo",
-        "surface": "Perplexity",
-        "query": "What companies handle military base signage contracts?",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "aeo",
-        "surface": "Google AI Overview",
-        "query": "Who makes the best monument signs in Florida?",
-        "mentioned": true,
-        "cited_source": true
-      },
-      {
-        "tier": "aeo",
-        "surface": "Google AI Overview",
-        "query": "Who makes the best wayfinding signs in Florida?",
-        "mentioned": true,
-        "cited_source": true
-      },
-      {
-        "tier": "aeo",
-        "surface": "Google AI Overview",
-        "query": "Who makes the best homebuilder and community signs in Florida?",
-        "mentioned": true,
-        "cited_source": true
-      },
-      {
-        "tier": "aeo",
-        "surface": "Google AI Overview",
-        "query": "Who designs the best master-planned community entrances in Florida?",
-        "mentioned": false,
-        "cited_source": true
-      },
-      {
-        "tier": "aeo",
-        "surface": "Google AI Overview",
-        "query": "Who makes the best luxury hotel and resort signage in Florida?",
-        "mentioned": true,
-        "cited_source": true
-      },
-      {
-        "tier": "aeo",
-        "surface": "Google AI Overview",
-        "query": "Who are the best commercial sign companies in Jacksonville FL?",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "aeo",
-        "surface": "Google AI Overview",
-        "query": "Where can I get custom business signs installed in Clay County Florida?",
-        "mentioned": true,
-        "cited_source": true
-      },
-      {
-        "tier": "aeo",
-        "surface": "Google AI Overview",
-        "query": "What are the top home builder signage companies in Florida?",
-        "mentioned": true,
-        "cited_source": true
-      },
-      {
-        "tier": "aeo",
-        "surface": "Google AI Overview",
-        "query": "Who does model home display signage in Jacksonville?",
-        "mentioned": true,
-        "cited_source": true
-      },
-      {
-        "tier": "aeo",
-        "surface": "Google AI Overview",
-        "query": "Which companies install community monument signs in master-planned communities?",
-        "mentioned": true,
-        "cited_source": true
-      },
-      {
-        "tier": "aeo",
-        "surface": "Google AI Overview",
-        "query": "Who is the best environmental graphic design firm in the Southeast?",
-        "mentioned": true,
-        "cited_source": true
-      },
-      {
-        "tier": "aeo",
-        "surface": "Google AI Overview",
-        "query": "Which sign companies specialize in wayfinding systems for campuses?",
-        "mentioned": true,
-        "cited_source": true
-      },
-      {
-        "tier": "aeo",
-        "surface": "Google AI Overview",
-        "query": "What companies handle military base signage contracts?",
-        "mentioned": true,
-        "cited_source": true
-      },
-      {
-        "tier": "llm",
-        "surface": "ChatGPT",
-        "query": "Who makes the best monument signs in Florida? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "ChatGPT",
-        "query": "Who makes the best wayfinding signs in Florida? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "ChatGPT",
-        "query": "Who makes the best homebuilder and community signs in Florida? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "ChatGPT",
-        "query": "Who designs the best master-planned community entrances in Florida? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "ChatGPT",
-        "query": "Who makes the best luxury hotel and resort signage in Florida? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "ChatGPT",
-        "query": "Who are the best commercial sign companies in Jacksonville FL? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "ChatGPT",
-        "query": "Where can I get custom business signs installed in Clay County Florida? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "ChatGPT",
-        "query": "What are the top home builder signage companies in Florida? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "ChatGPT",
-        "query": "Who does model home display signage in Jacksonville? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "ChatGPT",
-        "query": "Which companies install community monument signs in master-planned communities? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "ChatGPT",
-        "query": "Who is the best environmental graphic design firm in the Southeast? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "ChatGPT",
-        "query": "Which sign companies specialize in wayfinding systems for campuses? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "ChatGPT",
-        "query": "What companies handle military base signage contracts? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Gemini",
-        "query": "Who makes the best monument signs in Florida? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Gemini",
-        "query": "Who makes the best wayfinding signs in Florida? (parametric)",
-        "mentioned": true,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Gemini",
-        "query": "Who makes the best homebuilder and community signs in Florida? (parametric)",
-        "mentioned": true,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Gemini",
-        "query": "Who designs the best master-planned community entrances in Florida? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Gemini",
-        "query": "Who makes the best luxury hotel and resort signage in Florida? (parametric)",
-        "mentioned": true,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Gemini",
-        "query": "Who are the best commercial sign companies in Jacksonville FL? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Gemini",
-        "query": "Where can I get custom business signs installed in Clay County Florida? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Gemini",
-        "query": "What are the top home builder signage companies in Florida? (parametric)",
-        "mentioned": true,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Gemini",
-        "query": "Who does model home display signage in Jacksonville? (parametric)",
-        "mentioned": true,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Gemini",
-        "query": "Which companies install community monument signs in master-planned communities? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Gemini",
-        "query": "Who is the best environmental graphic design firm in the Southeast? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Gemini",
-        "query": "Which sign companies specialize in wayfinding systems for campuses? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Gemini",
-        "query": "What companies handle military base signage contracts? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Claude",
-        "query": "Who makes the best monument signs in Florida? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Claude",
-        "query": "Who makes the best wayfinding signs in Florida? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Claude",
-        "query": "Who makes the best homebuilder and community signs in Florida? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Claude",
-        "query": "Who designs the best master-planned community entrances in Florida? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Claude",
-        "query": "Who makes the best luxury hotel and resort signage in Florida? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Claude",
-        "query": "Who are the best commercial sign companies in Jacksonville FL? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Claude",
-        "query": "Where can I get custom business signs installed in Clay County Florida? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Claude",
-        "query": "What are the top home builder signage companies in Florida? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Claude",
-        "query": "Who does model home display signage in Jacksonville? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Claude",
-        "query": "Which companies install community monument signs in master-planned communities? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Claude",
-        "query": "Who is the best environmental graphic design firm in the Southeast? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Claude",
-        "query": "Which sign companies specialize in wayfinding systems for campuses? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Claude",
-        "query": "What companies handle military base signage contracts? (parametric)",
-        "mentioned": false,
-        "cited_source": false
       }
     ],
     "summary": {
-      "Perplexity (AEO)": "5/13 cited (brand9signs.com); 6/13 named",
-      "Google AI Overview (AEO)": "12/13 cited (brand9signs.com); 11/13 named",
-      "AEO cited (all surfaces)": "17/26 cited",
-      "local pack (GEO)": "1/2 named",
-      "ChatGPT (LLM parametric)": "0/13 named",
-      "Gemini (LLM parametric)": "5/13 named",
-      "Claude (LLM parametric)": "0/13 named (account-memory active every chat; B9 not in cold parametric recall)",
-      "LLM parametric (all surfaces)": "5/39 named"
-    }
+      "Perplexity (AEO)": "10/13 cited (brand9signs.com); 10/13 named",
+      "Google AI Overview (AEO)": "11/13 cited (brand9signs.com); 11/13 named (2 queries returned no AIO box: Jacksonville commercial, Clay County -- both returned a local pack instead, with B9 present in the Clay County pack)",
+      "Grok (AEO)": "8/13 cited; 9/13 named (FRESH probe -- prior week's 13/13 was carried forward from a 2026-08-10 backup and overstated Grok)",
+      "AEO cited (all surfaces)": "29/39 cited; 30/39 named",
+      "local pack (GEO)": "1/2 named (rows retained, not re-probed this week)",
+      "ChatGPT (LLM parametric)": "4/13 named -- but all four hits rendered as local-business/map cards with phone + Directions, i.e. web/maps-grounded despite the no-search prefix; NOT clean parametric",
+      "Gemini (LLM parametric)": "2/4 SUBMITTED questions named (9 of 13 could not be submitted); Gemini web-grounded this week ('Searching the web' shown despite the no-search prefix) and both hits were source-citation chips, not body recommendations",
+      "Claude (LLM parametric)": "0/3 SUBMITTED questions named (10 of 13 could not be submitted); on every submitted question Claude explicitly stated Brand 9 is not in its recall and refused to name it from account memory -- the documented memory confound, scored false per protocol",
+      "LLM parametric (all surfaces)": "6/20 named across SUBMITTED questions only (denominator is not comparable to prior weeks)"
+    },
+    "note": "2026-08-24: parametric naming remains the slowest-moving pillar and no surface produced a clean, unambiguous parametric hit. Every LLM 'named' this week is confounded by web/maps grounding (ChatGPT, Gemini). Claude self-documents the account-memory confound and declines. AEO is the pillar that is genuinely and cleanly measured this week; note that Grok's fresh number is materially lower than the carried-forward figure it replaces."
   },
   "sentiment": {
     "positive_pct": null,
@@ -1044,8 +1022,8 @@
     "enabled": false,
     "created_total": 0
   },
-  "last_scan_ts": "2026-08-01T11:00:07.869693Z",
-  "_mirrored_at": "2026-08-01T11:00:07.869693Z",
+  "last_scan_ts": "2026-08-24T14:24:51.494791Z",
+  "_mirrored_at": "2026-08-24T14:24:51.494791Z",
   "answer_units": [
     {
       "question": "Who installs custom AI agent teams for small businesses?",
@@ -1116,6 +1094,7 @@
       "url": "https://brand9signs.com/who-makes-the-best-monument-signs-in-florida/",
       "cited_by": [
         "Google AI Overview",
+        "Grok",
         "Perplexity"
       ],
       "traffic": null,
@@ -1127,7 +1106,9 @@
       "url": "https://brand9signs.com/who-makes-the-best-wayfinding-signs-in-florida/",
       "cited_by": [
         "Gemini",
-        "Google AI Overview"
+        "Google AI Overview",
+        "Grok",
+        "Perplexity"
       ],
       "traffic": null,
       "inquiries": 0,
@@ -1137,8 +1118,10 @@
       "question": "Who makes the best homebuilder and community signs in Florida?",
       "url": "https://brand9signs.com/who-makes-the-best-homebuilder-and-community-signs-in-florida/",
       "cited_by": [
+        "ChatGPT",
         "Gemini",
         "Google AI Overview",
+        "Grok",
         "Perplexity"
       ],
       "traffic": null,
@@ -1159,8 +1142,8 @@
       "question": "Who makes the best luxury hotel and resort signage in Florida?",
       "url": "https://brand9signs.com/who-makes-the-best-luxury-hotel-and-resort-signage-in-florida/",
       "cited_by": [
-        "Gemini",
         "Google AI Overview",
+        "Grok",
         "Perplexity"
       ],
       "traffic": null,
@@ -1179,7 +1162,8 @@
       "question": "Where can I get custom business signs installed in Clay County Florida?",
       "url": "https://brand9signs.com/where-can-i-get-custom-business-signs-installed-in-clay-county-florida/",
       "cited_by": [
-        "Google AI Overview"
+        "Grok",
+        "Perplexity"
       ],
       "traffic": null,
       "inquiries": 0,
@@ -1189,8 +1173,9 @@
       "question": "What are the top home builder signage companies in Florida?",
       "url": "https://brand9signs.com/what-are-the-top-home-builder-signage-companies-in-florida/",
       "cited_by": [
-        "Gemini",
+        "ChatGPT",
         "Google AI Overview",
+        "Grok",
         "Perplexity"
       ],
       "traffic": null,
@@ -1201,8 +1186,9 @@
       "question": "Who does model home display signage in Jacksonville?",
       "url": "https://brand9signs.com/who-does-model-home-display-signage-in-jacksonville/",
       "cited_by": [
-        "Gemini",
+        "ChatGPT",
         "Google AI Overview",
+        "Grok",
         "Perplexity"
       ],
       "traffic": null,
@@ -1213,7 +1199,9 @@
       "question": "Which companies install community monument signs in master-planned communities?",
       "url": "https://brand9signs.com/which-companies-install-community-monument-signs-in-master-planned-communities/",
       "cited_by": [
-        "Google AI Overview"
+        "ChatGPT",
+        "Google AI Overview",
+        "Perplexity"
       ],
       "traffic": null,
       "inquiries": 0,
@@ -1223,7 +1211,8 @@
       "question": "Who is the best environmental graphic design firm in the Southeast?",
       "url": "https://brand9signs.com/who-is-the-best-environmental-graphic-design-firm-in-the-southeast/",
       "cited_by": [
-        "Google AI Overview"
+        "Google AI Overview",
+        "Perplexity"
       ],
       "traffic": null,
       "inquiries": 0,
@@ -1243,7 +1232,9 @@
       "question": "What companies handle military base signage contracts?",
       "url": "https://brand9signs.com/what-companies-handle-military-base-signage-contracts/",
       "cited_by": [
-        "Google AI Overview"
+        "Google AI Overview",
+        "Grok",
+        "Perplexity"
       ],
       "traffic": null,
       "inquiries": 0,
