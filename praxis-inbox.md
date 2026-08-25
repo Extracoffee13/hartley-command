@@ -1514,3 +1514,15 @@ lesson: Anthropic's fix for context cost was DEFERRAL, not compression — keep 
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-25
+decision: Second fire of the day (10:00 ET). Verified the 06:00 report intact, re-scanned the last 24h, and ran every candidate through a falsification step before shipping - the control prescribed by this morning's own bullet 3.
+outcome: Appended bullet 5 - X launched its Ads MCP server (announced by @XBusiness, reported Aug 23, docs at docs.x.com/x-ads-api/mcp), making X the last major social ad platform to become agent-callable after Meta (April), TikTok (May), Pinterest and Snapchat; feeds live campaign data and analytics into Grok, Claude Code or any custom MCP-SDK agent. Logged with the corpus gap it exposed: this report opened the ad-platform-MCP thread on 06-29 with a YES and a prescription, dropped it on 07-01, and 'Pinterest', 'Snapchat' and 'X Ads' return zero matches corpus-wide. Suppressed by the falsification step as already logged: Claude Code self-hosted environments (08-13, 08-15), the MCP roadmap and stateless spec (08-24), arXiv 2603.09619 (carried 3x), the digital-signage CMS MCP servers (already-corrected false negative), SmoothAgent, Impala, Claude Academy, Sonnet 5 pricing, HappyRobot, Cognition. Standing negatives held on re-check: no frontier release in the window (GLM-5.2 Turbo on Aug 17 still the most recent); no MCP server for architectural sign fabrication, wayfinding program data or sign permitting.
+lesson: Three consecutive scans have found their most useful item in a thread this report STOPPED rather than a story it missed - Kitesurf this morning, seven unlogged outages yesterday, the ad-platform MCP thread today, where a June bullet issued a YES and a build prescription and then went quiet through two more platform launches. Missed stories announce themselves; abandoned threads decay in silence, so any bullet that ships a YES with a prescription should be entered on a dated re-check list rather than trusted to recur. Separately, the falsification step earned its keep on its first run: it killed four candidates the corpus already carried and caught a date contradiction inside the surviving source (published Sunday, describing the launch as 'on Friday'), which is now reported as a window instead of restated as fact - a critic paid to break the bullet found in one pass what an author asked to be careful had not found in weeks.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
