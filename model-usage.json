@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-01T07:25:17",
+  "generated": "2026-08-25T07:39:26",
   "schema_version": 1,
   "source": "Hermes logs (~/.hermes/logs/agent.log*, errors.log*)",
   "logs_scanned": [
@@ -8,39 +8,21 @@
   ],
   "status": "ok",
   "totals": {
-    "requests": 1475,
+    "requests": 1468,
     "errors_402": 0,
-    "other_errors": 183,
-    "in_tokens": 107052391,
-    "out_tokens": 628132
+    "other_errors": 83,
+    "in_tokens": 370765311,
+    "out_tokens": 605038
   },
   "models": [
     {
-      "model": "moonshotai/kimi-k2.7-code",
+      "model": "deepseek/deepseek-v4-flash",
       "provider": "openrouter",
-      "requests": 1259,
+      "requests": 1468,
       "errors_402": 0,
-      "other_errors": 68,
-      "in_tokens": 76775787,
-      "out_tokens": 560612
-    },
-    {
-      "model": "moonshotai/kimi-k3",
-      "provider": "openrouter",
-      "requests": 216,
-      "errors_402": 0,
-      "other_errors": 112,
-      "in_tokens": 30276604,
-      "out_tokens": 67520
-    },
-    {
-      "model": "moonshotai/kimi-k2.6",
-      "provider": "nvidia",
-      "requests": 0,
-      "errors_402": 0,
-      "other_errors": 3,
-      "in_tokens": 0,
-      "out_tokens": 0
+      "other_errors": 83,
+      "in_tokens": 370765311,
+      "out_tokens": 605038
     }
   ]
 }
