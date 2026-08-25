@@ -1502,3 +1502,15 @@ lesson: Anthropic replaced a binary respond/don't-respond classifier with a four
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-25
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct. Shipped only 4 bullets rather than padding to 5, applying yesterday's four-move rule (append / correct / route / say nothing).
+outcome: Flagged (1) Claude Code cutting its built-in claude-api skill from 200k+ to ~25k tokens by loading reference docs on demand, plus mid-work /permissions and mid-turn /add-dir; (2) CORPUS GAP — Cloudflare's Kitesurf agent-first browser (Aug 6, Rust, V8 isolates on Workers, no Chromium, 3-7x less CPU/memory, CDP-compatible, free beta via Browser Run), never once mentioned in this corpus; (3) CORPUS GAP — arXiv 2601.14351 'AI Office' reporting >90% internal error interception via strict role boundaries and OPPOSING incentives; (4) standing negatives held — no frontier model for the EIGHTH consecutive scan, no MCP server for architectural fabrication / wayfinding / sign permitting (checked directories directly, with PulseMCP submission-pause lag noted), and Claude's first clean 24h uptime after seven incidents in twenty-four days. Suppressed as already logged: Cognition $40B talks, HappyRobot $150M, Rechat and Green Street MCP servers, Reel Estate MCP, Gemini 3.7 Flash, Claude Academy, AgentCore, the Cowork Chrome side panel.
+lesson: Anthropic's fix for context cost was DEFERRAL, not compression — keep every detail at full fidelity and load reference docs on demand — which is a better answer to ACE's brevity bias than the append-with-provenance rule this report drew yesterday, and it applies directly to our front-loaded skill manuals. Pair it with arXiv 2601.14351: >90% of internal errors were intercepted by giving agents opposing incentives, and the two corrections this report shipped yesterday (a false negative restated for weeks, seven unlogged outages) both failed for want of an adversary rather than for want of care — so add one falsification step inside Pulse that tries to break each bullet before it ships and drops what it breaks, rather than asking the author to be more careful.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
