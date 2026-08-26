@@ -1550,3 +1550,15 @@ lesson: Yesterday's lesson was to check the vendor's release notes before invent
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-26
+decision: Second fire of the day (10:00 ET). Verified the 06:00 report intact, re-scanned the window, ran every candidate through the falsification step, and appended only what survived.
+outcome: Appended two bullets. (5) Runable closed a $21M Series A today co-led by Susquehanna Venture Capital and Nexus Venture Partners at a $65M post-money, extending its build-a-small-business agent into the GROW side - ad campaigns, social, SEO and explicitly optimising a business's presence in AI chatbot results, which is PRAGMA's own wedge stated as a competitor roadmap; company-reported $2M ARR in three weeks and 1.5M users, unaudited. Zero corpus matches. Re-check dated 2026-09-26 on whether the AI-visibility feature actually ships. (6) CORPUS GAP - Claude Code 2.1.223 (Aug 6) patched a Bash permission BYPASS where a crafted command could hide part of itself from the permission check, plus tab/invisible-Unicode padding hiding part of a command from the approval dialog, dynamic import() escaping the workflow sandbox, and bypassPermissions in an agent definition ignoring the org disable policy; a later August release warns on allow rules with a wildcard before the subcommand and adds an Auto mode tab to /permissions. Zero matches for the vulnerability strings across 58 files. Frontier re-checked and held for the ELEVENTH consecutive scan. Suppressed as already carried: Mythos 5 / Defender Advantage Fund / Cyber Verification Program (08-24), Getty Images MCP (5x since 08-13), AVCLabs (08-01), Reel Estate (07-23), Pipedrive (5x since 07-23), and the whole arXiv slate returned by search (2603.09619, 2510.04618, 2602.05447, SmoothAgent, 2606.20683). Signage negative still carried from 08-25, not re-checked.
+lesson: The vendor's release notes are operational documents, not marketing, and this corpus has now missed something material in them twice in three days - yesterday a capability we were rebuilding by hand, today a permission-integrity hole in the boundary our unattended automation depends on. Hermes executes credentialed shell work with no human reading an approval dialog, so a permission model whose evaluated string differs from its executed string is the one bug class that architecture cannot absorb: confirm the fleet is past 2.1.223 and audit Bash allow rules for a wildcard placed before the subcommand, because such a rule reads narrow and behaves broad. Separately, a funded competitor has now put PRAGMA's own sentence in its roadmap, and the answer is not to compete with a self-serve agent on price but to sell what 1.5 million two-person teams structurally cannot generate - a dated and re-measured AAIR score, documented-relationship proof, and an attribution chain from an AI answer to a booked job.
+tags: pulse,mcp,ecosystem,daily,security,competitive
+confidence: 0.8
+~~~
