@@ -1441,11 +1441,15 @@ function renderGrid() {
       const explicit = String(c.zone || '').trim().toLowerCase();
       if (explicit === '1' || explicit === 'zone 1' || explicit === 'zone1') return 'zone1';
       if (explicit === '2' || explicit === 'zone 2' || explicit === 'zone2') return 'zone2';
+      if (explicit === '3' || explicit === 'zone 3' || explicit === 'zone3') return 'zone3';
       if (c.office) return 'none';
       const lc = String(c.localContact || c.contact || '').toLowerCase();
       if (!lc || lc.includes('jax corp office')) return 'none';
-      if (lc.includes('kyle') && !lc.includes('cassandra')) return 'zone1';
-      if (lc.includes('cassandra') && !lc.includes('kyle')) return 'zone2';
+      // Assign only when the contact name is unambiguous — a cell naming two
+      // reps shouldn't silently land in one zone. Zone 3 added 2026-08-26.
+      const hits = [['kyle','zone1'],['cassandra','zone2'],['kat','zone3']]
+        .filter(([name]) => lc.includes(name));
+      if (hits.length === 1) return hits[0][1];
       return 'none';
     };
     const areaLabel = {
@@ -1471,8 +1475,9 @@ function renderGrid() {
         const zoneMeta = {
           zone1: {label:'Zone 1 — Kyle Bazler'},
           zone2: {label:'Zone 2 — Cassandra Clitus'},
+          zone3: {label:'Zone 3 — Kat Blasini'},
         };
-        ['zone1','zone2'].forEach(zone => {
+        ['zone1','zone2','zone3'].forEach(zone => {
           const zoneItems = items.filter(c => zoneOf(c) === zone);
           if (!zoneItems.length) return;
           html.push(`<div class="zone-header"><div>📍 ${zoneMeta[zone].label}</div><div>${zoneItems.length} projects</div></div>`);
