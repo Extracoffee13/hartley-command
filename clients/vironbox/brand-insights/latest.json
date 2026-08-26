@@ -1,28 +1,22 @@
 {
   "schema_version": "2.0",
-  "ts": "2026-08-26T11:00:18.899454Z",
-  "client": "b9",
-  "client_display_name": "Brand 9 Signs",
+  "ts": "2026-08-26T11:00:19.180685Z",
+  "client": "vironbox",
+  "client_display_name": "VironBox",
   "product_name": "PRAGMA Mirror",
   "scan_status": "live",
   "visibility_score": {
-    "composite": 54,
+    "composite": 50,
     "live_pulse": 50,
     "trend_7day": [
-      49,
-      92,
-      50,
-      54,
-      50,
-      54,
-      54
+      50
     ],
     "color_threshold": {
       "red_below": 50,
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "YELLOW \u2014 composite brand visibility 54/100 across AEO, SEO, GEO and LLM surfaces."
+    "interpretation": "YELLOW \u2014 composite brand visibility 50/100 across AEO, SEO, GEO and LLM surfaces."
   },
   "modules": {
     "aeo": {
@@ -399,62 +393,37 @@
           "cited": false
         }
       ],
-      "geotarget": [
-        {
-          "community": "eTown Jacksonville",
-          "status": "opportunity"
-        },
-        {
-          "community": "Shearwater St Johns",
-          "status": "opportunity"
-        },
-        {
-          "community": "RiverTown St Johns",
-          "status": "opportunity"
-        },
-        {
-          "community": "Tributary Yulee",
-          "status": "opportunity"
-        }
-      ],
+      "geotarget": [],
       "sources": [
         "browser_probe \u00b7 local queries (key-free)"
       ]
     }
   },
   "competitors": [
-    "FastSigns",
-    "Signarama",
-    "SpeedPro",
-    "Image360"
+    "Higharc",
+    "Motif"
   ],
-  "recommendations_count": 31,
+  "recommendations_count": 27,
   "recommendations_high": 25,
   "_meta": {
     "writer": "pragma-mirror call (run.py)",
-    "computed_at": "2026-08-26T11:00:18.899454Z",
+    "computed_at": "2026-08-26T11:00:19.180685Z",
     "recommend_only": true,
     "data_source": "GSC + browser-probe (key-free)",
     "paid_apis": "none \u2014 Tavily/SerpAPI retired 2026-07-08",
     "degraded_modules": []
   },
   "aivi": {
-    "composite": 54,
+    "composite": 50,
     "trend_7day": [
-      49,
-      92,
-      50,
-      54,
-      50,
-      54,
-      54
+      50
     ],
     "color_threshold": {
       "red_below": 50,
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "YELLOW \u2014 composite brand visibility 54/100 across AEO, SEO, GEO and LLM surfaces.",
+    "interpretation": "YELLOW \u2014 composite brand visibility 50/100 across AEO, SEO, GEO and LLM surfaces.",
     "subscores": {
       "mention_score": 74,
       "citation_score": 50,
@@ -514,7 +483,7 @@
     "google_ai_overview": {
       "cited": true,
       "query": "Who makes the best monument signs in Florida?",
-      "checked_at": "2026-08-26T11:00:18.899454Z",
+      "checked_at": "2026-08-26T11:00:19.180685Z",
       "mentions": 29,
       "citations": [
         "Who makes the best monument signs in Florida?",
@@ -1019,125 +988,52 @@
     "negative_pct": null,
     "overall": "unmeasured"
   },
-  "mode": "auto-remediate",
-  "last_action": "Auto-fix engine created 10 local landing pages via WP REST \u2014 additive, dup-guarded, logged, reversible.",
-  "last_verification": "10 pages live & verified (HTTP 200, schema).",
+  "mode": "recommend",
+  "last_action": null,
+  "last_verification": null,
   "autofix": {
-    "enabled": true,
-    "mode": "auto-remediate",
-    "tier": "paid",
-    "last_run": "2026-07-07T10:25:00.819109Z",
-    "created_total": 10,
-    "guardrails": [
-      "additive-only",
-      "dup-guard",
-      "rate-limited",
-      "change-logged",
-      "wp-revision-undo"
-    ],
-    "recent": [
-      "signs-etown-jacksonville",
-      "signs-shearwater-st-johns",
-      "signs-rivertown-st-johns",
-      "signs-tributary-yulee",
-      "signage-fleming-island",
-      "signage-middleburg",
-      "signage-st-augustine",
-      "signage-clay-county"
-    ]
+    "enabled": false,
+    "created_total": 0
   },
-  "last_scan_ts": "2026-08-26T11:00:18.899454Z",
-  "_mirrored_at": "2026-08-26T11:00:18.899454Z",
+  "last_scan_ts": "2026-08-26T11:00:19.180685Z",
+  "_mirrored_at": "2026-08-26T11:00:19.180685Z",
   "answer_units": [
     {
-      "question": "What are the top home builder signage companies in Florida?",
-      "url": "https://brand9signs.com/what-are-the-top-home-builder-signage-companies-in-florida/",
-      "cited_by": [
-        "ChatGPT",
-        "Google AI Overview",
-        "Grok",
-        "Perplexity"
-      ],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "cited"
-    },
-    {
-      "question": "What companies handle military base signage contracts?",
-      "url": "https://brand9signs.com/what-companies-handle-military-base-signage-contracts/",
-      "cited_by": [
-        "Google AI Overview",
-        "Grok",
-        "Perplexity"
-      ],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "cited"
-    },
-    {
-      "question": "What do the best monument signs cost in Florida?",
-      "url": "https://brand9signs.com/what-do-the-best-monument-signs-cost-in-florida/",
-      "cited_by": [],
-      "traffic": 0,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "Where can I get custom business signs installed in Clay County Florida?",
-      "url": "https://brand9signs.com/where-can-i-get-custom-business-signs-installed-in-clay-county-florida/",
-      "cited_by": [
-        "Grok",
-        "Perplexity"
-      ],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "cited"
-    },
-    {
-      "question": "Which companies install community monument signs in master-planned communities?",
-      "url": "https://brand9signs.com/which-companies-install-community-monument-signs-in-master-planned-communities/",
-      "cited_by": [
-        "ChatGPT",
-        "Google AI Overview",
-        "Perplexity"
-      ],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "cited"
-    },
-    {
-      "question": "Which sign companies specialize in wayfinding systems for campuses?",
-      "url": "https://brand9signs.com/which-sign-companies-specialize-in-wayfinding-systems-for-campuses/",
-      "cited_by": [
-        "Google AI Overview"
-      ],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "cited"
-    },
-    {
-      "question": "Who are the best commercial sign companies in Jacksonville FL?",
-      "url": "https://brand9signs.com/who-are-the-best-commercial-sign-companies-in-jacksonville-fl/",
+      "question": "Who can turn a plain-language building brief into a real Revit model?",
+      "url": "https://brand9signs.com/who-can-turn-a-plain-language-building-brief-into-a-real-revit-model/",
       "cited_by": [],
       "traffic": null,
       "inquiries": 0,
       "status": "targeting"
     },
     {
-      "question": "Who designs the best master-planned community entrances in Florida?",
-      "url": "https://brand9signs.com/who-designs-the-best-master-planned-community-entrances-in-florida/",
-      "cited_by": [
-        "Google AI Overview"
-      ],
+      "question": "What is the best AI-native architectural rendering service that does not use generative AI?",
+      "url": "https://brand9signs.com/what-is-the-best-ai-native-architectural-rendering-service-that-does-not-use-generative-ai/",
+      "cited_by": [],
       "traffic": null,
       "inquiries": 0,
-      "status": "cited"
+      "status": "targeting"
     },
     {
-      "question": "Who does model home display signage in Jacksonville?",
-      "url": "https://brand9signs.com/who-does-model-home-display-signage-in-jacksonville/",
+      "question": "Who does photoreal renders for South Florida condominium developments?",
+      "url": "https://brand9signs.com/who-does-photoreal-renders-for-south-florida-condominium-developments/",
+      "cited_by": [],
+      "traffic": null,
+      "inquiries": 0,
+      "status": "targeting"
+    },
+    {
+      "question": "How does VironBox compare to Higharc and Motif?",
+      "url": "https://brand9signs.com/how-does-vironbox-compare-to-higharc-and-motif/",
+      "cited_by": [],
+      "traffic": null,
+      "inquiries": 0,
+      "status": "targeting"
+    },
+    {
+      "question": "Who makes the best monument signs in Florida?",
+      "url": "https://brand9signs.com/who-makes-the-best-monument-signs-in-florida/",
       "cited_by": [
-        "ChatGPT",
         "Google AI Overview",
         "Grok",
         "Perplexity"
@@ -1147,18 +1043,12 @@
       "status": "cited"
     },
     {
-      "question": "Who does the best environmental graphic design in Florida?",
-      "url": "https://brand9signs.com/who-does-the-best-environmental-graphic-design-in-florida/",
-      "cited_by": [],
-      "traffic": 0,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "Who is the best environmental graphic design firm in the Southeast?",
-      "url": "https://brand9signs.com/who-is-the-best-environmental-graphic-design-firm-in-the-southeast/",
+      "question": "Who makes the best wayfinding signs in Florida?",
+      "url": "https://brand9signs.com/who-makes-the-best-wayfinding-signs-in-florida/",
       "cited_by": [
+        "Gemini",
         "Google AI Overview",
+        "Grok",
         "Perplexity"
       ],
       "traffic": null,
@@ -1180,12 +1070,14 @@
       "status": "cited"
     },
     {
-      "question": "Who makes the best luxury hotel and resort signage in Boca Raton?",
-      "url": "https://brand9signs.com/who-makes-the-best-luxury-hotel-and-resort-signage-in-boca-raton/",
-      "cited_by": [],
+      "question": "Who designs the best master-planned community entrances in Florida?",
+      "url": "https://brand9signs.com/who-designs-the-best-master-planned-community-entrances-in-florida/",
+      "cited_by": [
+        "Google AI Overview"
+      ],
       "traffic": null,
       "inquiries": 0,
-      "status": "targeting"
+      "status": "cited"
     },
     {
       "question": "Who makes the best luxury hotel and resort signage in Florida?",
@@ -1195,570 +1087,99 @@
         "Grok",
         "Perplexity"
       ],
-      "traffic": 0,
+      "traffic": null,
       "inquiries": 0,
       "status": "cited"
     },
     {
-      "question": "Who makes the best luxury hotel and resort signage in Fort Lauderdale?",
-      "url": "https://brand9signs.com/who-makes-the-best-luxury-hotel-and-resort-signage-in-fort-lauderdale/",
-      "cited_by": [],
-      "traffic": 0,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "Who makes the best luxury hotel and resort signage in Key West?",
-      "url": "https://brand9signs.com/who-makes-the-best-luxury-hotel-and-resort-signage-in-key-west/",
+      "question": "Who are the best commercial sign companies in Jacksonville FL?",
+      "url": "https://brand9signs.com/who-are-the-best-commercial-sign-companies-in-jacksonville-fl/",
       "cited_by": [],
       "traffic": null,
       "inquiries": 0,
       "status": "targeting"
     },
     {
-      "question": "Who makes the best luxury hotel and resort signage in Miami Beach?",
-      "url": "https://brand9signs.com/who-makes-the-best-luxury-hotel-and-resort-signage-in-miami-beach/",
-      "cited_by": [],
-      "traffic": 0,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "Who makes the best luxury hotel and resort signage in Miami?",
-      "url": "https://brand9signs.com/who-makes-the-best-luxury-hotel-and-resort-signage-in-miami/",
-      "cited_by": [],
+      "question": "Where can I get custom business signs installed in Clay County Florida?",
+      "url": "https://brand9signs.com/where-can-i-get-custom-business-signs-installed-in-clay-county-florida/",
+      "cited_by": [
+        "Grok",
+        "Perplexity"
+      ],
       "traffic": null,
       "inquiries": 0,
-      "status": "targeting"
+      "status": "cited"
     },
     {
-      "question": "Who makes the best luxury hotel and resort signage in Naples?",
-      "url": "https://brand9signs.com/who-makes-the-best-luxury-hotel-and-resort-signage-in-naples/",
-      "cited_by": [],
+      "question": "What are the top home builder signage companies in Florida?",
+      "url": "https://brand9signs.com/what-are-the-top-home-builder-signage-companies-in-florida/",
+      "cited_by": [
+        "ChatGPT",
+        "Google AI Overview",
+        "Grok",
+        "Perplexity"
+      ],
       "traffic": null,
       "inquiries": 0,
-      "status": "targeting"
+      "status": "cited"
     },
     {
-      "question": "Who makes the best luxury hotel and resort signage in Palm Beach?",
-      "url": "https://brand9signs.com/who-makes-the-best-luxury-hotel-and-resort-signage-in-palm-beach/",
-      "cited_by": [],
-      "traffic": 0,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "Who makes the best luxury hotel and resort signage on Marco Island?",
-      "url": "https://brand9signs.com/who-makes-the-best-luxury-hotel-and-resort-signage-on-marco-island/",
-      "cited_by": [],
+      "question": "Who does model home display signage in Jacksonville?",
+      "url": "https://brand9signs.com/who-does-model-home-display-signage-in-jacksonville/",
+      "cited_by": [
+        "ChatGPT",
+        "Google AI Overview",
+        "Grok",
+        "Perplexity"
+      ],
       "traffic": null,
       "inquiries": 0,
-      "status": "targeting"
+      "status": "cited"
     },
     {
-      "question": "Who makes the best monument signs in Florida?",
-      "url": "https://brand9signs.com/who-makes-the-best-monument-signs-in-florida/",
+      "question": "Which companies install community monument signs in master-planned communities?",
+      "url": "https://brand9signs.com/which-companies-install-community-monument-signs-in-master-planned-communities/",
+      "cited_by": [
+        "ChatGPT",
+        "Google AI Overview",
+        "Perplexity"
+      ],
+      "traffic": null,
+      "inquiries": 0,
+      "status": "cited"
+    },
+    {
+      "question": "Who is the best environmental graphic design firm in the Southeast?",
+      "url": "https://brand9signs.com/who-is-the-best-environmental-graphic-design-firm-in-the-southeast/",
+      "cited_by": [
+        "Google AI Overview",
+        "Perplexity"
+      ],
+      "traffic": null,
+      "inquiries": 0,
+      "status": "cited"
+    },
+    {
+      "question": "Which sign companies specialize in wayfinding systems for campuses?",
+      "url": "https://brand9signs.com/which-sign-companies-specialize-in-wayfinding-systems-for-campuses/",
+      "cited_by": [
+        "Google AI Overview"
+      ],
+      "traffic": null,
+      "inquiries": 0,
+      "status": "cited"
+    },
+    {
+      "question": "What companies handle military base signage contracts?",
+      "url": "https://brand9signs.com/what-companies-handle-military-base-signage-contracts/",
       "cited_by": [
         "Google AI Overview",
         "Grok",
         "Perplexity"
       ],
-      "traffic": 0,
+      "traffic": null,
       "inquiries": 0,
       "status": "cited"
-    },
-    {
-      "question": "Who makes the best wayfinding signs in Florida?",
-      "url": "https://brand9signs.com/who-makes-the-best-wayfinding-signs-in-florida/",
-      "cited_by": [
-        "Gemini",
-        "Google AI Overview",
-        "Grok",
-        "Perplexity"
-      ],
-      "traffic": 0,
-      "inquiries": 0,
-      "status": "cited"
-    },
-    {
-      "question": "who designs the best master-planned community entrances in Fernandina Beach FL",
-      "url": "https://brand9signs.com/who-designs-the-best-master-planned-community-entrances-in-fernandina-beach-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who designs the best master-planned community entrances in Fleming Island FL",
-      "url": "https://brand9signs.com/who-designs-the-best-master-planned-community-entrances-in-fleming-island-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who designs the best master-planned community entrances in Green Cove Springs FL",
-      "url": "https://brand9signs.com/who-designs-the-best-master-planned-community-entrances-in-green-cove-springs-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who designs the best master-planned community entrances in Julington Creek FL",
-      "url": "https://brand9signs.com/who-designs-the-best-master-planned-community-entrances-in-julington-creek-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who designs the best master-planned community entrances in Middleburg FL",
-      "url": "https://brand9signs.com/who-designs-the-best-master-planned-community-entrances-in-middleburg-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who designs the best master-planned community entrances in Nocatee FL",
-      "url": "https://brand9signs.com/who-designs-the-best-master-planned-community-entrances-in-nocatee-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who designs the best master-planned community entrances in Orange Park FL",
-      "url": "https://brand9signs.com/who-designs-the-best-master-planned-community-entrances-in-orange-park-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who designs the best master-planned community entrances in Ponte Vedra FL",
-      "url": "https://brand9signs.com/who-designs-the-best-master-planned-community-entrances-in-ponte-vedra-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who designs the best master-planned community entrances in St. Augustine FL",
-      "url": "https://brand9signs.com/who-designs-the-best-master-planned-community-entrances-in-st-augustine-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who designs the best master-planned community entrances in St. Johns FL",
-      "url": "https://brand9signs.com/who-designs-the-best-master-planned-community-entrances-in-st-johns-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who designs the best master-planned community entrances in World Golf Village FL",
-      "url": "https://brand9signs.com/who-designs-the-best-master-planned-community-entrances-in-world-golf-village-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who designs the best master-planned community entrances in Yulee FL",
-      "url": "https://brand9signs.com/who-designs-the-best-master-planned-community-entrances-in-yulee-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best development signs in Fernandina Beach FL",
-      "url": "https://brand9signs.com/who-makes-the-best-development-signs-in-fernandina-beach-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best development signs in Fleming Island FL",
-      "url": "https://brand9signs.com/who-makes-the-best-development-signs-in-fleming-island-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best development signs in Green Cove Springs FL",
-      "url": "https://brand9signs.com/who-makes-the-best-development-signs-in-green-cove-springs-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best development signs in Julington Creek FL",
-      "url": "https://brand9signs.com/who-makes-the-best-development-signs-in-julington-creek-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best development signs in Middleburg FL",
-      "url": "https://brand9signs.com/who-makes-the-best-development-signs-in-middleburg-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best development signs in Nocatee FL",
-      "url": "https://brand9signs.com/who-makes-the-best-development-signs-in-nocatee-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best development signs in Orange Park FL",
-      "url": "https://brand9signs.com/who-makes-the-best-development-signs-in-orange-park-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best development signs in Ponte Vedra FL",
-      "url": "https://brand9signs.com/who-makes-the-best-development-signs-in-ponte-vedra-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best development signs in St. Augustine FL",
-      "url": "https://brand9signs.com/who-makes-the-best-development-signs-in-st-augustine-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best development signs in St. Johns FL",
-      "url": "https://brand9signs.com/who-makes-the-best-development-signs-in-st-johns-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best development signs in World Golf Village FL",
-      "url": "https://brand9signs.com/who-makes-the-best-development-signs-in-world-golf-village-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best development signs in Yulee FL",
-      "url": "https://brand9signs.com/who-makes-the-best-development-signs-in-yulee-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best homebuilder community entrance signs in Fernandina Beach FL",
-      "url": "https://brand9signs.com/who-makes-the-best-homebuilder-community-entrance-signs-in-fernandina-beach-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best homebuilder community entrance signs in Fleming Island FL",
-      "url": "https://brand9signs.com/who-makes-the-best-homebuilder-community-entrance-signs-in-fleming-island-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best homebuilder community entrance signs in Green Cove Springs FL",
-      "url": "https://brand9signs.com/who-makes-the-best-homebuilder-community-entrance-signs-in-green-cove-springs-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best homebuilder community entrance signs in Julington Creek FL",
-      "url": "https://brand9signs.com/who-makes-the-best-homebuilder-community-entrance-signs-in-julington-creek-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best homebuilder community entrance signs in Middleburg FL",
-      "url": "https://brand9signs.com/who-makes-the-best-homebuilder-community-entrance-signs-in-middleburg-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best homebuilder community entrance signs in Nocatee FL",
-      "url": "https://brand9signs.com/who-makes-the-best-homebuilder-community-entrance-signs-in-nocatee-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best homebuilder community entrance signs in Orange Park FL",
-      "url": "https://brand9signs.com/who-makes-the-best-homebuilder-community-entrance-signs-in-orange-park-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best homebuilder community entrance signs in Ponte Vedra FL",
-      "url": "https://brand9signs.com/who-makes-the-best-homebuilder-community-entrance-signs-in-ponte-vedra-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best homebuilder community entrance signs in St. Augustine FL",
-      "url": "https://brand9signs.com/who-makes-the-best-homebuilder-community-entrance-signs-in-st-augustine-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best homebuilder community entrance signs in St. Johns FL",
-      "url": "https://brand9signs.com/who-makes-the-best-homebuilder-community-entrance-signs-in-st-johns-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best homebuilder community entrance signs in World Golf Village FL",
-      "url": "https://brand9signs.com/who-makes-the-best-homebuilder-community-entrance-signs-in-world-golf-village-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best homebuilder community entrance signs in Yulee FL",
-      "url": "https://brand9signs.com/who-makes-the-best-homebuilder-community-entrance-signs-in-yulee-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best monument signs in Fernandina Beach FL",
-      "url": "https://brand9signs.com/who-makes-the-best-monument-signs-in-fernandina-beach-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best monument signs in Fleming Island FL",
-      "url": "https://brand9signs.com/who-makes-the-best-monument-signs-in-fleming-island-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best monument signs in Green Cove Springs FL",
-      "url": "https://brand9signs.com/who-makes-the-best-monument-signs-in-green-cove-springs-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best monument signs in Julington Creek FL",
-      "url": "https://brand9signs.com/who-makes-the-best-monument-signs-in-julington-creek-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best monument signs in Middleburg FL",
-      "url": "https://brand9signs.com/who-makes-the-best-monument-signs-in-middleburg-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best monument signs in Nocatee FL",
-      "url": "https://brand9signs.com/who-makes-the-best-monument-signs-in-nocatee-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best monument signs in Orange Park FL",
-      "url": "https://brand9signs.com/who-makes-the-best-monument-signs-in-orange-park-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best monument signs in Ponte Vedra FL",
-      "url": "https://brand9signs.com/who-makes-the-best-monument-signs-in-ponte-vedra-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best monument signs in St. Augustine FL",
-      "url": "https://brand9signs.com/who-makes-the-best-monument-signs-in-st-augustine-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best monument signs in St. Johns FL",
-      "url": "https://brand9signs.com/who-makes-the-best-monument-signs-in-st-johns-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best monument signs in World Golf Village FL",
-      "url": "https://brand9signs.com/who-makes-the-best-monument-signs-in-world-golf-village-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best monument signs in Yulee FL",
-      "url": "https://brand9signs.com/who-makes-the-best-monument-signs-in-yulee-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best wayfinding signs in Fernandina Beach FL",
-      "url": "https://brand9signs.com/who-makes-the-best-wayfinding-signs-in-fernandina-beach-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best wayfinding signs in Fleming Island FL",
-      "url": "https://brand9signs.com/who-makes-the-best-wayfinding-signs-in-fleming-island-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best wayfinding signs in Green Cove Springs FL",
-      "url": "https://brand9signs.com/who-makes-the-best-wayfinding-signs-in-green-cove-springs-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best wayfinding signs in Julington Creek FL",
-      "url": "https://brand9signs.com/who-makes-the-best-wayfinding-signs-in-julington-creek-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best wayfinding signs in Middleburg FL",
-      "url": "https://brand9signs.com/who-makes-the-best-wayfinding-signs-in-middleburg-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best wayfinding signs in Nocatee FL",
-      "url": "https://brand9signs.com/who-makes-the-best-wayfinding-signs-in-nocatee-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best wayfinding signs in Orange Park FL",
-      "url": "https://brand9signs.com/who-makes-the-best-wayfinding-signs-in-orange-park-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best wayfinding signs in Ponte Vedra FL",
-      "url": "https://brand9signs.com/who-makes-the-best-wayfinding-signs-in-ponte-vedra-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best wayfinding signs in St. Augustine FL",
-      "url": "https://brand9signs.com/who-makes-the-best-wayfinding-signs-in-st-augustine-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best wayfinding signs in St. Johns FL",
-      "url": "https://brand9signs.com/who-makes-the-best-wayfinding-signs-in-st-johns-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best wayfinding signs in World Golf Village FL",
-      "url": "https://brand9signs.com/who-makes-the-best-wayfinding-signs-in-world-golf-village-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
-    },
-    {
-      "question": "who makes the best wayfinding signs in Yulee FL",
-      "url": "https://brand9signs.com/who-makes-the-best-wayfinding-signs-in-yulee-fl/",
-      "cited_by": [],
-      "traffic": null,
-      "inquiries": 0,
-      "status": "targeting"
     }
   ]
 }
