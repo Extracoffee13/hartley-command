@@ -1986,10 +1986,20 @@ function renderRegionMap() {
     _regionMap = L.map(el, {
       center: view.center, zoom: view.zoom, scrollWheelZoom: false, attributionControl: false
     });
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-      maxZoom: 18, subdomains: 'abcd'
+    // Basemap: Esri Light Gray Canvas. Keyless and unwatermarked.
+    // CARTO's light_all now stamps "API KEY REQUIRED" diagonally across every
+    // tile for unkeyed use, which clients could see. Esri gives the same
+    // light-gray look as base + labels, free with attribution, and needs no
+    // credential - which matters because this repo is public, so any key
+    // committed here would be readable by anyone.
+    // Note the {z}/{y}/{x} order: Esri differs from the usual {z}/{x}/{y}.
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+      maxNativeZoom: 16, maxZoom: 18
     }).addTo(_regionMap);
-    L.control.attribution({position:'bottomright',prefix:false}).addAttribution('&copy; OpenStreetMap, &copy; CARTO').addTo(_regionMap);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', {
+      maxNativeZoom: 16, maxZoom: 18, pane: 'overlayPane'
+    }).addTo(_regionMap);
+    L.control.attribution({position:'bottomright',prefix:false}).addAttribution('Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ').addTo(_regionMap);
   } else {
     // recenter on region change
     const view = REGION_CENTROIDS[currentRegion] || REGION_CENTROIDS.all;
