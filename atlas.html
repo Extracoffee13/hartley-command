@@ -1477,11 +1477,15 @@ function renderGrid() {
           zone2: {label:'Zone 2 — Cassandra Clitus'},
           zone3: {label:'Zone 3 — Kat Blasini'},
         };
+        // Render every JAX zone header even when empty. A newly created zone
+        // (Kat's Zone 3) has no communities assigned yet, and silently hiding
+        // it makes the zone look like it was never set up — the header is what
+        // tells the team the zone exists and is ready to assign into.
         ['zone1','zone2','zone3'].forEach(zone => {
           const zoneItems = items.filter(c => zoneOf(c) === zone);
-          if (!zoneItems.length) return;
-          html.push(`<div class="zone-header"><div>📍 ${zoneMeta[zone].label}</div><div>${zoneItems.length} projects</div></div>`);
-          html.push(cards(zoneItems));
+          const count = zoneItems.length;
+          html.push(`<div class="zone-header"><div>📍 ${zoneMeta[zone].label}</div><div>${count} ${count === 1 ? 'project' : 'projects'}</div></div>`);
+          if (count) html.push(cards(zoneItems));
         });
         const ungrouped = items.filter(c => zoneOf(c) === 'none');
         if (ungrouped.length) html.push(cards(ungrouped));
