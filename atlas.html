@@ -780,6 +780,24 @@ body.client-view .admin-only{display:none !important;}
     </div>
   </div>
 
+  <!-- ── INVENTORY ON HAND ── -->
+  <div class="panel" style="margin-bottom:22px;">
+    <div class="p-hdr">
+      <div class="p-title"><span class="p-title-icon">&#128230;</span> Inventory on Hand</div>
+      <span class="sec-badge" id="invBadge">&mdash;</span>
+    </div>
+    <div class="p-body">
+      <table class="wo-tbl">
+        <thead>
+          <tr>
+            <th>Item</th><th>Category</th><th>On Hand</th><th>Reorder At</th><th>Location</th><th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="inventoryBody"></tbody>
+      </table>
+    </div>
+  </div>
+
 
 </main>
 
@@ -817,6 +835,12 @@ const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1vhkDxy0M4xUBKX5z9
 // Photos tab — populated by the Atlas Web App's upload pipeline.
 // gviz/tq endpoint works by sheet name (no gid lookup needed).
 let PHOTOS_CSV_URL = 'https://docs.google.com/spreadsheets/d/1vhkDxy0M4xUBKX5z9QBWPpBh5A0szkEx5571_wP6ac4/gviz/tq?tqx=out:csv&sheet=Photos';
+// Inventory tab — stock Brand 9 keeps on hand. Read by sheet NAME via gviz so
+// it needs no gid, same as Photos. The tab is the catalogue: one row per item,
+// with the item names themselves picked from a dropdown fed by Lookups so the
+// same product can't end up spelled three different ways.
+let INVENTORY_CSV_URL = 'https://docs.google.com/spreadsheets/d/1vhkDxy0M4xUBKX5z9QBWPpBh5A0szkEx5571_wP6ac4/gviz/tq?tqx=out:csv&sheet=Inventory';
+const INVENTORY = [];
 // Mobile upload page served by the Atlas Web App. Append &community=<name> to pre-select.
 let FIELD_PHOTO_FORM_URL = 'https://script.google.com/macros/s/AKfycbyjF3HvyBm47tOXolMcnNG7igVfpwfrXg8v4q04kW6qZJ7VS6udEaR7UsmTL96eN8Y9/exec?page=upload';
 // Atlas Web App POST endpoint — admin actions (delete_photo, etc.)
@@ -846,6 +870,86 @@ async function deleteAtlasPhoto(photoId, community) {
     alert('Delete failed: ' + err.message);
   }
 }
+// ── INVENTORY ────────────────────────────────────────────────────────────
+const invEsc = s => String(s == null ? '' : s).replace(/[&<>"']/g,
+  c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+// Out of stock beats low beats fine — this panel exists to be acted on.
+function invRank(i) {
+  if (i.onHand <= 0) return 0;
+  if (i.reorder > 0 && i.onHand <= i.reorder) return 1;
+  return 2;
+}
+function invState(i) {
+  return [{label:'Out', bg:'#fee2e2', fg:'#dc2626'},
+          {label:'Low', bg:'#fef3c7', fg:'#d97706'},
+          {label:'OK',  bg:'#d1fae5', fg:'#059669'}][invRank(i)];
+}
+
+async function syncInventory() {
+  if (!INVENTORY_CSV_URL) return;
+  try {
+    const r = await fetch(INVENTORY_CSV_URL + '&_t=' + Date.now(), {cache:'no-store'});
+    if (!r.ok) return;
+    const rows = parseCSV(await r.text()).filter(x => x.length && x.some(v => v && v.length));
+    if (rows.length < 2) return;
+    const head = rows[0].map(x => String(x || '').trim());
+    const ix = {}; head.forEach((n, i) => { ix[n] = i; });
+    const cell = (row, name) => (ix[name] === undefined ? '' : String(row[ix[name]] || '').trim());
+    const num  = v => { const n = parseFloat(String(v).replace(/[^0-9.\-]/g, '')); return isNaN(n) ? 0 : n; };
+    INVENTORY.length = 0;
+    rows.slice(1).forEach(row => {
+      const item = cell(row, 'Item');
+      if (!item) return;
+      INVENTORY.push({
+        item,
+        category: cell(row, 'Category') || 'Uncategorised',
+        onHand:   num(cell(row, 'On Hand')),
+        reorder:  num(cell(row, 'Reorder At')),
+        unit:     cell(row, 'Unit'),
+        location: cell(row, 'Location'),
+        counted:  cell(row, 'Last Counted'),
+        notes:    cell(row, 'Notes')
+      });
+    });
+    renderInventory();
+  } catch (e) { /* inventory is non-critical — fail quiet, like photos */ }
+}
+
+function renderInventory() {
+  const body  = document.getElementById('inventoryBody');
+  const badge = document.getElementById('invBadge');
+  if (!body) return;
+  if (!INVENTORY.length) {
+    body.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--gray-400);padding:18px;">' +
+      'No items yet — add rows on the Inventory tab of the sheet.</td></tr>';
+    if (badge) badge.textContent = '0 items';
+    return;
+  }
+  const sorted = [...INVENTORY].sort((a, b) =>
+    invRank(a) - invRank(b) ||
+    a.category.localeCompare(b.category) ||
+    a.item.localeCompare(b.item));
+  body.innerHTML = sorted.map(i => {
+    const s = invState(i);
+    const unit = i.unit ? ' <span style="color:var(--gray-400);font-weight:600;">' + invEsc(i.unit) + '</span>' : '';
+    return '<tr>' +
+      '<td style="font-weight:700;">' + invEsc(i.item) + '</td>' +
+      '<td style="color:var(--gray-600);">' + invEsc(i.category) + '</td>' +
+      '<td style="font-weight:800;">' + i.onHand + unit + '</td>' +
+      '<td style="color:var(--gray-400);">' + (i.reorder || '&mdash;') + '</td>' +
+      '<td style="color:var(--gray-600);">' + (invEsc(i.location) || '&mdash;') + '</td>' +
+      '<td><span style="font-size:10px;font-weight:800;padding:2px 8px;border-radius:10px;' +
+        'background:' + s.bg + ';color:' + s.fg + ';text-transform:uppercase;letter-spacing:.5px;">' +
+        s.label + '</span></td>' +
+    '</tr>';
+  }).join('');
+  const needs = INVENTORY.filter(i => invRank(i) < 2).length;
+  if (badge) badge.textContent = needs
+    ? INVENTORY.length + ' items \u00b7 ' + needs + ' need reorder'
+    : INVENTORY.length + ' items';
+}
+
 // Per-community photo cache populated by syncPhotos()
 const COMMUNITY_PHOTOS = {};
 function _driveIdFromUrl(u) {
@@ -2573,6 +2677,13 @@ setInterval(() => {
   if (document.visibilityState === 'visible' && PHOTOS_CSV_URL) {
     syncPhotos().then(() => renderGrid());
   }
+}, 60000);
+
+// Inventory sync: same 60s cadence as photos. Stock counts move far slower
+// than community status, so this deliberately does not ride the 5s poll.
+syncInventory();
+setInterval(() => {
+  if (document.visibilityState === 'visible') syncInventory();
 }, 60000);
 
 // Auto-refresh: re-fetch the Sheet every 60s while the page is open.
