@@ -1177,6 +1177,35 @@ async function syncFromSheet() {
       return /sold out|closeout/.test(v);
     };
 
+    // ── Zones come from the sheet's own ZONE banner rows ──────────────────
+    // The team assigns a community to a zone by putting its row under a
+    // banner. The old logic ignored the banners and matched the Local Contact
+    // name instead, which silently dropped every community whose contact
+    // wasn't the zone's rep — six of Cassandra's eight (2026-08-26). Walking
+    // the rows in order and carrying the last ZONE banner down makes the sheet
+    // the source of truth, and a new zone needs no code change.
+    const titleCaseName = s => String(s).toLowerCase()
+      .replace(/\b[a-z]/g, ch => ch.toUpperCase()).trim();
+    const zoneByRow = [];
+    (function () {
+      let cur = null;
+      rows.slice(1).forEach((r, i) => {
+        const community = String(r[idx['Community']] || '').trim();
+        const region    = String(r[idx['Region']] || '').trim();
+        const banner    = String(idx['Request'] !== undefined ? (r[idx['Request']] || '') : '').trim();
+        if (!community && !region && banner) {
+          const m = banner.match(/^ZONE\s*(\d+)\s*[—–-]\s*(.+)$/i);
+          // A ZONE banner opens a zone; any other banner (an area heading like
+          // 'MID FL NORTH') closes it, so zones never leak across areas.
+          cur = m
+            ? { key: 'zone' + m[1], num: parseInt(m[1], 10),
+                label: 'Zone ' + m[1] + ' — ' + titleCaseName(m[2]) }
+            : null;
+        }
+        zoneByRow[i] = cur;
+      });
+    })();
+
     const fresh = rows.slice(1).map((r, i) => ({
       id:            i + 1,  // synthetic since ID col was dropped
       region:        String(r[idx['Region']]||'').trim().toLowerCase() || 'jax',
@@ -1201,6 +1230,7 @@ async function syncFromSheet() {
       nextInstall:   (idx['Install Date'] !== undefined ? String(r[idx['Install Date']]||'').trim() : '') || 'TBD',
       localContact:  String(r[idx['Local Contact']]||'').trim() || 'Gina Lee',
       zone:          String(r[idx['Zone']]||'').trim(),
+      sheetZone:     zoneByRow[i] || null,  // zone banner this row sits under
       contact:       String(r[idx['Main POC']]||'').trim() || 'Gina Lee',
       permit811:     String(r[idx['811 Permit']]||'').trim().toLowerCase().replace('n/a','na') || 'na',
       office:        false,  // Office col dropped
@@ -1471,23 +1501,32 @@ function renderGrid() {
       const items = filteredCommunities.filter(c => areaOf(c) === area);
       if (!items.length) return;
       html.push(`<div class="area-header">📍 ${areaLabel[area] || String(area).toUpperCase()}</div>`);
+      // Zone grouping now runs for every area, not just JAX — the sheet gives
+      // each area its own ZONE banners and all 92 communities sit under one.
+      // Trust that placement; fall back to the old name matching only for a
+      // row that somehow arrived with no banner above it.
+      const keyOf = c => (c.sheetZone ? c.sheetZone.key : zoneOf(c));
+      const zones = new Map();
       if (area === 'jax') {
-        const zoneMeta = {
-          zone1: {label:'Zone 1 — Kyle Bazler'},
-          zone2: {label:'Zone 2 — Cassandra Clitus'},
-          zone3: {label:'Zone 3 — Kat Blasini'},
-        };
-        // Render every JAX zone header even when empty. A newly created zone
-        // (Kat's Zone 3) has no communities assigned yet, and silently hiding
-        // it makes the zone look like it was never set up — the header is what
-        // tells the team the zone exists and is ready to assign into.
-        ['zone1','zone2','zone3'].forEach(zone => {
-          const zoneItems = items.filter(c => zoneOf(c) === zone);
+        // Seed JAX's three so a zone that exists but has nothing assigned
+        // still shows a header rather than looking like it was never set up.
+        zones.set('zone1', { num: 1, label: 'Zone 1 — Kyle Bazler' });
+        zones.set('zone2', { num: 2, label: 'Zone 2 — Cassandra Clitus' });
+        zones.set('zone3', { num: 3, label: 'Zone 3 — Kat Blasini' });
+      }
+      // Labels and ordering come from the sheet, so a new ZONE banner (or a
+      // renamed rep) shows up here with no code change at all.
+      items.forEach(c => {
+        if (c.sheetZone) zones.set(c.sheetZone.key, { num: c.sheetZone.num, label: c.sheetZone.label });
+      });
+      if (zones.size) {
+        [...zones.entries()].sort((a, b) => a[1].num - b[1].num).forEach(([key, meta]) => {
+          const zoneItems = items.filter(c => keyOf(c) === key);
           const count = zoneItems.length;
-          html.push(`<div class="zone-header"><div>📍 ${zoneMeta[zone].label}</div><div>${count} ${count === 1 ? 'project' : 'projects'}</div></div>`);
+          html.push(`<div class="zone-header"><div>📍 ${meta.label}</div><div>${count} ${count === 1 ? 'project' : 'projects'}</div></div>`);
           if (count) html.push(cards(zoneItems));
         });
-        const ungrouped = items.filter(c => zoneOf(c) === 'none');
+        const ungrouped = items.filter(c => !zones.has(keyOf(c)));
         if (ungrouped.length) html.push(cards(ungrouped));
       } else {
         html.push(cards(items));
