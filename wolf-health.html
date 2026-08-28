@@ -14,14 +14,42 @@ a{color:#00d4ff}
 .verdict{font-weight:700;font-size:.9rem}
 .rationale{margin:.35rem 0;color:#cfcfcf;line-height:1.4}
 .meta{font-size:.8rem;color:#888}
+.alert-box{border:1px solid #ff4444;background:#1a0808;padding:.75rem;margin:1rem 0;border-radius:6px;color:#ff6666;font-size:.85rem}
 </style></head><body>
 <h1>WOLF Health Dashboard</h1>
-<div class="card"><b>Day 62/90</b> &bull; OVERDUE 36 days (kill-crit passed) &bull; Portfolio: $98,272</div>
-<div class="card">Compliance: <span class="warn">WARN</span></div>
-<div class="card">Infrastructure: <span class="ok">OK</span></div>
-<div class="card">Alerts: KILL CRITERION DATE 2026-07-23 HAS PASSED (10 days overdue); day counter stale; position review required</div>
-<div class="card"><h2>Positions</h2><div><span class="ticker">ACN</span> 48 @ $174.0 · current $138.0 · <span class="crit">-20.7%</span></div></div>
-<div class="card"><h2>Market Regime</h2><div>moderate-bear · VIX 18</div></div>
-<div class="card"><h2>Deep Research Theses</h2><div class="thesis"><span class="ticker">ACN</span><span class="verdict ok">BULLISH</span><div class="rationale">**VERDICT: BULLISH (STRONGLY RECOMMEND AVERAGING DOWN)**</div><div class="meta">generated 2026-07-01 · source gemini-deep-research · <a href="./wolf-research/ACN-2026-07-01.md" target="_blank">full report</a></div></div></div>
-<div class="card" style="font-size:0.8rem">Updated: 2026-08-28 10:30 UTC by wolf-dashboard-autosync</div>
+
+<div class="card"><b>Day 62/90</b> &bull; 28 days remaining &bull; Portfolio: <b>$98,272</b> &bull; P&amp;L: <span class="crit">-$1,728 (-1.73%)</span></div>
+
+<div class="alert-box">⚠ KILL CRITERION DATE 2026-07-23 PASSED (36 days overdue on day counter &bull; position review required)</div>
+
+<div class="card"><h2>Compliance</h2><span class="warn">WARN</span> &mdash; Data source: state.json-fallback (Alpaca key absent &mdash; no live brokerage connection)</div>
+
+<div class="card"><h2>Infrastructure</h2><span class="ok">OK</span> &mdash; Autosync cron healthy</div>
+
+<div class="card"><h2>Market Regime</h2>moderate-bear &bull; VIX 18 &bull; Rate backdrop: hawkish-hold (3.50-3.75%)</div>
+
+<div class="card"><h2>Positions</h2>
+<div><span class="ticker">ACN</span> 48 @ $174.00 &middot; current $138.00 &middot; <span class="crit">-20.7%</span></div>
+<div class="meta">Entry $174 &middot; RSI 40.47 (oversold-adjacent) &middot; sentiment 83% (elevated)</div>
+</div>
+
+<div class="card"><h2>Deep Research Theses</h2>
+<div class="thesis"><span class="ticker">ACN</span><span class="verdict ok">BULLISH</span>
+<div class="rationale">**VERDICT: BULLISH (STRONGLY RECOMMEND AVERAGING DOWN)** — NATO AI momentum + AI-outsourcing thesis; capitulation context (spiking mentions + rising sentiment into drawdown)</div>
+<div class="meta">generated 2026-07-01 &middot; source gemini-deep-research &middot; model deep-research-preview-04-2026 &middot; <a href="./wolf-research/ACN-2026-07-01.md" target="_blank">full report</a></div></div>
+</div>
+
+<div class="card"><h2>Capabilities</h2>
+<div>Score: <span class="warn">0 (unscored)</span></div>
+<div class="meta">50 lessons tracked &bull; Latest lesson: 2026-08-27 (1 day ago) &bull; Freshness: <span class="ok">OK</span></div>
+</div>
+
+<div class="card"><h2>DATA FRESHNESS</h2>
+<div>Last live data update: <span id="ts">2026-08-27 11:38 UTC</span></div>
+<div class="meta">Source: state.json-fallback &middot; 1 active thesis &middot; ACN social engagement elevated (1238 mentions)</div>
+</div>
+
+<div class="card" style="font-size:0.8rem">Updated: <span id="updated">2026-08-28 10:30 UTC</span> by wolf-dashboard-autosync</div>
+
+<script>document.getElementById('ts').textContent=new Date().toISOString().replace('T',' ').slice(0,19)</script>
 </body></html>
