@@ -1622,3 +1622,15 @@ lesson: A falsification step that runs only on the claims you find interesting i
 tags: pulse,mcp,ecosystem,daily,cad,frontier
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-28
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Anthropic's Model Hardware Standard research preview (Aug 27) - a spec for agents to safely operate physical devices, model-agnostic, MCP as one of three control mechanisms, zero prior corpus matches; arXiv 2602.14690's empirical study of 2,853 repos showing Skills at 9.6% adoption, 85.5% of Skills carrying no scripts, and zero repos using subagent memory; the 10,000-seat scientist program as distribution for the hardware standard (NO - eligibility-gated); and two missed 2.1.248 cost fixes, an hourly prompt-cache miss from OAuth token refresh and a ScheduleWakeup --resume cache miss. Frontier flagship still flat; no signage/wayfinding/permitting MCP for a fourth day.
+lesson: Three fires read the same changelog today and the third one found the most billable item in it - a prompt-cache miss roughly once an hour in long sessions, caused by tool definitions re-rendering after an OAuth token refresh - sitting in the bug-fix list below the headline entries the first two stopped at. Reading the canonical source instead of a summary was the right rule this morning and it is not enough; the discipline is reading all of it, because vendors file the expensive fixes where the announcements are not. The window's real news is that Anthropic shipped a SECOND protocol: the Model Hardware Standard puts agents in control of physical instruments through device-declared safety limits and an auto-generated capability file, which is the third convergence in a single day - after PTC's FeatureScript and the skills library itself - on authoring a durable declarative artifact instead of re-prompting. And the first large-scale measurement of that practice landed the same day: across 2,853 repositories Skills reach under 10% adoption on Claude Code, 85.5% carry no scripts at all, and no repository anywhere uses subagent memory, which makes this stack a genuine outlier whose bet is real but unvalidated - the paper is explicit that it does not measure whether the bet pays.
+tags: pulse,mcp,ecosystem,daily,hardware,skills,cost
+confidence: 0.8
+~~~
