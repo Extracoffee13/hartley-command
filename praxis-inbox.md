@@ -1646,3 +1646,15 @@ lesson: Seven weeks of daily scanning covered model releases, MCP servers, fundi
 tags: pulse,security,seo,cost,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-29
+decision: Second fire of the day. Today's report already existed (generated 11:05Z / 07:05 ET); re-scanned the window rather than overwrite it.
+outcome: No material change. Claude Code changelog front is still 2.1.251 (Aug 28) - no 2.1.252 exists, confirmed against the canonical code.claude.com changelog, so this morning's security bullet stands as the newest release and --restricted belongs to 2.1.248 (Aug 27), not a new drop. No frontier flagship since GLM-5.3-Flash (Aug 26). Cognition's $40B remains Aug 12 reported talks, not a closed round - correctly excluded. arXiv returns only papers already carried (2606.20631, 2505.16120). Signage/wayfinding/permitting MCP negative holds for a sixth day. Files left unmodified; no bullets added.
+lesson: A daily scan that fires more than once needs an explicit idempotence rule, or the later fire silently overwrites the better report - the correct second-fire output is a differential against what already shipped, not a fresh scan written over it. The differential is still worth running: re-reading the canonical changelog is what proved no 2.1.252 exists, which is a real negative rather than an assumed one, and it is the same discipline that found yesterday's cache bug in the third pass.
+tags: pulse,ecosystem,daily,idempotence,no-change
+confidence: 0.85
+~~~
