@@ -1,0 +1,200 @@
+{
+  "schema_version": "v6",
+  "instrument": "aair-v6",
+  "frozen_at": "2026-08-29T14:13:36.901947Z",
+  "source": "hermes-v6-runner",
+  "corpus_file": "/Users/alfredpennyworth/Documents/Claude/Projects/HBS Foundry/corpus/corpus_signshop_jax_v3.json",
+  "corpus_meta": {
+    "corpus_version": "signshop-jax-market-v3",
+    "seed": 20260716,
+    "n_prompts": 100,
+    "cells_per_scan_retrieval_tier": 400,
+    "built": "2026-07-16",
+    "provenance": "Google autocomplete market pull, 2026-07-16 \u2014 184 seeds, 822 suggestions, 219 after declared exclusions. See market_signshop_jax_observed.json. Ranking = recurrence (a proxy for volume). Geo + question frame added by us, declared."
+  },
+  "headline": {
+    "aair_retrieval_top3": 33,
+    "fraction": "120/362",
+    "ci_95": "28.5%..38.2",
+    "note": "Headline AAIR = RETRIEVAL tier, top-3. The surface customers actually use. ALWAYS report with the interval."
+  },
+  "attempted": 1400,
+  "scored": 1281,
+  "no_read": 119,
+  "named_anywhere": 127,
+  "named_top3": 120,
+  "tiers": {
+    "retrieval": {
+      "attempted": 400,
+      "scored": 362,
+      "no_read": 38,
+      "named_anywhere": 127,
+      "named_top3": 120,
+      "pct_named_anywhere": 35,
+      "pct_top3": 33,
+      "ci_95_top3": "28.5%..38.2",
+      "ci_lo": 28.5,
+      "ci_hi": 38.2,
+      "fraction_top3": "120/362"
+    },
+    "parametric": {
+      "attempted": 600,
+      "scored": 539,
+      "no_read": 61,
+      "named_anywhere": 0,
+      "named_top3": 0,
+      "pct_named_anywhere": 0,
+      "pct_top3": 0,
+      "ci_95_top3": "0.0%..0.7",
+      "ci_lo": 0.0,
+      "ci_hi": 0.7,
+      "fraction_top3": "0/539"
+    },
+    "ondevice": {
+      "attempted": 400,
+      "scored": 380,
+      "no_read": 20,
+      "named_anywhere": 0,
+      "named_top3": 0,
+      "pct_named_anywhere": 0,
+      "pct_top3": 0,
+      "ci_95_top3": "0.0%..1.0",
+      "ci_lo": 0.0,
+      "ci_hi": 1.0,
+      "fraction_top3": "0/380"
+    }
+  },
+  "engines": {
+    "sonar": {
+      "label": "Perplexity (Sonar)",
+      "tier": "retrieval",
+      "attempted": 100,
+      "scored": 100,
+      "no_read": 0,
+      "named": 25,
+      "top3": 25
+    },
+    "gpt4o_online": {
+      "label": "ChatGPT (GPT-4o \u00b7 search)",
+      "tier": "retrieval",
+      "attempted": 100,
+      "scored": 87,
+      "no_read": 13,
+      "named": 28,
+      "top3": 28
+    },
+    "gemini_online": {
+      "label": "Gemini 2.5 \u00b7 search",
+      "tier": "retrieval",
+      "attempted": 100,
+      "scored": 93,
+      "no_read": 7,
+      "named": 39,
+      "top3": 35
+    },
+    "sonnet_online": {
+      "label": "Claude Sonnet 4.5 \u00b7 search",
+      "tier": "retrieval",
+      "attempted": 100,
+      "scored": 82,
+      "no_read": 18,
+      "named": 35,
+      "top3": 32
+    },
+    "gpt4o": {
+      "label": "GPT-4o (no web)",
+      "tier": "parametric",
+      "attempted": 100,
+      "scored": 88,
+      "no_read": 12,
+      "named": 0,
+      "top3": 0
+    },
+    "sonnet": {
+      "label": "Claude Sonnet 4.5 (no web)",
+      "tier": "parametric",
+      "attempted": 100,
+      "scored": 85,
+      "no_read": 15,
+      "named": 0,
+      "top3": 0
+    },
+    "gemini": {
+      "label": "Gemini 2.5 (no web)",
+      "tier": "parametric",
+      "attempted": 100,
+      "scored": 85,
+      "no_read": 15,
+      "named": 0,
+      "top3": 0
+    },
+    "grok": {
+      "label": "Grok 4.5 (no web)",
+      "tier": "parametric",
+      "attempted": 100,
+      "scored": 84,
+      "no_read": 16,
+      "named": 0,
+      "top3": 0
+    },
+    "deepseek": {
+      "label": "DeepSeek V3.1",
+      "tier": "parametric",
+      "attempted": 100,
+      "scored": 98,
+      "no_read": 2,
+      "named": 0,
+      "top3": 0
+    },
+    "llama4": {
+      "label": "Llama 4 Maverick",
+      "tier": "parametric",
+      "attempted": 100,
+      "scored": 99,
+      "no_read": 1,
+      "named": 0,
+      "top3": 0
+    },
+    "llama3b": {
+      "label": "Llama 3.2 3B",
+      "tier": "ondevice",
+      "attempted": 100,
+      "scored": 94,
+      "no_read": 6,
+      "named": 0,
+      "top3": 0
+    },
+    "gemma4b": {
+      "label": "Gemma 3 4B",
+      "tier": "ondevice",
+      "attempted": 100,
+      "scored": 96,
+      "no_read": 4,
+      "named": 0,
+      "top3": 0
+    },
+    "phi4": {
+      "label": "Microsoft Phi-4",
+      "tier": "ondevice",
+      "attempted": 100,
+      "scored": 94,
+      "no_read": 6,
+      "named": 0,
+      "top3": 0
+    },
+    "qwen7b": {
+      "label": "Qwen 2.5 7B",
+      "tier": "ondevice",
+      "attempted": 100,
+      "scored": 96,
+      "no_read": 4,
+      "named": 0,
+      "top3": 0
+    }
+  },
+  "match_rules_fired": {
+    "full_name": 127,
+    "no_match": 1154
+  },
+  "ts": "2026-08-29T14:13:36.901960Z"
+}
