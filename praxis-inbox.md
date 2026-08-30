@@ -1658,3 +1658,15 @@ lesson: A daily scan that fires more than once needs an explicit idempotence rul
 tags: pulse,ecosystem,daily,idempotence,no-change
 confidence: 0.85
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-30
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged five items - (1) Judge Rita Lin ruled the Pentagon's supply-chain-risk designation of Anthropic unlawful as First Amendment retaliation, a nine-week corpus blind spot on sole-vendor continuity risk; (2) the Cowork built-in browser reached Pro/Max/Team, with a first-hand in-session check confirming Claude in Chrome is still the PREFERRED browser, which de-escalates Thursday's alarm and turns it into a two-file skill-documentation edit; (3) day two of the new Google standing source produced a CORRECTION - the Aug 18-21 spam update remains the last confirmed ranking change and the "August core update rolling out Aug 26" claim is contradicted by Google's own Search Status Dashboard; (4) Claude Code shipped nothing in 24h, official changelog front is still 2.1.251 (Aug 28), while two aggregators describe an "Aug 29" release the vendor never published; (5) corpus gap on the arXiv long-term-memory-security literature (2604.16548) that argues writable cross-session agent memory must be governed at write time, which is exactly how ~/.hermes/memories/ and the skills corpus are NOT governed. Signage/wayfinding/permitting MCP negative holds for a sixth day. Frontier flagships flat.
+lesson: Two days after adding Google to the standing sources, that source's first real contribution was catching a false story rather than finding a true one, and on the same day going to the official Claude Code changelog rather than a summariser exposed two aggregators describing a release the vendor never shipped - a daily scan that reads summarisers drifts from reality in small confident increments nobody audits, so the primary-source check is the whole job and the interesting-sounding item is the one to check first. The other half is category blind spots: Pentagon, supply chain and First Amendment return zero matches across nine weeks while litigation ran that could have removed this stack's sole vendor, because coverage drifts toward the categories that produce interesting daily reading and away from the ones that hold the actual risk.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
