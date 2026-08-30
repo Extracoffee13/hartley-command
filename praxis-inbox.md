@@ -1670,3 +1670,15 @@ lesson: Two days after adding Google to the standing sources, that source's firs
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-30
+decision: Second fire of the day (10:00 ET). Today's report already existed on disk (written 06:03 ET, latest.json 06:04 ET); ran a differential against it rather than overwriting a better report.
+outcome: No material change, and one finding that STRENGTHENS this morning's bullet 4. Fetched the canonical code.claude.com changelog directly: the front entry is still 2.1.251 (Aug 28), with 2.1.250 (Aug 28) and 2.1.248 (Aug 27) beneath it - no 2.1.252 exists, so the "Claude Code shipped nothing in 24h" bullet holds twelve hours later. Better than that: a search-surfaced aggregator summary described an August 28-30 Claude Code release bundling ANTHROPIC_DEFAULT_MODEL, a glibc 2.44 startup-crash fix, and the 1.1x US-only-inference premium in /cost - and grepping the canonical changelog places those in 2.1.236 (Aug 19), 2.1.245 (Aug 25) and 2.1.239 (Aug 21) respectively. That is aggregator date-drift caught with line numbers rather than inferred, which is the concrete version of the claim this morning's report could only make as "the most probable reading". No frontier flagship since GLM-5.3-Flash (Aug 26); Gemini 3.7 Flash (Aug 13), Grok 4.6 (Aug 6), Meta Muse Spark 1.2 (Aug 6) and DeepSeek V4 Flash Vision Exp (Aug 21) all already carried. No Anthropic announcement dated Aug 30. No new MCP server in the window; the signage/wayfinding/permitting MCP negative holds for a seventh day. On Google, Search Engine Land reports the Aug 18-21 spam update drove an 82% increase over normal search churn - a sharpening of a story today's bullet 3 already carries, not a new item, and it raises rather than lowers the priority of the still-unstarted Search Console pull across that window. No new AI-agent funding round dated Aug 29-30. Files left unmodified; no bullets added, no overwrite.
+lesson: The right output for a repeat fire is a differential that tries to falsify the morning's bullets, not a fresh scan written over them - and today the differential paid for itself by upgrading a hedge into a fact. This morning could only say it was "the most probable reading" that aggregators were re-dating an old release; grepping the canonical changelog twelve hours later placed each disputed item at a specific earlier version, which is the difference between a suspicion and a citation. Primary sources do not just catch false claims, they convert cautious language into precise language, and that is worth a second pass on a day with no news.
+tags: pulse,ecosystem,daily,idempotence,no-change,primary-source
+confidence: 0.85
+~~~
