@@ -1694,3 +1694,15 @@ lesson: The finding on a third null fire is the schedule, not the news. One scan
 tags: pulse,ecosystem,daily,idempotence,no-change,scheduling
 confidence: 0.85
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-31
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged (1) a two-step cost squeeze - Sonnet 5 promo pricing $2/$10 ends TODAY with standard $3/$15 from Sept 1, and Claude Code weekly limits net MINUS 17% on Sept 14 when the 50% summer boost is replaced by a permanent 25% bump over baseline; both figures return zero corpus matches; (2) Claudeforce, the Salesforce x Anthropic announcement of Aug 26, with Salesforce-in-Claude in select pilot and open beta expected September - product name zero corpus matches despite Salesforce appearing in five prior files; (3) MEASURED aggregator lag - the official code.claude.com changelog was unreachable from this session, and the mirrors used instead report 2.1.247 (Aug 26) as latest when yesterday's direct primary fetch recorded 2.1.251 (Aug 28), giving four versions / five days of quantified drift and no evidence of any release in 24h; (4) a checked null sweep - no frontier flagship, no new MCP server, no agent funding round dated Aug 30-31 (Sail Research $80M is June and already carried), no uncarried arXiv paper, and the signage/wayfinding/permitting MCP negative holding for a NINTH consecutive day.
+lesson: Today the report's two most useful entries came from the same place: a number attached to something that had only ever been asserted. The cost squeeze is real, dated and quantified - Sonnet 5 goes from $2/$10 to $3/$15 tomorrow and Claude Code's effective weekly capacity falls about 17% on September 14 - and it lands on a fleet whose actual consumption has never been measured, because the single /cost reading this report has recommended for six days remains unpulled. That is the whole lesson in one line: an unmeasured baseline is fine until someone else changes the denominator, and then it is the reason you find out about a 17% cut by hitting a wall mid-session. The second half is the same shape. For three days this scan has said aggregators drift from primary sources; today the primary was unreachable, and that failure produced the first quantified estimate the corpus holds - four versions and five days behind - which is worth more than another day of the unquantified claim. When the primary cannot be reached, publish the secondary reading WITH its measured lag attached rather than presenting it as current or saying nothing, and the same rule applies to the run rate: measure it before the terms change, not after.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
