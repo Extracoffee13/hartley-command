@@ -1,12 +1,13 @@
 {
-    "last_sync": "2026-08-31T18:30:00+00:00",
-    "synced": 2,
-    "iCloud_synced": 2,
+    "last_sync": "2026-08-31T19:00:00+00:00",
+    "synced": 3,
+    "iCloud_synced": 1,
     "source": "construct-dashboard-autosync cron v4-sync",
     "status": "ok",
     "files": [
         "kanban-state.json",
-        "hermes-status.json"
+        "hermes-status.json",
+        "wolf-health.html"
     ],
-    "note": "iCloud→workspace pull: kanban 14:27, hermes-status 14:25 (both newer than repo 13:19-13:20). wolf-health.html unchanged. Live repo will push to origin."
+    "note": "Fetched origin (e3c5cb4, 8 new commits FF-merged). iCloud kanban/hermes-status content-hash matches repo. Pushed updated wolf-health.html back to iCloud (workspace newer). Repo up to date."
 }
