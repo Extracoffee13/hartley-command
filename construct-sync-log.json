@@ -1,9 +1,9 @@
 {
-    "last_sync": "2026-08-31T19:32:00+00:00",
-    "synced": 0,
-    "iCloud_synced": 0,
+    "last_sync": "2026-08-31T19:46:00+00:00",
+    "synced": 1,
+    "iCloud_synced": 1,
     "source": "construct-dashboard-autosync cron v4-sync",
     "status": "ok",
-    "files": [],
-    "note": "Heartbeat check: all stores consistent (md5 MATCH on all 5 tracked files). iCloud Hartley Command ↔ workspace repo identical. Pulled origin (bb7f9cd, 3 new commits FF). Wolf: day=128, $100,749, theses=1 — unchanged. Kanban: all lanes empty. Hermes: reports=0, inbox=0, calls=75, ducks=13. No files needed syncing."
+    "files": ["kanban-state.json"],
+    "note": "Synced kanban-state.json (newer generated_at in workspace: 15:42 vs live: 15:27). Rebase dropped our commit — change already upstream (origin/9a3f5da). Live repo rebased to 9a3f5da. All 3 stores consistent: workspace data dir ↔ live repo ↔ iCloud. Wolf: day=128, $100,749, theses=1 — unchanged. Kanban: all lanes empty (+1 completed done entry). Hermes: reports=0, inbox=0, calls=75, ducks=13."
 }
