@@ -1,9 +1,9 @@
 {
-    "last_sync": "2026-08-31T20:16:00+00:00",
-    "synced": 2,
-    "iCloud_synced": 2,
+    "last_sync": "2026-08-31T21:00:00+00:00",
+    "synced": 3,
+    "iCloud_synced": 1,
     "source": "construct-dashboard-autosync cron v4-sync",
     "status": "ok",
-    "files": ["kanban-state.json", "hermes-status.json"],
-    "note": "Synced kanban-state.json (iCloud 16:12 vs repo 15:42 — iCloud newer) and hermes-status.json (iCloud 19:55 vs repo 19:25 — iCloud newer). MD5 verified: repo ↔ iCloud consistent for all 3 tracked files (wolf-health.html unchanged, MD5 matched). Git commit c7c310c. Wolf: day=128, $100,749, theses=1 — unchanged. Kanban: all lanes empty (+1 done entry from Jul 1). Hermes: reports=0, inbox=0, calls=75, ducks=13."
+    "files": ["kanban-state.json", "hermes-status.json", "wolf-health.html"],
+    "note": "Synced kanban-state.json (workspace 20:57Z newer than repo 20:12Z), hermes-status.json (workspace 20:55Z newer than repo 19:55Z) and wolf-health.html (workspace 21:00Z newest across all stores; iCloud was stale at 20:24Z, refreshed to workspace version). MD5 verified: repo ↔ workspace ↔ iCloud consistent for all tracked files. Git commit to follow. Wolf: day=128, $100,749, theses=1 — unchanged. Kanban: all lanes empty (+1 done entry from Jul 1). Hermes: reports=0, inbox=0, calls=75, ducks=13."
 }
