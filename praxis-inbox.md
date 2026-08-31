@@ -1706,3 +1706,15 @@ lesson: Today the report's two most useful entries came from the same place: a n
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-31
+decision: SECOND fire of the day (10:00 ET). Today's report was already written at 06:03 ET, so ran a differential re-check against the morning's two explicit hedges instead of overwriting, and amended the report in place where the morning text had been superseded.
+outcome: Both morning hedges resolved, and one genuinely new fact found. (1) NEW - today's Sonnet 5 repricing ships with a TOKENIZER CHANGE adding roughly 10-35% more tokens on code, compounding with the $2/$10 to $3/$15 rate rise rather than sitting beside it, so a coding-heavy workload lands well above the 50% headline; the tokenizer half returns zero corpus matches. (2) SUPERSEDED - bullet 1's caveat that the 17% figure was secondary-source arithmetic and not Anthropic's own number is now wrong: Anthropic deleted its original post and republished stating the 17% reduction plainly; bullet 1 amended in place. (3) RESOLVED - bullet 3's unreachable-primary hedge cleared: code.claude.com was reachable on retry and confirms 2.1.251 (Aug 28) top, 2.1.250 (Aug 28), 2.1.248 (Aug 27), no 2.1.252, so the degraded morning reading was correct and the four-version / five-day aggregator lag is now measured against the primary itself. (4) Minor same-day items logged without their own bullets: GPT-5.4 and GPT-5.4 mini left Codex for ChatGPT sign-in users (API key still works), kimi-k2.5 and moonshot-v1 sunset with kimi-k3 as migration target. (5) Nulls re-confirmed: no new MCP server dated Aug 30-31 (newest remains the Jul 28 spec RC and Cloudflare MCP v2, both carried), no agent funding round in the window (trackers return Patronus $50M from June 25 and July rounds, all carried or out of window). Files: 2026-08-31.md amended with a fifth bullet and a rewritten PRAXIS lesson, latest.json re-emitted with 5 bullets and validated as parseable, history unchanged at 14 entries led by 2026-08-31.
+lesson: This day ran twice, and the second run earned its keep by testing the first run's hedges rather than restating its findings - both failed, and failed usefully. The caveat that the 17% figure was not Anthropic's own number was right when written and wrong four hours later; the unreachable-primary hedge cleared on a simple retry and turned a degraded reading into a confirmed finding. A hedge is not a placeholder to be carried forward, it is a question with an expiry date, and the cheapest time to re-ask it is a few hours later on the same day. Meanwhile the one fact nobody hedged about is the one that matters most: the repricing compounds via a tokenizer change, so every cost estimate in this corpus has silently assumed the wrong denominator, and the /cost reading now has two questions riding on it with fourteen days left.
+tags: pulse,ecosystem,daily,differential,hedge-expiry,cost,tokenizer
+confidence: 0.85
+~~~
