@@ -1,9 +1,9 @@
 {
-    "last_sync": "2026-08-31T21:15:00+00:00",
-    "synced": 1,
-    "iCloud_synced": 0,
+    "last_sync": "2026-08-31T23:01:00+00:00",
+    "synced": 3,
+    "iCloud_synced": 2,
     "source": "construct-dashboard-autosync cron v4-sync",
     "status": "ok",
-    "files": ["kanban-state.json"],
-    "note": "Synced kanban-state.json only (workspace 17:12 EDT vs repo 16:57 EDT — timestamp-only change, identical lane data). hermes-status.json and wolf-health.html already matched. Pushed to ec41d02. Wolf: day=128, $100,749, theses=1 — unchanged. All lanes empty. Hermes: reports=0, inbox=0, calls=75, ducks=13."
+    "files": ["kanban-state.json", "hermes-status.json", "wolf-health.html"],
+    "note": "Synced kanban-state.json (iCloud 22:57 UTC vs workspace 22:42 UTC — iCloud newer); hermes-status.json (iCloud 22:55 UTC vs workspace 22:25 UTC — iCloud newer); wolf-health.html (workspace → iCloud root + WOLF Dashboards, already consistent with Hartley Command). Wolf: day=128, $100,749, theses=1 — unchanged. Kanban: all lanes empty (+1 done entry from Jul 1). Hermes: reports=0, inbox=0, calls=75, ducks=13."
 }
