@@ -1718,3 +1718,15 @@ lesson: This day ran twice, and the second run earned its keep by testing the fi
 tags: pulse,ecosystem,daily,differential,hedge-expiry,cost,tokenizer
 confidence: 0.85
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-08-31
+decision: THIRD fire of the day (14:00 ET). Today's report was written at 06:03 ET and differentially re-checked at 10:00 ET, so ran a second differential against the 10:00 state rather than overwriting, and logged the null plus the recurring schedule observation.
+outcome: Null differential - nothing material since the 10:00 re-check and nothing that alters any of today's five bullets. Anthropic: no announcement dated Aug 31 beyond what is already carried; a fresh search returns only the Sonnet 5 repricing, the Sept 14 weekly-limit cut, Claudeforce, Claude for Teachers and the 10,000 science seats, all of which grep positive in this corpus (Claudeforce and the tokenizer half both landing today in 08-31 itself). Frontier flagships flat - trackers still return GLM-5.3 Flash and Qwen3.8 Flash (both Aug 26), Gemini 3.7 Flash (Aug 13) and Meta Muse Spark 1.2, every one already carried across multiple files; no OpenAI, Mistral, DeepSeek or Cohere release dated Aug 30-31. MCP: no server released in the window; the newest surfaced items are the Jul 28 spec RC and Cloudflare MCP v2, both carried, plus Okta's weekly 2026.08.1 OSS MCP update (Okta carried in seven prior files). Funding: no agent round dated Aug 30-31; trackers return Zenity's $125M from Aug 3, already carried in six files. Signage/wayfinding/permitting MCP negative holds for a TENTH consecutive day - the search again returned only sign-industry marketing (FastSigns, BlinkSigns) and two conventional SaaS platforms, SignAgent and TSP, with no protocol tooling. One zero-match item logged without a bullet: GetMCP, a commercial MCP-server product that went standalone Aug 27 and supports five spec revisions through 2026-07-28 - genuinely low signal, recorded only so the zero-match is not rediscovered tomorrow. Files left unmodified: no bullets added, no overwrite, latest.json re-validated as parseable with 5 bullets, tags yes/maybe/maybe/no/yes, and a 14-entry history led by 2026-08-31.
+lesson: Yesterday's third fire concluded that the marginal value of a re-fire collapses once the primary sources have been checked directly, and today reproduces that result exactly - the 10:00 differential converted two hedges into citations and found the tokenizer change, and the 14:00 differential found nothing at all. Two consecutive days of the same shape is no longer an observation, it is a measurement: this task fires roughly three times a day against a source set that updates once, and the second fire earns its keep only when the first left an open hedge. The rule worth adopting is conditional rather than scheduled - re-fire to close a stated hedge, skip when the morning report carried none - and today's report carries no open hedges, which is precisely why this block has nothing in it but a null.
+tags: pulse,ecosystem,daily,idempotence,no-change,scheduling,null-differential
+confidence: 0.85
+~~~
