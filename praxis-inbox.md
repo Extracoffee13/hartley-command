@@ -1730,3 +1730,15 @@ lesson: Yesterday's third fire concluded that the marginal value of a re-fire co
 tags: pulse,ecosystem,daily,idempotence,no-change,scheduling,null-differential
 confidence: 0.85
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-09-01
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct, and re-verified yesterday's two lead bullets against the vendor's own pricing page on the day their change was supposed to take effect.
+outcome: Two corrections and one new cost dimension. (1) CORRECTION - the Sept 1 Sonnet 5 price increase to $3/$15 WILL NOT OCCUR; the primary pricing page states $2/$10 is now the standard price, the reversal was announced Aug 10, and this corpus carried the hike as fact on 08-25 and as the lead bullet of 08-31. (2) CORRECTION - the tokenizer claim was wrong in size and shape: the primary says ~30 percent more tokens (not a 10-35 percent band), scoped to Claude 4.7-and-later MODELS (not to code, not to the repricing), so it is a standing property rather than a Sept 1 event and yesterday's 1.65-2.0x compounding thesis has no event behind it. (3) SURVIVES - the Sept 14 Claude Code weekly-limit change is real and unretracted, 25 percent over baseline equals a 17 percent cut against today's boosted cap, and a newly-carried scope detail is that it applies to paid seat-based plans only, not API-key or usage-based Enterprise. (4) NEW - Claude Managed Agents bills session runtime at $0.08 per session-hour separately from tokens, accruing only while status is running; `session-hour` returns zero corpus matches despite `Managed Agents` appearing in six files. (5) Nulls checked: no frontier flagship, no MCP server, no agent round dated Aug 31-Sep 1, no arXiv paper outside the corpus, and the signage/wayfinding/permitting MCP negative holds for an ELEVENTH day. Glasswing logged as a zero-match without a bullet (Aug 21, outside window). Files: 2026-09-01.md written with 5 bullets, latest.json overwritten and validated as parseable, history 14 entries led by 2026-09-01.
+lesson: A dated future change must be re-verified against the vendor's own page on the day it takes effect, because cancellations ship as quiet docs edits and never as news. Yesterday's error was not a hedge that expired - it was a fact stated without a caveat, repeated across two files, and already three weeks false when published. The items most likely to be wrong are not the ones carrying caveats; they are the ones repeated often enough to stop attracting them.
+tags: pulse,ecosystem,daily,correction,primary-source,cost,pricing,tokenizer
+confidence: 0.85
+~~~

@@ -1,9 +1,43 @@
 {
-    "last_sync": "2026-08-31T20:16:00+00:00",
-    "synced": 2,
-    "iCloud_synced": 2,
-    "source": "construct-dashboard-autosync cron v4-sync",
-    "status": "ok",
-    "files": ["kanban-state.json", "hermes-status.json"],
-    "note": "Synced kanban-state.json (iCloud 16:12 vs repo 15:42 — iCloud newer) and hermes-status.json (iCloud 19:55 vs repo 19:25 — iCloud newer). MD5 verified: repo ↔ iCloud consistent for all 3 tracked files (wolf-health.html unchanged, MD5 matched). Git commit c7c310c. Wolf: day=128, $100,749, theses=1 — unchanged. Kanban: all lanes empty (+1 done entry from Jul 1). Hermes: reports=0, inbox=0, calls=75, ducks=13."
+  "syncs": [
+    {
+      "ts": "2026-09-01T05:32:58.010747Z",
+      "type": "wolf-dashboard-autosync",
+      "files": [
+        "kanban-state.json",
+        "hermes-status.json",
+        "wolf-health.html"
+      ],
+      "commit": "c0afbdd",
+      "day": 128,
+      "portfolio": 100749,
+      "theses": 1
+    },
+    {
+      "ts": "2026-09-01T07:34:44.000000Z",
+      "type": "construct-dashboard-autosync",
+      "files": [
+        "kanban-state.json",
+        "hermes-status.json",
+        "wolf-health.html",
+        "construct-integrity.json"
+      ],
+      "day": 128,
+      "portfolio": 100749,
+      "theses": 1
+    },
+    {
+      "ts": "2026-09-01T08:30:00.000000Z",
+      "type": "wolf-dashboard-autosync",
+      "files": [
+        "wolf-health.html"
+      ],
+      "commit": "f76208d",
+      "day": 128,
+      "portfolio": 100749,
+      "theses": 1,
+      "note": "timestamp refresh only — data unchanged"
+    }
+  ],
+  "last_sync": "2026-09-01T08:30:00.000000Z"
 }
