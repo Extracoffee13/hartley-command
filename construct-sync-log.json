@@ -1,9 +1,9 @@
 {
-    "last_sync": "2026-09-01T00:03:00+00:00",
-    "synced": 3,
-    "iCloud_synced": 3,
+    "last_sync": "2026-09-01T01:00:00+00:00",
+    "synced": 2,
+    "iCloud_synced": 0,
     "source": "construct-dashboard-autosync cron v4-sync",
     "status": "ok",
-    "files": ["kanban-state.json", "hermes-status.json", "wolf-health.html"],
-    "note": "construct-dashboard-autosync.py: synced=0 (all JSON already consistent). Manual: wolf-health.html REPO→iCloud (00:00 UTC vs 23:30 UTC — REPO newer). wolf_live_data.json REPO→iCloud. Wolf: day=128, $100,749, theses=1 — unchanged. Kanban: all lanes empty (+1 done from Jul 1). Hermes: reports=0, inbox=0, calls=75, ducks=13 (stable)."
+    "files": ["hermes-status.json", "kanban-state.json"],
+    "note": "construct-dashboard-autosync: synced=2 to hartley-command-live. hermes-status.json (lens_week 7→6, Sep 1 heartbeat) and kanban-state.json (timestamp refresh) pushed to live. wolf_live_data.json unchanged. Wolf: day=128, $100,749, theses=1, ACN $189.61. Kanban: all empty (+1 done from Jul 1). Hermes: reports=0, inbox=0, calls=75, ducks=13 (stable)."
 }
