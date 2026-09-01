@@ -1,9 +1,9 @@
 {
-    "last_sync": "2026-09-01T01:00:00+00:00",
+    "last_sync": "2026-09-01T04:32:00+00:00",
     "synced": 2,
     "iCloud_synced": 0,
-    "source": "construct-dashboard-autosync cron v4-sync",
+    "source": "wolf-dashboard-autosync cron",
     "status": "ok",
-    "files": ["hermes-status.json", "kanban-state.json"],
-    "note": "construct-dashboard-autosync: synced=2 to hartley-command-live. hermes-status.json (lens_week 7→6, Sep 1 heartbeat) and kanban-state.json (timestamp refresh) pushed to live. wolf_live_data.json unchanged. Wolf: day=128, $100,749, theses=1, ACN $189.61. Kanban: all empty (+1 done from Jul 1). Hermes: reports=0, inbox=0, calls=75, ducks=13 (stable)."
+    "files": ["wolf-health.html", "hermes-snapshot-wolf.json"],
+    "note": "wolf-dashboard-autosync: synced=2 to hartley-command-live. wolf-health.html (day 128, portfolio $100,749, ACN $189.61 +9%, overdue 40d) and hermes-snapshot-wolf.json (timestamp refresh) pushed. commit 227af1c via remote main."
 }
