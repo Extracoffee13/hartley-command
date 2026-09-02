@@ -1,93 +1,68 @@
 {
-  "ts": "2026-08-31T14:04:47Z",
+  "ts": "2026-09-02T14:30:00Z",
   "client": "b9",
+  "scan_version": "day48",
   "engine_summary": {
     "Google AI Overview": {
-      "cited": 12,
-      "total": 13,
-      "pct": 92.3
+      "cited": 0,
+      "total": 0,
+      "pct": 0
     },
     "Perplexity": {
-      "cited": 6,
-      "total": 13,
-      "pct": 46.2
+      "cited": 0,
+      "total": 0,
+      "pct": 0
     },
     "Grok": {
-      "cited": 13,
-      "total": 13,
-      "pct": 100
+      "cited": 0,
+      "total": 0,
+      "pct": 0
     },
     "ChatGPT": {
-      "cited": 2,
-      "total": 13,
-      "pct": 15.4
+      "cited": 0,
+      "total": 0,
+      "pct": 0
     },
     "Gemini": {
-      "cited": 3,
-      "total": 13,
-      "pct": 23.1
+      "cited": 0,
+      "total": 0,
+      "pct": 0
     },
     "Claude": {
       "cited": 0,
-      "total": 13,
+      "total": 0,
       "pct": 0
     }
   },
-  "aeo_score": 90,
-  "aeo_interpretation": "EXCELLENT — Brand 9 Signs cited by Google AI Overview (12/13), Grok (13/13), Perplexity (6/13)",
+  "aeo_score": 37,
+  "aeo_interpretation": "YELLOW \u2014 Brand 9 Signs retrieval tier: 148/397 cited (37%, CI 32.7-42.1%)",
+  "retrieval_tier": {
+    "scored": 397,
+    "no_read": 3,
+    "named_top3": 148,
+    "named_anywhere": 157,
+    "pct_top3": 37,
+    "ci_95_top3": "32.7%..42.1%"
+  },
   "browser_probes": {
     "Perplexity": {
       "probes": 3,
-      "cited": 1,
-      "pct": 33.3,
-      "source": "browser_exec sandbox"
+      "cited": 3,
+      "pct": 100
     },
     "Grok": {
-      "probes": 3,
-      "cited": 3,
-      "pct": 100,
-      "source": "browser_exec sandbox"
+      "probes": 0,
+      "cited": 0,
+      "pct": 0
     },
     "Google AI Overview": {
-      "probes": 3,
-      "cited": 3,
-      "pct": 100,
-      "source": "browser_exec sandbox"
-    },
-    "probed_at": "2026-08-29T14:10:00Z",
-    "queries": [
-      "Who makes the best monument signs in Florida?",
-      "What are the top home builder signage companies in Florida?",
-      "Which companies install community monument signs in master-planned communities?"
-    ]
-  },
-  "aair_v6_scan": {
-    "ts": "2026-08-30T14:17:57Z",
-    "retrieval_top3_pct": 34,
-    "retrieval_top3_fraction": "125/365",
-    "retrieval_ci_95": "29.6%..39.3%",
-    "no_read": 35,
-    "by_engine": {
-      "Perplexity (Sonar)": {
-        "top3": 25,
-        "scored": 100,
-        "pct": 25.0
-      },
-      "ChatGPT (GPT-4o search)": {
-        "top3": 28,
-        "scored": 87,
-        "pct": 32.2
-      },
-      "Gemini 2.5 search": {
-        "top3": 35,
-        "scored": 93,
-        "pct": 37.6
-      },
-      "Claude Sonnet 4.5 search": {
-        "top3": 32,
-        "scored": 82,
-        "pct": 39.0
-      }
+      "probes": 0,
+      "cited": 0,
+      "pct": 0
     }
+  },
+  "previous_scan": {
+    "day": 47,
+    "pct_top3": 34
   }
 }
