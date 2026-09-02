@@ -2,26 +2,107 @@
 <html lang="en"><head><meta charset="utf-8">
 <title>WOLF Health Dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",monospace;padding:2rem}
-h1{color:#00ff88;font-weight:600}
-.card{background:#111;border:1px solid #333;padding:1rem;margin:1rem 0;border-radius:6px}
-h2{margin:0 0 .5rem;font-size:.9rem;color:#00d4ff;text-transform:uppercase;letter-spacing:.04em}
-.ok{color:#00ff88} .warn{color:#ffaa00} .crit{color:#ff4444}
-a{color:#00d4ff}
+<style>body{background:#000;color:#e0e0e0;font-family:'Courier New',monospace;padding:2rem;margin:0}
+h1{color:#39ff14;font-size:1.6rem;margin:0 0 .25rem}
+.sub{color:#888;font-size:.8rem;margin-bottom:1.5rem}
+.card{background:#0a0a0a;border:1px solid #333;border-left:3px solid #39ff14;padding:1rem;margin:1rem 0;border-radius:6px}
+h2{color:#00d4ff;font-size:.85rem;text-transform:uppercase;letter-spacing:.04em;margin:0 0 .75rem}
+.ok{color:#39ff14}.warn{color:#ffa500}.crit{color:#ff4d4d}.muted{color:#888}
+.badge{background:#333;padding:.2rem .5rem;border-radius:4px;font-size:.8rem;font-weight:700}
+table{width:100%;border-collapse:collapse;font-size:.85rem;margin-top:.5rem}
+th{text-align:left;color:#00d4ff;border-bottom:1px solid #333;padding:.35rem .5rem}
+td{padding:.35rem .5rem;border-bottom:1px solid #222}
+.bar-bg{background:#222;height:16px;border-radius:4px;position:relative;overflow:hidden;width:100%;max-width:400px}
+.bar-fill{background:linear-gradient(90deg,#39ff14,#00d4ff);height:100%}
+.bar-line{position:absolute;top:0;bottom:0;width:2px;background:#ff4d4d;left:80%}
+.fixed-panel{position:fixed;right:1rem;bottom:1rem;background:#111;border:1px solid #333;padding:.75rem;border-radius:6px;font-size:.75rem;max-width:260px;z-index:100}
 .thesis{border-left:3px solid #333;padding-left:.75rem;margin:.75rem 0}
 .ticker{font-weight:700;font-size:1.1rem;margin-right:.75rem}
 .verdict{font-weight:700;font-size:.9rem}
 .rationale{margin:.35rem 0;color:#cfcfcf;line-height:1.4}
 .meta{font-size:.8rem;color:#888}
-</style></head><body>
+a{color:#00d4ff}
+pre{background:#111;padding:.75rem;border:1px solid #333;overflow:auto;font-size:.75rem}
+.footer{font-size:.75rem;color:#888;margin-top:2rem;border-top:1px solid #333;padding-top:1rem}</style></head><body>
 <h1>WOLF Health Dashboard</h1>
-<div class="card"><b>Day 129/90</b> &bull; OVERDUE 41 days (kill-crit passed) &bull; Portfolio: $100,749</div>
-<div class="card">Compliance: <span class="warn">WARN</span></div>
-<div class="card">Infrastructure: <span class="ok">OK</span></div>
-<div class="card">Alerts: KILL CRITERION DATE 2026-07-23 HAS PASSED (41 days overdue); mission at day 129 of 90; position review required</div>
-<div class="card"><h2>Positions</h2><div><span class="ticker">ACN</span> 48 @ $174.0 · current $188.09 · <span class="ok">8.1%</span></div></div>
-<div class="card"><h2>Market Regime</h2><div>moderate-bear · VIX 18</div></div>
-<div class="card"><h2>Deep Research Theses</h2><div class="thesis"><span class="ticker">ACN</span><span class="verdict ok">BULLISH</span><div class="rationale">**VERDICT: BULLISH (STRONGLY RECOMMEND AVERAGING DOWN)**</div><div class="meta">generated 2026-07-01 · source gemini-deep-research · <a href="./wolf-research/ACN-2026-07-01.md" target="_blank">full report</a></div></div></div>
-<div class="card" style="font-size:0.8rem">Updated: 2026-09-02 13:00 UTC by wolf-dashboard-autosync</div>
+<div class="sub">Hermes COS oversight · sync 2026-09-02 13:03 UTC</div>
+
+<div class="card">
+<h2>⚠️ Real-Money Lock</h2>
+<p>Capability score <span class="crit">0</span>/100 (fallback source). Real-money trading remains DISABLED until score ≥80 and kill-criterion review is complete.</p>
+</div>
+
+<div class="card">
+<h2>Compliance Alerts</h2>
+<table><tr><th>Filed</th><th>Issue</th><th>Current Status</th></tr><tr><td>2026-09-02T02:31:00Z</td><td>KILL CRITERION DATE 2026-07-23 HAS PASSED (41 days overdue); mission at day 129 of 90; position review required</td><td><span class='crit'>OPEN</span> — kill date arrived; day counter stale; review required</td></tr></table>
+</div>
+
+<div class="card">
+<h2>Day-90 Kill Criterion</h2>
+<p><span class="badge" style="background:#ffa500;color:#000">PASSED</span> · kill-criterion date <b>2026-07-23</b> · 41 days overdue</p>
+<p class="muted">Mission start 2026-04-25 · day counter reports 129/90 but is stale (Alpaca-fallback accounting). Position review required.</p>
+</div>
+
+<div class="card">
+<h2>Capability Score</h2>
+<div class="bar-bg"><div class="bar-fill" style="width:0%"></div><div class="bar-line"></div></div>
+<p>Score: <span class="crit">0</span>/100 · threshold 80 · lessons stale 0d</p>
+<div style="font-size:.8rem"><p><b>2026-08-04:</b> Tue 2026-08-04 — AI-demand trade re-lights on Palantir's blowout (+12%, US commercial rev ~+150%); Nasdaq futures lead (+135). Read: demand is bifurcating — applied-AI monetizers (PLTR) reward, capex-heavy platforms (Met…</p><p><b>2026-08-03:</b> Mon 2026-08-03 — first full-week-of-August open. Carry-over: last week resolved earnings-dispersion vs a hawkish-hold macro, with Thu 7/30's megacap/chip rally carrying the tape. Discipline at today's open: don't chase t…</p></div>
+</div>
+
+<div class="card">
+<h2>Portfolio Snapshot</h2>
+<p><b>Equity:</b> $100,749 · <b>Cash:</b> $0 · <b>Positions value:</b> $9,028</p>
+<p class="muted">Data source: state.json-fallback (Alpaca key absent) · state age 10.5h</p>
+<table><tr><th>Ticker</th><th>Shares</th><th>Avg Entry</th><th>Current</th><th>Unrealized</th><th>Mkt Value</th></tr><tr><td>ACN</td><td>48</td><td>$174.00</td><td>$188.09</td><td class='ok'>8.1%</td><td>$9,028</td></tr></table>
+<p class="crit">Reconciliation gap: equity $100,749 vs cash $0 + positions $9,028. Indicates fallback/stale accounting.</p>
+</div>
+
+<div class="card">
+<h2>Strategy Status</h2>
+<table><tr><th>Strategy</th><th>Status</th><th>Alloc</th><th>Sharpe</th><th>Max DD</th><th>Note</th></tr><tr><td>ACN Deep Value / AI Outsourcing</td><td class='ok'>ACTIVE</td><td>1.00</td><td>—</td><td>—</td><td>Single thesis; high conviction</td></tr><tr><td>Momentum Rotation</td><td class='muted'>DISABLED</td><td>—</td><td>—</td><td>—</td><td>No signal</td></tr><tr><td>Mean Reversion</td><td class='warn'>PENDING</td><td>—</td><td>—</td><td>—</td><td>Capitulation watch only</td></tr><tr><td>Macro Regime Hedge</td><td class='muted'>DISABLED</td><td>—</td><td>—</td><td>—</td><td>No hedge deployed</td></tr><tr><td>Earnings Dispersion</td><td class='muted'>DISABLED</td><td>—</td><td>—</td><td>—</td><td>No earnings playbook</td></tr><tr><td>Volatility Harvest</td><td class='muted'>DISABLED</td><td>—</td><td>—</td><td>—</td><td>VIX 18, no trade</td></tr><tr><td>Quality Factor</td><td class='muted'>DISABLED</td><td>—</td><td>—</td><td>—</td><td>Universe not screened</td></tr><tr><td>Alt-Data Signal</td><td class='warn'>PENDING</td><td>—</td><td>—</td><td>—</td><td>LunarCrush data stale</td></tr><tr><td>Sector Rotation</td><td class='muted'>DISABLED</td><td>—</td><td>—</td><td>—</td><td>No rotation trigger</td></tr><tr><td>Tail-Risk Protection</td><td class='muted'>DISABLED</td><td>—</td><td>—</td><td>—</td><td>None</td></tr></table>
+</div>
+
+<div class="card">
+<h2>Infrastructure Status</h2>
+<p>Verdict: <span class="crit">DEGRADED</span> · 37 ok / 5 warn / 1 alert · 42 agents</p>
+<table><tr><th>Agent</th><th>Status</th><th>Note</th><th>Timestamp</th></tr><tr><td>agent-cross-ref-validator</td><td class='warn'>WARN</td><td>validated 29 ducks, 1 issues</td><td>2026-09-02 03:00:46</td></tr><tr><td>ai-citation-probe</td><td class='ok'>OK</td><td>b9=True pragma=True hc=None pushed</td><td>2026-09-02 11:40:20</td></tr><tr><td>b9-site-change-watcher</td><td class='crit'>ALERT</td><td>changes: ['https://brand9signs.com/']</td><td>2026-09-02 12:30:48</td></tr><tr><td>b9-worker-queue-watchdog</td><td class='ok'>OK</td><td>launchd agent up, queue clean</td><td>2026-09-02 13:00:54</td></tr><tr><td>claude-token-rollup</td><td class='ok'>OK</td><td>pct=78 measured=77591707</td><td>2026-09-02 11:40:20</td></tr><tr><td>competitor-watch</td><td class='ok'>OK</td><td>competitors=2 changed=0</td><td>2026-09-02 10:00:57</td></tr><tr><td>completion-claim-watcher</td><td class='ok'>OK</td><td>scanned=1</td><td>2026-09-02 13:00:54</td></tr><tr><td>construct-5min-health-check</td><td class='ok'>OK</td><td>ok</td><td>2026-09-02 13:00:54</td></tr><tr><td>construct-v4-sync</td><td class='ok'>OK</td><td>wds=13 stale=0 pushed refresh=fresh hermes=empty</td><td>2026-09-02 13:00:56</td></tr><tr><td>content-publish-scheduler</td><td class='ok'>OK</td><td>queued=0 due=0</td><td>2026-09-02 13:00:54</td></tr><tr><td>dashboard-autosync</td><td class='ok'>OK</td><td>synced=2 files=['kanban-state.json', 'hermes-status.json']</td><td>2026-09-02 13:00:53</td></tr><tr><td>dashboard-deploy</td><td class='ok'>OK</td><td>pushed hub=200</td><td>2026-09-02 12:55:12</td></tr><tr><td>dh-dns-tracker</td><td class='ok'>OK</td><td>DNS ok: brand9signs.com=34.174.176.133, prag-ma.ai=67.205.26.176</td><td>2026-09-02 10:15:26</td></tr><tr><td>flock-typology-watcher</td><td class='ok'>OK</td><td>wd=26 calls=11 ratio=0.4</td><td>2026-09-02 11:40:18</td></tr><tr><td>flock-typology-writer</td><td class='ok'>OK</td><td>wd=13 calls=75</td><td>2026-09-02 11:40:20</td></tr><tr><td>github-pages-build-watcher</td><td class='ok'>OK</td><td>status=built error={'message': None}</td><td>2026-09-02 13:00:54</td></tr><tr><td>harvard-library-index-builder</td><td class='ok'>OK</td><td>indexed=3380 sources=13</td><td>2026-09-02 09:43:41</td></tr><tr><td>harvard-source-backfill</td><td class='ok'>OK</td><td>checked=121 added=0 (nothing new/relevant within 3d)</td><td>2026-09-02 11:41:29</td></tr><tr><td>hermes-composed-brief</td><td class='ok'>OK</td><td>brief=2026-09-01.md ducks=54</td><td>2026-09-01 21:00:49</td></tr><tr><td>inbox-self-heal</td><td class='ok'>OK</td><td>inbox=0 tasks</td><td>2026-09-02 13:00:53</td></tr><tr><td>invitation-homes-watcher</td><td class='ok'>OK</td><td>changed=True http=200</td><td>2026-09-02 12:00:44</td></tr><tr><td>lennar-route-density-tracker</td><td class='ok'>OK</td><td>5 regions, 90 active rows, top=sofla</td><td>2026-09-02 11:00:33</td></tr><tr><td>memory-capture</td><td class='ok'>OK</td><td>new_entries=0</td><td>2026-09-02 13:00:54</td></tr><tr><td>memory-crossshare</td><td class='ok'>OK</td><td>promoted=0</td><td>2026-09-02 13:00:54</td></tr><tr><td>model-tier-router</td><td class='ok'>OK</td><td>pending=0</td><td>2026-09-02 13:00:54</td></tr><tr><td>morning-briefing-composer</td><td class='ok'>OK</td><td>brief=morning-2026-09-02.md ducks=54 inbox=5</td><td>2026-09-02 10:00:58</td></tr><tr><td>pages-freshness</td><td class='ok'>OK</td><td>pages_lag=-0min mirror=54</td><td>2026-09-02 12:26:49</td></tr><tr><td>plugin-load-verifier</td><td class='ok'>OK</td><td>loaded=['telegram']</td><td>2026-09-02 13:00:54</td></tr><tr><td>pragma-mirror</td><td class='ok'>OK</td><td>vis=41 aeo=56 seo=36 geo=60 llm=0 recs=35</td><td>2026-09-02 11:00:37</td></tr><tr><td>pragma-smb-install-readiness-tracker</td><td class='warn'>WARN</td><td>no pragma pipeline file and no client dirs found</td><td>2026-09-02 12:00:43</td></tr><tr><td>pragma-uptime-guardian</td><td class='ok'>OK</td><td>code=200 pragma_content=True</td><td>2026-09-02 13:00:54</td></tr><tr><td>praxis-distiller</td><td class='ok'>OK</td><td>scanned=0 promoted=0 held=0</td><td>2026-09-02 13:00:53</td></tr><tr><td>review-velocity-tracker</td><td class='ok'>OK</td><td>count=None rating=None vel7d=None vel30d=None</td><td>2026-09-02 12:00:44</td></tr><tr><td>site-health-crawler</td><td class='ok'>OK</td><td>score=70 pages=249</td><td>2026-09-02 11:41:27</td></tr><tr><td>skills-registry-scan</td><td class='ok'>OK</td><td>total=172 new=0 dropped=0 missing_roots=none</td><td>2026-09-02 10:10:00</td></tr><tr><td>ssl-cert-watcher</td><td class='ok'>OK</td><td>brand9signs.com 44d; prag-ma.ai 80d</td><td>2026-09-02 11:00:33</td></tr><tr><td>telegram-listener</td><td class='ok'>OK</td><td>telegram=connected gateway=running</td><td>2026-09-02 13:00:54</td></tr><tr><td>uptime-monitor</td><td class='ok'>OK</td><td>2 sites up</td><td>2026-09-02 13:00:54</td></tr><tr><td>wealth-signal-aggregator</td><td class='warn'>WARN</td><td>no sources configured; local_signals=2</td><td>2026-09-02 10:30:28</td></tr><tr><td>wild-duck-doctor</td><td class='warn'>WARN</td><td>29 ducks: 8 ok, 16 stale, 5 no-hb</td><td>2026-09-02 13:00:53</td></tr><tr><td>wolf-dashboard-autosync</td><td class='ok'>OK</td><td>day=129 val=100749 theses=1</td><td>2026-09-02 13:00:54</td></tr><tr><td>wolf-state-updater</td><td class='ok'>OK</td><td>tasks=0 live_data=state.json-fallback (Alpaca key absent)</td><td>2026-09-02 11:40:18</td></tr></table>
+</div>
+
+<div class="card">
+<h2>WOLF-State-Watcher Heartbeat</h2>
+<pre>{
+  "source": "wolf-state-watcher-snapshot.json",
+  "checked_at": "2026-06-25T13:35:46Z",
+  "status": "WARN",
+  "interpretation": "Path mismatch: watcher observes ~/Documents/Claude/Projects/Atlas/wolf/state.json inside hermes-sandbox, which does not exist; live state is at AP-v2 recovered path.",
+  "action_required": "Reconfigure watcher to /Atlas/wolf/state.json or symlink live state into hermes-sandbox/workspace/wolf/state.json",
+  "days_to_reassess": null
+}</pre>
+</div>
+
+<div class="card">
+<h2>Deep Research Theses</h2>
+<div class="thesis"><span class="ticker">ACN</span><span class="verdict ok">BULLISH</span>
+<div class="rationale">**VERDICT: BULLISH (STRONGLY RECOMMEND AVERAGING DOWN)**</div>
+<div class="meta">generated 2026-07-01 · source gemini-deep-research · <a href="./wolf-research/ACN-2026-07-01.md" target="_blank">full report</a></div></div>
+</div>
+
+<div class="card" style="font-size:.8rem">
+<h2>Market Regime</h2>
+<p>moderate-bear · VIX 18</p>
+</div>
+
+<div class="footer">
+state.json generated: 2026-09-02T02:31:00Z · live_data updated: 2026-08-30T00:00:00Z · data_source: state.json-fallback (Alpaca key absent)<br>
+Generated by wolf-dashboard-autosync Call under Hermes COS oversight · 2026-09-02T13:03Z
+</div>
+
+<div class="fixed-panel" id="freshness">
+<b>DATA FRESHNESS</b><br>
+Day 129 · Cap 0<br>
+Portfolio $100,749<br>
+Theses 1 · Regime moderate-bear<br>
+Last sync 2026-09-02 13:03 UTC
+</div>
 </body></html>
