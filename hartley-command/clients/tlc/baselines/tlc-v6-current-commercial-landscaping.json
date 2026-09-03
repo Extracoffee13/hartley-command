@@ -1,0 +1,199 @@
+{
+  "ok": true,
+  "schema_version": "v6",
+  "instrument": "aair-v6",
+  "supersedes_interpretation_of": "v5 (v5 remains frozen and live)",
+  "business": "Total Lawn Care",
+  "city": "Jacksonville, FL",
+  "service": "commercial landscaping",
+  "corpus": {
+    "source": "market-corpus",
+    "n_prompts": 1,
+    "meta": null,
+    "warning": null
+  },
+  "headline": {
+    "aair_retrieval_top3": 0,
+    "ci_95": "0%..49%",
+    "fraction": "0/4",
+    "note": "Headline AAIR = RETRIEVAL tier, top-3. The surface customers actually use. ALWAYS report with the interval."
+  },
+  "attempted": 14,
+  "scored": 14,
+  "no_read": 0,
+  "named_anywhere": 0,
+  "named_top3": 0,
+  "tiers": {
+    "retrieval": {
+      "attempted": 4,
+      "scored": 4,
+      "no_read": 0,
+      "named_anywhere": 0,
+      "named_top3": 0,
+      "pct_named_anywhere": 0,
+      "pct_top3": 0,
+      "ci_95_top3": "0%..49%",
+      "ci_lo": 0,
+      "ci_hi": 49,
+      "fraction_top3": "0/4"
+    },
+    "parametric": {
+      "attempted": 6,
+      "scored": 6,
+      "no_read": 0,
+      "named_anywhere": 0,
+      "named_top3": 0,
+      "pct_named_anywhere": 0,
+      "pct_top3": 0,
+      "ci_95_top3": "0%..39%",
+      "ci_lo": 0,
+      "ci_hi": 39,
+      "fraction_top3": "0/6"
+    },
+    "ondevice": {
+      "attempted": 4,
+      "scored": 4,
+      "no_read": 0,
+      "named_anywhere": 0,
+      "named_top3": 0,
+      "pct_named_anywhere": 0,
+      "pct_top3": 0,
+      "ci_95_top3": "0%..49%",
+      "ci_lo": 0,
+      "ci_hi": 49,
+      "fraction_top3": "0/4"
+    }
+  },
+  "match_rules_fired": {
+    "no_match": 14
+  },
+  "engines": {
+    "sonar": {
+      "label": "Perplexity (Sonar)",
+      "tier": "retrieval",
+      "attempted": 1,
+      "scored": 1,
+      "no_read": 0,
+      "named": 0,
+      "top3": 0
+    },
+    "gpt4o_online": {
+      "label": "ChatGPT (GPT-4o \u00b7 search)",
+      "tier": "retrieval",
+      "attempted": 1,
+      "scored": 1,
+      "no_read": 0,
+      "named": 0,
+      "top3": 0
+    },
+    "gemini_online": {
+      "label": "Gemini 2.5 \u00b7 search",
+      "tier": "retrieval",
+      "attempted": 1,
+      "scored": 1,
+      "no_read": 0,
+      "named": 0,
+      "top3": 0
+    },
+    "sonnet_online": {
+      "label": "Claude Sonnet 4.5 \u00b7 search",
+      "tier": "retrieval",
+      "attempted": 1,
+      "scored": 1,
+      "no_read": 0,
+      "named": 0,
+      "top3": 0
+    },
+    "gpt4o": {
+      "label": "GPT-4o (no web)",
+      "tier": "parametric",
+      "attempted": 1,
+      "scored": 1,
+      "no_read": 0,
+      "named": 0,
+      "top3": 0
+    },
+    "sonnet": {
+      "label": "Claude Sonnet 4.5 (no web)",
+      "tier": "parametric",
+      "attempted": 1,
+      "scored": 1,
+      "no_read": 0,
+      "named": 0,
+      "top3": 0
+    },
+    "gemini": {
+      "label": "Gemini 2.5 (no web)",
+      "tier": "parametric",
+      "attempted": 1,
+      "scored": 1,
+      "no_read": 0,
+      "named": 0,
+      "top3": 0
+    },
+    "grok": {
+      "label": "Grok 4.5 (no web)",
+      "tier": "parametric",
+      "attempted": 1,
+      "scored": 1,
+      "no_read": 0,
+      "named": 0,
+      "top3": 0
+    },
+    "deepseek": {
+      "label": "DeepSeek V3.1",
+      "tier": "parametric",
+      "attempted": 1,
+      "scored": 1,
+      "no_read": 0,
+      "named": 0,
+      "top3": 0
+    },
+    "llama4": {
+      "label": "Llama 4 Maverick",
+      "tier": "parametric",
+      "attempted": 1,
+      "scored": 1,
+      "no_read": 0,
+      "named": 0,
+      "top3": 0
+    },
+    "llama3b": {
+      "label": "Llama 3.2 3B",
+      "tier": "ondevice",
+      "attempted": 1,
+      "scored": 1,
+      "no_read": 0,
+      "named": 0,
+      "top3": 0
+    },
+    "gemma4b": {
+      "label": "Gemma 3 4B",
+      "tier": "ondevice",
+      "attempted": 1,
+      "scored": 1,
+      "no_read": 0,
+      "named": 0,
+      "top3": 0
+    },
+    "phi4": {
+      "label": "Microsoft Phi-4",
+      "tier": "ondevice",
+      "attempted": 1,
+      "scored": 1,
+      "no_read": 0,
+      "named": 0,
+      "top3": 0
+    },
+    "qwen7b": {
+      "label": "Qwen 2.5 7B",
+      "tier": "ondevice",
+      "attempted": 1,
+      "scored": 1,
+      "no_read": 0,
+      "named": 0,
+      "top3": 0
+    }
+  },
+  "ts": "2026-08-03T09:22:49+00:00"
+}

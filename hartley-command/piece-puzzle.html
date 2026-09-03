@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HC Puzzle Piece — Hartley Capital</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #024256; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; }
+  canvas { display: block; }
+</style>
+</head>
+<body>
+<canvas id="c" width="375" height="812"></canvas>
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+const W = 375, H = 812;
+let t = 0;
+
+function drawPuzzlePiece(cx, cy, size) {
+  // Puzzle piece with: tab on top, tab on right, indent on bottom, indent on left
+  const s = size;
+  const tabR = s * 0.14; // radius of tab bumps
+  const half = s / 2;
+
+  ctx.save();
+  ctx.translate(cx, cy);
+
+  ctx.beginPath();
+
+  // Start at top-left corner
+  ctx.moveTo(-half, -half);
+
+  // TOP EDGE — with tab (outward bump)
+  ctx.lineTo(-tabR * 1.2, -half);
+  ctx.bezierCurveTo(
+    -tabR * 1.2, -half - tabR * 2.2,
+    tabR * 1.2, -half - tabR * 2.2,
+    tabR * 1.2, -half
+  );
+  ctx.lineTo(half, -half);
+
+  // RIGHT EDGE — with tab (outward bump)
+  ctx.lineTo(half, -tabR * 1.2);
+  ctx.bezierCurveTo(
+    half + tabR * 2.2, -tabR * 1.2,
+    half + tabR * 2.2, tabR * 1.2,
+    half, tabR * 1.2
+  );
+  ctx.lineTo(half, half);
+
+  // BOTTOM EDGE — with indent (inward bump)
+  ctx.lineTo(tabR * 1.2, half);
+  ctx.bezierCurveTo(
+    tabR * 1.2, half - tabR * 2.2,
+    -tabR * 1.2, half - tabR * 2.2,
+    -tabR * 1.2, half
+  );
+  ctx.lineTo(-half, half);
+
+  // LEFT EDGE — with indent (inward bump)
+  ctx.lineTo(-half, tabR * 1.2);
+  ctx.bezierCurveTo(
+    -half + tabR * 2.2, tabR * 1.2,
+    -half + tabR * 2.2, -tabR * 1.2,
+    -half, -tabR * 1.2
+  );
+  ctx.lineTo(-half, -half);
+
+  ctx.closePath();
+
+  // Fill white
+  ctx.fillStyle = '#FFFFFF';
+  ctx.fill();
+
+  // Now cut out the H shape
+  ctx.globalCompositeOperation = 'destination-out';
+
+  const hW = s * 0.42;  // H total width
+  const hH = s * 0.48;  // H total height
+  const stroke = s * 0.09; // H stroke width
+  const crossH = stroke; // crossbar height
+
+  // H shape: two vertical bars + crossbar
+  // Left vertical
+  ctx.fillStyle = 'rgba(0,0,0,1)';
+  ctx.fillRect(-hW / 2, -hH / 2, stroke, hH);
+  // Right vertical
+  ctx.fillRect(hW / 2 - stroke, -hH / 2, stroke, hH);
+  // Crossbar
+  ctx.fillRect(-hW / 2, -crossH / 2, hW, crossH);
+
+  ctx.globalCompositeOperation = 'source-over';
+  ctx.restore();
+}
+
+function drawText() {
+  // "HARTLEY CAPITAL" — white, Georgia, letter-spaced
+  ctx.save();
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+
+  // Hartley Capital
+  ctx.font = '600 20px Georgia, "Times New Roman", serif';
+  ctx.fillStyle = '#FFFFFF';
+  ctx.letterSpacing = '4px';
+  // Canvas doesn't natively support letterSpacing in all browsers,
+  // so we draw it manually
+  const text1 = 'HARTLEY CAPITAL';
+  const spacing1 = 4;
+  drawSpacedText(text1, W / 2, H / 2 + 110, spacing1, '#FFFFFF', '600 20px Georgia, "Times New Roman", serif');
+
+  // "THE WHOLE PICTURE" — gold
+  const text2 = 'THE WHOLE PICTURE';
+  const spacing2 = 3;
+  drawSpacedText(text2, W / 2, H / 2 + 142, spacing2, '#c9a84c', '400 13px Georgia, "Times New Roman", serif');
+
+  ctx.restore();
+}
+
+function drawSpacedText(text, x, y, spacing, color, font) {
+  ctx.save();
+  ctx.font = font;
+  ctx.fillStyle = color;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+
+  // Calculate total width
+  let totalW = 0;
+  for (let i = 0; i < text.length; i++) {
+    totalW += ctx.measureText(text[i]).width + (i < text.length - 1 ? spacing : 0);
+  }
+
+  let curX = x - totalW / 2;
+  for (let i = 0; i < text.length; i++) {
+    const charW = ctx.measureText(text[i]).width;
+    ctx.fillText(text[i], curX + charW / 2, y);
+    curX += charW + spacing;
+  }
+  ctx.restore();
+}
+
+function drawGlow(cx, cy) {
+  const pulse = 0.7 + 0.3 * Math.sin(t * 1.2);
+  const glow = ctx.createRadialGradient(cx, cy, 30, cx, cy, 160);
+  glow.addColorStop(0, `rgba(255, 255, 255, ${0.06 * pulse})`);
+  glow.addColorStop(0.5, `rgba(201, 168, 76, ${0.03 * pulse})`);
+  glow.addColorStop(1, 'rgba(201, 168, 76, 0)');
+  ctx.fillStyle = glow;
+  ctx.beginPath();
+  ctx.arc(cx, cy, 160, 0, Math.PI * 2);
+  ctx.fill();
+}
+
+function frame(ts) {
+  t = ts / 1000;
+  ctx.fillStyle = '#024256';
+  ctx.fillRect(0, 0, W, H);
+
+  const pcx = W / 2;
+  const pcy = H / 2 - 30;
+
+  drawGlow(pcx, pcy);
+  drawPuzzlePiece(pcx, pcy, 150);
+  drawText();
+
+  requestAnimationFrame(frame);
+}
+
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>

@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en" data-client="tlc" data-generated-at="2026-06-09T00:00:00.000Z">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Total Lawn Care — PRAGMA Client Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --void: #0A0A0A;
+      --card-base: #0E0E0E;
+      --card-raised: #141414;
+      --card-border: rgba(31, 224, 126, 0.18);
+      --signal: #1FE07E;
+      --signal-dim: rgba(31, 224, 126, 0.12);
+      --signal-mid: rgba(31, 224, 126, 0.35);
+      --text-primary: #FFFFFF;
+      --text-secondary: rgba(255, 255, 255, 0.65);
+      --text-muted: rgba(255, 255, 255, 0.35);
+      --amber: #F5A623;
+      --amber-dim: rgba(245, 166, 35, 0.12);
+      --amber-border: rgba(245, 166, 35, 0.35);
+      --red: #FF4C4C;
+      --font-sans: 'Inter', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+      --radius: 8px;
+      --radius-lg: 12px;
+    }
+
+    html {
+      background-color: var(--void);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      min-height: 100vh;
+      background-color: var(--void);
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(31, 224, 126, 0.06) 0%, transparent 70%);
+    }
+
+    /* ─── Layout ─────────────────────────────────────────────── */
+    .page-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ─── Back link bar ───────────────────────────────────────── */
+    .back-bar {
+      padding: 20px 0 0;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--signal);
+      text-decoration: none;
+      opacity: 0.75;
+      transition: opacity 0.15s;
+    }
+
+    .back-link:hover { opacity: 1; }
+
+    /* ─── Header ─────────────────────────────────────────────── */
+    .header {
+      padding: 32px 0 40px;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 40px;
+    }
+
+    .header-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--signal);
+      margin-bottom: 12px;
+    }
+
+    .header-title {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .header-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--signal-dim);
+      border: 1px solid var(--card-border);
+      border-radius: 100px;
+      padding: 7px 16px;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--signal);
+      box-shadow: 0 0 8px var(--signal);
+      flex-shrink: 0;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--signal); }
+      50% { opacity: 0.6; box-shadow: 0 0 16px var(--signal); }
+    }
+
+    .header-status span {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--signal);
+    }
+
+    /* ─── Section titles ─────────────────────────────────────── */
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    /* ─── Mission Control ────────────────────────────────────── */
+    .mission-control {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    @media (max-width: 900px) {
+      .mission-control { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .mission-control { grid-template-columns: 1fr; }
+    }
+
+    .stat-card {
+      background: var(--card-base);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--signal), transparent);
+      opacity: 0.4;
+    }
+
+    .stat-card:hover {
+      border-color: rgba(31, 224, 126, 0.35);
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .stat-value {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .stat-sub {
+      font-size: 12px;
+      color: var(--text-secondary);
+      font-weight: 400;
+    }
+
+    .progress-bar-wrap {
+      margin-top: 14px;
+      height: 4px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--signal);
+      border-radius: 2px;
+      box-shadow: 0 0 8px var(--signal);
+      transition: width 0.8s ease;
+    }
+
+    .stat-card.green-accent .stat-value {
+      color: var(--signal);
+    }
+
+    .imac-indicator {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .imac-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--signal);
+      box-shadow: 0 0 6px var(--signal);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    .imac-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--signal);
+      font-weight: 600;
+    }
+
+    /* ─── Agent Health ───────────────────────────────────────── */
+    .agent-section {
+      margin-bottom: 48px;
+    }
+
+    .agent-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .agent-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .agent-grid { grid-template-columns: 1fr; }
+    }
+
+    .agent-card {
+      background: var(--card-base);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 18px 20px;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+    }
+
+    .agent-card:hover {
+      background: var(--card-raised);
+      border-color: rgba(31, 224, 126, 0.3);
+    }
+
+    .agent-card.running {
+      border-left: 3px solid var(--signal);
+    }
+
+    .agent-card.scaffolding {
+      border-left: 3px solid var(--amber);
+    }
+
+    .agent-name {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      letter-spacing: 0.01em;
+      word-break: break-all;
+    }
+
+    .agent-role {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+
+    .agent-cadence {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .agent-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .agent-badge {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .badge-running {
+      background: rgba(31, 224, 126, 0.12);
+      color: var(--signal);
+      border: 1px solid rgba(31, 224, 126, 0.3);
+    }
+
+    .badge-scaffolding {
+      background: var(--amber-dim);
+      color: var(--amber);
+      border: 1px solid var(--amber-border);
+    }
+
+    .agent-last {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    .agent-pid {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: rgba(31, 224, 126, 0.5);
+      margin-top: 2px;
+    }
+
+    /* ─── Phase Tracker ──────────────────────────────────────── */
+    .phase-section {
+      margin-bottom: 48px;
+    }
+
+    .phase-timeline {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .phase-timeline::before {
+      content: '';
+      position: absolute;
+      top: 22px;
+      left: 5%;
+      right: 5%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--signal) 33%, rgba(255,255,255,0.1) 33%);
+      z-index: 0;
+    }
+
+    @media (max-width: 600px) {
+      .phase-timeline { grid-template-columns: 1fr; gap: 12px; }
+      .phase-timeline::before { display: none; }
+    }
+
+    .phase-card {
+      background: var(--card-base);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 24px 20px;
+      position: relative;
+      z-index: 1;
+      margin: 0 6px;
+    }
+
+    .phase-card.active {
+      border-color: var(--signal);
+      background: #0C140F;
+    }
+
+    .phase-card.pending {
+      opacity: 0.55;
+    }
+
+    .phase-number {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .phase-card.active .phase-number {
+      color: var(--signal);
+    }
+
+    .phase-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .phase-range {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .phase-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .phase-status-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 4px;
+      margin-bottom: 14px;
+    }
+
+    .badge-active {
+      background: rgba(31, 224, 126, 0.12);
+      color: var(--signal);
+      border: 1px solid rgba(31, 224, 126, 0.3);
+    }
+
+    .badge-pending {
+      background: rgba(255,255,255,0.06);
+      color: var(--text-muted);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* ─── Deliverables ───────────────────────────────────────── */
+    .deliverables-section {
+      margin-bottom: 48px;
+    }
+
+    .deliverables-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 680px) {
+      .deliverables-grid { grid-template-columns: 1fr; }
+    }
+
+    .deliverables-col {
+      background: var(--card-base);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+
+    .deliverables-col-title {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .col-in-progress .deliverables-col-title {
+      color: var(--signal);
+    }
+
+    .col-pending .deliverables-col-title {
+      color: var(--amber);
+    }
+
+    .deliverable-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .deliverable-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .del-icon {
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      width: 16px;
+      text-align: center;
+    }
+
+    .del-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    .del-text strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .del-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 1px 6px;
+      border-radius: 3px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .tag-done {
+      background: rgba(31, 224, 126, 0.1);
+      color: var(--signal);
+      border: 1px solid rgba(31, 224, 126, 0.25);
+    }
+
+    .tag-wip {
+      background: rgba(245, 166, 35, 0.1);
+      color: var(--amber);
+      border: 1px solid rgba(245, 166, 35, 0.25);
+    }
+
+    .tag-blocked {
+      background: rgba(255,255,255,0.05);
+      color: var(--text-muted);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* ─── Economics ──────────────────────────────────────────── */
+    .economics-section {
+      margin-bottom: 48px;
+    }
+
+    .economics-card {
+      background: linear-gradient(135deg, #0C140F 0%, #0D0D0D 100%);
+      border: 1px solid var(--signal);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .economics-card::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 240px; height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(31, 224, 126, 0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .economics-headline {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--signal);
+      margin-bottom: 8px;
+    }
+
+    .economics-lead {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 28px;
+      letter-spacing: -0.02em;
+    }
+
+    .economics-lead span {
+      color: var(--signal);
+    }
+
+    .economics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 800px) {
+      .economics-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .economics-grid { grid-template-columns: 1fr; }
+    }
+
+    .econ-metric {
+      border-left: 2px solid var(--card-border);
+      padding-left: 16px;
+    }
+
+    .econ-metric-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    .econ-metric-value {
+      font-family: var(--font-mono);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--signal);
+      letter-spacing: -0.01em;
+    }
+
+    .econ-metric-sub {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    /* ─── Footer ─────────────────────────────────────────────── */
+    .footer {
+      padding: 28px 0 0;
+      border-top: 1px solid var(--card-border);
+      text-align: center;
+    }
+
+    .footer-text {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+    }
+
+    .footer-text strong {
+      color: var(--text-secondary);
+    }
+
+    /* ─── Divider ─────────────────────────────────────────────── */
+    .section-divider {
+      height: 1px;
+      background: var(--card-border);
+      margin-bottom: 40px;
+    }
+
+    /* ─── Scrollbar ──────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--void); }
+    ::-webkit-scrollbar-thumb { background: rgba(31, 224, 126, 0.2); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(31, 224, 126, 0.4); }
+  </style>
+</head>
+<body data-client="tlc" data-generated-at="2026-06-09T12:00:00.000Z">
+
+  <div class="page-wrap">
+
+    <!-- ═══ Back Bar ═══════════════════════════════════════════ -->
+    <div class="back-bar">
+      <a href="/clients/" class="back-link">← PRAGMA Hub</a>
+    </div>
+
+    <!-- ═══ Header ════════════════════════════════════════════ -->
+    <header class="header">
+      <div class="header-eyebrow">&gt;_ TLC · Tier 3 · Sprint Build + Monitor</div>
+      <h1 class="header-title">Total Lawn Care</h1>
+      <div class="header-status">
+        <div class="status-dot"></div>
+        <span>ACTIVE · Day 19/30 · iMac online · 9 agents running</span>
+      </div>
+    </header>
+
+    <!-- ═══ Mission Control ═══════════════════════════════════ -->
+    <div class="section-label">// Mission Control</div>
+    <div class="mission-control">
+
+      <div class="stat-card">
+        <div class="stat-label">Sprint Day</div>
+        <div class="stat-value">19<span style="font-size:16px;color:rgba(255,255,255,0.3);font-weight:400">/30</span></div>
+        <div class="stat-sub">63% complete</div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" style="width:63%"></div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">Phase Score</div>
+        <div class="stat-value green-accent" style="font-size:20px;color:var(--signal);padding-top:4px;">Phase 1<br/>Complete</div>
+        <div class="stat-sub" style="margin-top:8px;">Sprint Build active</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">Next Milestone</div>
+        <div class="stat-value" style="font-size:20px;">Day-30</div>
+        <div class="stat-sub">in 11 days</div>
+        <div style="margin-top:10px;">
+          <span style="font-family:var(--font-mono);font-size:10px;color:var(--signal);letter-spacing:0.06em;">2026-06-20</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">iMac Status</div>
+        <div class="imac-indicator" style="margin-bottom:8px;">
+          <div class="imac-dot"></div>
+          <span class="imac-label">ONLINE</span>
+        </div>
+        <div class="stat-sub" style="line-height:1.8;">
+          90Gi free<br/>
+          <span style="font-family:var(--font-mono);font-size:11px;">load avg 1.06</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ═══ Agent Health ═══════════════════════════════════════ -->
+    <div class="agent-section">
+      <div class="section-label">// Agent Health — 9 operators deployed</div>
+      <div class="agent-grid">
+
+        <!-- 1. heartbeat -->
+        <div class="agent-card running">
+          <div class="agent-name">com.pragma.heartbeat</div>
+          <div class="agent-role">Telemetry</div>
+          <div class="agent-cadence">every 60s</div>
+          <div class="agent-footer">
+            <span class="agent-badge badge-running">● Running</span>
+            <span class="agent-last">2026-06-09</span>
+          </div>
+        </div>
+
+        <!-- 2. lens-landscape -->
+        <div class="agent-card scaffolding">
+          <div class="agent-name">com.pragma.lens-landscape</div>
+          <div class="agent-role">Lens (Intelligence)</div>
+          <div class="agent-cadence">daily 05:34 ET</div>
+          <div class="agent-footer">
+            <span class="agent-badge badge-scaffolding">◌ Scaffolding</span>
+            <span class="agent-last">2026-06-09</span>
+          </div>
+        </div>
+
+        <!-- 3. atlas-sync -->
+        <div class="agent-card scaffolding">
+          <div class="agent-name">com.pragma.atlas-sync</div>
+          <div class="agent-role">Atlas (Operations)</div>
+          <div class="agent-cadence">daily 06:00 ET</div>
+          <div class="agent-footer">
+            <span class="agent-badge badge-scaffolding">◌ Scaffolding</span>
+            <span class="agent-last">2026-06-09</span>
+          </div>
+        </div>
+
+        <!-- 4. pulse-listen -->
+        <div class="agent-card scaffolding">
+          <div class="agent-name">com.pragma.pulse-listen</div>
+          <div class="agent-role">Pulse (Owned Presence)</div>
+          <div class="agent-cadence">daily 07:00 ET</div>
+          <div class="agent-footer">
+            <span class="agent-badge badge-scaffolding">◌ Scaffolding</span>
+            <span class="agent-last">2026-06-09</span>
+          </div>
+        </div>
+
+        <!-- 5. prism -->
+        <div class="agent-card scaffolding">
+          <div class="agent-name">com.pragma.prism</div>
+          <div class="agent-role">Prism (Alt-Data)</div>
+          <div class="agent-cadence">daily 04:00 ET</div>
+          <div class="agent-footer">
+            <span class="agent-badge badge-scaffolding">◌ Scaffolding</span>
+            <span class="agent-last">2026-06-09</span>
+          </div>
+        </div>
+
+        <!-- 6. vector -->
+        <div class="agent-card scaffolding">
+          <div class="agent-name">com.pragma.vector</div>
+          <div class="agent-role">Vector (Brand + Creative)</div>
+          <div class="agent-cadence">weekly Mon 08:00 ET</div>
+          <div class="agent-footer">
+            <span class="agent-badge badge-scaffolding">◌ Scaffolding</span>
+            <span class="agent-last">2026-06-09</span>
+          </div>
+        </div>
+
+        <!-- 7. scout -->
+        <div class="agent-card scaffolding">
+          <div class="agent-name">com.pragma.scout</div>
+          <div class="agent-role">Scout (Competitor)</div>
+          <div class="agent-cadence">weekly Tue 08:00 ET</div>
+          <div class="agent-footer">
+            <span class="agent-badge badge-scaffolding">◌ Scaffolding</span>
+            <span class="agent-last">2026-06-03</span>
+          </div>
+        </div>
+
+        <!-- 8. keystone -->
+        <div class="agent-card scaffolding">
+          <div class="agent-name">com.pragma.keystone</div>
+          <div class="agent-role">Keystone (Strategy)</div>
+          <div class="agent-cadence">monthly 1st 09:00 ET</div>
+          <div class="agent-footer">
+            <span class="agent-badge badge-scaffolding">◌ Scaffolding</span>
+            <span class="agent-last">2026-06-08</span>
+          </div>
+        </div>
+
+        <!-- 9. sync-to-mac-mini -->
+        <div class="agent-card running">
+          <div class="agent-name">com.pragma.sync-to-mac-mini</div>
+          <div class="agent-role">Sync</div>
+          <div class="agent-cadence">every 4h</div>
+          <div class="agent-footer">
+            <span class="agent-badge badge-running">● Running</span>
+            <span class="agent-last">2026-06-09</span>
+          </div>
+          <div class="agent-pid">PID 7232</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══ Phase Tracker ══════════════════════════════════════ -->
+    <div class="phase-section">
+      <div class="section-label">// Engagement Phase Tracker</div>
+      <div class="phase-timeline">
+
+        <div class="phase-card active">
+          <div class="phase-number">Phase 1</div>
+          <div class="phase-name">Sprint Build</div>
+          <div class="phase-range">Days 1–30</div>
+          <div class="phase-status-badge badge-active">● Active</div>
+          <div class="phase-desc">Website build, agent wiring, access provisioning</div>
+        </div>
+
+        <div class="phase-card pending">
+          <div class="phase-number">Phase 2</div>
+          <div class="phase-name">Monitor</div>
+          <div class="phase-range">Days 31–90</div>
+          <div class="phase-status-badge badge-pending">○ Pending</div>
+          <div class="phase-desc">Live data, weekly status, operator output review</div>
+        </div>
+
+        <div class="phase-card pending">
+          <div class="phase-number">Phase 3</div>
+          <div class="phase-name">Validate</div>
+          <div class="phase-range">Days 91–180</div>
+          <div class="phase-status-badge badge-pending">○ Pending</div>
+          <div class="phase-desc">Case study capture, before/after metrics</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══ Deliverables ═══════════════════════════════════════ -->
+    <div class="deliverables-section">
+      <div class="section-label">// Deliverables Checklist</div>
+      <div class="deliverables-grid">
+
+        <!-- Left col: In Progress -->
+        <div class="deliverables-col col-in-progress">
+          <div class="deliverables-col-title">In Progress</div>
+
+          <div class="deliverable-item">
+            <span class="del-icon" style="color:var(--signal)">✓</span>
+            <div class="del-text">
+              <strong>iMac infrastructure deployed</strong>
+              <span class="del-tag tag-done">Done</span>
+            </div>
+          </div>
+
+          <div class="deliverable-item">
+            <span class="del-icon" style="color:var(--signal)">✓</span>
+            <div class="del-text">
+              <strong>9 agents running</strong>
+              <span class="del-tag tag-done">Done</span>
+            </div>
+          </div>
+
+          <div class="deliverable-item">
+            <span class="del-icon" style="color:var(--signal)">✓</span>
+            <div class="del-text">
+              <strong>Agent audit log active</strong>
+              <span class="del-tag tag-done">530KB</span>
+            </div>
+          </div>
+
+          <div class="deliverable-item">
+            <span class="del-icon" style="color:var(--amber)">◎</span>
+            <div class="del-text">
+              TLC website build
+              <span class="del-tag tag-wip">In Progress</span>
+            </div>
+          </div>
+
+          <div class="deliverable-item">
+            <span class="del-icon" style="color:var(--amber)">◎</span>
+            <div class="del-text">
+              Scout wired to public data
+              <span class="del-tag tag-wip">In Progress</span>
+            </div>
+          </div>
+
+          <div class="deliverable-item">
+            <span class="del-icon" style="color:var(--amber)">◎</span>
+            <div class="del-text">
+              Lens wired to industry feeds
+              <span class="del-tag tag-wip">In Progress</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right col: Pending (Bob's input) -->
+        <div class="deliverables-col col-pending">
+          <div class="deliverables-col-title">Pending — Bob's Input Needed</div>
+
+          <div class="deliverable-item">
+            <span class="del-icon" style="color:var(--text-muted)">○</span>
+            <div class="del-text">
+              GSC access grant
+              <span class="del-tag tag-blocked">Blocked</span>
+            </div>
+          </div>
+
+          <div class="deliverable-item">
+            <span class="del-icon" style="color:var(--text-muted)">○</span>
+            <div class="del-text">
+              GBP Manager access
+              <span class="del-tag tag-blocked">Blocked</span>
+            </div>
+          </div>
+
+          <div class="deliverable-item">
+            <span class="del-icon" style="color:var(--text-muted)">○</span>
+            <div class="del-text">
+              LinkedIn Company Page admin
+              <span class="del-tag tag-blocked">Blocked</span>
+            </div>
+          </div>
+
+          <div class="deliverable-item">
+            <span class="del-icon" style="color:var(--text-muted)">○</span>
+            <div class="del-text">
+              Brand voice samples from Bob
+              <span class="del-tag tag-blocked">Blocked</span>
+            </div>
+          </div>
+
+          <div class="deliverable-item">
+            <span class="del-icon" style="color:var(--text-muted)">○</span>
+            <div class="del-text">
+              Photography shoot scheduled
+              <span class="del-tag tag-blocked">Blocked</span>
+            </div>
+          </div>
+
+          <div class="deliverable-item">
+            <span class="del-icon" style="color:var(--text-muted)">○</span>
+            <div class="del-text">
+              Domain decision<br/>
+              <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted)">tlctotallawncare.com vs tlc.green</span>
+              <span class="del-tag tag-blocked">Blocked</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══ Engagement Economics ═══════════════════════════════ -->
+    <div class="economics-section">
+      <div class="section-label">// Engagement Economics</div>
+      <div class="economics-card">
+        <div class="economics-headline">Economic Value · PRAGMA Tier 3</div>
+        <div class="economics-lead">
+          Delivered at <span>$0 cash</span> — full operator stack running
+        </div>
+        <div class="economics-grid">
+
+          <div class="econ-metric">
+            <div class="econ-metric-label">PRAGMA Tier 3 Equivalent</div>
+            <div class="econ-metric-value">$112K–$195K</div>
+            <div class="econ-metric-sub">Year 1 value</div>
+          </div>
+
+          <div class="econ-metric">
+            <div class="econ-metric-label">Hire-Cost Replaced</div>
+            <div class="econ-metric-value">$739K–$1.66M</div>
+            <div class="econ-metric-sub">Loaded annual</div>
+          </div>
+
+          <div class="econ-metric">
+            <div class="econ-metric-label">SaaS Displaced</div>
+            <div class="econ-metric-value">$9.6K–$36K</div>
+            <div class="econ-metric-sub">Per year</div>
+          </div>
+
+          <div class="econ-metric">
+            <div class="econ-metric-label">Bobby Time Invested</div>
+            <div class="econ-metric-value">215 min</div>
+            <div class="econ-metric-sub">Day 1 only</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ Footer ═════════════════════════════════════════════ -->
+    <footer class="footer">
+      <p class="footer-text">
+        <strong>PRAGMA.</strong> · TLC Engagement · Kickoff 2026-05-21 · Day-30 target 2026-06-20
+      </p>
+    </footer>
+
+  </div><!-- /page-wrap -->
+
+</body>
+</html>

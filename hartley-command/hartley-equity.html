@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hartley Capital — Let's Build Something.</title>
+  <meta name="theme-color" content="#024256">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://hartleyequity.com">
+  <meta property="og:title"       content="Hartley Capital — Let's Build Something.">
+  <meta property="og:description" content="Not a Sliver. The Whole Picture. Private Capital · Strategic Growth · Generational Legacy. Launching Q2 2026.">
+  <meta property="og:image"       content="https://hartleyequity.com/og-preview.jpg">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:title"      content="Hartley Capital — Let's Build Something.">
+  <meta name="twitter:description" content="Not a Sliver. The Whole Picture. Private Capital · Strategic Growth · Generational Legacy. Launching Q2 2026.">
+  <meta name="description"        content="Hartley Capital — Not a Sliver. The Whole Picture. Private Capital · Strategic Growth · Generational Legacy. Launching Q2 2026.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23024256'/><text x='50%25' y='56%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='18' font-weight='600' fill='%23ffffff'>HC</text></svg>">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:       #024256;
+      --gold:       #c9a96e;
+      --gold-dim:   rgba(201,169,110,0.6);
+      --white:      #FFFFFF;
+      --white-dim:  rgba(255,255,255,0.6);
+      --white-faint:rgba(255,255,255,0.2);
+    }
+
+    html, body {
+      width: 100%; height: 100%;
+      background: var(--teal);
+      color: var(--white);
+      font-family: "Inter", -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    @media (max-height: 680px) {
+      html, body { overflow-y: auto; }
+    }
+
+    /* ─── Layout Shell ─────────────────────────── */
+    .page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 100dvh;
+      padding: 34px 21px;
+    }
+
+    /* ─── Top Wordmark ─────────────────────────── */
+    .wordmark {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      text-align: center;
+    }
+    .wordmark-text {
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: clamp(9px, 1.8vw, 11px);
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--white);
+      opacity: 0.75;
+    }
+    .wordmark-rule {
+      width: 34px;
+      height: 1px;
+      background: rgba(255,255,255,0.3);
+    }
+
+    /* ─── Hero Center ──────────────────────────── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 34px;
+      text-align: center;
+      width: 100%;
+      max-width: 760px;
+    }
+
+    /* ─── Logo ─────────────────────────────────── */
+    .logo-img {
+      width: clamp(120px, 20vw, 180px);
+      height: clamp(120px, 20vw, 180px);
+      object-fit: contain;
+      display: block;
+    }
+
+    /* ─── Tagline Block ────────────────────────── */
+    .tagline-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .tagline {
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(36px, 7vw, 68px);
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+      color: var(--white);
+    }
+
+    .tagline-line2 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(20px, 4vw, 38px);
+      letter-spacing: 0.03em;
+      line-height: 1.25;
+      color: var(--gold);
+    }
+
+    .sub-tagline {
+      font-family: "Inter", sans-serif;
+      font-weight: 300;
+      font-size: clamp(11px, 2vw, 13px);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+    }
+    .sub-dot {
+      color: rgba(255,255,255,0.35);
+      margin: 0 0.5em;
+    }
+
+    /* ─── Divider ──────────────────────────────── */
+    .divider {
+      width: 89px;
+      height: 1px;
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* ─── Launch Line ──────────────────────────── */
+    .launch-text {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(13px, 2.2vw, 15px);
+      letter-spacing: 0.12em;
+      color: var(--white-dim);
+    }
+
+    /* ─── Email Form ───────────────────────────── */
+    .notify-wrap {
+      width: 100%;
+      max-width: 420px;
+    }
+    .notify-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .notify-form {
+      display: flex;
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 3px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.06);
+      transition: border-color 0.3s;
+    }
+    .notify-form:focus-within {
+      border-color: rgba(255,255,255,0.6);
+    }
+
+    .notify-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      padding: 14px 18px;
+      font-family: "Inter", sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+    .notify-input::placeholder {
+      color: var(--white-faint);
+      letter-spacing: 0.04em;
+    }
+
+    .notify-btn {
+      background: var(--white);
+      border: none;
+      padding: 14px 22px;
+      font-family: "Inter", sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--teal);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .notify-btn:hover  { background: rgba(255,255,255,0.85); }
+    .notify-btn:active { transform: scale(0.97); }
+
+    .notify-success {
+      display: none;
+      text-align: center;
+      padding: 14px;
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 15px;
+      color: var(--white);
+      letter-spacing: 0.05em;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 3px;
+    }
+
+    /* ─── Footer ───────────────────────────────── */
+    .credentials {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      text-align: center;
+    }
+    .cred-line {
+      font-family: "Inter", sans-serif;
+      font-size: clamp(9px, 1.6vw, 10px);
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+    }
+    .cred-dot { margin: 0 0.6em; opacity: 0.5; }
+
+    /* ─── Fade-in ──────────────────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeUp 0.9s ease forwards;
+    }
+    .fade-in:nth-child(1) { animation-delay: 0.1s; }
+    .fade-in:nth-child(2) { animation-delay: 0.3s; }
+    .fade-in:nth-child(3) { animation-delay: 0.5s; }
+    .fade-in:nth-child(4) { animation-delay: 0.7s; }
+    .fade-in:nth-child(5) { animation-delay: 0.85s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── Mobile ───────────────────────────────── */
+    @media (max-width: 480px) {
+      .page { padding: 21px 13px; }
+      .notify-form { flex-direction: column; }
+      .notify-input { border-bottom: 1px solid rgba(255,255,255,0.2); text-align: center; }
+      .notify-btn { width: 100%; padding: 13px; }
+      .sub-tagline { font-size: 10px; letter-spacing: 0.15em; }
+    }
+    @media (max-width: 360px) {
+      .tagline { font-size: 30px; }
+    }
+    @media (max-height: 680px) {
+      .page { min-height: unset; padding: 21px 21px 55px; gap: 21px; }
+    }
+  </style>
+</head>
+<body>
+
+<main class="page" role="main">
+
+  <header class="wordmark fade-in">
+    <div class="wordmark-text">Hartley Capital</div>
+    <div class="wordmark-rule"></div>
+  </header>
+
+  <section class="hero" aria-label="Coming soon announcement">
+
+    <img
+      class="logo-img fade-in"
+      src="data:image/png;base64,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"
+      alt="Hartley Capital — puzzle piece mark with H cutout"
+      role="img"
+    >
+
+    <div class="tagline-block fade-in">
+      <h1 class="tagline">Let&#8217;s Build Something.</h1>
+      <p class="tagline-line2">Not a Sliver. The Whole Picture.</p>
+      <p class="sub-tagline">
+        Private Capital
+        <span class="sub-dot">·</span>
+        Strategic Growth
+        <span class="sub-dot">·</span>
+        Generational Legacy
+      </p>
+    </div>
+
+    <div class="divider fade-in" aria-hidden="true"></div>
+
+    <div class="fade-in">
+      <span class="launch-text">Launching Q2 2026</span>
+    </div>
+
+    <div class="notify-wrap fade-in">
+      <p class="notify-label">Be the first to know</p>
+      <form
+        class="notify-form"
+        id="notifyForm"
+        action="https://formspree.io/f/YOUR_FORM_ID"
+        method="POST"
+        novalidate
+      >
+        <input
+          class="notify-input"
+          type="email"
+          name="email"
+          placeholder="your@email.com"
+          required
+          autocomplete="email"
+          aria-label="Email address"
+        >
+        <button class="notify-btn" type="submit" aria-label="Subscribe for updates">
+          Notify&nbsp;Me
+        </button>
+      </form>
+      <div class="notify-success" id="notifySuccess" role="status">
+        You&#8217;re on the list. We&#8217;ll be in touch.
+      </div>
+    </div>
+
+  </section>
+
+  <footer class="credentials fade-in" aria-label="Company details">
+    <p class="cred-line">
+      Jacksonville, FL
+      <span class="cred-dot">·</span>
+      HBS Alumni Network
+      <span class="cred-dot">·</span>
+      40 Years of Building
+    </p>
+    <p class="cred-line" style="opacity:0.5">
+      &copy; 2026 Hartley Capital
+      <span class="cred-dot">·</span>
+      hartleyequity.com
+    </p>
+  </footer>
+
+</main>
+
+<script>
+  (function () {
+    var form    = document.getElementById('notifyForm');
+    var success = document.getElementById('notifySuccess');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      var action = form.getAttribute('action') || '';
+      if (action.indexOf('YOUR_FORM_ID') !== -1) {
+        e.preventDefault();
+        var email = form.querySelector('input[type=email]').value.trim();
+        if (!email) return;
+        window.location.href = 'mailto:LETSBUILD@HartleyEquity.com?subject=Notify%20Me&body=Please%20add%20' + encodeURIComponent(email) + '%20to%20the%20launch%20list.';
+        return;
+      }
+      e.preventDefault();
+      var data = new FormData(form);
+      fetch(action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+        .then(function (r) {
+          if (r.ok) {
+            form.style.display = 'none';
+            success.style.display = 'block';
+            var label = form.previousElementSibling;
+            if (label) label.style.display = 'none';
+          }
+        })
+        .catch(function () { form.submit(); });
+    });
+  })();
+</script>
+
+</body>
+</html>

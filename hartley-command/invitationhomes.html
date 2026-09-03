@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand 9 Signs · Invitation Homes Coverage Overview</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --inv-forest:#217106;--inv-forest-d:#1a5905;
+  --inv-lime:#68B631;--inv-lime-l:#e8f7dc;--inv-cream:#f5f3ec;
+  --gray-50:#f8fafc;--gray-100:#f1f5f9;--gray-200:#e2e8f0;
+  --gray-400:#94a3b8;--gray-600:#475569;--gray-800:#1e293b;
+  --white:#fff;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --shadow:0 1px 3px rgba(0,0,0,.08);
+  --shadow-md:0 4px 16px rgba(0,0,0,.1);
+  --shadow-lg:0 10px 40px rgba(0,0,0,.15);
+  --radius:10px;
+}
+body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);min-height:100vh;line-height:1.5;}
+
+/* ── HEADER ── */
+.hdr{
+  background:linear-gradient(135deg,var(--inv-forest) 0%,var(--inv-forest-d) 100%);
+  padding:18px 32px;display:flex;align-items:center;justify-content:space-between;
+  box-shadow:0 2px 12px rgba(0,0,0,.2);
+}
+.hdr-left{display:flex;align-items:center;gap:14px;}
+.logo-mark{
+  width:48px;height:48px;border-radius:10px;background:var(--inv-lime);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:20px;color:#fff;
+  box-shadow:0 2px 8px rgba(104,182,49,.4);
+}
+.hdr h1{font-size:18px;font-weight:800;color:#fff;letter-spacing:.5px;}
+.hdr-sub{font-size:11px;color:rgba(255,255,255,.65);letter-spacing:2px;text-transform:uppercase;margin-top:3px;}
+.hdr-right{font-size:12px;color:rgba(255,255,255,.7);text-align:right;}
+
+/* ── DECK VIEWER (inline scrollable PDF) ── */
+.deck-wrap{background:var(--inv-cream);padding:24px 32px;border-bottom:1px solid #e6e3d2;}
+.deck-head{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  margin-bottom:14px;
+}
+.deck-head-left{display:flex;align-items:center;gap:14px;}
+.deck-icon{
+  width:44px;height:44px;border-radius:9px;background:var(--inv-forest);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;
+}
+.deck-label{font-size:10px;color:var(--inv-forest);text-transform:uppercase;letter-spacing:1.5px;font-weight:700;}
+.deck-title{font-size:16px;font-weight:800;color:var(--gray-800);margin-top:2px;}
+.deck-actions{display:flex;gap:10px;}
+.deck-btn{
+  background:var(--inv-forest);color:#fff;
+  padding:10px 18px;border-radius:7px;font-size:12px;font-weight:700;
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+  border:0;cursor:pointer;font-family:var(--font);
+}
+.deck-btn:hover{background:var(--inv-forest-d);}
+.deck-btn.outline{background:transparent;color:var(--inv-forest);border:1.5px solid var(--inv-forest);}
+.deck-btn.outline:hover{background:var(--inv-lime-l);}
+.deck-frame{
+  width:100%;height:760px;border:1px solid #d4d0bc;border-radius:10px;
+  background:#fff;box-shadow:var(--shadow-md);overflow:hidden;
+}
+.deck-frame embed,.deck-frame iframe{width:100%;height:100%;border:0;display:block;}
+
+/* ── INTRO ── */
+.intro{background:#fff;padding:24px 32px;border-bottom:1px solid var(--gray-200);}
+.intro h2{font-size:22px;font-weight:800;color:var(--inv-forest);margin-bottom:10px;}
+.intro p{font-size:14px;color:var(--gray-600);line-height:1.7;max-width:900px;}
+.intro .inv-name{color:var(--inv-forest);font-weight:700;}
+
+/* ── KPI ── */
+.kpi-row{background:#fff;padding:0 32px 24px;display:flex;gap:32px;flex-wrap:wrap;}
+.kpi{display:flex;flex-direction:column;}
+.kpi-l{font-size:10px;color:var(--inv-forest);text-transform:uppercase;letter-spacing:1.5px;font-weight:700;}
+.kpi-v{font-size:24px;font-weight:800;color:var(--inv-forest);line-height:1;margin-top:3px;}
+.kpi-s{font-size:11px;color:var(--gray-600);margin-top:2px;}
+
+/* ── MAIN ── */
+.main{display:grid;grid-template-columns:1fr 360px;gap:0;}
+.left{padding:24px 32px;background:var(--gray-50);}
+.right{padding:24px 32px;background:#fff;border-left:1px solid var(--gray-200);}
+
+.section-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.section-title{font-size:13px;font-weight:700;color:var(--gray-800);letter-spacing:1.5px;text-transform:uppercase;}
+.section-meta{font-size:11px;color:var(--gray-400);}
+
+.map-card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:24px;}
+#invmap{height:420px;}
+.map-legend{padding:10px 14px;background:var(--inv-cream);font-size:11px;color:var(--gray-600);border-top:1px solid #e6e3d2;display:flex;gap:18px;align-items:center;}
+.legend-dot{width:12px;height:12px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:middle;border:2px solid var(--inv-forest);background:var(--inv-lime);}
+
+/* ── MARKET GRID ── */
+.market-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:24px;}
+.market-card{
+  background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);
+  padding:14px;transition:all .2s;
+}
+.market-card.coverage{border-left:3px solid var(--inv-lime);background:linear-gradient(to right,var(--inv-lime-l) 0%,#fff 30%);}
+.market-card.hq{border-top:2px solid var(--inv-forest);}
+.market-name{font-weight:700;font-size:14px;color:var(--gray-800);}
+.market-state{font-size:11px;color:var(--gray-400);margin-top:2px;}
+.market-stats{display:flex;justify-content:space-between;margin-top:10px;padding-top:10px;border-top:1px solid var(--gray-100);}
+.market-stat{display:flex;flex-direction:column;}
+.market-stat-v{font-size:18px;font-weight:800;color:var(--inv-forest);line-height:1;}
+.market-stat-l{font-size:9px;color:var(--gray-400);text-transform:uppercase;letter-spacing:.5px;margin-top:2px;}
+.market-coverage{font-size:10px;color:var(--inv-forest);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-top:8px;}
+.comm-row{
+  font-size:11px;color:var(--gray-600);padding:6px 8px;border-radius:5px;cursor:pointer;
+  background:var(--inv-lime-l);margin-top:4px;display:flex;align-items:center;justify-content:space-between;
+}
+.comm-row:hover{background:#d4ebc1;}
+
+/* ── CAPABILITY (right pane) ── */
+.capability-list{display:flex;flex-direction:column;gap:10px;}
+.capability{
+  background:var(--inv-lime-l);border:1px solid #d4ebc1;border-radius:8px;padding:13px;
+  display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;
+}
+.capability-icon{
+  width:40px;height:40px;border-radius:8px;background:var(--inv-forest);
+  color:#fff;display:flex;align-items:center;justify-content:center;font-size:19px;
+}
+.capability-title{font-size:13px;font-weight:700;color:var(--gray-800);}
+.capability-detail{font-size:11px;color:var(--gray-600);margin-top:2px;line-height:1.5;}
+
+.contact-card{
+  background:linear-gradient(135deg,var(--inv-forest),var(--inv-forest-d));
+  color:#fff;border-radius:var(--radius);padding:20px;margin-top:20px;
+}
+.contact-card h3{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;font-weight:800;color:var(--inv-lime);margin-bottom:8px;}
+.contact-card p{font-size:13px;line-height:1.6;opacity:.93;margin-bottom:10px;}
+.contact-card a{color:var(--inv-lime);font-weight:700;text-decoration:none;}
+
+/* ── QUOTE CARD ── */
+.quote-card{
+  background:var(--inv-cream);border-left:4px solid var(--inv-forest);
+  border-radius:8px;padding:20px 22px 22px;margin-top:24px;position:relative;
+}
+.quote-mark{
+  position:absolute;top:-2px;left:14px;font-size:54px;line-height:1;
+  font-family:Georgia,serif;color:var(--inv-forest);opacity:.25;font-weight:700;
+}
+.quote-text{
+  font-family:Georgia,'Times New Roman',serif;font-style:italic;
+  font-size:15px;line-height:1.55;color:var(--gray-800);margin:6px 0 0;
+  position:relative;z-index:1;
+}
+
+/* ── FOOTER ── */
+.footer{padding:16px 32px;background:var(--gray-50);border-top:1px solid var(--gray-200);
+  display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--gray-400);flex-wrap:wrap;gap:8px;}
+.footer-brand{color:var(--inv-forest);font-weight:700;}
+
+@media(max-width:1100px){.main{grid-template-columns:1fr;}.right{border-left:0;border-top:1px solid var(--gray-200);}}
+
+/* ── COMMUNITY MODAL ── */
+.comm-modal-ov{
+  display:none;position:fixed;inset:0;background:rgba(15,30,15,.65);
+  align-items:center;justify-content:center;z-index:500;padding:20px;
+}
+.comm-modal-ov.open{display:flex;}
+.comm-modal{
+  background:#fff;border-radius:14px;max-width:680px;width:100%;max-height:90vh;
+  overflow-y:auto;box-shadow:var(--shadow-lg);
+}
+.cm-hdr{
+  background:linear-gradient(135deg,var(--inv-forest),var(--inv-forest-d));
+  color:#fff;padding:22px 26px;border-radius:14px 14px 0 0;
+  display:flex;justify-content:space-between;align-items:flex-start;
+}
+.cm-region{font-size:11px;color:var(--inv-lime);letter-spacing:1.5px;text-transform:uppercase;font-weight:700;}
+.cm-name{font-size:20px;font-weight:800;color:#fff;margin-top:6px;}
+.cm-city{font-size:12px;color:rgba(255,255,255,.7);margin-top:4px;}
+.cm-close{background:rgba(255,255,255,.18);color:#fff;border:0;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:16px;}
+.cm-body{padding:22px 26px;}
+.cm-section{margin-bottom:22px;}
+.cm-section-title{font-size:11px;color:var(--inv-forest);text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:10px;}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-left">
+    <div class="logo-mark">9</div>
+    <div>
+      <h1>Brand 9 Signs</h1>
+      <div class="hdr-sub">Florida-based signage operations · est. 1986</div>
+    </div>
+  </div>
+  <div class="hdr-right">
+    <div style="font-size:11px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:1px;">Coverage Overview for</div>
+    <div style="font-size:14px;color:#fff;font-weight:700;margin-top:2px;">Invitation Homes (NYSE: INVH)</div>
+  </div>
+</header>
+
+<!-- INLINE DECK — Brand 9 INVH Signage Proposal · May 2026 -->
+<div class="deck-wrap">
+  <div class="deck-head">
+    <div class="deck-head-left">
+      <div class="deck-icon">📄</div>
+      <div>
+        <div class="deck-label">Signage Proposal · May 2026</div>
+        <div class="deck-title">Brand 9 Signs · Invitation Homes Signage Marketing</div>
+      </div>
+    </div>
+    <div class="deck-actions">
+      <a class="deck-btn" href="assets/invitationhomes_2026.pdf" target="_blank" rel="noopener">Open Full Screen ↗</a>
+      <a class="deck-btn outline" href="assets/invitationhomes_2026.pdf" download>Download PDF</a>
+    </div>
+  </div>
+  <div class="deck-frame">
+    <embed src="assets/invitationhomes_2026.pdf#view=FitH&toolbar=1" type="application/pdf">
+  </div>
+</div>
+
+<div class="intro">
+  <h2>Built for your portfolio. Already on your routes.</h2>
+  <p>
+    Brand 9 Signs has run signage operations across the same Southeast metros where
+    <span class="inv-name">Invitation Homes</span> holds its largest concentrations — Jacksonville, St. Augustine,
+    Ocala, Tampa, Orlando, South Florida, Atlanta, and the Carolinas. We currently operate
+    250+ active community programs for Lennar Homes across these same markets, with our crews
+    on the ground every week.
+  </p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi"><div class="kpi-l">Years in business</div><div class="kpi-v">40+</div><div class="kpi-s">Family-owned · est. 1986</div></div>
+  <div class="kpi"><div class="kpi-l">Active community programs</div><div class="kpi-v">250+</div><div class="kpi-s">Built-to-rent + new construction</div></div>
+  <div class="kpi"><div class="kpi-l">SE markets covered</div><div class="kpi-v">7 of 7</div><div class="kpi-s">All major INVH Southeast metros</div></div>
+  <div class="kpi"><div class="kpi-l">Install crews on route</div><div class="kpi-v">Weekly</div><div class="kpi-s">Florida + Georgia · same crews, same week</div></div>
+  <div class="kpi"><div class="kpi-l">Headquartered</div><div class="kpi-v">Jacksonville, FL</div><div class="kpi-s">Independent · single point of accountability</div></div>
+</div>
+
+<div class="main">
+  <div class="left">
+
+    <div class="section-hdr">
+      <div class="section-title">Where Our Routes Overlap with Invitation Homes</div>
+    </div>
+
+    <div class="map-card">
+      <div id="invmap"></div>
+      <div class="map-legend">
+        <span><span class="legend-dot"></span> Markets where Brand 9 has active install routes</span>
+        <span style="margin-left:auto;font-size:10px;">Sized by INVH portfolio share</span>
+      </div>
+    </div>
+
+    <div class="section-hdr">
+      <div class="section-title">Southeast Coverage by Market</div>
+    </div>
+
+    <div class="market-grid" id="market-grid"></div>
+
+  </div>
+
+  <div class="right">
+
+    <div class="section-hdr">
+      <div class="section-title">Signage Scope We Handle</div>
+    </div>
+    <div class="capability-list">
+      <div class="capability">
+        <div class="capability-icon">🪧</div>
+        <div>
+          <div class="capability-title">"For Lease" Yard Signs</div>
+          <div class="capability-detail">Per-unit signage · designed for repeat use across vacancy cycles</div>
+        </div>
+      </div>
+      <div class="capability">
+        <div class="capability-icon">🏘️</div>
+        <div>
+          <div class="capability-title">Build-to-Rent Community Signage</div>
+          <div class="capability-detail">Entrance monuments · wayfinding · model home · leasing center</div>
+        </div>
+      </div>
+      <div class="capability">
+        <div class="capability-icon">🏢</div>
+        <div>
+          <div class="capability-title">Regional Office Identity</div>
+          <div class="capability-detail">Interior + exterior office signage · consistent across markets</div>
+        </div>
+      </div>
+      <div class="capability">
+        <div class="capability-icon">🚧</div>
+        <div>
+          <div class="capability-title">Construction Phase Signage</div>
+          <div class="capability-detail">Site safety · sponsor boards · sales preview · fencing graphics</div>
+        </div>
+      </div>
+      <div class="capability">
+        <div class="capability-icon">🪟</div>
+        <div>
+          <div class="capability-title">Window Graphics + Decals</div>
+          <div class="capability-detail">"Now Leasing" treatments · property branding · leasing-center windows</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-hdr" style="margin-top:28px;">
+      <div class="section-title">Marketing Services</div>
+    </div>
+    <p style="font-size:12px;color:var(--gray-600);line-height:1.6;margin-bottom:12px;">
+      Beyond signage, Brand 9 is a full-spectrum marketing partner. The message in the market
+      and the sign on the ground come from the same team — same day, same brand.
+    </p>
+    <div class="capability-list">
+      <div class="capability">
+        <div class="capability-icon">🎯</div>
+        <div>
+          <div class="capability-title">Brand Strategy &amp; Positioning</div>
+          <div class="capability-detail">Competitive audits · narrative architecture · voice frameworks · launch planning</div>
+        </div>
+      </div>
+      <div class="capability">
+        <div class="capability-icon">✏️</div>
+        <div>
+          <div class="capability-title">Visual Identity Systems</div>
+          <div class="capability-detail">Logomarks · color systems · typography · design manuals that scale</div>
+        </div>
+      </div>
+      <div class="capability">
+        <div class="capability-icon">🎬</div>
+        <div>
+          <div class="capability-title">Creative Production</div>
+          <div class="capability-detail">Graphic design · motion graphics · pitch decks · packaging · editorial systems</div>
+        </div>
+      </div>
+      <div class="capability">
+        <div class="capability-icon">📣</div>
+        <div>
+          <div class="capability-title">Go-to-Market Campaigns</div>
+          <div class="capability-detail">GTM sequencing · media planning · launch execution · measurement</div>
+        </div>
+      </div>
+      <div class="capability">
+        <div class="capability-icon">🏡</div>
+        <div>
+          <div class="capability-title">Community Launch Programs</div>
+          <div class="capability-detail">Model home marketing · sales center collateral · on-site buyer experience</div>
+        </div>
+      </div>
+      <div class="capability">
+        <div class="capability-icon">📊</div>
+        <div>
+          <div class="capability-title">Digital &amp; Print Collateral</div>
+          <div class="capability-detail">Brochures · landing pages · email · social kits · investor decks</div>
+        </div>
+      </div>
+      <div class="capability">
+        <div class="capability-icon">📈</div>
+        <div>
+          <div class="capability-title">Marketing Measurement</div>
+          <div class="capability-detail">Performance tracking across campaigns, communities, and portfolios</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote-card">
+      <div class="quote-mark">"</div>
+      <p class="quote-text">A sign is the slowest medium in marketing. It is also the longest-lived.</p>
+    </div>
+
+    <div class="contact-card">
+      <h3>Direct Contact</h3>
+      <p><a href="mailto:ap@brand9signs.com">ap@brand9signs.com</a></p>
+      <p>(888) 460-1308</p>
+      <p style="font-size:11px;opacity:.75;margin-top:8px;">Brand 9 Signs · Jacksonville, Florida · est. 1986</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- Community detail modal -->
+<div class="comm-modal-ov" id="commModal" onclick="if(event.target===this)closeCommModal()">
+  <div class="comm-modal">
+    <div class="cm-hdr">
+      <div>
+        <div class="cm-region" id="cm-region"></div>
+        <div class="cm-name" id="cm-name"></div>
+        <div class="cm-city" id="cm-city"></div>
+      </div>
+      <button class="cm-close" onclick="closeCommModal()">✕</button>
+    </div>
+    <div class="cm-body">
+      <div class="cm-section">
+        <div class="cm-section-title">Notes</div>
+        <div id="cm-notes" style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:14px;font-size:13px;color:var(--gray-600);line-height:1.6;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div><span class="footer-brand">Brand 9 Signs</span> · est. 1986 · Jacksonville, FL</div>
+  <div>Prepared for Invitation Homes · <span id="ts"></span></div>
+</div>
+
+<script>
+document.getElementById('ts').textContent = new Date().toLocaleDateString('en-US', {year:'numeric',month:'long',day:'numeric'});
+
+// Deck is now embedded inline — no JS needed for the viewer.
+
+// ── MARKETS ──
+const MARKETS = [
+  {name:"Jacksonville",   state:"FL",    coverage:true, hq:true, pct:2,  est_homes:2180,
+   communities:[
+     {name:"Sample Community A · St. Johns",    city:"St. Johns, FL",       notes:"Northeast Florida community. Brand 9 currently installs in this corridor for Lennar."},
+     {name:"Sample Community B · Nocatee Area", city:"Ponte Vedra, FL",     notes:"Adjacent to Brand 9's existing Nocatee-area route. Same crew, same week."},
+     {name:"Sample Community C · Westside JAX", city:"Jacksonville, FL",    notes:"West Jacksonville. Same crew rotation as our 18 Lennar communities in greater JAX."},
+   ]},
+  {name:"Atlanta",        state:"GA",    coverage:true, pct:13, est_homes:14160,
+   communities:[
+     {name:"Sample Community · ATL Metro", city:"Marietta, GA", notes:"Atlanta metro market. Brand 9 has install capability and route experience here."},
+   ]},
+  {name:"Tampa",          state:"FL",    coverage:true, pct:10, est_homes:10890,
+   communities:[
+     {name:"Sample Community · Wesley Chapel", city:"Wesley Chapel, FL", notes:"Tampa metro · Wesley Chapel corridor. Brand 9 current install route."},
+   ]},
+  {name:"South Florida",  state:"FL",    coverage:true, pct:12, est_homes:13070},
+  {name:"Orlando",        state:"FL",    coverage:true, pct:5,  est_homes:5450},
+  {name:"Carolinas",      state:"NC/SC", coverage:true, pct:6,  est_homes:6540},
+  {name:"Nashville",      state:"TN",    coverage:true, pct:3,  est_homes:3270},
+  {name:"Phoenix",        state:"AZ",    pct:10, est_homes:10890},
+  {name:"Dallas",         state:"TX",    pct:3,  est_homes:3270},
+  {name:"Houston",        state:"TX",    pct:2,  est_homes:2180},
+  {name:"Denver",         state:"CO",    pct:3,  est_homes:3270},
+  {name:"Las Vegas",      state:"NV",    pct:4,  est_homes:4360},
+  {name:"S. California",  state:"CA",    pct:13, est_homes:14160},
+  {name:"N. California",  state:"CA",    pct:6,  est_homes:6540},
+  {name:"Seattle",        state:"WA",    pct:6,  est_homes:6540},
+  {name:"Minneapolis",    state:"MN",    pct:1,  est_homes:1090},
+];
+
+const COORDS = {
+  "Jacksonville":[30.332,-81.656],"Tampa":[27.951,-82.458],"Orlando":[28.538,-81.379],
+  "South Florida":[26.122,-80.137],"Atlanta":[33.749,-84.388],"Carolinas":[35.227,-80.843],
+  "Nashville":[36.165,-86.784],"Phoenix":[33.448,-112.074],"Dallas":[32.776,-96.797],
+  "Houston":[29.760,-95.369],"Denver":[39.739,-104.990],"Las Vegas":[36.169,-115.140],
+  "S. California":[34.052,-118.243],"N. California":[37.774,-122.419],"Seattle":[47.606,-122.332],"Minneapolis":[44.978,-93.265]
+};
+
+// Render market cards — HQ first, coverage markets next, rest after
+const grid = document.getElementById('market-grid');
+MARKETS.sort((a,b)=>{
+  if (a.hq) return -1; if (b.hq) return 1;
+  if (a.coverage && !b.coverage) return -1; if (!a.coverage && b.coverage) return 1;
+  return b.pct - a.pct;
+}).forEach((m, mIdx)=>{
+  const card = document.createElement('div');
+  card.className = 'market-card' + (m.coverage ? ' coverage' : '') + (m.hq ? ' hq' : '');
+  const commCount = (m.communities||[]).length;
+  card.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+      <div>
+        <div class="market-name">${m.name}${m.hq ? ' <span style="font-size:9px;background:var(--inv-lime);color:var(--inv-forest-d);padding:2px 6px;border-radius:3px;letter-spacing:.5px;vertical-align:middle;">★ HQ</span>' : ''}</div>
+        <div class="market-state">${m.state} · ${m.pct}% INVH portfolio</div>
+      </div>
+    </div>
+    <div class="market-stats">
+      <div class="market-stat"><div class="market-stat-v">~${(m.est_homes/1000).toFixed(1)}K</div><div class="market-stat-l">Est. Homes</div></div>
+      ${m.coverage ? '<div style="font-size:10px;color:var(--inv-forest);font-weight:700;text-transform:uppercase;letter-spacing:.5px;align-self:flex-end;">✓ Brand 9 active</div>' : '<div style="font-size:10px;color:var(--gray-400);align-self:flex-end;">—</div>'}
+    </div>
+    ${commCount > 0 ? `<div style="margin-top:10px;padding-top:8px;border-top:1px dashed var(--gray-200);">
+      <div style="font-size:9px;color:var(--inv-forest);text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:6px;">Sample Communities</div>
+      ${m.communities.map((c,ci)=>`
+        <div class="comm-row" onclick="openCommModal(${mIdx},${ci})">
+          <span style="font-weight:600;">${c.name}</span>
+          <span style="font-size:10px;color:var(--inv-forest);">›</span>
+        </div>
+      `).join('')}
+    </div>` : ''}
+  `;
+  grid.appendChild(card);
+});
+
+function openCommModal(mIdx, ci) {
+  const m = MARKETS[mIdx];
+  const c = m.communities[ci];
+  document.getElementById('cm-name').textContent = c.name;
+  document.getElementById('cm-city').textContent = c.city + ' · ' + m.name + ' market';
+  document.getElementById('cm-region').textContent = '📍 ' + m.state + (m.hq ? ' · Brand 9 HQ market' : '');
+  document.getElementById('cm-notes').textContent = c.notes || 'Sample community for reference. Real community list confirmed once partnership underway.';
+  document.getElementById('commModal').classList.add('open');
+}
+function closeCommModal() {
+  document.getElementById('commModal').classList.remove('open');
+}
+
+// ── MAP ──
+const map = L.map('invmap',{zoomControl:true,scrollWheelZoom:false}).setView([34.5,-92],4);
+L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png',{
+  attribution:'© OpenStreetMap © CARTO', maxZoom:18, subdomains:'abcd'
+}).addTo(map);
+
+MARKETS.forEach(m=>{
+  const c = COORDS[m.name];
+  if (!c) return;
+  const r = Math.max(8, Math.sqrt(m.est_homes)/4);
+  if (m.coverage) {
+    L.circleMarker(c,{radius:r, color:'#217106', fillColor:'#68B631', fillOpacity:.75, weight:2.5})
+      .bindTooltip(`<strong>${m.name}</strong><br>${m.pct}% INVH portfolio · ~${m.est_homes.toLocaleString()} homes<br><strong style="color:#217106">✓ Brand 9 active here</strong>`, {permanent:false})
+      .addTo(map);
+  } else {
+    L.circleMarker(c,{radius:r, color:'#cbd5e1', fillColor:'#e2e8f0', fillOpacity:.5, weight:1})
+      .bindTooltip(`<strong>${m.name}</strong><br>${m.pct}% INVH portfolio · ~${m.est_homes.toLocaleString()} homes`, {permanent:false})
+      .addTo(map);
+  }
+});
+</script>
+
+</body>
+</html>
+<!-- watcher-tick: 2026-05-29T18:12:37Z C-suite cut deploy -->

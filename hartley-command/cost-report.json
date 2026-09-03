@@ -1,0 +1,35 @@
+{
+  "generated": "2026-08-02T07:00:23",
+  "day": "2026-08-01",
+  "status": "OVER",
+  "threshold_usd": 10.0,
+  "est_usd_yesterday": 66.91,
+  "est_usd_today_so_far": 12.59,
+  "calls_yesterday": 1222,
+  "by_model": [
+    {
+      "name": "moonshotai/kimi-k2.7-code",
+      "in": 68262843,
+      "out": 515340,
+      "calls": 1222,
+      "usd": 66.91106085000001
+    }
+  ],
+  "by_job": [
+    {
+      "name": "wolf-dashboard-autosync",
+      "in": 52272661,
+      "out": 357861,
+      "calls": 844,
+      "usd": 51.09047195000004
+    },
+    {
+      "name": "construct-dashboard-autosync",
+      "in": 15990182,
+      "out": 157479,
+      "calls": 378,
+      "usd": 15.820588900000008
+    }
+  ],
+  "note": "upper-bound estimate; ignores prompt-cache discounts"
+}

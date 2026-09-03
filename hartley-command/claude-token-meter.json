@@ -1,0 +1,54 @@
+{
+  "generated": "2026-09-03T11:42:56.311941Z",
+  "source": "live \u2014 claude-token-rollup from model-usage.json (Hermes/OpenRouter measured)",
+  "weekly_limit": {
+    "pct_used": 100,
+    "window": "measured Hermes/OpenRouter usage as of 2026-09-03",
+    "note": "% = measured tokens (113,809,647) vs a 100,000,000-token soft budget. Claude Cowork usage is not API-exposed and is not counted here."
+  },
+  "claude_totals": {
+    "in_tokens": null,
+    "out_tokens": null,
+    "note": "Cowork usage feed pending tracker"
+  },
+  "grading_scale": "A \u2265 90 \u00b7 B 80\u201389 \u00b7 C 70\u201379 \u00b7 D < 70 \u2014 quality from Model Arena bake-off",
+  "models": [
+    {
+      "model": "claude-opus-4-8",
+      "provider": "anthropic",
+      "surface": "Cowork (driver)",
+      "requests": null,
+      "in_tokens": null,
+      "out_tokens": null,
+      "cost_usd": null,
+      "quality": null,
+      "grade": null,
+      "note": "primary Cowork driver \u2014 heavy 2-day session"
+    },
+    {
+      "model": "moonshotai/kimi-k2.7-code",
+      "provider": "openrouter",
+      "surface": "Hermes flock",
+      "requests": 1259,
+      "in_tokens": 76775787,
+      "out_tokens": 560612,
+      "cost_usd": 0.0377,
+      "quality": 92.2,
+      "grade": "A",
+      "note": "bake-off 60/60 ok \u00b7 avg 14.2s \u00b7 ~$0.0006/task"
+    },
+    {
+      "model": "z-ai/glm-5.2",
+      "provider": "openrouter",
+      "surface": "Hermes flock",
+      "requests": null,
+      "in_tokens": null,
+      "out_tokens": null,
+      "cost_usd": null,
+      "quality": null,
+      "grade": null,
+      "note": "bake-off 42/42 ok \u00b7 avg 18.2s \u00b7 quality pending rollup"
+    }
+  ],
+  "coverage_note": "Claude Cowork (Opus) token usage is NOT API-exposed and is therefore uncounted; figures below are measured Hermes/OpenRouter spend."
+}

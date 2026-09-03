@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>PRAGMA Mirror — Client Scorecard</title>
+<style>
+:root{--blue:#0090D0;--black:#0b0b0b;--ink:#12222e;--red:#e5484d;--yellow:#e8a13a;--green:#2fa84f;--line:#e3e8ee}
+*{box-sizing:border-box}body{margin:0;font-family:'Helvetica Neue',Arial,sans-serif;color:var(--ink);background:#f4f7f9}
+.wrap{max-width:940px;margin:0 auto;padding:28px 20px 60px}
+header{display:flex;justify-content:space-between;align-items:baseline;border-bottom:3px solid var(--blue);padding-bottom:10px}
+header .brand{font-size:13px;letter-spacing:2px;color:var(--blue);font-weight:700}
+header h1{font-size:22px;margin:4px 0 0}
+header .date{font-size:12px;color:#789}
+.hero{display:grid;grid-template-columns:220px 1fr;gap:24px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px;margin-top:20px}
+.dial{text-align:center}
+.dial .num{font-size:72px;font-weight:900;line-height:1}
+.dial .tag{display:inline-block;margin-top:8px;padding:3px 12px;border-radius:20px;color:#fff;font-weight:700;font-size:13px}
+.dial .of{color:#8aa;font-size:12px;margin-top:6px}
+.axes{display:grid;grid-template-columns:1fr 1fr;gap:14px 24px;align-self:center}
+.axis .top{display:flex;justify-content:space-between;font-size:13px;font-weight:600}
+.axis .bar{height:8px;background:#eef2f5;border-radius:5px;margin-top:5px;overflow:hidden}
+.axis .fill{height:100%;border-radius:5px}
+.spark{margin-top:6px;font-size:11px;color:#789}
+h2{font-size:15px;margin:28px 0 4px;color:var(--ink)}
+.sub{font-size:12px;color:#789;margin-bottom:12px}
+.mods{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.mod{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px}
+.mod .chip{font-size:10px;font-weight:700;padding:2px 8px;border-radius:12px;color:#fff}
+.mod .name{font-weight:700;margin:8px 0 2px;font-size:14px}
+.mod .metric{font-size:13px;color:var(--blue);font-weight:600}
+.mod .moves{font-size:11px;color:#789;margin-top:4px}
+.mod .pend{font-size:11px;color:#12222e;margin-top:6px}
+.flywheel{background:var(--black);color:#fff;border-radius:12px;padding:20px 24px;margin-top:26px;font-size:14px;line-height:1.6}
+.flywheel b{color:var(--blue)}
+footer{color:#8aa;font-size:11px;text-align:center;margin-top:24px}
+</style></head>
+<body><div class="wrap">
+<header>
+  <div><div class="brand">PRAGMA MIRROR</div><h1 id="client">Client Scorecard</h1></div>
+  <div class="date" id="date">—</div>
+</header>
+
+<div class="hero">
+  <div class="dial">
+    <div class="num" id="composite">–</div>
+    <div class="tag" id="tag">—</div>
+    <div class="of">visibility composite / 100</div>
+    <div class="spark" id="trend"></div>
+  </div>
+  <div class="axes" id="axes"></div>
+</div>
+
+<h2>What's moving your score</h2>
+<div class="sub">Each service module works one part of your visibility. The Mirror says which; the module moves it; the score proves it.</div>
+<div class="mods" id="mods"></div>
+
+<div class="flywheel">
+  <b>The loop:</b> the Mirror measures where the AI overlooks you → the right module drafts the fix → you approve → it runs on your own site and profiles → your score climbs. Everything we build, you own.
+</div>
+<footer id="foot">PRAGMA Mirror · measurement + action in one loop</footer>
+</div>
+
+<script>
+var AXES=[["aeo","Answer Engines (AEO)"],["seo","Search Coverage (SEO)"],["geo","Local Presence (GEO)"],["llm","AI Chatbots (LLM)"]];
+var MOVES={reviews:"Reputation + Local",gbp:"Local (GEO)",content:"Answer Engines (AEO/SEO)",social:"Brand + LLM",email:"Reputation",landing:"Conversion",assistant:"Conversion + AEO",leads:"Revenue"};
+function color(v,t){t=t||{red_below:50,yellow_below:70};return v<t.red_below?'var(--red)':v<t.yellow_below?'var(--yellow)':'var(--green)';}
+async function j(u){try{var r=await fetch(u+'?cb='+Date.now(),{cache:'no-store'});if(r.ok)return await r.json();}catch(e){}return null;}
+(async function(){
+  var m=await j('./brand-insights/latest.json')||{};
+  var sm=await j('./service-modules.json')||{modules:[]};
+  var q=await j('./approval-queue.json')||{by_module:{}};
+  var vs=m.visibility_score||{}, comp=vs.composite!=null?vs.composite:'–', th=vs.color_threshold||{};
+  document.getElementById('client').textContent=(m.client_display_name||'Brand 9 Signs')+' — Scorecard';
+  document.getElementById('date').textContent=(m.ts||'').slice(0,10);
+  var c=document.getElementById('composite');c.textContent=comp;c.style.color=color(comp,th);
+  var tag=document.getElementById('tag');var interp=(vs.interpretation||'').split('—')[0].trim()||'—';
+  tag.textContent=interp;tag.style.background=color(comp,th);
+  var tr=vs.trend_7day||[];document.getElementById('trend').textContent=tr.length?('7-day: '+tr.join(' → ')):'';
+  // axes
+  var mods=m.modules||{};var ax=document.getElementById('axes');
+  AXES.forEach(function(a){var s=(mods[a[0]]||{}).score;s=s==null?0:s;
+    ax.insertAdjacentHTML('beforeend','<div class="axis"><div class="top"><span>'+a[1]+'</span><span>'+s+'</span></div><div class="bar"><div class="fill" style="width:'+s+'%;background:'+color(s,th)+'"></div></div></div>');});
+  // reputation axis (from service-modules reviews)
+  var rev=(sm.modules||[]).filter(function(x){return x.id==='reviews'})[0]||{};
+  if(rev.rating!=null){ax.insertAdjacentHTML('beforeend','<div class="axis"><div class="top"><span>Reputation (reviews)</span><span>'+rev.rating+'★</span></div><div class="bar"><div class="fill" style="width:'+(rev.rating/5*100)+'%;background:var(--green)"></div></div></div>');}
+  // modules
+  var chipC={LIVE:'var(--green)',BUILD:'var(--yellow)',SCOPE:'#8aa'};
+  var host=document.getElementById('mods');
+  (sm.modules||[]).forEach(function(x){var pend=(q.by_module||{})[x.id]||0;
+    host.insertAdjacentHTML('beforeend','<div class="mod"><span class="chip" style="background:'+(chipC[x.status]||'#8aa')+'">'+x.status+'</span><div class="name">'+x.label+'</div><div class="metric">'+(MOVES[x.id]||'')+'</div><div class="moves">'+(x.metric_label||'')+'</div><div class="pend">'+(pend>0?(pend+' ready to approve'):'—')+'</div></div>');});
+  document.getElementById('foot').textContent='PRAGMA Mirror · '+(m.recommendations_count||0)+' recommendations ('+(m.recommendations_high||0)+' high-impact) · measurement + action in one loop';
+})();
+</script></body></html>

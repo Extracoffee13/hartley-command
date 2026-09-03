@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hartley Capital — Toy Rocket Launch</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 375px; height: 812px; overflow: hidden; background: #000; }
+  canvas { display: block; width: 375px; height: 812px; }
+</style>
+</head>
+<body>
+<canvas id="c" width="750" height="1624"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('c');
+  const ctx = canvas.getContext('2d');
+  const W = 750;
+  const H = 1624;
+  const CX = W / 2;
+
+  // Timing
+  const COUNTDOWN_START = 0;
+  const COUNTDOWN_END = 3;
+  const IGNITE_START = 3;
+  const IGNITE_END = 5;
+  const LAUNCH_START = 5;
+  const LAUNCH_END = 12;
+  const PAUSE_END = 14;
+  const TOTAL_LOOP = 14;
+
+  // Colors
+  const TEAL = '#024256';
+  const SKY_TOP = '#87CEEB';
+  const GRASS = '#3a7d44';
+  const GRASS_DARK = '#2d6235';
+
+  // Ground
+  const GROUND_Y = H * 0.85;
+  const GROUND_H = H - GROUND_Y;
+
+  // Launch pad position
+  const PAD_BASE_Y = GROUND_Y - 4;
+  const PAD_W = 120;
+  const PAD_H = 16;
+
+  // Rocket dimensions
+  const ROCKET_W = 48;
+  const ROCKET_H = 100;
+  const NOSE_H = 30;
+  const FIN_W = 18;
+  const FIN_H = 28;
+
+  // Rocket resting position (bottom of rocket body on pad)
+  const ROCKET_REST_Y = PAD_BASE_Y - PAD_H - 40 - ROCKET_H;
+
+  // Clouds
+  const clouds = [
+    { x: 120, y: 180, r: 60, speed: 0.3, puffs: [{dx:0,dy:0,r:60},{dx:50,dy:-8,r:50},{dx:-45,dy:-5,r:45},{dx:25,dy:-25,r:40},{dx:-20,dy:-20,r:38}] },
+    { x: 550, y: 320, r: 50, speed: 0.2, puffs: [{dx:0,dy:0,r:50},{dx:40,dy:-5,r:42},{dx:-38,dy:-3,r:40},{dx:18,dy:-22,r:35}] },
+    { x: 300, y: 500, r: 45, speed: 0.35, puffs: [{dx:0,dy:0,r:45},{dx:35,dy:-6,r:38},{dx:-32,dy:-4,r:35},{dx:15,dy:-18,r:30},{dx:-15,dy:-16,r:32}] },
+    { x: 680, y: 140, r: 55, speed: 0.25, puffs: [{dx:0,dy:0,r:55},{dx:45,dy:-7,r:46},{dx:-42,dy:-4,r:42},{dx:22,dy:-24,r:38}] }
+  ];
+
+  // Smoke particles
+  let smokeParticles = [];
+
+  // Stars / sparkle particles for trail
+  let trailParticles = [];
+
+  let startTime = null;
+
+  function easeInQuad(t) { return t * t; }
+  function easeInCubic(t) { return t * t * t; }
+
+  // Draw sky gradient
+  function drawSky() {
+    const grad = ctx.createLinearGradient(0, 0, 0, GROUND_Y);
+    grad.addColorStop(0, SKY_TOP);
+    grad.addColorStop(0.6, '#5DADE2');
+    grad.addColorStop(1, TEAL);
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, W, GROUND_Y);
+  }
+
+  // Draw sun
+  function drawSun(time) {
+    const sunX = 600;
+    const sunY = 200;
+    // Glow
+    const glowGrad = ctx.createRadialGradient(sunX, sunY, 30, sunX, sunY, 120);
+    glowGrad.addColorStop(0, 'rgba(255, 244, 180, 0.5)');
+    glowGrad.addColorStop(1, 'rgba(255, 244, 180, 0)');
+    ctx.fillStyle = glowGrad;
+    ctx.beginPath();
+    ctx.arc(sunX, sunY, 120, 0, Math.PI * 2);
+    ctx.fill();
+    // Sun body
+    ctx.fillStyle = '#FFE066';
+    ctx.beginPath();
+    ctx.arc(sunX, sunY, 50, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = '#FFF3A0';
+    ctx.beginPath();
+    ctx.arc(sunX - 8, sunY - 8, 35, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // Draw clouds
+  function drawClouds(time) {
+    clouds.forEach(cloud => {
+      const cx = ((cloud.x + time * cloud.speed * 60) % (W + 200)) - 100;
+      ctx.globalAlpha = 0.85;
+      cloud.puffs.forEach(p => {
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath();
+        ctx.arc(cx + p.dx, cloud.y + p.dy, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      // Slight highlight
+      ctx.globalAlpha = 0.3;
+      cloud.puffs.forEach(p => {
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath();
+        ctx.arc(cx + p.dx - 5, cloud.y + p.dy - 8, p.r * 0.7, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      ctx.globalAlpha = 1;
+    });
+  }
+
+  // Draw ground
+  function drawGround() {
+    // Main grass
+    ctx.fillStyle = GRASS;
+    ctx.fillRect(0, GROUND_Y, W, GROUND_H);
+
+    // Darker bottom
+    const grassGrad = ctx.createLinearGradient(0, GROUND_Y, 0, H);
+    grassGrad.addColorStop(0, GRASS);
+    grassGrad.addColorStop(1, GRASS_DARK);
+    ctx.fillStyle = grassGrad;
+    ctx.fillRect(0, GROUND_Y, W, GROUND_H);
+
+    // Grass blades
+    ctx.fillStyle = '#4a9d54';
+    for (let i = 0; i < W; i += 12) {
+      const h = 8 + Math.sin(i * 0.7) * 6 + Math.cos(i * 1.3) * 4;
+      ctx.beginPath();
+      ctx.moveTo(i, GROUND_Y);
+      ctx.lineTo(i + 4, GROUND_Y - h);
+      ctx.lineTo(i + 8, GROUND_Y);
+      ctx.fill();
+    }
+    // Extra darker blades
+    ctx.fillStyle = '#2d6235';
+    for (let i = 6; i < W; i += 18) {
+      const h = 6 + Math.cos(i * 0.9) * 5;
+      ctx.beginPath();
+      ctx.moveTo(i, GROUND_Y);
+      ctx.lineTo(i + 3, GROUND_Y - h);
+      ctx.lineTo(i + 6, GROUND_Y);
+      ctx.fill();
+    }
+  }
+
+  // Draw launch pad
+  function drawLaunchPad() {
+    const padCenterX = CX;
+    const legSpread = 70;
+    const legTopY = PAD_BASE_Y - 40;
+
+    // Tripod legs
+    ctx.strokeStyle = '#888';
+    ctx.lineWidth = 5;
+    // Left leg
+    ctx.beginPath();
+    ctx.moveTo(padCenterX, legTopY);
+    ctx.lineTo(padCenterX - legSpread, PAD_BASE_Y);
+    ctx.stroke();
+    // Right leg
+    ctx.beginPath();
+    ctx.moveTo(padCenterX, legTopY);
+    ctx.lineTo(padCenterX + legSpread, PAD_BASE_Y);
+    ctx.stroke();
+    // Center leg (front facing)
+    ctx.beginPath();
+    ctx.moveTo(padCenterX, legTopY);
+    ctx.lineTo(padCenterX, PAD_BASE_Y + 5);
+    ctx.stroke();
+
+    // Launch rod
+    ctx.strokeStyle = '#aaa';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(padCenterX, legTopY);
+    ctx.lineTo(padCenterX, legTopY - ROCKET_H - 30);
+    ctx.stroke();
+
+    // Blast deflector plate
+    ctx.fillStyle = '#999';
+    ctx.beginPath();
+    ctx.ellipse(padCenterX, legTopY + 2, 30, 6, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = '#777';
+    ctx.beginPath();
+    ctx.ellipse(padCenterX, legTopY + 4, 28, 5, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Small feet
+    ctx.fillStyle = '#666';
+    ctx.fillRect(padCenterX - legSpread - 8, PAD_BASE_Y - 3, 16, 6);
+    ctx.fillRect(padCenterX + legSpread - 8, PAD_BASE_Y - 3, 16, 6);
+    ctx.fillRect(padCenterX - 8, PAD_BASE_Y + 2, 16, 6);
+  }
+
+  // Draw rocket
+  function drawRocket(x, y) {
+    const bx = x - ROCKET_W / 2;
+    const by = y;
+
+    // --- Fins ---
+    ctx.fillStyle = '#E74C3C';
+    // Left fin
+    ctx.beginPath();
+    ctx.moveTo(bx, by + ROCKET_H - FIN_H);
+    ctx.lineTo(bx - FIN_W, by + ROCKET_H + 4);
+    ctx.lineTo(bx, by + ROCKET_H + 4);
+    ctx.closePath();
+    ctx.fill();
+    // Right fin
+    ctx.beginPath();
+    ctx.moveTo(bx + ROCKET_W, by + ROCKET_H - FIN_H);
+    ctx.lineTo(bx + ROCKET_W + FIN_W, by + ROCKET_H + 4);
+    ctx.lineTo(bx + ROCKET_W, by + ROCKET_H + 4);
+    ctx.closePath();
+    ctx.fill();
+    // Center fin (smaller, for depth)
+    ctx.fillStyle = '#C0392B';
+    ctx.beginPath();
+    ctx.moveTo(x - 5, by + ROCKET_H - 18);
+    ctx.lineTo(x, by + ROCKET_H + 4);
+    ctx.lineTo(x + 5, by + ROCKET_H - 18);
+    ctx.closePath();
+    ctx.fill();
+
+    // --- Body ---
+    ctx.fillStyle = '#FAFAFA';
+    ctx.beginPath();
+    ctx.rect(bx, by + NOSE_H, ROCKET_W, ROCKET_H - NOSE_H);
+    ctx.fill();
+
+    // Body shading
+    const bodyGrad = ctx.createLinearGradient(bx, 0, bx + ROCKET_W, 0);
+    bodyGrad.addColorStop(0, 'rgba(0,0,0,0.05)');
+    bodyGrad.addColorStop(0.3, 'rgba(255,255,255,0.1)');
+    bodyGrad.addColorStop(1, 'rgba(0,0,0,0.1)');
+    ctx.fillStyle = bodyGrad;
+    ctx.fillRect(bx, by + NOSE_H, ROCKET_W, ROCKET_H - NOSE_H);
+
+    // Stripe (blue)
+    ctx.fillStyle = '#2980B9';
+    ctx.fillRect(bx, by + NOSE_H + 30, ROCKET_W, 10);
+
+    // Second stripe (red, thin)
+    ctx.fillStyle = '#E74C3C';
+    ctx.fillRect(bx, by + NOSE_H + 44, ROCKET_W, 5);
+
+    // --- Nose cone ---
+    ctx.fillStyle = '#E74C3C';
+    ctx.beginPath();
+    ctx.moveTo(x, by);
+    ctx.quadraticCurveTo(x + 5, by + NOSE_H * 0.4, bx + ROCKET_W, by + NOSE_H);
+    ctx.lineTo(bx, by + NOSE_H);
+    ctx.quadraticCurveTo(x - 5, by + NOSE_H * 0.4, x, by);
+    ctx.closePath();
+    ctx.fill();
+
+    // Nose highlight
+    ctx.fillStyle = 'rgba(255,255,255,0.25)';
+    ctx.beginPath();
+    ctx.moveTo(x - 2, by + 6);
+    ctx.quadraticCurveTo(x, by + NOSE_H * 0.5, bx + 8, by + NOSE_H);
+    ctx.lineTo(bx + 4, by + NOSE_H);
+    ctx.quadraticCurveTo(x - 6, by + NOSE_H * 0.4, x - 2, by + 6);
+    ctx.closePath();
+    ctx.fill();
+
+    // Window (porthole)
+    ctx.fillStyle = '#AED6F1';
+    ctx.beginPath();
+    ctx.arc(x, by + NOSE_H + 16, 8, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = '#BDC3C7';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    // Window highlight
+    ctx.fillStyle = 'rgba(255,255,255,0.5)';
+    ctx.beginPath();
+    ctx.arc(x - 2, by + NOSE_H + 14, 3, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // Draw flame
+  function drawFlame(x, y, intensity) {
+    const flameH = 20 + intensity * 50;
+    const flameW = 12 + intensity * 10;
+    const flicker = Math.sin(Date.now() * 0.02) * 4;
+    const flicker2 = Math.cos(Date.now() * 0.03) * 3;
+
+    // Outer flame (orange-red)
+    const outerGrad = ctx.createLinearGradient(x, y, x, y + flameH);
+    outerGrad.addColorStop(0, 'rgba(255, 100, 0, 0.9)');
+    outerGrad.addColorStop(0.5, 'rgba(255, 50, 0, 0.7)');
+    outerGrad.addColorStop(1, 'rgba(255, 50, 0, 0)');
+    ctx.fillStyle = outerGrad;
+    ctx.beginPath();
+    ctx.moveTo(x - flameW, y);
+    ctx.quadraticCurveTo(x - flameW * 0.5 + flicker, y + flameH * 0.6, x + flicker2, y + flameH);
+    ctx.quadraticCurveTo(x + flameW * 0.5 + flicker, y + flameH * 0.6, x + flameW, y);
+    ctx.closePath();
+    ctx.fill();
+
+    // Inner flame (yellow-white)
+    const innerGrad = ctx.createLinearGradient(x, y, x, y + flameH * 0.6);
+    innerGrad.addColorStop(0, 'rgba(255, 255, 200, 0.95)');
+    innerGrad.addColorStop(0.5, 'rgba(255, 220, 50, 0.8)');
+    innerGrad.addColorStop(1, 'rgba(255, 150, 0, 0)');
+    ctx.fillStyle = innerGrad;
+    ctx.beginPath();
+    ctx.moveTo(x - flameW * 0.5, y);
+    ctx.quadraticCurveTo(x - flameW * 0.2 - flicker2, y + flameH * 0.4, x - flicker, y + flameH * 0.65);
+    ctx.quadraticCurveTo(x + flameW * 0.2 - flicker2, y + flameH * 0.4, x + flameW * 0.5, y);
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  // Smoke system
+  function addSmoke(x, y, count) {
+    for (let i = 0; i < count; i++) {
+      smokeParticles.push({
+        x: x + (Math.random() - 0.5) * 40,
+        y: y + Math.random() * 10,
+        r: 8 + Math.random() * 15,
+        vx: (Math.random() - 0.5) * 2,
+        vy: -0.3 - Math.random() * 0.5,
+        alpha: 0.6 + Math.random() * 0.3,
+        decay: 0.003 + Math.random() * 0.005,
+        growth: 0.3 + Math.random() * 0.3
+      });
+    }
+  }
+
+  function updateAndDrawSmoke() {
+    for (let i = smokeParticles.length - 1; i >= 0; i--) {
+      const p = smokeParticles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      p.r += p.growth;
+      p.alpha -= p.decay;
+      if (p.alpha <= 0) {
+        smokeParticles.splice(i, 1);
+        continue;
+      }
+      ctx.globalAlpha = p.alpha;
+      ctx.fillStyle = '#FFFFFF';
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  // Trail particles (small sparks)
+  function addTrail(x, y) {
+    for (let i = 0; i < 3; i++) {
+      trailParticles.push({
+        x: x + (Math.random() - 0.5) * 16,
+        y: y,
+        vx: (Math.random() - 0.5) * 1.5,
+        vy: 1 + Math.random() * 3,
+        alpha: 0.8,
+        decay: 0.02 + Math.random() * 0.02,
+        r: 2 + Math.random() * 3,
+        color: Math.random() > 0.5 ? '#FFD700' : '#FF6600'
+      });
+    }
+  }
+
+  function updateAndDrawTrail() {
+    for (let i = trailParticles.length - 1; i >= 0; i--) {
+      const p = trailParticles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      p.alpha -= p.decay;
+      p.r *= 0.98;
+      if (p.alpha <= 0) {
+        trailParticles.splice(i, 1);
+        continue;
+      }
+      ctx.globalAlpha = p.alpha;
+      ctx.fillStyle = p.color;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  // Draw countdown text
+  function drawCountdown(num) {
+    ctx.save();
+    ctx.font = 'bold 80px "Comic Sans MS", "Chalkboard SE", cursive, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    // Shadow
+    ctx.fillStyle = 'rgba(0,0,0,0.15)';
+    ctx.fillText(num, CX + 4, H * 0.38 + 4);
+
+    // Main text
+    ctx.fillStyle = '#FFFFFF';
+    ctx.strokeStyle = '#E74C3C';
+    ctx.lineWidth = 5;
+    ctx.strokeText(num, CX, H * 0.38);
+    ctx.fillText(num, CX, H * 0.38);
+    ctx.restore();
+  }
+
+  // Draw "LIFTOFF!" text
+  function drawLiftoff(alpha) {
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.font = 'bold 64px "Comic Sans MS", "Chalkboard SE", cursive, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = '#FFFFFF';
+    ctx.strokeStyle = '#E74C3C';
+    ctx.lineWidth = 4;
+    ctx.strokeText('LIFTOFF!', CX, H * 0.38);
+    ctx.fillText('LIFTOFF!', CX, H * 0.38);
+    ctx.globalAlpha = 1;
+    ctx.restore();
+  }
+
+  function animate(timestamp) {
+    if (!startTime) startTime = timestamp;
+    const elapsed = (timestamp - startTime) / 1000;
+    const loopTime = elapsed % TOTAL_LOOP;
+
+    // Clear
+    ctx.clearRect(0, 0, W, H);
+
+    // Draw scene layers
+    drawSky();
+    drawSun(loopTime);
+    drawClouds(elapsed); // use total elapsed so clouds drift continuously
+    drawGround();
+    drawLaunchPad();
+
+    // Determine rocket position
+    let rocketY = ROCKET_REST_Y;
+    let showFlame = false;
+    let flameIntensity = 0;
+    let showRocket = true;
+
+    if (loopTime < COUNTDOWN_END) {
+      // Countdown phase — rocket on pad
+      rocketY = ROCKET_REST_Y;
+
+      // Show countdown numbers
+      const countdownProgress = loopTime;
+      if (countdownProgress < 1) {
+        drawCountdown('3');
+      } else if (countdownProgress < 2) {
+        drawCountdown('2');
+      } else {
+        drawCountdown('1');
+      }
+
+    } else if (loopTime < IGNITE_END) {
+      // Ignition phase
+      rocketY = ROCKET_REST_Y;
+      showFlame = true;
+      const igniteProgress = (loopTime - IGNITE_START) / (IGNITE_END - IGNITE_START);
+      flameIntensity = igniteProgress * 0.6;
+
+      // Smoke puffs at base
+      if (Math.random() < 0.4) {
+        addSmoke(CX, ROCKET_REST_Y + ROCKET_H + 10, 2);
+      }
+
+      // Show LIFTOFF text fading in
+      if (igniteProgress < 0.8) {
+        drawLiftoff(Math.min(igniteProgress * 2, 1));
+      }
+
+      // Slight rumble
+      const rumble = (Math.random() - 0.5) * 3 * igniteProgress;
+      rocketY += rumble;
+
+    } else if (loopTime < LAUNCH_END) {
+      // Launch phase
+      showFlame = true;
+      const launchProgress = (loopTime - LAUNCH_START) / (LAUNCH_END - LAUNCH_START);
+      const easedProgress = easeInCubic(launchProgress);
+
+      // Rocket moves from rest to well above the screen
+      const totalDistance = ROCKET_REST_Y + ROCKET_H + 200; // enough to go off screen
+      rocketY = ROCKET_REST_Y - easedProgress * totalDistance;
+
+      flameIntensity = 0.6 + launchProgress * 0.4;
+
+      // Trail particles
+      if (launchProgress > 0.05) {
+        addTrail(CX, rocketY + ROCKET_H + 5);
+      }
+
+      // Smoke at launch pad (diminishing)
+      if (launchProgress < 0.4 && Math.random() < 0.3) {
+        addSmoke(CX, ROCKET_REST_Y + ROCKET_H + 10, 1);
+      }
+
+      // Liftoff text fading out
+      if (launchProgress < 0.3) {
+        drawLiftoff(1 - launchProgress / 0.3);
+      }
+
+      // If rocket is completely off screen, hide it
+      if (rocketY + ROCKET_H < -50) {
+        showRocket = false;
+      }
+
+    } else {
+      // Pause / reset phase — rocket off screen, scene resets
+      showRocket = false;
+    }
+
+    // Draw smoke behind rocket
+    updateAndDrawSmoke();
+    updateAndDrawTrail();
+
+    // Draw rocket
+    if (showRocket) {
+      drawRocket(CX, rocketY);
+      if (showFlame) {
+        drawFlame(CX, rocketY + ROCKET_H + 4, flameIntensity);
+      }
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  requestAnimationFrame(animate);
+})();
+</script>
+</body>
+</html>

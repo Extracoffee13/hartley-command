@@ -1,0 +1,479 @@
+{
+  "schema_version": "1.0",
+  "last_updated_utc": "2026-05-04T12:40:48Z",
+  "updates": [
+    {
+      "id": "2026-04-29-master-mp4-shipped",
+      "date": "2026-04-29",
+      "title": "\u2605 MASTER FILM SHIPPED \u2014 60s 1080p + 1080x1920 mobile cut",
+      "summary": "Built the 60-second master film from all 14 locked beat stills using ffmpeg + Ken Burns motion (per-beat zoom + pan calibrated to runsheet timeline). 1920x1080 H.264 master at 7.4MB \u00b7 1080x1920 mobile cut at 3.3MB. Both 24fps, exact 60.000s duration. Each beat's motion calibrated: Beat 10 LIFTOFF gets strong push-in (1.0\u21921.20 zoom), Beat 12 LUNAR ARC longest-dwell gets slow orbital push (9 seconds, 1.0\u21921.15), Beats 1-7 backyard arc get subtle drifts, Beat 14 brand mark holds static for 2s payoff. NO AUDIO in v1 \u2014 placeholder track / commissioned cue layered separately per Audio Sound-Design Brief v1. Files ready for brand9signs.com homepage replacement per integration brief in Brand 9 Site Up-grades folder.",
+      "agents_affected": [
+        "Vector",
+        "Signal",
+        "AP"
+      ],
+      "files_changed": [
+        "Brand 9 Rocket Motion Film./brand9-ninth-street-master-1080p.mp4 (NEW \u00b7 7.4MB \u00b7 60s \u00b7 1920x1080 \u00b7 24fps)",
+        "Brand 9 Rocket Motion Film./brand9-ninth-street-mobile-1080x1920.mp4 (NEW \u00b7 3.3MB \u00b7 60s \u00b7 1080x1920 \u00b7 24fps)"
+      ],
+      "tag": "deliverable",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-04-29-phase3-deep-prep",
+      "date": "2026-04-29",
+      "title": "Phase 3 deep-prep complete \u2014 runsheets + audio brief + embed + Beat 8 keyframes + launcher",
+      "summary": "Pre-baked everything Phase 3 needs so the motion pipeline is paste-and-go: Audio Sound-Design Brief v1 (per-beat SFX + music tier recommendations + LUFS targets), homepage video embed HTML/CSS/JS for brand9signs.com (16:9 desktop + 9:16 mobile media-query swap, autoplay-blocked fallback, prefers-reduced-motion respected), Mobile Cut Layout Strategy v1 (per-beat re-frame rules, AE pre-comp spec), Phase 5 Final Deliverables Checklist v1 (close-out punchlist), Beat 8 sub-shot keyframes built via Python composite (sun-cross, calendar-pages, toy-shelf-to-adult), and Phase 3 quick-launch .command bootstrapper that opens Higgsfield + Runway + all 4 runsheets + project folder in one double-click. Skill stack pulled: graphic-designer (Vector) + ms-office-suite (web) + xlsx (delivery checklist).",
+      "agents_affected": [
+        "Vector",
+        "Signal",
+        "AP"
+      ],
+      "files_changed": [
+        "Brand 9 Rocket Motion Film./Phase 3 \u2014 Audio Sound-Design Brief v1.md",
+        "Brand 9 Rocket Motion Film./Phase 3 \u2014 Mobile Cut Layout Strategy v1.md",
+        "Brand 9 Rocket Motion Film./Phase 5 \u2014 Final Film Deliverables Checklist v1.md",
+        "Brand 9 Rocket Motion Film./B9-NS-Beat08-1-SunCross-keyframe-v1.png",
+        "Brand 9 Rocket Motion Film./B9-NS-Beat08-2-CalendarPages-keyframe-v1.png",
+        "Brand 9 Rocket Motion Film./B9-NS-Beat08-3-ToyShelfToAdult-keyframe-v1.png",
+        "Brand 9 Rocket Motion Film./LAUNCH_phase3_motion.command",
+        "Brand 9 Site Up-grades/homepage-motion-film-embed.html",
+        "Brand 9 Site Up-grades/homepage-motion-film-integration-brief.md"
+      ],
+      "tag": "deliverable",
+      "color": "#ffd700"
+    },
+    {
+      "id": "2026-04-29-phase2-gate2-phase3-prep",
+      "date": "2026-04-29",
+      "title": "Phase 2 Gate 2 PASSED + Phase 3 Motion Runsheet shipped",
+      "summary": "Beat 4 corrected with toy-rocket continuity + contact sheet v2 rebuilt + Bobby validated 'precisely what I had in mind' on full beat range. Gate 2 audit: Skeptic 12/12 PASS, Architect drip rationing held. Phase 3 Motion Runsheet v1 (149 lines) shipped \u2014 full master timeline 0:00\u21921:00, per-beat Higgsfield prompts (Beats 1\u20137) + Runway prompts (Beats 9, 10, 11, 12, 13) + AE shot list (Beat 8 time-passage montage + Beat 14 brand mark + payoff line typography). Beat 14 payoff mock built (1920\u00d71080) showing 'Dream big. Build bigger.' in Cosmo Orange compressed sans with drips on key descenders + final period.",
+      "agents_affected": [
+        "Vector",
+        "Signal",
+        "AP"
+      ],
+      "files_changed": [
+        "Brand 9 Rocket Motion Film./B9-NS-Beat04-Ignition-PRO-v1.png (overwritten \u2014 corrected toy-rocket framing)",
+        "Brand 9 Rocket Motion Film./B9-NS-Beat04-Ignition-v2-toyrocket.png (audit copy)",
+        "Brand 9 Rocket Motion Film./B9-NS-Phase2-ContactSheet-v2.png (new \u2014 beat 4 corrected)",
+        "Brand 9 Rocket Motion Film./Phase 2 Gate 2 \u2014 Skeptic + Architect Pass.md (new)",
+        "Brand 9 Rocket Motion Film./Phase 3 Motion Runsheet v1.md (new \u2014 149 lines)",
+        "Brand 9 Rocket Motion Film./B9-NS-Beat14-PayoffMock-v1.png (new \u2014 payoff frame mock)",
+        "memory/feedback_ninth_street_render_strategy.md (canonical pipeline + Beat 4 toy-rocket rule etched)",
+        "memory/project_ninth_street_style.md (Bobby's 2026-04-29 'precisely what I had in mind' approval logged)"
+      ],
+      "tag": "deliverable",
+      "color": "#ffd700"
+    },
+    {
+      "id": "2026-04-29-phase2-pro-renders-complete",
+      "date": "2026-04-29",
+      "title": "Phase 2 Pro-tier renders COMPLETE \u2014 8 beats + contact sheet shipped",
+      "summary": "Autonomously fired 8 remaining beats (3, 4, 5, 6, 7, 9, 11, 13) into Gemini Pro tier via Chrome MCP. Each rendered as fresh chat per Phase 2 Runsheet protocol \u2014 composition + palette + V2 impasto strategy intact, fidelity at production-grade Pro tier baseline. All 8 PNGs landed in Brand 9 Rocket Motion Film. project folder with canonical filename pattern (B9-NS-BeatNN-Title-PRO-v1.png) via auto-fired move + rename .command. Contact sheet built (2000\u00d71028 PNG, 12-frame grid showing 1, 2, 3, 4, 5, 6, 7, 9, 10-WINNER, 11, 12-WINNER, 13). Phase 2 Gate 2 ready: full Skeptic + Architect pass on contact sheet \u2192 Phase 3 motion (Higgsfield 1-7, Runway 9-13, AE 8+14+master).",
+      "agents_affected": [
+        "Vector",
+        "Signal",
+        "AP"
+      ],
+      "files_changed": [
+        "Brand 9 Rocket Motion Film./B9-NS-Beat03-Pad-PRO-v1.png (new)",
+        "Brand 9 Rocket Motion Film./B9-NS-Beat04-Ignition-PRO-v1.png (new)",
+        "Brand 9 Rocket Motion Film./B9-NS-Beat05-Ascent-PRO-v1.png (new)",
+        "Brand 9 Rocket Motion Film./B9-NS-Beat06-Apogee-PRO-v1.png (new)",
+        "Brand 9 Rocket Motion Film./B9-NS-Beat07-Drift-PRO-v1.png (new)",
+        "Brand 9 Rocket Motion Film./B9-NS-Beat09-ModernPad-PRO-v1.png (new)",
+        "Brand 9 Rocket Motion Film./B9-NS-Beat11-EarthHorizon-PRO-v1.png (new)",
+        "Brand 9 Rocket Motion Film./B9-NS-Beat13-Reentry-PRO-v1.png (new)",
+        "Brand 9 Rocket Motion Film./B9-NS-Phase2-ContactSheet-PRO-v1.png (new \u2014 2000x1028 contact sheet)"
+      ],
+      "tag": "deliverable",
+      "color": "#ffd700"
+    },
+    {
+      "id": "2026-04-28-gitnexus-codegraph",
+      "date": "2026-04-28",
+      "title": "GitNexus + CodeGraph wired \u2014 Code Intelligence Layer live",
+      "summary": "Two new code-intelligence skills added to the universal pool. GitNexus (4.8MB, 19 SKILL.md, 2621 files): browser-based zero-server code knowledge graph \u2014 indexes any repo into deps/call-chains/clusters/execution-flows for Graph RAG. CodeGraph (350KB, 103 files): semantic code intelligence for Claude Code \u2014 94% fewer tool calls, 77% faster exploration, tree-sitter extraction across Python/TS/JS/Go/Java/Dart/Delphi. Wired into Cipher (CTO), Forge (COO), Oracle (CIO) SKILL.md files. Ecosystem CLAUDE.md created at AP Agent CEO Skills root with additions log. Pool now 56 packages.",
+      "agents_affected": [
+        "Cipher",
+        "Forge",
+        "Oracle",
+        "AP"
+      ],
+      "files_changed": [
+        "skills-library/installed/gitnexus/ (new, 4.8MB)",
+        "skills-library/installed/codegraph/ (new, 350KB)",
+        "c-suite/agents/cto/SKILL.md (Cipher \u2014 Code Intelligence Layer section)",
+        "c-suite/agents/coo/SKILL.md (Forge \u2014 Code Intelligence Layer section)",
+        "c-suite/agents/oracle/SKILL.md (Oracle \u2014 Code Intelligence Layer section)",
+        "CLAUDE.md (new \u2014 ecosystem root, additions log seeded)"
+      ],
+      "tag": "skills-install",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-04-28-pro-tier-validated",
+      "date": "2026-04-28",
+      "title": "Gemini Pro tier = production-grade fidelity baseline",
+      "summary": "Bobby switched Gemini model from 'Fast' (Imagen 3) to 'Pro' (Gemini 3 Pro) and re-fired Beat 2 prompt. Result: visible thick painterly brushwork, real impasto wood grain, gallery-grade hand brushstrokes \u2014 matches Geddes/Brantley reference at meaningfully higher fidelity than V0/V2 at Fast. Path 1 from Phase 2 Runsheet (account-tier upgrade) now active. All remaining beats render at Pro tier going forward. V2 prompt strategy carries over unchanged \u2014 only the model selector switches.",
+      "agents_affected": [
+        "Vector",
+        "Signal",
+        "AP"
+      ],
+      "files_changed": [
+        "B9-NS-PRO-render-v1.png (Beat 2 \u2014 The kit, Pro tier)",
+        "memory/feedback_ninth_street_render_strategy.md (Pro tier validation appended)"
+      ],
+      "tag": "fidelity-unlock",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-04-28-ninth-street-permanent",
+      "date": "2026-04-28",
+      "title": "Ninth Street style \u2014 PERMANENT LOCK + brand deck queued post-film",
+      "summary": "Bobby validated Beat 10 + Beat 12 V2 renders (\"The Gemini Renderings look great\"). Style spec promoted to permanent: never overwritten, default for ALL Brand 9 work going forward (signage, social, motion, web, print, environmental). V2 impasto prompt strategy validated as canonical for future Ninth Street rendering. Brand deck (visual system overview, four pillars, palette logic, typography, drip/halftone rules, do/don't gallery, 15 service-category applications, motion principles) QUEUED \u2014 fires only after homepage motion film Phase 5 completes. Trigger: Bobby says \"build the Ninth Street brand deck now.\"",
+      "agents_affected": [
+        "Vector",
+        "Signal",
+        "AP"
+      ],
+      "files_changed": [
+        "memory/project_ninth_street_style.md (permanent-lock declaration added)",
+        "memory/feedback_ninth_street_render_strategy.md (new \u2014 V2 impasto strategy canonical)",
+        "MEMORY.md (index updated)"
+      ],
+      "tag": "brand-lock",
+      "color": "#ffd700"
+    },
+    {
+      "id": "2026-04-28-uncaged",
+      "date": "2026-04-28",
+      "title": "[UNCAGED] mode deployed \u2014 default operating standard",
+      "summary": "Sister code to [RED]. Direct, fast, action-default, no permission-asking. Hedging vocabulary banned. Approval gates collapsed except real legal liability + capital deployment + money movement. Quality Triangle still runs. Goal: maximize Construct ecosystem for generational wealth. Deployed to 19 agents (16 c-suite + AP root + Louis + Architect via bootstrapper).",
+      "agents_affected": [
+        "AP",
+        "Louis",
+        "Architect",
+        "Vector",
+        "Signal",
+        "Cornerstone",
+        "Atlas",
+        "Forge",
+        "Ledger",
+        "Cipher",
+        "Oracle",
+        "Sentinel",
+        "Spectra",
+        "Nexus",
+        "Venture",
+        "Equity",
+        "Alpha",
+        "WOLF",
+        "Charlie"
+      ],
+      "files_changed": [
+        "~/.claude/memory/uncaged.md (new master protocol)",
+        "c-suite/agents/*/SKILL.md (16 files updated)",
+        "AP Agent CEO Skills/SKILL.md",
+        "Hartley Capital/SKILL.md",
+        "Agent Architect/SKILL.md"
+      ],
+      "tag": "operating-mode",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-04-28-opensource-5",
+      "date": "2026-04-28",
+      "title": "5 open-source repos installed + wired",
+      "summary": "Penpot (165MB, design platform), VibeVoice (123MB, MS speech), TradingAgents (3.6MB, trading framework), DeepSeek-V3 (257KB, MoE inference reference), system-design-primer (12MB, canonical architecture reference). Pool now 54 packages.",
+      "agents_affected": [
+        "Vector",
+        "Signal",
+        "Cornerstone",
+        "WOLF",
+        "Alpha",
+        "Cipher",
+        "Oracle",
+        "Forge",
+        "AP"
+      ],
+      "tag": "skills-install",
+      "color": "#00d4ff"
+    },
+    {
+      "id": "2026-04-28-trigger-codes",
+      "date": "2026-04-28",
+      "title": "5 C-Suite trigger codes deployed to all agents",
+      "summary": "[Deepthink] / [BTW] / [Caveman] / [Ultrathink] / [Ghost] \u2014 previously referenced in agent files (\"Honors [RED] and the five C-Suite codes\") but never defined. Now appended with full canonical definitions, stacking rules, [RED] precedence, and trust boundary to all 17+ agent SKILL.md files.",
+      "agents_affected": [
+        "all"
+      ],
+      "tag": "operating-mode",
+      "color": "#b388ff"
+    },
+    {
+      "id": "2026-04-28-phase2-runsheet",
+      "date": "2026-04-28",
+      "title": "Brand 9 Motion Film \u2014 Phase 1 Gate 1 locked + Phase 2 Runsheet shipped",
+      "summary": "Beat 10 Liftoff + Beat 12 Lunar Arc heroes locked via autonomous ecosystem vote (V2 impasto wins both). Phase 2 Runsheet bundles all 9 remaining beat prompts as copy-paste blocks with 3 escalation paths for production-grade fidelity.",
+      "agents_affected": [
+        "Vector",
+        "Signal",
+        "AP"
+      ],
+      "tag": "deliverable",
+      "color": "#ffd700"
+    },
+    {
+      "id": "2026-04-28-quality-triangle",
+      "date": "2026-04-28",
+      "title": "Quality Triangle protocol locked",
+      "summary": "Skeptic (does it work) / Architect (does it belong) / Security (can it be exploited). Master protocol at ~/.claude/memory/quality-triangle.md. Deployed to all 17 agent SKILL.md files plus dashboard panel.",
+      "agents_affected": [
+        "all"
+      ],
+      "tag": "operating-mode",
+      "color": "#00d4ff"
+    },
+    {
+      "id": "2026-04-28-domain-skills",
+      "date": "2026-04-28",
+      "title": "Outperform Stack \u2014 13 domain skill packages installed",
+      "summary": "HR (Nexus), CRE/architects (Louis/Architect), startup-skills (Spectra/AP), devops/terraform (Cipher), academic-research (Hartley-Cite/Sentinel), finance-skills 81-pack (Ledger/Equity/Alpha/Venture), gtm-agents 244-skill (Signal/Atlas/AP), onewave 162-skill (multi-domain), claudekit, exec-coach-2026 (Cornerstone), more.",
+      "agents_affected": [
+        "Nexus",
+        "Spectra",
+        "Cipher",
+        "Sentinel",
+        "Ledger",
+        "Equity",
+        "Alpha",
+        "Venture",
+        "Signal",
+        "Atlas",
+        "Cornerstone",
+        "Forge",
+        "Oracle",
+        "AP"
+      ],
+      "tag": "skills-install",
+      "color": "#00d4ff"
+    },
+    {
+      "id": "2026-04-28-live-dashboard",
+      "date": "2026-04-28",
+      "title": "Construct dashboard wired live (24/7 autonomous)",
+      "summary": "launchd watcher fires on filesystem changes to skills-library/installed/ and c-suite/agents/. scan_agents_live.py regenerates agent_skills.json. Dashboard auto-polls every 30s with freshness counter. NEUROLINK 2099 visualization (animated SVG, 30 nodes, synaptic particles). SkillDeploymentPanel per agent.",
+      "agents_affected": [],
+      "tag": "infrastructure",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-05-03-skill-audit-truth",
+      "date": "2026-05-03",
+      "title": "Skill audit \u2014 disk truth vs Apr 27 dispatch claim",
+      "summary": "Bobby flagged dispatch may not have actually completed Apr 27's claimed installs. Disk audit: 56 packages, 2459 SKILL.md (vs dispatch's claim of 97 packages \u2014 inflated). 4 packages dispatch claimed but missing on disk: NanoClaw, Mnemon, video-use, web-content-designer. Web-search verification: 3 are real public repos; web-content-designer is not a real package (likely confused with claude-design-skill or garden-skills).",
+      "agents_affected": [
+        "AP",
+        "Cornerstone",
+        "Cipher",
+        "Vector"
+      ],
+      "tag": "audit",
+      "color": "#ff9933"
+    },
+    {
+      "id": "2026-05-03-skill-installs-completed",
+      "date": "2026-05-03",
+      "title": "3 missing skill packages installed (dispatch backfill)",
+      "summary": "Cloned via tarball: nanoclaw (qwibitai/nanoclaw, 462 files / 54 SKILL.md \u2014 multi-channel messaging agent), mnemon (mnemon-dev/mnemon, 143 files / 3 SKILL.md \u2014 LLM-supervised persistent memory), video-use (browser-use/video-use, 51 files / 2 SKILL.md \u2014 Claude Code video editor). Total disk: 59 packages / 2518 SKILL.md / 32 agents. agent_skills.json regenerated and pushed to GitHub Pages via launchd watcher.",
+      "agents_affected": [
+        "NanoClaw",
+        "Cipher",
+        "Vector",
+        "all-engineering"
+      ],
+      "tag": "skill-install",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-05-03-install-verifier-locked",
+      "date": "2026-05-03",
+      "title": "Install verifier locked \u2014 dispatch can no longer claim done without proof",
+      "summary": "verify_skill_installs.py shipped at Agent Ecosystem Dashboard/. Wired into weekly-skill-scout SKILL.md as mandatory '\u2705 DISK VERIFICATION' report section. Memory rule locked: every install claim must be backed by a [PASS] line. Bobby caught dispatch faking 4 installs (NanoClaw, Mnemon, video-use, web-content-designer) on 2026-05-03 after weeks of inflated reports. Closed permanently.",
+      "agents_affected": [
+        "dispatch",
+        "skill-scout",
+        "all-agents"
+      ],
+      "tag": "infrastructure",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-05-03-7pack-skills-installed",
+      "date": "2026-05-03",
+      "title": "Bobby's 7-pack skill audit + install (4 new + 2 confirmed + 1 ambiguous)",
+      "summary": "Audited Bobby's 7 candidate skills with the new disk verifier. Already installed: taste-skill, impeccable. Newly installed: open-design (nexu-io, 1099 files / 60 SKILL.md \u2014 local-first Claude Design alternative), design-md-chrome (bergside \u2014 Chrome extension that extracts design tokens to DESIGN.md / SKILL.md), design-motion-principles (kylezantos \u2014 Emil Kowalski + Krehel + Tompkins motion design audit), code-review-graph (tirth8205 \u2014 Tree-sitter knowledge graph, 6.8x fewer tokens on reviews). APFEL deferred \u2014 no public repo by that exact name; closest matches: vabole/apple-skills, axiaoge2/Apple-Hig-Designer, rshankras/claude-code-apple-skills. All 4 new installs disk-verified [PASS] via verify_skill_installs.py.",
+      "agents_affected": [
+        "Vector",
+        "Signal",
+        "Cipher",
+        "Forge"
+      ],
+      "tag": "skill-install",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-05-03-apfel-clarified",
+      "date": "2026-05-03",
+      "title": "APFEL clarified \u2014 Arthur-Ficial's local Apple Intelligence CLI (not a Claude skill)",
+      "summary": "Bobby clarified APFEL = arthur-ficial/tap/apfel \u2014 Homebrew-installed macOS CLI exposing on-device Apple Intelligence as a local OpenAI-compatible server. Doesn't belong in skills-library/installed/ \u2014 system-level tool. Install: brew install arthur-ficial/tap/apfel. Operational role: free, private, no-key local-LLM fallback for any agent that can target a custom OPENAI_API_BASE. Use cases: privacy-safe inference for legal/financial/internal memos, offline drafting, low-latency micro-tasks. Bobby running the brew install locally; CLI not on disk via skills loader.",
+      "agents_affected": [
+        "all-agents-as-fallback",
+        "Sentinel",
+        "Ledger",
+        "Cornerstone"
+      ],
+      "tag": "infrastructure",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-05-03-apfel-installed",
+      "date": "2026-05-03",
+      "title": "APFEL v1.3.3 installed \u2014 local Apple Intelligence endpoint live for agents",
+      "summary": "brew install arthur-ficial/tap/apfel completed. OpenAI-compatible server at http://127.0.0.1:11434/v1 (run via `brew services start arthur-ficial/tap/apfel` for persistent daemon, or `apfel --serve` for one-shot). Requirements: macOS 26 Tahoe + Apple Silicon + Apple Intelligence enabled. Free, on-device, no API keys, full privacy. Architectural role: drop-in fallback target for any agent or routine that supports a custom OPENAI_API_BASE \u2014 point Sentinel + Ledger at it for privacy-sensitive legal/financial drafting; useful for Cornerstone offline-style entries when you want zero cloud round-trip. Also accepts MCP tool servers via --mcp flag, so APFEL itself can call the Construct MCP servers if Bobby ever wants a fully-local pipeline.",
+      "agents_affected": [
+        "Sentinel",
+        "Ledger",
+        "Cornerstone",
+        "all-fallback-eligible"
+      ],
+      "tag": "infrastructure",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-05-03-apfel-online-locked",
+      "date": "2026-05-03",
+      "title": "APFEL fully online on port 11435 \u2014 Sentinel + Ledger wired for privacy-routing",
+      "summary": "APFEL serving apple-foundationmodel via personal launchd plist at ~/Library/LaunchAgents/com.bobby.apfel.plist (RunAtLoad + KeepAlive). Endpoint http://127.0.0.1:11435/v1. Brew services abandoned for apfel \u2014 env-var-through-plist was fragile. Ollama keeps 11434 (Llama 3.1 8B), APFEL holds 11435 (Apple Foundation Model). Sentinel + Ledger SKILL.md updated with mandatory privacy-routing block: privileged contracts/NDAs/settlement drafts (Sentinel) and account numbers/unaudited financials/cap-table drafts (Ledger) MUST shell out to apfel locally instead of cloud. Audit line required: 'Routed to: apfel/apple-foundationmodel (local) \u2014 endpoint http://127.0.0.1:11435/v1'. Two privacy-safe local LLM paths now live across the ecosystem.",
+      "agents_affected": [
+        "Sentinel",
+        "Ledger",
+        "Cornerstone-fallback"
+      ],
+      "tag": "infrastructure",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-05-03-locations-hub-built",
+      "date": "2026-05-03",
+      "title": "Locations hub IA shipped \u2014 Jacksonville anchor + nav restructure (Option A)",
+      "summary": "Bobby asked whether geo pages belong under Services or Contact dropdown. Recommended dedicated Locations top-nav (industry standard for multi-market service businesses). Built and shipped end-to-end: (1) Jacksonville signage page at /signage-jacksonville/ as the home-market anchor \u2014 40 years, Jan founded 1986, Bobby owns/runs, no permitting language, deepest content of the three. (2) Locations hub at /locations/ summarizing all three markets with internal-linking to services. (3) Nav restructured via WP REST menu-items API: created top-level Locations item (id 9414) between Case Studies and Brand Lab AI, made Jacksonville (9415) the first child, reparented Orlando (9397) and Miami (9398) from Services into Locations, reordered Brand Lab AI / About Us / Contact accordingly. (4) Yoast SEO set on both new pages. (5) SG cache purged. Header, mobile menu, and footer bar all confirmed rendering the new IA. Final top-nav: Services \u00b7 Our Ecosystem \u00b7 Case Studies \u00b7 Locations [JAX | ORL | MIA] \u00b7 Brand Lab AI \u00b7 About Us \u00b7 Contact.",
+      "agents_affected": [
+        "Signal",
+        "Brand 9"
+      ],
+      "tag": "site-architecture",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-05-03-jx-color-revisions",
+      "date": "2026-05-03",
+      "title": "Jacksonville + Locations color revisions (Bobby's 6-pack)",
+      "summary": "Fixed theme override leaks: H1 was rendering at #DC9814 (gold \u2014 Brand 9 canon forbids); buttons rendering theme link cyan instead of white; black CTA banner copy losing to body text color; stat numbers/labels invisible against dark bg. Solution: !important on every Brand 9 color override across both Jacksonville and Locations page CSS to defeat the theme's site-wide rules. Removed all Jan Hartley + Robert Louis Hartley + HBS-alumnus + back-of-a-van references per Bobby's request \u2014 simpler 'Founded in 1986. Built in Jacksonville. Still Florida-owned.' framing. Added sitewide CSS in WPCode snippet 9234 (Brand 9 Fonts) for Locations dropdown hover state \u2014 cyan #00AEEF on submenu :hover and current-page items. SG cache purged. All 6 issues verified [PASS] on live page.",
+      "agents_affected": [
+        "Signal",
+        "Vector",
+        "Brand 9"
+      ],
+      "tag": "site-fix",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-05-03-submenu-rest-white",
+      "date": "2026-05-03",
+      "title": "Locations dropdown black-on-black fixed \u2014 submenu rest state white",
+      "summary": "On a city page (e.g. /signage-jacksonville/) the Locations dropdown opens with the theme's dark-gray bg (rgb(40,40,40)) and inherited theme navy text \u2014 Orlando + Miami links unreadable. Added rest-state white !important rule for all top-nav submenu links in WPCode snippet 9234. Active page (Jacksonville) stays cyan as 'you are here' indicator; Orlando + Miami at rest are white; cyan on hover. Mobile menu submenu styled to match. Verified live: dropdown now JAX(cyan) / ORL(white) / MIA(white).",
+      "agents_affected": [
+        "Signal",
+        "Brand 9"
+      ],
+      "tag": "site-fix",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-05-03-telnyx-dormant",
+      "date": "2026-05-03",
+      "title": "Telnyx account closed (orphan from early AP-JARVIS exploration)",
+      "summary": "Telnyx account suspended for negative balance. Disk audit found zero ecosystem references (no agent, skill, scheduled task, or site uses it). Provisioned during early AP-JARVIS SMS/voice exploration that never shipped. Decision: let it stay suspended, no payment, account purges naturally. Future SMS/voice work for AP or any agent routes to Twilio fresh \u2014 better Claude/agent stack support and no negative-balance baggage. Memory locked so future sessions don't re-evaluate.",
+      "agents_affected": [
+        "AP-JARVIS-future"
+      ],
+      "tag": "infrastructure",
+      "color": "#46556B"
+    },
+    {
+      "id": "2026-05-03-ap-v2-package-staged",
+      "date": "2026-05-03",
+      "title": "AP-v2 install package staged \u2014 NanoClaw + iMessage + APFEL hybrid",
+      "summary": "Replaces broken AP-JARVIS Electron + wake-word path with NanoClaw containerized Claude reachable via iMessage. Audited v1 source \u2014 ported all 17 ElevenLabs voice IDs, AP system prompt, dispatch protocol, canonical agent IDs. v2 adds: APFEL routing for privacy/cost (free local for ~70% of queries), disk-truth verification (every action verified before claimed done), iMessage as primary input (Mac wake-word irrelevant). Package at ~/Documents/Claude/Projects/AP as JARVIS/AP-v2-install/ \u2014 5 files: mount-allowlist.json (10 ecosystem folders), CLAUDE.local.md (full system prompt), agent-voices.json (17 voices), INSTALL.md (5-step runbook), verify-after-install.sh (10-check smoke test). Bobby runs `bash nanoclaw.sh` on his Mac (~20 min) and texts AP from iPhone. Token projection $1-8/month at his usage shape.",
+      "agents_affected": [
+        "AP",
+        "all-c-suite-future"
+      ],
+      "tag": "infrastructure",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-05-03-ap-v2-online",
+      "date": "2026-05-03",
+      "title": "AP-v2 (NanoClaw + Telegram) operational \u2014 phone to AP loop confirmed",
+      "summary": "AP-v2 v2 baseline shipped. Bobby texts @APAgent0013_bot from Telegram \u2192 NanoClaw routes to containerized Claude in agent group 'AP' (renamed from auto-default 'Terminal Agent') \u2192 replies delivered back. Telegram chosen over iMessage (NanoClaw upstream channels branch missing iMessage adapter). Six DB fixes required beyond the wizard: user_roles owner seed for Bobby's Telegram identity, messaging_group_agents wiring row, sender policy public, agent_group rename, AP system prompt swap into groups/_ping-test/CLAUDE.local.md, port-3000 conflict cleanup. The 8 .command files staged in 'AP as JARVIS/AP-v2-install/' captured the install path for future revisits. Lessons locked: (1) NanoClaw v2 wizard does not auto-seed first-user owner role \u2014 manual SQL required, (2) shallow git clone restricts fetchspec to main, breaks channels-branch references, (3) DB writes don't reflect until service restart. v2.1 follow-on: ElevenLabs voice replies, per-specialist containers, Tailscale dashboard repurpose.",
+      "agents_affected": [
+        "AP",
+        "all-c-suite-future"
+      ],
+      "tag": "infrastructure",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-05-03-ap-v2-voice-in-live",
+      "date": "2026-05-03",
+      "title": "AP-v2 voice-in operational \u2014 local Whisper, no API key dependency",
+      "summary": "Bobby talks into Telegram on iPhone, AP transcribes via local Whisper, replies in text. AP-v2 is now fully two-way for voice-input + text-output, no Anthropic API key required (the OneCLI dialog Bobby was driving toward turns out to have been unnecessary \u2014 local Whisper handles transcription). Earlier in the same session AP demonstrated reading brand9signs.com live: identified the 'Four Pillars. One Trajectory.' section, product tile grid, navy/dark palette, footer composition \u2014 all unprompted, by reading the live site through the container's browser context. AP also reasoned about its own limits cleanly: told Bobby it can't push site changes from Telegram without repo URL or SSH/deploy creds wired in, suggested GitHub repo URL as the fix path. The Construct CEO persona is consistent across messages.",
+      "agents_affected": [
+        "AP",
+        "voice-pipeline"
+      ],
+      "tag": "infrastructure",
+      "color": "#39ff14"
+    },
+    {
+      "id": "2026-05-03-ap-v2-wiring-lessons",
+      "date": "2026-05-03",
+      "title": "AP-v2 install lessons captured \u2014 9 hidden gates between 'wizard finished' and 'AP replies'",
+      "summary": "NanoClaw v2 wizard's 'success' is not the same as 'AP replies.' Tonight's debugging found 9 separate gates the wizard does NOT seed: (1) shallow clone fetchspec excludes the channels branch needed for any channel adapter, (2) launchd auto-respawn after channel install hits port-3000 EADDRINUSE, (3) user_roles for the human is empty \u2014 needs SQL insert, (4) messaging_group_agents wiring row missing \u2014 needs SQL insert, (5) unknown_sender_policy defaults to 'request_approval' \u2014 needs flip to 'public', (6) agent_group folder's CLAUDE.local.md is generic 'Terminal Agent' stub, not the real persona, (7) auto-created messaging group has no channel-registration record, (8) every NEW Telegram user_id creates a fresh messaging group requiring its own user_role + wiring + policy seed, (9) container exit kills session memory \u2014 fresh container per message has no continuity. All 9 fixed during this session via direct DB writes and CLAUDE.local.md swap. Lessons locked in feedback memory `feedback_nanoclaw_v2_not_ready.md` so future sessions don't rediscover.",
+      "agents_affected": [
+        "AP",
+        "future-installs"
+      ],
+      "tag": "lessons",
+      "color": "#ff9933"
+    },
+    {
+      "id": "2026-05-04-ap-voice-out-live",
+      "date": "2026-05-04",
+      "title": "AP voice OUT live \u2014 Harry speaks back via Telegram",
+      "summary": "AP can now reply with voice messages to Bobby's Telegram, spoken in Harry (his cloned ElevenLabs voice OeQ4VTZk797BW9xIopa0). Architecture: in-container Bash primitive at /workspace/agent/bin/ap-tts-send.sh \u2014 self-contained (curl + node only, both in nanoclaw image), reads keys from chmod-600 .voice-env, calls ElevenLabs (model eleven_turbo_v2_5, output_format opus_48000_128) \u2192 OGG/Opus \u2192 Telegram sendVoice multipart. Zero host code changes, zero new launchd plists, zero rebuild required. Two end-to-end smoke tests passed (Telegram message_ids 47, 51). AP system prompt updated with full Voice OUT section (when to use, when not, voice-writing style, sequencing). The earlier 'George' label drift on AP's voice was also corrected \u2014 OeQ4VTZk797BW9xIopa0 is Harry, not George; George (JBFqn...) is Architect's voice.",
+      "tags": [
+        "ap-v2",
+        "voice",
+        "telegram",
+        "elevenlabs"
+      ],
+      "status": "live"
+    }
+  ]
+}

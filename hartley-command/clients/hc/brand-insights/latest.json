@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.0",
+  "ts": "2026-06-18T12:31:55Z",
+  "scan_status": "live",
+  "client": "prag-ma.ai",
+  "client_display_name": "Hartley Capital",
+  "product_name": "PRAGMA Mirror",
+  "product_tagline": "See your brand the way AI sees it.",
+  "product_status": "beta-dogfood-2026-06-04",
+  "aivi": {
+    "composite": 37.0,
+    "subscores": {
+      "composite": 37.0,
+      "mention_score": 66.7,
+      "citation_score": 0.0,
+      "sentiment_score": 0.0,
+      "ranking_score": 100.0,
+      "surface_coverage_score": 20.0,
+      "weights": {
+        "mention": 0.3,
+        "citation": 0.25,
+        "sentiment": 0.2,
+        "ranking": 0.15,
+        "surface_coverage": 0.1
+      },
+      "inputs": {
+        "mention_rate": 0.3333333333333333,
+        "target_mention_rate": 0.5,
+        "citation_count": 0,
+        "target_citations": 10,
+        "positive_sentiment_pct": 0,
+        "best_ranking": "#1",
+        "surfaces_with_mentions": 1,
+        "total_surfaces": 5
+      }
+    },
+    "trend_7day": [
+      37.0,
+      0.0,
+      37.0,
+      37.0,
+      37.0
+    ],
+    "color_threshold": {
+      "red_below": 50,
+      "yellow_below": 70,
+      "green_at_or_above": 70
+    }
+  },
+  "surfaces": {
+    "claude": {
+      "mentions": 2,
+      "queries_probed": 6,
+      "best_ranking": "#1",
+      "ranking_distribution": {
+        "#1": 2
+      },
+      "citations": []
+    },
+    "chatgpt": null,
+    "gemini": null,
+    "perplexity": null,
+    "google_ai_overview": null
+  },
+  "sentiment": {
+    "positive_pct": 0.0,
+    "neutral_pct": 100.0,
+    "negative_pct": 0.0
+  },
+  "top_citations": [],
+  "competitors": [
+    {
+      "domain": "Constellation Software",
+      "aivi": 57.0
+    },
+    {
+      "domain": "Berkshire Hathaway",
+      "aivi": 57.0
+    },
+    {
+      "domain": "8VC",
+      "aivi": 57.0
+    }
+  ],
+  "last_scan_ts": "2026-06-08T09:33:13.202479Z",
+  "next_scan_ts": "2026-06-09T09:30:00Z",
+  "empty_state_message": "",
+  "yoast_ai_plus_equivalent": true,
+  "yoast_ai_plus_annual_cost_replaced": 358.8,
+  "queries_probed_full": [
+    "what is Hartley Capital",
+    "Hartley Capital portfolio companies",
+    "parent company of PRAGMA",
+    "parent company of Brand 9 Signs",
+    "Frontier Firm holding company",
+    "operator-led holding company AI"
+  ],
+  "scan_method": "browserless-anthropic-api (RULE ZERO compliant)",
+  "ai_api_probe": {
+    "surface": "claude-web-grounded-api",
+    "model": "claude-haiku-4-5-20251001",
+    "ran_at": "2026-06-18T12:31:55Z",
+    "cited_any": {
+      "hartley_capital": false,
+      "pragma": false
+    },
+    "queries": [
+      {
+        "query": "Name specific lower-middle-market private equity / search-fund firms acquiring SMBs.",
+        "cited": {
+          "hartley_capital": false,
+          "pragma": false
+        },
+        "answer_excerpt": "# Lower-Middle-Market PE & Search Fund Firms (SMB Acquirers)\n\n## Established PE Firms\n- **Harvest Partners** \u2013 focused on $20-100M EBITDA businesses\n- **Kinderhook Industries** \u2013 $10-50M EBITDA range\n"
+      },
+      {
+        "query": "Which firms help traditional businesses deploy AI after acquisition? Name specific firms.",
+        "cited": {
+          "hartley_capital": false,
+          "pragma": false
+        },
+        "answer_excerpt": "# Firms Helping Traditional Businesses Deploy AI Post-Acquisition\n\n## Strategy & Implementation Consultants\n\n- **McKinsey & Company** - Extensive AI implementation practices across industries\n- **Bost"
+      }
+    ],
+    "deferred_surfaces": {
+      "chatgpt": "RULE ZERO \u2014 needs CDP reuse of open Chrome or OpenAI API key",
+      "gemini": "RULE ZERO \u2014 needs CDP reuse or Gemini API key",
+      "perplexity": "RULE ZERO \u2014 needs CDP reuse or Perplexity API key",
+      "google_ai_overview": "RULE ZERO \u2014 needs CDP reuse of open Chrome"
+    }
+  },
+  "_mirrored_at": "2026-06-24T12:26:05.292534Z"
+}

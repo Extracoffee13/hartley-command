@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CORNERSTONE — Foundation of the Hartley Legacy</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --midnight: #0a0d1a;
+    --deep-navy: #0d1428;
+    --navy: #111b35;
+    --gold: #c9a84c;
+    --gold-light: #e8c96e;
+    --gold-pale: #f5e4a8;
+    --gold-dim: rgba(201,168,76,0.3);
+    --warm-white: #f8f4ed;
+    --cream: #ede8df;
+    --text-dim: rgba(248,244,237,0.55);
+    --text-medium: rgba(248,244,237,0.75);
+    --amber: #d4851a;
+    --scripture-blue: #7ba7d4;
+    --quantum-teal: #4db8c4;
+    --breath: rgba(201,168,76,0.06);
+  }
+
+  body {
+    background: var(--midnight);
+    color: var(--warm-white);
+    font-family: 'Georgia', 'Times New Roman', serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Ambient light overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse 80% 40% at 50% 0%, rgba(201,168,76,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 30% at 20% 100%, rgba(77,184,196,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 20% at 80% 50%, rgba(201,168,76,0.03) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    padding: 60px 0 48px;
+    position: relative;
+  }
+
+  .header-eyebrow {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    opacity: 0.8;
+  }
+
+  .header-title {
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 400;
+    letter-spacing: 8px;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    text-shadow: 0 0 60px rgba(201,168,76,0.3), 0 0 120px rgba(201,168,76,0.1);
+    margin-bottom: 12px;
+  }
+
+  .header-subtitle {
+    font-size: 15px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+    font-style: italic;
+    margin-bottom: 32px;
+  }
+
+  .header-verse {
+    font-size: 13px;
+    color: var(--scripture-blue);
+    letter-spacing: 1px;
+    font-style: italic;
+    opacity: 0.8;
+  }
+
+  .header-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-dim), rgba(201,168,76,0.6), var(--gold-dim), transparent);
+    margin: 40px 0 0;
+  }
+
+  /* ── Sistine Inspired Banner ── */
+  .sistine-banner {
+    background: linear-gradient(135deg, rgba(13,20,40,0.95) 0%, rgba(18,15,8,0.95) 100%);
+    border: 1px solid var(--gold-dim);
+    border-radius: 4px;
+    padding: 32px 40px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .sistine-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 25% 50%, rgba(201,168,76,0.05) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 75% 50%, rgba(77,184,196,0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .sistine-hands {
+    font-size: 48px;
+    margin-bottom: 16px;
+    display: block;
+    filter: drop-shadow(0 0 20px rgba(201,168,76,0.4));
+  }
+
+  .sistine-text {
+    font-size: 14px;
+    color: var(--text-medium);
+    line-height: 1.8;
+    font-style: italic;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .sistine-caption {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-top: 16px;
+    opacity: 0.6;
+  }
+
+  /* ── Section ── */
+  .section {
+    margin-bottom: 28px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .section-icon {
+    font-size: 18px;
+    filter: drop-shadow(0 0 8px rgba(201,168,76,0.5));
+  }
+
+  .section-label {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold-dim), transparent);
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: linear-gradient(135deg, rgba(13,20,40,0.9) 0%, rgba(10,13,26,0.95) 100%);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 4px;
+    padding: 28px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+  }
+
+  .card:hover {
+    border-color: rgba(201,168,76,0.3);
+  }
+
+  .card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent);
+  }
+
+  /* ── Scripture Card ── */
+  .scripture-card {
+    background: linear-gradient(135deg, rgba(15,22,48,0.95) 0%, rgba(10,13,30,0.98) 100%);
+    border: 1px solid rgba(123,167,212,0.25);
+    border-radius: 4px;
+    padding: 32px;
+    margin-bottom: 28px;
+    position: relative;
+  }
+
+  .scripture-card::before {
+    content: '\201C';
+    position: absolute;
+    top: 8px; left: 24px;
+    font-size: 80px;
+    color: rgba(123,167,212,0.15);
+    font-family: Georgia, serif;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .scripture-text {
+    font-size: 22px;
+    line-height: 1.6;
+    color: var(--warm-white);
+    font-style: italic;
+    margin-bottom: 12px;
+    padding-top: 8px;
+    text-shadow: 0 0 30px rgba(123,167,212,0.2);
+  }
+
+  .scripture-ref {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--scripture-blue);
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  .scripture-insight {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(123,167,212,0.1);
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-medium);
+  }
+
+  /* ── Quantum Card ── */
+  .quantum-card {
+    background: linear-gradient(135deg, rgba(10,22,24,0.95) 0%, rgba(8,15,20,0.98) 100%);
+    border: 1px solid rgba(77,184,196,0.2);
+    border-radius: 4px;
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    position: relative;
+  }
+
+  .quantum-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(77,184,196,0.4), transparent);
+  }
+
+  .quantum-label {
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--quantum-teal);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    opacity: 0.7;
+  }
+
+  .quantum-principle {
+    font-size: 20px;
+    color: var(--quantum-teal);
+    font-style: italic;
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(77,184,196,0.3);
+  }
+
+  .quantum-explanation {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-medium);
+  }
+
+  /* ── Affirmation Card ── */
+  .affirmation-card {
+    background: linear-gradient(135deg, rgba(18,14,5,0.95) 0%, rgba(12,10,4,0.98) 100%);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 4px;
+    padding: 32px;
+    margin-bottom: 28px;
+  }
+
+  .affirmation-line {
+    font-size: 17px;
+    line-height: 2;
+    color: var(--gold-light);
+    font-style: italic;
+    text-shadow: 0 0 20px rgba(201,168,76,0.2);
+  }
+
+  .affirmation-instruction {
+    margin-top: 16px;
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    opacity: 0.5;
+    text-transform: uppercase;
+  }
+
+  /* ── Visualization Card ── */
+  .visualization-card {
+    background: linear-gradient(135deg, rgba(12,8,20,0.95) 0%, rgba(8,6,16,0.98) 100%);
+    border: 1px solid rgba(150,100,200,0.2);
+    border-radius: 4px;
+    padding: 32px;
+    margin-bottom: 28px;
+  }
+
+  .visualization-label {
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: rgba(180,130,240,0.7);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .visualization-scene {
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--text-medium);
+    font-style: italic;
+  }
+
+  .visualization-timer {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 6px 14px;
+    border: 1px solid rgba(150,100,200,0.2);
+    border-radius: 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: rgba(180,130,240,0.6);
+    text-transform: uppercase;
+  }
+
+  /* ── Intentions Panel ── */
+  .intentions-panel {
+    background: linear-gradient(135deg, rgba(13,20,40,0.9) 0%, rgba(10,13,26,0.95) 100%);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 4px;
+    padding: 28px 32px;
+    margin-bottom: 28px;
+  }
+
+  .intention-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.06);
+  }
+
+  .intention-item:last-child { border-bottom: none; }
+
+  .intention-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin-top: 6px;
+    flex-shrink: 0;
+    box-shadow: 0 0 8px rgba(201,168,76,0.4);
+  }
+
+  .intention-text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-medium);
+    font-style: italic;
+  }
+
+  /* ── Evening Reflection ── */
+  .reflection-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  @media (max-width: 640px) {
+    .reflection-grid { grid-template-columns: 1fr; }
+  }
+
+  .reflection-item {
+    background: linear-gradient(135deg, rgba(13,20,40,0.9) 0%, rgba(10,13,26,0.95) 100%);
+    border: 1px solid rgba(201,168,76,0.12);
+    border-radius: 4px;
+    padding: 20px 24px;
+  }
+
+  .reflection-item-label {
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.6;
+    margin-bottom: 10px;
+  }
+
+  .reflection-prompt {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-medium);
+    font-style: italic;
+  }
+
+  /* ── Legacy Journal ── */
+  .journal-scroll {
+    max-height: 640px;
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+
+  .journal-scroll::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .journal-scroll::-webkit-scrollbar-track {
+    background: rgba(201,168,76,0.05);
+    border-radius: 2px;
+  }
+
+  .journal-scroll::-webkit-scrollbar-thumb {
+    background: rgba(201,168,76,0.25);
+    border-radius: 2px;
+  }
+
+  .journal-entry {
+    background: linear-gradient(135deg, rgba(14,18,10,0.92) 0%, rgba(10,13,8,0.97) 100%);
+    border: 1px solid rgba(100,160,80,0.2);
+    border-radius: 4px;
+    padding: 0;
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .journal-entry-morning {
+    border-color: rgba(201,168,76,0.2);
+    background: linear-gradient(135deg, rgba(18,15,6,0.92) 0%, rgba(12,10,4,0.97) 100%);
+  }
+
+  .journal-entry-evening {
+    border-color: rgba(77,100,180,0.2);
+    background: linear-gradient(135deg, rgba(10,12,22,0.92) 0%, rgba(8,9,18,0.97) 100%);
+  }
+
+  .journal-entry::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    border-radius: 4px 0 0 4px;
+  }
+
+  .journal-entry-morning::before {
+    background: linear-gradient(180deg, rgba(201,168,76,0.7), rgba(201,168,76,0.1));
+  }
+
+  .journal-entry-evening::before {
+    background: linear-gradient(180deg, rgba(77,100,180,0.7), rgba(77,100,180,0.1));
+  }
+
+  .journal-entry-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px 18px 28px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+  }
+
+  .journal-entry-header:hover {
+    background: rgba(201,168,76,0.03);
+  }
+
+  .journal-date {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .journal-entry-morning .journal-date { color: rgba(201,168,76,0.6); }
+  .journal-entry-evening .journal-date { color: rgba(120,140,220,0.6); }
+
+  .entry-type-badge {
+    display: inline-block;
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+  }
+
+  .badge-morning {
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.25);
+    color: var(--gold);
+  }
+
+  .badge-evening {
+    background: rgba(77,100,180,0.1);
+    border: 1px solid rgba(77,100,180,0.25);
+    color: rgba(150,170,240,0.9);
+  }
+
+  .entry-scripture-preview {
+    font-size: 12px;
+    color: var(--scripture-blue);
+    font-style: italic;
+    margin-top: 4px;
+    opacity: 0.8;
+  }
+
+  .entry-expand-btn {
+    font-size: 12px;
+    color: rgba(201,168,76,0.4);
+    transition: transform 0.2s, color 0.2s;
+    flex-shrink: 0;
+    margin-left: 12px;
+  }
+
+  .entry-expand-btn.open {
+    transform: rotate(90deg);
+    color: rgba(201,168,76,0.7);
+  }
+
+  .entry-body {
+    padding: 0 28px 24px 28px;
+    border-top: 1px solid rgba(201,168,76,0.06);
+  }
+
+  .entry-body-section {
+    margin-top: 20px;
+  }
+
+  .entry-body-label {
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 8px;
+  }
+
+  .journal-entry-morning .entry-body-label { color: var(--gold); }
+  .journal-entry-evening .entry-body-label { color: rgba(150,170,240,0.9); }
+
+  .entry-body-text {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--text-medium);
+    font-style: italic;
+  }
+
+  /* ── Empty State ── */
+  .empty-state {
+    text-align: center;
+    padding: 48px 24px;
+    background: linear-gradient(135deg, rgba(13,20,40,0.7) 0%, rgba(10,13,26,0.8) 100%);
+    border: 1px dashed rgba(201,168,76,0.15);
+    border-radius: 4px;
+  }
+
+  .empty-state-icon {
+    font-size: 36px;
+    margin-bottom: 16px;
+    opacity: 0.4;
+    display: block;
+  }
+
+  .empty-state-text {
+    font-size: 14px;
+    color: var(--text-dim);
+    font-style: italic;
+    line-height: 1.7;
+  }
+
+  .empty-state-sub {
+    margin-top: 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: rgba(201,168,76,0.3);
+    text-transform: uppercase;
+  }
+
+  /* ── Reflection Dynamic Card ── */
+  .reflection-dynamic-card {
+    background: linear-gradient(135deg, rgba(10,12,22,0.95) 0%, rgba(8,10,18,0.98) 100%);
+    border: 1px solid rgba(77,100,180,0.2);
+    border-radius: 4px;
+    padding: 28px 32px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .reflection-dynamic-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(77,100,180,0.4), transparent);
+  }
+
+  /* ── Progress Tracker ── */
+  .progress-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  @media (max-width: 640px) {
+    .progress-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .progress-stat {
+    background: linear-gradient(135deg, rgba(13,20,40,0.9) 0%, rgba(10,13,26,0.95) 100%);
+    border: 1px solid rgba(201,168,76,0.12);
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .progress-number {
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--gold-light);
+    text-shadow: 0 0 20px rgba(201,168,76,0.3);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .progress-label {
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    opacity: 0.55;
+  }
+
+  /* ── Streak Bar ── */
+  .streak-bar {
+    background: linear-gradient(135deg, rgba(13,20,40,0.9) 0%, rgba(10,13,26,0.95) 100%);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 4px;
+    padding: 24px 32px;
+    margin-bottom: 28px;
+  }
+
+  .streak-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .streak-title {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+
+  .streak-count {
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    color: var(--gold-light);
+    letter-spacing: 1px;
+  }
+
+  .streak-track {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .streak-day {
+    width: 18px;
+    height: 18px;
+    border-radius: 2px;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.12);
+  }
+
+  .streak-day.done {
+    background: rgba(201,168,76,0.35);
+    border-color: rgba(201,168,76,0.6);
+    box-shadow: 0 0 6px rgba(201,168,76,0.2);
+  }
+
+  .streak-day.today {
+    background: var(--gold);
+    border-color: var(--gold-light);
+    box-shadow: 0 0 10px rgba(201,168,76,0.5);
+    animation: pulse-gold 2s ease-in-out infinite;
+  }
+
+  .streak-day.missed {
+    background: rgba(180,40,40,0.2);
+    border-color: rgba(200,60,60,0.35);
+  }
+
+  @keyframes pulse-gold {
+    0%, 100% { box-shadow: 0 0 10px rgba(201,168,76,0.5); }
+    50% { box-shadow: 0 0 20px rgba(201,168,76,0.8); }
+  }
+
+  .streak-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 28px;
+    margin-top: 14px;
+  }
+
+  .streak-stat-item {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+  }
+
+  .streak-stat-item strong {
+    color: var(--gold-light);
+    font-weight: normal;
+  }
+
+  .streak-progress-bar {
+    width: 100%;
+    height: 3px;
+    background: rgba(201,168,76,0.1);
+    border-radius: 2px;
+    margin: 12px 0 4px;
+    overflow: hidden;
+  }
+
+  .streak-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    border-radius: 2px;
+    transition: width 0.6s ease;
+  }
+
+  /* ── Principle Pillars ── */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  @media (max-width: 700px) {
+    .pillars-grid { grid-template-columns: 1fr; }
+  }
+
+  .pillar {
+    background: linear-gradient(135deg, rgba(13,20,40,0.85) 0%, rgba(10,13,26,0.95) 100%);
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 4px;
+    padding: 24px 20px;
+    text-align: center;
+    transition: border-color 0.3s;
+  }
+
+  .pillar:hover { border-color: rgba(201,168,76,0.25); }
+
+  .pillar-icon { font-size: 28px; margin-bottom: 12px; display: block; }
+
+  .pillar-name {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+    margin-bottom: 8px;
+  }
+
+  .pillar-desc {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-dim);
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 40px 0;
+    border-top: 1px solid rgba(201,168,76,0.1);
+    margin-top: 40px;
+  }
+
+  .footer-verse {
+    font-size: 15px;
+    font-style: italic;
+    color: var(--text-medium);
+    margin-bottom: 8px;
+  }
+
+  .footer-ref {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    opacity: 0.5;
+  }
+
+  /* ── Status Badge ── */
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: rgba(100,200,100,0.1);
+    border: 1px solid rgba(100,200,100,0.25);
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: rgba(100,200,100,0.8);
+    text-transform: uppercase;
+    margin-left: 12px;
+    vertical-align: middle;
+  }
+
+  .status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(100,200,100,0.8);
+    animation: blink 1.5s ease-in-out infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* ── Two-col layout ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+
+  @media (max-width: 700px) {
+    .two-col { grid-template-columns: 1fr; }
+  }
+
+  /* ── Refresh Button ── */
+  .refresh-btn {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.6);
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 3px;
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .refresh-btn:hover {
+    color: rgba(201,168,76,0.9);
+    background: rgba(201,168,76,0.1);
+    border-color: rgba(201,168,76,0.4);
+  }
+
+  /* ── Activation date stamp ── */
+  .activation-datestamp {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    opacity: 0.5;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- HEADER -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="header">
+    <div class="header-eyebrow">Chief Mindset Officer · Hartley Agent Ecosystem</div>
+    <h1 class="header-title">CORNERSTONE</h1>
+    <p class="header-subtitle">Foundation of the Hartley Legacy</p>
+    <div class="header-verse">
+      "The LORD is my rock, my fortress and my deliverer." — Psalm 18:2
+    </div>
+    <span class="status-badge"><span class="status-dot"></span>Active</span>
+    <div class="header-divider"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- SISTINE CHAPEL REFERENCE BANNER -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="sistine-banner">
+    <span class="sistine-hands">🫴 ✨ 🤲</span>
+    <p class="sistine-text">
+      Michelangelo's <em>Creation of Adam</em> — the divine mind reaching down, the human mind reaching up.
+      Not yet touching. The space between the fingers is where faith lives.
+      This is the gap Cornerstone holds open: the distance between where Bobby is and where he was made to be.
+      The divine hand is always extended. Bobby's only job is to reach.
+    </p>
+    <div class="sistine-caption">As Above · So Below · Mind Shapes Matter</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- TODAY'S ACTIVATION (Dynamic) -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">☀️</span>
+      <span class="section-label">Today's Activation</span>
+      <div class="section-line"></div>
+      <button class="refresh-btn" id="refresh-btn" onclick="loadEntries()">↻ Refresh</button>
+    </div>
+    <div id="activation-content">
+      <div class="empty-state">
+        <span class="empty-state-icon">☀️</span>
+        <div class="empty-state-text">Loading today's activation...</div>
+        <div class="empty-state-sub">Fetching from cornerstone-entries.json</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- PROGRESS TRACKER -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">📊</span>
+      <span class="section-label">Progress Tracker</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="progress-grid">
+      <div class="progress-stat">
+        <div class="progress-number" id="morning-count">—</div>
+        <div class="progress-label">Morning Activations</div>
+      </div>
+      <div class="progress-stat">
+        <div class="progress-number" id="evening-count">—</div>
+        <div class="progress-label">Evening Reflections</div>
+      </div>
+      <div class="progress-stat">
+        <div class="progress-number" id="streak-count">—</div>
+        <div class="progress-label">Day Streak</div>
+      </div>
+      <div class="progress-stat">
+        <div class="progress-number" id="journal-count">—</div>
+        <div class="progress-label">Legacy Entries</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- 90-DAY NEURAL REWIRING STREAK -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="streak-bar">
+    <div class="streak-row">
+      <span class="streak-title">90-Day Neural Rewiring Track</span>
+      <span class="streak-count">Day <span id="current-day">—</span> of 90</span>
+    </div>
+    <div class="streak-progress-bar"><div class="streak-progress-fill" id="streak-progress-fill" style="width:0%"></div></div>
+    <div class="streak-track" id="streak-track"></div>
+    <div class="streak-stats">
+      <span class="streak-stat-item">Completed: <strong id="nrt-completed">—</strong></span>
+      <span class="streak-stat-item">Missed: <strong id="nrt-missed">—</strong></span>
+      <span class="streak-stat-item">Current Streak: <strong id="nrt-streak">—</strong></span>
+      <span class="streak-stat-item">Longest Streak: <strong id="nrt-longest">—</strong></span>
+      <span class="streak-stat-item">Complete: <strong id="nrt-pct">—</strong></span>
+    </div>
+    <div style="margin-top:10px; font-size:12px; color:var(--text-dim); font-style:italic;">
+      Neurons that fire together, wire together. Each activation is a neural investment. 90 days builds a new brain architecture.
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- TODAY'S REFLECTION (Dynamic) -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🌙</span>
+      <span class="section-label">Today's Reflection</span>
+      <div class="section-line"></div>
+    </div>
+    <div id="reflection-content">
+      <div class="empty-state">
+        <span class="empty-state-icon">🌙</span>
+        <div class="empty-state-text">Evening reflection not yet recorded for today.</div>
+        <div class="empty-state-sub">Returns at end of day · Cornerstone Evening Task</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- THREE PILLARS -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">⛰️</span>
+      <span class="section-label">The Three Pillars</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <span class="pillar-icon">✝️</span>
+        <div class="pillar-name">Faith</div>
+        <div class="pillar-desc">Scripture, covenant, and the promises of God as the immovable foundation. Not hoping in God's goodness — standing on it.</div>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">⚛️</span>
+        <div class="pillar-name">Quantum Science</div>
+        <div class="pillar-desc">Observer effect, neuroplasticity, and the RAS. The same truth as scripture, expressed in the language of physics. Two witnesses confirm the principle.</div>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">🏔️</span>
+        <div class="pillar-name">Peak Performance</div>
+        <div class="pillar-desc">Morning priming, state management, visualization, intentional identity. The elite perform deliberately — every day is a conscious construction.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- LEGACY JOURNAL (Dynamic) -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">📖</span>
+      <span class="section-label">Legacy Journal</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="journal-scroll" id="legacy-journal">
+      <div class="empty-state">
+        <span class="empty-state-icon">📖</span>
+        <div class="empty-state-text">Loading journal entries...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- ARCHETYPE REFERENCE -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">👑</span>
+      <span class="section-label">The Archetypes</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="two-col">
+      <div class="card">
+        <div style="font-family:'Courier New',monospace; font-size:10px; letter-spacing:2px; color:var(--gold); opacity:0.6; margin-bottom:12px; text-transform:uppercase;">Joseph · The Pit Before Egypt</div>
+        <div style="font-size:14px; line-height:1.8; color:var(--text-medium);">Thrown in a pit at 17. Sold into slavery. Falsely accused. Imprisoned. Every step looked like the dream dying. It was the dream being built. The compression of 13 years produced the authority to run an empire at 30. <em>No pit, no palace. No preparation, no position.</em></div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Courier New',monospace; font-size:10px; letter-spacing:2px; color:var(--gold); opacity:0.6; margin-bottom:12px; text-transform:uppercase;">David · The Cave Before the Crown</div>
+        <div style="font-size:14px; line-height:1.8; color:var(--text-medium);">Anointed king as a shepherd boy. Spent years in caves before sitting on the throne — hunted, misunderstood, isolated. The cave was his executive training program. It produced a king who knew what it cost. <em>The crown sits differently when you earned it in the dark.</em></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- FOOTER -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="footer">
+    <div class="footer-verse">"A good man leaves an inheritance to his children's children."</div>
+    <div class="footer-ref">Proverbs 13:22 · The Mandate</div>
+  </div>
+
+</div>
+
+<script>
+  // ── Utility ──
+  function formatDate(dateStr) {
+    const [y, m, d] = dateStr.split('-').map(Number);
+    const date = new Date(y, m - 1, d);
+    return date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+  }
+
+  function formatDateShort(dateStr) {
+    const [y, m, d] = dateStr.split('-').map(Number);
+    const date = new Date(y, m - 1, d);
+    return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  }
+
+  function today() {
+    const now = new Date();
+    const y = now.getFullYear();
+    const m = String(now.getMonth() + 1).padStart(2, '0');
+    const d = String(now.getDate()).padStart(2, '0');
+    return `${y}-${m}-${d}`;
+  }
+
+  function esc(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  // ── Toggle journal entry expand/collapse ──
+  function toggleEntry(id) {
+    const body = document.getElementById(id);
+    const btn = document.getElementById('btn-' + id);
+    if (!body) return;
+    const open = body.style.display !== 'none';
+    body.style.display = open ? 'none' : 'block';
+    if (btn) btn.classList.toggle('open', !open);
+  }
+
+  // ── Render: Today's Activation ──
+  function renderActivation(entry) {
+    const el = document.getElementById('activation-content');
+    if (!entry) {
+      el.innerHTML = `
+        <div class="empty-state">
+          <span class="empty-state-icon">☀️</span>
+          <div class="empty-state-text">No morning activation found for today.<br>The scheduled task will deliver it at its next run.</div>
+          <div class="empty-state-sub">Check back after your morning session</div>
+        </div>`;
+      return;
+    }
+
+    let html = `<div class="activation-datestamp">${formatDate(entry.date)} · Morning Activation</div>`;
+
+    if (entry.scripture) {
+      html += `
+        <div class="scripture-card">
+          <div class="scripture-text">"${esc(entry.scripture.text)}"</div>
+          <div class="scripture-ref">${esc(entry.scripture.reference)}</div>
+        </div>`;
+    }
+
+    if (entry.quantum_principle) {
+      html += `
+        <div class="quantum-card">
+          <div class="quantum-label">Quantum Principle · Observer Effect</div>
+          <div class="quantum-principle">${esc(entry.quantum_principle)}</div>
+          ${entry.quantum_explanation ? `<div class="quantum-explanation">${esc(entry.quantum_explanation)}</div>` : ''}
+        </div>`;
+    }
+
+    if (entry.affirmation) {
+      html += `
+        <div class="affirmation-card">
+          <div class="affirmation-line">"${esc(entry.affirmation)}"</div>
+          <div class="affirmation-instruction">⟶ Speak this aloud. Conviction activates the neural imprint.</div>
+        </div>`;
+    }
+
+    if (entry.visualization) {
+      html += `
+        <div class="visualization-card">
+          <div class="visualization-label">Mental Rehearsal · Visualization Focus</div>
+          <div class="visualization-scene">${esc(entry.visualization).replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>')}</div>
+          <div class="visualization-timer">⏱ 3 minute session recommended</div>
+        </div>`;
+    }
+
+    if (entry.intention) {
+      html += `
+        <div class="intentions-panel">
+          <div class="intention-item">
+            <div class="intention-dot"></div>
+            <div class="intention-text">${esc(entry.intention).replace(/\n/g, '<br>')}</div>
+          </div>
+        </div>`;
+    }
+
+    el.innerHTML = html;
+  }
+
+  // ── Render: Today's Reflection ──
+  function renderReflection(entry) {
+    const el = document.getElementById('reflection-content');
+    if (!entry) {
+      el.innerHTML = `
+        <div class="empty-state">
+          <span class="empty-state-icon">🌙</span>
+          <div class="empty-state-text">Evening reflection not yet recorded for today.<br>It will appear here after your Cornerstone evening session runs.</div>
+          <div class="empty-state-sub">Available after tonight's reflection</div>
+        </div>`;
+      return;
+    }
+
+    let html = `<div class="reflection-dynamic-card">
+      <div style="font-family:'Courier New',monospace; font-size:10px; letter-spacing:2px; color:rgba(150,170,240,0.6); text-transform:uppercase; margin-bottom:20px;">${formatDate(entry.date)} · Evening Reflection</div>`;
+
+    if (entry.gratitude) {
+      html += `
+        <div class="entry-body-section">
+          <div class="entry-body-label" style="color:rgba(150,170,240,0.7);">Gratitude</div>
+          <div class="entry-body-text">${esc(entry.gratitude).replace(/\n/g, '<br>')}</div>
+        </div>`;
+    }
+
+    if (entry.progress) {
+      html += `
+        <div class="entry-body-section">
+          <div class="entry-body-label" style="color:rgba(150,170,240,0.7);">Progress</div>
+          <div class="entry-body-text">${esc(entry.progress).replace(/\n/g, '<br>')}</div>
+        </div>`;
+    }
+
+    if (entry.release) {
+      html += `
+        <div class="entry-body-section">
+          <div class="entry-body-label" style="color:rgba(150,170,240,0.7);">Release</div>
+          <div class="entry-body-text">${esc(entry.release).replace(/\n/g, '<br>')}</div>
+        </div>`;
+    }
+
+    if (entry.scripture) {
+      html += `
+        <div class="entry-body-section">
+          <div class="entry-body-label" style="color:rgba(150,170,240,0.7);">Scripture for Rest</div>
+          <div class="entry-body-text" style="color:var(--scripture-blue);">"${esc(entry.scripture.text)}" — ${esc(entry.scripture.reference)}</div>
+        </div>`;
+    }
+
+    if (entry.tomorrow_intention) {
+      html += `
+        <div class="entry-body-section">
+          <div class="entry-body-label" style="color:rgba(150,170,240,0.7);">Tomorrow's Intention</div>
+          <div class="entry-body-text">${esc(entry.tomorrow_intention).replace(/\n/g, '<br>')}</div>
+        </div>`;
+    }
+
+    if (entry.full_text && !entry.gratitude && !entry.progress) {
+      html += `
+        <div class="entry-body-section">
+          <div class="entry-body-text">${esc(entry.full_text).replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>')}</div>
+        </div>`;
+    }
+
+    html += `</div>`;
+    el.innerHTML = html;
+  }
+
+  // ── Render: Legacy Journal ──
+  function renderJournal(entries) {
+    const el = document.getElementById('legacy-journal');
+    if (!entries || entries.length === 0) {
+      el.innerHTML = `
+        <div class="empty-state">
+          <span class="empty-state-icon">📖</span>
+          <div class="empty-state-text">No journal entries yet. Your first morning activation will appear here.</div>
+          <div class="empty-state-sub">Entries accumulate with each daily session</div>
+        </div>`;
+      return;
+    }
+
+    const sorted = [...entries].sort((a, b) => b.id.localeCompare(a.id));
+    let html = '';
+
+    sorted.forEach((entry, idx) => {
+      const isMorning = entry.type === 'morning';
+      const entryClass = isMorning ? 'journal-entry-morning' : 'journal-entry-evening';
+      const badgeClass = isMorning ? 'badge-morning' : 'badge-evening';
+      const typeLabel = isMorning ? 'Morning Activation' : 'Evening Reflection';
+      const bodyId = 'jentry-' + entry.id.replace(/[^a-z0-9]/gi, '-');
+
+      const scripturePreview = entry.scripture
+        ? `<div class="entry-scripture-preview">${esc(entry.scripture.reference)}</div>`
+        : '';
+
+      // Build body sections
+      let bodyHtml = '';
+
+      if (isMorning) {
+        if (entry.quantum_principle) {
+          bodyHtml += `
+            <div class="entry-body-section">
+              <div class="entry-body-label">Quantum Principle</div>
+              <div class="entry-body-text" style="color:var(--quantum-teal);">${esc(entry.quantum_principle)}</div>
+              ${entry.quantum_explanation ? `<div class="entry-body-text" style="margin-top:8px;">${esc(entry.quantum_explanation)}</div>` : ''}
+            </div>`;
+        }
+        if (entry.affirmation) {
+          bodyHtml += `
+            <div class="entry-body-section">
+              <div class="entry-body-label">Affirmation</div>
+              <div class="entry-body-text" style="color:var(--gold-light);">"${esc(entry.affirmation)}"</div>
+            </div>`;
+        }
+        if (entry.visualization) {
+          bodyHtml += `
+            <div class="entry-body-section">
+              <div class="entry-body-label">Visualization</div>
+              <div class="entry-body-text">${esc(entry.visualization).replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>')}</div>
+            </div>`;
+        }
+        if (entry.intention) {
+          bodyHtml += `
+            <div class="entry-body-section">
+              <div class="entry-body-label">Intention</div>
+              <div class="entry-body-text">${esc(entry.intention).replace(/\n/g, '<br>')}</div>
+            </div>`;
+        }
+      } else {
+        // Evening entry fields
+        const fields = [
+          { key: 'gratitude', label: 'Gratitude' },
+          { key: 'progress', label: 'Progress' },
+          { key: 'release', label: 'Release' },
+          { key: 'tomorrow_intention', label: "Tomorrow's Intention" }
+        ];
+        fields.forEach(f => {
+          if (entry[f.key]) {
+            bodyHtml += `
+              <div class="entry-body-section">
+                <div class="entry-body-label">${f.label}</div>
+                <div class="entry-body-text">${esc(entry[f.key]).replace(/\n/g, '<br>')}</div>
+              </div>`;
+          }
+        });
+        if (entry.full_text && !entry.gratitude) {
+          bodyHtml += `
+            <div class="entry-body-section">
+              <div class="entry-body-text">${esc(entry.full_text).replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>')}</div>
+            </div>`;
+        }
+      }
+
+      html += `
+        <div class="journal-entry ${entryClass}">
+          <div class="journal-entry-header" onclick="toggleEntry('${bodyId}')">
+            <div>
+              <div class="journal-date">${formatDateShort(entry.date)}</div>
+              <span class="entry-type-badge ${badgeClass}">${typeLabel}</span>
+              ${entry.scripture ? `<div class="entry-scripture-preview">${esc(entry.scripture.reference)}</div>` : ''}
+            </div>
+            <div class="entry-expand-btn" id="btn-${bodyId}">▶</div>
+          </div>
+          <div id="${bodyId}" class="entry-body" style="display:none;">
+            ${entry.scripture ? `
+              <div class="entry-body-section">
+                <div class="entry-body-label">Scripture</div>
+                <div class="entry-body-text" style="color:var(--scripture-blue); font-size:16px;">"${esc(entry.scripture.text)}"<br><span style="font-size:11px; letter-spacing:2px; font-family:'Courier New',monospace; opacity:0.7;">— ${esc(entry.scripture.reference)}</span></div>
+              </div>` : ''}
+            ${bodyHtml}
+          </div>
+        </div>`;
+    });
+
+    el.innerHTML = html;
+  }
+
+  // ── Update streak track ──
+  function updateStreakTrack(entries) {
+    const START = new Date('2026-04-06T12:00:00');
+    const now = new Date();
+    const todayStr = today();
+    const total = 90;
+
+    // Current day number (Day 1 = April 6, 2026)
+    const msPerDay = 86400000;
+    const currentDayNum = Math.min(Math.floor((now - START) / msPerDay) + 1, 90);
+
+    document.getElementById('current-day').textContent = currentDayNum;
+
+    // Set of dates that have a morning entry
+    const completedDates = new Set(
+      entries.filter(e => e.type === 'morning').map(e => e.date)
+    );
+
+    // Build the 90-cell grid
+    const track = document.getElementById('streak-track');
+    track.innerHTML = '';
+    for (let i = 0; i < total; i++) {
+      const dayNum = i + 1;
+      // Date string for this cell
+      const cellDate = new Date(START.getTime() + i * msPerDay);
+      const cellDateStr = cellDate.toISOString().slice(0, 10);
+
+      const dot = document.createElement('div');
+      if (dayNum < currentDayNum) {
+        // Past day
+        dot.className = 'streak-day ' + (completedDates.has(cellDateStr) ? 'done' : 'missed');
+      } else if (dayNum === currentDayNum) {
+        // Today
+        dot.className = 'streak-day ' + (completedDates.has(todayStr) ? 'done today' : 'today');
+      } else {
+        // Future
+        dot.className = 'streak-day';
+      }
+      dot.title = 'Day ' + dayNum + ' · ' + cellDateStr;
+      track.appendChild(dot);
+    }
+
+    // Progress bar
+    const pct = Math.min((currentDayNum / total) * 100, 100);
+    document.getElementById('streak-progress-fill').style.width = pct.toFixed(1) + '%';
+
+    // Completed & missed counts
+    let completed = 0, missed = 0;
+    for (let i = 0; i < currentDayNum - 1; i++) {
+      const cellDateStr = new Date(START.getTime() + i * msPerDay).toISOString().slice(0, 10);
+      if (completedDates.has(cellDateStr)) completed++;
+      else missed++;
+    }
+    // Count today if has entry
+    if (completedDates.has(todayStr)) completed++;
+
+    // Current streak (consecutive days with morning entry ending on or before today)
+    let streak = 0;
+    let checkDate = new Date(todayStr + 'T12:00:00');
+    for (let i = 0; i < currentDayNum; i++) {
+      const d = new Date(checkDate.getTime() - i * msPerDay);
+      const ds = d.toISOString().slice(0, 10);
+      if (completedDates.has(ds)) streak++;
+      else break;
+    }
+
+    // Longest streak across all 90 days up to today
+    let longest = 0, run = 0;
+    for (let i = 0; i < currentDayNum; i++) {
+      const ds = new Date(START.getTime() + i * msPerDay).toISOString().slice(0, 10);
+      if (completedDates.has(ds)) { run++; longest = Math.max(longest, run); }
+      else run = 0;
+    }
+
+    document.getElementById('nrt-completed').textContent = completed;
+    document.getElementById('nrt-missed').textContent = missed;
+    document.getElementById('nrt-streak').textContent = streak + (streak === 1 ? ' day' : ' days');
+    document.getElementById('nrt-longest').textContent = longest + (longest === 1 ? ' day' : ' days');
+    document.getElementById('nrt-pct').textContent = ((completed / total) * 100).toFixed(0) + '%';
+  }
+
+  // ── Main: Load entries from JSON ──
+  async function loadEntries() {
+    const btn = document.getElementById('refresh-btn');
+    if (btn) { btn.textContent = '↻ Loading...'; btn.disabled = true; }
+
+    try {
+      const res = await fetch('cornerstone-entries.json?t=' + Date.now());
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+      const entries = Array.isArray(data.entries) ? data.entries : [];
+
+      const todayStr = today();
+      const morningEntries = entries.filter(e => e.type === 'morning').sort((a, b) => b.date.localeCompare(a.date));
+      const eveningEntries = entries.filter(e => e.type === 'evening').sort((a, b) => b.date.localeCompare(a.date));
+
+      // Prefer today's entry, fall back to most recent
+      const activationEntry = morningEntries.find(e => e.date === todayStr) || morningEntries[0] || null;
+      const reflectionEntry = eveningEntries.find(e => e.date === todayStr) || null;
+
+      renderActivation(activationEntry);
+      renderReflection(reflectionEntry);
+      renderJournal(entries);
+
+      // Stats
+      document.getElementById('morning-count').textContent = morningEntries.length;
+      document.getElementById('evening-count').textContent = eveningEntries.length;
+      document.getElementById('journal-count').textContent = entries.length;
+
+      // Streak: consecutive days with at least one entry ending on/before today
+      const uniqueDates = [...new Set(entries.map(e => e.date))].sort().reverse();
+      let streak = 0;
+      let checkDate = new Date(todayStr + 'T12:00:00');
+      for (const dateStr of uniqueDates) {
+        const d = new Date(dateStr + 'T12:00:00');
+        const diffDays = Math.round((checkDate - d) / 86400000);
+        if (diffDays <= 1) {
+          streak++;
+          checkDate = d;
+        } else {
+          break;
+        }
+      }
+      document.getElementById('streak-count').textContent = streak;
+      updateStreakTrack(entries);
+
+    } catch (err) {
+      // Show graceful empty states on error
+      renderActivation(null);
+      renderReflection(null);
+      renderJournal([]);
+      document.getElementById('morning-count').textContent = '0';
+      document.getElementById('evening-count').textContent = '0';
+      document.getElementById('streak-count').textContent = '0';
+      document.getElementById('journal-count').textContent = '0';
+      updateStreakTrack([]);
+      console.warn('Could not load cornerstone-entries.json:', err.message);
+    }
+
+    if (btn) { btn.textContent = '↻ Refresh'; btn.disabled = false; }
+  }
+
+  // ── Boot ──
+  loadEntries();
+</script>
+</body>
+</html>

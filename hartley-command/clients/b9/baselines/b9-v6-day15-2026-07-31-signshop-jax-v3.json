@@ -1,0 +1,60 @@
+{
+  "schema_version": "v6",
+  "instrument": "aair-v6",
+  "frozen_at": "2026-07-31T15:44:59Z",
+  "source": "principal-run chunked scan",
+  "chunks": "15 chunks, 0 errors",
+  "headline": {
+    "aair_retrieval_top3": 36,
+    "fraction": "140/392",
+    "ci_95": "31.1%..40.6%"
+  },
+  "tiers": {
+    "retrieval": {
+      "attempted": 400,
+      "scored": 392,
+      "no_read": 8,
+      "named_top3": 140,
+      "named_anywhere": 147,
+      "pct_top3": 36,
+      "ci_95_top3": "31.1%..40.6%",
+      "ci_lo": 31.1,
+      "ci_hi": 40.6,
+      "fraction_top3": "140/392"
+    },
+    "parametric": {
+      "attempted": 600,
+      "scored": 568,
+      "no_read": 32,
+      "named_top3": 0,
+      "named_anywhere": 0,
+      "pct_top3": 0,
+      "ci_95_top3": "0.0%..0.7%",
+      "ci_lo": 0.0,
+      "ci_hi": 0.7,
+      "fraction_top3": "0/568"
+    },
+    "ondevice": {
+      "attempted": 400,
+      "scored": 362,
+      "no_read": 38,
+      "named_top3": 0,
+      "named_anywhere": 0,
+      "pct_top3": 0,
+      "ci_95_top3": "0.0%..1.1%",
+      "ci_lo": 0.0,
+      "ci_hi": 1.1,
+      "fraction_top3": "0/362"
+    }
+  },
+  "corpus_meta": {
+    "corpus_version": "signshop-jax-market-v3",
+    "seed": 20260716,
+    "n_prompts": 100,
+    "cells_per_scan_retrieval_tier": 400,
+    "built": "2026-07-16",
+    "provenance": "Google autocomplete market pull, 2026-07-16 \u2014 184 seeds, 822 suggestions, 219 after declared exclusions. See market_signshop_jax_observed.json. Ranking = recurrence (a proxy for volume). Geo + question frame added by us, declared."
+  },
+  "no_read_total": 78,
+  "total_cells_gross": 1400
+}

@@ -1,0 +1,27 @@
+[
+  {
+    "ts": "2026-07-07T18:51:32.979415+00:00",
+    "client": "b9",
+    "priority": "#1 CRITICAL",
+    "issue": "Duplicate homepage /home/ (page ID 9222) splitting authority and causing de-indexing",
+    "actions": [
+      "Backed up redirection list and page 9222 to clients/b9/gsc-recovery/homepage-duplicate-backup/",
+      "Created 301 redirect /home/ -> https://brand9signs.com/ via Redirection plugin id 28",
+      "Trashed WP page ID 9222 (status=trash)",
+      "Verified /home/ removed from page-sitemap.xml",
+      "Verified https://brand9signs.com/ canonical=self-canonical to root, title Homebuilder Signage Florida | Brand 9 Signs",
+      "Initiated GSC resubmit / request indexing via authenticated Chrome"
+    ],
+    "rollback": [
+      "Delete redirect id 28 in WP-admin Tools > Redirection",
+      "Restore page ID 9222 from Trash (can restore from Trash)",
+      "Re-submitsitemap if needed"
+    ],
+    "money_pages_protected": true,
+    "real_homepage_id": 757,
+    "duplicate_page_id": 9222,
+    "redirect_id": 28,
+    "verified_by": "pending_claude_independent",
+    "status": "applied"
+  }
+]

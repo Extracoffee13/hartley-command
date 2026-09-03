@@ -1,0 +1,13 @@
+{
+  "_generated_at": "2026-06-24T16:38:05.372276+00:00",
+  "all_pass": false,
+  "pass_count": 8,
+  "total": 10,
+  "failing_claims": [
+    "state.json hermes_agent_version == 0.15.1",
+    "v4 dashboard CALLS count in HTML == state.json calls_count"
+  ],
+  "verifier_exit_code": 1,
+  "stdout_tail": "ashboard reachable\n       url: https://extracoffee13.github.io/hartley-command/wolf-health.html?_cb=1782319086\n       status: 200\n       expected_status: 200\n[PASS] wolf-health has DATA FRESHNESS panel code\n       url: https://extracoffee13.github.io/hartley-command/wolf-health.html?_cb=1782319086\n       status: 200\n       needle: DATA FRESHNESS\n       found_count: 2\n\n=== overall: FAIL (8/10) ===\n",
+  "stderr_tail": ""
+}

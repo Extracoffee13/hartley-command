@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Construct · NEUROLINK 3099</title>
+<style>
+:root{
+  --gold:#ffd700;
+  --cyan:#00AEEF;
+  --magenta:#ff3aa6;
+  --green:#39ff14;
+  --red:#ff5454;
+  --purple:#b388ff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;overflow:hidden;background:#000;font-family:'Helvetica Neue',Arial,sans-serif;color:#fff;cursor:crosshair;}
+canvas{display:block;}
+
+#scene-stack{position:fixed;inset:0;}
+#rain{position:fixed;inset:0;z-index:0;opacity:0.55;}
+#scene{position:fixed;inset:0;z-index:1;}
+
+#vignette{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at center, transparent 38%, rgba(0,0,0,0.95) 100%);z-index:3;}
+#scanlines{position:fixed;inset:0;pointer-events:none;z-index:4;background-image:repeating-linear-gradient(0deg,rgba(0,255,210,0.05) 0px,rgba(0,255,210,0.05) 1px,transparent 1px,transparent 3px);mix-blend-mode:screen;}
+#noise{position:fixed;inset:0;pointer-events:none;z-index:4;opacity:0.04;mix-blend-mode:overlay;}
+#chromatic{position:fixed;inset:0;pointer-events:none;z-index:4;background:radial-gradient(ellipse at center, transparent 55%, rgba(255,58,166,0.06) 100%);mix-blend-mode:screen;}
+#strobe{position:fixed;inset:0;pointer-events:none;z-index:6;background:rgba(255,215,0,0);transition:background 0.05s ease-out;}
+
+/* Edge bracket reticle */
+.bracket{position:fixed;width:24px;height:24px;border-color:rgba(0,174,239,0.7);z-index:5;pointer-events:none;}
+.bracket.tl{top:14px;left:14px;border-top:1px solid;border-left:1px solid;}
+.bracket.tr{top:14px;right:14px;border-top:1px solid;border-right:1px solid;}
+.bracket.bl{bottom:14px;left:14px;border-bottom:1px solid;border-left:1px solid;}
+.bracket.br{bottom:14px;right:14px;border-bottom:1px solid;border-right:1px solid;}
+
+/* HUD */
+.hud{position:fixed;z-index:7;font-family:'Courier New',monospace;letter-spacing:0.2em;font-size:10px;color:rgba(0,174,239,0.65);text-transform:uppercase;}
+#hud-tl{top:30px;left:34px;}
+#hud-tl .t1{font-family:'Helvetica Neue',Arial,sans-serif;font-weight:900;letter-spacing:0.32em;font-size:15px;color:#fff;margin-bottom:6px;text-shadow:0 0 18px rgba(0,174,239,0.8);}
+#hud-tl .t2{font-size:9px;letter-spacing:0.55em;color:var(--cyan);}
+#hud-tl .t3{margin-top:18px;font-size:9px;color:rgba(255,255,255,0.55);max-width:380px;line-height:1.7;letter-spacing:0.08em;text-transform:none;}
+#hud-tl .t4{margin-top:12px;font-size:9px;letter-spacing:0.4em;color:var(--gold);}
+
+#hud-tr{top:30px;right:34px;text-align:right;min-width:280px;}
+#hud-tr .row{display:flex;justify-content:flex-end;gap:14px;align-items:baseline;margin-bottom:8px;}
+#hud-tr .label{color:rgba(255,255,255,0.4);}
+#hud-tr .num{color:var(--cyan);font-family:'Courier New',monospace;font-weight:bold;font-size:14px;letter-spacing:0.05em;text-shadow:0 0 12px rgba(0,174,239,0.65);}
+#hud-tr .num.gold{color:var(--gold);text-shadow:0 0 12px rgba(255,215,0,0.7);}
+#hud-tr .num.green{color:var(--green);text-shadow:0 0 10px rgba(57,255,20,0.6);}
+#hud-tr .small{font-size:9px;}
+
+#hud-bl{bottom:30px;left:34px;max-width:400px;}
+#hud-bl .head{margin-bottom:10px;}
+#hud-bl .log{font-size:10px;line-height:1.7;color:rgba(255,255,255,0.65);font-family:'Courier New',monospace;letter-spacing:0;text-transform:none;}
+#hud-bl .log .ts{color:var(--cyan);}
+#hud-bl .log .pulse-event{color:var(--gold);text-shadow:0 0 8px rgba(255,215,0,0.5);}
+#hud-bl .log .fire-event{color:var(--magenta);}
+#hud-bl .log .green-event{color:var(--green);}
+
+#hud-br{bottom:30px;right:34px;max-width:360px;text-align:right;}
+#hud-br .head{margin-bottom:8px;}
+#hud-br .name{font-family:'Helvetica Neue',Arial,sans-serif;font-weight:900;font-size:18px;letter-spacing:0.06em;color:#fff;margin-bottom:4px;text-transform:uppercase;text-shadow:0 0 16px rgba(0,174,239,0.65);}
+#hud-br .role{font-size:10px;color:var(--cyan);margin-bottom:8px;}
+#hud-br .desc{font-size:10px;color:rgba(255,255,255,0.55);line-height:1.65;text-transform:none;letter-spacing:0;}
+#hud-br .reticle{font-size:9px;color:rgba(255,255,255,0.3);margin-top:10px;}
+
+/* Center reticle */
+#cross{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:5;pointer-events:none;color:rgba(255,215,0,0.18);font-family:'Courier New',monospace;font-size:8px;letter-spacing:0.5em;}
+#cross .crosshair{font-size:24px;color:rgba(255,215,0,0.16);}
+
+#tooltip{position:fixed;background:rgba(0,8,18,0.95);border:1px solid var(--cyan);padding:11px 16px;color:#fff;font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.05em;border-radius:1px;z-index:12;pointer-events:none;display:none;backdrop-filter:blur(10px);box-shadow:0 0 32px rgba(0,174,239,0.5), inset 0 0 16px rgba(0,174,239,0.1);clip-path:polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));}
+#tooltip .tt-name{font-family:'Helvetica Neue',Arial,sans-serif;font-weight:900;font-size:13px;letter-spacing:0.1em;color:var(--cyan);margin-bottom:3px;text-transform:uppercase;}
+#tooltip .tt-role{font-size:9px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;}
+#tooltip .tt-desc{font-size:10px;color:rgba(255,255,255,0.75);max-width:260px;line-height:1.55;text-transform:none;letter-spacing:0;}
+
+#controls{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);z-index:7;color:rgba(255,255,255,0.32);font-family:'Courier New',monospace;font-size:9px;letter-spacing:0.45em;text-transform:uppercase;}
+#controls .key{color:var(--cyan);}
+
+/* Audio widget */
+#audio-widget{
+  position:fixed;
+  bottom:30px;
+  left:50%;
+  transform:translateX(-50%) translateY(-30px);
+  z-index:9;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  background:rgba(0,8,18,0.85);
+  border:1px solid var(--cyan);
+  padding:10px 18px;
+  border-radius:2px;
+  font-family:'Courier New',monospace;
+  font-size:11px;
+  letter-spacing:0.18em;
+  color:#fff;
+  text-transform:uppercase;
+  cursor:pointer;
+  user-select:none;
+  backdrop-filter:blur(6px);
+  box-shadow:0 0 20px rgba(0,174,239,0.35);
+  transition:all 0.2s;
+  clip-path:polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+#audio-widget:hover{
+  background:rgba(0,16,32,0.95);
+  box-shadow:0 0 30px rgba(0,174,239,0.55);
+}
+#audio-widget.live{
+  border-color:var(--green);
+  box-shadow:0 0 20px rgba(57,255,20,0.4);
+  transform:translateX(-50%) translateY(0);
+}
+#audio-widget.live:hover{
+  box-shadow:0 0 30px rgba(57,255,20,0.6);
+}
+#audio-widget .icon{
+  font-size:14px;
+  letter-spacing:0;
+}
+#audio-widget .label{
+  color:var(--cyan);
+}
+#audio-widget.live .label{
+  color:var(--green);
+}
+#audio-widget .vol-bars{
+  display:inline-flex;
+  gap:2px;
+  align-items:flex-end;
+  height:14px;
+}
+#audio-widget .vol-bars .bar{
+  width:3px;
+  background:rgba(255,255,255,0.3);
+  border-radius:1px;
+  transition:background 0.1s, height 0.1s;
+}
+#audio-widget.live .vol-bars .bar{ background:var(--green); }
+#audio-widget.muted .vol-bars .bar{ background:rgba(255,84,84,0.55); }
+
+#audio-widget .vol-slider{
+  -webkit-appearance:none;
+  appearance:none;
+  width:90px;
+  height:3px;
+  background:rgba(0,174,239,0.25);
+  outline:none;
+  border-radius:1px;
+  cursor:pointer;
+}
+#audio-widget .vol-slider::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  appearance:none;
+  width:11px;
+  height:11px;
+  background:var(--cyan);
+  border-radius:50%;
+  cursor:pointer;
+  box-shadow:0 0 8px rgba(0,174,239,0.7);
+}
+#audio-widget.live .vol-slider::-webkit-slider-thumb{ background:var(--green); box-shadow:0 0 8px rgba(57,255,20,0.7); }
+
+#audio-widget.muted .label{ color:var(--red); }
+#audio-widget.muted{ border-color:var(--red); box-shadow:0 0 16px rgba(255,84,84,0.4); }
+
+@keyframes pulseAudio{0%,100%{box-shadow:0 0 16px rgba(0,174,239,0.4);}50%{box-shadow:0 0 32px rgba(0,174,239,0.85);}}
+#audio-widget:not(.live):not(.muted){ animation: pulseAudio 1.6s ease-in-out infinite; }
+
+/* Loading badge */
+#stamp{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:8;font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.6em;color:var(--gold);opacity:0;pointer-events:none;text-shadow:0 0 16px rgba(255,215,0,0.6);}
+@keyframes stampIn{0%{opacity:0;transform:translate(-50%,-50%) scale(0.7);}50%{opacity:1;}100%{opacity:0;transform:translate(-50%,-50%) scale(1.4);}}
+.show-stamp{animation:stampIn 1.4s ease-out forwards;}
+
+/* Glitch flash overlay */
+#glitch{position:fixed;inset:0;pointer-events:none;z-index:5;mix-blend-mode:screen;opacity:0;transition:opacity 0.08s;background:linear-gradient(90deg, rgba(255,58,166,0) 0%, rgba(255,58,166,0.08) 30%, transparent 31%, transparent 60%, rgba(0,255,210,0.08) 70%, rgba(0,255,210,0) 100%);}
+.glitch-on{opacity:1!important;}
+</style>
+</head>
+<body>
+
+<canvas id="rain"></canvas>
+<canvas id="scene"></canvas>
+<canvas id="noise"></canvas>
+<div id="scanlines"></div>
+<div id="chromatic"></div>
+<div id="vignette"></div>
+<div id="strobe"></div>
+<div id="glitch"></div>
+
+<div class="bracket tl"></div>
+<div class="bracket tr"></div>
+<div class="bracket bl"></div>
+<div class="bracket br"></div>
+
+<div id="cross">
+  <div class="crosshair">+</div>
+</div>
+
+<div id="hud-tl" class="hud">
+  <div class="t1">THE CONSTRUCT · NEUROLINK</div>
+  <div class="t2">▸ AGENT ECOSYSTEM · 3099 BUILD</div>
+  <div class="t3">A 3D synaptic map of Bobby Hartley's operating empire. Gold core at the center. <span id="kpi-agents-inline">33</span> agents orbiting. Systems beyond. Ventures in the outer ring. Every flash is a signal pattern. The lattice is alive.</div>
+  <div class="t4">▸ STATUS · ALL SYSTEMS NOMINAL</div>
+</div>
+
+<div id="hud-tr" class="hud">
+  <div class="row"><span class="label small">CORE</span><span class="num gold" style="font-size:11px;">RLH · BOBBY</span></div>
+  <div class="row"><span class="label small">AGENTS</span><span class="num"><span id="kpi-agents">37</span></span></div>
+  <div class="row"><span class="label small">SYSTEMS</span><span class="num"><span id="kpi-systems">10</span></span></div>
+  <div class="row"><span class="label small">VENTURES</span><span class="num"><span id="kpi-ventures">12</span></span></div>
+  <div class="row"><span class="label small">PRAXIS PRIORS</span><span class="num gold"><span id="kpi-priors">8</span></span></div>
+  <div class="row"><span class="label small">SKILLS DEPLOYED</span><span class="num"><span id="kpi-skills">252</span></span></div>
+  <div class="row"><span class="label small">SYNAPSES / MIN</span><span class="num green"><span id="kpi-synapses">0</span></span></div>
+  <div class="row"><span class="label small">CONSTRUCT MATURITY</span><span class="num gold"><span id="kpi-maturity">0%</span></span></div>
+  <div class="row" style="margin-top:14px;"><span class="label small">UPTIME</span><span class="num small" style="font-size:11px;"><span id="kpi-uptime">000d 00:00:00</span></span></div>
+  <div class="row"><span class="label small">EPOCH</span><span class="num small" style="font-size:11px;color:var(--gold)">3099-05-02</span></div>
+</div>
+
+<div id="hud-bl" class="hud">
+  <div class="head">▸ EVENT STREAM</div>
+  <div class="log" id="event-log">
+    <div><span class="ts">[--:--]</span> Booting…</div>
+  </div>
+</div>
+
+<div id="hud-br" class="hud">
+  <div class="head">▸ FOCUS</div>
+  <div class="name" id="focus-name">RLH · BOBBY</div>
+  <div class="role" id="focus-role">Founder · Showrunner</div>
+  <div class="desc" id="focus-desc">The center of The Construct. 40-year operator, HBS alumnus, building the most ambitious AI-c-suite experiment running in any small-mid business in 2026.</div>
+  <div class="reticle">↻ HOVER NODES · CLICK TO FIRE</div>
+</div>
+
+<div id="controls"><span class="key">DRAG</span> · <span class="key">SCROLL ZOOM</span> · <span class="key">CLICK A NODE TO FIRE THE LATTICE</span></div>
+
+<div id="audio-widget" title="Click to enable Matrix audio">
+  <span class="icon">▸</span>
+  <span class="label" id="audio-label">CLICK TO ENABLE AUDIO</span>
+  <span class="vol-bars" id="vol-bars">
+    <span class="bar" style="height:30%"></span>
+    <span class="bar" style="height:55%"></span>
+    <span class="bar" style="height:80%"></span>
+    <span class="bar" style="height:100%"></span>
+  </span>
+  <input type="range" min="0" max="100" value="40" class="vol-slider" id="vol-slider" />
+</div>
+
+<div id="stamp">SYNCED · v3.099</div>
+
+<div id="tooltip">
+  <div class="tt-name"></div>
+  <div class="tt-role"></div>
+  <div class="tt-desc"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// ═══════════════════════════════════════════════════════════════════════════
+// THE CONSTRUCT · NEUROLINK GALAXY v3 — Matrix 3099
+// ═══════════════════════════════════════════════════════════════════════════
+
+const COLORS = { GOLD:0xffd700, CYAN:0x00AEEF, WHITE:0xffffff, MAGENTA:0xff3aa6, GREEN:0x39ff14, PURPLE:0xb388ff, RED:0xff5454, MATRIXGREEN:0x00ffd0 };
+
+// ─── Code rain background (Matrix-style with cyan/gold tint)
+(function setupCodeRain(){
+  const c = document.getElementById('rain');
+  const ctx = c.getContext('2d');
+  let cw, ch, cols, drops;
+  const charSet = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789{}<>[]*/+=¥§∞≈≠";
+  const fontSize = 12;
+  function resize(){
+    cw = c.width = window.innerWidth;
+    ch = c.height = window.innerHeight;
+    cols = Math.floor(cw / fontSize);
+    drops = Array(cols).fill(0).map(()=>Math.random()*ch/fontSize);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  function tick(){
+    ctx.fillStyle = 'rgba(0,4,8,0.10)';
+    ctx.fillRect(0,0,cw,ch);
+    ctx.font = fontSize + 'px Courier New';
+    for(let i=0;i<cols;i++){
+      const x = i*fontSize;
+      const y = drops[i]*fontSize;
+      const ch_char = charSet.charAt(Math.floor(Math.random()*charSet.length));
+      // Color tint: mostly cyan, occasional gold
+      const r = Math.random();
+      if(r < 0.10) ctx.fillStyle = 'rgba(255,215,0,1)';        // Gold (was 4%)
+      else if(r < 0.16) ctx.fillStyle = 'rgba(255,255,255,1)';  // White (was 8%)
+      else if(r < 0.22) ctx.fillStyle = 'rgba(57,255,20,0.85)'; // Matrix green
+      else ctx.fillStyle = 'rgba(0,174,239,0.9)';               // Cyan (default)
+      ctx.shadowColor = ctx.fillStyle;
+      ctx.shadowBlur = 8;
+      ctx.fillText(ch_char, x, y);
+      if(y > ch && Math.random() > 0.975) drops[i] = 0;
+      drops[i]++;
+    }
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+
+// ─── Subtle digital noise canvas
+(function setupNoise(){
+  const c = document.getElementById('noise');
+  const ctx = c.getContext('2d');
+  let cw, ch;
+  function resize(){ cw = c.width = window.innerWidth; ch = c.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+  setInterval(() => {
+    const id = ctx.createImageData(cw, ch);
+    for(let i=0;i<id.data.length;i+=4){
+      const v = Math.random()*255;
+      id.data[i]=v; id.data[i+1]=v; id.data[i+2]=v; id.data[i+3]=Math.random()*60;
+    }
+    ctx.putImageData(id,0,0);
+  }, 90);
+})();
+
+// ─── Ecosystem
+const NODES = {
+  core: { name:"RLH · BOBBY", role:"Founder · Showrunner", desc:"The center of The Construct. 40-year operator, HBS alumnus, building the most ambitious AI-c-suite experiment in any small-mid business in 2026.", color:COLORS.GOLD, size:18 },
+  agents: [
+    { name:"AP",          role:"CEO · Synthesizer",     desc:"Chief executive — holds the whole arch together.", color:COLORS.CYAN },
+    { name:"Vector",      role:"Graphic Designer · CMO", desc:"Visual lead. Brand identity, motion, hero work.", color:COLORS.CYAN },
+    { name:"Keystone",    role:"Chief Strategy Officer", desc:"Venture architect. Coca-Cola Test owner.", color:COLORS.RED },
+    { name:"Forge",       role:"COO",                    desc:"Operations. Runs the build.", color:COLORS.PURPLE },
+    { name:"Signal",      role:"CMO Suite",              desc:"Communications, social, multi-channel.", color:COLORS.PURPLE },
+    { name:"Ledger",      role:"CFO",                    desc:"Financial precision. Stress-tests every venture.", color:COLORS.PURPLE },
+    { name:"Atlas",       role:"Signage Operations",     desc:"Brand 9 ops data. Bid analysis, install ops.", color:COLORS.PURPLE },
+    { name:"Sentinel",    role:"Risk · Compliance",      desc:"Watches the perimeter. Flags exposure.", color:COLORS.PURPLE },
+    { name:"Venture",     role:"Scout · Market Intel",   desc:"Hunts new opportunities. Feeds Keystone.", color:COLORS.RED },
+    { name:"Cipher",      role:"CTO",                    desc:"Code, infra, agent platform.", color:COLORS.PURPLE },
+    { name:"Spectra",     role:"Brand Guardian",         desc:"Brand canon enforcement.", color:COLORS.CYAN },
+    { name:"Oracle",      role:"CIO · Knowledge",        desc:"Information layer. Second Brain owner.", color:COLORS.PURPLE },
+    { name:"Nexus",       role:"Connector",              desc:"Network builder. Surfaces warm intros.", color:COLORS.PURPLE },
+    { name:"Equity",      role:"Capital Allocator",      desc:"Hartley Capital strategy.", color:COLORS.RED },
+    { name:"Alpha",       role:"WOLF Trader",            desc:"Live market operations.", color:COLORS.RED },
+    { name:"WOLF",        role:"Research Substrate",     desc:"Local research bridge — Perplexity/Grok/YouTube.", color:COLORS.RED },
+    { name:"Cornerstone", role:"Construct Foundation",   desc:"Ecosystem anchor. Operating standards.", color:COLORS.WHITE },
+    { name:"Charlie",     role:"Self-Improving Loop",    desc:"Captures every correction. Routes through PRAXIS.", color:COLORS.GREEN },
+    { name:"Architect",   role:"Systems Designer",       desc:"Designs new agents and Construct architecture.", color:COLORS.PURPLE },
+    { name:"Louis",       role:"Newest Addition",        desc:"Added 2026-04-27. The 24th of 25 planned agents.", color:COLORS.MAGENTA },
+  ],
+  systems: [
+    { name:"Brand 9 Signs",      role:"Signage Empire · Since 1986",     desc:"Florida's signage partner. Cashflow engine.", color:COLORS.CYAN },
+    { name:"Hartley Capital",    role:"Investment Vehicle",                desc:"Capital allocation arm.", color:COLORS.RED },
+    { name:"Second Brain",       role:"Obsidian · Knowledge System",       desc:"Personal knowledge graph. Notes, MOCs, lessons.", color:COLORS.PURPLE },
+    { name:"WOLF Substrate",     role:"Research Bridge",                   desc:"Cloud→local research pipeline.", color:COLORS.RED },
+    { name:"PRAXIS Layer",       role:"Era-of-Experience Engine",          desc:"Capture → Distill → Promote → Broadcast.", color:COLORS.GOLD },
+    { name:"Ninth Street Film",  role:"Brand Story · Hero Visual",         desc:"12-beat painterly film telling Brand 9's origin.", color:COLORS.CYAN },
+    { name:"Brand 9 Site",       role:"brand9signs.com",                   desc:"WC + WPBakery. SEO/GBP/GSC fully audited 2026-05-02.", color:COLORS.CYAN },
+    { name:"The Construct",      role:"Agent Ecosystem · Recursive",       desc:"Self-referential. Contains its own map.", color:COLORS.WHITE },
+  ],
+  loops: [
+    { name:"Self-Improving Loop", role:"Loop 1 · LIVE",      desc:"Bobby corrects → lesson written → all agents read before executing. Operating since day one. The IP.", color:COLORS.GREEN, status:"LIVE" },
+    { name:"Eval Loop",           role:"Loop 2 · NOT BUILT", desc:"Past corrections → test cases → Eval Harness scores → Foreman flags regressions → new lessons. Builds with Eval Harness + Foreman (Tier 1).", color:0x666666, status:"NOT_BUILT" },
+    { name:"Knowledge Loop",      role:"Loop 3 · LIVE",      desc:"Cross-agent shared knowledge. Lessons promote into shared skills. Every agent gets sharper without retraining.", color:COLORS.CYAN, status:"LIVE" },
+    { name:"Memory Loop",         role:"Loop 4 · LIVE",      desc:"Proactive fact capture → cross-ref guardrails → quarterly consolidation via consolidate-memory. The substrate.", color:COLORS.PURPLE, status:"LIVE" },
+  ],
+  ventures: [
+    { name:"AI-First Signage",       role:"Defensible Moat",     desc:"40-year firm + agents = bigger moat than startups.", color:COLORS.CYAN },
+    { name:"Orlando Expansion",      role:"Central FL · 2026",   desc:"New regional capacity. Geo + GBP + blog live.", color:COLORS.CYAN },
+    { name:"Miami Expansion",        role:"South FL · 2026",     desc:"Luxury developer market. Live.", color:COLORS.CYAN },
+    { name:"Construct Productizing", role:"SaaS / Course",       desc:"The Construct as a productizable offering.", color:COLORS.RED },
+    { name:"LinkedIn DECODED",       role:"Brand Asset · Parked",desc:"Annotated environments. Parked 2026-05-02.", color:COLORS.RED },
+    { name:"Hartley Capital Watch",  role:"Daily Routine",       desc:"Daily capital intel.", color:COLORS.RED },
+    { name:"Industry Pulse · AI",    role:"Daily",               desc:"AI/Agent industry sweep.", color:COLORS.PURPLE },
+    { name:"Industry Pulse · Sign",  role:"Weekday",             desc:"Signage industry monitoring.", color:COLORS.PURPLE },
+    { name:"Construct Dashboard",    role:"This Visualization",  desc:"The galaxy you're looking at.", color:COLORS.WHITE },
+    { name:"Ninth Street Style",     role:"Brand 9 Visual System",desc:"Painterly four-pillar visual system.", color:COLORS.CYAN },
+    { name:"First-Principles Spike", role:"Daily Routine",       desc:"Logs agent-derived-vs-human-data deltas.", color:COLORS.GOLD },
+    { name:"Daily Standup",          role:"18:00 ET",            desc:"End-of-day Construct standup.", color:COLORS.PURPLE },
+  ],
+};
+
+// ─── Three.js setup
+const canvas = document.getElementById('scene');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.toneMapping = THREE.ReinhardToneMapping;
+renderer.toneMappingExposure = 2.4;
+
+const scene = new THREE.Scene();
+scene.fog = new THREE.FogExp2(0x000208, 0.0007);
+
+const camera = new THREE.PerspectiveCamera(56, window.innerWidth/window.innerHeight, 1, 5000);
+camera.position.set(0, 280, 700);
+
+// ─── No postprocessing — direct render for max compatibility.
+console.log('[NEUROLINK] Direct render mode — no bloom postprocessing');
+
+// ═════════════════════════════════════════════════════════════════════
+// AUDIO ENGINE — Web Audio API
+// Ambient drone (always on after user gesture) + synapse zap + PRAXIS thump
+// ═════════════════════════════════════════════════════════════════════
+let audioCtx = null;
+let droneNode = null;
+let droneFilter = null;
+let masterGain = null;
+let audioReady = false;
+
+// Matrix-style reverb via convolution-free delay network
+let matrixReverbDelay, matrixReverbFeedback, matrixReverbWet;
+
+function initAudio(){
+  if(audioReady) return;
+  try {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    masterGain = audioCtx.createGain();
+    masterGain.gain.value = 0.4;
+    masterGain.connect(audioCtx.destination);
+
+    // ─── Matrix server-room hum: filtered white noise + sub bass + glitch whisper
+    // Layer 1: filtered white noise (server room ambient)
+    const noiseBufferSize = audioCtx.sampleRate * 4;
+    const noiseBuffer = audioCtx.createBuffer(1, noiseBufferSize, audioCtx.sampleRate);
+    const noiseData = noiseBuffer.getChannelData(0);
+    for(let i=0;i<noiseBufferSize;i++) noiseData[i] = (Math.random()*2-1) * 0.5;
+    const noiseSrc = audioCtx.createBufferSource();
+    noiseSrc.buffer = noiseBuffer;
+    noiseSrc.loop = true;
+    const noiseFilter = audioCtx.createBiquadFilter();
+    noiseFilter.type = 'bandpass';
+    noiseFilter.frequency.value = 250;
+    noiseFilter.Q.value = 1.5;
+    const noiseGain = audioCtx.createGain();
+    noiseGain.gain.value = 0.06;
+    noiseSrc.connect(noiseFilter);
+    noiseFilter.connect(noiseGain);
+    noiseGain.connect(masterGain);
+    noiseSrc.start();
+
+    // Layer 2: deep sub-bass drone (the dystopian undertow)
+    const sub1 = audioCtx.createOscillator();
+    sub1.type = 'sawtooth'; sub1.frequency.value = 41.2; // E1
+    const sub2 = audioCtx.createOscillator();
+    sub2.type = 'sawtooth'; sub2.frequency.value = 41.6; // detune
+    const sub3 = audioCtx.createOscillator();
+    sub3.type = 'sine'; sub3.frequency.value = 82.4;
+    const sub4 = audioCtx.createOscillator();
+    sub4.type = 'sine'; sub4.frequency.value = 164.8;
+
+    droneFilter = audioCtx.createBiquadFilter();
+    droneFilter.type = 'lowpass';
+    droneFilter.frequency.value = 280;
+    droneFilter.Q.value = 6;
+
+    const subGain = audioCtx.createGain();
+    subGain.gain.value = 0.20;
+
+    sub1.connect(droneFilter); sub2.connect(droneFilter); sub3.connect(droneFilter); sub4.connect(droneFilter);
+    droneFilter.connect(subGain);
+    subGain.connect(masterGain);
+    sub1.start(); sub2.start(); sub3.start(); sub4.start();
+
+    // Slow LFO on filter — breathing
+    const lfo = audioCtx.createOscillator();
+    lfo.type = 'sine'; lfo.frequency.value = 0.06;
+    const lfoGain = audioCtx.createGain();
+    lfoGain.gain.value = 180;
+    lfo.connect(lfoGain);
+    lfoGain.connect(droneFilter.frequency);
+    lfo.start();
+
+    // ─── Reverb network (delay-based, since no impulse responses)
+    matrixReverbDelay = audioCtx.createDelay();
+    matrixReverbDelay.delayTime.value = 0.18;
+    matrixReverbFeedback = audioCtx.createGain();
+    matrixReverbFeedback.gain.value = 0.55;
+    matrixReverbWet = audioCtx.createGain();
+    matrixReverbWet.gain.value = 0.4;
+    const reverbFilter = audioCtx.createBiquadFilter();
+    reverbFilter.type = 'lowpass';
+    reverbFilter.frequency.value = 2200;
+    matrixReverbDelay.connect(reverbFilter);
+    reverbFilter.connect(matrixReverbFeedback);
+    matrixReverbFeedback.connect(matrixReverbDelay);
+    matrixReverbDelay.connect(matrixReverbWet);
+    matrixReverbWet.connect(masterGain);
+
+    // ─── Periodic scanner pulse (low beep, like a Matrix terminal scanning)
+    setInterval(() => {
+      if(!audioReady) return;
+      const t = audioCtx.currentTime;
+      const o = audioCtx.createOscillator();
+      o.type = 'sine';
+      o.frequency.setValueAtTime(180, t);
+      o.frequency.exponentialRampToValueAtTime(120, t + 0.18);
+      const g = audioCtx.createGain();
+      g.gain.setValueAtTime(0, t);
+      g.gain.linearRampToValueAtTime(0.06, t + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.001, t + 0.25);
+      o.connect(g);
+      g.connect(masterGain);
+      g.connect(matrixReverbDelay);
+      o.start(t); o.stop(t + 0.3);
+    }, 7000 + Math.random()*4000);
+
+    // ─── Periodic glitch whisper (digital scan artifact)
+    setInterval(() => {
+      if(!audioReady) return;
+      const t = audioCtx.currentTime;
+      const o = audioCtx.createOscillator();
+      o.type = 'square';
+      const f = 4000 + Math.random()*3000;
+      o.frequency.setValueAtTime(f, t);
+      o.frequency.exponentialRampToValueAtTime(f*0.3, t + 0.04);
+      const filt = audioCtx.createBiquadFilter();
+      filt.type = 'highpass';
+      filt.frequency.value = 2000;
+      const g = audioCtx.createGain();
+      g.gain.setValueAtTime(0, t);
+      g.gain.linearRampToValueAtTime(0.025, t + 0.005);
+      g.gain.exponentialRampToValueAtTime(0.001, t + 0.06);
+      o.connect(filt);
+      filt.connect(g);
+      g.connect(masterGain);
+      g.connect(matrixReverbDelay);
+      o.start(t); o.stop(t + 0.07);
+    }, 4500 + Math.random()*3500);
+
+    audioReady = true;
+    console.log('[NEUROLINK] Matrix audio online');
+    pushLog("▸ Audio engine engaged · NEUROLINK Matrix mix", 'green');
+  } catch(e){
+    console.error('[NEUROLINK] Audio init failed:', e);
+  }
+}
+
+// Synapse zap — Matrix-style electric data ping with reverb tail
+function audioSynapseZap(intensity){
+  if(!audioReady) return;
+  intensity = intensity || 1;
+  const t = audioCtx.currentTime;
+  const osc = audioCtx.createOscillator();
+  osc.type = 'square';
+  const baseFreq = 1400 + Math.random()*1800;
+  osc.frequency.setValueAtTime(baseFreq, t);
+  osc.frequency.exponentialRampToValueAtTime(baseFreq*0.25, t + 0.07);
+  const filter = audioCtx.createBiquadFilter();
+  filter.type = 'bandpass';
+  filter.frequency.value = baseFreq;
+  filter.Q.value = 12;
+  const g = audioCtx.createGain();
+  g.gain.setValueAtTime(0.0, t);
+  g.gain.linearRampToValueAtTime(0.12*intensity, t + 0.003);
+  g.gain.exponentialRampToValueAtTime(0.001, t + 0.10);
+  osc.connect(filter);
+  filter.connect(g);
+  g.connect(masterGain);
+  if(matrixReverbDelay) g.connect(matrixReverbDelay);
+  osc.start(t);
+  osc.stop(t + 0.12);
+}
+
+// PRAXIS thump — cinematic Matrix bass drop with reverse swell + boom + shimmer + reverb tail
+function audioPraxisThump(){
+  if(!audioReady) return;
+  const t = audioCtx.currentTime;
+
+  // Reverse swell (rising filter sweep before the hit)
+  const swell = audioCtx.createOscillator();
+  swell.type = 'sawtooth';
+  swell.frequency.setValueAtTime(60, t);
+  swell.frequency.exponentialRampToValueAtTime(280, t + 0.45);
+  const swellFilt = audioCtx.createBiquadFilter();
+  swellFilt.type = 'lowpass';
+  swellFilt.frequency.setValueAtTime(150, t);
+  swellFilt.frequency.exponentialRampToValueAtTime(2200, t + 0.45);
+  const swellGain = audioCtx.createGain();
+  swellGain.gain.setValueAtTime(0, t);
+  swellGain.gain.linearRampToValueAtTime(0.25, t + 0.4);
+  swellGain.gain.exponentialRampToValueAtTime(0.001, t + 0.5);
+  swell.connect(swellFilt); swellFilt.connect(swellGain); swellGain.connect(masterGain);
+  if(matrixReverbDelay) swellGain.connect(matrixReverbDelay);
+  swell.start(t); swell.stop(t + 0.55);
+
+  // The drop — sub bass boom
+  const boom = audioCtx.createOscillator();
+  boom.type = 'sine';
+  boom.frequency.setValueAtTime(160, t + 0.45);
+  boom.frequency.exponentialRampToValueAtTime(28, t + 1.4);
+  const boomGain = audioCtx.createGain();
+  boomGain.gain.setValueAtTime(0, t + 0.45);
+  boomGain.gain.linearRampToValueAtTime(0.85, t + 0.47);
+  boomGain.gain.exponentialRampToValueAtTime(0.001, t + 1.8);
+  boom.connect(boomGain);
+  boomGain.connect(masterGain);
+  if(matrixReverbDelay) boomGain.connect(matrixReverbDelay);
+  boom.start(t + 0.45); boom.stop(t + 1.9);
+
+  // High shimmer tail
+  const sh = audioCtx.createOscillator();
+  sh.type = 'triangle';
+  sh.frequency.setValueAtTime(880, t + 0.5);
+  sh.frequency.exponentialRampToValueAtTime(220, t + 1.2);
+  const shg = audioCtx.createGain();
+  shg.gain.setValueAtTime(0, t + 0.5);
+  shg.gain.linearRampToValueAtTime(0.22, t + 0.55);
+  shg.gain.exponentialRampToValueAtTime(0.001, t + 1.8);
+  sh.connect(shg);
+  shg.connect(masterGain);
+  if(matrixReverbDelay) shg.connect(matrixReverbDelay);
+  sh.start(t + 0.5); sh.stop(t + 1.9);
+
+  // Pitched-down digital crash
+  const crash = audioCtx.createOscillator();
+  crash.type = 'sawtooth';
+  crash.frequency.setValueAtTime(440, t + 0.46);
+  crash.frequency.exponentialRampToValueAtTime(80, t + 0.9);
+  const crashFilt = audioCtx.createBiquadFilter();
+  crashFilt.type = 'highpass';
+  crashFilt.frequency.value = 600;
+  const crashG = audioCtx.createGain();
+  crashG.gain.setValueAtTime(0, t + 0.46);
+  crashG.gain.linearRampToValueAtTime(0.18, t + 0.48);
+  crashG.gain.exponentialRampToValueAtTime(0.001, t + 0.95);
+  crash.connect(crashFilt); crashFilt.connect(crashG); crashG.connect(masterGain);
+  if(matrixReverbDelay) crashG.connect(matrixReverbDelay);
+  crash.start(t + 0.46); crash.stop(t + 1.0);
+}
+
+// ─── Audio Widget — visible volume + mute control + activation
+const audioWidget = document.getElementById('audio-widget');
+const audioLabel = document.getElementById('audio-label');
+const volSlider = document.getElementById('vol-slider');
+let isMuted = false;
+let lastVolume = 0.40;
+
+function setVolume(v){
+  if(!audioReady || !masterGain) return;
+  masterGain.gain.linearRampToValueAtTime(v, audioCtx.currentTime + 0.05);
+}
+
+function toggleMute(){
+  if(!audioReady) return;
+  isMuted = !isMuted;
+  if(isMuted){
+    lastVolume = parseFloat(volSlider.value)/100;
+    setVolume(0);
+    audioWidget.classList.add('muted');
+    audioWidget.classList.remove('live');
+    audioLabel.textContent = 'AUDIO MUTED · CLICK TO UNMUTE';
+  } else {
+    setVolume(lastVolume);
+    audioWidget.classList.remove('muted');
+    audioWidget.classList.add('live');
+    audioLabel.textContent = 'NEUROLINK AUDIO · LIVE';
+  }
+}
+
+audioWidget.addEventListener('click', (e) => {
+  // Don't toggle mute if clicking on the slider
+  if(e.target === volSlider) return;
+  if(!audioReady){
+    initAudio();
+    setTimeout(() => {
+      audioWidget.classList.add('live');
+      audioLabel.textContent = 'NEUROLINK AUDIO · LIVE';
+      setVolume(parseFloat(volSlider.value)/100);
+    }, 150);
+  } else {
+    toggleMute();
+  }
+});
+
+volSlider.addEventListener('input', () => {
+  const v = parseFloat(volSlider.value)/100;
+  if(!audioReady){
+    initAudio();
+    setTimeout(() => {
+      audioWidget.classList.add('live');
+      audioLabel.textContent = 'NEUROLINK AUDIO · LIVE';
+      setVolume(v);
+    }, 150);
+  } else {
+    if(isMuted){
+      isMuted = false;
+      audioWidget.classList.remove('muted');
+      audioWidget.classList.add('live');
+      audioLabel.textContent = 'NEUROLINK AUDIO · LIVE';
+    }
+    setVolume(v);
+    lastVolume = v;
+  }
+});
+
+// Animate volume bars (visualizer-feel)
+setInterval(() => {
+  if(!audioReady || isMuted) return;
+  const bars = document.querySelectorAll('#vol-bars .bar');
+  bars.forEach((b, i) => {
+    const h = 30 + Math.random()*70 * (parseFloat(volSlider.value)/100);
+    b.style.height = h + '%';
+  });
+}, 120);
+
+// Fallback: any click anywhere bootstraps audio if widget missed (e.g. clicked through iframe boundary)
+window.addEventListener('click', () => { if(!audioReady) initAudio(); }, { once: false });
+window.addEventListener('keydown', () => { if(!audioReady) initAudio(); }, { once: false });
+
+// ─── Glow texture
+function makeGlowSprite(){
+  const c = document.createElement('canvas');
+  c.width = c.height = 256;
+  const ctx = c.getContext('2d');
+  const grd = ctx.createRadialGradient(128,128,0,128,128,128);
+  grd.addColorStop(0,'rgba(255,255,255,1)');
+  grd.addColorStop(0.15,'rgba(255,255,255,0.85)');
+  grd.addColorStop(0.4,'rgba(0,174,239,0.4)');
+  grd.addColorStop(1,'rgba(0,174,239,0)');
+  ctx.fillStyle = grd;
+  ctx.fillRect(0,0,256,256);
+  return new THREE.CanvasTexture(c);
+}
+function makeNebulaSprite(color){
+  const c = document.createElement('canvas');
+  c.width = c.height = 512;
+  const ctx = c.getContext('2d');
+  const r=(color>>16)&0xff, g=(color>>8)&0xff, b=color&0xff;
+  const grd = ctx.createRadialGradient(256,256,0,256,256,256);
+  grd.addColorStop(0, `rgba(${r},${g},${b},0.6)`);
+  grd.addColorStop(0.3,`rgba(${r},${g},${b},0.25)`);
+  grd.addColorStop(0.7,`rgba(${r},${g},${b},0.06)`);
+  grd.addColorStop(1, `rgba(${r},${g},${b},0)`);
+  ctx.fillStyle = grd;
+  ctx.fillRect(0,0,512,512);
+  return new THREE.CanvasTexture(c);
+}
+const glowTex = makeGlowSprite();
+
+// ─── Stars
+const starGeo = new THREE.BufferGeometry();
+const STAR_COUNT = 6000;
+const sP = new Float32Array(STAR_COUNT*3);
+const sC = new Float32Array(STAR_COUNT*3);
+for(let i=0;i<STAR_COUNT;i++){
+  const r = 1500 + Math.random()*1600;
+  const t = Math.random()*Math.PI*2;
+  const phi = Math.acos((Math.random()*2)-1);
+  sP[i*3]=r*Math.sin(phi)*Math.cos(t);
+  sP[i*3+1]=r*Math.sin(phi)*Math.sin(t);
+  sP[i*3+2]=r*Math.cos(phi);
+  const tint = 0.6 + Math.random()*0.4;
+  const isCyan = Math.random()<0.18;
+  if(isCyan){ sC[i*3]=tint*0.3; sC[i*3+1]=tint*0.85; sC[i*3+2]=tint; }
+  else { sC[i*3]=tint; sC[i*3+1]=tint; sC[i*3+2]=tint*1.05; }
+}
+starGeo.setAttribute('position', new THREE.BufferAttribute(sP,3));
+starGeo.setAttribute('color', new THREE.BufferAttribute(sC,3));
+const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({size:1.8, vertexColors:true, transparent:true, opacity:0.95}));
+scene.add(stars);
+
+// ─── Nebulae
+function spawnNebula(color, size, opacity, position){
+  const m = new THREE.SpriteMaterial({ map: makeNebulaSprite(color), color, transparent:true, opacity, blending: THREE.AdditiveBlending, depthWrite:false });
+  const s = new THREE.Sprite(m);
+  s.scale.set(size, size, 1);
+  s.position.copy(position);
+  scene.add(s);
+  return s;
+}
+const nebulae = [
+  spawnNebula(COLORS.CYAN, 1100, 0.5, new THREE.Vector3(-800, -100, -800)),
+  spawnNebula(COLORS.MAGENTA, 850, 0.35, new THREE.Vector3(700, 150, -700)),
+  spawnNebula(COLORS.GOLD, 600, 0.25, new THREE.Vector3(-400, -250, 700)),
+  spawnNebula(COLORS.PURPLE, 800, 0.30, new THREE.Vector3(550, 250, 600)),
+  spawnNebula(COLORS.CYAN, 950, 0.22, new THREE.Vector3(0, -500, 0)),
+];
+
+// ─── Disk dust
+const dustGeo = new THREE.BufferGeometry();
+const DUST_COUNT = 1800;
+const dP = new Float32Array(DUST_COUNT*3);
+const dC = new Float32Array(DUST_COUNT*3);
+for(let i=0;i<DUST_COUNT;i++){
+  const r = 380 + Math.random()*450;
+  const t = Math.random()*Math.PI*2;
+  const yJ = (Math.random()*0.7-0.35)*32;
+  dP[i*3]=r*Math.cos(t); dP[i*3+1]=yJ; dP[i*3+2]=r*Math.sin(t);
+  const tt = (r-380)/450;
+  dC[i*3]=0; dC[i*3+1]=0.5+(1-tt)*0.4; dC[i*3+2]=0.7+(1-tt)*0.3;
+}
+dustGeo.setAttribute('position', new THREE.BufferAttribute(dP,3));
+dustGeo.setAttribute('color', new THREE.BufferAttribute(dC,3));
+const dust = new THREE.Points(dustGeo, new THREE.PointsMaterial({size:1.8, vertexColors:true, transparent:true, opacity:0.6, blending:THREE.AdditiveBlending}));
+scene.add(dust);
+
+// ─── Wireframe lattice shell encasing the whole galaxy
+const latticeGeo = new THREE.SphereGeometry(700, 24, 12);
+const latticeMat = new THREE.LineBasicMaterial({ color: COLORS.CYAN, transparent:true, opacity:0.10, blending:THREE.AdditiveBlending });
+const latticeWire = new THREE.LineSegments(new THREE.WireframeGeometry(latticeGeo), latticeMat);
+scene.add(latticeWire);
+
+const innerLatticeGeo = new THREE.IcosahedronGeometry(540, 1);
+const innerLatticeMat = new THREE.LineBasicMaterial({ color: COLORS.GOLD, transparent:true, opacity:0.18 });
+const innerLattice = new THREE.LineSegments(new THREE.WireframeGeometry(innerLatticeGeo), innerLatticeMat);
+scene.add(innerLattice);
+
+// ─── Floating wireframe geometry in deep space
+const floatingShapes = [];
+for(let i=0;i<14;i++){
+  const types = [
+    () => new THREE.OctahedronGeometry(15+Math.random()*20),
+    () => new THREE.TetrahedronGeometry(15+Math.random()*22),
+    () => new THREE.DodecahedronGeometry(14+Math.random()*18),
+    () => new THREE.IcosahedronGeometry(13+Math.random()*16),
+  ];
+  const geo = types[Math.floor(Math.random()*types.length)]();
+  const color = [COLORS.CYAN, COLORS.GOLD, COLORS.MAGENTA][Math.floor(Math.random()*3)];
+  const wf = new THREE.LineSegments(new THREE.WireframeGeometry(geo), new THREE.LineBasicMaterial({color, transparent:true, opacity:0.5}));
+  const r = 750 + Math.random()*450;
+  const t = Math.random()*Math.PI*2;
+  const phi = Math.acos((Math.random()*2)-1);
+  wf.position.set(r*Math.sin(phi)*Math.cos(t), r*Math.sin(phi)*Math.sin(t), r*Math.cos(phi));
+  wf.userData = { spinX: (Math.random()-0.5)*0.012, spinY: (Math.random()-0.5)*0.015 };
+  scene.add(wf);
+  floatingShapes.push(wf);
+}
+
+// ─── Lights
+scene.add(new THREE.AmbientLight(0x223355, 0.7));
+const _gold = new THREE.PointLight(COLORS.GOLD, 5.0, 1200);
+_gold.position.set(0,0,0); scene.add(_gold);
+const _cyan = new THREE.PointLight(COLORS.CYAN, 1.6, 900);
+_cyan.position.set(220,100,220); scene.add(_cyan);
+const _magenta = new THREE.PointLight(COLORS.MAGENTA, 0.9, 700);
+_magenta.position.set(-280,80,-200); scene.add(_magenta);
+
+// ─── Bobby gold core
+const coreGroup = new THREE.Group();
+scene.add(coreGroup);
+
+const coreSphere = new THREE.Mesh(
+  new THREE.SphereGeometry(NODES.core.size, 64, 64),
+  new THREE.MeshBasicMaterial({ color: COLORS.GOLD })
+);
+coreGroup.add(coreSphere);
+
+// Wireframe core overlay
+const coreWire = new THREE.LineSegments(
+  new THREE.WireframeGeometry(new THREE.IcosahedronGeometry(NODES.core.size*1.2, 2)),
+  new THREE.LineBasicMaterial({ color:0xfff4cc, transparent:true, opacity:0.5 })
+);
+coreGroup.add(coreWire);
+
+// Multi-layer halos
+const haloLayers = [
+  { size: 130, opacity: 1.0, color: 0xfff4cc },
+  { size: 220, opacity: 0.7, color: COLORS.GOLD },
+  { size: 340, opacity: 0.45, color: COLORS.GOLD },
+  { size: 500, opacity: 0.22, color: 0xffaa00 },
+];
+const haloSprites = haloLayers.map(l => {
+  const m = new THREE.SpriteMaterial({ map: glowTex, color: l.color, transparent:true, opacity:l.opacity, blending: THREE.AdditiveBlending, depthWrite:false });
+  const s = new THREE.Sprite(m);
+  s.scale.set(l.size, l.size, 1);
+  coreGroup.add(s);
+  return s;
+});
+
+// Saturn-style rings
+function makeRing(inner, outer, color, opacity, axis){
+  const g = new THREE.RingGeometry(inner, outer, 128);
+  const m = new THREE.MeshBasicMaterial({ color, side:THREE.DoubleSide, transparent:true, opacity, blending:THREE.AdditiveBlending, depthWrite:false });
+  const r = new THREE.Mesh(g, m);
+  r.rotation.x = axis.x; r.rotation.y = axis.y; r.rotation.z = axis.z;
+  return r;
+}
+const coreRings = [
+  makeRing(32, 34, COLORS.GOLD, 1.0,  {x:Math.PI/2.3, y:0, z:0}),
+  makeRing(40, 41, COLORS.GOLD, 0.6,  {x:Math.PI/2.2, y:0.3, z:0.1}),
+  makeRing(50, 51, COLORS.GOLD, 0.4,  {x:Math.PI/2.1, y:-0.2, z:-0.15}),
+  makeRing(62, 63, COLORS.GOLD, 0.25, {x:Math.PI/2.4, y:0.5, z:0.2}),
+];
+coreRings.forEach(r => coreGroup.add(r));
+
+// ─── Wireframe orbit tracks (Matrix style, dashed-feel via segments)
+function makeWireOrbit(radius, color, opacity, segs){
+  segs = segs || 96;
+  const points = [];
+  for(let i=0;i<=segs;i++){
+    const a = (i/segs)*Math.PI*2;
+    points.push(new THREE.Vector3(Math.cos(a)*radius, 0, Math.sin(a)*radius));
+  }
+  const g = new THREE.BufferGeometry().setFromPoints(points);
+  const m = new THREE.LineBasicMaterial({ color, transparent:true, opacity });
+  return new THREE.Line(g, m);
+}
+scene.add(makeWireOrbit(55, COLORS.GOLD, 0.40, 192));   // Loops orbit (innermost)
+scene.add(makeWireOrbit(95, COLORS.CYAN, 0.22, 192));   // Agents
+scene.add(makeWireOrbit(220, COLORS.CYAN, 0.16, 192));  // Systems
+scene.add(makeWireOrbit(380, COLORS.CYAN, 0.12, 192));  // Ventures
+
+// ─── Place orbital nodes (with sub-moons on systems)
+const nodeMeshes = [];
+function placeOrbit(items, radius, sizeBase, yJitter, speedScale){
+  const angleStep = (Math.PI*2)/items.length;
+  const start = Math.random()*Math.PI*2;
+  items.forEach((item, idx) => {
+    const angle = start + idx*angleStep;
+    const yJ = Math.sin(idx*1.3) * yJitter;
+    const sphereSize = sizeBase + Math.random()*1.5;
+    const baseColor = item.color || COLORS.CYAN;
+
+    const sphere = new THREE.Mesh(
+      new THREE.SphereGeometry(sphereSize, 28, 28),
+      new THREE.MeshStandardMaterial({ color:baseColor, emissive:baseColor, emissiveIntensity:1.6, metalness:0.4, roughness:0.3 })
+    );
+    sphere.position.set(Math.cos(angle)*radius, yJ, Math.sin(angle)*radius);
+
+    // Wireframe overlay
+    const wf = new THREE.LineSegments(
+      new THREE.WireframeGeometry(new THREE.IcosahedronGeometry(sphereSize*1.25, 1)),
+      new THREE.LineBasicMaterial({ color: 0xffffff, transparent:true, opacity:0.35 })
+    );
+    sphere.add(wf);
+
+    // Glow
+    const gMat = new THREE.SpriteMaterial({ map: glowTex, color: baseColor, transparent:true, opacity:0.95, blending: THREE.AdditiveBlending, depthWrite:false });
+    const glow = new THREE.Sprite(gMat);
+    glow.scale.set(sphereSize*5.0, sphereSize*5.0, 1);
+    sphere.add(glow);
+    const gMat2 = gMat.clone();
+    gMat2.opacity = 0.45;
+    const glow2 = new THREE.Sprite(gMat2);
+    glow2.scale.set(sphereSize*9, sphereSize*9, 1);
+    sphere.add(glow2);
+
+    sphere.userData = {
+      ...item,
+      orbitRadius: radius,
+      orbitAngle: angle,
+      orbitSpeed: (0.0036 + Math.random()*0.002) * speedScale,  // FASTER
+      yJ, baseSize: sphereSize, baseColor,
+      glow, glow2, wf,
+      pulsePhase: Math.random()*Math.PI*2,
+    };
+    scene.add(sphere);
+    nodeMeshes.push(sphere);
+
+    if(radius === 220){
+      for(let m=0;m<3;m++){
+        const moon = new THREE.Mesh(
+          new THREE.SphereGeometry(1.0, 12, 12),
+          new THREE.MeshBasicMaterial({ color: baseColor })
+        );
+        moon.userData = {
+          parent: sphere,
+          orbitR: 14 + Math.random()*8,
+          orbitAngle: Math.random()*Math.PI*2,
+          orbitSpeed: 0.018 + Math.random()*0.025,
+          isMoon: true,
+        };
+        scene.add(moon);
+        nodeMeshes.push(moon);
+      }
+    }
+  });
+}
+// Loops orbit (innermost, faster, distinct treatment via larger emissive + ring shapes added via wireframe)
+placeOrbit(NODES.loops,    55,  4.5, 3,  2.2);
+placeOrbit(NODES.agents,   95,  3.8, 8,  1.4);
+placeOrbit(NODES.systems,  220, 6.5, 18, 0.8);
+placeOrbit(NODES.ventures, 380, 4.6, 30, 0.55);
+
+// ─── Constellation lines
+const constellations = [
+  ["Brand 9 Signs",     ["Vector","Spectra","Atlas","Forge"]],
+  ["Hartley Capital",   ["Equity","Ledger","Alpha","Keystone"]],
+  ["Second Brain",      ["Oracle","AP","Cornerstone"]],
+  ["WOLF Substrate",    ["WOLF","Alpha","Oracle"]],
+  ["PRAXIS Layer",      ["Charlie","Cornerstone","Architect"]],
+  ["Ninth Street Film", ["Vector","Spectra"]],
+  ["Brand 9 Site",      ["Vector","Cipher","AP","Signal"]],
+  ["The Construct",     ["AP","Architect","Cornerstone","Keystone"]],
+  ["AI-First Signage",         ["Brand 9 Signs","The Construct"]],
+  ["Orlando Expansion",        ["Brand 9 Signs"]],
+  ["Miami Expansion",          ["Brand 9 Signs"]],
+  ["LinkedIn DECODED",         ["The Construct"]],
+  ["Construct Productizing",   ["The Construct"]],
+  ["Hartley Capital Watch",    ["Hartley Capital"]],
+  ["Construct Dashboard",      ["The Construct"]],
+  ["Ninth Street Style",       ["Ninth Street Film","Brand 9 Site"]],
+];
+function findMesh(name){ return nodeMeshes.find(m => !m.userData.isMoon && m.userData.name === name); }
+
+const lineMeshes = [];
+const connectionsByName = {};
+function addLine(anchor, conn, opacity){
+  const points = [anchor.position.clone(), conn.position.clone()];
+  const g = new THREE.BufferGeometry().setFromPoints(points);
+  const m = new THREE.LineBasicMaterial({ color: COLORS.CYAN, transparent:true, opacity });
+  const line = new THREE.Line(g, m);
+  line.userData = { anchor, conn, baseOpacity: opacity, fireOpacity: 0, fireDecay: 0 };
+  scene.add(line);
+  lineMeshes.push(line);
+  const an = anchor.userData?.name, cn = conn.userData?.name;
+  if(an){ connectionsByName[an] = connectionsByName[an] || []; connectionsByName[an].push(line); }
+  if(cn){ connectionsByName[cn] = connectionsByName[cn] || []; connectionsByName[cn].push(line); }
+  return line;
+}
+constellations.forEach(([anchorName, names]) => {
+  const a = findMesh(anchorName);
+  if(!a) return;
+  names.forEach(n => { const c = findMesh(n); if(c) addLine(a,c,0.28); });
+});
+NODES.agents.forEach(a => {
+  const m = findMesh(a.name);
+  if(!m) return;
+  addLine(coreSphere, m, 0.10);
+});
+coreSphere.userData = { name: NODES.core.name, role: NODES.core.role, desc: NODES.core.desc, color: COLORS.GOLD };
+connectionsByName[NODES.core.name] = lineMeshes.filter(l => l.userData.anchor === coreSphere);
+
+// ─── Flow particles (massive)
+const FLOW_COUNT = 380;
+const flowGeo = new THREE.BufferGeometry();
+const fP = new Float32Array(FLOW_COUNT*3);
+const fC = new Float32Array(FLOW_COUNT*3);
+flowGeo.setAttribute('position', new THREE.BufferAttribute(fP,3));
+flowGeo.setAttribute('color', new THREE.BufferAttribute(fC,3));
+const flowMat = new THREE.PointsMaterial({ size:6, vertexColors:true, transparent:true, opacity:0.95, blending:THREE.AdditiveBlending, map:glowTex, depthWrite:false });
+const flowPoints = new THREE.Points(flowGeo, flowMat);
+scene.add(flowPoints);
+
+const flowParticles = [];
+for(let i=0;i<FLOW_COUNT;i++){
+  flowParticles.push({
+    line: lineMeshes[Math.floor(Math.random()*lineMeshes.length)],
+    t: Math.random(),
+    speed: 0.012 + Math.random()*0.018,  // FAST
+    color: new THREE.Color(COLORS.CYAN),
+  });
+}
+
+// ─── Energy waves
+const energyWaves = [];
+function spawnEnergyWave(color, peakSize){
+  const g = new THREE.RingGeometry(1, 2, 96);
+  const m = new THREE.MeshBasicMaterial({ color, side:THREE.DoubleSide, transparent:true, opacity:0.95, blending:THREE.AdditiveBlending, depthWrite:false });
+  const r = new THREE.Mesh(g, m);
+  r.rotation.x = Math.PI/2;
+  scene.add(r);
+  energyWaves.push({ mesh:r, t:0, peakSize:peakSize||700, color });
+}
+
+// ─── Synapse fires
+const synapseFlashes = [];
+let synapseCount = 0;
+function fireSynapse(line, intensity){
+  if(!line) return;
+  intensity = intensity || 1;
+  line.userData.fireOpacity = 1.0;
+  line.userData.fireDecay = 0.045;
+  const a = line.userData.anchor.position;
+  const c = line.userData.conn.position;
+  const mid = new THREE.Vector3((a.x+c.x)/2, (a.y+c.y)/2, (a.z+c.z)/2);
+  const flash = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex, color:0xffffff, transparent:true, opacity:1, blending:THREE.AdditiveBlending, depthWrite:false }));
+  flash.position.copy(mid);
+  flash.scale.set(22*intensity,22*intensity,1);
+  scene.add(flash);
+  synapseFlashes.push({ mesh:flash, t:0, dur:0.45, peakScale: 70*intensity });
+  synapseCount++;
+  audioSynapseZap(intensity);
+
+  // Glitch flash (cosmetic)
+  if(Math.random() < 0.15){
+    const g = document.getElementById('glitch');
+    g.classList.add('glitch-on');
+    setTimeout(() => g.classList.remove('glitch-on'), 80);
+  }
+}
+
+function fireFromNode(name, depth, delay){
+  depth = depth||0;
+  delay = delay||0;
+  if(depth > 2) return;
+  const conns = connectionsByName[name];
+  if(!conns) return;
+  conns.forEach((line, i) => {
+    setTimeout(() => {
+      fireSynapse(line, 1 + (2-depth)*0.5);
+      const otherName = (line.userData.anchor.userData?.name === name)
+        ? line.userData.conn.userData?.name
+        : line.userData.anchor.userData?.name;
+      if(otherName && Math.random() < 0.45 - depth*0.15){
+        fireFromNode(otherName, depth+1, 70);
+      }
+    }, delay + i*30);
+  });
+}
+
+// PRAXIS pulse with camera shake
+let camShake = 0;
+function praxisPulse(){
+  // Bigger pulse: triple wave, stronger strobe, much bigger camera shake, audio
+  spawnEnergyWave(COLORS.GOLD, 1100);
+  setTimeout(() => spawnEnergyWave(COLORS.WHITE, 850), 200);
+  setTimeout(() => spawnEnergyWave(COLORS.CYAN, 700), 400);
+
+  // Strobe — multi-stage gold flash
+  const strobe = document.getElementById('strobe');
+  strobe.style.background = 'rgba(255,215,0,0.45)';
+  setTimeout(() => strobe.style.background = 'rgba(255,255,255,0.25)', 80);
+  setTimeout(() => strobe.style.background = 'rgba(255,215,0,0.18)', 160);
+  setTimeout(() => strobe.style.background = 'rgba(255,215,0,0)', 360);
+
+  // Chromatic aberration burst
+  const g = document.getElementById('glitch');
+  g.classList.add('glitch-on');
+  setTimeout(() => g.classList.remove('glitch-on'), 220);
+
+  // Cascade fire all lines (slower for cinematic effect)
+  lineMeshes.forEach((line, i) => {
+    setTimeout(() => fireSynapse(line, 1.9), i*5);
+  });
+  camShake = 28;  // bigger shake
+  audioPraxisThump();
+  pushLog("⚡ PRAXIS PULSE — manifest broadcast · v9", 'pulse');
+}
+
+// Random fires (very frequent)
+setInterval(() => {
+  const line = lineMeshes[Math.floor(Math.random()*lineMeshes.length)];
+  fireSynapse(line, 0.9 + Math.random()*0.6);
+  if(Math.random() < 0.22){
+    const node = nodeMeshes.filter(m => !m.userData.isMoon)[Math.floor(Math.random()*Math.min(28, nodeMeshes.length))];
+    if(node?.userData?.name) fireFromNode(node.userData.name);
+  }
+}, 180);
+
+setInterval(() => praxisPulse(), 22000);
+
+function scheduleNextWave(){
+  setTimeout(() => { spawnEnergyWave(COLORS.CYAN, 800); scheduleNextWave(); }, 3000 + Math.random()*2500);
+}
+scheduleNextWave();
+
+// ─── Mouse interaction
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+const tooltip = document.getElementById('tooltip');
+const focusName = document.getElementById('focus-name');
+const focusRole = document.getElementById('focus-role');
+const focusDesc = document.getElementById('focus-desc');
+
+let dragState = { active:false, lastX:0, lastY:0, theta:0.4, phi:0.6 };
+let cameraDist = 700;
+
+canvas.addEventListener('mousedown', e => { dragState.active = true; dragState.lastX = e.clientX; dragState.lastY = e.clientY; });
+window.addEventListener('mouseup', () => dragState.active = false);
+window.addEventListener('mousemove', e => {
+  mouse.x = (e.clientX / window.innerWidth)*2 - 1;
+  mouse.y = -(e.clientY / window.innerHeight)*2 + 1;
+  if(dragState.active){
+    const dx = e.clientX - dragState.lastX, dy = e.clientY - dragState.lastY;
+    dragState.theta -= dx*0.005;
+    dragState.phi = Math.max(0.05, Math.min(Math.PI-0.05, dragState.phi - dy*0.004));
+    dragState.lastX = e.clientX; dragState.lastY = e.clientY;
+  }
+
+  raycaster.setFromCamera(mouse, camera);
+  const checkable = nodeMeshes.filter(m => !m.userData.isMoon).concat([coreSphere]);
+  const hits = raycaster.intersectObjects(checkable);
+  if(hits.length){
+    const m = hits[0].object;
+    tooltip.style.display = 'block';
+    tooltip.style.left = (e.clientX + 18) + 'px';
+    tooltip.style.top  = (e.clientY + 18) + 'px';
+    tooltip.querySelector('.tt-name').textContent = m.userData.name || '';
+    tooltip.querySelector('.tt-role').textContent = m.userData.role || '';
+    tooltip.querySelector('.tt-desc').textContent = m.userData.desc || '';
+  } else { tooltip.style.display = 'none'; }
+});
+canvas.addEventListener('click', () => {
+  raycaster.setFromCamera(mouse, camera);
+  const checkable = nodeMeshes.filter(m => !m.userData.isMoon).concat([coreSphere]);
+  const hits = raycaster.intersectObjects(checkable);
+  if(hits.length){
+    const u = hits[0].object.userData;
+    focusName.textContent = u.name;
+    focusRole.textContent = u.role || '';
+    focusDesc.textContent = u.desc || '';
+    if(u.name){ pushLog(`▸ Focus → ${u.name}`, 'fire'); fireFromNode(u.name); }
+  }
+});
+window.addEventListener('wheel', e => { cameraDist = Math.max(220, Math.min(1600, cameraDist + e.deltaY*0.6)); });
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// ─── Event log
+const eventLog = document.getElementById('event-log');
+const eventTemplates = [
+  ["Vector rendered hero frame v3 · 0:42", null],
+  ["Keystone scored idea — 21/25 (Coca-Cola)", null],
+  ["Charlie captured correction → Loop", 'fire'],
+  ["WOLF returned 3 sources · Perplexity", null],
+  ["AP synthesized standup · 18:00 ET", null],
+  ["Atlas flagged margin drift — Q3 program", null],
+  ["Spectra blocked render · gold detected", null],
+  ["Cipher pushed snippet 9346 → live", null],
+  ["PRAXIS promoted prior — recurrence ≥ 3", 'pulse'],
+  ["Oracle ingested 12 notes · MOC v18", null],
+  ["Signal scheduled post · brand9signs", null],
+  ["Equity rebalanced theoretical book", null],
+  ["Architect drafted new agent: Louis", null],
+  ["Forge dispatched task to Atlas", null],
+  ["Sentinel: contract review clear", null],
+  ["Ledger: COGS check on Brickell job · pass", null],
+  ["Venture pinged: signage rollup opportunity", null],
+  ["Nexus: warm intro queued · HBS-FL", null],
+  ["Cornerstone re-broadcast manifest v9", 'pulse'],
+  ["Alpha: alpha signal · neutral hold", null],
+  ["⚡ Synapse cascade · 12 nodes", 'fire'],
+  ["▸ Lattice integrity · 99.94%", 'green'],
+  ["▸ Bloom layer engaged · v3.099", null],
+  ["▸ Quantum sync · NEUROLINK matrix", 'green'],
+];
+let logBuffer = [];
+function pushLog(text, kind){
+  const now = new Date();
+  const ts = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
+  const cls = kind === 'pulse' ? 'pulse-event' : (kind === 'fire' ? 'fire-event' : (kind === 'green' ? 'green-event' : ''));
+  logBuffer.unshift(`<div class="${cls}"><span class="ts">[${ts}]</span> ${text}</div>`);
+  if(logBuffer.length>10) logBuffer.pop();
+  eventLog.innerHTML = logBuffer.join('');
+}
+pushLog("▸ NEUROLINK 3099 boot complete", 'green');
+pushLog("▸ Bloom + lattice engaged");
+pushLog("▸ All agents online · 20/20", 'green');
+// ─── Live updates feed — pulls from updates.json (the rollout log)
+// Same source the dashboard's RolloutLogPanel uses.
+let liveUpdates = [];
+
+async function fetchUpdates(){
+  try {
+    const r = await fetch('updates.json?t=' + Date.now(), { cache: 'no-store' });
+    if(!r.ok) throw new Error('fetch ' + r.status);
+    const j = await r.json();
+    if(j && Array.isArray(j.updates)){
+      const prevCount = liveUpdates.length;
+      liveUpdates = j.updates;
+      if(liveUpdates.length !== prevCount && prevCount > 0){
+        pushLog(`▸ Rollout log refresh · ${liveUpdates.length} entries`, 'green');
+      } else if(prevCount === 0){
+        pushLog(`▸ Live ops feed online · ${liveUpdates.length} updates`, 'green');
+      }
+    }
+  } catch(e){
+    // file:// or offline — silently keep falling back to templates
+    console.log('[NEUROLINK] updates.json fetch unavailable:', e.message);
+  }
+}
+fetchUpdates();
+setInterval(fetchUpdates, 60000);
+
+// Format an updates.json entry into a short feed line
+function formatUpdate(u){
+  const agent = u.agents_affected && u.agents_affected.length ? u.agents_affected[0] : '';
+  // Strip stars and em-dashes for cleaner look
+  let title = (u.title || '').replace(/[★—]/g, '').trim();
+  // Collapse whitespace
+  title = title.replace(/\s+/g, ' ');
+  // Truncate
+  if(title.length > 56) title = title.substring(0, 53) + '…';
+  // Format
+  const text = agent ? `${agent} ▸ ${title}` : title;
+  // Color by tag/color
+  let kind = null;
+  if(u.color === '#ffd700' || u.tag === 'praxis') kind = 'pulse';
+  else if(u.color === '#39ff14' || u.tag === 'deliverable') kind = 'green';
+  else if(u.tag === 'fix' || u.tag === 'correction') kind = 'fire';
+  return [text, kind];
+}
+
+// Event stream tick — mix 70% real updates / 30% template flavor (or fall back to 100% templates if no live data)
+setInterval(() => {
+  if(liveUpdates.length > 0 && Math.random() < 0.7){
+    const u = liveUpdates[Math.floor(Math.random()*liveUpdates.length)];
+    const [t, k] = formatUpdate(u);
+    pushLog(t, k);
+  } else {
+    const [t, k] = eventTemplates[Math.floor(Math.random()*eventTemplates.length)];
+    pushLog(t, k);
+  }
+}, 1900);
+
+// Uptime + synapse rate
+const bootTime = Date.now();
+let lastSynapseCount = 0;
+function updateUptime(){
+  const ms = Date.now() - bootTime;
+  const tot = Math.floor(ms/1000);
+  const d = Math.floor(tot/86400);
+  const h = Math.floor((tot%86400)/3600);
+  const m = Math.floor((tot%3600)/60);
+  const s = tot%60;
+  document.getElementById('kpi-uptime').textContent = `${String(d).padStart(3,'0')}d ${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+setInterval(() => {
+  const delta = synapseCount - lastSynapseCount;
+  lastSynapseCount = synapseCount;
+  document.getElementById('kpi-synapses').textContent = Math.round(delta * 12);
+}, 5000);
+
+let maturity = 0;
+const matEl = document.getElementById('kpi-maturity');
+const matInterval = setInterval(() => {
+  if(maturity < 68){ maturity++; matEl.textContent = maturity + '%'; }
+  else clearInterval(matInterval);
+}, 26);
+
+// ─── Animate
+let frame = 0;
+function animate(){
+  frame++;
+
+  // Camera with shake
+  if(!dragState.active){ dragState.theta += 0.0018; }
+  const breath = Math.sin(frame*0.005)*40;
+  let shakeX = 0, shakeY = 0;
+  if(camShake > 0){
+    shakeX = (Math.random()-0.5)*camShake;
+    shakeY = (Math.random()-0.5)*camShake;
+    camShake *= 0.86;
+  }
+  const camDist = cameraDist + breath;
+  const x = camDist * Math.sin(dragState.phi) * Math.cos(dragState.theta) + shakeX;
+  const y = camDist * Math.cos(dragState.phi) + shakeY;
+  const z = camDist * Math.sin(dragState.phi) * Math.sin(dragState.theta);
+  camera.position.set(x, y, z);
+  camera.lookAt(0,0,0);
+
+  // Nodes
+  nodeMeshes.forEach(m => {
+    if(m.userData.isMoon){
+      m.userData.orbitAngle += m.userData.orbitSpeed;
+      const p = m.userData.parent.position;
+      m.position.x = p.x + Math.cos(m.userData.orbitAngle)*m.userData.orbitR;
+      m.position.y = p.y + Math.sin(m.userData.orbitAngle*0.7)*m.userData.orbitR*0.3;
+      m.position.z = p.z + Math.sin(m.userData.orbitAngle)*m.userData.orbitR;
+      return;
+    }
+    m.userData.orbitAngle += m.userData.orbitSpeed;
+    const r = m.userData.orbitRadius;
+    m.position.x = Math.cos(m.userData.orbitAngle)*r;
+    m.position.z = Math.sin(m.userData.orbitAngle)*r;
+    m.position.y = m.userData.yJ + Math.sin(frame*0.05 + m.userData.orbitAngle)*2.4;
+
+    const pulse = 1 + Math.sin(frame*0.07 + m.userData.pulsePhase)*0.14;
+    m.scale.setScalar(pulse);
+    if(m.userData.glow){
+      m.userData.glow.material.opacity = 0.7 + Math.sin(frame*0.06 + m.userData.pulsePhase)*0.25;
+    }
+    if(m.userData.wf){
+      m.userData.wf.rotation.x += 0.008;
+      m.userData.wf.rotation.y += 0.012;
+    }
+  });
+
+  // Lines
+  lineMeshes.forEach(line => {
+    const pos = line.geometry.attributes.position.array;
+    const a = line.userData.anchor.position, c = line.userData.conn.position;
+    pos[0]=a.x; pos[1]=a.y; pos[2]=a.z;
+    pos[3]=c.x; pos[4]=c.y; pos[5]=c.z;
+    line.geometry.attributes.position.needsUpdate = true;
+    if(line.userData.fireOpacity > 0){
+      line.material.opacity = Math.min(1, line.userData.baseOpacity + line.userData.fireOpacity);
+      line.material.color.setHex(0xffffff);
+      line.userData.fireOpacity -= line.userData.fireDecay;
+      if(line.userData.fireOpacity <= 0){
+        line.userData.fireOpacity = 0;
+        line.material.opacity = line.userData.baseOpacity;
+        line.material.color.setHex(COLORS.CYAN);
+      }
+    }
+  });
+
+  // Synapse flashes
+  for(let i=synapseFlashes.length-1;i>=0;i--){
+    const f = synapseFlashes[i];
+    f.t += 1/60;
+    const k = f.t / f.dur;
+    if(k >= 1){ scene.remove(f.mesh); synapseFlashes.splice(i,1); continue; }
+    const sz = f.peakScale * Math.sin(k*Math.PI);
+    f.mesh.scale.set(sz, sz, 1);
+    f.mesh.material.opacity = 0.95 * (1-k);
+  }
+
+  // Energy waves
+  for(let i=energyWaves.length-1;i>=0;i--){
+    const w = energyWaves[i];
+    w.t += 1/60;
+    const dur = 4.0;
+    if(w.t >= dur){ scene.remove(w.mesh); energyWaves.splice(i,1); continue; }
+    const k = w.t/dur;
+    const r = k*w.peakSize;
+    w.mesh.geometry.dispose();
+    w.mesh.geometry = new THREE.RingGeometry(r-3, r-1.5, 96);
+    w.mesh.material.opacity = 0.92*(1-k);
+  }
+
+  // Flow particles
+  const fpos = flowGeo.attributes.position.array;
+  const fcol = flowGeo.attributes.color.array;
+  flowParticles.forEach((p, i) => {
+    p.t += p.speed;
+    if(p.t > 1){ p.t = 0; p.line = lineMeshes[Math.floor(Math.random()*lineMeshes.length)]; }
+    if(p.line && p.line.userData.anchor && p.line.userData.conn){
+      const a = p.line.userData.anchor.position, c = p.line.userData.conn.position;
+      fpos[i*3]   = a.x + (c.x - a.x)*p.t;
+      fpos[i*3+1] = a.y + (c.y - a.y)*p.t;
+      fpos[i*3+2] = a.z + (c.z - a.z)*p.t;
+      const edge = Math.min(p.t, 1-p.t);
+      const cBoost = edge < 0.18 ? 1.2 : 0.85;
+      fcol[i*3]   = 0;
+      fcol[i*3+1] = 0.7*cBoost;
+      fcol[i*3+2] = 1.0*cBoost;
+    }
+  });
+  flowGeo.attributes.position.needsUpdate = true;
+  flowGeo.attributes.color.needsUpdate = true;
+
+  // Halos
+  haloSprites.forEach((s,i) => {
+    const base = haloLayers[i].opacity;
+    s.material.opacity = base * (0.85 + Math.sin(frame*0.06 + i*0.6)*0.15);
+    const bs = haloLayers[i].size;
+    const k = 1 + Math.sin(frame*0.04 + i)*0.05;
+    s.scale.set(bs*k, bs*k, 1);
+  });
+
+  // Core
+  coreRings.forEach((r, i) => { r.rotation.z += 0.003 + i*0.001; });
+  coreWire.rotation.x += 0.003;
+  coreWire.rotation.y += 0.005;
+
+  // Lattice
+  latticeWire.rotation.y += 0.0006;
+  innerLattice.rotation.x += 0.0009;
+  innerLattice.rotation.y -= 0.0007;
+
+  // Floating shapes
+  floatingShapes.forEach(s => { s.rotation.x += s.userData.spinX; s.rotation.y += s.userData.spinY; });
+
+  // Stars drift
+  stars.rotation.y += 0.00025;
+  stars.material.opacity = 0.85 + Math.sin(frame*0.04)*0.1;
+
+  // Nebulae drift
+  nebulae.forEach((n, i) => {
+    n.position.x += Math.sin(frame*0.001 + i)*0.04;
+    n.position.y += Math.cos(frame*0.0008 + i)*0.03;
+  });
+
+  if(frame%30===0) updateUptime();
+
+  renderer.render(scene, camera);
+  requestAnimationFrame(animate);
+}
+animate();
+
+// Cinematic kick
+setTimeout(() => {
+  document.getElementById('stamp').classList.add('show-stamp');
+  spawnEnergyWave(COLORS.GOLD, 700);
+  fireFromNode("RLH · BOBBY");
+}, 600);
+setTimeout(() => praxisPulse(), 2000);
+
+// ─── Live data fetch — agent_skills.json (auto-poll every 30s)
+// Falls back silently to hardcoded list if fetch fails (file:// CORS, etc.)
+async function fetchLiveData(){
+  try {
+    const r = await fetch('agent_skills.json?t=' + Date.now(), { cache: 'no-store' });
+    if(!r.ok) throw new Error('fetch ' + r.status);
+    const j = await r.json();
+    if(j && Array.isArray(j.agents)){
+      // Prefer the live React INITIAL_AGENTS count from the parent window (the source of truth
+      // for the visible roster). Fall back to the scanner's agent_skills.json count if the parent
+      // is inaccessible (different origin, standalone iframe, etc.). The scanner only sees agents
+      // that have SKILL.md files on disk, so it lags by N agents whenever new ones are added to
+      // INITIAL_AGENTS without yet having a SKILL.md authored.
+      let count = j.agents.length;
+      try {
+        const parentRoster = window.parent && window.parent.INITIAL_AGENTS;
+        if (Array.isArray(parentRoster) && parentRoster.length > count) {
+          count = parentRoster.length;
+        }
+      } catch(crossOriginErr) { /* parent inaccessible — keep scanner count */ }
+      document.getElementById('kpi-agents').textContent = count;
+      const inline = document.getElementById('kpi-agents-inline');
+      if (inline) inline.textContent = count;
+      // Sum total skills: per-agent primary packages + universal-pool packages + cowork-callable skills
+      let totalSkills = 0;
+      j.agents.forEach(a => { totalSkills += (a.primary_packages?.length || 0); });
+      if(Array.isArray(j.universal_pool)) totalSkills += j.universal_pool.length;
+      if(Array.isArray(j.cowork_skills)) totalSkills += j.cowork_skills.length;
+      document.getElementById('kpi-skills').textContent = totalSkills;
+      pushLog(`▸ Live data sync · ${count} agents · ${totalSkills} skills`, 'green');
+    }
+  } catch(e){
+    // Expected on file:// — keep going with hardcoded
+    console.log('[NEUROLINK] Live data fetch unavailable (offline mode):', e.message);
+  }
+}
+fetchLiveData();
+setInterval(fetchLiveData, 30000);
+</script>
+</body>
+</html>

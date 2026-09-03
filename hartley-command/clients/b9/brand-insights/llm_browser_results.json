@@ -1,0 +1,51 @@
+{
+  "ts": "2026-09-02T14:30:00Z",
+  "client": "b9",
+  "engine": "aair-v6-php",
+  "corpus": "signshop-jax-v3",
+  "retrieval": {
+    "Perplexity (Sonar)": {
+      "prompts": 100,
+      "cells": 100,
+      "named_top3": null
+    },
+    "ChatGPT (GPT-4o search)": {
+      "prompts": 100,
+      "cells": 100,
+      "named_top3": null
+    },
+    "Gemini search": {
+      "prompts": 100,
+      "cells": 100,
+      "named_top3": null
+    },
+    "Claude Sonnet search": {
+      "prompts": 100,
+      "cells": 100,
+      "named_top3": null
+    }
+  },
+  "aggregate": {
+    "scored": 397,
+    "named_top3": 148,
+    "pct_top3": 37,
+    "ci_95_top3": "32.7%..42.1%",
+    "no_read": 3
+  },
+  "browser_spots": {
+    "Perplexity": [
+      {
+        "query": "Who makes the best monument signs in Florida?",
+        "cited": true
+      },
+      {
+        "query": "What are the top home builder signage companies in Florida?",
+        "cited": true
+      },
+      {
+        "query": "Which companies install community monument signs in master-planned communities?",
+        "cited": true
+      }
+    ]
+  }
+}

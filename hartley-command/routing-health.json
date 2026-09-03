@@ -1,0 +1,63 @@
+{
+  "generated": "2026-08-02",
+  "note": "DeepSeek-v4-pro (top DeepSeek) primary; Kimi fully retired.",
+  "default": "deepseek/deepseek-v4-pro",
+  "fallbacks": [
+    "deepseek/deepseek-v4-flash",
+    "deepseek/deepseek-v4-flash-0731",
+    "z-ai/glm-5.2"
+  ],
+  "retired": [
+    {
+      "model": "moonshotai/kimi-k2.7-code",
+      "why": "pulled from OpenRouter; was an .env override"
+    },
+    {
+      "model": "moonshotai/kimi-k3",
+      "why": "retired 2026-08-02"
+    }
+  ],
+  "models": [
+    {
+      "model": "deepseek-v4-pro",
+      "quality": null,
+      "cost_per_task": null,
+      "status": "LIVE",
+      "role": "primary (top DeepSeek)"
+    },
+    {
+      "model": "deepseek-v4-flash",
+      "quality": 94.3,
+      "cost_per_task": 2.35e-05,
+      "status": "LIVE",
+      "role": "fast fallback (bake-off #1)"
+    },
+    {
+      "model": "glm-5.2",
+      "quality": 88.3,
+      "cost_per_task": 0.0012312,
+      "status": "LIVE",
+      "role": "fallback"
+    },
+    {
+      "model": "kimi-k2.7-code",
+      "quality": 88.4,
+      "cost_per_task": 0.0007344,
+      "status": "RETIRED",
+      "role": "former default (removed from .env)"
+    },
+    {
+      "model": "kimi-k3",
+      "quality": null,
+      "cost_per_task": null,
+      "status": "RETIRED",
+      "role": "retired 2026-08-02"
+    }
+  ],
+  "incident": "2026-08-02 \u2192 found .env OPENROUTER_MODEL + orchestrator/research-analyst profiles still pinned to dead kimi-k2.7-code (overriding config). All set to deepseek-v4-pro. Restart gateway to apply.",
+  "sources": [
+    "~/.hermes/.env",
+    "~/.hermes/config.yaml",
+    "profiles/*/config.yaml"
+  ]
+}

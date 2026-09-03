@@ -1,0 +1,126 @@
+{
+  "generated": "2026-09-03T11:42:46Z",
+  "headline": "Owned-Presence service modules — productized off Mirror Base",
+  "bundle": "Local Visibility (Reviews + GBP + Social) · $799–1,499/mo · envelops ToplinePro",
+  "modules": [
+    {
+      "id": "reviews",
+      "label": "Reviews & Reputation",
+      "status": "LIVE",
+      "metric_label": "Rating · replies to send",
+      "count": 40,
+      "rating": 5.0,
+      "velocity_30d": null,
+      "pending_drafts": 33,
+      "source": "business.google.com/reviews (logged-in Chrome, all pages) → reviews_writer",
+      "gap": "auto-post pending GBP API access (Google case 9-2128000040668, ~Jul 18–22); then add Yelp/FB/BBB",
+      "price": "$150–300/mo"
+    },
+    {
+      "id": "gbp",
+      "label": "Google Business Profile",
+      "status": "BUILD",
+      "metric_label": "Weekly post · auto-publish",
+      "posts_month": null,
+      "qa_answered": null,
+      "geo_naming_rate": null,
+      "source": "gbp_writer (weekly post draft) · gbp_post API auto-publish (pending access) · Mirror GEO",
+      "gap": "auto-publish pending GBP API access (Google case 9-2128000040668, ~Jul 18–22); add Q&A/photo",
+      "price": "$200–400/mo",
+      "pending_drafts": 1
+    },
+    {
+      "id": "social",
+      "label": "Done-for-You Social",
+      "status": "LIVE",
+      "metric_label": "Scheduled · Published (wk)",
+      "scheduled_week": null,
+      "published_week": null,
+      "platforms": [
+        "X",
+        "IG",
+        "FB",
+        "LinkedIn",
+        "Threads"
+      ],
+      "source": "social-cross-post · content-publish-scheduler · Vector · reddit-daily-pack",
+      "gap": "monthly content-calendar generator (generalize Reddit daily-pack)",
+      "price": "$400–800/mo",
+      "pending_drafts": 3
+    },
+    {
+      "id": "email",
+      "label": "Email / SMS Lifecycle",
+      "status": "BUILD",
+      "metric_label": "Campaign drafts · Send from inbox",
+      "sequences": null,
+      "sends_week": null,
+      "source": "email_writer → ap@brand9signs.com (Apple Mail / Gmail-Chrome)",
+      "gap": "list source + unsubscribe tracking; Bobby sends on approval (no paid connector)",
+      "price": "$300–600/mo",
+      "pending_drafts": 1
+    },
+    {
+      "id": "leads",
+      "label": "Local Lead-Gen + Speed-to-Lead",
+      "status": "BUILD",
+      "metric_label": "New leads · Median response",
+      "leads_week": null,
+      "median_response_min": null,
+      "source": "leads-inbox-scan → ap@brand9signs.com (Gmail-Chrome) · speed-to-lead drafts",
+      "gap": "confirm B9 lead inbox; drafts ready (PREP) — you send",
+      "price": "$500–1,500/mo + performance",
+      "pending_drafts": 0
+    },
+    {
+      "id": "content",
+      "label": "SEO/AEO Content Engine",
+      "status": "LIVE",
+      "metric_label": "Articles/mo · AEO-structured",
+      "articles_month": null,
+      "source": "content-engine → Mirror gaps → AEO draft + Vector image → Yoast publish",
+      "gap": "generalize per-client cadence; track ranking/citation lift",
+      "price": "$600–1,500/mo",
+      "tier": 2,
+      "pending_drafts": 6
+    },
+    {
+      "id": "landing",
+      "label": "Lead-Gen Landing Pages",
+      "status": "BUILD",
+      "metric_label": "Pages · form → Leads",
+      "pages_live": null,
+      "source": "landing-pages/generate → HTML page (Vector) → deploy via website MCP; form emails ap@brand9signs.com → Leads duck",
+      "gap": "deploy on approval + per-niche template library",
+      "price": "$500–1,200/mo + per-campaign",
+      "tier": 2,
+      "pending_drafts": 1
+    },
+    {
+      "id": "assistant",
+      "label": "AI Website Assistant",
+      "status": "BUILD",
+      "metric_label": "Site chatbot · KB + lead-capture",
+      "intents": 8,
+      "source": "website-assistant/build_widget → embeddable widget (KB-guardrailed) → deploy via website MCP; lead form → ap@brand9signs.com → Leads duck",
+      "gap": "embed on approval; optional upgrade to LLM-backed",
+      "price": "$300–800/mo",
+      "tier": 2,
+      "pending_drafts": 1
+    }
+  ],
+  "data_source": "hermes state snapshots + per-module writers (populate as fetch rails wire)",
+  "approval_queue": {
+    "pending_total": 46,
+    "by_module": {
+      "reviews": 33,
+      "gbp": 1,
+      "social": 3,
+      "email": 1,
+      "leads": 0,
+      "content": 6,
+      "landing": 1,
+      "assistant": 1
+    }
+  }
+}

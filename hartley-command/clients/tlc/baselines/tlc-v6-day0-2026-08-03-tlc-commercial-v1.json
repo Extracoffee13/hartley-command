@@ -1,0 +1,60 @@
+{
+  "schema_version": "v6",
+  "instrument": "aair-v6",
+  "frozen_at": "2026-08-03T09:22:33Z",
+  "source": "principal-run chunked scan",
+  "chunks": "5 chunks, 0 errors",
+  "headline": {
+    "aair_retrieval_top3": 9,
+    "fraction": "11/116",
+    "ci_95": "5.4%..16.2%"
+  },
+  "tiers": {
+    "retrieval": {
+      "attempted": 116,
+      "scored": 116,
+      "no_read": 0,
+      "named_top3": 11,
+      "named_anywhere": 11,
+      "pct_top3": 9,
+      "ci_95_top3": "5.4%..16.2%",
+      "ci_lo": 5.4,
+      "ci_hi": 16.2,
+      "fraction_top3": "11/116"
+    },
+    "parametric": {
+      "attempted": 174,
+      "scored": 169,
+      "no_read": 5,
+      "named_top3": 0,
+      "named_anywhere": 0,
+      "pct_top3": 0,
+      "ci_95_top3": "0.0%..2.2%",
+      "ci_lo": 0.0,
+      "ci_hi": 2.2,
+      "fraction_top3": "0/169"
+    },
+    "ondevice": {
+      "attempted": 116,
+      "scored": 116,
+      "no_read": 0,
+      "named_top3": 0,
+      "named_anywhere": 0,
+      "pct_top3": 0,
+      "ci_95_top3": "0.0%..3.2%",
+      "ci_lo": 0.0,
+      "ci_hi": 3.2,
+      "fraction_top3": "0/116"
+    }
+  },
+  "corpus_meta": {
+    "corpus_version": "tlc-commercial-nursery-v1",
+    "seed": "20260803",
+    "n_prompts": 29,
+    "cells_per_scan_retrieval_tier": 145,
+    "built": "2026-08-03T09:17:49Z",
+    "provenance": "Extracted from 06_TLC_Corpus_and_Grid.md (Bobby approved 2026-08-03). 29 buyer questions, tagged trade \u00d7 metro."
+  },
+  "no_read_total": 5,
+  "total_cells_gross": 406
+}

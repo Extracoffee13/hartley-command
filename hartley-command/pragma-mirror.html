@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRAGMA Mirror — AI Visibility Engine</title>
+<meta name="robots" content="noindex">
+<style>
+:root {
+  --void:#0A0A0A; --void-3:#141414;
+  --signal:#1FE07E; --cyan:#3FA9F5;
+  --output:#FFF; --output-65:rgba(255,255,255,0.65);
+  --output-45:rgba(255,255,255,0.45); --output-30:rgba(255,255,255,0.30);
+  --output-12:rgba(255,255,255,0.12);
+  --red:#FF4D4F; --yellow:#FFC53D; --orange:#FF9F40;
+  --f-sans:'Inter',system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',monospace;
+  --f-serif:Georgia,serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--void);color:var(--output);font-family:var(--f-sans);font-size:14px;line-height:1.55;padding:28px 24px;max-width:1200px;margin:0 auto;-webkit-font-smoothing:antialiased}
+a{color:var(--signal);text-decoration:none}
+a:hover{text-decoration:underline}
+code{font-family:var(--f-mono);font-size:12px;color:var(--cyan);background:rgba(63,169,245,0.08);padding:1px 6px;border-radius:3px}
+
+.hdr{margin-bottom:34px;border-bottom:1px solid var(--output-12);padding-bottom:18px}
+.hdr h1{font-family:var(--f-serif);font-size:34px;font-weight:900;color:var(--signal);letter-spacing:-0.5px}
+.hdr .sub{color:var(--output-65);font-size:13px;margin-top:5px;font-family:var(--f-mono)}
+.hdr .meta{display:flex;gap:18px;margin-top:14px;font-family:var(--f-mono);font-size:11px;color:var(--output-45)}
+.hdr .meta span{color:var(--signal)}
+
+h2{font-size:18px;font-weight:800;color:var(--cyan);margin:34px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--output-12);letter-spacing:-0.2px}
+h2 .badge{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;padding:3px 8px;margin-left:10px;border-radius:3px;background:rgba(31,224,126,0.12);color:var(--signal);font-weight:500;text-transform:uppercase}
+h3{font-size:13px;font-weight:700;color:var(--output);margin:18px 0 6px;font-family:var(--f-mono);text-transform:uppercase;letter-spacing:1px}
+
+.section{margin:18px 0}
+.row{display:grid;grid-template-columns:200px 1fr;gap:18px;padding:8px 0;border-bottom:1px dashed var(--output-12);align-items:start}
+.row .k{color:var(--output-45);font-family:var(--f-mono);font-size:11px;letter-spacing:1px;padding-top:2px}
+.row .v{color:var(--output-65);font-size:13px}
+.row .v.signal{color:var(--signal)}
+
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:14px 0}
+@media (max-width:780px){.grid-3{grid-template-columns:1fr}}
+.card{border:1px solid var(--output-12);background:var(--void-3);padding:16px;border-radius:6px}
+.card.signal{border-color:var(--signal)}
+.card h4{font-size:14px;font-weight:700;color:var(--signal);margin-bottom:6px}
+.card .aivi-big{font-family:var(--f-serif);font-size:42px;font-weight:900;line-height:1;color:var(--signal);margin:6px 0}
+.card .aivi-big.red{color:var(--red)}
+.card .aivi-big.yellow{color:var(--yellow)}
+.card .meta{font-family:var(--f-mono);font-size:10px;color:var(--output-45);margin-top:8px}
+.card .link{display:inline-block;margin-top:8px;font-size:11px;color:var(--cyan)}
+
+.flow{padding:16px;background:var(--void-3);border-left:3px solid var(--signal);font-family:var(--f-mono);font-size:11px;color:var(--output-65);line-height:1.9;border-radius:4px}
+.flow .arrow{color:var(--signal);margin:0 6px}
+.flow strong{color:var(--cyan);font-weight:500}
+
+.surface-grid{display:grid;grid-template-columns:140px 1fr 90px 100px 80px;gap:14px;font-size:12px;padding:8px 0;border-bottom:1px dashed var(--output-12);align-items:center}
+.surface-grid.head{color:var(--output-45);font-family:var(--f-mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--output-12)}
+.surface-grid .name{color:var(--signal);font-family:var(--f-mono)}
+.status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.status-dot.live{background:var(--signal)}
+.status-dot.missing{background:var(--red)}
+.status-dot.pending{background:var(--yellow)}
+
+.warn-box{padding:14px 16px;background:rgba(255,77,79,0.08);border-left:3px solid var(--red);font-size:13px;color:var(--output-65);margin:14px 0;border-radius:4px}
+.warn-box strong{color:var(--red)}
+.win-box{padding:14px 16px;background:rgba(31,224,126,0.08);border-left:3px solid var(--signal);font-size:13px;color:var(--output);margin:14px 0;border-radius:4px}
+.win-box strong{color:var(--signal)}
+
+ul.bare{list-style:none}
+ul.bare li{padding:5px 0;color:var(--output-65)}
+ul.bare li::before{content:"+ ";color:var(--signal);font-family:var(--f-mono);font-weight:700;margin-right:4px}
+
+footer{margin-top:50px;padding-top:18px;border-top:1px solid var(--output-12);text-align:center;font-family:var(--f-mono);font-size:10px;color:var(--output-30);letter-spacing:1.5px}
+footer a{color:var(--output-45);margin:0 8px}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <h1>PRAGMA Mirror &mdash; AI Visibility Engine</h1>
+  <div class="sub">Measures AI visibility across 5 surfaces. Diagnoses citation gaps. Autonomously generates and publishes AEO-optimized content to close them. Not a tracker &mdash; an engine. Google tells you what AI says. PRAGMA changes it.</div>
+  <div class="meta">
+    <span>Build: <span id="build-date">2026-06-04</span></span>
+    <span>Status: <span id="status">checking&hellip;</span></span>
+    <span>Probe: daily 05:30 ET &nbsp;|&nbsp; AEO Operator: daily 06:00 ET</span>
+    <span>Replaces: Yoast AI+ Brand Insights + Google AI monitoring tools</span>
+  </div>
+</div>
+
+<h2>Live AIVI numbers <span class="badge">B9 current: 38/100 · RED</span></h2>
+<div class="grid-3">
+  <div class="card" id="b9-card">
+    <h4>Brand 9 Signs</h4>
+    <div class="aivi-big" id="b9-aivi">&mdash;</div>
+    <div class="meta" id="b9-meta">loading&hellip;</div>
+    <a class="link" href="/clients/b9/brand-insights.html">Open B9 tile &rarr;</a>
+  </div>
+  <div class="card" id="pragma-card">
+    <h4>PRAGMA</h4>
+    <div class="aivi-big" id="pragma-aivi">&mdash;</div>
+    <div class="meta" id="pragma-meta">loading&hellip;</div>
+    <a class="link" href="/clients/pragma/brand-insights.html">Open PRAGMA tile &rarr;</a>
+  </div>
+  <div class="card" id="hc-card">
+    <h4>Hartley Capital</h4>
+    <div class="aivi-big" id="hc-aivi">&mdash;</div>
+    <div class="meta" id="hc-meta">loading&hellip;</div>
+    <a class="link" href="/clients/hc/brand-insights.html">Open HC tile &rarr;</a>
+  </div>
+</div>
+
+<h2>AEO Action Engine <span class="badge">live · first run 2026-06-11</span></h2>
+
+<div class="win-box">
+  <strong>First operator run complete:</strong> 6 AEO pages generated and queued (2026-06-11 19:29 UTC) &mdash; <code>best-sign-company-florida</code>, <code>lennar-community-signs-florida</code>, <code>construction-signs-florida</code>, <code>site-sign-company-florida</code>, <code>homebuilder-signage-florida</code>, <code>jacksonville-sign-company</code>.
+  WP publish activates once credentials are added to <code>~/.hermes/.env</code> &mdash; run <code>bash ~/Documents/Claude/Projects/Atlas/hermes-sandbox/wild-ducks-clients/b9-aeo-operator/setup-env.sh</code> in Terminal.
+</div>
+
+<div class="flow">
+  <strong>Full autonomous loop (once credentials live):</strong>
+  <br/>
+  05:30 ET <strong>citation-probe</strong> queries 5 AI surfaces &mdash; 6 buyer-intent queries each
+  <span class="arrow">&rarr;</span> AIVI composite scored and written to <code>latest.json</code>
+  <br/>
+  06:00 ET <strong>b9-aeo-operator</strong> reads AIVI gaps (surfaces below 70)
+  <span class="arrow">&rarr;</span> generates AEO page per gap (OpenRouter claude-sonnet-4-5)
+  <span class="arrow">&rarr;</span> publishes direct to brand9signs.com via WP REST API (status: publish, no approval gate)
+  <span class="arrow">&rarr;</span> submits to Google Search Console for fast indexing
+  <span class="arrow">&rarr;</span> logs to <code>actions_taken</code> in <code>latest.json</code>
+  <br/>
+  Next 05:30 cycle re-probes &mdash; AIVI trend shows improvement over days/weeks
+</div>
+
+<div class="grid-3" style="margin-top: 16px;">
+  <div class="card">
+    <h4>Monitor</h4>
+    <div class="meta">fresh/stale status, last mirrored timestamp, and whether the loop is alive</div>
+  </div>
+  <div class="card">
+    <h4>Action mode</h4>
+    <div class="meta">observe, recommend, or auto-remediate depending on client policy</div>
+  </div>
+  <div class="card">
+    <h4>Verification</h4>
+    <div class="meta">last action taken and whether verification came back clean</div>
+  </div>
+</div>
+<div class="warn-box">
+  <strong>Mode policy:</strong> Observe-only shows the scan. Recommend surfaces the fix. Auto-remediate can publish pre-approved changes and then re-verify before the next cycle.
+</div>
+
+<div class="warn-box" id="credentials-status">
+  <strong>Credentials needed:</strong> Add <code>OPENROUTER_API_KEY</code>, <code>B9_WP_USER</code>, <code>B9_WP_APP_PASSWORD</code> to <code>~/.hermes/.env</code> to unlock AI content generation and WP publishing.
+  Run: <code>bash ~/Documents/Claude/Projects/Atlas/hermes-sandbox/wild-ducks-clients/b9-aeo-operator/setup-env.sh</code>
+</div>
+
+<h2>Public-facing surfaces <span class="badge">where bobby clicks</span></h2>
+<div class="row"><div class="k">PRAGMA dogfood page</div><div class="v"><a href="https://prag-ma.ai/aivi/" target="_blank">https://prag-ma.ai/aivi/</a> &mdash; full AIVI tile + 3-brand context, formula visible, live JSON behind it</div></div>
+<div class="row"><div class="k">PRAGMA homepage nav</div><div class="v">&ldquo;our AIVI&rdquo; link added to main nav (deploys with the next prag-ma.ai push)</div></div>
+<div class="row"><div class="k">Build-vs-buy article</div><div class="v"><a href="https://prag-ma.ai/thinking/we-built-our-own-ai-brand-monitoring/" target="_blank">https://prag-ma.ai/thinking/we-built-our-own-ai-brand-monitoring/</a></div></div>
+<div class="row"><div class="k">Pricing page bullets</div><div class="v"><a href="https://prag-ma.ai/pricing/" target="_blank">https://prag-ma.ai/pricing/</a> &mdash; PRAGMA Mirror in Express &amp; Starter tiers</div></div>
+
+<h2>Ops dashboards <span class="badge">internal</span></h2>
+<div class="row"><div class="k">B9 client tile</div><div class="v"><a href="https://extracoffee13.github.io/hartley-command/clients/b9/brand-insights.html" target="_blank">extracoffee13.github.io/hartley-command/clients/b9/brand-insights.html</a></div></div>
+<div class="row"><div class="k">PRAGMA client tile</div><div class="v"><a href="https://extracoffee13.github.io/hartley-command/clients/pragma/brand-insights.html" target="_blank">extracoffee13.github.io/hartley-command/clients/pragma/brand-insights.html</a></div></div>
+<div class="row"><div class="k">HC client tile</div><div class="v"><a href="https://extracoffee13.github.io/hartley-command/clients/hc/brand-insights.html" target="_blank">extracoffee13.github.io/hartley-command/clients/hc/brand-insights.html</a></div></div>
+<div class="row"><div class="k">V4 dashboard tile</div><div class="v"><a href="/the-construct-v4.html" target="_blank">/the-construct-v4.html</a> &mdash; PragmaMirrorPanel between Harvard Corpus and Wild Ducks bands</div></div>
+<div class="row"><div class="k">This status page</div><div class="v"><a href="/pragma-mirror.html">/pragma-mirror.html</a> &larr; you are here</div></div>
+
+<h2>What the system does <span class="badge">full AEO loop</span></h2>
+<div class="flow">
+  <strong>MEASURE →</strong>
+  05:30 ET <strong>launchd</strong> fires <strong>com.hermes.b9-ai-citation-probe</strong>, <strong>pragma</strong>, <strong>hc</strong> (offset 2 min each)
+  <span class="arrow">&rarr;</span> each probe asks 5 AI surfaces 6-7 buyer-intent queries
+  <span class="arrow">&rarr;</span> per response: sentiment classified, citations extracted, ranking computed, competitor swap-and-rerun
+  <span class="arrow">&rarr;</span> AIVI composite written to <code>/Atlas/pragma/clients/&lt;slug&gt;/brand-insights/latest.json</code>
+  <span class="arrow">&rarr;</span> 05:40 <strong>brand-insights-mirror</strong> copies to <code>/dashboards-deploy/</code>
+  <span class="arrow">&rarr;</span> <strong>dashboard-deploy-watcher</strong> pushes to GitHub Pages
+  <span class="arrow">&rarr;</span> Telegram digest if any AIVI moved &gt;10% vs 7-day average
+  <br/><br/>
+  <strong>ACT →</strong>
+  06:00 ET <strong>com.hermes.b9-aeo-operator</strong> fires (30 min after probe)
+  <span class="arrow">&rarr;</span> reads PRAGMA <code>latest.json</code> &mdash; identifies queries where AIVI &lt; 70 (citation gap)
+  <span class="arrow">&rarr;</span> generates AEO page per gap via OpenRouter (anthropic/claude-sonnet-4-5)
+  <span class="arrow">&rarr;</span> writes FAQPage JSON-LD schema + direct-answer body optimized for LLM citations
+  <span class="arrow">&rarr;</span> publishes directly to brand9signs.com via WP REST API (no approval gate)
+  <span class="arrow">&rarr;</span> submits URL to Google Search Console Indexing API
+  <span class="arrow">&rarr;</span> logs <code>actions_taken</code> to <code>latest.json</code> &mdash; next probe measures improvement
+</div>
+
+<h2>AI surface coverage <span class="badge">5 LLM surfaces · AEO targets</span></h2>
+
+<h3>Tier 1 — Direct LLM probe (Playwright · authenticated sessions)</h3>
+<div class="surface-grid head">
+  <div>Surface</div><div>Why it matters</div><div>Probe method</div><div>Status</div><div>AEO targets</div>
+</div>
+<div class="surface-grid"><div class="name">Claude.ai</div><div>Anthropic &mdash; fastest-growing enterprise LLM</div><div>Playwright · authenticated</div><div><span class="status-dot pending"></span>bootstrap login needed</div><div><strong style="color:var(--signal)">yes</strong></div></div>
+<div class="surface-grid"><div class="name">ChatGPT</div><div>OpenAI &mdash; largest consumer LLM base</div><div>Playwright · authenticated</div><div><span class="status-dot pending"></span>bootstrap login needed</div><div><strong style="color:var(--signal)">yes</strong></div></div>
+<div class="surface-grid"><div class="name">Gemini</div><div>Google &mdash; AI Mode + AI Overviews</div><div>Playwright · authenticated</div><div><span class="status-dot pending"></span>bootstrap login needed</div><div><strong style="color:var(--signal)">yes</strong></div></div>
+<div class="surface-grid"><div class="name">Perplexity</div><div>AI search &mdash; heavy citation-first format</div><div>Playwright · authenticated</div><div><span class="status-dot pending"></span>bootstrap login needed</div><div><strong style="color:var(--signal)">yes</strong></div></div>
+<div class="surface-grid"><div class="name">Google AIO</div><div>Google AI Overview &mdash; shown to 1B+ users</div><div>Playwright · search SERP</div><div><span class="status-dot pending"></span>bootstrap login needed</div><div><strong style="color:var(--signal)">yes</strong></div></div>
+
+<h3>Tier 2 — Search-engine AI scraper (no keys · always-on baseline)</h3>
+<div class="surface-grid head">
+  <div>Surface</div><div>Purpose</div><div>API key</div><div>Status</div><div>Yoast also?</div>
+</div>
+<div class="surface-grid"><div class="name">DuckDuckGo</div><div>AI Answer, privacy-first search</div><div><em style="color:var(--output-45)">none needed</em></div><div><span class="status-dot live"></span>live</div><div><strong style="color:var(--signal)">no &mdash; bonus</strong></div></div>
+<div class="surface-grid"><div class="name">You.com</div><div>AI-first search, YouChat</div><div><em style="color:var(--output-45)">none needed</em></div><div><span class="status-dot live"></span>live</div><div><strong style="color:var(--signal)">no &mdash; bonus</strong></div></div>
+<div class="surface-grid"><div class="name">Bing AI</div><div>Copilot, Bing Chat, Edge</div><div><em style="color:var(--output-45)">none needed</em></div><div><span class="status-dot live"></span>live</div><div>yes</div></div>
+<div class="surface-grid"><div class="name">Mojeek</div><div>Independent AI search</div><div><em style="color:var(--output-45)">none needed</em></div><div><span class="status-dot live"></span>live</div><div><strong style="color:var(--signal)">no &mdash; bonus</strong></div></div>
+<div class="surface-grid"><div class="name">Phind</div><div>AI search for developers &amp; pros</div><div><em style="color:var(--output-45)">none needed</em></div><div><span class="status-dot live"></span>live</div><div><strong style="color:var(--signal)">no &mdash; bonus</strong></div></div>
+
+<div class="win-box">
+  <strong>Why this beats Google&rsquo;s AI tools:</strong> Google Search Console tells you your organic ranking. Google&rsquo;s AI Overview tracking tells you <em>if</em> you&rsquo;re cited in AI answers. PRAGMA Mirror tells you where you&rsquo;re missing across <em>all five major AI surfaces</em> &mdash; and then the AEO operator writes and publishes the content to fix it. Measure, diagnose, act &mdash; fully autonomous.
+</div>
+
+<h2>Files shipped <span class="badge">inventory</span></h2>
+
+<h3>Master modules (one copy, shared by all clients)</h3>
+<ul class="bare">
+  <li><code>/Atlas/hermes-sandbox/wild-ducks/ai-citation-probe/run.py</code> &mdash; orchestrator, 5-surface probe loop + finishing layer</li>
+  <li><code>/Atlas/hermes-sandbox/wild-ducks/ai-citation-probe/sentiment.py</code> &mdash; Claude-API sentiment per mention</li>
+  <li><code>/Atlas/hermes-sandbox/wild-ducks/ai-citation-probe/citation_extractor.py</code> &mdash; URL regex + client/competitor filter</li>
+  <li><code>/Atlas/hermes-sandbox/wild-ducks/ai-citation-probe/competitor_probe.py</code> &mdash; substituted-name re-probe</li>
+  <li><code>/Atlas/hermes-sandbox/wild-ducks/ai-citation-probe/aivi_score.py</code> &mdash; transparent composite (formula published)</li>
+  <li><code>/Atlas/hermes-sandbox/calls/brand-insights-mirror/run.py</code> &mdash; mirrors per-client JSON to dashboards-deploy</li>
+</ul>
+
+<h3>Per-client tailored ducks</h3>
+<ul class="bare">
+  <li><code>/Atlas/hermes-sandbox/wild-ducks-clients/b9-ai-citation-probe/</code> &mdash; B9 brand, 4 sign-shop queries</li>
+  <li><code>/Atlas/hermes-sandbox/wild-ducks-clients/pragma-ai-citation-probe/</code> &mdash; PRAGMA brand, 7 agentic-AI queries, competitors: Cyndra, Ciridae, Signazon, Operator AI, Tab</li>
+  <li><code>/Atlas/hermes-sandbox/wild-ducks-clients/hc-ai-citation-probe/</code> &mdash; HC brand, 6 holding-co queries, competitors: Constellation, Berkshire, 8VC</li>
+</ul>
+
+<h3>Per-client configs</h3>
+<ul class="bare">
+  <li><code>/Atlas/clients/PRAGMA_Brand9/wild-duck-config.yaml</code></li>
+  <li><code>/Atlas/clients/PRAGMA_Pragma/wild-duck-config.yaml</code></li>
+  <li><code>/Atlas/clients/PRAGMA_HC/wild-duck-config.yaml</code></li>
+</ul>
+
+<h3>Output JSON (the actual data)</h3>
+<ul class="bare">
+  <li><code>/Atlas/pragma/clients/b9/brand-insights/latest.json</code> + <code>history/YYYY-MM-DD.json</code></li>
+  <li><code>/Atlas/pragma/clients/pragma/brand-insights/latest.json</code> + <code>history/YYYY-MM-DD.json</code></li>
+  <li><code>/Atlas/pragma/clients/hc/brand-insights/latest.json</code> + <code>history/YYYY-MM-DD.json</code></li>
+</ul>
+
+<h3>Web surfaces (deployed)</h3>
+<ul class="bare">
+  <li>prag-ma.ai/aivi/ &mdash; dogfood AIVI page (PRAGMA)</li>
+  <li>prag-ma.ai/thinking/we-built-our-own-ai-brand-monitoring/ &mdash; build-vs-buy article</li>
+  <li>prag-ma.ai/pricing/ &mdash; PRAGMA Mirror bullet under Express + Starter tiers</li>
+  <li>/clients/b9/brand-insights.html (this repo) &mdash; B9 ops tile</li>
+  <li>/clients/hc/brand-insights.html (this repo) &mdash; HC ops tile</li>
+  <li>V4 dashboard PragmaMirrorPanel (this repo)</li>
+</ul>
+
+<h3>Playbook + memory</h3>
+<ul class="bare">
+  <li><code>/Atlas/pragma/playbook/pragma-brand-insights-day1-v14.md</code> &mdash; PRAGMA Day-1 V14 install playbook</li>
+  <li>Memory: <code>project_pragma_mirror_2026_06_04.md</code></li>
+  <li>Memory: <code>reference_dashboards_deploy_folder_is_hartley_command_repo.md</code></li>
+  <li>Memory: <code>feedback_dont_defer_deploy_when_sandbox_can_ssh.md</code></li>
+</ul>
+
+<h2>How to verify it&rsquo;s working <span class="badge">tomorrow morning</span></h2>
+<ul class="bare">
+  <li>Open <a href="https://prag-ma.ai/aivi/" target="_blank">prag-ma.ai/aivi/</a> &mdash; the AIVI number should be non-zero once API keys are in place</li>
+  <li>Check Telegram &mdash; daily digest fires after the 05:30 ET cycle</li>
+  <li>Look at <code>/Atlas/pragma/clients/&lt;slug&gt;/brand-insights/history/2026-06-05.json</code> tomorrow</li>
+  <li>Run <code>launchctl list | grep ai-citation-probe</code> &mdash; should show 3 jobs</li>
+  <li>Tail <code>/Atlas/hermes-sandbox/logs/ai-citation-probe.log</code> for fresh entries</li>
+</ul>
+
+<h2>Open punch list</h2>
+<ul class="bare">
+  <li><strong>Wire AEO credentials:</strong> run <code>bash ~/Documents/Claude/Projects/Atlas/hermes-sandbox/wild-ducks-clients/b9-aeo-operator/setup-env.sh</code> in Terminal &mdash; enter OpenRouter key + WP App Password to unlock autonomous publishing</li>
+  <li><strong>Bootstrap Playwright LLM probe:</strong> <code>pip install playwright &amp;&amp; playwright install chromium</code>, then login once to each surface (Claude.ai, ChatGPT, Gemini, Perplexity) to save auth sessions for daily scanning</li>
+  <li><strong>Wire GSC indexing:</strong> add <code>GSC_SERVICE_ACCOUNT_JSON</code> to <code>~/.hermes/.env</code> for automatic Search Console submission after each AEO page publish</li>
+  <li><strong>Update prag-ma.ai OS page:</strong> change &ldquo;AI Citation Probe&rdquo; Flock entry from measurement-only language to &ldquo;measures citations AND publishes content to close gaps&rdquo;</li>
+</ul>
+
+<footer>
+  PRAGMA MIRROR &middot; A HARTLEY CAPITAL TOOL &middot; BUILT 2026-06-04 &middot; <a href="https://prag-ma.ai/">prag-ma.ai</a> &middot; <a href="/">hartley command</a>
+</footer>
+
+<script>
+const CLIENTS = [
+  {slug:'b9', display:'Brand 9 Signs'},
+  {slug:'pragma', display:'PRAGMA'},
+  {slug:'hc', display:'Hartley Capital'},
+];
+
+async function load(slug) {
+  const urls = [
+    `./clients/${slug}/brand-insights/latest.json?cb=${Date.now()}`,
+    `https://extracoffee13.github.io/hartley-command/clients/${slug}/brand-insights/latest.json?cb=${Date.now()}`,
+  ];
+  for (const u of urls) {
+    try {
+      const r = await fetch(u, {cache:'no-store'});
+      if (r.ok) return await r.json();
+    } catch(_) {}
+  }
+  return null;
+}
+
+(async () => {
+  let liveCount = 0;
+  let staleCount = 0;
+  const now = Date.now();
+  for (const c of CLIENTS) {
+    const d = await load(c.slug);
+    const aiviEl = document.getElementById(c.slug + '-aivi');
+    const metaEl = document.getElementById(c.slug + '-meta');
+    if (!d) { aiviEl.textContent = 'no data'; metaEl.textContent = 'fetch failed'; continue; }
+    // Update build date dynamically from PRAGMA JSON ts field
+    if (c.slug === 'pragma' && d.ts) {
+      document.getElementById('build-date').textContent = d.ts.slice(0,10);
+    }
+    const a = d.aivi && d.aivi.composite;
+    if (d.scan_status === 'first_scan_pending' || a == null) {
+      aiviEl.textContent = '—';
+      metaEl.textContent = 'first scan pending · ' + (d.empty_state_message || 'awaiting daily cycle');
+      continue;
+    }
+    aiviEl.textContent = a;
+    const t = (d.aivi && d.aivi.color_threshold) || {red_below:50, yellow_below:70};
+    if (a < t.red_below) aiviEl.classList.add('red');
+    else if (a < t.yellow_below) aiviEl.classList.add('yellow');
+    const surfaces = Object.entries(d.surfaces || {}).filter(([k,v])=>v).map(([k])=>k);
+    const mirroredAt = d._mirrored_at || d.last_scan_ts || d.ts || null;
+    const mirroredMs = mirroredAt ? Date.parse(mirroredAt) : NaN;
+    const ageHrs = Number.isFinite(mirroredMs) ? (now - mirroredMs) / 36e5 : NaN;
+    const stale = Number.isFinite(ageHrs) && ageHrs > 24;
+    if (stale) { staleCount++; aiviEl.classList.add('yellow'); }
+    metaEl.innerHTML = `scan ts ${(d.ts || 'unknown').slice(0,19)}Z · mirrored ${mirroredAt ? mirroredAt.slice(0,19) + 'Z' : 'unknown'}${Number.isFinite(ageHrs) ? ` · ${ageHrs.toFixed(1)}h old` : ''}${stale ? ' · stale' : ''} · surfaces with data: ${surfaces.join(', ') || 'none'}`;
+    liveCount++;
+  }
+  document.getElementById('status').textContent = `${liveCount}/3 with real data · ${staleCount} stale`;
+  document.getElementById('status').style.color = liveCount === 3 && staleCount === 0 ? 'var(--signal)' : (liveCount > 0 ? 'var(--yellow)' : 'var(--red)');
+})();
+</script>
+</body>
+</html>

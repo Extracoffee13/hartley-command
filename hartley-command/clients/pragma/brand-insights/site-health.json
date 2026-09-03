@@ -1,0 +1,96 @@
+{
+  "generated": "2026-07-15T16:18:15.580425Z",
+  "data_source": "PRAGMA Site-Health Operator \u2014 owned crawl (prag-ma.ai)",
+  "version": "1.0.0",
+  "phase": "1",
+  "domain": "prag-ma.ai",
+  "scan_status": "completed",
+  "health_score": 98,
+  "health_score_breakdown": {
+    "method": "Ahrefs-equivalent \u2014 base 100, deducted for real issues affecting SERP performance",
+    "deductions": {
+      "title_tags_over_60_chars": {
+        "count": 1,
+        "penalty": 0.5
+      },
+      "meta_descriptions_over_155_chars": {
+        "count": 6,
+        "penalty": 1.8
+      },
+      "missing_h1_on_content_pages": {
+        "count": 0,
+        "penalty": 0.0
+      },
+      "multiple_h1s_on_money_pages": {
+        "count": 0,
+        "penalty": 0.0
+      },
+      "pages_over_2s_load": {
+        "count": 0,
+        "penalty": 0.0
+      },
+      "broken_links_404": {
+        "count": 0,
+        "penalty": 0.0
+      }
+    },
+    "final_score": 98
+  },
+  "crawl": {
+    "timestamp": "2026-07-07T15:28:32Z",
+    "duration_s": 1.9,
+    "pages_crawled": 10,
+    "money_pages": 10,
+    "archive_tag_pages": 0,
+    "avg_load_time_s": 0.183,
+    "slow_pages_over_1.5s": 0,
+    "slow_pages_over_2.0s": 0,
+    "slowest_pages": [
+      {
+        "url": "https://prag-ma.ai/the-operating-system/",
+        "load_s": 0.21
+      },
+      {
+        "url": "https://prag-ma.ai/apply/",
+        "load_s": 0.198
+      },
+      {
+        "url": "https://prag-ma.ai/trust/",
+        "load_s": 0.195
+      },
+      {
+        "url": "https://prag-ma.ai/",
+        "load_s": 0.187
+      },
+      {
+        "url": "https://prag-ma.ai/offerings/",
+        "load_s": 0.187
+      }
+    ],
+    "status_codes": {
+      "200": 10
+    }
+  },
+  "issues": {
+    "errors": {
+      "count": 0,
+      "items": [
+        {
+          "type": "404_not_found",
+          "count": 0,
+          "urls": []
+        }
+      ]
+    }
+  },
+  "schema_check": {
+    "has_schema": true,
+    "source": "live fetch",
+    "note": "application/ld+json present on homepage"
+  },
+  "llms_txt": {
+    "has_llms_txt": true,
+    "url": "https://prag-ma.ai/llms.txt",
+    "source": "live fetch"
+  }
+}

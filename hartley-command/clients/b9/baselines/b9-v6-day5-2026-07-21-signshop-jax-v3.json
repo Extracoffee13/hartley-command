@@ -1,0 +1,205 @@
+{
+  "schema_version": "v6",
+  "instrument": "aair-v6",
+  "frozen_at": "2026-07-21T15:50:43.645174Z",
+  "source": "principal-run chunked scan",
+  "corpus_file": "/Users/alfredpennyworth/Documents/Claude/Projects/HBS Foundry/corpus/corpus_signshop_jax_v3.json",
+  "corpus_meta": {
+    "corpus_version": "signshop-jax-market-v3",
+    "seed": 20260716,
+    "n_prompts": 100,
+    "cells_per_scan_retrieval_tier": 400,
+    "built": "2026-07-21",
+    "provenance": "Google autocomplete market pull, 2026-07-16 \u2014 184 seeds, 822 suggestions, 219 after declared exclusions. See market_signshop_jax_observed.json. Ranking = recurrence (a proxy for volume). Geo + question frame added by us, declared.",
+    "provenance_remeasured": "Re-measured 2026-07-21, 100 market prompts, 13 engines. See b9-v6-day5-2026-07-21-signshop-jax-v3.json.",
+    "note": "Re-measured 2026-07-21, 100 market prompts, 13 engines. See b9-v6-day5-2026-07-21-signshop-jax-v3.json."
+  },
+  "headline": {
+    "aair_retrieval_top3": 10,
+    "fraction": "41/400",
+    "ci_95": "7.6%..13.6%",
+    "note": "Headline AAIR = RETRIEVAL tier, top-3. The surface customers actually use. ALWAYS report with the interval."
+  },
+  "attempted": 1400,
+  "scored": 1380,
+  "no_read": 20,
+  "named_anywhere": 53,
+  "named_top3": 41,
+  "tiers": {
+    "retrieval": {
+      "attempted": 400,
+      "scored": 400,
+      "no_read": 0,
+      "named_anywhere": 53,
+      "named_top3": 41,
+      "pct_named_anywhere": 13,
+      "pct_top3": 10,
+      "ci_95_top3": "7.6%..13.6%",
+      "ci_lo": 7.6,
+      "ci_hi": 13.6,
+      "fraction_top3": "41/400"
+    },
+    "parametric": {
+      "attempted": 600,
+      "scored": 600,
+      "no_read": 0,
+      "named_anywhere": 0,
+      "named_top3": 0,
+      "pct_named_anywhere": 0,
+      "pct_top3": 0,
+      "ci_95_top3": "0.0%..0.6%",
+      "ci_lo": 0.0,
+      "ci_hi": 0.6,
+      "fraction_top3": "0/600"
+    },
+    "ondevice": {
+      "attempted": 400,
+      "scored": 380,
+      "no_read": 20,
+      "named_anywhere": 0,
+      "named_top3": 0,
+      "pct_named_anywhere": 0,
+      "pct_top3": 0,
+      "ci_95_top3": "0.0%..1.0%",
+      "ci_lo": 0.0,
+      "ci_hi": 1.0,
+      "fraction_top3": "0/380"
+    }
+  },
+  "engines": {
+    "sonar": {
+      "label": "Perplexity (Sonar)",
+      "tier": "retrieval",
+      "attempted": 100,
+      "scored": 100,
+      "no_read": 0,
+      "named": 24,
+      "top3": 15
+    },
+    "gpt4o_online": {
+      "label": "ChatGPT (GPT-4o \u00b7 search)",
+      "tier": "retrieval",
+      "attempted": 100,
+      "scored": 100,
+      "no_read": 0,
+      "named": 11,
+      "top3": 11
+    },
+    "gemini_online": {
+      "label": "Gemini 2.5 \u00b7 search",
+      "tier": "retrieval",
+      "attempted": 100,
+      "scored": 100,
+      "no_read": 0,
+      "named": 10,
+      "top3": 9
+    },
+    "sonnet_online": {
+      "label": "Claude Sonnet 4.5 \u00b7 search",
+      "tier": "retrieval",
+      "attempted": 100,
+      "scored": 100,
+      "no_read": 0,
+      "named": 8,
+      "top3": 6
+    },
+    "gpt4o": {
+      "label": "GPT-4o (no web)",
+      "tier": "parametric",
+      "attempted": 100,
+      "scored": 100,
+      "no_read": 0,
+      "named": 0,
+      "top3": 0
+    },
+    "sonnet": {
+      "label": "Claude Sonnet 4.5 (no web)",
+      "tier": "parametric",
+      "attempted": 100,
+      "scored": 100,
+      "no_read": 0,
+      "named": 0,
+      "top3": 0
+    },
+    "gemini": {
+      "label": "Gemini 2.5 (no web)",
+      "tier": "parametric",
+      "attempted": 100,
+      "scored": 100,
+      "no_read": 0,
+      "named": 0,
+      "top3": 0
+    },
+    "grok": {
+      "label": "Grok 4.5 (no web)",
+      "tier": "parametric",
+      "attempted": 100,
+      "scored": 100,
+      "no_read": 0,
+      "named": 0,
+      "top3": 0
+    },
+    "deepseek": {
+      "label": "DeepSeek V3.1",
+      "tier": "parametric",
+      "attempted": 100,
+      "scored": 100,
+      "no_read": 0,
+      "named": 0,
+      "top3": 0
+    },
+    "llama4": {
+      "label": "Llama 4 Maverick",
+      "tier": "parametric",
+      "attempted": 100,
+      "scored": 100,
+      "no_read": 0,
+      "named": 0,
+      "top3": 0
+    },
+    "llama3b": {
+      "label": "Llama 3.2 3B",
+      "tier": "ondevice",
+      "attempted": 100,
+      "scored": 100,
+      "no_read": 0,
+      "named": 0,
+      "top3": 0
+    },
+    "gemma4b": {
+      "label": "Gemma 3 4B",
+      "tier": "ondevice",
+      "attempted": 100,
+      "scored": 100,
+      "no_read": 0,
+      "named": 0,
+      "top3": 0
+    },
+    "phi4": {
+      "label": "Microsoft Phi-4",
+      "tier": "ondevice",
+      "attempted": 100,
+      "scored": 100,
+      "no_read": 0,
+      "named": 0,
+      "top3": 0
+    },
+    "qwen7b": {
+      "label": "Qwen 2.5 7B",
+      "tier": "ondevice",
+      "attempted": 100,
+      "scored": 80,
+      "no_read": 20,
+      "named": 0,
+      "top3": 0
+    }
+  },
+  "match_rules_fired": {
+    "no_match": 1327,
+    "full_name": 53
+  },
+  "ts": "2026-07-21T15:50:43.645192Z",
+  "no_read_total": 20,
+  "total_cells_gross": 1400,
+  "chunks": "15 chunks \u00d7 98 cells, 0 errors"
+}

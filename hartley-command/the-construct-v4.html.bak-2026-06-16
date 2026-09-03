@@ -1,0 +1,2078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>THE CONSTRUCT v4 — Brand 9 / Hartley Capital Agent Ecosystem</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #000; overflow-x: hidden; font-family: 'Courier New', Courier, monospace; color: #39ff14; }
+
+  @keyframes nlrain { 0% { transform: translateY(0); } 100% { transform: translateY(140%); } }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  @keyframes pulse-ring { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.6); opacity: 0; } }
+  @keyframes flicker { 0%, 100% { opacity: 1; } 50% { opacity: 0.97; } 51% { opacity: 0.9; } 52% { opacity: 1; } }
+  @keyframes glow-pulse { 0%, 100% { box-shadow: 0 0 8px rgba(57,255,20,0.3); } 50% { box-shadow: 0 0 22px rgba(57,255,20,0.55); } }
+  @keyframes scan-line { 0% { transform: translateY(-100%); } 100% { transform: translateY(900px); } }
+  @keyframes tier-flow { 0% { stroke-dashoffset: 100; } 100% { stroke-dashoffset: 0; } }
+  @keyframes node-breathe { 0%, 100% { filter: drop-shadow(0 0 6px currentColor) brightness(1); } 50% { filter: drop-shadow(0 0 14px currentColor) brightness(1.25); } }
+  @keyframes data-flow { 0% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -40; } }
+  @keyframes packet-travel { 0% { offset-distance: 0%; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { offset-distance: 100%; opacity: 0; } }
+
+  * { scrollbar-width: thin; scrollbar-color: rgba(57,255,20,0.3) transparent; }
+  *::-webkit-scrollbar { width: 4px; height: 4px; }
+  *::-webkit-scrollbar-track { background: transparent; }
+  *::-webkit-scrollbar-thumb { background: rgba(57,255,20,0.3); border-radius: 2px; }
+  a { color: #00d4ff; text-decoration: none; }
+  a:hover { color: #39ff14; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect, useRef, useCallback, useMemo } = React;
+
+// ═══════════════════════════════════════════════════════════════
+// THE CONSTRUCT v4 — Brand 9 / Hartley Capital Agent Ecosystem
+// Plan locked 2026-04-24 · Day-90 kill criterion 2026-07-23
+// v4 rebuild 2026-05-27 — tiered Neurolink + Hermes T2 panel + live PRAGMA Lite spec
+// Cool palette enforced. Matrix grammar, holographic execution.
+// ═══════════════════════════════════════════════════════════════
+
+const PLAN_LOCK_DATE = new Date("2026-04-24T00:00:00");
+const KILL_CRITERION_DATE = new Date("2026-07-23T00:00:00");
+const V4_BUILD_DATE = new Date("2026-05-27T18:50:00");
+
+const daysBetween = (a, b) => Math.floor((b - a) / (1000 * 60 * 60 * 24));
+const dayOfNinety = () => Math.max(0, daysBetween(PLAN_LOCK_DATE, new Date()) + 1);
+const daysUntilKill = () => Math.max(0, daysBetween(new Date(), KILL_CRITERION_DATE));
+
+// ─── Brand tokens (cool palette enforced) ────────────────────────
+const C = {
+  bg: "#000000",
+  green: "#39ff14",      // primary signal
+  greenDim: "rgba(57,255,20,0.3)",
+  greenSoft: "rgba(57,255,20,0.08)",
+  cyan: "#00d4ff",       // strategy / data flow
+  blue: "#4a9eff",       // finance / executive
+  purple: "#b388ff",     // creative
+  white: "#ffffff",      // meta / foundation
+  gold: "#ffd700",       // human (Bobby)
+  red: "#ff3366",        // kill / risk
+  orange: "#ff9933",     // warning (used sparingly)
+};
+
+// ─── Agent registry (v4 — accurate to memory + ops state) ──────
+const FOUNDER = {
+  id: "founder", codename: "Bobby", role: "Founder · CEO", color: C.gold,
+  isHuman: true,
+};
+
+// Tier 1 — Public PRAGMA Operators (Cowork-Claude)
+// Coca-Cola Test (1-25) · re-scored monthly by Keystone · v2.3 lineage
+// ≥22 = ★ MOONSHOT tier (durable, defensible, Coke-class)
+// 18-21 = active live ecosystem
+// 15-17 = active but lower leverage
+const PUBLIC_OPERATORS = [
+  { id: "op-keystone", codename: "Keystone", role: "CSO · Venture Architect", color: C.cyan, score: 20,
+    today: "PRAGMA Lite spec review", workload: "Strategic · synthesis", tier: "T1 · Cowork", status: "active",
+    skills: ["Venture Thesis", "Wedge-to-Empire Mapping", "Opportunity Scoring (Coca-Cola Test)", "Kill / Double-Down Calls", "Portfolio Allocation", "Strategic Review", "Competitive Positioning"] },
+  { id: "op-vector", codename: "Vector", role: "Graphic Designer", color: C.purple, score: 21,
+    today: "Hero film assets · PRAGMA brand", workload: "Creative · visual", tier: "T1 · Cowork", status: "active",
+    skills: ["huashu-design (canon entry)", "Remotion programmatic video", "Blender 3D", "Adobe MCP", "Theme Factory", "Algorithmic Art", "Motion Graphics (PRAGMA spec)", "Brand Tokens (Void/Signal/Output)", "Design Critique"] },
+  { id: "op-atlas", codename: "Atlas", role: "Daily Orchestration", color: C.green, score: 18,
+    today: "Construct dashboard v4 build", workload: "Coordination · dashboard", tier: "T1 · Cowork", status: "active",
+    skills: ["Daily Orchestration", "Dashboard Synthesis", "Cross-Operator Coordination", "AM Briefing Generation", "Hermes inbox dispatch"] },
+  { id: "op-lens", codename: "Lens", role: "Daily Intelligence Officer", color: C.cyan, score: 21,
+    today: "9:34 ET fire · 31 items · 6 sources · 0 fails", workload: "Intel · 3×/day", tier: "T1 · Cowork", status: "active",
+    skills: ["lens-daily-scan (5:34/9:34/13:34 ET)", "HBR authenticated crawl", "Multi-source RSS extract", "Idempotent multi-fire", "WOLF feed append", "Slack #all-ap-dispatch", "Harvard library inbox"] },
+  { id: "op-scout", codename: "Scout", role: "Competitive Research", color: C.cyan, score: 19,
+    today: "PRAGMA Lite competitor scan pending", workload: "Research · ad-hoc", tier: "T1 · Cowork", status: "idle",
+    skills: ["competitive-brief", "Battlecard generation", "Positioning gap detection", "Web sweep automation", "White Space analysis (with Prism)"] },
+  { id: "op-pulse", codename: "Pulse", role: "Owned-Presence Operator", color: C.green, score: 20,
+    today: "7:00 ET LISTEN brief shipped", workload: "Social · SEO · reviews", tier: "T1 · Cowork", status: "active",
+    skills: ["GBP audit", "Review response drafting", "seo-audit", "linkedin-posting", "multi-channel-social-posting", "wordpress-yoast-publishing", "Meta Ads MCP"] },
+  { id: "op-prism", codename: "Prism", role: "Alt-Data Operator", color: C.cyan, score: 19,
+    today: "Quarterly TLC trade-area refresh", workload: "Foot traffic · spend", tier: "T1 · Cowork", status: "active",
+    skills: ["Foot-traffic alt-data", "Census demographics", "Trade-area mapping", "Institutional voids", "Competitor benchmarking", "Quarterly diligence pack"] },
+];
+
+// Tier 1.5 — Internal Coordination Layer (active, behind-the-scenes)
+const INTERNAL_AGENTS = [
+  { id: "in-architect", codename: "Architect", role: "Capital Council · Sunday 7:06 ET · CIVO", color: C.blue, tier: "T1.5 · Cowork", status: "active" },
+  { id: "in-anvil", codename: "Anvil", role: "Chief Integration · plugin wiring", color: C.green, tier: "T1.5 · Cowork", status: "active" },
+  { id: "in-wolf", codename: "WOLF", role: "Quant · Day 50 calendar / Day 28 reported · audit 2026-05-28", color: C.orange, tier: "T1.5 · Cowork", status: "audit" },
+  { id: "in-cornerstone", codename: "Cornerstone", role: "Morning + Evening reflection", color: C.white, tier: "T1.5 · Cowork", status: "active" },
+  { id: "in-loop", codename: "Self-Improving Loop", role: "Meta · captures corrections", color: C.white, tier: "T1.5 · Cowork", status: "active" },
+  { id: "in-leo", codename: "Leo", role: "Aschenbrenner lens · PE/VC/WOLF deal screening · NEW 2026-05-28", color: C.gold, tier: "T1.5 · Skill", status: "active" },
+  { id: "in-nvidia", codename: "NVIDIA", role: "Jensen lens · compute infrastructure · platform shift thesis · NEW 2026-06-02", color: C.green, tier: "T1.5 · Skill", status: "active" },
+  { id: "in-anthropic", codename: "Anthropic", role: "Constitutional AI · deployment-trust moat · Cherny lens · NEW 2026-06-02", color: C.orange, tier: "T1.5 · Skill", status: "active" },
+  { id: "in-musk", codename: "Musk", role: "First-principles · vertical integration · manufacturing-as-product · NEW 2026-06-02", color: C.gold, tier: "T1.5 · Skill", status: "active" },
+  { id: "in-allin", codename: "All-In", role: "Chamath/Sacks/Friedberg/Calacanis · group-of-four contrarian flag · NEW 2026-06-02", color: C.cyan, tier: "T1.5 · Skill", status: "active" },
+  { id: "in-gv", codename: "GV", role: "Vaynerchuk · attention arbitrage · document don't create · NEW 2026-06-02", color: C.purple, tier: "T1.5 · Skill", status: "active" },
+  { id: "in-jobs", codename: "Jobs", role: "Focus as saying no · taste as institutional · restraint as product · NEW 2026-06-02", color: C.white, tier: "T1.5 · Skill", status: "active" },
+  { id: "in-hormozi", codename: "Hormozi", role: "Value equation · offer construction · SMB sales math · NEW 2026-06-02", color: C.green, tier: "T1.5 · Skill", status: "active" },
+  { id: "in-oleary", codename: "O'Leary", role: "Royalty over equity · unit econ in 3 sentences · Mr Wonderful gate · NEW 2026-06-02", color: C.gold, tier: "T1.5 · Skill", status: "active" },
+  // Auto-installed 2026-06-03 09:13 ET via adoption-queue auto-install rule
+  { id: "in-graphify",            codename: "Graphify",            role: "Codebase knowledge graph · 6.8-49× token savings · auto-installed 2026-06-03",                          color: C.cyan,   tier: "T1.5 · Skill · auto", status: "active" },
+  { id: "in-taste-skill",         codename: "Taste",                role: "Anti-slop frontend discipline · fits Vector + PRAGMA brand-token doctrine · auto-installed 2026-06-03", color: C.purple, tier: "T1.5 · Skill · auto", status: "active" },
+  { id: "in-notfair",             codename: "NotFair",              role: "SEO + GEO + Google Ads + Meta Ads skills · auto-installed 2026-06-03",                                  color: C.green,  tier: "T1.5 · Skill · auto", status: "active" },
+  { id: "in-pro-workflow",        codename: "Pro-Workflow",         role: "Self-correcting memory across 50+ sessions · learns from corrections · auto-installed 2026-06-03",      color: C.white,  tier: "T1.5 · Skill · auto", status: "active" },
+  { id: "in-memsearch",           codename: "Memsearch",            role: "Persistent unified memory layer · markdown-backed · auto-installed 2026-06-03",                         color: C.blue,   tier: "T1.5 · Skill · auto", status: "active" },
+  { id: "in-design-extract",      codename: "Design-Extract",       role: "Extract any website's design system · DTCG tokens · auto-installed 2026-06-03",                         color: C.purple, tier: "T1.5 · Skill · auto", status: "active" },
+  { id: "in-codex-settings",      codename: "Codex-Settings",       role: "Battle-tested Claude Code + OpenAI Codex setup · skills/plugins/hooks · auto-installed 2026-06-03",     color: C.cyan,   tier: "T1.5 · Skill · auto", status: "active" },
+  { id: "in-claude-mem",          codename: "Claude-Mem",           role: "Persistent context across sessions · captures everything agents do · auto-installed 2026-06-03",        color: C.blue,   tier: "T1.5 · Skill · auto", status: "active" },
+  { id: "in-harness",             codename: "Harness",              role: "Meta-skill: designs domain-specific agent teams · generates specialists · auto-installed 2026-06-03",   color: C.gold,   tier: "T1.5 · Skill · auto", status: "active" },
+  { id: "in-awesome-plugins",     codename: "Awesome-Plugins",      role: "Automated Claude Code plugin adoption metrics across GitHub · auto-installed 2026-06-03",               color: C.green,  tier: "T1.5 · Skill · auto", status: "active" },
+  { id: "in-antigravity",         codename: "Antigravity",          role: "Professional capabilities pack · full-stack dev + more · auto-installed 2026-06-03",                    color: C.orange, tier: "T1.5 · Skill · auto", status: "active" },
+  { id: "in-octopus",             codename: "Octopus",              role: "Up to 8 AI models on every research/design/coding task · blind-spot surfacing · auto-installed 2026-06-03", color: C.cyan, tier: "T1.5 · Skill · auto", status: "active" },
+  { id: "in-hermes-webui",        codename: "Hermes-WebUI",         role: "Real web UI for Hermes-Agent · mobile-via-Tailscale · auto-installed 2026-06-03",                       color: C.green,  tier: "T1.5 · Skill · auto", status: "active" },
+];
+
+// Tier 1B — C-Suite Routing Labels (internal routing terminology used by Lens)
+// Per Two-Tier Naming memory: these are NOT separate agents — they're routing labels Lens uses to tag actions.
+// Don't conflate with public Tier 1 PRAGMA Operators.
+const CSUITE_ROSTER = [
+  { codename: "AP",       role: "CEO",                  dept: "Executive",   color: C.gold },
+  { codename: "Ledger",   role: "CFO",                  dept: "Finance",     color: C.blue, priorityElevated: true },
+  { codename: "Forge",    role: "COO",                  dept: "Operations",  color: C.green },
+  { codename: "Cipher",   role: "CTO",                  dept: "Technology",  color: C.blue },
+  { codename: "Oracle",   role: "CIO",                  dept: "Technology",  color: C.blue },
+  { codename: "Signal",   role: "CMO",                  dept: "Creative",    color: C.purple },
+  { codename: "Sentinel", role: "CLO",                  dept: "Strategy",    color: C.cyan },
+  { codename: "Spectra",  role: "CSO",                  dept: "Strategy",    color: C.cyan,  status: "idle" },
+  { codename: "Nexus",    role: "CHRO",                 dept: "People",      color: C.green, status: "idle" },
+  { codename: "Venture",  role: "VC Analyst",           dept: "Finance",     color: C.blue },
+  { codename: "Equity",   role: "PE Strategist",        dept: "Finance",     color: C.blue },
+  { codename: "Alpha",    role: "Hedge Fund Manager",   dept: "Finance",     color: C.blue },
+  { codename: "Apex",     role: "CRO",                  dept: "Revenue",     color: C.green },
+  { codename: "Anchor",   role: "CCO",                  dept: "People",      color: C.green },
+  { codename: "Helm",     role: "CPO",                  dept: "Product",     color: C.purple },
+];
+
+// Build Queue Backlog — future-state agents under construction or queued
+const BUILD_BACKLOG = [
+  { codename: "Archivist",       role: "Archive · 0/500 jobs indexed",      status: "building",   day: 60, color: C.cyan },
+  { codename: "Skill-Forge",     role: "Skill Creator · 0/3 skills accepted", status: "building", day: 30, color: C.green },
+  { codename: "Foreman",         role: "Overseer · 0% replay catch rate",   status: "building",   day: 60, color: C.green },
+  { codename: "Eval Harness",    role: "Evaluator · 0 agents scored",       status: "building",   day: 45, color: C.cyan },
+  { codename: "Skill-Forge v2",  role: "scaffold + validate + deploy CLIs", status: "building",   day: 30, color: C.green },
+  { codename: "Precedent-Finder",role: "Finder · 0/2 client decks",         status: "queued",     day: 90, color: C.cyan },
+  { codename: "Field-Scout",     role: "Field-Drone · contingent build",    status: "contingent", day: null, color: C.greenDim },
+  { codename: "Hartley-Cite",    role: "Cite · queued",                     status: "queued",     day: null, color: C.cyan },
+];
+
+// NEW Tier 2 — Production engine (Hermes-Agent + DeepSeek)
+// Top workloads shown in Neurolink; full migration map below
+const HERMES_WORKLOADS = [
+  { id: "h-wolf-disc",  codename: "wolf-discovery", role: "Parallel A/B vs Cowork daily 06:30 ET", color: C.green, status: "proven", lastRun: "5/27 probe · 3 ArXiv papers · $0.005" },
+  { id: "h-wolf-less",  codename: "wolf-lesson-capture", role: "Nightly · fixes broken WOLF feed", color: C.green, status: "staged", lastRun: "spec ready · lane-1-lesson-capture.md" },
+  { id: "h-wolf-bench", codename: "wolf-strategy-benchmark", role: "Nightly · candidates from discoveries", color: C.green, status: "staged", lastRun: "spec ready · lane-2" },
+  { id: "h-wolf-mand",  codename: "wolf-mandate-poll", role: "Every 4hr · Day-60 gate-1 feed", color: C.green, status: "staged", lastRun: "spec ready · lane-3" },
+  { id: "h-wolf-esot",  codename: "wolf-esoteric-daily", role: "Daily 10:00 ET · 7× weekly throughput", color: C.green, status: "staged", lastRun: "spec ready · lane-4" },
+  { id: "h-lens",       codename: "lens-broad", role: "Lens broad-sweep first pass · proven 5/27", color: C.green, status: "proven", lastRun: "23 items · 17 sources · ~$0.07" },
+];
+
+// Full Hermes Migration Map — A-G categories from audit
+const HERMES_MIGRATION_MAP = [
+  {
+    id: "cat-a", letter: "A", title: "Background Polling · 24/7", color: C.green,
+    thesis: "Workloads that should run continuously but currently can't at Claude prices.",
+    items: [
+      { name: "Review monitoring", detail: "Google · Yelp · BBB · Brand 9 + TLC + PRAGMA clients", status: "planned" },
+      { name: "GBP listing health", detail: "hourly polling per location", status: "planned" },
+      { name: "Competitor pricing watch", detail: "per-PRAGMA-client + B9 competitors", status: "planned" },
+      { name: "Inventory delta detection", detail: "Atlas → QBO via MCP", status: "opportunity" },
+      { name: "Web traffic anomaly", detail: "GSC + Site Kit hourly pull · 2σ flag", status: "opportunity" },
+      { name: "Lennar new-community discovery", detail: "DeckForge feed source", status: "opportunity" },
+      { name: "GitHub release watch", detail: "Hermes-Agent · Anthropic SDK · plugin deps", status: "opportunity" },
+    ],
+  },
+  {
+    id: "cat-b", letter: "B", title: "Bulk Data Assembly", color: C.cyan,
+    thesis: "Overnight prep so morning Cowork synthesis runs on pre-staged data, not raw scrapes.",
+    items: [
+      { name: "Lens broad-sweep", detail: "3×/day · proven today at ~$0.07", status: "proven" },
+      { name: "Architect Capital Council data prep", detail: "Sat night → Sun morning synthesis", status: "ready" },
+      { name: "Weekly portfolio data assembly", detail: "Mon 8 AM brief upstream", status: "ready" },
+      { name: "Brand-Lab AI weekly source scan", detail: "Mon AM upstream", status: "ready" },
+      { name: "Memory compression source pull", detail: "Monthly 1st of month upstream", status: "ready" },
+    ],
+  },
+  {
+    id: "cat-c", letter: "C", title: "First-Pass Triage", color: C.cyan,
+    thesis: "Hermes classifies & routes · Cowork only sees items needing decisions.",
+    items: [
+      { name: "Email triage", detail: "action / fyi / spam pre-routing", status: "planned" },
+      { name: "Slack #all-ap-dispatch monitor", detail: "missed-action flagging", status: "planned" },
+      { name: "Daily dispatch check", detail: "channel verification · M-F 8:38 ET", status: "ready" },
+      { name: "AP morning briefing data layer", detail: "Hermes assembles · Cowork writes voice", status: "ready" },
+    ],
+  },
+  {
+    id: "cat-d", letter: "D", title: "Source-Specific Scrapes", color: C.green,
+    thesis: "Pure scrape + parse + de-dupe · zero Claude reasoning needed.",
+    items: [
+      { name: "ArXiv q-fin", detail: "daily · proven today · 3 papers · $0.005", status: "proven" },
+      { name: "NBER working papers", detail: "weekly", status: "ready" },
+      { name: "FRED data releases", detail: "weekly", status: "ready" },
+      { name: "Reddit /r/algotrading + /r/quant", detail: "daily top posts", status: "ready" },
+      { name: "Hacker News quant mentions", detail: "daily via HN Algolia API", status: "ready" },
+      { name: "SSRN finance papers", detail: "weekly most-downloaded", status: "ready" },
+      { name: "WOLF consulting intel", detail: "PwC · McKinsey · Deloitte · BCG · Bain daily", status: "ready" },
+    ],
+  },
+  {
+    id: "cat-e", letter: "E", title: "Client-Side · PRAGMA Lite", color: C.purple,
+    thesis: "Every Install client runs Hermes on their own hardware · zero recurring Anthropic dependency.",
+    items: [
+      { name: "Per-client review monitoring", detail: "always-on on client's Mac/VPS", status: "spec" },
+      { name: "Per-client SEO drift watch", detail: "weekly site scan · alert on drops", status: "spec" },
+      { name: "Per-client GBP health", detail: "hourly listing integrity", status: "spec" },
+      { name: "Per-client content publishing", detail: "scheduled posts via gateway integrations", status: "spec" },
+      { name: "PRAGMA Skill Pack v0.1", detail: "6-item spec locked 2026-05-27", status: "spec" },
+    ],
+  },
+  {
+    id: "cat-f", letter: "F", title: "Health · Monitoring", color: C.white,
+    thesis: "Lowest stakes · fully autonomous · runs forever once configured.",
+    items: [
+      { name: "Daily machine cleanup", detail: "currently launchd — could move to Hermes", status: "opportunity" },
+      { name: "Log scanning + error patterns", detail: "system health surface", status: "opportunity" },
+      { name: "File integrity checks", detail: "sensitive client dirs", status: "opportunity" },
+      { name: "Disk + memory usage tracking", detail: "trend alerts", status: "opportunity" },
+    ],
+  },
+  {
+    id: "cat-g", letter: "G", title: "Auxiliary for Cowork", color: C.white,
+    thesis: "Cheap Hermes calls inside Cowork's auxiliary task pipeline.",
+    items: [
+      { name: "Context compression", detail: "long-conversation summaries via Hermes", status: "ready" },
+      { name: "Title generation", detail: "session titles · file naming", status: "ready" },
+      { name: "Inbox summarization", detail: "Hermes pre-summarizes · Cowork triages", status: "ready" },
+      { name: "Web-page text extraction", detail: "before Cowork reads the page", status: "ready" },
+    ],
+  },
+];
+
+// ROI projection (napkin math)
+const ROI = {
+  current_scheduler_burn_low: 200,
+  current_scheduler_burn_high: 1000,
+  hermes_data_capture_pct: 0.60,
+  monthly_savings_low: 120,
+  monthly_savings_high: 600,
+  annualized_low: 1440,
+  annualized_high: 7200,
+  new_workloads_unlocked: 11, // Categories A + F items that don't run today
+  pragma_lite_client_cost_removed: 100, // $/mo per client (Claude Max replacement)
+};
+
+// Tier 0 — Foundation infrastructure
+const FOUNDATION = [
+  { id: "f-mcp", label: "MCPs", detail: "10+ wired · Slack · Gmail · QBO · Canva · Higgsfield · Meta Ads · Chrome", color: C.white },
+  { id: "f-skills", label: "Skills", detail: "50+ installed · plugin marketplace · agentskills.io", color: C.white },
+  { id: "f-memory", label: "Memory", detail: "Two-tier · CLAUDE.md + memory/ · Self-Improving Loop active", color: C.white },
+  { id: "f-sched", label: "Scheduled Tasks", detail: "20+ active · Cornerstone · Lens · Pulse · WOLF tool-discovery", color: C.white },
+  { id: "f-qt", label: "Quality Triangle", detail: "Skeptic · Architect · Security · pre-ship gate", color: C.green },
+];
+
+// ─── Live ops state (snapshotted today) ──────────────────────────
+const LIVE = {
+  lens_today: { items: 31, sources: 6, failures: 0, fired_at: "09:34 ET", phase: "A.2" },
+  hermes_today: {
+    runs: 3,
+    real_findings: true,
+    arxiv_papers: 3,
+    lens_items: 23,
+    cost_usd: 0.075,
+    cost_cowork_equivalent: 1.5,
+    cost_ratio: "~20× cheaper",
+  },
+  wolf_state: { day_of_60: 21, decision_window: "2026-06-05", paper_track_status: "active" },
+  pragma_active: { engagements: 1, client: "TLC · Sprint Build + Monitor", days_into_build: 7 },
+  schedules_next: [
+    { name: "Lens 13:34 fire", at: "13:34 ET", status: "fired" },
+    { name: "Cornerstone evening", at: "21:00 ET", status: "pending" },
+    { name: "Construct LLM judge", at: "23:31 ET", status: "pending" },
+    { name: "Cornerstone morning", at: "tomorrow 06:06 ET", status: "pending" },
+  ],
+};
+
+// ─── Matrix rain background (preserved from v2.3) ────────────────
+const MatrixRain = () => {
+  const canvasRef = useRef(null);
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    let animId;
+    const resize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
+    resize();
+    window.addEventListener("resize", resize);
+    const fontSize = 14;
+    let columns = Math.floor(canvas.width / fontSize);
+    let drops = Array(columns).fill(1);
+    const chars = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEF:.";
+    const draw = () => {
+      ctx.fillStyle = "rgba(0,0,0,0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.font = `${fontSize}px monospace`;
+      columns = Math.floor(canvas.width / fontSize);
+      while (drops.length < columns) drops.push(1);
+      for (let i = 0; i < columns; i++) {
+        const ch = chars[Math.floor(Math.random() * chars.length)];
+        const b = Math.random();
+        if (b > 0.95) ctx.fillStyle = "#ffffff";
+        else if (b > 0.85) ctx.fillStyle = "#39ff14";
+        else ctx.fillStyle = `rgba(0, ${100 + Math.floor(Math.random()*155)}, 0, ${0.25 + Math.random()*0.4})`;
+        ctx.fillText(ch, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+      }
+      animId = requestAnimationFrame(draw);
+    };
+    draw();
+    return () => { cancelAnimationFrame(animId); window.removeEventListener("resize", resize); };
+  }, []);
+  return <canvas ref={canvasRef} style={{ position: "fixed", inset: 0, zIndex: 0, opacity: 0.10, pointerEvents: "none" }} />;
+};
+
+// ─── Glitch text ─────────────────────────────────────────────────
+const GlitchText = ({ text, style = {} }) => {
+  const [g, setG] = useState(false);
+  useEffect(() => {
+    const id = setInterval(() => { setG(true); setTimeout(() => setG(false), 130); }, 3500 + Math.random()*4000);
+    return () => clearInterval(id);
+  }, []);
+  return (
+    <span style={{ ...style, position: "relative", display: "inline-block" }}>
+      {text}
+      {g && (
+        <>
+          <span style={{ ...style, position: "absolute", left: 2, top: -1, color: "#c500ff", clipPath: "inset(20% 0 40% 0)", opacity: 0.7 }}>{text}</span>
+          <span style={{ ...style, position: "absolute", left: -2, top: 1, color: "#00ffff", clipPath: "inset(50% 0 10% 0)", opacity: 0.7 }}>{text}</span>
+        </>
+      )}
+    </span>
+  );
+};
+
+// ─── Scan line ───────────────────────────────────────────────────
+const ScanSweep = () => (
+  <div style={{
+    position: "absolute", left: 0, right: 0, height: 2, top: 0,
+    background: "linear-gradient(90deg, transparent, rgba(57,255,20,0.5), transparent)",
+    animation: "scan-line 4.5s linear infinite", pointerEvents: "none", zIndex: 2,
+  }} />
+);
+
+// ─── Live clock ──────────────────────────────────────────────────
+const useLiveStamp = () => {
+  const [s, setS] = useState(() => new Date().toLocaleTimeString("en-US", { hour12: false }));
+  useEffect(() => {
+    const id = setInterval(() => setS(new Date().toLocaleTimeString("en-US", { hour12: false })), 1000);
+    return () => clearInterval(id);
+  }, []);
+  return s;
+};
+
+// ═══════════════════════════════════════════════════════════════
+// HEADER
+// ═══════════════════════════════════════════════════════════════
+const Header = () => {
+  const stamp = useLiveStamp();
+  const d90 = dayOfNinety();
+  const kill = daysUntilKill();
+  return (
+    <div style={{
+      position: "relative", zIndex: 10, padding: "20px 28px 16px",
+      borderBottom: "1px solid rgba(57,255,20,0.2)", background: "rgba(0,0,0,0.85)",
+    }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 12 }}>
+        <div>
+          <div style={{ fontSize: 11, color: C.greenDim, letterSpacing: 4, marginBottom: 6 }}>
+            BRAND 9 · HARTLEY CAPITAL · PRAGMA
+          </div>
+          <div style={{ fontSize: 28, fontWeight: 700, color: C.green, letterSpacing: 6, lineHeight: 1 }}>
+            <GlitchText text="THE CONSTRUCT" style={{ color: C.green, fontWeight: 700 }} />
+            <span style={{ color: C.cyan, fontSize: 18, marginLeft: 14, letterSpacing: 4 }}>v4</span>
+          </div>
+          <div style={{ fontSize: 10, color: C.greenDim, marginTop: 8, letterSpacing: 2 }}>
+            FRONTIER-FIRM AGENT ECOSYSTEM · TWO-TIER OPERATING MODEL
+          </div>
+        </div>
+        <div style={{ textAlign: "right", fontSize: 10, lineHeight: 1.7 }}>
+          <div style={{ color: C.greenDim, letterSpacing: 2 }}>SYSTEM TIME</div>
+          <div style={{ color: C.green, fontSize: 14, fontWeight: 700, letterSpacing: 2 }}>{stamp}</div>
+          <div style={{ marginTop: 8, color: C.greenDim }}>
+            DAY <span style={{ color: C.cyan }}>{d90}</span> / 90
+            <span style={{ margin: "0 10px", color: C.greenDim }}>·</span>
+            KILL-CRIT IN <span style={{ color: kill < 30 ? C.orange : C.cyan }}>{kill}</span>d
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════════════════
+// TIERED NEUROLINK — the new central visual
+// ═══════════════════════════════════════════════════════════════
+const TieredNeurolink = () => {
+  const W = 1400, H = 760;
+  const founderY = 50;
+  const hermesY = 140;   // NEW · Hermes COS sits between Bobby and Operators
+  const tier1Y = 250;
+  const tier2Y = 440;
+  const tier0Y = 640;
+
+  const tier1X = (i, n) => 140 + i * ((W - 280) / Math.max(1, n - 1));
+  const tier2X = (i, n) => 220 + i * ((W - 440) / Math.max(1, n - 1));
+  const tier0X = (i, n) => 180 + i * ((W - 360) / Math.max(1, n - 1));
+
+  const [stamp, setStamp] = useState("00:00:00.000");
+  const [packets, setPackets] = useState(8421);
+  useEffect(() => {
+    const id = setInterval(() => {
+      const d = new Date();
+      setStamp(d.toLocaleTimeString("en-US", { hour12: false }) + "." + String(d.getMilliseconds()).padStart(3, "0"));
+      setPackets(p => p + Math.floor(5 + Math.random() * 14));
+    }, 90);
+    return () => clearInterval(id);
+  }, []);
+
+  // Synapse fire animation — random nodes "fire" with a brief flash
+  const allNodes = useMemo(() => [
+    ...PUBLIC_OPERATORS.map((o, i) => ({ ...o, layer: 1, x: tier1X(i, PUBLIC_OPERATORS.length), y: tier1Y })),
+    ...HERMES_WORKLOADS.map((h, i) => ({ ...h, layer: 2, x: tier2X(i, HERMES_WORKLOADS.length), y: tier2Y })),
+  ], []);
+
+  const [fires, setFires] = useState([]);
+  useEffect(() => {
+    const id = setInterval(() => {
+      const node = allNodes[Math.floor(Math.random() * allNodes.length)];
+      const fireId = Math.random().toString(36).slice(2);
+      setFires(f => [...f, { id: fireId, x: node.x, y: node.y, color: node.color }]);
+      setTimeout(() => setFires(f => f.filter(x => x.id !== fireId)), 1100);
+    }, 600);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <div style={{
+      position: "relative", margin: "20px 28px", padding: 18,
+      border: "1px solid rgba(57,255,20,0.2)", background: "rgba(0,0,0,0.7)",
+      overflow: "hidden",
+    }}>
+      <ScanSweep />
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+        <div style={{ fontSize: 11, color: C.green, letterSpacing: 4 }}>
+          ⌬ NEUROLINK · TIERED ARCHITECTURE · TWO-TIER OPERATING MODEL
+        </div>
+        <div style={{ fontSize: 10, color: C.greenDim, letterSpacing: 2 }}>
+          PKT <span style={{ color: C.cyan }}>{packets.toLocaleString()}</span>
+          <span style={{ margin: "0 8px" }}>·</span>
+          T<span style={{ color: C.cyan }}>{stamp}</span>
+        </div>
+      </div>
+
+      <svg viewBox={`0 0 ${W} ${H}`} style={{ width: "100%", height: "auto", display: "block" }} preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="connFlow" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor={C.green} stopOpacity="0.6" />
+            <stop offset="100%" stopColor={C.cyan} stopOpacity="0.2" />
+          </linearGradient>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3" result="b" />
+            <feMerge>
+              <feMergeNode in="b" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+          <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="1.5" result="b" />
+            <feMerge>
+              <feMergeNode in="b" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+        {/* Tier band labels (left side) */}
+        <g fontFamily="Courier New, monospace" fontSize="9" letterSpacing="2" fill={C.greenDim}>
+          <text x="20" y={founderY + 5}>FOUNDER</text>
+          <text x="20" y={hermesY + 5} fill={C.cyan} fontWeight="700">HERMES · COS · OVERSEER</text>
+          <text x="20" y={tier1Y + 5}>TIER 1 · COWORK · CLAUDE</text>
+          <text x="20" y={tier2Y + 5}>TIER 2 · HERMES · DEEPSEEK</text>
+          <text x="20" y={tier0Y + 5}>TIER 0 · FOUNDATION</text>
+        </g>
+
+        {/* Tier band background bars */}
+        <g>
+          <rect x="120" y={hermesY - 40} width={W - 240} height="80" fill={C.cyan} opacity="0.07" />
+          <rect x="120" y={tier1Y - 60} width={W - 240} height="120" fill={C.cyan} opacity="0.04" />
+          <rect x="120" y={tier2Y - 60} width={W - 240} height="120" fill={C.green} opacity="0.04" />
+          <rect x="120" y={tier0Y - 30} width={W - 240} height="60" fill={C.white} opacity="0.03" />
+        </g>
+
+        {/* Connection: Founder ↔ Hermes (the COS bridge — animated) */}
+        <line x1={W/2} y1={founderY + 30} x2={W/2} y2={hermesY - 30}
+          stroke={C.cyan} strokeOpacity="0.85" strokeWidth="2.5"
+          strokeDasharray="6,3" style={{ animation: "data-flow 1.8s linear infinite" }} />
+
+        {/* Hermes → ALL Operators (he can use the ecosystem) */}
+        {PUBLIC_OPERATORS.map((o, i) => {
+          const x = tier1X(i, PUBLIC_OPERATORS.length);
+          return (
+            <line key={`h1-${i}`} x1={W/2} y1={hermesY + 30} x2={x} y2={tier1Y - 30}
+              stroke={C.cyan} strokeOpacity="0.5" strokeWidth="1.3"
+              strokeDasharray="3,3" />
+          );
+        })}
+
+        {/* Hermes → ALL Tier 2 Wild Ducks (direct command lines — Hermes is the overseer) */}
+        {HERMES_WORKLOADS.map((h, i) => {
+          const x = tier2X(i, HERMES_WORKLOADS.length);
+          return (
+            <line key={`h2-${i}`} x1={W/2} y1={hermesY + 30} x2={x} y2={tier2Y - 30}
+              stroke={C.green} strokeOpacity="0.4" strokeWidth="1"
+              strokeDasharray="4,4" style={{ animation: "data-flow 3s linear infinite" }} />
+          );
+        })}
+
+        {/* Faded: Founder → Tier 1 (legacy lines, now mediated by Hermes) */}
+        {PUBLIC_OPERATORS.map((o, i) => {
+          const x = tier1X(i, PUBLIC_OPERATORS.length);
+          return (
+            <line key={`f1-${i}`} x1={W/2} y1={founderY + 30} x2={x} y2={tier1Y - 30}
+              stroke={C.gold} strokeOpacity="0.08" strokeWidth="0.5"
+              strokeDasharray="2,6" />
+          );
+        })}
+
+        {/* Connection lines: Tier 1 → Tier 2 (selective, showing which Operators have T2 backing) */}
+        {[
+          { fromOpIdx: 3, toWorkIdx: 2, label: "Lens broad-sweep" },     // Lens → lens-broad
+          { fromOpIdx: 4, toWorkIdx: 4, label: "Scout watch" },            // Scout → scout-watch
+          { fromOpIdx: 5, toWorkIdx: 3, label: "Pulse poll" },             // Pulse → pulse-poll
+        ].map((c, i) => {
+          const x1 = tier1X(c.fromOpIdx, PUBLIC_OPERATORS.length);
+          const x2 = tier2X(c.toWorkIdx, HERMES_WORKLOADS.length);
+          return (
+            <line key={`t12-${i}`} x1={x1} y1={tier1Y + 30} x2={x2} y2={tier2Y - 30}
+              stroke={C.green} strokeOpacity="0.55" strokeWidth="1.5"
+              strokeDasharray="5,5" style={{ animation: "data-flow 2.5s linear infinite" }} />
+          );
+        })}
+
+        {/* Connection lines: All to Foundation */}
+        {FOUNDATION.map((f, i) => {
+          const x = tier0X(i, FOUNDATION.length);
+          return (
+            <line key={`t0-${i}`} x1={W/2} y1={tier2Y + 30} x2={x} y2={tier0Y - 20}
+              stroke={C.white} strokeOpacity="0.15" strokeWidth="0.8" />
+          );
+        })}
+
+        {/* Founder node (Bobby) */}
+        <g transform={`translate(${W/2},${founderY})`}>
+          <circle r="48" fill="none" stroke={C.gold} strokeOpacity="0.3" strokeWidth="0.5">
+            <animate attributeName="r" values="48;58;48" dur="3s" repeatCount="indefinite" />
+            <animate attributeName="stroke-opacity" values="0.3;0.1;0.3" dur="3s" repeatCount="indefinite" />
+          </circle>
+          <circle r="32" fill="#000" stroke={C.gold} strokeWidth="2" filter="url(#glow)" />
+          <text x="0" y="-2" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="11" fontWeight="700" fill={C.gold}>BOBBY</text>
+          <text x="0" y="10" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="7" fill={C.gold} opacity="0.7">FOUNDER</text>
+        </g>
+
+        {/* Hermes COS — sits directly under Bobby, oversees ecosystem */}
+        <g transform={`translate(${W/2},${hermesY})`}>
+          {/* Pulsing halo */}
+          <circle r="56" fill="none" stroke={C.cyan} strokeOpacity="0.45" strokeWidth="0.8">
+            <animate attributeName="r" values="56;70;56" dur="2.4s" repeatCount="indefinite" />
+            <animate attributeName="stroke-opacity" values="0.5;0.15;0.5" dur="2.4s" repeatCount="indefinite" />
+          </circle>
+          <circle r="42" fill="none" stroke={C.cyan} strokeOpacity="0.25" strokeWidth="0.5" />
+          {/* Main body — hex-feel rounded */}
+          <rect x="-48" y="-26" width="96" height="52" rx="6" fill="#000" stroke={C.cyan} strokeWidth="2.2" filter="url(#glow)" />
+          {/* Status pulse */}
+          <circle cx="38" cy="-16" r="3.5" fill={C.green}>
+            <animate attributeName="opacity" values="1;0.3;1" dur="1.2s" repeatCount="indefinite" />
+          </circle>
+          <text x="0" y="-7" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="13" fontWeight="700" fill={C.cyan}>HERMES</text>
+          <text x="0" y="5" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="7" fill={C.cyan} opacity="0.8">CHIEF OF STAFF · OVERSEER</text>
+          <text x="0" y="16" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="6" fill={C.green} opacity="0.7" data-live="hermes-flock-summary">hermes-agent v0.15 · substrate · 13 wild ducks · 93 calls</text>
+        </g>
+
+        {/* Tier 1 nodes (Public Operators) */}
+        {PUBLIC_OPERATORS.map((o, i) => {
+          const x = tier1X(i, PUBLIC_OPERATORS.length);
+          return (
+            <g key={o.id} transform={`translate(${x},${tier1Y})`}>
+              <rect x="-58" y="-22" width="116" height="44" rx="3" fill="#000" stroke={o.color} strokeWidth="1.5" filter="url(#softGlow)" />
+              {o.status === "active" && (
+                <circle cx="50" cy="-14" r="3" fill={C.green}>
+                  <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite" />
+                </circle>
+              )}
+              <text x="0" y="-2" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="10" fontWeight="700" fill={o.color}>{o.codename.toUpperCase()}</text>
+              <text x="0" y="12" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="7" fill={o.color} opacity="0.7">{o.workload}</text>
+            </g>
+          );
+        })}
+
+        {/* Tier 2 nodes (Hermes workloads) */}
+        {HERMES_WORKLOADS.map((h, i) => {
+          const x = tier2X(i, HERMES_WORKLOADS.length);
+          const isProven = h.status === "proven";
+          return (
+            <g key={h.id} transform={`translate(${x},${tier2Y})`}>
+              <rect x="-52" y="-20" width="104" height="40" rx="3"
+                fill="#000" stroke={isProven ? C.green : C.greenDim}
+                strokeWidth={isProven ? 1.5 : 1}
+                strokeDasharray={isProven ? "0" : "3,3"}
+                filter={isProven ? "url(#softGlow)" : "none"} />
+              {isProven && (
+                <circle cx="44" cy="-12" r="2.5" fill={C.green}>
+                  <animate attributeName="opacity" values="1;0.4;1" dur="1.8s" repeatCount="indefinite" />
+                </circle>
+              )}
+              <text x="0" y="-3" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="9" fontWeight="700"
+                fill={isProven ? C.green : C.greenDim}>{h.codename}</text>
+              <text x="0" y="9" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="6"
+                fill={isProven ? C.green : C.greenDim} opacity="0.8">
+                {isProven ? "● proven" : "○ planned"}
+              </text>
+            </g>
+          );
+        })}
+
+        {/* Tier 0 — Foundation */}
+        {FOUNDATION.map((f, i) => {
+          const x = tier0X(i, FOUNDATION.length);
+          return (
+            <g key={f.id} transform={`translate(${x},${tier0Y})`}>
+              <rect x="-72" y="-14" width="144" height="28" rx="3" fill="#000" stroke={f.color} strokeOpacity="0.5" strokeWidth="1" />
+              <text x="0" y="3" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="9" fontWeight="600" fill={f.color}>{f.label}</text>
+            </g>
+          );
+        })}
+
+        {/* Synapse fires — random node flashes */}
+        {fires.map(f => (
+          <circle key={f.id} cx={f.x} cy={f.y} r="6" fill={f.color} opacity="0.7">
+            <animate attributeName="r" values="6;38;6" dur="1s" repeatCount="1" />
+            <animate attributeName="opacity" values="0.8;0;0" dur="1s" repeatCount="1" />
+          </circle>
+        ))}
+
+        {/* HUD corner ticks */}
+        <g stroke={C.green} strokeOpacity="0.4" strokeWidth="1" fill="none">
+          <path d={`M 8 8 L 8 28 M 8 8 L 28 8`} />
+          <path d={`M ${W-8} 8 L ${W-8} 28 M ${W-8} 8 L ${W-28} 8`} />
+          <path d={`M 8 ${H-8} L 8 ${H-28} M 8 ${H-8} L 28 ${H-8}`} />
+          <path d={`M ${W-8} ${H-8} L ${W-8} ${H-28} M ${W-8} ${H-8} L ${W-28} ${H-8}`} />
+        </g>
+      </svg>
+
+      <div style={{ marginTop: 10, display: "flex", flexWrap: "wrap", gap: 18, fontSize: 9, color: C.greenDim, letterSpacing: 1 }}>
+        <span>● TIER 1 — STRATEGIC COCKPIT — Cowork·Claude — premium reasoning · synthesis · decision-grade</span>
+        <span>● TIER 1 EXECUTION LAYER — Hermes·DeepSeek + Wild Ducks — IBM/Watson-style mavericks · ~20× cheaper · 24/7 capable · DOCTRINE LOCKED 2026-05-28</span>
+        <span>○ planned — backlog</span>
+        <span>● proven — shipped today</span>
+      </div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════════════════
+// OPERATOR STATUS CARDS
+// ═══════════════════════════════════════════════════════════════
+const OperatorCard = ({ op }) => {
+  const [open, setOpen] = useState(false);
+  const sc = scoreColor(op.score);
+  return (
+    <div style={{
+      border: `1px solid ${op.color}`, padding: 12, position: "relative",
+      background: "rgba(0,0,0,0.7)", minWidth: 220,
+    }}>
+      <div style={{ position: "absolute", top: 8, right: 8, display: "flex", alignItems: "center", gap: 5 }}>
+        <span style={{
+          width: 7, height: 7, borderRadius: "50%",
+          background: op.status === "active" ? C.green : op.status === "idle" ? C.greenDim : C.orange,
+          animation: op.status === "active" ? "blink 1.6s infinite" : "none",
+        }} />
+        <span style={{ fontSize: 8, color: op.color, letterSpacing: 1 }}>{op.status.toUpperCase()}</span>
+      </div>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 6, paddingRight: 56 }}>
+        <div style={{ fontSize: 14, fontWeight: 700, color: op.color, letterSpacing: 2 }}>{op.codename.toUpperCase()}</div>
+      </div>
+      <div style={{ fontSize: 9, color: op.color, opacity: 0.8, marginTop: 2 }}>{op.role}</div>
+      {op.score != null && (
+        <div style={{ marginTop: 6 }}>
+          <span style={{ fontSize: 10, padding: "1px 6px", borderRadius: 2, background: scoreBg(op.score),
+                         color: sc, border: `1px solid ${scoreBorder(op.score)}`,
+                         letterSpacing: 1, fontFamily: "Courier New, monospace", fontWeight: 700 }}>
+            {op.score}/25{op.score >= 22 ? " ★" : ""}
+          </span>
+          <span style={{ fontSize: 8, color: C.greenDim, marginLeft: 6, letterSpacing: 1 }}>COCA-COLA</span>
+        </div>
+      )}
+      <div style={{ fontSize: 9, color: C.greenDim, marginTop: 10, lineHeight: 1.5 }}>
+        <span style={{ color: C.cyan }}>TODAY</span> {op.today}
+      </div>
+      <div style={{ fontSize: 9, color: C.greenDim, marginTop: 4, lineHeight: 1.5 }}>
+        <span style={{ color: C.cyan }}>LANE</span> {op.workload}
+      </div>
+      <div style={{ fontSize: 8, color: C.greenDim, marginTop: 8, letterSpacing: 1 }}>{op.tier}</div>
+      {op.skills && op.skills.length > 0 && (
+        <div style={{ marginTop: 8, borderTop: `1px dashed ${op.color}55`, paddingTop: 6 }}>
+          <button onClick={() => setOpen(o => !o)}
+                  style={{ background: "transparent", border: "none", color: op.color, cursor: "pointer",
+                           fontSize: 9, fontFamily: "Courier New, monospace", padding: 0, letterSpacing: 1, textAlign: "left", width: "100%" }}>
+            {open ? "▾" : "▸"} skills ({op.skills.length})
+          </button>
+          {open && (
+            <ul style={{ margin: "5px 0 0 14px", padding: 0, listStyle: "none" }}>
+              {op.skills.map(sk => (
+                <li key={sk} style={{ fontSize: 9, color: op.color, opacity: 0.85, lineHeight: 1.6, fontFamily: "Courier New, monospace" }}>
+                  · {sk}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
+
+const InternalCard = ({ a }) => (
+  <div style={{
+    border: `1px solid ${a.color}`, padding: 10,
+    background: "rgba(0,0,0,0.6)", borderStyle: "dashed",
+  }}>
+    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <span style={{ fontSize: 11, fontWeight: 700, color: a.color, letterSpacing: 1 }}>{a.codename}</span>
+      <span style={{ width: 6, height: 6, borderRadius: "50%", background: C.green, animation: "blink 2s infinite" }} />
+    </div>
+    <div style={{ fontSize: 8, color: a.color, opacity: 0.7, marginTop: 4 }}>{a.role}</div>
+    <div style={{ fontSize: 7, color: C.greenDim, marginTop: 6, letterSpacing: 1 }}>{a.tier}</div>
+  </div>
+);
+
+const OperatorGrid = () => (
+  <div style={{ margin: "20px 28px" }}>
+    <div style={{ fontSize: 11, color: C.green, letterSpacing: 4, marginBottom: 12 }}>
+      ⎔ TIER 1 · PUBLIC OPERATORS · COWORK·CLAUDE
+    </div>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 12 }}>
+      {PUBLIC_OPERATORS.map(o => <OperatorCard key={o.id} op={o} />)}
+    </div>
+
+    <div style={{ fontSize: 11, color: C.green, letterSpacing: 4, marginTop: 28, marginBottom: 12, opacity: 0.85 }}>
+      ⎔ TIER 1.5 · INTERNAL COORDINATION LAYER
+    </div>
+    <div style={{ fontSize: 9, color: C.greenDim, marginBottom: 10, fontStyle: "italic" }}>
+      Behind-the-scenes agents that coordinate · gate · reflect. Active but not customer-facing.
+    </div>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 10 }}>
+      {INTERNAL_AGENTS.map(a => <InternalCard key={a.id} a={a} />)}
+    </div>
+
+    {/* Live Skills Registry — hydrates from installed-skills-registry.json (daily scanner output) */}
+    {/* Locked 2026-06-05: per [[feedback_dashboards_auto_sync_no_reminders]], new skill discoveries must surface without manual V4 edits. */}
+    <div style={{ marginTop: 20, padding: 14, border: `1px dashed ${C.cyan}`, background: "rgba(63,169,245,0.04)", borderRadius: 4 }}>
+      <div style={{ fontSize: 11, color: C.cyan, letterSpacing: 3, marginBottom: 6 }}>
+        ⚡ SKILLS REGISTRY · LIVE · daily ecosystem-evolution-scanner
+      </div>
+      <div style={{ fontSize: 12, color: C.green, lineHeight: 1.7 }}>
+        <div>Total skills installed: <strong data-live="skills_registry_total" style={{color: C.cyan}}>—</strong> · Last scan: <span data-live="skills_registry_ts" style={{color: C.cyan, fontFamily: "monospace", fontSize: 10}}>polling…</span></div>
+        <div>Newly discovered (not yet hardcoded as Internal cards): <strong data-live="skills_registry_new_count" style={{color: C.orange}}>—</strong></div>
+        <div style={{ marginTop: 8, fontSize: 11, color: C.greenDim, fontFamily: "monospace" }} data-live="skills_registry_new_list">—</div>
+      </div>
+      <div style={{ fontSize: 9, color: C.greenDim, marginTop: 8, lineHeight: 1.5 }}>
+        Source: <code style={{ color: C.cyan }}>/Atlas/hermes-sandbox/state/installed-skills-registry.json</code> · mirrored hourly by <code style={{ color: C.cyan }}>brand-insights-mirror</code> Call · scanner fires <strong>daily 08:00 ET</strong> (was weekly Sundays; flipped 2026-06-05)
+      </div>
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════
+// TIER 1B — C-SUITE ROUTING ROSTER (compressed)
+// Per Two-Tier Naming memory: routing labels Lens uses · NOT separate agents
+// ═══════════════════════════════════════════════════════════════
+const CSuiteRoster = () => (
+  <div style={{ margin: "20px 28px", padding: 16, border: `1px solid ${C.greenDim}`, background: "rgba(0,0,0,0.6)", borderStyle: "dashed" }}>
+    <div style={{ fontSize: 11, color: C.cyan, letterSpacing: 4, marginBottom: 6 }}>
+      ⎔ TIER 1B · C-SUITE ROUTING ROSTER
+    </div>
+    <div style={{ fontSize: 9, color: C.greenDim, fontStyle: "italic", marginBottom: 12, lineHeight: 1.5 }}>
+      Internal routing terminology Lens uses to tag actions across the Construct. <span style={{ color: C.orange }}>NOT separate agents</span> — these are labels for the same Cowork runtime acting in different functional capacities. Do not conflate with Tier 1 PRAGMA Operators. Mass-renaming these labels breaks Lens routing.
+    </div>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(170px, 1fr))", gap: 6 }}>
+      {CSUITE_ROSTER.map((a, i) => (
+        <div key={i} style={{
+          padding: "5px 9px",
+          borderLeft: `2px solid ${a.color}`,
+          background: a.priorityElevated ? "rgba(74,158,255,0.07)" : "rgba(0,0,0,0.3)",
+          display: "flex", flexDirection: "column",
+        }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+            <span style={{ fontSize: 11, fontWeight: 700, color: a.color, letterSpacing: 1 }}>{a.codename}</span>
+            <span style={{ fontSize: 7, color: a.status === "idle" ? C.greenDim : C.green, letterSpacing: 1 }}>{a.status === "idle" ? "idle" : "●"}</span>
+          </div>
+          <span style={{ fontSize: 8, color: a.color, opacity: 0.7, marginTop: 1 }}>{a.role}</span>
+          <span style={{ fontSize: 7, color: C.greenDim, marginTop: 2, letterSpacing: 1 }}>{a.dept.toUpperCase()}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════
+// BUILD QUEUE BACKLOG — future-state agents under construction
+// ═══════════════════════════════════════════════════════════════
+const BuildBacklog = () => (
+  <div style={{ margin: "20px 28px", padding: 16, border: `1px solid ${C.cyan}`, borderStyle: "dashed", background: "rgba(0,212,255,0.03)" }}>
+    <div style={{ fontSize: 11, color: C.cyan, letterSpacing: 4, marginBottom: 6 }}>
+      ⊕ BUILD QUEUE · BACKLOG · FUTURE-STATE AGENTS
+    </div>
+    <div style={{ fontSize: 9, color: C.greenDim, fontStyle: "italic", marginBottom: 12, lineHeight: 1.5 }}>
+      Agents under construction or queued. Day-90 kill criterion 2026-07-23 applies — agents not shipped by then get re-evaluated for fit.
+    </div>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 8 }}>
+      {BUILD_BACKLOG.map((b, i) => (
+        <div key={i} style={{
+          padding: 8,
+          border: `1px ${b.status === "contingent" ? "dotted" : "dashed"} ${b.color}`,
+          background: "rgba(0,0,0,0.5)",
+        }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+            <span style={{ fontSize: 11, fontWeight: 700, color: b.color, letterSpacing: 1 }}>{b.codename}</span>
+            <span style={{ fontSize: 7, color: C.greenDim, letterSpacing: 1 }}>
+              {b.status.toUpperCase()}{b.day ? ` · D${b.day}` : ""}
+            </span>
+          </div>
+          <div style={{ fontSize: 8, color: b.color, opacity: 0.75, marginTop: 3 }}>{b.role}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════
+// HERMES TIER-2 PANEL — the new infrastructure layer
+// ═══════════════════════════════════════════════════════════════
+const HermesPanel = () => (
+  <div style={{ margin: "28px 28px 20px", padding: 18,
+    border: `2px solid ${C.green}`, background: "rgba(57,255,20,0.04)", position: "relative",
+    animation: "glow-pulse 3s ease-in-out infinite",
+  }}>
+    <div style={{ position: "absolute", top: -10, left: 16, padding: "0 8px", background: "#000", fontSize: 10, color: C.green, letterSpacing: 4 }}>
+      ⚕ TIER 1 — EXECUTION LAYER — HERMES + WILD DUCKS
+    </div>
+    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 24, marginTop: 8 }}>
+      <div>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 4 }}>STACK</div>
+        <div style={{ fontSize: 11, color: C.green, lineHeight: 1.6 }}>
+          <div><span style={{ color: C.cyan }}>Named agent:</span> <strong>Hermes</strong> (COS — Bobby's AP-equivalent, locked 2026-05-31)</div>
+          <div><span style={{ color: C.cyan }}>OS:</span> Hermes-Agent v0.15 · <span data-live="os_status" style={{color: C.green}}>LIVE 2026-06-01</span></div>
+          <div><span style={{ color: C.cyan }}>Model:</span> DeepSeek V3.2 + Claude Sonnet 4.5 via OpenRouter</div>
+          <div><span style={{ color: C.cyan }}>Memory files:</span> <span data-live="memory_files">280+</span> across substrate</div>
+          <div><span style={{ color: C.cyan }}>Substrate:</span> <span data-live="wild_ducks_count">13</span> Wild Ducks + <span data-live="calls_count">93</span> Calls (live from flock-classification.json)</div>
+          <div><span style={{ color: C.cyan }}>Interface:</span> @HartleyHermesBot (Telegram) + Cowork</div>
+          <div><span style={{ color: C.cyan }}>Search backend:</span> Tavily (1000 free/mo)</div>
+          <div><span style={{ color: C.cyan }}>Host:</span> Bobby's Mac · launchd</div>
+          <div><span style={{ color: C.cyan }}>Approvals:</span> smart (auto low-risk · Bobby-gate on irreversible)</div>
+          <div><span style={{ color: C.cyan }}>Quiet hours:</span> 22:00-07:00 ET · digest 7:05 ET (locked 2026-06-01)</div>
+        </div>
+      </div>
+      <div>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 4 }}>LIVE TODAY · auto-refresh on load</div>
+        <div style={{ fontSize: 11, color: C.green, lineHeight: 1.6 }}>
+          <div><span style={{ color: C.cyan }}>Last heartbeat:</span> <span data-live="heartbeat_ts">poll on load</span></div>
+          <div><span style={{ color: C.cyan }}>Reports filed today:</span> <span data-live="reports_today">—</span></div>
+          <div><span style={{ color: C.cyan }}>Inbox tasks pending:</span> <span data-live="inbox_pending">—</span></div>
+          <div><span style={{ color: C.cyan }}>Lens briefs (last 7d):</span> <span data-live="lens_week">—</span></div>
+          <div><span style={{ color: C.cyan }}>Adoption queue:</span> <span data-live="adoption_pending">—</span></div>
+          <div><span style={{ color: C.cyan }}>Last state write:</span> <span data-live="last_write">—</span></div>
+        </div>
+        <div style={{ fontSize: 9, color: C.greenDim, marginTop: 8, lineHeight: 1.4 }}>
+          Source: <code style={{ color: C.cyan }}>hermes-status.json</code> · written hourly by <code style={{ color: C.cyan }}>hermes-status-writer</code> Call · falls back to static if 404
+        </div>
+      </div>
+      <div>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 4 }}>PRAGMA LITE · SKILL PACK v0.1 SPEC</div>
+        <div style={{ fontSize: 10, color: C.green, lineHeight: 1.55 }}>
+          <div>1. Source-auth bridge (HBR / WSJ paywalled)</div>
+          <div>2. Cross-source synthesis template</div>
+          <div>3. Operator action-routing vocab</div>
+          <div>4. Depth-over-breadth source priority</div>
+          <div>5. Voice template (founder-grade)</div>
+          <div>6. Sector modules (real estate, capital, macro)</div>
+        </div>
+      </div>
+    </div>
+
+    <div style={{ marginTop: 14, paddingTop: 12, borderTop: `1px solid ${C.greenDim}` }}>
+      <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 6 }}>WORKLOADS</div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 8 }}>
+        {HERMES_WORKLOADS.map(h => (
+          <div key={h.id} style={{
+            border: `1px solid ${h.status === "proven" ? C.green : C.greenDim}`,
+            borderStyle: h.status === "proven" ? "solid" : "dashed",
+            padding: 8, background: "rgba(0,0,0,0.5)",
+          }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span style={{ fontSize: 10, fontWeight: 700, color: h.status === "proven" ? C.green : C.greenDim, letterSpacing: 1 }}>
+                {h.codename}
+              </span>
+              <span style={{ fontSize: 8, color: h.status === "proven" ? C.green : C.greenDim }}>
+                {h.status === "proven" ? "● proven" : "○ planned"}
+              </span>
+            </div>
+            <div style={{ fontSize: 8, color: h.status === "proven" ? C.green : C.greenDim, opacity: 0.7, marginTop: 3 }}>{h.role}</div>
+            <div style={{ fontSize: 8, color: C.greenDim, marginTop: 4, fontFamily: "Courier New, monospace" }}>{h.lastRun}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════
+// PRAGMA MIRROR — replaces Yoast AI+ Brand Insights ($358.80/yr SaaS)
+// ═══════════════════════════════════════════════════════════════
+// Sourced from /Atlas/pragma/clients/brand9signs/brand-insights/latest.json
+// mirrored to /dashboards-deploy/brand-insights/latest.json on each cycle.
+// Locked 2026-06-04 per Bobby — Path 1: build, don't buy.
+const PragmaMirrorPanel = () => {
+  const [data, setData] = React.useState(null);
+  const [fetched, setFetched] = React.useState(false);
+  React.useEffect(() => {
+    const tryFetch = async () => {
+      const urls = [
+        './brand-insights/latest.json?cb=' + Date.now(),
+        'https://extracoffee13.github.io/dashboards-deploy/brand-insights/latest.json?cb=' + Date.now(),
+      ];
+      for (const u of urls) {
+        try {
+          const r = await fetch(u, { cache: 'no-store' });
+          if (r.ok) { setData(await r.json()); setFetched(true); return; }
+        } catch (e) { /* try next */ }
+      }
+      setFetched(true);
+    };
+    tryFetch();
+  }, []);
+
+  const productName = (data && data.product_name) || "PRAGMA Mirror";
+  const tagline = (data && data.product_tagline) || "See your brand the way AI sees it.";
+  const aiviVal = data && data.aivi && data.aivi.composite;
+  const thresh = (data && data.aivi && data.aivi.color_threshold) || { red_below: 50, yellow_below: 70, green_at_or_above: 70 };
+  const aiviColor = (v) => {
+    if (v === null || v === undefined) return C.greenDim;
+    if (v < thresh.red_below) return "#FF4D4F";
+    if (v < thresh.yellow_below) return "#FFC53D";
+    return C.green;
+  };
+  const sparkline = (data && data.aivi && data.aivi.trend_7day) || [];
+  const surfaces = (data && data.surfaces) || { claude: null, chatgpt: null, gemini: null, perplexity: null, google_ai_overview: null };
+  const sentiment = (data && data.sentiment) || { positive_pct: null, neutral_pct: null, negative_pct: null };
+  const topCitations = (data && data.top_citations) || [];
+  const competitors = (data && data.competitors) || [];
+  const isPending = !data || data.scan_status === "first_scan_pending" || aiviVal === null || aiviVal === undefined;
+  const emptyMsg = (data && data.empty_state_message) || "First scan running — check back after the next 05:30 ET cycle.";
+
+  // Sparkline SVG inline (no chart libs — locked rule)
+  const sparkSvg = () => {
+    if (!sparkline || sparkline.length === 0) {
+      return <div style={{ fontSize: 9, color: C.greenDim, fontStyle: "italic" }}>no trend yet · 7-day sparkline appears after first week</div>;
+    }
+    const w = 220, h = 40;
+    const max = Math.max(...sparkline, 1), min = Math.min(...sparkline, 0);
+    const range = Math.max(max - min, 1);
+    const pts = sparkline.map((v, i) => {
+      const x = (i / Math.max(sparkline.length - 1, 1)) * w;
+      const y = h - ((v - min) / range) * h;
+      return x.toFixed(1) + "," + y.toFixed(1);
+    }).join(" ");
+    return (
+      <svg width={w} height={h} viewBox={"0 0 " + w + " " + h}>
+        <polyline points={pts} fill="none" stroke={C.green} strokeWidth="2" />
+      </svg>
+    );
+  };
+
+  // Surface bar: each surface is a row, name + mentions + ranking pill
+  const surfaceRow = (key, label) => {
+    const s = surfaces[key];
+    const mentions = s ? (s.mentions || 0) : null;
+    const rank = s ? (s.best_ranking || s.ranking || "unranked") : "—";
+    const cited = s ? (s.citations || []).length : 0;
+    return (
+      <div key={key} style={{ display: "grid", gridTemplateColumns: "120px 1fr 80px", alignItems: "center", padding: "4px 0", borderBottom: `1px dashed ${C.greenDim}` }}>
+        <span style={{ fontSize: 10, color: C.cyan }}>{label}</span>
+        <span style={{ fontSize: 10, color: C.green }}>
+          {mentions === null ? "—" : mentions + " mentions · " + cited + " citations"}
+        </span>
+        <span style={{ fontSize: 9, color: C.green, textAlign: "right", letterSpacing: 1 }}>{rank}</span>
+      </div>
+    );
+  };
+
+  // Sentiment donut (simple SVG, 3 segments)
+  const sentimentChart = () => {
+    const p = sentiment.positive_pct, n = sentiment.neutral_pct, neg = sentiment.negative_pct;
+    if (p === null || p === undefined) {
+      return <div style={{ fontSize: 9, color: C.greenDim, fontStyle: "italic" }}>sentiment pending</div>;
+    }
+    const total = (p || 0) + (n || 0) + (neg || 0);
+    if (total === 0) return <div style={{ fontSize: 9, color: C.greenDim }}>no mentions yet</div>;
+    const arc = (start, end, color) => {
+      const r = 28, cx = 35, cy = 35;
+      const a1 = (start / 100) * 2 * Math.PI - Math.PI / 2;
+      const a2 = (end / 100) * 2 * Math.PI - Math.PI / 2;
+      const large = (end - start) > 50 ? 1 : 0;
+      const x1 = cx + r * Math.cos(a1), y1 = cy + r * Math.sin(a1);
+      const x2 = cx + r * Math.cos(a2), y2 = cy + r * Math.sin(a2);
+      return <path d={"M " + cx + " " + cy + " L " + x1 + " " + y1 + " A " + r + " " + r + " 0 " + large + " 1 " + x2 + " " + y2 + " Z"} fill={color} />;
+    };
+    let cursor = 0;
+    return (
+      <svg width="70" height="70" viewBox="0 0 70 70">
+        {p > 0 && arc(cursor, cursor + p, C.green)}
+        {(() => { cursor += p; return null; })()}
+        {n > 0 && arc(cursor, cursor + n, C.cyan)}
+        {(() => { cursor += n; return null; })()}
+        {neg > 0 && arc(cursor, cursor + neg, "#FF4D4F")}
+        <circle cx="35" cy="35" r="14" fill="#000" />
+      </svg>
+    );
+  };
+
+  return (
+    <div style={{ margin: "28px 28px 20px", padding: 18,
+      border: `2px solid ${C.green}`, background: "rgba(31,224,126,0.03)", position: "relative" }}>
+      <div style={{ position: "absolute", top: -10, left: 16, padding: "0 8px", background: "#000", fontSize: 10, color: C.green, letterSpacing: 4 }}>
+        ◉ PRAGMA MIRROR — MEASURE · DIAGNOSE · ACT · AEO ENGINE LIVE
+      </div>
+
+      {/* Header row */}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginTop: 6, marginBottom: 14 }}>
+        <div>
+          <div style={{ fontSize: 22, fontWeight: 900, color: C.green, fontFamily: "Georgia, serif", letterSpacing: 1 }}>{productName}</div>
+          <div style={{ fontSize: 11, color: C.cyan, marginTop: 2 }}>We don&apos;t just track AI citations &mdash; we engineer them.</div>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 4 }}>
+          <span style={{ fontSize: 9, color: C.green, border: `1px solid ${C.green}`, padding: "2px 8px", letterSpacing: 2 }}>AEO ENGINE · B9 LIVE</span>
+          <span style={{ fontSize: 8, color: C.greenDim }}>Probe 05:30 ET · AEO publish 06:00 ET · Replaces Yoast AI+ + Google AI monitoring</span>
+        </div>
+      </div>
+
+      {isPending && (
+        <div style={{ padding: 14, border: `1px dashed ${C.greenDim}`, marginBottom: 14, background: "rgba(0,0,0,0.4)" }}>
+          <div style={{ fontSize: 11, color: C.cyan, letterSpacing: 1, marginBottom: 4 }}>○ FIRST SCAN PENDING</div>
+          <div style={{ fontSize: 10, color: C.green, lineHeight: 1.5 }}>{emptyMsg}</div>
+          <div style={{ fontSize: 8, color: C.greenDim, marginTop: 6, fontFamily: "Courier New, monospace" }}>
+            scan_status={data ? data.scan_status : "no_data"} · fetched={fetched ? "yes" : "loading"} · honest empty-state per locked dashboard-honesty rule
+          </div>
+        </div>
+      )}
+
+      {/* Body grid: AIVI big number + sparkline | surfaces | sentiment + competitors */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1.4fr 1fr", gap: 24 }}>
+        {/* AIVI column */}
+        <div>
+          <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 4 }}>AIVI · COMPOSITE 0-100</div>
+          <div style={{ fontSize: 64, fontWeight: 900, color: aiviColor(aiviVal), lineHeight: 1, fontFamily: "Georgia, serif" }}>
+            {aiviVal === null || aiviVal === undefined ? "--" : aiviVal}
+          </div>
+          <div style={{ fontSize: 9, color: C.greenDim, marginTop: 6 }}>7-DAY TREND</div>
+          <div style={{ marginTop: 4 }}>{sparkSvg()}</div>
+          <div style={{ fontSize: 8, color: C.greenDim, marginTop: 8, lineHeight: 1.4 }}>
+            Transparent formula:<br/>
+            0.30·mention + 0.25·citation + 0.20·sentiment + 0.15·ranking + 0.10·coverage
+          </div>
+        </div>
+
+        {/* Surfaces column */}
+        <div>
+          <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 6 }}>AI SURFACES · MENTIONS · RANKING</div>
+          {surfaceRow("claude", "Claude")}
+          {surfaceRow("chatgpt", "ChatGPT")}
+          {surfaceRow("gemini", "Gemini")}
+          {surfaceRow("perplexity", "Perplexity")}
+          {surfaceRow("google_ai_overview", "Google AIO")}
+          <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginTop: 12, marginBottom: 4 }}>TOP CITATIONS THIS WEEK</div>
+          {topCitations.length === 0 ? (
+            <div style={{ fontSize: 9, color: C.greenDim, fontStyle: "italic" }}>—</div>
+          ) : topCitations.slice(0, 3).map((c, i) => (
+            <div key={i} style={{ fontSize: 9, color: C.cyan, marginTop: 2 }}>
+              <a href={c.url} target="_blank" rel="noopener" style={{ color: C.cyan, textDecoration: "none" }}>{c.url}</a>
+              <span style={{ color: C.greenDim, marginLeft: 6 }}>· {c.times_cited || 0} cites</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Sentiment + competitors column */}
+        <div>
+          <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 6 }}>SENTIMENT</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            {sentimentChart()}
+            <div style={{ fontSize: 9, lineHeight: 1.6 }}>
+              <div style={{ color: C.green }}>● positive {sentiment.positive_pct === null ? "—" : sentiment.positive_pct + "%"}</div>
+              <div style={{ color: C.cyan }}>● neutral {sentiment.neutral_pct === null ? "—" : sentiment.neutral_pct + "%"}</div>
+              <div style={{ color: "#FF4D4F" }}>● negative {sentiment.negative_pct === null ? "—" : sentiment.negative_pct + "%"}</div>
+            </div>
+          </div>
+          <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginTop: 14, marginBottom: 4 }}>COMPETITOR BENCHMARK</div>
+          {competitors.length === 0 ? (
+            <div style={{ fontSize: 9, color: C.greenDim, fontStyle: "italic" }}>cyndra.ai · signazon.com — pending first scan</div>
+          ) : competitors.slice(0, 4).map((c, i) => (
+            <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 50px", alignItems: "center", padding: "3px 0" }}>
+              <span style={{ fontSize: 10, color: C.cyan }}>{c.domain}</span>
+              <span style={{ fontSize: 10, color: aiviColor(c.aivi), textAlign: "right", fontWeight: 700 }}>{c.aivi == null ? "—" : c.aivi}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div style={{ marginTop: 14, paddingTop: 10, borderTop: `1px solid ${C.greenDim}`, display: "flex", justifyContent: "space-between", fontSize: 9, color: C.greenDim }}>
+        <span>Last scan: <span style={{ color: C.cyan }}>{(data && data.last_scan_ts) || "—"}</span></span>
+        <span>Source: <code style={{ color: C.cyan }}>/Atlas/pragma/clients/brand9signs/brand-insights/latest.json</code></span>
+        <span>Next scan: <span style={{ color: C.cyan }}>05:30 ET daily</span></span>
+      </div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════════════════
+// WILD DUCKS — IBM/Watson mavericks · Hermes-hosted skill agents
+// ═══════════════════════════════════════════════════════════════
+// Wild Ducks scored same Coca-Cola Test (1-25) as Operators — Keystone re-scores monthly
+// Score reflects: strategic durability × frequency leverage × productization value to PRAGMA
+// WILD DUCKS — the rare flock · judgment + synthesis · IBM/Watson mavericks
+// Reclassified 2026-06-01 per Bobby: 75 → 13 actual Wild Ducks. Everything else
+// moved to CALLS (cron monitors/dispatchers) or archive/one-shots/.
+// Rule: must (a) make judgment calls or synthesize, (b) recur, (c) be
+// non-trivial for a Claude agent + plain skill to replicate.
+const WILD_DUCKS = [
+  { name: "void-prospector",                     status: "proven", score: 23, domain: "Institutional void hunter · weekly Sat 09:00 ET · LLM-driven",
+    skills: ["Three-vehicle thesis routing (B9 · PRAGMA · HC)", "Coca-Cola scoring per opportunity", "Hermes-substrate write-through"] },
+  { name: "wealth-signal-aggregator",            status: "proven", score: 22, domain: "Daily wealth digest · 06:30 ET · what advanced wealth today",
+    skills: ["Cross-vehicle synthesis", "Signal-to-noise filter", "Telegram brief"] },
+  { name: "morning-briefing-composer",           status: "proven", score: 21, domain: "Hermes-composed daily brief · operator-voiced",
+    skills: ["Day-of context assembly", "Voice discipline (no AI cadence)", "Top-3 priority ranking"] },
+  { name: "pragma-engagement-audit",             status: "proven", score: 22, domain: "Weekly Mon 09:00 ET · scores every PRAGMA engagement against current spec",
+    skills: ["10-dimension scoring", "Gap-to-upgrade plan", "Drift detection before client trust breaks"] },
+  { name: "agent-cross-ref-validator",           status: "proven", score: 20, domain: "Meta-learning detection · are agents learning from each other",
+    skills: ["Cross-agent citation tracing", "Hermes-substrate validation", "Closes Bobby&apos;s &quot;are agents learning?&quot; question"] },
+  { name: "harvard-library-index-builder",       status: "proven", score: 19, domain: "Queryable Lens corpus · knowledge curation",
+    skills: ["HBR + HBS + MIT + Stanford ingest", "Topic clustering", "Searchable index for any agent"] },
+  { name: "praxis-distiller",                    status: "proven", score: 19, domain: "Lesson distillation from PRAXIS_INBOX",
+    skills: ["Pattern detection across mistakes", "Prevention-rule generation", "Memory write-through"] },
+  { name: "wild-duck-doctor",                    status: "proven", score: 18, domain: "Meta-flock health · catches dead ducks",
+    skills: ["Heartbeat aggregation", "Anomaly detection", "Telegram on regression"] },
+  { name: "pragma-smb-install-readiness-tracker",status: "proven", score: 20, domain: "Pre-engagement scoring · stops TLC-class blockers",
+    skills: ["Stack detection", "Writability + SSL gates", "Tier recommendation"] },
+  { name: "lennar-route-density-tracker",        status: "proven", score: 20, domain: "INVH-class pursuit lever · Lennar route SE FL synthesis",
+    skills: ["Community density mapping", "Bid pipeline intel", "Expansion alerting"] },
+  { name: "invitation-homes-watcher",            status: "proven", score: 19, domain: "Active national-deal intel synthesis",
+    skills: ["Public filings + press scan", "Vendor RFP detection", "Strategic next-action prompt"] },
+  { name: "competitor-watch",                    status: "proven", score: 18, domain: "Daily 12:00 ET · 15 named competitors per vehicle",
+    skills: ["Material-change detection (not just diff)", "Layoff / pivot / sunset signals", "Void-prospector feed"] },
+  { name: "hermes-composed-brief",               status: "proven", score: 20, domain: "Hermes substrate's daily artifact (supersedes morning-briefing-composer)",
+    skills: ["LLM-composed via Hermes", "Multi-vehicle scope", "Telegram + dashboard"] },
+
+];
+
+// CALLS — the operational substrate · cron monitors · dispatchers · daemons
+// Locked 2026-06-01 per Bobby: "duck calls" — predictable instruments, not the rare ducks
+// Listed compactly because they're plumbing, not headliners.
+const CALLS = [
+  // Monitors
+  { name: "uptime-monitor",                  cadence: "5min",  group: "monitor" },
+  { name: "ssl-cert-watcher",                cadence: "daily", group: "monitor" },
+  { name: "dh-dns-tracker",                  cadence: "daily", group: "monitor" },
+  { name: "gh-pr-watch",                     cadence: "15min", group: "monitor" },
+  { name: "visual-qa-monitor",               cadence: "daily", group: "monitor" },
+  { name: "brand9-product-catalog-watcher",  cadence: "daily", group: "monitor" },
+  { name: "github-pages-build-watcher",      cadence: "10min", group: "monitor" },
+  { name: "gbp-review-monitor",              cadence: "daily", group: "monitor" },
+  { name: "wolf-state-watcher",              cadence: "hourly",group: "monitor" },
+  { name: "serp-tracker",                    cadence: "daily", group: "monitor" },
+  // Dashboards (autosync regenerators)
+  { name: "dashboard-autosync",              cadence: "30min", group: "autosync" },
+  { name: "b9-ops-autosync",                 cadence: "daily", group: "autosync" },
+  { name: "pragma-pipeline-autosync",        cadence: "daily", group: "autosync" },
+  { name: "wolf-dashboard-autosync",         cadence: "hourly",group: "autosync" },
+  // Rollups + dispatchers
+  { name: "engagement-metrics-rollup",       cadence: "daily", group: "rollup" },
+  { name: "content-publish-scheduler",       cadence: "15min", group: "dispatch" },
+  { name: "inbound-lead-router",             cadence: "30min", group: "dispatch" },
+  { name: "review-velocity-tracker",         cadence: "daily", group: "rollup" },
+  { name: "ai-citation-probe",               cadence: "weekly",group: "probe" },
+  { name: "social-cross-post",               cadence: "ondemand", group: "dispatch" },
+  { name: "deploy-brand9-wp",                cadence: "ondemand", group: "dispatch" },
+  // Memory substrate (the Hermes-as-substrate plumbing)
+  { name: "memory-unifier",                  cadence: "15min", group: "memory" },
+  { name: "memory-crossshare",               cadence: "30min", group: "memory" },
+  { name: "memory-index",                    cadence: "hourly",group: "memory" },
+  { name: "memory-prefetch",                 cadence: "5min",  group: "memory" },
+  { name: "memory-capture",                  cadence: "ondemand", group: "memory" },
+  // Inbox + ops daemons
+  { name: "inbox-poller",                    cadence: "daemon", group: "daemon" },
+  { name: "inbox-self-heal",                 cadence: "5min",  group: "daemon" },
+  { name: "cowork-inbox-monitor",            cadence: "5min",  group: "daemon" },
+  { name: "telegram-listener",               cadence: "daemon", group: "daemon" },
+  { name: "mac-driver",                      cadence: "daemon", group: "daemon" },
+  { name: "hermes-archive-cleaner",          cadence: "weekly",group: "ops" },
+  { name: "metric-collector",                cadence: "hourly",group: "ops" },
+
+  // RECLASSIFIED 2026-06-05 — moved from WILD_DUCKS per typology audit
+  { name: "shell-runner", cadence: "event", group: "dispatch" },
+  { name: "adoption-reminder", cadence: "daily", group: "ops" },
+  { name: "ecosystem-evolution-scanner", cadence: "daily", group: "ops" },
+  { name: "quiet-hours-digest", cadence: "nightly", group: "ops" },
+  { name: "wolf-state-updater", cadence: "daily", group: "monitor" },
+  { name: "hermes-status-writer", cadence: "hourly", group: "autosync" },
+  { name: "dashboard-data-writer", cadence: "hourly", group: "autosync" },
+  { name: "construct-v4-sync", cadence: "30min", group: "autosync" },
+  { name: "claim-verifier-call", cadence: "event", group: "monitor" },
+  { name: "completion-claim-watcher", cadence: "event", group: "monitor" },
+  { name: "b9-daily-rescore", cadence: "daily", group: "b9" },
+  { name: "plugin-load-verifier", cadence: "5min", group: "monitor" },
+  { name: "competitor-language-watcher", cadence: "daily", group: "probe" },
+  { name: "uvp-drift-watcher", cadence: "daily", group: "probe" },
+  { name: "session-context-primer", cadence: "session", group: "daemon" },
+  { name: "harvard-deep-scan", cadence: "daily", group: "harvard" },
+  { name: "harvard-corpus-builder", cadence: "daily", group: "harvard" },
+  { name: "sana-ingestion", cadence: "daily", group: "harvard" },
+  { name: "thinker-corpus-builder", cadence: "weekly", group: "harvard" },
+  { name: "dashboard-deploy-watcher", cadence: "5min", group: "autosync" },
+  { name: "harvard-stats-rebuilder", cadence: "5min", group: "harvard" },
+  { name: "voice-surface-watcher", cadence: "daily", group: "probe" },
+  { name: "gsc-daily-watcher", cadence: "daily", group: "b9" },
+  { name: "b9-meta-rewrite-prioritizer", cadence: "daily", group: "b9" },
+  { name: "b9-schema-completeness-monitor", cadence: "daily", group: "b9" },
+  { name: "apple-2fa-capture", cadence: "event", group: "daemon" },
+  { name: "apple-maps-listing-watcher", cadence: "daily", group: "monitor" },
+  { name: "b9-site-change-watcher", cadence: "daily", group: "b9" },
+  { name: "google-search-intel-watcher", cadence: "daily", group: "probe" },
+  { name: "gsc-complete-daily", cadence: "daily", group: "b9" },
+  { name: "b9-wp-options-daily", cadence: "daily", group: "b9" },
+  { name: "b9-exhaustive-audit", cadence: "daily", group: "b9" },
+  { name: "b9-faqpage-injector", cadence: "event", group: "b9" },
+  { name: "flock-typology-watcher", cadence: "weekly", group: "ops" },
+];
+
+// META task 21 — batch-migrates the 16 READY workloads from HermesMigrationMap into Wild Duck pattern
+const WILD_DUCK_META_TASKS = [
+  { name: "batch-migrate-ready-workloads", phase: "meta", status: "spec", score: 15, domain: "16 READY workloads → Wild Ducks", task: "21",
+    skills: ["Migration Map parse", "Wild Duck scaffold from template", "Auto-populate vs STATUS_SPEC triage", "Per-workload self-test"] },
+
+  // RECLASSIFIED 2026-06-05 — moved from WILD_DUCKS per typology audit
+  { name: "shell-runner", cadence: "event", group: "dispatch" },
+  { name: "adoption-reminder", cadence: "daily", group: "ops" },
+  { name: "ecosystem-evolution-scanner", cadence: "daily", group: "ops" },
+  { name: "quiet-hours-digest", cadence: "nightly", group: "ops" },
+  { name: "wolf-state-updater", cadence: "daily", group: "monitor" },
+  { name: "hermes-status-writer", cadence: "hourly", group: "autosync" },
+  { name: "dashboard-data-writer", cadence: "hourly", group: "autosync" },
+  { name: "construct-v4-sync", cadence: "30min", group: "autosync" },
+  { name: "claim-verifier-call", cadence: "event", group: "monitor" },
+  { name: "completion-claim-watcher", cadence: "event", group: "monitor" },
+  { name: "b9-daily-rescore", cadence: "daily", group: "b9" },
+  { name: "plugin-load-verifier", cadence: "5min", group: "monitor" },
+  { name: "competitor-language-watcher", cadence: "daily", group: "probe" },
+  { name: "uvp-drift-watcher", cadence: "daily", group: "probe" },
+  { name: "session-context-primer", cadence: "session", group: "daemon" },
+  { name: "harvard-deep-scan", cadence: "daily", group: "harvard" },
+  { name: "harvard-corpus-builder", cadence: "daily", group: "harvard" },
+  { name: "sana-ingestion", cadence: "daily", group: "harvard" },
+  { name: "thinker-corpus-builder", cadence: "weekly", group: "harvard" },
+  { name: "dashboard-deploy-watcher", cadence: "5min", group: "autosync" },
+  { name: "harvard-stats-rebuilder", cadence: "5min", group: "harvard" },
+  { name: "voice-surface-watcher", cadence: "daily", group: "probe" },
+  { name: "gsc-daily-watcher", cadence: "daily", group: "b9" },
+  { name: "b9-meta-rewrite-prioritizer", cadence: "daily", group: "b9" },
+  { name: "b9-schema-completeness-monitor", cadence: "daily", group: "b9" },
+  { name: "apple-2fa-capture", cadence: "event", group: "daemon" },
+  { name: "apple-maps-listing-watcher", cadence: "daily", group: "monitor" },
+  { name: "b9-site-change-watcher", cadence: "daily", group: "b9" },
+  { name: "google-search-intel-watcher", cadence: "daily", group: "probe" },
+  { name: "gsc-complete-daily", cadence: "daily", group: "b9" },
+  { name: "b9-wp-options-daily", cadence: "daily", group: "b9" },
+  { name: "b9-exhaustive-audit", cadence: "daily", group: "b9" },
+  { name: "b9-faqpage-injector", cadence: "event", group: "b9" },
+  { name: "flock-typology-watcher", cadence: "weekly", group: "ops" },
+];
+
+// Coca-Cola score color tier (matches v2.3 lineage)
+const scoreColor = score => score >= 22 ? "#b388ff" : score >= 18 ? C.cyan : C.greenDim;
+const scoreBg    = score => score >= 22 ? "rgba(179,136,255,0.18)" : score >= 18 ? "rgba(0,212,255,0.15)" : "rgba(57,255,20,0.08)";
+const scoreBorder= score => score >= 22 ? "rgba(179,136,255,0.55)" : score >= 18 ? "rgba(0,212,255,0.4)" : "rgba(57,255,20,0.25)";
+
+const WildDucksBand = () => {
+  const [expanded, setExpanded] = useState({});
+  const toggle = name => setExpanded(prev => ({ ...prev, [name]: !prev[name] }));
+  const stat = s => s === "proven" ? { c: C.green, label: "● proven" }
+                 : s === "ready"  ? { c: C.green, label: "◐ ready" }
+                 : s === "spec"   ? { c: C.cyan,  label: "△ spec queued" }
+                 : { c: C.greenDim, label: "○ planned" };
+  const callGroupColor = g => g === "memory" ? "#b388ff" : g === "daemon" ? "#ffb74d" : g === "monitor" ? C.green : g === "autosync" ? C.cyan : g === "rollup" ? C.green : g === "dispatch" ? C.cyan : C.greenDim;
+  return (
+    <div style={{ margin: "20px 28px 28px", padding: 18, border: `2px solid ${C.cyan}`, background: "rgba(0,212,255,0.04)", position: "relative" }}>
+      <div style={{ position: "absolute", top: -10, left: 16, padding: "0 8px", background: "#000", fontSize: 10, color: C.cyan, letterSpacing: 4 }}>
+        ✺ WILD DUCKS — the flock inside Hermes
+      </div>
+      <div style={{ display: "flex", alignItems: "center", gap: 18, marginTop: 8 }}>
+        <svg viewBox="0 0 240 100" width="120" height="50" aria-label="Wild Duck silhouette" style={{ flex: "0 0 auto" }}>
+          <path fill={C.cyan} d="M 28 62 Q 22 67 28 72 L 78 70 Q 102 62 132 55 L 178 49 L 200 46 L 218 49 L 200 54 L 174 56 L 138 64 Q 108 70 86 76 L 48 78 Q 32 76 28 62 Z"/>
+          <path fill={C.cyan} d="M 78 58 L 56 18 Q 86 22 102 46 Z"/>
+          <path fill="rgba(0,212,255,0.65)" d="M 78 76 L 60 96 Q 92 92 108 70 Z"/>
+          <circle cx="190" cy="48" r="1.4" fill="#000"/>
+        </svg>
+        <div style={{ fontSize: 10, color: C.cyan, lineHeight: 1.6, fontStyle: "italic", opacity: 0.85 }}>
+          IBM/Watson 1960s. Kierkegaard parable underneath: you can tame wild ducks but you can never make tame ducks wild again. Andreessen: IBM/HP lost theirs to VC. Most SMBs never had any. PRAGMA installs a flock on the operator's Mac where they don't fly away.
+        </div>
+      </div>
+      <div style={{ marginTop: 14, fontSize: 11, color: C.cyan, lineHeight: 1.8 }}>
+        Three-tier brand: <span style={{ color: C.green, fontWeight: 700 }}>Operators</span> (Brain) → <span style={{ color: C.green, fontWeight: 700 }}>Hermes</span> (OS) → <span style={{ color: C.cyan, fontWeight: 700 }}>Wild Ducks</span> (narrow-domain, no-approval-gates, never tamed)
+      </div>
+      <div style={{ marginTop: 6, fontSize: 9, color: C.greenDim, letterSpacing: 2, fontFamily: "Courier New, monospace" }}>
+        ▸ SCORED COCA-COLA TEST (1–25) · RE-SCORED MONTHLY BY KEYSTONE · ≥22 ★ MOONSHOT TIER
+      </div>
+      {/* Wild Ducks — the rare flock, flat list */}
+      <div style={{ marginTop: 16 }}>
+        <div style={{ fontSize: 9, color: C.cyanDim || "rgba(0,212,255,0.6)", letterSpacing: 2, marginBottom: 6 }}>
+          ✺ THE FLOCK · {WILD_DUCKS.length} WILD DUCKS · {CALLS.length} CALLS · RECLASSIFIED 2026-06-05
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 8 }}>
+          {WILD_DUCKS.map(d => {
+            const s = stat(d.status);
+            const sc = scoreColor(d.score);
+            const isOpen = !!expanded[d.name];
+            return (
+              <div key={d.name} style={{ border: `1px solid ${s.c}`, padding: 8, background: "rgba(0,0,0,0.5)" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 6 }}>
+                  <span style={{ fontSize: 10, fontWeight: 700, color: s.c, letterSpacing: 1, fontFamily: "Courier New, monospace" }}>
+                    {d.name}
+                  </span>
+                  <span style={{ fontSize: 9, padding: "1px 6px", borderRadius: 2, background: scoreBg(d.score),
+                                 color: sc, border: `1px solid ${scoreBorder(d.score)}`,
+                                 letterSpacing: 1, fontFamily: "Courier New, monospace", fontWeight: 700, whiteSpace: "nowrap" }}>
+                    {d.score}/25{d.score >= 22 ? " ★" : ""}
+                  </span>
+                </div>
+                <div style={{ fontSize: 8, color: s.c, opacity: 0.7, marginTop: 3 }}>{d.domain}</div>
+                <div style={{ fontSize: 8, color: s.c, marginTop: 4 }}>{s.label}</div>
+                {d.skills && d.skills.length > 0 && (
+                  <div style={{ marginTop: 6, borderTop: `1px dashed rgba(0,212,255,0.2)`, paddingTop: 5 }}>
+                    <button onClick={() => toggle(d.name)}
+                            style={{ background: "transparent", border: "none", color: C.cyan, cursor: "pointer",
+                                     fontSize: 8, fontFamily: "Courier New, monospace", padding: 0, letterSpacing: 1, textAlign: "left", width: "100%" }}>
+                      {isOpen ? "▾" : "▸"} skills ({d.skills.length})
+                    </button>
+                    {isOpen && (
+                      <ul style={{ margin: "5px 0 0 12px", padding: 0, listStyle: "none" }}>
+                        {d.skills.map(sk => (
+                          <li key={sk} style={{ fontSize: 8, color: C.cyan, opacity: 0.85, lineHeight: 1.5, fontFamily: "Courier New, monospace" }}>
+                            · {sk}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* CALLS — the operational substrate · cron monitors + dispatchers + daemons */}
+      <div style={{ marginTop: 24, paddingTop: 16, borderTop: `1px dashed ${C.cyan}` }}>
+        <div style={{ fontSize: 10, color: C.cyan, letterSpacing: 3, marginBottom: 4 }}>
+          ◉ CALLS · {CALLS.length} OPERATIONAL INSTRUMENTS
+        </div>
+        <div style={{ fontSize: 9, color: C.greenDim, fontStyle: "italic", marginBottom: 10, lineHeight: 1.5 }}>
+          Duck calls — predictable cron monitors, dispatchers, daemons, and memory plumbing. Not Wild Ducks — they don't innovate, they execute. Hermes substrate.
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: 4 }}>
+          {CALLS.map(c => {
+            const cc = callGroupColor(c.group);
+            return (
+              <div key={c.name} style={{ border: `1px solid ${cc}`, opacity: 0.85, padding: "4px 6px", background: "rgba(0,0,0,0.4)",
+                                          display: "flex", justifyContent: "space-between", alignItems: "center", gap: 6 }}>
+                <span style={{ fontSize: 8, color: cc, fontFamily: "Courier New, monospace", letterSpacing: 0.5,
+                               overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{c.name}</span>
+                <span style={{ fontSize: 7, color: cc, opacity: 0.8, fontFamily: "Courier New, monospace", letterSpacing: 1 }}>
+                  {c.cadence}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+        <div style={{ marginTop: 10, fontSize: 8, color: C.greenDim, fontFamily: "Courier New, monospace", letterSpacing: 1 }}>
+          ▸ GROUPS: monitor · autosync · rollup · dispatch · memory · daemon · probe · ops
+          &nbsp;&nbsp;·&nbsp;&nbsp;19 one-shots archived to /Atlas/hermes-sandbox/archive/one-shots/
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════════════════
+// HERMES MIGRATION MAP — A-G categories from the larger-scale audit
+// ═══════════════════════════════════════════════════════════════
+const STATUS_STYLE = {
+  proven:      { color: C.green,    bg: "rgba(57,255,20,0.12)",  border: C.green,    label: "● PROVEN",      style: "solid" },
+  ready:       { color: C.green,    bg: "rgba(57,255,20,0.05)",  border: C.green,    label: "◐ READY",       style: "solid" },
+  planned:     { color: C.cyan,     bg: "rgba(0,212,255,0.05)",  border: C.cyan,     label: "○ PLANNED",     style: "dashed" },
+  opportunity: { color: C.greenDim, bg: "rgba(57,255,20,0.02)",  border: C.greenDim, label: "◇ OPPORTUNITY", style: "dashed" },
+  spec:        { color: C.purple,   bg: "rgba(179,136,255,0.05)",border: C.purple,   label: "△ SPEC",        style: "dashed" },
+};
+
+const HermesMigrationMap = () => {
+  const totals = useMemo(() => {
+    const counts = { proven: 0, ready: 0, planned: 0, opportunity: 0, spec: 0 };
+    HERMES_MIGRATION_MAP.forEach(cat => cat.items.forEach(i => { counts[i.status] = (counts[i.status] || 0) + 1; }));
+    return counts;
+  }, []);
+  const totalItems = Object.values(totals).reduce((a,b) => a+b, 0);
+
+  return (
+    <div style={{ margin: "28px 28px 20px", padding: 20,
+      border: `1px solid ${C.green}`, background: "rgba(0,0,0,0.75)", position: "relative",
+    }}>
+      <div style={{ position: "absolute", top: -10, left: 16, padding: "0 8px", background: "#000", fontSize: 10, color: C.green, letterSpacing: 4 }}>
+        ⌬ HERMES MIGRATION MAP — LARGER-SCALE AUDIT 2026-05-27
+      </div>
+
+      <div style={{ marginTop: 8, marginBottom: 18, display: "flex", flexWrap: "wrap", gap: 18, alignItems: "center", fontSize: 10 }}>
+        <span style={{ color: C.greenDim, letterSpacing: 2 }}>SCOPE</span>
+        <span style={{ color: C.green }}>{totalItems} workloads · 7 categories</span>
+        <span style={{ color: C.greenDim }}>·</span>
+        {Object.entries(totals).map(([k,v]) => (
+          <span key={k} style={{ color: STATUS_STYLE[k].color }}>
+            {STATUS_STYLE[k].label} <span style={{ fontWeight: 700 }}>{v}</span>
+          </span>
+        ))}
+      </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(420px, 1fr))", gap: 14 }}>
+        {HERMES_MIGRATION_MAP.map(cat => (
+          <div key={cat.id} style={{
+            borderLeft: `3px solid ${cat.color}`, paddingLeft: 14, paddingBottom: 6,
+            background: "rgba(0,0,0,0.4)", paddingTop: 10, paddingRight: 10,
+          }}>
+            <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 4 }}>
+              <span style={{ fontSize: 22, fontWeight: 700, color: cat.color, letterSpacing: 2, fontFamily: "Courier New, monospace" }}>{cat.letter}</span>
+              <span style={{ fontSize: 12, fontWeight: 700, color: cat.color, letterSpacing: 3 }}>{cat.title}</span>
+            </div>
+            <div style={{ fontSize: 9, color: C.greenDim, lineHeight: 1.5, marginBottom: 10, fontStyle: "italic", paddingRight: 8 }}>
+              {cat.thesis}
+            </div>
+            {cat.items.map((it, i) => {
+              const ss = STATUS_STYLE[it.status];
+              return (
+                <div key={i} style={{
+                  display: "flex", justifyContent: "space-between", alignItems: "center",
+                  padding: "5px 8px", marginBottom: 3,
+                  border: `1px ${ss.style} ${ss.border}`, background: ss.bg,
+                }}>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: 10, color: ss.color, fontWeight: 600 }}>{it.name}</div>
+                    <div style={{ fontSize: 8, color: C.greenDim, marginTop: 1, opacity: 0.85 }}>{it.detail}</div>
+                  </div>
+                  <span style={{ fontSize: 8, color: ss.color, letterSpacing: 1, marginLeft: 8, whiteSpace: "nowrap" }}>{ss.label}</span>
+                </div>
+              );
+            })}
+          </div>
+        ))}
+      </div>
+
+      {/* ROI strip */}
+      <div style={{ marginTop: 18, paddingTop: 14, borderTop: `1px solid ${C.greenDim}` }}>
+        <div style={{ fontSize: 10, color: C.green, letterSpacing: 3, marginBottom: 8 }}>⊕ NAPKIN ROI</div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14, fontSize: 10, color: C.greenDim, lineHeight: 1.6 }}>
+          <div>
+            <div style={{ color: C.cyan, fontSize: 9, letterSpacing: 2 }}>CURRENT SCHEDULER BURN</div>
+            <div style={{ color: C.green, fontSize: 18, fontWeight: 700 }}>${ROI.current_scheduler_burn_low}–${ROI.current_scheduler_burn_high}<span style={{ fontSize: 10, color: C.greenDim }}>/mo</span></div>
+            <div style={{ fontSize: 8 }}>~20+ scheduled tasks · Anthropic tokens</div>
+          </div>
+          <div>
+            <div style={{ color: C.cyan, fontSize: 9, letterSpacing: 2 }}>HERMES CAPTURE @ 60%</div>
+            <div style={{ color: C.green, fontSize: 18, fontWeight: 700 }}>${ROI.monthly_savings_low}–${ROI.monthly_savings_high}<span style={{ fontSize: 10, color: C.greenDim }}>/mo saved</span></div>
+            <div style={{ fontSize: 8 }}>annualized ${ROI.annualized_low.toLocaleString()}–${ROI.annualized_high.toLocaleString()}</div>
+          </div>
+          <div>
+            <div style={{ color: C.cyan, fontSize: 9, letterSpacing: 2 }}>NEW 24/7 WORKLOADS</div>
+            <div style={{ color: C.green, fontSize: 18, fontWeight: 700 }}>{ROI.new_workloads_unlocked}<span style={{ fontSize: 10, color: C.greenDim }}> unlocked</span></div>
+            <div style={{ fontSize: 8 }}>cat A+F · currently $0 because too costly</div>
+          </div>
+          <div>
+            <div style={{ color: C.cyan, fontSize: 9, letterSpacing: 2 }}>PRAGMA LITE</div>
+            <div style={{ color: C.purple, fontSize: 18, fontWeight: 700 }}>−$${ROI.pragma_lite_client_cost_removed}<span style={{ fontSize: 10, color: C.greenDim }}>/mo per client</span></div>
+            <div style={{ fontSize: 8 }}>Claude Max removed from client TCO · opens SMB tier</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════════════════
+// LIVE DATA FEED
+// ═══════════════════════════════════════════════════════════════
+const LiveDataFeed = () => (
+  <div style={{ margin: "20px 28px", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16 }}>
+    {/* Today's Lens */}
+    <div style={{ border: `1px solid ${C.cyan}`, padding: 14, background: "rgba(0,0,0,0.7)" }}>
+      <div style={{ fontSize: 9, color: C.cyan, letterSpacing: 3, marginBottom: 8 }}>● LENS · 2026-05-27 · 09:34 ET</div>
+      <div style={{ fontSize: 30, color: C.cyan, fontWeight: 700, lineHeight: 1 }}>{LIVE.lens_today.items}</div>
+      <div style={{ fontSize: 9, color: C.greenDim, marginTop: 4 }}>items · {LIVE.lens_today.sources} sources · {LIVE.lens_today.failures} fails</div>
+      <div style={{ fontSize: 8, color: C.greenDim, marginTop: 10 }}>Phase {LIVE.lens_today.phase} · 3×/day fire schedule</div>
+      <div style={{ fontSize: 8, color: C.cyan, marginTop: 6, opacity: 0.7 }}>HBR ✓ HBS WK ✓ HBS AI ✓ CNBC ✓ Yahoo ✓ Reuters ✓</div>
+    </div>
+
+    {/* Hermes Today */}
+    <div style={{ border: `1px solid ${C.green}`, padding: 14, background: "rgba(0,0,0,0.7)" }}>
+      <div style={{ fontSize: 9, color: C.green, letterSpacing: 3, marginBottom: 8 }}>⚕ HERMES · 2026-05-27 · DAY 1</div>
+      <div style={{ fontSize: 30, color: C.green, fontWeight: 700, lineHeight: 1 }}>${LIVE.hermes_today.cost_usd.toFixed(2)}</div>
+      <div style={{ fontSize: 9, color: C.greenDim, marginTop: 4 }}>burned vs ${LIVE.hermes_today.cost_cowork_equivalent.toFixed(2)} Cowork eq</div>
+      <div style={{ fontSize: 8, color: C.greenDim, marginTop: 10 }}>{LIVE.hermes_today.runs} runs · {LIVE.hermes_today.cost_ratio}</div>
+      <div style={{ fontSize: 8, color: C.green, marginTop: 6, opacity: 0.8 }}>ArXiv ✓ Wolf (blocked) ✓ Lens-broad ✓</div>
+    </div>
+
+    {/* Next Fires */}
+    <div style={{ border: `1px solid ${C.green}`, padding: 14, background: "rgba(0,0,0,0.7)" }}>
+      <div style={{ fontSize: 9, color: C.green, letterSpacing: 3, marginBottom: 8 }}>⏲ SCHEDULED · NEXT 4 FIRES</div>
+      {LIVE.schedules_next.map((s, i) => (
+        <div key={i} style={{ fontSize: 9, color: s.status === "fired" ? C.greenDim : C.green, marginBottom: 3, display: "flex", justifyContent: "space-between" }}>
+          <span>{s.status === "fired" ? "✓" : "○"} {s.name}</span>
+          <span style={{ color: C.greenDim }}>{s.at}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════
+// PRAGMA PIPELINE
+// ═══════════════════════════════════════════════════════════════
+const PragmaPanel = () => (
+  <div style={{ margin: "20px 28px", padding: 18, border: `1px solid ${C.purple}`, background: "rgba(179,136,255,0.04)" }}>
+    <div style={{ fontSize: 11, color: C.purple, letterSpacing: 4, marginBottom: 14 }}>
+      ⌬ PRAGMA · INSTALL+BUILD PIPELINE
+    </div>
+    <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr 1fr", gap: 18 }}>
+      <div>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 4 }}>ACTIVE</div>
+        <div style={{ fontSize: 14, color: C.purple, fontWeight: 700 }}>TLC · The Lakeshore Co.</div>
+        <div style={{ fontSize: 9, color: C.purple, opacity: 0.7, marginTop: 4 }}>Sprint Build + Monitor (90-day build / 90-day monitor)</div>
+        <div style={{ fontSize: 10, color: C.greenDim, marginTop: 8 }}>Day {LIVE.pragma_active.days_into_build} / 90 build · agrihood proximity strategy</div>
+      </div>
+      <div>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 4 }}>PRODUCT TIERS</div>
+        <div style={{ fontSize: 10, color: C.purple, lineHeight: 1.7 }}>
+          <div><span style={{ color: C.green }}>Install 1</span> · "Starting at $7,500" · published</div>
+          <div><span style={{ color: C.greenDim }}>Install 2/3</span> · by inquiry · pricing locked</div>
+          <div><span style={{ color: C.greenDim }}>Build (enterprise)</span> · by inquiry</div>
+          <div><span style={{ color: C.green }}>Lite (NEW)</span> · Hermes-based · sub-$7,500 target</div>
+        </div>
+      </div>
+      <div>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 4 }}>WEDGE</div>
+        <div style={{ fontSize: 10, color: C.purple, lineHeight: 1.7 }}>
+          <div>14-30 day deployment</div>
+          <div>vs. 60-90 day consulting</div>
+          <div style={{ marginTop: 6 }}>+ Hermes Lite: ~20× lower runtime cost</div>
+          <div>+ Skill Pack v0.1 spec locked</div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════
+// FOUNDATION DETAIL
+// ═══════════════════════════════════════════════════════════════
+const FoundationPanel = () => (
+  <div style={{ margin: "20px 28px", padding: 16, border: `1px solid ${C.white}`, borderColor: "rgba(255,255,255,0.25)", background: "rgba(255,255,255,0.02)" }}>
+    <div style={{ fontSize: 11, color: C.white, letterSpacing: 4, marginBottom: 12, opacity: 0.9 }}>
+      ◇ TIER 0 · FOUNDATION
+    </div>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 12 }}>
+      {FOUNDATION.map(f => (
+        <div key={f.id} style={{ borderLeft: `2px solid ${f.color}`, paddingLeft: 10 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: f.color, letterSpacing: 2 }}>{f.label.toUpperCase()}</div>
+          <div style={{ fontSize: 9, color: C.greenDim, marginTop: 4, lineHeight: 1.5 }}>{f.detail}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════
+// FOOTER
+// ═══════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════
+// LEO SKILL + WOLF AUDIT FLAG — added 2026-05-28
+// ═══════════════════════════════════════════════════════════════
+const ChernyAnchor = () => (
+  <div style={{ margin: "20px 28px", padding: 16, border: `2px solid ${C.cyan}`, background: "rgba(0,212,255,0.04)" }}>
+    <div style={{ fontSize: 10, color: C.cyan, letterSpacing: 4, marginBottom: 8 }}>★ CANONICAL CITATION · ANTHROPIC STATES THE PRAGMA THESIS · 2026-05-28</div>
+    <div style={{ fontSize: 13, color: C.cyan, fontWeight: 700, fontStyle: "italic", marginBottom: 10, lineHeight: 1.45 }}>
+      "The best person to write accounting software is a really good accountant... Coding is the easy part. Knowing the domain is the hard part."
+    </div>
+    <div style={{ fontSize: 10, color: C.cyan, opacity: 0.75, marginBottom: 10 }}>
+      — Boris Cherny · Anthropic · Claude Code engineering lead · Sequoia AI Ascent 2026
+    </div>
+    <div style={{ fontSize: 10, color: C.greenDim, lineHeight: 1.5 }}>
+      Three-piece anchor stack now in play for PRAGMA + HC pitch surfaces: <strong style={{ color: C.cyan }}>HBR cover (Lee/Mantia/McNeill)</strong> + <strong style={{ color: C.cyan }}>HBR Insider counter (Gavett)</strong> + <strong style={{ color: C.cyan }}>Cherny at Sequoia</strong> — three institutional surfaces, same week, same conclusion: the moat is the operating model, not the model.
+      <br/>
+      <span style={{ color: C.cyan, opacity: 0.7 }}>Staged: /thinking/ post · PRAGMA + Bobby + HC LinkedIn drafts · site integration spec · awaiting pre-flight gate + Vector pass.</span>
+    </div>
+  </div>
+);
+
+// KANBAN STRIP — live Hermes kanban board state (2026-06-03)
+// Reads /kanban-state.json (written by kanban_bridge.py via inbox-poller hook)
+const KanbanStrip = () => {
+  const [data, setData] = React.useState(null);
+  const [err, setErr] = React.useState(null);
+  React.useEffect(() => {
+    fetch('./kanban-state.json?cb=' + Date.now())
+      .then(r => r.ok ? r.json() : Promise.reject('http ' + r.status))
+      .then(d => setData(d))
+      .catch(e => setErr(String(e)));
+    const t = setInterval(() => {
+      fetch('./kanban-state.json?cb=' + Date.now())
+        .then(r => r.ok ? r.json() : null).then(d => d && setData(d)).catch(()=>{});
+    }, 60000);
+    return () => clearInterval(t);
+  }, []);
+
+  const lanes = [
+    { key: 'inbox', label: 'INBOX', color: C.greenDim },
+    { key: 'in_flight', label: 'IN-FLIGHT', color: C.cyan },
+    { key: 'blocked', label: 'BLOCKED', color: C.red },
+    { key: 'done', label: 'DONE', color: C.green },
+  ];
+  const counts = data?.counts || {};
+  const total = Object.values(counts).reduce((a,b) => a+b, 0);
+  const freshness = data?.generated_at ? new Date(data.generated_at) : null;
+  const ageMin = freshness ? Math.round((Date.now() - freshness.getTime()) / 60000) : null;
+  const fresh = ageMin !== null && ageMin < 10;
+  // ET-localized display per locked Eastern-Time-everywhere rule
+  const etTime = freshness ? freshness.toLocaleString("en-US", { timeZone: "America/New_York", hour: "2-digit", minute: "2-digit", hour12: false }) : null;
+
+  return (
+    <div style={{ margin: "20px 28px", border: `2px solid ${C.cyan}`, padding: 16, background: "rgba(0,212,255,0.04)" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 12 }}>
+        <div>
+          <div style={{ fontSize: 10, color: C.cyan, letterSpacing: 4 }}>⌬ KANBAN · Hermes-Agent native · 2026-06-03</div>
+          <div style={{ fontSize: 14, color: C.cyan, fontWeight: 700, marginTop: 4 }}>
+            Inbox → In-Flight → Blocked / Done · {total} cards total
+          </div>
+        </div>
+        <div style={{ fontSize: 9, color: fresh ? C.green : C.orange, letterSpacing: 1 }}>
+          {err ? `STATE FILE MISSING — ${err}` : (
+            ageMin === null ? "loading…" :
+            fresh ? `🟢 LIVE · ${etTime} ET · refreshed ${ageMin}m ago` :
+                    `🟠 SNAPSHOT · ${etTime} ET · ${ageMin}m old`
+          )}
+        </div>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }}>
+        {lanes.map(L => {
+          const cards = (data?.lanes?.[L.key] || []).slice(0, 8);
+          return (
+            <div key={L.key} style={{ border: `1px solid ${L.color}`, padding: 10, background: "rgba(0,0,0,0.3)" }}>
+              <div style={{ fontSize: 10, color: L.color, letterSpacing: 3, marginBottom: 8, display: "flex", justifyContent: "space-between" }}>
+                <span>{L.label}</span>
+                <span style={{ fontWeight: 700 }}>{counts[L.key] ?? 0}</span>
+              </div>
+              {cards.length === 0 && <div style={{ fontSize: 9, color: C.greenDim, opacity: 0.5 }}>—</div>}
+              {cards.map(c => (
+                <div key={c.task_id} style={{ fontSize: 9, color: C.greenDim, lineHeight: 1.4, marginBottom: 6, opacity: 0.85 }}>
+                  <div style={{ color: L.color, fontWeight: 500 }}>{c.task_id.split('-')[0]}</div>
+                  <div>{(c.title || c.task_id).slice(0, 60)}</div>
+                </div>
+              ))}
+              {counts[L.key] > 8 && (
+                <div style={{ fontSize: 8, color: L.color, opacity: 0.6, marginTop: 4 }}>+{counts[L.key] - 8} more</div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+      <div style={{ fontSize: 8, color: C.cyan, opacity: 0.55, marginTop: 10, letterSpacing: 1 }}>
+        Source: ~/.hermes/kanban.db (SQLite) · Bridge: /Atlas/hermes-sandbox/lib/kanban_bridge.py · Refresh: every 60s
+      </div>
+    </div>
+  );
+};
+
+const LeoWolfStrip = () => (
+  <div style={{ margin: "20px 28px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+    <div style={{ border: `2px solid ${C.gold}`, padding: 16, background: "rgba(255,215,0,0.04)" }}>
+      <div style={{ fontSize: 10, color: C.gold, letterSpacing: 4, marginBottom: 8 }}>⌬ LEO · NEW SKILL · 2026-05-28</div>
+      <div style={{ fontSize: 14, color: C.gold, fontWeight: 700, marginBottom: 6 }}>Aschenbrenner Lens — PE · VC · WOLF</div>
+      <div style={{ fontSize: 10, color: C.gold, opacity: 0.85, lineHeight: 1.6, marginBottom: 10 }}>
+        Operationalizes Leopold Aschenbrenner's "Situational Awareness" framework (AGI ~2027 · bottleneck thesis · trillion-dollar cluster) as a deal/strategy lens for Hartley Capital acquisitions, the venture book, and WOLF positions.
+      </div>
+      <div style={{ fontSize: 9, color: C.gold, opacity: 0.7, lineHeight: 1.5 }}>
+        <div><span style={{ color: C.green }}>Long thesis:</span> power producers · BTC miners as compute infra · memory/storage</div>
+        <div><span style={{ color: C.red }}>Short thesis:</span> NVDA · SMH · ORCL · AVGO commoditization · model-lab speculation</div>
+        <div><span style={{ color: C.cyan }}>Triggers:</span> "what does Leo say" · "Aschenbrenner read" · "bottleneck framework" · deal screening · WOLF strategy review</div>
+      </div>
+      <div style={{ fontSize: 8, color: C.gold, opacity: 0.6, marginTop: 10, letterSpacing: 1 }}>
+        /Atlas/skills/leo/ — SKILL.md + framework.md + applications.md + portfolio-snapshot.md + sources.md
+      </div>
+    </div>
+    <div style={{ border: `2px solid ${C.red}`, padding: 16, background: "rgba(255,51,102,0.05)" }}>
+      <div style={{ fontSize: 10, color: C.red, letterSpacing: 4, marginBottom: 8 }}>🚨 WOLF COMPLIANCE CRISIS · 2026-05-28</div>
+      <div style={{ fontSize: 14, color: C.red, fontWeight: 700, marginBottom: 6 }}>Every position in mandate violation · PLTR 48% (6× cap)</div>
+      <div style={{ fontSize: 10, color: C.red, opacity: 0.9, lineHeight: 1.6, marginBottom: 10 }}>
+        NVDA 26% · MSFT 26% · MDT 25% · JPM 22% — all 2.8-6× over the 8% single-name cap. Circuit breaker YELLOW · manual halt active. Auto-rebalance scheduled but not effective. <strong style={{ color: C.orange }}>Day-60 graduate verdict June 5 = auto-FAIL on Gate 1.</strong>
+      </div>
+      <div style={{ fontSize: 9, color: C.red, opacity: 0.8, lineHeight: 1.5 }}>
+        <div><span style={{ color: C.orange }}>Pre-staged verdict:</span> EXTEND to Day 90 · graduate blocked on compliance</div>
+        <div><span style={{ color: C.orange }}>Leo lens read:</span> WOLF is LONG the names Aschenbrenner is SHORTING (NVDA / MSFT / TSLA / PLTR) — zero exposure to his bottleneck longs</div>
+        <div><span style={{ color: C.orange }}>Dashboard lie:</span> Day 50 reality / Day 28 reported · state file at /Atlas/wolf/state.json</div>
+        <div><span style={{ color: C.cyan }}>Files:</span> /Atlas/wolf/wolf_day60_dryrun.json · /Atlas/wolf/COMPLIANCE-ALERT-2026-05-28.md · /Atlas/hermes-sandbox/wolf-MASTER-setup.md</div>
+      </div>
+    </div>
+  </div>
+);
+
+const Footer = () => (
+  <div style={{
+    margin: "20px 28px 28px", padding: 14, fontSize: 9, color: C.greenDim,
+    borderTop: `1px solid ${C.greenDim}`, letterSpacing: 1, lineHeight: 1.6,
+  }}>
+    <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
+      <span>v4 BUILD · {V4_BUILD_DATE.toISOString().slice(0,16)} · COOL PALETTE ENFORCED</span>
+      <span>QUALITY TRIANGLE: SKEPTIC · ARCHITECT · SECURITY — pre-ship gate active</span>
+      <span>SELF-IMPROVING LOOP: capturing corrections · feeding back to all agents</span>
+    </div>
+    <div style={{ marginTop: 8, opacity: 0.6 }}>
+      THE CONSTRUCT · INTERNAL NAMING · PUBLIC TIER = 5 PRAGMA OPERATORS · DO NOT MASS-RENAME T2 LABELS
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════
+// HARVARD CORPUS PANEL — strategic asymmetric advantage
+// ═══════════════════════════════════════════════════════════════
+const HarvardCorpusPanel = () => (
+  <div style={{ margin: "28px 28px 20px", padding: 18,
+    border: `2px solid ${C.cyan}`, background: "rgba(0,212,255,0.04)", position: "relative",
+  }}>
+    <div style={{ position: "absolute", top: -10, left: 16, padding: "0 8px", background: "#000", fontSize: 10, color: C.cyan, letterSpacing: 4 }}>
+      ⚑ HARVARD CORPUS — strategic asymmetric advantage · shared substrate
+    </div>
+    <div style={{ marginTop: 8, marginBottom: 16, fontSize: 12, color: C.green, opacity: 0.85 }}>
+      Full-body offline corpus from every Harvard / HBS / HBSWK / HBR / d3 surface Bobby has access to. Wrapped as <strong>skills</strong> mounted on BOTH Cowork and Hermes — every agent grep&apos;s the same on-disk files. No re-fetching per query. Bobby&apos;s strategic moat: <em>"access very few have."</em>
+    </div>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 14, marginTop: 12 }}>
+      <div style={{ background: "rgba(0,0,0,0.4)", padding: 12, borderLeft: `3px solid ${C.cyan}` }}>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2 }}>ARTICLES</div>
+        <div style={{ fontSize: 32, fontWeight: 900, color: C.cyan }} data-live="hc_total">404</div>
+      </div>
+      <div style={{ background: "rgba(0,0,0,0.4)", padding: 12, borderLeft: `3px solid ${C.cyan}` }}>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2 }}>FACULTY</div>
+        <div style={{ fontSize: 32, fontWeight: 900, color: C.cyan }} data-live="hc_faculty">52</div>
+      </div>
+      <div style={{ background: "rgba(0,0,0,0.4)", padding: 12, borderLeft: `3px solid ${C.cyan}` }}>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2 }}>TOPICS</div>
+        <div style={{ fontSize: 32, fontWeight: 900, color: C.cyan }} data-live="hc_topics">17</div>
+      </div>
+      <div style={{ background: "rgba(0,0,0,0.4)", padding: 12, borderLeft: `3px solid ${C.cyan}` }}>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2 }}>FACULTY LINKS</div>
+        <div style={{ fontSize: 32, fontWeight: 900, color: C.cyan }} data-live="hc_faclinks">2,850</div>
+      </div>
+      <div style={{ background: "rgba(0,0,0,0.4)", padding: 12, borderLeft: `3px solid ${C.cyan}` }}>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2 }}>TOPIC LINKS</div>
+        <div style={{ fontSize: 32, fontWeight: 900, color: C.cyan }} data-live="hc_topiclinks">1,077</div>
+      </div>
+    </div>
+    <div style={{ marginTop: 16, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+      <div>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 6 }}>SOURCES ON DISK</div>
+        <div style={{ fontSize: 11, color: C.green, lineHeight: 1.7 }}>
+          <div><span style={{ color: C.cyan }}>d3.harvard.edu:</span> <span data-live="hc_d3_total">490</span> URLs total · <span data-live="hc_d3_recovery">multi-strategy recovery 2026-06-08</span></div>
+          <div><span style={{ color: C.cyan }}>HBS Working Knowledge:</span> <span data-live="hc_hbswk">137</span> articles (sitemap-paced)</div>
+          <div><span style={{ color: C.cyan }}>HBR:</span> 4 metadata snapshots + canonical PRAGMA-cite list (full bodies = copyright)</div>
+          <div><span style={{ color: C.cyan }}>HBS AI Institute Sana:</span> auto-capture when Bobby's foreground tab is d3.sana.ai</div>
+          <div><span style={{ color: C.cyan }}>Bobby's enrolled Programs:</span> captured progressively · 3 programs at Step 1 of 2</div>
+        </div>
+      </div>
+      <div>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 6 }}>SKILLS · BOTH SIDES</div>
+        <div style={{ fontSize: 11, color: C.green, lineHeight: 1.7 }}>
+          <div><span style={{ color: C.cyan }}>harvard-library</span> · base query interface</div>
+          <div><span style={{ color: C.cyan }}>hbs-ai-institute</span> · d3-specific</div>
+          <div><span style={{ color: C.cyan }}>hbs-courses</span> · Bobby's enrolled Programs</div>
+          <div><span style={{ color: C.cyan }}>harvard-quotables</span> · Hartley-Cite corpus</div>
+          <div><span style={{ color: C.cyan }}>frontier-firm-framework</span> · canonical PRAGMA cite (Lakhani)</div>
+          <div style={{ marginTop: 6, opacity: 0.7 }}>Mounted at /Atlas/skills/ (Cowork) + ~/.hermes/skills/hartley-construct/skills/ (Hermes)</div>
+        </div>
+      </div>
+    </div>
+    <div style={{ marginTop: 14, display: "flex", justifyContent: "space-between", alignItems: "center", borderTop: `1px solid ${C.cyan}33`, paddingTop: 10 }}>
+      <div style={{ fontSize: 10, color: C.greenDim, letterSpacing: 1 }}>
+        <span style={{ color: C.cyan }}>Maintenance:</span> harvard-corpus-builder (4:00 ET) · harvard-corpus-indexer (4:30 ET) · harvard-deep-scan (6:30 ET) · session-context-primer (5:00 ET) · lens-daily-scan (5:34/9:34/13:34 ET)
+      </div>
+      <a href="harvard-library.html" style={{ color: C.cyan, fontSize: 11, fontFamily: "monospace", textDecoration: "underline" }}>open library →</a>
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════
+// FOUNDERS PLAYBOOK PANEL — Anthropic's May 2026 guide as ecosystem skill
+// ═══════════════════════════════════════════════════════════════
+const FoundersPlaybookPanel = () => (
+  <div style={{ margin: "28px 28px 20px", padding: 18,
+    border: `2px solid ${C.gold}`, background: "rgba(255,215,0,0.04)", position: "relative",
+  }}>
+    <div style={{ position: "absolute", top: -10, left: 16, padding: "0 8px", background: "#000", fontSize: 10, color: C.gold, letterSpacing: 4 }}>
+      ⚑ FOUNDERS PLAYBOOK — Anthropic (May 2026) · operationalized as ecosystem skill
+    </div>
+    <div style={{ marginTop: 8, marginBottom: 16, fontSize: 12, color: C.green, opacity: 0.85 }}>
+      Anthropic&apos;s 36pp guide read cover-to-cover and wrapped as a callable skill. Frameworks, decision tests, and verbatim quotes routed to Keystone scoring, PRAGMA pitch + Day-1 V-blocks, HC diligence, B9 strategy, and /thinking/ articles. The first founder playbook that treats AI <em>speed</em> as the central risk and ends on moat construction instead of fundraising mechanics.
+    </div>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))", gap: 14, marginTop: 12 }}>
+      <div style={{ background: "rgba(0,0,0,0.4)", padding: 12, borderLeft: `3px solid ${C.gold}` }}>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2 }}>PAGES READ</div>
+        <div style={{ fontSize: 32, fontWeight: 900, color: C.gold }}>36</div>
+      </div>
+      <div style={{ background: "rgba(0,0,0,0.4)", padding: 12, borderLeft: `3px solid ${C.gold}` }}>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2 }}>STAGES</div>
+        <div style={{ fontSize: 32, fontWeight: 900, color: C.gold }}>4</div>
+      </div>
+      <div style={{ background: "rgba(0,0,0,0.4)", padding: 12, borderLeft: `3px solid ${C.gold}` }}>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2 }}>FRAMEWORKS</div>
+        <div style={{ fontSize: 32, fontWeight: 900, color: C.gold }}>8</div>
+      </div>
+      <div style={{ background: "rgba(0,0,0,0.4)", padding: 12, borderLeft: `3px solid ${C.gold}` }}>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2 }}>QUOTABLES</div>
+        <div style={{ fontSize: 32, fontWeight: 900, color: C.gold }}>10</div>
+      </div>
+      <div style={{ background: "rgba(0,0,0,0.4)", padding: 12, borderLeft: `3px solid ${C.gold}` }}>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2 }}>SURFACES WIRED</div>
+        <div style={{ fontSize: 32, fontWeight: 900, color: C.gold }}>5</div>
+      </div>
+    </div>
+    <div style={{ marginTop: 16, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+      <div>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 6 }}>NAMED FRAMEWORKS</div>
+        <div style={{ fontSize: 11, color: C.green, lineHeight: 1.7 }}>
+          <div><span style={{ color: C.gold }}>Sean Ellis Test</span> · &gt;40% &quot;very disappointed&quot; = real PMF</div>
+          <div><span style={{ color: C.gold }}>The Effort Test</span> · push vs pull on retention</div>
+          <div><span style={{ color: C.gold }}>3-Q MVP Diagnostic</span> · when PMF stalls</div>
+          <div><span style={{ color: C.gold }}>Bottleneck Map</span> · where founder is still load-bearing</div>
+          <div><span style={{ color: C.gold }}>Moat Stack (3 sources)</span> · domain + data + lock-in</div>
+          <div><span style={{ color: C.gold }}>Incumbent-Copy Gate</span> · binary moat test</div>
+          <div><span style={{ color: C.gold }}>Surface Matrix</span> · Chat / Cowork / Code</div>
+          <div><span style={{ color: C.gold }}>CLAUDE.md as architecture</span> · persistent project memory</div>
+        </div>
+      </div>
+      <div>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 6 }}>WIRED INTO</div>
+        <div style={{ fontSize: 11, color: C.green, lineHeight: 1.7 }}>
+          <div><span style={{ color: C.gold }}>Keystone scoring</span> · 4 new venture axes</div>
+          <div><span style={{ color: C.gold }}>PRAGMA pitch</span> · install-not-train is doc&apos;d Anthropic best practice</div>
+          <div><span style={{ color: C.gold }}>PRAGMA Day-1</span> · 7 productizable V-blocks</div>
+          <div><span style={{ color: C.gold }}>HC diligence</span> · 8 standardized questions</div>
+          <div><span style={{ color: C.gold }}>B9 strategy</span> · founder-as-orchestrator for 40-yr SMB</div>
+          <div style={{ marginTop: 6, opacity: 0.7 }}>Mounted at /Atlas/skills/founders-playbook/ (Cowork + Hermes mirror)</div>
+        </div>
+      </div>
+    </div>
+    <div style={{ marginTop: 14, padding: 10, background: "rgba(255,215,0,0.06)", borderLeft: `3px solid ${C.gold}` }}>
+      <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 4 }}>SPINE QUOTE</div>
+      <div style={{ fontSize: 12, color: C.gold, fontStyle: "italic", lineHeight: 1.5 }}>
+        &quot;The bottlenecks are no longer what you can build, but what you choose to build.&quot; <span style={{ opacity: 0.6, fontSize: 10 }}>— p.32</span>
+      </div>
+    </div>
+    <div style={{ marginTop: 14, display: "flex", justifyContent: "space-between", alignItems: "center", borderTop: `1px solid ${C.gold}33`, paddingTop: 10 }}>
+      <div style={{ fontSize: 10, color: C.greenDim, letterSpacing: 1 }}>
+        <span style={{ color: C.gold }}>Triggers:</span> &quot;is this a Coca-Cola&quot; · &quot;score this venture&quot; · &quot;run the moat test&quot; · &quot;PRAGMA prospect qualification&quot; · &quot;what does Anthropic say about [moats / agents / PMF]&quot;
+      </div>
+      <a href="https://claude.com/blog/the-founders-playbook" target="_blank" style={{ color: C.gold, fontSize: 11, fontFamily: "monospace", textDecoration: "underline" }}>source →</a>
+    </div>
+  </div>
+);
+
+// ═══════════════════════════════════════════════════════════════
+// MAIN
+// ═══════════════════════════════════════════════════════════════
+const Dashboard = () => (
+  <div style={{ minHeight: "100vh", position: "relative" }}>
+    <MatrixRain />
+    <div style={{ position: "relative", zIndex: 5 }}>
+      <Header />
+      <TieredNeurolink />
+      <HermesPanel />
+      <HarvardCorpusPanel />
+      <FoundersPlaybookPanel />
+      <PragmaMirrorPanel />
+      <WildDucksBand />
+      <HermesMigrationMap />
+      <OperatorGrid />
+      <CSuiteRoster />
+      <BuildBacklog />
+      <LiveDataFeed />
+      <PragmaPanel />
+      <ChernyAnchor />
+      <KanbanStrip />
+      <LeoWolfStrip />
+      <FoundationPanel />
+      <Footer />
+    </div>
+  </div>
+);
+
+ReactDOM.createRoot(document.getElementById("root")).render(<Dashboard />);
+</script>
+
+<!-- Live-data hydration · reads hermes-status.json (written hourly by hermes-status-writer Call).
+     Failed fetch leaves static fallback values in place — dashboard stays usable offline. -->
+<script>
+(function hydrateLive() {
+  function update(key, val) {
+    document.querySelectorAll('[data-live="' + key + '"]').forEach(el => {
+      if (val !== null && val !== undefined && val !== '') el.textContent = String(val);
+    });
+  }
+  const sources = [
+    './hermes-status.json',
+    'https://extracoffee13.github.io/hartley-command/hermes-status.json'
+  ];
+  // Harvard Corpus hydration — separate JSON
+  (async () => {
+    try {
+      const r = await fetch('./harvard-corpus-stats.json?nocache=' + Date.now(), { cache: 'no-store' });
+      if (!r.ok) {
+        const r2 = await fetch('https://extracoffee13.github.io/hartley-command/harvard-corpus-stats.json?nocache=' + Date.now(), { cache: 'no-store' });
+        if (!r2.ok) return;
+        const hc = await r2.json();
+        update('hc_total', hc.total_articles);
+        update('hc_faculty', hc.faculty_indexed);
+        update('hc_topics', hc.topics_covered);
+        update('hc_faclinks', (hc.total_faculty_links || 0).toLocaleString());
+        update('hc_topiclinks', (hc.total_topic_links || 0).toLocaleString());
+        update('hc_hbswk', hc.by_source && hc.by_source.hbswk);
+        return;
+      }
+      const hc = await r.json();
+      update('hc_total', hc.total_articles);
+      update('hc_faculty', hc.faculty_indexed);
+      update('hc_topics', hc.topics_covered);
+      update('hc_faclinks', (hc.total_faculty_links || 0).toLocaleString());
+      update('hc_topiclinks', (hc.total_topic_links || 0).toLocaleString());
+      update('hc_hbswk', hc.by_source && hc.by_source.hbswk);
+    } catch (e) { /* fallback to static */ }
+  })();
+
+  // Flock classification hydration — flock-classification.json (added 2026-06-05 PM)
+  // Replaces hardcoded "13 wild ducks · 33 calls" with live count from classifier output.
+  (async () => {
+    const urls = [
+      './flock-classification.json?cb=' + Date.now(),
+      'https://extracoffee13.github.io/hartley-command/flock-classification.json?cb=' + Date.now(),
+    ];
+    let fc = null;
+    for (const u of urls) {
+      try { const r = await fetch(u, {cache:'no-store'}); if (r.ok) { fc = await r.json(); break; } } catch(_){}
+    }
+    if (!fc) return;
+    const wd = (fc.wild_ducks && fc.wild_ducks.count) || 0;
+    const ca = (fc.calls && fc.calls.count) || 0;
+    update('hermes-flock-summary', `hermes-agent v0.15 · substrate · ${wd} wild ducks · ${ca} calls`);
+    update('wild_ducks_count', wd);
+    update('calls_count', ca);
+  })();
+
+  // Skills Registry hydration — daily-scanner output (added 2026-06-05)
+  // Reads installed-skills-registry.json + compares to hardcoded INTERNAL_AGENTS cards
+  (async () => {
+    const urls = [
+      './installed-skills-registry.json?cb=' + Date.now(),
+      'https://extracoffee13.github.io/hartley-command/installed-skills-registry.json?cb=' + Date.now(),
+    ];
+    let reg = null;
+    for (const u of urls) {
+      try { const r = await fetch(u, {cache: 'no-store'}); if (r.ok) { reg = await r.json(); break; } } catch(_) {}
+    }
+    if (!reg) {
+      update('skills_registry_total', 'registry not yet mirrored');
+      update('skills_registry_ts', 'pending first sync');
+      update('skills_registry_new_count', '?');
+      update('skills_registry_new_list', '(brand-insights-mirror Call needs to fire once to publish the registry)');
+      return;
+    }
+    const skills = reg.skills || [];
+    update('skills_registry_total', skills.length);
+    update('skills_registry_ts', (reg.updated_at || reg._mirrored_at || '?').slice(0,19) + 'Z');
+    // Find skills in registry NOT in INTERNAL_AGENTS hardcoded ids
+    let hardcoded = new Set();
+    try {
+      document.querySelectorAll('[data-internal-id]').forEach(el => hardcoded.add(el.getAttribute('data-internal-id')));
+    } catch(_) {}
+    // Fallback if no data-internal-id — derive from INTERNAL_AGENTS global if exposed
+    const hardcodedNames = new Set([
+      'graphify','taste-skill','notfair','pro-workflow','memsearch','design-extract',
+      'claude-codex-settings','claude-mem','harness','awesome-claude-plugins',
+      'antigravity-skills','claude-octopus','nesquena-hermes-webui','allin','anthropic',
+      'gv','jobs','hormozi','musk','nvidia','oleary','leo','harvard-library',
+      'harvard-quotables','hbs-ai-institute','hbs-courses','frontier-firm-framework',
+    ]);
+    const newOnes = skills.filter(s => {
+      const nm = (s.name || s.slug || s.id || '').toLowerCase();
+      return nm && !hardcodedNames.has(nm);
+    });
+    update('skills_registry_new_count', newOnes.length);
+    update('skills_registry_new_list',
+      newOnes.length === 0 ? 'all registry skills represented in Internal cards · no new discoveries today' :
+      newOnes.map(s => '· ' + (s.name || s.slug || s.id || '?')).join('  '));
+  })();
+
+  (async () => {
+    for (const url of sources) {
+      try {
+        const res = await fetch(url + '?nocache=' + Date.now(), { cache: 'no-store' });
+        if (!res.ok) continue;
+        const d = await res.json();
+        // Flock counts are authoritative from flock-classification.json — skip them here
+        const skipKeys = new Set(['wild_ducks_count', 'calls_count']);
+        Object.entries(d).forEach(([k, v]) => { if (!skipKeys.has(k)) update(k, v); });
+        // Stamp the source URL so we can see it worked
+        const stamp = document.createElement('div');
+        stamp.style.cssText = 'position:fixed;bottom:6px;right:8px;font-size:8px;color:#39ff14;opacity:0.4;font-family:monospace;letter-spacing:1px';
+        stamp.textContent = 'live · ' + new Date(d.heartbeat_ts || d.last_write || Date.now()).toLocaleTimeString();
+        document.body.appendChild(stamp);
+        return;
+      } catch (e) { /* try next source */ }
+    }
+  })();
+  // Re-hydrate after React mounts (give it 600ms)
+  setTimeout(hydrateLive, 600);
+})();
+</script>
+
+</body>
+</html>
+<!-- watcher-tick: 2026-05-31T18:40:28Z hermes-cos-node-deploy -->

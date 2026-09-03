@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="refresh" content="60">
+<title>Hartley Command Center</title>
+<style>
+  :root { color-scheme: dark; --bg:#0b0d10; --panel:#11161e; --panel2:#151a21; --border:#1f2630; --border-h:#2a3442; --fg:#e6e9ef; --muted:#8a94a6; --dim:#6b7688; --green:#39ff14; --cyan:#00d4ff; --lavender:#b388ff; --ice:#88aaff; --mint:#aaffcc; }
+  * { box-sizing:border-box; }
+  body { font-family:-apple-system,system-ui,sans-serif; background:var(--bg); color:var(--fg); margin:0; padding:0; }
+  .wrap { max-width:1200px; margin:0 auto; padding:1.25rem; }
+  h1 { font-size:1.5rem; letter-spacing:.04em; margin:0 0 .15rem; font-weight:700; }
+  h1 .v { font-size:.7rem; color:var(--cyan); font-weight:500; letter-spacing:.1em; margin-left:.5rem; vertical-align:middle; }
+  .sub { color:var(--muted); font-size:.82rem; margin-bottom:.5rem; }
+  .stamp { color:var(--dim); font-size:.72rem; font-family:ui-monospace,Menlo,monospace; margin-bottom:1rem; }
+  .stamp #now { color:var(--green); }
+  .kc { background:linear-gradient(135deg,rgba(179,136,255,.08),rgba(0,8,16,.95)); border:1px solid rgba(179,136,255,.35); border-radius:8px; padding:.7rem .9rem; margin:0 0 1rem; font-size:.78rem; display:flex; gap:1.25rem; flex-wrap:wrap; align-items:center; }
+  .kc .label { color:var(--lavender); font-weight:700; letter-spacing:.1em; font-size:.7rem; }
+  .kc .day { color:var(--lavender); font-weight:700; font-size:.95rem; }
+  .kc .gap { color:var(--muted); }
+  h2 { font-size:.72rem; text-transform:uppercase; letter-spacing:.14em; color:var(--muted); margin:1.5rem 0 .5rem; font-weight:600; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:.6rem; }
+  a.card { display:block; padding:.85rem 1rem; background:var(--panel2); border:1px solid var(--border); border-radius:10px; color:var(--fg); text-decoration:none; transition:all .15s ease; position:relative; overflow:hidden; }
+  a.card:hover { background:var(--panel); border-color:var(--border-h); }
+  a.card .top { display:flex; justify-content:space-between; align-items:baseline; gap:.5rem; }
+  a.card .name { font-weight:600; font-size:.95rem; letter-spacing:.02em; }
+  a.card .score { font-family:ui-monospace,Menlo,monospace; font-size:.72rem; padding:.05rem .35rem; border-radius:4px; background:rgba(57,255,20,.08); color:var(--green); border:1px solid rgba(57,255,20,.3); }
+  a.card .score.moonshot { background:rgba(179,136,255,.12); color:var(--lavender); border-color:rgba(179,136,255,.4); }
+  a.card .score.cs { background:rgba(170,238,255,.08); color:var(--ice); border-color:rgba(170,238,255,.25); }
+  a.card .role { color:var(--muted); font-size:.74rem; margin-top:.2rem; letter-spacing:.02em; }
+  a.card .meta { color:var(--dim); font-size:.68rem; font-family:ui-monospace,Menlo,monospace; margin-top:.5rem; display:flex; gap:.7rem; flex-wrap:wrap; }
+  a.card .pill { display:inline-block; padding:.05rem .35rem; border-radius:4px; font-size:.66rem; letter-spacing:.04em; }
+  a.card .pill.live { background:rgba(57,255,20,.12); color:var(--green); }
+  a.card .pill.build { background:rgba(179,136,255,.12); color:var(--lavender); }
+  a.card .pill.queued { background:rgba(136,170,255,.1); color:var(--ice); }
+  a.card .pill.static { background:rgba(108,118,136,.15); color:var(--dim); }
+  a.card.flag { border-color:rgba(57,255,20,.4); background:linear-gradient(135deg,rgba(57,255,20,.04),var(--panel2)); }
+  a.card.flag::before { content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--green); }
+  .note { background:rgba(0,212,255,.04); border:1px solid rgba(0,212,255,.18); border-radius:8px; padding:.6rem .9rem; margin:1rem 0 0; font-size:.74rem; color:rgba(0,212,255,.75); line-height:1.55; }
+  .note strong { color:var(--cyan); }
+  footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--border); color:var(--dim); font-size:.7rem; font-family:ui-monospace,Menlo,monospace; line-height:1.55; }
+  footer a { color:var(--cyan); text-decoration:none; }
+  footer a:hover { text-decoration:underline; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Hartley Command Center<span class="v">v1.0 · live</span></h1>
+<div class="sub">All Hartley agents in one surface. Auto-refreshes every 60 seconds.</div>
+<div class="stamp">Last loaded <span id="now">—</span> · 60s auto-refresh active · same content on local <code>10.1.10.195:8081</code> + public Pages + iCloud</div>
+
+<div class="kc">
+  <span class="label">◯ KILL CRITERION</span>
+  <span>Day <span id="dayN" class="day">—</span> / 90</span>
+  <span class="gap">→</span>
+  <span><span id="daysLeft" class="day">—</span> days left</span>
+  <span class="gap">→</span>
+  <span>2026-07-23</span>
+  <span class="gap">·</span>
+  <span style="color:var(--ice)">Tier 1: Archivist, Skill-Forge, Foreman, Eval Harness, Precedent-Finder</span>
+</div>
+
+<h2>★ Live Agents (Tier 1)</h2>
+<div class="grid">
+  <a class="card flag" href="the-construct-v4.html">
+    <div class="top"><span class="name">Construct</span><span class="score">v4 NEW</span></div>
+    <div class="role">Agent ecosystem · tiered Neurolink · Hermes T2 panel</div>
+    <div class="meta"><span class="pill live">live · two-tier model</span><span>Cowork · Claude + Hermes · DeepSeek</span></div>
+  </a>
+  <a class="card flag" href="wolf-health.html">
+    <div class="top"><span class="name">WOLF Health</span><span class="score">AUDIT</span></div>
+    <div class="role">Independent status · Day 129 · kill criterion PASSED (2026-07-23) · 41d overdue · $100,749 book · moderate-bear · ACN +8.1%</div>
+    <div class="meta"><span class="pill live">2026-09-02</span><span>kill criterion 41d overdue; position review required</span></div>
+  </a>
+  <a class="card" href="construct.html">
+    <div class="top"><span class="name">Construct</span><span class="score">v2.3</span></div>
+    <div class="role">Previous · concentric orbital Neurolink</div>
+    <div class="meta"><span class="pill live">live · auto-sync</span><span>fallback</span></div>
+  </a>
+  <a class="card flag" href="louis.html">
+    <div class="top"><span class="name">Louis</span><span class="score moonshot">24/25 ★</span></div>
+    <div class="role">FL Real Estate Intelligence · Hartley Capital</div>
+    <div class="meta"><span class="pill live">live · auto-update Sunday</span><span>Caden land search active</span></div>
+  </a>
+  <a class="card flag" href="https://extracoffee13.github.io/wolf-dashboards-repo/WOLF_Command_Center.html">
+    <div class="top"><span class="name">WOLF</span><span class="score">19/25</span></div>
+    <div class="role">CTO-Trading · 4 markets · 9 strategies</div>
+    <div class="meta"><span class="pill live">live · 5min sync</span><span id="wolf-cap">cap: loading…</span></div>
+  </a>
+  <a class="card" href="atlas.html">
+    <div class="top"><span class="name">Atlas</span><span class="score">18/25</span></div>
+    <div class="role">B9 Signage Operations · 65 Lennar communities</div>
+    <div class="meta"><span class="pill live">live · auto-sync</span></div>
+  </a>
+  <a class="card flag" href="invitationhomes.html">
+    <div class="top"><span class="name">Atlas · INVH</span><span class="score">NEW</span></div>
+    <div class="role">Invitation Homes pipeline · 16 markets · SE focus · ~109K homes</div>
+    <div class="meta"><span class="pill live">opportunity map</span><span>pre-engagement</span></div>
+  </a>
+  <a class="card" href="cornerstone.html">
+    <div class="top"><span class="name">Cornerstone</span><span class="score">15/25</span></div>
+    <div class="role">Chief Mindset Officer · faith + science</div>
+    <div class="meta"><span class="pill live">live · auto-sync</span></div>
+  </a>
+  <a class="card" href="construct.html">
+    <div class="top"><span class="name">Second Brain</span><span class="score cs">memory</span></div>
+    <div class="role">Memory Consolidation Engine · 31 commands · all 19 agents</div>
+    <div class="meta"><span class="pill live">active · overnight consolidation</span><span>obsidian-second-brain skill</span></div>
+  </a>
+  <a class="card" href="architect.html">
+    <div class="top"><span class="name">Architect</span><span class="score cs">C-Suite</span></div>
+    <div class="role">Chief Investment & Ventures Officer</div>
+    <div class="meta"><span class="pill live">live · auto-sync</span></div>
+  </a>
+  <a class="card flag" href="harvard-library.html">
+    <div class="top"><span class="name">Harvard Corpus</span><span class="score">NEW</span></div>
+    <div class="role">HBS · HBSWK · HBR · d3 · Sana · Bobby's Programs — 292 articles, 43 faculty indexed</div>
+    <div class="meta"><span class="pill live">live · daily 4 AM ET corpus sync</span><span id="hc-count">stats: loading…</span></div>
+  </a>
+</div>
+
+<h2>Hartley Capital</h2>
+<div class="grid">
+  <a class="card" href="hartley-equity.html">
+    <div class="top"><span class="name">Hartley Equity</span><span class="score cs">surface</span></div>
+    <div class="role">Equity capital surface</div>
+    <div class="meta"><span class="pill live">live · auto-sync</span></div>
+  </a>
+  <a class="card" href="hartley-equity-canvas.html">
+    <div class="top"><span class="name">Hartley Equity Canvas</span><span class="score cs">surface</span></div>
+    <div class="role">Strategic canvas view</div>
+    <div class="meta"><span class="pill live">live · auto-sync</span></div>
+  </a>
+  <a class="card" href="hero-video.html">
+    <div class="top"><span class="name">Hero Video</span><span class="score cs">marketing</span></div>
+    <div class="role">Hartley Capital hero preview</div>
+    <div class="meta"><span class="pill static">static · marketing</span></div>
+  </a>
+</div>
+
+<h2>PRAGMA · A Hartley Capital Company</h2>
+<div class="grid">
+  <a class="card flag" href="pragma-operator-registry.html">
+    <div class="top"><span class="name">PRAGMA Operator Registry</span><span class="score">7+1</span></div>
+    <div class="role">Canonical 5 + Pulse + Prism + Ledger (reserved) · Skills + Connectors</div>
+    <div class="meta"><span class="pill live">live · v0.1 dogfood</span><span>at cap</span></div>
+  </a>
+  <a class="card" href="https://prag-ma.ai/" target="_blank" rel="noopener">
+    <div class="top"><span class="name">prag-ma.ai (public)</span><span class="score cs">live site</span></div>
+    <div class="role">Public PRAGMA site · /how-it-works · /trust · /the-operating-system · /thinking</div>
+    <div class="meta"><span class="pill live">live · static HTML on DreamHost</span></div>
+  </a>
+  <a class="card" href="https://prag-ma.ai/apply/" target="_blank" rel="noopener">
+    <div class="top"><span class="name">PRAGMA Apply</span><span class="score cs">form</span></div>
+    <div class="role">Engagement application · 6 sections · Robert reviews each personally</div>
+    <div class="meta"><span class="pill live">live · Formspree backed</span></div>
+  </a>
+</div>
+
+<h2>Plan & Reference</h2>
+<div class="grid">
+  <a class="card" href="ascension.html">
+    <div class="top"><span class="name">Ascension</span><span class="score cs">project</span></div>
+    <div class="role">Project Ascension dashboard</div>
+    <div class="meta"><span class="pill static">static · drift flagged</span></div>
+  </a>
+  <a class="card" href="https://github.com/Extracoffee13/hartley-command" target="_blank" rel="noopener">
+    <div class="top"><span class="name">GitHub repo</span><span class="score cs">source</span></div>
+    <div class="role">Extracoffee13/hartley-command · main</div>
+    <div class="meta"><span class="pill live">auto-push on save</span></div>
+  </a>
+</div>
+
+<div class="note">
+  <strong>The four loops</strong> · Loop 1 (Correction) <span style="color:var(--green)">LIVE</span> · Loop 2 (Eval) <span style="color:var(--lavender)">NOT BUILT</span> · Loop 3 (Code) <span style="color:var(--lavender)">NOT BUILT</span> · Loop 4 (Memory) <span style="color:var(--green)">LIVE</span>. All four must be live for the system to compound. <strong>Public posture:</strong> shop not studio · no permitting · no single-client expansion reason · no DeckForge/ForgeDesk publicly · no warm colors on B9 surfaces · Robert Louis Hartley.
+</div>
+
+<footer>
+  THE CONSTRUCT v4 · 2026-05-27 rebuild — tiered Neurolink + Hermes-Agent T2 panel + two-tier operating model · v2.3 fallback at construct.html · auto-sync via <code>com.construct.dashboard-sync</code> + <code>com.wolf.dashboard-sync</code><br>
+  Public: <a href="https://extracoffee13.github.io/hartley-command/" target="_blank">extracoffee13.github.io/hartley-command</a> · Local: <code>10.1.10.195:8081</code> · iPhone offline: iCloud Drive → Hartley Command/
+</footer>
+
+</div>
+
+<script>
+(function () {
+  const KILL_DATE = new Date('2026-07-23T00:00:00');
+  const PLAN_LOCK = new Date('2026-04-24T00:00:00');
+  const DAY_MS = 24 * 60 * 60 * 1000;
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function refreshStamp() {
+    const d = new Date();
+    document.getElementById('now').textContent =
+      d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()) + ' ' +
+      pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds());
+    const dayN = Math.max(1, Math.floor((d - PLAN_LOCK) / DAY_MS) + 1);
+    const daysLeft = Math.max(0, Math.ceil((KILL_DATE - d) / DAY_MS));
+    document.getElementById('dayN').textContent = dayN;
+    document.getElementById('daysLeft').textContent = daysLeft;
+  }
+  refreshStamp();
+  setInterval(refreshStamp, 1000);
+  function refreshWolf() {
+    fetch('https://extracoffee13.github.io/wolf-dashboards-repo/wolf_live_data.json?t=' + Date.now(), { cache: 'no-store' })
+      .then(r => r.ok ? r.json() : null)
+      .then(d => {
+        if (!d) return;
+        const cap = d.wolf_capabilities && d.wolf_capabilities.capability_score;
+        const day = d.wolf_capabilities && d.wolf_capabilities.day_on_mission;
+        const el = document.getElementById('wolf-cap');
+        if (el && cap != null) {
+          el.textContent = 'cap ' + cap + '/100' + (day != null ? ' · day ' + day : '');
+        }
+      })
+      .catch(() => { });
+  }
+  refreshWolf();
+  setInterval(refreshWolf, 30000);
+})();
+</script>
+
+</body>
+</html>

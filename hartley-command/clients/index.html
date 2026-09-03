@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PRAGMA. · Client Operations Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── PRAGMA Design Tokens ─────────────────────────────────────────────── */
+    :root {
+      --void:           #0A0A0A;
+      --void-card:      #0E0E0E;
+      --void-surface:   #111111;
+      --void-border:    #1A1A1A;
+      --signal:         #1FE07E;
+      --signal-dim:     rgba(31, 224, 126, 0.18);
+      --signal-glow:    rgba(31, 224, 126, 0.08);
+      --signal-text:    rgba(31, 224, 126, 0.90);
+      --amber:          #F59E0B;
+      --amber-dim:      rgba(245, 158, 11, 0.15);
+      --amber-text:     rgba(245, 158, 11, 0.90);
+      --output:         #FFFFFF;
+      --output-body:    rgba(255, 255, 255, 0.65);
+      --output-muted:   rgba(255, 255, 255, 0.35);
+      --output-faint:   rgba(255, 255, 255, 0.12);
+      --font-sans:      'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono:      'JetBrains Mono', 'Menlo', 'Courier New', monospace;
+      --radius-sm:      4px;
+      --radius-md:      8px;
+      --radius-lg:      12px;
+      --radius-xl:      16px;
+    }
+
+    /* ─── Reset & Base ─────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      background: var(--void);
+      color: var(--output-body);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background: var(--void);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── Navigation ───────────────────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      padding: 0 32px;
+      background: rgba(10, 10, 10, 0.80);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border-bottom: 1px solid var(--void-border);
+    }
+
+    .nav-wordmark {
+      font-family: var(--font-mono);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--output);
+      text-transform: uppercase;
+    }
+
+    .nav-wordmark .dot {
+      color: var(--signal);
+    }
+
+    .nav-eyebrow {
+      margin-left: 16px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--output-muted);
+      letter-spacing: 0.05em;
+      padding-left: 16px;
+      border-left: 1px solid var(--void-border);
+    }
+
+    .nav-spacer { flex: 1; }
+
+    .nav-pill {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--signal-text);
+      background: var(--signal-glow);
+      border: 1px solid var(--signal-dim);
+      border-radius: 100px;
+      padding: 3px 10px;
+    }
+
+    /* ─── Page Layout ──────────────────────────────────────────────────────── */
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 112px 32px 80px;
+    }
+
+    /* ─── Page Header ──────────────────────────────────────────────────────── */
+    .page-header {
+      margin-bottom: 56px;
+    }
+
+    .page-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: var(--signal-text);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .page-title {
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--output);
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .page-title .dot { color: var(--signal); }
+
+    .page-subtitle {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--output-muted);
+      letter-spacing: 0.01em;
+    }
+
+    .page-subtitle span {
+      color: var(--output-body);
+    }
+
+    /* ─── Section Labels ───────────────────────────────────────────────────── */
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      color: var(--output-muted);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--void-border);
+    }
+
+    /* ─── Metrics Band ─────────────────────────────────────────────────────── */
+    .metrics-band {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 52px;
+    }
+
+    .metric-card {
+      background: var(--void-card);
+      border: 1px solid var(--void-border);
+      border-radius: var(--radius-lg);
+      padding: 20px 22px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s ease;
+    }
+
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--signal-glow);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .metric-card:hover { border-color: var(--signal-dim); }
+    .metric-card:hover::before { opacity: 1; }
+
+    .metric-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: var(--output-muted);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .metric-value {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--output);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .metric-value.signal { color: var(--signal); }
+
+    .metric-sub {
+      font-size: 11px;
+      color: var(--output-muted);
+      font-family: var(--font-mono);
+    }
+
+    /* ─── Engagements Section ──────────────────────────────────────────────── */
+    .engagements-section { margin-bottom: 52px; }
+
+    /* ─── Client Card ──────────────────────────────────────────────────────── */
+    .client-card {
+      background: var(--void-card);
+      border: 1px solid var(--signal-dim);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .client-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--signal) 0%, rgba(31,224,126,0.3) 100%);
+    }
+
+    .card-header {
+      padding: 24px 28px 20px;
+      border-bottom: 1px solid var(--void-border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .client-identity { display: flex; align-items: center; gap: 14px; }
+
+    .client-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background: var(--signal-glow);
+      border: 1px solid var(--signal-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--signal);
+      letter-spacing: 0.05em;
+      flex-shrink: 0;
+    }
+
+    .client-name-group {}
+
+    .client-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--output);
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .client-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--output-muted);
+      background: var(--output-faint);
+      border-radius: var(--radius-sm);
+      padding: 2px 7px;
+      letter-spacing: 0.06em;
+    }
+
+    .client-meta {
+      font-size: 12px;
+      color: var(--output-muted);
+      margin-top: 3px;
+      font-family: var(--font-mono);
+    }
+
+    .badges {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      border-radius: 100px;
+      padding: 4px 12px;
+    }
+
+    .badge-signal {
+      color: var(--signal-text);
+      background: var(--signal-glow);
+      border: 1px solid var(--signal-dim);
+    }
+
+    .badge-amber {
+      color: var(--amber-text);
+      background: var(--amber-dim);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+    }
+
+    /* ─── Card Body ────────────────────────────────────────────────────────── */
+    .card-body {
+      padding: 24px 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .card-section-title {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--output-muted);
+      margin-bottom: 12px;
+    }
+
+    /* ─── Timeline Row ─────────────────────────────────────────────────────── */
+    .timeline-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .timeline-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .timeline-key {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--output-muted);
+    }
+
+    .timeline-val {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--output);
+    }
+
+    .timeline-val.signal { color: var(--signal); }
+
+    /* ─── Links Row ────────────────────────────────────────────────────────── */
+    .links-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .card-link {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--signal-text);
+      border: 1px solid var(--signal-dim);
+      border-radius: var(--radius-sm);
+      padding: 6px 12px;
+      transition: background 0.15s ease, border-color 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card-link:hover {
+      background: var(--signal-glow);
+      border-color: rgba(31, 224, 126, 0.40);
+    }
+
+    /* ─── Agent Pills ──────────────────────────────────────────────────────── */
+    .agent-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .agent-pill {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--signal-text);
+      background: rgba(31, 224, 126, 0.06);
+      border: 1px solid var(--signal-dim);
+      border-radius: 100px;
+      padding: 3px 9px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+
+    .agent-pill .check {
+      font-size: 9px;
+      color: var(--signal);
+    }
+
+    /* ─── Freshness Row ────────────────────────────────────────────────────── */
+    .freshness-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .freshness-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      gap: 8px;
+    }
+
+    .freshness-name {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--output-body);
+    }
+
+    .freshness-dot {
+      flex: 1;
+      height: 1px;
+      background: var(--void-border);
+      margin: 0 6px;
+    }
+
+    .freshness-val {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    .freshness-val.today { color: var(--signal-text); }
+    .freshness-val.stale { color: var(--amber-text); }
+
+    /* ─── iMac Health ──────────────────────────────────────────────────────── */
+    .imac-health {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .health-chip {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--output-body);
+      background: var(--void-surface);
+      border: 1px solid var(--void-border);
+      border-radius: var(--radius-sm);
+      padding: 5px 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .health-chip .indicator {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--signal);
+      flex-shrink: 0;
+      box-shadow: 0 0 6px var(--signal);
+    }
+
+    /* ─── Progress Bar ─────────────────────────────────────────────────────── */
+    .progress-container { grid-column: 1 / -1; }
+
+    .progress-track {
+      display: flex;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      height: 32px;
+      gap: 2px;
+      margin-bottom: 10px;
+    }
+
+    .progress-segment {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      padding: 0 10px;
+      transition: opacity 0.2s;
+    }
+
+    .progress-segment.active {
+      flex: 30;
+      background: linear-gradient(90deg, rgba(31,224,126,0.22) 0%, rgba(31,224,126,0.10) 100%);
+      border: 1px solid var(--signal-dim);
+      color: var(--signal-text);
+    }
+
+    .progress-segment.pending {
+      background: var(--void-surface);
+      border: 1px solid var(--void-border);
+      color: var(--output-muted);
+    }
+
+    .progress-segment.pending-monitor { flex: 60; }
+    .progress-segment.pending-validate { flex: 90; }
+
+    .progress-labels {
+      display: flex;
+      gap: 2px;
+    }
+
+    .progress-label-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+    }
+
+    .progress-label-item.active-label { flex: 30; }
+    .progress-label-item.monitor-label { flex: 60; }
+    .progress-label-item.validate-label { flex: 90; }
+
+    .plabel-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .active-label .plabel-dot { background: var(--signal); }
+    .monitor-label .plabel-dot, .validate-label .plabel-dot { background: var(--output-muted); }
+
+    .plabel-text {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--output-muted);
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .active-label .plabel-text { color: var(--signal-text); }
+
+    /* ─── Card Footer ──────────────────────────────────────────────────────── */
+    .card-footer {
+      padding: 14px 28px;
+      border-top: 1px solid var(--void-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .card-footer-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--output-muted);
+      letter-spacing: 0.08em;
+    }
+
+    .card-footer-value {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--signal-text);
+      font-weight: 500;
+    }
+
+    /* ─── Page Footer ──────────────────────────────────────────────────────── */
+    .page-footer {
+      margin-top: 72px;
+      padding-top: 24px;
+      border-top: 1px solid var(--void-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-wordmark {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--output);
+      text-transform: uppercase;
+    }
+
+    .footer-wordmark .dot { color: var(--signal); }
+
+    .footer-meta {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--output-muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── Responsive ───────────────────────────────────────────────────────── */
+    @media (max-width: 860px) {
+      .metrics-band { grid-template-columns: repeat(2, 1fr); }
+      .card-body { grid-template-columns: 1fr; }
+      .progress-container { grid-column: 1; }
+    }
+
+    @media (max-width: 540px) {
+      .nav { padding: 0 16px; }
+      .nav-eyebrow { display: none; }
+      .page { padding: 88px 16px 60px; }
+      .page-title { font-size: 28px; }
+      .metrics-band { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .metric-card { padding: 14px 16px; }
+      .metric-value { font-size: 20px; }
+      .card-header { padding: 18px 18px 16px; }
+      .card-body { padding: 18px 18px; gap: 18px; }
+      .card-footer { padding: 12px 18px; }
+      .progress-segment { font-size: 9px; padding: 0 6px; }
+    }
+  </style>
+</head>
+<body data-generated-at="2026-06-09T00:00:00.000Z">
+
+  <!-- ─── Navigation ────────────────────────────────────────────────────── -->
+  <nav class="nav">
+    <span class="nav-wordmark">PRAGMA<span class="dot">.</span></span>
+    <span class="nav-eyebrow">&gt;_ Client Operations Hub</span>
+    <span class="nav-spacer"></span>
+    <span class="nav-pill">INTERNAL</span>
+  </nav>
+
+  <!-- ─── Main Container ────────────────────────────────────────────────── -->
+  <div id="pragma-client-hub" class="page">
+
+    <!-- ─── Page Header ─────────────────────────────────────────────────── -->
+    <header class="page-header">
+      <div class="page-eyebrow">&gt;_ Client Operations Hub</div>
+      <h1 class="page-title">PRAGMA<span class="dot">.</span></h1>
+      <p class="page-subtitle">
+        <span>Active engagements</span> · agent health · deliverables
+      </p>
+    </header>
+
+    <!-- ─── Metrics Band ─────────────────────────────────────────────────── -->
+    <div class="section-label">System Overview</div>
+    <div class="metrics-band">
+
+      <div class="metric-card">
+        <div class="metric-label">Engagements Active</div>
+        <div class="metric-value signal">1</div>
+        <div class="metric-sub">TLC onboarded</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-label">Total Agents Deployed</div>
+        <div class="metric-value signal">9</div>
+        <div class="metric-sub">all systems nominal</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-label">Days to Day-30 Milestone</div>
+        <div class="metric-value">11</div>
+        <div class="metric-sub">TLC · 2026-06-20</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-label">Economic Value (TLC)</div>
+        <div class="metric-value" style="font-size:20px;">$112K–$195K</div>
+        <div class="metric-sub">Y1 projected</div>
+      </div>
+
+    </div>
+
+    <!-- ─── Active Engagements ───────────────────────────────────────────── -->
+    <section class="engagements-section">
+      <div class="section-label">Active Engagements</div>
+
+      <!-- TLC Client Card -->
+      <div class="client-card">
+
+        <!-- Card Header -->
+        <div class="card-header">
+          <div class="client-identity">
+            <div class="client-avatar">TLC</div>
+            <div class="client-name-group">
+              <div class="client-name">
+                Total Lawn Care
+                <span class="client-tag">TLC</span>
+              </div>
+              <div class="client-meta">Start 2026-05-21 · Milestone 2026-06-20 · 11 days remaining</div>
+            </div>
+          </div>
+          <div class="badges">
+            <span class="badge badge-signal">ACTIVE · Day 19 of 30</span>
+            <span class="badge badge-amber">Tier 3 · Pro Bono · Case Study</span>
+          </div>
+        </div>
+
+        <!-- Card Body -->
+        <div class="card-body">
+
+          <!-- Left Column: Timeline + Links -->
+          <div>
+            <div class="card-section-title">Engagement Timeline</div>
+            <div class="timeline-row" style="margin-bottom:20px;">
+              <div class="timeline-item">
+                <span class="timeline-key">Start</span>
+                <span class="timeline-val">2026-05-21</span>
+              </div>
+              <div class="timeline-item">
+                <span class="timeline-key">Day-30 Milestone</span>
+                <span class="timeline-val signal">2026-06-20</span>
+              </div>
+              <div class="timeline-item">
+                <span class="timeline-key">Remaining</span>
+                <span class="timeline-val signal">11 days</span>
+              </div>
+            </div>
+
+            <div class="card-section-title">Quick Links</div>
+            <div class="links-row">
+              <a href="#" class="card-link">→ Client Dashboard</a>
+              <a href="https://tlctotallawncare.com" target="_blank" rel="noopener" class="card-link">→ tlctotallawncare.com</a>
+            </div>
+          </div>
+
+          <!-- Right Column: Agent Health -->
+          <div>
+            <div class="card-section-title">Agent Health — 9 Active</div>
+            <div class="agent-pills">
+              <span class="agent-pill"><span class="check">✓</span> heartbeat</span>
+              <span class="agent-pill"><span class="check">✓</span> atlas-sync</span>
+              <span class="agent-pill"><span class="check">✓</span> pulse-listen</span>
+              <span class="agent-pill"><span class="check">✓</span> lens-landscape</span>
+              <span class="agent-pill"><span class="check">✓</span> prism</span>
+              <span class="agent-pill"><span class="check">✓</span> vector</span>
+              <span class="agent-pill"><span class="check">✓</span> scout</span>
+              <span class="agent-pill"><span class="check">✓</span> keystone</span>
+              <span class="agent-pill"><span class="check">✓</span> sync-to-mac-mini</span>
+            </div>
+          </div>
+
+          <!-- Left: Data Freshness -->
+          <div>
+            <div class="card-section-title">Data Freshness</div>
+            <div class="freshness-list">
+              <div class="freshness-item">
+                <span class="freshness-name">Lens</span>
+                <span class="freshness-dot"></span>
+                <span class="freshness-val today">today</span>
+              </div>
+              <div class="freshness-item">
+                <span class="freshness-name">Atlas</span>
+                <span class="freshness-dot"></span>
+                <span class="freshness-val today">today</span>
+              </div>
+              <div class="freshness-item">
+                <span class="freshness-name">Pulse</span>
+                <span class="freshness-dot"></span>
+                <span class="freshness-val today">today</span>
+              </div>
+              <div class="freshness-item">
+                <span class="freshness-name">Prism</span>
+                <span class="freshness-dot"></span>
+                <span class="freshness-val today">today</span>
+              </div>
+              <div class="freshness-item">
+                <span class="freshness-name">Vector</span>
+                <span class="freshness-dot"></span>
+                <span class="freshness-val today">today</span>
+              </div>
+              <div class="freshness-item">
+                <span class="freshness-name">Scout</span>
+                <span class="freshness-dot"></span>
+                <span class="freshness-val stale">Jun 03</span>
+              </div>
+              <div class="freshness-item">
+                <span class="freshness-name">Keystone</span>
+                <span class="freshness-dot"></span>
+                <span class="freshness-val stale">Jun 08</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: iMac Health -->
+          <div>
+            <div class="card-section-title">iMac Health</div>
+            <div class="imac-health">
+              <div class="health-chip">
+                <span class="indicator"></span>
+                90Gi disk free
+              </div>
+              <div class="health-chip">
+                <span class="indicator"></span>
+                load 1.06
+              </div>
+              <div class="health-chip">
+                <span class="indicator"></span>
+                Day 19
+              </div>
+            </div>
+          </div>
+
+          <!-- Full-width: Deliverables Progress -->
+          <div class="progress-container">
+            <div class="card-section-title">Deliverables Roadmap</div>
+            <div class="progress-track">
+              <div class="progress-segment active">
+                Sprint Build · Days 1–30
+              </div>
+              <div class="progress-segment pending pending-monitor">
+                Monitor · Days 31–90
+              </div>
+              <div class="progress-segment pending pending-validate">
+                Validate · Days 91–180
+              </div>
+            </div>
+            <div class="progress-labels">
+              <div class="progress-label-item active-label">
+                <span class="plabel-dot"></span>
+                <span class="plabel-text">Active</span>
+              </div>
+              <div class="progress-label-item monitor-label">
+                <span class="plabel-dot"></span>
+                <span class="plabel-text">Pending</span>
+              </div>
+              <div class="progress-label-item validate-label">
+                <span class="plabel-dot"></span>
+                <span class="plabel-text">Pending</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /card-body -->
+
+        <!-- Card Footer -->
+        <div class="card-footer">
+          <span class="card-footer-label">PRAGMA ENGAGEMENT · TLC-001 · CASE STUDY TRACK</span>
+          <span class="card-footer-value">⬡ All 9 agents nominal · iMac online</span>
+        </div>
+
+      </div><!-- /client-card -->
+
+    </section>
+
+    <!-- ─── Page Footer ──────────────────────────────────────────────────── -->
+    <footer class="page-footer">
+      <span class="footer-wordmark">PRAGMA<span class="dot">.</span></span>
+      <span class="footer-meta">A Hartley Capital Company · 2026</span>
+    </footer>
+
+  </div><!-- /pragma-client-hub -->
+
+  <!-- Inject accurate generated-at timestamp -->
+  <script>
+    document.body.setAttribute(
+      'data-generated-at',
+      new Date().toISOString()
+    );
+  </script>
+
+</body>
+</html>

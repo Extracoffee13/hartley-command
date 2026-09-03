@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Hartley Capital</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #024256; overflow: hidden; width: 100vw; height: 100vh; }
+  canvas { display: block; width: 100vw; height: 100vh; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+// ── Constants ──────────────────────────────────────────────────────────────
+const BG      = '#024256';
+const GOLD    = '#c9a84c';
+const WHITE   = '#ffffff';
+
+// ── Stars ──────────────────────────────────────────────────────────────────
+const STAR_COUNT = 180;
+const stars = Array.from({length: STAR_COUNT}, () => ({
+  x: Math.random(),
+  y: Math.random(),
+  r: Math.random() * 1.8 + 0.3,
+  phase: Math.random() * Math.PI * 2,
+  speed: Math.random() * 0.03 + 0.01
+}));
+
+function drawStars(t, alpha) {
+  stars.forEach(s => {
+    const tw = 0.5 + 0.5 * Math.sin(s.phase + t * s.speed);
+    ctx.beginPath();
+    ctx.arc(s.x * canvas.width, s.y * canvas.height, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255,255,255,${alpha * tw * 0.85})`;
+    ctx.fill();
+  });
+}
+
+// ── Particles ──────────────────────────────────────────────────────────────
+class Particle {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.vx = (Math.random() - 0.5) * 3;
+    this.vy = Math.random() * 4 + 2;
+    this.life = 1;
+    this.decay = Math.random() * 0.03 + 0.02;
+    this.r = Math.random() * 5 + 2;
+    const colors = ['#ff6b00','#ffaa00','#ffdd44','#ff3300'];
+    this.color = colors[Math.floor(Math.random() * colors.length)];
+  }
+  update() {
+    this.x += this.vx;
+    this.y += this.vy;
+    this.life -= this.decay;
+    this.r *= 0.97;
+  }
+  draw() {
+    ctx.globalAlpha = this.life;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.r, 0, Math.PI*2);
+    ctx.fillStyle = this.color;
+    ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+}
+
+const particles = [];
+
+function spawnFlame(x, y, count) {
+  for (let i = 0; i < count; i++) particles.push(new Particle(x, y));
+}
+
+// ── Rocket drawing ─────────────────────────────────────────────────────────
+function drawRocket(cx, cy, scale, alpha) {
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.translate(cx, cy);
+  ctx.scale(scale, scale);
+
+  // Body
+  ctx.beginPath();
+  ctx.roundRect(-18, -50, 36, 80, 6);
+  ctx.fillStyle = WHITE;
+  ctx.fill();
+
+  // Nose cone
+  ctx.beginPath();
+  ctx.moveTo(-18, -50);
+  ctx.quadraticCurveTo(-18, -100, 0, -120);
+  ctx.quadraticCurveTo(18, -100, 18, -50);
+  ctx.closePath();
+  ctx.fillStyle = GOLD;
+  ctx.fill();
+
+  // Window
+  ctx.beginPath();
+  ctx.arc(0, -30, 11, 0, Math.PI*2);
+  ctx.fillStyle = '#024256';
+  ctx.fill();
+  ctx.beginPath();
+  ctx.arc(0, -30, 8, 0, Math.PI*2);
+  ctx.fillStyle = '#88ccee';
+  ctx.fill();
+  ctx.beginPath();
+  ctx.arc(-3, -33, 3, 0, Math.PI*2);
+  ctx.fillStyle = 'rgba(255,255,255,0.5)';
+  ctx.fill();
+
+  // HC on body
+  ctx.fillStyle = GOLD;
+  ctx.font = 'bold 14px Arial, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('HC', 0, 15);
+
+  // Left fin
+  ctx.beginPath();
+  ctx.moveTo(-18, 10);
+  ctx.lineTo(-42, 45);
+  ctx.lineTo(-18, 30);
+  ctx.closePath();
+  ctx.fillStyle = GOLD;
+  ctx.fill();
+
+  // Right fin
+  ctx.beginPath();
+  ctx.moveTo(18, 10);
+  ctx.lineTo(42, 45);
+  ctx.lineTo(18, 30);
+  ctx.closePath();
+  ctx.fillStyle = GOLD;
+  ctx.fill();
+
+  // Nozzle
+  ctx.beginPath();
+  ctx.moveTo(-12, 30);
+  ctx.lineTo(-14, 48);
+  ctx.lineTo(14, 48);
+  ctx.lineTo(12, 30);
+  ctx.closePath();
+  ctx.fillStyle = '#aaaaaa';
+  ctx.fill();
+
+  ctx.restore();
+}
+
+// ── Puzzle piece with H cutout ──────────────────────────────────────────────
+function drawPuzzle(cx, cy, size, alpha) {
+  const s = size;
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.translate(cx, cy);
+
+  // ── outer jigsaw shape ──
+  ctx.beginPath();
+  // Start top-left, go clockwise
+  // Top edge (left half → bump → right half)
+  ctx.moveTo(-s*0.5, -s*0.5);
+  ctx.lineTo(-s*0.15, -s*0.5);
+  // top bump (outward = upward, negative y direction)
+  ctx.arc(0, -s*0.5, s*0.15, Math.PI, 0, false);
+  ctx.lineTo(s*0.5, -s*0.5);
+
+  // Right edge (top half → bump → bottom half)
+  ctx.lineTo(s*0.5, -s*0.15);
+  // right bump (outward = rightward)
+  ctx.arc(s*0.5, 0, s*0.15, -Math.PI/2, Math.PI/2, false);
+  ctx.lineTo(s*0.5, s*0.5);
+
+  // Bottom edge (right half → bump → left half)
+  ctx.lineTo(s*0.15, s*0.5);
+  // bottom bump (outward = downward — no bump here, keep clean)
+  ctx.lineTo(-s*0.5, s*0.5);
+
+  // Left edge (bottom → top, no bump)
+  ctx.lineTo(-s*0.5, s*0.5);
+  ctx.lineTo(-s*0.5, -s*0.5);
+  ctx.closePath();
+
+  ctx.fillStyle = WHITE;
+  ctx.fill();
+
+  // ── H cutout ──
+  // carve out via composite
+  ctx.globalCompositeOperation = 'destination-out';
+  const hw = s * 0.08;  // stem width
+  const hh = s * 0.32;  // half-height of H
+  const hg = s * 0.06;  // half-gap between stems
+  // Left stem
+  ctx.beginPath();
+  ctx.rect(-hg - hw*2, -hh, hw*2, hh*2);
+  ctx.fill();
+  // Right stem
+  ctx.beginPath();
+  ctx.rect(hg, -hh, hw*2, hh*2);
+  ctx.fill();
+  // Crossbar
+  ctx.beginPath();
+  ctx.rect(-hg - hw*2, -hh*0.18, hg*2 + hw*4, hh*0.36);
+  ctx.fill();
+
+  ctx.globalCompositeOperation = 'source-over';
+  ctx.restore();
+}
+
+// ── Text rendering ──────────────────────────────────────────────────────────
+function drawText(text, cx, cy, size, color, alpha, weight) {
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.fillStyle = color;
+  ctx.font = `${weight||'600'} ${size}px 'Georgia', serif`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(text, cx, cy);
+  ctx.restore();
+}
+
+function drawTextWrapped(lines, cx, cy, size, color, alpha, weight, lineH) {
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.fillStyle = color;
+  ctx.font = `${weight||'600'} ${size}px 'Georgia', serif`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  lines.forEach((line, i) => {
+    ctx.fillText(line, cx, cy + i * lineH);
+  });
+  ctx.restore();
+}
+
+// ── Timeline helpers ────────────────────────────────────────────────────────
+// Total loop: 60 seconds
+const LOOP = 60;
+
+// Phase schedule (seconds):
+// 0-8   : stars fade in, rocket sits on pad
+// 8-22  : rocket launches (rises through screen)
+// 22-30 : launch aftermath — star field glows, text phase 1
+// 30-38 : text phase 2
+// 38-48 : text phase 3 (multi-line)
+// 48-56 : puzzle piece + HARTLEY CAPITAL reveal
+// 56-60 : fade out everything
+
+function easeInOut(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+function easeOut(t)   { return 1 - Math.pow(1-t, 3); }
+function clamp01(v)   { return Math.max(0, Math.min(1, v)); }
+function phase(t, s, e) { return clamp01((t - s) / (e - s)); }
+function fadeInOut(t, s, fi, fo, e) {
+  if (t < s || t > e) return 0;
+  if (t < fi) return (t-s)/(fi-s);
+  if (t > fo) return 1-(t-fo)/(e-fo);
+  return 1;
+}
+
+// ── Main animation loop ─────────────────────────────────────────────────────
+let startTime = null;
+
+function frame(ts) {
+  if (!startTime) startTime = ts;
+  const elapsed = ((ts - startTime) / 1000) % LOOP;
+  const t = elapsed;
+
+  const W = canvas.width;
+  const H = canvas.height;
+  const cx = W / 2;
+
+  // Clear
+  ctx.fillStyle = BG;
+  ctx.fillRect(0, 0, W, H);
+
+  // Star alpha: fade in 0-3s, full 3-56s, fade out 56-60s
+  const starAlpha = fadeInOut(t, 0, 3, 56, 60);
+  drawStars(t, starAlpha);
+
+  // ── Rocket launch ──────────────────────────────────────────────────────
+  // Sits at bottom 0-8s, launches 8-22s
+  const rocketScale = Math.min(W, H) / 700;
+
+  if (t < 22) {
+    let rocketY, rocketAlpha;
+
+    if (t < 8) {
+      // Sitting on pad, small idle bob
+      const bob = Math.sin(t * 2) * 4;
+      rocketY = H * 0.72 + bob;
+      rocketAlpha = clamp01(t / 2);
+    } else {
+      // Launch: 8-22s (14 sec journey)
+      const p = easeInOut(phase(t, 8, 22));
+      rocketY = H * 0.72 - p * (H * 1.2);
+      rocketAlpha = t < 20 ? 1 : 1 - phase(t, 20, 22);
+    }
+
+    // Flame particles during launch
+    if (t > 7.5 && t < 21) {
+      const intensity = t < 9 ? (t - 7.5) * 8 : (t < 19 ? 8 : (21-t)*4);
+      spawnFlame(cx, rocketY + 140 * rocketScale, Math.floor(intensity));
+    }
+
+    drawRocket(cx, rocketY, rocketScale, rocketAlpha);
+  }
+
+  // Update & draw particles
+  for (let i = particles.length - 1; i >= 0; i--) {
+    particles[i].update();
+    particles[i].draw();
+    if (particles[i].life <= 0) particles.splice(i, 1);
+  }
+
+  // ── Text phase 1: "We started in a van." 22-30s ───────────────────────
+  {
+    const a = fadeInOut(t, 22, 24, 29, 30);
+    if (a > 0) {
+      const fontSize = Math.max(18, Math.min(36, W * 0.075));
+      drawText('We started in a van.', cx, H * 0.45, fontSize, WHITE, a, '400');
+    }
+  }
+
+  // ── Text phase 2: "We never stopped building." 30-38s ────────────────
+  {
+    const a = fadeInOut(t, 30, 32, 37, 38);
+    if (a > 0) {
+      const fontSize = Math.max(18, Math.min(36, W * 0.075));
+      drawText('We never stopped building.', cx, H * 0.45, fontSize, GOLD, a, '600');
+    }
+  }
+
+  // ── Text phase 3: multi-line 38-48s ───────────────────────────────────
+  {
+    const a = fadeInOut(t, 38, 40, 47, 48);
+    if (a > 0) {
+      const fontSize = Math.max(14, Math.min(28, W * 0.058));
+      const lines = ["Let's Build Something.", 'Not a Sliver.', 'The Whole Picture.'];
+      const lineH = fontSize * 1.6;
+      const totalH = (lines.length - 1) * lineH;
+      drawTextWrapped(lines, cx, H * 0.42 - totalH/2, fontSize, WHITE, a, '600', lineH);
+    }
+  }
+
+  // ── Puzzle piece + HARTLEY CAPITAL 48-60s ─────────────────────────────
+  {
+    const puzzleA = fadeInOut(t, 48, 51, 57, 60);
+    if (puzzleA > 0) {
+      const pSize = Math.min(W, H) * 0.28;
+      drawPuzzle(cx, H * 0.38, pSize, puzzleA);
+
+      // HARTLEY CAPITAL below
+      const brandSize = Math.max(16, Math.min(38, W * 0.078));
+      const tagSize   = Math.max(10, Math.min(18, W * 0.038));
+      drawText('HARTLEY CAPITAL', cx, H * 0.38 + pSize * 0.72, brandSize, WHITE, puzzleA, '700');
+      drawText('THE WHOLE PICTURE', cx, H * 0.38 + pSize * 0.72 + brandSize * 1.5, tagSize, GOLD, puzzleA * 0.85, '400');
+    }
+  }
+
+  requestAnimationFrame(frame);
+}
+
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>

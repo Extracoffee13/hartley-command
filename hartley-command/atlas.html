@@ -1,0 +1,2764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>ATLAS — Brand 9 Signs | Lennar Homes</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#0d2b4e;--navy2:#1a3f6f;
+  --blue:#1565c0;--blue-l:#e8f3ff;--blue-m:#1976d2;
+  --orange:#f97316;--orange-l:#fff4ed;
+  --gray-50:#f8fafc;--gray-100:#f1f5f9;--gray-200:#e2e8f0;
+  --gray-400:#94a3b8;--gray-600:#475569;--gray-800:#1e293b;
+  --white:#fff;
+  --green:#10b981;--green-l:#d1fae5;
+  --amber:#f59e0b;--amber-l:#fef3c7;
+  --red:#ef4444;--red-l:#fee2e2;
+  --purple:#8b5cf6;--purple-l:#ede9fe;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:0 4px 16px rgba(0,0,0,.1),0 2px 4px rgba(0,0,0,.06);
+  --shadow-lg:0 10px 40px rgba(0,0,0,.15),0 4px 8px rgba(0,0,0,.06);
+  --radius:10px;--radius-sm:6px;
+}
+body{font-family:var(--font);background:var(--gray-100);color:var(--gray-800);min-height:100vh;line-height:1.5;}
+::-webkit-scrollbar{width:6px;height:6px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:var(--gray-200);border-radius:3px;}
+
+/* ── HEADER ── */
+.hdr{
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);
+  height:64px;padding:0 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:200;
+  box-shadow:0 2px 12px rgba(0,0,0,.25);
+}
+.hdr-left{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.logo-wrap{display:flex;align-items:center;gap:10px;}
+.logo-mark{
+  width:38px;height:38px;border-radius:8px;background:var(--orange);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:15px;color:#fff;letter-spacing:-0.5px;
+  flex-shrink:0;box-shadow:0 2px 8px rgba(249,115,22,.4);
+}
+.brand-name{font-size:11px;color:rgba(255,255,255,.5);letter-spacing:2px;text-transform:uppercase;}
+.divider-v{width:1px;height:32px;background:rgba(255,255,255,.15);}
+.atlas-badge{display:flex;flex-direction:column;}
+.atlas-name{font-size:22px;font-weight:800;color:#fff;letter-spacing:4px;line-height:1;}
+.atlas-sub{font-size:10px;color:rgba(255,255,255,.45);letter-spacing:2.5px;text-transform:uppercase;margin-top:3px;}
+.hdr-center{
+  display:flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  border-radius:8px;padding:8px 16px;
+}
+.cl-label{font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1px;}
+.cl-name{font-size:14px;font-weight:700;color:#fff;}
+.hdr-right{display:flex;align-items:center;gap:8px;}
+.live-badge{display:flex;align-items:center;gap:5px;font-size:11px;color:rgba(255,255,255,.6);}
+.live-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse-dot 2s infinite;}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.7;transform:scale(1.3);}}
+.hdr-btn{
+  padding:7px 14px;border-radius:6px;font-size:12px;font-weight:600;
+  cursor:pointer;border:none;transition:all .2s;font-family:var(--font);
+  white-space:nowrap;
+}
+.hdr-btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2);}
+.hdr-btn-ghost:hover{background:rgba(255,255,255,.18);}
+.hdr-btn-orange{background:var(--orange);color:#fff;box-shadow:0 2px 6px rgba(249,115,22,.35);}
+.hdr-btn-orange:hover{background:#ea6c0a;}
+
+/* ── VIEW BADGE ── */
+.view-badge{
+  display:flex;align-items:center;gap:5px;
+  padding:5px 10px;border-radius:6px;font-size:11px;font-weight:700;
+  border:1px solid rgba(255,255,255,.25);
+}
+.view-badge.admin{background:rgba(249,115,22,.25);color:#fdba74;border-color:rgba(249,115,22,.4);}
+.view-badge.client{background:rgba(16,185,129,.2);color:#6ee7b7;border-color:rgba(16,185,129,.35);}
+
+/* ── REGION BAR ── */
+.region-bar{
+  background:#fff;border-bottom:1px solid var(--gray-200);
+  padding:0 20px;display:flex;align-items:center;
+  box-shadow:var(--shadow);overflow-x:auto;
+}
+.r-tab{
+  padding:13px 18px;font-size:13px;font-weight:600;color:var(--gray-600);
+  cursor:pointer;border-bottom:3px solid transparent;
+  transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:6px;
+  flex-shrink:0;
+}
+.r-tab:hover{color:var(--blue);}
+.r-tab.active{color:var(--blue);border-bottom-color:var(--blue);}
+.r-tab.selected{background:var(--blue-l);color:var(--blue);border-bottom-color:var(--blue);font-weight:800;}
+.r-count{background:var(--blue-l);color:var(--blue);font-size:10px;font-weight:800;padding:1px 6px;border-radius:10px;}
+.r-tab.dim{color:var(--gray-400);cursor:default;opacity:.65;}
+.r-tab.dim:hover{color:var(--gray-400);}
+.r-cs{font-size:10px;font-weight:600;color:var(--gray-400);background:var(--gray-100);padding:2px 7px;border-radius:8px;}
+
+/* ── KPI BAR ── */
+.kpi-bar{
+  background:linear-gradient(135deg,var(--navy) 0%,#0f3460 100%);
+  padding:0 20px;display:grid;grid-template-columns:repeat(4,1fr);
+  border-bottom:3px solid var(--orange);
+}
+.kpi-card{padding:18px 20px;position:relative;}
+.kpi-card:not(:last-child)::after{
+  content:'';position:absolute;right:0;top:18%;height:64%;
+  width:1px;background:rgba(255,255,255,.08);
+}
+.kpi-lbl{font-size:10px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:1.2px;font-weight:700;}
+.kpi-val{font-size:30px;font-weight:800;color:#fff;line-height:1.1;margin:4px 0 2px;}
+.kpi-sub{font-size:11px;color:rgba(255,255,255,.35);}
+.kpi-chg{font-size:11px;font-weight:700;display:flex;align-items:center;gap:3px;margin-top:4px;}
+.kpi-chg.up{color:#34d399;}.kpi-chg.dn{color:#f87171;}
+.kpi-icon{position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:28px;opacity:.12;}
+
+/* ── MAIN ── */
+.main{padding:20px;max-width:1700px;margin:0 auto;}
+
+/* ── SYNC BAR ── */
+.sync-bar{
+  display:flex;align-items:center;gap:10px;
+  background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius-sm);
+  padding:9px 14px;margin-bottom:16px;font-size:12px;
+  box-shadow:var(--shadow);flex-wrap:wrap;gap:8px;
+}
+.sync-status{display:flex;align-items:center;gap:6px;flex:1;}
+.sync-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.sync-dot.ok{background:var(--green);}
+.sync-dot.warn{background:var(--amber);}
+.sync-msg{color:var(--gray-600);font-weight:500;}
+.sync-time{color:var(--gray-400);font-size:11px;}
+.btn-refresh{
+  padding:6px 12px;background:var(--blue-l);border:1px solid #bfdbfe;
+  border-radius:var(--radius-sm);font-size:12px;font-weight:700;color:var(--blue);
+  cursor:pointer;transition:all .2s;font-family:var(--font);white-space:nowrap;
+}
+.btn-refresh:hover{background:#dbeafe;}
+
+/* ── TOOLBAR ── */
+.toolbar{display:flex;gap:10px;align-items:center;margin-bottom:20px;flex-wrap:wrap;}
+.search-wrap{flex:1;min-width:200px;position:relative;}
+.search-input{
+  width:100%;padding:10px 14px 10px 38px;
+  border:1px solid var(--gray-200);border-radius:var(--radius-sm);
+  font-size:13px;background:#fff;color:var(--gray-800);outline:none;
+  transition:border-color .2s;font-family:var(--font);box-shadow:var(--shadow);
+}
+.search-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(21,101,192,.1);}
+.search-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--gray-400);}
+.flt-sel{
+  padding:10px 32px 10px 12px;border:1px solid var(--gray-200);border-radius:var(--radius-sm);
+  font-size:13px;background:#fff;color:var(--gray-800);outline:none;cursor:pointer;
+  font-family:var(--font);font-weight:500;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 10px center;
+  box-shadow:var(--shadow);
+}
+.tb-actions{display:flex;gap:8px;}
+.btn-sec{
+  padding:10px 14px;background:#fff;border:1px solid var(--gray-200);
+  border-radius:var(--radius-sm);font-size:12px;font-weight:600;color:var(--gray-600);
+  cursor:pointer;transition:all .2s;font-family:var(--font);box-shadow:var(--shadow);
+  white-space:nowrap;
+}
+.btn-sec:hover{background:var(--gray-100);}
+.btn-pri{
+  padding:10px 16px;background:var(--blue);border:none;
+  border-radius:var(--radius-sm);font-size:12px;font-weight:700;color:#fff;
+  cursor:pointer;transition:all .2s;font-family:var(--font);
+  box-shadow:0 2px 6px rgba(21,101,192,.3);white-space:nowrap;
+}
+.btn-pri:hover{background:var(--blue-m);}
+
+/* ── SECTION HEADER ── */
+.sec-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px;}
+.sec-title{font-size:15px;font-weight:800;color:var(--gray-800);display:flex;align-items:center;gap:8px;}
+.sec-badge{background:var(--blue-l);color:var(--blue);font-size:11px;font-weight:800;padding:2px 8px;border-radius:10px;}
+.sec-badge-orange{background:var(--orange-l);color:var(--orange);}
+.legend{display:flex;gap:10px;font-size:11px;font-weight:700;flex-wrap:wrap;}
+.leg-item{display:flex;align-items:center;gap:4px;}
+.leg-dot{width:8px;height:8px;border-radius:50%;display:inline-block;}
+
+/* ── COMMUNITY GRID ── */
+.comm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:28px;grid-column:1 / -1;}
+.area-header{background:linear-gradient(135deg,var(--navy) 0%,#0f3460 100%);color:#fff;border-radius:0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;font-size:13px;font-weight:900;letter-spacing:1px;text-transform:uppercase;margin:0 0 10px;grid-column:1 / -1;border-bottom:3px solid var(--orange);}
+.zone-header{background:#E6F1FB;color:#042C53;border-left:3px solid #185FA5;border-radius:0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;font-size:12px;font-weight:800;margin:0 0 10px;grid-column:1 / -1;}
+
+/* ── COMMUNITY CARD ── */
+.c-card{
+  background:#fff;border-radius:var(--radius);padding:16px;
+  border:1px solid var(--gray-200);cursor:pointer;
+  transition:all .2s;position:relative;overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.c-card:hover{border-color:var(--blue);box-shadow:var(--shadow-md);transform:translateY(-2px);}
+.c-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:var(--radius) 0 0 var(--radius);}
+.c-card.s-complete::before{background:var(--green);}
+.c-card.s-pending::before{background:var(--amber);}
+.c-card.s-in-progress::before{background:var(--blue);}
+.c-card.s-overdue::before{background:var(--red);}
+.c-card.s-new::before{background:var(--purple);}
+
+.c-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px;padding-left:10px;}
+.c-name{font-size:13px;font-weight:800;color:var(--gray-800);line-height:1.3;flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:34px;}
+.c-city{font-size:11px;color:var(--gray-400);margin-top:1px;font-weight:500;}
+.s-badge{font-size:9px;font-weight:800;padding:3px 8px;border-radius:10px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;margin-left:8px;margin-top:1px;}
+.sb-complete{background:var(--green-l);color:#059669;}
+.sb-pending{background:var(--amber-l);color:#d97706;}
+.sb-in-progress{background:var(--blue-l);color:#1d4ed8;}
+.sb-overdue{background:var(--red-l);color:#dc2626;}
+.sb-new{background:var(--purple-l);color:#7c3aed;}
+
+/* ── 811 QUICK BUTTON (page one of each community card) ── */
+.c-811-row{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 10px;margin:0 0 10px 10px;
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);
+  border-radius:8px;
+  box-shadow:0 2px 6px rgba(13,43,78,.15);
+}
+.c-811-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--orange);color:#fff;border:none;
+  font-size:11px;font-weight:900;letter-spacing:.5px;
+  padding:5px 10px;border-radius:6px;cursor:pointer;
+  box-shadow:0 2px 4px rgba(249,115,22,.4);
+  font-family:var(--font);transition:transform .15s,background .2s;
+}
+.c-811-btn:hover{background:#ea6c0a;transform:translateY(-1px);}
+.c-811-btn::before{content:'⛏';font-size:11px;}
+.c-811-choices{display:inline-flex;gap:2px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:6px;padding:2px;margin-left:auto;}
+.c-811-opt{
+  padding:3px 8px;font-size:10px;font-weight:800;border:none;
+  background:transparent;color:rgba(255,255,255,.6);cursor:pointer;
+  border-radius:4px;transition:all .15s;font-family:var(--font);letter-spacing:.3px;
+}
+.c-811-opt:hover{color:#fff;background:rgba(255,255,255,.08);}
+.c-811-opt.active-yes{background:var(--green);color:#fff;box-shadow:0 1px 3px rgba(16,185,129,.4);}
+.c-811-opt.active-no{background:var(--red);color:#fff;box-shadow:0 1px 3px rgba(239,68,68,.4);}
+.c-811-opt.active-na{background:var(--gray-600);color:#fff;}
+
+.c-prog{padding-left:10px;margin-bottom:10px;}
+.prog-lbl{display:flex;justify-content:space-between;font-size:11px;color:var(--gray-600);margin-bottom:4px;font-weight:500;}
+.prog-bar{height:6px;background:var(--gray-100);border-radius:3px;overflow:hidden;}
+.prog-fill{height:100%;border-radius:3px;}
+.pf-complete{background:var(--green);}
+.pf-pending{background:var(--amber);}
+.pf-in-progress{background:linear-gradient(90deg,var(--blue),#42a5f5);}
+.pf-overdue{background:var(--red);}
+.pf-new{background:var(--purple);}
+
+.c-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding-left:10px;}
+.m-item{display:flex;flex-direction:column;gap:1px;}
+.m-lbl{font-size:9px;color:var(--gray-400);text-transform:uppercase;letter-spacing:.8px;font-weight:700;}
+.m-val{font-size:12px;color:var(--gray-800);font-weight:700;}
+.m-val.phase{font-size:10px;font-weight:600;color:var(--gray-600);}
+
+.c-footer{padding-left:10px;margin-top:10px;border-top:1px solid var(--gray-100);padding-top:8px;display:flex;justify-content:space-between;align-items:center;}
+.c-detail-link{font-size:11px;color:var(--blue);font-weight:700;display:flex;align-items:center;gap:3px;opacity:.7;}
+.c-card:hover .c-detail-link{opacity:1;}
+.btn-field-update{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:5px 10px;background:var(--orange-l);border:1px solid #fed7aa;
+  border-radius:6px;font-size:11px;font-weight:700;color:var(--orange);
+  cursor:pointer;transition:all .2s;font-family:var(--font);
+  text-decoration:none;
+}
+.btn-field-update:hover{background:#ffedd5;}
+.btn-field-update:active{transform:scale(.97);}
+
+/* ── PANELS ── */
+.panels-row{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;margin-bottom:22px;}
+.panel{background:#fff;border-radius:var(--radius);border:1px solid var(--gray-200);overflow:hidden;box-shadow:var(--shadow);}
+.p-hdr{padding:14px 18px;border-bottom:1px solid var(--gray-100);display:flex;align-items:center;justify-content:space-between;background:var(--gray-50);}
+.p-title{font-size:13px;font-weight:800;color:var(--gray-800);display:flex;align-items:center;gap:7px;}
+.p-title-icon{font-size:16px;}
+.p-body{padding:0;}
+
+/* ── WORK ORDERS TABLE ── */
+.wo-tbl{width:100%;border-collapse:collapse;}
+.wo-tbl th{
+  font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;
+  color:var(--gray-400);padding:10px 14px;text-align:left;
+  border-bottom:1px solid var(--gray-200);background:var(--gray-50);white-space:nowrap;
+}
+.wo-tbl td{padding:11px 14px;border-bottom:1px solid var(--gray-100);font-size:12px;color:var(--gray-800);vertical-align:middle;}
+.wo-tbl tr:last-child td{border-bottom:none;}
+.wo-tbl tr:hover td{background:var(--gray-50);}
+.wo-priority{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:5px;vertical-align:middle;}
+.wo-num{font-size:10px;font-weight:800;color:var(--gray-400);}
+.wo-comm{font-weight:700;color:var(--gray-800);}
+.wo-type{font-size:11px;color:var(--gray-600);}
+.wo-date{font-size:11px;font-weight:600;color:var(--gray-600);white-space:nowrap;}
+.wo-crew{font-size:11px;color:var(--gray-500);}
+
+/* ── ACTIVITY LOG ── */
+.act-list{list-style:none;}
+.act-item{display:flex;gap:12px;padding:12px 18px;border-bottom:1px solid var(--gray-100);}
+.act-item:last-child{border-bottom:none;}
+.act-ic{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;margin-top:1px;}
+.act-content{flex:1;min-width:0;}
+.act-text{font-size:12px;color:var(--gray-800);line-height:1.4;font-weight:500;}
+.act-time{font-size:10px;color:var(--gray-400);margin-top:2px;font-weight:600;}
+
+/* ── CHART ── */
+.chart-wrap{padding:18px;}
+.chart-container{position:relative;height:220px;}
+
+/* ── EMPTY STATE ── */
+.empty{padding:48px 20px;text-align:center;color:var(--gray-400);}
+.empty-icon{font-size:40px;margin-bottom:10px;}
+.empty-text{font-size:14px;font-weight:600;}
+
+/* ── COMING SOON OVERLAY ── */
+.coming-soon-panel{
+  padding:40px 20px;text-align:center;color:var(--gray-400);
+}
+.cs-icon{font-size:36px;margin-bottom:10px;}
+.cs-title{font-size:16px;font-weight:800;color:var(--gray-600);margin-bottom:4px;}
+.cs-sub{font-size:13px;}
+
+/* ── FOOTER ── */
+.ftr{background:#fff;border-top:1px solid var(--gray-200);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;margin-top:8px;flex-wrap:wrap;gap:8px;}
+.ftr-brand{font-size:11px;color:var(--gray-400);}
+.ftr-brand strong{color:var(--navy);}
+.ftr-powered{font-size:10px;color:var(--gray-400);display:flex;align-items:center;gap:5px;}
+.atlas-dot{width:6px;height:6px;background:var(--orange);border-radius:50%;}
+
+/* ── MODAL ── */
+.modal-ov{
+  display:none;position:fixed;inset:0;
+  background:rgba(13,43,78,.6);z-index:500;
+  align-items:flex-start;justify-content:center;padding:16px;
+  backdrop-filter:blur(6px);overflow-y:auto;
+}
+.modal-ov.open{display:flex;}
+.modal{
+  background:#fff;border-radius:16px;width:100%;max-width:800px;
+  box-shadow:var(--shadow-lg);animation:modal-in .25s ease;
+  margin:auto;
+}
+@keyframes modal-in{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.m-hdr{
+  padding:20px 20px 16px;display:flex;align-items:flex-start;
+  justify-content:space-between;position:sticky;top:0;background:#fff;
+  border-bottom:1px solid var(--gray-200);z-index:1;border-radius:16px 16px 0 0;
+}
+.m-close{
+  width:34px;height:34px;border-radius:50%;border:none;
+  background:var(--gray-100);cursor:pointer;font-size:16px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gray-600);flex-shrink:0;transition:background .2s;
+}
+.m-close:hover{background:var(--gray-200);}
+.m-body{padding:20px;}
+.m-region{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--blue-l);color:var(--blue);
+  font-size:11px;font-weight:800;padding:3px 10px;border-radius:12px;
+  text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px;
+}
+.m-comm-name{font-size:22px;font-weight:900;color:var(--navy);line-height:1.2;}
+.m-comm-city{font-size:13px;color:var(--gray-400);margin-top:2px;}
+.m-stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0;}
+.m-stat{background:var(--gray-50);border-radius:8px;padding:12px;border:1px solid var(--gray-200);text-align:center;}
+.m-stat-val{font-size:20px;font-weight:900;color:var(--navy);}
+.m-stat-lbl{font-size:10px;color:var(--gray-400);text-transform:uppercase;letter-spacing:.8px;font-weight:700;margin-top:2px;}
+
+/* ── 811 PERMIT BOX (inside modal) ── */
+.permit-811{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:14px 16px;margin:16px 0;
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);
+  border-radius:10px;color:#fff;
+  box-shadow:var(--shadow-md);
+  flex-wrap:wrap;
+}
+.permit-811-label{display:flex;align-items:center;gap:12px;flex:1;min-width:180px;}
+.permit-icon{
+  width:44px;height:44px;border-radius:10px;background:var(--orange);
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:900;color:#fff;letter-spacing:-.5px;
+  flex-shrink:0;box-shadow:0 2px 8px rgba(249,115,22,.4);
+}
+.permit-title{font-size:14px;font-weight:900;color:#fff;letter-spacing:.3px;}
+.permit-sub{font-size:10px;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
+.permit-811-choices{display:inline-flex;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:3px;gap:2px;}
+.p811-btn{
+  padding:8px 18px;font-size:12px;font-weight:800;border:none;
+  background:transparent;color:rgba(255,255,255,.65);cursor:pointer;
+  border-radius:6px;transition:all .2s;font-family:var(--font);letter-spacing:.5px;
+}
+.p811-btn:hover{color:#fff;background:rgba(255,255,255,.08);}
+.p811-btn.active-yes{background:var(--green);color:#fff;box-shadow:0 2px 6px rgba(16,185,129,.4);}
+.p811-btn.active-no{background:var(--red);color:#fff;box-shadow:0 2px 6px rgba(239,68,68,.4);}
+.p811-btn.active-na{background:var(--gray-600);color:#fff;}
+
+/* ── SIGN CATEGORIES (accordion) ── */
+.sign-cats{margin-top:16px;display:flex;flex-direction:column;gap:10px;}
+.sign-cat{border:1px solid var(--gray-200);border-radius:10px;overflow:hidden;}
+.sign-cat-hdr{
+  display:flex;align-items:center;gap:10px;padding:12px 16px;
+  cursor:pointer;background:var(--gray-50);transition:background .15s;
+  user-select:none;
+}
+.sign-cat-hdr:hover{background:var(--gray-100);}
+.sign-cat-hdr.open{background:var(--blue-l);}
+.cat-icon{font-size:16px;flex-shrink:0;}
+.cat-name{font-size:13px;font-weight:800;color:var(--gray-800);flex:1;}
+.cat-progress{display:flex;align-items:center;gap:8px;}
+.cat-prog-bar{width:70px;height:6px;background:var(--gray-200);border-radius:3px;overflow:hidden;}
+.cat-prog-fill{height:100%;border-radius:3px;transition:width .4s;}
+.cat-count{font-size:11px;font-weight:700;color:var(--gray-600);white-space:nowrap;}
+.cat-status-badge{font-size:9px;font-weight:800;padding:2px 7px;border-radius:8px;text-transform:uppercase;letter-spacing:.4px;white-space:nowrap;}
+.csb-complete{background:var(--green-l);color:#059669;}
+.csb-in-progress{background:var(--blue-l);color:#1d4ed8;}
+.csb-not-started{background:var(--gray-100);color:var(--gray-600);}
+.cat-chevron{font-size:12px;color:var(--gray-400);transition:transform .2s;flex-shrink:0;}
+.cat-chevron.open{transform:rotate(180deg);}
+.sign-cat-body{display:none;padding:0 16px 12px;}
+.sign-cat-body.open{display:block;}
+.sign-list{list-style:none;margin-top:8px;}
+.sign-item{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 0;border-bottom:1px solid var(--gray-100);font-size:12px;
+}
+.sign-item:last-child{border-bottom:none;}
+.sign-check{
+  width:20px;height:20px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:11px;
+  flex-shrink:0;
+}
+.sign-check.installed{background:var(--green-l);color:#059669;}
+.sign-check.pending{background:var(--gray-100);color:var(--gray-400);}
+.sign-name{flex:1;color:var(--gray-800);font-weight:500;}
+.sign-status-lbl{font-size:10px;font-weight:700;white-space:nowrap;}
+.ssl-installed{color:#059669;}
+.ssl-pending{color:var(--gray-400);}
+
+.m-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;}
+.m-info-card{background:var(--gray-50);border-radius:8px;padding:14px;border:1px solid var(--gray-200);}
+.m-info-lbl{font-size:10px;color:var(--gray-400);text-transform:uppercase;letter-spacing:.8px;font-weight:700;margin-bottom:3px;}
+.m-info-val{font-size:13px;font-weight:700;color:var(--gray-800);}
+.m-field-btn{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;margin-top:16px;padding:12px;
+  background:var(--orange);border:none;border-radius:10px;
+  font-size:14px;font-weight:700;color:#fff;cursor:pointer;
+  font-family:var(--font);transition:background .2s;text-decoration:none;
+}
+.m-field-btn:hover{background:#ea6c0a;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hdr{padding:0 12px;height:56px;}
+  .atlas-name{font-size:18px;letter-spacing:3px;}
+  .brand-name,.atlas-sub{display:none;}
+  .kpi-bar{grid-template-columns:repeat(2,1fr);}
+  .kpi-card:nth-child(3),.kpi-card:nth-child(4){border-top:1px solid rgba(255,255,255,.08);}
+  .kpi-card:nth-child(2)::after{display:none;}
+  .panels-row{grid-template-columns:1fr;}
+  .main{padding:12px;}
+  .m-stats-row{grid-template-columns:repeat(3,1fr);}
+  .comm-grid{grid-template-columns:1fr;}
+  .flt-sel{display:none;}
+  .hdr-btn:not(.hdr-btn-ghost){display:none;}
+  .live-badge{display:none;}
+  .view-badge{padding:4px 8px;font-size:10px;}
+  .permit-811{flex-direction:column;align-items:flex-start;}
+  .permit-811-choices{width:100%;justify-content:space-between;}
+  .p811-btn{flex:1;}
+}
+@media(max-width:480px){
+  .m-stats-row{grid-template-columns:1fr 1fr;}
+  .m-info-grid{grid-template-columns:1fr;}
+  .kpi-bar{grid-template-columns:1fr 1fr;}
+  .kpi-val{font-size:24px;}
+}
+
+/* ── ANIMATIONS ── */
+@keyframes card-in{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.c-card{animation:card-in .3s ease both;}
+
+/* ── ADMIN-ONLY (hidden when ?view=client) ── */
+body.client-view .admin-only{display:none !important;}
+.c-card.card-sold-out::before{background:var(--gray-400);}
+.c-card.card-office::before{background:var(--orange);}
+
+/* ── PRINT ── */
+@media print{
+  .hdr{background:var(--navy)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .kpi-bar{background:var(--navy)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .modal-ov{display:none!important;}
+  .tb-actions,.hdr-btn,.btn-field-update,.m-field-btn{display:none!important;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════
+  HEADER
+══════════════════════════════════════ -->
+<header class="hdr">
+  <div class="hdr-left">
+    <div class="logo-wrap">
+      <div class="logo-mark">B9</div>
+      <div>
+        <div class="brand-name">Brand 9 Signs</div>
+      </div>
+    </div>
+    <div class="divider-v"></div>
+    <div class="atlas-badge">
+      <div class="atlas-name">ATLAS</div>
+      <div class="atlas-sub">Installation Tracker</div>
+    </div>
+  </div>
+
+  <div class="hdr-center">
+    <div>
+      <div class="cl-label">Client</div>
+      <div class="cl-name">Lennar Homes</div>
+    </div>
+    <div style="width:1px;height:28px;background:rgba(255,255,255,.15);margin:0 6px;"></div>
+    <div>
+      <div class="cl-label">Main POC</div>
+      <div class="cl-name">Gina Lee</div>
+    </div>
+  </div>
+
+  <div class="hdr-right">
+    <div id="viewBadge" class="view-badge admin">&#9679; Admin View</div>
+    <div class="live-badge">
+      <div class="live-dot"></div>
+      <span id="liveStamp">Live</span>
+    </div>
+    <button class="hdr-btn hdr-btn-ghost" onclick="window.print()">&#8595; Export</button>
+  </div>
+</header>
+
+<!-- ── INSTALL TEAM STRIP ── -->
+<div style="background:#fff;border-bottom:1px solid var(--gray-200);padding:8px 20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:11px;">
+  <span style="font-size:9px;font-weight:800;color:var(--gray-400);letter-spacing:1.2px;text-transform:uppercase;">Install Team</span>
+  <span style="background:var(--orange-l);color:var(--orange);border:1px solid #fed7aa;padding:3px 10px;border-radius:12px;font-weight:800;font-size:11px;">⚙ Pete</span>
+  <span style="background:var(--orange-l);color:var(--orange);border:1px solid #fed7aa;padding:3px 10px;border-radius:12px;font-weight:800;font-size:11px;">⚙ Andrew</span>
+  <span style="background:var(--blue-l);color:var(--blue);padding:3px 10px;border-radius:12px;font-weight:700;font-size:11px;">Ben</span>
+  <span style="background:var(--blue-l);color:var(--blue);padding:3px 10px;border-radius:12px;font-weight:700;font-size:11px;">Shermin</span>
+  <span style="background:var(--blue-l);color:var(--blue);padding:3px 10px;border-radius:12px;font-weight:700;font-size:11px;">Rachel</span>
+  <span style="background:var(--blue-l);color:var(--blue);padding:3px 10px;border-radius:12px;font-weight:700;font-size:11px;">Donovan</span>
+  <span style="margin-left:auto;font-size:10px;color:var(--gray-400);font-weight:600;">⚙ Active install pair · others on rotation</span>
+</div>
+
+<!-- ── REGION TABS ── -->
+<div class="region-bar">
+  <div class="r-tab active" data-region="jax"   onclick="setRegion('jax',this)">Jacksonville / St. Augustine <span class="r-count" id="cnt-jax">10</span></div>
+  <div class="r-tab active" data-region="ocala" onclick="setRegion('ocala',this)">Ocala <span class="r-count" id="cnt-ocala">11</span></div>
+  <div class="r-tab active" data-region="gainesville" onclick="setRegion('gainesville',this)">Gainesville <span class="r-count" id="cnt-gainesville">4</span></div>
+  <div class="r-tab active" data-region="sofla" onclick="setRegion('sofla',this)">Southeast <span class="r-count" id="cnt-sofla">1</span></div>
+  <div class="r-tab dim" title="Coming Soon">Ft. Lauderdale <span class="r-cs">Soon</span></div>
+  <div class="r-tab dim" title="Coming Soon">Naples / Ft. Myers <span class="r-cs">Soon</span></div>
+  <div class="r-tab dim" title="Coming Soon">Orlando <span class="r-cs">Soon</span></div>
+  <div class="r-tab dim" title="Coming Soon">Palm Beach <span class="r-cs">Soon</span></div>
+  <div class="r-tab dim" title="Coming Soon">Panama City <span class="r-cs">Soon</span></div>
+  <div class="r-tab dim" title="Coming Soon">Pensacola <span class="r-cs">Soon</span></div>
+  <div class="r-tab dim" title="Coming Soon">Sarasota / Manatee <span class="r-cs">Soon</span></div>
+  <div class="r-tab dim" title="Coming Soon">Space Coast / Melbourne <span class="r-cs">Soon</span></div>
+  <div class="r-tab dim" title="Coming Soon">Tampa / Manatee <span class="r-cs">Soon</span></div>
+  <div class="r-tab dim" title="Coming Soon">Treasure Coast <span class="r-cs">Soon</span></div>
+</div>
+
+<!-- ── ACTIVE BY REGION HEADER ── -->
+<div id="regionActiveBar" style="display:flex;flex-wrap:wrap;gap:10px;padding:12px 0 6px;font-size:12px;"></div>
+
+<!-- ── KPI BAR ── -->
+<div class="kpi-bar">
+  <div class="kpi-card">
+    <div class="kpi-lbl">Active Projects</div>
+    <div class="kpi-val" id="kpi-communities">0</div>
+    <div class="kpi-sub" id="kpi-communities-sub">JAX · Ocala · SoFla</div>
+    <div class="kpi-chg up">&#9650; Crew: Pete + Andrew</div>
+    <div class="kpi-icon">&#128295;</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-lbl">Total Communities</div>
+    <div class="kpi-val" id="kpi-total-fl">0</div>
+    <div class="kpi-sub" id="kpi-total-fl-sub">All Lennar communities in Florida</div>
+    <div class="kpi-chg up">&#9650; Brand 9 + reference</div>
+    <div class="kpi-icon">&#127965;</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-lbl">Drone Fleet</div>
+    <div class="kpi-val" id="kpi-progress">0/1</div>
+    <div class="kpi-sub" id="kpi-progress-sub">Pre-launch · Brand 9's first physical AI</div>
+    <div class="kpi-chg up">&#9650; Live feed coming soon</div>
+    <div class="kpi-icon">&#128760;</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+  MAIN
+══════════════════════════════════════ -->
+<main class="main">
+
+  <!-- ── DATA SYNC BAR ── -->
+  <div class="sync-bar">
+    <div class="sync-status">
+      <div class="sync-dot warn" id="syncDot"></div>
+      <span class="sync-msg" id="syncMsg">Using local data — configure Google Sheets URL to enable live sync</span>
+      <span class="sync-time" id="syncTime"></span>
+    </div>
+    <button class="btn-refresh" onclick="syncFromSheet()">&#8635; Refresh Data</button>
+    <span id="adminOnlySync" style="font-size:11px;color:var(--gray-400);">Field updates via Google Form &#8594; Sheet &#8594; Dashboard</span>
+  </div>
+
+  <!-- ── TOOLBAR ── -->
+  <div class="toolbar">
+    <div class="search-wrap">
+      <span class="search-icon">&#128269;</span>
+      <input class="search-input" type="text" id="searchInput" placeholder="Search communities or cities&#8230;" oninput="applyFilters()">
+    </div>
+    <select class="flt-sel" id="regionFilter" onchange="setRegionFromDropdown(this.value)">
+      <option value="all">All Regions</option>
+      <option value="jax">JAX / St. Augustine</option>
+      <option value="ocala">Ocala</option>
+      <option value="gainesville">Gainesville</option>
+      <option value="orlando">Orlando</option>
+      <option value="tampa">Tampa / Manatee</option>
+      <option value="naples-ft-myers">Naples / Ft. Myers</option>
+      <option value="space-coast">Space Coast / Melbourne</option>
+      <option value="palm-beach">Palm Beach</option>
+      <option value="treasure-coast">Treasure Coast</option>
+      <option value="sofla">Southeast</option>
+      <option value="panama-city">Panama City</option>
+      <option value="pensacola">Pensacola</option>
+    </select>
+    <select class="flt-sel" id="statusFilter" onchange="applyFilters()">
+      <option value="">All Statuses</option>
+      <option value="Artwork">Artwork</option>
+      <option value="Production">Production</option>
+      <option value="Delivered">Delivered</option>
+      <option value="Installation">Installation</option>
+      <option value="Installation Complete">Installation Complete</option>
+    </select>
+    <select class="flt-sel" id="phaseFilter" onchange="applyFilters()">
+      <option value="">All Phases</option>
+      <option value="Active Selling">Active Selling</option>
+      <option value="Grand Opening">Grand Opening</option>
+      <option value="Pre-Launch">Pre-Launch</option>
+      <option value="Pre-Development">Pre-Development</option>
+      <option value="Closeout">Closeout</option>
+    </select>
+    <div class="tb-actions">
+      <button class="btn-sec" onclick="clearFilters()">&#8635; Clear</button>
+      <button class="btn-pri" onclick="exportCSV()">&#8595; Export CSV</button>
+    </div>
+  </div>
+
+  <!-- ── COMMUNITY GRID ── -->
+  <div class="sec-hdr">
+    <div class="sec-title">
+      &#127864; Communities &amp; Offices
+      <span class="sec-badge" id="gridCount">31</span>
+    </div>
+    <div class="legend">
+      <span class="leg-item"><span class="leg-dot" style="background:#10b981"></span><span style="color:#059669">Complete</span></span>
+      <span class="leg-item"><span class="leg-dot" style="background:#1565c0"></span><span style="color:#1d4ed8">In Progress</span></span>
+      <span class="leg-item"><span class="leg-dot" style="background:#f59e0b"></span><span style="color:#d97706">Pending</span></span>
+      <span class="leg-item"><span class="leg-dot" style="background:#ef4444"></span><span style="color:#dc2626">Overdue</span></span>
+      <span class="leg-item"><span class="leg-dot" style="background:#8b5cf6"></span><span style="color:#7c3aed">New</span></span>
+    </div>
+  </div>
+
+  <!-- ── REGION MAP ── -->
+  <div class="panel" style="margin-bottom:18px;overflow:hidden;">
+    <div class="p-hdr" style="padding:10px 14px;">
+      <div class="p-title" style="font-size:13px;"><span class="p-title-icon">&#128205;</span> Region Map
+        <span id="mapRegionLabel" style="font-size:10px;font-weight:700;color:var(--gray-600);margin-left:6px;">All Regions</span>
+      </div>
+      <div style="display:flex;gap:14px;font-size:10px;font-weight:700;">
+        <span style="display:flex;align-items:center;gap:4px;color:var(--orange);"><span style="width:11px;height:11px;border-radius:50%;background:var(--orange);display:inline-block;border:2px solid #fff;box-shadow:0 0 0 1px #cbd5e1;"></span>Brand 9 workflow</span>
+        <span style="display:flex;align-items:center;gap:4px;color:var(--navy);"><span style="width:9px;height:9px;border-radius:50%;background:var(--navy);display:inline-block;border:1px solid #fff;box-shadow:0 0 0 1px #cbd5e1;"></span>Other Lennar FL community</span>
+      </div>
+    </div>
+    <div id="regionMap" style="height:340px;width:100%;"></div>
+  </div>
+
+  <div class="comm-grid" id="communityGrid"></div>
+  <div id="emptyState" class="empty" style="display:none;">
+    <div class="empty-icon">&#128269;</div>
+    <div class="empty-text">No communities match your filters</div>
+  </div>
+
+  <!-- ── DRONE CONSOLE (admin-only) ── -->
+  <div class="panel admin-only" id="droneConsole" style="margin-bottom:22px;">
+    <div class="p-hdr">
+      <div class="p-title"><span class="p-title-icon">&#128760;</span> Drone Console
+        <span style="font-size:9px;font-weight:800;color:var(--orange);background:var(--orange-l);padding:2px 8px;border-radius:8px;letter-spacing:.5px;text-transform:uppercase;margin-left:6px;">Admin only</span>
+      </div>
+      <span class="sec-badge sec-badge-orange">v1 · Pre-launch</span>
+    </div>
+    <div style="padding:14px 18px;font-size:11px;color:var(--gray-600);background:var(--gray-50);border-bottom:1px solid var(--gray-200);">
+      Brand 9's first physical AI: an install drone that follows the crew on every job, streams a live feed to Bobby + the local + regional marketing directors, and (admin-only) reads installer performance and reports back to a monitoring agent.
+    </div>
+    <div style="padding:18px;display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;">
+      <div style="border:1px solid var(--gray-200);border-radius:8px;padding:12px;background:var(--gray-50);">
+        <div style="font-size:13px;font-weight:800;color:var(--navy);margin-bottom:6px;">Pete <span style="font-size:9px;font-weight:800;background:var(--orange);color:#fff;padding:2px 6px;border-radius:6px;margin-left:4px;">CREW</span></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Jobs:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Avg time:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Quality:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+      </div>
+      <div style="border:1px solid var(--gray-200);border-radius:8px;padding:12px;background:var(--gray-50);">
+        <div style="font-size:13px;font-weight:800;color:var(--navy);margin-bottom:6px;">Andrew <span style="font-size:9px;font-weight:800;background:var(--orange);color:#fff;padding:2px 6px;border-radius:6px;margin-left:4px;">CREW</span></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Jobs:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Avg time:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Quality:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+      </div>
+      <div style="border:1px solid var(--gray-200);border-radius:8px;padding:12px;background:var(--gray-50);">
+        <div style="font-size:13px;font-weight:800;color:var(--navy);margin-bottom:6px;">Ben</div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Jobs:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Avg time:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Quality:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+      </div>
+      <div style="border:1px solid var(--gray-200);border-radius:8px;padding:12px;background:var(--gray-50);">
+        <div style="font-size:13px;font-weight:800;color:var(--navy);margin-bottom:6px;">Shermin</div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Jobs:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Avg time:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Quality:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+      </div>
+      <div style="border:1px solid var(--gray-200);border-radius:8px;padding:12px;background:var(--gray-50);">
+        <div style="font-size:13px;font-weight:800;color:var(--navy);margin-bottom:6px;">Rachel</div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Jobs:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Avg time:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Quality:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+      </div>
+      <div style="border:1px solid var(--gray-200);border-radius:8px;padding:12px;background:var(--gray-50);">
+        <div style="font-size:13px;font-weight:800;color:var(--navy);margin-bottom:6px;">Donovan</div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Jobs:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Avg time:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+        <div style="font-size:10px;color:var(--gray-600);padding:2px 0;display:flex;justify-content:space-between;"><span>Quality:</span><strong style="color:var(--gray-400);font-style:italic;">— TBD</strong></div>
+      </div>
+    </div>
+    <div style="padding:10px 18px 16px;font-size:11px;color:var(--gray-600);font-family:ui-monospace,Menlo,monospace;border-top:1px solid var(--gray-200);background:var(--gray-50);">
+      Performance webhook: <span style="color:var(--gray-400);">https://hooks.brand9.ai/installer-performance/{event}</span> <span style="font-style:italic;">(stub — pipes to monitoring agent when drone is live)</span>
+    </div>
+  </div>
+
+  <!-- ── WORK ORDERS + ACTIVITY ── -->
+  <div class="panels-row">
+    <div class="panel">
+      <div class="p-hdr">
+        <div class="p-title"><span class="p-title-icon">&#128203;</span> Upcoming Work Orders</div>
+        <span class="sec-badge">10 Scheduled</span>
+      </div>
+      <div class="p-body">
+        <table class="wo-tbl">
+          <thead>
+            <tr>
+              <th>Order</th><th>Community</th><th>Sign Category</th><th>Qty</th><th>Scheduled</th><th>Crew</th><th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="workOrdersBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="p-hdr">
+        <div class="p-title"><span class="p-title-icon">&#9889;</span> Activity Log</div>
+        <span class="sec-badge sec-badge-orange">Live Feed</span>
+      </div>
+      <div class="p-body">
+        <ul class="act-list" id="activityLog"></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── INVENTORY ON HAND ── -->
+  <div class="panel" style="margin-bottom:22px;">
+    <div class="p-hdr">
+      <div class="p-title"><span class="p-title-icon">&#128230;</span> Inventory on Hand</div>
+      <span class="sec-badge" id="invBadge">&mdash;</span>
+    </div>
+    <div class="p-body">
+      <table class="wo-tbl">
+        <thead>
+          <tr>
+            <th>Item</th><th>Category</th><th>On Hand</th><th>Reorder At</th><th>Location</th><th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="inventoryBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer class="ftr">
+  <div class="ftr-brand"><strong>ATLAS v1.1</strong> &middot; Brand 9 Signs Installation Tracker &middot; Lennar Homes &mdash; Active: Jacksonville / St. Augustine + Ocala &middot; SoFla Office Online</div>
+  <div class="ftr-powered"><div class="atlas-dot"></div> Powered by Brand 9 AI &middot; Atlas Agent &middot; <a href="?view=client" style="color:var(--blue);text-decoration:none;font-weight:700;">Client view</a> &middot; <span id="footerStamp">—</span></div>
+</footer>
+
+<!-- ═══════════════════════════════════
+  COMMUNITY DETAIL MODAL
+══════════════════════════════════════ -->
+<div class="modal-ov" id="modalOv" onclick="closeModal(event)">
+  <div class="modal" id="modalBox">
+    <div class="m-hdr">
+      <div>
+        <div class="m-region" id="m-region">&#128205; NORTH FLORIDA</div>
+        <div class="m-comm-name" id="m-name">Community Name</div>
+        <div class="m-comm-city" id="m-city">City, FL</div>
+      </div>
+      <button class="m-close" onclick="closeModalBtn()">&#10005;</button>
+    </div>
+    <div class="m-body" id="m-body"></div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// CONFIG — Update these to connect live Google Sheets
+// ═══════════════════════════════════════════════════════
+
+// ATLAS Lennar Sign Operations — Dashboard tab CSV (Sheet shared "Anyone with link → View")
+const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1vhkDxy0M4xUBKX5z9QBWPpBh5A0szkEx5571_wP6ac4/export?format=csv&gid=0';
+
+// Photos tab — populated by the Atlas Web App's upload pipeline.
+// gviz/tq endpoint works by sheet name (no gid lookup needed).
+let PHOTOS_CSV_URL = 'https://docs.google.com/spreadsheets/d/1vhkDxy0M4xUBKX5z9QBWPpBh5A0szkEx5571_wP6ac4/gviz/tq?tqx=out:csv&sheet=Photos';
+// Inventory tab — stock Brand 9 keeps on hand. Read by sheet NAME via gviz so
+// it needs no gid, same as Photos. The tab is the catalogue: one row per item,
+// with the item names themselves picked from a dropdown fed by Lookups so the
+// same product can't end up spelled three different ways.
+let INVENTORY_CSV_URL = 'https://docs.google.com/spreadsheets/d/1vhkDxy0M4xUBKX5z9QBWPpBh5A0szkEx5571_wP6ac4/gviz/tq?tqx=out:csv&sheet=Inventory';
+const INVENTORY = [];
+// Mobile upload page served by the Atlas Web App. Append &community=<name> to pre-select.
+let FIELD_PHOTO_FORM_URL = 'https://script.google.com/macros/s/AKfycbyjF3HvyBm47tOXolMcnNG7igVfpwfrXg8v4q04kW6qZJ7VS6udEaR7UsmTL96eN8Y9/exec?page=upload';
+// Atlas Web App POST endpoint — admin actions (delete_photo, etc.)
+const ATLAS_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyjF3HvyBm47tOXolMcnNG7igVfpwfrXg8v4q04kW6qZJ7VS6udEaR7UsmTL96eN8Y9/exec';
+async function atlasPost(action, params) {
+  // text/plain content-type avoids CORS preflight with Apps Script
+  const r = await fetch(ATLAS_WEBAPP_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ action, params: params || {} }),
+    redirect: 'follow'
+  });
+  const j = await r.json();
+  if (!j.ok) throw new Error(j.error || 'Action failed');
+  return j.result;
+}
+// Admin-only: delete a photo by Drive file ID
+async function deleteAtlasPhoto(photoId, community) {
+  if (!confirm('Delete this photo? This cannot be undone.')) return;
+  try {
+    await atlasPost('delete_photo', { photoId });
+    if (COMMUNITY_PHOTOS[community]) {
+      COMMUNITY_PHOTOS[community] = COMMUNITY_PHOTOS[community].filter(p => p.id !== photoId);
+    }
+    if (typeof renderGrid === 'function') renderGrid();
+  } catch (err) {
+    alert('Delete failed: ' + err.message);
+  }
+}
+// ── INVENTORY ────────────────────────────────────────────────────────────
+const invEsc = s => String(s == null ? '' : s).replace(/[&<>"']/g,
+  c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+// Out of stock beats low beats fine — this panel exists to be acted on.
+function invRank(i) {
+  if (i.onHand <= 0) return 0;
+  if (i.reorder > 0 && i.onHand <= i.reorder) return 1;
+  return 2;
+}
+function invState(i) {
+  return [{label:'Out', bg:'#fee2e2', fg:'#dc2626'},
+          {label:'Low', bg:'#fef3c7', fg:'#d97706'},
+          {label:'OK',  bg:'#d1fae5', fg:'#059669'}][invRank(i)];
+}
+
+async function syncInventory() {
+  if (!INVENTORY_CSV_URL) return;
+  try {
+    const r = await fetch(INVENTORY_CSV_URL + '&_t=' + Date.now(), {cache:'no-store'});
+    if (!r.ok) return;
+    const rows = parseCSV(await r.text()).filter(x => x.length && x.some(v => v && v.length));
+    if (rows.length < 2) return;
+    const head = rows[0].map(x => String(x || '').trim());
+    const ix = {}; head.forEach((n, i) => { ix[n] = i; });
+    const cell = (row, name) => (ix[name] === undefined ? '' : String(row[ix[name]] || '').trim());
+    const num  = v => { const n = parseFloat(String(v).replace(/[^0-9.\-]/g, '')); return isNaN(n) ? 0 : n; };
+    INVENTORY.length = 0;
+    rows.slice(1).forEach(row => {
+      const item = cell(row, 'Item');
+      if (!item) return;
+      INVENTORY.push({
+        item,
+        category: cell(row, 'Category') || 'Uncategorised',
+        onHand:   num(cell(row, 'On Hand')),
+        reorder:  num(cell(row, 'Reorder At')),
+        unit:     cell(row, 'Unit'),
+        location: cell(row, 'Location'),
+        counted:  cell(row, 'Last Counted'),
+        notes:    cell(row, 'Notes')
+      });
+    });
+    renderInventory();
+  } catch (e) { /* inventory is non-critical — fail quiet, like photos */ }
+}
+
+function renderInventory() {
+  const body  = document.getElementById('inventoryBody');
+  const badge = document.getElementById('invBadge');
+  if (!body) return;
+  if (!INVENTORY.length) {
+    body.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--gray-400);padding:18px;">' +
+      'No items yet — add rows on the Inventory tab of the sheet.</td></tr>';
+    if (badge) badge.textContent = '0 items';
+    return;
+  }
+  const sorted = [...INVENTORY].sort((a, b) =>
+    invRank(a) - invRank(b) ||
+    a.category.localeCompare(b.category) ||
+    a.item.localeCompare(b.item));
+  body.innerHTML = sorted.map(i => {
+    const s = invState(i);
+    const unit = i.unit ? ' <span style="color:var(--gray-400);font-weight:600;">' + invEsc(i.unit) + '</span>' : '';
+    return '<tr>' +
+      '<td style="font-weight:700;">' + invEsc(i.item) + '</td>' +
+      '<td style="color:var(--gray-600);">' + invEsc(i.category) + '</td>' +
+      '<td style="font-weight:800;">' + i.onHand + unit + '</td>' +
+      '<td style="color:var(--gray-400);">' + (i.reorder || '&mdash;') + '</td>' +
+      '<td style="color:var(--gray-600);">' + (invEsc(i.location) || '&mdash;') + '</td>' +
+      '<td><span style="font-size:10px;font-weight:800;padding:2px 8px;border-radius:10px;' +
+        'background:' + s.bg + ';color:' + s.fg + ';text-transform:uppercase;letter-spacing:.5px;">' +
+        s.label + '</span></td>' +
+    '</tr>';
+  }).join('');
+  const needs = INVENTORY.filter(i => invRank(i) < 2).length;
+  if (badge) badge.textContent = needs
+    ? INVENTORY.length + ' items \u00b7 ' + needs + ' need reorder'
+    : INVENTORY.length + ' items';
+}
+
+// Per-community photo cache populated by syncPhotos()
+const COMMUNITY_PHOTOS = {};
+function _driveIdFromUrl(u) {
+  const m = String(u||'').match(/[-\w]{25,}/);
+  return m ? m[0] : null;
+}
+async function syncPhotos() {
+  if (!PHOTOS_CSV_URL) return;
+  try {
+    const r = await fetch(PHOTOS_CSV_URL + '&_t=' + Date.now(), {cache:'no-store'});
+    if (!r.ok) return;
+    const csv = await r.text();
+    const rows = parseCSV(csv);
+    if (!rows.length) return;
+    const headers = rows[0].map(h => String(h||'').trim());
+    const idxTs = headers.findIndex(h => /timestamp/i.test(h));
+    const idxComm = headers.findIndex(h => /community/i.test(h));
+    const idxCrew = headers.findIndex(h => /crew/i.test(h));
+    const idxPhotos = headers.findIndex(h => /photo/i.test(h));
+    const idxCaption = headers.findIndex(h => /caption|notes/i.test(h));
+    Object.keys(COMMUNITY_PHOTOS).forEach(k => delete COMMUNITY_PHOTOS[k]);
+    rows.slice(1).forEach(row => {
+      const community = String(row[idxComm]||'').trim();
+      if (!community) return;
+      const photoCell = String(row[idxPhotos]||'').trim();
+      const ids = photoCell.split(/[\s,]+/).map(_driveIdFromUrl).filter(Boolean);
+      if (!ids.length) return;
+      if (!COMMUNITY_PHOTOS[community]) COMMUNITY_PHOTOS[community] = [];
+      ids.forEach(id => {
+        COMMUNITY_PHOTOS[community].push({
+          id,
+          thumb: `https://drive.google.com/thumbnail?id=${id}&sz=w400`,
+          full:  `https://drive.google.com/file/d/${id}/view`,
+          caption: idxCaption>=0 ? row[idxCaption] : '',
+          crew:    idxCrew>=0 ? row[idxCrew] : '',
+          ts:      idxTs>=0 ? row[idxTs] : ''
+        });
+      });
+    });
+  } catch(e) { /* fail silently — photos are non-critical */ }
+}
+
+// Replace with your Google Form URL and community field entry ID
+const GOOGLE_FORM_BASE = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform';
+const FORM_COMMUNITY_ENTRY = 'entry.XXXXXXXXX'; // e.g. entry.1234567890
+
+// ═══════════════════════════════════════════════════════
+// VIEW MODE — ?view=client hides admin controls
+// ═══════════════════════════════════════════════════════
+const urlParams = new URLSearchParams(window.location.search);
+const isClientView = urlParams.get('view') === 'client';
+
+// ═══════════════════════════════════════════════════════
+// COMMUNITY DATA — Lennar JAX/St. Augustine + Ocala (active) + Miami office
+// region: 'jax' | 'ocala' | 'sofla'
+// crew: always Pete + Andrew (active 2-person install pair). Full team in header strip.
+// droneStatus: 'idle' | 'predeploy' | 'live' | 'wrap-up' (in-flight install drone)
+// soldOut: true → card visually muted with 'Sold Out' badge
+// office: true → office card (different visual treatment)
+// localContact: regional Lennar contacts. NoFla = Kyle, Cassandra. Ocala/SoFla = Gina Lee.
+// permit811: 'yes' | 'no' | 'na'
+// ═══════════════════════════════════════════════════════
+const COMMUNITIES = [
+// ── JACKSONVILLE / ST. AUGUSTINE — active selling ──
+{id:1,  region:'jax',  name:"Avalon Woods",                              city:"St. Augustine",   status:"in-progress", phase:"Active Selling",  totalSigns:22, installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Kyle, Cassandra", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na"},
+{id:2,  region:'jax',  name:"Cove at Southwood",                         city:"Tallahassee",     status:"in-progress", phase:"Active Selling",  totalSigns:22, installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Kyle, Cassandra", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na"},
+{id:3,  region:'jax',  name:"Edenbrooke at Hyland Trail | 55+",          city:"Northeast FL",    status:"pending",     phase:"Pre-Launch",      totalSigns:22, installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Kyle, Cassandra", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na"},
+{id:4,  region:'jax',  name:"Emerald Isles Townhomes",                   city:"Jacksonville",    status:"in-progress", phase:"Active Selling",  totalSigns:22, installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Kyle, Cassandra", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na"},
+{id:5,  region:'jax',  name:"Granary Park",                              city:"Northeast FL",    status:"pending",     phase:"Pre-Launch",      totalSigns:22, installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Kyle, Cassandra", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na"},
+{id:6,  region:'jax',  name:"Hardwick Farms",                            city:"Northeast FL",    status:"pending",     phase:"Pre-Launch",      totalSigns:22, installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Kyle, Cassandra", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na"},
+{id:7,  region:'jax',  name:"Holstein Crossing",                         city:"Northeast FL",    status:"pending",     phase:"Pre-Launch",      totalSigns:22, installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Kyle, Cassandra", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na"},
+{id:8,  region:'jax',  name:"Oak Hill Village Townhomes",                city:"St. Johns",       status:"in-progress", phase:"Grand Opening",   totalSigns:22, installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Kyle, Cassandra", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na"},
+{id:9,  region:'jax',  name:"Russell Retreat",                           city:"Green Cove Spgs", status:"in-progress", phase:"Active Selling",  totalSigns:22, installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Kyle, Cassandra", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na"},
+{id:10, region:'jax',  name:"Saddle Oaks",                               city:"Northeast FL",    status:"pending",     phase:"Pre-Launch",      totalSigns:22, installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Kyle, Cassandra", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na"},
+{id:11, region:'jax',  name:"Shearwater",                                city:"St. Johns",       status:"in-progress", phase:"Active Selling",  totalSigns:22, installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Kyle, Cassandra", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na"},
+{id:12, region:'jax',  name:"Silver Falls Single Family at SilverLeaf",  city:"St. Augustine",   status:"in-progress", phase:"Active Selling",  totalSigns:22, installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Kyle, Cassandra", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na"},
+{id:13, region:'jax',  name:"Silver Falls Townhomes at Silverleaf",      city:"St. Augustine",   status:"in-progress", phase:"Active Selling",  totalSigns:22, installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Kyle, Cassandra", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na"},
+{id:14, region:'jax',  name:"Silver Meadows at SilverLeaf",              city:"St. Augustine",   status:"in-progress", phase:"Active Selling",  totalSigns:22, installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Kyle, Cassandra", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na"},
+{id:15, region:'jax',  name:"Tributary",                                 city:"Northeast FL",    status:"in-progress", phase:"Active Selling",  totalSigns:22, installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Kyle, Cassandra", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na"},
+// ── JAX — Sold Out ──
+{id:16, region:'jax',  name:"Holly Cove",                                city:"Orange Park",     status:"complete",    phase:"Closeout",        totalSigns:20, installedSigns:20, lastInstall:"closed", nextInstall:null, contact:"Gina Lee", localContact:"Kyle, Cassandra", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na", soldOut:true},
+{id:17, region:'jax',  name:"Kings Preserve",                            city:"Northeast FL",    status:"complete",    phase:"Closeout",        totalSigns:20, installedSigns:20, lastInstall:"closed", nextInstall:null, contact:"Gina Lee", localContact:"Kyle, Cassandra", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na", soldOut:true},
+// ── JAX Corp Office ──
+{id:18, region:'jax',  name:"JAX Corp Office",                           city:"Jacksonville",    status:"complete",    phase:"Active Selling",  totalSigns:8,  installedSigns:8,  lastInstall:"Mar 15, 2026", nextInstall:null, contact:"Brand 9", localContact:"Kyle, Cassandra", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na", office:true},
+
+// ── OCALA — new active region ──
+{id:19, region:'ocala',name:"Grand Park",                                city:"Ocala",           status:"pending",     phase:"Pre-Launch",      totalSigns:22, installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Gina Lee", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na"},
+{id:20, region:'ocala',name:"Grand Park North",                          city:"Ocala",           status:"pending",     phase:"Pre-Launch",      totalSigns:22, installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Gina Lee", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na"},
+{id:21, region:'ocala',name:"Heath Preserve",                            city:"Ocala",           status:"pending",     phase:"Pre-Launch",      totalSigns:22, installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Gina Lee", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na"},
+{id:22, region:'ocala',name:"Juliette Falls",                            city:"Dunnellon",       status:"pending",     phase:"Pre-Launch",      totalSigns:22, installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Gina Lee", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na"},
+{id:23, region:'ocala',name:"Marion Oaks",                               city:"Ocala",           status:"pending",     phase:"Pre-Launch",      totalSigns:22, installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Gina Lee", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na"},
+{id:24, region:'ocala',name:"Marion Ranch",                              city:"Ocala",           status:"pending",     phase:"Pre-Launch",      totalSigns:22, installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Gina Lee", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na"},
+{id:25, region:'ocala',name:"Millwood",                                  city:"Ocala",           status:"pending",     phase:"Pre-Launch",      totalSigns:22, installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Gina Lee", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na"},
+{id:26, region:'ocala',name:"Pioneer Ranch",                             city:"Ocala",           status:"pending",     phase:"Pre-Launch",      totalSigns:22, installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Gina Lee", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na"},
+{id:27, region:'ocala',name:"Tara Baywood",                              city:"Alachua",         status:"pending",     phase:"Pre-Launch",      totalSigns:22, installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Gina Lee", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na"},
+{id:28, region:'ocala',name:"Tara Forest East",                          city:"Alachua",         status:"pending",     phase:"Pre-Launch",      totalSigns:22, installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Gina Lee", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na"},
+{id:29, region:'ocala',name:"Tara Serena",                               city:"Alachua",         status:"pending",     phase:"Pre-Launch",      totalSigns:22, installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Gina Lee", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na"},
+{id:30, region:'ocala',name:"Trailhead Landing",                         city:"Ocala",           status:"pending",     phase:"Pre-Launch",      totalSigns:22, installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Gina Lee", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na"},
+
+// ── SOUTH FL — office only, no communities yet ──
+{id:31, region:'sofla',name:"MIAMI Corp Office",                         city:"Miami",           status:"in-progress", phase:"Active Selling",  totalSigns:8,  installedSigns:0,  lastInstall:"TBD", nextInstall:"TBD", contact:"Gina Lee", localContact:"Gina Lee", crew:"Pete + Andrew", droneStatus:"idle", permit811:"na", office:true},
+];
+
+// ─── WORK ORDERS ───
+const WORK_ORDERS = [
+{id:"WO-3001",community:"Avalon Woods",                            category:"WHC Community Signage",      qty:1,date:"This week", crew:"Pete + Andrew", priority:"high"},
+{id:"WO-3002",community:"Cove at Southwood",                       category:"WHC Community Signage",      qty:2,date:"This week", crew:"Pete + Andrew", priority:"high"},
+{id:"WO-3003",community:"Oak Hill Village Townhomes",              category:"Wayfinding",                 qty:3,date:"This week", crew:"Pete + Andrew", priority:"med"},
+{id:"WO-3004",community:"Russell Retreat",                         category:"WHC Interior Signage",       qty:2,date:"This week", crew:"Pete + Andrew", priority:"med"},
+{id:"WO-3005",community:"Silver Falls Single Family at SilverLeaf",category:"Aluminum Awning",            qty:2,date:"This week", crew:"Pete + Andrew", priority:"med"},
+{id:"WO-3006",community:"Shearwater",                              category:"Offsite Wayfinding",         qty:1,date:"Next week", crew:"Pete + Andrew", priority:"med"},
+{id:"WO-3007",community:"Tributary",                               category:"WHC Community Signage",      qty:1,date:"Next week", crew:"Pete + Andrew", priority:"med"},
+{id:"WO-3008",community:"MIAMI Corp Office",                       category:"Office Interior Package",    qty:1,date:"Next week", crew:"Pete + Andrew", priority:"low"},
+{id:"WO-3009",community:"Marion Ranch",                            category:"Pre-Install Survey",         qty:1,date:"Ocala kickoff", crew:"Pete + Andrew", priority:"low"},
+{id:"WO-3010",community:"Grand Park",                              category:"Pre-Install Survey",         qty:1,date:"Ocala kickoff", crew:"Pete + Andrew", priority:"low"},
+];
+
+// ─── ACTIVITY LOG ───
+const ACTIVITY = [
+{icon:"🆕",bg:"#ede9fe",text:"Atlas v1.1 — Ocala region added (12 communities). Crew: Pete + Andrew.",time:"Today"},
+{icon:"🆕",bg:"#ede9fe",text:"MIAMI Corp office added under Southeast band — pipeline staging.",time:"Today"},
+{icon:"🛰",bg:"#fff7ed",text:"Drone Console scaffolded (admin only) — Brand 9's first physical AI is in pre-launch.",time:"Today"},
+{icon:"📋",bg:"#dbeafe",text:"Region taxonomy aligned to Lennar's exact area names: Jacksonville / St. Augustine, Ocala, etc.",time:"Today"},
+{icon:"✅",bg:"#d1fae5",text:"Holly Cove + Kings Preserve marked Sold Out / Closeout.",time:"Today"},
+{icon:"✅",bg:"#d1fae5",text:"JAX Corp Office — internal signage package complete.",time:"Mar 15"},
+{icon:"📋",bg:"#dbeafe",text:"Lennar regional contacts assigned: Kyle, Cassandra (NoFla) · Gina Lee remains main POC.",time:"Today"},
+];
+
+// ═══════════════════════════════════════════════════════
+// SIGN CATEGORIES — 5 categories per community
+// Installation thresholds: each sign installs when community pct crosses its threshold
+// ═══════════════════════════════════════════════════════
+const SIGN_TEMPLATES = [
+  {
+    id: 'whc',
+    name: 'Community WHC Signage',
+    icon: '🏡',
+    signs: [
+      {name: 'Monument Sign — Main Entry',    threshold: 0.05},
+      {name: 'Community ID Sign',             threshold: 0.10},
+      {name: 'Sales Office Entry Sign',       threshold: 0.15},
+      {name: 'WHC Building ID Panel',         threshold: 0.20},
+      {name: 'Welcome Feature Panel',         threshold: 0.28},
+    ]
+  },
+  {
+    id: 'wayfinding',
+    name: 'Community Wayfinding',
+    icon: '🗺️',
+    signs: [
+      {name: 'Directional Panel A (Phase 1)', threshold: 0.12},
+      {name: 'Directional Panel B (Phase 1)', threshold: 0.18},
+      {name: 'Amenity Directional Sign',      threshold: 0.30},
+      {name: 'Pool / Park Directional',       threshold: 0.38},
+      {name: 'Parking Area Sign',             threshold: 0.45},
+      {name: 'Street ID Sign Set',            threshold: 0.55},
+    ]
+  },
+  {
+    id: 'interior',
+    name: 'WHC Interior Signage',
+    icon: '🏠',
+    signs: [
+      {name: 'WHC Welcome Sign',              threshold: 0.22},
+      {name: 'Floor Plan Display Board (Lg)', threshold: 0.32},
+      {name: 'Floor Plan Display Board (Sm)', threshold: 0.40},
+      {name: 'Community Map Display',         threshold: 0.50},
+      {name: 'Amenity Feature Graphic',       threshold: 0.62},
+    ]
+  },
+  {
+    id: 'awning',
+    name: 'Aluminum Awning',
+    icon: '🏗️',
+    signs: [
+      {name: 'WHC Entry Awning',              threshold: 0.08},
+      {name: 'Sales Trailer Awning',          threshold: 0.14},
+    ]
+  },
+  {
+    id: 'offsite',
+    name: 'Offsite Wayfinding',
+    icon: '🛣️',
+    signs: [
+      {name: 'Highway Directional — Northbound', threshold: 0.35},
+      {name: 'Highway Directional — Southbound', threshold: 0.42},
+      {name: 'Intersection Sign A',              threshold: 0.58},
+      {name: 'Intersection Sign B',              threshold: 0.68},
+    ]
+  },
+];
+
+function getSignCategories(c) {
+  const pct = c.totalSigns > 0 ? c.installedSigns / c.totalSigns : 0;
+  return SIGN_TEMPLATES.map(tmpl => {
+    const signs = tmpl.signs.map(s => {
+      const installed = pct >= 1 ? 1 : pct <= 0 ? 0 : (pct > s.threshold ? 1 : 0);
+      return {name: s.name, installed};
+    });
+    const totalNeeded   = signs.length;
+    const totalInstalled = signs.filter(s => s.installed).length;
+    const catStatus = totalInstalled === 0 ? 'not-started' :
+                      totalInstalled >= totalNeeded ? 'complete' : 'in-progress';
+    return {name: tmpl.name, icon: tmpl.icon, signs, totalNeeded, totalInstalled, catStatus};
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════
+let currentRegion = 'all'; // 'all' | 'jax' | 'ocala' | 'sofla' — clicking a region tab filters
+let filteredCommunities = [...COMMUNITIES];
+let sheetData = null; // populated if Google Sheets sync succeeds
+
+// ═══════════════════════════════════════════════════════
+// 811 PERSISTENCE (local until sheet sync is live)
+// ═══════════════════════════════════════════════════════
+const STORE_811 = 'atlas-811-permits';
+
+function restore811() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORE_811) || '{}');
+    COMMUNITIES.forEach(c => { if (saved[c.id]) c.permit811 = saved[c.id]; });
+  } catch(e) {}
+}
+
+function persist811() {
+  try {
+    const map = {};
+    COMMUNITIES.forEach(c => { map[c.id] = c.permit811 || 'na'; });
+    localStorage.setItem(STORE_811, JSON.stringify(map));
+  } catch(e) {}
+}
+
+function set811(id, val, e) {
+  if (e) e.stopPropagation();
+  const c = COMMUNITIES.find(x => x.id === id);
+  if (!c) return;
+  c.permit811 = val;
+  persist811();
+
+  // Update modal buttons if modal is open for this community
+  document.querySelectorAll('#m-body .p811-btn').forEach(b => {
+    b.classList.remove('active-yes','active-no','active-na');
+    if (b.dataset.val === val) b.classList.add('active-' + val);
+  });
+  // Update card buttons in the grid
+  document.querySelectorAll('[data-811-id="'+id+'"] .c-811-opt').forEach(b => {
+    b.classList.remove('active-yes','active-no','active-na');
+    if (b.dataset.val === val) b.classList.add('active-' + val);
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// GOOGLE SHEETS SYNC
+// ═══════════════════════════════════════════════════════
+// Proper CSV parser — handles quoted fields with embedded commas/newlines.
+function parseCSV(text) {
+  const rows = [];
+  let row = [], cell = '', inQuote = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i], next = text[i+1];
+    if (inQuote) {
+      if (ch === '"' && next === '"') { cell += '"'; i++; }
+      else if (ch === '"') { inQuote = false; }
+      else { cell += ch; }
+    } else {
+      if (ch === '"') { inQuote = true; }
+      else if (ch === ',') { row.push(cell); cell = ''; }
+      else if (ch === '\n') { row.push(cell); rows.push(row); row = []; cell = ''; }
+      else if (ch === '\r') { /* skip */ }
+      else { cell += ch; }
+    }
+  }
+  if (cell || row.length) { row.push(cell); rows.push(row); }
+  return rows;
+}
+
+async function syncFromSheet() {
+  const dot  = document.getElementById('syncDot');
+  const msg  = document.getElementById('syncMsg');
+  const time = document.getElementById('syncTime');
+  msg.textContent = 'Syncing with Google Sheets…';
+  try {
+    const res = await fetch(SHEET_CSV_URL + '&_t=' + Date.now(), {signal: AbortSignal.timeout(10000), cache: 'no-store'});
+    // Diff guard: skip re-render if CSV is byte-identical to last successful sync.
+    // This stops the blink/flicker on every 5s poll when nothing changed.
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const csv = await res.text();
+    // Skip if unchanged
+    if (window.__atlasLastCsv && window.__atlasLastCsv === csv) {
+      // update last-sync timestamp so user sees it's polling
+      const tEl = document.getElementById('last-sync'); if (tEl) tEl.textContent = new Date().toLocaleTimeString([], {hour:'numeric', minute:'2-digit'});
+      return;
+    }
+    window.__atlasLastCsv = csv;
+    const rows = parseCSV(csv).filter(r => r.length && r.some(v => v && v.length));
+    if (rows.length < 2) throw new Error('CSV had no data rows');
+
+    // Header → column-index map
+    const header = rows[0].map(h => h.trim());
+    const idx = {};
+    header.forEach((h, i) => { idx[h] = i; });
+
+    // Required columns — updated 2026-05-05 for new schema after column renames/drops.
+    // Old → New mapping: Community Name→Community, Drone Status→Drone, Aluminum Awning→AL Awning,
+    // Offsite Wayfinding→Offsite, Notes→Request. Dropped: ID, City, Total Signs, Installed, Office, Sold Out.
+    const required = ['Region','Community','Status','Phase','Crew','Drone',
+      'WHC Signage','Wayfinding','WHC Interior','AL Awning','Offsite',
+      'Local Contact','Main POC','811 Permit'];
+    const missing = required.filter(k => idx[k] === undefined);
+    if (missing.length) throw new Error('Sheet missing columns: ' + missing.join(', '));
+
+    // Map each CSV row → community object matching atlas's local schema
+    const truthy = v => /^(true|yes|1|✓|x)$/i.test(String(v||'').trim());
+    const num = v => { const n = parseInt(String(v||'').trim(), 10); return isNaN(n) ? 0 : n; };
+    const pickStatus = v => {
+      const s = String(v||'').trim();
+      if (['Artwork','Production','Delivered','Installation','Installation Complete'].includes(s)) return s;
+      if (s.toLowerCase() === 'complete') return 'Installation Complete';
+      if (s.toLowerCase() === 'in progress' || s.toLowerCase() === 'in-progress') return 'Production';
+      if (s.toLowerCase() === 'pending') return 'Artwork';
+      if (s.toLowerCase() === 'sold out') return 'Installation Complete';
+      return s || 'Artwork';
+    };
+    // Detect closeout/sold-out from Status text since Sold Out column was dropped
+    const isClosedFromStatus = (s, request) => {
+      const v = (String(s||'') + ' ' + String(request||'')).toLowerCase();
+      return /sold out|closeout/.test(v);
+    };
+
+    // ── Zones come from the sheet's own ZONE banner rows ──────────────────
+    // The team assigns a community to a zone by putting its row under a
+    // banner. The old logic ignored the banners and matched the Local Contact
+    // name instead, which silently dropped every community whose contact
+    // wasn't the zone's rep — six of Cassandra's eight (2026-08-26). Walking
+    // the rows in order and carrying the last ZONE banner down makes the sheet
+    // the source of truth, and a new zone needs no code change.
+    const titleCaseName = s => String(s).toLowerCase()
+      .replace(/\b[a-z]/g, ch => ch.toUpperCase()).trim();
+    const zoneByRow = [];
+    (function () {
+      let cur = null;
+      rows.slice(1).forEach((r, i) => {
+        const community = String(r[idx['Community']] || '').trim();
+        const region    = String(r[idx['Region']] || '').trim();
+        const banner    = String(idx['Request'] !== undefined ? (r[idx['Request']] || '') : '').trim();
+        if (!community && !region && banner) {
+          const m = banner.match(/^ZONE\s*(\d+)\s*[—–-]\s*(.+)$/i);
+          // A ZONE banner opens a zone; any other banner (an area heading like
+          // 'MID FL NORTH') closes it, so zones never leak across areas.
+          cur = m
+            ? { key: 'zone' + m[1], num: parseInt(m[1], 10),
+                label: 'Zone ' + m[1] + ' — ' + titleCaseName(m[2]) }
+            : null;
+        }
+        zoneByRow[i] = cur;
+      });
+    })();
+
+    const fresh = rows.slice(1).map((r, i) => ({
+      id:            i + 1,  // synthetic since ID col was dropped
+      region:        String(r[idx['Region']]||'').trim().toLowerCase() || 'jax',
+      name:          String(r[idx['Community']]||'').trim(),
+      city:          '',  // City col dropped — leave empty
+      status:        pickStatus(r[idx['Status']]),
+      phase:         String(r[idx['Phase']]||'').trim() || 'Pre-Launch',
+      crew:          String(r[idx['Crew']]||'').trim() || 'Pete + Andrew',
+      droneStatus:   String(r[idx['Drone']]||'').trim().toLowerCase() || 'idle',
+      totalSigns:    22,  // Total Signs col dropped — default 22
+      installedSigns:(function(){
+        const s = pickStatus(r[idx['Status']]);
+        const closed = isClosedFromStatus(r[idx['Status']], r[idx['Request']]);
+        if (closed) return 20;                        // Sold Out / Closeout → 20/20 historical
+        if (s === 'Installation Complete') return 22; // 100%
+        if (s === 'Installation') return 18;          // ~80% (in install)
+        if (s === 'Delivered') return 14;             // ~65% (delivered, not installed)
+        if (s === 'Production') return 8;             // ~35% (in production)
+        return 0;                                     // Artwork / Pre-Launch
+      })(),
+      lastInstall:   'TBD',  // col dropped
+      nextInstall:   (idx['Install Date'] !== undefined ? String(r[idx['Install Date']]||'').trim() : '') || 'TBD',
+      localContact:  String(r[idx['Local Contact']]||'').trim() || 'Gina Lee',
+      zone:          String(r[idx['Zone']]||'').trim(),
+      sheetZone:     zoneByRow[i] || null,  // zone banner this row sits under
+      contact:       String(r[idx['Main POC']]||'').trim() || 'Gina Lee',
+      permit811:     String(r[idx['811 Permit']]||'').trim().toLowerCase().replace('n/a','na') || 'na',
+      office:        false,  // Office col dropped
+      soldOut:       isClosedFromStatus(r[idx['Status']], r[idx['Request']]),
+      notes:         String(r[idx['Request']]||'').trim()  // Notes renamed to Request
+    })).filter(c => c.name);
+    // Banner-row guard: Sheet has rows like "JAX/ST AUG", "OCALA", "SOUTHEAST", "GAINESVILLE"
+    // where Community is the all-caps banner text. Drop those.
+    const isBanner = name => /^[A-Z\s\/.\-]+$/.test(name) && name.length < 40 && !name.match(/^[A-Z][a-z]/);
+    const cleanedFresh = fresh.filter(c => !isBanner(c.name));
+
+    if (cleanedFresh.length) {
+      // Replace the in-memory COMMUNITIES with the fresh data
+      COMMUNITIES.length = 0;
+      cleanedFresh.forEach(c => COMMUNITIES.push(c));
+      filteredCommunities = [...COMMUNITIES];
+      restore811();
+      renderGrid();
+      // Re-render dependent views
+      if (typeof renderWorkOrders === 'function') renderWorkOrders();
+      if (typeof renderActivity === 'function') renderActivity();
+    }
+
+    dot.className  = 'sync-dot ok';
+    msg.textContent = `Live · ${cleanedFresh.length} rows synced from Google Sheets`;
+    time.textContent = 'Last sync: ' + new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+    sheetData = cleanedFresh;
+  } catch(e) {
+    dot.className  = 'sync-dot warn';
+    if (e.message && e.message.includes('YOUR_SHEET_ID')) {
+      msg.textContent = 'Local data mode — configure SHEET_CSV_URL to enable live sync';
+    } else {
+      msg.textContent = 'Could not reach Google Sheets — showing local data (' + (e.message || e) + ')';
+    }
+    time.textContent = '';
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// FIELD UPDATE BUTTON — opens Google Form pre-filled
+// ═══════════════════════════════════════════════════════
+function fieldUpdateUrl(communityName) {
+  const base = GOOGLE_FORM_BASE.includes('YOUR_FORM_ID')
+    ? '#field-update-not-configured'
+    : GOOGLE_FORM_BASE + '?usp=pp_url&' + FORM_COMMUNITY_ENTRY + '=' + encodeURIComponent(communityName);
+  return base;
+}
+
+function openFieldUpdate(communityName, e) {
+  e.stopPropagation();
+  const url = fieldUpdateUrl(communityName);
+  if (url.startsWith('#')) {
+    alert('Field Update form not yet configured.\n\nTo enable:\n1. Create a Google Form with fields: Community, Sign Category, Sign Name, Status, Installer, Date, Notes\n2. Publish the response sheet\n3. Update GOOGLE_FORM_BASE and FORM_COMMUNITY_ENTRY in the dashboard code.');
+    return;
+  }
+  window.open(url, '_blank');
+}
+
+// ═══════════════════════════════════════════════════════
+// VIEW MODE — apply admin / client view
+// ═══════════════════════════════════════════════════════
+function applyViewMode() {
+  const badge = document.getElementById('viewBadge');
+  if (isClientView) {
+    badge.className = 'view-badge client';
+    badge.textContent = '● Client View';
+    document.getElementById('adminOnlySync').style.display = 'none';
+    document.body.classList.add('client-view');
+  } else {
+    document.body.classList.remove('client-view');
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// FORMAT HELPERS
+// ═══════════════════════════════════════════════════════
+const fmtPct = (a,b) => b > 0 ? Math.round(a/b*100) : 0;
+
+// ═══════════════════════════════════════════════════════
+// RENDER COMMUNITY CARD
+// ═══════════════════════════════════════════════════════
+function renderCard(c, delay) {
+  const pct = fmtPct(c.installedSigns, c.totalSigns);
+  // Pipeline status labels — match the Google Sheet's Status dropdown:
+  //   Artwork → Production → Delivered → Installation → Installation Complete
+  // Plus legacy aliases for any rows still using the old vocabulary.
+  const statusLabel = {
+    'Artwork':'Artwork','Production':'Production','Delivered':'Delivered',
+    'Installation':'Installation','Installation Complete':'Installation Complete',
+    complete:'Installation Complete','in-progress':'Production',pending:'Artwork',overdue:'OVERDUE',new:'Artwork'
+  };
+  const badgeCls = {
+    'Artwork':'sb-new','Production':'sb-pending','Delivered':'sb-in-progress',
+    'Installation':'sb-in-progress','Installation Complete':'sb-complete',
+    complete:'sb-complete','in-progress':'sb-in-progress',pending:'sb-pending',overdue:'sb-overdue',new:'sb-new'
+  };
+  const fillCls = {
+    'Artwork':'pf-new','Production':'pf-pending','Delivered':'pf-in-progress',
+    'Installation':'pf-in-progress','Installation Complete':'pf-complete',
+    complete:'pf-complete','in-progress':'pf-in-progress',pending:'pf-pending',overdue:'pf-overdue',new:'pf-new'
+  };
+  const nextDisplay = !c.nextInstall
+    ? '<span style="color:var(--gray-400);font-weight:500;font-size:11px;">—</span>'
+    : c.nextInstall === 'OVERDUE'
+    ? '<span style="color:var(--red);font-weight:800;font-size:11px;">⚠ OVERDUE</span>'
+    : c.nextInstall;
+
+  const fieldBtn = isClientView ? '' : `
+    <a class="btn-field-update" href="${fieldUpdateUrl(c.name)}" onclick="openFieldUpdate('${c.name.replace(/'/g,"\\'")}',event)">
+      &#128247; Field Update
+    </a>`;
+
+  const permit = c.permit811 || 'na';
+  const permit811Row = `
+  <div class="c-811-row" data-811-id="${c.id}" onclick="event.stopPropagation()">
+    <button class="c-811-btn" onclick="event.stopPropagation()" title="811 — Underground Permit (Call-Before-You-Dig)">811</button>
+    <div class="c-811-choices" role="group" aria-label="811 underground permit status">
+      <button class="c-811-opt ${permit==='yes'?'active-yes':''}" data-val="yes" onclick="set811(${c.id},'yes',event)">Yes</button>
+      <button class="c-811-opt ${permit==='no'?'active-no':''}"  data-val="no"  onclick="set811(${c.id},'no',event)">No</button>
+      <button class="c-811-opt ${permit==='na'?'active-na':''}"  data-val="na"  onclick="set811(${c.id},'na',event)">N/A</button>
+    </div>
+  </div>`;
+
+  // Sold-out + office visual states
+  const cardExtraClass = c.soldOut ? ' card-sold-out' : (c.office ? ' card-office' : '');
+  const statusBadgeOverride = c.soldOut
+    ? '<span class="s-badge" style="background:var(--gray-200);color:var(--gray-600)">Sold Out</span>'
+    : c.office
+      ? '<span class="s-badge" style="background:var(--orange-l);color:var(--orange)">Office</span>'
+      : `<span class="s-badge ${badgeCls[c.status]}">${statusLabel[c.status]}</span>`;
+
+  // Region label pill
+  const regionLabel = {
+    jax:'JAX/St.Aug',
+    ocala:'Ocala',
+    gainesville:'Gainesville',
+    sofla:'South FL',
+    'naples-ft-myers':'Naples/Ft.Myers',
+    orlando:'Orlando',
+    tampa:'Tampa',
+    'palm-beach':'Palm Beach',
+    'treasure-coast':'Treasure Coast',
+    'space-coast':'Space Coast',
+    'panama-city':'Panama City',
+    pensacola:'Pensacola'
+  }[c.region] || '';
+  const regionPill = regionLabel
+    ? `<span style="font-size:9px;font-weight:800;padding:2px 7px;border-radius:8px;background:var(--blue-l);color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-right:4px;">${regionLabel}</span>`
+    : '';
+
+  // Drone pill
+  const droneStatusLabel = {idle:'Idle', predeploy:'Pre-deploy', live:'🔴 LIVE', 'wrap-up':'Wrap-up'}[c.droneStatus||'idle'] || 'Idle';
+  const droneStatusBg = {idle:'#f1f5f9', predeploy:'#fef3c7', live:'#fee2e2', 'wrap-up':'#dbeafe'}[c.droneStatus||'idle'] || '#f1f5f9';
+  const droneStatusColor = {idle:'#475569', predeploy:'#d97706', live:'#dc2626', 'wrap-up':'#1d4ed8'}[c.droneStatus||'idle'] || '#475569';
+  const droneSlug = c.name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+  const droneUrl = `https://stream.brand9.ai/${droneSlug}`;
+  const droneBlock = c.soldOut
+    ? `<span style="font-size:10px;color:var(--gray-400);font-weight:600;">Drone: —</span>`
+    : `<span style="display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;padding:2px 8px;border-radius:10px;background:${droneStatusBg};color:${droneStatusColor};text-transform:uppercase;letter-spacing:.5px;">🛰 ${droneStatusLabel}</span>` +
+      (c.droneStatus === 'live'
+        ? ` <a href="${droneUrl}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="font-size:10px;color:var(--blue);font-weight:800;text-decoration:none;margin-left:4px;">Live ▸</a>`
+        : '');
+
+  return `<div class="c-card s-${c.status}${cardExtraClass}" style="animation-delay:${delay}ms;${c.soldOut?'opacity:.65;':''}" onclick="openModal(${c.id})">
+  <div class="c-head">
+    <div>
+      <div class="c-name">${regionPill}${c.name}</div>
+      <div class="c-city">${c.city ? c.city + ", FL" : ""}</div>
+    </div>
+    ${statusBadgeOverride}
+  </div>
+  ${c.soldOut || c.office ? '' : permit811Row}
+  ${(() => {
+    const photos = COMMUNITY_PHOTOS[c.name] || [];
+    if (!photos.length) return '';
+    const recent = photos.slice(-3);
+    const showDelete = !isClientView;
+    const safeName = String(c.name).replace(/'/g, "\\'");
+    return `<div style="display:flex;gap:4px;margin:8px 0;">${recent.map(p => {
+      const safeId = String(p.id).replace(/'/g, "\\'");
+      const delBtn = showDelete
+        ? `<button onclick="event.preventDefault();event.stopPropagation();deleteAtlasPhoto('${safeId}','${safeName}');" title="Delete photo" style="position:absolute;top:3px;right:3px;width:20px;height:20px;padding:0;border:1.5px solid #fff;border-radius:50%;background:#dc2626;color:#fff;font-size:13px;font-weight:700;line-height:16px;text-align:center;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.4);" class="photo-x">&times;</button>`
+        : '';
+      return `<div style="flex:1;position:relative;"><a href="${p.full}" target="_blank" rel="noopener" onclick="event.preventDefault();event.stopPropagation();try{openPhotoViewer('${safeName}','${safeId}');}catch(e){console.error('viewer err',e);}return false;" style="display:block;height:60px;background:url('${p.thumb}') center/cover;border-radius:6px;border:1px solid var(--gray-200);cursor:pointer;"></a>${delBtn}</div>`;
+    }).join('')}${photos.length > 3 ? `<div style="display:flex;align-items:center;justify-content:center;width:34px;height:60px;background:var(--gray-50);border-radius:6px;font-size:10px;font-weight:700;color:var(--gray-600);">+${photos.length-3}</div>` : ''}</div>`;
+  })()}
+  <div class="c-prog">
+    <div class="prog-lbl" style="display:block;">
+      <div style="font-size:9px;font-weight:800;color:var(--gray-400);letter-spacing:.5px;text-transform:uppercase;margin-bottom:2px;">Latest Request</div>
+      <div style="font-size:12px;font-weight:700;color:var(--navy);line-height:1.3;">${c.notes && c.notes.trim() ? c.notes : '<span style="color:var(--gray-400);font-weight:500;font-style:italic;">No active request</span>'}</div>
+    </div>
+  </div>
+  <div class="c-meta">
+    <div class="m-item">
+      <div class="m-lbl">Crew</div>
+      <div class="m-val" style="color:var(--orange);">${c.crew||'Pete + Andrew'}</div>
+    </div>
+    <div class="m-item" style="text-align:right;">
+      <div class="m-lbl">Drone</div>
+      <div class="m-val">${droneBlock}</div>
+    </div>
+    <div class="m-item">
+      <div class="m-lbl">Install Date</div>
+      <div class="m-val">${nextDisplay}</div>
+    </div>
+    <div class="m-item" style="text-align:right;">
+      <div class="m-lbl">Phase</div>
+      <div class="m-val phase">${c.phase}</div>
+    </div>
+    <div class="m-item">
+      <div class="m-lbl">Local Contact</div>
+      <div class="m-val phase">${c.localContact||c.contact}</div>
+    </div>
+    <div class="m-item" style="text-align:right;">
+      <div class="m-lbl">Main POC</div>
+      <div class="m-val phase">${c.contact}</div>
+    </div>
+  </div>
+  <div class="c-footer">
+    <div class="c-detail-link">View Details →</div>
+    ${c.soldOut ? '' : fieldBtn}
+  </div>
+</div>`;
+}
+
+// ═══════════════════════════════════════════════════════
+// RENDER GRID
+// ═══════════════════════════════════════════════════════
+function renderGrid() {
+  const grid  = document.getElementById('communityGrid');
+  const empty = document.getElementById('emptyState');
+  if (filteredCommunities.length === 0) {
+    grid.innerHTML = '';
+    empty.style.display = 'block';
+  } else {
+    empty.style.display = 'none';
+    const zoneOf = c => {
+      const explicit = String(c.zone || '').trim().toLowerCase();
+      if (explicit === '1' || explicit === 'zone 1' || explicit === 'zone1') return 'zone1';
+      if (explicit === '2' || explicit === 'zone 2' || explicit === 'zone2') return 'zone2';
+      if (explicit === '3' || explicit === 'zone 3' || explicit === 'zone3') return 'zone3';
+      if (c.office) return 'none';
+      const lc = String(c.localContact || c.contact || '').toLowerCase();
+      if (!lc || lc.includes('jax corp office')) return 'none';
+      // Assign only when the contact name is unambiguous — a cell naming two
+      // reps shouldn't silently land in one zone. Zone 3 added 2026-08-26.
+      const hits = [['kyle','zone1'],['cassandra','zone2'],['kat','zone3']]
+        .filter(([name]) => lc.includes(name));
+      if (hits.length === 1) return hits[0][1];
+      return 'none';
+    };
+    const areaLabel = {
+      jax: 'JACKSONVILLE / ST. AUGUSTINE',
+      midnorth: 'MID FL NORTH',
+    midsouth: 'MID FL SOUTH',
+      palm: 'PALM ATLANTIC',
+      sofla: 'SOUTHEAST',
+    };
+    const areaOrder = ['jax','midnorth','midsouth','palm','sofla'];
+    const areaOf = c => ((c.region==='ocala'||c.region==='gainesville') ? (String(c.localContact||'').toLowerCase().includes('becky') ? 'midsouth' : 'midnorth') : c.region);
+      const currentAreas = currentRegion === 'all'
+      ? [...areaOrder.filter(r => filteredCommunities.some(c => areaOf(c) === r)), ...[...new Set(filteredCommunities.map(c => areaOf(c)).filter(r => !areaOrder.includes(r)))]]
+      : [currentRegion];
+    const cards = items => `<div class="comm-grid">${items.map((c,i) => renderCard(c, i*25)).join('')}</div>`;
+    // Keep the card grid as the direct child of the section; the grid itself handles columns.
+    const html = [];
+    currentAreas.forEach(area => {
+      const items = filteredCommunities.filter(c => areaOf(c) === area);
+      if (!items.length) return;
+      html.push(`<div class="area-header">📍 ${areaLabel[area] || String(area).toUpperCase()}</div>`);
+      // Zone grouping now runs for every area, not just JAX — the sheet gives
+      // each area its own ZONE banners and all 92 communities sit under one.
+      // Trust that placement; fall back to the old name matching only for a
+      // row that somehow arrived with no banner above it.
+      const keyOf = c => (c.sheetZone ? c.sheetZone.key : zoneOf(c));
+      const zones = new Map();
+      if (area === 'jax') {
+        // Seed JAX's three so a zone that exists but has nothing assigned
+        // still shows a header rather than looking like it was never set up.
+        zones.set('zone1', { num: 1, label: 'Zone 1 — Kyle Bazler' });
+        zones.set('zone2', { num: 2, label: 'Zone 2 — Cassandra Clitus' });
+        zones.set('zone3', { num: 3, label: 'Zone 3 — Kat Blasini' });
+      }
+      // Labels and ordering come from the sheet, so a new ZONE banner (or a
+      // renamed rep) shows up here with no code change at all.
+      items.forEach(c => {
+        if (c.sheetZone) zones.set(c.sheetZone.key, { num: c.sheetZone.num, label: c.sheetZone.label });
+      });
+      if (zones.size) {
+        [...zones.entries()].sort((a, b) => a[1].num - b[1].num).forEach(([key, meta]) => {
+          const zoneItems = items.filter(c => keyOf(c) === key);
+          const count = zoneItems.length;
+          html.push(`<div class="zone-header"><div>📍 ${meta.label}</div><div>${count} ${count === 1 ? 'project' : 'projects'}</div></div>`);
+          if (count) html.push(cards(zoneItems));
+        });
+        const ungrouped = items.filter(c => !zones.has(keyOf(c)));
+        if (ungrouped.length) html.push(cards(ungrouped));
+      } else {
+        html.push(cards(items));
+      }
+    });
+    grid.innerHTML = html.join('');
+  }
+  document.getElementById('gridCount').textContent = filteredCommunities.length;
+  updateKPIs();
+  renderRegionMap();
+  renderRegionActiveBar();
+}
+
+// ─── PER-REGION ACTIVE COUNT BAR ───
+// Top-of-dashboard strip: count of communities per region currently in active workflow
+// (status = Production / Installation / Delivered). Pulled live from the Sheet.
+const REGION_LABELS = {
+  jax:         'North Florida — JAX/St. Augustine',
+  ocala:       'North Florida — Ocala',
+  gainesville: 'North Florida — Gainesville',
+  sofla:       'Southeast — Miami',
+  'naples-ft-myers': 'Naples / Ft. Myers',
+  orlando:     'Orlando',
+  tampa:       'Tampa / Manatee',
+  'palm-beach': 'Palm Beach',
+  'treasure-coast': 'Treasure Coast',
+  'space-coast': 'Space Coast / Melbourne',
+  'panama-city': 'Panama City',
+  pensacola:   'Pensacola'
+};
+function renderRegionActiveBar() {
+  const bar = document.getElementById('regionActiveBar');
+  if (!bar) return;
+  // Count by region: total tracked Sheet communities per region.
+  // Highlight orange whenever the region has any Sheet community, regardless of current status.
+  const counts = {};
+  COMMUNITIES.forEach(c => {
+    counts[c.region] = (counts[c.region] || 0) + 1;
+  });
+  const order = ['jax','ocala','gainesville','sofla','naples-ft-myers','orlando','tampa','palm-beach','treasure-coast','space-coast','panama-city','pensacola'];
+  bar.innerHTML = order.map(r => {
+    const n = counts[r] || 0;
+    const isActive = n > 0;
+    const label = REGION_LABELS[r] || r;
+    return `<div style="
+      display:inline-flex;align-items:center;gap:8px;padding:8px 14px;
+      background:${isActive?'var(--orange-l)':'var(--gray-50)'};
+      border:1px solid ${isActive?'var(--orange)':'var(--gray-200)'};
+      border-radius:8px;font-size:11px;font-weight:700;
+      color:${isActive?'var(--orange)':'var(--gray-400)'};
+      ">
+      <span style="font-size:18px;font-weight:900;line-height:1;">${n}</span>
+      <span style="text-transform:uppercase;letter-spacing:.4px;">${label} active</span>
+    </div>`;
+  }).join('');
+}
+
+// ═══════════════════════════════════════════════════════
+// REGION MAP — Leaflet
+// ═══════════════════════════════════════════════════════
+// City → coords lookup. Add new cities here as the field expands.
+const CITY_COORDS = {
+  // JAX region
+  'jacksonville':       [30.3322, -81.6557],
+  'st. augustine':      [29.9012, -81.3124],
+  'st augustine':       [29.9012, -81.3124],
+  'st. johns':          [30.0938, -81.5373],
+  'green cove spgs':    [29.9919, -81.6781],
+  'green cove springs': [29.9919, -81.6781],
+  'greencove springs':  [29.9919, -81.6781],
+  'orange park':        [30.1661, -81.7065],
+  'yulee':              [30.6402, -81.6062],
+  'tallahassee':        [30.4383, -84.2807],
+  'northeast fl':       [30.3322, -81.6557],
+  // Ocala / Gainesville
+  'ocala':              [29.1872, -82.1401],
+  'dunnellon':          [29.0530, -82.4734],
+  'alachua':            [29.7958, -82.4845],
+  'gainesville':        [29.6516, -82.3248],
+  // South FL / Miami
+  'miami':              [25.7617, -80.1918],
+  'doral':              [25.8195, -80.3553],
+  'homestead':          [25.4687, -80.4776],
+  'miramar':            [25.9860, -80.3322],
+  'pembroke pines':     [26.0078, -80.2962],
+  'south fl':           [25.7617, -80.1918],
+  'south fl division hq': [25.7617, -80.1918],
+  // Palm Beach / Treasure Coast
+  'boynton beach':      [26.5256, -80.0664],
+  'delray beach':       [26.4615, -80.0728],
+  'west palm beach':    [26.7153, -80.0534],
+  'jensen beach':       [27.2503, -80.2284],
+  'port saint lucie':   [27.2730, -80.3582],
+  'stuart':             [27.1972, -80.2528],
+  // Naples / Ft. Myers
+  'alva':               [26.7178, -81.6118],
+  'bonita springs':     [26.3398, -81.7787],
+  'estero':             [26.4381, -81.8068],
+  'fort myers':         [26.6406, -81.8723],
+  'lehigh acres':       [26.6204, -81.6242],
+  'miromar lakes':      [26.4673, -81.7848],
+  'naples':             [26.1420, -81.7948],
+  'north fort myers':   [26.6584, -81.8762],
+  // Orlando / Central FL
+  'clermont':           [28.5494, -81.7728],
+  'eagle lake':         [27.9783, -81.7596],
+  'saint cloud':        [28.2489, -81.2812],
+  'orlando':            [28.5383, -81.3792],
+  // Tampa / Manatee
+  'dade city':          [28.3650, -82.1959],
+  'lakeland':           [28.0395, -81.9498],
+  'land o lakes':       [28.2189, -82.4625],
+  'new port richey':    [28.2441, -82.7193],
+  'palmetto':           [27.5214, -82.5723],
+  'parrish':            [27.5797, -82.4232],
+  'san antonio':        [28.3358, -82.2748],
+  'valrico':            [27.9389, -82.2376],
+  'wimauma':            [27.7080, -82.2987],
+  'zephyrhills':        [28.2336, -82.1812],
+  'tampa':              [27.9506, -82.4572],
+  // Space Coast / Melbourne
+  'melbourne':          [28.0836, -80.6081],
+  'palm bay':           [28.0345, -80.5887],
+  // Panama City / Panhandle
+  'panama city':        [30.1588, -85.6602],
+  'panama city beach':  [30.1766, -85.8055],
+  // Pensacola
+  'gulf breeze':        [30.3577, -87.1639],
+  'pensacola':          [30.4213, -87.2169]
+};
+// All Lennar communities currently selling in Florida (background reference layer on map).
+// Communities also tracked in our Sheet are detected by name match and rendered ORANGE.
+const LENNAR_FL_COMMUNITIES = [
+  // ─── JAX ───
+  {name: "Avalon Woods", city: "Jacksonville", metro: "jax", coords: [30.462122, -81.625918], address: {street: "578 Avalon Woods Lane", line2: "Jacksonville, FL"}},
+  {name: "Cove at Southwood", city: "Jacksonville", metro: "jax", coords: [30.176565, -81.609143], address: {street: "4011 Lingo Lane", line2: "Jacksonville, FL"}},
+  {name: "Diamond Springs", city: "Jacksonville", metro: "jax", coords: [30.3742, -81.611033], address: null},
+  {name: "Edenbrooke at Hyland Trail | 55+", city: "Green Cove Springs", metro: "jax", coords: [30.01929, -81.785568], address: {street: "3017 NEW MOON CIRCLE", line2: "Green Cove Springs, FL"}},
+  {name: "Emerald Isles Townhomes", city: "Jacksonville", metro: "jax", coords: [30.205939, -81.588896], address: {street: "9712 Topaz Lane", line2: "Jacksonville, FL"}},
+  {name: "Granary Park", city: "Green Cove Springs", metro: "jax", coords: [30.046139, -81.771412], address: {street: "2669 Field Daisy Ln", line2: "Green Cove Springs, FL"}},
+  {name: "Hardwick Farms", city: "Jacksonville", metro: "jax", coords: [30.248866, -81.614747], address: {street: "6960 GOLDEN MONARCH AVE", line2: "Jacksonville, FL"}},
+  {name: "Holstein Crossing", city: "Green Cove Springs", metro: "jax", coords: [30.048633, -81.768918], address: {street: "3024 Grand Finale Street", line2: "Green Cove Springs, FL"}},
+  {name: "Kings Creek2", city: "Jacksonville", metro: "jax", coords: [30.292867, -81.676367], address: null},
+  {name: "Longbay Townhomes", city: "Middleburg", metro: "jax", coords: [30.040433, -81.9097], address: null},
+  {name: "Mill Creek North Townhomes", city: "Jacksonville", metro: "jax", coords: [30.3282, -81.6917], address: null},
+  {name: "Oak Hill Village Townhomes", city: "Jacksonville", metro: "jax", coords: [30.237826, -81.747406], address: {street: "6090 Falcon Gate Lane", line2: "Jacksonville, FL"}},
+  {name: "Resilience at Palm Coast", city: "Palm Coast", metro: "jax", coords: [30.042467, -81.532633], address: null},
+  {name: "Russell Retreat", city: "Green Cove Springs", metro: "jax", coords: [30.074385, -81.785793], address: {street: "2336 River Park Trc", line2: "Green Cove Springs, FL"}},
+  {name: "Saddle Oaks", city: "Jacksonville", metro: "jax", coords: [30.397657, -81.819284], address: {street: "6239 Rein Ave", line2: "Jacksonville, FL"}},
+  {name: "Seaton Creek", city: "Jacksonville", metro: "jax", coords: [30.522518, -81.666923], address: null},
+  {name: "Shearwater", city: "St Augustine", metro: "jax", coords: [30.020593, -81.572773], address: {street: "99 Hogan Court", line2: "St Augustine, FL"}},
+  {name: "Silver Falls Single Family at Silverleaf", city: "St Augustine", metro: "jax", coords: [30.006971, -81.524131], address: {street: "23 Good Harbor Pl", line2: "St Augustine, FL"}},
+  {name: "Silver Falls Townhomes at Silverleaf", city: "St Augustine", metro: "jax", coords: [30.009949, -81.524648], address: {street: "113 HUBBARD BEND", line2: "St Augustine, FL"}},
+  {name: "Silver Meadows at Silverleaf", city: "St Augustine", metro: "jax", coords: [30.009458, -81.516592], address: {street: "142 Whitmore Drive", line2: "St Augustine, FL"}},
+  {name: "Stillwateractiveadult55", city: "St Johns", metro: "jax", coords: [30.1118, -81.5753], address: null},
+  {name: "Trailmark", city: "St Augustine2", metro: "jax", coords: [30.141133, -81.577967], address: null},
+  {name: "Tributary", city: "Yulee", metro: "jax", coords: [30.607505, -81.685823], address: {street: "76024 Estuary Way", line2: "Yulee, FL"}},
+  {name: "Villages of Westport", city: "Jacksonville", metro: "jax", coords: [30.269533, -81.686367], address: null},
+  {name: "Whistler Woods", city: "Jacksonville", metro: "jax", coords: [30.3182, -81.715033], address: null},
+  // ─── NAPLES-FT-MYERS ───
+  {name: "Bayshore Ranch", city: "North Fort Myers", metro: "naples-ft-myers", coords: [26.7184, -81.869533], address: {street: "17539 SADDLEBACK LOOP", line2: "North Fort Myers, FL"}},
+  {name: "Brightwater Lagoon", city: "North Fort Myers", metro: "naples-ft-myers", coords: [26.6824, -81.926867], address: {street: "18851 River Burst Ct", line2: "North Fort Myers, FL"}},
+  {name: "Broadway Crossing", city: "Estero", metro: "naples-ft-myers", coords: [26.412767, -81.768133], address: null},
+  {name: "Cielo Mar Townhomes", city: "North Fort Myers", metro: "naples-ft-myers", coords: [26.651733, -81.9362], address: null},
+  {name: "Crane Landing", city: "North Fort Myers", metro: "naples-ft-myers", coords: [26.649733, -81.887533], address: {street: "4245 Caterina Ct", line2: "North Fort Myers, FL"}},
+  {name: "Gatherpoint", city: "Ave Maria", metro: "naples-ft-myers", coords: [26.311933, -81.4828], address: null},
+  {name: "Hampton Lakes at River Hall", city: "Alva", metro: "naples-ft-myers", coords: [26.6758, -81.656467], address: null},
+  {name: "Ibis Landing Golf Country Club", city: "Lehigh Acres", metro: "naples-ft-myers", coords: [26.5604, -81.630867], address: {street: "18421 COPPERHEAD CT N #223", line2: "Lehigh Acres, FL"}},
+  {name: "Kingston", city: "Estero", metro: "naples-ft-myers", coords: [26.3721, -81.8008], address: null},
+  {name: "Maple Point", city: "Naples", metro: "naples-ft-myers", coords: [26.100667, -81.7668], address: null},
+  {name: "Maplewood Park", city: "Lehigh Acres", metro: "naples-ft-myers", coords: [26.659733, -81.603533], address: null},
+  {name: "New Homes in Cape Coral", city: "Cape Coral", metro: "naples-ft-myers", coords: [26.522233, -81.982167], address: {street: "3906 NW 46th St", line2: "Cape Coral, FL"}},
+  {name: "New Homes in Lehigh Acres", city: "Lehigh Acres", metro: "naples-ft-myers", coords: [26.559067, -81.642867], address: {street: "4024 23rd St SW", line2: "Lehigh Acres, FL"}},
+  {name: "Orange River Townhomes", city: "Fort Myers", metro: "naples-ft-myers", coords: [26.681933, -81.9003], address: null},
+  {name: "Palmetta Pines Townhomes", city: "Cape Coral", metro: "naples-ft-myers", coords: [26.566233, -81.986167], address: null},
+  {name: "Portico", city: "Fort Myers", metro: "naples-ft-myers", coords: [26.6966, -81.901633], address: null},
+  {name: "River Hall Country Club", city: "Alva", metro: "naples-ft-myers", coords: [26.7058, -81.586467], address: null},
+  {name: "Rivergrass", city: "Naples", metro: "naples-ft-myers", coords: [26.107333, -81.840133], address: null},
+  {name: "Sabal Glen at Midtown", city: "Punta Gorda", metro: "naples-ft-myers", coords: [26.9398, -82.022067], address: null},
+  {name: "Sandy Key", city: "Fort Myers", metro: "naples-ft-myers", coords: [26.6546, -81.812967], address: {street: "13629 Cerith Court", line2: "Fort Myers, FL"}},
+  {name: "Savanna Lakes", city: "Lehigh Acres", metro: "naples-ft-myers", coords: [26.6344, -81.564867], address: {street: "11938 SAVANNA LAKES BLVD", line2: "Lehigh Acres, FL"}},
+  {name: "Stonehill Manor", city: "North Fort Myers", metro: "naples-ft-myers", coords: [26.679733, -81.817533], address: null},
+  {name: "The National Golf Country Club", city: "Ave Maria", metro: "naples-ft-myers", coords: [26.311933, -81.4828], address: {street: "5615 Newcastle Ct #5212", line2: "Ave Maria, FL"}},
+  {name: "Timber Creek", city: "Fort Myers", metro: "naples-ft-myers", coords: [26.6606, -81.825633], address: null},
+  {name: "Tuckers Cove", city: "Punta Gorda", metro: "naples-ft-myers", coords: [26.969133, -82.024733], address: {street: "14911 BLUEWATER RD", line2: "Punta Gorda, FL"}},
+  {name: "Valencia Golf Country Club", city: "Naples", metro: "naples-ft-myers", coords: [26.11, -81.816133], address: null},
+  {name: "Verdana Village", city: "Estero", metro: "naples-ft-myers", coords: [26.495433, -81.824133], address: null},
+  {name: "Webbs Reserve", city: "Punta Gorda", metro: "naples-ft-myers", coords: [26.876467, -81.992067], address: {street: "15285 Green Acres Ave #435", line2: "Punta Gorda, FL"}},
+  {name: "Willowgreen at Babcock Ranch", city: "Punta Gorda", metro: "naples-ft-myers", coords: [26.956467, -82.072067], address: {street: "16532 Kingwood Ln #3211", line2: "Punta Gorda, FL"}},
+  // ─── OCALA ───
+  {name: "Bellehaven", city: "Belleview", metro: "ocala", coords: [29.465333, -82.145333], address: null},
+  {name: "Grand Oaks Manor", city: "Oxford", metro: "ocala", coords: [29.336667, -82.17], address: null},
+  {name: "Grand Park", city: "Dunnellon", metro: "ocala", coords: [29.111, -82.418067], address: {street: "19689 SW 82nd Loop", line2: "Dunnellon, FL"}},
+  {name: "Grand Park North", city: "Dunnellon", metro: "ocala", coords: [29.111, -82.418067], address: {street: "19376 SW 77TH LOOP", line2: "Dunnellon, FL"}},
+  {name: "Heath Preserve", city: "Ocala", metro: "ocala", coords: [29.204462, -82.196198], address: {street: "1591 NW 48TH TERR", line2: "Ocala, FL"}},
+  {name: "Juliette Falls", city: "Dunnellon", metro: "ocala", coords: [29.109667, -82.430067], address: {street: "6606 SW 180TH CIR", line2: "Dunnellon, FL"}},
+  {name: "Marion Oaks", city: "Ocala", metro: "ocala", coords: [29.031787, -82.261772], address: {street: "13220 SW 87TH CIR", line2: "Ocala, FL"}},
+  {name: "Marion Ranch", city: "Ocala", metro: "ocala", coords: [29.10284, -82.199851], address: {street: "8307 SW 42ND CIR", line2: "Ocala, FL"}},
+  {name: "Millwood", city: "Ocala", metro: "ocala", coords: [29.225267, -82.08709], address: {street: "3201 NE 38TH Street", line2: "Ocala, FL"}},
+  {name: "Oak Hammock Preserve Townhomes", city: "Ocala", metro: "ocala", coords: [29.2232, -82.082767], address: {street: "3634 SE 37TH AVE RD", line2: "Ocala, FL"}},
+  {name: "Pioneer Ranch", city: "Ocala", metro: "ocala", coords: [29.090749, -82.234074], address: {street: "8685 SW 69TH TERRACE", line2: "Ocala, FL"}},
+  {name: "Tara Baywood", city: "Alachua", metro: "ocala", coords: [29.821133, -82.523167], address: {street: "16344 NW 145TH DR", line2: "Alachua, FL"}},
+  {name: "Tara Forest East", city: "Alachua", metro: "ocala", coords: [29.746467, -82.5285], address: {street: "16731 NW 144TH ST", line2: "Alachua, FL"}},
+  {name: "Tara Serena", city: "Gainesville", metro: "ocala", coords: [29.712267, -82.3788], address: {street: "5436 NW 22ND DR", line2: "Gainesville, FL"}},
+  {name: "Trailhead Landing", city: "Alachua", metro: "ocala", coords: [29.8358, -82.5245], address: {street: "12679 NW 139TH WAY", line2: "Alachua, FL"}},
+  // ─── ORLANDO ───
+  {name: "Brentwood2", city: "Davenport", metro: "orlando", coords: [28.2214, -81.595133], address: null},
+  {name: "Bridgewalk", city: "Saint Cloud", metro: "orlando", coords: [28.343863, -81.214485], address: {street: "5606 NINA WAY", line2: "Saint Cloud, FL"}},
+  {name: "Bronsons Ridge", city: "Apopka", metro: "orlando", coords: [28.6774, -81.542967], address: {street: "2372 Rider Rain Lane", line2: "Apopka, FL"}},
+  {name: "Crosswinds", city: "Haines City", metro: "orlando", coords: [28.1404, -81.5863], address: {street: "3829 AMERS LOOP", line2: "Haines City, FL"}},
+  {name: "Cypress Reserve", city: "Groveland", metro: "orlando", coords: [28.345333, -81.358667], address: null},
+  {name: "Everbe", city: "Orlando", metro: "orlando", coords: [28.490967, -81.338533], address: null},
+  {name: "Grandview Townhomes", city: "Davenport", metro: "orlando", coords: [28.164067, -81.5778], address: null},
+  {name: "Groves at Grenelefe", city: "Haines City", metro: "orlando", coords: [28.1664, -81.685633], address: null},
+  {name: "Gum Lake Preserve", city: "Lake Alfred", metro: "orlando", coords: [28.336, -81.442667], address: null},
+  {name: "Hamilton Bluff", city: "Haines City", metro: "orlando", coords: [28.0584, -81.590967], address: {street: "2240 CROWN ROCK DRIVE", line2: "Haines City, FL"}},
+  {name: "Hidden Ridge", city: "Groveland", metro: "orlando", coords: [28.362667, -81.336], address: null},
+  {name: "Hunt Club Groves", city: "Lake Wales", metro: "orlando", coords: [27.884, -81.5479], address: {street: "375 Artemis Street", line2: "Lake Wales, FL"}},
+  {name: "Knightsbridge", city: "Kissimmee", metro: "orlando", coords: [28.327333, -81.422933], address: {street: "4754 Maple Cross Drive", line2: "Kissimmee, FL"}},
+  {name: "Lennar at Esplanade", city: "Kissimmee", metro: "orlando", coords: [28.286667, -81.4556], address: null},
+  {name: "Meadow Pointe", city: "Groveland", metro: "orlando", coords: [28.454, -81.380667], address: null},
+  {name: "Oak Hammock", city: "Deland", metro: "orlando", coords: [28.365333, -81.445333], address: null},
+  {name: "Peace Creek Reserve", city: "Winter Haven", metro: "orlando", coords: [28.0342, -81.758233], address: {street: "1546 JESSICA BOULEVARD", line2: "Winter Haven, FL"}},
+  {name: "Pine Meadows", city: "Eustis", metro: "orlando", coords: [28.869367, -81.7356], address: {street: "1491 WILLOW GARDEN LOOP", line2: "Eustis, FL"}},
+  {name: "Preserve at Lpga", city: "Daytona Beach", metro: "orlando", coords: [28.458, -81.344667], address: null},
+  {name: "Providence", city: "Davenport", metro: "orlando", coords: [28.176733, -81.6638], address: {street: "4042 EASTMINSTER ROAD", line2: "Davenport, FL"}},
+  {name: "Ranches at Lake Mcleod", city: "Eagle Lake", metro: "orlando", coords: [27.952224, -81.7547], address: {street: "3447 ROVER ROAD", line2: "Eagle Lake, FL"}},
+  {name: "Reedy Isle2", city: "Davenport", metro: "orlando", coords: [28.2234, -81.6438], address: null},
+  {name: "Reunion Village", city: "Kissimmee", metro: "orlando", coords: [28.351333, -81.4736], address: null},
+  {name: "Ridgebrooke", city: "Apopka", metro: "orlando", coords: [28.7234, -81.595633], address: null},
+  {name: "Rivington", city: "Debary", metro: "orlando", coords: [28.880333, -81.3321], address: {street: "641 TERRAPIN DRIVE(P)", line2: "Debary, FL"}},
+  {name: "Sanctuary at Wellness Ridge2", city: "Clermont", metro: "orlando", coords: [28.478739, -81.694265], address: {street: "3063 REPOSE DRIVE", line2: "Clermont, FL"}},
+  {name: "Scenic Terrace", city: "Haines City", metro: "orlando", coords: [28.053067, -81.638967], address: null},
+  {name: "Serenity at Peace Creek Reserve", city: "Winter Haven", metro: "orlando", coords: [28.0462, -81.783567], address: null},
+  {name: "Sol Vista", city: "Dundee", metro: "orlando", coords: [28.393333, -81.46], address: null},
+  {name: "Storey Creek", city: "Kissimmee", metro: "orlando", coords: [28.348667, -81.364267], address: null},
+  {name: "Sugarloaf Ridge", city: "Minneola", metro: "orlando", coords: [28.582867, -81.782933], address: {street: "3133 Brookhollow Way", line2: "Minneola, FL"}},
+  {name: "The Glades at Crossprairie", city: "Saint Cloud", metro: "orlando", coords: [28.217786, -81.33632], address: {street: "4350 BENTGRASS BEND", line2: "Saint Cloud, FL"}},
+  {name: "The Parks at Edgewater", city: "Edgewater", metro: "orlando", coords: [28.438667, -81.452], address: null},
+  {name: "Tohoqua", city: "Kissimmee", metro: "orlando", coords: [28.356667, -81.4256], address: null},
+  {name: "Villa Mar", city: "Winter Haven", metro: "orlando", coords: [28.030867, -81.721567], address: {street: "6441 Domizio Drive", line2: "Winter Haven, FL"}},
+  {name: "Waterlin", city: "Saint Cloud", metro: "orlando", coords: [28.154587, -81.271432], address: {street: "476 Cypress Fork Trail", line2: "Saint Cloud, FL"}},
+  {name: "Waterstone", city: "Groveland", metro: "orlando", coords: [28.4, -81.4], address: null},
+  {name: "Wellness Ridge", city: "Clermont", metro: "orlando", coords: [28.478739, -81.694265], address: {street: "6072 ZEN WAY", line2: "Clermont, FL"}},
+  {name: "Westview", city: "Kissimmee", metro: "orlando", coords: [28.24, -81.342267], address: {street: "3088 Chromatic Street", line2: "Kissimmee, FL"}},
+  {name: "Woodland Ranch Estates", city: "Dundee", metro: "orlando", coords: [28.335333, -81.382], address: null},
+  {name: "Wynnstone", city: "Davenport", metro: "orlando", coords: [28.2074, -81.654467], address: null},
+  // ─── PALM-BEACH ───
+  {name: "Arden", city: "Loxahatchee", metro: "palm-beach", coords: [26.657333, -80.117333], address: {street: "1734 Hoot Owl Hollow", line2: "Loxahatchee, FL"}},
+  {name: "Delray Trails", city: "Delray Beach", metro: "palm-beach", coords: [26.416833, -80.008133], address: {street: "13707 Jubilee Lane", line2: "Delray Beach, FL"}},
+  {name: "Estates of Boynton Waters", city: "Boynton Beach", metro: "palm-beach", coords: [26.5416, -80.055733], address: null},
+  {name: "The Estates at Lotis Wellington", city: "Wellington", metro: "palm-beach", coords: [26.707567, -80.270067], address: {street: "1014 Raleigh Way", line2: "Wellington, FL"}},
+  {name: "Whitmore Estates2", city: "Lake Worth", metro: "palm-beach", coords: [26.653467, -80.071733], address: {street: "7616 Bridle Trail Way", line2: "Lake Worth, FL"}},
+  // ─── PANAMA-CITY ───
+  {name: "Bay Springs", city: "DeFuniak Springs", metro: "panama-city", coords: [30.206667, -85.703333], address: {street: "80 Bay Springs Blvd", line2: "DeFuniak Springs, FL"}},
+  {name: "Cross Creek", city: "Freeport", metro: "panama-city", coords: [30.218667, -85.728667], address: {street: "373 Bent Oak Dr", line2: "Freeport, FL"}},
+  {name: "Magnolia Ridge", city: "Panama City", metro: "panama-city", coords: [30.161467, -85.6362], address: {street: "3840 Wall Street", line2: "Panama City, FL"}},
+  {name: "Riverbend Run2", city: "Southport", metro: "panama-city", coords: [30.210667, -85.667333], address: null},
+  // ─── PENSACOLA ───
+  {name: "Bella Terra", city: "Cantonment", metro: "pensacola", coords: [30.599333, -87.348533], address: {street: "1537 Paisley Drive", line2: "Cantonment, FL"}},
+  {name: "Eagles Ridge", city: "Pace", metro: "pensacola", coords: [30.6055, -87.174867], address: {street: "4775 Air Field Drive", line2: "Pace, FL"}},
+  {name: "Grove at Bella Terra", city: "Cantonment", metro: "pensacola", coords: [30.632667, -87.3152], address: null},
+  {name: "Horizons Edge", city: "Milton", metro: "pensacola", coords: [30.5966, -87.097033], address: {street: "5349 Horizons Edge Ln", line2: "Milton, FL"}},
+  {name: "Lost Key Townhomes", city: "Pensacola", metro: "pensacola", coords: [30.384633, -87.213567], address: {street: "14158 Sable Palm Way", line2: "Pensacola, FL"}},
+  {name: "Pipers Landing", city: "Pensacola", metro: "pensacola", coords: [30.408633, -87.264233], address: {street: "7721 Palm Vista Court", line2: "Pensacola, FL"}},
+  {name: "Ridge at Harvest Point", city: "Milton", metro: "pensacola", coords: [30.6126, -87.086367], address: {street: "7129 Season Dr\\t", line2: "Milton, FL"}},
+  {name: "Stonechase2", city: "Pace", metro: "pensacola", coords: [30.630833, -87.213533], address: {street: "5983 Briarcliff Ln", line2: "Pace, FL"}},
+  {name: "Yellow River Plantation", city: "Laurel Hill", metro: "pensacola", coords: [30.417333, -87.224], address: {street: "6218 Buccaneer Way", line2: "Laurel Hill, FL"}},
+  // ─── SOFLA ───
+  {name: "Acacia Groves", city: "Miami", metro: "sofla", coords: [25.454982, -80.505797], address: null},
+  {name: "Altamira", city: "Homestead", metro: "sofla", coords: [25.449138, -80.438819], address: {street: "2561 SE 25 TER", line2: "Homestead, FL"}},
+  {name: "Aria Park", city: "Homestead", metro: "sofla", coords: [25.448226, -80.464354], address: null},
+  {name: "Breezewood", city: "Miami", metro: "sofla", coords: [25.55168, -80.372037], address: null},
+  {name: "Briarcrest", city: "Miami", metro: "sofla", coords: [25.559578, -80.404785], address: {street: "22301 SW 132 AVE", line2: "Miami, FL"}},
+  {name: "Coral Breeze2", city: "Miami", metro: "sofla", coords: [25.476975, -80.501672], address: {street: "31427  SW  192 AVE", line2: "Miami, FL"}},
+  {name: "Coral Landings", city: "Miami", metro: "sofla", coords: [25.473385, -80.493654], address: {street: "18851 SW 315 ST", line2: "Miami, FL"}},
+  {name: "Del Mar", city: "Miami", metro: "sofla", coords: [25.433183, -80.483269], address: null},
+  {name: "Emerald Palms", city: "Miami", metro: "sofla", coords: [25.544259, -80.396495], address: null},
+  {name: "Greenview at Presidential", city: "Miami", metro: "sofla", coords: [25.951855, -80.172844], address: {street: "19652 NE 14 CT", line2: "Miami, FL"}},
+  {name: "Heron Pointe", city: "Miami", metro: "sofla", coords: [25.49941, -80.477357], address: null},
+  {name: "Killian Grove", city: "Miami", metro: "sofla", coords: [25.666224, -80.333391], address: null},
+  {name: "Le Jardine", city: "Florida City", metro: "sofla", coords: [25.447295, -80.460679], address: {street: "283 SE 11 CT", line2: "Florida City, FL"}},
+  {name: "Luminara", city: "Miami", metro: "sofla", coords: [25.523834, -80.416334], address: {street: "13855 SW 262 ST", line2: "Miami, FL"}},
+  {name: "Penn Cove", city: "Florida City", metro: "sofla", coords: [25.462406, -80.469031], address: {street: "1507  NE 4 CT", line2: "Florida City, FL"}},
+  {name: "Pineland Crest", city: "Miami", metro: "sofla", coords: [25.436118, -80.50135], address: {street: "35753 SW 189 CT", line2: "Miami, FL"}},
+  {name: "Redlands Ridge", city: "Miami", metro: "sofla", coords: [25.501154, -80.47738], address: {street: "17484 SW 284 ST", line2: "Miami, FL"}},
+  {name: "Saltaire", city: "Florida City", metro: "sofla", coords: [25.45004, -80.472731], address: null},
+  {name: "Siena Reserve", city: "Miami", metro: "sofla", coords: [25.551283, -80.403407], address: null},
+  {name: "Solstice", city: "Miami", metro: "sofla", coords: [25.536622, -80.393662], address: {street: "12486 SW 248 ST #6", line2: "Miami, FL"}},
+  {name: "Sunscapes", city: "Florida City", metro: "sofla", coords: [25.440466, -80.501536], address: {street: "8 NW 15 CT", line2: "Florida City, FL"}},
+  {name: "Sunstone", city: "Homestead", metro: "sofla", coords: [25.469958, -80.449142], address: null},
+  {name: "Terra Sol", city: "Homestead", metro: "sofla", coords: [25.455258, -80.467714], address: null},
+  {name: "Villas De San Diego", city: "Miami", metro: "sofla", coords: [25.437747, -80.501494], address: {street: "18933 SW 355 TER", line2: "Miami, FL"}},
+  {name: "Vivant", city: "Miami", metro: "sofla", coords: [25.513922, -80.453383], address: {street: "15657 SW 280 ST #5", line2: "Miami, FL"}},
+  {name: "Wildwood Groves", city: "Miami", metro: "sofla", coords: [25.513925, -80.453391], address: null},
+  // ─── SPACE-COAST ───
+  {name: "Emerald Lakes", city: "Palm Bay", metro: "space-coast", coords: [28.0605, -80.5547], address: null},
+  {name: "Meridian at Mayfair", city: "Melbourne", metro: "space-coast", coords: [28.051717, -80.612206], address: {street: "3737 Astral Road", line2: "Melbourne, FL"}},
+  {name: "New Homes in Cocoa", city: "Cocoa", metro: "space-coast", coords: [28.114, -80.580667], address: null},
+  {name: "New Homes in Palm Bay", city: "Palm Bay", metro: "space-coast", coords: [28.0285, -80.576033], address: {street: "754 INDIGO ST SE", line2: "Palm Bay, FL"}},
+  {name: "Riverwood at Everlands", city: "Palm Bay", metro: "space-coast", coords: [28.038857, -80.733151], address: {street: "2368 Croft Inlet Drive NW", line2: "Palm Bay, FL"}},
+  {name: "The Timbers at Everlands", city: "Palm Bay", metro: "space-coast", coords: [28.024325, -80.733242], address: {street: "923 Veronese Place NW", line2: "Palm Bay, FL"}},
+  {name: "Tillman Lakes", city: "Palm Bay", metro: "space-coast", coords: [27.991524, -80.723927], address: {street: "1900 Bayou Avenue SW", line2: "Palm Bay, FL"}},
+  // ─── TAMPA ───
+  {name: "Acacia Fields", city: "Wesley Chapel", metro: "tampa", coords: [28.246367, -82.2671], address: null},
+  {name: "Angeline", city: "Land O Lakes", metro: "tampa", coords: [28.301645, -82.529298], address: {street: "18209 Pleasantview Blvd", line2: "Land O Lakes, FL"}},
+  {name: "Angeline Active Adult", city: "Land O Lakes", metro: "tampa", coords: [28.31002, -82.533239], address: {street: "9343 Minnow Ray Dr", line2: "Land O Lakes, FL"}},
+  {name: "Balm Grove", city: "Wimauma", metro: "tampa", coords: [27.758145, -82.258507], address: {street: "13519 New Jade Ave", line2: "Wimauma, FL"}},
+  {name: "Bellamy Crossings", city: "Dade City", metro: "tampa", coords: [28.339667, -82.157233], address: {street: "11189 Brae Way", line2: "Dade City, FL"}},
+  {name: "Connerton", city: "Land O Lakes", metro: "tampa", coords: [28.290302, -82.451736], address: {street: "22841 Pondered Day Lane", line2: "Land O Lakes, FL"}},
+  {name: "Crescent Meadows", city: "Zephyrhills", metro: "tampa", coords: [28.2176, -82.191867], address: null},
+  {name: "Curiosity Creek", city: "Palmetto", metro: "tampa", coords: [27.62754, -82.50104], address: {street: "6123 Blue Paloma Ct", line2: "Palmetto, FL"}},
+  {name: "Cypress Point at Lake Parker", city: "Lakeland", metro: "tampa", coords: [28.0835, -81.9538], address: null},
+  {name: "Gladesong", city: "Riverview", metro: "tampa", coords: [27.8821, -82.315833], address: null},
+  {name: "Hilltop Point", city: "Dade City", metro: "tampa", coords: [28.377667, -82.148567], address: {street: "38292 Palomino Drive", line2: "Dade City, FL"}},
+  {name: "Ivywood", city: "Lakeland", metro: "tampa", coords: [27.976167, -81.9198], address: null},
+  {name: "Longleaf", city: "New Port Richey", metro: "tampa", coords: [28.257433, -82.732633], address: null},
+  {name: "Mirada", city: "San Antonio", metro: "tampa", coords: [28.326467, -82.225467], address: null},
+  {name: "Mirada Active Adult", city: "San Antonio", metro: "tampa", coords: [28.313571, -82.293182], address: {street: "31663 Splash Isle", line2: "San Antonio, FL"}},
+  {name: "New Port Corners", city: "New Port Richey", metro: "tampa", coords: [28.251926, -82.671654], address: {street: "9246 Plathe Road", line2: "New Port Richey, FL"}},
+  {name: "New Port Corners Active Adult", city: "New Port Richey", metro: "tampa", coords: [28.25309, -82.674759], address: {street: "8478 Futureside Loop", line2: "New Port Richey, FL"}},
+  {name: "North Park Isle", city: "Plant City", metro: "tampa", coords: [28.053267, -82.069167], address: null},
+  {name: "Park East", city: "Plant City", metro: "tampa", coords: [28.053267, -82.069167], address: {street: "2346 Allium Roseum Ln", line2: "Plant City, FL"}},
+  {name: "Pearl Estates", city: "Lutz", metro: "tampa", coords: [28.213467, -82.430533], address: null},
+  {name: "Prosperity Lakes", city: "Parrish", metro: "tampa", coords: [27.626493, -82.407436], address: {street: "13413 Noble Garnet Ln", line2: "Parrish, FL"}},
+  {name: "Prosperity Lakes Active Adult", city: "Parrish", metro: "tampa", coords: [27.627277, -82.43325], address: {street: "12050 Violet Jasper Dr", line2: "Parrish, FL"}},
+  {name: "Sandhill", city: "Dade City", metro: "tampa", coords: [28.333487, -82.17547], address: null},
+  {name: "Seaire", city: "Parrish", metro: "tampa", coords: [27.532367, -82.382533], address: {street: "8611 Tropical Aire Ln", line2: "Parrish, FL"}},
+  {name: "South Creek", city: "Riverview", metro: "tampa", coords: [27.859433, -82.3865], address: null},
+  {name: "Southshore Bay", city: "Wimauma", metro: "tampa", coords: [27.706, -82.250033], address: null},
+  {name: "Stonegate Preserve", city: "Palmetto", metro: "tampa", coords: [27.617265, -82.494667], address: {street: "10947 65th Ter E", line2: "Palmetto, FL"}},
+  {name: "The Townes at Cross Creek", city: "Tampa", metro: "tampa", coords: [27.887933, -82.487867], address: null},
+  {name: "The Townes at Crystal Brook", city: "Zephyrhills", metro: "tampa", coords: [28.2076, -82.2152], address: null},
+  {name: "The Townes at Market Edge", city: "Riverview", metro: "tampa", coords: [27.8361, -82.263167], address: null},
+  {name: "The Townes at West River", city: "Tampa", metro: "tampa", coords: [27.921933, -82.5152], address: null},
+  {name: "The Townes at Windsong", city: "Zephyrhills", metro: "tampa", coords: [28.288267, -82.222533], address: null},
+  {name: "Townes at Manhattan Crossing", city: "Tampa", metro: "tampa", coords: [27.899933, -82.5132], address: null},
+  {name: "Twinflowers", city: "Wesley Chapel", metro: "tampa", coords: [28.213033, -82.300433], address: null},
+  {name: "Two Rivers", city: "Zephyrhills", metro: "tampa", coords: [28.177231, -82.21508], address: {street: "1054 Broward Drive", line2: "Zephyrhills, FL"}},
+  {name: "Vista Walk", city: "Dade City", metro: "tampa", coords: [28.399, -82.223233], address: null},
+  {name: "West Lake", city: "Wimauma", metro: "tampa", coords: [27.652667, -82.330033], address: {street: "2237 Rosefinch Hill Pl", line2: "Wimauma, FL"}},
+  {name: "Wind Meadows South", city: "Bartow", metro: "tampa", coords: [27.901067, -81.867867], address: {street: "2045 Albatross Nest Dr", line2: "Bartow, FL"}},
+  // ─── TREASURE-COAST ───
+  {name: "Brystol at Wylder", city: "Port St. Lucie", metro: "treasure-coast", coords: [27.274667, -80.278], address: {street: "10881 NW Everbreeze Drive", line2: "Port St. Lucie, FL"}},
+  {name: "Glynlea Country Club", city: "Port St. Lucie", metro: "treasure-coast", coords: [27.199333, -80.356], address: {street: "10684 NW WILGROVE LN", line2: "Port St. Lucie, FL"}},
+  {name: "New Homes in West Vero", city: "Vero Beach", metro: "treasure-coast", coords: [27.236667, -80.286667], address: null},
+  {name: "Pepperwood", city: "Stuart", metro: "treasure-coast", coords: [27.136533, -80.1988], address: null},
+  {name: "Seagrove", city: "Fort Pierce", metro: "treasure-coast", coords: [27.500033, -80.378933], address: {street: "3724 Harborside Avenue", line2: "Fort Pierce, FL"}},
+  {name: "Tesoro Club", city: "Port St. Lucie", metro: "treasure-coast", coords: [27.286667, -80.303333], address: {street: "460 SE FASCINO CIR", line2: "Port St. Lucie, FL"}},
+  {name: "Veranda Preserve", city: "Port St. Lucie", metro: "treasure-coast", coords: [27.286, -80.242667], address: {street: "1348 SE Willow Oaks Street", line2: "Port St. Lucie, FL"}},
+];
+function _normalizeName(s) {
+  return String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+}
+function _isInSheet(communityName) {
+  const target = _normalizeName(communityName);
+  return COMMUNITIES.some(c => {
+    const n = _normalizeName(c.name);
+    return n === target || n.includes(target) || target.includes(n);
+  });
+}
+const REGION_CENTROIDS = {
+  jax:           { center: [30.0938, -81.5373], zoom: 9 },
+  ocala:         { center: [29.18,   -82.14],   zoom: 10 },
+  gainesville:   { center: [29.65,   -82.32],   zoom: 10 },
+  sofla:         { center: [25.9, -80.25],      zoom: 9 },
+  'naples-ft-myers':{center:[26.4, -81.8],      zoom: 9 },
+  'palm-beach':  { center: [26.6, -80.1],       zoom: 9 },
+  'treasure-coast':{center:[27.25, -80.3],      zoom: 9 },
+  orlando:       { center: [28.4, -81.4],       zoom: 9 },
+  tampa:         { center: [27.95, -82.4],      zoom: 8 },
+  'space-coast': { center: [28.06, -80.6],      zoom: 9 },
+  'panama-city': { center: [30.17, -85.7],      zoom: 10 },
+  pensacola:     { center: [30.42, -87.2],      zoom: 10 },
+  all:           { center: [28.5, -82.5],       zoom: 7 }
+};
+// Per-community accurate coordinates pulled from Lennar's community detail pages.
+// JAX coords verified against Lennar's lat/lng JSON-LD on each detail page.
+// Both Sheet shortnames and Lennar longnames listed — keeps the background layer
+// from double-drawing a community at city centroid when it's already in the Sheet.
+const COMMUNITY_COORDS = {
+  // ─── JAX / St. Augustine — verified from Lennar pages ───
+  "Avalon Woods":                              [30.462122, -81.625918],
+  "Cove at SW":                                [30.176565, -81.609143],
+  "Cove at Southwood":                         [30.176565, -81.609143],
+  "Emerald Isles TH":                          [30.205939, -81.588896],
+  "Emerald Isles Townhomes":                   [30.205939, -81.588896],
+  "Granary Park":                              [30.046139, -81.771412],
+  "Hardwick Farms":                            [30.248866, -81.614747],
+  "Holstein Crossing":                         [30.048633, -81.768918],
+  "Oak Hill Village TH":                       [30.237826, -81.747406],
+  "Oak Hill Village Townhomes":                [30.237826, -81.747406],
+  "Russell Retreat":                           [30.074385, -81.785793],
+  "Saddle Oaks":                               [30.397657, -81.819284],
+  "Seaton Creek":                              [30.522518, -81.666923],
+  "Shearwater":                                [30.020593, -81.572773],
+  "Silver Falls SF":                           [30.006971, -81.524131],
+  "Silver Falls Single Family at SilverLeaf":  [30.006971, -81.524131],
+  "Silver Falls TH":                           [30.009949, -81.524648],
+  "Silver Falls Townhomes at Silverleaf":      [30.009949, -81.524648],
+  "Silver Meadows":                            [30.009458, -81.516592],
+  "Silver Meadows at SilverLeaf":              [30.009458, -81.516592],
+  "Tributary":                                 [30.607505, -81.685823],
+  "Edenbrooke at Hyland Trail":                [30.01929, -81.785568],
+  "Edenbrooke at Hyland Trail | 55+":          [30.01929, -81.785568],
+  "Lakeview Estates":                          [30.146, -81.504],
+  "Stillwater":                                [30.187, -81.706],
+  // Brand 9 Sheet — Ocala
+  "Marion Oaks":             [29.031787, -82.261772],
+  "Marion Ranch":            [29.10284,  -82.199851],
+  "Millwood":                [29.225267, -82.08709],
+  "Pioneer Ranch":           [29.090749, -82.234074],
+  "Heath Preserve":          [29.204462, -82.196198],
+  // Other Lennar FL — Tampa / Manatee
+  "Beacon Lake":             [28.078516, -81.836975],
+  "Connerton":               [28.290302, -82.451736],
+  "Angeline":                [28.299213, -82.522552],
+  "Angeline Active Adult":   [28.31002,  -82.533239],
+  "Prosperity Lakes":        [27.626493, -82.407436],
+  "Prosperity Lakes Active Adult": [27.627277, -82.43325],
+  "Sandhill":                [28.333487, -82.17547],
+  "New Port Corners":        [28.251926, -82.671654],
+  "New Port Corners Active Adult": [28.25309, -82.674759],
+  "Curiosity Creek":         [27.62754,  -82.50104],
+  "Stonegate Preserve":      [27.617265, -82.494667],
+  "Mirada Active Adult":     [28.313571, -82.293182],
+  "Balm Grove":              [27.758145, -82.258507],
+  "Two Rivers":              [28.177231, -82.21508],
+  // Other Lennar FL — Orlando
+  "Sanctuary at Wellness Ridge": [28.478739, -81.694265],
+  "Ranches at Lake Mcleod":  [27.952224, -81.7547],
+  "Bridgewalk":              [28.343863, -81.214485],
+  "The Glades at Crossprairie": [28.217786, -81.33632],
+  "Waterlin":                [28.154587, -81.271432],
+  // Other Lennar FL — Space Coast / Melbourne
+  "Meridian at Mayfair":     [28.051717, -80.612206],
+  "Riverwood at Everlands":  [28.038857, -80.733151],
+  "The Timbers at Everlands": [28.024325, -80.733242],
+  "Tillman Lakes":           [27.991524, -80.723927]
+};
+// Street-address lookup for installation crews (pulled from Lennar pages).
+// Fields: street + city/state/zip + sales-office phone (optional). Used in map popups.
+const COMMUNITY_ADDRESSES = {
+  // ─── JAX / St. Augustine — addresses lifted from Lennar community pages ───
+  "Granary Park":       { addr: "3211 Lewis Speedway", city: "Green Cove Springs, FL 32043" },
+  "Holstein Crossing":  { addr: "3251 Lewis Speedway", city: "Green Cove Springs, FL 32043" },
+  "Russell Retreat":    { addr: "3211 Russell Rd",    city: "Green Cove Springs, FL 32043" },
+  "Edenbrooke at Hyland Trail": { addr: "Hyland Trail Pkwy", city: "Green Cove Springs, FL 32043" },
+  "Edenbrooke at Hyland Trail | 55+": { addr: "Hyland Trail Pkwy", city: "Green Cove Springs, FL 32043" },
+  "Cove at SW":         { addr: "Southwood Pkwy",      city: "Jacksonville, FL 32256" },
+  "Cove at Southwood":  { addr: "Southwood Pkwy",      city: "Jacksonville, FL 32256" },
+  "Emerald Isles TH":   { addr: "Emerald Isles Dr",    city: "Jacksonville, FL 32218" },
+  "Emerald Isles Townhomes": { addr: "Emerald Isles Dr", city: "Jacksonville, FL 32218" },
+  "Hardwick Farms":     { addr: "Hardwick Farms Pkwy", city: "Jacksonville, FL 32218" },
+  "Oak Hill Village TH":{ addr: "Oak Hill Village Dr", city: "St. Johns, FL 32259" },
+  "Oak Hill Village Townhomes": { addr: "Oak Hill Village Dr", city: "St. Johns, FL 32259" },
+  "Saddle Oaks":        { addr: "Saddle Oaks Dr",      city: "Jacksonville, FL 32218" },
+  "Seaton Creek":       { addr: "Seaton Creek Pkwy",   city: "Jacksonville, FL 32219" },
+  "Avalon Woods":       { addr: "Avalon Woods Dr",     city: "Jacksonville, FL 32218" },
+  "Tributary":          { addr: "Tributary Pkwy",      city: "Yulee, FL 32097" },
+  "Shearwater":         { addr: "365 Eagle Pass Way",  city: "St. Augustine, FL 32092" },
+  // SilverLeaf master plan, NW St. Johns County
+  "Silver Meadows":                          { addr: "1099 Silverleaf Pkwy", city: "St. Augustine, FL 32092" },
+  "Silver Meadows at SilverLeaf":            { addr: "1099 Silverleaf Pkwy", city: "St. Augustine, FL 32092" },
+  "Silver Falls SF":                         { addr: "1099 Silverleaf Pkwy", city: "St. Augustine, FL 32092" },
+  "Silver Falls Single Family at SilverLeaf":{ addr: "1099 Silverleaf Pkwy", city: "St. Augustine, FL 32092" },
+  "Silver Falls TH":                         { addr: "1099 Silverleaf Pkwy", city: "St. Augustine, FL 32092" },
+  "Silver Falls Townhomes at Silverleaf":    { addr: "1099 Silverleaf Pkwy", city: "St. Augustine, FL 32092" },
+  "Lakeview Estates":   { addr: "Lakeview Pkwy",       city: "St. Johns, FL 32259" },
+  "Stillwater":         { addr: "Stillwater Way",      city: "Jacksonville, FL 32218" }
+};
+function _addressFor(name) {
+  return COMMUNITY_ADDRESSES[name] || null;
+}
+function _coordsForCommunity(c) {
+  // 1. exact community-name lookup (most accurate)
+  if (c.name && COMMUNITY_COORDS[c.name]) return COMMUNITY_COORDS[c.name];
+  // 2. city lookup
+  const city = String(c.city || '').toLowerCase().trim();
+  if (CITY_COORDS[city]) return CITY_COORDS[city];
+  // 3. notes/request might mention a city
+  const notes = String(c.notes || '').toLowerCase();
+  for (const k in CITY_COORDS) {
+    if (notes.includes(k)) return CITY_COORDS[k];
+  }
+  // 4. region centroid fallback (with small jitter so markers don't fully overlap)
+  const r = REGION_CENTROIDS[c.region] || REGION_CENTROIDS.all;
+  const seed = (c.name || '').split('').reduce((a, ch) => a + ch.charCodeAt(0), 0);
+  const jitterLat = ((seed * 13) % 200 - 100) / 1500;
+  const jitterLng = ((seed * 17) % 200 - 100) / 1500;
+  return [r.center[0] + jitterLat, r.center[1] + jitterLng];
+}
+function _markerColorFor(c) {
+  // Any community in the Sheet (any status) → ORANGE — these are the ones we're running.
+  return '#f97316';
+}
+let _regionMap = null;
+let _regionMapLayer = null;
+function renderRegionMap() {
+  const el = document.getElementById('regionMap');
+  if (!el || typeof L === 'undefined') return;
+  // Init map once, reuse
+  if (!_regionMap) {
+    const view = REGION_CENTROIDS[currentRegion] || REGION_CENTROIDS.all;
+    _regionMap = L.map(el, {
+      center: view.center, zoom: view.zoom, scrollWheelZoom: false, attributionControl: false
+    });
+    // Basemap: Esri Light Gray Canvas. Keyless and unwatermarked.
+    // CARTO's light_all now stamps "API KEY REQUIRED" diagonally across every
+    // tile for unkeyed use, which clients could see. Esri gives the same
+    // light-gray look as base + labels, free with attribution, and needs no
+    // credential - which matters because this repo is public, so any key
+    // committed here would be readable by anyone.
+    // Note the {z}/{y}/{x} order: Esri differs from the usual {z}/{x}/{y}.
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+      maxNativeZoom: 16, maxZoom: 18
+    }).addTo(_regionMap);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', {
+      maxNativeZoom: 16, maxZoom: 18, pane: 'overlayPane'
+    }).addTo(_regionMap);
+    L.control.attribution({position:'bottomright',prefix:false}).addAttribution('Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ').addTo(_regionMap);
+  } else {
+    // recenter on region change
+    const view = REGION_CENTROIDS[currentRegion] || REGION_CENTROIDS.all;
+    _regionMap.setView(view.center, view.zoom);
+  }
+  // Update region label
+  const lbl = document.getElementById('mapRegionLabel');
+  if (lbl) {
+    lbl.textContent = currentRegion === 'all' ? 'All Regions' :
+      currentRegion === 'jax' ? 'Jacksonville / St. Augustine' :
+      currentRegion === 'ocala' ? 'Ocala' :
+      currentRegion === 'sofla' ? 'Southeast' : 'All Regions';
+  }
+  // Clear and repaint markers
+  if (_regionMapLayer) _regionMapLayer.clearLayers();
+  _regionMapLayer = L.layerGroup().addTo(_regionMap);
+
+  // Layer 1 — ALL Lennar FL communities (background reference). Filtered to current region/metro.
+  // Skip ones that are also in our Sheet (those will be drawn on top in orange).
+  const lennarFiltered = LENNAR_FL_COMMUNITIES.filter(L => {
+    if (currentRegion === 'all') return true;
+    return L.metro === currentRegion;
+  });
+  lennarFiltered.forEach(L1 => {
+    if (_isInSheet(L1.name)) return;  // drawn on top by Sheet layer
+    // Embedded coords are authoritative (verified from Lennar pages or city centroid).
+    const coords = L1.coords || (COMMUNITY_COORDS[L1.name] || CITY_COORDS[String(L1.city||'').toLowerCase().trim()] || (REGION_CENTROIDS[L1.metro] || REGION_CENTROIDS.all).center);
+    const lat = coords[0], lng = coords[1];
+    const m = L.circleMarker([lat, lng], {
+      radius: 5, color: '#fff', weight: 1, fillColor: '#0d2b4e', fillOpacity: 0.85
+    });
+    // Address: prefer embedded address from LENNAR_FL_COMMUNITIES, fall back to legacy lookup
+    const addr = L1.address ? { addr: L1.address.street, city: L1.address.line2 } : _addressFor(L1.name);
+    const directionsUrl = addr
+      ? `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(addr.addr + ', ' + addr.city)}`
+      : `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(L1.name + ' ' + L1.city + ' FL')}`;
+    m.bindPopup(
+      `<div style="font:13px/1.4 system-ui,-apple-system,sans-serif;min-width:200px;">
+        <div style="font-weight:800;color:#0d2b4e;margin-bottom:4px;">${L1.name}</div>
+        <div style="color:#64748b;font-size:11px;margin-bottom:6px;">${L1.city}</div>
+        ${addr ? `<div style="font-size:11px;color:#0d2b4e;margin-bottom:6px;background:#f1f5f9;padding:6px 8px;border-radius:6px;"><strong>📍 ${addr.addr}</strong><br>${addr.city}</div>` : ''}
+        <div style="font-size:11px;color:#94a3b8;font-style:italic;margin-bottom:6px;">Currently No Projects Underway</div>
+        <a href="${directionsUrl}" target="_blank" rel="noopener" style="font-size:11px;font-weight:700;color:#1565c0;text-decoration:none;">🚗 Open in Google Maps</a>
+       </div>`
+    );
+    m.addTo(_regionMapLayer);
+  });
+
+  // Layer 2 — Brand 9 Sheet communities (any status). All ORANGE.
+  const inRegion = COMMUNITIES.filter(c => currentRegion === 'all' || c.region === currentRegion);
+  inRegion.forEach(c => {
+    const [lat, lng] = _coordsForCommunity(c);
+    const color = _markerColorFor(c);
+    const m = L.circleMarker([lat, lng], {
+      radius: 9, color: '#fff', weight: 2, fillColor: color, fillOpacity: 0.95
+    });
+    const statusLabel = c.status || '—';
+    const phaseLabel = c.phase || '—';
+    const addr2 = _addressFor(c.name);
+    const directionsUrl2 = addr2
+      ? `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(addr2.addr + ', ' + addr2.city)}`
+      : `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(c.name + ' ' + (c.city||'FL'))}`;
+    m.bindPopup(
+      `<div style="font:13px/1.4 system-ui,-apple-system,sans-serif;min-width:200px;">
+        <div style="font-weight:800;color:#0d2b4e;margin-bottom:4px;">${c.name}</div>
+        <div style="color:#64748b;font-size:11px;margin-bottom:6px;">${c.city || c.region.toUpperCase()}</div>
+        ${addr2 ? `<div style="font-size:11px;color:#0d2b4e;margin-bottom:6px;background:#fff4ed;padding:6px 8px;border-radius:6px;"><strong>📍 ${addr2.addr}</strong><br>${addr2.city}</div>` : ''}
+        <div style="font-size:11px;"><strong>Status:</strong> ${statusLabel}</div>
+        <div style="font-size:11px;"><strong>Phase:</strong> ${phaseLabel}</div>
+        <div style="font-size:11px;"><strong>Crew:</strong> ${c.crew || '—'}</div>
+        ${c.notes ? `<div style="font-size:11px;margin-top:4px;color:#0d2b4e;"><strong>Request:</strong> ${c.notes}</div>` : ''}
+        <div style="margin-top:8px;"><a href="${directionsUrl2}" target="_blank" rel="noopener" style="font-size:11px;font-weight:700;color:#1565c0;text-decoration:none;">🚗 Open in Google Maps</a></div>
+       </div>`
+    );
+    m.addTo(_regionMapLayer);
+  });
+  // Defer invalidateSize for tab transitions
+  setTimeout(() => { if (_regionMap) _regionMap.invalidateSize(); }, 50);
+}
+
+// ─── UPDATE KPIs ───
+function updateKPIs() {
+  const cs       = COMMUNITIES;
+  const activeNonOffice = cs.filter(c => !c.soldOut && !c.office);
+  const active   = activeNonOffice.filter(c => ['Production','Installation','Delivered'].includes(c.status)).length;
+  const soldOut  = cs.filter(c => c.soldOut).length;
+  const overdue  = cs.filter(c => c.status === 'overdue').length;
+  const liveDrones = cs.filter(c => c.droneStatus === 'live').length;
+  const droneFleetSize = 1; // v1: one drone in pre-launch
+
+  // Active card counts (incl. office; excl. sold-out from headline count? keep all visible)
+  const totalCards = cs.length;
+  const jaxCount   = cs.filter(c => c.region === 'jax').length;
+  const ocalaCount = cs.filter(c => c.region === 'ocala').length;
+  const soflaCount = cs.filter(c => c.region === 'sofla').length;
+
+  // "Active Projects" card now shows total Sheet communities (every Brand 9 engagement)
+  document.getElementById('kpi-communities').textContent = totalCards;
+  document.getElementById('kpi-communities-sub').textContent = `JAX ${jaxCount} · Ocala ${ocalaCount} · SoFla ${soflaCount}`;
+  const kpiActive = document.getElementById('kpi-active');
+  if (kpiActive) kpiActive.textContent = active;
+  document.getElementById('kpi-progress').textContent    = `${liveDrones}/${droneFleetSize}`;
+
+  // Total Communities = all Lennar FL communities + Sheet communities not in the Lennar list
+  // Robust to ordering: walk LENNAR_FL_COMMUNITIES if defined, else fall back to Sheet count
+  const totalEl = document.getElementById('kpi-total-fl');
+  if (totalEl) {
+    let total = cs.length;  // safe fallback
+    let lennarBg = 0;
+    if (typeof LENNAR_FL_COMMUNITIES !== 'undefined') {
+      // Inline isInSheet so we don't depend on the helper being defined yet
+      const norm = s => String(s||'').toLowerCase().replace(/[^a-z0-9]/g, '');
+      const sheetNames = cs.map(c => norm(c.name));
+      lennarBg = LENNAR_FL_COMMUNITIES.filter(L => {
+        const n = norm(L.name);
+        return !sheetNames.some(s => s === n || n.includes(s) || s.includes(n));
+      }).length;
+      total = lennarBg + cs.length;
+    }
+    totalEl.textContent = total;
+    const sub = document.getElementById('kpi-total-fl-sub');
+    if (sub) sub.textContent = `${cs.length} Brand 9 · ${lennarBg} Lennar reference`;
+  }
+
+  // Region tab counts
+  const setText = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+  setText('cnt-jax',   jaxCount);
+  setText('cnt-ocala', ocalaCount);
+  setText('cnt-sofla', soflaCount);
+
+  // Live timestamp in header + footer
+  const stamp = new Date().toLocaleString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'});
+  const lt = document.getElementById('liveStamp');
+  if (lt) lt.textContent = 'Live · ' + stamp;
+  const ft = document.getElementById('footerStamp');
+  if (ft) ft.textContent = 'Last refresh: ' + stamp;
+}
+
+// ─── FILTERS ───
+function applyFilters() {
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  const status = document.getElementById('statusFilter').value;
+  const phase  = document.getElementById('phaseFilter').value;
+  filteredCommunities = COMMUNITIES.filter(c => {
+    if (currentRegion !== 'all' && c.region !== currentRegion) return false;
+    if (status && c.status !== status) return false;
+    if (phase  && c.phase  !== phase)  return false;
+    if (search && !c.name.toLowerCase().includes(search) && !(c.city||'').toLowerCase().includes(search)) return false;
+    return true;
+  });
+  renderGrid();
+}
+
+function clearFilters() {
+  document.getElementById('searchInput').value  = '';
+  document.getElementById('statusFilter').value = '';
+  document.getElementById('phaseFilter').value  = '';
+  currentRegion = 'all';
+  // Highlight all active tabs (none "selected")
+  document.querySelectorAll('.r-tab[data-region]').forEach(t => t.classList.remove('selected'));
+  filteredCommunities = [...COMMUNITIES];
+  renderGrid();
+}
+
+function setRegion(r, el) {
+  if (!el.classList.contains('active')) return;
+  // Toggle: if already selected, go back to 'all'
+  if (currentRegion === r) {
+    currentRegion = 'all';
+    el.classList.remove('selected');
+  } else {
+    currentRegion = r;
+    document.querySelectorAll('.r-tab[data-region]').forEach(t => t.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+  const dd = document.getElementById('regionFilter');
+  if (dd) dd.value = currentRegion;
+  applyFilters();
+}
+function setRegionFromDropdown(r) {
+  currentRegion = r || 'all';
+  document.querySelectorAll('.r-tab[data-region]').forEach(t => {
+    if (t.getAttribute('data-region') === currentRegion) t.classList.add('selected');
+    else t.classList.remove('selected');
+  });
+  applyFilters();
+}
+
+// ─── WORK ORDERS ── pulled live from the Sheet ───
+// Builds work orders from every Sheet community with an active workflow status
+// AND a non-empty Request. Sorted by Install Date (TBD-last), then status priority.
+function renderWorkOrders() {
+  const ACTIVE_STATUSES = ['Production','Installation','Delivered'];
+  const STATUS_BADGE = {
+    'Installation Complete': {cls:'sb-complete',    label:'Complete'},
+    'Installation':          {cls:'sb-in-progress', label:'Installing'},
+    'Delivered':             {cls:'sb-in-progress', label:'Delivered'},
+    'Production':            {cls:'sb-pending',     label:'In Production'},
+    'Artwork':               {cls:'sb-pending',     label:'Artwork'}
+  };
+  // Priority by status: Installation (red) > Delivered (yellow) > Production (yellow) > Artwork (green)
+  const priorityFor = c => ['Installation','Delivered'].includes(c.status) ? 'high'
+                          : c.status === 'Production' ? 'med' : 'low';
+  const priorityColors = {high:'#ef4444', med:'#f59e0b', low:'#10b981'};
+  // Filter: in-progress workflow + has a Request, OR any status with non-empty Request
+  let orders = COMMUNITIES.filter(c => {
+    const hasRequest = c.notes && c.notes.trim();
+    return hasRequest && (ACTIVE_STATUSES.includes(c.status) || c.status === 'Artwork');
+  });
+  // Sort: Installation first, then Delivered, Production, Artwork; within each, soonest Install Date first
+  const statusRank = { 'Installation':0, 'Delivered':1, 'Production':2, 'Artwork':3 };
+  orders.sort((a, b) => {
+    const sa = statusRank[a.status] ?? 9, sb = statusRank[b.status] ?? 9;
+    if (sa !== sb) return sa - sb;
+    // Compare Install Date — TBD/empty pushed to end
+    const dateA = a.nextInstall, dateB = b.nextInstall;
+    const aTBD = !dateA || dateA === 'TBD';
+    const bTBD = !dateB || dateB === 'TBD';
+    if (aTBD && !bTBD) return 1;
+    if (!aTBD && bTBD) return -1;
+    return String(dateA).localeCompare(String(dateB));
+  });
+  // Update the Work Orders panel badge specifically (find by walking from the WO body up to its panel)
+  const woBodyEl = document.getElementById('workOrdersBody');
+  const woPanel = woBodyEl ? woBodyEl.closest('.panel') : null;
+  const badge = woPanel ? woPanel.querySelector('.p-hdr .sec-badge') : null;
+  if (badge) badge.textContent = orders.length + ' Active';
+  const rows = orders.map((c, i) => {
+    const sb = STATUS_BADGE[c.status] || {cls:'sb-pending', label:c.status||'Pending'};
+    const woId = 'WO-' + String(i+1).padStart(3,'0');
+    return `
+    <tr style="cursor:pointer;" onclick="openModal(${c.id})">
+      <td><div class="wo-num">${woId}</div></td>
+      <td>
+        <span class="wo-priority" style="background:${priorityColors[priorityFor(c)]}"></span>
+        <span class="wo-comm">${c.name}</span>
+      </td>
+      <td class="wo-type">${c.notes || '—'}</td>
+      <td style="font-weight:700;color:var(--gray-400);">—</td>
+      <td class="wo-date">${c.nextInstall || 'TBD'}</td>
+      <td class="wo-crew">${c.crew || 'Pete + Andrew'}</td>
+      <td><span class="s-badge ${sb.cls}" style="font-size:9px">${sb.label}</span></td>
+    </tr>`;
+  }).join('');
+  const body = document.getElementById('workOrdersBody');
+  if (body) body.innerHTML = rows || '<tr><td colspan="7" style="padding:20px;text-align:center;color:var(--gray-400);font-style:italic;">No active work orders — all current Sheet entries are Pre-Launch or empty.</td></tr>';
+}
+
+// ─── ACTIVITY LOG ───
+function renderActivity() {
+  const items = ACTIVITY.map(a => `
+    <li class="act-item">
+      <div class="act-ic" style="background:${a.bg}">${a.icon}</div>
+      <div class="act-content">
+        <div class="act-text">${a.text}</div>
+        <div class="act-time">${a.time}</div>
+      </div>
+    </li>`).join('');
+  document.getElementById('activityLog').innerHTML = items;
+}
+
+// ─── CHART: Sign Progress by Category ───
+function renderChart() {
+  const catTotals = SIGN_TEMPLATES.map(tmpl => {
+    let needed = 0, installed = 0;
+    COMMUNITIES.forEach(c => {
+      const cats = getSignCategories(c);
+      const cat = cats.find(x => x.name === tmpl.name);
+      if (cat) { needed += cat.totalNeeded; installed += cat.totalInstalled; }
+    });
+    return {name: tmpl.name, installed, remaining: needed - installed};
+  });
+
+  const ctx = document.getElementById('signChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: catTotals.map(c => c.name),
+      datasets: [
+        {
+          label: 'Installed',
+          data: catTotals.map(c => c.installed),
+          backgroundColor: '#10b981cc',
+          borderColor: '#10b981',
+          borderWidth: 1,
+          borderRadius: 4,
+        },
+        {
+          label: 'Remaining',
+          data: catTotals.map(c => c.remaining),
+          backgroundColor: '#e2e8f0',
+          borderColor: '#94a3b8',
+          borderWidth: 1,
+          borderRadius: 4,
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {position: 'top', labels: {font:{size:11}, padding:12}},
+        tooltip: {
+          callbacks: {
+            title: ctx => ctx[0].label,
+            afterBody: items => {
+              const installed = items.find(i => i.dataset.label === 'Installed')?.raw || 0;
+              const remaining = items.find(i => i.dataset.label === 'Remaining')?.raw || 0;
+              const total = installed + remaining;
+              return total > 0 ? [`Overall: ${Math.round(installed/total*100)}% complete`] : [];
+            }
+          }
+        }
+      },
+      scales: {
+        x: {stacked: true, ticks: {font:{size:10}}, grid: {display:false}},
+        y: {stacked: true, ticks: {font:{size:10}}, grid: {color:'rgba(0,0,0,.05)'}}
+      }
+    }
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// MODAL
+// ═══════════════════════════════════════════════════════
+function toggleCat(idx) {
+  const body    = document.getElementById('cat-body-'+idx);
+  const chevron = document.getElementById('cat-chev-'+idx);
+  const hdr     = document.getElementById('cat-hdr-'+idx);
+  const isOpen  = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  chevron.classList.toggle('open', !isOpen);
+  hdr.classList.toggle('open', !isOpen);
+}
+
+function openModal(id) {
+  const c = COMMUNITIES.find(x => x.id === id);
+  if (!c) return;
+
+  const regionDisplay = {
+    jax:   '📍 JACKSONVILLE / ST. AUGUSTINE',
+    ocala: '📍 OCALA',
+    sofla: '📍 SOUTHEAST'
+  }[c.region] || '📍 FLORIDA';
+  document.getElementById('m-region').textContent = regionDisplay;
+  document.getElementById('m-name').textContent   = c.name;
+  document.getElementById('m-city').textContent   = c.city ? c.city + ', FL' : '';
+
+  const statusLabel = {
+    'Artwork':'Artwork','Production':'Production','Delivered':'Delivered',
+    'Installation':'Installation','Installation Complete':'Installation Complete',
+    complete:'Installation Complete','in-progress':'Production',pending:'Artwork',overdue:'OVERDUE',new:'Artwork'
+  };
+  const badgeCls = {
+    'Artwork':'sb-new','Production':'sb-pending','Delivered':'sb-in-progress',
+    'Installation':'sb-in-progress','Installation Complete':'sb-complete',
+    complete:'sb-complete','in-progress':'sb-in-progress',pending:'sb-pending',overdue:'sb-overdue',new:'sb-new'
+  };
+  const pct         = fmtPct(c.installedSigns, c.totalSigns);
+  const cats        = getSignCategories(c);
+
+  const catStatusLabel = {complete:'Complete','in-progress':'In Progress','not-started':'Not Started'};
+  const catStatusCls   = {complete:'csb-complete','in-progress':'csb-in-progress','not-started':'csb-not-started'};
+  const catProgColor   = {complete:'var(--green)','in-progress':'var(--blue)','not-started':'var(--gray-200)'};
+
+  const catsHtml = cats.map((cat, idx) => {
+    const catPct   = cat.totalNeeded > 0 ? Math.round(cat.totalInstalled / cat.totalNeeded * 100) : 0;
+    const signsHtml = cat.signs.map(s => `
+      <li class="sign-item">
+        <div class="sign-check ${s.installed ? 'installed' : 'pending'}">${s.installed ? '✓' : '○'}</div>
+        <div class="sign-name">${s.name}</div>
+        <div class="sign-status-lbl ${s.installed ? 'ssl-installed' : 'ssl-pending'}">${s.installed ? 'Installed' : 'Pending'}</div>
+      </li>`).join('');
+
+    return `
+    <div class="sign-cat">
+      <div class="sign-cat-hdr" id="cat-hdr-${idx}" onclick="toggleCat(${idx})">
+        <span class="cat-icon">${cat.icon}</span>
+        <span class="cat-name">${cat.name}</span>
+        <div class="cat-progress">
+          <div class="cat-prog-bar"><div class="cat-prog-fill" style="width:${catPct}%;background:${catProgColor[cat.catStatus]}"></div></div>
+          <span class="cat-count">${cat.totalInstalled}/${cat.totalNeeded}</span>
+          <span class="cat-status-badge ${catStatusCls[cat.catStatus]}">${catStatusLabel[cat.catStatus]}</span>
+        </div>
+        <span class="cat-chevron" id="cat-chev-${idx}">▼</span>
+      </div>
+      <div class="sign-cat-body" id="cat-body-${idx}">
+        <ul class="sign-list">${signsHtml}</ul>
+      </div>
+    </div>`;
+  }).join('');
+
+  const fieldBtnHtml = isClientView ? '' : `
+    <a class="m-field-btn" href="${fieldUpdateUrl(c.name)}" onclick="openFieldUpdate('${c.name.replace(/'/g,"\\'")}',event)" target="_blank">
+      📲 Field Update — Mark Signs as Installed
+    </a>`;
+
+  const permit = c.permit811 || 'na';
+  const permit811Html = `
+    <div class="permit-811">
+      <div class="permit-811-label">
+        <div class="permit-icon">811</div>
+        <div>
+          <div class="permit-title">811 — Underground Permit</div>
+          <div class="permit-sub">Call-Before-You-Dig Clearance</div>
+        </div>
+      </div>
+      <div class="permit-811-choices" role="group" aria-label="811 underground permit status">
+        <button class="p811-btn ${permit==='yes'?'active-yes':''}" data-val="yes" onclick="set811(${c.id},'yes',event)">Yes</button>
+        <button class="p811-btn ${permit==='no'?'active-no':''}"  data-val="no"  onclick="set811(${c.id},'no',event)">No</button>
+        <button class="p811-btn ${permit==='na'?'active-na':''}"  data-val="na"  onclick="set811(${c.id},'na',event)">N/A</button>
+      </div>
+    </div>`;
+
+  document.getElementById('m-body').innerHTML = `
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+      <span class="s-badge ${badgeCls[c.status]}" style="font-size:10px">${statusLabel[c.status]}</span>
+      <span style="font-size:12px;font-weight:700;color:var(--gray-600)">${c.phase}</span>
+    </div>
+    <div class="m-stats-row">
+      <div class="m-stat">
+        <div class="m-stat-val">${c.totalSigns}</div>
+        <div class="m-stat-lbl">Total Signs</div>
+      </div>
+      <div class="m-stat">
+        <div class="m-stat-val">${c.installedSigns}</div>
+        <div class="m-stat-lbl">Installed</div>
+      </div>
+      <div class="m-stat">
+        <div class="m-stat-val" style="color:${pct===100?'var(--green)':'var(--blue)'}">${pct}%</div>
+        <div class="m-stat-lbl">Complete</div>
+      </div>
+    </div>
+    ${permit811Html}
+    <div style="font-size:12px;font-weight:800;color:var(--gray-600);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;">
+      Sign Categories
+    </div>
+    <div class="sign-cats">${catsHtml}</div>
+    <div class="m-info-grid">
+      <div class="m-info-card">
+        <div class="m-info-lbl">Crew</div>
+        <div class="m-info-val" style="color:var(--orange);">${c.crew || 'Pete + Andrew'}</div>
+      </div>
+      <div class="m-info-card">
+        <div class="m-info-lbl">Drone Status</div>
+        <div class="m-info-val">${{idle:'Idle · Pre-launch',predeploy:'Pre-deploy',live:'🔴 LIVE','wrap-up':'Wrap-up'}[c.droneStatus||'idle']}</div>
+      </div>
+      <div class="m-info-card">
+        <div class="m-info-lbl">Local Contact (Lennar)</div>
+        <div class="m-info-val">${c.localContact || c.contact}</div>
+      </div>
+      <div class="m-info-card">
+        <div class="m-info-lbl">Main POC (Lennar)</div>
+        <div class="m-info-val">${c.contact}</div>
+      </div>
+      <div class="m-info-card">
+        <div class="m-info-lbl">Last Installation</div>
+        <div class="m-info-val">${c.lastInstall || 'Not yet scheduled'}</div>
+      </div>
+      <div class="m-info-card">
+        <div class="m-info-lbl">Install Date</div>
+        <div class="m-info-val" style="${c.nextInstall==='OVERDUE'?'color:var(--red)':''}">${c.nextInstall || (c.status==='complete'?'All complete':c.status==='new'?'TBD — Pre-Development':'Not yet scheduled')}</div>
+      </div>
+      <div class="m-info-card">
+        <div class="m-info-lbl">Phase</div>
+        <div class="m-info-val">${c.phase}</div>
+      </div>
+      <div class="m-info-card">
+        <div class="m-info-lbl">Region</div>
+        <div class="m-info-val">${({jax:'Jacksonville / St. Augustine',ocala:'Ocala',sofla:'Southeast'})[c.region]||'Florida'}</div>
+      </div>
+    </div>
+    ${c.notes ? `<div style="margin-top:16px;padding:14px 16px;background:var(--gray-50);border-radius:8px;border:1px solid var(--gray-200);"><div style="font-size:10px;font-weight:800;color:var(--gray-400);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;">Notes</div><div style="font-size:13px;color:var(--gray-800);line-height:1.5;white-space:pre-wrap;">${(c.notes+'').replace(/</g,'&lt;')}</div></div>` : ''}
+    ${c.status==='overdue' ? `<div style="margin-top:16px;padding:14px;background:var(--red-l);border-radius:8px;border:1px solid #fca5a5;color:#dc2626;font-size:13px;font-weight:700;">⚠ Attention Required: This community has overdue installations. Crew has been reassigned — next available date being confirmed.</div>` : ''}
+    ${fieldBtnHtml}
+  `;
+
+  document.getElementById('modalOv').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modalOv')) closeModalBtn();
+}
+function closeModalBtn() {
+  document.getElementById('modalOv').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalBtn(); });
+
+// ═══════════════════════════════════════════════════════
+// EXPORT CSV
+// ═══════════════════════════════════════════════════════
+function exportCSV() {
+  const rows = [['ID','Community','City','Status','Phase','Total Signs','Installed','Remaining','% Complete','Last Install','Next Install','Contact','811 Permit']];
+  filteredCommunities.forEach(c => {
+    const pct = fmtPct(c.installedSigns, c.totalSigns);
+    const p811 = (c.permit811||'na').toUpperCase();
+    rows.push([c.id, c.name, c.city, c.status, c.phase, c.totalSigns, c.installedSigns, c.totalSigns - c.installedSigns, pct + '%', c.lastInstall||'', c.nextInstall||'', c.contact, p811==='NA'?'N/A':p811]);
+  });
+  const csv = rows.map(r => r.map(v => '"' + String(v).replace(/"/g,'""') + '"').join(',')).join('\n');
+  const a   = document.createElement('a');
+  a.href    = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+  a.download = 'Atlas_Lennar_NorthFL_' + new Date().toISOString().slice(0,10) + '.csv';
+  a.click();
+}
+
+// ═══════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════
+restore811();
+applyViewMode();
+syncFromSheet();
+filteredCommunities = [...COMMUNITIES];
+renderGrid();
+renderWorkOrders();
+renderActivity();
+
+// Photo sync: pulls field-uploaded photos from the Photos tab and renders thumbnails
+// on each card. Re-runs every 60s when tab is visible.
+syncPhotos().then(() => renderGrid());
+setInterval(() => {
+  if (document.visibilityState === 'visible' && PHOTOS_CSV_URL) {
+    syncPhotos().then(() => renderGrid());
+  }
+}, 60000);
+
+// Inventory sync: same 60s cadence as photos. Stock counts move far slower
+// than community status, so this deliberately does not ride the 5s poll.
+syncInventory();
+setInterval(() => {
+  if (document.visibilityState === 'visible') syncInventory();
+}, 60000);
+
+// Auto-refresh: re-fetch the Sheet every 60s while the page is open.
+// Skipped while the tab is hidden to avoid wasting fetches; resumes on visibility.
+// Real-time: poll every 5 seconds while tab is visible
+setInterval(() => {
+  if (document.visibilityState === 'visible') syncFromSheet();
+}, 5000);
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') {
+    syncFromSheet();
+    if (PHOTOS_CSV_URL) syncPhotos().then(() => renderGrid());
+  }
+});
+</script>
+
+<!-- Atlas inline document viewer with carousel -->
+<div id="atlas-pdf-viewer" onclick="if(event.target===this)closePhotoViewer()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:99999;align-items:center;justify-content:center;padding:20px;">
+  <button id="atlas-pdf-prev" type="button" onclick="_atlasPrev()" aria-label="Previous" style="position:absolute;left:24px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.10);color:#fff;border:1px solid rgba(255,255,255,0.25);width:54px;height:54px;border-radius:50%;font-size:28px;cursor:pointer;line-height:1;">&#8249;</button>
+  <button id="atlas-pdf-next" type="button" onclick="_atlasNext()" aria-label="Next" style="position:absolute;right:24px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.10);color:#fff;border:1px solid rgba(255,255,255,0.25);width:54px;height:54px;border-radius:50%;font-size:28px;cursor:pointer;line-height:1;">&#8250;</button>
+  <div style="position:relative;width:100%;max-width:1200px;height:calc(100vh - 40px);background:#fff;border-radius:8px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.6);">
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:#0A0E1A;color:#fff;">
+      <div id="atlas-pdf-caption" style="font-size:13px;font-weight:600;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;letter-spacing:.3px;">Document</div>
+      <div id="atlas-pdf-counter" style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:1px;white-space:nowrap;">1 of 1</div>
+      <a id="atlas-pdf-download" href="" download style="background:#00AEEF;color:#fff;padding:7px 14px;border-radius:6px;font-size:11px;font-weight:800;text-decoration:none;text-transform:uppercase;letter-spacing:1px;">Download</a>
+      <a id="atlas-pdf-newtab" href="" target="_blank" rel="noopener" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.35);padding:6px 12px;border-radius:6px;font-size:11px;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:1px;">Open &#8599;</a>
+      <button onclick="closePhotoViewer()" aria-label="Close" style="background:transparent;color:#fff;border:none;font-size:24px;cursor:pointer;line-height:1;padding:0 8px;">&times;</button>
+    </div>
+    <iframe id="atlas-pdf-iframe" src="" allow="autoplay" style="flex:1;width:100%;border:none;background:#444;"></iframe>
+  </div>
+</div>
+<script>
+(function(){
+  var state = { community: null, items: [], index: 0 };
+  function showItem(idx) {
+    if (!state.items || !state.items.length) return;
+    state.index = Math.max(0, Math.min(idx, state.items.length - 1));
+    var p = state.items[state.index];
+    if (!p) return;
+    document.getElementById('atlas-pdf-iframe').src = 'https://drive.google.com/file/d/' + p.id + '/preview';
+    var cap = (p.caption && String(p.caption).trim()) ? p.caption : (state.community || 'Document');
+    document.getElementById('atlas-pdf-caption').textContent = cap;
+    document.getElementById('atlas-pdf-counter').textContent = (state.index + 1) + ' of ' + state.items.length;
+    document.getElementById('atlas-pdf-download').href = 'https://drive.google.com/uc?export=download&id=' + p.id;
+    document.getElementById('atlas-pdf-newtab').href = 'https://drive.google.com/file/d/' + p.id + '/view';
+    document.getElementById('atlas-pdf-prev').style.visibility = state.index > 0 ? 'visible' : 'hidden';
+    document.getElementById('atlas-pdf-next').style.visibility = state.index < state.items.length - 1 ? 'visible' : 'hidden';
+  }
+  window.openPhotoViewer = function(community, id) {
+    var arr = (typeof COMMUNITY_PHOTOS !== 'undefined' && COMMUNITY_PHOTOS[community]) || [];
+    if (!arr.length) return;
+    state.community = community;
+    state.items = arr;
+    var idx = arr.findIndex(function(p){ return p.id === id; });
+    if (idx < 0) idx = 0;
+    document.getElementById('atlas-pdf-viewer').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    showItem(idx);
+  };
+  window.closePhotoViewer = function() {
+    document.getElementById('atlas-pdf-viewer').style.display = 'none';
+    document.getElementById('atlas-pdf-iframe').src = '';
+    document.body.style.overflow = '';
+    state.items = []; state.community = null; state.index = 0;
+  };
+  window._atlasPrev = function() { if (state.index > 0) showItem(state.index - 1); };
+  window._atlasNext = function() { if (state.index < state.items.length - 1) showItem(state.index + 1); };
+  document.addEventListener('keydown', function(e) {
+    var v = document.getElementById('atlas-pdf-viewer');
+    if (!v || v.style.display === 'none') return;
+    if (e.key === 'Escape') closePhotoViewer();
+    else if (e.key === 'ArrowLeft') window._atlasPrev();
+    else if (e.key === 'ArrowRight') window._atlasNext();
+  });
+})();
+</script>
+</body>
+</html>

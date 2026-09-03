@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Construct · Operator Registry</title>
+<meta name="description" content="The Construct — canonical registry of PRAGMA Operators across Hartley Capital, Brand 9 Signs, and PRAGMA client engagements. Internal source of truth.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800;900&family=Fraunces:opsz,wght@9..144,300..700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --void: #0A0A0A; --void-2: #0E0E0E; --void-3: #141414;
+  --signal: #1FE07E; --signal-2: #19C46D;
+  --signal-dim: rgba(31,224,126,0.08); --signal-line: rgba(31,224,126,0.18);
+  --amber: #FFB72B; --amber-dim: rgba(255,183,43,0.10); --amber-line: rgba(255,183,43,0.25);
+  --slate: #6B7280; --slate-dim: rgba(107,114,128,0.12); --slate-line: rgba(107,114,128,0.25);
+  --output: #FFFFFF; --output-65: rgba(255,255,255,0.65);
+  --output-45: rgba(255,255,255,0.45); --output-30: rgba(255,255,255,0.30);
+  --output-12: rgba(255,255,255,0.12); --output-04: rgba(255,255,255,0.04);
+  --f-sans: 'Inter', system-ui, sans-serif;
+  --f-serif: 'Fraunces', serif;
+  --f-mono: 'JetBrains Mono', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--void); color: var(--output);
+  font-family: var(--f-sans); font-size: 16px; line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+::selection { background: var(--signal); color: var(--void); }
+
+.wrap { max-width: 1200px; margin: 0 auto; padding: 55px 55px 89px; }
+.eyebrow {
+  font-family: var(--f-mono); font-size: 11px; color: var(--signal);
+  letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 21px;
+}
+.eyebrow::before { content: '>_ '; opacity: 0.6; margin-right: 4px; }
+h1 {
+  font-size: clamp(40px, 5vw, 72px); font-weight: 900;
+  letter-spacing: -0.04em; line-height: 1.02; margin-bottom: 21px;
+}
+h1 .accent { color: var(--signal); }
+.dek {
+  font-family: var(--f-serif); font-size: 22px;
+  font-weight: 300; font-style: italic; line-height: 1.45;
+  color: var(--output-65); padding-left: 21px; border-left: 2px solid var(--signal);
+  margin-bottom: 55px; max-width: 760px;
+}
+.meta-bar {
+  display: flex; gap: 34px; flex-wrap: wrap;
+  padding: 21px 28px; background: var(--void-3); border: 1px solid var(--output-04);
+  border-radius: 13px; margin-bottom: 55px;
+  font-family: var(--f-mono); font-size: 12px; color: var(--output-65);
+}
+.meta-bar .label { color: var(--output-30); letter-spacing: 0.1em; text-transform: uppercase; margin-right: 8px; }
+.meta-bar .val { color: var(--output); }
+.meta-bar .val.signal { color: var(--signal); }
+
+h2 {
+  font-size: clamp(28px, 3vw, 38px); font-weight: 800;
+  letter-spacing: -0.02em; line-height: 1.15; margin: 55px 0 13px;
+}
+h2 .accent { color: var(--signal); }
+h2 .count {
+  font-family: var(--f-mono); font-size: 13px; color: var(--output-45);
+  font-weight: 400; letter-spacing: 0.1em; vertical-align: middle; margin-left: 13px;
+}
+.sec-dek {
+  font-size: 15px; color: var(--output-45); margin-bottom: 34px; max-width: 760px;
+}
+
+.grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 13px;
+}
+.op {
+  background: var(--void-3); border: 1px solid var(--output-04);
+  border-radius: 16px; padding: 28px 28px 21px;
+  display: flex; flex-direction: column;
+}
+.op.active { border-color: var(--signal-line); }
+.op.active:hover { border-color: var(--signal); }
+.op.build { border-color: var(--amber-line); }
+.op.reserved { border-color: var(--slate-line); opacity: 0.85; }
+
+.op-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 4px; }
+.op-name { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+.op-name .accent { color: var(--signal); }
+.op-fn { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--signal); opacity: 0.85; margin-bottom: 13px; }
+.op.build .op-fn { color: var(--amber); }
+.op.reserved .op-fn { color: var(--slate); }
+
+.status {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 10px; border-radius: 100px;
+  font-family: var(--f-mono); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase;
+}
+.status.active { background: var(--signal-dim); color: var(--signal); border: 1px solid var(--signal-line); }
+.status.build { background: var(--amber-dim); color: var(--amber); border: 1px solid var(--amber-line); }
+.status.reserved { background: var(--slate-dim); color: var(--slate); border: 1px solid var(--slate-line); }
+.status::before { content: '●'; font-size: 8px; }
+
+.op-charter { font-size: 14px; color: var(--output-65); line-height: 1.55; margin-bottom: 13px; font-weight: 300; }
+.op-charter strong { color: var(--output); font-weight: 500; }
+
+.op-meta { font-family: var(--f-mono); font-size: 11px; color: var(--output-30); margin-top: auto; padding-top: 13px; border-top: 1px solid var(--output-04); display: flex; gap: 21px; flex-wrap: wrap; }
+.op-meta .k { color: var(--output-30); margin-right: 4px; }
+.op-meta .v { color: var(--output-65); }
+
+.op-scope { margin-bottom: 13px; }
+.op-scope-label { font-family: var(--f-mono); font-size: 10px; color: var(--output-45); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 6px; }
+.op-scope-items { font-size: 13px; color: var(--output-65); line-height: 1.55; font-weight: 300; }
+
+.op-tools { margin-bottom: 13px; padding: 13px 16px; background: var(--void-2); border-radius: 10px; border-left: 2px solid var(--signal-line); }
+.op-tools-label { font-family: var(--f-mono); font-size: 10px; color: var(--signal); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; opacity: 0.85; }
+.op-tools-label::before { content: '▦ '; opacity: 0.6; }
+.op-tools-items { font-family: var(--f-mono); font-size: 12px; color: var(--output-65); line-height: 1.65; font-weight: 400; }
+.op-tools-items code { color: var(--signal); background: var(--signal-dim); padding: 1px 6px; border-radius: 4px; font-size: 11px; }
+.op-tools-items .heading { color: var(--output-45); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; display: block; margin: 8px 0 3px; }
+.op-tools-items .heading:first-child { margin-top: 0; }
+
+.gates-section { margin: 55px 0 0; padding: 34px; background: var(--void-3); border: 1px solid var(--signal-line); border-radius: 16px; }
+.gates-section h3 { font-size: 21px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 13px; }
+.gates-section h3 .accent { color: var(--signal); }
+.gates-section .gates-dek { font-size: 14px; color: var(--output-65); margin-bottom: 21px; line-height: 1.6; font-weight: 300; }
+.gates-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin-top: 21px; }
+.gate { padding: 18px 21px; background: var(--void-2); border: 1px solid var(--output-04); border-radius: 12px; }
+.gate-name { font-family: var(--f-mono); font-size: 11px; color: var(--signal); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; opacity: 0.85; }
+.gate-pillars { font-size: 13px; color: var(--output); font-weight: 500; margin-bottom: 6px; }
+.gate-pillars .accent { color: var(--signal); font-weight: 400; padding: 0 4px; }
+.gate-body { font-size: 12.5px; color: var(--output-65); line-height: 1.55; font-weight: 300; }
+.gate.tbd { border-color: var(--amber-line); }
+.gate.tbd .gate-name { color: var(--amber); }
+@media (max-width: 720px) { .gates-grid { grid-template-columns: 1fr; } }
+
+.deploy-matrix { margin: 34px 0 0; overflow-x: auto; }
+.deploy-matrix table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.deploy-matrix th, .deploy-matrix td { padding: 13px 16px; text-align: left; border-bottom: 1px solid var(--output-04); }
+.deploy-matrix th { font-family: var(--f-mono); font-size: 10.5px; color: var(--output-45); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500; }
+.deploy-matrix td.op-cell { font-weight: 700; }
+.deploy-matrix td.op-cell .accent { color: var(--signal); }
+.deploy-matrix td.yes { color: var(--signal); font-family: var(--f-mono); font-size: 12px; font-weight: 700; }
+.deploy-matrix td.no { color: var(--output-30); font-family: var(--f-mono); font-size: 12px; }
+.deploy-matrix td.partial { color: var(--amber); font-family: var(--f-mono); font-size: 12px; font-weight: 700; }
+.deploy-matrix tr:hover { background: var(--void-2); }
+
+.callout {
+  margin: 34px 0; padding: 28px 34px;
+  background: var(--signal-dim); border-left: 2px solid var(--signal); border-radius: 4px;
+}
+.callout-tag { font-family: var(--f-mono); font-size: 10px; color: var(--signal); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 10px; }
+.callout-body { font-family: var(--f-serif); font-size: 18px; line-height: 1.5; color: var(--output); font-style: italic; }
+
+.footer {
+  margin-top: 89px; padding-top: 34px; border-top: 1px solid var(--output-04);
+  font-family: var(--f-mono); font-size: 11px; color: var(--output-30); letter-spacing: 0.1em;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 13px;
+}
+.footer .dot { color: var(--signal); }
+
+@media (max-width: 720px) {
+  .wrap { padding: 34px 24px 55px; }
+  .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="eyebrow">The Construct · Operator Registry</div>
+  <h1>The <span class="accent">Construct.</span></h1>
+  <p class="dek">
+    The canonical registry of PRAGMA Operators. Active deployments, build queue, reserved bench. Single source of truth across Hartley Capital, Brand 9 Signs, and PRAGMA client engagements.
+  </p>
+
+  <div class="meta-bar">
+    <span><span class="label">As of</span><span class="val signal">2026-05-20</span></span>
+    <span><span class="label">Active</span><span class="val signal">8</span></span>
+    <span><span class="label">Custom</span><span class="val">2 (B9S)</span></span>
+    <span><span class="label">Cap</span><span class="val">8</span></span>
+    <span><span class="label">Cap</span><span class="val">7</span></span>
+    <span><span class="label">Custom Operators</span><span class="val">2 (B9S)</span></span>
+  </div>
+
+  <h2>Active Operators<span class="count">— deployed and running</span></h2>
+  <p class="sec-dek">The five core PRAGMA Operators — the standard kit every client engagement ships with. All five are also live inside Hartley Capital and Brand 9 Signs.</p>
+
+  <div class="grid">
+
+    <div class="op active">
+      <div class="op-head">
+        <span class="op-name">Keystone<span class="accent">.</span></span>
+        <span class="status active">Active</span>
+      </div>
+      <div class="op-fn">Chief Strategy Officer / Venture Architect</div>
+      <div class="op-charter"><strong>Charter:</strong> Venture thesis work, opportunity scoring against the Coca-Cola Test, kill/continue/double-down calls on active bets, portfolio shape, strategic reviews of ongoing initiatives.</div>
+      <div class="op-scope">
+        <div class="op-scope-label">Scope</div>
+        <div class="op-scope-items">Coca-Cola Test scoring · wedge-to-empire mapping · venture archetype balance · portfolio allocation · go-to-market sequencing · strategic reviews · competitive positioning</div>
+      </div>
+      <div class="op-tools">
+        <div class="op-tools-label">Skills + Connectors</div>
+        <div class="op-tools-items">
+          <span class="heading">Skill</span><code>keystone</code> (Construct skill bundle · references: coca-cola-test.md · venture-archetypes.md · portfolio-allocation.md)
+          <span class="heading">Tools</span><code>WebSearch</code> · <code>WebFetch</code> · <code>Read</code>/<code>Write</code>/<code>Edit</code> · memory-file management
+          <span class="heading">Gates</span>Quality Triangle (Skeptic / Architect / Security) on every recommendation
+          <span class="heading">Loop</span>corrections → Self-Improving Loop · rubric sharpens over time
+        </div>
+      </div>
+      <div class="op-meta">
+        <span><span class="k">deployed</span><span class="v">HC · PRAGMA</span></span>
+        <span><span class="k">last update</span><span class="v">2026-05-20</span></span>
+      </div>
+    </div>
+
+    <div class="op active">
+      <div class="op-head">
+        <span class="op-name">Vector<span class="accent">.</span></span>
+        <span class="status active">Active</span>
+      </div>
+      <div class="op-fn">Brand &amp; Design Lead / Site Architect</div>
+      <div class="op-charter"><strong>Charter:</strong> Visual identity, motion graphics, deliverable polish across HC and PRAGMA outputs. <strong>Vector builds websites; Pulse runs them</strong> — Vector owns new builds, redesigns, design system maintenance. Trained on institutional voice. Never auto-publishes; operator reviews every output.</div>
+      <div class="op-scope">
+        <div class="op-scope-label">Scope</div>
+        <div class="op-scope-items">Visual identity · website builds + redesigns + remodels · design system · motion graphics (Higgsfield, Nano Banana 2, Vibe Motion) · 3D rendering · video generation · design critique · typography · color theory · layout · brand-aligned creative · brand audits</div>
+      </div>
+      <div class="op-tools">
+        <div class="op-tools-label">Skills + Connectors</div>
+        <div class="op-tools-items">
+          <span class="heading">Skill</span><code>graphic-designer</code> (Construct skill · CMO suite)
+          <span class="heading">Image / Video / 3D MCP</span><code>mcp__d0115040-*</code> → Higgsfield · Nano Banana 2 · Vibe Motion · Runway · Tripo AI · Luma AI
+          <span class="heading">Canva MCP</span><code>mcp__19927f77-*</code> (template + brand-kit access if client uses Canva)
+          <span class="heading">Local tools</span><code>Edit</code>/<code>Write</code> SVG/HTML/CSS · PIL/Pillow raster · ffmpeg video compile · fonttools for woff2→TTF
+          <span class="heading">Gates</span>Creative Board (Vision / Craft / Brand-fit) on every visual output
+          <span class="heading">Loop</span>rejected drafts → Self-Improving Loop · brand-voice drift detection
+        </div>
+      </div>
+      <div class="op-meta">
+        <span><span class="k">deployed</span><span class="v">HC · B9S · PRAGMA</span></span>
+        <span><span class="k">last update</span><span class="v">2026-05-19</span></span>
+      </div>
+    </div>
+
+    <div class="op active">
+      <div class="op-head">
+        <span class="op-name">Atlas<span class="accent">.</span></span>
+        <span class="status active">Active</span>
+      </div>
+      <div class="op-fn">Operations Officer / Live Ops Dashboard</div>
+      <div class="op-charter"><strong>Charter:</strong> Live operational dashboard, signal monitoring, daily ops surfacing. Single source of truth the rest of the Construct reads from and writes to. Instantiated per business shape.</div>
+      <div class="op-scope">
+        <div class="op-scope-label">Scope</div>
+        <div class="op-scope-items">B9S: Lennar community deck pipeline, install scheduling, crew assignment, sign status · HC: portfolio position view · PRAGMA client deployments shaped to client ops</div>
+      </div>
+      <div class="op-tools">
+        <div class="op-tools-label">Skills + Connectors</div>
+        <div class="op-tools-items">
+          <span class="heading">Local engine</span><code>/Atlas/atlas.html</code> (custom HTML dashboard) · <code>atlas_call.py</code> · <code>create-atlas-sheet.gs</code> Apps Script
+          <span class="heading">Google connector</span>Sheets API + Apps Script for Lennar pipeline read/write
+          <span class="heading">Handoff</span>DeckForge consumes Atlas brief → renders proof decks
+          <span class="heading">Storage</span>Sheets + JSON state in <code>/Atlas/</code>
+          <span class="heading">Loop</span>operations corrections → <code>/Atlas/lens-briefs/</code> consolidation
+        </div>
+      </div>
+      <div class="op-meta">
+        <span><span class="k">deployed</span><span class="v">HC · B9S</span></span>
+        <span><span class="k">last update</span><span class="v">2026-05-20</span></span>
+      </div>
+    </div>
+
+    <div class="op active">
+      <div class="op-head">
+        <span class="op-name">Lens<span class="accent">.</span></span>
+        <span class="status active">Active</span>
+      </div>
+      <div class="op-fn">Daily Intelligence Officer</div>
+      <div class="op-charter"><strong>Charter:</strong> Multi-fire daily scan (5:34 / 9:34 / 13:34 ET, idempotent skip). Scans HBR, HBS Working Knowledge, HBS AI Institute, Harvard Gazette, MIT, Stanford GSB, Wharton, NBER, Fed/BIS/IMF, Stratechery, Bloomberg/MarketWatch/Yahoo/CNBC/Reuters/FT/WSJ/Economist, Howard Marks, Matt Levine, Dalio. Produces 5-minute briefing + tagged corpus contribution.</div>
+      <div class="op-scope">
+        <div class="op-scope-label">Scope</div>
+        <div class="op-scope-items">Daily intelligence brief · Harvard / HBS / HBR ingestion · pattern-of-the-day extraction · agent-routing of items · Quotables → Hartley-Cite · WOLF append</div>
+      </div>
+      <div class="op-tools">
+        <div class="op-tools-label">Skills + Connectors</div>
+        <div class="op-tools-items">
+          <span class="heading">Skill</span><code>lens-daily-scan</code> (Construct skill · multi-fire scheduled)
+          <span class="heading">Chrome MCP</span><code>mcp__Claude_in_Chrome__*</code> → HBR/HBS authed scraping · IdeaCast RSS · Management Tip RSS
+          <span class="heading">Web tools</span><code>WebFetch</code> + RSS for free sources (HBS WK · Harvard Gazette · MIT · Stanford GSB · Wharton · NBER · Stratechery · Howard Marks · Matt Levine · Dalio)
+          <span class="heading">Scheduler</span><code>mcp__scheduled-tasks__*</code> (5:34 + 9:34 + 13:34 ET with idempotent skip)
+          <span class="heading">Delivery</span><code>mcp__3a82e68f-*__slack_send_message</code> → #all-ap-dispatch
+          <span class="heading">Storage</span><code>/Atlas/lens-briefs/</code> + <code>/Atlas/harvard-library/inbox/</code> (shared corpus, every Operator reads)
+          <span class="heading">Routing labels (Tier 2 internal)</span>Architect · Anvil · WOLF · Brand Lab AI · Signal · Helm · Cipher · Cornerstone · Keystone · Scout · Hartley-Cite
+        </div>
+      </div>
+      <div class="op-meta">
+        <span><span class="k">deployed</span><span class="v">HC · PRAGMA</span></span>
+        <span><span class="k">last update</span><span class="v">2026-05-20 (Phase A.2)</span></span>
+      </div>
+    </div>
+
+    <div class="op active">
+      <div class="op-head">
+        <span class="op-name">Scout<span class="accent">.</span></span>
+        <span class="status active">Active</span>
+      </div>
+      <div class="op-fn">Research Lead / Due Diligence</div>
+      <div class="op-charter"><strong>Charter:</strong> Competitive audits, due diligence, market intelligence for new bets. Goes deep where Lens goes wide. The diligence team a small firm couldn't otherwise afford.</div>
+      <div class="op-scope">
+        <div class="op-scope-label">Scope</div>
+        <div class="op-scope-items">Competitive audits (Cyndra, et al.) · acquisition target diligence · market intelligence · industry analysis · founder backgrounds · pricing teardowns · GTM playbook teardowns</div>
+      </div>
+      <div class="op-tools">
+        <div class="op-tools-label">Skills + Connectors</div>
+        <div class="op-tools-items">
+          <span class="heading">Methodology</span>Coca-Cola Test scoring · competitive matrix · wedge-to-empire mapping · institutional-comparison framework
+          <span class="heading">Marketing-suite skills</span><code>marketing:competitive-brief</code> · <code>marketing:seo-audit</code> · <code>legal:legal-risk-assessment</code> · <code>operations:risk-assessment</code> · <code>finance:variance-analysis</code> (multi-discipline audit composition)
+          <span class="heading">Web tools</span><code>WebSearch</code> · <code>WebFetch</code> · Chrome MCP for paywalled / SPA content
+          <span class="heading">Proof artifact</span><code>/pragma-launch/16-cyndra-competitive-audit.md</code> (20 sections · VC + PE + hedge-fund + code + brand lenses)
+          <span class="heading">Gates</span>Quality Triangle (Skeptic / Architect / Security) on every audit
+        </div>
+      </div>
+      <div class="op-meta">
+        <span><span class="k">deployed</span><span class="v">HC · PRAGMA</span></span>
+        <span><span class="k">last update</span><span class="v">2026-05-19 (Cyndra audit)</span></span>
+      </div>
+    </div>
+
+  </div>
+
+  <h2>Custom Operators<span class="count">— per-engagement, deployed</span></h2>
+  <p class="sec-dek">Domain-specific Operators built for a single business. Examples in production at Brand 9 Signs:</p>
+
+  <div class="grid">
+
+    <div class="op active">
+      <div class="op-head">
+        <span class="op-name">DeckForge<span class="accent">.</span></span>
+        <span class="status active">Active</span>
+      </div>
+      <div class="op-fn">Custom · B9S · Client-Deck Rendering</div>
+      <div class="op-charter"><strong>Charter:</strong> Consumes the weekly community brief from Atlas, renders client-ready proof decks in Lennar's brand — covers, interior pages, sign instances, model ID, wayfinding, price overlays — and emits production-press files post-approval. Hours of designer work per week → minutes.</div>
+      <div class="op-scope">
+        <div class="op-scope-label">Scope</div>
+        <div class="op-scope-items">Atlas brief consumption · proof-deck generation · approval lifecycle · production press files · Signs365 / local CNC dispatch · per-brand template extension (brand/&lt;client&gt;/ folders)</div>
+      </div>
+      <div class="op-tools">
+        <div class="op-tools-label">Skills + Connectors</div>
+        <div class="op-tools-items">
+          <span class="heading">Engine</span>Python pipeline at <code>/Documents/Claude/Projects/DeckForge/</code>
+          <span class="heading">Render</span>PIL/Pillow · reportlab · custom PDF/PSD compositors
+          <span class="heading">Input</span>Atlas weekly brief (Apps Script JSON)
+          <span class="heading">Output</span>Lennar-brand proof deck + production-press files (PDF/X-1a, CMYK)
+          <span class="heading">Dispatch</span>Signs365 API · local CNC machine queue
+          <span class="heading">Extension</span><code>brand/&lt;client&gt;/</code> folder pattern for new clients
+        </div>
+      </div>
+      <div class="op-meta">
+        <span><span class="k">deployed</span><span class="v">B9S (Lennar, 16 communities)</span></span>
+        <span><span class="k">last update</span><span class="v">2026-05-18</span></span>
+      </div>
+    </div>
+
+    <div class="op active">
+      <div class="op-head">
+        <span class="op-name">B9 Drones<span class="accent">.</span></span>
+        <span class="status active">Active · Pilot</span>
+      </div>
+      <div class="op-fn">Custom · B9S · Install Supervision</div>
+      <div class="op-charter"><strong>Charter:</strong> Drones supervise install crews in real time. Clients watch work happen live. Installers graded against spec automatically. Same agent-supervises-output pattern as document agents, applied to physical fabrication.</div>
+      <div class="op-scope">
+        <div class="op-scope-label">Scope</div>
+        <div class="op-scope-items">Live install supervision · client-facing feed · installer grading · sign-spec compliance · production-line measurement</div>
+      </div>
+      <div class="op-tools">
+        <div class="op-tools-label">Skills + Connectors</div>
+        <div class="op-tools-items">
+          <span class="heading">Hardware</span>Commercial drone fleet · flight-automation routing
+          <span class="heading">Vision</span>Real-time video stream + computer-vision sign-spec compliance check
+          <span class="heading">Feed</span>Client-facing live stream (watch the install happen)
+          <span class="heading">Grading</span>Per-installer scorecard auto-generated against spec
+          <span class="heading">Integration</span>Outputs grade + footage back into Atlas
+        </div>
+      </div>
+      <div class="op-meta">
+        <span><span class="k">deployed</span><span class="v">B9S (pilot)</span></span>
+        <span><span class="k">last update</span><span class="v">2026-05-19</span></span>
+      </div>
+    </div>
+
+  </div>
+
+  <h2>Active — bench expansion<span class="count">— part of standard PRAGMA service</span></h2>
+  <p class="sec-dek">Pulse, Prism, and Ledger round out the eight-Operator standard kit. Active across PRAGMA + Hartley Capital + Brand 9 Signs. Ship with every PRAGMA engagement.</p>
+
+  <div class="grid">
+
+    <div class="op active">
+      <div class="op-head">
+        <span class="op-name">Pulse<span class="accent">.</span></span>
+        <span class="status active">Active</span>
+      </div>
+      <div class="op-fn">Owned Presence Operator</div>
+      <div class="op-charter"><strong>Charter:</strong> Consolidates the client's owned-presence stack into one Operator. Replaces 4-5 SaaS subscriptions (Hootsuite, SEMrush, Birdeye, Mailchimp, etc.) with a single Operator that improves with the underlying stack. <strong>Vector builds websites; Pulse runs them</strong> — Pulse owns SEO/GEO, content production, traffic monitoring, conversion testing on the already-built site. Coca-Cola Test: 21/25.</div>
+      <div class="op-scope">
+        <div class="op-scope-label">Scope</div>
+        <div class="op-scope-items">Social (X, Instagram, Facebook, LinkedIn, Threads) · Google Business profile · reviews + review remediation · SEO + GEO (generative engine optimization) · website content production · website traffic monitoring · conversion-rate testing · A/B copy variants · brand-voice content drafts · privacy-disclosure handling · SaaS-subscription replacement</div>
+      </div>
+      <div class="op-tools">
+        <div class="op-tools-label">Skills + Connectors (v1.0 in production)</div>
+        <div class="op-tools-items">
+          <span class="heading">SKILL.md</span><code>/Atlas/pulse/SKILL.md</code> (charter, invocation patterns, output formats, kill criterion)
+          <span class="heading">Social skills</span><code>anthropic-skills:linkedin-posting</code> · <code>anthropic-skills:multi-channel-social-posting</code> (X, IG, FB personal/biz, Threads)
+          <span class="heading">Meta Ads MCP (added 2026-05-20)</span><code>https://mcp.facebook.com/ads</code> · paid campaign management · audience targeting · creative variants · budget allocation · performance optimization · Facebook + Instagram
+          <span class="heading">SEO/GEO skills</span><code>anthropic-skills:wordpress-yoast-publishing</code> · <code>marketing:seo-audit</code> · <code>marketing:brand-review</code> · <code>marketing:content-creation</code> · <code>marketing:email-sequence</code>
+          <span class="heading">Marketing MCPs</span><code>mcp__plugin_marketing_klaviyo__*</code> · <code>mcp__plugin_marketing_ahrefs__*</code> · <code>mcp__plugin_marketing_hubspot__*</code> · <code>mcp__plugin_marketing_supermetrics__*</code> (when client uses)
+          <span class="heading">Web tools</span>Chrome MCP for GBP / Search Console / GA4 reading · Yelp Fusion + Facebook Graph for reviews
+          <span class="heading">Brand voice corpus</span><code>/Atlas/pulse/brand-voice.md</code> (PRAGMA · HC · B9S · Bobby personal)
+          <span class="heading">Output formats</span><code>/Atlas/pulse/output-formats.md</code> (LISTEN brief · READ pack · response cards · audit reports)
+          <span class="heading">Gates</span>Quality Triangle (Skeptic / Architect / Security) on copy drafts · Creative Board (Vision / Craft / Brand-fit) on visual outputs
+          <span class="heading">Loop</span><code>/Atlas/pulse/loop/</code> (rejections · regrets · conversations · drift · wins · vendor-replaced)
+        </div>
+      </div>
+      <div class="op-meta">
+        <span><span class="k">spec</span><span class="v">17-pulse-operator-spec-v1.md ✓</span></span>
+        <span><span class="k">SKILL.md</span><span class="v">/Atlas/pulse/SKILL.md ✓</span></span>
+        <span><span class="k">first outputs</span><span class="v">30-day PRAGMA calendar · 3 draft response cards · daily LISTEN brief ✓</span></span>
+        <span><span class="k">next milestone</span><span class="v">Engagement #2 → first paying deployment</span></span>
+        <span><span class="k">kill criterion</span><span class="v">90d: no close on Pulse capability → fold into Vector</span></span>
+      </div>
+    </div>
+
+    <div class="op active">
+      <div class="op-head">
+        <span class="op-name">Prism<span class="accent">.</span></span>
+        <span class="status active">Active</span>
+      </div>
+      <div class="op-fn">Alt-Data Operator</div>
+      <div class="op-charter"><strong>Charter:</strong> PE-grade alternative data accessible to mid-market operators. Cell-data foot traffic (Placer.ai-tier), bank transaction/spend data (Yodlee/Plaid-tier), census demographics, institutional voids, industry intelligence, competitor benchmarking. This is the moat play. Coca-Cola Test: 21/25 with higher moat ceiling than Pulse.</div>
+      <div class="op-scope">
+        <div class="op-scope-label">Scope</div>
+        <div class="op-scope-items">Cell-data foot traffic · transaction/spend data · census demographics · institutional voids · industry analysis · competitor benchmarking · review-corpus aggregation · vendor partnerships (Placer.ai, Yodlee, Plaid, Standard Industries)</div>
+      </div>
+      <div class="op-tools">
+        <div class="op-tools-label">Skills + Connectors (spec'd, vendors pending)</div>
+        <div class="op-tools-items">
+          <span class="heading">Spec</span><code>/pragma-launch/18-prism-operator-spec-v1.md</code> (vendor matrix · cost caps · 3-sprint sequence)
+          <span class="heading">Paid vendors (auth pending)</span>Placer.ai (foot traffic) · Yodlee or Plaid (transaction data) · target $700-$5K/mo cap
+          <span class="heading">Free APIs</span>US Census Bureau · BLS · Yelp Fusion · GMB Insights (client OAuth)
+          <span class="heading">Storage</span>BigQuery / Snowflake / Redshift (client-side) · MCP available: <code>mcp__plugin_finance_bigquery__*</code>
+          <span class="heading">Analyst skills</span><code>finance:variance-analysis</code> · <code>marketing:competitive-brief</code> · <code>marketing:performance-report</code> · <code>operations:risk-assessment</code>
+          <span class="heading">Web tools</span><code>WebFetch</code> for free-source layer · Chrome MCP for paywalled
+          <span class="heading">Integration</span>Reads Lens daily brief for context · feeds Scout audits with quantitative backing
+          <span class="heading">Gates</span>Quality Triangle on every diligence pack · privacy compliance hard-stop (no re-identifiable data)
+          <span class="heading">Loop</span><code>/Atlas/prism/loop/</code> (interpretations · postmortems · vendor-issues · weak-answers)
+        </div>
+      </div>
+      <div class="op-meta">
+        <span><span class="k">spec</span><span class="v">18-prism-operator-spec-v1.md ✓</span></span>
+        <span><span class="k">SKILL.md</span><span class="v">/Atlas/prism/SKILL.md ✓</span></span>
+        <span><span class="k">first output</span><span class="v">B9S Florida footprint MVP report ✓ (free sources)</span></span>
+        <span><span class="k">next milestone</span><span class="v">Paid vendor auth (Placer.ai, Yodlee/Plaid) — post engagement #3</span></span>
+        <span><span class="k">kill criterion</span><span class="v">90d from build start: data costs &gt; $5K/mo before second engagement uses Prism → pause + renegotiate vendor mix</span></span>
+      </div>
+    </div>
+
+  </div>
+
+  <h2>Ledger — finance / CFO<span class="count">— Tier 5, score 22, active in Hartley Capital</span></h2>
+  <p class="sec-dek">Correction 2026-05-20: Ledger was already built and active in Hartley Capital's Construct (cs-ledger · CFO · Finance · Tier 5 · priorityElevated). Earlier "reserved" framing was a Loop failure — fixed. Active and shipped with every Tier 1 + Tier 3 PRAGMA engagement.</p>
+
+  <div class="grid">
+
+    <div class="op active">
+      <div class="op-head">
+        <span class="op-name">Ledger<span class="accent">.</span></span>
+        <span class="status active">Active · HC</span>
+      </div>
+      <div class="op-fn">Finance / CFO Operator</div>
+      <div class="op-charter"><strong>Charter (draft):</strong> Cash flow monitoring, AR aging, monthly close support, P&amp;L variance, runway flagging. Reads bank feeds and accounting subledgers; flags anomalies; drafts monthly commentary. Connector access required: QuickBooks Online / Xero / NetSuite + bank feeds.</div>
+      <div class="op-scope">
+        <div class="op-scope-label">Scope</div>
+        <div class="op-scope-items">Bank reconciliation · AR aging · journal entry prep · monthly close sequencing · P&amp;L variance commentary · runway projection · cash flow forecasting · SOX testing (when applicable)</div>
+      </div>
+      <div class="op-tools">
+        <div class="op-tools-label">Skills + Connectors (already available — Ledger could deploy fast)</div>
+        <div class="op-tools-items">
+          <span class="heading">QuickBooks MCP (already in plugin)</span><code>mcp__3828af81-*__qbo_accounting_get_balance_sheet</code> · <code>get_ar_aging_detail</code> · <code>get_ap_aging_detail</code> · <code>get_sales_by_customer_summary</code> · <code>profit_loss_generator</code> · <code>cash_flow_generator</code> · <code>industry_recommendation</code> · payroll · invoices · estimates
+          <span class="heading">Finance skills (already available)</span><code>finance:journal-entry</code> · <code>finance:reconciliation</code> · <code>finance:close-management</code> · <code>finance:financial-statements</code> · <code>finance:variance-analysis</code> · <code>finance:sox-testing</code> · <code>finance:audit-support</code>
+          <span class="heading">Bank feed</span>Plaid (also available via Prism's vendor stack)
+          <span class="heading">Why reserved not built</span>No client engagement has triggered it yet — premature build is solution-in-search-of-problem
+          <span class="heading">Gates</span>Quality Triangle on every entry · materiality threshold for human review
+        </div>
+      </div>
+      <div class="op-meta">
+        <span><span class="k">trigger</span><span class="v">Client engagement requires CFO Operator</span></span>
+        <span><span class="k">build effort</span><span class="v">~30 days post-trigger</span></span>
+      </div>
+    </div>
+
+  </div>
+
+  <h2>Deployment matrix<span class="count">— where Operators live</span></h2>
+  <p class="sec-dek">Which Operators are running in which entity. Updated when a deployment changes.</p>
+
+  <div class="deploy-matrix">
+    <table>
+      <thead>
+        <tr>
+          <th>Operator</th>
+          <th>Hartley Capital</th>
+          <th>Brand 9 Signs</th>
+          <th>PRAGMA (firm)</th>
+          <th>Client engagements</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="op-cell">Keystone<span class="accent">.</span></td><td class="yes">● Active</td><td class="no">—</td><td class="yes">● Active</td><td class="no">Standard kit</td></tr>
+        <tr><td class="op-cell">Vector<span class="accent">.</span></td><td class="yes">● Active</td><td class="yes">● Active</td><td class="yes">● Active</td><td class="no">Standard kit</td></tr>
+        <tr><td class="op-cell">Atlas<span class="accent">.</span></td><td class="yes">● Active</td><td class="yes">● Active (Lennar)</td><td class="no">—</td><td class="no">Per-engagement instance</td></tr>
+        <tr><td class="op-cell">Lens<span class="accent">.</span></td><td class="yes">● Active (Phase A.2)</td><td class="no">—</td><td class="yes">● Active</td><td class="no">Standard kit</td></tr>
+        <tr><td class="op-cell">Scout<span class="accent">.</span></td><td class="yes">● Active</td><td class="no">—</td><td class="yes">● Active</td><td class="no">Standard kit</td></tr>
+        <tr><td class="op-cell">DeckForge<span class="accent">.</span></td><td class="no">—</td><td class="yes">● Active (Lennar)</td><td class="no">—</td><td class="no">B9S custom</td></tr>
+        <tr><td class="op-cell">B9 Drones<span class="accent">.</span></td><td class="no">—</td><td class="partial">◐ Pilot</td><td class="no">—</td><td class="no">B9S custom</td></tr>
+        <tr><td class="op-cell">Pulse<span class="accent">.</span></td><td class="no">In build</td><td class="no">In build</td><td class="no">In build</td><td class="no">Future standard kit</td></tr>
+        <tr><td class="op-cell">Prism<span class="accent">.</span></td><td class="no">In build</td><td class="no">In build</td><td class="no">In build</td><td class="no">Future standard kit</td></tr>
+        <tr><td class="op-cell">Ledger<span class="accent">.</span></td><td class="no">Reserved</td><td class="no">Reserved</td><td class="no">Reserved</td><td class="no">Trigger-based</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <div class="callout-tag">operating principle</div>
+    <p class="callout-body">
+      Operator cap at seven. Adding an eighth requires retiring one. This forces discipline and prevents the Cyndra trap of hiring agents instead of compounding the ones you have. Custom Operators (DeckForge, B9 Drones) live outside the cap because they're client-specific, not standard kit.
+    </p>
+  </div>
+
+  <div class="gates-section">
+    <h3>Operating discipline — <span class="accent">quality gates</span></h3>
+    <p class="gates-dek">Every Operator output passes a discipline gate before it ships. The gates are productized — they show up in PRAGMA's client deliverables as "this passed the Quality Triangle" / "this passed the Creative Board." Competitors don't gate. PRAGMA does. That's the credibility moat.</p>
+
+    <div class="gates-grid">
+      <div class="gate">
+        <div class="gate-name">▦ Quality Triangle</div>
+        <div class="gate-pillars">Skeptic <span class="accent">·</span> Architect <span class="accent">·</span> Security</div>
+        <div class="gate-body">
+          Already live inside the Construct (originated in <code>construct-forge</code>, now in <code>praxis/quality_triangle.py</code>). Applies to every strategy, ops, finance, research, or analysis deliverable. <strong>Skeptic</strong> pressure-tests the claims. <strong>Architect</strong> checks it fits the client's actual operating model. <strong>Security</strong> screens for legal / financial / brand / operational risk. Fails → log, don't ship.
+        </div>
+      </div>
+      <div class="gate">
+        <div class="gate-name">▦ Creative Board</div>
+        <div class="gate-pillars">Vision <span class="accent">·</span> Craft <span class="accent">·</span> Brand-fit</div>
+        <div class="gate-body">
+          Vector's equivalent of Quality Triangle for visual / creative deliverables. <strong>Vision</strong> — does it carry the core idea? <strong>Craft</strong> — typography, color, motion, layout, execution quality. <strong>Brand-fit</strong> — does it match the institutional voice + locked design system? Applies to logos, decks, motion graphics, website builds, social graphics, sign proofs. Fails any pillar → log, don't ship.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2>The Self-Improving <span class="accent">Loop</span></h2>
+  <p class="sec-dek">Every Operator routes its corrections, mistakes, and lessons through the Self-Improving Loop. Same loop, every Operator. Corrections become updates; updates compound.</p>
+  <p class="op-charter" style="font-size:15px;max-width:760px;">When Bobby corrects an Operator's output, the correction routes through the Loop and updates the relevant skill or memory file. Operators that get corrected don't repeat mistakes; Operators that don't get corrected drift. The Loop is non-negotiable in every PRAGMA engagement — without it, the system degrades.</p>
+
+  <div class="footer">
+    <span>The Construct<span class="dot">.</span> · Operator Registry · 2026-05-20</span>
+    <span>Internal · noindex · do not link from prag-ma.ai</span>
+  </div>
+
+</div>
+
+</body>
+</html>

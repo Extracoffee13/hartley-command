@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NASA/SpaceX Rocket — Hartley Capital</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 375px; height: 812px; overflow: hidden; background: #000; }
+canvas { display: block; }
+</style>
+</head>
+<body>
+<canvas id="c" width="375" height="812"></canvas>
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+const W = 375, H = 812;
+const LOOP_DURATION = 15000;
+let startTime = null;
+
+// Stars
+const stars = [];
+for (let i = 0; i < 200; i++) {
+  stars.push({
+    x: Math.random() * W,
+    y: Math.random() * H,
+    size: Math.random() * 2 + 0.5,
+    brightness: Math.random() * 0.8 + 0.2,
+    twinkleSpeed: Math.random() * 3 + 1,
+    twinkleOffset: Math.random() * Math.PI * 2
+  });
+}
+
+// Exhaust particles
+class Particle {
+  constructor(x, y) {
+    this.x = x + (Math.random() - 0.5) * 20;
+    this.y = y + Math.random() * 10;
+    this.vx = (Math.random() - 0.5) * 1.5;
+    this.vy = Math.random() * 3 + 2;
+    this.life = 1;
+    this.decay = Math.random() * 0.02 + 0.01;
+    this.size = Math.random() * 6 + 3;
+    this.type = Math.random(); // 0-0.3 bright, 0.3-0.7 orange, 0.7-1 smoke
+  }
+  update() {
+    this.x += this.vx;
+    this.y += this.vy;
+    this.vy *= 0.99;
+    this.vx *= 0.98;
+    this.life -= this.decay;
+    this.size *= 1.01;
+  }
+  draw(ctx) {
+    if (this.life <= 0) return;
+    let alpha = this.life * 0.7;
+    let r, g, b;
+    if (this.type < 0.3) {
+      r = 255; g = 255; b = 240;
+    } else if (this.type < 0.7) {
+      r = 255; g = 180 + this.life * 60; b = 50 * this.life;
+    } else {
+      r = 180; g = 170; b = 160;
+      alpha *= 0.5;
+    }
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${r},${g},${b},${alpha})`;
+    ctx.fill();
+  }
+}
+
+let particles = [];
+
+function drawBackground(t, progress) {
+  // Atmosphere to space transition
+  const atmosphereAlpha = Math.max(0, 1 - progress * 1.8);
+
+  // Base: dark space
+  const grd = ctx.createLinearGradient(0, 0, 0, H);
+  grd.addColorStop(0, '#020010');
+  grd.addColorStop(0.4, `rgba(5, 5, 30, 1)`);
+  grd.addColorStop(1, `rgba(8, 8, 40, 1)`);
+  ctx.fillStyle = grd;
+  ctx.fillRect(0, 0, W, H);
+
+  // Atmospheric blue overlay (fades out)
+  if (atmosphereAlpha > 0) {
+    const atm = ctx.createLinearGradient(0, 0, 0, H);
+    atm.addColorStop(0, `rgba(10, 20, 60, ${atmosphereAlpha * 0.3})`);
+    atm.addColorStop(0.5, `rgba(30, 60, 120, ${atmosphereAlpha * 0.5})`);
+    atm.addColorStop(0.8, `rgba(50, 100, 180, ${atmosphereAlpha * 0.6})`);
+    atm.addColorStop(1, `rgba(80, 140, 220, ${atmosphereAlpha * 0.4})`);
+    ctx.fillStyle = atm;
+    ctx.fillRect(0, 0, W, H);
+  }
+
+  // Stars — more visible as atmosphere fades
+  const starAlpha = Math.min(1, progress * 2);
+  for (const s of stars) {
+    const twinkle = Math.sin(t * s.twinkleSpeed + s.twinkleOffset) * 0.3 + 0.7;
+    const a = s.brightness * twinkle * starAlpha;
+    // Parallax — stars drift down slowly
+    let sy = (s.y + progress * 80 * s.brightness) % H;
+    ctx.beginPath();
+    ctx.arc(s.x, sy, s.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255, 255, 255, ${a})`;
+    ctx.fill();
+    // Subtle glow on brighter stars
+    if (s.size > 1.5) {
+      ctx.beginPath();
+      ctx.arc(s.x, sy, s.size * 3, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(200, 210, 255, ${a * 0.1})`;
+      ctx.fill();
+    }
+  }
+}
+
+function drawRocket(rocketX, rocketY, t) {
+  const bodyW = 28;
+  const bodyH = 210;
+  const noseH = 50;
+  const bx = rocketX - bodyW / 2;
+  const by = rocketY;
+
+  // === ENGINE GLOW on rocket body from below ===
+  const glowGrd = ctx.createRadialGradient(rocketX, by + bodyH + 10, 5, rocketX, by + bodyH + 10, 120);
+  glowGrd.addColorStop(0, 'rgba(255, 200, 100, 0.15)');
+  glowGrd.addColorStop(0.5, 'rgba(255, 150, 50, 0.05)');
+  glowGrd.addColorStop(1, 'rgba(255, 100, 0, 0)');
+  ctx.fillStyle = glowGrd;
+  ctx.fillRect(rocketX - 120, by + bodyH - 100, 240, 200);
+
+  // === ROCKET BODY ===
+  // Main cylinder — white with subtle shading
+  const bodyGrd = ctx.createLinearGradient(bx, 0, bx + bodyW, 0);
+  bodyGrd.addColorStop(0, '#d8d8d8');
+  bodyGrd.addColorStop(0.2, '#f0f0f0');
+  bodyGrd.addColorStop(0.5, '#ffffff');
+  bodyGrd.addColorStop(0.8, '#f0f0f0');
+  bodyGrd.addColorStop(1, '#d0d0d0');
+
+  ctx.fillStyle = bodyGrd;
+  ctx.fillRect(bx, by + noseH, bodyW, bodyH - noseH);
+
+  // === NOSE CONE ===
+  ctx.beginPath();
+  ctx.moveTo(rocketX, by);
+  ctx.quadraticCurveTo(rocketX + bodyW * 0.55, by + noseH * 0.7, bx + bodyW, by + noseH);
+  ctx.lineTo(bx, by + noseH);
+  ctx.quadraticCurveTo(rocketX - bodyW * 0.55, by + noseH * 0.7, rocketX, by);
+  ctx.closePath();
+  const noseGrd = ctx.createLinearGradient(bx, 0, bx + bodyW, 0);
+  noseGrd.addColorStop(0, '#d0d0d0');
+  noseGrd.addColorStop(0.3, '#e8e8e8');
+  noseGrd.addColorStop(0.5, '#f5f5f5');
+  noseGrd.addColorStop(0.7, '#e8e8e8');
+  noseGrd.addColorStop(1, '#c8c8c8');
+  ctx.fillStyle = noseGrd;
+  ctx.fill();
+
+  // Nose tip highlight
+  ctx.beginPath();
+  ctx.moveTo(rocketX, by);
+  ctx.quadraticCurveTo(rocketX + 3, by + 15, rocketX + 2, by + 25);
+  ctx.lineTo(rocketX - 1, by + 25);
+  ctx.quadraticCurveTo(rocketX - 2, by + 15, rocketX, by);
+  ctx.fillStyle = 'rgba(255,255,255,0.6)';
+  ctx.fill();
+
+  // === INTERSTAGE BANDS ===
+  ctx.fillStyle = '#888';
+  ctx.fillRect(bx - 1, by + noseH - 2, bodyW + 2, 3);
+  ctx.fillRect(bx - 1, by + noseH + 40, bodyW + 2, 2);
+  ctx.fillRect(bx - 1, by + bodyH - 50, bodyW + 2, 3);
+
+  // === AMERICAN FLAG DETAIL ===
+  const flagX = bx + 5;
+  const flagY = by + noseH + 15;
+  const flagW = 18;
+  const flagH = 12;
+  // Stripes
+  for (let i = 0; i < 7; i++) {
+    ctx.fillStyle = i % 2 === 0 ? '#cc3333' : '#ffffff';
+    ctx.fillRect(flagX, flagY + i * (flagH / 7), flagW, flagH / 7 + 0.5);
+  }
+  // Blue field
+  ctx.fillStyle = '#334488';
+  ctx.fillRect(flagX, flagY, flagW * 0.45, flagH * 0.57);
+
+  // === SpaceX-style text ===
+  ctx.save();
+  ctx.font = 'bold 7px Arial, sans-serif';
+  ctx.fillStyle = 'rgba(100,100,100,0.6)';
+  ctx.translate(rocketX + 4, by + bodyH - 60);
+  ctx.rotate(-Math.PI / 2);
+  ctx.fillText('HARTLEY', 0, 0);
+  ctx.restore();
+
+  // === GRID FINS (near top) ===
+  const finY = by + noseH + 50;
+  // Left fin
+  ctx.beginPath();
+  ctx.moveTo(bx, finY);
+  ctx.lineTo(bx - 14, finY - 5);
+  ctx.lineTo(bx - 14, finY + 15);
+  ctx.lineTo(bx, finY + 12);
+  ctx.closePath();
+  ctx.fillStyle = '#666';
+  ctx.fill();
+  ctx.strokeStyle = '#888';
+  ctx.lineWidth = 0.5;
+  for (let i = 0; i < 4; i++) {
+    ctx.beginPath();
+    ctx.moveTo(bx - 13, finY - 3 + i * 5);
+    ctx.lineTo(bx - 1, finY - 1 + i * 4);
+    ctx.stroke();
+  }
+  // Right fin
+  ctx.beginPath();
+  ctx.moveTo(bx + bodyW, finY);
+  ctx.lineTo(bx + bodyW + 14, finY - 5);
+  ctx.lineTo(bx + bodyW + 14, finY + 15);
+  ctx.lineTo(bx + bodyW, finY + 12);
+  ctx.closePath();
+  ctx.fillStyle = '#666';
+  ctx.fill();
+  for (let i = 0; i < 4; i++) {
+    ctx.beginPath();
+    ctx.moveTo(bx + bodyW + 13, finY - 3 + i * 5);
+    ctx.lineTo(bx + bodyW + 1, finY - 1 + i * 4);
+    ctx.stroke();
+  }
+
+  // === LANDING LEGS (folded, near bottom) ===
+  const legY = by + bodyH - 15;
+  ctx.strokeStyle = '#777';
+  ctx.lineWidth = 2;
+  // Left
+  ctx.beginPath();
+  ctx.moveTo(bx, legY);
+  ctx.lineTo(bx - 8, legY + 20);
+  ctx.stroke();
+  // Right
+  ctx.beginPath();
+  ctx.moveTo(bx + bodyW, legY);
+  ctx.lineTo(bx + bodyW + 8, legY + 20);
+  ctx.stroke();
+
+  // === ENGINE BELL / NOZZLE ===
+  const nozzleTop = by + bodyH;
+  const nozzleH = 22;
+  ctx.beginPath();
+  ctx.moveTo(bx + 3, nozzleTop);
+  ctx.lineTo(bx - 6, nozzleTop + nozzleH);
+  ctx.lineTo(bx + bodyW + 6, nozzleTop + nozzleH);
+  ctx.lineTo(bx + bodyW - 3, nozzleTop);
+  ctx.closePath();
+  const nozGrd = ctx.createLinearGradient(bx, nozzleTop, bx, nozzleTop + nozzleH);
+  nozGrd.addColorStop(0, '#888');
+  nozGrd.addColorStop(0.5, '#666');
+  nozGrd.addColorStop(1, '#555');
+  ctx.fillStyle = nozGrd;
+  ctx.fill();
+
+  // Nozzle interior
+  ctx.beginPath();
+  ctx.moveTo(bx + 6, nozzleTop + 3);
+  ctx.lineTo(bx, nozzleTop + nozzleH - 2);
+  ctx.lineTo(bx + bodyW, nozzleTop + nozzleH - 2);
+  ctx.lineTo(bx + bodyW - 6, nozzleTop + 3);
+  ctx.closePath();
+  const intGrd = ctx.createLinearGradient(0, nozzleTop, 0, nozzleTop + nozzleH);
+  intGrd.addColorStop(0, '#333');
+  intGrd.addColorStop(1, '#ff8800');
+  ctx.fillStyle = intGrd;
+  ctx.fill();
+
+  // === EXHAUST PLUME ===
+  const exX = rocketX;
+  const exY = nozzleTop + nozzleH;
+  const flicker = Math.sin(t * 25) * 3 + Math.sin(t * 37) * 2;
+  const flicker2 = Math.cos(t * 19) * 4;
+
+  // Outer plume — wide, transparent orange
+  const outerLen = 180 + flicker * 5;
+  const outerGrd = ctx.createLinearGradient(0, exY, 0, exY + outerLen);
+  outerGrd.addColorStop(0, 'rgba(255, 160, 30, 0.6)');
+  outerGrd.addColorStop(0.3, 'rgba(255, 120, 20, 0.35)');
+  outerGrd.addColorStop(0.7, 'rgba(255, 80, 10, 0.1)');
+  outerGrd.addColorStop(1, 'rgba(255, 50, 0, 0)');
+  ctx.beginPath();
+  ctx.moveTo(exX - 18, exY);
+  ctx.quadraticCurveTo(exX - 25 + flicker2, exY + outerLen * 0.5, exX + flicker, exY + outerLen);
+  ctx.quadraticCurveTo(exX + 25 - flicker2, exY + outerLen * 0.5, exX + 18, exY);
+  ctx.closePath();
+  ctx.fillStyle = outerGrd;
+  ctx.fill();
+
+  // Mid plume — gold/yellow
+  const midLen = 140 + flicker * 3;
+  const midGrd = ctx.createLinearGradient(0, exY, 0, exY + midLen);
+  midGrd.addColorStop(0, 'rgba(255, 220, 100, 0.8)');
+  midGrd.addColorStop(0.3, 'rgba(255, 180, 50, 0.5)');
+  midGrd.addColorStop(0.7, 'rgba(255, 130, 20, 0.15)');
+  midGrd.addColorStop(1, 'rgba(255, 80, 0, 0)');
+  ctx.beginPath();
+  ctx.moveTo(exX - 12, exY);
+  ctx.quadraticCurveTo(exX - 16 + flicker2 * 0.5, exY + midLen * 0.5, exX + flicker * 0.5, exY + midLen);
+  ctx.quadraticCurveTo(exX + 16 - flicker2 * 0.5, exY + midLen * 0.5, exX + 12, exY);
+  ctx.closePath();
+  ctx.fillStyle = midGrd;
+  ctx.fill();
+
+  // Core plume — white hot
+  const coreLen = 90 + flicker * 2;
+  const coreGrd = ctx.createLinearGradient(0, exY, 0, exY + coreLen);
+  coreGrd.addColorStop(0, 'rgba(255, 255, 255, 0.95)');
+  coreGrd.addColorStop(0.3, 'rgba(255, 255, 220, 0.7)');
+  coreGrd.addColorStop(0.6, 'rgba(255, 240, 180, 0.3)');
+  coreGrd.addColorStop(1, 'rgba(255, 200, 100, 0)');
+  ctx.beginPath();
+  ctx.moveTo(exX - 7, exY);
+  ctx.quadraticCurveTo(exX - 8 + flicker2 * 0.2, exY + coreLen * 0.5, exX, exY + coreLen);
+  ctx.quadraticCurveTo(exX + 8 - flicker2 * 0.2, exY + coreLen * 0.5, exX + 7, exY);
+  ctx.closePath();
+  ctx.fillStyle = coreGrd;
+  ctx.fill();
+
+  // Engine glow circle
+  ctx.beginPath();
+  ctx.arc(exX, exY, 10, 0, Math.PI * 2);
+  const egGrd = ctx.createRadialGradient(exX, exY, 0, exX, exY, 10);
+  egGrd.addColorStop(0, 'rgba(255,255,255,1)');
+  egGrd.addColorStop(0.5, 'rgba(255,220,150,0.6)');
+  egGrd.addColorStop(1, 'rgba(255,150,50,0)');
+  ctx.fillStyle = egGrd;
+  ctx.fill();
+
+  return { exX, exY };
+}
+
+function animate(timestamp) {
+  if (!startTime) startTime = timestamp;
+  let elapsed = (timestamp - startTime) % LOOP_DURATION;
+  let progress = elapsed / LOOP_DURATION; // 0 to 1
+  let t = elapsed / 1000; // seconds
+
+  ctx.clearRect(0, 0, W, H);
+
+  // Draw background with atmosphere-to-space transition
+  drawBackground(t, progress);
+
+  // Rocket position — slow upward drift
+  const rocketX = W / 2;
+  const baseY = 420; // starting Y for rocket top
+  const rocketY = baseY - progress * 80; // slow upward movement
+
+  // Spawn exhaust particles
+  const nozzleBottomY = rocketY + 210 + 22; // body + nozzle
+  if (Math.random() < 0.6) {
+    particles.push(new Particle(rocketX, nozzleBottomY + 5));
+  }
+  if (Math.random() < 0.3) {
+    particles.push(new Particle(rocketX, nozzleBottomY + 15));
+  }
+
+  // Update and draw particles (behind rocket)
+  particles = particles.filter(p => p.life > 0);
+  for (const p of particles) {
+    p.update();
+    p.draw(ctx);
+  }
+
+  // Draw rocket
+  drawRocket(rocketX, rocketY, t);
+
+  // Ambient light bloom around engine area
+  const bloomGrd = ctx.createRadialGradient(rocketX, nozzleBottomY, 0, rocketX, nozzleBottomY, 200);
+  bloomGrd.addColorStop(0, 'rgba(255, 180, 80, 0.06)');
+  bloomGrd.addColorStop(0.5, 'rgba(255, 120, 40, 0.02)');
+  bloomGrd.addColorStop(1, 'rgba(255, 80, 0, 0)');
+  ctx.fillStyle = bloomGrd;
+  ctx.fillRect(0, nozzleBottomY - 200, W, 400);
+
+  // Vignette
+  const vigGrd = ctx.createRadialGradient(W/2, H/2, H * 0.35, W/2, H/2, H * 0.7);
+  vigGrd.addColorStop(0, 'rgba(0,0,0,0)');
+  vigGrd.addColorStop(1, 'rgba(0,0,0,0.3)');
+  ctx.fillStyle = vigGrd;
+  ctx.fillRect(0, 0, W, H);
+
+  requestAnimationFrame(animate);
+}
+
+requestAnimationFrame(animate);
+</script>
+</body>
+</html>

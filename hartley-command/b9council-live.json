@@ -1,0 +1,49 @@
+{
+  "_meta": {
+    "purpose": "Live metrics for the Brand 9 Council — public Council product on /brand-lab-ai/. Sourced from WP wp-content/uploads/b9council/sessions.jsonl, synced via tools/sync-council-sessions.py.",
+    "wp_sessions_endpoint": "https://brand9signs.com/wp-content/uploads/b9council/sessions.jsonl",
+    "local_sync_path": "outputs/b9council/sessions.jsonl",
+    "last_sync_iso": "2026-06-24T12:26:06-04:00",
+    "first_session_iso": "2026-05-07T19:04:19+00:00",
+    "schema_note": "Real schema uses {hash, created_at, ip_md5, input, verdict}. Sync script tolerates the original draft schema fields too."
+  },
+  "status": "LIVE",
+  "deploy_date_target": "2026-05-09",
+  "sessions_total": 2,
+  "sessions_last_7_days": 0,
+  "sessions_last_30_days": 0,
+  "sessions_per_day_avg_30d": 0.0,
+  "distinct_ips_last_7_days": 0,
+  "distinct_ips_total": 1,
+  "share_rate_pct": null,
+  "verdict_distribution": {
+    "GO": 0,
+    "HOLD": 0,
+    "KILL": 0,
+    "ITERATE": 1,
+    "NEEDS_DATA": 1
+  },
+  "foreman_violation_rate_pct": 0.0,
+  "inbound_leads_traceable": 0,
+  "kc_council_day7": {
+    "target": 50,
+    "current": 2,
+    "metric": "sessions",
+    "deadline_iso": "2026-05-16",
+    "pass": false
+  },
+  "kc_council_day30": {
+    "target": 500,
+    "current": 0,
+    "metric": "indexed_council_urls",
+    "deadline_iso": "2026-06-08",
+    "pass": false
+  },
+  "kc_council_day60": {
+    "target": 1,
+    "current": 0,
+    "metric": "inbound_leads_traceable_to_session",
+    "deadline_iso": "2026-07-08",
+    "pass": false
+  }
+}
