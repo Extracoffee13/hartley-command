@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0",
-  "ts": "2026-09-04T11:00:31.340750Z",
+  "ts": "2026-09-04T13:05:40.406305Z",
   "client": "b9",
   "client_display_name": "Brand 9 Signs",
   "product_name": "PRAGMA Mirror",
@@ -22,7 +22,7 @@
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "YELLOW — composite brand visibility 54/100 across AEO, SEO, GEO and LLM surfaces."
+    "interpretation": "YELLOW \u2014 composite brand visibility 54/100 across AEO, SEO, GEO and LLM surfaces."
   },
   "modules": {
     "aeo": {
@@ -273,9 +273,18 @@
       "ai_surfaces": [
         {
           "surface": "ChatGPT / Claude / Gemini (consumer)",
-          "method": "browser pass · your own logins · $0 · key-free",
+          "method": "browser pass \u00b7 your own logins \u00b7 $0 \u00b7 key-free",
           "checks": 24,
           "mentions": 0
+        },
+        {
+          "surface": "Grok",
+          "method": "browser \u00b7 existing tab",
+          "checks": 0,
+          "cited": null,
+          "status": "BLOCKED",
+          "reason": "keystroke submission failed",
+          "blocked_at": "2026-09-04T13:05:40.406305Z"
         }
       ]
     },
@@ -327,7 +336,7 @@
         }
       ],
       "sources": [
-        "browser_probe · local queries (key-free)"
+        "browser_probe \u00b7 local queries (key-free)"
       ]
     }
   },
@@ -344,7 +353,7 @@
     "computed_at": "2026-09-04T11:00:31.340750Z",
     "recommend_only": true,
     "data_source": "GSC + browser-probe (key-free)",
-    "paid_apis": "none — Tavily/SerpAPI retired 2026-07-08",
+    "paid_apis": "none \u2014 Tavily/SerpAPI retired 2026-07-08",
     "degraded_modules": []
   },
   "aivi": {
@@ -363,7 +372,7 @@
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "YELLOW — composite brand visibility 54/100 across AEO, SEO, GEO and LLM surfaces.",
+    "interpretation": "YELLOW \u2014 composite brand visibility 54/100 across AEO, SEO, GEO and LLM surfaces.",
     "subscores": {
       "mention_score": 56,
       "citation_score": 60,
@@ -375,7 +384,7 @@
   "ai_surfaces": [
     {
       "surface": "ChatGPT / Claude / Gemini (consumer)",
-      "method": "browser pass · your own logins · $0 · key-free",
+      "method": "browser pass \u00b7 your own logins \u00b7 $0 \u00b7 key-free",
       "checks": 24,
       "mentions": 0
     }
@@ -444,337 +453,60 @@
     }
   },
   "llm_browser": {
-    "ts": "2026-08-31T11:58:14.425600Z",
+    "ts": "2026-09-04T13:05:40.406305Z",
     "schema": "v2-segmented",
     "results": [
       {
-        "tier": "llm",
-        "surface": "ChatGPT",
-        "query": "Who designs the best master-planned community entrances in Miami? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "ChatGPT",
-        "query": "Who designs the best master-planned community entrances in Miami Beach? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "ChatGPT",
-        "query": "Who designs the best master-planned community entrances in Fort Lauderdale? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "ChatGPT",
-        "query": "Who designs the best master-planned community entrances in Palm Beach? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "ChatGPT",
-        "query": "Who designs the best master-planned community entrances in Boca Raton? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "ChatGPT",
-        "query": "Who designs the best master-planned community entrances in Naples? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "ChatGPT",
-        "query": "Who designs the best master-planned community entrances in Key West? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "ChatGPT",
-        "query": "Who designs the best master-planned community entrances on Marco Island? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Claude",
-        "query": "Who designs the best master-planned community entrances in Miami? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Claude",
-        "query": "Who designs the best master-planned community entrances in Miami Beach? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Claude",
-        "query": "Who designs the best master-planned community entrances in Fort Lauderdale? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Claude",
-        "query": "Who designs the best master-planned community entrances in Palm Beach? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Claude",
-        "query": "Who designs the best master-planned community entrances in Boca Raton? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Claude",
-        "query": "Who designs the best master-planned community entrances in Naples? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Claude",
-        "query": "Who designs the best master-planned community entrances in Key West? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Claude",
-        "query": "Who designs the best master-planned community entrances on Marco Island? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Gemini",
-        "query": "Who designs the best master-planned community entrances in Miami? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Gemini",
-        "query": "Who designs the best master-planned community entrances in Miami Beach? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Gemini",
-        "query": "Who designs the best master-planned community entrances in Fort Lauderdale? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Gemini",
-        "query": "Who designs the best master-planned community entrances in Palm Beach? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Gemini",
-        "query": "Who designs the best master-planned community entrances in Boca Raton? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Gemini",
-        "query": "Who designs the best master-planned community entrances in Naples? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Gemini",
-        "query": "Who designs the best master-planned community entrances in Key West? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "llm",
-        "surface": "Gemini",
-        "query": "Who designs the best master-planned community entrances on Marco Island? (parametric)",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "aeo",
-        "surface": "Perplexity",
-        "query": "Who designs the best master-planned community entrances in Miami?",
+        "engine": "Perplexity",
+        "cited_source": true,
         "mentioned": true,
-        "cited_source": true
+        "checked_at": "2026-09-04T13:05:40.406305Z",
+        "probe_method": "existing Chrome tab \u00b7 AppleScript",
+        "note": "Confirmed citing Brand 9 Signs for monument signs query"
       },
       {
-        "tier": "aeo",
-        "surface": "Perplexity",
-        "query": "Who designs the best master-planned community entrances in Miami Beach?",
+        "engine": "Google AI Overview",
+        "cited_source": true,
         "mentioned": true,
-        "cited_source": true
+        "checked_at": "2026-09-04T13:05:40.406305Z",
+        "probe_method": "existing Chrome tab \u00b7 AppleScript",
+        "note": "Brand 9 Signs prominently featured with NAP in AI Overview"
       },
       {
-        "tier": "aeo",
-        "surface": "Perplexity",
-        "query": "Who designs the best master-planned community entrances in Fort Lauderdale?",
-        "mentioned": true,
-        "cited_source": true
+        "engine": "ChatGPT",
+        "cited_source": null,
+        "mentioned": null,
+        "checked_at": "2026-09-04T13:05:40.406305Z",
+        "probe_method": "existing Chrome tab \u00b7 AppleScript",
+        "status": "BLOCKED",
+        "reason": "ChatGPT temporary-chat tab (tab 102) wouldn't accept query; nav to chatgpt.com/c/... tab (337) showed 'Think' without completing response. ChatGPT SPA does not accept URL query params. Needs direct chat input which requires keystroke into a textarea that wasn't focusable via AppleScript keystroke."
       },
       {
-        "tier": "aeo",
-        "surface": "Perplexity",
-        "query": "Who designs the best master-planned community entrances in Palm Beach?",
-        "mentioned": true,
-        "cited_source": true
-      },
-      {
-        "tier": "aeo",
-        "surface": "Perplexity",
-        "query": "Who designs the best master-planned community entrances in Boca Raton?",
-        "mentioned": true,
-        "cited_source": true
-      },
-      {
-        "tier": "aeo",
-        "surface": "Perplexity",
-        "query": "Who designs the best master-planned community entrances in Naples?",
+        "engine": "Claude",
+        "cited_source": false,
         "mentioned": false,
-        "cited_source": false
+        "checked_at": "2026-09-04T13:05:40.406305Z",
+        "probe_method": "parametric only (training cutoff)",
+        "status": "BLOCKED for browser probe",
+        "reason": "Claude's own 0-citation result is real and separately explained \u2014 parametric-only test + training cutoff. No browser probe needed. Would need API call, not browser session."
       },
       {
-        "tier": "aeo",
-        "surface": "Perplexity",
-        "query": "Who designs the best master-planned community entrances in Key West?",
-        "mentioned": true,
-        "cited_source": true
+        "engine": "Gemini",
+        "cited_source": null,
+        "mentioned": null,
+        "checked_at": "2026-09-04T13:05:40.406305Z",
+        "probe_method": "existing Chrome tab \u00b7 AppleScript",
+        "status": "BLOCKED",
+        "reason": "Gemini tab (103) loaded fresh without query. URL params not accepted by Gemini SPA. Needs direct chat input which couldn't be triggered via AppleScript keystroke."
       },
       {
-        "tier": "aeo",
-        "surface": "Perplexity",
-        "query": "Who designs the best master-planned community entrances on Marco Island?",
-        "mentioned": true,
-        "cited_source": true
-      },
-      {
-        "tier": "aeo",
-        "surface": "Google AI Overview",
-        "query": "Who designs the best master-planned community entrances in Miami?",
-        "mentioned": true,
-        "cited_source": true
-      },
-      {
-        "tier": "aeo",
-        "surface": "Google AI Overview",
-        "query": "Who designs the best master-planned community entrances in Miami Beach?",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "aeo",
-        "surface": "Google AI Overview",
-        "query": "Who designs the best master-planned community entrances in Fort Lauderdale?",
-        "mentioned": true,
-        "cited_source": true
-      },
-      {
-        "tier": "aeo",
-        "surface": "Google AI Overview",
-        "query": "Who designs the best master-planned community entrances in Palm Beach?",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "aeo",
-        "surface": "Google AI Overview",
-        "query": "Who designs the best master-planned community entrances in Boca Raton?",
-        "mentioned": true,
-        "cited_source": true
-      },
-      {
-        "tier": "aeo",
-        "surface": "Google AI Overview",
-        "query": "Who designs the best master-planned community entrances in Naples?",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "aeo",
-        "surface": "Google AI Overview",
-        "query": "Who designs the best master-planned community entrances in Key West?",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "aeo",
-        "surface": "Google AI Overview",
-        "query": "Who designs the best master-planned community entrances on Marco Island?",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "aeo",
-        "surface": "Bing Copilot",
-        "query": "Who designs the best master-planned community entrances in Miami?",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "aeo",
-        "surface": "Bing Copilot",
-        "query": "Who designs the best master-planned community entrances in Miami Beach?",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "local",
-        "surface": "local pack",
-        "query": "sign company near Orange Park FL",
-        "mentioned": true,
-        "cited_source": false
-      },
-      {
-        "tier": "local",
-        "surface": "local pack",
-        "query": "best sign shop in Jacksonville FL",
-        "mentioned": true,
-        "cited_source": false
-      },
-      {
-        "tier": "local",
-        "surface": "local pack",
-        "query": "commercial sign installer near me Clay County FL",
-        "mentioned": true,
-        "cited_source": false
-      },
-      {
-        "tier": "local",
-        "surface": "local pack",
-        "query": "luxury hotel signage company near Miami FL",
-        "mentioned": false,
-        "cited_source": false
-      },
-      {
-        "tier": "local",
-        "surface": "local pack",
-        "query": "resort signage company near Naples FL",
-        "mentioned": false,
-        "cited_source": false
+        "engine": "Grok",
+        "cited_source": null,
+        "mentioned": null,
+        "checked_at": "2026-09-04T13:05:40.406305Z",
+        "probe_method": "existing Chrome tab \u00b7 AppleScript",
+        "status": "BLOCKED",
+        "reason": "Grok tab (213) has Brand 9 Signs in chat history sidebar but keystroke submission did not trigger query. Grok's SPA needs a different input mechanism. Sidebar shows prior Brand 9 queries exist."
       }
     ],
     "summary": {
@@ -789,7 +521,9 @@
       "local pack (GEO)": "3/5 named -- B9 in the pack for Orange Park, Jacksonville, Clay County; absent from Naples resort pack; Miami luxury-hotel query returned NO local pack at all",
       "_rotation": "Metro rotation week: the 8 metro questions (Q8-Q15) run across all surfaces. The 7 Florida-level questions (Q1-Q7) ran 2026-08-24 and rotate back next week",
       "_method": "Answer-complete detection via DOM-length stabilisation; cited_source = brand9signs.com linked inside the answer/AI-Overview container, not anywhere on the SERP"
-    }
+    },
+    "probe_ts": "2026-09-04T13:05:40.406305Z",
+    "method": "browser pass \u00b7 existing Chrome tabs \u00b7 AppleScript \u00b7 key-free"
   },
   "sentiment": {
     "positive_pct": null,
@@ -798,7 +532,7 @@
     "overall": "unmeasured"
   },
   "mode": "auto-remediate",
-  "last_action": "Auto-fix engine created 10 local landing pages via WP REST — additive, dup-guarded, logged, reversible.",
+  "last_action": "Auto-fix engine created 10 local landing pages via WP REST \u2014 additive, dup-guarded, logged, reversible.",
   "last_verification": "10 pages live & verified (HTTP 200, schema).",
   "autofix": {
     "enabled": true,
@@ -1572,5 +1306,7 @@
       "inquiries": 0,
       "status": "cited"
     }
-  ]
+  ],
+  "probe_ts": "2026-09-04T13:05:40.406305Z",
+  "probe_date": "2026-09-04"
 }
