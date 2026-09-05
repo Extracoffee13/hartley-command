@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0",
-  "ts": "2026-09-04T13:33:36.186559Z",
+  "ts": "2026-09-05T10:05:02.813388Z",
   "client": "b9",
   "client_display_name": "Brand 9 Signs",
   "product_name": "PRAGMA Mirror",
@@ -276,16 +276,6 @@
           "method": "browser pass \u00b7 your own logins \u00b7 $0 \u00b7 key-free",
           "checks": 24,
           "mentions": 0
-        },
-        {
-          "surface": "Grok",
-          "method": "browser \u00b7 JS click+type+click",
-          "checks": 1,
-          "cited": true,
-          "status": "active",
-          "reason": "keystroke submission failed",
-          "blocked_at": "2026-09-04T13:05:40.406305Z",
-          "checked_at": "2026-09-04T13:33:36.186559Z"
         }
       ]
     },
@@ -351,7 +341,7 @@
   "recommendations_high": 33,
   "_meta": {
     "writer": "pragma-mirror call (run.py)",
-    "computed_at": "2026-09-04T11:00:31.340750Z",
+    "computed_at": "2026-09-05T10:05:02.813388Z",
     "recommend_only": true,
     "data_source": "GSC + browser-probe (key-free)",
     "paid_apis": "none \u2014 Tavily/SerpAPI retired 2026-07-08",
@@ -430,7 +420,7 @@
     "google_ai_overview": {
       "cited": true,
       "query": "Who designs the best master-planned community entrances in Miami?",
-      "checked_at": "2026-09-04T11:00:31.340750Z",
+      "checked_at": "2026-09-05T10:05:02.813388Z",
       "mentions": 10,
       "citations": [
         "Who designs the best master-planned community entrances in Miami?",
@@ -454,58 +444,337 @@
     }
   },
   "llm_browser": {
-    "ts": "2026-09-04T13:33:36.186559Z",
+    "ts": "2026-08-31T11:58:14.425600Z",
     "schema": "v2-segmented",
     "results": [
       {
-        "engine": "Perplexity",
-        "cited_source": true,
-        "mentioned": true,
-        "checked_at": "2026-09-04T13:33:36.186559Z",
-        "probe_method": "existing Chrome tab \u00b7 AppleScript",
-        "note": "Confirmed citing Brand 9 Signs for monument signs query"
-      },
-      {
-        "engine": "Google AI Overview",
-        "cited_source": true,
-        "mentioned": true,
-        "checked_at": "2026-09-04T13:33:36.186559Z",
-        "probe_method": "existing Chrome tab \u00b7 AppleScript",
-        "note": "Brand 9 Signs prominently featured with NAP in AI Overview"
-      },
-      {
-        "engine": "ChatGPT",
-        "cited_source": null,
-        "mentioned": null,
-        "checked_at": "2026-09-04T13:33:36.186559Z",
-        "probe_method": "JS click on Think button, 2 attempts",
-        "status": "BLOCKED",
-        "reason": "ChatGPT free tier (user is Free plan) refused to answer. Both attempts ('Think' button click and fresh chat) landed on 'Upgrade to Plus' paywall after submitting the query. ChatGPT requires Plus subscription to generate responses for this type of query."
-      },
-      {
-        "engine": "Claude",
-        "cited_source": false,
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who designs the best master-planned community entrances in Miami? (parametric)",
         "mentioned": false,
-        "checked_at": "2026-09-04T13:33:36.186559Z",
-        "probe_method": "parametric only (training cutoff)",
-        "status": "BLOCKED for browser probe",
-        "reason": "Claude's 0-citation result is real and separately explained \u2014 parametric-only test + training cutoff. No browser probe needed. Would need API call, not browser session."
+        "cited_source": false
       },
       {
-        "engine": "Gemini",
-        "cited_source": true,
-        "mentioned": true,
-        "checked_at": "2026-09-04T13:33:36.186559Z",
-        "probe_method": "JS contenteditable set + JS send button click",
-        "note": "Brand 9 Signs listed as #3 in top Florida monument sign manufacturers. Detailed description: 'Specializing in low-profile, high-impact monument entries designed to blend with existing architecture. They manage the entire lifecycle\u2014from sightline engineering and municipal code permitting to concrete, aluminum, and illuminated letter fabrication.'"
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who designs the best master-planned community entrances in Miami Beach? (parametric)",
+        "mentioned": false,
+        "cited_source": false
       },
       {
-        "engine": "Grok",
-        "cited_source": true,
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who designs the best master-planned community entrances in Fort Lauderdale? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who designs the best master-planned community entrances in Palm Beach? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who designs the best master-planned community entrances in Boca Raton? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who designs the best master-planned community entrances in Naples? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who designs the best master-planned community entrances in Key West? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who designs the best master-planned community entrances on Marco Island? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Claude",
+        "query": "Who designs the best master-planned community entrances in Miami? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Claude",
+        "query": "Who designs the best master-planned community entrances in Miami Beach? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Claude",
+        "query": "Who designs the best master-planned community entrances in Fort Lauderdale? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Claude",
+        "query": "Who designs the best master-planned community entrances in Palm Beach? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Claude",
+        "query": "Who designs the best master-planned community entrances in Boca Raton? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Claude",
+        "query": "Who designs the best master-planned community entrances in Naples? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Claude",
+        "query": "Who designs the best master-planned community entrances in Key West? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Claude",
+        "query": "Who designs the best master-planned community entrances on Marco Island? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Gemini",
+        "query": "Who designs the best master-planned community entrances in Miami? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Gemini",
+        "query": "Who designs the best master-planned community entrances in Miami Beach? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Gemini",
+        "query": "Who designs the best master-planned community entrances in Fort Lauderdale? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Gemini",
+        "query": "Who designs the best master-planned community entrances in Palm Beach? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Gemini",
+        "query": "Who designs the best master-planned community entrances in Boca Raton? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Gemini",
+        "query": "Who designs the best master-planned community entrances in Naples? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Gemini",
+        "query": "Who designs the best master-planned community entrances in Key West? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "llm",
+        "surface": "Gemini",
+        "query": "Who designs the best master-planned community entrances on Marco Island? (parametric)",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who designs the best master-planned community entrances in Miami?",
         "mentioned": true,
-        "checked_at": "2026-09-04T13:33:36.186559Z",
-        "probe_method": "JS dismiss email dialog + JS contenteditable set + JS Submit button click",
-        "note": "Brand 9 Signs listed as a notable company. Detailed description: 'Family-owned since 1986. Strong focus on low-profile, architectural-style entry monuments for businesses, medical plazas, schools, churches, retail, and especially master-planned communities/homebuilders. They emphasize in-house design-to-install, strategy-led branding, and Florida-code compliance.'"
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who designs the best master-planned community entrances in Miami Beach?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who designs the best master-planned community entrances in Fort Lauderdale?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who designs the best master-planned community entrances in Palm Beach?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who designs the best master-planned community entrances in Boca Raton?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who designs the best master-planned community entrances in Naples?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who designs the best master-planned community entrances in Key West?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who designs the best master-planned community entrances on Marco Island?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Google AI Overview",
+        "query": "Who designs the best master-planned community entrances in Miami?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Google AI Overview",
+        "query": "Who designs the best master-planned community entrances in Miami Beach?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "aeo",
+        "surface": "Google AI Overview",
+        "query": "Who designs the best master-planned community entrances in Fort Lauderdale?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Google AI Overview",
+        "query": "Who designs the best master-planned community entrances in Palm Beach?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "aeo",
+        "surface": "Google AI Overview",
+        "query": "Who designs the best master-planned community entrances in Boca Raton?",
+        "mentioned": true,
+        "cited_source": true
+      },
+      {
+        "tier": "aeo",
+        "surface": "Google AI Overview",
+        "query": "Who designs the best master-planned community entrances in Naples?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "aeo",
+        "surface": "Google AI Overview",
+        "query": "Who designs the best master-planned community entrances in Key West?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "aeo",
+        "surface": "Google AI Overview",
+        "query": "Who designs the best master-planned community entrances on Marco Island?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "aeo",
+        "surface": "Bing Copilot",
+        "query": "Who designs the best master-planned community entrances in Miami?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "aeo",
+        "surface": "Bing Copilot",
+        "query": "Who designs the best master-planned community entrances in Miami Beach?",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "local",
+        "surface": "local pack",
+        "query": "sign company near Orange Park FL",
+        "mentioned": true,
+        "cited_source": false
+      },
+      {
+        "tier": "local",
+        "surface": "local pack",
+        "query": "best sign shop in Jacksonville FL",
+        "mentioned": true,
+        "cited_source": false
+      },
+      {
+        "tier": "local",
+        "surface": "local pack",
+        "query": "commercial sign installer near me Clay County FL",
+        "mentioned": true,
+        "cited_source": false
+      },
+      {
+        "tier": "local",
+        "surface": "local pack",
+        "query": "luxury hotel signage company near Miami FL",
+        "mentioned": false,
+        "cited_source": false
+      },
+      {
+        "tier": "local",
+        "surface": "local pack",
+        "query": "resort signage company near Naples FL",
+        "mentioned": false,
+        "cited_source": false
       }
     ],
     "summary": {
@@ -520,9 +789,7 @@
       "local pack (GEO)": "3/5 named -- B9 in the pack for Orange Park, Jacksonville, Clay County; absent from Naples resort pack; Miami luxury-hotel query returned NO local pack at all",
       "_rotation": "Metro rotation week: the 8 metro questions (Q8-Q15) run across all surfaces. The 7 Florida-level questions (Q1-Q7) ran 2026-08-24 and rotate back next week",
       "_method": "Answer-complete detection via DOM-length stabilisation; cited_source = brand9signs.com linked inside the answer/AI-Overview container, not anywhere on the SERP"
-    },
-    "probe_ts": "2026-09-04T13:33:36.186559Z",
-    "method": "browser pass \u00b7 real click+type+click via CDP \u00b7 JS verification"
+    }
   },
   "sentiment": {
     "positive_pct": null,
@@ -557,8 +824,8 @@
       "signage-clay-county"
     ]
   },
-  "last_scan_ts": "2026-09-04T11:00:31.340750Z",
-  "_mirrored_at": "2026-09-04T11:00:31.340750Z",
+  "last_scan_ts": "2026-09-05T10:05:02.813388Z",
+  "_mirrored_at": "2026-09-05T10:05:02.813388Z",
   "answer_units": [
     {
       "question": "What are the top home builder signage companies in Florida?",
@@ -1305,7 +1572,5 @@
       "inquiries": 0,
       "status": "cited"
     }
-  ],
-  "probe_ts": "2026-09-04T13:33:36.186559Z",
-  "probe_date": "2026-09-04"
+  ]
 }
