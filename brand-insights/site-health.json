@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-05T11:41:11.848028Z",
+  "generated": "2026-09-03T11:42:56.362923Z",
   "data_source": "PRAGMA Site-Health Operator \u2014 owned crawl (key-free); GSC enrichment pending project access",
   "version": "1.1.0",
   "phase": "1",
@@ -9,11 +9,11 @@
     "method": "Ahrefs-equivalent \u2014 base 100, deducted for real issues affecting SERP performance (owned crawl)",
     "deductions": {
       "title_tags_over_60_chars": {
-        "count": 181,
+        "count": 180,
         "penalty": 15
       },
       "meta_descriptions_over_155_chars": {
-        "count": 67,
+        "count": 66,
         "penalty": 15
       },
       "missing_h1_on_content_pages": {
@@ -36,35 +36,35 @@
     "final_score": 70.0
   },
   "crawl": {
-    "timestamp": "2026-09-05T11:41:11.848028Z",
-    "duration_s": 67.6,
-    "pages_crawled": 250,
+    "timestamp": "2026-09-03T11:42:56.362923Z",
+    "duration_s": 68.3,
+    "pages_crawled": 249,
     "status_codes": {
-      "200": 250
+      "200": 249
     },
-    "avg_load_time_s": 0.676,
+    "avg_load_time_s": 0.75,
     "slow_pages_over_1.5s": 0,
     "slow_pages_over_2.0s": 0,
     "slowest_pages": [
       {
-        "url": "https://brand9signs.com/product/cabinet-signs/",
-        "load_s": 1.293
+        "url": "https://brand9signs.com/product/quality-wall-signs/",
+        "load_s": 1.215
       },
       {
-        "url": "https://brand9signs.com/brand-9-now-serving-tampa-bay/",
-        "load_s": 0.631
+        "url": "https://brand9signs.com/pitch-deck-design-motion-graphics-two-assets-brands-get-wrong/",
+        "load_s": 0.663
       },
       {
-        "url": "https://brand9signs.com/product/lighted-business-signs/",
-        "load_s": 0.553
+        "url": "https://brand9signs.com/portfolio/",
+        "load_s": 0.647
       },
       {
-        "url": "https://brand9signs.com/insights/",
-        "load_s": 0.54
+        "url": "https://brand9signs.com/product/custom-parking-signs/",
+        "load_s": 0.621
       },
       {
-        "url": "https://brand9signs.com/product/home-builder-marketing/",
-        "load_s": 0.365
+        "url": "https://brand9signs.com/product/motion-graphics-brand-visuals/",
+        "load_s": 0.606
       }
     ]
   },
@@ -321,10 +321,6 @@
         "meta_len": 286
       },
       {
-        "url": "https://brand9signs.com/college-campus-signage-northeast-florida/",
-        "meta_len": 282
-      },
-      {
         "url": "https://brand9signs.com/product/hotel-signs/",
         "meta_len": 276
       },
@@ -551,6 +547,10 @@
       {
         "url": "https://brand9signs.com/case-studies/",
         "meta_len": 159
+      },
+      {
+        "url": "https://brand9signs.com/product/premium-graphic-design-services/",
+        "meta_len": 159
       }
     ],
     "multiple_h1": [],
@@ -558,12 +558,11 @@
     "not_found_404": []
   },
   "gsc": {
-    "window": "3 months (2026-06-03 to 2026-09-02)",
-    "clicks": 293,
-    "impressions": 74300,
-    "ctr": 0.4,
-    "avg_position": 30.6,
-    "indexed": 341,
+    "period": "last_3_months",
+    "total_clicks": 283,
+    "total_impressions": 72400,
+    "avg_ctr": 0.4,
+    "avg_position": 30.8,
     "top_pages": [
       {
         "url": "https://brand9signs.com/",
@@ -646,7 +645,58 @@
         "clicks": 2
       }
     ],
-    "top_queries": [],
+    "top_queries": [
+      {
+        "q": "brand 9 signs",
+        "clicks": 18,
+        "impr": 62
+      },
+      {
+        "q": "brand 9",
+        "clicks": 9,
+        "impr": 125
+      },
+      {
+        "q": "brand9",
+        "clicks": 7,
+        "impr": 57
+      },
+      {
+        "q": "school branding",
+        "clicks": 6,
+        "impr": 2083
+      },
+      {
+        "q": "school branding ideas",
+        "clicks": 3,
+        "impr": 445
+      },
+      {
+        "q": "margarets walk",
+        "clicks": 2,
+        "impr": 48
+      },
+      {
+        "q": "fort george island",
+        "clicks": 2,
+        "impr": 7
+      },
+      {
+        "q": "wayfinding",
+        "clicks": 1,
+        "impr": 1211
+      },
+      {
+        "q": "exterior wayfinding signage",
+        "clicks": 1,
+        "impr": 248
+      },
+      {
+        "q": "hibernia plantation",
+        "clicks": 1,
+        "impr": 96
+      }
+    ],
     "top_pages_source": "pragma-mirror gsc-pages-b9.json",
     "top_pages_captured": "2026-07-27T16:51:13Z"
   }

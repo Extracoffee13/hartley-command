@@ -1,16 +1,20 @@
 {
-  "generated": "2026-09-03T23:09:06",
+  "generated": "2026-08-02T08:37:44",
   "status": "WARN",
-  "issue_count": 1,
+  "issue_count": 2,
   "issues": [
+    {
+      "sev": "WARN",
+      "msg": "stale tile model-leaderboard.json: 95h old (max 72h)"
+    },
     {
       "sev": "WARN",
       "msg": "status flock_source reads a _RECOVERED backup: /Users/alfredpennyworth/AP-v2/_RECOVERED_2026-06-24/hartley-command/flock-classification.json"
     }
   ],
   "checks_run": [
-    "cron scripts checked (53 enabled jobs)",
-    "model availability checked (5 configured vs 49 live)",
+    "cron scripts checked (45 enabled jobs)",
+    "model availability checked (8 configured vs 34 live)",
     "tile freshness checked",
     "count source checked"
   ]
