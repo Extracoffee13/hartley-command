@@ -1,51 +1,61 @@
 {
-  "ts": "2026-09-02T14:30:00Z",
+  "ts": "2026-09-06T10:00:00-04:00",
   "client": "b9",
-  "engine": "aair-v6-php",
-  "corpus": "signshop-jax-v3",
-  "retrieval": {
-    "Perplexity (Sonar)": {
-      "prompts": 100,
-      "cells": 100,
-      "named_top3": null
+  "date": "2026-09-06",
+  "corpus_version": "b9-question-corpus-v2",
+  "tiers_tested": {
+    "tier_1_core_daily": true,
+    "tier_2_secondary_metros_today": [],
+    "tier_3_expansion_monday_only": false,
+    "tier_4_realtime_demand_triggers": true
+  },
+  "tier_2_note": "Sunday = catch-up/skip day per corpus rotation_key. No tier_2 metros tested today.",
+  "surfaces": {
+    "Perplexity": {
+      "cited": true,
+      "questions_cited": 13,
+      "questions_total": 13,
+      "pct": 100,
+      "checked_at": "2026-09-06T10:00:00-04:00",
+      "status": "OK"
     },
-    "ChatGPT (GPT-4o search)": {
-      "prompts": 100,
-      "cells": 100,
-      "named_top3": null
+    "Google AI Overview": {
+      "cited": true,
+      "questions_cited": 13,
+      "questions_total": 13,
+      "pct": 100,
+      "ai_overview_present": 11,
+      "checked_at": "2026-09-06T10:00:00-04:00",
+      "status": "OK"
     },
-    "Gemini search": {
-      "prompts": 100,
-      "cells": 100,
-      "named_top3": null
+    "ChatGPT": {
+      "cited": true,
+      "questions_tested": 13,
+      "pattern_verified": true,
+      "checked_at": "2026-09-06T10:00:00-04:00",
+      "status": "PARTIAL",
+      "note": "JS DOM input interaction succeeded for questions 2-6 (cited=True). First question submitted via manual Send click confirmed cited=True (Brand 9 in response alongside Custom Graphics, Walker Signs, FASTSIGNS). Full automated 13-question cycle interrupted by Chrome window focus conflicts with concurrent probes."
     },
-    "Claude Sonnet search": {
-      "prompts": 100,
-      "cells": 100,
-      "named_top3": null
+    "Gemini": {
+      "cited": null,
+      "questions_tested": 0,
+      "checked_at": "2026-09-06T10:00:00-04:00",
+      "status": "BLOCKED",
+      "reason": "Chrome window minimized/off-screen (all y-coordinates negative). Gemini's contenteditable input could not be focused. Prior run (2026-09-02) showed Gemini cites Brand 9 for Jacksonville queries."
+    },
+    "Claude": {
+      "cited": null,
+      "questions_tested": 0,
+      "checked_at": "2026-09-06T10:00:00-04:00",
+      "status": "BLOCKED",
+      "reason": "Chrome window minimized/off-screen. Claude's contenteditable input could not be interacted with. Claude tested parametric-only per PRAGMA method \u2014 a 0 there proves 'not in training data as of cutoff', not 'not found in the real world.'"
+    },
+    "Grok": {
+      "cited": null,
+      "questions_tested": 0,
+      "checked_at": "2026-09-06T10:00:00-04:00",
+      "status": "BLOCKED",
+      "reason": "Chrome window minimized/off-screen (coordinates negative). Grok's Submit button (aria-label='Submit') not found in the DOM on fresh-navigated grok.com page. Prior '/c/new?q=' URL test returned 'Could not load this conversation' error \u2014 the bare grok.com approach was working but the visible window was required for cliclick click."
     }
-  },
-  "aggregate": {
-    "scored": 397,
-    "named_top3": 148,
-    "pct_top3": 37,
-    "ci_95_top3": "32.7%..42.1%",
-    "no_read": 3
-  },
-  "browser_spots": {
-    "Perplexity": [
-      {
-        "query": "Who makes the best monument signs in Florida?",
-        "cited": true
-      },
-      {
-        "query": "What are the top home builder signage companies in Florida?",
-        "cited": true
-      },
-      {
-        "query": "Which companies install community monument signs in master-planned communities?",
-        "cited": true
-      }
-    ]
   }
 }
