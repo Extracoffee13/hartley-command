@@ -1,64 +1,405 @@
 {
-  "ts": "2026-09-07T08:00:00-04:00",
-  "client": "b9",
-  "date": "2026-09-07",
-  "corpus_version": "b9-question-corpus-v2",
-  "tiers_tested": {
-    "tier_1_core_daily": true,
-    "tier_2_secondary_metros_today": [
-      "Fernandina Beach FL",
-      "Yulee FL"
-    ],
-    "tier_3_expansion_monday_only": true,
-    "tier_4_realtime_demand_triggers": true
+ "ts": "2026-09-08T14:32:25Z",
+ "results": [
+  {
+   "tier": "aeo",
+   "surface": "Google AI Overview",
+   "query": "Who's the best sign company in Jacksonville FL?",
+   "mentioned": true,
+   "cited_source": true,
+   "checked_at": "2026-09-08T14:16:44Z"
   },
-  "tier_2_note": "Monday rotation: Fernandina Beach FL (index 0) + Yulee FL (index 1) per rotation_key",
-  "surfaces": {
-    "Perplexity": {
-      "cited": true,
-      "questions_cited": 6,
-      "questions_total": 6,
-      "pct": 100,
-      "checked_at": "2026-09-07T08:00:00-04:00",
-      "status": "OK"
-    },
-    "Google AI Overview": {
-      "cited": true,
-      "questions_cited": 1,
-      "questions_total": 1,
-      "pct": 100,
-      "ai_overview_present": true,
-      "checked_at": "2026-09-07T08:00:00-04:00",
-      "status": "OK"
-    },
-    "ChatGPT": {
-      "cited": true,
-      "questions_tested": 1,
-      "pattern_verified": true,
-      "checked_at": "2026-09-07T08:00:00-04:00",
-      "status": "OK",
-      "note": "Orange Park probe: Brand 9 ranked #1. Send-click interaction confirmed working."
-    },
-    "Gemini": {
-      "cited": true,
-      "questions_tested": 1,
-      "checked_at": "2026-09-07T08:00:00-04:00",
-      "status": "OK",
-      "note": "Orange Park probe: Brand 9 listed first in Gemini response with full description. click-verify-type-verify-click sequence confirmed working."
-    },
-    "Grok": {
-      "cited": true,
-      "questions_tested": 1,
-      "checked_at": "2026-09-07T08:00:00-04:00",
-      "status": "PARTIAL",
-      "note": "Orange Park probe: Brand 9 site opened (brand9signs.com), 95 sources, follow-up suggestions reference 'Compare CG Signs vs Brand 9 quotes'. Final answer still rendering after extended wait. Text-input and Submit click confirmed working."
-    },
-    "Claude": {
-      "cited": null,
-      "questions_tested": 0,
-      "checked_at": "2026-09-07T08:00:00-04:00",
-      "status": "PARAMETRIC_ONLY",
-      "reason": "Per PRAGMA method: Claude tested parametric-only. A 0 there proves 'not in training data as of cutoff', not 'not found in the real world.' Claude in-browser does not support web search for citation probes."
-    }
+  {
+   "tier": "aeo",
+   "surface": "Google AI Overview",
+   "query": "Who makes the best monument signs in Jacksonville FL?",
+   "mentioned": true,
+   "cited_source": true,
+   "checked_at": "2026-09-08T14:16:48Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Google AI Overview",
+   "query": "Best community / neighborhood entrance signage in Jacksonville FL?",
+   "mentioned": true,
+   "cited_source": true,
+   "checked_at": "2026-09-08T14:16:53Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Google AI Overview",
+   "query": "Who makes model-home & community signage for homebuilders in Jacksonville FL?",
+   "mentioned": true,
+   "cited_source": true,
+   "checked_at": "2026-09-08T14:16:57Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Google AI Overview",
+   "query": "Best custom LED-illuminated & dimensional-letter business signs in Jacksonville FL?",
+   "mentioned": true,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:17:01Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Google AI Overview",
+   "query": "Who does wayfinding signage for campuses & institutions in Jacksonville FL?",
+   "mentioned": true,
+   "cited_source": true,
+   "checked_at": "2026-09-08T14:17:06Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Google AI Overview",
+   "query": "Who's the best sign company in Orange Park / Clay County FL (HQ)?",
+   "mentioned": true,
+   "cited_source": true,
+   "checked_at": "2026-09-08T14:17:10Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Google AI Overview",
+   "query": "Who makes the best monument signs in Orange Park / Clay County FL (HQ)?",
+   "mentioned": true,
+   "cited_source": true,
+   "checked_at": "2026-09-08T14:17:14Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Google AI Overview",
+   "query": "Best community / neighborhood entrance signage in Orange Park / Clay County FL (HQ)?",
+   "mentioned": true,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:17:19Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Google AI Overview",
+   "query": "Who makes model-home & community signage for homebuilders in Orange Park / Clay County FL (HQ)?",
+   "mentioned": true,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:17:23Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Google AI Overview",
+   "query": "Best custom LED-illuminated & dimensional-letter business signs in Orange Park / Clay County FL (HQ)?",
+   "mentioned": true,
+   "cited_source": true,
+   "checked_at": "2026-09-08T14:17:27Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Google AI Overview",
+   "query": "Who does wayfinding signage for campuses & institutions in Orange Park / Clay County FL (HQ)?",
+   "mentioned": true,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:17:32Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Google AI Overview",
+   "query": "Who's the best sign company in Fleming Island FL?",
+   "mentioned": true,
+   "cited_source": true,
+   "checked_at": "2026-09-08T14:17:36Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Google AI Overview",
+   "query": "Who makes the best monument signs in Fleming Island FL?",
+   "mentioned": true,
+   "cited_source": true,
+   "checked_at": "2026-09-08T14:17:41Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Google AI Overview",
+   "query": "Best community / neighborhood entrance signage in Fleming Island FL?",
+   "mentioned": true,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:17:45Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Google AI Overview",
+   "query": "Who makes model-home & community signage for homebuilders in Fleming Island FL?",
+   "mentioned": true,
+   "cited_source": true,
+   "checked_at": "2026-09-08T14:17:49Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Google AI Overview",
+   "query": "Best custom LED-illuminated & dimensional-letter business signs in Fleming Island FL?",
+   "mentioned": true,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:17:54Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Google AI Overview",
+   "query": "Who does wayfinding signage for campuses & institutions in Fleming Island FL?",
+   "mentioned": true,
+   "cited_source": true,
+   "checked_at": "2026-09-08T14:17:58Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Google AI Overview",
+   "query": "Who's the best sign company in Green Cove Springs FL?",
+   "mentioned": true,
+   "cited_source": true,
+   "checked_at": "2026-09-08T14:18:02Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Google AI Overview",
+   "query": "Who makes the best monument signs in Green Cove Springs FL?",
+   "mentioned": true,
+   "cited_source": true,
+   "checked_at": "2026-09-08T14:18:06Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Google AI Overview",
+   "query": "Best community / neighborhood entrance signage in Green Cove Springs FL?",
+   "mentioned": true,
+   "cited_source": true,
+   "checked_at": "2026-09-08T14:18:11Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Google AI Overview",
+   "query": "Who makes model-home & community signage for homebuilders in Green Cove Springs FL?",
+   "mentioned": true,
+   "cited_source": true,
+   "checked_at": "2026-09-08T14:18:15Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Google AI Overview",
+   "query": "Best custom LED-illuminated & dimensional-letter business signs in Green Cove Springs FL?",
+   "mentioned": true,
+   "cited_source": true,
+   "checked_at": "2026-09-08T14:18:19Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Google AI Overview",
+   "query": "Who does wayfinding signage for campuses & institutions in Green Cove Springs FL?",
+   "mentioned": true,
+   "cited_source": true,
+   "checked_at": "2026-09-08T14:18:24Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Google AI Overview",
+   "query": "Who does donor wall / donor recognition signage for college campus buildings near Palatka FL?",
+   "mentioned": true,
+   "cited_source": true,
+   "checked_at": "2026-09-08T14:18:28Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Perplexity",
+   "query": "Who's the best sign company in Jacksonville FL?",
+   "mentioned": false,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:19:05Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Perplexity",
+   "query": "Who makes the best monument signs in Jacksonville FL?",
+   "mentioned": false,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:19:17Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Perplexity",
+   "query": "Best community / neighborhood entrance signage in Jacksonville FL?",
+   "mentioned": true,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:19:30Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Perplexity",
+   "query": "Who makes model-home & community signage for homebuilders in Jacksonville FL?",
+   "mentioned": true,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:19:42Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Perplexity",
+   "query": "Best custom LED-illuminated & dimensional-letter business signs in Jacksonville FL?",
+   "mentioned": false,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:19:55Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Perplexity",
+   "query": "Who does wayfinding signage for campuses & institutions in Jacksonville FL?",
+   "mentioned": false,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:20:07Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Perplexity",
+   "query": "Who's the best sign company in Orange Park / Clay County FL (HQ)?",
+   "mentioned": true,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:20:20Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Perplexity",
+   "query": "Who makes the best monument signs in Orange Park / Clay County FL (HQ)?",
+   "mentioned": true,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:20:32Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Perplexity",
+   "query": "Best community / neighborhood entrance signage in Orange Park / Clay County FL (HQ)?",
+   "mentioned": false,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:20:45Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Perplexity",
+   "query": "Who makes model-home & community signage for homebuilders in Orange Park / Clay County FL (HQ)?",
+   "mentioned": true,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:20:57Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Perplexity",
+   "query": "Best custom LED-illuminated & dimensional-letter business signs in Orange Park / Clay County FL (HQ)?",
+   "mentioned": false,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:21:09Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Perplexity",
+   "query": "Who does wayfinding signage for campuses & institutions in Orange Park / Clay County FL (HQ)?",
+   "mentioned": true,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:21:22Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Perplexity",
+   "query": "Who's the best sign company in Fleming Island FL?",
+   "mentioned": false,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:21:34Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Perplexity",
+   "query": "Who makes the best monument signs in Fleming Island FL?",
+   "mentioned": false,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:21:47Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Perplexity",
+   "query": "Best community / neighborhood entrance signage in Fleming Island FL?",
+   "mentioned": true,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:21:59Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Perplexity",
+   "query": "Who makes model-home & community signage for homebuilders in Fleming Island FL?",
+   "mentioned": true,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:22:11Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Perplexity",
+   "query": "Best custom LED-illuminated & dimensional-letter business signs in Fleming Island FL?",
+   "mentioned": false,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:22:24Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Perplexity",
+   "query": "Who does wayfinding signage for campuses & institutions in Fleming Island FL?",
+   "mentioned": false,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:22:36Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Perplexity",
+   "query": "Who's the best sign company in Green Cove Springs FL?",
+   "mentioned": false,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:22:48Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Perplexity",
+   "query": "Who makes the best monument signs in Green Cove Springs FL?",
+   "mentioned": false,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:23:01Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Perplexity",
+   "query": "Best community / neighborhood entrance signage in Green Cove Springs FL?",
+   "mentioned": false,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:23:13Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Perplexity",
+   "query": "Who makes model-home & community signage for homebuilders in Green Cove Springs FL?",
+   "mentioned": true,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:23:26Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Perplexity",
+   "query": "Best custom LED-illuminated & dimensional-letter business signs in Green Cove Springs FL?",
+   "mentioned": false,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:23:38Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Perplexity",
+   "query": "Who does wayfinding signage for campuses & institutions in Green Cove Springs FL?",
+   "mentioned": true,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:23:51Z"
+  },
+  {
+   "tier": "aeo",
+   "surface": "Perplexity",
+   "query": "Who does donor wall / donor recognition signage for college campus buildings near Palatka FL?",
+   "mentioned": false,
+   "cited_source": false,
+   "checked_at": "2026-09-08T14:24:03Z"
   }
+ ]
 }
