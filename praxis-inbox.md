@@ -2030,3 +2030,15 @@ lesson: WE CHECK WHAT IS NEWEST AND WE NEVER CHECK WHAT IS TRUE. Three misses in
 tags: pulse,mcp,ecosystem,daily,retraction,skill-doctor-shipped-sep-4,v2-1-261,version-misdated,newest-is-not-true,check-the-feature-not-the-changelog,claude-code-vs-cowork-gate,compliance-api,cowork-session-transcripts,tool-call-content,per-message-ids,incident-log-shipped-as-product,standing-action-a-schema,enterprise-only,build-or-buy,deadbugz-followthrough,cowork-built-in-browser,credential-isolated-profile,split-the-browsers,visibility-scan-confound,never-open-new-chrome,clay,115m-series-d,7-1b-valuation,agents-run-gtm,one-workflow-sold-horizontally,keystone,pragma-shape,context-engineering,arxiv-2603-09619,economy,provenance,isolation,130-skill-corpus,cadence-cost-sep-12
 confidence: 0.85
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-09-10
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (second fire of the day).
+outcome: Flagged Fable 5.1's documented 'answers from memory at low effort' behaviour plus the 0.025x cache-read price and High-vs-Medium effort defaults (re-prices standing action (e)); C2PA Content Credentials and text watermarking on Claude-produced assets (B9 / VironBox render-gate impact); the MCP roadmap naming our ~130-skill context tax as 'progressive discovery' and agent identity/DPoP as the upstream of standing action (b); and Wyre AI's $5M for traceable construction scopes as the closest adjacency to B9 takeoff. Standing action (c) due today, still unrun.
+lesson: When a failure repeats across different mechanisms and different days, read the settings and the vendor's behaviour notes before writing another rule — six fires diagnosed this scan's staleness as a discipline problem when Anthropic's own docs described it as a low-effort retrieval default.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
