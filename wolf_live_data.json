@@ -19,18 +19,18 @@
     "ACN": {
       "shares": 48,
       "avg_entry": 174.0,
-      "current": 178.7,
-      "unrealized_plpc": 0.027
+      "current": 178.03,
+      "unrealized_plpc": 0.0232
     }
   },
   "daily_pnl": {},
   "market_regime": {
-    "current": "moderate-bear",
-    "vix": 15.95,
-    "ten_year": 4.808,
-    "wti": 95.0,
-    "brent": 100.0,
-    "source": "Yahoo Finance Sep 9 13:00 ET"
+    "current": "bearish",
+    "vix": 17.5,
+    "ten_year": 4.92,
+    "wti": 96.8,
+    "brent": 101.5,
+    "source": "Motley Fool / 24/7 Wall St Sep 10 intraday (14:00 ET)"
   },
   "wolf_capabilities": {
     "capability_score": 0,
@@ -242,24 +242,26 @@
       }
     ]
   },
-  "last_updated": "2026-09-10T11:41:52.144218Z",
+  "last_updated": "2026-09-11T11:44:18.631301Z",
   "data_source": "state.json-fallback (Alpaca key absent)",
   "day": 129,
   "days_remaining": 0,
   "signal_overlay": {
-    "generated": "2026-08-30T00:00:00Z",
-    "source": "state.json direct read",
+    "generated": "2026-09-10T18:00:00Z",
+    "source": "Hermes cron live market refresh",
     "positions": [
       {
         "ticker": "ACN",
-        "current": 187.5,
-        "unrealized_plpc": 0.078,
+        "current": 178.03,
+        "unrealized_plpc": 0.0232,
         "flags": [],
-        "note": "Sep 2 intraday ~$187.50 (-0.3% from 188.09 close). ACN 48 @ $174.0 avg. BULLISH thesis holding."
+        "note": "Sep 10 afternoon selloff \u2014 S&P 7,599, 10Y 4.92%, ACN $178.03 (intraday ~$177.57). 48 @ $174 avg. BULLISH thesis compressing under macro. CPI tomorrow Sep 11, FOMC Sep 15-16. Regime BEARISH."
       }
     ],
     "book_flags": {
-      "divergence_warnings": [],
+      "divergence_warnings": [
+        "PPI 5.3% accelerating + 10Y 4.92% (10yr high) + oil >$100 + 5-day equity losing streak \u2014 macro headwinds independent of ACN fundamentals \u2014 regime escalated to BEARISH"
+      ],
       "capitulation_watch": []
     }
   },
@@ -267,8 +269,8 @@
     "active_theses": 1
   },
   "portfolio_value": 100749,
-  "generated_at": "2026-09-09T17:03:47Z",
-  "updated_at": "2026-09-09T17:03:47Z",
+  "generated_at": "2026-09-10T18:00:00Z",
+  "updated_at": "2026-09-10T18:00:00Z",
   "equity": 100749,
   "cash": 0,
   "active_theses": 1
