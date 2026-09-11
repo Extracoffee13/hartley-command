@@ -1,20 +1,14 @@
 {
   "schema_version": "2.0",
-  "ts": "2026-09-09T11:00:16.127789Z",
+  "ts": "2026-09-11T10:05:08.575736Z",
   "client": "b9",
   "client_display_name": "Brand 9 Signs",
   "product_name": "PRAGMA Mirror",
   "scan_status": "live",
   "visibility_score": {
     "composite": 54,
-    "live_pulse": 44,
+    "live_pulse": 37,
     "trend_7day": [
-      54,
-      54,
-      54,
-      54,
-      54,
-      54,
       54
     ],
     "color_threshold": {
@@ -352,57 +346,11 @@
       "note": "LLM degraded \u2014 browser-probe sidecar missing."
     },
     "geo": {
-      "score": 60,
-      "geofence": [
-        {
-          "query": "sign company near Orange Park FL",
-          "surface": "local pack",
-          "cited": true
-        },
-        {
-          "query": "best sign shop in Jacksonville FL",
-          "surface": "local pack",
-          "cited": true
-        },
-        {
-          "query": "commercial sign installer near me Clay County FL",
-          "surface": "local pack",
-          "cited": true
-        },
-        {
-          "query": "luxury hotel signage company near Miami FL",
-          "surface": "local pack",
-          "cited": false
-        },
-        {
-          "query": "resort signage company near Naples FL",
-          "surface": "local pack",
-          "cited": false
-        }
-      ],
-      "geotarget": [
-        {
-          "community": "eTown Jacksonville",
-          "status": "opportunity"
-        },
-        {
-          "community": "Shearwater St Johns",
-          "status": "opportunity"
-        },
-        {
-          "community": "RiverTown St Johns",
-          "status": "opportunity"
-        },
-        {
-          "community": "Tributary Yulee",
-          "status": "opportunity"
-        }
-      ],
-      "sources": [
-        "prior_scan"
-      ],
-      "note": "GEO pending \u2014 no local-tier probes in the segmented sidecar yet.",
-      "retained_from_prior": true
+      "score": null,
+      "geofence": [],
+      "geotarget": [],
+      "sources": [],
+      "note": "GEO pending \u2014 no local-tier probes in the segmented sidecar yet."
     }
   },
   "competitors": [
@@ -415,7 +363,7 @@
   "recommendations_high": 32,
   "_meta": {
     "writer": "pragma-mirror call (run.py)",
-    "computed_at": "2026-09-09T11:00:16.127789Z",
+    "computed_at": "2026-09-11T10:05:08.575736Z",
     "recommend_only": true,
     "data_source": "GSC + browser-probe (key-free)",
     "paid_apis": "none \u2014 Tavily/SerpAPI retired 2026-07-08",
@@ -427,12 +375,6 @@
   "aivi": {
     "composite": 54,
     "trend_7day": [
-      54,
-      54,
-      54,
-      54,
-      54,
-      54,
       54
     ],
     "color_threshold": {
@@ -443,10 +385,10 @@
     "interpretation": "YELLOW \u2014 composite brand visibility 54/100 across AEO, SEO, GEO and LLM surfaces.",
     "subscores": {
       "mention_score": 38,
-      "citation_score": 60,
+      "citation_score": null,
       "sentiment_score": 50,
       "ranking_score": 36,
-      "surface_coverage_score": 0
+      "surface_coverage_score": null
     }
   },
   "ai_surfaces": [
@@ -489,7 +431,7 @@
     "google_ai_overview": {
       "cited": true,
       "query": "Who's the best sign company in Jacksonville FL?",
-      "checked_at": "2026-09-09T11:00:16.127789Z",
+      "checked_at": "2026-09-11T10:05:08.575736Z",
       "mentions": 19,
       "citations": [
         "Who's the best sign company in Jacksonville FL?",
@@ -527,35 +469,15 @@
     "negative_pct": null,
     "overall": "unmeasured"
   },
-  "mode": "auto-remediate",
-  "last_action": "Auto-fix engine created 10 local landing pages via WP REST \u2014 additive, dup-guarded, logged, reversible.",
-  "last_verification": "10 pages live & verified (HTTP 200, schema).",
+  "mode": "recommend",
+  "last_action": null,
+  "last_verification": null,
   "autofix": {
-    "enabled": true,
-    "mode": "auto-remediate",
-    "tier": "paid",
-    "last_run": "2026-07-07T10:25:00.819109Z",
-    "created_total": 10,
-    "guardrails": [
-      "additive-only",
-      "dup-guard",
-      "rate-limited",
-      "change-logged",
-      "wp-revision-undo"
-    ],
-    "recent": [
-      "signs-etown-jacksonville",
-      "signs-shearwater-st-johns",
-      "signs-rivertown-st-johns",
-      "signs-tributary-yulee",
-      "signage-fleming-island",
-      "signage-middleburg",
-      "signage-st-augustine",
-      "signage-clay-county"
-    ]
+    "enabled": false,
+    "created_total": 0
   },
-  "last_scan_ts": "2026-09-09T11:00:16.127789Z",
-  "_mirrored_at": "2026-09-09T11:00:16.127789Z",
+  "last_scan_ts": "2026-09-11T10:05:08.575736Z",
+  "_mirrored_at": "2026-09-11T10:05:08.575736Z",
   "answer_units": [
     {
       "question": "What are the top home builder signage companies in Florida?",
