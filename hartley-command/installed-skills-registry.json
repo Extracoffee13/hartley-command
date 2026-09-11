@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-03T10:10:00.359386+00:00",
+  "updated_at": "2026-09-10T10:10:05.626820+00:00",
   "skills": [
     {
       "slug": "aair-market-baseline-scanning",
@@ -377,7 +377,7 @@
       "path": "/Users/alfredpennyworth/.hermes/skills/devops",
       "has_skill_md": true,
       "has_description_md": false,
-      "description_excerpt": "---\nname: devops\n\ndescription: Class-level skill for managing DevOps processes and workflows efficiently within the Construct ecosystem.\n\nuser_preferences:\n  concise: true\n\npitfalls:\n  - Verify produc"
+      "description_excerpt": "---\nname: devops\n\ndescription: Class-level skill for managing DevOps processes and workflows efficiently within the Construct ecosystem.\n\nuser_preferences:\n  concise: true\n  deploy_workflow:\n    - Pro"
     },
     {
       "slug": "dogfood-errors-management",
@@ -1094,13 +1094,6 @@
       "description_excerpt": "---\nname: vironbox-render-node\ndescription: >-\n  The VironBox render node - the licensed 3ds Max 2027 GPU box, its watcher, its paths, and\n  the failure modes that have actually cost days. Read this b"
     },
     {
-      "slug": "vision-tool-configuration",
-      "path": "/Users/alfredpennyworth/.hermes/skills/vision-tool-configuration",
-      "has_skill_md": true,
-      "has_description_md": false,
-      "description_excerpt": "---\nname: vision-tool-configuration\ndescription: Configure the vision tool provider and model for Hermes Agent to enable image analysis.\nversion: 1.0.0\nauthor: Hermes Agent\nlicense: MIT\nplatforms: [li"
-    },
-    {
       "slug": "web-search",
       "path": "/Users/alfredpennyworth/.hermes/skills/web-search",
       "has_skill_md": true,
@@ -1207,14 +1200,16 @@
     }
   ],
   "_counts": {
-    "hermes_skills": 165,
+    "hermes_skills": 164,
     "hermes_agent_skills": 0,
     "atlas_skills": 7,
-    "total": 172
+    "total": 171
   },
   "_new_since_last_build": [],
-  "_dropped_since_last_build": [],
+  "_dropped_since_last_build": [
+    "vision-tool-configuration"
+  ],
   "_roots_missing": [],
-  "_mirrored_at": "2026-09-03T10:10:00.359386Z",
+  "_mirrored_at": "2026-09-10T10:10:05.626820Z",
   "_builder": "skills-registry-scan"
 }

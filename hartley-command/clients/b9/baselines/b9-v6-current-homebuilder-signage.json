@@ -13,29 +13,29 @@
     "warning": null
   },
   "headline": {
-    "aair_retrieval_top3": 50,
-    "ci_95": "15%..85%",
-    "fraction": "2/4",
+    "aair_retrieval_top3": 25,
+    "ci_95": "4.6%..69.9%",
+    "fraction": "1/4",
     "note": "Headline AAIR = RETRIEVAL tier, top-3. The surface customers actually use. ALWAYS report with the interval."
   },
   "attempted": 14,
   "scored": 13,
   "no_read": 1,
-  "named_anywhere": 2,
-  "named_top3": 2,
+  "named_anywhere": 1,
+  "named_top3": 1,
   "tiers": {
     "retrieval": {
       "attempted": 4,
       "scored": 4,
       "no_read": 0,
-      "named_anywhere": 2,
-      "named_top3": 2,
-      "pct_named_anywhere": 50,
-      "pct_top3": 50,
-      "ci_95_top3": "15%..85%",
-      "ci_lo": 15,
-      "ci_hi": 85,
-      "fraction_top3": "2/4"
+      "named_anywhere": 1,
+      "named_top3": 1,
+      "pct_named_anywhere": 25,
+      "pct_top3": 25,
+      "ci_95_top3": "4.6%..69.9%",
+      "ci_lo": 4.6,
+      "ci_hi": 69.9,
+      "fraction_top3": "1/4"
     },
     "parametric": {
       "attempted": 6,
@@ -65,8 +65,8 @@
     }
   },
   "match_rules_fired": {
-    "full_name": 2,
-    "no_match": 11
+    "full_name": 1,
+    "no_match": 12
   },
   "engines": {
     "sonar": {
@@ -102,8 +102,8 @@
       "attempted": 1,
       "scored": 1,
       "no_read": 0,
-      "named": 1,
-      "top3": 1
+      "named": 0,
+      "top3": 0
     },
     "gpt4o": {
       "label": "GPT-4o (no web)",
@@ -196,5 +196,5 @@
       "top3": 0
     }
   },
-  "ts": "2026-09-02T14:25:26+00:00"
+  "ts": "2026-09-07T10:11:42+00:00"
 }
