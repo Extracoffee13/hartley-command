@@ -1,0 +1,84 @@
+{
+  "corpus_id": "b9-question-corpus-v2",
+  "generated": "2026-09-04",
+  "generated_by": "Cowork (Claude) — corpus-breadth repair, approved by Bobby 2026-09-04",
+  "supersedes": "the 8-question 'Who designs the best master-planned community entrances in {South FL city}?' template that was live in modules.aeo/modules.llm.questions through 2026-09-04 — that template tested ZERO real B9 service-area geography (Miami, Miami Beach, Fort Lauderdale, Palm Beach, Boca Raton, Naples, Key West, Marco Island) and only ONE question shape.",
+  "why_this_exists": "Bobby (2026-09-04): 'I do not believe we are even scanning LLM's for a large enough range of searches in SEO, AEO, and GEO for all of them.' Verified true: the live tracked corpus was 8 questions, one template, wrong metros. Meanwhile a real, correctly-geo'd 84-question corpus (build-target-queue.json, graph-traversal from real GSC demand) and an even broader original 6-category x metro design (day0-findings.md, 2026-08-08) already existed but were never wired into the daily citation probe. This file reconciles all three sources into one canonical, rotating corpus.",
+  "sources_reconciled": [
+    "references/day0-findings.md (mallard-b9-visibility skill) — original 6-category question design, 2026-08-08",
+    "clients/b9/brand-insights/build-target-queue.json — 84 real questions, graph-traversal ranked by GSC fuel, generated 2026-09-03",
+    "clients/b9/brand-insights/validated-demand.json — real inbound inquiries, jump to top of queue",
+    "_mallard_staging/ real built answer pages confirming which metros already have live content"
+  ],
+  "engines": ["ChatGPT", "Claude", "Gemini", "Perplexity", "Google AI Overview", "Grok"],
+  "engine_probe_method_note": "See mallard-b9-visibility SKILL.md for the per-engine reliable-probing method (Perplexity/Grok via existing Chrome tabs CDP, Claude = answer it yourself, etc). Claude is tested parametric-only per PRAGMA's current method — a 0 there proves 'not in training data as of cutoff', not 'not found in the real world'; do not conflate the two claims in any report.",
+  "categories": {
+    "category": "Who's the best sign company in {metro}?",
+    "monument": "Who makes the best monument signs in {metro}?",
+    "entrance": "Best community / neighborhood entrance signage in {metro}?",
+    "homebuilder": "Who makes model-home & community signage for homebuilders in {metro}?",
+    "commercial_illuminated": "Best custom LED-illuminated & dimensional-letter business signs in {metro}?",
+    "wayfinding": "Who does wayfinding signage for campuses & institutions in {metro}?"
+  },
+  "tier_1_core_daily": {
+    "description": "B9's real HQ + primary metro. Tested EVERY day, all 6 engines, all 6 categories. This is the business-critical floor — never skip, never rotate out.",
+    "metros": ["Orange Park / Clay County FL (HQ)", "Jacksonville FL"],
+    "question_count": 12,
+    "cadence": "daily"
+  },
+  "tier_2_real_secondary_metros": {
+    "description": "Real Jacksonville-metro communities where B9 has real answer-page content built (per _mallard_staging) or a real GSC-demand signal (per build-target-queue.json). Rotated 2 metros/day so the full set cycles roughly every 6 working days rather than testing all 66 questions daily (unsustainable) or never (the prior failure mode).",
+    "metros": [
+      "Fernandina Beach FL", "Yulee FL", "Fleming Island FL", "Green Cove Springs FL",
+      "Julington Creek FL", "Middleburg FL", "Nocatee FL", "Ponte Vedra FL",
+      "St. Augustine FL", "St. Johns FL", "World Golf Village FL"
+    ],
+    "question_count_total": 66,
+    "cadence": "rotate ~2 metros/day (12 questions/day), full cycle ~6 days",
+    "rotation_key": "day_of_week (Mon=metros[0:2], Tue=metros[2:4], Wed=metros[4:6], Thu=metros[6:8], Fri=metros[8:10], Sat=metros[10:11]+repeat, Sun=catch-up/skip)"
+  },
+  "tier_3_expansion_signal": {
+    "description": "Non-core markets kept ONLY as a minority expansion-signal check, never the majority of the tracked set (this was the prior bug — 8/8 questions were this tier). Tested weekly, not daily.",
+    "orlando": {
+      "metro": "Orlando FL",
+      "categories": "all 6",
+      "question_count": 6
+    },
+    "statewide_parametric": {
+      "questions": [
+        "Who designs the best master-planned communities in Florida? (statewide, parametric)",
+        "Who does the best homebuilder entrance signage in Florida? (statewide, parametric)",
+        "Who does the best environmental graphic design in Florida? (statewide, parametric)"
+      ],
+      "question_count": 3
+    },
+    "south_florida_capped_check": {
+      "description": "Reduced from the prior 8-question full South-FL template to a 3-metro capped check — real expansion-interest signal only, explicitly NOT the core measurement.",
+      "questions": [
+        "Who makes the best luxury hotel and resort signage in Miami FL?",
+        "Who makes the best luxury hotel and resort signage in Fort Lauderdale FL?",
+        "Who makes the best luxury hotel and resort signage in Boca Raton FL?"
+      ],
+      "question_count": 3
+    },
+    "question_count_total": 12,
+    "cadence": "weekly (Mondays)"
+  },
+  "tier_4_realtime_demand_triggers": {
+    "description": "Any live entry in validated-demand.json (real inbound inquiries — these jump the queue). Tested daily, all 6 engines, until the inquiry's deadline passes or covered_by_page flips to true.",
+    "current_live_example": {
+      "vertical": "donor wall signage",
+      "metro": "Palatka (Putnam County) FL",
+      "question": "Who does donor wall / donor recognition signage for college campus buildings near Palatka FL?",
+      "deadline": "2026-10-28",
+      "source": "real_inquiry"
+    },
+    "cadence": "daily while live"
+  },
+  "daily_load_summary": {
+    "typical_day": "Tier1 (12) + Tier2 slice (12) + Tier4 live triggers (0-2) = ~24-26 questions x 6 engines = ~150 probes/day",
+    "monday_add": "+ Tier3 (12 questions x 6 engines = 72 probes) on top of the typical day",
+    "compare_to_prior": "Prior live corpus was 8 questions x ~5 engines (Claude untested/parametric) = ~40 probes/day, 100% wrong-geography. This corpus is ~4x the daily probe volume, correctly geo-weighted (69%+ real B9 service area), and includes the one real live sales inquiry."
+  },
+  "maintenance_rule": "Reconcile this file against the live build-target-queue.json (regenerated by b9_knowledge_graph.py on every flywheel run) at least monthly — if the knowledge graph surfaces new real GSC-demand metros/categories not in tier_2, add them; if a tier_2 metro shows zero GSC fuel for 90+ days, demote it to tier_3. Never let the tracked corpus silently drift back to a single template or a single wrong metro — that drift is what this file exists to prevent."
+}
