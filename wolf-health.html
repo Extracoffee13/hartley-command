@@ -7,70 +7,21 @@ body{background:#0a0a0a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFo
 h1{color:#00ff88;font-weight:600}
 .card{background:#111;border:1px solid #333;padding:1rem;margin:1rem 0;border-radius:6px}
 h2{margin:0 0 .5rem;font-size:.9rem;color:#00d4ff;text-transform:uppercase;letter-spacing:.04em}
-.ok{color:#00ff88} .warn{color:#ffaa00} .crit{color:#ff4444} .muted{color:#888}
+.ok{color:#00ff88} .warn{color:#ffaa00} .crit{color:#ff4444}
 a{color:#00d4ff}
 .thesis{border-left:3px solid #333;padding-left:.75rem;margin:.75rem 0}
 .ticker{font-weight:700;font-size:1.1rem;margin-right:.75rem}
 .verdict{font-weight:700;font-size:.9rem}
 .rationale{margin:.35rem 0;color:#cfcfcf;line-height:1.4}
 .meta{font-size:.8rem;color:#888}
-.footer{font-size:.8rem;color:#888;border-top:1px solid #333;padding-top:.75rem;margin-top:1.5rem}
-.grid{display:flex;gap:1rem;flex-wrap:wrap}
-.stat{background:#0d0d0d;border:1px solid #222;padding:.5rem .75rem;border-radius:4px;min-width:120px}
-.stat .val{font-size:1.15rem;font-weight:700}
-.stat .lbl{font-size:.65rem;color:#888;text-transform:uppercase;letter-spacing:.06em}
 </style></head><body>
 <h1>WOLF Health Dashboard</h1>
-<div class="card"><b>Day 129/90</b> &bull; OVERDUE 50 days (kill-crit passed 2026-07-23) &bull; Portfolio: $100,749 &bull; 1 thesis (ACN BULLISH)</div>
-
-<div class="card">
-<h2>Market Snapshot — Sep 11 Close</h2>
-<div class="grid">
-<div class="stat"><div class="val ok">7,656.98</div><div class="lbl">S&P 500</div><div class="muted" style="font-size:.7rem">+0.9% · −0.8% wk</div></div>
-<div class="stat"><div class="val">52,573.29</div><div class="lbl">DJIA</div><div class="muted" style="font-size:.7rem">+1.0% · −1.6% wk</div></div>
-<div class="stat"><div class="val">26,333.04</div><div class="lbl">NASDAQ</div><div class="muted" style="font-size:.7rem">+1.0% · −0.7% wk</div></div>
-<div class="stat"><div class="val warn">15.80</div><div class="lbl">VIX</div><div class="muted" style="font-size:.7rem">−2.06pts · normal zone</div></div>
-<div class="stat"><div class="val">$104.61</div><div class="lbl">BRENT</div><div class="muted" style="font-size:.7rem">−2.81% · Hormuz talks</div></div>
-</div>
-</div>
-
-<div class="card">
-<h2>Positions</h2>
-<div><span class="ticker">ACN</span> 48 @ $174.00 avg &bull; current est. $190.09 &bull; <span class="ok">+9.2% unrealized</span></div>
-<div class="muted" style="font-size:.75rem;margin-top:.35rem">Cost basis $8,352 &bull; Mkt value ~$9,124 &bull; Sep 11 catalyst: $480M DoD contract + Google Cloud Gemini launch</div>
-</div>
-
-<div class="card">
-<h2>Market &amp; Economic Context</h2>
-<p><b>CPI Aug:</b> +0.4% MoM / +3.4% YoY (in line) &bull; Core CPI +0.3% MoM (above 0.2% fcast) / +2.4% YoY</p>
-<p><b>Fed odds:</b> 85-90% for 25bp hike at FOMC Sep 16-17 &bull; Chair Warsh hawkish at Jackson Hole</p>
-<p><b>Oil:</b> Brent $104.61 on Hormuz reopening negotiations &bull; Saudi pipeline shut as Houthis seize island</p>
-<p><b>YTD:</b> S&P +11.9% &bull; Dow +9.4% &bull; Nasdaq +13.3%</p>
-</div>
-
-<div class="card">
-<h2>Infrastructure</h2>
-<p>All 16 agents <span class="ok">OK</span> &bull; wild-duck-doctor: <span class="warn">WARN</span> (4 stale, 12 no-hb) &bull; agent-cross-ref: <span class="warn">WARN</span> (1 issue)</p>
-</div>
-
-<div class="card">
-<h2>Compliance</h2>
-<p><span class="warn">WARN</span> &bull; KILL CRITERION DATE 2026-07-23 PASSED (50 days overdue) &bull; mission at day 129 of 90</p>
-</div>
-
-<div class="card">
-<h2>Market Regime</h2>
-<div>moderate-bear &bull; VIX 15.80 (<span class="ok">−2.06pts from prior session</span>) &bull; implied-vs-realized spread 6.9pts</div>
-</div>
-
-<div class="card">
-<h2>Deep Research Theses</h2>
-<div class="thesis"><span class="ticker">ACN</span><span class="verdict ok">BULLISH</span>
-<div class="rationale"><b>VERDICT: BULLISH (STRONGLY RECOMMEND AVERAGING DOWN)</b> — $480M DoD contract + Google Cloud Gemini Enterprise partnership reinforces revenue visibility. 57% analyst buy rating, avg PT $194.36. Revenue $69.67B, net profit $7.68B, P/E 14.63. Dividend yield 3.56%.</div>
-<div class="meta">generated 2026-07-01 &bull; source gemini-deep-research &bull; <a href="./wolf-research/ACN-2026-07-01.md" target="_blank">full report</a></div></div>
-</div>
-
-<div class="footer">
-Updated: 2026-09-12 01:01 UTC by wolf-dashboard-autosync (30m cron) &bull; Data: AP News, TradingKey, Reuters, Sigmanomics &bull; Portfolio state from pre-run snapshot
-</div>
+<div class="card"><b>Day 129/90</b> &bull; OVERDUE 50 days (kill-crit passed) &bull; Portfolio: $100,749</div>
+<div class="card">Compliance: <span class="warn">WARN</span></div>
+<div class="card">Infrastructure: <span class="ok">OK</span></div>
+<div class="card">Alerts: KILL CRITERION DATE 2026-07-23 HAS PASSED (50 days overdue); mission at day 129 of 90; position review required</div>
+<div class="card"><h2>Positions</h2><div><span class="ticker">ACN</span> 48 @ $174.0 · current $183.9 · <span class="ok">5.7%</span></div></div>
+<div class="card"><h2>Market Regime</h2><div>moderate-bear · VIX 15.88</div></div>
+<div class="card"><h2>Deep Research Theses</h2><div class="thesis"><span class="ticker">ACN</span><span class="verdict ok">BULLISH</span><div class="rationale">**VERDICT: BULLISH (STRONGLY RECOMMEND AVERAGING DOWN)**</div><div class="meta">generated 2026-07-01 · source gemini-deep-research · <a href="./wolf-research/ACN-2026-07-01.md" target="_blank">full report</a></div></div></div>
+<div class="card" style="font-size:0.8rem">Updated: 2026-09-12 01:30 UTC by wolf-dashboard-autosync</div>
 </body></html>
