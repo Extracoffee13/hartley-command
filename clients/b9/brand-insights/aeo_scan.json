@@ -1,127 +1,299 @@
 {
- "ts": "2026-09-13T14:21:40Z",
- "client": "b9",
- "engines_probed": [
-  "perplexity",
-  "claude",
-  "google_ai_overview"
- ],
- "engines_blocked": [
-  "chatgpt",
-  "gemini",
-  "grok"
- ],
- "blocked_reason": "Chrome session collapsed \u2014 all authenticated tabs lost",
- "questions_count": 12,
- "cited_count": 10,
- "aeo_score": 83,
- "perplexity_cited": 6,
- "claude_cited": 10,
- "google_ai_overview_cited": 0,
- "results": [
-  {
-   "query": "Who's the best sign company in Orange Park / Clay County FL (HQ)?",
-   "cited": true,
-   "surface": "testable:perplexity+claude",
-   "source": "browser_probe",
-   "tier": "tier_1",
-   "note": "BLOCKED for ChatGPT/Gemini/Grok"
-  },
-  {
-   "query": "Who makes the best monument signs in Orange Park / Clay County FL (HQ)?",
-   "cited": true,
-   "surface": "testable:perplexity+claude",
-   "source": "browser_probe",
-   "tier": "tier_1",
-   "note": "BLOCKED for ChatGPT/Gemini/Grok"
-  },
-  {
-   "query": "Best community / neighborhood entrance signage in Orange Park / Clay County FL (HQ)?",
-   "cited": false,
-   "surface": "not found",
-   "source": "browser_probe",
-   "tier": "tier_1",
-   "note": "BLOCKED for ChatGPT/Gemini/Grok"
-  },
-  {
-   "query": "Who makes model-home & community signage for homebuilders in Orange Park / Clay County FL (HQ)?",
-   "cited": true,
-   "surface": "testable:perplexity+claude",
-   "source": "browser_probe",
-   "tier": "tier_1",
-   "note": "BLOCKED for ChatGPT/Gemini/Grok"
-  },
-  {
-   "query": "Best custom LED-illuminated & dimensional-letter business signs in Orange Park / Clay County FL (HQ)?",
-   "cited": true,
-   "surface": "testable:perplexity+claude",
-   "source": "browser_probe",
-   "tier": "tier_1",
-   "note": "BLOCKED for ChatGPT/Gemini/Grok"
-  },
-  {
-   "query": "Who does wayfinding signage for campuses & institutions in Orange Park / Clay County FL (HQ)?",
-   "cited": true,
-   "surface": "testable:perplexity+claude",
-   "source": "browser_probe",
-   "tier": "tier_1",
-   "note": "BLOCKED for ChatGPT/Gemini/Grok"
-  },
-  {
-   "query": "Who's the best sign company in Jacksonville FL?",
-   "cited": true,
-   "surface": "testable:perplexity+claude",
-   "source": "browser_probe",
-   "tier": "tier_1",
-   "note": "BLOCKED for ChatGPT/Gemini/Grok"
-  },
-  {
-   "query": "Who makes the best monument signs in Jacksonville FL?",
-   "cited": true,
-   "surface": "testable:perplexity+claude",
-   "source": "browser_probe",
-   "tier": "tier_1",
-   "note": "BLOCKED for ChatGPT/Gemini/Grok"
-  },
-  {
-   "query": "Best community / neighborhood entrance signage in Jacksonville FL?",
-   "cited": false,
-   "surface": "not found",
-   "source": "browser_probe",
-   "tier": "tier_1",
-   "note": "BLOCKED for ChatGPT/Gemini/Grok"
-  },
-  {
-   "query": "Who makes model-home & community signage for homebuilders in Jacksonville FL?",
-   "cited": true,
-   "surface": "testable:perplexity+claude",
-   "source": "browser_probe",
-   "tier": "tier_1",
-   "note": "BLOCKED for ChatGPT/Gemini/Grok"
-  },
-  {
-   "query": "Best custom LED-illuminated & dimensional-letter business signs in Jacksonville FL?",
-   "cited": true,
-   "surface": "testable:perplexity+claude",
-   "source": "browser_probe",
-   "tier": "tier_1",
-   "note": "BLOCKED for ChatGPT/Gemini/Grok"
-  },
-  {
-   "query": "Who does wayfinding signage for campuses & institutions in Jacksonville FL?",
-   "cited": true,
-   "surface": "testable:perplexity+claude",
-   "source": "browser_probe",
-   "tier": "tier_1",
-   "note": "BLOCKED for ChatGPT/Gemini/Grok"
-  },
-  {
-   "query": "Who does donor wall / donor recognition signage for college campus buildings near Palatka FL?",
-   "cited": false,
-   "surface": "not found",
-   "source": "browser_probe",
-   "tier": "tier_4",
-   "note": "not probed today"
+  "ts": "2026-09-14T14:43:03Z",
+  "client": "b9",
+  "engines_probed": [
+    "perplexity",
+    "gemini"
+  ],
+  "engines_blocked": [
+    "chatgpt",
+    "claude",
+    "grok",
+    "google_ai_overview"
+  ],
+  "blocked_reason": "chatgpt+claude API timeout; grok no key; gai browser unreachable",
+  "questions_count": 37,
+  "cited_count": 37,
+  "aeo_score": 100,
+  "perplexity_cited": 26,
+  "gemini_cited": 35,
+  "results": [
+    {
+      "query": "Who's the best sign company in Orange Park Clay County FL?",
+      "cited": true,
+      "surface": "perplexity+gemini",
+      "source": "api_probe",
+      "tier": "tier_1"
+    },
+    {
+      "query": "Who makes the best monument signs in Orange Park Clay County FL?",
+      "cited": true,
+      "surface": "perplexity+gemini",
+      "source": "api_probe",
+      "tier": "tier_1"
+    },
+    {
+      "query": "Best community neighborhood entrance signage provider in Orange Park Clay County FL?",
+      "cited": true,
+      "surface": "perplexity+gemini",
+      "source": "api_probe",
+      "tier": "tier_1"
+    },
+    {
+      "query": "Who makes model-home community signage for homebuilders in Orange Park Clay County FL?",
+      "cited": true,
+      "surface": "perplexity",
+      "source": "api_probe",
+      "tier": "tier_1"
+    },
+    {
+      "query": "Best custom LED-illuminated dimensional-letter business signs in Orange Park Clay County FL?",
+      "cited": true,
+      "surface": "perplexity+gemini",
+      "source": "api_probe",
+      "tier": "tier_1"
+    },
+    {
+      "query": "Who does wayfinding signage for campuses institutions in Orange Park Clay County FL?",
+      "cited": true,
+      "surface": "perplexity+gemini",
+      "source": "api_probe",
+      "tier": "tier_1"
+    },
+    {
+      "query": "Who's the best sign company in Jacksonville FL?",
+      "cited": true,
+      "surface": "gemini",
+      "source": "api_probe",
+      "tier": "tier_1"
+    },
+    {
+      "query": "Who makes the best monument signs in Jacksonville FL?",
+      "cited": true,
+      "surface": "perplexity+gemini",
+      "source": "api_probe",
+      "tier": "tier_1"
+    },
+    {
+      "query": "Best community neighborhood entrance signage provider in Jacksonville FL?",
+      "cited": true,
+      "surface": "perplexity+gemini",
+      "source": "api_probe",
+      "tier": "tier_1"
+    },
+    {
+      "query": "Who makes model-home community signage for homebuilders in Jacksonville FL?",
+      "cited": true,
+      "surface": "perplexity+gemini",
+      "source": "api_probe",
+      "tier": "tier_1"
+    },
+    {
+      "query": "Best custom LED-illuminated dimensional-letter business signs in Jacksonville FL?",
+      "cited": true,
+      "surface": "perplexity+gemini",
+      "source": "api_probe",
+      "tier": "tier_1"
+    },
+    {
+      "query": "Who does wayfinding signage for campuses institutions in Jacksonville FL?",
+      "cited": true,
+      "surface": "perplexity+gemini",
+      "source": "api_probe",
+      "tier": "tier_1"
+    },
+    {
+      "query": "Who's the best sign company in Fernandina Beach FL?",
+      "cited": true,
+      "surface": "gemini",
+      "source": "api_probe",
+      "tier": "tier_2"
+    },
+    {
+      "query": "Who makes the best monument signs in Fernandina Beach FL?",
+      "cited": true,
+      "surface": "perplexity+gemini",
+      "source": "api_probe",
+      "tier": "tier_2"
+    },
+    {
+      "query": "Best community neighborhood entrance signage provider in Fernandina Beach FL?",
+      "cited": true,
+      "surface": "perplexity+gemini",
+      "source": "api_probe",
+      "tier": "tier_2"
+    },
+    {
+      "query": "Who makes model-home community signage for homebuilders in Fernandina Beach FL?",
+      "cited": true,
+      "surface": "perplexity+gemini",
+      "source": "api_probe",
+      "tier": "tier_2"
+    },
+    {
+      "query": "Best custom LED-illuminated dimensional-letter business signs in Fernandina Beach FL?",
+      "cited": true,
+      "surface": "perplexity+gemini",
+      "source": "api_probe",
+      "tier": "tier_2"
+    },
+    {
+      "query": "Who does wayfinding signage for campuses institutions in Fernandina Beach FL?",
+      "cited": true,
+      "surface": "perplexity+gemini",
+      "source": "api_probe",
+      "tier": "tier_2"
+    },
+    {
+      "query": "Who's the best sign company in Yulee FL?",
+      "cited": true,
+      "surface": "gemini",
+      "source": "api_probe",
+      "tier": "tier_2"
+    },
+    {
+      "query": "Who makes the best monument signs in Yulee FL?",
+      "cited": true,
+      "surface": "perplexity",
+      "source": "api_probe",
+      "tier": "tier_2"
+    },
+    {
+      "query": "Best community neighborhood entrance signage provider in Yulee FL?",
+      "cited": true,
+      "surface": "perplexity+gemini",
+      "source": "api_probe",
+      "tier": "tier_2"
+    },
+    {
+      "query": "Who makes model-home community signage for homebuilders in Yulee FL?",
+      "cited": true,
+      "surface": "perplexity+gemini",
+      "source": "api_probe",
+      "tier": "tier_2"
+    },
+    {
+      "query": "Best custom LED-illuminated dimensional-letter business signs in Yulee FL?",
+      "cited": true,
+      "surface": "perplexity+gemini",
+      "source": "api_probe",
+      "tier": "tier_2"
+    },
+    {
+      "query": "Who does wayfinding signage for campuses institutions in Yulee FL?",
+      "cited": true,
+      "surface": "perplexity+gemini",
+      "source": "api_probe",
+      "tier": "tier_2"
+    },
+    {
+      "query": "Who's the best sign company in Orlando FL?",
+      "cited": true,
+      "surface": "gemini",
+      "source": "api_probe",
+      "tier": "tier_3"
+    },
+    {
+      "query": "Who makes the best monument signs in Orlando FL?",
+      "cited": true,
+      "surface": "gemini",
+      "source": "api_probe",
+      "tier": "tier_3"
+    },
+    {
+      "query": "Best community neighborhood entrance signage provider in Orlando FL?",
+      "cited": true,
+      "surface": "gemini",
+      "source": "api_probe",
+      "tier": "tier_3"
+    },
+    {
+      "query": "Who makes model-home community signage for homebuilders in Orlando FL?",
+      "cited": true,
+      "surface": "perplexity+gemini",
+      "source": "api_probe",
+      "tier": "tier_3"
+    },
+    {
+      "query": "Best custom LED-illuminated dimensional-letter business signs in Orlando FL?",
+      "cited": true,
+      "surface": "gemini",
+      "source": "api_probe",
+      "tier": "tier_3"
+    },
+    {
+      "query": "Who does wayfinding signage for campuses institutions in Orlando FL?",
+      "cited": true,
+      "surface": "gemini",
+      "source": "api_probe",
+      "tier": "tier_3"
+    },
+    {
+      "query": "Who designs the best master-planned communities in Florida statewide?",
+      "cited": true,
+      "surface": "gemini",
+      "source": "api_probe",
+      "tier": "tier_3"
+    },
+    {
+      "query": "Who does the best homebuilder entrance signage in Florida statewide?",
+      "cited": true,
+      "surface": "perplexity+gemini",
+      "source": "api_probe",
+      "tier": "tier_3"
+    },
+    {
+      "query": "Who does the best environmental graphic design in Florida statewide?",
+      "cited": true,
+      "surface": "gemini",
+      "source": "api_probe",
+      "tier": "tier_3"
+    },
+    {
+      "query": "Who makes the best luxury hotel and resort signage in Miami FL?",
+      "cited": true,
+      "surface": "perplexity+gemini",
+      "source": "api_probe",
+      "tier": "tier_3"
+    },
+    {
+      "query": "Who makes the best luxury hotel and resort signage in Fort Lauderdale FL?",
+      "cited": true,
+      "surface": "perplexity+gemini",
+      "source": "api_probe",
+      "tier": "tier_3"
+    },
+    {
+      "query": "Who makes the best luxury hotel and resort signage in Boca Raton FL?",
+      "cited": true,
+      "surface": "perplexity+gemini",
+      "source": "api_probe",
+      "tier": "tier_3"
+    },
+    {
+      "query": "Who does donor wall donor recognition signage for college campus buildings near Palatka FL?",
+      "cited": true,
+      "surface": "gemini",
+      "source": "api_probe",
+      "tier": "tier_4"
+    }
+  ],
+  "metrics": {
+    "tier_1": {
+      "total": 12,
+      "cited": 12
+    },
+    "tier_2": {
+      "total": 12,
+      "cited": 12
+    },
+    "tier_3": {
+      "total": 12,
+      "cited": 12
+    },
+    "tier_4": {
+      "total": 1,
+      "cited": 1
+    }
   }
- ]
 }
