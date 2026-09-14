@@ -19,7 +19,7 @@
    "yellow_below": 70,
    "green_at_or_above": 70
   },
-  "interpretation": "YELLOW \u2014 composite brand visibility 54/100 across AEO, SEO, GEO and LLM surfaces."
+  "interpretation": "YELLOW — composite brand visibility 54/100 across AEO, SEO, GEO and LLM surfaces."
  },
  "modules": {
   "aeo": {
@@ -138,7 +138,7 @@
    "cited": false,
    "probe_status": "BLOCKED",
    "checked_at": "2026-09-13T14:21:40Z",
-   "reason": "Chrome session collapsed \u2014 navigation to GSC triggered expired session redirect, lost all 126 tabs"
+   "reason": "Chrome session collapsed — navigation to GSC triggered expired session redirect, lost all 126 tabs"
   },
   "gemini": {
    "cited": false,
@@ -150,14 +150,14 @@
    "cited": false,
    "probe_status": "BLOCKED",
    "checked_at": "2026-09-13T14:21:40Z",
-   "reason": "Chrome window collapsed from 126 to 3 tabs \u2014 no Grok session"
+   "reason": "Chrome window collapsed from 126 to 3 tabs — no Grok session"
   },
   "google_ai_overview": {
    "cited": false,
    "probe_status": "COMPLETED",
    "aio_present": false,
    "checked_at": "2026-09-13T14:21:40Z",
-   "note": "None of 12 queries triggered AI Overview \u2014 expected for local-service queries"
+   "note": "None of 12 queries triggered AI Overview — expected for local-service queries"
   },
   "perplexity": {
    "cited": 6,
@@ -253,5 +253,295 @@
    "status": "probed",
    "checked_at": "2026-09-13T14:21:40Z"
   }
- ]
+ ],
+ "llm_browser": {
+  "ts": "2026-09-14T12:51:53Z",
+  "schema": "v2-segmented",
+  "results": [
+   {
+    "tier": "llm",
+    "surface": "ChatGPT",
+    "query": "Who makes the best monument signs in Florida?",
+    "mentioned": false,
+    "cited_source": false,
+    "checked_at": "2026-09-14T12:51:53Z",
+    "note": "temporary chat, no-search instruction honored"
+   },
+   {
+    "tier": "llm",
+    "surface": "ChatGPT",
+    "query": "What do the best monument signs cost in Florida?",
+    "mentioned": true,
+    "cited_source": false,
+    "checked_at": "2026-09-14T12:51:53Z",
+    "note": "web search auto-fired despite no-search instruction; not a clean parametric reading"
+   },
+   {
+    "tier": "llm",
+    "surface": "ChatGPT",
+    "query": "Who makes the best homebuilder and community signs in Florida?",
+    "mentioned": true,
+    "cited_source": false,
+    "checked_at": "2026-09-14T12:51:53Z",
+    "note": "temporary chat; account personalization may still apply"
+   },
+   {
+    "tier": "llm",
+    "surface": "Gemini",
+    "query": "Who makes the best monument signs in Florida?",
+    "mentioned": true,
+    "cited_source": false,
+    "checked_at": "2026-09-14T12:51:53Z"
+   },
+   {
+    "tier": "llm",
+    "surface": "Gemini",
+    "query": "What do the best monument signs cost in Florida?",
+    "mentioned": false,
+    "cited_source": false,
+    "checked_at": "2026-09-14T12:51:53Z"
+   },
+   {
+    "tier": "llm",
+    "surface": "Claude",
+    "query": "Who makes the best monument signs in Florida?",
+    "mentioned": false,
+    "cited_source": false,
+    "checked_at": "2026-09-14T12:51:53Z",
+    "note": "model named Brand 9 only to state it was EXCLUDING it as account-derived; not an unaided recommendation"
+   },
+   {
+    "tier": "llm",
+    "surface": "Claude",
+    "query": "Who makes the best homebuilder and community signs in Florida?",
+    "mentioned": false,
+    "cited_source": false,
+    "checked_at": "2026-09-14T12:51:53Z",
+    "note": "model named Brand 9 only to state it was EXCLUDING it as account-derived; not an unaided recommendation"
+   },
+   {
+    "tier": "aeo",
+    "surface": "Google AI Overview",
+    "query": "Who makes the best monument signs in Florida?",
+    "mentioned": true,
+    "cited_source": true,
+    "checked_at": "2026-09-14T12:51:53Z"
+   },
+   {
+    "tier": "aeo",
+    "surface": "Bing Copilot",
+    "query": "Who makes the best monument signs in Florida?",
+    "mentioned": true,
+    "cited_source": true,
+    "checked_at": "2026-09-14T12:51:53Z"
+   },
+   {
+    "tier": "aeo",
+    "surface": "Perplexity",
+    "query": "Who makes the best monument signs in Florida?",
+    "mentioned": true,
+    "cited_source": true,
+    "checked_at": "2026-09-14T12:51:53Z"
+   },
+   {
+    "tier": "aeo",
+    "surface": "Google AI Overview",
+    "query": "What do the best monument signs cost in Florida?",
+    "mentioned": true,
+    "cited_source": true,
+    "checked_at": "2026-09-14T12:51:53Z"
+   },
+   {
+    "tier": "aeo",
+    "surface": "Bing Copilot",
+    "query": "What do the best monument signs cost in Florida?",
+    "mentioned": true,
+    "cited_source": false,
+    "checked_at": "2026-09-14T12:51:53Z"
+   },
+   {
+    "tier": "aeo",
+    "surface": "Perplexity",
+    "query": "What do the best monument signs cost in Florida?",
+    "mentioned": true,
+    "cited_source": true,
+    "checked_at": "2026-09-14T12:51:53Z"
+   },
+   {
+    "tier": "aeo",
+    "surface": "Google AI Overview",
+    "query": "Who makes the best homebuilder and community signs in Florida?",
+    "mentioned": true,
+    "cited_source": true,
+    "checked_at": "2026-09-14T12:51:53Z"
+   },
+   {
+    "tier": "aeo",
+    "surface": "Bing Copilot",
+    "query": "Who makes the best homebuilder and community signs in Florida?",
+    "mentioned": true,
+    "cited_source": true,
+    "checked_at": "2026-09-14T12:51:53Z"
+   },
+   {
+    "tier": "aeo",
+    "surface": "Perplexity",
+    "query": "Who makes the best homebuilder and community signs in Florida?",
+    "mentioned": true,
+    "cited_source": false,
+    "checked_at": "2026-09-14T12:51:53Z"
+   },
+   {
+    "tier": "aeo",
+    "surface": "Google AI Overview",
+    "query": "Who makes the best wayfinding signs in Florida?",
+    "mentioned": true,
+    "cited_source": true,
+    "checked_at": "2026-09-14T12:51:53Z"
+   },
+   {
+    "tier": "aeo",
+    "surface": "Bing Copilot",
+    "query": "Who makes the best wayfinding signs in Florida?",
+    "mentioned": true,
+    "cited_source": true,
+    "checked_at": "2026-09-14T12:51:53Z"
+   },
+   {
+    "tier": "aeo",
+    "surface": "Perplexity",
+    "query": "Who makes the best wayfinding signs in Florida?",
+    "mentioned": true,
+    "cited_source": true,
+    "checked_at": "2026-09-14T12:51:53Z"
+   },
+   {
+    "tier": "aeo",
+    "surface": "Google AI Overview",
+    "query": "Who makes the best luxury hotel and resort signage in Florida?",
+    "mentioned": true,
+    "cited_source": true,
+    "checked_at": "2026-09-14T12:51:53Z"
+   },
+   {
+    "tier": "aeo",
+    "surface": "Bing Copilot",
+    "query": "Who makes the best luxury hotel and resort signage in Florida?",
+    "mentioned": true,
+    "cited_source": false,
+    "checked_at": "2026-09-14T12:51:53Z"
+   },
+   {
+    "tier": "aeo",
+    "surface": "Perplexity",
+    "query": "Who makes the best luxury hotel and resort signage in Florida?",
+    "mentioned": true,
+    "cited_source": false,
+    "checked_at": "2026-09-14T12:51:53Z"
+   },
+   {
+    "tier": "aeo",
+    "surface": "Google AI Overview",
+    "query": "Who does the best environmental graphic design in Florida?",
+    "mentioned": true,
+    "cited_source": true,
+    "checked_at": "2026-09-14T12:51:53Z"
+   },
+   {
+    "tier": "aeo",
+    "surface": "Bing Copilot",
+    "query": "Who does the best environmental graphic design in Florida?",
+    "mentioned": true,
+    "cited_source": true,
+    "checked_at": "2026-09-14T12:51:53Z"
+   },
+   {
+    "tier": "aeo",
+    "surface": "Perplexity",
+    "query": "Who does the best environmental graphic design in Florida?",
+    "mentioned": true,
+    "cited_source": true,
+    "checked_at": "2026-09-14T12:51:53Z"
+   },
+   {
+    "tier": "aeo",
+    "surface": "Google AI Overview",
+    "query": "Who designs the best master-planned community entrances in Florida?",
+    "mentioned": true,
+    "cited_source": true,
+    "checked_at": "2026-09-14T12:51:53Z"
+   },
+   {
+    "tier": "aeo",
+    "surface": "Bing Copilot",
+    "query": "Who designs the best master-planned community entrances in Florida?",
+    "mentioned": true,
+    "cited_source": false,
+    "checked_at": "2026-09-14T12:51:53Z"
+   },
+   {
+    "tier": "aeo",
+    "surface": "Perplexity",
+    "query": "Who designs the best master-planned community entrances in Florida?",
+    "mentioned": true,
+    "cited_source": true,
+    "checked_at": "2026-09-14T12:51:53Z"
+   },
+   {
+    "tier": "local",
+    "surface": "near me / local pack",
+    "query": "sign company near Orange Park FL",
+    "mentioned": true,
+    "cited_source": true,
+    "checked_at": "2026-09-14T12:51:53Z"
+   },
+   {
+    "tier": "local",
+    "surface": "near me / local pack",
+    "query": "best sign shop in Jacksonville FL",
+    "mentioned": true,
+    "cited_source": false,
+    "checked_at": "2026-09-14T12:51:53Z"
+   },
+   {
+    "tier": "local",
+    "surface": "near me / local pack",
+    "query": "commercial sign installer near me Clay County FL",
+    "mentioned": true,
+    "cited_source": true,
+    "checked_at": "2026-09-14T12:51:53Z"
+   },
+   {
+    "tier": "local",
+    "surface": "near me / local pack",
+    "query": "luxury hotel signage company near Miami FL",
+    "mentioned": true,
+    "cited_source": true,
+    "checked_at": "2026-09-14T12:51:53Z"
+   },
+   {
+    "tier": "local",
+    "surface": "near me / local pack",
+    "query": "resort signage company near Naples FL",
+    "mentioned": true,
+    "cited_source": true,
+    "checked_at": "2026-09-14T12:51:53Z"
+   }
+  ],
+  "summary": {
+   "ChatGPT": "2/3",
+   "Gemini": "1/2",
+   "Claude": "0/2",
+   "Google AI Overview": "7/7",
+   "Bing Copilot": "4/7",
+   "Perplexity": "5/7",
+   "near me / local pack": "5/5"
+  },
+  "run_notes": {
+   "scope": "Time-boxed per spec: the 7 Florida-level questions ran across all surfaces this week. The 8 metro questions (Miami, Miami Beach, Fort Lauderdale, Palm Beach, Boca Raton, Naples, Key West, Marco Island) rotate to next week.",
+   "tier1_partial": "ChatGPT 3/7, Gemini 2/7, Claude 2/7 questions completed. ChatGPT stalled repeatedly (free-tier account); remaining Tier-1 rows were NOT run and are deliberately absent rather than fabricated.",
+   "personalization_confound": "All Tier-1 surfaces ran on Bobby's own logged-in accounts, which carry memory of Brand 9 Signs. ChatGPT used a temporary chat; Claude explicitly refused to count its account-derived knowledge of Brand 9. Treat Tier-1 mention counts as an upper bound.",
+   "signal_definition": "summary counts mentioned for tier llm/local and cited_source for tier aeo."
+  }
+ }
 }
