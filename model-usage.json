@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-15T07:41:30",
+  "generated": "2026-09-16T07:41:47",
   "schema_version": 1,
   "source": "Hermes logs (~/.hermes/logs/agent.log*, errors.log*)",
   "logs_scanned": [
@@ -8,21 +8,30 @@
   ],
   "status": "ok",
   "totals": {
-    "requests": 164,
+    "requests": 358,
     "errors_402": 0,
-    "other_errors": 4,
-    "in_tokens": 12997272,
-    "out_tokens": 92752
+    "other_errors": 36,
+    "in_tokens": 41922294,
+    "out_tokens": 228431
   },
   "models": [
     {
       "model": "deepseek/deepseek-v4-flash",
       "provider": "openrouter",
-      "requests": 164,
+      "requests": 239,
       "errors_402": 0,
-      "other_errors": 4,
-      "in_tokens": 12997272,
-      "out_tokens": 92752
+      "other_errors": 5,
+      "in_tokens": 20488625,
+      "out_tokens": 137203
+    },
+    {
+      "model": "deepseek/deepseek-v4.1-flash",
+      "provider": "openrouter",
+      "requests": 119,
+      "errors_402": 0,
+      "other_errors": 31,
+      "in_tokens": 21433669,
+      "out_tokens": 91228
     }
   ]
 }
