@@ -1,16 +1,44 @@
 {
-  "ts": "2026-09-15T10:10:00Z",
-  "engine": "multi-engine browser probe",
-  "questions_checked": 25,
-  "cited": 0,
-  "mentioned": 0,
-  "aeo_score": 0,
+  "ts": "2026-09-17T14:15:00Z",
+  "engine": "multi-engine API probe (OpenRouter) + Claude parametric",
+  "questions_checked": 75,
+  "cited": 51,
+  "mentioned": 51,
+  "aeo_score": 68,
   "surfaces": {
-    "Google AI Overview": {"cited": 0, "mentioned": 0},
-    "Perplexity": {"cited": 0, "mentioned": 0, "status": "BLOCKED", "reason": "Cloudflare blocks sandboxed browser; Chrome JS from Apple Events disabled in real Chrome"},
-    "ChatGPT": {"cited": 0, "mentioned": 0, "status": "BLOCKED", "reason": "Login required, no real Chrome tab available with ChatGPT session"},
-    "Grok": {"cited": 0, "mentioned": 0, "status": "BLOCKED", "reason": "Login required; URL prefill sent query but Grok did not generate response without login"},
-    "Gemini": {"cited": 0, "mentioned": 0, "status": "BLOCKED", "reason": "Login required"},
-    "Claude": {"cited": 0, "mentioned": 0, "status": "parametric", "note": "Parametric test only — Brand 9 not in Claude training data (local B2B signage co founded ~2024)"}
-  }
+    "Perplexity": {
+      "cited": 17,
+      "mentioned": 17,
+      "pct": "68%"
+    },
+    "ChatGPT": {
+      "cited": 16,
+      "mentioned": 16,
+      "pct": "64%"
+    },
+    "Gemini": {
+      "cited": 18,
+      "mentioned": 18,
+      "pct": "72%"
+    },
+    "Grok": {
+      "cited": 0,
+      "mentioned": 0,
+      "status": "API probe",
+      "note": "Tested 3 questions \u2014 none cited B9"
+    },
+    "Claude": {
+      "cited": 0,
+      "mentioned": 0,
+      "status": "parametric",
+      "note": "Not in training data"
+    },
+    "Google AI Overview": {
+      "cited": 0,
+      "mentioned": 0,
+      "status": "BLOCKED",
+      "reason": "Chrome remote-debugging CDP port not accessible; AppleScript JS execution disabled"
+    }
+  },
+  "note": "Corrected Duval/Clay/St.Johns/Nassau corpus v2. Perplexity+ChatGPT+Gemini via OpenRouter search models. Grok API. Claude parametric. Google AI Overview BLOCKED."
 }
