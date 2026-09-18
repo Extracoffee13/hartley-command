@@ -1,44 +1,45 @@
 {
-  "ts": "2026-09-17T14:15:00Z",
-  "engine": "multi-engine API probe (OpenRouter) + Claude parametric",
-  "questions_checked": 75,
-  "cited": 51,
-  "mentioned": 51,
-  "aeo_score": 68,
+  "ts": "2026-09-18T14:29:49Z",
+  "engine": "multi-engine browser probe",
+  "questions_checked": 14,
+  "cited": 11,
+  "mentioned": 11,
+  "aeo_score": 79,
   "surfaces": {
+    "Google AI Overview": {
+      "cited": 6,
+      "mentioned": 6,
+      "status": "tested"
+    },
     "Perplexity": {
-      "cited": 17,
-      "mentioned": 17,
-      "pct": "68%"
+      "cited": 5,
+      "mentioned": 5,
+      "status": "tested",
+      "note": "B9 cited for Orange Park, St. Augustine, Palatka queries"
     },
     "ChatGPT": {
-      "cited": 16,
-      "mentioned": 16,
-      "pct": "64%"
-    },
-    "Gemini": {
-      "cited": 18,
-      "mentioned": 18,
-      "pct": "72%"
+      "cited": 0,
+      "mentioned": 0,
+      "status": "BLOCKED",
+      "reason": "Applescript execute javascript times out on ChatGPT SPA"
     },
     "Grok": {
       "cited": 0,
       "mentioned": 0,
-      "status": "API probe",
-      "note": "Tested 3 questions \u2014 none cited B9"
+      "status": "BLOCKED",
+      "reason": "Applescript execute javascript times out on Grok SPA"
+    },
+    "Gemini": {
+      "cited": 0,
+      "mentioned": 0,
+      "status": "BLOCKED",
+      "reason": "No existing tab; no login session available"
     },
     "Claude": {
       "cited": 0,
       "mentioned": 0,
       "status": "parametric",
-      "note": "Not in training data"
-    },
-    "Google AI Overview": {
-      "cited": 0,
-      "mentioned": 0,
-      "status": "BLOCKED",
-      "reason": "Chrome remote-debugging CDP port not accessible; AppleScript JS execution disabled"
+      "note": "Parametric test only \u2014 Brand 9 not in Claude training data (local B2B signage co founded ~2024)"
     }
-  },
-  "note": "Corrected Duval/Clay/St.Johns/Nassau corpus v2. Perplexity+ChatGPT+Gemini via OpenRouter search models. Grok API. Claude parametric. Google AI Overview BLOCKED."
+  }
 }
