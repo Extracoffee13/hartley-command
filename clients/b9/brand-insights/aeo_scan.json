@@ -1,52 +1,51 @@
 {
-  "ts": "2026-09-19T12:00:00Z",
+  "ts": "2026-09-20T14:20:00Z",
   "engine": "multi-engine browser probe",
-  "questions_checked": 25,
-  "cited": 16,
-  "mentioned": 16,
-  "aeo_score": 64,
-  "surfaces": {
-    "Google AI Overview": {
-      "cited": 12,
-      "mentioned": 12,
-      "status": "tested",
-      "note": "B9 mentioned in 12/15 Google search results via GBP listing. 0 AI overview boxes appeared for any query.",
-      "checked_at": "2026-09-19T12:00:00Z"
+  "questions_checked": 50,
+  "cited": 23,
+  "not_cited": 27,
+  "by_engine": [
+    {
+      "engine": "Google AI Overview",
+      "tested": 25,
+      "cited": 23,
+      "status": "OK",
+      "checked_at": "2026-09-20T11:00:25Z"
     },
-    "Perplexity": {
-      "cited": 16,
-      "mentioned": 16,
-      "status": "tested",
-      "note": "B9 cited in 16/25 queries across all 4 metros + Palatka. Strong on Orange Park (5/6) and World Golf Village (5/6), weaker on Jacksonville (3/6) and Fernandina Beach (3/6). Palatka donor-wall query not cited.",
-      "checked_at": "2026-09-19T12:00:00Z"
-    },
-    "ChatGPT": {
+    {
+      "engine": "Perplexity",
+      "tested": 25,
       "cited": 0,
-      "mentioned": 0,
+      "status": "OK",
+      "checked_at": "2026-09-20T11:00:25Z"
+    },
+    {
+      "engine": "ChatGPT",
+      "tested": 0,
+      "cited": 0,
       "status": "BLOCKED",
-      "reason": "AppleScript JS execution times out on ChatGPT SPA (React-heavy). Cannot interact with composer.",
-      "checked_at": "2026-09-19T12:00:00Z"
+      "reason": "Chrome session collapsed (136\u21922 tabs). Authenticated ChatGPT tab (tab 7) lost. Needs Bobby to restore Chrome tabs."
     },
-    "Grok": {
+    {
+      "engine": "Gemini",
+      "tested": 0,
       "cited": 0,
-      "mentioned": 0,
       "status": "BLOCKED",
-      "reason": "Same SPA limitation as ChatGPT. Bypass requires CDP or interactive session.",
-      "checked_at": "2026-09-19T12:00:00Z"
+      "reason": "Chrome session collapsed. No authenticated Gemini tab available."
     },
-    "Gemini": {
+    {
+      "engine": "Grok",
+      "tested": 0,
       "cited": 0,
-      "mentioned": 0,
       "status": "BLOCKED",
-      "reason": "No existing Gemini tab in Chrome session. Cannot create one headlessly.",
-      "checked_at": "2026-09-19T12:00:00Z"
+      "reason": "Chrome session collapsed. Authenticated Grok tab (tab 48) lost."
     },
-    "Claude": {
+    {
+      "engine": "Claude",
+      "tested": 0,
       "cited": 0,
-      "mentioned": 0,
-      "status": "parametric",
-      "reason": "Brand 9 not in Claude training data (local B2B signage company). Parametric-only test is standard.",
-      "checked_at": "2026-09-19T12:00:00Z"
+      "status": "parametric_expected_0",
+      "reason": "Claude parametric probe: 0 cited by default. Per PRAGMA method, a 0 indicates 'not in training data as of cutoff', not real-world absence."
     }
-  }
+  ]
 }
