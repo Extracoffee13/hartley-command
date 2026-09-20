@@ -1,67 +1,298 @@
 {
-  "generated": "2026-09-19T11:00:00Z",
-  "client": "b9",
+  "generated": "2026-09-20T11:37:20.885649Z",
+  "data_source": "PRAGMA Site-Health Operator \u2014 owned crawl (key-free); GSC enrichment pending project access",
+  "version": "1.1.0",
+  "phase": "1",
   "domain": "brand9signs.com",
-  "period": "last_3_months",
-  "source": "google_search_console_browser_probe",
-  "total_clicks": 321,
-  "total_impressions": 79000,
-  "average_ctr": 0.004,
-  "average_position": 29.1,
-  "top_queries": [
-    {
-      "query": "brand 9 signs",
-      "clicks": 24,
-      "impressions": 76
+  "health_score": 89,
+  "health_score_breakdown": {
+    "method": "Ahrefs-equivalent \u2014 base 100, deducted for real issues affecting SERP performance (owned crawl)",
+    "deductions": {
+      "title_tags_over_60_chars": {
+        "count": 7,
+        "penalty": 3.5
+      },
+      "meta_descriptions_over_155_chars": {
+        "count": 26,
+        "penalty": 7.8
+      },
+      "missing_h1_on_content_pages": {
+        "count": 0,
+        "penalty": 0.0
+      },
+      "multiple_h1s_on_money_pages": {
+        "count": 0,
+        "penalty": 0.0
+      },
+      "pages_over_2s_load": {
+        "count": 0,
+        "penalty": 0.0
+      },
+      "broken_links_404": {
+        "count": 0,
+        "penalty": 0.0
+      }
     },
-    {
-      "query": "school branding",
-      "clicks": 8,
-      "impressions": 2082
+    "final_score": 88.7
+  },
+  "crawl": {
+    "timestamp": "2026-09-20T11:37:20.885649Z",
+    "duration_s": 51.6,
+    "pages_crawled": 182,
+    "status_codes": {
+      "200": 182
     },
-    {
-      "query": "brand 9",
-      "clicks": 8,
-      "impressions": 104
-    },
-    {
-      "query": "brand9",
-      "clicks": 7,
-      "impressions": 59
-    },
-    {
-      "query": "how much does a monument sign cost",
-      "clicks": 2,
-      "impressions": 92
-    },
-    {
-      "query": "hibernia plantation",
-      "clicks": 2,
-      "impressions": 84
-    },
-    {
-      "query": "brandmaxxing",
-      "clicks": 2,
-      "impressions": 48
-    },
-    {
-      "query": "margarets walk",
-      "clicks": 2,
-      "impressions": 45
-    },
-    {
-      "query": "fort george island",
-      "clicks": 2,
-      "impressions": 7
-    },
-    {
-      "query": "wayfinding",
-      "clicks": 1,
-      "impressions": 1192
-    }
-  ],
-  "pages_scanned": 25,
-  "assets_checked": 0,
-  "broken_assets": 0,
-  "health": "green"
+    "avg_load_time_s": 0.508,
+    "slow_pages_over_1.5s": 0,
+    "slow_pages_over_2.0s": 0,
+    "slowest_pages": [
+      {
+        "url": "https://brand9signs.com/product/a-frame-signs/",
+        "load_s": 0.735
+      },
+      {
+        "url": "https://brand9signs.com/product/custom-route-66-signs-3d/",
+        "load_s": 0.627
+      },
+      {
+        "url": "https://brand9signs.com/terms-of-use-conditions-agreement/",
+        "load_s": 0.405
+      },
+      {
+        "url": "https://brand9signs.com/the-secret-behind-effective-wall-signage-what-makes-people-remember-your-brand/",
+        "load_s": 0.39
+      },
+      {
+        "url": "https://brand9signs.com/portfolio/",
+        "load_s": 0.382
+      }
+    ]
+  },
+  "issues_detail": {
+    "title_over_60": [
+      {
+        "url": "https://brand9signs.com/product/cabinet-signs/",
+        "title_len": 62
+      },
+      {
+        "url": "https://brand9signs.com/product/property-branding/",
+        "title_len": 62
+      },
+      {
+        "url": "https://brand9signs.com/product/state-park-signs/",
+        "title_len": 62
+      },
+      {
+        "url": "https://brand9signs.com/ada-signs-florida-commercial/",
+        "title_len": 61
+      },
+      {
+        "url": "https://brand9signs.com/product/boutique-signs/",
+        "title_len": 61
+      },
+      {
+        "url": "https://brand9signs.com/product/mesh-banners/",
+        "title_len": 61
+      },
+      {
+        "url": "https://brand9signs.com/branded-environments-florida/",
+        "title_len": 61
+      }
+    ],
+    "meta_over_155": [
+      {
+        "url": "https://brand9signs.com/product/interior-environments/",
+        "meta_len": 187
+      },
+      {
+        "url": "https://brand9signs.com/development-signage-stack/",
+        "meta_len": 177
+      },
+      {
+        "url": "https://brand9signs.com/builder-signage-stack/",
+        "meta_len": 172
+      },
+      {
+        "url": "https://brand9signs.com/hotel-signage-cost-2/",
+        "meta_len": 165
+      },
+      {
+        "url": "https://brand9signs.com/art/fibonacci-sunflower-spiral/",
+        "meta_len": 165
+      },
+      {
+        "url": "https://brand9signs.com/contact/",
+        "meta_len": 164
+      },
+      {
+        "url": "https://brand9signs.com/product/boulevard-banners/",
+        "meta_len": 164
+      },
+      {
+        "url": "https://brand9signs.com/case-studies/",
+        "meta_len": 163
+      },
+      {
+        "url": "https://brand9signs.com/product/exterior-wayfinding/",
+        "meta_len": 162
+      },
+      {
+        "url": "https://brand9signs.com/wayfinding-signage-florida/",
+        "meta_len": 162
+      },
+      {
+        "url": "https://brand9signs.com/in-room-guest-experience-signage-2/",
+        "meta_len": 160
+      },
+      {
+        "url": "https://brand9signs.com/insights/",
+        "meta_len": 160
+      },
+      {
+        "url": "https://brand9signs.com/product/mesh-banners/",
+        "meta_len": 160
+      },
+      {
+        "url": "https://brand9signs.com/sign-prices/",
+        "meta_len": 160
+      },
+      {
+        "url": "https://brand9signs.com/dimensional-letters-3d-signs-florida/",
+        "meta_len": 159
+      },
+      {
+        "url": "https://brand9signs.com/art/violet-aster/",
+        "meta_len": 159
+      },
+      {
+        "url": "https://brand9signs.com/kingsley-plantation-fort-george-island-history/",
+        "meta_len": 159
+      },
+      {
+        "url": "https://brand9signs.com/the-complete-guide-to-community-entrance-signage-for-homebuilders/",
+        "meta_len": 159
+      },
+      {
+        "url": "https://brand9signs.com/product/builder-barricades/",
+        "meta_len": 158
+      },
+      {
+        "url": "https://brand9signs.com/military-government-signage-florida/",
+        "meta_len": 158
+      },
+      {
+        "url": "https://brand9signs.com/locations/",
+        "meta_len": 157
+      },
+      {
+        "url": "https://brand9signs.com/church-signage-florida/",
+        "meta_len": 157
+      },
+      {
+        "url": "https://brand9signs.com/brand-9-now-serving-tampa-bay/",
+        "meta_len": 157
+      },
+      {
+        "url": "https://brand9signs.com/product/hotel-signs/",
+        "meta_len": 156
+      },
+      {
+        "url": "https://brand9signs.com/signage-jacksonville/",
+        "meta_len": 156
+      },
+      {
+        "url": "https://brand9signs.com/ybor-city-tampa-cigar-history/",
+        "meta_len": 156
+      }
+    ],
+    "multiple_h1": [],
+    "missing_h1": [],
+    "not_found_404": []
+  },
+  "gsc": {
+    "top_pages": [
+      {
+        "url": "https://brand9signs.com/",
+        "clicks": 82
+      },
+      {
+        "url": "https://brand9signs.com/product/builder-barricades/",
+        "clicks": 24
+      },
+      {
+        "url": "https://brand9signs.com/the-history-of-margarets-walk/",
+        "clicks": 18
+      },
+      {
+        "url": "https://brand9signs.com/hibernia-plantation-history-clay-county-florida/",
+        "clicks": 16
+      },
+      {
+        "url": "https://brand9signs.com/what-is-school-branding/",
+        "clicks": 7
+      },
+      {
+        "url": "https://brand9signs.com/aces-boom-box-chronicles-a-brief-history-of-the-boombox/",
+        "clicks": 6
+      },
+      {
+        "url": "https://brand9signs.com/sistine-chapel-best-viewpoint/",
+        "clicks": 6
+      },
+      {
+        "url": "https://brand9signs.com/brand-lab-ai/",
+        "clicks": 6
+      },
+      {
+        "url": "https://brand9signs.com/product/state-park-signs/",
+        "clicks": 5
+      },
+      {
+        "url": "https://brand9signs.com/product/exterior-wayfinding/",
+        "clicks": 4
+      },
+      {
+        "url": "https://brand9signs.com/kingsley-plantation-fort-george-island-history/",
+        "clicks": 4
+      },
+      {
+        "url": "https://brand9signs.com/product/military-base-signs/",
+        "clicks": 4
+      },
+      {
+        "url": "https://brand9signs.com/product/modern-street-signs/",
+        "clicks": 3
+      },
+      {
+        "url": "https://brand9signs.com/about-us-brand-9/",
+        "clicks": 3
+      },
+      {
+        "url": "https://brand9signs.com/product/home-builder-exterior-signs/",
+        "clicks": 3
+      },
+      {
+        "url": "https://brand9signs.com/product/3d-business-signs-custom-office/",
+        "clicks": 2
+      },
+      {
+        "url": "https://brand9signs.com/product/custom-podiums/",
+        "clicks": 2
+      },
+      {
+        "url": "https://brand9signs.com/bok-tower-gardens-history-lake-wales-florida/",
+        "clicks": 2
+      },
+      {
+        "url": "https://brand9signs.com/lennar-case-study-building-brand-equity-through-superior-community-signage/",
+        "clicks": 2
+      },
+      {
+        "url": "https://brand9signs.com/product/squadron-signs/",
+        "clicks": 2
+      }
+    ],
+    "top_pages_source": "pragma-mirror gsc-pages-b9.json",
+    "top_pages_captured": "2026-07-27T16:51:13Z"
+  }
 }
