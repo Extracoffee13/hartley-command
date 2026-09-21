@@ -22,7 +22,7 @@
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "YELLOW — composite brand visibility 54/100 across AEO, SEO, GEO and LLM surfaces."
+    "interpretation": "YELLOW \u2014 composite brand visibility 54/100 across AEO, SEO, GEO and LLM surfaces."
   },
   "modules": {
     "aeo": {
@@ -470,7 +470,7 @@
       "ai_surfaces": [
         {
           "surface": "ChatGPT / Claude / Gemini (consumer)",
-          "method": "browser pass · your own logins · $0 · key-free",
+          "method": "browser pass \u00b7 your own logins \u00b7 $0 \u00b7 key-free",
           "checks": 25,
           "mentions": 0
         }
@@ -874,7 +874,7 @@
         }
       ],
       "sources": [
-        "browser_probe · local queries (key-free)"
+        "browser_probe \u00b7 local queries (key-free)"
       ]
     }
   },
@@ -891,7 +891,7 @@
     "computed_at": "2026-09-21T11:00:07.954260Z",
     "recommend_only": true,
     "data_source": "GSC + browser-probe (key-free)",
-    "paid_apis": "none — Tavily/SerpAPI retired 2026-07-08",
+    "paid_apis": "none \u2014 Tavily/SerpAPI retired 2026-07-08",
     "degraded_modules": []
   },
   "aivi": {
@@ -910,7 +910,7 @@
       "yellow_below": 70,
       "green_at_or_above": 70
     },
-    "interpretation": "YELLOW — composite brand visibility 54/100 across AEO, SEO, GEO and LLM surfaces.",
+    "interpretation": "YELLOW \u2014 composite brand visibility 54/100 across AEO, SEO, GEO and LLM surfaces.",
     "subscores": {
       "mention_score": 46,
       "citation_score": 31,
@@ -922,7 +922,7 @@
   "ai_surfaces": [
     {
       "surface": "ChatGPT / Claude / Gemini (consumer)",
-      "method": "browser pass · your own logins · $0 · key-free",
+      "method": "browser pass \u00b7 your own logins \u00b7 $0 \u00b7 key-free",
       "checks": 25,
       "mentions": 0
     }
@@ -996,704 +996,312 @@
     }
   },
   "llm_browser": {
-    "engine": "multi-engine browser probe",
-    "run_date": "2026-09-16T14:34:01Z",
-    "total_questions": 25,
+    "ts": "2026-09-21T11:53:43Z",
+    "schema": "v2-segmented",
+    "engine": "PRAGMA Mirror v2 segmented browser probe (Claude-in-Chrome, logged-in accounts)",
+    "run_date": "2026-09-21T11:53:43Z",
+    "rotation": "florida-level-7 (8 metro questions rotate next week)",
+    "total_questions": 33,
     "results": [
       {
-        "tier": "tier1",
-        "surface": "Google AI Overview",
-        "query": "Who's the best sign company in Orange Park / Clay County FL (HQ)?",
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who makes the best monument signs in Florida?",
         "mentioned": true,
         "cited_source": true,
-        "checked_at": "2026-09-16T14:34:01Z"
+        "checked_at": "2026-09-21T11:53:43Z"
       },
       {
-        "tier": "tier1",
-        "surface": "Google AI Overview",
-        "query": "Who makes the best monument signs in Orange Park / Clay County FL (HQ)?",
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "What do the best monument signs cost in Florida?",
+        "mentioned": false,
+        "cited_source": false,
+        "checked_at": "2026-09-21T11:53:43Z",
+        "note": "answer captured short; brand absent from captured response"
+      },
+      {
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who makes the best homebuilder and community signs in Florida?",
         "mentioned": true,
         "cited_source": true,
-        "checked_at": "2026-09-16T14:34:01Z"
+        "checked_at": "2026-09-21T11:53:43Z"
       },
       {
-        "tier": "tier1",
-        "surface": "Google AI Overview",
-        "query": "Best community / neighborhood entrance signage in Orange Park / Clay County FL (HQ)?",
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who makes the best wayfinding signs in Florida?",
         "mentioned": true,
         "cited_source": true,
-        "checked_at": "2026-09-16T14:34:01Z"
+        "checked_at": "2026-09-21T11:53:43Z"
       },
       {
-        "tier": "tier1",
-        "surface": "Google AI Overview",
-        "query": "Who makes model-home & community signage for homebuilders in Orange Park / Clay County FL (HQ)?",
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who makes the best luxury hotel and resort signage in Florida?",
         "mentioned": true,
         "cited_source": true,
-        "checked_at": "2026-09-16T14:34:01Z"
+        "checked_at": "2026-09-21T11:53:43Z"
       },
       {
-        "tier": "tier1",
-        "surface": "Google AI Overview",
-        "query": "Best custom LED-illuminated & dimensional-letter business signs in Orange Park / Clay County FL (HQ)?",
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who does the best environmental graphic design in Florida?",
+        "mentioned": false,
+        "cited_source": false,
+        "checked_at": "2026-09-21T11:53:43Z"
+      },
+      {
+        "tier": "llm",
+        "surface": "ChatGPT",
+        "query": "Who designs the best master-planned community entrances in Florida?",
         "mentioned": true,
         "cited_source": true,
-        "checked_at": "2026-09-16T14:34:01Z"
+        "checked_at": "2026-09-21T11:53:43Z"
       },
       {
-        "tier": "tier1",
+        "tier": "llm",
+        "surface": "Gemini",
+        "query": "Who makes the best monument signs in Florida?",
+        "mentioned": true,
+        "cited_source": false,
+        "checked_at": "2026-09-21T11:53:43Z"
+      },
+      {
+        "tier": "llm",
+        "surface": "Gemini",
+        "query": "What do the best monument signs cost in Florida?",
+        "mentioned": false,
+        "cited_source": false,
+        "checked_at": "2026-09-21T11:53:43Z"
+      },
+      {
+        "tier": "llm",
+        "surface": "Gemini",
+        "query": "Who makes the best homebuilder and community signs in Florida?",
+        "mentioned": true,
+        "cited_source": false,
+        "checked_at": "2026-09-21T11:53:43Z"
+      },
+      {
+        "tier": "llm",
+        "surface": "Gemini",
+        "query": "Who makes the best wayfinding signs in Florida?",
+        "mentioned": true,
+        "cited_source": false,
+        "checked_at": "2026-09-21T11:53:43Z"
+      },
+      {
+        "tier": "llm",
+        "surface": "Gemini",
+        "query": "Who makes the best luxury hotel and resort signage in Florida?",
+        "mentioned": true,
+        "cited_source": false,
+        "checked_at": "2026-09-21T11:53:43Z"
+      },
+      {
+        "tier": "llm",
+        "surface": "Gemini",
+        "query": "Who does the best environmental graphic design in Florida?",
+        "mentioned": false,
+        "cited_source": false,
+        "checked_at": "2026-09-21T11:53:43Z"
+      },
+      {
+        "tier": "llm",
+        "surface": "Gemini",
+        "query": "Who designs the best master-planned community entrances in Florida?",
+        "mentioned": false,
+        "cited_source": false,
+        "checked_at": "2026-09-21T11:53:43Z"
+      },
+      {
+        "tier": "aeo",
         "surface": "Google AI Overview",
-        "query": "Who does wayfinding signage for campuses & institutions in Orange Park / Clay County FL (HQ)?",
+        "query": "Who makes the best monument signs in Florida?",
         "mentioned": true,
         "cited_source": true,
-        "checked_at": "2026-09-16T14:34:01Z"
+        "checked_at": "2026-09-21T11:53:43Z"
       },
       {
-        "tier": "tier1",
+        "tier": "aeo",
         "surface": "Google AI Overview",
-        "query": "Who's the best sign company in Jacksonville FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier1",
-        "surface": "Google AI Overview",
-        "query": "Who makes the best monument signs in Jacksonville FL?",
+        "query": "What do the best monument signs cost in Florida?",
         "mentioned": true,
         "cited_source": true,
-        "checked_at": "2026-09-16T14:34:01Z"
+        "checked_at": "2026-09-21T11:53:43Z"
       },
       {
-        "tier": "tier1",
+        "tier": "aeo",
         "surface": "Google AI Overview",
-        "query": "Best community / neighborhood entrance signage in Jacksonville FL?",
+        "query": "Who makes the best homebuilder and community signs in Florida?",
         "mentioned": true,
         "cited_source": true,
-        "checked_at": "2026-09-16T14:34:01Z"
+        "checked_at": "2026-09-21T11:53:43Z"
       },
       {
-        "tier": "tier1",
+        "tier": "aeo",
         "surface": "Google AI Overview",
-        "query": "Who makes model-home & community signage for homebuilders in Jacksonville FL?",
+        "query": "Who makes the best wayfinding signs in Florida?",
         "mentioned": true,
         "cited_source": true,
-        "checked_at": "2026-09-16T14:34:01Z"
+        "checked_at": "2026-09-21T11:53:43Z"
       },
       {
-        "tier": "tier1",
+        "tier": "aeo",
         "surface": "Google AI Overview",
-        "query": "Best custom LED-illuminated & dimensional-letter business signs in Jacksonville FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier1",
-        "surface": "Google AI Overview",
-        "query": "Who does wayfinding signage for campuses & institutions in Jacksonville FL?",
+        "query": "Who makes the best luxury hotel and resort signage in Florida?",
         "mentioned": true,
         "cited_source": true,
-        "checked_at": "2026-09-16T14:34:01Z"
+        "checked_at": "2026-09-21T11:53:43Z"
       },
       {
-        "tier": "tier2",
+        "tier": "aeo",
         "surface": "Google AI Overview",
-        "query": "Who's the best sign company in Julington Creek FL?",
+        "query": "Who does the best environmental graphic design in Florida?",
         "mentioned": true,
         "cited_source": true,
-        "checked_at": "2026-09-16T14:34:01Z"
+        "checked_at": "2026-09-21T11:53:43Z"
       },
       {
-        "tier": "tier2",
+        "tier": "aeo",
         "surface": "Google AI Overview",
-        "query": "Who makes the best monument signs in Julington Creek FL?",
+        "query": "Who designs the best master-planned community entrances in Florida?",
         "mentioned": true,
         "cited_source": true,
-        "checked_at": "2026-09-16T14:34:01Z"
+        "checked_at": "2026-09-21T11:53:43Z"
       },
       {
-        "tier": "tier2",
-        "surface": "Google AI Overview",
-        "query": "Best community / neighborhood entrance signage in Julington Creek FL?",
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who makes the best monument signs in Florida?",
         "mentioned": true,
         "cited_source": true,
-        "checked_at": "2026-09-16T14:34:01Z"
+        "checked_at": "2026-09-21T11:53:43Z"
       },
       {
-        "tier": "tier2",
-        "surface": "Google AI Overview",
-        "query": "Who makes model-home & community signage for homebuilders in Julington Creek FL?",
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "What do the best monument signs cost in Florida?",
+        "mentioned": false,
+        "cited_source": true,
+        "checked_at": "2026-09-21T11:53:43Z"
+      },
+      {
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who makes the best homebuilder and community signs in Florida?",
         "mentioned": true,
         "cited_source": true,
-        "checked_at": "2026-09-16T14:34:01Z"
+        "checked_at": "2026-09-21T11:53:43Z"
       },
       {
-        "tier": "tier2",
-        "surface": "Google AI Overview",
-        "query": "Best custom LED-illuminated & dimensional-letter business signs in Julington Creek FL?",
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who makes the best wayfinding signs in Florida?",
         "mentioned": true,
         "cited_source": true,
-        "checked_at": "2026-09-16T14:34:01Z"
+        "checked_at": "2026-09-21T11:53:43Z"
       },
       {
-        "tier": "tier2",
-        "surface": "Google AI Overview",
-        "query": "Who does wayfinding signage for campuses & institutions in Julington Creek FL?",
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who makes the best luxury hotel and resort signage in Florida?",
         "mentioned": true,
         "cited_source": true,
-        "checked_at": "2026-09-16T14:34:01Z"
+        "checked_at": "2026-09-21T11:53:43Z"
       },
       {
-        "tier": "tier2",
-        "surface": "Google AI Overview",
-        "query": "Who's the best sign company in Middleburg FL?",
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who does the best environmental graphic design in Florida?",
+        "mentioned": false,
+        "cited_source": false,
+        "checked_at": "2026-09-21T11:53:43Z"
+      },
+      {
+        "tier": "aeo",
+        "surface": "Perplexity",
+        "query": "Who designs the best master-planned community entrances in Florida?",
+        "mentioned": true,
+        "cited_source": false,
+        "checked_at": "2026-09-21T11:53:43Z"
+      },
+      {
+        "tier": "local",
+        "surface": "local pack",
+        "query": "sign company near Orange Park FL",
         "mentioned": true,
         "cited_source": true,
-        "checked_at": "2026-09-16T14:34:01Z"
+        "checked_at": "2026-09-21T11:53:43Z"
       },
       {
-        "tier": "tier2",
-        "surface": "Google AI Overview",
-        "query": "Who makes the best monument signs in Middleburg FL?",
+        "tier": "local",
+        "surface": "local pack",
+        "query": "best sign shop in Jacksonville FL",
+        "mentioned": true,
+        "cited_source": false,
+        "checked_at": "2026-09-21T11:53:43Z"
+      },
+      {
+        "tier": "local",
+        "surface": "local pack",
+        "query": "commercial sign installer near me Clay County FL",
         "mentioned": true,
         "cited_source": true,
-        "checked_at": "2026-09-16T14:34:01Z"
+        "checked_at": "2026-09-21T11:53:43Z"
       },
       {
-        "tier": "tier2",
-        "surface": "Google AI Overview",
-        "query": "Best community / neighborhood entrance signage in Middleburg FL?",
-        "mentioned": true,
+        "tier": "local",
+        "surface": "local pack",
+        "query": "luxury hotel signage company near Miami FL",
+        "mentioned": false,
         "cited_source": true,
-        "checked_at": "2026-09-16T14:34:01Z"
+        "checked_at": "2026-09-21T11:53:43Z"
       },
       {
-        "tier": "tier2",
-        "surface": "Google AI Overview",
-        "query": "Who makes model-home & community signage for homebuilders in Middleburg FL?",
-        "mentioned": true,
+        "tier": "local",
+        "surface": "local pack",
+        "query": "resort signage company near Naples FL",
+        "mentioned": false,
         "cited_source": true,
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier2",
-        "surface": "Google AI Overview",
-        "query": "Best custom LED-illuminated & dimensional-letter business signs in Middleburg FL?",
-        "mentioned": true,
-        "cited_source": true,
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier2",
-        "surface": "Google AI Overview",
-        "query": "Who does wayfinding signage for campuses & institutions in Middleburg FL?",
-        "mentioned": true,
-        "cited_source": true,
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier4",
-        "surface": "Google AI Overview",
-        "query": "Who does donor wall / donor recognition signage for college campus buildings near Palatka FL?",
-        "mentioned": true,
-        "cited_source": true,
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier1",
-        "surface": "Claude",
-        "query": "Who's the best sign company in Orange Park / Clay County FL (HQ)?",
-        "mentioned": false,
-        "cited_source": false,
-        "note": "parametric",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier1",
-        "surface": "Claude",
-        "query": "Who makes the best monument signs in Orange Park / Clay County FL (HQ)?",
-        "mentioned": false,
-        "cited_source": false,
-        "note": "parametric",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier1",
-        "surface": "Claude",
-        "query": "Best community / neighborhood entrance signage in Orange Park / Clay County FL (HQ)?",
-        "mentioned": false,
-        "cited_source": false,
-        "note": "parametric",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier1",
-        "surface": "Claude",
-        "query": "Who makes model-home & community signage for homebuilders in Orange Park / Clay County FL (HQ)?",
-        "mentioned": false,
-        "cited_source": false,
-        "note": "parametric",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier1",
-        "surface": "Claude",
-        "query": "Best custom LED-illuminated & dimensional-letter business signs in Orange Park / Clay County FL (HQ)?",
-        "mentioned": false,
-        "cited_source": false,
-        "note": "parametric",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier1",
-        "surface": "Claude",
-        "query": "Who does wayfinding signage for campuses & institutions in Orange Park / Clay County FL (HQ)?",
-        "mentioned": false,
-        "cited_source": false,
-        "note": "parametric",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier1",
-        "surface": "Claude",
-        "query": "Who's the best sign company in Jacksonville FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "note": "parametric",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier1",
-        "surface": "Claude",
-        "query": "Who makes the best monument signs in Jacksonville FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "note": "parametric",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier1",
-        "surface": "Claude",
-        "query": "Best community / neighborhood entrance signage in Jacksonville FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "note": "parametric",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier1",
-        "surface": "Claude",
-        "query": "Who makes model-home & community signage for homebuilders in Jacksonville FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "note": "parametric",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier1",
-        "surface": "Claude",
-        "query": "Best custom LED-illuminated & dimensional-letter business signs in Jacksonville FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "note": "parametric",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier1",
-        "surface": "Claude",
-        "query": "Who does wayfinding signage for campuses & institutions in Jacksonville FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "note": "parametric",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier2",
-        "surface": "Claude",
-        "query": "Who's the best sign company in Julington Creek FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "note": "parametric",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier2",
-        "surface": "Claude",
-        "query": "Who makes the best monument signs in Julington Creek FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "note": "parametric",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier2",
-        "surface": "Claude",
-        "query": "Best community / neighborhood entrance signage in Julington Creek FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "note": "parametric",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier2",
-        "surface": "Claude",
-        "query": "Who makes model-home & community signage for homebuilders in Julington Creek FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "note": "parametric",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier2",
-        "surface": "Claude",
-        "query": "Best custom LED-illuminated & dimensional-letter business signs in Julington Creek FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "note": "parametric",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier2",
-        "surface": "Claude",
-        "query": "Who does wayfinding signage for campuses & institutions in Julington Creek FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "note": "parametric",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier2",
-        "surface": "Claude",
-        "query": "Who's the best sign company in Middleburg FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "note": "parametric",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier2",
-        "surface": "Claude",
-        "query": "Who makes the best monument signs in Middleburg FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "note": "parametric",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier2",
-        "surface": "Claude",
-        "query": "Best community / neighborhood entrance signage in Middleburg FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "note": "parametric",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier2",
-        "surface": "Claude",
-        "query": "Who makes model-home & community signage for homebuilders in Middleburg FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "note": "parametric",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier2",
-        "surface": "Claude",
-        "query": "Best custom LED-illuminated & dimensional-letter business signs in Middleburg FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "note": "parametric",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier2",
-        "surface": "Claude",
-        "query": "Who does wayfinding signage for campuses & institutions in Middleburg FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "note": "parametric",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier4",
-        "surface": "Claude",
-        "query": "Who does donor wall / donor recognition signage for college campus buildings near Palatka FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "note": "parametric",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier1",
-        "surface": "Perplexity",
-        "query": "Who's the best sign company in Orange Park / Clay County FL (HQ)?",
-        "mentioned": false,
-        "cited_source": false,
-        "blocked_reason": "Bot challenge/page detection - sandboxed browser blocked",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier1",
-        "surface": "Perplexity",
-        "query": "Who makes the best monument signs in Orange Park / Clay County FL (HQ)?",
-        "mentioned": false,
-        "cited_source": false,
-        "blocked_reason": "Bot challenge/page detection - sandboxed browser blocked",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier1",
-        "surface": "Perplexity",
-        "query": "Best community / neighborhood entrance signage in Orange Park / Clay County FL (HQ)?",
-        "mentioned": false,
-        "cited_source": false,
-        "blocked_reason": "Bot challenge/page detection - sandboxed browser blocked",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier1",
-        "surface": "Perplexity",
-        "query": "Who makes model-home & community signage for homebuilders in Orange Park / Clay County FL (HQ)?",
-        "mentioned": false,
-        "cited_source": false,
-        "blocked_reason": "Bot challenge/page detection - sandboxed browser blocked",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier1",
-        "surface": "Perplexity",
-        "query": "Best custom LED-illuminated & dimensional-letter business signs in Orange Park / Clay County FL (HQ)?",
-        "mentioned": false,
-        "cited_source": false,
-        "blocked_reason": "Bot challenge/page detection - sandboxed browser blocked",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier1",
-        "surface": "Perplexity",
-        "query": "Who does wayfinding signage for campuses & institutions in Orange Park / Clay County FL (HQ)?",
-        "mentioned": false,
-        "cited_source": false,
-        "blocked_reason": "Bot challenge/page detection - sandboxed browser blocked",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier1",
-        "surface": "Perplexity",
-        "query": "Who's the best sign company in Jacksonville FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "blocked_reason": "Bot challenge/page detection - sandboxed browser blocked",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier1",
-        "surface": "Perplexity",
-        "query": "Who makes the best monument signs in Jacksonville FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "blocked_reason": "Bot challenge/page detection - sandboxed browser blocked",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier1",
-        "surface": "Perplexity",
-        "query": "Best community / neighborhood entrance signage in Jacksonville FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "blocked_reason": "Bot challenge/page detection - sandboxed browser blocked",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier1",
-        "surface": "Perplexity",
-        "query": "Who makes model-home & community signage for homebuilders in Jacksonville FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "blocked_reason": "Bot challenge/page detection - sandboxed browser blocked",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier1",
-        "surface": "Perplexity",
-        "query": "Best custom LED-illuminated & dimensional-letter business signs in Jacksonville FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "blocked_reason": "Bot challenge/page detection - sandboxed browser blocked",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier1",
-        "surface": "Perplexity",
-        "query": "Who does wayfinding signage for campuses & institutions in Jacksonville FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "blocked_reason": "Bot challenge/page detection - sandboxed browser blocked",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier2",
-        "surface": "Perplexity",
-        "query": "Who's the best sign company in Julington Creek FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "blocked_reason": "Bot challenge/page detection - sandboxed browser blocked",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier2",
-        "surface": "Perplexity",
-        "query": "Who makes the best monument signs in Julington Creek FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "blocked_reason": "Bot challenge/page detection - sandboxed browser blocked",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier2",
-        "surface": "Perplexity",
-        "query": "Best community / neighborhood entrance signage in Julington Creek FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "blocked_reason": "Bot challenge/page detection - sandboxed browser blocked",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier2",
-        "surface": "Perplexity",
-        "query": "Who makes model-home & community signage for homebuilders in Julington Creek FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "blocked_reason": "Bot challenge/page detection - sandboxed browser blocked",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier2",
-        "surface": "Perplexity",
-        "query": "Best custom LED-illuminated & dimensional-letter business signs in Julington Creek FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "blocked_reason": "Bot challenge/page detection - sandboxed browser blocked",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier2",
-        "surface": "Perplexity",
-        "query": "Who does wayfinding signage for campuses & institutions in Julington Creek FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "blocked_reason": "Bot challenge/page detection - sandboxed browser blocked",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier2",
-        "surface": "Perplexity",
-        "query": "Who's the best sign company in Middleburg FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "blocked_reason": "Bot challenge/page detection - sandboxed browser blocked",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier2",
-        "surface": "Perplexity",
-        "query": "Who makes the best monument signs in Middleburg FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "blocked_reason": "Bot challenge/page detection - sandboxed browser blocked",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier2",
-        "surface": "Perplexity",
-        "query": "Best community / neighborhood entrance signage in Middleburg FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "blocked_reason": "Bot challenge/page detection - sandboxed browser blocked",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier2",
-        "surface": "Perplexity",
-        "query": "Who makes model-home & community signage for homebuilders in Middleburg FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "blocked_reason": "Bot challenge/page detection - sandboxed browser blocked",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier2",
-        "surface": "Perplexity",
-        "query": "Best custom LED-illuminated & dimensional-letter business signs in Middleburg FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "blocked_reason": "Bot challenge/page detection - sandboxed browser blocked",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier2",
-        "surface": "Perplexity",
-        "query": "Who does wayfinding signage for campuses & institutions in Middleburg FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "blocked_reason": "Bot challenge/page detection - sandboxed browser blocked",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      {
-        "tier": "tier4",
-        "surface": "Perplexity",
-        "query": "Who does donor wall / donor recognition signage for college campus buildings near Palatka FL?",
-        "mentioned": false,
-        "cited_source": false,
-        "blocked_reason": "Bot challenge/page detection - sandboxed browser blocked",
-        "checked_at": "2026-09-16T14:34:01Z"
+        "checked_at": "2026-09-21T11:53:43Z"
       }
     ],
-    "surfaces": {
-      "google_ai_overview": {
-        "cited": true,
-        "mention_count": 23,
-        "total_probed": 25,
-        "checked_at": "2026-09-16T14:34:01Z"
+    "summary": {
+      "ChatGPT": "5/7",
+      "Gemini": "4/7",
+      "Claude": "skipped",
+      "Google AI Overview": "7/7",
+      "Perplexity": "5/7",
+      "Bing Copilot": "skipped",
+      "local pack": "3/5"
+    },
+    "tier_scores": {
+      "llm_mentions": "9/14",
+      "aeo_citations": "12/14",
+      "geo_mentions": "3/5"
+    },
+    "skipped": [
+      {
+        "surface": "Bing Copilot",
+        "tier": "aeo",
+        "reason": "login wall at copilot.microsoft.com; per spec, never log in",
+        "queries": 7
       },
-      "claude": {
-        "cited": false,
-        "mention_count": 0,
-        "total_probed": 25,
-        "checked_at": "2026-09-16T14:34:01Z",
-        "note": "parametric — not in training data"
-      },
-      "perplexity": {
-        "cited": false,
-        "mention_count": 0,
-        "total_probed": 25,
-        "blocked_reason": "Cloudflare bot protection in sandboxed browser; AppleScript JS blocked on real Chrome",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      "chatgpt": {
-        "cited": false,
-        "mention_count": 0,
-        "total_probed": 25,
-        "blocked_reason": "Cloudflare/bot challenge on sandboxed browser; Chrome session collapsed",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      "gemini": {
-        "cited": false,
-        "mention_count": 0,
-        "total_probed": 25,
-        "blocked_reason": "Cloudflare/bot challenge on sandboxed browser",
-        "checked_at": "2026-09-16T14:34:01Z"
-      },
-      "grok": {
-        "cited": false,
-        "mention_count": 0,
-        "total_probed": 25,
-        "blocked_reason": "Real Chrome session collapsed (131→4 tabs); sandboxed session blocked by Cloudflare",
-        "checked_at": "2026-09-16T14:34:01Z"
+      {
+        "surface": "Claude",
+        "tier": "llm",
+        "reason": "account memory contaminates the probe (responses identify the operator as the site owner, e.g. \"your own page\"); not a valid parametric reading",
+        "queries": 7
       }
-    }
+    ],
+    "notes": [
+      "ChatGPT auto-invoked web search on these queries (utm_source=chatgpt.com citation links), so its rows are not purely parametric.",
+      "Perplexity citations render as inline domain chips rather than anchors; cited_source detects the brand9signs domain in the answer body.",
+      "Tier-3 local rows are scored on local-pack presence only. Miami and Naples show brand9signs.com in organic/web results but Brand 9 is absent from the local pack."
+    ]
   },
   "sentiment": {
     "positive_pct": null,
