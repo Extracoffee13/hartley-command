@@ -188,6 +188,18 @@
  "decisions": [
   {
    "date": "2026-09-23",
+   "what": "Hermes + JEV audit applied. Web search moved off the exhausted Tavily plan (search: DuckDuckGo, extract: Exa keyless) — tested live. Fallback chain fixed: the old comma-string was ignored, so there was no fallback at all; now Gemini 2.5 Flash first, then two OpenRouter models — tested by forcing a failure. OpenRouter data_collection: deny. Orchestrator on DeepSeek v4-pro, workers stay on flash, cron pinned to flash. Holographic local memory on (default, orchestrator, research)."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "JEV: four questions per call (agent, risk, size, owner-approval), gates on JEV's calibrated confidence (act >= 0.50, click-guard 'go' >= 0.85), logs the answering model (Vercel only serves the 'jev' alias, so version pinning isn't possible there). New: gk ask (open question -> flash / pro / Claude), gk lead (Brand 9 lead score 0-100, wired into leads_writer), gk swarm (hard research -> parallel workers + pro verifier), JEV done-check in shadow mode (nightly, log only). Vercel credits not bought: $0 spend, no rate limits in 81 live calls; the digest flags 429s."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "Fixed: lens-auth-pull (38-day failure — heredoc bug; now pulls in its own background tab, never Bobby's active tab), b9-site-change-watcher (false 'changed' alarms from raw-HTML hashing; now visible text, alerts without failing). Telegram tool-call hook fails closed. Weekly cron doctor to Telegram (Mon 7:10). Voice page / Telegram build-out on hold until they can reach the whole ecosystem."
+  },
+  {
+   "date": "2026-09-23",
    "what": "JEV click-guard added for browser work (gk guard): before each browser step JEV answers go / stop / wrong page; money, cancel, delete, sign-in, send and publish words always stop. Tested: it stopped 'Pay now' and flagged a Google sign-in on a server-check task as the wrong page. Lens routine rewritten without WOLF or Slack; 'Pragma mirror llm browser weekly' routine disabled."
   },
   {
