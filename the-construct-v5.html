@@ -742,6 +742,7 @@ const GatekeeperPanel = () => {
         <div>3. Keys / deletes / payments / DNS → Claude, always</div>
         <div>4. Unsure or risky work gets a <b>checker card</b> that verifies the result before it counts as done</div>
         <div>5. JEV down → <b>LAYA</b> on the Mac takes over</div>
+        <div>6. Browser work: <b>JEV click-guard</b> (<code>gk guard</code>) approves each step — money, cancel, delete, sign-in and send always stop for Bobby</div>
         <div style={{ color: C.greenDim, fontSize: 9 }}>"Is this job really done?" checks stay with Claude.</div>
         <div style={{ marginTop: 6 }}><span style={{ color: C.cyan }}>Live decisions:</span> {(d.by_mode && d.by_mode["jev-primary"]) || 0} <span style={{ color: C.greenDim }}>· {(d.by_mode && d.by_mode.testing) || 0} during testing</span></div>
         <div><span style={{ color: C.cyan }}>Sent to:</span> {Object.entries(d.picks || {}).map(([k, v]) => k + " " + v).join(" · ") || "—"}</div>
@@ -818,8 +819,8 @@ const VenturesPanel = () => {
   const { reg } = useEco(); const v = (reg && reg.ventures) || [];
   return ecoBox("◆ VENTURES — WHAT THE ECOSYSTEM WORKS ON", C.gold,
     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 8, marginTop: 6 }}>
-      {v.map(x => <div key={x.name} style={{ border: `1px solid ${C.greenDim}`, padding: 8, background: "rgba(0,0,0,0.5)" }}>
-        <div style={{ fontSize: 11, fontWeight: 700, color: C.gold }}>{x.link ? <a href={x.link} style={{ color: C.gold }}>{x.name}</a> : x.name}</div>
+      {v.map(x => <div key={x.name} style={{ border: `1px solid ${C.greenDim}`, padding: 8, background: "rgba(0,0,0,0.5)", opacity: x.status === "paused" ? 0.55 : 1 }}>
+        <div style={{ fontSize: 11, fontWeight: 700, color: C.gold }}>{x.link ? <a href={x.link} style={{ color: C.gold }}>{x.name}</a> : x.name}{x.status && x.status !== "active" ? <span style={{ marginLeft: 6, fontSize: 8, color: C.orange, letterSpacing: 1 }}>{x.status.toUpperCase()}</span> : null}</div>
         <div style={{ fontSize: 9, color: C.green, opacity: 0.8, marginTop: 3 }}>{x.focus}</div>
       </div>)}
     </div>);
