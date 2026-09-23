@@ -129,6 +129,7 @@ const FOUNDATION = [
   { id: "f-skills", label: "Skills", detail: "~150 Claude skills · Hermes/Atlas registry count shown under Tier 1 · 13 unused Hermes skills disabled 09-23", color: C.white },
   { id: "f-memory", label: "Memory", detail: "Two-tier · CLAUDE.md + memory/ · Self-Improving Loop active", color: C.white },
   { id: "f-sched", label: "Scheduled Tasks", detail: "live", color: C.white },
+  { id: "f-hc", label: "Harvard Corpus", detail: "live", color: C.cyan },
   { id: "f-qt", label: "Quality Triangle", detail: "Skeptic · Architect · Security · pre-ship gate", color: C.green },
 ];
 
@@ -258,6 +259,8 @@ const TieredNeurolink = () => {
   const cr = (st && st.hermes && st.hermes.cron) || {};
   const gk = (st && st.gatekeeper) || {}; const bk = gk.bakeoff || {};
   const u = (st && st.hermes && st.hermes.usage_30d) || {};
+  const kb = (st && st.kanban) || {}; const kbc = kb.counts || {};
+  const kbOpen = ["triage", "todo", "ready", "running", "review", "blocked", "scheduled"].reduce((a, k) => a + (kbc[k] || 0), 0);
 
 
   const mono = "Courier New, monospace";
@@ -270,7 +273,7 @@ const TieredNeurolink = () => {
     <div style={{ position: "relative", margin: "20px 28px", padding: 18, border: "1px solid rgba(57,255,20,0.2)", background: "rgba(0,0,0,0.7)", overflow: "hidden" }}>
       <ScanSweep />
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12, flexWrap: "wrap", gap: 8 }}>
-        <div style={{ fontSize: 11, color: C.green, letterSpacing: 4 }}>⌬ NEUROLINK · HOW WORK FLOWS · CLAUDE → GATEKEEPER → HERMES</div>
+        <div style={{ fontSize: 11, color: C.green, letterSpacing: 4 }}>⌬ NEUROLINK · HOW WORK FLOWS · CLAUDE → GATEKEEPER → KANBAN → HERMES</div>
         <div style={{ fontSize: 10, color: C.greenDim, letterSpacing: 2 }}>
           HERMES 30D <span style={{ color: C.cyan }}>{(u.sessions || 0).toLocaleString()}</span> sessions · <span style={{ color: C.cyan }}>${u.cost_usd ?? "—"}</span>
           <span style={{ margin: "0 8px" }}>·</span>GATE <span style={{ color: C.cyan }}>{(gk.policy && gk.policy.mode) || "—"}</span>
@@ -301,7 +304,7 @@ const TieredNeurolink = () => {
         {PUBLIC_OPERATORS.map((o, i) => flow(W / 2, founderY + 32, tier1X(i, PUBLIC_OPERATORS.length), tier1Y - 24, C.gold, 0.45, 1, "3,4", 3, `f1-${i}`))}
         {/* Bobby ⇢ Hermes direct (Telegram), drawn down the right edge */}
         <path d={`M ${W/2 + 34} ${founderY} C ${W - 90} ${founderY}, ${W - 90} ${hermesY}, ${W/2 + 150} ${hermesY}`} fill="none" stroke={C.gold} strokeOpacity="0.35" strokeWidth="1" strokeDasharray="2,5" />
-        <text x={W - 150} y={(founderY + hermesY) / 2} fontFamily={mono} fontSize="8" fill={C.gold} opacity="0.7">Telegram · direct</text>
+        <text x={W - 190} y={(founderY + hermesY) / 2} fontFamily={mono} fontSize="8" fill={C.gold} opacity="0.8">Telegram · 7:05 digest + card alerts</text>
 
         {/* Claude operators → Gatekeeper (tasks handed to Hermes via gk) */}
         {PUBLIC_OPERATORS.map((o, i) => flow(tier1X(i, PUBLIC_OPERATORS.length), tier1Y + 24, jevX, gateY - 22, C.cyan, 0.35, 1, "4,4", 2.6, `t1g-${i}`))}
@@ -311,6 +314,12 @@ const TieredNeurolink = () => {
         {/* Gatekeeper → Hermes */}
         {flow(jevX, gateY + 22, W / 2, hermesY - 24, C.green, 0.8, 2, "6,3", 1.8, "g-h")}
         {flow(layaX, gateY + 22, W / 2, hermesY - 24, C.green, 0.3, 1, "2,5", 0, "l-h")}
+        {/* Kanban board — every gk task becomes a card; unsure/risky work gets a checker card */}
+        <g transform={`translate(${W / 2 - 75},${(gateY + hermesY) / 2 + 2})`}>
+          <rect x="-92" y="-15" width="184" height="30" rx="3" fill="#000" stroke={C.purple} strokeWidth="1.4" filter="url(#softGlow)" />
+          <text x="0" y="-2" textAnchor="middle" fontFamily={mono} fontSize="9" fontWeight="700" fill={C.purple}>KANBAN BOARD</text>
+          <text x="0" y="9" textAnchor="middle" fontFamily={mono} fontSize="7" fill={C.purple} opacity="0.85">{kbOpen} open · {kb.done_24h ?? 0} done 24 h · checker cards</text>
+        </g>
         {/* Risky work → back to Claude */}
         <path d={`M ${jevX - 70} ${gateY} C ${jevX - 260} ${gateY}, ${jevX - 260} ${tier1Y + 40}, ${jevX - 200} ${tier1Y + 30}`} fill="none" stroke={C.orange} strokeOpacity="0.8" strokeWidth="1.3" strokeDasharray="5,4" markerEnd="url(#arr)" />
         <text x={jevX - 330} y={gateY + 34} fontFamily={mono} fontSize="8" fill={C.orange}>risky (keys · deletes · payments · DNS) → Claude</text>
@@ -402,7 +411,7 @@ const TieredNeurolink = () => {
       <div style={{ marginTop: 10, display: "flex", flexWrap: "wrap", gap: 18, fontSize: 9, color: C.greenDim, letterSpacing: 1 }}>
         <span><span style={{ color: C.gold }}>●</span> Bobby directs and judges</span>
         <span><span style={{ color: C.cyan }}>●</span> Claude plans, measures, gates, briefs</span>
-        <span><span style={{ color: C.cyan }}>◆</span> Gatekeeper (for work sent through gk) picks profile + model: confident → flash · unsure → v4-pro · risky → Claude</span>
+        <span><span style={{ color: C.cyan }}>◆</span> Gatekeeper picks profile + model and puts the work on the Kanban board: confident → flash · unsure → v4-pro + checker card · risky → Claude + checker card</span>
         <span><span style={{ color: C.green }}>●</span> Hermes builds on the Mac · live numbers from ecosystem-status.json (hourly)</span>
       </div>
     </div>
@@ -526,10 +535,10 @@ const HermesPanel = () => (
         <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 4 }}>STACK</div>
         <div style={{ fontSize: 11, color: C.green, lineHeight: 1.6 }}>
           <div><span style={{ color: C.cyan }}>Role:</span> <strong>Hermes</strong> runs the credentialed work on the Mac: deploys, SSH, keys, scheduled jobs</div>
-          <div><span style={{ color: C.cyan }}>OS:</span> Hermes-Agent v0.21.4 · <span style={{color: C.green}}>gateway running</span> · Telegram connected, no messages in the last 7 days</div>
+          <div><span style={{ color: C.cyan }}>OS:</span> Hermes-Agent v0.21.4 · <span style={{color: C.green}}>gateway running</span> · Telegram: daily digest 7:05 ET + Kanban card alerts</div>
           <div><span style={{ color: C.cyan }}>Model:</span> DeepSeek-v4-flash on every profile · Gatekeeper upgrades unsure work to v4-pro and risky work (keys, deletes, payments, DNS) to Claude</div>
                     <div><span style={{ color: C.cyan }}>Profiles:</span> default · ops-worker · orchestrator · publisher · research-analyst</div>
-          <div><span style={{ color: C.cyan }}>Interface:</span> @HartleyHermesBot (Telegram) + Cowork</div>
+          <div><span style={{ color: C.cyan }}>Interface:</span> Hermes desktop app (Kanban tab) · @HartleyHermesBot (Telegram) · Cowork</div>
           <div><span style={{ color: C.cyan }}>Search:</span> Google Search Console + browser checks (paid search APIs retired July)</div>
           <div><span style={{ color: C.cyan }}>Host:</span> Bobby's Mac · launchd</div>
                             </div>
@@ -585,7 +594,9 @@ const scoreBorder= score => score >= 22 ? "rgba(179,136,255,0.55)" : score >= 18
 // ═══════════════════════════════════════════════════════════════
 const FoundationPanel = () => { const { st, reg } = useEco(); const cr = (st && st.hermes && st.hermes.cron) || {};
   const rn = ((reg && reg.claude && reg.claude.routines) || []).length;
-  const live = { "f-sched": `${rn || "—"} Claude routines · ${cr.enabled ?? "—"} Hermes jobs enabled (${cr.scripts_enabled ?? "—"} plain scripts, ${cr.agent_jobs_enabled ?? "—"} use a model)` };
+  const hc = (st && st.harvard) || {};
+  const live = { "f-sched": `${rn || "—"} Claude routines · ${cr.enabled ?? "—"} Hermes jobs enabled (${cr.scripts_enabled ?? "—"} plain scripts, ${cr.agent_jobs_enabled ?? "—"} use a model)`,
+    "f-hc": `${(hc.articles || 0).toLocaleString()} articles searchable · ${hc.searches_30d ?? 0} searches in 30 days by Keystone / Scout` };
   return (
   <div style={{ margin: "20px 28px", padding: 16, border: `1px solid ${C.white}`, borderColor: "rgba(255,255,255,0.25)", background: "rgba(255,255,255,0.02)" }}>
     <div style={{ fontSize: 11, color: C.white, letterSpacing: 4, marginBottom: 12, opacity: 0.9 }}>
@@ -725,11 +736,12 @@ const GatekeeperPanel = () => {
     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20, marginTop: 6, fontSize: 11, color: C.green, lineHeight: 1.6 }}>
       <div>
         <div><span style={{ color: C.cyan }}>Mode:</span> {pol.mode || "—"} {pol.decided ? "· since " + pol.decided.slice(0, 10) : ""}</div>
-        <div style={{ color: C.greenDim, fontSize: 9, marginBottom: 4 }}>Covers work sent through <code>gk run</code>. Scheduled jobs and Telegram go straight to Hermes.</div>
+        <div style={{ color: C.greenDim, fontSize: 9, marginBottom: 4 }}><code>gk run</code> now puts every task on the Hermes Kanban board. Scheduled jobs still run straight from Hermes cron.</div>
         <div>1. <b>JEV</b> picks the Hermes profile (typed answer, no text)</div>
         <div>2. Confident → DeepSeek flash · unsure → DeepSeek v4-pro</div>
         <div>3. Keys / deletes / payments / DNS → Claude, always</div>
-        <div>4. JEV down → <b>LAYA</b> on the Mac takes over</div>
+        <div>4. Unsure or risky work gets a <b>checker card</b> that verifies the result before it counts as done</div>
+        <div>5. JEV down → <b>LAYA</b> on the Mac takes over</div>
         <div style={{ color: C.greenDim, fontSize: 9 }}>"Is this job really done?" checks stay with Claude.</div>
         <div style={{ marginTop: 6 }}><span style={{ color: C.cyan }}>Live decisions:</span> {(d.by_mode && d.by_mode["jev-primary"]) || 0} <span style={{ color: C.greenDim }}>· {(d.by_mode && d.by_mode.testing) || 0} during testing</span></div>
         <div><span style={{ color: C.cyan }}>Sent to:</span> {Object.entries(d.picks || {}).map(([k, v]) => k + " " + v).join(" · ") || "—"}</div>
@@ -759,6 +771,47 @@ const HermesFailingPanel = () => {
         <div style={{ color: "rgba(255,255,255,0.8)", fontSize: 10 }}>{JOB_NOTES[j.name] || j.error}</div>
       </div>) : <span>Every enabled job succeeded on its last run.</span>}
       <div style={{ marginTop: 6, color: C.greenDim, fontSize: 9 }}>{dups.length ? `⚠ ${dups.length} jobs are enabled in two profiles and run twice: ${dups.join(", ")}` : "No job runs twice (duplicate copies paused 09-23)."}</div>
+    </div>);
+};
+const KB_COLORS = { done: C.green, running: C.cyan, ready: C.cyan, blocked: C.red, review: C.orange, todo: C.greenDim, triage: C.greenDim, scheduled: C.greenDim };
+const KanbanPanel = () => {
+  const { st } = useEco(); const kb = (st && st.kanban) || {}; const c = kb.counts || {}; const rec = kb.recent || [];
+  const tile = (k, label) => <div key={k} style={{ border: `1px solid ${KB_COLORS[k] || C.greenDim}`, padding: "6px 10px", minWidth: 86 }}>
+    <div style={{ fontSize: 8, color: C.greenDim, letterSpacing: 2 }}>{label}</div>
+    <div style={{ fontSize: 20, fontWeight: 700, color: KB_COLORS[k] || C.green }}>{k === "done24" ? (kb.done_24h ?? 0) : (c[k] || 0)}</div></div>;
+  return ecoBox("▦ KANBAN — HERMES WORK BOARD", C.purple,
+    <div style={{ marginTop: 6, fontSize: 10, color: C.green, lineHeight: 1.5 }}>
+      <div style={{ color: C.greenDim, fontSize: 9, marginBottom: 8 }}>Every task sent through <code>gk run</code> becomes a card here. Hermes picks it up within a minute. Unsure or risky work gets a second <b>Check:</b> card that re-tests the result against the live system before it counts as done. Finished or stuck cards alert you on Telegram. Drag cards in the <b>Kanban</b> tab of the Hermes desktop app.</div>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 10 }}>
+        {tile("ready", "WAITING")}{tile("running", "RUNNING")}{tile("blocked", "STUCK")}{tile("review", "REVIEW")}{tile("done24", "DONE · 24 H")}
+      </div>
+      <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2, marginBottom: 4 }}>LATEST CARDS · Gatekeeper created {kb.gk_cards_30d ?? 0} tasks in 30 days, {kb.gk_checked_30d ?? 0} with a checker</div>
+      {rec.length ? rec.slice(0, 8).map(x => <div key={x.id} style={{ marginBottom: 6 }}>
+        <span style={{ color: KB_COLORS[x.status] || C.green }}>●</span> <b style={{ color: x.check ? C.purple : C.green }}>{x.title}</b> <span style={{ color: C.greenDim }}>· {x.profile} · {x.status} · {x.when}</span>
+        {x.summary ? <div style={{ color: "rgba(255,255,255,0.75)", fontSize: 9 }}>{x.summary}</div> : null}
+      </div>) : <span>No cards yet.</span>}
+    </div>);
+};
+const DigestPanel = () => {
+  const { st } = useEco(); const d = (st && st.digest) || null; const hc = (st && st.harvard) || {};
+  const by = Object.entries(hc.by || {}).map(([k, v]) => k + " " + v).join(" · ");
+  return ecoBox("✉ TELEGRAM DIGEST + HARVARD USE", C.gold,
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20, marginTop: 6, fontSize: 10, color: C.green, lineHeight: 1.6 }}>
+      <div>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2 }}>DAILY DIGEST · 7:05 ET</div>
+        {d ? <>
+          <div><span style={{ color: d.sent ? C.green : C.red }}>{d.sent ? "● sent" : "⚠ not sent"}</span> {new Date(d.ts).toLocaleString()}</div>
+          <div style={{ color: C.greenDim }}>Lens headlines {d.lens_items} · cards done {d.kanban_done} · stuck {d.kanban_blocked} · model spend 24 h ${d.spend_24h}</div>
+          {d.error ? <div style={{ color: C.red }}>{d.error}</div> : null}
+        </> : <div>Not sent yet.</div>}
+        <div style={{ color: C.greenDim, fontSize: 9, marginTop: 4 }}>One message: Lens headlines, Kanban cards finished or stuck, jobs needing attention, yesterday's spend, Harvard searches.</div>
+      </div>
+      <div>
+        <div style={{ fontSize: 9, color: C.greenDim, letterSpacing: 2 }}>HARVARD CORPUS · IS IT INFORMING DECISIONS?</div>
+        <div><span style={{ fontSize: 20, fontWeight: 700, color: hc.searches_30d ? C.green : C.orange }}>{hc.searches_30d ?? 0}</span> searches in 30 days {by ? "· " + by : ""}</div>
+        <div style={{ color: C.greenDim }}>{(hc.articles || 0).toLocaleString()} articles searchable · index rebuilt daily 4:45 ET</div>
+        <div style={{ color: C.greenDim, fontSize: 9, marginTop: 4 }}>Keystone and Scout must search it and cite it before every recommendation. Zero means it is not being used.</div>
+      </div>
     </div>);
 };
 const VenturesPanel = () => {
@@ -794,6 +847,8 @@ const Dashboard = () => (
       <Header />
       <TieredNeurolink />
       <GatekeeperPanel />
+      <KanbanPanel />
+      <DigestPanel />
       <HermesPanel />
       <HermesFailingPanel />
       <ClaudeRoutinesPanel />
