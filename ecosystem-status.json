@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-23T15:00:35+00:00",
+ "generated": "2026-09-23T15:14:23+00:00",
  "writer": "ecosystem-status-writer",
  "hermes": {
   "version": "0.21.4",
@@ -59,10 +59,10 @@
    "cache_read_tokens": 2070485277
   },
   "cron": {
-   "total": 171,
-   "enabled": 81,
-   "scripts_enabled": 79,
-   "agent_jobs_enabled": 2,
+   "total": 174,
+   "enabled": 38,
+   "scripts_enabled": 38,
+   "agent_jobs_enabled": 0,
    "failing": [
     {
      "profile": "default",
@@ -72,7 +72,11 @@
      "status": "error",
      "last_run": "2026-09-23T08:30",
      "schedule": "30 8 * * *",
-     "error": "  https://brand9signs.com/real-estate-signs/"
+     "error": "Script exited with code 1 https://brand9signs.com/real-estate-signs/",
+     "profiles": [
+      "default"
+     ],
+     "fixed": false
     },
     {
      "profile": "default",
@@ -82,17 +86,11 @@
      "status": "error",
      "last_run": "2026-09-23T08:10",
      "schedule": "10 */4 * * *",
-     "error": "TypeError: '>' not supported between instances of 'NoneType' and 'NoneType'"
-    },
-    {
-     "profile": "default",
-     "name": "serp-tracker",
-     "enabled": true,
-     "script": true,
-     "status": "error",
-     "last_run": "2026-09-21T07:30",
-     "schedule": "30 7 * * 1",
-     "error": "UnboundLocalError: cannot access local variable 'urllib' where it is not associated with a value"
+     "error": "Script exited with code 1 TypeError: '>' not supported between instances of 'NoneType' and 'NoneType'",
+     "profiles": [
+      "default"
+     ],
+     "fixed": true
     },
     {
      "profile": "default",
@@ -102,39 +100,14 @@
      "status": "error",
      "last_run": "2026-09-23T09:25",
      "schedule": "25 9 * * *",
-     "error": "menu item Allow JavaScript from Apple Events of menu Developer of menu item Developer of menu View of menu bar item View of menu bar 1 of application process Go"
-    },
-    {
-     "profile": "publisher",
-     "name": "b9-site-change-watcher",
-     "enabled": true,
-     "script": true,
-     "status": "error",
-     "last_run": "2026-09-23T08:30",
-     "schedule": "30 8 * * *",
-     "error": "  https://brand9signs.com/real-estate-signs/"
-    },
-    {
-     "profile": "publisher",
-     "name": "serp-tracker",
-     "enabled": true,
-     "script": true,
-     "status": "error",
-     "last_run": "2026-09-21T07:30",
-     "schedule": "30 7 * * 1",
-     "error": "UnboundLocalError: cannot access local variable 'urllib' where it is not associated with a value"
-    },
-    {
-     "profile": "publisher",
-     "name": "lens-auth-pull",
-     "enabled": true,
-     "script": true,
-     "status": "error",
-     "last_run": "2026-09-23T09:25",
-     "schedule": "25 9 * * *",
-     "error": "menu item Allow JavaScript from Apple Events of menu Developer of menu item Developer of menu View of menu bar item View of menu bar 1 of application process Go"
+     "error": "Script exited with code 127 menu item Allow JavaScript from Apple Events of menu Developer of menu item Developer of menu View of menu bar item View of menu bar",
+     "profiles": [
+      "default"
+     ],
+     "fixed": false
     }
    ],
+   "duplicates": [],
    "roster": [
     {
      "profile": "default",
@@ -164,16 +137,6 @@
      "status": "ok",
      "last_run": "2026-09-21T06:12",
      "schedule": "0 6 * * 1",
-     "error": ""
-    },
-    {
-     "profile": "default",
-     "name": "b9-flywheel-daily-refresh",
-     "enabled": true,
-     "script": false,
-     "status": "ok",
-     "last_run": "2026-09-23T10:17",
-     "schedule": "0 10 * * *",
      "error": ""
     },
     {
@@ -224,7 +187,7 @@
      "status": "error",
      "last_run": "2026-09-23T08:30",
      "schedule": "30 8 * * *",
-     "error": "  https://brand9signs.com/real-estate-signs/"
+     "error": "Script exited with code 1 https://brand9signs.com/real-estate-signs/"
     },
     {
      "profile": "default",
@@ -232,18 +195,8 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-23T10:30",
+     "last_run": "2026-09-23T11:00",
      "schedule": "*/30 * * * *",
-     "error": ""
-    },
-    {
-     "profile": "default",
-     "name": "competitor-watch",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T06:01",
-     "schedule": "0 */6 * * *",
      "error": ""
     },
     {
@@ -252,7 +205,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-23T10:45",
+     "last_run": "2026-09-23T11:00",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -262,7 +215,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-23T10:00",
+     "last_run": "2026-09-23T11:00",
      "schedule": "0 * * * *",
      "error": ""
     },
@@ -312,7 +265,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-23T10:45",
+     "last_run": "2026-09-23T11:00",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -331,8 +284,8 @@
      "name": "ecosystem-status-writer",
      "enabled": true,
      "script": true,
-     "status": null,
-     "last_run": "",
+     "status": "ok",
+     "last_run": "2026-09-23T11:00",
      "schedule": "0 * * * *",
      "error": ""
     },
@@ -344,7 +297,7 @@
      "status": "error",
      "last_run": "2026-09-23T08:10",
      "schedule": "10 */4 * * *",
-     "error": "TypeError: '>' not supported between instances of 'NoneType' and 'NoneType'"
+     "error": "Script exited with code 1 TypeError: '>' not supported between instances of 'NoneType' and 'NoneType'"
     },
     {
      "profile": "default",
@@ -352,7 +305,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-23T10:45",
+     "last_run": "2026-09-23T11:00",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -382,18 +335,8 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-23T10:30",
+     "last_run": "2026-09-23T11:00",
      "schedule": "*/5 * * * *",
-     "error": ""
-    },
-    {
-     "profile": "default",
-     "name": "kanban-state-gen",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T10:57",
-     "schedule": "2,7,12,17,22,27,32,37,42,47,52,57 * * * *",
      "error": ""
     },
     {
@@ -414,7 +357,7 @@
      "status": "error",
      "last_run": "2026-09-23T09:25",
      "schedule": "25 9 * * *",
-     "error": "menu item Allow JavaScript from Apple Events of menu Developer of menu item Developer of menu View of menu bar item View of menu bar 1 of application process Go"
+     "error": "Script exited with code 127 menu item Allow JavaScript from Apple Events of menu Developer of menu item Developer of menu View of menu bar item View of menu bar"
     },
     {
      "profile": "default",
@@ -422,48 +365,8 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-23T11:00",
+     "last_run": "2026-09-23T11:13",
      "schedule": "* * * * *",
-     "error": ""
-    },
-    {
-     "profile": "default",
-     "name": "memory-capture",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T10:30",
-     "schedule": "*/30 * * * *",
-     "error": ""
-    },
-    {
-     "profile": "default",
-     "name": "memory-crossshare",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T10:30",
-     "schedule": "*/30 * * * *",
-     "error": ""
-    },
-    {
-     "profile": "default",
-     "name": "model-eval-daily-refresh",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T06:01",
-     "schedule": "0 6 * * *",
-     "error": ""
-    },
-    {
-     "profile": "default",
-     "name": "model-tier-router",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T10:30",
-     "schedule": "*/30 * * * *",
      "error": ""
     },
     {
@@ -492,7 +395,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-23T10:45",
+     "last_run": "2026-09-23T11:00",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -505,16 +408,6 @@
      "last_run": "2026-09-23T08:00",
      "schedule": "0 8 * * *",
      "error": ""
-    },
-    {
-     "profile": "default",
-     "name": "serp-tracker",
-     "enabled": true,
-     "script": true,
-     "status": "error",
-     "last_run": "2026-09-21T07:30",
-     "schedule": "30 7 * * 1",
-     "error": "UnboundLocalError: cannot access local variable 'urllib' where it is not associated with a value"
     },
     {
      "profile": "default",
@@ -542,18 +435,8 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-23T10:45",
+     "last_run": "2026-09-23T11:00",
      "schedule": "*/15 * * * *",
-     "error": ""
-    },
-    {
-     "profile": "default",
-     "name": "void-prospector",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T10:00",
-     "schedule": "0 10 * * *",
      "error": ""
     },
     {
@@ -562,268 +445,8 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-23T10:30",
+     "last_run": "2026-09-23T11:00",
      "schedule": "*/30 * * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "749-pile-change-detector",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-22T14:01",
-     "schedule": "0 14 * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "agent-cross-ref-validator",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-22T23:01",
-     "schedule": "0 23 * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "b9-gsc-weekly-review",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-21T06:01",
-     "schedule": "0 6 * * 1",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "b9-reindex-recovery",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T10:00",
-     "schedule": "0 10 * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "b9-site-change-watcher",
-     "enabled": true,
-     "script": true,
-     "status": "error",
-     "last_run": "2026-09-23T08:30",
-     "schedule": "30 8 * * *",
-     "error": "  https://brand9signs.com/real-estate-signs/"
-    },
-    {
-     "profile": "publisher",
-     "name": "competitor-watch",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T06:01",
-     "schedule": "0 */6 * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "completion-claim-watcher",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T10:45",
-     "schedule": "*/15 * * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "construct-5min-health-check",
-     "enabled": true,
-     "script": false,
-     "status": "ok",
-     "last_run": "2026-09-23T10:55",
-     "schedule": "*/5 * * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "content-publish-scheduler",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T10:45",
-     "schedule": "*/15 * * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "dh-dns-tracker",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T06:15",
-     "schedule": "15 6 * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "gbp-review-monitor",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T08:10",
-     "schedule": "10 */4 * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "github-pages-build-watcher",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T10:45",
-     "schedule": "*/15 * * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "harvard-library-index-builder",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T04:31",
-     "schedule": "30 4 * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "hermes-composed-brief",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-22T17:01",
-     "schedule": "0 17 * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "inbox-self-heal",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T10:55",
-     "schedule": "*/5 * * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "kanban-state-gen",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T10:57",
-     "schedule": "2,7,12,17,22,27,32,37,42,47,52,57 * * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "lennar-route-density-tracker",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T07:00",
-     "schedule": "0 7 * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "lens-auth-pull",
-     "enabled": true,
-     "script": true,
-     "status": "error",
-     "last_run": "2026-09-23T09:25",
-     "schedule": "25 9 * * *",
-     "error": "menu item Allow JavaScript from Apple Events of menu Developer of menu item Developer of menu View of menu bar item View of menu bar 1 of application process Go"
-    },
-    {
-     "profile": "publisher",
-     "name": "lens-auth-pull-watcher",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T10:59",
-     "schedule": "* * * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "memory-capture",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T10:30",
-     "schedule": "*/30 * * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "memory-crossshare",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T10:30",
-     "schedule": "*/30 * * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "model-eval-daily-refresh",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T06:01",
-     "schedule": "0 6 * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "model-tier-router",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T10:30",
-     "schedule": "*/30 * * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "monitor-gsc-daily",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T06:01",
-     "schedule": "0 6 * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "morning-briefing-composer",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T06:01",
-     "schedule": "0 6 * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "plugin-load-verifier",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T10:45",
-     "schedule": "*/15 * * * *",
      "error": ""
     },
     {
@@ -848,62 +471,12 @@
     },
     {
      "profile": "publisher",
-     "name": "pragma-smb-install-readiness-tracker",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T08:00",
-     "schedule": "0 8 * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
      "name": "pragma-uptime-guardian",
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-23T10:45",
+     "last_run": "2026-09-23T11:00",
      "schedule": "*/15 * * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "review-velocity-tracker",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T08:00",
-     "schedule": "0 8 * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "serp-tracker",
-     "enabled": true,
-     "script": true,
-     "status": "error",
-     "last_run": "2026-09-21T07:30",
-     "schedule": "30 7 * * 1",
-     "error": "UnboundLocalError: cannot access local variable 'urllib' where it is not associated with a value"
-    },
-    {
-     "profile": "publisher",
-     "name": "ssh-availability-check",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T08:00",
-     "schedule": "0 */4 * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "ssl-cert-watcher",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T07:00",
-     "schedule": "0 7 * * *",
      "error": ""
     },
     {
@@ -912,38 +485,8 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-23T10:55",
+     "last_run": "2026-09-23T11:10",
      "schedule": "*/5 * * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "uptime-monitor",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T10:45",
-     "schedule": "*/15 * * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "void-prospector",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T10:00",
-     "schedule": "0 10 * * *",
-     "error": ""
-    },
-    {
-     "profile": "publisher",
-     "name": "wild-duck-doctor",
-     "enabled": true,
-     "script": true,
-     "status": "ok",
-     "last_run": "2026-09-23T10:30",
-     "schedule": "*/30 * * * *",
      "error": ""
     }
    ]
@@ -964,8 +507,12 @@
    "last_24h": 44,
    "to_claude": 0,
    "by_mode": {
-    "?": 37,
+    "testing": 37,
     "jev-primary": 7
+   },
+   "picks": {
+    "publisher": 4,
+    "ops-worker": 3
    }
   },
   "bakeoff": {
