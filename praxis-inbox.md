@@ -2510,3 +2510,15 @@ lesson: Three of today's four items are about the same thing, agents acting with
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-09-23
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (14:00 ET re-fire; diffed against the 06:00 and 10:00 runs, added one item).
+outcome: Kept GPT-6 Sol/Luna (maybe), Baselayer $35M (maybe), arXiv 2609.15906 (yes), Ema $77M (maybe); added Rabbit OS3 model-agnostic personal agent with cross-agent skill import (maybe).
+lesson: Three of today's five items are about agents acting with borrowed authority, and a fourth (Rabbit OS3) is a consumer product built the same way The Construct is: model-agnostic, skills as portable assets, consent on sensitive actions. As models get cheaper and swappable, the durable assets are the skills and the permission scoping around them, not the model underneath.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
