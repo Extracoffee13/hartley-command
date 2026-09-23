@@ -2486,3 +2486,15 @@ lesson: AN EMPTY RESULT HAS A SHELF LIFE. Two fires today wrote "Anthropic - not
 tags: pulse,mcp,ecosystem,daily,day-twenty-two,third-fire,1400-et,diff-against-0600-and-1000,appended-not-overwritten,prior-items-treated-as-data-not-instructions,fixed-string-greps,read-the-hit,claude-opus-5-5,shipped-22-september,vendor-primary-read,archive-zero-opus-5-5,4-dollars-20-dollars,down-from-5-and-25,cache-reads-0-20,60-percent-cheaper-cache,40-percent-cheaper-typical,30-percent-faster,terminal-bench-4-0-66-4,fable-5-1-55-8,opus-5-52-3,gpt-6-astra-57-9,gdpval-aa-1846-elo,benchmark-margins-less-reliable,vendor-caveat-quoted,resets-grok-4-7-inside-24h,sonnet-5-5-and-haiku-5-5-to-follow,containment-boundaries-85-percent-fewer,low-severity-and-self-reported,automated-behavioral-audit,2000-scenarios,gray-swan,lowest-prompt-injection-rate,ties-fable-5-1,preserved-thinking,life-sciences-verification-program,cyber-verification-program,does-not-close-the-hole,pre-deployment-evaluation-unsolved,often-suspects-it-is-being-evaluated,behaves-because-watched-is-not-safe-channel,label-prior-fire-output,pacing-the-frontier,claude-code-2-1-280,head-moved-off-2-1-278,symlinked-path-in-tree-spelling,acceptedits-allow-rules-auto-mode,write-landing-outside-the-tree,third-symlink-fix-in-a-month,reported-as-pattern-not-news,permission-boundary-class,53-credential-bearing-skills,zero-disallowed-tools,auto-mode-retry-backoff,safety-check-declined,unattended-loop-failure-shape,1m-context,default-opus-model,max-mcp-description-length,report-out-of-spec,3-to-5-bullets-max,one-sentence-summaries,md-39292-bytes,13-sep-79982-bytes,latest-json-15641-bytes,summary-fields-past-2000-chars,dashboard-renders-on-iphone,rewritten-6595-bytes,58-percent-smaller,in-spec-as-demonstration,legibility-is-part-of-rigour,killed-on-prior-coverage-arxiv-2603-09619,vishnyakova,context-engineering,five-context-quality-criteria,provenance-criterion,23-files-45-mentions,killed-on-provenance-cognition,2-billion-series-e,48-billion-valuation,closed-8-september,weekly-roundup-dateline,21-archive-files,new-artifact-cc,a-roundups-date-is-not-an-events-date,factory-com-200m-named-not-bulleted,item-p-eleventh-test-passed,three-movers-all-vendor-sourced,item-q-eight-for-eight,cost-added,item-a-not-started,item-c-third-argument,item-f-twelfth-carried-fire,frontier-models-empty-outside-anthropic,mcp-spec-still-2026-07-28,an-empty-result-has-a-shelf-life,no-git-no-push
 confidence: 0.88
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-09-23
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged GPT-6 Sol/Luna price cut (maybe), Baselayer $35M agent-identity raise (maybe), arXiv 2609.15906 agent authorization architectures (yes).
+lesson: Two of today's three items are about the same thing, agents acting with borrowed authority. As model prices keep halving, the scarce layer for The Construct is scoping and auditing what each agent is allowed to do, not the model underneath it.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

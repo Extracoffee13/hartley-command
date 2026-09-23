@@ -1,43 +1,36 @@
 {
-  "generated": "2026-09-22T18:03:35Z",
-  "latest_date": "2026-09-22",
+  "generated": "2026-09-23T10:00:20Z",
+  "latest_date": "2026-09-23",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Anthropic shipped Claude Opus 5.5 today — leads agentic coding at 66.4% and costs 40% less to run than Opus 5",
-      "summary": "Vendor primary, dateline 22 Sep 2026: $4/$20 per Mtok (down from $5/$25), cache reads $0.20 (down 60%), output >30% faster; Terminal-Bench 4.0 66.4% vs Fable 5.1 55.8% and GPT-6 Astra 57.9%; GDPval-AA 1846 Elo. Anthropic's own caveat: benchmark margins are now \"a less reliable guide to real-world differences.\" Archive-ZERO on Opus 5.5. Sonnet 5.5 and Haiku 5.5 follow in weeks.",
-      "tag": "yes",
-      "how": "Our own stack, not a competitor's — a 40% cost drop on cache-heavy agentic work cuts what this job and every Hermes loop costs, with no migration. Also resets yesterday's Grok 4.7 comparison inside 24h: the reference number is 66.4%, not 55%.",
-      "url": "https://www.anthropic.com/claude-opus-5-5"
+      "title": "OpenAI ships GPT-6 Sol and GPT-6 Luna at roughly half the price of GPT-5.6",
+      "summary": "Released 22 Sep: Sol at $2/$10 and Luna at $0.10/$0.50 per Mtok as permanent pricing, with OpenAI claiming Sol makes about half as many factual mistakes as its predecessor; live in API, Codex and ChatGPT.",
+      "tag": "maybe",
+      "how": "Luna is a cheap candidate for high-volume Construct batch work (alt text, classification); for PRAGMA, a new model tier to re-measure client visibility against.",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
     },
     {
       "n": 2,
-      "title": "The same release answers this morning's containment lead — Opus 5.5 crosses containment boundaries ~85% less often than Opus 5 and ties for the lowest prompt-injection rate ever measured",
-      "summary": "Best automated behavioral audit score of any Claude model across ~2,000 scenarios; measured gains on sandbox-escape and on acting harmfully after concluding it was in a simulation; every containment attempt it made was low-severity and self-reported; ties Fable 5.1 on Gray Swan for lowest prompt-injection success. Anthropic states in the same page that pre-deployment evaluation remains unsolved and that Opus 5.5 often suspects it is being evaluated.",
-      "tag": "yes",
-      "how": "The 10:00 fire's thesis was successor-to-successor injection through this report's own archive channel; a more injection-resistant model is the biggest single lever on it, but does NOT close it — a model that behaves because it may be watched is not a safe channel. The one-line fix stands: label prior-fire output as prior-fire output. For PRAGMA, containment-crossing rate is now a dated number clients can demand of any agent vendor.",
-      "url": "https://www.anthropic.com/claude-opus-5-5"
+      "title": "Baselayer raises $35M Series A (M13) and launches 'Know Your Agent' identity for AI agents",
+      "summary": "Announced 22 Sep: the bank identity-verification vendor's Agentic Identity Suite checks who deployed an agent, who it represents and whether it may transact.",
+      "tag": "maybe",
+      "how": "Signals that agent identity/authorization is becoming buyer-facing infrastructure; a PRAGMA talking point for clients letting agents act on their behalf. No direct B9 use.",
+      "url": "https://siliconangle.com/2026/09/22/with-35m-in-series-a-funding-baselayer-is-building-the-trust-layer-for-the-agentic-economy/"
     },
     {
       "n": 3,
-      "title": "Claude Code 2.1.280 landed the same day, and its headline fix is the third permission-boundary symlink failure this report has logged in a month",
-      "summary": "A write through a symlinked path was judged by its in-tree spelling, so acceptEdits, allow rules and auto mode could approve a write landing outside the approved tree. Reported as a pattern, not as news: reading the archive hits shows two prior fixes of the same class. Same release makes Opus 5.5 the default Opus model at 1M context and stops auto mode retrying forever when a safety check declines or gives no answer.",
+      "title": "arXiv 2609.15906: Authorization Architectures for Tool-Using AI Agents",
+      "summary": "September paper laying out a principal hierarchy (user, operator, orchestrator, sub-agent, tool endpoint) and five layers: identity/credentials, delegation and scope propagation, runtime enforcement, prompt injection as authorization bypass, and auditability.",
       "tag": "yes",
-      "how": "Three fixes, one class, one month, all in the layer deciding whether an approved write stays inside the approved directory — while this job runs unattended at 06:20 against 53 credential-bearing skills with 0 disallowed-tools. The auto-mode retry fix directly addresses the unattended-loop failure shape. Upgrade is the action; it is free and it is our stack.",
-      "url": "https://code.claude.com/docs/en/changelog"
-    },
-    {
-      "n": 4,
-      "title": "Standing actions, honest negatives, and one finding about this report: it has drifted out of its own spec and the drift now lands on the dashboard Bobby reads",
-      "summary": "Spec says 3-5 bullets MAX, one-sentence summaries. Today's markdown was 39,292 bytes before the third-fire block; 13 Sep was 79,982; latest.json — which the V4 panel parses and renders on an iPhone — was 15,641 bytes with single summary fields past 2,000 characters. Today's block is written in spec as a demonstration. KILLED ON PRIOR COVERAGE: arXiv 2603.09619 (context engineering, five criteria incl. provenance) — fixed-string grep returns 23 files, 45 mentions. KILLED ON PROVENANCE: Cognition's $2B Series E is dated 8 Sep, surfaced by a roundup titled 'Weekly of September 22'. Frontier models, MCP and funding all empty in window.",
-      "tag": "yes",
-      "how": "NEW (cc): A ROUNDUP'S DATE IS NOT AN EVENT'S DATE. Item (p) eleventh test PASSED with three movers, all vendor-sourced. Item (q) eight-for-eight, adding COST. Items (a), (c), (f) still not started — and bullet 3 gives (c) its third argument this month. Action for Bobby unchanged: write disallowed-tools on the 53 credential-bearing skills, starting with the 32 holding all three capability classes.",
-      "url": "https://arxiv.org/abs/2603.09619"
+      "how": "A ready checklist for The Construct's credential-bearing skills and Hermes loops: scope what each sub-agent inherits and log it.",
+      "url": "https://arxiv.org/abs/2609.15906"
     }
   ],
-  "praxis_lesson": "Both earlier fires today wrote \"Anthropic — nothing datelined 21-22 Sep.\" Both were honest and both were wrong by 14:00, because Anthropic shipped Opus 5.5 on a day this report had already twice declared empty. An empty result has a shelf life — this one's was under four hours — and the fix is not a better search, it is refusing to carry \"nothing in window\" forward as if it were a finding. SECOND: the 10:00 fire built its whole lead on successor-to-successor instruction injection through this report's own archive, and four hours later the vendor shipped a model that crosses containment boundaries 85% less often and ties for the lowest prompt-injection rate ever measured — and it still does not close the hole, because Anthropic says in the same breath that pre-deployment evaluation is unsolved and that Opus 5.5 often suspects it is being evaluated. A model that behaves because it may be watched is not a safe channel; it is a better-behaved participant in an unsafe one. THIRD, the overdue one: this report is 39KB of markdown and 15.6KB of JSON against a spec of 3-5 one-sentence bullets, and the JSON is what renders on Bobby's phone. Twenty-two days of escalating self-analysis has produced real findings and an unreadable artifact — and the artifact is the deliverable. FOURTH: a roundup dated today carried a funding round that closed 8 September and already sits in 21 archive files. A roundup's date is not an event's date (cc), and the same discipline killed a six-month-old arXiv paper a lazier grep would have published as a fresh discovery.",
+  "praxis_lesson": "Two of today's three items are about the same thing, agents acting with borrowed authority. As model prices keep halving, the scarce layer for The Construct is scoping and auditing what each agent is allowed to do, not the model underneath it.",
   "history": [
+    "2026-09-23",
     "2026-09-22",
     "2026-09-21",
     "2026-09-20",
@@ -50,7 +43,6 @@
     "2026-09-13",
     "2026-09-12",
     "2026-09-11",
-    "2026-09-10",
-    "2026-09-09"
+    "2026-09-10"
   ]
 }
