@@ -159,12 +159,11 @@ const BUILD_BACKLOG = [
 // NEW Tier 2 — Production engine (Hermes-Agent + DeepSeek)
 // Top workloads shown in Neurolink; full migration map below
 const HERMES_WORKLOADS = [
-  { id: "h-gatekeeper", codename: "gatekeeper · JEV", role: "Picks the profile + model for every task · 23/24 routing, 6/6 triage", color: C.green, status: "proven", lastRun: "live 2026-09-23 · jev-primary" },
-  { id: "h-laya",       codename: "LAYA backup", role: "Open-source decider on the Mac · takes over if JEV is down", color: C.green, status: "proven", lastRun: "21/24 routing · 69 ms" },
-  { id: "h-ops",        codename: "ops-worker", role: "Credentialed shell on the Mac · fixes, deploys, cron", color: C.green, status: "proven", lastRun: "deepseek-v4-flash" },
-  { id: "h-pub",        codename: "publisher", role: "WordPress / LinkedIn / site publishing · busiest profile", color: C.green, status: "proven", lastRun: "deepseek-v4-flash" },
-  { id: "h-research",   codename: "research-analyst", role: "Web + data research · Lens / Scout backing", color: C.green, status: "proven", lastRun: "deepseek-v4-flash" },
-  { id: "h-orch",       codename: "orchestrator", role: "Multi-step plans · unsure work escalates to v4-pro / Claude", color: C.green, status: "proven", lastRun: "deepseek-v4-flash" },
+  { id: "h-default",  codename: "default",          role: "Main Hermes · Telegram @HartleyHermesBot + cron", color: C.green, status: "proven", lastRun: "deepseek-v4-flash" },
+  { id: "h-ops",      codename: "ops-worker",       role: "Credentialed shell on the Mac · fixes, deploys, cron", color: C.green, status: "proven", lastRun: "deepseek-v4-flash" },
+  { id: "h-orch",     codename: "orchestrator",     role: "Multi-step plans · unsure work → v4-pro", color: C.green, status: "proven", lastRun: "deepseek-v4-flash" },
+  { id: "h-pub",      codename: "publisher",        role: "WordPress / LinkedIn / site publishing · busiest profile", color: C.green, status: "proven", lastRun: "deepseek-v4-flash" },
+  { id: "h-research", codename: "research-analyst", role: "Web + data research", color: C.green, status: "proven", lastRun: "deepseek-v4-flash" },
 ];
 
 // Full Hermes Migration Map — A-G categories from audit
@@ -409,269 +408,188 @@ const Header = () => {
 // TIERED NEUROLINK — the new central visual
 // ═══════════════════════════════════════════════════════════════
 const TieredNeurolink = () => {
-  const W = 1400, H = 760;
-  const founderY = 50;
-  const hermesY = 140;   // NEW · Hermes COS sits between Bobby and Operators
-  const tier1Y = 250;
-  const tier2Y = 440;
-  const tier0Y = 640;
-
+  const W = 1400, H = 800;
+  const founderY = 52, tier1Y = 190, gateY = 350, hermesY = 470, tier2Y = 580, tier0Y = 720;
   const tier1X = (i, n) => 140 + i * ((W - 280) / Math.max(1, n - 1));
-  const tier2X = (i, n) => 220 + i * ((W - 440) / Math.max(1, n - 1));
+  const tier2X = (i, n) => 260 + i * ((W - 520) / Math.max(1, n - 1));
   const tier0X = (i, n) => 180 + i * ((W - 360) / Math.max(1, n - 1));
+  const jevX = W / 2 - 150, layaX = W / 2 + 150;
 
-  const [stamp, setStamp] = useState("00:00:00.000");
-  const [packets, setPackets] = useState(8421);
-  useEffect(() => {
-    const id = setInterval(() => {
-      const d = new Date();
-      setStamp(d.toLocaleTimeString("en-US", { hour12: false }) + "." + String(d.getMilliseconds()).padStart(3, "0"));
-      setPackets(p => p + Math.floor(5 + Math.random() * 14));
-    }, 90);
-    return () => clearInterval(id);
-  }, []);
+  const { st } = useEco();
+  const prof = {}; ((st && st.hermes && st.hermes.profiles) || []).forEach(p => { prof[p.name] = p; });
+  const cr = (st && st.hermes && st.hermes.cron) || {};
+  const gk = (st && st.gatekeeper) || {}; const bk = gk.bakeoff || {};
+  const u = (st && st.hermes && st.hermes.usage_30d) || {};
+  const [stamp, setStamp] = useState("00:00:00");
+  useEffect(() => { const id = setInterval(() => setStamp(new Date().toLocaleTimeString("en-US", { hour12: false })), 1000); return () => clearInterval(id); }, []);
 
-  // Synapse fire animation — random nodes "fire" with a brief flash
   const allNodes = useMemo(() => [
-    ...PUBLIC_OPERATORS.map((o, i) => ({ ...o, layer: 1, x: tier1X(i, PUBLIC_OPERATORS.length), y: tier1Y })),
-    ...HERMES_WORKLOADS.map((h, i) => ({ ...h, layer: 2, x: tier2X(i, HERMES_WORKLOADS.length), y: tier2Y })),
+    ...PUBLIC_OPERATORS.map((o, i) => ({ color: o.color, x: tier1X(i, PUBLIC_OPERATORS.length), y: tier1Y })),
+    ...HERMES_WORKLOADS.map((h, i) => ({ color: C.green, x: tier2X(i, HERMES_WORKLOADS.length), y: tier2Y })),
+    { color: C.cyan, x: jevX, y: gateY },
   ], []);
-
   const [fires, setFires] = useState([]);
   useEffect(() => {
     const id = setInterval(() => {
       const node = allNodes[Math.floor(Math.random() * allNodes.length)];
-      const fireId = Math.random().toString(36).slice(2);
-      setFires(f => [...f, { id: fireId, x: node.x, y: node.y, color: node.color }]);
-      setTimeout(() => setFires(f => f.filter(x => x.id !== fireId)), 1100);
-    }, 600);
+      const fid = Math.random().toString(36).slice(2);
+      setFires(f => [...f, { id: fid, ...node }]);
+      setTimeout(() => setFires(f => f.filter(x => x.id !== fid)), 1100);
+    }, 700);
     return () => clearInterval(id);
   }, []);
 
+  const mono = "Courier New, monospace";
+  const flow = (x1, y1, x2, y2, color, op, w, dash, dur, key) => (
+    <line key={key} x1={x1} y1={y1} x2={x2} y2={y2} stroke={color} strokeOpacity={op} strokeWidth={w}
+      strokeDasharray={dash} style={dur ? { animation: `data-flow ${dur}s linear infinite` } : undefined} />
+  );
+
   return (
-    <div style={{
-      position: "relative", margin: "20px 28px", padding: 18,
-      border: "1px solid rgba(57,255,20,0.2)", background: "rgba(0,0,0,0.7)",
-      overflow: "hidden",
-    }}>
+    <div style={{ position: "relative", margin: "20px 28px", padding: 18, border: "1px solid rgba(57,255,20,0.2)", background: "rgba(0,0,0,0.7)", overflow: "hidden" }}>
       <ScanSweep />
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-        <div style={{ fontSize: 11, color: C.green, letterSpacing: 4 }}>
-          ⌬ NEUROLINK · TIERED ARCHITECTURE · TWO-TIER OPERATING MODEL
-        </div>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12, flexWrap: "wrap", gap: 8 }}>
+        <div style={{ fontSize: 11, color: C.green, letterSpacing: 4 }}>⌬ NEUROLINK · HOW WORK FLOWS · CLAUDE → GATEKEEPER → HERMES</div>
         <div style={{ fontSize: 10, color: C.greenDim, letterSpacing: 2 }}>
-          PKT <span style={{ color: C.cyan }}>{packets.toLocaleString()}</span>
-          <span style={{ margin: "0 8px" }}>·</span>
-          T<span style={{ color: C.cyan }}>{stamp}</span>
+          HERMES 30D <span style={{ color: C.cyan }}>{(u.sessions || 0).toLocaleString()}</span> sessions · <span style={{ color: C.cyan }}>${u.cost_usd ?? "—"}</span>
+          <span style={{ margin: "0 8px" }}>·</span>GATE <span style={{ color: C.cyan }}>{(gk.policy && gk.policy.mode) || "—"}</span>
+          <span style={{ margin: "0 8px" }}>·</span><span style={{ color: C.cyan }}>{stamp}</span>
         </div>
       </div>
 
       <svg viewBox={`0 0 ${W} ${H}`} style={{ width: "100%", height: "auto", display: "block" }} preserveAspectRatio="xMidYMid meet">
         <defs>
-          <linearGradient id="connFlow" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor={C.green} stopOpacity="0.6" />
-            <stop offset="100%" stopColor={C.cyan} stopOpacity="0.2" />
-          </linearGradient>
-          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="3" result="b" />
-            <feMerge>
-              <feMergeNode in="b" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-          <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="1.5" result="b" />
-            <feMerge>
-              <feMergeNode in="b" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b" /><feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+          <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="1.5" result="b" /><feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+          <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill={C.orange} /></marker>
         </defs>
 
-        {/* Tier band labels (left side) */}
-        <g fontFamily="Courier New, monospace" fontSize="9" letterSpacing="2" fill={C.greenDim}>
-          <text x="20" y={founderY + 5}>FOUNDER</text>
-          <text x="20" y={hermesY + 5} fill={C.cyan} fontWeight="700">HERMES · COS · OVERSEER</text>
-          <text x="20" y={tier1Y + 5}>TIER 1 · COWORK · CLAUDE</text>
-          <text x="20" y={tier2Y + 5}>TIER 2 · HERMES · DEEPSEEK</text>
-          <text x="20" y={tier0Y + 5}>TIER 0 · FOUNDATION</text>
+        <g fontFamily={mono} fontSize="8" letterSpacing="2" fill={C.greenDim}>
+          <text x="128" y={tier1Y - 48} fill={C.cyan}>TIER 1 · CLAUDE · COWORK</text>
+          <text x="128" y={gateY - 30} fill={C.cyan} fontWeight="700">GATEKEEPER · ROUTER</text>
+          <text x="128" y={hermesY - 28}>TIER 2 · HERMES ON THE MAC · DEEPSEEK PROFILES</text>
+          <text x="128" y={tier0Y - 36}>TIER 0 · FOUNDATION</text>
         </g>
-
-        {/* Tier band background bars */}
         <g>
-          <rect x="120" y={hermesY - 40} width={W - 240} height="80" fill={C.cyan} opacity="0.07" />
           <rect x="120" y={tier1Y - 60} width={W - 240} height="120" fill={C.cyan} opacity="0.04" />
-          <rect x="120" y={tier2Y - 60} width={W - 240} height="120" fill={C.green} opacity="0.04" />
-          <rect x="120" y={tier0Y - 30} width={W - 240} height="60" fill={C.white} opacity="0.03" />
+          <rect x="120" y={gateY - 42} width={W - 240} height="84" fill={C.cyan} opacity="0.07" />
+          <rect x="120" y={hermesY - 40} width={W - 240} height="180" fill={C.green} opacity="0.04" />
+          <rect x="120" y={tier0Y - 30} width={W - 240} height="56" fill={C.white} opacity="0.03" />
         </g>
 
-        {/* Connection: Founder ↔ Hermes (the COS bridge — animated) */}
-        <line x1={W/2} y1={founderY + 30} x2={W/2} y2={hermesY - 30}
-          stroke={C.cyan} strokeOpacity="0.85" strokeWidth="2.5"
-          strokeDasharray="6,3" style={{ animation: "data-flow 1.8s linear infinite" }} />
+        {/* Bobby → Claude operators (primary way work starts) */}
+        {PUBLIC_OPERATORS.map((o, i) => flow(W / 2, founderY + 32, tier1X(i, PUBLIC_OPERATORS.length), tier1Y - 24, C.gold, 0.45, 1, "3,4", 3, `f1-${i}`))}
+        {/* Bobby ⇢ Hermes direct (Telegram), drawn down the right edge */}
+        <path d={`M ${W/2 + 34} ${founderY} C ${W - 90} ${founderY}, ${W - 90} ${hermesY}, ${W/2 + 150} ${hermesY}`} fill="none" stroke={C.gold} strokeOpacity="0.35" strokeWidth="1" strokeDasharray="2,5" />
+        <text x={W - 150} y={(founderY + hermesY) / 2} fontFamily={mono} fontSize="8" fill={C.gold} opacity="0.7">Telegram · direct</text>
 
-        {/* Hermes → ALL Operators (he can use the ecosystem) */}
-        {PUBLIC_OPERATORS.map((o, i) => {
-          const x = tier1X(i, PUBLIC_OPERATORS.length);
-          return (
-            <line key={`h1-${i}`} x1={W/2} y1={hermesY + 30} x2={x} y2={tier1Y - 30}
-              stroke={C.cyan} strokeOpacity="0.5" strokeWidth="1.3"
-              strokeDasharray="3,3" />
-          );
-        })}
+        {/* Claude operators → Gatekeeper (tasks handed to Hermes via gk) */}
+        {PUBLIC_OPERATORS.map((o, i) => flow(tier1X(i, PUBLIC_OPERATORS.length), tier1Y + 24, jevX, gateY - 22, C.cyan, 0.35, 1, "4,4", 2.6, `t1g-${i}`))}
+        {/* JEV ↔ LAYA failover */}
+        {flow(jevX + 70, gateY, layaX - 70, gateY, C.cyan, 0.6, 1.2, "3,3", 0, "fail")}
+        <text x={W / 2} y={gateY - 6} textAnchor="middle" fontFamily={mono} fontSize="8" fill={C.cyan} opacity="0.8">backup if JEV is down</text>
+        {/* Gatekeeper → Hermes */}
+        {flow(jevX, gateY + 22, W / 2, hermesY - 24, C.green, 0.8, 2, "6,3", 1.8, "g-h")}
+        {flow(layaX, gateY + 22, W / 2, hermesY - 24, C.green, 0.3, 1, "2,5", 0, "l-h")}
+        {/* Risky work → back to Claude */}
+        <path d={`M ${jevX - 70} ${gateY} C ${jevX - 260} ${gateY}, ${jevX - 260} ${tier1Y + 40}, ${jevX - 200} ${tier1Y + 30}`} fill="none" stroke={C.orange} strokeOpacity="0.8" strokeWidth="1.3" strokeDasharray="5,4" markerEnd="url(#arr)" />
+        <text x={jevX - 330} y={gateY + 34} fontFamily={mono} fontSize="8" fill={C.orange}>risky (keys · deletes · payments · DNS) → Claude</text>
+        {/* Hermes → profiles */}
+        {HERMES_WORKLOADS.map((h, i) => flow(W / 2, hermesY + 24, tier2X(i, HERMES_WORKLOADS.length), tier2Y - 22, C.green, 0.5, 1.2, "4,4", 3, `h2-${i}`))}
+        {/* Everything rests on the foundation */}
+        {FOUNDATION.map((f, i) => flow(W / 2, tier2Y + 24, tier0X(i, FOUNDATION.length), tier0Y - 16, C.white, 0.12, 0.8, "0", 0, `t0-${i}`))}
 
-        {/* Hermes → ALL Tier 2 Wild Ducks (direct command lines — Hermes is the overseer) */}
-        {HERMES_WORKLOADS.map((h, i) => {
-          const x = tier2X(i, HERMES_WORKLOADS.length);
-          return (
-            <line key={`h2-${i}`} x1={W/2} y1={hermesY + 30} x2={x} y2={tier2Y - 30}
-              stroke={C.green} strokeOpacity="0.4" strokeWidth="1"
-              strokeDasharray="4,4" style={{ animation: "data-flow 3s linear infinite" }} />
-          );
-        })}
-
-        {/* Faded: Founder → Tier 1 (legacy lines, now mediated by Hermes) */}
-        {PUBLIC_OPERATORS.map((o, i) => {
-          const x = tier1X(i, PUBLIC_OPERATORS.length);
-          return (
-            <line key={`f1-${i}`} x1={W/2} y1={founderY + 30} x2={x} y2={tier1Y - 30}
-              stroke={C.gold} strokeOpacity="0.08" strokeWidth="0.5"
-              strokeDasharray="2,6" />
-          );
-        })}
-
-        {/* Connection lines: Tier 1 → Tier 2 (selective, showing which Operators have T2 backing) */}
-        {[
-          { fromOpIdx: 0, toWorkIdx: 5, label: "Keystone plans" },     // Keystone → orchestrator
-          { fromOpIdx: 2, toWorkIdx: 2, label: "Atlas ops" },          // Atlas → ops-worker
-          { fromOpIdx: 3, toWorkIdx: 4, label: "Lens research" },      // Lens → research-analyst
-          { fromOpIdx: 4, toWorkIdx: 4, label: "Scout research" },     // Scout → research-analyst
-          { fromOpIdx: 5, toWorkIdx: 3, label: "Pulse publish" },      // Pulse → publisher
-        ].map((c, i) => {
-          const x1 = tier1X(c.fromOpIdx, PUBLIC_OPERATORS.length);
-          const x2 = tier2X(c.toWorkIdx, HERMES_WORKLOADS.length);
-          return (
-            <line key={`t12-${i}`} x1={x1} y1={tier1Y + 30} x2={x2} y2={tier2Y - 30}
-              stroke={C.green} strokeOpacity="0.55" strokeWidth="1.5"
-              strokeDasharray="5,5" style={{ animation: "data-flow 2.5s linear infinite" }} />
-          );
-        })}
-
-        {/* Connection lines: All to Foundation */}
-        {FOUNDATION.map((f, i) => {
-          const x = tier0X(i, FOUNDATION.length);
-          return (
-            <line key={`t0-${i}`} x1={W/2} y1={tier2Y + 30} x2={x} y2={tier0Y - 20}
-              stroke={C.white} strokeOpacity="0.15" strokeWidth="0.8" />
-          );
-        })}
-
-        {/* Founder node (Bobby) */}
+        {/* Bobby */}
         <g transform={`translate(${W/2},${founderY})`}>
           <circle r="48" fill="none" stroke={C.gold} strokeOpacity="0.3" strokeWidth="0.5">
             <animate attributeName="r" values="48;58;48" dur="3s" repeatCount="indefinite" />
             <animate attributeName="stroke-opacity" values="0.3;0.1;0.3" dur="3s" repeatCount="indefinite" />
           </circle>
           <circle r="32" fill="#000" stroke={C.gold} strokeWidth="2" filter="url(#glow)" />
-          <text x="0" y="-2" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="11" fontWeight="700" fill={C.gold}>BOBBY</text>
-          <text x="0" y="10" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="7" fill={C.gold} opacity="0.7">FOUNDER</text>
+          <text x="0" y="-2" textAnchor="middle" fontFamily={mono} fontSize="11" fontWeight="700" fill={C.gold}>BOBBY</text>
+          <text x="0" y="10" textAnchor="middle" fontFamily={mono} fontSize="7" fill={C.gold} opacity="0.7">FOUNDER</text>
         </g>
 
-        {/* Hermes COS — sits directly under Bobby, oversees ecosystem */}
-        <g transform={`translate(${W/2},${hermesY})`}>
-          {/* Pulsing halo */}
-          <circle r="56" fill="none" stroke={C.cyan} strokeOpacity="0.45" strokeWidth="0.8">
-            <animate attributeName="r" values="56;70;56" dur="2.4s" repeatCount="indefinite" />
-            <animate attributeName="stroke-opacity" values="0.5;0.15;0.5" dur="2.4s" repeatCount="indefinite" />
-          </circle>
-          <circle r="42" fill="none" stroke={C.cyan} strokeOpacity="0.25" strokeWidth="0.5" />
-          {/* Main body — hex-feel rounded */}
-          <rect x="-48" y="-26" width="96" height="52" rx="6" fill="#000" stroke={C.cyan} strokeWidth="2.2" filter="url(#glow)" />
-          {/* Status pulse */}
-          <circle cx="38" cy="-16" r="3.5" fill={C.green}>
-            <animate attributeName="opacity" values="1;0.3;1" dur="1.2s" repeatCount="indefinite" />
-          </circle>
-          <text x="0" y="-7" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="13" fontWeight="700" fill={C.cyan}>HERMES</text>
-          <text x="0" y="5" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="7" fill={C.cyan} opacity="0.8">CHIEF OF STAFF · OVERSEER</text>
-          <text x="0" y="16" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="6" fill={C.green} opacity="0.7" data-live="hermes-flock-summary">hermes-agent v0.21.4 · gatekeeper JEV → deepseek / claude</text>
-        </g>
-
-        {/* Tier 1 nodes (Public Operators) */}
+        {/* Tier 1 — Claude operators */}
         {PUBLIC_OPERATORS.map((o, i) => {
           const x = tier1X(i, PUBLIC_OPERATORS.length);
+          const ateam = ["Keystone", "Ledger", "Scout", "Vector"].includes(o.codename);
           return (
             <g key={o.id} transform={`translate(${x},${tier1Y})`}>
               <rect x="-58" y="-22" width="116" height="44" rx="3" fill="#000" stroke={o.color} strokeWidth="1.5" filter="url(#softGlow)" />
-              {o.status === "active" && (
-                <circle cx="50" cy="-14" r="3" fill={C.green}>
-                  <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite" />
-                </circle>
-              )}
-              <text x="0" y="-2" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="10" fontWeight="700" fill={o.color}>{o.codename.toUpperCase()}</text>
-              <text x="0" y="12" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="7" fill={o.color} opacity="0.7">{o.workload}</text>
+              {o.status === "active" && <circle cx="50" cy="-14" r="3" fill={C.green}><animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite" /></circle>}
+              <text x="0" y="-4" textAnchor="middle" fontFamily={mono} fontSize="10" fontWeight="700" fill={o.color}>{o.codename.toUpperCase()}</text>
+              <text x="0" y="8" textAnchor="middle" fontFamily={mono} fontSize="7" fill={o.color} opacity="0.7">{o.role}</text>
+              <text x="0" y="17" textAnchor="middle" fontFamily={mono} fontSize="6" fill={ateam ? C.purple : C.greenDim}>{ateam ? "A-TEAM" : "OPERATOR"}</text>
             </g>
           );
         })}
 
-        {/* Tier 2 nodes (Hermes workloads) */}
+        {/* Gatekeeper — JEV primary, LAYA backup */}
+        {[{ x: jevX, name: "JEV", sub: "primary · TypeSafe via Vercel", sc: bk.jev, on: true },
+          { x: layaX, name: "LAYA", sub: "backup · open-source on the Mac", sc: bk["laya:typed-decisions"], on: false }].map(g => (
+          <g key={g.name} transform={`translate(${g.x},${gateY})`}>
+            <rect x="-70" y="-22" width="140" height="44" rx="4" fill="#000" stroke={C.cyan} strokeWidth={g.on ? 2 : 1} strokeDasharray={g.on ? "0" : "4,3"} filter={g.on ? "url(#glow)" : "none"} />
+            <text x="0" y="-5" textAnchor="middle" fontFamily={mono} fontSize="11" fontWeight="700" fill={C.cyan}>{g.name}</text>
+            <text x="0" y="7" textAnchor="middle" fontFamily={mono} fontSize="7" fill={C.cyan} opacity="0.8">{g.sub}</text>
+            <text x="0" y="17" textAnchor="middle" fontFamily={mono} fontSize="7" fill={C.green}>{g.sc ? `routing ${g.sc.route[0]}/${g.sc.route[1]} · urgency ${g.sc.triage[0]}/${g.sc.triage[1]}` : ""}</text>
+          </g>
+        ))}
+
+        {/* Hermes */}
+        <g transform={`translate(${W/2},${hermesY})`}>
+          <ellipse rx="166" ry="36" fill="none" stroke={C.green} strokeOpacity="0.3" strokeWidth="0.8">
+            <animate attributeName="ry" values="36;44;36" dur="2.4s" repeatCount="indefinite" />
+            <animate attributeName="stroke-opacity" values="0.45;0.12;0.45" dur="2.4s" repeatCount="indefinite" />
+          </ellipse>
+          <rect x="-150" y="-24" width="300" height="48" rx="6" fill="#000" stroke={C.green} strokeWidth="2.2" filter="url(#glow)" />
+          <text x="0" y="-6" textAnchor="middle" fontFamily={mono} fontSize="13" fontWeight="700" fill={C.green}>HERMES</text>
+          <text x="0" y="6" textAnchor="middle" fontFamily={mono} fontSize="7" fill={C.green} opacity="0.85">builds · credentialed execution · v{(st && st.hermes && st.hermes.version) || "0.21.4"}</text>
+          <text x="0" y="17" textAnchor="middle" fontFamily={mono} fontSize="7" fill={C.greenDim}>{cr.enabled ?? "—"} jobs on · {cr.scripts_enabled ?? "—"} no-model scripts · {(cr.failing || []).length} failed last run</text>
+        </g>
+
+        {/* Profiles */}
         {HERMES_WORKLOADS.map((h, i) => {
-          const x = tier2X(i, HERMES_WORKLOADS.length);
-          const isProven = h.status === "proven";
+          const x = tier2X(i, HERMES_WORKLOADS.length); const p = prof[h.codename] || {};
           return (
             <g key={h.id} transform={`translate(${x},${tier2Y})`}>
-              <rect x="-52" y="-20" width="104" height="40" rx="3"
-                fill="#000" stroke={isProven ? C.green : C.greenDim}
-                strokeWidth={isProven ? 1.5 : 1}
-                strokeDasharray={isProven ? "0" : "3,3"}
-                filter={isProven ? "url(#softGlow)" : "none"} />
-              {isProven && (
-                <circle cx="44" cy="-12" r="2.5" fill={C.green}>
-                  <animate attributeName="opacity" values="1;0.4;1" dur="1.8s" repeatCount="indefinite" />
-                </circle>
-              )}
-              <text x="0" y="-3" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="9" fontWeight="700"
-                fill={isProven ? C.green : C.greenDim}>{h.codename}</text>
-              <text x="0" y="9" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="6"
-                fill={isProven ? C.green : C.greenDim} opacity="0.8">
-                {isProven ? "● proven" : "○ planned"}
-              </text>
+              <rect x="-62" y="-22" width="124" height="44" rx="3" fill="#000" stroke={C.green} strokeWidth="1.5" filter="url(#softGlow)" />
+              <circle cx="54" cy="-14" r="2.5" fill={C.green}><animate attributeName="opacity" values="1;0.4;1" dur="1.8s" repeatCount="indefinite" /></circle>
+              <text x="0" y="-5" textAnchor="middle" fontFamily={mono} fontSize="10" fontWeight="700" fill={C.green}>{h.codename}</text>
+              <text x="0" y="7" textAnchor="middle" fontFamily={mono} fontSize="7" fill={C.green} opacity="0.8">{(p.model || "deepseek-v4-flash").replace("deepseek/", "")}</text>
+              <text x="0" y="17" textAnchor="middle" fontFamily={mono} fontSize="7" fill={C.greenDim}>{p.sessions_30d != null ? `${p.sessions_30d.toLocaleString()} sessions · $${p.cost_30d}` : "30d: loading…"}</text>
             </g>
           );
         })}
 
-        {/* Tier 0 — Foundation */}
+        {/* Foundation */}
         {FOUNDATION.map((f, i) => {
           const x = tier0X(i, FOUNDATION.length);
           return (
             <g key={f.id} transform={`translate(${x},${tier0Y})`}>
               <rect x="-72" y="-14" width="144" height="28" rx="3" fill="#000" stroke={f.color} strokeOpacity="0.5" strokeWidth="1" />
-              <text x="0" y="3" textAnchor="middle" fontFamily="Courier New, monospace" fontSize="9" fontWeight="600" fill={f.color}>{f.label}</text>
+              <text x="0" y="3" textAnchor="middle" fontFamily={mono} fontSize="9" fontWeight="600" fill={f.color}>{f.label}</text>
             </g>
           );
         })}
 
-        {/* Synapse fires — random node flashes */}
         {fires.map(f => (
-          <circle key={f.id} cx={f.x} cy={f.y} r="6" fill={f.color} opacity="0.7">
-            <animate attributeName="r" values="6;38;6" dur="1s" repeatCount="1" />
-            <animate attributeName="opacity" values="0.8;0;0" dur="1s" repeatCount="1" />
+          <circle key={f.id} cx={f.x} cy={f.y} r="6" fill={f.color} opacity="0.6">
+            <animate attributeName="r" values="6;34;6" dur="1s" repeatCount="1" />
+            <animate attributeName="opacity" values="0.7;0;0" dur="1s" repeatCount="1" />
           </circle>
         ))}
-
-        {/* HUD corner ticks */}
         <g stroke={C.green} strokeOpacity="0.4" strokeWidth="1" fill="none">
-          <path d={`M 8 8 L 8 28 M 8 8 L 28 8`} />
-          <path d={`M ${W-8} 8 L ${W-8} 28 M ${W-8} 8 L ${W-28} 8`} />
-          <path d={`M 8 ${H-8} L 8 ${H-28} M 8 ${H-8} L 28 ${H-8}`} />
-          <path d={`M ${W-8} ${H-8} L ${W-8} ${H-28} M ${W-8} ${H-8} L ${W-28} ${H-8}`} />
+          <path d={`M 8 8 L 8 28 M 8 8 L 28 8`} /><path d={`M ${W-8} 8 L ${W-8} 28 M ${W-8} 8 L ${W-28} 8`} />
+          <path d={`M 8 ${H-8} L 8 ${H-28} M 8 ${H-8} L 28 ${H-8}`} /><path d={`M ${W-8} ${H-8} L ${W-8} ${H-28} M ${W-8} ${H-8} L ${W-28} ${H-8}`} />
         </g>
       </svg>
 
       <div style={{ marginTop: 10, display: "flex", flexWrap: "wrap", gap: 18, fontSize: 9, color: C.greenDim, letterSpacing: 1 }}>
-        <span>● TIER 1 — STRATEGIC COCKPIT — Cowork·Claude — premium reasoning · synthesis · decision-grade</span>
-        <span>● TIER 1 EXECUTION LAYER — Hermes·DeepSeek + Wild Ducks — IBM/Watson-style mavericks · ~20× cheaper · 24/7 capable · DOCTRINE LOCKED 2026-05-28</span>
-        <span>○ planned — backlog</span>
-        <span>● proven — shipped today</span>
+        <span><span style={{ color: C.gold }}>●</span> Bobby directs and judges</span>
+        <span><span style={{ color: C.cyan }}>●</span> Claude plans, measures, gates, briefs</span>
+        <span><span style={{ color: C.cyan }}>◆</span> Gatekeeper picks profile + model: confident → flash · unsure → v4-pro · risky → Claude</span>
+        <span><span style={{ color: C.green }}>●</span> Hermes builds on the Mac · live numbers from ecosystem-status.json (hourly)</span>
       </div>
     </div>
   );
