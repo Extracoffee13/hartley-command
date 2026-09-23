@@ -2498,3 +2498,15 @@ lesson: Two of today's three items are about the same thing, agents acting with 
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-09-23
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (10:00 ET re-fire; diffed against the earlier 2026-09-23 run, added one item).
+outcome: Kept GPT-6 Sol/Luna (maybe), Baselayer $35M (maybe), arXiv 2609.15906 (yes); added Ema $77M Series B for AI employees with human approval on sensitive actions (maybe).
+lesson: Three of today's four items are about the same thing, agents acting with borrowed authority. As model prices keep halving, the scarce layer for The Construct is scoping and auditing what each agent is allowed to do, not the model underneath it.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
