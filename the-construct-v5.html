@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>The Construct — Agent Ecosystem</title>
+<style>
+:root{color-scheme:dark;--bg:#0b0d10;--panel:#11161e;--panel2:#151a21;--border:#1f2630;--fg:#e6e9ef;--muted:#8a94a6;--dim:#6b7688;
+--green:#39ff14;--cyan:#00d4ff;--lav:#b388ff;--amber:#ffb020;--red:#ff5c5c;--mono:ui-monospace,Menlo,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.45 -apple-system,system-ui,sans-serif}
+.wrap{max-width:1240px;margin:0 auto;padding:20px 16px 60px}
+header{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+h1{margin:0;font-size:22px;letter-spacing:.04em}
+h1 small{color:var(--cyan);font-size:11px;letter-spacing:.12em;margin-left:8px;font-weight:500}
+.sub{color:var(--muted);font-size:13px}
+a{color:var(--cyan);text-decoration:none}a:hover{text-decoration:underline}
+h2{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin:26px 0 8px;font-weight:600}
+.fresh{display:flex;gap:6px;flex-wrap:wrap;font:11px var(--mono)}
+.chip{padding:3px 8px;border:1px solid var(--border);border-radius:999px;background:var(--panel2);color:var(--muted)}
+.chip b{font-weight:600}.ok b{color:var(--green)}.warn b{color:var(--amber)}.bad b{color:var(--red)}
+.grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card{background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;min-width:0}
+.card h3{margin:0 0 6px;font-size:14px;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.tag{font:11px var(--mono);padding:1px 6px;border-radius:4px;border:1px solid var(--border);color:var(--muted);white-space:nowrap}
+.tag.g{color:var(--green);border-color:rgba(57,255,20,.35)}.tag.a{color:var(--amber);border-color:rgba(255,176,32,.4)}
+.tag.r{color:var(--red);border-color:rgba(255,92,92,.4)}.tag.l{color:var(--lav);border-color:rgba(179,136,255,.4)}
+.kpis{display:grid;gap:10px;grid-template-columns:repeat(4,minmax(0,1fr))}@media(max-width:700px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.kpi{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:10px 12px}
+.kpi .v{font:600 22px var(--mono);color:var(--fg)}.kpi .l{color:var(--muted);font-size:12px}
+.muted{color:var(--muted)}.small{font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{text-align:left;color:var(--muted);font-weight:600;border-bottom:1px solid var(--border);padding:6px 6px}
+td{border-bottom:1px solid var(--border);padding:6px;vertical-align:top}
+.scroll{overflow-x:auto}
+.mono{font-family:var(--mono)}
+.bar{height:8px;background:var(--panel);border-radius:4px;overflow:hidden}.bar i{display:block;height:100%;background:var(--cyan)}
+.err{color:var(--red);font:11px var(--mono);word-break:break-word}
+details summary{cursor:pointer;color:var(--muted);font-size:12px;margin-top:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div>
+    <h1>THE CONSTRUCT<small>AGENT ECOSYSTEM · v5</small></h1>
+    <div class="sub">Brand 9 · PRAGMA · Hartley Capital — what is actually running, from live sources. <a href="index.html">← Command Center</a></div>
+  </div>
+  <div class="sub mono" id="gen">loading…</div>
+</header>
+<div class="fresh" id="fresh"></div>
+
+<h2>Right now</h2>
+<div class="kpis" id="kpis"></div>
+
+<h2>Gatekeeper — the decision layer in front of DeepSeek and Claude</h2>
+<div class="grid" id="gk"></div>
+
+<h2>Claude layer</h2>
+<div class="grid" id="ateam"></div>
+<div class="card" style="margin-top:10px"><h3>Scheduled routines <span class="tag" id="rdate"></span></h3><div class="scroll"><table id="routines"></table></div></div>
+
+<h2>Hermes layer (on the Mac)</h2>
+<div class="grid" id="hermes"></div>
+<div class="card" style="margin-top:10px"><h3>Failed on their last run <span class="tag r" id="failn"></span></h3><div id="failing" class="small"></div></div>
+<div class="card" style="margin-top:10px"><h3>Enabled jobs <span class="tag" id="rostern"></span></h3>
+<details><summary>show all</summary><div class="scroll"><table id="roster"></table></div></details></div>
+
+<h2>Ventures</h2>
+<div class="grid" id="ventures"></div>
+
+<h2>Signals</h2>
+<div class="grid" id="signals"></div>
+
+<h2>Decisions log</h2>
+<div class="card"><table id="decisions"></table></div>
+
+<h2>What was built — Apr → Sep 2026</h2>
+<div class="grid" id="history"></div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const get=p=>fetch(p+'?t='+Date.now()).then(r=>r.ok?r.json():null).catch(()=>null);
+const ageH=ts=>ts?(Date.now()-new Date(ts).getTime())/3.6e6:null;
+const fmtAge=h=>h==null?'—':h<1?Math.round(h*60)+'m':h<48?Math.round(h)+'h':Math.round(h/24)+'d';
+const n=x=>(x??0).toLocaleString();
+
+async function main(){
+  const [st,reg,harv,pulse,cites,site,aair]=await Promise.all([
+    get('ecosystem-status.json'),get('ecosystem-registry.json'),get('harvard-corpus-stats.json'),
+    get('industry-pulse-ai/latest.json'),get('citations-summary.json'),get('brand-insights/site-health.json'),
+    null]);
+  const H=st?.hermes||{}, G=st?.gatekeeper||{}, R=reg||{};
+  $('gen').textContent=st?('live feed '+fmtAge(ageH(st.generated))+' old'):'live feed missing';
+
+  // freshness strip
+  const feeds=[['Ecosystem',st?.generated,2],['Lens corpus',harv?.last_indexed,26],['Industry pulse',pulse?.generated,30],
+    ['AI citations',cites?.brand9signs?.ran_at,30],['B9 site crawl',site?.generated,30],['Routines list',R.claude?.routines_snapshot_date,24*8]];
+  $('fresh').innerHTML=feeds.map(([k,ts,lim])=>{const h=ageH(ts);const c=h==null?'bad':h>lim?'warn':'ok';
+    return `<span class="chip ${c}">${k} <b>${fmtAge(h)}</b></span>`}).join('');
+
+  // KPIs
+  const u=H.usage_30d||{}, cr=H.cron||{}, pol=G.policy||{};
+  const k=[[H.version?'v'+H.version:'—','Hermes version'],[n(u.sessions),'Hermes sessions · 30 days'],['$'+(u.cost_usd??'—'),'Hermes model spend · 30 days'],
+    [`${cr.enabled??'—'}/${cr.total??'—'}`,'Hermes jobs enabled'],[(cr.failing||[]).length,'Jobs failing now'],
+    [({'jev-primary':'JEV','laya-vote':'LAYA','three-vote':'3-vote'})[pol.mode]||'—','Gatekeeper primary'],[R.claude?.skills_count?('~'+R.claude.skills_count):'—','Claude skills'],[(R.claude?.routines||[]).length,'Claude routines']];
+  $('kpis').innerHTML=k.map(([v,l])=>`<div class="kpi"><div class="v">${esc(v)}</div><div class="l">${esc(l)}</div></div>`).join('');
+
+  // Gatekeeper
+  const b=G.bakeoff||{}, d=G.decisions||{};
+  const row=(name,s)=>s?`<tr><td>${esc(name)}</td><td class="mono">${s.route[0]}/${s.route[1]}</td><td class="mono">${s.triage[0]}/${s.triage[1]}</td><td class="mono">${s.gate[0]}/${s.gate[1]}</td><td class="mono">${s.p50_ms} ms</td></tr>`:'';
+  $('gk').innerHTML=`
+   <div class="card"><h3>How work is routed <span class="tag ${pol.mode==='jev-primary'?'g':'a'}">${esc(pol.mode||'no policy')}</span></h3>
+    <div class="small">1. <b>JEV</b> (TypeSafe, via Vercel AI Gateway) picks the Hermes profile — typed answer, no text generation.<br>
+    2. Confident → <b>DeepSeek flash</b> (today's default). Unsure → <b>DeepSeek v4-pro</b>.<br>
+    3. Anything touching keys, deletes, payments or DNS → <b>Claude</b>, whatever the vote.<br>
+    4. JEV down → <b>LAYA</b> (open-source, runs on the Mac) takes over automatically.<br>
+    <span class="muted">"Is this job really done?" checks always stay with Claude.</span></div></div>
+   <div class="card"><h3>Bakeoff — 36 labeled cases <span class="tag">${esc((pol.decided||'').slice(0,10))}</span></h3>
+    <div class="scroll"><table><tr><th>Voter</th><th>Route</th><th>Urgency</th><th>Done-check</th><th>p50</th></tr>
+    ${row('JEV',b.jev)}${row('LAYA typed',b['laya:typed-decisions'])}${row('LAYA multi',b['laya:multilingual'])}</table></div></div>
+   <div class="card"><h3>Decisions logged</h3><div class="kpis">
+    <div class="kpi"><div class="v">${n(d.total)}</div><div class="l">total</div></div>
+    <div class="kpi"><div class="v">${n(d.last_24h)}</div><div class="l">last 24 h</div></div></div>
+    <div class="small muted" style="margin-top:6px">JEV key on Mac: ${G.jev_key_present?'yes':'no'}</div></div>`;
+
+  // Claude
+  const C=R.claude||{};
+  $('ateam').innerHTML=(C.a_team||[]).map(a=>`<div class="card"><h3>${esc(a.name)} <span class="tag l">A-Team · ${esc(a.role)}</span></h3><div class="small muted">${esc(a.does)}</div></div>`).join('')+
+    (C.operators||[]).map(a=>`<div class="card"><h3>${a.link?`<a href="${esc(a.link)}">${esc(a.name)}</a>`:esc(a.name)} <span class="tag">Operator · ${esc(a.role)}</span></h3><div class="small muted">${esc(a.does)}</div></div>`).join('');
+  $('rdate').textContent='as of '+(C.routines_snapshot_date||'—');
+  $('routines').innerHTML='<tr><th>Routine</th><th>Schedule</th><th>Last run</th></tr>'+(C.routines||[]).map(r=>{
+    const t=/never|pending|not yet/.test(r.last)?'a':'g';return `<tr><td>${esc(r.name)}</td><td class="muted">${esc(r.when)}</td><td><span class="tag ${t}">${esc(r.last)}</span></td></tr>`}).join('');
+
+  // Hermes
+  const plats=Object.entries(H.platforms||{}).map(([p,s])=>`${p}: ${s}`).join(', ')||'—';
+  $('hermes').innerHTML=`<div class="card"><h3>Gateway <span class="tag ${H.gateway==='running'?'g':'r'}">${esc(H.gateway||'unknown')}</span></h3>
+     <div class="small">Version ${esc(H.version||'—')}<br>Live platforms: ${esc(plats)}<br>Scripts (no model): ${n(cr.scripts_enabled)} · agent jobs: ${n(cr.agent_jobs_enabled)}</div></div>`+
+    (H.profiles||[]).map(p=>`<div class="card"><h3>${esc(p.name)} ${p.retire?'<span class="tag r">retire</span>':'<span class="tag">profile</span>'}</h3>
+     <div class="small">Model: <span class="mono">${esc(p.model||'inherits default')}</span><br>${n(p.sessions_30d)} sessions · $${p.cost_30d} (30 d)</div></div>`).join('');
+  const f=cr.failing||[]; $('failn').textContent=f.length;
+  $('failing').innerHTML=f.length?f.map(j=>`<div style="margin:6px 0"><b>${esc(j.profile)}/${esc(j.name)}</b> <span class="muted">${esc(j.last_run)}</span><div class="err">${esc(j.error)}</div></div>`).join(''):'<span class="muted">None.</span>';
+  const ro=cr.roster||[]; $('rostern').textContent=ro.length;
+  $('roster').innerHTML='<tr><th>Profile</th><th>Job</th><th>Type</th><th>Schedule</th><th>Last</th></tr>'+ro.map(j=>`<tr><td class="muted">${esc(j.profile)}</td><td>${esc(j.name)}</td><td>${j.script?'script':'agent'}</td><td class="mono small">${esc(j.schedule)}</td><td><span class="tag ${j.status==='error'?'r':j.status==='ok'?'g':''}">${esc(j.status||'—')}</span></td></tr>`).join('');
+
+  // Ventures
+  $('ventures').innerHTML=(R.ventures||[]).map(v=>`<div class="card"><h3>${v.link?`<a href="${esc(v.link)}">${esc(v.name)}</a>`:esc(v.name)} <span class="tag g">${esc(v.status)}</span></h3><div class="small muted">${esc(v.focus)}</div></div>`).join('');
+
+  // Signals
+  const sig=[];
+  const av=st?.b9_aair;
+  if(av&&av.scans?.length){sig.push(`<div class="card"><h3>B9 AI visibility (AAIR v6) <span class="tag">${esc(av.date)}</span></h3>
+    <div class="small">Share of AI answers naming Brand 9 in the top 3:<br>${av.scans.map(x=>`<b>${esc(x.top3)}%</b> ${esc(x.service)} <span class="muted">(${esc(x.fraction)}, range ${esc(x.ci)})</span>`).join('<br>')}</div></div>`)}
+  if(cites){sig.push(`<div class="card"><h3>AI citations probe <span class="tag">${fmtAge(ageH(cites.brand9signs?.ran_at))} ago</span></h3><div class="small">
+    Brand 9 cited: <b>${cites.brand9signs?.cited_any?.b9?'yes':'no'}</b> · PRAGMA cited: <b>${cites.brand9signs?.cited_any?.pragma?'yes':'no'}</b> · Hartley Capital cited: <b>${cites.hc?.cited_any?.hartley_capital?'yes':'no'}</b></div></div>`)}
+  if(site){const pc=site.crawl?.pages_crawled;sig.push(`<div class="card"><h3>brand9signs.com crawl ${pc===0?'<span class="tag r">crawl empty</span>':''}</h3><div class="small">
+    ${pc===0?'The crawler fetched 0 pages, so its "100" health score is not a measurement.':'Health score: <b>'+esc(site.health_score)+'</b> · pages crawled: '+esc(pc)}</div></div>`)}
+  if(harv){sig.push(`<div class="card"><h3>Lens research corpus</h3><div class="small"><b>${n(harv.total_articles)}</b> articles · ${n(harv.faculty_indexed)} faculty · ${n(harv.topics_covered)} topics<br><span class="muted">HBS Working Knowledge ${n(harv.by_source?.hbswk)} · HBS AI Institute ${n(harv.by_source?.['hbs-ai-institute'])} · HBR ${n(harv.by_source?.hbr)}</span></div></div>`)}
+  if(pulse){sig.push(`<div class="card"><h3>Industry Pulse — AI / Agent <span class="tag">${esc(pulse.latest_date)}</span></h3><div class="small">${(pulse.bullets||[]).slice(0,3).map(x=>`• ${x.url?`<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title)}</a>`:esc(x.title)}`).join('<br>')}</div></div>`)}
+  $('signals').innerHTML=sig.join('')||'<div class="card muted">No signal feeds reachable.</div>';
+
+  // Decisions + history
+  $('decisions').innerHTML=(R.decisions||[]).map(x=>`<tr><td class="mono muted" style="white-space:nowrap">${esc(x.date)}</td><td>${esc(x.what)}</td></tr>`).join('');
+  const hs=R.history||{}, mx=Math.max(...(hs.by_month||[[0,1,1]]).map(m=>m[2]));
+  $('history').innerHTML=`<div class="card"><h3>Hand-built changes per month</h3>${(hs.by_month||[]).map(m=>`<div class="small" style="display:grid;grid-template-columns:36px 1fr 34px;gap:8px;align-items:center;margin:4px 0"><span class="muted">${m[0]}</span><div class="bar"><i style="width:${m[2]/mx*100}%"></i></div><span class="mono">${m[2]}</span></div>`).join('')}
+    <div class="small muted" style="margin-top:6px">${n(hs.substantive_commits)} real changes out of ${n(hs.total_commits)} commits — the rest were sync bots.</div></div>
+    <div class="card"><h3>Eras</h3><table>${(hs.eras||[]).map(e=>`<tr><td class="mono muted" style="white-space:nowrap">${esc(e[0])}</td><td>${esc(e[1])}</td></tr>`).join('')}</table></div>`;
+}
+main(); setInterval(main,5*60*1000);
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+{
+ "_meta": {"updated": "2026-09-23", "note": "Human-curated facts that no script can observe (who the agents are, which ventures are live, owner decisions). Live numbers come from ecosystem-status.json. Edit this file when something is added or dropped."},
+ "claude": {
+  "a_team": [
+   {"name": "Keystone", "role": "Strategy", "does": "Venture strategy, sequencing, go/no-go calls"},
+   {"name": "Ledger", "role": "Unit economics", "does": "Pricing, margins, model and token cost math"},
+   {"name": "Scout", "role": "Market intel", "does": "Competitors, market sizing, source-cited research"},
+   {"name": "Vector", "role": "Design", "does": "All graphics and renders, behind the vector-design gate"},
+   {"name": "Hermes", "role": "Credentialed execution", "does": "Runs work on the Mac: deploys, SSH, keys, cron"}
+  ],
+  "operators": [
+   {"name": "Atlas", "role": "Lennar operations", "does": "Lennar community dashboard, inventory and zones", "link": "atlas.html"},
+   {"name": "Pulse", "role": "Industry pulse", "does": "Daily AI/agent and signage industry briefs"},
+   {"name": "Prism", "role": "Trade-area analysis", "does": "Trade-area and demographic views for client sites"}
+  ],
+  "skills_count": 150,
+  "routines_snapshot_date": "2026-09-23",
+  "routines": [
+   {"name": "B9 redirect guard", "when": "Daily 6:30 ET", "last": "succeeded 09-23"},
+   {"name": "Leads inbox scan", "when": "9 / 13 / 17 ET", "last": "succeeded 09-22"},
+   {"name": "Lens daily corpus scan", "when": "5:34 / 9:34 / 13:34 ET", "last": "succeeded 09-23"},
+   {"name": "Construct ops sweep", "when": "10:45 / 14:45 ET", "last": "succeeded 09-22"},
+   {"name": "B9 Big Job Radar", "when": "Mondays", "last": "succeeded 09-21"},
+   {"name": "Daily Construct Standup", "when": "Weekdays 22:00 UTC", "last": "succeeded 09-22"},
+   {"name": "Hartley Capital Watch", "when": "Weekdays 20:00 UTC", "last": "succeeded 09-22"},
+   {"name": "First-Principles Spike", "when": "Weekdays 18:00 UTC", "last": "succeeded 09-22"},
+   {"name": "Industry Pulse — AI/Agent", "when": "Daily 12:30 UTC", "last": "succeeded 09-22"},
+   {"name": "Industry Pulse — Signage", "when": "Weekdays 12:00 UTC", "last": "succeeded 09-23"},
+   {"name": "Skill Discovery Sweep", "when": "Daily 11:00 UTC", "last": "succeeded 09-23"},
+   {"name": "B9 monthly machine-traffic report", "when": "1st of month", "last": "not yet run"},
+   {"name": "Pragma threatd weekly", "when": "Mondays 7:15 ET", "last": "never recorded a run"},
+   {"name": "Pragma mirror llm browser weekly", "when": "Mondays 7:00 ET", "last": "never recorded a run"},
+   {"name": "Gbp api approval watch", "when": "Daily 9:00 ET", "last": "never recorded a run"},
+   {"name": "Gbp autopilot", "when": "Daily 8:20 ET", "last": "never recorded a run"},
+   {"name": "B9 — GSC quota retry", "when": "One-off 09-23 19:40 UTC", "last": "pending"}
+  ]
+ },
+ "ventures": [
+  {"name": "Brand 9 Signs", "status": "active", "focus": "Website, Google Search, AI visibility (AAIR), leads", "link": "https://brand9signs.com"},
+  {"name": "PRAGMA", "status": "active", "focus": "Agentic OS for small businesses; AI-visibility service", "link": "https://prag-ma.ai"},
+  {"name": "ANS · VironBox · Hypercube", "status": "active", "focus": "Architectural render engine (Blender/Cycles, APS/Revit)"},
+  {"name": "STRUO", "status": "active", "focus": "Visualization for UHNW / super-yacht channel"},
+  {"name": "Nana Buns", "status": "active", "focus": "Family food brand; site live, Etsy"},
+  {"name": "Lennar Atlas", "status": "active", "focus": "Lennar community operations dashboard", "link": "atlas.html"},
+  {"name": "Legal AI venture", "status": "active", "focus": "Early-stage"},
+  {"name": "TLC website rebuild", "status": "active", "focus": "Client rebuild, run through Hermes"},
+  {"name": "Hartley Capital", "status": "active", "focus": "Holding company", "link": "hartley-equity.html"}
+ ],
+ "decisions": [
+  {"date": "2026-09-23", "what": "Gatekeeper live: JEV (TypeSafe via Vercel AI Gateway) routes Hermes work; LAYA is the automatic backup. JEV won the bakeoff 23/24 routing, 6/6 triage."},
+  {"date": "2026-09-23", "what": "Confident routing stays on DeepSeek flash; only unsure work goes to v4-pro, and only risky work (keys, deletes, payments, DNS) goes to Claude."},
+  {"date": "2026-09-23", "what": "Construct rebuilt around the real ecosystem; WOLF, PRAXIS, Slack, Louis, Invitation Homes, Cornerstone, Architect, PRAGMA Lite, SMB bundle and Reddit panels removed."},
+  {"date": "2026-09-23", "what": "WOLF dashboard writers, construct-v4-sync, praxis-distiller and 4 WOLF-era bots paused; serp-tracker, gbp-review-monitor and lens-auth-pull temp-file bug fixed; hermes-auto-update disabled in both profiles. lens-auth-pull now stops on a Safari setting (Allow JavaScript from Apple Events)."},
+  {"date": "2026-09-03", "what": "WOLF killed (routines archived). Slack dropped. PRAXIS and Brand 9 Site Health routine paused."}
+ ],
+ "history": {
+  "first_commit": "2026-04-05",
+  "total_commits": 37809,
+  "substantive_commits": 411,
+  "by_month": [["Apr", 86, 38], ["May", 438, 66], ["Jun", 14694, 83], ["Jul", 11669, 103], ["Aug", 3588, 68], ["Sep", 7334, 53]],
+  "eras": [
+   ["Apr 5–12", "Command Center, Hartley Capital brand, WOLF strategies"],
+   ["Late Apr – mid May", "Atlas: Lennar operations (206 communities, work orders)"],
+   ["May 18–31", "Construct v2 → v4, PRAGMA operator registry"],
+   ["Jun 1–10", "Hermes flock, Harvard corpus, PRAGMA Mirror born"],
+   ["Jun 24 – Jul 21", "Mac recovery; AI-visibility engine (Mirror v2, AAIR v6)"],
+   ["Jul 10 – Sep 16", "WOLF on autopilot past its kill date (now stopped)"],
+   ["Aug 3 – Sep 22", "B9 flywheel: weekly AAIR, knowledge graph, answer pages"]
+  ]
+ }
+}

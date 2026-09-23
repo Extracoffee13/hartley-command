@@ -1,0 +1,1043 @@
+{
+ "generated": "2026-09-23T14:32:31+00:00",
+ "writer": "ecosystem-status-writer",
+ "hermes": {
+  "version": "0.21.4",
+  "gateway": "running",
+  "platforms": {
+   "telegram": "connected"
+  },
+  "profiles": [
+   {
+    "name": "default",
+    "model": "deepseek/deepseek-v4-flash",
+    "sessions_30d": 1114,
+    "cost_30d": 36.97,
+    "retire": false
+   },
+   {
+    "name": "ops-worker",
+    "model": "deepseek/deepseek-v4-flash",
+    "sessions_30d": 56,
+    "cost_30d": 1.79,
+    "retire": false
+   },
+   {
+    "name": "orchestrator",
+    "model": "deepseek/deepseek-v4-flash",
+    "sessions_30d": 33,
+    "cost_30d": 1.05,
+    "retire": false
+   },
+   {
+    "name": "publisher",
+    "model": "deepseek/deepseek-v4-flash",
+    "sessions_30d": 2997,
+    "cost_30d": 20.52,
+    "retire": false
+   },
+   {
+    "name": "research-analyst",
+    "model": "deepseek/deepseek-v4-flash",
+    "sessions_30d": 199,
+    "cost_30d": 2.28,
+    "retire": false
+   },
+   {
+    "name": "wolf-analyst",
+    "model": "deepseek/deepseek-v4-flash",
+    "sessions_30d": 28,
+    "cost_30d": 0.55,
+    "retire": true
+   }
+  ],
+  "usage_30d": {
+   "sessions": 4427,
+   "cost_usd": 63.16,
+   "input_tokens": 315869015,
+   "output_tokens": 18866579,
+   "cache_read_tokens": 2070485277
+  },
+  "cron": {
+   "total": 167,
+   "enabled": 81,
+   "scripts_enabled": 79,
+   "agent_jobs_enabled": 2,
+   "failing": [
+    {
+     "profile": "default",
+     "name": "b9-site-change-watcher",
+     "enabled": true,
+     "script": true,
+     "status": "error",
+     "last_run": "2026-09-23T08:30",
+     "schedule": "30 8 * * *",
+     "error": "  https://brand9signs.com/real-estate-signs/"
+    },
+    {
+     "profile": "default",
+     "name": "gbp-review-monitor",
+     "enabled": true,
+     "script": true,
+     "status": "error",
+     "last_run": "2026-09-23T08:10",
+     "schedule": "10 */4 * * *",
+     "error": "TypeError: '>' not supported between instances of 'NoneType' and 'NoneType'"
+    },
+    {
+     "profile": "default",
+     "name": "serp-tracker",
+     "enabled": true,
+     "script": true,
+     "status": "error",
+     "last_run": "2026-09-21T07:30",
+     "schedule": "30 7 * * 1",
+     "error": "UnboundLocalError: cannot access local variable 'urllib' where it is not associated with a value"
+    },
+    {
+     "profile": "default",
+     "name": "lens-auth-pull",
+     "enabled": true,
+     "script": true,
+     "status": "error",
+     "last_run": "2026-09-23T09:25",
+     "schedule": "25 9 * * *",
+     "error": "menu item Allow JavaScript from Apple Events of menu Developer of menu item Developer of menu View of menu bar item View of menu bar 1 of application process Go"
+    },
+    {
+     "profile": "publisher",
+     "name": "b9-site-change-watcher",
+     "enabled": true,
+     "script": true,
+     "status": "error",
+     "last_run": "2026-09-23T08:30",
+     "schedule": "30 8 * * *",
+     "error": "  https://brand9signs.com/real-estate-signs/"
+    },
+    {
+     "profile": "publisher",
+     "name": "serp-tracker",
+     "enabled": true,
+     "script": true,
+     "status": "error",
+     "last_run": "2026-09-21T07:30",
+     "schedule": "30 7 * * 1",
+     "error": "UnboundLocalError: cannot access local variable 'urllib' where it is not associated with a value"
+    },
+    {
+     "profile": "publisher",
+     "name": "lens-auth-pull",
+     "enabled": true,
+     "script": true,
+     "status": "error",
+     "last_run": "2026-09-23T09:25",
+     "schedule": "25 9 * * *",
+     "error": "menu item Allow JavaScript from Apple Events of menu Developer of menu item Developer of menu View of menu bar item View of menu bar 1 of application process Go"
+    }
+   ],
+   "roster": [
+    {
+     "profile": "default",
+     "name": "749-pile-change-detector",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-22T14:01",
+     "schedule": "0 14 * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "agent-cross-ref-validator",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-22T23:01",
+     "schedule": "0 23 * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "b9-aair-v6-weekly",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-21T06:12",
+     "schedule": "0 6 * * 1",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "b9-flywheel-daily-refresh",
+     "enabled": true,
+     "script": false,
+     "status": "ok",
+     "last_run": "2026-09-23T10:17",
+     "schedule": "0 10 * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "b9-gsc-weekly-review",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-21T06:00",
+     "schedule": "0 6 * * 1",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "b9-htaccess-selfheal",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T09:50",
+     "schedule": "daily 09:50 ET",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "b9-reindex-recovery",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:00",
+     "schedule": "0 10 * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "b9-restore-recheck",
+     "enabled": true,
+     "script": true,
+     "status": null,
+     "last_run": "",
+     "schedule": "0 9 * * 1 (Mondays, 6 runs)",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "b9-site-change-watcher",
+     "enabled": true,
+     "script": true,
+     "status": "error",
+     "last_run": "2026-09-23T08:30",
+     "schedule": "30 8 * * *",
+     "error": "  https://brand9signs.com/real-estate-signs/"
+    },
+    {
+     "profile": "default",
+     "name": "b9-worker-queue-watchdog",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:30",
+     "schedule": "*/30 * * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "competitor-watch",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T06:01",
+     "schedule": "0 */6 * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "completion-claim-watcher",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:30",
+     "schedule": "*/15 * * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "construct-5min-health-check",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:00",
+     "schedule": "0 * * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "construct-cost-guardrail",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T07:00",
+     "schedule": "0 7 * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "construct-integrity-check",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T03:31",
+     "schedule": "30 3 * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "construct-ip-backup",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T03:01",
+     "schedule": "0 3 * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "construct-pruning-report",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-21T04:00",
+     "schedule": "0 4 * * 1",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "content-publish-scheduler",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:30",
+     "schedule": "*/15 * * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "dh-dns-tracker",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T06:15",
+     "schedule": "15 6 * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "ecosystem-status-writer",
+     "enabled": true,
+     "script": true,
+     "status": null,
+     "last_run": "",
+     "schedule": "0 * * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "gbp-review-monitor",
+     "enabled": true,
+     "script": true,
+     "status": "error",
+     "last_run": "2026-09-23T08:10",
+     "schedule": "10 */4 * * *",
+     "error": "TypeError: '>' not supported between instances of 'NoneType' and 'NoneType'"
+    },
+    {
+     "profile": "default",
+     "name": "github-pages-build-watcher",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:30",
+     "schedule": "*/15 * * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "harvard-library-index-builder",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T04:31",
+     "schedule": "30 4 * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "hermes-composed-brief",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-22T17:01",
+     "schedule": "0 17 * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "inbox-self-heal",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:30",
+     "schedule": "*/5 * * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "kanban-state-gen",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:27",
+     "schedule": "2,7,12,17,22,27,32,37,42,47,52,57 * * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "lennar-route-density-tracker",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T07:00",
+     "schedule": "0 7 * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "lens-auth-pull",
+     "enabled": true,
+     "script": true,
+     "status": "error",
+     "last_run": "2026-09-23T09:25",
+     "schedule": "25 9 * * *",
+     "error": "menu item Allow JavaScript from Apple Events of menu Developer of menu item Developer of menu View of menu bar item View of menu bar 1 of application process Go"
+    },
+    {
+     "profile": "default",
+     "name": "lens-auth-pull-watcher",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:31",
+     "schedule": "* * * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "memory-capture",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:30",
+     "schedule": "*/30 * * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "memory-crossshare",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:30",
+     "schedule": "*/30 * * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "model-eval-daily-refresh",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T06:01",
+     "schedule": "0 6 * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "model-tier-router",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:30",
+     "schedule": "*/30 * * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "monitor-gsc-daily",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T06:01",
+     "schedule": "0 6 * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "morning-briefing-composer",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T06:01",
+     "schedule": "0 6 * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "plugin-load-verifier",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:30",
+     "schedule": "*/15 * * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "review-velocity-tracker",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T08:00",
+     "schedule": "0 8 * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "serp-tracker",
+     "enabled": true,
+     "script": true,
+     "status": "error",
+     "last_run": "2026-09-21T07:30",
+     "schedule": "30 7 * * 1",
+     "error": "UnboundLocalError: cannot access local variable 'urllib' where it is not associated with a value"
+    },
+    {
+     "profile": "default",
+     "name": "ssh-availability-check",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T08:00",
+     "schedule": "0 */4 * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "ssl-cert-watcher",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T07:00",
+     "schedule": "0 7 * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "uptime-monitor",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:30",
+     "schedule": "*/15 * * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "void-prospector",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:00",
+     "schedule": "0 10 * * *",
+     "error": ""
+    },
+    {
+     "profile": "default",
+     "name": "wild-duck-doctor",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:30",
+     "schedule": "*/30 * * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "749-pile-change-detector",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-22T14:01",
+     "schedule": "0 14 * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "agent-cross-ref-validator",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-22T23:01",
+     "schedule": "0 23 * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "b9-gsc-weekly-review",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-21T06:01",
+     "schedule": "0 6 * * 1",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "b9-reindex-recovery",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:00",
+     "schedule": "0 10 * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "b9-site-change-watcher",
+     "enabled": true,
+     "script": true,
+     "status": "error",
+     "last_run": "2026-09-23T08:30",
+     "schedule": "30 8 * * *",
+     "error": "  https://brand9signs.com/real-estate-signs/"
+    },
+    {
+     "profile": "publisher",
+     "name": "competitor-watch",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T06:01",
+     "schedule": "0 */6 * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "completion-claim-watcher",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:30",
+     "schedule": "*/15 * * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "construct-5min-health-check",
+     "enabled": true,
+     "script": false,
+     "status": "ok",
+     "last_run": "2026-09-23T10:30",
+     "schedule": "*/5 * * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "content-publish-scheduler",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:30",
+     "schedule": "*/15 * * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "dh-dns-tracker",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T06:15",
+     "schedule": "15 6 * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "gbp-review-monitor",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T08:10",
+     "schedule": "10 */4 * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "github-pages-build-watcher",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:30",
+     "schedule": "*/15 * * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "harvard-library-index-builder",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T04:31",
+     "schedule": "30 4 * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "hermes-composed-brief",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-22T17:01",
+     "schedule": "0 17 * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "inbox-self-heal",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:30",
+     "schedule": "*/5 * * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "kanban-state-gen",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:27",
+     "schedule": "2,7,12,17,22,27,32,37,42,47,52,57 * * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "lennar-route-density-tracker",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T07:00",
+     "schedule": "0 7 * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "lens-auth-pull",
+     "enabled": true,
+     "script": true,
+     "status": "error",
+     "last_run": "2026-09-23T09:25",
+     "schedule": "25 9 * * *",
+     "error": "menu item Allow JavaScript from Apple Events of menu Developer of menu item Developer of menu View of menu bar item View of menu bar 1 of application process Go"
+    },
+    {
+     "profile": "publisher",
+     "name": "lens-auth-pull-watcher",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:31",
+     "schedule": "* * * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "memory-capture",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:30",
+     "schedule": "*/30 * * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "memory-crossshare",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:30",
+     "schedule": "*/30 * * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "model-eval-daily-refresh",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T06:01",
+     "schedule": "0 6 * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "model-tier-router",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:30",
+     "schedule": "*/30 * * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "monitor-gsc-daily",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T06:01",
+     "schedule": "0 6 * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "morning-briefing-composer",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T06:01",
+     "schedule": "0 6 * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "plugin-load-verifier",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:30",
+     "schedule": "*/15 * * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "pragma-engagement-audit",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-21T09:00",
+     "schedule": "0 9 * * 1",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "pragma-mirror-native-daily",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T06:05",
+     "schedule": "5 6 * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "pragma-smb-install-readiness-tracker",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T08:00",
+     "schedule": "0 8 * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "pragma-uptime-guardian",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:30",
+     "schedule": "*/15 * * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "review-velocity-tracker",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T08:00",
+     "schedule": "0 8 * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "serp-tracker",
+     "enabled": true,
+     "script": true,
+     "status": "error",
+     "last_run": "2026-09-21T07:30",
+     "schedule": "30 7 * * 1",
+     "error": "UnboundLocalError: cannot access local variable 'urllib' where it is not associated with a value"
+    },
+    {
+     "profile": "publisher",
+     "name": "ssh-availability-check",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T08:00",
+     "schedule": "0 */4 * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "ssl-cert-watcher",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T07:00",
+     "schedule": "0 7 * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "telegram-listener",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:30",
+     "schedule": "*/5 * * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "uptime-monitor",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:30",
+     "schedule": "*/15 * * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "void-prospector",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:00",
+     "schedule": "0 10 * * *",
+     "error": ""
+    },
+    {
+     "profile": "publisher",
+     "name": "wild-duck-doctor",
+     "enabled": true,
+     "script": true,
+     "status": "ok",
+     "last_run": "2026-09-23T10:30",
+     "schedule": "*/30 * * * *",
+     "error": ""
+    }
+   ]
+  }
+ },
+ "gatekeeper": {
+  "policy": {
+   "mode": "jev-primary",
+   "decided": "2026-09-23T09:37:27",
+   "laya_vote_route_acc_on_acted": 0.938,
+   "laya_vote_coverage": "16/24",
+   "jev_route_acc": 0.958,
+   "jev_triage_acc": 1.0,
+   "jev_p50_ms": 307
+  },
+  "decisions": {
+   "total": 44,
+   "last_24h": 44,
+   "to_claude": 0,
+   "by_mode": {
+    "?": 37,
+    "jev-primary": 7
+   }
+  },
+  "bakeoff": {
+   "jev": {
+    "route": [
+     23,
+     24
+    ],
+    "triage": [
+     6,
+     6
+    ],
+    "gate": [
+     6,
+     6
+    ],
+    "p50_ms": 307
+   },
+   "laya:typed-decisions": {
+    "route": [
+     21,
+     24
+    ],
+    "triage": [
+     5,
+     6
+    ],
+    "gate": [
+     2,
+     6
+    ],
+    "p50_ms": 69
+   },
+   "laya:multilingual": {
+    "route": [
+     15,
+     24
+    ],
+    "triage": [
+     3,
+     6
+    ],
+    "gate": [
+     3,
+     6
+    ],
+    "p50_ms": 34
+   }
+  },
+  "jev_key_present": true
+ },
+ "b9_aair": {
+  "date": "2026-07-21",
+  "scans": [
+   {
+    "service": "homebuilder signage",
+    "top3": 100,
+    "fraction": "4/4",
+    "ci": "51%..100%"
+   },
+   {
+    "service": "sign shop",
+    "top3": 0,
+    "fraction": "0/4",
+    "ci": "0%..49%"
+   },
+   {
+    "service": "b9-v6-day5-2026-07-21-signshop-jax-v3",
+    "top3": 10,
+    "fraction": "41/400",
+    "ci": "7.6%..13.6%"
+   }
+  ]
+ }
+}
