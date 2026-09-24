@@ -2522,3 +2522,15 @@ lesson: Three of today's five items are about agents acting with borrowed author
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-09-24
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Claude Marketplace (yes), Anthropic life-sciences lab / 950-agent enzyme discovery (maybe), Gemini API managed-agent harness + Credentials API (yes), Outerlimit $16M agent authorization (maybe), 50skills $6M (maybe).
+lesson: Two of today's items are about one idea: skills, connectors and credentials are becoming the distributable unit (Anthropic's Marketplace sells them; Google's Credentials API keeps secrets out of the model's view). The Construct should treat each skill as something that could be listed, which means its credentials live at the tool boundary, never in the prompt.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

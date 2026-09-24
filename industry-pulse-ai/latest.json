@@ -1,51 +1,52 @@
 {
-  "generated": "2026-09-23T18:00:15Z",
-  "latest_date": "2026-09-23",
+  "generated": "2026-09-24T10:00:50Z",
+  "latest_date": "2026-09-24",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "OpenAI ships GPT-6 Sol and GPT-6 Luna at roughly half the price of GPT-5.6",
-      "summary": "Released 22 Sep: Sol at $2/$10 and Luna at $0.10/$0.50 per Mtok as permanent pricing, with OpenAI claiming Sol makes about half as many factual mistakes as its predecessor; live in API, Codex and ChatGPT.",
-      "tag": "maybe",
-      "how": "Luna is a cheap candidate for high-volume Construct batch work (alt text, classification); for PRAGMA, a new model tier to re-measure client visibility against.",
-      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+      "title": "Anthropic launches Claude Marketplace: 2,000+ connectors/plugins, partner agents and service partners in one hub",
+      "summary": "Announced 23 Sep: three sections (Add: MCP connectors and Agent Skills plugins; Buy: partner software like Cursor, Harvey, Lovable and Snowflake, payable from committed Anthropic spend; Scale: Claude Partner Network integrators such as Accenture, BCG and Deloitte).",
+      "tag": "yes",
+      "how": "The Construct already builds skills and plugins in the exact format the Marketplace lists, and the 'Scale' tier is a service-partner lane PRAGMA could pursue; worth checking the listing/partner requirements. No direct B9 use.",
+      "url": "https://claude.com/blog/claude-marketplace"
     },
     {
       "n": 2,
-      "title": "Baselayer raises $35M Series A (M13) and launches 'Know Your Agent' identity for AI agents",
-      "summary": "Announced 22 Sep: the bank identity-verification vendor's Agentic Identity Suite checks who deployed an agent, who it represents and whether it may transact.",
+      "title": "Anthropic opens a life-sciences lab; ~950 Claude agents autonomously flag a new CRISPR-like enzyme system",
+      "summary": "Announced 23 Sep: in about 21 hours and ~210M tokens, a Claude agent swarm screened 200,000+ reverse transcriptases down to 20 candidates and surfaced 'ART' systems with CRISPR-like repeat arrays; human scientists run the BSL-1/2 wet lab.",
       "tag": "maybe",
-      "how": "Signals that agent identity/authorization is becoming buyer-facing infrastructure; a PRAGMA talking point for clients letting agents act on their behalf. No direct B9 use.",
-      "url": "https://siliconangle.com/2026/09/22/with-35m-in-series-a-funding-baselayer-is-building-the-trust-layer-for-the-agentic-economy/"
+      "how": "Not a product, but a public, measured proof of the wide-fan-out-then-narrow pattern (hundreds of agents, one funnel) that The Construct uses at small scale; a credible PRAGMA talking point on what agent swarms can do.",
+      "url": "https://www.anthropic.com/news/claude-discovers-novel-enzyme-system"
     },
     {
       "n": 3,
-      "title": "arXiv 2609.15906: Authorization Architectures for Tool-Using AI Agents",
-      "summary": "September paper laying out a principal hierarchy (user, operator, orchestrator, sub-agent, tool endpoint) and five layers: identity/credentials, delegation and scope propagation, runtime enforcement, prompt injection as authorization bypass, and auditability.",
+      "title": "Google ships antigravity-preview-09-2026 managed-agent harness plus Files and Credentials APIs for the Gemini API",
+      "summary": "Live 23-24 Sep on Gemini 3.8 Flash: Google claims 40% fewer output tokens on file edits; the Credentials API registers a secret once and attaches it to an MCP server or sandbox env var so the model never sees it. The 05-2026 harness is deprecated 5 Oct.",
       "tag": "yes",
-      "how": "A ready checklist for The Construct's credential-bearing skills and Hermes loops: scope what each sub-agent inherits and log it.",
-      "url": "https://arxiv.org/abs/2609.15906"
+      "how": "The Credentials API is the pattern The Construct lacks (Hermes holds keys the agent can read); copy the principle of secrets injected at the tool boundary, not in the prompt, for credential-bearing skills.",
+      "url": "https://aistudio.google.com/learn/managed-agents-updated-harness-files-credentials"
     },
     {
       "n": 4,
-      "title": "Ema raises $77M Series B for 'AI employees' in enterprise HR, IT and finance",
-      "summary": "Announced 23 Sep (Creagis lead, Accel returning): Ema's prebuilt agents plan and execute tasks inside existing enterprise systems and escalate sensitive actions to a human approver; it cites Wipro and Hitachi deployments.",
+      "title": "Outerlimit exits stealth with $16M pre-seed for authorization and security for agentic AI",
+      "summary": "Reported 24 Sep: a decentralised security/authorisation company built specifically for AI agents, the third agent-authorization funding story this week after Baselayer.",
       "tag": "maybe",
-      "how": "Validates PRAGMA's packaged-operator pitch (prebuilt role agents, not DIY frameworks) and the approve-before-sensitive-action pattern The Construct already uses; no direct B9 use.",
-      "url": "https://siliconangle.com/2026/09/23/ema-raises-77m-in-funding-to-deploy-ai-employees-across-enterprise-hr-it-and-finance-departments/"
+      "how": "Confirms agent authorization is becoming its own infrastructure category; a PRAGMA talking point for clients giving agents access. No B9 use.",
+      "url": "https://fintech.global/2026/09/24/outerlimit-raises-16m-as-agentic-ai-outpaces-security/"
     },
     {
       "n": 5,
-      "title": "Rabbit launches OS3, a cloud personal agent that drives your own computers, imports skills from other agents, and pairs to your phone over Telegram",
-      "summary": "Unveiled 23 Sep: bring-your-own-key and model-agnostic (Claude, GPT, OpenRouter or local), installs on up to five machines with one command, swaps models without losing memory or skills, and requires confirmation for sensitive actions; SiliconANGLE lists Hermes Agent as a direct comparable.",
+      "title": "50skills raises $6M for HR agents that build their own workflow agents from plain-language process descriptions",
+      "summary": "Announced 23 Sep: the Iceland-based startup lets customers describe a process in plain language and an agent sets up the matching workflow.",
       "tag": "maybe",
-      "how": "Same shape as The Construct (Hermes on the Mac, Telegram to Bobby, skills as portable assets); if import-a-skill-by-URL becomes a cross-agent standard, Construct skills become sellable PRAGMA deliverables. No B9 use.",
-      "url": "https://siliconangle.com/2026/09/23/rabbit-returns-with-os3-a-personal-ai-agent-that-can-access-files-and-connect-computers/"
+      "how": "Same 'describe the process, the agent builds the automation' motion as PRAGMA's operator onboarding; a small comparable for pricing and positioning. No B9 use.",
+      "url": "https://techfundingnews.com/50skills-raises-6m-for-ai-agents-that-build-their-own-agents-to-run-hr/"
     }
   ],
-  "praxis_lesson": "Three of today's five items are about agents acting with borrowed authority, and a fourth (Rabbit OS3) is a consumer product built the same way The Construct is: model-agnostic, skills as portable assets, consent on sensitive actions. As models get cheaper and swappable, the durable assets are the skills and the permission scoping around them, not the model underneath.",
+  "praxis_lesson": "Two of today's items are about one idea: skills, connectors and credentials are becoming the distributable unit (Anthropic's Marketplace sells them; Google's Credentials API keeps secrets out of the model's view). The Construct should treat each skill as something that could be listed, which means its credentials live at the tool boundary, never in the prompt.",
   "history": [
+    "2026-09-24",
     "2026-09-23",
     "2026-09-22",
     "2026-09-21",
@@ -58,7 +59,6 @@
     "2026-09-14",
     "2026-09-13",
     "2026-09-12",
-    "2026-09-11",
-    "2026-09-10"
+    "2026-09-11"
   ]
 }
