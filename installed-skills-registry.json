@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-23T10:10:05.103467+00:00",
+  "updated_at": "2026-09-24T10:10:01.456712+00:00",
   "skills": [
     {
       "slug": "aair-market-baseline-scanning",
@@ -161,13 +161,6 @@
       "has_skill_md": true,
       "has_description_md": false,
       "description_excerpt": "---\nname: atlas\ndescription: \"Atlas is The Construct's Daily Orchestration operator: it runs the daily coordination cycle, cross-operator handoffs, Hermes inbox dispatch, dashboard synthesis, and AM b"
-    },
-    {
-      "slug": "autonomous-ai-agents",
-      "path": "/Users/alfredpennyworth/.hermes/skills/autonomous-ai-agents",
-      "has_skill_md": true,
-      "has_description_md": true,
-      "description_excerpt": "---\nname: autonomous-ai-agents\ndescription: Skills governing autonomous AI solutions, including handoff protocols and multi-agent collaboration.\n---\n* **handoff protocols:** Define procedures for effe"
     },
     {
       "slug": "b9-content-operations",
@@ -448,13 +441,6 @@
       "has_skill_md": true,
       "has_description_md": false,
       "description_excerpt": "---\nname: hermes-response-management\ndescription: Response style and user-preference rules for interacting with Bobby in the Hermes ecosystem.\n---\n\n# Hermes Response Management\n\nThis skill captures ho"
-    },
-    {
-      "slug": "hermes-response-style-preference-update",
-      "path": "/Users/alfredpennyworth/.hermes/skills/hermes-response-style-preference-update",
-      "has_skill_md": true,
-      "has_description_md": false,
-      "description_excerpt": "---\nname: hermes-response-style-preference-update\ndescription: Captures and enforces the user's preference for concise responses without unnecessary detail or explanations.\nversion: 1.0.0\nauthor: Herm"
     },
     {
       "slug": "hermes-themes",
@@ -765,13 +751,6 @@
       "description_excerpt": "---\nname: stack-detection\ndescription: \"Wild Duck capability (pragma-smb-install-readiness-tracker): detect an SMB prospect's existing tech stack to pre-score install readiness.\"\nmetadata:\n  node_type"
     },
     {
-      "slug": "standalone-ssh-usage",
-      "path": "/Users/alfredpennyworth/.hermes/skills/standalone-ssh-usage",
-      "has_skill_md": true,
-      "has_description_md": false,
-      "description_excerpt": "---\nname: standalone-ssh-usage\ndescription: Best practices and common pitfalls for using SSH in deployment tasks.\n---\n\n## SSH Usage Guidelines\n1. Always check SSH configurations and permissions before"
-    },
-    {
       "slug": "status-writer-push",
       "path": "/Users/alfredpennyworth/.hermes/skills/status-writer-push",
       "has_skill_md": true,
@@ -784,13 +763,6 @@
       "has_skill_md": true,
       "has_description_md": false,
       "description_excerpt": "---\nname: strategic-review\ndescription: \"Keystone capability: run a monthly strategic review of ongoing initiatives \u2014 re-score, surface drift, recommend moves. Use for 'strategic review', monthly port"
-    },
-    {
-      "slug": "task-execution-skills",
-      "path": "/Users/alfredpennyworth/.hermes/skills/task-execution-skills",
-      "has_skill_md": true,
-      "has_description_md": false,
-      "description_excerpt": "---\nname: task-execution-skills\ndescription: Revamp task execution reporting to include improved verification and documentation of task outcomes., Incorporate user expectations directly into task exec"
     },
     {
       "slug": "task-reporting",
@@ -976,14 +948,19 @@
     }
   ],
   "_counts": {
-    "hermes_skills": 132,
+    "hermes_skills": 128,
     "hermes_agent_skills": 0,
     "atlas_skills": 7,
-    "total": 139
+    "total": 135
   },
   "_new_since_last_build": [],
-  "_dropped_since_last_build": [],
+  "_dropped_since_last_build": [
+    "autonomous-ai-agents",
+    "hermes-response-style-preference-update",
+    "standalone-ssh-usage",
+    "task-execution-skills"
+  ],
   "_roots_missing": [],
-  "_mirrored_at": "2026-09-23T10:10:05.103467Z",
+  "_mirrored_at": "2026-09-24T10:10:01.456712Z",
   "_builder": "skills-registry-scan"
 }
