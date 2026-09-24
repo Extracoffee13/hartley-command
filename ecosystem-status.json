@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-24T20:00:10+00:00",
+ "generated": "2026-09-24T21:00:09+00:00",
  "writer": "ecosystem-status-writer",
  "hermes": {
   "version": "0.21.4",
@@ -11,22 +11,22 @@
    {
     "name": "default",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 1058,
-    "cost_30d": 32.5,
+    "sessions_30d": 1054,
+    "cost_30d": 32.48,
     "retire": false
    },
    {
     "name": "ops-worker",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 59,
-    "cost_30d": 1.84,
+    "sessions_30d": 58,
+    "cost_30d": 1.8,
     "retire": false
    },
    {
     "name": "orchestrator",
     "model": "deepseek/deepseek-v4-pro   # 2026-09-23 audit: frontier orchestrator, cheap workers",
-    "sessions_30d": 36,
-    "cost_30d": 1.29,
+    "sessions_30d": 35,
+    "cost_30d": 1.27,
     "retire": false
    },
    {
@@ -39,24 +39,24 @@
    {
     "name": "research-analyst",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 201,
-    "cost_30d": 2.41,
+    "sessions_30d": 200,
+    "cost_30d": 2.38,
     "retire": false
    },
    {
     "name": "wolf-analyst",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 26,
-    "cost_30d": 0.55,
+    "sessions_30d": 25,
+    "cost_30d": 0.53,
     "retire": true
    }
   ],
   "usage_30d": {
-   "sessions": 4375,
-   "cost_usd": 59.1,
-   "input_tokens": 303968979,
-   "output_tokens": 18564179,
-   "cache_read_tokens": 1858191356
+   "sessions": 4367,
+   "cost_usd": 58.97,
+   "input_tokens": 303224397,
+   "output_tokens": 18528194,
+   "cache_read_tokens": 1854198410
   },
   "cron": {
    "total": 187,
@@ -142,7 +142,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-24T15:30",
+     "last_run": "2026-09-24T16:30",
      "schedule": "*/30 * * * *",
      "error": ""
     },
@@ -152,7 +152,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-24T15:45",
+     "last_run": "2026-09-24T16:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -162,7 +162,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-24T15:00",
+     "last_run": "2026-09-24T16:00",
      "schedule": "0 * * * *",
      "error": ""
     },
@@ -222,7 +222,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-24T15:45",
+     "last_run": "2026-09-24T16:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -252,7 +252,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-24T15:00",
+     "last_run": "2026-09-24T16:00",
      "schedule": "0 * * * *",
      "error": ""
     },
@@ -262,7 +262,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-24T12:10",
+     "last_run": "2026-09-24T16:10",
      "schedule": "10 */4 * * *",
      "error": ""
     },
@@ -272,7 +272,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-24T15:45",
+     "last_run": "2026-09-24T16:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -332,7 +332,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-24T15:30",
+     "last_run": "2026-09-24T16:30",
      "schedule": "*/5 * * * *",
      "error": ""
     },
@@ -362,7 +362,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-24T15:59",
+     "last_run": "2026-09-24T16:59",
      "schedule": "* * * * *",
      "error": ""
     },
@@ -392,7 +392,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-24T15:45",
+     "last_run": "2026-09-24T16:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -432,7 +432,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-24T15:45",
+     "last_run": "2026-09-24T16:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -442,7 +442,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-24T15:30",
+     "last_run": "2026-09-24T16:30",
      "schedule": "*/30 * * * *",
      "error": ""
     },
@@ -462,7 +462,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-24T15:45",
+     "last_run": "2026-09-24T16:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -472,7 +472,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-24T15:55",
+     "last_run": "2026-09-24T16:55",
      "schedule": "*/5 * * * *",
      "error": ""
     }
