@@ -2558,3 +2558,15 @@ lesson: Access is the product this week, and reliability of the plumbing is the 
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-09-25
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (14:00 ET re-fire; diffed against the 06:00 and 10:00 runs, swapped one item).
+outcome: Kept Claude Tag personal connectors (yes), Cyera $400M (maybe), Alchemy AgentCard (maybe), Claude Code 2.1.282 (yes); replaced Factory $200M with Island $400M Series F at $6.4B for browser-level agent control (maybe).
+lesson: Access is the product this week: Anthropic scoped connectors to the person who owns them, and four agent-access companies raised money in seven days, Island's pitch being that the browser is where agents act. The Construct should keep one written access list per agent (which connectors, which browser profile, whose credentials) so we can show it to a PRAGMA client on request.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
