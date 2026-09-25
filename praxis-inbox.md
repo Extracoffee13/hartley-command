@@ -2534,3 +2534,15 @@ lesson: Two of today's items are about one idea: skills, connectors and credenti
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-09-25
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Claude Tag personal connectors in channels (yes), Cyera $400M agent access/identity (maybe), Alchemy AgentCard + Mastercard Agent Pay archive miss (maybe), Factory $200M self-improving dev archive miss (maybe).
+lesson: Access is the product this week: Anthropic scoped connectors to the person who owns them, and the money is going to companies that answer 'what can this agent touch.' The Construct should keep one written access list per agent (which connectors, whose credentials) so we can show it to a PRAGMA client on request.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

@@ -1,51 +1,44 @@
 {
-  "generated": "2026-09-24T10:00:50Z",
-  "latest_date": "2026-09-24",
+  "generated": "2026-09-25T06:00:47-04:00",
+  "latest_date": "2026-09-25",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Anthropic launches Claude Marketplace: 2,000+ connectors/plugins, partner agents and service partners in one hub",
-      "summary": "Announced 23 Sep: three sections (Add: MCP connectors and Agent Skills plugins; Buy: partner software like Cursor, Harvey, Lovable and Snowflake, payable from committed Anthropic spend; Scale: Claude Partner Network integrators such as Accenture, BCG and Deloitte).",
+      "title": "Claude Tag now uses each person's own claude.ai connectors inside shared Slack channels",
+      "summary": "Announced 24 Sep: when you ask Claude Tag for something in a channel, it can use your personal connectors (calendar, email, drive, CRM), nobody else can use them, and you review the reply before it posts or let auto mode post unless it flags sensitive content. Rolling out on Team plans, Enterprise to follow.",
       "tag": "yes",
-      "how": "The Construct already builds skills and plugins in the exact format the Marketplace lists, and the 'Scale' tier is a service-partner lane PRAGMA could pursue; worth checking the listing/partner requirements. No direct B9 use.",
-      "url": "https://claude.com/blog/claude-marketplace"
+      "how": "The Construct already runs on personal connectors (Gmail, Drive, Slack); this lets a channel request pull from Bobby's own tools without sharing credentials with the channel. Worth trying in the B9 Slack once it reaches our plan.",
+      "url": "https://claude.com/blog/claude-tag-now-supports-personal-connectors-in-channels"
     },
     {
       "n": 2,
-      "title": "Anthropic opens a life-sciences lab; ~950 Claude agents autonomously flag a new CRISPR-like enzyme system",
-      "summary": "Announced 23 Sep: in about 21 hours and ~210M tokens, a Claude agent swarm screened 200,000+ reverse transcriptases down to 20 candidates and surfaced 'ART' systems with CRISPR-like repeat arrays; human scientists run the BSL-1/2 wet lab.",
+      "title": "Cyera adds $400M from Goldman Sachs (>$12B valuation) to control what AI agents can access",
+      "summary": "Announced 22 Sep: a Series G extension to merge data security and identity (including non-human identities via its Oasis acquisition) into one layer, with Agent Guardian and Cyera Endpoint products for agent risk. Cyera's 2026 funding now totals about $1.4B.",
       "tag": "maybe",
-      "how": "Not a product, but a public, measured proof of the wide-fan-out-then-narrow pattern (hundreds of agents, one funnel) that The Construct uses at small scale; a credible PRAGMA talking point on what agent swarms can do.",
-      "url": "https://www.anthropic.com/news/claude-discovers-novel-enzyme-system"
+      "how": "Third agent-authorization raise in a week (Baselayer, Outerlimit, now Cyera). For PRAGMA, 'what can this agent touch' is becoming a buyer question; our answer should be a per-agent access list we can show a client.",
+      "url": "https://siliconangle.com/2026/09/22/cyera-raises-another-400m-amid-ai-agent-security-push/"
     },
     {
       "n": 3,
-      "title": "Google ships antigravity-preview-09-2026 managed-agent harness plus Files and Credentials APIs for the Gemini API",
-      "summary": "Live 23-24 Sep on Gemini 3.8 Flash: Google claims 40% fewer output tokens on file edits; the Credentials API registers a secret once and attaches it to an MCP server or sandbox env var so the model never sees it. The 05-2026 harness is deprecated 5 Oct.",
-      "tag": "yes",
-      "how": "The Credentials API is the pattern The Construct lacks (Hermes holds keys the agent can read); copy the principle of secrets injected at the tool boundary, not in the prompt, for credential-bearing skills.",
-      "url": "https://aistudio.google.com/learn/managed-agents-updated-harness-files-credentials"
+      "title": "Archive miss (17 Sep): Alchemy's AgentCard adds Mastercard Agent Pay so agents can buy things with spend limits and proof of intent",
+      "summary": "Agents pay with one-time tokenized Mastercard credentials tied to the user's existing card; users and issuers set limits by amount, merchant category and location, and Mastercard's Verifiable Intent framework records what the agent was authorized to do.",
+      "tag": "maybe",
+      "how": "Not for Construct use now (we do not let agents move money). Useful for PRAGMA as the reference pattern for any client asking about agent purchasing: capped, tokenized, provable authorization.",
+      "url": "https://www.prnewswire.com/news-releases/alchemy-unlocks-ai-agent-purchases-anywhere-mastercard-is-accepted-online-via-agentcard-302882149.html"
     },
     {
       "n": 4,
-      "title": "Outerlimit exits stealth with $16M pre-seed for authorization and security for agentic AI",
-      "summary": "Reported 24 Sep: a decentralised security/authorisation company built specifically for AI agents, the third agent-authorization funding story this week after Baselayer.",
+      "title": "Archive miss (15 Sep): Factory raises $200M at a $5B valuation for multi-agent 'self-improving' software development",
+      "summary": "Backed by Blackstone, Khosla, Sequoia and NEA; Factory splits high-level coding tasks across groups of agents and learns from each enterprise's workflows and outcomes. Valuation more than tripled since April.",
       "tag": "maybe",
-      "how": "Confirms agent authorization is becoming its own infrastructure category; a PRAGMA talking point for clients giving agents access. No B9 use.",
-      "url": "https://fintech.global/2026/09/24/outerlimit-raises-16m-as-agentic-ai-outpaces-security/"
-    },
-    {
-      "n": 5,
-      "title": "50skills raises $6M for HR agents that build their own workflow agents from plain-language process descriptions",
-      "summary": "Announced 23 Sep: the Iceland-based startup lets customers describe a process in plain language and an agent sets up the matching workflow.",
-      "tag": "maybe",
-      "how": "Same 'describe the process, the agent builds the automation' motion as PRAGMA's operator onboarding; a small comparable for pricing and positioning. No B9 use.",
-      "url": "https://techfundingnews.com/50skills-raises-6m-for-ai-agents-that-build-their-own-agents-to-run-hr/"
+      "how": "Investors are paying for the loop that learns from outcomes, which is the same shape as our PRAXIS inbox and self-improving-loop skill. Supports keeping lessons machine-readable rather than prose.",
+      "url": "https://siliconangle.com/2026/09/15/factory-raises-200m-for-its-self-improving-software-development-platform/"
     }
   ],
-  "praxis_lesson": "Two of today's items are about one idea: skills, connectors and credentials are becoming the distributable unit (Anthropic's Marketplace sells them; Google's Credentials API keeps secrets out of the model's view). The Construct should treat each skill as something that could be listed, which means its credentials live at the tool boundary, never in the prompt.",
+  "praxis_lesson": "Access is the product this week: Anthropic scoped connectors to the person who owns them, and the money is going to companies that answer 'what can this agent touch.' The Construct should keep one written access list per agent (which connectors, whose credentials) so we can show it to a PRAGMA client on request.",
   "history": [
+    "2026-09-25",
     "2026-09-24",
     "2026-09-23",
     "2026-09-22",
@@ -58,7 +51,6 @@
     "2026-09-15",
     "2026-09-14",
     "2026-09-13",
-    "2026-09-12",
-    "2026-09-11"
+    "2026-09-12"
   ]
 }
