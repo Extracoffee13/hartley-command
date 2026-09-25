@@ -2546,3 +2546,15 @@ lesson: Access is the product this week: Anthropic scoped connectors to the pers
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-09-25
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (10:00 ET re-fire; diffed against the 06:00 run, added one item).
+outcome: Kept Claude Tag personal connectors (yes), Cyera $400M (maybe), Alchemy AgentCard (maybe), Factory $200M (maybe); added Claude Code 2.1.282 background-subagent reliability fixes (yes).
+lesson: Access is the product this week, and reliability of the plumbing is the other half: a subagent whose report is silently lost at compaction looks like a successful run. Scheduled Construct jobs should assert that every subagent they launched returned output before writing results.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

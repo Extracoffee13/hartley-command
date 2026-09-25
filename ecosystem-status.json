@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-25T13:00:10+00:00",
+ "generated": "2026-09-25T14:00:10+00:00",
  "writer": "ecosystem-status-writer",
  "hermes": {
   "version": "0.21.4",
@@ -11,52 +11,52 @@
    {
     "name": "default",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 971,
-    "cost_30d": 31.57,
+    "sessions_30d": 966,
+    "cost_30d": 31.5,
     "retire": false
    },
    {
     "name": "ops-worker",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 48,
-    "cost_30d": 1.5,
+    "sessions_30d": 45,
+    "cost_30d": 1.47,
     "retire": false
    },
    {
     "name": "orchestrator",
     "model": "deepseek/deepseek-v4-pro   # 2026-09-23 audit: frontier orchestrator, cheap workers",
-    "sessions_30d": 27,
-    "cost_30d": 1.05,
+    "sessions_30d": 24,
+    "cost_30d": 0.97,
     "retire": false
    },
    {
     "name": "publisher",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 2987,
-    "cost_30d": 20.34,
+    "sessions_30d": 2984,
+    "cost_30d": 20.31,
     "retire": false
    },
    {
     "name": "research-analyst",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 191,
-    "cost_30d": 2.18,
+    "sessions_30d": 188,
+    "cost_30d": 2.12,
     "retire": false
    },
    {
     "name": "wolf-analyst",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 17,
-    "cost_30d": 0.35,
+    "sessions_30d": 14,
+    "cost_30d": 0.31,
     "retire": true
    }
   ],
   "usage_30d": {
-   "sessions": 4241,
-   "cost_usd": 56.99,
-   "input_tokens": 291477703,
-   "output_tokens": 17988871,
-   "cache_read_tokens": 1797955973
+   "sessions": 4221,
+   "cost_usd": 56.68,
+   "input_tokens": 289297367,
+   "output_tokens": 17899774,
+   "cache_read_tokens": 1791017861
   },
   "cron": {
    "total": 187,
@@ -102,7 +102,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-24T09:50",
+     "last_run": "2026-09-25T09:50",
      "schedule": "daily 09:50 ET",
      "error": ""
     },
@@ -142,7 +142,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-25T08:30",
+     "last_run": "2026-09-25T09:30",
      "schedule": "*/30 * * * *",
      "error": ""
     },
@@ -152,7 +152,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-25T08:45",
+     "last_run": "2026-09-25T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -222,7 +222,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-25T08:45",
+     "last_run": "2026-09-25T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -252,7 +252,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-25T08:00",
+     "last_run": "2026-09-25T09:00",
      "schedule": "0 * * * *",
      "error": ""
     },
@@ -272,7 +272,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-25T08:45",
+     "last_run": "2026-09-25T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -292,7 +292,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-24T09:40",
+     "last_run": "2026-09-25T09:40",
      "schedule": "40 9 * * *",
      "error": ""
     },
@@ -332,7 +332,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-25T08:30",
+     "last_run": "2026-09-25T09:30",
      "schedule": "*/5 * * * *",
      "error": ""
     },
@@ -352,7 +352,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-24T09:26",
+     "last_run": "2026-09-25T09:26",
      "schedule": "25 9 * * *",
      "error": ""
     },
@@ -362,7 +362,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-25T09:00",
+     "last_run": "2026-09-25T09:59",
      "schedule": "* * * * *",
      "error": ""
     },
@@ -392,7 +392,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-25T08:45",
+     "last_run": "2026-09-25T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -432,7 +432,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-25T08:45",
+     "last_run": "2026-09-25T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -442,7 +442,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-25T08:30",
+     "last_run": "2026-09-25T09:30",
      "schedule": "*/30 * * * *",
      "error": ""
     },
@@ -462,7 +462,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-25T08:45",
+     "last_run": "2026-09-25T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -472,7 +472,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-25T08:55",
+     "last_run": "2026-09-25T09:55",
      "schedule": "*/5 * * * *",
      "error": ""
     }
@@ -674,13 +674,13 @@
   "error": null
  },
  "harvard": {
-  "articles": 3422,
+  "articles": 3426,
   "searches_30d": 4,
   "by": {
    "unknown": 1,
    "hermes-research-analyst": 3
   },
   "last_search": "2026-09-24T12:52:05Z",
-  "index_built": "2026-09-25T08:45:12+00:00"
+  "index_built": "2026-09-25T13:40:47+00:00"
  }
 }

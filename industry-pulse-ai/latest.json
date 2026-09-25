@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-25T06:00:47-04:00",
+  "generated": "2026-09-25T10:00:36-04:00",
   "latest_date": "2026-09-25",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
@@ -34,6 +34,14 @@
       "tag": "maybe",
       "how": "Investors are paying for the loop that learns from outcomes, which is the same shape as our PRAXIS inbox and self-improving-loop skill. Supports keeping lessons machine-readable rather than prose.",
       "url": "https://siliconangle.com/2026/09/15/factory-raises-200m-for-its-self-improving-software-development-platform/"
+    },
+    {
+      "n": 5,
+      "title": "Claude Code 2.1.282: background subagents keep their reports through compaction and lose the one-hour command limit",
+      "summary": "Released 25 Sep: fixes a finished subagent's report being lost when the parent conversation compacts, stops messages to background subagents vanishing in headless/SDK sessions, removes the one-hour cap on subagent background commands, speeds resume of long compacted sessions in Claude Desktop, and shows claude.ai-synced skills by short name instead of anthropic-skills:<name>.",
+      "tag": "yes",
+      "how": "The Construct's scheduled Cowork runs fan out to subagents and run long; lost subagent reports after compaction are a silent-failure source. No action needed beyond the auto-update; re-check any scheduled task that previously returned empty subagent output.",
+      "url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md"
     }
   ],
   "praxis_lesson": "Access is the product this week: Anthropic scoped connectors to the person who owns them, and the money is going to companies that answer 'what can this agent touch.' The Construct should keep one written access list per agent (which connectors, whose credentials) so we can show it to a PRAGMA client on request.",
