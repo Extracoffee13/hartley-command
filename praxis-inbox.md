@@ -2570,3 +2570,15 @@ lesson: Access is the product this week: Anthropic scoped connectors to the pers
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-09-26
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Claude plugin directory submission portal + MCP 2.0 (yes), Google Gemini "Call for Me" business calling (maybe), Anthropic-Akamai $11.6B CPU cloud deal (no), arXiv reliability routing for forecasting agents (maybe).
+lesson: Anthropic made plugins the single way to extend Claude and now shows developers which searches lead people to a listing, and Google's Gemini will start phoning businesses directly. Both are the same shift PRAGMA sells: agents choose what to use and whom to call, so The Construct should publish one public PRAGMA plugin and give Brand 9 a fixed set of facts that any caller, human or AI, hears the same way.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

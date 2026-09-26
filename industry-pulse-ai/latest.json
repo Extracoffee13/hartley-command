@@ -1,51 +1,44 @@
 {
-  "generated": "2026-09-25T14:00:18-04:00",
-  "latest_date": "2026-09-25",
+  "generated": "2026-09-26T06:00:44-04:00",
+  "latest_date": "2026-09-26",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Claude Tag now uses each person's own claude.ai connectors inside shared Slack channels",
-      "summary": "Announced 24 Sep: when you ask Claude Tag for something in a channel, it can use your personal connectors (calendar, email, drive, CRM), nobody else can use them, and you review the reply before it posts or let auto mode post unless it flags sensitive content. Rolling out on Team plans, Enterprise to follow.",
+      "title": "Anthropic opens a directory submission portal for Claude plugins (MCP connectors + Skills), with MCP 2.0 support",
+      "summary": "Announced 25 Sep: developers on paid plans can submit a single remote MCP connector or a GitHub-hosted plugin bundle (MCP servers + skills; in Claude Code also hooks, commands, agents) at claude.ai/directory/manage, get automatic validation and a safety scan, track review, choose when to publish, then see installs by surface/version and which searches lead to the listing. Claude supports the MCP 2.0 spec (stateless core) plus MCP Apps and Enterprise Managed Auth; one discovery experience across Claude and Claude Code rolls out over the coming weeks.",
       "tag": "yes",
-      "how": "The Construct already runs on personal connectors (Gmail, Drive, Slack); this lets a channel request pull from Bobby's own tools without sharing credentials with the channel. Worth trying in the B9 Slack once it reaches our plan.",
-      "url": "https://claude.com/blog/claude-tag-now-supports-personal-connectors-in-channels"
+      "how": "The Construct's skills are already plugin-shaped; bundling a public, non-credentialed PRAGMA plugin (AI-visibility audit skills + a read-only MCP) gets it listed where buyers already search, and the search-term analytics tell us what people look for. Keep internal/credentialed skills private.",
+      "url": "https://claude.com/blog/build-plugins-for-claude"
     },
     {
       "n": 2,
-      "title": "Cyera adds $400M from Goldman Sachs (>$12B valuation) to control what AI agents can access",
-      "summary": "Announced 22 Sep: a Series G extension to merge data security and identity (including non-human identities via its Oasis acquisition) into one layer, with Agent Guardian and Cyera Endpoint products for agent risk. Cyera's 2026 funding now totals about $1.4B.",
+      "title": "Google tests \"Call for Me\": Gemini phones local businesses for you, navigates menus, waits on hold and talks to staff",
+      "summary": "Reported 24–25 Sep: an experimental Pixel 11 feature (US, paid Gemini, Phone by Google beta) where Gemini calls from the user's own number to check inventory, change appointments or ask about reservations, with a live transcript the user can take over; it refuses payments, passwords and SSNs.",
       "tag": "maybe",
-      "how": "Third agent-authorization raise in a week (Baselayer, Outerlimit, now Cyera). For PRAGMA, 'what can this agent touch' is becoming a buyer question; our answer should be a per-agent access list we can show a client.",
-      "url": "https://siliconangle.com/2026/09/22/cyera-raises-another-400m-amid-ai-agent-security-push/"
+      "how": "Brand 9 Signs' phone line will start getting AI callers asking price, lead time and availability. Whoever answers (person or voicemail) should have a short, consistent script with the facts an agent can repeat; for PRAGMA, 'what does an AI hear when it calls you' is a new visibility surface next to 'what does an AI say about you'.",
+      "url": "https://techcrunch.com/2026/09/24/google-tests-letting-gemini-make-phone-calls-initially-for-us-pixel-owners/"
     },
     {
       "n": 3,
-      "title": "Archive miss (17 Sep): Alchemy's AgentCard adds Mastercard Agent Pay so agents can buy things with spend limits and proof of intent",
-      "summary": "Agents pay with one-time tokenized Mastercard credentials tied to the user's existing card; users and issuers set limits by amount, merchant category and location, and Mastercard's Verifiable Intent framework records what the agent was authorized to do.",
-      "tag": "maybe",
-      "how": "Not for Construct use now (we do not let agents move money). Useful for PRAGMA as the reference pattern for any client asking about agent purchasing: capped, tokenized, provable authorization.",
-      "url": "https://www.prnewswire.com/news-releases/alchemy-unlocks-ai-agent-purchases-anywhere-mastercard-is-accepted-online-via-agentcard-302882149.html"
+      "title": "Anthropic signs a 7-year, $11.6B CPU-focused cloud deal with Akamai (up to ~$20B, warrant for up to 5% of Akamai)",
+      "summary": "Announced 25 Sep (Akamai 8-K): the largest deal in Akamai's history and unusual for centering on CPUs rather than GPUs, the general-purpose compute that runs agent tool calls, sandboxes and code execution. Reports put Anthropic's compute commitments past $500B in under a year.",
+      "tag": "no",
+      "how": "No action for The Construct. Context only: more CPU capacity behind agent sandboxes should mean fewer capacity-related failures in long Cowork/Claude Code runs over time.",
+      "url": "https://techcrunch.com/2026/09/25/anthropic-to-pay-akamai-11-6-billion-over-seven-years-in-cloud-deal/"
     },
     {
       "n": 4,
-      "title": "Island raises $400M Series F at $6.4B to make the enterprise browser the control point for AI agents",
-      "summary": "Announced 24 Sep: Island is extending its enterprise browser, which already sets rules for what staff can copy, download or share in web apps, to govern what AI agents can do once they are logged into company tools.",
+      "title": "arXiv: \"When Should Forecasting Agents Reason? Behavioral Stress Tests for Reliability Routing\"",
+      "summary": "New this week (arXiv 2609.28475): stress-tests forecasting agents that mix LLM reasoning, retrieval, ensembling and calibration to find when each behavior actually helps, and proposes routing questions to the behavior that is reliable for them rather than always reasoning.",
       "tag": "maybe",
-      "how": "Fourth agent-access raise in a week (Baselayer, Outerlimit, Cyera, Island). The Construct drives Bobby's real Chrome, so the browser is exactly where our agents act; for PRAGMA it reinforces offering clients a per-agent access list before connecting anything.",
-      "url": "https://www.globenewswire.com/news-release/2026/09/24/3368154/0/en/island-announces-400-million-series-f-bringing-valuation-to-6-4-billion.html"
-    },
-    {
-      "n": 5,
-      "title": "Claude Code 2.1.282: background subagents keep their reports through compaction and lose the one-hour command limit",
-      "summary": "Released 25 Sep: fixes a finished subagent's report being lost when the parent conversation compacts, stops messages to background subagents vanishing in headless/SDK sessions, removes the one-hour cap on subagent background commands, speeds resume of long compacted sessions in Claude Desktop, and shows claude.ai-synced skills by short name instead of anthropic-skills:<name>.",
-      "tag": "yes",
-      "how": "The Construct's scheduled Cowork runs fan out to subagents and run long; lost subagent reports after compaction are a silent-failure source. No action needed beyond the auto-update; re-check any scheduled task that previously returned empty subagent output.",
-      "url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md"
+      "how": "Same question The Construct faces with the Mirror/visibility scans and Lens: not every job needs a full reasoning pass. Useful framing for deciding which daily jobs get the expensive model and which get a cheap deterministic check.",
+      "url": "https://arxiv.org/abs/2609.28475"
     }
   ],
-  "praxis_lesson": "Access is the product this week: Anthropic scoped connectors to the person who owns them, and four agent-access companies raised money in seven days, Island's pitch being that the browser is where agents act. The Construct should keep one written access list per agent (which connectors, which browser profile, whose credentials) so we can show it to a PRAGMA client on request.",
+  "praxis_lesson": "Anthropic made plugins the single way to extend Claude and now shows developers which searches lead people to a listing, and Google's Gemini will start phoning businesses directly. Both are the same shift PRAGMA sells: agents choose what to use and whom to call, so The Construct should publish one public PRAGMA plugin and give Brand 9 a fixed set of facts that any caller, human or AI, hears the same way.",
   "history": [
+    "2026-09-26",
     "2026-09-25",
     "2026-09-24",
     "2026-09-23",
@@ -58,7 +51,6 @@
     "2026-09-16",
     "2026-09-15",
     "2026-09-14",
-    "2026-09-13",
-    "2026-09-12"
+    "2026-09-13"
   ]
 }
