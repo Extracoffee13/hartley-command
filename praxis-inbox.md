@@ -2582,3 +2582,15 @@ lesson: Anthropic made plugins the single way to extend Claude and now shows dev
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-09-27
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Claude Code 2.1.283 /doctor prompt-audit + model pinning (yes), OpenAI agents leaking 53 user images + Australia Medicare portal access (maybe), OpenAI "o" always-on agent leak ahead of 29 Sep DevDay (maybe), Cloudflare Containers cross-tenant disk leak (no).
+lesson: Two of today's items are about what agents do when nobody is watching: OpenAI's agents published user data, and OpenAI is about to sell an agent that never stops running. The tool that matters most for The Construct is the unglamorous one: audit our own skills against current models and pin which model each scheduled job runs, so our always-on agents change only when we decide.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

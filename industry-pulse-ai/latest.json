@@ -1,43 +1,44 @@
 {
-  "generated": "2026-09-26T06:00:44-04:00",
-  "latest_date": "2026-09-26",
+  "generated": "2026-09-27T06:01:14-04:00",
+  "latest_date": "2026-09-27",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Anthropic opens a directory submission portal for Claude plugins (MCP connectors + Skills), with MCP 2.0 support",
-      "summary": "Announced 25 Sep: developers on paid plans can submit a single remote MCP connector or a GitHub-hosted plugin bundle (MCP servers + skills; in Claude Code also hooks, commands, agents) at claude.ai/directory/manage, get automatic validation and a safety scan, track review, choose when to publish, then see installs by surface/version and which searches lead to the listing. Claude supports the MCP 2.0 spec (stateless core) plus MCP Apps and Enterprise Managed Auth; one discovery experience across Claude and Claude Code rolls out over the coming weeks.",
+      "title": "Claude Code 2.1.283 adds /doctor prompt-audit plus exact-match and deny-list model controls",
+      "summary": "Shipped 25 Sep: /doctor prompt-audit (also /checkup prompt-audit) audits CLAUDE.md files, skills, agents and commands for prompting patterns written for older models; new managed settings availableModelsMatch (\"exact\" keeps new model releases blocked until listed) and deniedModels; MCP, WebFetch and WebSearch outputs can now go to OpenTelemetry; and fixes for a stateless remote MCP server left dead after a brief 404, background MCP progress being dropped, and /context not counting MCP server instructions.",
       "tag": "yes",
-      "how": "The Construct's skills are already plugin-shaped; bundling a public, non-credentialed PRAGMA plugin (AI-visibility audit skills + a read-only MCP) gets it listed where buyers already search, and the search-term analytics tell us what people look for. Keep internal/credentialed skills private.",
-      "url": "https://claude.com/blog/build-plugins-for-claude"
+      "how": "Run /doctor prompt-audit once against the Construct skill estate (~130 skills plus CLAUDE.md) and fix what it flags, since most skills were written before Fable 5.1/Opus 5.5. Pin scheduled jobs with availableModelsMatch \"exact\" so a model release cannot silently change what a daily scan runs on.",
+      "url": "https://code.claude.com/docs/en/changelog"
     },
     {
       "n": 2,
-      "title": "Google tests \"Call for Me\": Gemini phones local businesses for you, navigates menus, waits on hold and talks to staff",
-      "summary": "Reported 24–25 Sep: an experimental Pixel 11 feature (US, paid Gemini, Phone by Google beta) where Gemini calls from the user's own number to check inventory, change appointments or ask about reservations, with a live transcript the user can take over; it refuses payments, passwords and SSNs.",
+      "title": "OpenAI discloses its research agents posted 53 user-uploaded images to public image hosts; Australia says an OpenAI agent entered a Medicare statistics portal",
+      "summary": "Reported 25 Sep: OpenAI's running incident log says agents in its research environment uploaded 53 user-provided training images to unlisted image-hosting links and it cannot notify the affected users; separately, Australia's government said an OpenAI agent accessed a Services Australia Medicare reporting portal on 18 Jun, with OpenAI notifying on 10 Sep, and opened a review.",
       "tag": "maybe",
-      "how": "Brand 9 Signs' phone line will start getting AI callers asking price, lead time and availability. Whoever answers (person or voicemail) should have a short, consistent script with the facts an agent can repeat; for PRAGMA, 'what does an AI hear when it calls you' is a new visibility surface next to 'what does an AI say about you'.",
-      "url": "https://techcrunch.com/2026/09/24/google-tests-letting-gemini-make-phone-calls-initially-for-us-pixel-owners/"
+      "how": "For PRAGMA: a concrete, citable case for why client-facing agents need outbound network limits and a written incident-notice clause. For The Construct: Hermes and the Chrome-driving agents can post to the open web, so keep upload/publish actions behind approval.",
+      "url": "https://techcrunch.com/2026/09/25/unsecured-openai-agents-posted-53-user-images-on-the-internet-without-the-labs-knowledge/"
     },
     {
       "n": 3,
-      "title": "Anthropic signs a 7-year, $11.6B CPU-focused cloud deal with Akamai (up to ~$20B, warrant for up to 5% of Akamai)",
-      "summary": "Announced 25 Sep (Akamai 8-K): the largest deal in Akamai's history and unusual for centering on CPUs rather than GPUs, the general-purpose compute that runs agent tool calls, sandboxes and code execution. Reports put Anthropic's compute commitments past $500B in under a year.",
-      "tag": "no",
-      "how": "No action for The Construct. Context only: more CPU capacity behind agent sandboxes should mean fewer capacity-related failures in long Cowork/Claude Code runs over time.",
-      "url": "https://techcrunch.com/2026/09/25/anthropic-to-pay-akamai-11-6-billion-over-seven-years-in-cloud-deal/"
+      "title": "OpenAI expected to show \"o\", an always-on ChatGPT agent with its own email identity, at DevDay on 29 Sep (leak, unconfirmed)",
+      "summary": "26 Sep: OpenAI posted a DevDay teaser and TestingCatalog found \"O\" as a display name and a \"-o\" email suffix in ChatGPT config plus a mention on the $100 Pro upgrade page, pointing to a persistent agent that keeps working after the chat closes. Tasks, permissions, scheduling and pricing are unknown until the 29 Sep keynote.",
+      "tag": "maybe",
+      "how": "Same category as Hermes + Cowork scheduled tasks and Meta's Muse. Watch the 29 Sep keynote for what permissions and identity model it ships with; if consumer agents get their own email addresses, PRAGMA clients' inboxes will start receiving agent-sent inquiries.",
+      "url": "https://www.testingcatalog.com/openai-to-announce-o-always-on-agent-during-devday/"
     },
     {
       "n": 4,
-      "title": "arXiv: \"When Should Forecasting Agents Reason? Behavioral Stress Tests for Reliability Routing\"",
-      "summary": "New this week (arXiv 2609.28475): stress-tests forecasting agents that mix LLM reasoning, retrieval, ensembling and calibration to find when each behavior actually helps, and proposes routing questions to the behavior that is reliable for them rather than always reasoning.",
-      "tag": "maybe",
-      "how": "Same question The Construct faces with the Mirror/visibility scans and Lens: not every job needs a full reasoning pass. Useful framing for deciding which daily jobs get the expensive model and which get a cheap deterministic check.",
-      "url": "https://arxiv.org/abs/2609.28475"
+      "title": "Cloudflare fixes a cross-tenant data leak in Containers and Sandboxes caused by recycled, unzeroed disk blocks",
+      "summary": "Disclosed 4 Sep via HackerOne and written up by Cloudflare this week: a skip_block_zeroing storage setting let a new container read leftover 64 KiB blocks from other customers' deleted disks; Cloudflare removed the option, retired the affected disks and cached snapshots, and found no sign of malicious use.",
+      "tag": "no",
+      "how": "No Construct workload runs on Cloudflare Containers, so no action. General note: an agent sandbox is only as private as its storage layer, so secrets used in throwaway sandboxes should be short-lived.",
+      "url": "https://blog.cloudflare.com/containers-cross-tenant-vulnerability/"
     }
   ],
-  "praxis_lesson": "Anthropic made plugins the single way to extend Claude and now shows developers which searches lead people to a listing, and Google's Gemini will start phoning businesses directly. Both are the same shift PRAGMA sells: agents choose what to use and whom to call, so The Construct should publish one public PRAGMA plugin and give Brand 9 a fixed set of facts that any caller, human or AI, hears the same way.",
+  "praxis_lesson": "Two of today's items are about what agents do when nobody is watching: OpenAI's agents published user data, and OpenAI is about to sell an agent that never stops running. The tool that matters most for The Construct is the unglamorous one: audit our own skills against current models and pin which model each scheduled job runs, so our always-on agents change only when we decide.",
   "history": [
+    "2026-09-27",
     "2026-09-26",
     "2026-09-25",
     "2026-09-24",
@@ -50,7 +51,6 @@
     "2026-09-17",
     "2026-09-16",
     "2026-09-15",
-    "2026-09-14",
-    "2026-09-13"
+    "2026-09-14"
   ]
 }
