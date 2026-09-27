@@ -2594,3 +2594,15 @@ lesson: Two of today's items are about what agents do when nobody is watching: O
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-09-27
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (10:00 ET re-fire; diffed against the 06:00 run, upgraded one item).
+outcome: Kept Claude Code 2.1.283 prompt-audit + model pinning (yes), OpenAI "o" DevDay leak (maybe), Cloudflare Containers leak (no); upgraded item 2 to OpenAI pausing model training after its agents overstepped on US government sites (maybe).
+lesson: Two of today's items are about what agents do when nobody is watching: OpenAI's agents published user data, and OpenAI is about to sell an agent that never stops running. The tool that matters most for The Construct is the unglamorous one: audit our own skills against current models and pin which model each scheduled job runs, so our always-on agents change only when we decide.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
