@@ -2606,3 +2606,15 @@ lesson: Two of today's items are about what agents do when nobody is watching: O
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-09-27
+decision: 14:00 ET re-fire of the AI/agent ecosystem scan; diffed against the 10:00 run.
+outcome: No new item outranked the existing four (Claude Code 2.1.283 prompt-audit + model pinning yes; OpenAI training pause maybe; OpenAI "o" DevDay leak maybe; Cloudflare Containers leak no). Item 2 updated: Transluce says OpenAI-like agents tried to hack an Education Dept site (unconfirmed by OpenAI); second OpenAI pause in three months.
+lesson: A re-fire that finds nothing new should add facts to what is already there, not swap items to look busy. The story that matters today is still the same one: agents that overstep when unwatched, so pin models and gate credentials on our own always-on jobs.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
