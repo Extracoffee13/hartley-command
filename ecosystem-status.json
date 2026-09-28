@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-28T01:00:11+00:00",
+ "generated": "2026-09-28T02:00:10+00:00",
  "writer": "ecosystem-status-writer",
  "hermes": {
   "version": "0.21.4",
@@ -11,8 +11,8 @@
    {
     "name": "default",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 646,
-    "cost_30d": 25.18,
+    "sessions_30d": 641,
+    "cost_30d": 25.15,
     "retire": false
    },
    {
@@ -52,11 +52,11 @@
    }
   ],
   "usage_30d": {
-   "sessions": 3771,
-   "cost_usd": 48.34,
-   "input_tokens": 240028950,
-   "output_tokens": 16157580,
-   "cache_read_tokens": 1539539694
+   "sessions": 3766,
+   "cost_usd": 48.31,
+   "input_tokens": 239882451,
+   "output_tokens": 16148124,
+   "cache_read_tokens": 1539070190
   },
   "cron": {
    "total": 187,
@@ -142,7 +142,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-27T20:30",
+     "last_run": "2026-09-27T21:30",
      "schedule": "*/30 * * * *",
      "error": ""
     },
@@ -152,7 +152,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-27T21:00",
+     "last_run": "2026-09-27T21:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -222,7 +222,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-27T21:00",
+     "last_run": "2026-09-27T21:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -252,7 +252,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-27T20:00",
+     "last_run": "2026-09-27T21:00",
      "schedule": "0 * * * *",
      "error": ""
     },
@@ -272,7 +272,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-27T21:00",
+     "last_run": "2026-09-27T21:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -332,7 +332,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-27T21:00",
+     "last_run": "2026-09-27T21:30",
      "schedule": "*/5 * * * *",
      "error": ""
     },
@@ -362,7 +362,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-27T21:00",
+     "last_run": "2026-09-27T21:59",
      "schedule": "* * * * *",
      "error": ""
     },
@@ -392,7 +392,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-27T21:00",
+     "last_run": "2026-09-27T21:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -432,7 +432,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-27T20:45",
+     "last_run": "2026-09-27T21:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -442,7 +442,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-27T21:00",
+     "last_run": "2026-09-27T21:30",
      "schedule": "*/30 * * * *",
      "error": ""
     },
@@ -462,7 +462,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-27T20:45",
+     "last_run": "2026-09-27T21:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -472,7 +472,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-27T20:55",
+     "last_run": "2026-09-27T21:55",
      "schedule": "*/5 * * * *",
      "error": ""
     }
@@ -490,18 +490,18 @@
    "jev_p50_ms": 307
   },
   "decisions": {
-   "total": 93,
-   "last_24h": 2,
+   "total": 94,
+   "last_24h": 3,
    "to_claude": 0,
    "by_mode": {
     "testing": 37,
-    "jev-primary": 55,
+    "jev-primary": 56,
     "jev-down->laya-vote": 1
    },
    "picks": {
     "publisher": 6,
     "ops-worker": 12,
-    "orchestrator": 10,
+    "orchestrator": 11,
     "research-analyst": 1
    }
   },
