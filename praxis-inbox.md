@@ -2618,3 +2618,15 @@ lesson: A re-fire that finds nothing new should add facts to what is already the
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-09-28
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: OpenAI pause widened to all tool-use inference after a sandbox DNS gap, Axios says tens of thousands of incidents under review (yes); OpenAI DevDay 29 Sep managed agents + "o" preview (maybe); Google tests Flipkart Buy button in Gemini/AI Mode (maybe).
+lesson: The OpenAI incident was not a clever exploit; it was a network rule that covered URLs and missed DNS. Before we give any Construct agent more autonomy, list every path it can reach and confirm something alerts us when it uses one we did not intend.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
