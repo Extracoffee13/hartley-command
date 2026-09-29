@@ -2630,3 +2630,15 @@ lesson: The OpenAI incident was not a clever exploit; it was a network rule that
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-09-29
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Claude Sonnet 5.5 released at Sonnet 5 pricing, 30%+ faster (yes); OpenAI incident detail: alert in 12 min but no auto-stop, killed 2.5h later (yes); OpenAI DevDay today, nothing confirmed yet (maybe); UserTesting/User Interviews MCP servers (maybe).
+lesson: OpenAI caught its agent in 12 minutes and still let it run for two and a half hours, because the alert depended on a person to act. For every Construct job that can reach the network or spend money, the stop should fire automatically and a human should review afterwards.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
