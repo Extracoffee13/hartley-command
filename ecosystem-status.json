@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-29T22:00:11+00:00",
+ "generated": "2026-09-29T23:00:11+00:00",
  "writer": "ecosystem-status-writer",
  "hermes": {
   "version": "0.21.4",
@@ -11,52 +11,52 @@
    {
     "name": "default",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 418,
-    "cost_30d": 22.86,
+    "sessions_30d": 414,
+    "cost_30d": 22.77,
     "retire": false
    },
    {
     "name": "ops-worker",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 12,
-    "cost_30d": 0.73,
+    "sessions_30d": 10,
+    "cost_30d": 0.66,
     "retire": false
    },
    {
     "name": "orchestrator",
     "model": "deepseek/deepseek-v4-pro   # 2026-09-23 audit: frontier orchestrator, cheap workers",
-    "sessions_30d": 7,
-    "cost_30d": 0.27,
+    "sessions_30d": 5,
+    "cost_30d": 0.25,
     "retire": false
    },
    {
     "name": "publisher",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 2964,
-    "cost_30d": 20.0,
+    "sessions_30d": 2962,
+    "cost_30d": 19.99,
     "retire": false
    },
    {
     "name": "research-analyst",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 41,
-    "cost_30d": 0.57,
+    "sessions_30d": 37,
+    "cost_30d": 0.48,
     "retire": false
    },
    {
     "name": "wolf-analyst",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 2,
-    "cost_30d": 0.05,
+    "sessions_30d": 0,
+    "cost_30d": 0,
     "retire": true
    }
   ],
   "usage_30d": {
-   "sessions": 3444,
-   "cost_usd": 44.48,
-   "input_tokens": 218362747,
-   "output_tokens": 14781977,
-   "cache_read_tokens": 1423360494
+   "sessions": 3428,
+   "cost_usd": 44.15,
+   "input_tokens": 216420776,
+   "output_tokens": 14678085,
+   "cache_read_tokens": 1412765422
   },
   "cron": {
    "total": 187,
@@ -142,7 +142,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-29T17:30",
+     "last_run": "2026-09-29T18:30",
      "schedule": "*/30 * * * *",
      "error": ""
     },
@@ -152,7 +152,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-29T17:45",
+     "last_run": "2026-09-29T18:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -162,7 +162,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-29T17:00",
+     "last_run": "2026-09-29T18:00",
      "schedule": "0 * * * *",
      "error": ""
     },
@@ -222,7 +222,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-29T17:45",
+     "last_run": "2026-09-29T18:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -252,7 +252,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-29T17:00",
+     "last_run": "2026-09-29T18:00",
      "schedule": "0 * * * *",
      "error": ""
     },
@@ -272,7 +272,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-29T17:45",
+     "last_run": "2026-09-29T18:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -332,7 +332,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-29T17:30",
+     "last_run": "2026-09-29T18:30",
      "schedule": "*/5 * * * *",
      "error": ""
     },
@@ -362,7 +362,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-29T17:59",
+     "last_run": "2026-09-29T18:59",
      "schedule": "* * * * *",
      "error": ""
     },
@@ -392,7 +392,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-29T17:45",
+     "last_run": "2026-09-29T18:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -432,7 +432,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-29T17:45",
+     "last_run": "2026-09-29T18:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -442,7 +442,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-29T17:30",
+     "last_run": "2026-09-29T18:30",
      "schedule": "*/30 * * * *",
      "error": ""
     },
@@ -462,7 +462,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-29T17:45",
+     "last_run": "2026-09-29T18:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -472,7 +472,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-29T17:55",
+     "last_run": "2026-09-29T18:55",
      "schedule": "*/5 * * * *",
      "error": ""
     }
