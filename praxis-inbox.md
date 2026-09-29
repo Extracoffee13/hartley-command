@@ -2642,3 +2642,15 @@ lesson: OpenAI caught its agent in 12 minutes and still let it run for two and a
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-09-29
+decision: Midday refresh of the AI/agent ecosystem scan after OpenAI's DevDay keynote.
+outcome: Replaced the DevDay 'maybe' with confirmed launches: GPT-6.1 Sol, always-on Dots agents with own cloud computer + 4,000 plugins, Agents API public beta (yes). Sonnet 5.5, OpenAI kill-path incident and UserTesting MCP items unchanged.
+lesson: OpenAI caught its agent in 12 minutes and still let it run for two and a half hours, because the alert depended on a person to act. For every Construct job that can reach the network or spend money, the stop should fire automatically and a human should review afterwards.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
