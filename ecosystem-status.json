@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-30T19:00:11+00:00",
+ "generated": "2026-09-30T20:00:11+00:00",
  "writer": "ecosystem-status-writer",
  "hermes": {
   "version": "0.21.4",
@@ -11,8 +11,8 @@
    {
     "name": "default",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 302,
-    "cost_30d": 18.75,
+    "sessions_30d": 296,
+    "cost_30d": 18.67,
     "retire": false
    },
    {
@@ -39,8 +39,8 @@
    {
     "name": "research-analyst",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 9,
-    "cost_30d": 0.16,
+    "sessions_30d": 7,
+    "cost_30d": 0.15,
     "retire": false
    },
    {
@@ -52,11 +52,11 @@
    }
   ],
   "usage_30d": {
-   "sessions": 3288,
-   "cost_usd": 39.81,
-   "input_tokens": 200474409,
-   "output_tokens": 13897381,
-   "cache_read_tokens": 1242852846
+   "sessions": 3280,
+   "cost_usd": 39.72,
+   "input_tokens": 200048886,
+   "output_tokens": 13858555,
+   "cache_read_tokens": 1239900398
   },
   "cron": {
    "total": 187,
@@ -142,7 +142,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-30T14:30",
+     "last_run": "2026-09-30T15:30",
      "schedule": "*/30 * * * *",
      "error": ""
     },
@@ -152,7 +152,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-30T14:45",
+     "last_run": "2026-09-30T15:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -162,7 +162,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-30T14:00",
+     "last_run": "2026-09-30T15:00",
      "schedule": "0 * * * *",
      "error": ""
     },
@@ -222,7 +222,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-30T14:45",
+     "last_run": "2026-09-30T15:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -252,7 +252,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-30T14:00",
+     "last_run": "2026-09-30T15:00",
      "schedule": "0 * * * *",
      "error": ""
     },
@@ -272,7 +272,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-30T14:45",
+     "last_run": "2026-09-30T15:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -332,7 +332,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-30T14:30",
+     "last_run": "2026-09-30T15:30",
      "schedule": "*/5 * * * *",
      "error": ""
     },
@@ -362,7 +362,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-30T14:59",
+     "last_run": "2026-09-30T16:00",
      "schedule": "* * * * *",
      "error": ""
     },
@@ -392,7 +392,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-30T14:45",
+     "last_run": "2026-09-30T15:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -432,7 +432,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-30T14:45",
+     "last_run": "2026-09-30T15:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -442,7 +442,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-30T14:30",
+     "last_run": "2026-09-30T15:30",
      "schedule": "*/30 * * * *",
      "error": ""
     },
@@ -462,7 +462,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-30T14:45",
+     "last_run": "2026-09-30T15:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -472,7 +472,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-09-30T14:55",
+     "last_run": "2026-09-30T15:55",
      "schedule": "*/5 * * * *",
      "error": ""
     }
@@ -490,19 +490,19 @@
    "jev_p50_ms": 307
   },
   "decisions": {
-   "total": 96,
-   "last_24h": 0,
+   "total": 97,
+   "last_24h": 1,
    "to_claude": 0,
    "by_mode": {
     "testing": 37,
-    "jev-primary": 58,
+    "jev-primary": 59,
     "jev-down->laya-vote": 1
    },
    "picks": {
     "publisher": 6,
     "ops-worker": 12,
     "orchestrator": 13,
-    "research-analyst": 1
+    "research-analyst": 2
    }
   },
   "bakeoff": {
