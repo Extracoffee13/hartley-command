@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-30T06:00:24-04:00",
+  "generated": "2026-09-30T14:00:36-04:00",
   "latest_date": "2026-09-30",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
@@ -12,7 +12,23 @@
       "url": "https://9to5google.com/2026/09/29/claude-confirmed-outage-sept-29/"
     },
     {
-      "n": 2,
+      "title": "Anthropic's IPO prospectus leaks: $2T+ November listing target, ~80 of 261 pages on risk",
+      "summary": "29 Sep: reports on the leaked S-1 show an $8B+ operating loss on $4.6B revenue for the reported period, Q2 2026 revenue of $11.5B with a second straight quarter of operating profit, and a November IPO targeting a $2T+ valuation; the filing warns of 'catastrophic or existential risk'.",
+      "tag": "maybe",
+      "how": "The Construct runs almost entirely on Claude: a public Anthropic means quarterly disclosure on pricing, capacity and reliability we can plan around. PRAGMA: the risk-factor section is ready-made material for client conversations about vendor concentration.",
+      "url": "https://fortune.com/2026/09/29/anthropic-ipo-s-1-prospectus-income-statement/",
+      "n": 2
+    },
+    {
+      "title": "Informa TechTarget puts its person-level B2B buyer-intent data behind an MCP server (30 Sep)",
+      "summary": "TechTarget's Buyer Intelligence (intent signals, pain points, persona/ICP data) is now callable from Claude, ChatGPT, Copilot, Gemini and custom agents to build account battlecards and personalized outreach inside the AI workflow.",
+      "tag": "maybe",
+      "how": "PRAGMA: the intent-data vendors are moving into the agent; an outbound/battlecard agent for PRAGMA's own pipeline becomes a connector, not a build. Brand 9 Signs: low fit (TechTarget's audience is tech buyers, not homebuilders).",
+      "url": "https://www.martechcube.com/informa-techtarget-announced-the-launch-of-mcp-server/",
+      "n": 3
+    },
+    {
+      "n": 4,
       "title": "Docusign opens its MCP server to every AI agent today (30 Sep)",
       "summary": "Docusign's MCP server, backed by its Iris AI engine, becomes callable from Claude, ChatGPT, Gemini, Copilot, Slack and any MCP client, with account-level admin controls and access to past negotiations, clauses and policy across its agreement suite.",
       "tag": "maybe",
@@ -20,20 +36,12 @@
       "url": "https://www.docusign.com/company/news-center/docusign-agreement-layer-for-the-agentic-enterprise-coming-to-every-agent"
     },
     {
-      "n": 3,
+      "n": 5,
       "title": "Reco raises $55M to discover AI agents and track their apps, accounts and permissions",
       "summary": "29 Sep: agent-security startup Reco raised $55M (total $140M) and expanded its platform to inventory AI agents across 280+ apps, as TechCrunch notes the agent-security category is getting crowded.",
       "tag": "maybe",
       "how": "PRAGMA: 'which agents do you run and what can each one touch' is becoming a funded category — an agent inventory + permissions map is a sellable first deliverable. The Construct: we should hold that same map for Hermes, launchd jobs and Cowork tasks ourselves.",
       "url": "https://techcrunch.com/2026/09/29/reco-raises-55m-as-ai-agent-security-startups-crowd-the-market/"
-    },
-    {
-      "n": 4,
-      "title": "Flexport launches an MCP server so shippers' agents can track, quote and book freight",
-      "summary": "29 Sep: Flexport's MCP server lets Claude, ChatGPT, Copilot or in-house agents quote, book and track freight in plain language — another operations vendor exposing transactional actions, not just data, to agents.",
-      "tag": "no",
-      "how": "Not a B9 need today (local fabrication and install). Signal only: supply-chain vendors are shipping MCP; check whether B9's sign-material suppliers offer ordering APIs/MCP before building any purchasing agent.",
-      "url": "https://www.freightwaves.com/news/flexport-mcp-server-ai-agents-freight-booking"
     }
   ],
   "praxis_lesson": "Claude went partly down for 36 minutes on a weekday morning, the fifth time this month. A scheduled job that fails once and never retries is a gap on the dashboard nobody notices; every daily Construct job should retry once and confirm its output file exists.",

@@ -2666,3 +2666,15 @@ lesson: Claude went partly down for 36 minutes on a weekday morning, the fifth t
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-09-30
+decision: Midday refresh of today's AI/agent ecosystem scan for The Construct.
+outcome: Added Anthropic S-1 leak ($2T+ Nov IPO target, maybe) and Informa TechTarget buyer-intent MCP (maybe); kept Claude 29 Sep outage (yes), Docusign MCP (maybe), Reco $55M (maybe); dropped Flexport.
+lesson: Claude went partly down for 36 minutes on a weekday morning, the fifth time this month. A scheduled job that fails once and never retries is a gap on the dashboard nobody notices; every daily Construct job should retry once and confirm its output file exists.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
