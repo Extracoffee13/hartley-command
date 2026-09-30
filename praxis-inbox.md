@@ -2654,3 +2654,15 @@ lesson: OpenAI caught its agent in 12 minutes and still let it run for two and a
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-09-30
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Claude partial outage 29 Sep 10:00-10:36 ET, 5th this month (yes); Docusign MCP open to all agents today (maybe); Reco $55M agent-inventory security (maybe); Flexport freight MCP (no).
+lesson: Claude went partly down for 36 minutes on a weekday morning, the fifth time this month. A scheduled job that fails once and never retries is a gap on the dashboard nobody notices; every daily Construct job should retry once and confirm its output file exists.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
