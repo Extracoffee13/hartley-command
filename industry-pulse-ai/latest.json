@@ -1,51 +1,52 @@
 {
-  "generated": "2026-09-30T14:00:36-04:00",
-  "latest_date": "2026-09-30",
+  "generated": "2026-10-01T05:51:47-04:00",
+  "latest_date": "2026-10-01",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Claude partial outage 29 Sep hit Claude, Claude Code, Cowork and the API — fifth partial outage this month",
-      "summary": "Errors began at 14:00 UTC (10:00 ET) and were mitigated by 14:36 UTC, with sign-in (SSO, Sign in with Apple), new chats and new Claude Code/Cowork sessions failing for a period; 12,000+ Downdetector reports. Earlier partial outages hit on 3, 11, 15 and 22 September.",
+      "title": "Claude Sonnet 5.5 launched 28 Sep — about 30% faster and up to 30% cheaper for most work than Sonnet 5",
+      "summary": "Anthropic's new mid-tier model is pitched as the cheap-and-fast option rather than the smartest; the newsroom also lists Opus 5.5 (22 Sep) matching Fable 5.1 at ~40% lower cost.",
       "tag": "yes",
-      "how": "The Construct: any Cowork scheduled task that fired in that window (10:00–10:40 ET) likely died silently — check the 29 Sep runs and add a retry-once rule plus a 'did it write today's file' check to each daily job. PRAGMA: single-vendor model dependency is a real client risk worth naming.",
-      "url": "https://9to5google.com/2026/09/29/claude-confirmed-outage-sept-29/"
+      "how": "The Construct: route high-volume scheduled jobs (daily scans, triage, drafting) to Sonnet 5.5 and keep Opus for hard reasoning; re-check API changes before switching model IDs. Brand 9 Signs/PRAGMA: lower per-task cost improves margins on agent work.",
+      "url": "https://www.heise.de/en/news/Claude-Sonnet-5-5-Faster-and-cheaper-mid-range-model-11468834.html"
     },
     {
-      "title": "Anthropic's IPO prospectus leaks: $2T+ November listing target, ~80 of 261 pages on risk",
-      "summary": "29 Sep: reports on the leaked S-1 show an $8B+ operating loss on $4.6B revenue for the reported period, Q2 2026 revenue of $11.5B with a second straight quarter of operating profit, and a November IPO targeting a $2T+ valuation; the filing warns of 'catastrophic or existential risk'.",
+      "n": 2,
+      "title": "OpenAI launches 'dots' — always-on goal-driven agents on GPT-6 Astra (29 Sep, DevDay)",
+      "summary": "Dots work continuously toward user-defined goals across 4,000+ apps incl. Slack and Teams; Pro/Business Premium first, Enterprise needs admin approval, UK/EU excluded at launch.",
       "tag": "maybe",
-      "how": "The Construct runs almost entirely on Claude: a public Anthropic means quarterly disclosure on pricing, capacity and reliability we can plan around. PRAGMA: the risk-factor section is ready-made material for client conversations about vendor concentration.",
-      "url": "https://fortune.com/2026/09/29/anthropic-ipo-s-1-prospectus-income-statement/",
-      "n": 2
+      "how": "PRAGMA: direct competitor framing for 'always-on operator' offers — position on owned orchestration, governance and vertical know-how rather than the agent runtime. The Construct: benchmark against our launchd/Cowork scheduled jobs.",
+      "url": "https://shattered.io/openai-dots-enterprise-agent-race-instinct-1b-2026"
     },
     {
-      "title": "Informa TechTarget puts its person-level B2B buyer-intent data behind an MCP server (30 Sep)",
-      "summary": "TechTarget's Buyer Intelligence (intent signals, pain points, persona/ICP data) is now callable from Claude, ChatGPT, Copilot, Gemini and custom agents to build account battlecards and personalized outreach inside the AI workflow.",
+      "n": 3,
+      "title": "Google unveils Gemini 4 'Argon' (30 Sep), limited to trusted cyber defenders for now",
+      "summary": "Google claims state-of-the-art coding and knowledge results, beating OpenAI's GPT-6 Astra on several measures; pricing undisclosed and broader rollout (paying subscribers first) comes after more testing.",
       "tag": "maybe",
-      "how": "PRAGMA: the intent-data vendors are moving into the agent; an outbound/battlecard agent for PRAGMA's own pipeline becomes a connector, not a build. Brand 9 Signs: low fit (TechTarget's audience is tech buyers, not homebuilders).",
-      "url": "https://www.martechcube.com/informa-techtarget-announced-the-launch-of-mcp-server/",
-      "n": 3
+      "how": "The Construct: nothing to wire yet — watch for general availability and pricing before benchmarking against Claude for coding/long-running agents.",
+      "url": "https://axios.com/2026/09/30/google-gemini-4"
     },
     {
       "n": 4,
-      "title": "Docusign opens its MCP server to every AI agent today (30 Sep)",
-      "summary": "Docusign's MCP server, backed by its Iris AI engine, becomes callable from Claude, ChatGPT, Gemini, Copilot, Slack and any MCP client, with account-level admin controls and access to past negotiations, clauses and policy across its agreement suite.",
+      "title": "Instinct raises $1B at a $10B valuation (Sequoia, Benchmark, Coatue)",
+      "summary": "Independent enterprise AI-agent startup's round lands the same week OpenAI ships dots; investors are betting enterprises pay recurring revenue for agents, not just pilots.",
       "tag": "maybe",
-      "how": "Brand 9 Signs: proposal-to-signature for Lennar/builder jobs could run from the agent (draft, send, track signed status into Atlas). The Construct already lists a Docusign plugin connector that needs authorization; wire it only if B9 signs enough contracts in Docusign to justify it.",
-      "url": "https://www.docusign.com/company/news-center/docusign-agreement-layer-for-the-agentic-enterprise-coming-to-every-agent"
+      "how": "PRAGMA: validates the market for agent operators and shows incumbents/startups crowding the space — differentiate on SMB/vertical delivery. Brand 9 Signs: no direct fit.",
+      "url": "https://techfundingnews.com/ai-agent-instinct-jumps-to-10b-valuation-with-1b-led-by-sequoia-benchmark-and-coatue"
     },
     {
       "n": 5,
-      "title": "Reco raises $55M to discover AI agents and track their apps, accounts and permissions",
-      "summary": "29 Sep: agent-security startup Reco raised $55M (total $140M) and expanded its platform to inventory AI agents across 280+ apps, as TechCrunch notes the agent-security category is getting crowded.",
-      "tag": "maybe",
-      "how": "PRAGMA: 'which agents do you run and what can each one touch' is becoming a funded category — an agent inventory + permissions map is a sellable first deliverable. The Construct: we should hold that same map for Hermes, launchd jobs and Cowork tasks ourselves.",
-      "url": "https://techcrunch.com/2026/09/29/reco-raises-55m-as-ai-agent-security-startups-crowd-the-market/"
+      "title": "arXiv 2609.01736: Harness Engineering in LLM Tool Use via Agent-Native Reusable Tool Primitives",
+      "summary": "Paper argues for building agents on reusable, agent-native tool primitives instead of ad-hoc per-task tool glue.",
+      "tag": "yes",
+      "how": "The Construct: matches our skills/MCP registry approach — consolidate repeated scripts (render checks, publish loops, scans) into shared primitives that every agent calls.",
+      "url": "https://arxiv.org/abs/2609.01736"
     }
   ],
-  "praxis_lesson": "Claude went partly down for 36 minutes on a weekday morning, the fifth time this month. A scheduled job that fails once and never retries is a gap on the dashboard nobody notices; every daily Construct job should retry once and confirm its output file exists.",
+  "praxis_lesson": "OpenAI, Google and a $1B-funded startup all pushed agents this week, so the runtime is commoditizing fast. The Construct's durable edge is the layer we own — reusable tool primitives, governance and vertical knowledge — and the model underneath should be swappable (e.g. Sonnet 5.5 for volume work).",
   "history": [
+    "2026-10-01",
     "2026-09-30",
     "2026-09-29",
     "2026-09-28",
@@ -58,7 +59,6 @@
     "2026-09-21",
     "2026-09-20",
     "2026-09-19",
-    "2026-09-18",
-    "2026-09-17"
+    "2026-09-18"
   ]
 }

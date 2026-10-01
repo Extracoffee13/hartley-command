@@ -2678,3 +2678,15 @@ lesson: Claude went partly down for 36 minutes on a weekday morning, the fifth t
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-01
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged: Sonnet 5.5 launch (yes), OpenAI dots (maybe), Gemini 4 Argon limited release (maybe), Instinct $1B (maybe), arXiv harness-engineering paper (yes).
+lesson: OpenAI, Google and a $1B-funded startup all pushed agents this week, so the runtime is commoditizing fast. The Construct's durable edge is the layer we own — reusable tool primitives, governance and vertical knowledge — and the model underneath should be swappable (e.g. Sonnet 5.5 for volume work).
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
