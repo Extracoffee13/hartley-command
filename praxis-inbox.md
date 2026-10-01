@@ -2690,3 +2690,15 @@ lesson: OpenAI, Google and a $1B-funded startup all pushed agents this week, so 
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-01
+decision: Midday refresh of the 24h AI/agent ecosystem scan for The Construct.
+outcome: Added GPT-6.1 Sol at 1/5 Astra price (maybe) and Barclays Claude rollout (maybe); kept Sonnet 5.5 (yes), OpenAI dots + Instinct $1B (maybe), Gemini 4 Argon (maybe); dropped the arXiv harness paper.
+lesson: Frontier pricing fell again within 48 hours (Sonnet 5.5, then GPT-6.1 Sol at a fifth of Astra's price), so model choice is now a per-job cost lever, not a platform commitment. Keep every Construct job model-agnostic and route by task value.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
