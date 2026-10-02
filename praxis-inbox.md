@@ -2726,3 +2726,15 @@ lesson: Money is flowing to both ends of the agent stack: always-on agents (Open
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-02
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Claude Sonnet 5.5 default + Claude Code mods + Sonnet 4.5 retirement (yes), Lofty MCP (maybe), Restate $20M durable runtime (maybe), LlamaIndex Extract v2.5 (maybe), Nvidia Open Agent Safety Platform (maybe).
+lesson: Reliability is becoming a product category alongside governance: durable runtimes (Restate) and containment (Nvidia) both treat agent failure as the default case. Design every Construct job to be resumable and fail-contained, not just permissioned.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

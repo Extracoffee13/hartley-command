@@ -1,50 +1,50 @@
 {
-  "generated": "2026-10-02T09:51:38-04:00",
+  "generated": "2026-10-02T13:51:06-04:00",
   "latest_date": "2026-10-02",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Claude Code mods (v2.1.287, 1 Oct)",
-      "summary": "Anthropic ships TypeScript-based 'mods' for customizing Claude Code behavior, UI and features with granular control over tool calls and prompts, alongside improved plugin/MCP handling.",
+      "title": "Claude Sonnet 5.5 default in Claude Code + mods (v2.1.284–287) and Sonnet 4.5 retirement 30 Nov",
+      "summary": "Anthropic made Sonnet 5.5 (30%+ faster, up to 30% cheaper than Sonnet 5) the Claude Code default, shipped TypeScript 'mods' for deeper behavior customization, and set Sonnet 4.5 to retire on 30 Nov 2026.",
       "tag": "yes",
-      "how": "The Construct: evaluate mods for custom hooks/status and approval gates on scheduled agents; also migrate anything pinned to Sonnet 4.5 before 30 Nov.",
+      "how": "The Construct: audit scheduled routines and agents for Sonnet 4.5 pins and migrate to 5.5; trial mods for approval gates and status hooks.",
       "url": "https://releasebot.io/updates/anthropic"
     },
     {
       "n": 2,
-      "title": "OpenAI unveils 'Dots' always-on agent, $500 premium tier; seeks $30B at $1.4T",
-      "summary": "OpenAI launched an always-on agent called Dots and a $500 subscription tier while pursuing $30B at a $1.4T valuation after delaying its IPO; run-rate revenue is above $40B.",
+      "title": "Lofty launches MCP server for real-estate brokerages",
+      "summary": "Lofty released an MCP server on 28 Sep so brokerages can connect their own AI agents and business systems to the Lofty AOS platform without custom code.",
       "tag": "maybe",
-      "how": "PRAGMA: always-on personal agents set client expectations for persistent operators; price anchor for premium agent tiers. The Construct: benchmark against our scheduled-routine model.",
-      "url": "https://coindesk.com/markets/2026/09/30/openai-targets-usd1-4-trillion-valuation-and-unveils-dots-ai-agent"
+      "how": "PRAGMA: real-estate/CRM MCP is a ready integration target for operator clients. Brand 9 Signs: possible lead feed from developer/brokerage contacts for community signage.",
+      "url": "https://www.globenewswire.com/news-release/2026/09/28/3369855/0/en/lofty-launches-mcp-server-to-give-brokerages-an-open-foundation-for-their-ai-strategy.html"
     },
     {
       "n": 3,
-      "title": "Instinct raises $1B Series C at $10B for consumer task agent",
-      "summary": "Instinct, an agent that books travel, makes purchases and cancels subscriptions, raised $1B from Sequoia, Benchmark and others, facing competition from Meta's Muse and privacy concerns.",
+      "title": "Restate raises $20M Series A for durable AI agent runtime",
+      "summary": "Restate raised $20M to build durable-execution infrastructure so long-running agent workflows survive crashes and retries.",
       "tag": "maybe",
-      "how": "PRAGMA: validates demand for do-it-for-me agents; privacy/data-scope is the open wedge for operator consulting.",
-      "url": "https://techcrunch.com/2026/09/28/viral-ai-agent-instinct-raises-1b-series-c-at-a-10b-valuation/"
+      "how": "The Construct: durable execution is the missing piece for multi-step scheduled jobs that currently restart from scratch on failure. PRAGMA: reliability story for client deployments.",
+      "url": "https://aiweekly.co/alerts/restate-raises-20m-series-a-for-durable-ai-agent-runtime"
     },
     {
       "n": 4,
-      "title": "Armadin (Kevin Mandia) raises $255.5M at $2.5B for agent-swarm security testing",
-      "summary": "Armadin uses AI agent swarms that chain vulnerabilities for continuous security testing instead of periodic pen tests; total funding above $445M.",
+      "title": "LlamaIndex Extract v2.5 improves schema-based document extraction",
+      "summary": "LlamaIndex shipped Extract v2.5 with accuracy and grounding gains for schema-based extraction from documents.",
       "tag": "maybe",
-      "how": "The Construct: swarm-based continuous testing is a pattern to borrow for our own site/agent health sentinels. PRAGMA: security-minded agent audits are a sellable add-on.",
-      "url": "https://techcrunch.com/2026/10/01/kevin-mandias-new-agent-swarm-security-startup-armadin-raises-255-5m-at-2-5b-valuation"
+      "how": "Brand 9 Signs: candidate for pulling specs/quantities from RFPs, sign schedules and plan PDFs. PRAGMA: reusable intake-automation component.",
+      "url": "https://www.unite.ai/llamaindex-launches-extract-v2-5-with-accuracy-and-grounding-gains"
     },
     {
       "n": 5,
-      "title": "Reco raises $55M as agent-security startups crowd the market",
-      "summary": "Reco raised $55M amid a growing field of AI agent security/governance startups.",
+      "title": "Nvidia launches Open Agent Safety Platform with 100+ partners",
+      "summary": "Nvidia's hardware-software stack is designed to quarantine rogue AI agents in milliseconds, built with 100+ industry partners.",
       "tag": "maybe",
-      "how": "PRAGMA: agent inventory and supervision is becoming a budget line. The Construct: keep a registry of every scheduled agent with owner and permission scope.",
-      "url": "https://techcrunch.com/2026/09/29/reco-raises-55m-as-ai-agent-security-startups-crowd-the-market/"
+      "how": "PRAGMA: enterprise buyers will ask about agent containment; useful framing for consulting. The Construct: borrow the quarantine-by-default idea for permission scopes.",
+      "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/nvidia-launches-open-agent-safety-platform-to-restrain-rogue-ai-agents-new-hardware-and-software-security-stack-can-quarantine-agents-in-milliseconds"
     }
   ],
-  "praxis_lesson": "Money is flowing to both ends of the agent stack: always-on agents (OpenAI Dots, Instinct) and the security layer that tests and supervises them (Armadin, Reco). Pair every autonomous Construct job with an owner, a scoped permission set, and continuous verification.",
+  "praxis_lesson": "Reliability is becoming a product category alongside governance: durable runtimes (Restate) and containment (Nvidia) both treat agent failure as the default case. Design every Construct job to be resumable and fail-contained, not just permissioned.",
   "history": [
     "2026-10-02",
     "2026-10-01",
