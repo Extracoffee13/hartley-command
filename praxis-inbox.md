@@ -2714,3 +2714,15 @@ lesson: As agents multiply, the scarce asset shifts from capability to control: 
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-02
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Claude Code mods v2.1.287 (yes), OpenAI Dots + $500 tier (maybe), Instinct $1B (maybe), Armadin $255.5M (maybe), Reco $55M (maybe).
+lesson: Money is flowing to both ends of the agent stack: always-on agents (OpenAI Dots, Instinct) and the security layer that tests and supervises them (Armadin, Reco). Pair every autonomous Construct job with an owner, a scoped permission set, and continuous verification.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

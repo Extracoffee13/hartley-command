@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-02T13:00:12+00:00",
+ "generated": "2026-10-02T14:00:11+00:00",
  "writer": "ecosystem-status-writer",
  "hermes": {
   "version": "0.21.4",
@@ -11,8 +11,8 @@
    {
     "name": "default",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 223,
-    "cost_30d": 17.48,
+    "sessions_30d": 222,
+    "cost_30d": 17.21,
     "retire": false
    },
    {
@@ -25,22 +25,22 @@
    {
     "name": "orchestrator",
     "model": "deepseek/deepseek-v4-pro   # 2026-09-23 audit: frontier orchestrator, cheap workers",
-    "sessions_30d": 5,
-    "cost_30d": 0.25,
+    "sessions_30d": 6,
+    "cost_30d": 0.29,
     "retire": false
    },
    {
     "name": "publisher",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 2826,
-    "cost_30d": 17.8,
+    "sessions_30d": 2820,
+    "cost_30d": 17.69,
     "retire": false
    },
    {
     "name": "research-analyst",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 6,
-    "cost_30d": 0.14,
+    "sessions_30d": 7,
+    "cost_30d": 1.58,
     "retire": false
    },
    {
@@ -52,11 +52,11 @@
    }
   ],
   "usage_30d": {
-   "sessions": 3071,
-   "cost_usd": 36.33,
-   "input_tokens": 184693036,
-   "output_tokens": 12414537,
-   "cache_read_tokens": 1125870574
+   "sessions": 3066,
+   "cost_usd": 37.43,
+   "input_tokens": 183209473,
+   "output_tokens": 12370103,
+   "cache_read_tokens": 1117211601
   },
   "cron": {
    "total": 189,
@@ -102,7 +102,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-01T09:50",
+     "last_run": "2026-10-02T09:50",
      "schedule": "daily 09:50 ET",
      "error": ""
     },
@@ -142,7 +142,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-02T08:30",
+     "last_run": "2026-10-02T09:30",
      "schedule": "*/30 * * * *",
      "error": ""
     },
@@ -152,7 +152,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-02T08:45",
+     "last_run": "2026-10-02T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -162,7 +162,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-02T08:00",
+     "last_run": "2026-10-02T09:00",
      "schedule": "0 * * * *",
      "error": ""
     },
@@ -222,7 +222,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-02T08:45",
+     "last_run": "2026-10-02T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -252,7 +252,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-02T08:00",
+     "last_run": "2026-10-02T09:00",
      "schedule": "0 * * * *",
      "error": ""
     },
@@ -272,7 +272,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-02T08:45",
+     "last_run": "2026-10-02T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -292,7 +292,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-01T09:40",
+     "last_run": "2026-10-02T09:40",
      "schedule": "40 9 * * *",
      "error": ""
     },
@@ -332,7 +332,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-02T08:30",
+     "last_run": "2026-10-02T09:30",
      "schedule": "*/5 * * * *",
      "error": ""
     },
@@ -352,7 +352,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-01T09:26",
+     "last_run": "2026-10-02T09:26",
      "schedule": "25 9 * * *",
      "error": ""
     },
@@ -362,7 +362,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-02T08:59",
+     "last_run": "2026-10-02T10:00",
      "schedule": "* * * * *",
      "error": ""
     },
@@ -392,7 +392,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-02T08:45",
+     "last_run": "2026-10-02T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -432,7 +432,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-02T08:45",
+     "last_run": "2026-10-02T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -442,7 +442,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-02T08:30",
+     "last_run": "2026-10-02T09:30",
      "schedule": "*/30 * * * *",
      "error": ""
     },
@@ -462,7 +462,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-02T08:45",
+     "last_run": "2026-10-02T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -472,7 +472,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-02T08:55",
+     "last_run": "2026-10-02T09:55",
      "schedule": "*/5 * * * *",
      "error": ""
     }
@@ -490,19 +490,20 @@
    "jev_p50_ms": 307
   },
   "decisions": {
-   "total": 99,
-   "last_24h": 1,
+   "total": 108,
+   "last_24h": 10,
    "to_claude": 0,
    "by_mode": {
     "testing": 37,
-    "jev-primary": 61,
+    "jev-primary": 70,
     "jev-down->laya-vote": 1
    },
    "picks": {
     "publisher": 6,
-    "ops-worker": 12,
-    "orchestrator": 15,
-    "research-analyst": 2
+    "ops-worker": 13,
+    "orchestrator": 17,
+    "research-analyst": 6,
+    "vector-design": 2
    }
   },
   "bakeoff": {
@@ -556,10 +557,30 @@
  },
  "kanban": {
   "counts": {
-   "done": 12
+   "done": 14
   },
-  "done_24h": 0,
+  "done_24h": 2,
   "recent": [
+   {
+    "id": "t_837f2120",
+    "title": "Check: Phi & Grain: USPTO knockout search Class 20/35 and .com registr",
+    "profile": "orchestrator",
+    "status": "done",
+    "by": "gatekeeper",
+    "when": "10-02 09:44",
+    "check": true,
+    "summary": "Verified parent task's knockout search report independently against live systems: (1) All 7 .com domains confirmed unregistered via Verisign"
+   },
+   {
+    "id": "t_15d11b0f",
+    "title": "Phi & Grain: USPTO knockout search Class 20/35 and .com registrar chec",
+    "profile": "research-analyst",
+    "status": "done",
+    "by": "gatekeeper",
+    "when": "10-02 09:39",
+    "check": false,
+    "summary": "Wrote the knockout-search report to /Users/alfredpennyworth/Foundry/_solo/phi-and-grain/name-check.md (verified on disk via `ls -la` and `re"
+   },
    {
     "id": "t_6111a8d4",
     "title": "Synthesize swarm outputs",
@@ -639,30 +660,10 @@
     "when": "09-23 11:40",
     "check": false,
     "summary": "Compared page titles and meta descriptions for the Brand 9 Signs homepage (brand9signs.com/) and monument signs page (brand9signs.com/monume"
-   },
-   {
-    "id": "t_6931d674",
-    "title": "Check: Check that https://brand9signs.com and https://prag-ma.ai both ",
-    "profile": "orchestrator",
-    "status": "done",
-    "by": "gatekeeper",
-    "when": "09-23 11:39",
-    "check": true,
-    "summary": "Independent verification confirms the parent's findings: brand9signs.com returns HTTP 202 (217.7 ms, SiteGround captcha wall) \u2014 NOT 200; pra"
-   },
-   {
-    "id": "t_6eab07dd",
-    "title": "Check that https://brand9signs.com and https://prag-ma.ai both return ",
-    "profile": "ops-worker",
-    "status": "done",
-    "by": "gatekeeper",
-    "when": "09-23 11:37",
-    "check": false,
-    "summary": "Checked both URLs. brand9signs.com returns HTTP 202 (SiteGround captcha wall, 235 ms, 168 B) \u2014 NOT 200. prag-ma.ai returns HTTP 200 (286 ms,"
    }
   ],
-  "gk_cards_30d": 3,
-  "gk_checked_30d": 3
+  "gk_cards_30d": 4,
+  "gk_checked_30d": 4
  },
  "digest": {
   "ts": "2026-10-02T11:05:11+00:00",
@@ -675,13 +676,13 @@
   "error": null
  },
  "harvard": {
-  "articles": 3448,
+  "articles": 3452,
   "searches_30d": 4,
   "by": {
    "unknown": 1,
    "hermes-research-analyst": 3
   },
   "last_search": "2026-09-24T12:52:05Z",
-  "index_built": "2026-10-02T08:45:13+00:00"
+  "index_built": "2026-10-02T13:40:17+00:00"
  }
 }
