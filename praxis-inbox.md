@@ -2702,3 +2702,15 @@ lesson: Frontier pricing fell again within 48 hours (Sonnet 5.5, then GPT-6.1 So
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-02
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Claude Code mods + Sonnet 4.5 deprecation (yes), OpenAI shelving GPT-6.1 Astra (maybe), agent-governance wave Nvidia/Classie/Reco (maybe), Photon messaging agents (maybe), arXiv InFlowOp (maybe).
+lesson: As agents multiply, the scarce asset shifts from capability to control: OpenAI shelving Astra and a wave of agent-supervision launches show governance is the product. Give every Construct agent an owner, a permission scope, and an audit trail.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
