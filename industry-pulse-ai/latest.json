@@ -1,50 +1,50 @@
 {
-  "generated": "2026-10-03T05:51:26-04:00",
+  "generated": "2026-10-03T09:51:36-04:00",
   "latest_date": "2026-10-03",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "OpenAI DevDay: Dots persistent agents, GPT-6.1 Sol, Agents API with computer use, MCP Events",
-      "summary": "OpenAI launched always-on 'Dots' agents, GPT-6.1 Sol (GPT-6 Astra-level on many benchmarks at ~1/5 the price), an Agents API with computer use, multi-agent, tool search and context compression, plus an MCP Events spec for event-driven plugins.",
+      "title": "Anthropic retires Claude Sonnet 4.5 on Nov 30, 2026 — migrate to Sonnet 5.5",
+      "summary": "Anthropic's Developer Platform announced Sonnet 4.5 retires Nov 30, 2026, pointing users to Sonnet 5.5; Claude for Government also went GA (FedRAMP High) on Sep 30.",
       "tag": "yes",
-      "how": "The Construct: MCP Events + persistent-agent patterns map to event-triggered routines instead of pure cron; benchmark Sol for cheap coding/batch jobs. PRAGMA: 'always-on operator' is now a mainstream product category to position against.",
-      "url": "https://infoq.com/news/2026/10/openai-devday-2026"
+      "how": "The Construct: audit every routine, skill and script that pins a Sonnet 4.5 model ID and move it to Sonnet 5.5 before the cutoff. PRAGMA: add model-deprecation tracking to client operator runbooks.",
+      "url": "https://releasebot.io/updates/anthropic"
     },
     {
       "n": 2,
-      "title": "Claude Code 2.1.288 (resume/recovery, MCP handling) + $100M Claude Frontier Academy",
-      "summary": "Claude Code 2.1.288 ships smarter resume and recovery flows and stronger plugin/MCP handling; Anthropic also announced a $100M academy to train 10,000 Frontier Deployed Engineers with Accenture, Deloitte and McKinsey.",
+      "title": "Claude Code Mods (v2.1.287/2.1.288) — TypeScript functions that rewrite prompts, UI and built-ins",
+      "summary": "Mods let users change how Claude Code works via TypeScript hook functions; 2.1.288 adds smarter resume/recovery and stronger plugin/MCP handling.",
       "tag": "yes",
-      "how": "The Construct: update Claude Code and re-test long-running scheduled routines against the new resume/recovery flow. PRAGMA: the Academy signals demand for AI-operator talent and a possible partner/credential channel, and competition from big consultancies.",
+      "how": "The Construct: use mods for status lines, guardrails and per-agent prompt shaping; re-test long-running scheduled routines on the new resume/recovery flow.",
       "url": "https://releasebot.io/updates/anthropic"
     },
     {
       "n": 3,
-      "title": "Google Gemini 4 Argon begins rollout; Gemini Skills for cross-app task automation",
-      "summary": "Google started rolling out its flagship Gemini 4 Argon, initially to trusted cyber defenders and amid skepticism on coding performance, and launched Gemini Skills to automate repetitive tasks across apps.",
+      "title": "OpenAI unveils always-on 'dots' personal agent at DevDay amid reported $1.4T valuation talks",
+      "summary": "OpenAI launched 'dots', a persistent personal agent, while reports surfaced of funding talks at a roughly $1.4T valuation.",
       "tag": "maybe",
-      "how": "The Construct: skills-as-packaged-workflows is converging across vendors; hold model migration until general availability and independent coding benchmarks. PRAGMA: useful comparison point for client model-choice conversations.",
-      "url": "https://aiagentsdirectory.com/news/ai-agents-news-brief-october-2-2026"
+      "how": "PRAGMA: persistent operator agents are now a mainstream consumer category — sharpen the 'business-grade operator' positioning. The Construct: evaluate event-driven triggers over pure cron.",
+      "url": "https://en.wowtale.net/2026/10/02/235355"
     },
     {
       "n": 4,
-      "title": "Photon raises $4.5M seed for agents delivered over iMessage, WhatsApp, SMS and voice",
-      "summary": "Photon, an open-source-first framework for agents that live in messaging channels, raised a $4.5M seed with 40,000+ developer signups and 10x revenue growth in four months.",
+      "title": "Instinct raises $1B at $10B; EliseAI $350M (housing) and Homeward $120M (real estate) lead the week's rounds",
+      "summary": "Crunchbase's weekly list (Sep 26–Oct 2) is almost entirely AI: Instinct (AI assistants) $1B Series C, EliseAI $350M at $4B, Armadin $255.5M.",
       "tag": "maybe",
-      "how": "Brand 9 Signs: messaging-channel agent could handle quote follow-ups and install scheduling with builders/community managers. PRAGMA: a deployable channel layer for client operator agents.",
-      "url": "https://techcrunch.com/2026/10/01/photon-held-a-funeral-for-mobile-apps-now-it-has-4-5m-to-help-replace-them-with-agents"
+      "how": "PRAGMA: vertical operator agents for housing/real estate are heavily funded — validate community/builder-facing offers for Brand 9 Signs' master-planned-community buyers.",
+      "url": "https://news.crunchbase.com/venture/biggest-funding-rounds-ai-cyber-real-estate-instinct"
     },
     {
       "n": 5,
-      "title": "Agent security funding keeps climbing: Armadin $255.5M Series B, Reco $55M",
-      "summary": "Armadin raised $255.5M at a $2.5B post-money valuation for AI vulnerability testing, and Reco raised $55M as AI-agent security startups crowd the market; new agent-supervision tools (Classie Supervise, DeepKeep) also launched.",
+      "title": "Microsoft ships MAI-Transcribe-2-Streaming, its first real-time speech-to-text model for voice agents",
+      "summary": "Microsoft's streaming transcription model targets ultra-realistic, low-latency voice agents.",
       "tag": "maybe",
-      "how": "PRAGMA: governance/supervision is now a funded buyer category; include agent audit and control in consulting offers. The Construct: keep per-agent permission scopes and audit trails explicit.",
-      "url": "https://techcrunch.com/2026/09/29/reco-raises-55m-as-ai-agent-security-startups-crowd-the-market"
+      "how": "Brand 9 Signs: voice intake agent for quote requests and install scheduling. PRAGMA: a component for client voice-operator builds; compare latency/cost against current STT.",
+      "url": "https://siliconangle.com/2026/10/01/microsoft-targets-ultra-realistic-voice-agents-with-its-first-streaming-transcription-model"
     }
   ],
-  "praxis_lesson": "Agent vendors are converging on persistent, event-driven agents (OpenAI Dots + MCP Events, Gemini Skills, Claude Code mods) while security and recovery tooling gets funded alongside. Move Construct jobs from clock-driven to event-driven triggers, and make each one resumable and auditable.",
+  "praxis_lesson": "Model and tooling lifecycles are accelerating (Sonnet 4.5 retiring, Claude Code mods, new MCP/transcription stacks), so pinned model IDs and hard-coded tooling become silent liabilities. Keep a registry of every pinned model and tool version across Construct jobs, and review it on each deprecation notice.",
   "history": [
     "2026-10-03",
     "2026-10-02",

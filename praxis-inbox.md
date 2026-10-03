@@ -2750,3 +2750,15 @@ lesson: Agent vendors are converging on persistent, event-driven agents (OpenAI 
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-03
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Anthropic retires Claude Sonnet 4.5 on Nov 30, 2026 (yes); Claude Code Mods (v2.1.287/2.1.288) (yes); OpenAI unveils always-on 'dots' personal agent at DevDay amid reported $1.4T valuation talks (maybe); Instinct raises $1B at $10B (maybe); Microsoft ships MAI-Transcribe-2-Streaming, its first real-time speech-to-text model for voice agents (maybe).
+lesson: Model and tooling lifecycles are accelerating (Sonnet 4.5 retiring, Claude Code mods, new MCP/transcription stacks), so pinned model IDs and hard-coded tooling become silent liabilities. Keep a registry of every pinned model and tool version across Construct jobs, and review it on each deprecation notice.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
