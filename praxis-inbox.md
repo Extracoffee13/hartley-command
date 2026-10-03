@@ -2738,3 +2738,15 @@ lesson: Reliability is becoming a product category alongside governance: durable
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-03
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged OpenAI DevDay Dots/GPT-6.1 Sol/MCP Events (yes), Claude Code 2.1.288 + Frontier Academy (yes), Gemini 4 Argon + Gemini Skills (maybe), Photon $4.5M messaging agents (maybe), agent-security funding Armadin/Reco (maybe).
+lesson: Agent vendors are converging on persistent, event-driven agents (OpenAI Dots + MCP Events, Gemini Skills, Claude Code mods) while security and recovery tooling gets funded alongside. Move Construct jobs from clock-driven to event-driven triggers, and make each one resumable and auditable.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

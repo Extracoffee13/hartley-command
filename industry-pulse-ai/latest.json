@@ -1,51 +1,52 @@
 {
-  "generated": "2026-10-02T13:51:06-04:00",
-  "latest_date": "2026-10-02",
+  "generated": "2026-10-03T05:51:26-04:00",
+  "latest_date": "2026-10-03",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Claude Sonnet 5.5 default in Claude Code + mods (v2.1.284–287) and Sonnet 4.5 retirement 30 Nov",
-      "summary": "Anthropic made Sonnet 5.5 (30%+ faster, up to 30% cheaper than Sonnet 5) the Claude Code default, shipped TypeScript 'mods' for deeper behavior customization, and set Sonnet 4.5 to retire on 30 Nov 2026.",
+      "title": "OpenAI DevDay: Dots persistent agents, GPT-6.1 Sol, Agents API with computer use, MCP Events",
+      "summary": "OpenAI launched always-on 'Dots' agents, GPT-6.1 Sol (GPT-6 Astra-level on many benchmarks at ~1/5 the price), an Agents API with computer use, multi-agent, tool search and context compression, plus an MCP Events spec for event-driven plugins.",
       "tag": "yes",
-      "how": "The Construct: audit scheduled routines and agents for Sonnet 4.5 pins and migrate to 5.5; trial mods for approval gates and status hooks.",
-      "url": "https://releasebot.io/updates/anthropic"
+      "how": "The Construct: MCP Events + persistent-agent patterns map to event-triggered routines instead of pure cron; benchmark Sol for cheap coding/batch jobs. PRAGMA: 'always-on operator' is now a mainstream product category to position against.",
+      "url": "https://infoq.com/news/2026/10/openai-devday-2026"
     },
     {
       "n": 2,
-      "title": "Lofty launches MCP server for real-estate brokerages",
-      "summary": "Lofty released an MCP server on 28 Sep so brokerages can connect their own AI agents and business systems to the Lofty AOS platform without custom code.",
-      "tag": "maybe",
-      "how": "PRAGMA: real-estate/CRM MCP is a ready integration target for operator clients. Brand 9 Signs: possible lead feed from developer/brokerage contacts for community signage.",
-      "url": "https://www.globenewswire.com/news-release/2026/09/28/3369855/0/en/lofty-launches-mcp-server-to-give-brokerages-an-open-foundation-for-their-ai-strategy.html"
+      "title": "Claude Code 2.1.288 (resume/recovery, MCP handling) + $100M Claude Frontier Academy",
+      "summary": "Claude Code 2.1.288 ships smarter resume and recovery flows and stronger plugin/MCP handling; Anthropic also announced a $100M academy to train 10,000 Frontier Deployed Engineers with Accenture, Deloitte and McKinsey.",
+      "tag": "yes",
+      "how": "The Construct: update Claude Code and re-test long-running scheduled routines against the new resume/recovery flow. PRAGMA: the Academy signals demand for AI-operator talent and a possible partner/credential channel, and competition from big consultancies.",
+      "url": "https://releasebot.io/updates/anthropic"
     },
     {
       "n": 3,
-      "title": "Restate raises $20M Series A for durable AI agent runtime",
-      "summary": "Restate raised $20M to build durable-execution infrastructure so long-running agent workflows survive crashes and retries.",
+      "title": "Google Gemini 4 Argon begins rollout; Gemini Skills for cross-app task automation",
+      "summary": "Google started rolling out its flagship Gemini 4 Argon, initially to trusted cyber defenders and amid skepticism on coding performance, and launched Gemini Skills to automate repetitive tasks across apps.",
       "tag": "maybe",
-      "how": "The Construct: durable execution is the missing piece for multi-step scheduled jobs that currently restart from scratch on failure. PRAGMA: reliability story for client deployments.",
-      "url": "https://aiweekly.co/alerts/restate-raises-20m-series-a-for-durable-ai-agent-runtime"
+      "how": "The Construct: skills-as-packaged-workflows is converging across vendors; hold model migration until general availability and independent coding benchmarks. PRAGMA: useful comparison point for client model-choice conversations.",
+      "url": "https://aiagentsdirectory.com/news/ai-agents-news-brief-october-2-2026"
     },
     {
       "n": 4,
-      "title": "LlamaIndex Extract v2.5 improves schema-based document extraction",
-      "summary": "LlamaIndex shipped Extract v2.5 with accuracy and grounding gains for schema-based extraction from documents.",
+      "title": "Photon raises $4.5M seed for agents delivered over iMessage, WhatsApp, SMS and voice",
+      "summary": "Photon, an open-source-first framework for agents that live in messaging channels, raised a $4.5M seed with 40,000+ developer signups and 10x revenue growth in four months.",
       "tag": "maybe",
-      "how": "Brand 9 Signs: candidate for pulling specs/quantities from RFPs, sign schedules and plan PDFs. PRAGMA: reusable intake-automation component.",
-      "url": "https://www.unite.ai/llamaindex-launches-extract-v2-5-with-accuracy-and-grounding-gains"
+      "how": "Brand 9 Signs: messaging-channel agent could handle quote follow-ups and install scheduling with builders/community managers. PRAGMA: a deployable channel layer for client operator agents.",
+      "url": "https://techcrunch.com/2026/10/01/photon-held-a-funeral-for-mobile-apps-now-it-has-4-5m-to-help-replace-them-with-agents"
     },
     {
       "n": 5,
-      "title": "Nvidia launches Open Agent Safety Platform with 100+ partners",
-      "summary": "Nvidia's hardware-software stack is designed to quarantine rogue AI agents in milliseconds, built with 100+ industry partners.",
+      "title": "Agent security funding keeps climbing: Armadin $255.5M Series B, Reco $55M",
+      "summary": "Armadin raised $255.5M at a $2.5B post-money valuation for AI vulnerability testing, and Reco raised $55M as AI-agent security startups crowd the market; new agent-supervision tools (Classie Supervise, DeepKeep) also launched.",
       "tag": "maybe",
-      "how": "PRAGMA: enterprise buyers will ask about agent containment; useful framing for consulting. The Construct: borrow the quarantine-by-default idea for permission scopes.",
-      "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/nvidia-launches-open-agent-safety-platform-to-restrain-rogue-ai-agents-new-hardware-and-software-security-stack-can-quarantine-agents-in-milliseconds"
+      "how": "PRAGMA: governance/supervision is now a funded buyer category; include agent audit and control in consulting offers. The Construct: keep per-agent permission scopes and audit trails explicit.",
+      "url": "https://techcrunch.com/2026/09/29/reco-raises-55m-as-ai-agent-security-startups-crowd-the-market"
     }
   ],
-  "praxis_lesson": "Reliability is becoming a product category alongside governance: durable runtimes (Restate) and containment (Nvidia) both treat agent failure as the default case. Design every Construct job to be resumable and fail-contained, not just permissioned.",
+  "praxis_lesson": "Agent vendors are converging on persistent, event-driven agents (OpenAI Dots + MCP Events, Gemini Skills, Claude Code mods) while security and recovery tooling gets funded alongside. Move Construct jobs from clock-driven to event-driven triggers, and make each one resumable and auditable.",
   "history": [
+    "2026-10-03",
     "2026-10-02",
     "2026-10-01",
     "2026-09-30",
@@ -58,7 +59,6 @@
     "2026-09-23",
     "2026-09-22",
     "2026-09-21",
-    "2026-09-20",
-    "2026-09-19"
+    "2026-09-20"
   ]
 }
