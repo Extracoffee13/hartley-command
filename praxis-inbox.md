@@ -2762,3 +2762,15 @@ lesson: Model and tooling lifecycles are accelerating (Sonnet 4.5 retiring, Clau
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-03
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged OpenAI DevDay Agents API with computer use + MCP Events + GPT-6.1 Sol (yes); Anthropic $100M Claude Frontier Academy (maybe); Google Gemini 4 Argon (maybe).
+lesson: Three frontier model families shipped in one week (Sonnet 5.5, GPT-6.1 Sol, Gemini 4 Argon) while prices fell about 5x, so model choice is now a routing decision, not a loyalty decision. Keep a per-task eval harness so Construct jobs can switch models in hours, not weeks.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

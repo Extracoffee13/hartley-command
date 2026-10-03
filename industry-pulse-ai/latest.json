@@ -1,50 +1,34 @@
 {
-  "generated": "2026-10-03T09:51:36-04:00",
+  "generated": "2026-10-03T13:52:18-04:00",
   "latest_date": "2026-10-03",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Anthropic retires Claude Sonnet 4.5 on Nov 30, 2026 — migrate to Sonnet 5.5",
-      "summary": "Anthropic's Developer Platform announced Sonnet 4.5 retires Nov 30, 2026, pointing users to Sonnet 5.5; Claude for Government also went GA (FedRAMP High) on Sep 30.",
+      "title": "OpenAI DevDay: Agents API gets computer use, MCP Events spec, and GPT-6.1 Sol at ~1/5 the price of GPT-6 Astra",
+      "summary": "DevDay shipped an Agents API with computer use, multi-agent, tool search and context compaction, plus MCP Events support for ChatGPT plugins, Codex cloud environments, and GPT-6.1 Sol with cached input at $0.10/M tokens.",
       "tag": "yes",
-      "how": "The Construct: audit every routine, skill and script that pins a Sonnet 4.5 model ID and move it to Sonnet 5.5 before the cutoff. PRAGMA: add model-deprecation tracking to client operator runbooks.",
-      "url": "https://releasebot.io/updates/anthropic"
+      "how": "The Construct: track the MCP Events spec for event-driven triggers instead of pure cron, and benchmark cheaper model tiers for high-volume routines. PRAGMA: GUI-operating agents lower the cost of client operator builds for legacy software with no API.",
+      "url": "https://infoq.com/news/2026/10/openai-devday-2026"
     },
     {
       "n": 2,
-      "title": "Claude Code Mods (v2.1.287/2.1.288) — TypeScript functions that rewrite prompts, UI and built-ins",
-      "summary": "Mods let users change how Claude Code works via TypeScript hook functions; 2.1.288 adds smarter resume/recovery and stronger plugin/MCP handling.",
-      "tag": "yes",
-      "how": "The Construct: use mods for status lines, guardrails and per-agent prompt shaping; re-test long-running scheduled routines on the new resume/recovery flow.",
+      "title": "Anthropic launches $100M Claude Frontier Academy to train 10,000 Frontier Deployed Engineers by end of 2027",
+      "summary": "Anthropic is funding an enterprise talent program with cohorts in San Francisco, New York and London, aimed at the forward-deployed AI engineer role.",
+      "tag": "maybe",
+      "how": "PRAGMA: validates the AI-operator consulting category and the FDE role; position PRAGMA as the ready-now alternative while enterprise FDE supply is still ramping. Watch for partner/certification openings.",
       "url": "https://releasebot.io/updates/anthropic"
     },
     {
       "n": 3,
-      "title": "OpenAI unveils always-on 'dots' personal agent at DevDay amid reported $1.4T valuation talks",
-      "summary": "OpenAI launched 'dots', a persistent personal agent, while reports surfaced of funding talks at a roughly $1.4T valuation.",
+      "title": "Google unveils Gemini 4 Argon; CNBC asks whether Google can catch OpenAI and Anthropic at the frontier",
+      "summary": "Google's new frontier model landed the same week as Sonnet 5.5 (Sep 28) and GPT-6.1 Sol; I could only confirm the headline, not benchmark details (article was blocked).",
       "tag": "maybe",
-      "how": "PRAGMA: persistent operator agents are now a mainstream consumer category — sharpen the 'business-grade operator' positioning. The Construct: evaluate event-driven triggers over pure cron.",
-      "url": "https://en.wowtale.net/2026/10/02/235355"
-    },
-    {
-      "n": 4,
-      "title": "Instinct raises $1B at $10B; EliseAI $350M (housing) and Homeward $120M (real estate) lead the week's rounds",
-      "summary": "Crunchbase's weekly list (Sep 26–Oct 2) is almost entirely AI: Instinct (AI assistants) $1B Series C, EliseAI $350M at $4B, Armadin $255.5M.",
-      "tag": "maybe",
-      "how": "PRAGMA: vertical operator agents for housing/real estate are heavily funded — validate community/builder-facing offers for Brand 9 Signs' master-planned-community buyers.",
-      "url": "https://news.crunchbase.com/venture/biggest-funding-rounds-ai-cyber-real-estate-instinct"
-    },
-    {
-      "n": 5,
-      "title": "Microsoft ships MAI-Transcribe-2-Streaming, its first real-time speech-to-text model for voice agents",
-      "summary": "Microsoft's streaming transcription model targets ultra-realistic, low-latency voice agents.",
-      "tag": "maybe",
-      "how": "Brand 9 Signs: voice intake agent for quote requests and install scheduling. PRAGMA: a component for client voice-operator builds; compare latency/cost against current STT.",
-      "url": "https://siliconangle.com/2026/10/01/microsoft-targets-ultra-realistic-voice-agents-with-its-first-streaming-transcription-model"
+      "how": "The Construct: add Gemini 4 Argon to the model-routing bake-off for long-context and multimodal tasks once pricing and benchmarks are published. Brand 9 Signs: re-test image/vision tasks such as sign-mockup review.",
+      "url": "https://cnbc.com/2026/10/02/tech-download-google-argon-frontier-openai-anthropic.html"
     }
   ],
-  "praxis_lesson": "Model and tooling lifecycles are accelerating (Sonnet 4.5 retiring, Claude Code mods, new MCP/transcription stacks), so pinned model IDs and hard-coded tooling become silent liabilities. Keep a registry of every pinned model and tool version across Construct jobs, and review it on each deprecation notice.",
+  "praxis_lesson": "Three frontier model families shipped in one week (Sonnet 5.5, GPT-6.1 Sol, Gemini 4 Argon) while prices fell about 5x, so model choice is now a routing decision, not a loyalty decision. Keep a per-task eval harness so Construct jobs can switch models in hours, not weeks.",
   "history": [
     "2026-10-03",
     "2026-10-02",
