@@ -2786,3 +2786,15 @@ lesson: Deprecations and always-on agents arrive together: pinned model IDs and 
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-04
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged OpenDots persistent-agent template (maybe); DeepSeek Harness (maybe); Pi 1.0 + Pi Durable (maybe); Claude for Government GA (no).
+lesson: The same persistent-agent pattern is now shipping as open-source templates (OpenDots, Pi Durable, DeepSeek Harness), so the harness is commoditizing. Keep value in your own state files, permissions and evals, and treat any harness as swappable.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

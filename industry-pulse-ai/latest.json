@@ -1,42 +1,42 @@
 {
-  "generated": "2026-10-04T05:51:08-04:00",
+  "generated": "2026-10-04T09:51:46-04:00",
   "latest_date": "2026-10-04",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Claude Code Mods + releases 2.1.287/2.1.288: custom TypeScript functions that rewrite prompts, customize UI, and replace features, shipped inside plugins",
-      "summary": "Anthropic introduced Mods on Oct 1, letting teams distribute custom Claude Code behavior through plugins with admin controls; 2.1.288 (Oct 2) adds resume/recovery, plugin and MCP management, and permission fixes.",
-      "tag": "yes",
-      "how": "The Construct: package agent guardrails and house-style prompt rewrites as a plugin mod so every Construct session inherits them; the resume/recovery fixes help long scheduled runs. PRAGMA: a distributable mod is a productizable deliverable for client engineering teams.",
-      "url": "https://releasebot.io/updates/anthropic"
+      "title": "OpenDots: CopilotKit ships an MIT-licensed, self-hosted template for persistent AI coworkers across text, calls and Slack",
+      "summary": "Specialist agents with scoped tool permissions, shared working spaces, isolated browser environments, Slack and voice channels, and background task scheduling; unrelated to OpenAI's Dots (Oct 1).",
+      "tag": "maybe",
+      "how": "The Construct: a reference architecture for always-on agents with per-agent tool permissions, compare against the Hermes/routine setup. PRAGMA: a ready template for client persistent-coworker pilots.",
+      "url": "https://github.com/CopilotKit/OpenDots"
     },
     {
       "n": 2,
-      "title": "Anthropic schedules retirement of Claude Sonnet 4.5 (claude-sonnet-4-5-20250929) for November 30, 2026",
-      "summary": "The Developer Platform posted a deprecation notice on Sep 30 with retirement set for Nov 30, 2026.",
-      "tag": "yes",
-      "how": "The Construct: grep routines, skills and repos for the pinned Sonnet 4.5 ID and move them to Sonnet 5.5 before the cutoff. PRAGMA: add a model-deprecation check to client operator handoffs.",
-      "url": "https://releasebot.io/updates/anthropic"
+      "title": "DeepSeek Harness (dsh): open-source, MIT-licensed 'everything-is-a-plugin' agent harness with web, desktop and CLI front ends",
+      "summary": "Developer preview from DeepSeek AI built on the Cordis plugin framework; desktop apps for macOS, Windows and Linux reported Oct 3.",
+      "tag": "maybe",
+      "how": "The Construct: a model-agnostic harness to benchmark against Claude-based flows; expect breaking changes. PRAGMA: another client option when a non-US model is mandated.",
+      "url": "https://github.com/deepseek-ai/deepseek-harness"
     },
     {
       "n": 3,
-      "title": "OpenAI, Meta and Google are shifting toward persistent agents that manage multiple jobs and retain context",
-      "summary": "Business Standard reports the big labs are moving from one-shot assistants to always-on agents with long-lived memory (Oct 2).",
+      "title": "Pi 1.0 from Earendil: minimal, extensible agent harness with native MCP support, plus experimental Pi Durable for longer-running tasks",
+      "summary": "Adds native MCP, virtual model extensions, mid-conversation system message changes and better Claude caching; Pi Durable is a separate experimental substrate for long-running work (Oct 3).",
       "tag": "maybe",
-      "how": "The Construct: validates the scheduled-routine plus memory pattern; watch for platform-native persistence that could replace hand-rolled inbox/state files. PRAGMA: a selling point for operator engagements that run continuously.",
-      "url": "https://www.business-standard.com/technology/artificial-intelligence/rise-of-persistent-ai-agents-openai-meta-google-126100200565_1.html"
+      "how": "The Construct: Pi Durable's separate-substrate approach to long jobs is worth reading for scheduled-run resilience. PRAGMA: lightweight harness option for small client builds.",
+      "url": "https://earendil.com/posts/pi-1-0/"
     },
     {
       "n": 4,
-      "title": "DigitalOcean opens public preview of managed agent infrastructure with isolated runtimes and governed tool access",
-      "summary": "The service bundles isolated agent runtimes, governed tool access and serverless inference (Oct 2).",
-      "tag": "maybe",
-      "how": "PRAGMA: a low-ops hosting option for small client agent deployments; The Construct: compare against current runtime cost once pricing is clear.",
-      "url": "https://www.infoq.com/news/2026/10/digitalocean-managed-agents"
+      "title": "Claude for Government reaches general availability with FedRAMP High authorization",
+      "summary": "Anthropic's platform for federal and state agencies ships with governance controls, spend limits and audit logging (Sep 30).",
+      "tag": "no",
+      "how": "Not relevant to signage or current Construct work; only a signal that audit logging and spend limits are becoming standard, which PRAGMA can cite in compliance-minded client pitches.",
+      "url": "https://releasebot.io/updates/anthropic"
     }
   ],
-  "praxis_lesson": "Deprecations and always-on agents arrive together: pinned model IDs and hand-rolled state become liabilities. Keep model names in one config and agent state in portable files so a retirement date is a one-line change.",
+  "praxis_lesson": "The same persistent-agent pattern is now shipping as open-source templates (OpenDots, Pi Durable, DeepSeek Harness), so the harness is commoditizing. Keep value in your own state files, permissions and evals, and treat any harness as swappable.",
   "history": [
     "2026-10-04",
     "2026-10-03",
