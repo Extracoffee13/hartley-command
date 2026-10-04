@@ -1,42 +1,50 @@
 {
-  "generated": "2026-10-04T09:51:46-04:00",
+  "generated": "2026-10-04T13:51:00-04:00",
   "latest_date": "2026-10-04",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "OpenDots: CopilotKit ships an MIT-licensed, self-hosted template for persistent AI coworkers across text, calls and Slack",
-      "summary": "Specialist agents with scoped tool permissions, shared working spaces, isolated browser environments, Slack and voice channels, and background task scheduling; unrelated to OpenAI's Dots (Oct 1).",
-      "tag": "maybe",
-      "how": "The Construct: a reference architecture for always-on agents with per-agent tool permissions, compare against the Hermes/routine setup. PRAGMA: a ready template for client persistent-coworker pilots.",
-      "url": "https://github.com/CopilotKit/OpenDots"
+      "title": "Claude Code Mods (Oct 1) and Claude Code 2.1.288 (Oct 2): small TypeScript functions that rewrite prompts, change UI or replace built-ins, distributed inside plugins",
+      "summary": "Mods ship with 2.1.287; 2.1.288 adds reliability fixes for mid-response API timeouts and session recovery.",
+      "tag": "yes",
+      "how": "The Construct: package agent-specific behaviors (guardrails, prompt rewrites, status panes) as plugin mods instead of ad-hoc config; the timeout/session-recovery fixes help long scheduled runs. PRAGMA: a distributable customization layer for client Claude Code setups. Brand 9: no direct use.",
+      "url": "https://releasebot.io/updates/anthropic"
     },
     {
       "n": 2,
-      "title": "DeepSeek Harness (dsh): open-source, MIT-licensed 'everything-is-a-plugin' agent harness with web, desktop and CLI front ends",
-      "summary": "Developer preview from DeepSeek AI built on the Cordis plugin framework; desktop apps for macOS, Windows and Linux reported Oct 3.",
-      "tag": "maybe",
-      "how": "The Construct: a model-agnostic harness to benchmark against Claude-based flows; expect breaking changes. PRAGMA: another client option when a non-US model is mandated.",
-      "url": "https://github.com/deepseek-ai/deepseek-harness"
+      "title": "Claude Sonnet 5.5 (Sep 28): near-Opus 5.5 performance at about half the per-token cost",
+      "summary": "Reported AAII score of 56, on par with Opus 5.5, available across the API and major clouds.",
+      "tag": "yes",
+      "how": "The Construct: default scheduled/routine agents to Sonnet 5.5 and reserve Opus for hard planning, cutting daily-run cost. PRAGMA: cheaper tier for client agent pilots.",
+      "url": "https://patmcguinness.substack.com/p/ai-week-in-review-261003"
     },
     {
       "n": 3,
-      "title": "Pi 1.0 from Earendil: minimal, extensible agent harness with native MCP support, plus experimental Pi Durable for longer-running tasks",
-      "summary": "Adds native MCP, virtual model extensions, mid-conversation system message changes and better Claude caching; Pi Durable is a separate experimental substrate for long-running work (Oct 3).",
+      "title": "Anthropic Claude Frontier Academy (Oct 2): $100M program to train 10,000 Frontier Deployed Engineers by end of 2027",
+      "summary": "Medical-residency-style training with initial cohorts from Accenture, McKinsey and Deloitte.",
       "tag": "maybe",
-      "how": "The Construct: Pi Durable's separate-substrate approach to long jobs is worth reading for scheduled-run resilience. PRAGMA: lightweight harness option for small client builds.",
-      "url": "https://earendil.com/posts/pi-1-0/"
+      "how": "PRAGMA: validates the AI-operator consulting category and signals large incumbents will be competing for deployment talent; positioning should lean on vertical depth (signage) over generic deployment. Not relevant to Brand 9 directly.",
+      "url": "https://releasebot.io/updates/anthropic"
     },
     {
       "n": 4,
-      "title": "Claude for Government reaches general availability with FedRAMP High authorization",
-      "summary": "Anthropic's platform for federal and state agencies ships with governance controls, spend limits and audit logging (Sep 30).",
-      "tag": "no",
-      "how": "Not relevant to signage or current Construct work; only a signal that audit logging and spend limits are becoming standard, which PRAGMA can cite in compliance-minded client pitches.",
-      "url": "https://releasebot.io/updates/anthropic"
+      "title": "Google Gemini 4 Argon begins limited rollout (Oct 1) plus new Gemini Skills for automating repetitive cross-app tasks",
+      "summary": "Argon is going first to trusted cyber defenders with no GA date; reports note internal skepticism about its coding performance. Gemini Skills mirrors the skills pattern already used in Claude.",
+      "tag": "maybe",
+      "how": "The Construct: skills are becoming a cross-vendor primitive, so keep our skill files portable and vendor-neutral. PRAGMA: watch for GA before benchmarking.",
+      "url": "https://aiagentsdirectory.com/news/ai-agents-news-brief-october-2-2026"
+    },
+    {
+      "n": 5,
+      "title": "OpenAI GPT-6.1 Sol (Sep 29) and the always-on 'Dots' agent (Oct 1 DevDay)",
+      "summary": "Sol reportedly matches GPT-6 Astra (71.9% DeepSWE, 71.4% OSWorld) at $2/$10 per 1M tokens; Dots is a 24/7 agent integrating with thousands of apps.",
+      "tag": "maybe",
+      "how": "The Construct: benchmark Sol as a cheaper fallback for computer-use and coding agents; Dots is the consumer-grade version of our persistent-agent pattern. PRAGMA: client expectation of always-on agents is now set by OpenAI.",
+      "url": "https://patmcguinness.substack.com/p/ai-week-in-review-261003"
     }
   ],
-  "praxis_lesson": "The same persistent-agent pattern is now shipping as open-source templates (OpenDots, Pi Durable, DeepSeek Harness), so the harness is commoditizing. Keep value in your own state files, permissions and evals, and treat any harness as swappable.",
+  "praxis_lesson": "Skills, mods and always-on agents are now first-class primitives at Anthropic, Google and OpenAI alike, so the differentiator is no longer the harness but the governed skills, permissions and evals you own. Keep those portable and put the cheapest capable model (Sonnet 5.5) on routine runs.",
   "history": [
     "2026-10-04",
     "2026-10-03",

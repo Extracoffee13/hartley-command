@@ -2798,3 +2798,15 @@ lesson: The same persistent-agent pattern is now shipping as open-source templat
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-04
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Claude Code Mods + 2.1.288 (yes); Sonnet 5.5 (yes); Claude Frontier Academy (maybe); Gemini 4 Argon + Gemini Skills (maybe); GPT-6.1 Sol + OpenAI Dots (maybe).
+lesson: Skills, mods and always-on agents are now first-class primitives at Anthropic, Google and OpenAI alike, so the differentiator is no longer the harness but the governed skills, permissions and evals you own. Keep those portable and put the cheapest capable model (Sonnet 5.5) on routine runs.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
