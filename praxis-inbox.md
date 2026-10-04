@@ -2774,3 +2774,15 @@ lesson: Three frontier model families shipped in one week (Sonnet 5.5, GPT-6.1 S
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-04
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Claude Code Mods + 2.1.287/288 (yes); Sonnet 4.5 retirement Nov 30 (yes); persistent-agent shift at OpenAI/Meta/Google (maybe); DigitalOcean managed agent infra (maybe).
+lesson: Deprecations and always-on agents arrive together: pinned model IDs and hand-rolled state become liabilities. Keep model names in one config and agent state in portable files so a retirement date is a one-line change.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

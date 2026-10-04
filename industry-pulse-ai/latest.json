@@ -1,35 +1,44 @@
 {
-  "generated": "2026-10-03T13:52:18-04:00",
-  "latest_date": "2026-10-03",
+  "generated": "2026-10-04T05:51:08-04:00",
+  "latest_date": "2026-10-04",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "OpenAI DevDay: Agents API gets computer use, MCP Events spec, and GPT-6.1 Sol at ~1/5 the price of GPT-6 Astra",
-      "summary": "DevDay shipped an Agents API with computer use, multi-agent, tool search and context compaction, plus MCP Events support for ChatGPT plugins, Codex cloud environments, and GPT-6.1 Sol with cached input at $0.10/M tokens.",
+      "title": "Claude Code Mods + releases 2.1.287/2.1.288: custom TypeScript functions that rewrite prompts, customize UI, and replace features, shipped inside plugins",
+      "summary": "Anthropic introduced Mods on Oct 1, letting teams distribute custom Claude Code behavior through plugins with admin controls; 2.1.288 (Oct 2) adds resume/recovery, plugin and MCP management, and permission fixes.",
       "tag": "yes",
-      "how": "The Construct: track the MCP Events spec for event-driven triggers instead of pure cron, and benchmark cheaper model tiers for high-volume routines. PRAGMA: GUI-operating agents lower the cost of client operator builds for legacy software with no API.",
-      "url": "https://infoq.com/news/2026/10/openai-devday-2026"
+      "how": "The Construct: package agent guardrails and house-style prompt rewrites as a plugin mod so every Construct session inherits them; the resume/recovery fixes help long scheduled runs. PRAGMA: a distributable mod is a productizable deliverable for client engineering teams.",
+      "url": "https://releasebot.io/updates/anthropic"
     },
     {
       "n": 2,
-      "title": "Anthropic launches $100M Claude Frontier Academy to train 10,000 Frontier Deployed Engineers by end of 2027",
-      "summary": "Anthropic is funding an enterprise talent program with cohorts in San Francisco, New York and London, aimed at the forward-deployed AI engineer role.",
-      "tag": "maybe",
-      "how": "PRAGMA: validates the AI-operator consulting category and the FDE role; position PRAGMA as the ready-now alternative while enterprise FDE supply is still ramping. Watch for partner/certification openings.",
+      "title": "Anthropic schedules retirement of Claude Sonnet 4.5 (claude-sonnet-4-5-20250929) for November 30, 2026",
+      "summary": "The Developer Platform posted a deprecation notice on Sep 30 with retirement set for Nov 30, 2026.",
+      "tag": "yes",
+      "how": "The Construct: grep routines, skills and repos for the pinned Sonnet 4.5 ID and move them to Sonnet 5.5 before the cutoff. PRAGMA: add a model-deprecation check to client operator handoffs.",
       "url": "https://releasebot.io/updates/anthropic"
     },
     {
       "n": 3,
-      "title": "Google unveils Gemini 4 Argon; CNBC asks whether Google can catch OpenAI and Anthropic at the frontier",
-      "summary": "Google's new frontier model landed the same week as Sonnet 5.5 (Sep 28) and GPT-6.1 Sol; I could only confirm the headline, not benchmark details (article was blocked).",
+      "title": "OpenAI, Meta and Google are shifting toward persistent agents that manage multiple jobs and retain context",
+      "summary": "Business Standard reports the big labs are moving from one-shot assistants to always-on agents with long-lived memory (Oct 2).",
       "tag": "maybe",
-      "how": "The Construct: add Gemini 4 Argon to the model-routing bake-off for long-context and multimodal tasks once pricing and benchmarks are published. Brand 9 Signs: re-test image/vision tasks such as sign-mockup review.",
-      "url": "https://cnbc.com/2026/10/02/tech-download-google-argon-frontier-openai-anthropic.html"
+      "how": "The Construct: validates the scheduled-routine plus memory pattern; watch for platform-native persistence that could replace hand-rolled inbox/state files. PRAGMA: a selling point for operator engagements that run continuously.",
+      "url": "https://www.business-standard.com/technology/artificial-intelligence/rise-of-persistent-ai-agents-openai-meta-google-126100200565_1.html"
+    },
+    {
+      "n": 4,
+      "title": "DigitalOcean opens public preview of managed agent infrastructure with isolated runtimes and governed tool access",
+      "summary": "The service bundles isolated agent runtimes, governed tool access and serverless inference (Oct 2).",
+      "tag": "maybe",
+      "how": "PRAGMA: a low-ops hosting option for small client agent deployments; The Construct: compare against current runtime cost once pricing is clear.",
+      "url": "https://www.infoq.com/news/2026/10/digitalocean-managed-agents"
     }
   ],
-  "praxis_lesson": "Three frontier model families shipped in one week (Sonnet 5.5, GPT-6.1 Sol, Gemini 4 Argon) while prices fell about 5x, so model choice is now a routing decision, not a loyalty decision. Keep a per-task eval harness so Construct jobs can switch models in hours, not weeks.",
+  "praxis_lesson": "Deprecations and always-on agents arrive together: pinned model IDs and hand-rolled state become liabilities. Keep model names in one config and agent state in portable files so a retirement date is a one-line change.",
   "history": [
+    "2026-10-04",
     "2026-10-03",
     "2026-10-02",
     "2026-10-01",
@@ -42,7 +51,6 @@
     "2026-09-24",
     "2026-09-23",
     "2026-09-22",
-    "2026-09-21",
-    "2026-09-20"
+    "2026-09-21"
   ]
 }
