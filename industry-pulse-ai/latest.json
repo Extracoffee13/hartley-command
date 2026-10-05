@@ -1,50 +1,50 @@
 {
-  "generated": "2026-10-05T05:51:38-04:00",
+  "generated": "2026-10-05T09:51:12-04:00",
   "latest_date": "2026-10-05",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Supabase raises $150M and acquires Turso to give every AI agent its own database (Oct 2-4)",
-      "summary": "Supabase is buying Turso (SQLite-based) to offer per-agent databases at scale, betting the backend becomes the agent battleground.",
-      "tag": "maybe",
-      "how": "The Construct: per-agent isolated SQLite/Postgres stores are a clean pattern for agent memory and state instead of shared files. PRAGMA: a concrete backend recommendation for client agent builds. Brand 9: no direct use.",
-      "url": "https://turso.tech/blog/turso-is-joining-supabase"
+      "title": "Claude Code 2.1.288 (Oct 2) ships a broad reliability update with smarter resume and recovery; 2.1.287 introduced Claude Mods",
+      "summary": "Latest tracked Claude Code releases focus on resume/recovery flows, plus Claude Mods and plugin/MCP behavior improvements.",
+      "tag": "yes",
+      "how": "The Construct: resume/recovery matters for long-running scheduled agents like Pulse; Mods (hot-reloading plugin hooks) could host dashboard panes. PRAGMA: reliability talking point for client Claude Code rollouts. Brand 9: no direct use.",
+      "url": "https://releasebot.io/updates/anthropic/claude-code"
     },
     {
       "n": 2,
-      "title": "Claude Code 2.1.289 (Oct 4) adds agent.spawn for teammates and agent-state support; 2.1.288 adds MCP OAuth re-auth prompts",
-      "summary": "Plugin, terminal and shell-safety fixes plus new teammate-spawning and agent state primitives; MCP servers requesting extra OAuth scope now trigger re-authentication.",
-      "tag": "yes",
-      "how": "The Construct: agent.spawn maps onto our multi-agent swarm pattern, and the re-auth behavior affects any MCP connector with scoped OAuth. PRAGMA: sharper multi-agent story for client Claude Code deployments.",
-      "url": "https://releasebot.io/updates/anthropic"
+      "title": "Blackstone-led syndicate assembling $60B of Broadcom AI-chip financing tied to Anthropic, with notes convertible into Anthropic equity (Oct 2)",
+      "summary": "A banking syndicate is gathering $42B senior and $18B junior tranches, with convertibles into Anthropic equity, signaling continued massive compute buildout.",
+      "tag": "maybe",
+      "how": "PRAGMA: supports a 'vendor stability and capacity' argument when advising clients to standardize on Claude. The Construct and Brand 9: no direct use.",
+      "url": "https://theneuron.ai/digest/everything-that-happened-in-ai-today-friday-october-2-2026"
     },
     {
       "n": 3,
-      "title": "AWS MCP Server expands to six more regions (Oct 2)",
-      "summary": "The managed AWS MCP Server, part of the Agent Toolkit for AWS, is now in Singapore, Sydney, Tokyo, Ireland, London and Oregon for lower latency and data residency.",
+      "title": "Google cuts Gemini free access to a single model on Oct 9",
+      "summary": "Free Gemini users lose Flash and Pro access from October 9, per multiple outlets.",
       "tag": "maybe",
-      "how": "PRAGMA: a managed MCP endpoint is a ready option for client infra-automation agents with residency needs. The Construct and Brand 9: no direct use unless we host on AWS.",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/10/aws-mcp-server-six-additional-regions/"
+      "how": "The Construct: audit any agent or workflow that relies on free-tier Gemini before Oct 9 and move it to a paid key or another model. PRAGMA: a cautionary example of free-tier dependency risk for clients. Brand 9: no direct use.",
+      "url": "https://tech-insider.org/google-cuts-free-gemini-1-model-oct-9-2026"
     },
     {
       "n": 4,
-      "title": "arXiv 2610.02351 DeReAct: decomposed reasoning and acting with external gating policies",
-      "summary": "Proposes a modular agent design where separate gating policies validate actions and control completion, aimed at more reliable agents.",
+      "title": "arXiv 2610.02525 MIRA: meta-reasoning for iterative research agents",
+      "summary": "Separates research-allocation decisions from execution, using an outer-loop meta-reasoner to curate context and write work orders for long-horizon autonomous research.",
       "tag": "yes",
-      "how": "The Construct: maps directly to our verify-before-claiming and gate-the-output discipline; external gates beat self-reported completion. PRAGMA: a citable framing for reliability-focused client pitches.",
-      "url": "https://arxiv.org/abs/2610.02351"
+      "how": "The Construct: matches our orchestrator-writes-work-orders pattern for Scout/Pulse-style research agents. PRAGMA: citable architecture for research-agent engagements.",
+      "url": "https://arxiv.org/list/cs.AI/new"
     },
     {
       "n": 5,
-      "title": "arXiv 2610.02687 GraphMemory: graph-based structured memory for token-efficient continual learning",
-      "summary": "Decouples memory from context with a graph that accumulates, refines and connects reusable strategies while cutting token cost.",
+      "title": "Cua Spaces lets agents operate personal desktops or cloud machines with permissions and sign-in management (Oct 2)",
+      "summary": "Source-available driver access and managed permissions for computer-use agents on a person's own desktop.",
       "tag": "maybe",
-      "how": "The Construct: a model for evolving the PRAXIS inbox into linked, reusable strategies rather than flat logs. PRAGMA: memory architecture talking point.",
-      "url": "https://arxiv.org/abs/2610.02687"
+      "how": "The Construct: a comparison point for our computer-use and Hermes desktop automation, especially permission and sign-in handling. PRAGMA: possible building block for client desktop-automation agents. Brand 9: no direct use.",
+      "url": "https://theneuron.ai/digest/everything-that-happened-in-ai-today-friday-october-2-2026"
     }
   ],
-  "praxis_lesson": "Reliable agents come from structure outside the model: per-agent state (Turso/Supabase), spawned teammates (agent.spawn) and external gates (DeReAct) all move correctness out of the prompt and into the architecture. Give each Construct agent its own isolated store and a gate that verifies before it reports done.",
+  "praxis_lesson": "Agent quality is increasingly set by the control layer around the model: DeReAct-style external gates, MIRA-style meta-reasoners and resume/recovery tooling all beat trusting a single prompt. Give every long-running Construct agent an outer loop that allocates work and verifies results, and audit free-tier dependencies before they disappear.",
   "history": [
     "2026-10-05",
     "2026-10-04",

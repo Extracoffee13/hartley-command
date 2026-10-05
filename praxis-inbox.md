@@ -2822,3 +2822,15 @@ lesson: Reliable agents come from structure outside the model: per-agent state (
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-05
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Claude Code 2.1.288 resume/recovery + Mods (yes); Broadcom $60B Anthropic financing (maybe); Gemini free-tier cut Oct 9 (maybe); arXiv MIRA meta-reasoning (yes); Cua Spaces desktop agents (maybe).
+lesson: Agent quality is increasingly set by the control layer around the model: DeReAct-style external gates, MIRA-style meta-reasoners and resume/recovery tooling all beat trusting a single prompt. Give every long-running Construct agent an outer loop that allocates work and verifies results, and audit free-tier dependencies before they disappear.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
