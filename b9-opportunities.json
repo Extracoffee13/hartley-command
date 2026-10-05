@@ -1,0 +1,350 @@
+{
+ "generated": "2026-10-05T10:51:52-04:00",
+ "source": "_b9_temp/_flywheel/B9_BIDS.json via b9_bids.py export",
+ "summary": {
+  "open_bids": 7,
+  "targets": 6,
+  "red": 1,
+  "gates_open": 9,
+  "gates_total": 9,
+  "owner_actions": 8,
+  "drafts_waiting": 11,
+  "submitted": 0,
+  "won": 0
+ },
+ "gates": [
+  {
+   "id": "sam",
+   "short": "SAM.gov",
+   "name": "SAM.gov entity registration active (CAGE 0VVG2)",
+   "status": "blocked",
+   "owner": "Bobby",
+   "next": "Log in to SAM.gov with Login.gov > Workspace > Entities > filter Inactive > Renew. Free; ignore paid 'renewal services'. IRS + CAGE validation ~10-12 business days.",
+   "unlocks": 3
+  },
+  {
+   "id": "opengov_walton",
+   "short": "Walton OpenGov",
+   "name": "Vendor account on Walton County's OpenGov portal",
+   "status": "blocked",
+   "owner": "Bobby",
+   "next": "Create the free account at Walton County Purchasing (mywaltonfl.gov/259/Purchasing), follow the gateway-signs ITB, then tell Claude so the documents can be read.",
+   "unlocks": 1
+  },
+  {
+   "id": "license",
+   "short": "Licensing/permit answer",
+   "name": "Who holds the license and pulls permits on county sign bids",
+   "status": "decide",
+   "owner": "Bobby",
+   "next": "Decide: (a) team as fabricating sub to a licensed GC who bids as prime [cleanest by 10/19], (b) B9 primes with a licensed sign/electrical partner who permits [ask Walton if allowed], (c) B9 gets the state Sign Specialty Electrical license [months].",
+   "unlocks": 1
+  },
+  {
+   "id": "surety",
+   "short": "Bonding",
+   "name": "Surety line for bid bond (5%) and performance/payment bonds",
+   "status": "blocked",
+   "owner": "Bobby",
+   "next": "Call B9's insurance agent for a bid bond and P&P bond capacity (A.M. Best A- VII surety).",
+   "unlocks": 1
+  },
+  {
+   "id": "demandstar",
+   "short": "DemandStar",
+   "name": "DemandStar supplier account",
+   "status": "blocked",
+   "owner": "Bobby",
+   "next": "Register free; pick St. Johns County as the free agency.",
+   "unlocks": 0
+  },
+  {
+   "id": "portals",
+   "short": "Other FL portals",
+   "name": "City of Jacksonville supplier portal, Public Purchase (Nassau, Duval Schools), St. Johns Workday, Clay OpenGov, MFMP",
+   "status": "blocked",
+   "owner": "Bobby",
+   "next": "Register in one sitting (~60-90 min total): W-9, bank details for COJ, NAICS 339950 / 238990.",
+   "unlocks": 3
+  },
+  {
+   "id": "refs",
+   "short": "3 references",
+   "name": "Three past-performance references with contact details",
+   "status": "blocked",
+   "owner": "Bobby",
+   "next": "Give Claude three names, organisations, phone/email and one line on the job each.",
+   "unlocks": 3
+  },
+  {
+   "id": "capstmt",
+   "short": "Capability statement",
+   "name": "One-page federal capability statement",
+   "status": "in_progress",
+   "owner": "Claude",
+   "next": "Drafted 2026-10-05; UEI added once SAM is active.",
+   "unlocks": 3
+  },
+  {
+   "id": "coi",
+   "short": "Insurance COI",
+   "name": "Current certificate of insurance on file",
+   "status": "blocked",
+   "owner": "Bobby",
+   "next": "Send the current COI PDF to the bid folder (_b9_temp/_bids/).",
+   "unlocks": 2
+  }
+ ],
+ "opportunities": [
+  {
+   "id": "parks-entrance-fl",
+   "name": "Parks Entrance Sign Rebranding (FL, agency unidentified)",
+   "kind": "county",
+   "agency": "unidentified",
+   "where": "Florida",
+   "due": "2026-10-08",
+   "days_left": 3,
+   "value": "",
+   "fit": 3,
+   "status": "watch",
+   "alarm": "amber",
+   "blocked_by": [
+    "Other FL portals"
+   ],
+   "next": "Three days out and agency still unknown after four attempts — likely no-bid. Identify the agency for the next cycle.",
+   "owner": "Claude",
+   "url": ""
+  },
+  {
+   "id": "mansfield-tx",
+   "name": "Park monument name signage, 10 parks",
+   "kind": "city",
+   "agency": "City of Mansfield, TX",
+   "where": "Mansfield, TX",
+   "due": "2026-10-09",
+   "days_left": 4,
+   "value": "",
+   "fit": 3,
+   "status": "watch",
+   "alarm": "",
+   "blocked_by": [],
+   "next": "Out of the six-state focus and four days out — no-bid unless Bobby wants Texas.",
+   "owner": "Bobby",
+   "url": ""
+  },
+  {
+   "id": "welcome-thanks-fl",
+   "name": "Welcome and Thank You Signage Project (FL, agency unidentified)",
+   "kind": "county",
+   "agency": "unidentified",
+   "where": "Florida",
+   "due": "2026-10-15",
+   "days_left": 10,
+   "value": "",
+   "fit": 3,
+   "status": "watch",
+   "alarm": "amber",
+   "blocked_by": [
+    "Other FL portals"
+   ],
+   "next": "Identify the agency; if it is on a portal B9 registers on this week, qualify it.",
+   "owner": "Claude",
+   "url": ""
+  },
+  {
+   "id": "walton-gateway",
+   "name": "Walton County gateway signs (6 locations)",
+   "kind": "county",
+   "agency": "Walton County BOCC",
+   "where": "US 98 E/W, SR 20 E/W, US 331 N, SR 83 N — FL Panhandle",
+   "due": "2026-10-19",
+   "days_left": 14,
+   "value": "~$344K (6 × $57,335 installed) + solar add-alternate",
+   "fit": 5,
+   "status": "qualify",
+   "alarm": "amber",
+   "blocked_by": [
+    "Walton OpenGov",
+    "Licensing/permit answer",
+    "Bonding",
+    "Insurance COI",
+    "3 references"
+   ],
+   "next": "Register on Walton OpenGov today, pull the ITB, pre-bid date and Q&A deadline. Decide licensing route (GC prime or licensed partner). Line up 5% bid bond.",
+   "owner": "Bobby",
+   "url": "https://www.mywaltonfl.gov/259/Purchasing"
+  },
+  {
+   "id": "ihs-sisseton",
+   "name": "New LED sign — Woodrow Wilson Keeble Memorial Health Care Center",
+   "kind": "federal",
+   "agency": "Indian Health Service (HHS)",
+   "where": "Sisseton, SD",
+   "due": "2026-10-23",
+   "days_left": 18,
+   "value": "LED sign supply + install + removal",
+   "fit": 4,
+   "status": "qualify",
+   "alarm": "red",
+   "blocked_by": [
+    "SAM.gov",
+    "3 references",
+    "Capability statement",
+    "Insurance COI"
+   ],
+   "next": "SAM renewal must be submitted by ~10/6-7 to have a chance. Questions due 10/16 1 PM CT. Quote by email to the contracting officer, due 10/23 1 PM CT. LPTA; 3 references; price all-inclusive incl. travel.",
+   "owner": "Bobby",
+   "url": "https://sam.gov/opp/55c14221bf4640628a90be2246493346/view"
+  },
+  {
+   "id": "mill-creek",
+   "name": "Shoppes at Mill Creek Forest — retail expansion",
+   "kind": "private",
+   "agency": "Applicant via Kimley-Horn",
+   "where": "NW St. Johns County, FL",
+   "due": "2026-11-03",
+   "days_left": 29,
+   "value": "County Commission vote 3 Nov",
+   "fit": 3,
+   "status": "watch",
+   "alarm": "",
+   "blocked_by": [],
+   "next": "Watch the 3 Nov vote; then approach the owner via Kimley-Horn.",
+   "owner": "Claude",
+   "url": ""
+  },
+  {
+   "id": "hard-rock-jax",
+   "name": "Hard Rock Hotel Jacksonville — 350 keys + 152 residences",
+   "kind": "private",
+   "agency": "Florida Innovation Capital",
+   "where": "500 E. Bay St., Jacksonville",
+   "due": null,
+   "days_left": null,
+   "value": "",
+   "fit": 5,
+   "status": "watch",
+   "alarm": "",
+   "blocked_by": [],
+   "next": "Concept stage, sign family unlet. Approve the drafted intro; top concept-render candidate.",
+   "owner": "Bobby",
+   "url": ""
+  },
+  {
+   "id": "flagler-center",
+   "name": "Flagler Center repositioning — 7 buildings, new signage",
+   "kind": "private",
+   "agency": "Savlan Capital (JLL leasing)",
+   "where": "South Jacksonville",
+   "due": null,
+   "days_left": null,
+   "value": "",
+   "fit": 5,
+   "status": "watch",
+   "alarm": "",
+   "blocked_by": [],
+   "next": "Warmest path: JLL is an existing B9 client. Approve the drafted intro.",
+   "owner": "Bobby",
+   "url": ""
+  },
+  {
+   "id": "va-wpb",
+   "name": "VA West Palm Beach exterior signage & wayfinding (fabrication package after A/E)",
+   "kind": "federal",
+   "agency": "Dept. of Veterans Affairs",
+   "where": "West Palm Beach, FL",
+   "due": null,
+   "days_left": null,
+   "value": "",
+   "fit": 4,
+   "status": "watch",
+   "alarm": "amber",
+   "blocked_by": [
+    "SAM.gov",
+    "Capability statement"
+   ],
+   "next": "Track the A/E award on 36C24827R0008; approach the winning firm as fabricator; watch for the FY27 fabrication solicitation.",
+   "owner": "Claude",
+   "url": ""
+  },
+  {
+   "id": "fed-9905-stream",
+   "name": "Recurring federal sign buys — marquees, LED, entrance & interior wayfinding (PSC 9905 / NAICS 339950)",
+   "kind": "federal",
+   "agency": "DoD, NPS, VA, IHS, DHS",
+   "where": "Nationwide",
+   "due": null,
+   "days_left": null,
+   "value": "3 in B9's size band awarded in the last 2 weeks without B9",
+   "fit": 4,
+   "status": "watch",
+   "alarm": "amber",
+   "blocked_by": [
+    "SAM.gov",
+    "Capability statement",
+    "3 references"
+   ],
+   "next": "Weekly SAM.gov sweep in the radar; quote the right-sized ones the week SAM goes active.",
+   "owner": "Claude",
+   "url": ""
+  },
+  {
+   "id": "dcps-capital",
+   "name": "Duval County Public Schools $1B Master Facility Plan (Loretto, Fletcher HS…)",
+   "kind": "private",
+   "agency": "DCPS via construction-manager primes",
+   "where": "Jacksonville, FL",
+   "due": null,
+   "days_left": null,
+   "value": "",
+   "fit": 4,
+   "status": "watch",
+   "alarm": "amber",
+   "blocked_by": [
+    "Other FL portals"
+   ],
+   "next": "Register on DCPS Public Purchase; approve the drafted outreach to the CM primes (Gilbane, Haskell, Stellar). Check DCPS Small Business Enterprise eligibility (Clay County qualifies on location).",
+   "owner": "Bobby",
+   "url": ""
+  },
+  {
+   "id": "corinthia-tci",
+   "name": "Corinthia Grace Bay + Andaz TCI + Ports of Call (Turks & Caicos cluster)",
+   "kind": "private",
+   "agency": "Corinthia / Hyatt / Hilton Tapestry",
+   "where": "Providenciales, TCI",
+   "due": null,
+   "days_left": null,
+   "value": "",
+   "fit": 4,
+   "status": "watch",
+   "alarm": "",
+   "blocked_by": [],
+   "next": "Three targets on one island justify one trip. Aruba proof applies. Approve the drafted intros.",
+   "owner": "Bobby",
+   "url": ""
+  },
+  {
+   "id": "legends-landing",
+   "name": "Legends Landing — retail center identity package",
+   "kind": "private",
+   "agency": "Stiles Retail Group / Cantrell & Morgan / FCA",
+   "where": "St. Johns County, FL",
+   "due": null,
+   "days_left": null,
+   "value": "",
+   "fit": 4,
+   "status": "watch",
+   "alarm": "",
+   "blocked_by": [],
+   "next": "Plans not yet approved — identity package unlet. Concept-render candidate.",
+   "owner": "Bobby",
+   "url": ""
+  }
+ ],
+ "lessons": [
+  "2026-10-05 SAM is the single gate in front of every federal sign buy. Three right-sized jobs were awarded in two weeks while it sat on the owner list for five weeks — a gate that blocks revenue goes to the top of the owner list, not the bottom.",
+  "2026-10-05 Read the set-aside before qualifying: IHS often uses Buy Indian set-asides, but 75H70626Q00230 is Total Small Business — B9 is eligible.",
+  "2026-10-05 County gateway ITBs bundle licensing, permitting and bonds. Fabrication capability alone does not make B9 eligible; decide the licensed-partner route once and reuse it."
+ ]
+}

@@ -262,6 +262,24 @@ table.tb{width:100%;border-collapse:collapse;font-size:13px}
 
 footer{position:relative;z-index:1;padding:0 var(--s3) var(--s4);max-width:1680px;margin:0 auto;font-size:12px;color:var(--dim)}
 
+
+/* B9 opportunities panel (2026-10-05) — reads b9-opportunities.json written by _b9_temp/_flywheel/b9_bids.py */
+.opsrow{grid-column:1/-1;min-width:0}
+.opgates{display:flex;flex-wrap:wrap;gap:6px}
+.opgate{font:600 12px/1 var(--f-disp);letter-spacing:.08em;text-transform:uppercase;padding:6px 8px;border-radius:var(--r);border:1px solid var(--line2);color:var(--ice);white-space:nowrap}
+.opgate.blocked{color:var(--fail);border-color:rgba(255,90,102,.5);background:var(--fail-bg)}
+.opgate.decide,.opgate.in_progress{color:var(--warn);border-color:rgba(242,155,75,.5);background:var(--warn-bg)}
+.opgate small{font:500 11px var(--f-mono);color:var(--dim);margin-left:6px;letter-spacing:0;text-transform:none}
+.opwrap{overflow-x:auto}
+.optable{width:100%;border-collapse:collapse;font-size:13px}
+.optable th{font:600 11px/1.2 var(--f-disp);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+.optable td{padding:8px;border-bottom:1px solid rgba(120,220,255,.08);vertical-align:top;color:var(--text)}
+.optable td.mono{font-family:var(--f-mono);white-space:nowrap}
+.optable .m{color:var(--muted);font-size:12px;margin-top:2px}
+.optable a{color:var(--ice)}
+.panel:not(.expanded) .optable tr.more{display:none}
+@media (max-width:720px){ .opsrow{order:5} .optable .hide-s{display:none} .opsrow .stats.s5 .stat:last-child{grid-column:span 2} }
+
 /* responsive */
 @media (max-width:1180px){
   main{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"core core" "left right" "lower lower"}
@@ -364,7 +382,7 @@ footer{position:relative;z-index:1;padding:0 var(--s3) var(--s4);max-width:1680p
       <input id="cmdIn" type="text" enterkeyhint="send" placeholder="Ask or command — e.g. what needs attention" aria-label="Typed command or question">
       <button type="submit">Send</button>
     </form>
-    <div class="hint" id="hint"><kbd>Space</kbd> hold to talk · <kbd>/</kbd> type · <kbd>?</kbd> help · <kbd>+</kbd><kbd>−</kbd><kbd>0</kbd> zoom · <kbd>1</kbd>–<kbd>9</kbd> panels · drag panel headers to move</div>
+    <div class="hint" id="hint"><kbd>Space</kbd> hold to talk · <kbd>/</kbd> type · <kbd>?</kbd> help · <kbd>+</kbd><kbd>−</kbd><kbd>0</kbd> zoom · <kbd>1</kbd>–<kbd>9</kbd> <kbd>B</kbd> panels · drag panel headers to move</div>
     <div class="subgrid">
       <section class="panel" id="p-pf" data-key="6"><div class="ph"><span class="pt">Hermes profiles</span><span class="ps">30-day cost</span><span class="pk">6</span><button class="px" aria-label="Expand panel">⤢</button></div><div class="pb" id="b-pf"></div></section>
       <section class="panel" id="p-hv" data-key="5"><div class="ph"><span class="pt">Harvard corpus</span><span class="ps">Search before recommending</span><span class="pk">5</span><button class="px" aria-label="Expand panel">⤢</button></div><div class="pb" id="b-hv"></div></section>
@@ -381,8 +399,11 @@ footer{position:relative;z-index:1;padding:0 var(--s3) var(--s4);max-width:1680p
     <section class="panel" id="p-vn" data-key="8"><div class="ph"><span class="pt">Ventures</span><span class="ps">From the registry</span><span class="pk">8</span><button class="px" aria-label="Expand panel">⤢</button></div><div class="pb" id="b-vn"></div></section>
     <section class="panel" id="p-dc" data-key="9"><div class="ph"><span class="pt">Decisions</span><span class="ps">Latest 6</span><span class="pk">9</span><button class="px" aria-label="Expand panel">⤢</button></div><div class="pb" id="b-dc"></div></section>
   </div>
+  <div class="opsrow">
+    <section class="panel" id="p-op" data-key="b"><div class="ph"><span class="pt">B9 Opportunities</span><span class="ps">Bids &amp; big jobs · readiness gates</span><span class="pk">B</span><button class="px" aria-label="Expand panel">⤢</button></div><div class="pb" id="b-op"></div></section>
+  </div>
 </main>
-<footer id="foot">V6 · reads ecosystem-status.json, ecosystem-registry.json, hermes-status.json and harvard-corpus-stats.json once on load, then every 60 s · voice relay: 127.0.0.1:8787 on Bobby's Mac</footer>
+<footer id="foot">V6 · reads ecosystem-status.json, ecosystem-registry.json, hermes-status.json, harvard-corpus-stats.json and b9-opportunities.json once on load, then every 60 s · voice relay: 127.0.0.1:8787 on Bobby's Mac</footer>
 
 <div class="backdrop" id="backdrop"></div>
 <div class="help" id="help" role="dialog" aria-modal="true" aria-label="Help">
@@ -715,6 +736,30 @@ function renderDC(d){
   $('#b-dc').innerHTML = h;
 }
 
+function renderOP(){
+  var o = S.op, el = $('#b-op'); if(!el) return;
+  if(!o){ el.innerHTML = '<div class="m dimt">' + (S.loaded ? 'b9-opportunities.json not published yet.' : 'Waiting for data…') + '</div>'; return; }
+  var s = o.summary || {}, gates = arr(o.gates), ops = arr(o.opportunities);
+  var tiles = [['Open bids', s.open_bids, ''], ['Targets', s.targets, ''], ['Act now', s.red, s.red ? 'f' : ''],
+               ['Gates open', (s.gates_open || 0) + '<small> / ' + (s.gates_total || 0) + '</small>', s.gates_open ? 'w' : ''],
+               ['Drafts waiting', s.drafts_waiting, s.drafts_waiting ? 'w' : '']];
+  var h = '<div class="stats s5">' + tiles.map(function(t){ return '<div class="stat ' + t[2] + '"><div class="v">' + (t[1] == null ? '—' : t[1]) + '</div><div class="k">' + t[0] + '</div></div>'; }).join('') + '</div>';
+  h += '<div class="sec"><div class="lbl"><span class="m">Readiness gates — what stands between B9 and bidding</span><span class="m mono dimt">' + esc(fmtET(o.generated)) + '</span></div><div class="opgates">';
+  gates.forEach(function(g){ var st = g.status === 'done' ? '' : g.status;
+    h += '<span class="opgate ' + esc(st) + '" title="' + esc(g.name + ' — ' + (g.next || '')) + '">' + esc(g.short) + '<small>' + esc(g.status === 'done' ? 'done' : g.owner) + (g.unlocks ? ' · ' + g.unlocks + (g.unlocks === 1 ? ' bid' : ' bids') : '') + '</small></span>'; });
+  h += '</div></div>';
+  h += '<div class="sec opwrap"><table class="optable"><thead><tr><th>Due</th><th>Opportunity</th><th class="hide-s">Value</th><th>Status</th><th class="hide-s">Blocked by</th><th class="hide-s">Next</th></tr></thead><tbody>';
+  ops.forEach(function(x, i){
+    var due = x.due ? esc(x.due.slice(5)) + (x.days_left != null ? '<div class="m">' + (x.days_left >= 0 ? x.days_left + 'd' : 'closed') + '</div>' : '') : '<span class="dimt">rolling</span>';
+    var nm = x.url ? '<a href="' + esc(x.url) + '" target="_blank" rel="noopener">' + esc(x.name) + '</a>' : esc(x.name);
+    var tag = x.alarm === 'red' ? 'f' : (x.alarm === 'amber' ? 'w' : (x.status === 'watch' ? 'd' : ''));
+    h += '<tr class="' + (i >= 8 ? 'more' : '') + '"><td class="mono">' + due + '</td><td><div>' + nm + '</div><div class="m">' + esc([x.agency, x.where].filter(Boolean).join(' · ')) + '</div></td>'
+      + '<td class="hide-s">' + esc(x.value || '') + '</td><td><span class="tag ' + tag + '">' + esc(x.alarm === 'red' ? 'act now' : x.status) + '</span></td>'
+      + '<td class="hide-s">' + esc(arr(x.blocked_by).join(', ') || '—') + '</td><td class="hide-s"><div class="m clamp">' + esc(x.next || '') + '</div></td></tr>'; });
+  h += '</tbody></table>' + (ops.length > 8 ? '<div class="m dimt" style="font-size:12px;margin-top:6px">Expand ⤢ for all ' + ops.length + '.</div>' : '') + '</div>';
+  el.innerHTML = h;
+}
+
 /* ───────── core map ───────── */
 function pol(r, deg){ var a = deg*Math.PI/180; return [C + r*Math.cos(a), C + r*Math.sin(a)]; }
 function spread(n, a0, a1){ if(n <= 1) return [ (a0+a1)/2 ]; var o = []; for(var i = 0; i < n; i++) o.push(a0 + (a1-a0)*i/(n-1)); return o; }
@@ -1023,12 +1068,12 @@ function renderRelayChip(){
 /* ───────── data load (once, then every 60 s) ───────── */
 function gj(u){ return fetch(u + '?cb=' + Date.now(), {cache:'no-store'}).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; }); }
 function loadData(){
-  return Promise.all([gj('./ecosystem-status.json'), gj('./ecosystem-registry.json'), gj('./hermes-status.json'), gj('./harvard-corpus-stats.json')])
-    .then(function(r){ if(r[0]) S.st = r[0]; if(r[1]) S.reg = r[1]; if(r[2]) S.hv = r[2]; if(r[3]) S.hc = r[3]; S.loaded = new Date(); renderAll(); });
+  return Promise.all([gj('./ecosystem-status.json'), gj('./ecosystem-registry.json'), gj('./hermes-status.json'), gj('./harvard-corpus-stats.json'), gj('./b9-opportunities.json')])
+    .then(function(r){ if(r[0]) S.st = r[0]; if(r[1]) S.reg = r[1]; if(r[2]) S.hv = r[2]; if(r[3]) S.hc = r[3]; if(r[4]) S.op = r[4]; S.loaded = new Date(); renderAll(); });
 }
 function renderAll(){
   var d = D();
-  [renderSys, renderGK, renderKB, renderTG, renderHV, renderPF, renderRT, renderVN, renderDC].forEach(function(f){ try{ f(d); }catch(e){ console.warn('panel render', e); } });
+  [renderSys, renderGK, renderKB, renderTG, renderHV, renderPF, renderRT, renderVN, renderDC, renderOP].forEach(function(f){ try{ f(d); }catch(e){ console.warn('panel render', e); } });
   try{ buildMap(); }catch(e){ console.warn('map render', e); }
   renderDataChip();
   if(S.sel && S.nodes[S.sel]) $('#nodecard').innerHTML = nodeDetail(S.sel);
@@ -1344,6 +1389,7 @@ function init(){
     if(e.key === '+' || e.key === '='){ zoomAt(1.25); return; }
     if(e.key === '-' || e.key === '_'){ zoomAt(1/1.25); return; }
     if(e.key === '0'){ resetView(); return; }
+    if(e.key === 'b' || e.key === 'B'){ flashPanel('p-op', true); var bb = $('#p-op .px'); if(bb) bb.focus({preventScroll:true}); return; }
     if(/^[1-9]$/.test(e.key)){ var p = document.querySelector('.panel[data-key="' + e.key + '"]'); if(p){ flashPanel(p.id, true); var b = p.querySelector('.px'); if(b) b.focus({preventScroll:true}); } }
   });
   document.addEventListener('keyup', function(e){ if(e.code === 'Space' && spaceHeld){ spaceHeld = false; stopPTT(); } });
