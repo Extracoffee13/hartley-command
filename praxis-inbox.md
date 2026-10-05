@@ -2810,3 +2810,15 @@ lesson: Skills, mods and always-on agents are now first-class primitives at Anth
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-05
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Supabase+Turso per-agent DBs (maybe); Claude Code 2.1.289 agent.spawn + MCP re-auth (yes); AWS MCP Server regions (maybe); arXiv DeReAct gating (yes); arXiv GraphMemory (maybe).
+lesson: Reliable agents come from structure outside the model: per-agent state (Turso/Supabase), spawned teammates (agent.spawn) and external gates (DeReAct) all move correctness out of the prompt and into the architecture. Give each Construct agent its own isolated store and a gate that verifies before it reports done.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
