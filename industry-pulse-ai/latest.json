@@ -1,51 +1,20 @@
 {
-  "generated": "2026-10-05T13:50:58-04:00",
-  "latest_date": "2026-10-05",
+  "generated": "2026-10-06T05:51:06-04:00",
+  "latest_date": "2026-10-06",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "OpenAI starts labeled visual ads inside ChatGPT image generation (US free tier, October)",
-      "summary": "OpenAI says ads will be clearly labeled, limited to free-tier US users, and absent for Plus/Pro/Enterprise; it reports 1.2B weekly users.",
+      "title": "Instinct raises $1B at a $10B valuation (Sequoia, Benchmark, Coatue) for consumer task-doing agents",
+      "summary": "Personal-agent startup Instinct (founded 2025 by ex-Sierra Noah Shinn) quadrupled its valuation from $2.5B; users text or call it to book, shop and plan, with isolated sandboxes, short-lived local credentials and hallucination detection. Reported Sep 28, so older than 24h; surfaced because the last-24h search returned no verifiable fresh items.",
       "tag": "maybe",
-      "how": "Brand 9 Signs: a possible new paid-acquisition surface to test once self-serve opens. PRAGMA: ad-surface shift to brief clients on. The Construct: no direct use.",
-      "url": "https://techstartups.com/2026/10/05/top-tech-news-today-october-5-2026-deutsche-telekom-foxconn-google-openai-schneider-electric-more/"
-    },
-    {
-      "n": 2,
-      "title": "Google pauses its Open Source Vulnerability Rewards Program after a flood of AI-generated junk reports",
-      "summary": "Human reviewers were overwhelmed separating real findings from automated noise; Google is redesigning the program, with updates expected in 2027.",
-      "tag": "yes",
-      "how": "The Construct: any agent that submits reports, PRs or leads externally needs a verification gate so we are not the noise. PRAGMA: concrete cautionary case for client agent-output QA.",
-      "url": "https://techstartups.com/2026/10/05/top-tech-news-today-october-5-2026-deutsche-telekom-foxconn-google-openai-schneider-electric-more/"
-    },
-    {
-      "n": 3,
-      "title": "Reflection AI plans an open-weight model release this month to compete with DeepSeek and Qwen",
-      "summary": "No specs published yet; positioned as a US open-weight alternative.",
-      "tag": "maybe",
-      "how": "The Construct: watch for a cheap self-hostable model for Hermes workers. PRAGMA: open-weight option for clients with data-residency needs.",
-      "url": "https://explainx.ai/catch-up-on-ai/2026-10-05"
-    },
-    {
-      "n": 4,
-      "title": "Strata engine runs a 125B-parameter Qwen model on a 12GB consumer GPU at 44-124 tokens/sec",
-      "summary": "Open-source engine using aggressive quantization and offloading to fit large models on small GPUs.",
-      "tag": "maybe",
-      "how": "The Construct: could let local GPU nodes run bigger models for render/QA agents; verify quality loss from quantization first. PRAGMA: local-inference cost talking point.",
-      "url": "https://explainx.ai/catch-up-on-ai/2026-10-05"
-    },
-    {
-      "n": 5,
-      "title": "OpenAI Codex/Work: Pro plan limits drop to Plus tier on Oct 30 amid a '28-day daily improvement' pledge",
-      "summary": "An OpenAI lead pledged daily Codex/Work improvements for 28 days; plan limit changes take effect October 30.",
-      "tag": "no",
-      "how": "Informational for now; revisit only if we depend on OpenAI Codex limits.",
-      "url": "https://explainx.ai/catch-up-on-ai/2026-10-05"
+      "how": "PRAGMA: validates the operator-agent market and the safety pattern (sandbox + short-lived creds + hallucination detection) worth copying into client pitches. The Construct: reference design for credential scoping in Hermes workers. Brand 9 Signs: no direct use.",
+      "url": "https://www.thestar.com.my/tech/tech-news/2026/09/28/ai-agent-firm-instinct-raises-1-billion-in-latest-funding-round"
     }
   ],
-  "praxis_lesson": "When AI output floods a channel, the channel closes: Google froze its OSS bug bounty over AI-generated junk. Every Construct agent that sends anything outward needs a verify-before-submit gate and a quality bar, or its volume becomes a liability.",
+  "praxis_lesson": "Scan coverage gap: today's search surfaced only one verifiable item, and it was dated. Better to publish a thin, honest report than pad with unverified claims; add daily-digest sources that publish on time (the explainx/techstartups pages 404 until later in the day).",
   "history": [
+    "2026-10-06",
     "2026-10-05",
     "2026-10-04",
     "2026-10-03",
@@ -58,7 +27,6 @@
     "2026-09-26",
     "2026-09-25",
     "2026-09-24",
-    "2026-09-23",
-    "2026-09-22"
+    "2026-09-23"
   ]
 }
