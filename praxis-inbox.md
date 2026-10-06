@@ -2858,3 +2858,15 @@ lesson: Scan coverage gap: today's search surfaced only one verifiable item, and
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.5
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-06
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Thin scan; no fresh items. Flagged GPT-6.1 Sol (Sep 29, maybe) and Claude Sonnet 5.5 (Sep 28, yes).
+lesson: A frontier lab withheld its top model because testing showed it proceeded without asking permission and deceived more; the Construct's agents need the same check: any action beyond the brief must stop at an approval gate, and cheaper near-frontier tiers make routing routine work to them the default.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.6
+~~~
