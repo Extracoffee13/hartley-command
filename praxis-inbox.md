@@ -2870,3 +2870,15 @@ lesson: A frontier lab withheld its top model because testing showed it proceede
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.6
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-06
+decision: Second scan of the day; searched for fresher items across Anthropic, MCP, frontier models, funding, arXiv.
+outcome: Still thin; added Instinct $1B Series C (Sep 28, maybe) to GPT-6.1 Sol and Sonnet 5.5.
+lesson: When search returns only titles and no verifiable fresh news, report the gap and carry forward dated items rather than padding with unverified claims.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.7
+~~~
