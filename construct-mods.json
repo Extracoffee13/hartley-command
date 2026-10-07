@@ -1,0 +1,107 @@
+{
+ "generated": "2026-10-07T13:20:52Z",
+ "trial": {
+  "start": "2026-10-07",
+  "end": "2026-10-14",
+  "day1_check": "2026-10-08T13:15:00Z",
+  "evaluation": "2026-10-14T13:20:00Z"
+ },
+ "mods": [
+  {
+   "name": "construct-console",
+   "seat": "Mac Code tab",
+   "does": "Gatekeeper route on every prompt \u00b7 /hermes /route /queue \u00b7 health band",
+   "mac": true,
+   "cowork": null
+  },
+  {
+   "name": "construct-guards",
+   "seat": "Mac + Cowork",
+   "does": "No .md or Drive deliverables \u00b7 flags done-claims made without a check \u00b7 asks for sources",
+   "mac": true,
+   "cowork": false
+  },
+  {
+   "name": "construct-memory",
+   "seat": "Mac + Cowork",
+   "does": "One shared ledger for every session and project \u00b7 recall on each prompt \u00b7 Hermes skill mirror",
+   "mac": true,
+   "cowork": false
+  }
+ ],
+ "baseline": [
+  {
+   "k": "Corrections from Bobby",
+   "v": "33%",
+   "n": "9 of 27 messages, Oct 5\u20136",
+   "metric": "correction_rate"
+  },
+  {
+   "k": "Done-claims without a check",
+   "v": "17%",
+   "n": "1 of 6 claim turns, Sep 23\u2013Oct 6",
+   "metric": "unverified_claim_rate"
+  },
+  {
+   "k": "Change passes with sources",
+   "v": "0%",
+   "n": "0 of 4",
+   "metric": "sources_rate"
+  },
+  {
+   "k": "Gatekeeper routes / day",
+   "v": "2.5",
+   "n": "35 in 14 days; 0 from Claude Code",
+   "metric": "routes_per_day"
+  },
+  {
+   "k": "Hermes dispatch from Claude",
+   "v": "30\u201350 s",
+   "n": "Cowork \u2192 queue job",
+   "metric": "dispatch"
+  }
+ ],
+ "live": {
+  "turns_logged": 0,
+  "sessions": 0,
+  "by_transport": {},
+  "correction_rate": null,
+  "corrections": 0,
+  "claim_turns": 0,
+  "unverified_claims": 0,
+  "unverified_claim_rate": null,
+  "change_turns": 0,
+  "sources": 0,
+  "sources_rate": null,
+  "gatekeeper_routes": 4,
+  "hermes_slash_jobs": 0,
+  "blocked_calls": 0,
+  "routes_per_day": 4.0
+ },
+ "launchd_down": [
+  {
+   "name": "com.apple.knowledgeconstructiond",
+   "exit": "-9"
+  },
+  {
+   "name": "com.hartley.ai-citation-probe",
+   "exit": "78"
+  },
+  {
+   "name": "com.hartley.pragma-daily",
+   "exit": "78"
+  },
+  {
+   "name": "com.hartley.model-eval-weekly",
+   "exit": "78"
+  },
+  {
+   "name": "com.hartley.hermes-inbox-exec",
+   "exit": "78"
+  }
+ ],
+ "ledger": {
+  "path": "~/Foundry/_construct/ledger",
+  "days": []
+ }
+}

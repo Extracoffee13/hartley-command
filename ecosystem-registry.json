@@ -1,324 +1,392 @@
 {
-  "_meta": {
-    "updated": "2026-10-01",
-    "note": "Human-curated facts that no script can observe (who the agents are, which ventures are live, owner decisions). Live numbers come from ecosystem-status.json. Edit this file when something is added or dropped."
-  },
-  "claude": {
-    "a_team": [
-      {
-        "name": "Keystone",
-        "role": "Strategy",
-        "does": "Venture strategy, sequencing, go/no-go calls"
-      },
-      {
-        "name": "Ledger",
-        "role": "Unit economics",
-        "does": "Pricing, margins, model and token cost math"
-      },
-      {
-        "name": "Scout",
-        "role": "Market intel",
-        "does": "Competitors, market sizing, source-cited research"
-      },
-      {
-        "name": "Vector",
-        "role": "Design",
-        "does": "All graphics and renders, behind the vector-design gate"
-      },
-      {
-        "name": "Hermes",
-        "role": "Credentialed execution",
-        "does": "Runs work on the Mac: deploys, SSH, keys, cron"
-      }
-    ],
-    "operators": [
-      {
-        "name": "Atlas",
-        "role": "Lennar operations",
-        "does": "Lennar community dashboard, inventory and zones",
-        "link": "atlas.html"
-      },
-      {
-        "name": "Pulse",
-        "role": "Industry pulse",
-        "does": "Daily AI/agent and signage industry briefs"
-      },
-      {
-        "name": "Prism",
-        "role": "Trade-area analysis",
-        "does": "Trade-area and demographic views for client sites"
-      }
-    ],
-    "skills_count": 150,
-    "routines_snapshot_date": "2026-10-01",
-    "routines": [
-      {
-        "name": "Industry pulse daily",
-        "when": "5:50 / 9:50 / 13:50 ET",
-        "last": "succeeded 10-01"
-      },
-      {
-        "name": "B9 batch postpublish watch",
-        "when": "Daily 9:00 ET",
-        "last": "succeeded 10-01"
-      },
-      {
-        "name": "Pragma threatd weekly",
-        "when": "Mondays 7:15 ET",
-        "last": "succeeded never recorded a run"
-      },
-      {
-        "name": "B9 redirect guard",
-        "when": "Daily 6:30 ET",
-        "last": "succeeded 10-01"
-      },
-      {
-        "name": "Gbp api approval watch",
-        "when": "Daily 9:00 ET",
-        "last": "succeeded 10-01"
-      },
-      {
-        "name": "Leads inbox scan",
-        "when": "9 / 13 / 17 ET",
-        "last": "succeeded 10-01"
-      },
-      {
-        "name": "Gbp autopilot",
-        "when": "Daily 8:20 ET",
-        "last": "succeeded 10-01"
-      },
-      {
-        "name": "Construct ops sweep",
-        "when": "10:45 / 14:45 ET",
-        "last": "succeeded 10-01"
-      },
-      {
-        "name": "Lens daily corpus scan",
-        "when": "5:34 / 9:34 / 13:34 ET",
-        "last": "succeeded 10-01"
-      },
-      {
-        "name": "B9 Big Job Radar",
-        "when": "Mondays",
-        "last": "succeeded 09-21"
-      },
-      {
-        "name": "B9 monthly machine-traffic report",
-        "when": "1st of month",
-        "last": "succeeded 10-01"
-      },
-      {
-        "name": "Daily Construct Standup",
-        "when": "Weekdays 22:00 UTC",
-        "last": "succeeded 09-22"
-      },
-      {
-        "name": "Hartley Capital Watch",
-        "when": "Weekdays 20:00 UTC",
-        "last": "succeeded 09-22"
-      },
-      {
-        "name": "First-Principles Spike",
-        "when": "Weekdays 18:00 UTC",
-        "last": "succeeded 09-22"
-      },
-      {
-        "name": "Industry Pulse — AI/Agent",
-        "when": "Daily 12:30 UTC",
-        "last": "succeeded 10-01"
-      },
-      {
-        "name": "Industry Pulse — Signage",
-        "when": "Weekdays 12:00 UTC",
-        "last": "succeeded 09-23"
-      },
-      {
-        "name": "Skill Discovery Sweep",
-        "when": "Daily 11:00 UTC",
-        "last": "succeeded 10-01"
-      }
-    ]
-  },
-  "ventures": [
-    {
-      "name": "Brand 9 Signs",
-      "status": "active",
-      "focus": "Website, Google Search, leads",
-      "link": "https://brand9signs.com"
-    },
-    {
-      "name": "PRAGMA",
-      "status": "active",
-      "focus": "Agentic OS for small businesses; AI-visibility service",
-      "link": "https://prag-ma.ai"
-    },
-    {
-      "name": "ANS · VironBox · Hypercube",
-      "status": "paused",
-      "focus": "Architectural render engine — paused 09-23: Vagon, Vultr GPU, Arnold and render workers shut down"
-    },
-    {
-      "name": "STRUO",
-      "status": "paused",
-      "focus": "Visualization for UHNW / super-yacht channel — paused 10-05 by Bobby"
-    },
-    {
-      "name": "Nana Buns",
-      "status": "active",
-      "focus": "Family food brand; site live, Etsy"
-    },
-    {
-      "name": "Lennar Atlas",
-      "status": "active",
-      "focus": "Lennar community operations dashboard",
-      "link": "atlas.html"
-    },
-    {
-      "name": "Hartley Capital",
-      "status": "active",
-      "focus": "Holding company",
-      "link": "hartley-equity.html"
-    }
+ "_meta": {
+  "updated": "2026-10-07",
+  "note": "Human-curated facts that no script can observe (who the agents are, which ventures are live, owner decisions). Live numbers come from ecosystem-status.json. Edit this file when something is added or dropped."
+ },
+ "claude": {
+  "a_team": [
+   {
+    "name": "Keystone",
+    "role": "Strategy",
+    "does": "Venture strategy, sequencing, go/no-go calls"
+   },
+   {
+    "name": "Ledger",
+    "role": "Unit economics",
+    "does": "Pricing, margins, model and token cost math"
+   },
+   {
+    "name": "Scout",
+    "role": "Market intel",
+    "does": "Competitors, market sizing, source-cited research"
+   },
+   {
+    "name": "Vector",
+    "role": "Design",
+    "does": "All graphics and renders, behind the vector-design gate"
+   },
+   {
+    "name": "Hermes",
+    "role": "Credentialed execution",
+    "does": "Runs work on the Mac: deploys, SSH, keys, cron"
+   }
   ],
-  "decisions": [
-    {
-      "date": "2026-10-01",
-      "what": "Dashboard accuracy check: live feeds current (status hourly, Hermes heartbeat every 5 min). Scheduled-task list refreshed to the 17 live tasks (added Industry pulse daily and B9 batch postpublish watch; removed the finished one-off GSC quota retry). Hermes shows $0 / 0 sessions in 24 h because no Kanban, Telegram or voice work has been sent since 09-24 — all 41 Hermes scheduled jobs are scripts that use no model."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "Hermes + JEV audit applied. Web search moved off the exhausted Tavily plan (search: DuckDuckGo, extract: Exa keyless) — tested live. Fallback chain fixed: the old comma-string was ignored, so there was no fallback at all; now Gemini 2.5 Flash first, then two OpenRouter models — tested by forcing a failure. OpenRouter data_collection: deny. Orchestrator on DeepSeek v4-pro, workers stay on flash, cron pinned to flash. Holographic local memory on (default, orchestrator, research)."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "JEV: four questions per call (agent, risk, size, owner-approval), gates on JEV's calibrated confidence (act >= 0.50, click-guard 'go' >= 0.85), logs the answering model (Vercel only serves the 'jev' alias, so version pinning isn't possible there). New: gk ask (open question -> flash / pro / Claude), gk lead (Brand 9 lead score 0-100, wired into leads_writer), gk swarm (hard research -> parallel workers + pro verifier), JEV done-check in shadow mode (nightly, log only). Vercel credits not bought: $0 spend, no rate limits in 81 live calls; the digest flags 429s."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "Fixed: lens-auth-pull (38-day failure — heredoc bug; now pulls in its own background tab, never Bobby's active tab), b9-site-change-watcher (false 'changed' alarms from raw-HTML hashing; now visible text, alerts without failing). Telegram tool-call hook fails closed. Weekly cron doctor to Telegram (Mon 7:10). Voice page / Telegram build-out on hold until they can reach the whole ecosystem."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "JEV click-guard added for browser work (gk guard): before each browser step JEV answers go / stop / wrong page; money, cancel, delete, sign-in, send and publish words always stop. Tested: it stopped 'Pay now' and flagged a Google sign-in on a server-check task as the wrong page. Lens routine rewritten without WOLF or Slack; 'Pragma mirror llm browser weekly' routine disabled."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "Gatekeeper risk guard widened after a JEV test: 'Destroy the Vultr GPU server... stop billing' had routed to DeepSeek flash. Destroy, terminate, cancel, refund, billing, subscription, renewal and purchase now always go to Claude."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "3D-render spend dropped: Vagon subscription ended (runs to Oct 21, then the cloud PC is deleted), Autodesk Arnold cancelled at renewal (access to Oct 3), Autodesk approved the $150 refund for Flex order 1007041602 (case #26399764, 5-7 days). VironBox render worker and ANS runner stopped on the Mac. Vultr GPU server HyperCube-Max destroyed and its 170 GB snapshot deleted (no Vultr products left). AWS (created by Claude on Aug 13) is on the Free plan: it cannot charge unless someone upgrades it, and it closes itself on Feb 13, 2027 — left alone on purpose."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "Kanban is now the work path: gk run puts every Gatekeeper task on the Hermes Kanban board; unsure or risky work also gets a checker card that re-tests the result before it counts as done; the last card alerts Bobby on Telegram. Hermes gateway restarted onto the updated code. First checker caught brand9signs.com answering HTTP 202 (SiteGround captcha wall), not 200."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "Daily Telegram digest at 7:05 ET (Lens headlines, Kanban cards finished or stuck, jobs needing attention, spend, Harvard searches)."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "Harvard corpus made searchable (3,416 articles, rebuilt daily 4:45 ET). Keystone and Scout must search and cite it before every recommendation; every search is logged and counted on the dashboard."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "AAIR scoring and PRAGMA Mirror scripts paused (b9-aair-v6-weekly, pragma-mirror-native-daily); may be pivoted to something else later."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "Hermes scheduled jobs cut from 82 to 38 enabled: 34 duplicate copies in the publisher profile paused (they ran every job twice), plus kanban-state-gen, competitor-watch and void-prospector (placeholder configs), memory-capture and memory-crossshare (PRAXIS inbox empty), model-tier-router (replaced by Gatekeeper), serp-tracker (retired SerpAPI key), model-eval-daily-refresh (Model Arena dropped) and b9-flywheel-daily-refresh (the job that force-pushed over the dashboard). All paused, none deleted."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "Construct v5 = the v4 dashboard edited in place. Removed: WOLF, weekly Claude budget meter, model arena, Reddit, PRAGMA Mirror, AAIR scoring, Founders Playbook, ops-health, TLC/PRAGMA Lite pipeline, Cherny card, migration map, C-suite labels, backlog, kanban."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "Gatekeeper live: JEV (TypeSafe via Vercel AI Gateway) routes Hermes work; LAYA is the automatic backup. JEV won the bakeoff 23/24 routing, 6/6 triage."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "Confident routing stays on DeepSeek flash; only unsure work goes to v4-pro, and only risky work (keys, deletes, payments, DNS) goes to Claude."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "Construct rebuilt around the real ecosystem; WOLF, PRAXIS, Slack, Louis, Invitation Homes, Cornerstone, Architect, PRAGMA Lite, SMB bundle and Reddit panels removed."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "WOLF dashboard writers, construct-v4-sync, praxis-distiller and 4 WOLF-era bots paused; serp-tracker, gbp-review-monitor and lens-auth-pull temp-file bug fixed; hermes-auto-update disabled in both profiles. lens-auth-pull now stops on a Safari setting (Allow JavaScript from Apple Events)."
-    },
-    {
-      "date": "2026-09-03",
-      "what": "WOLF killed (routines archived). Slack dropped. PRAXIS and Brand 9 Site Health routine paused."
-    }
+  "operators": [
+   {
+    "name": "Atlas",
+    "role": "Lennar operations",
+    "does": "Lennar community dashboard, inventory and zones",
+    "link": "atlas.html"
+   },
+   {
+    "name": "Pulse",
+    "role": "Industry pulse",
+    "does": "Daily AI/agent and signage industry briefs"
+   },
+   {
+    "name": "Prism",
+    "role": "Trade-area analysis",
+    "does": "Trade-area and demographic views for client sites"
+   }
   ],
-  "history": {
-    "first_commit": "2026-04-05",
-    "total_commits": 37809,
-    "substantive_commits": 411,
-    "by_month": [
-      [
-        "Apr",
-        86,
-        38
-      ],
-      [
-        "May",
-        438,
-        66
-      ],
-      [
-        "Jun",
-        14694,
-        83
-      ],
-      [
-        "Jul",
-        11669,
-        103
-      ],
-      [
-        "Aug",
-        3588,
-        68
-      ],
-      [
-        "Sep",
-        7334,
-        53
-      ]
-    ],
-    "eras": [
-      [
-        "Apr 5–12",
-        "Command Center, Hartley Capital brand, WOLF strategies"
-      ],
-      [
-        "Late Apr – mid May",
-        "Atlas: Lennar operations (206 communities, work orders)"
-      ],
-      [
-        "May 18–31",
-        "Construct v2 → v4, PRAGMA operator registry"
-      ],
-      [
-        "Jun 1–10",
-        "Hermes flock, Harvard corpus, PRAGMA Mirror born"
-      ],
-      [
-        "Jun 24 – Jul 21",
-        "Mac recovery; AI-visibility engine (Mirror v2, AAIR v6)"
-      ],
-      [
-        "Jul 10 – Sep 16",
-        "WOLF on autopilot past its kill date (now stopped)"
-      ],
-      [
-        "Aug 3 – Sep 22",
-        "B9 flywheel: weekly AAIR, knowledge graph, answer pages"
-      ]
-    ]
+  "skills_count": 141,
+  "routines_snapshot_date": "2026-10-07",
+  "routines": [
+   {
+    "name": "Industry pulse daily",
+    "when": "5:50 / 9:50 / 13:50 ET",
+    "last": "succeeded 10-07"
+   },
+   {
+    "name": "Lens daily corpus scan",
+    "when": "5:34 / 9:34 / 13:34 ET",
+    "last": "succeeded 10-07"
+   },
+   {
+    "name": "B9 redirect guard",
+    "when": "Daily 6:30 ET",
+    "last": "succeeded 10-07"
+   },
+   {
+    "name": "Gbp autopilot",
+    "when": "Daily 8:20 ET",
+    "last": "succeeded 10-07"
+   },
+   {
+    "name": "B9 batch postpublish watch",
+    "when": "Daily 9:00 ET",
+    "last": "succeeded 10-07"
+   },
+   {
+    "name": "Gbp api approval watch",
+    "when": "Daily 9:00 ET",
+    "last": "succeeded 10-06"
+   },
+   {
+    "name": "Leads inbox scan",
+    "when": "9 / 13 / 17 ET",
+    "last": "succeeded 10-07"
+   },
+   {
+    "name": "Construct ops sweep",
+    "when": "10:45 / 14:45 ET",
+    "last": "succeeded 10-06"
+   },
+   {
+    "name": "Content engine",
+    "when": "Tue & Fri 10:00 ET",
+    "last": "not yet run (first 10-09)"
+   },
+   {
+    "name": "Industry Pulse — Signage",
+    "when": "Weekdays 12:00 UTC",
+    "last": "succeeded 10-07"
+   },
+   {
+    "name": "Industry Pulse — AI/Agent",
+    "when": "Daily 12:30 UTC",
+    "last": "succeeded 10-07"
+   },
+   {
+    "name": "Skill Discovery Sweep",
+    "when": "Daily 11:00 UTC",
+    "last": "succeeded 10-07"
+   },
+   {
+    "name": "First-Principles Spike",
+    "when": "Weekdays 18:00 UTC",
+    "last": "succeeded 10-06"
+   },
+   {
+    "name": "Hartley Capital Watch",
+    "when": "Weekdays 20:00 UTC",
+    "last": "succeeded 10-06"
+   },
+   {
+    "name": "Daily Construct Standup",
+    "when": "Weekdays 22:00 UTC",
+    "last": "succeeded 10-06"
+   },
+   {
+    "name": "Pragma threatd weekly",
+    "when": "Mondays 7:15 ET",
+    "last": "succeeded 10-05"
+   },
+   {
+    "name": "B9 Big Job Radar",
+    "when": "Mondays 11:00 UTC",
+    "last": "succeeded 10-05"
+   },
+   {
+    "name": "B9 monthly machine-traffic report",
+    "when": "1st of month",
+    "last": "succeeded 10-01"
+   }
+  ],
+  "upcoming": [
+   {
+    "name": "Mods: does the Cowork plugin load in a fresh session?",
+    "when": "10-08 9:15 ET"
+   },
+   {
+    "name": "Bing Places: verify, set team@ email, fix listing",
+    "when": "10-12 9:05 ET"
+   },
+   {
+    "name": "Mods trial: week-1 evaluation (PDF)",
+    "when": "10-14 9:20 ET"
+   },
+   {
+    "name": "Re-measure Fleming Island rankings",
+    "when": "10-20 9:35 ET"
+   },
+   {
+    "name": "B9 golden-ratio pivot checkpoint",
+    "when": "10-26 9:00 ET"
+   }
+  ],
+  "mods": [
+   {
+    "name": "construct-console",
+    "seat": "Mac Code tab",
+    "does": "Gatekeeper route on every prompt; /hermes, /route, /queue; health band"
+   },
+   {
+    "name": "construct-guards",
+    "seat": "Mac + Cowork",
+    "does": "No .md or Drive deliverables; flags done-claims made without a check; asks for sources"
+   },
+   {
+    "name": "construct-memory",
+    "seat": "Mac + Cowork",
+    "does": "One shared ledger for every session and project; recall on each prompt; Hermes skill mirror"
+   }
+  ]
+ },
+ "ventures": [
+  {
+   "name": "Brand 9 Signs",
+   "status": "active",
+   "focus": "Website, Google & Bing local (Orange Park, Fleming Island, Jacksonville), leads; channel letters dropped 10-06",
+   "link": "https://brand9signs.com"
+  },
+  {
+   "name": "PRAGMA",
+   "status": "active",
+   "focus": "Agentic OS for small businesses; AI-visibility service",
+   "link": "https://prag-ma.ai"
+  },
+  {
+   "name": "Nana Buns",
+   "status": "active",
+   "focus": "Family food brand; site live, Etsy"
+  },
+  {
+   "name": "Lennar Atlas",
+   "status": "active",
+   "focus": "Lennar community operations dashboard",
+   "link": "atlas.html"
+  },
+  {
+   "name": "Hartley Capital",
+   "status": "active",
+   "focus": "Holding company",
+   "link": "hartley-equity.html"
   }
+ ],
+ "decisions": [
+  {
+   "date": "2026-10-07",
+   "what": "Construct pivot: Claude Code mods become the fourth layer, beside Gatekeeper, Hermes and Claude agents. A mod runs inside Claude Code; its best seat is the Code tab on AP-Agent, where Gatekeeper, Hermes and the queue are local calls (Gatekeeper route ~1 s, against 30–50 s through a Cowork queue job). Three mods on a one-week trial, 10-07 to 10-14: construct-console, construct-guards and construct-memory. Evaluation 10-14."
+  },
+  {
+   "date": "2026-10-07",
+   "what": "Shared memory across sessions and projects: every turn from every Claude session (the Mac directly, Cowork through the linked Mac) goes to one ledger in ~/Foundry/_construct/ledger; each new request recalls related prior work; a Claude skill edited on the Mac is copied into the Hermes profiles that carry it."
+  },
+  {
+   "date": "2026-10-07",
+   "what": "Found four background services down with launchd exit 78 that the old status feed never showed: hermes-inbox-exec, ai-citation-probe, pragma-daily and model-eval-weekly. They now appear under System core."
+  },
+  {
+   "date": "2026-10-07",
+   "what": "Dashboard cleaned up: paused ventures (ANS · VironBox · Hypercube, STRUO) removed from view; routines rebuilt from the 18 live recurring tasks plus 5 dated checks; finished one-off decisions moved to history."
+  },
+  {
+   "date": "2026-10-06",
+   "what": "Brand 9: channel letters dropped from the offering; the Orange Park & Fleming Island page and the homepage rewritten for custom, commercial and outdoor signs to win the 'near me' local pack."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "Hermes + JEV audit applied. Web search moved off the exhausted Tavily plan (search: DuckDuckGo, extract: Exa keyless) — tested live. Fallback chain fixed: the old comma-string was ignored, so there was no fallback at all; now Gemini 2.5 Flash first, then two OpenRouter models — tested by forcing a failure. OpenRouter data_collection: deny. Orchestrator on DeepSeek v4-pro, workers stay on flash, cron pinned to flash. Holographic local memory on (default, orchestrator, research)."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "JEV: four questions per call (agent, risk, size, owner-approval), gates on JEV's calibrated confidence (act >= 0.50, click-guard 'go' >= 0.85), logs the answering model (Vercel only serves the 'jev' alias, so version pinning isn't possible there). New: gk ask (open question -> flash / pro / Claude), gk lead (Brand 9 lead score 0-100, wired into leads_writer), gk swarm (hard research -> parallel workers + pro verifier), JEV done-check in shadow mode (nightly, log only). Vercel credits not bought: $0 spend, no rate limits in 81 live calls; the digest flags 429s."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "JEV click-guard added for browser work (gk guard): before each browser step JEV answers go / stop / wrong page; money, cancel, delete, sign-in, send and publish words always stop. Tested: it stopped 'Pay now' and flagged a Google sign-in on a server-check task as the wrong page. Lens routine rewritten without WOLF or Slack; 'Pragma mirror llm browser weekly' routine disabled."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "Gatekeeper risk guard widened after a JEV test: 'Destroy the Vultr GPU server... stop billing' had routed to DeepSeek flash. Destroy, terminate, cancel, refund, billing, subscription, renewal and purchase now always go to Claude."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "Kanban is now the work path: gk run puts every Gatekeeper task on the Hermes Kanban board; unsure or risky work also gets a checker card that re-tests the result before it counts as done; the last card alerts Bobby on Telegram. Hermes gateway restarted onto the updated code. First checker caught brand9signs.com answering HTTP 202 (SiteGround captcha wall), not 200."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "Daily Telegram digest at 7:05 ET (Lens headlines, Kanban cards finished or stuck, jobs needing attention, spend, Harvard searches)."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "Harvard corpus made searchable (3,416 articles, rebuilt daily 4:45 ET). Keystone and Scout must search and cite it before every recommendation; every search is logged and counted on the dashboard."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "Gatekeeper live: JEV (TypeSafe via Vercel AI Gateway) routes Hermes work; LAYA is the automatic backup. JEV won the bakeoff 23/24 routing, 6/6 triage."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "Confident routing stays on DeepSeek flash; only unsure work goes to v4-pro, and only risky work (keys, deletes, payments, DNS) goes to Claude."
+  }
+ ],
+ "history": {
+  "first_commit": "2026-04-05",
+  "total_commits": 37809,
+  "substantive_commits": 411,
+  "by_month": [
+   [
+    "Apr",
+    86,
+    38
+   ],
+   [
+    "May",
+    438,
+    66
+   ],
+   [
+    "Jun",
+    14694,
+    83
+   ],
+   [
+    "Jul",
+    11669,
+    103
+   ],
+   [
+    "Aug",
+    3588,
+    68
+   ],
+   [
+    "Sep",
+    7334,
+    53
+   ]
+  ],
+  "eras": [
+   [
+    "Apr 5–12",
+    "Command Center, Hartley Capital brand, WOLF strategies"
+   ],
+   [
+    "Late Apr – mid May",
+    "Atlas: Lennar operations (206 communities, work orders)"
+   ],
+   [
+    "May 18–31",
+    "Construct v2 → v4, PRAGMA operator registry"
+   ],
+   [
+    "Jun 1–10",
+    "Hermes flock, Harvard corpus, PRAGMA Mirror born"
+   ],
+   [
+    "Jun 24 – Jul 21",
+    "Mac recovery; AI-visibility engine (Mirror v2, AAIR v6)"
+   ],
+   [
+    "Jul 10 – Sep 16",
+    "WOLF on autopilot past its kill date (now stopped)"
+   ],
+   [
+    "Aug 3 – Sep 22",
+    "B9 flywheel: weekly AAIR, knowledge graph, answer pages"
+   ]
+  ]
+ },
+ "ventures_archived": [
+  {
+   "name": "ANS · VironBox · Hypercube",
+   "status": "paused",
+   "focus": "Architectural render engine — paused 09-23: Vagon, Vultr GPU, Arnold and render workers shut down"
+  },
+  {
+   "name": "STRUO",
+   "status": "paused",
+   "focus": "Visualization for UHNW / super-yacht channel — paused 10-05 by Bobby"
+  }
+ ],
+ "history_decisions": [
+  {
+   "date": "2026-10-01",
+   "what": "Dashboard accuracy check: live feeds current (status hourly, Hermes heartbeat every 5 min). Scheduled-task list refreshed to the 17 live tasks (added Industry pulse daily and B9 batch postpublish watch; removed the finished one-off GSC quota retry). Hermes shows $0 / 0 sessions in 24 h because no Kanban, Telegram or voice work has been sent since 09-24 — all 41 Hermes scheduled jobs are scripts that use no model."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "Fixed: lens-auth-pull (38-day failure — heredoc bug; now pulls in its own background tab, never Bobby's active tab), b9-site-change-watcher (false 'changed' alarms from raw-HTML hashing; now visible text, alerts without failing). Telegram tool-call hook fails closed. Weekly cron doctor to Telegram (Mon 7:10). Voice page / Telegram build-out on hold until they can reach the whole ecosystem."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "3D-render spend dropped: Vagon subscription ended (runs to Oct 21, then the cloud PC is deleted), Autodesk Arnold cancelled at renewal (access to Oct 3), Autodesk approved the $150 refund for Flex order 1007041602 (case #26399764, 5-7 days). VironBox render worker and ANS runner stopped on the Mac. Vultr GPU server HyperCube-Max destroyed and its 170 GB snapshot deleted (no Vultr products left). AWS (created by Claude on Aug 13) is on the Free plan: it cannot charge unless someone upgrades it, and it closes itself on Feb 13, 2027 — left alone on purpose."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "AAIR scoring and PRAGMA Mirror scripts paused (b9-aair-v6-weekly, pragma-mirror-native-daily); may be pivoted to something else later."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "Hermes scheduled jobs cut from 82 to 38 enabled: 34 duplicate copies in the publisher profile paused (they ran every job twice), plus kanban-state-gen, competitor-watch and void-prospector (placeholder configs), memory-capture and memory-crossshare (PRAXIS inbox empty), model-tier-router (replaced by Gatekeeper), serp-tracker (retired SerpAPI key), model-eval-daily-refresh (Model Arena dropped) and b9-flywheel-daily-refresh (the job that force-pushed over the dashboard). All paused, none deleted."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "Construct v5 = the v4 dashboard edited in place. Removed: WOLF, weekly Claude budget meter, model arena, Reddit, PRAGMA Mirror, AAIR scoring, Founders Playbook, ops-health, TLC/PRAGMA Lite pipeline, Cherny card, migration map, C-suite labels, backlog, kanban."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "Construct rebuilt around the real ecosystem; WOLF, PRAXIS, Slack, Louis, Invitation Homes, Cornerstone, Architect, PRAGMA Lite, SMB bundle and Reddit panels removed."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "WOLF dashboard writers, construct-v4-sync, praxis-distiller and 4 WOLF-era bots paused; serp-tracker, gbp-review-monitor and lens-auth-pull temp-file bug fixed; hermes-auto-update disabled in both profiles. lens-auth-pull now stops on a Safari setting (Allow JavaScript from Apple Events)."
+  },
+  {
+   "date": "2026-09-03",
+   "what": "WOLF killed (routines archived). Slack dropped. PRAXIS and Brand 9 Site Health routine paused."
+  }
+ ]
 }

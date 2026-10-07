@@ -280,6 +280,15 @@ footer{position:relative;z-index:1;padding:0 var(--s3) var(--s4);max-width:1680p
 .panel:not(.expanded) .optable tr.more{display:none}
 @media (max-width:720px){ .opsrow{order:5} .optable .hide-s{display:none} .opsrow .stats.s5 .stat:last-child{grid-column:span 2} }
 
+/* Mods panel (2026-10-07) — reads construct-mods.json written by ~/Foundry/_construct_mods/tools/publish_status.py */
+.mdgrid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:var(--s3)}
+.mdtb{width:100%;border-collapse:collapse;font-size:13px}
+.mdtb th{font:600 11px/1.2 var(--f-disp);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}
+.mdtb td{padding:7px 8px;border-bottom:1px solid rgba(120,220,255,.08);vertical-align:top;color:var(--text)}
+.mdtb td.nr{font-family:var(--f-mono);text-align:right;white-space:nowrap}
+@media (max-width:900px){ .mdgrid{grid-template-columns:minmax(0,1fr)} }
+@media (max-width:720px){ .mdtb .hide-s{display:none} .mdtb td,.mdtb th{padding:6px 5px} }
+
 /* responsive */
 @media (max-width:1180px){
   main{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"core core" "left right" "lower lower"}
@@ -400,10 +409,13 @@ footer{position:relative;z-index:1;padding:0 var(--s3) var(--s4);max-width:1680p
     <section class="panel" id="p-dc" data-key="9"><div class="ph"><span class="pt">Decisions</span><span class="ps">Latest 6</span><span class="pk">9</span><button class="px" aria-label="Expand panel">⤢</button></div><div class="pb" id="b-dc"></div></section>
   </div>
   <div class="opsrow">
+    <section class="panel" id="p-md" data-key="m"><div class="ph"><span class="pt">Mods · shared memory</span><span class="ps">Claude Code layer · trial to 10-14</span><span class="pk">M</span><button class="px" aria-label="Expand panel">⤢</button></div><div class="pb" id="b-md"></div></section>
+  </div>
+  <div class="opsrow">
     <section class="panel" id="p-op" data-key="b"><div class="ph"><span class="pt">B9 Opportunities</span><span class="ps">Bids &amp; big jobs · readiness gates</span><span class="pk">B</span><button class="px" aria-label="Expand panel">⤢</button></div><div class="pb" id="b-op"></div></section>
   </div>
 </main>
-<footer id="foot">V6 · reads ecosystem-status.json, ecosystem-registry.json, hermes-status.json, harvard-corpus-stats.json and b9-opportunities.json once on load, then every 60 s · voice relay: 127.0.0.1:8787 on Bobby's Mac</footer>
+<footer id="foot">V6 · reads ecosystem-status.json, ecosystem-registry.json, hermes-status.json, harvard-corpus-stats.json, b9-opportunities.json and construct-mods.json once on load, then every 60 s · voice relay: 127.0.0.1:8787 on Bobby's Mac</footer>
 
 <div class="backdrop" id="backdrop"></div>
 <div class="help" id="help" role="dialog" aria-modal="true" aria-label="Help">
@@ -420,7 +432,7 @@ footer{position:relative;z-index:1;padding:0 var(--s3) var(--s4);max-width:1680p
         <li><q>How many Harvard searches?</q></li>
         <li><q>How is the Gatekeeper doing?</q></li>
         <li><q>Which jobs are running?</q> · <q>Is Hermes online?</q></li>
-        <li><q>Which ventures are paused?</q></li>
+        <li><q>How is the mods trial going?</q></li>
         <li><q>What was the latest decision?</q></li>
         <li><q>How are the Claude routines?</q> · <q>Who's on the team?</q></li>
       </ul>
@@ -501,7 +513,7 @@ function D(){
   var st = S.st || {}, reg = S.reg || {};
   var H = st.hermes || {}, cron = H.cron || {}, gk = st.gatekeeper || {}, kb = st.kanban || {};
   var profiles = arr(H.profiles).filter(function(p){ return p && !p.retire; });
-  var failing = arr(cron.failing);
+  var failing = arr(cron.failing).concat(arr(g(S.md || {},'launchd_down')).map(function(x){ return {name:x.name, error:'Background service is not running (launchd exit ' + x.exit + ').', profile:'launchd'}; }));
   var attention = failing.filter(function(f){ return !f.fixed; });
   var fixedWait = failing.filter(function(f){ return f.fixed; });
   var counts = kb.counts;
@@ -716,6 +728,10 @@ function renderRT(d){
   rs.forEach(function(r,i){ var t = routineTone(r.last);
     h += '<li class="row' + (i >= 9 ? ' more' : '') + '"><div class="n"><div class="t">' + esc(r.name) + '</div><div class="m">' + esc(r.when || '—') + '</div></div><span class="r">' + (t === '' ? '<span class="tag">' + esc(r.last) + '</span>' : '<span class="tag ' + t + '">' + esc(r.last || '—') + '</span>') + '</span></li>'; });
   h += '</ul>' + (rs.length > 9 ? '<div class="m dimt" style="font-size:12px">Expand ⤢ for ' + (rs.length - 9) + ' more.</div>' : '');
+  var up = arr(g(d.reg,'claude.upcoming'));
+  if(up.length){ h += '<div class="sec"><div class="lbl"><span>Dated checks coming up</span></div><ul class="rows">';
+    up.forEach(function(u){ h += '<li class="row"><div class="n"><div class="t">' + esc(u.name) + '</div></div><span class="r mono">' + esc(u.when) + '</span></li>'; });
+    h += '</ul></div>'; }
   $('#b-rt').innerHTML = h;
 }
 function renderVN(d){
@@ -734,6 +750,35 @@ function renderDC(d){
   ds.forEach(function(x,i){ h += '<li class="row' + (i >= 6 ? ' more' : '') + '"><div class="n"><div class="m mono dimt" style="font-size:12px">' + esc(x.date) + '</div><div class="t clamp" style="-webkit-line-clamp:3;font-weight:400">' + esc(x.what) + '</div></div></li>'; });
   h += '</ul>' + (ds.length > 6 ? '<div class="m dimt" style="font-size:12px">Expand ⤢ for all ' + ds.length + '.</div>' : '');
   $('#b-dc').innerHTML = h;
+}
+
+function renderMD(){
+  var m = S.md, el = $('#b-md'); if(!el) return;
+  if(!m){ el.innerHTML = '<div class="m dimt">' + (S.loaded ? 'construct-mods.json not published yet.' : 'Waiting for data…') + '</div>'; return; }
+  var t = m.trial || {}, lv = m.live || {}, bt = lv.by_transport || {};
+  function pct(x){ return x == null ? '—' : Math.round(x*100) + '%'; }
+  function yn(v, yes, no){ return v === true ? '<span class="tag">' + yes + '</span>' : (v === false ? '<span class="tag w">' + no + '</span>' : '<span class="dimt">—</span>'); }
+  var h = '<div class="stats s5">' +
+    stat(num(lv.turns_logged), 'Turns in ledger', 'i') +
+    stat(num(bt.local || 0) + '<small> / ' + num(bt.bridge || 0) + '</small>', 'Mac / Cowork turns') +
+    stat(pct(lv.correction_rate), 'Corrections (was 33%)') +
+    stat(pct(lv.unverified_claim_rate), 'Unchecked claims (was 17%)', lv.unverified_claims ? 'w' : '') +
+    stat(num(lv.routes_per_day), 'Gatekeeper / day (was 2.5)') +
+  '</div>';
+  h += '<div class="mdgrid"><div class="sec"><div class="lbl"><span>Mods</span><span class="mono dimt">trial ' + esc(String(t.start||'').slice(5)) + ' → ' + esc(String(t.end||'').slice(5)) + '</span></div><table class="mdtb"><tr><th>Mod</th><th class="hide-s">Does</th><th>Mac</th><th>Cowork</th></tr>';
+  arr(m.mods).forEach(function(x){ h += '<tr><td class="mono">' + esc(x.name) + '</td><td class="hide-s">' + esc(x.does) + '</td><td>' + yn(x.mac, 'loaded', 'off') + '</td><td>' + (x.cowork == null ? '<span class="dimt">n/a</span>' : yn(x.cowork, 'logging', 'not yet')) + '</td></tr>'; });
+  h += '</table></div><div class="sec"><div class="lbl"><span>Before → now</span><span class="mono dimt">n in brackets</span></div><table class="mdtb"><tr><th>Measure</th><th class="nr">Before</th><th class="nr">Trial</th></tr>';
+  var now = { correction_rate: pct(lv.correction_rate) + ' <span class="dimt">(' + num(lv.corrections) + '/' + num(lv.turns_logged) + ')</span>',
+              unverified_claim_rate: pct(lv.unverified_claim_rate) + ' <span class="dimt">(' + num(lv.unverified_claims) + '/' + num(lv.claim_turns) + ')</span>',
+              sources_rate: pct(lv.sources_rate) + ' <span class="dimt">(' + num(lv.sources) + '/' + num(lv.change_turns) + ')</span>',
+              routes_per_day: num(lv.routes_per_day), dispatch: '~1 s <span class="dimt">(' + num(lv.hermes_slash_jobs) + ' jobs)</span>' };
+  arr(m.baseline).forEach(function(b){ h += '<tr><td>' + esc(b.k) + '<div class="m dimt" style="font-size:11px">' + esc(b.n) + '</div></td><td class="nr">' + esc(b.v) + '</td><td class="nr">' + (now[b.metric] || '—') + '</td></tr>'; });
+  h += '</table></div></div>';
+  h += '<div class="sec ladder"><span class="lbl">Fresh-session check</span><span class="mono">' + esc(fmtET(t.day1_check)) + '</span>' +
+    '<span class="lbl">Week-1 evaluation</span><span class="mono">' + esc(fmtET(t.evaluation)) + '</span>' +
+    '<span class="lbl">Ledger</span><span class="mono">' + esc(g(m,'ledger.path') || '—') + ' <span class="dimt">· ' + plural(arr(g(m,'ledger.days')).length, 'day') + '</span></span>' +
+    '<span class="lbl">Written</span><span class="mono">' + esc(fmtET(m.generated)) + ' <span class="dimt">' + esc(ago(m.generated)) + '</span></span></div>';
+  el.innerHTML = h;
 }
 
 function renderOP(){
@@ -1068,12 +1113,12 @@ function renderRelayChip(){
 /* ───────── data load (once, then every 60 s) ───────── */
 function gj(u){ return fetch(u + '?cb=' + Date.now(), {cache:'no-store'}).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; }); }
 function loadData(){
-  return Promise.all([gj('./ecosystem-status.json'), gj('./ecosystem-registry.json'), gj('./hermes-status.json'), gj('./harvard-corpus-stats.json'), gj('./b9-opportunities.json')])
-    .then(function(r){ if(r[0]) S.st = r[0]; if(r[1]) S.reg = r[1]; if(r[2]) S.hv = r[2]; if(r[3]) S.hc = r[3]; if(r[4]) S.op = r[4]; S.loaded = new Date(); renderAll(); });
+  return Promise.all([gj('./ecosystem-status.json'), gj('./ecosystem-registry.json'), gj('./hermes-status.json'), gj('./harvard-corpus-stats.json'), gj('./b9-opportunities.json'), gj('./construct-mods.json')])
+    .then(function(r){ if(r[0]) S.st = r[0]; if(r[1]) S.reg = r[1]; if(r[2]) S.hv = r[2]; if(r[3]) S.hc = r[3]; if(r[4]) S.op = r[4]; if(r[5]) S.md = r[5]; S.loaded = new Date(); renderAll(); });
 }
 function renderAll(){
   var d = D();
-  [renderSys, renderGK, renderKB, renderTG, renderHV, renderPF, renderRT, renderVN, renderDC, renderOP].forEach(function(f){ try{ f(d); }catch(e){ console.warn('panel render', e); } });
+  [renderSys, renderGK, renderKB, renderTG, renderHV, renderPF, renderRT, renderVN, renderDC, renderMD, renderOP].forEach(function(f){ try{ f(d); }catch(e){ console.warn('panel render', e); } });
   try{ buildMap(); }catch(e){ console.warn('map render', e); }
   renderDataChip();
   if(S.sel && S.nodes[S.sel]) $('#nodecard').innerHTML = nodeDetail(S.sel);
@@ -1255,6 +1300,10 @@ function localAnswer(t){
     var vs = arr(d.reg.ventures), pz = vs.filter(function(v){ return v.status === 'paused'; }), ac = vs.filter(function(v){ return v.status !== 'paused'; });
     return { say:ac.length + ' ventures are active' + (pz.length ? ' and ' + pz.length + ' paused: ' + listWords(pz.map(function(v){ return v.name.replace(/ · /g,', '); })) : '') + '.', panels:['p-vn'] };
   }
+  if(/\bmods?\b|trial|shared memory|ledger/.test(s)){
+    var mm = S.md || {}, ml = mm.live || {};
+    return { say:'The mods trial runs ' + g(mm,'trial.start') + ' to ' + g(mm,'trial.end') + '. ' + num(ml.turns_logged) + ' turns are in the shared ledger so far, ' + num(g(ml,'by_transport.local') || 0) + ' from the Mac and ' + num(g(ml,'by_transport.bridge') || 0) + ' from Cowork.', panels:['p-md'] };
+  }
   if(/decision|decided|latest change|what changed/.test(s)){
     var dx = arr(d.reg.decisions)[0];
     if(!dx) return { say:'No decisions are logged.', panels:['p-dc'] };
@@ -1389,6 +1438,7 @@ function init(){
     if(e.key === '+' || e.key === '='){ zoomAt(1.25); return; }
     if(e.key === '-' || e.key === '_'){ zoomAt(1/1.25); return; }
     if(e.key === '0'){ resetView(); return; }
+    if(e.key === 'm' || e.key === 'M'){ flashPanel('p-md', true); var mb = $('#p-md .px'); if(mb) mb.focus({preventScroll:true}); return; }
     if(e.key === 'b' || e.key === 'B'){ flashPanel('p-op', true); var bb = $('#p-op .px'); if(bb) bb.focus({preventScroll:true}); return; }
     if(/^[1-9]$/.test(e.key)){ var p = document.querySelector('.panel[data-key="' + e.key + '"]'); if(p){ flashPanel(p.id, true); var b = p.querySelector('.px'); if(b) b.focus({preventScroll:true}); } }
   });
