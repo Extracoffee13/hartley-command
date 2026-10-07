@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-07T13:23:36Z",
+ "generated": "2026-10-07T13:29:32Z",
  "trial": {
   "start": "2026-10-07",
   "end": "2026-10-14",
@@ -19,14 +19,14 @@
    "seat": "Mac + Cowork",
    "does": "No .md or Drive deliverables \u00b7 flags done-claims made without a check \u00b7 asks for sources",
    "mac": true,
-   "cowork": false
+   "cowork": true
   },
   {
    "name": "construct-memory",
    "seat": "Mac + Cowork",
    "does": "One shared ledger for every session and project \u00b7 recall on each prompt \u00b7 Hermes skill mirror",
    "mac": true,
-   "cowork": false
+   "cowork": true
   }
  ],
  "baseline": [
@@ -62,17 +62,19 @@
   }
  ],
  "live": {
-  "turns_logged": 0,
-  "sessions": 0,
-  "by_transport": {},
-  "correction_rate": null,
+  "turns_logged": 1,
+  "sessions": 1,
+  "by_transport": {
+   "bridge": 1
+  },
+  "correction_rate": 0.0,
   "corrections": 0,
-  "claim_turns": 0,
+  "claim_turns": 1,
   "unverified_claims": 0,
-  "unverified_claim_rate": null,
-  "change_turns": 0,
-  "sources": 0,
-  "sources_rate": null,
+  "unverified_claim_rate": 0.0,
+  "change_turns": 1,
+  "sources": 1,
+  "sources_rate": 1.0,
   "gatekeeper_routes": 4,
   "hermes_slash_jobs": 0,
   "blocked_calls": 0,
@@ -98,6 +100,8 @@
  ],
  "ledger": {
   "path": "~/Foundry/_construct/ledger",
-  "days": []
+  "days": [
+   "2026-10-07"
+  ]
  }
 }
