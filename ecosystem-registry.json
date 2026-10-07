@@ -217,6 +217,10 @@
  "decisions": [
   {
    "date": "2026-10-07",
+   "what": "Signage e-commerce + high-end design tool scoped via the Construct (Gatekeeper: orchestrator T2, owner-decision; Scout + design-tool scan + Ledger in parallel). Anchor product: double-sided A-frame / lit sidewalk signs (seen on RVLightBender Etsy, ~$342). Verdict: product is right and VistaPrint is beatable (no lit option), but the risk is DEMAND not the tool — B9's own store did ~12 orders in 2022-24 and GA4 shows ~0 e-comm in 365 days. Plan is staged: Phase 0 prove demand 30-60 days (1-2 made A-frames on Etsy + a Stripe Buy-Now, $300-500 ads, measure CAC and real shipping) BEFORE any tool; Phase 1 license Zakeke (flat, no per-order fee) skinned to the B9 brand, 3-5 templates, print-ready to the shop — not a $15-60k custom build; Phase 2 scale. Cart scope stays small shippable items only (military->estimate, barricades->never, builders->quote). Owner go/no-go pending on Phase 0 + 4 shop numbers. Plan: project doc b9-signage-store-and-design-tool-plan-2026-10-07.md."
+  },
+  {
+   "date": "2026-10-07",
    "what": "MIMIC tool audited (github littledivy/mimic: capture your own app traffic -> Claude writes a Python client that replays your login). Verdict: adopt the PATTERN now (export our own HAR from a credentialed web tool -> AI-written typed client for Hermes, replacing slow browser-automation), adopt the TOOL only where a tool WE own has no API. Not for competitors or any account/data we don't own (ToS/legal), and never a replacement for GSC/GA4/GBP/IndexNow. Governance: a captured session is a live credential -> Mac-only like the APS secret, Gatekeeper owner-gated, codegen runs in the Code tab (claude -p is 'not logged in' headless). No clean B9 pilot right now: the slow manual tools (Yelp, Bing Places, Apple Business Connect) are third-party (ToS line), and the tools we own (site/SSH, SiteGround CLI, WordPress, GSC/GA4/GBP/IndexNow/Bing Webmaster) already have real APIs. Parked as a ready pattern; first pilot likely a future company's internal tool or a genuine API-less vendor portal. Full audit: project doc mimic-tool-audit-2026-10-07.md."
   },
   {
