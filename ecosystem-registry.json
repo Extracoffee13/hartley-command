@@ -217,6 +217,10 @@
  "decisions": [
   {
    "date": "2026-10-07",
+   "what": "MIMIC tool audited (github littledivy/mimic: capture your own app traffic -> Claude writes a Python client that replays your login). Verdict: adopt the PATTERN now (export our own HAR from a credentialed web tool -> AI-written typed client for Hermes, replacing slow browser-automation), adopt the TOOL only where a tool WE own has no API. Not for competitors or any account/data we don't own (ToS/legal), and never a replacement for GSC/GA4/GBP/IndexNow. Governance: a captured session is a live credential -> Mac-only like the APS secret, Gatekeeper owner-gated, codegen runs in the Code tab (claude -p is 'not logged in' headless). Next: pilot on one B9 tool with no API once Bobby names the slowest to drive. Full audit: project doc mimic-tool-audit-2026-10-07.md."
+  },
+  {
+   "date": "2026-10-07",
    "what": "The four 'failing' services resolved. Cause: launchd could not open their log files inside ~/Documents (macOS privacy), so each run died at start with exit 78 before the script ran. hermes-inbox-exec (runs dashboard/voice commands sent to Hermes) kept, logs moved to ~/Library/Logs/hartley, now exit 0. ai-citation-probe and pragma-daily (PRAGMA Mirror, paused 09-23) and model-eval-weekly (fed the model arena removed in v5) retired: unloaded, plists kept in ~/Library/LaunchAgents/_disabled_20261007."
   },
   {
