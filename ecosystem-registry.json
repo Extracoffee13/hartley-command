@@ -217,6 +217,10 @@
  "decisions": [
   {
    "date": "2026-10-07",
+   "what": "The four 'failing' services resolved. Cause: launchd could not open their log files inside ~/Documents (macOS privacy), so each run died at start with exit 78 before the script ran. hermes-inbox-exec (runs dashboard/voice commands sent to Hermes) kept, logs moved to ~/Library/Logs/hartley, now exit 0. ai-citation-probe and pragma-daily (PRAGMA Mirror, paused 09-23) and model-eval-weekly (fed the model arena removed in v5) retired: unloaded, plists kept in ~/Library/LaunchAgents/_disabled_20261007."
+  },
+  {
+   "date": "2026-10-07",
    "what": "Construct pivot: Claude Code mods become the fourth layer, beside Gatekeeper, Hermes and Claude agents. A mod runs inside Claude Code; its best seat is the Code tab on AP-Agent, where Gatekeeper, Hermes and the queue are local calls (Gatekeeper route ~1 s, against 30–50 s through a Cowork queue job). Three mods on a one-week trial, 10-07 to 10-14: construct-console, construct-guards and construct-memory. Evaluation 10-14."
   },
   {
@@ -225,7 +229,7 @@
   },
   {
    "date": "2026-10-07",
-   "what": "Found four background services down with launchd exit 78 that the old status feed never showed: hermes-inbox-exec, ai-citation-probe, pragma-daily and model-eval-weekly. They now appear under System core."
+   "what": "Found four background services down with launchd exit 78 that the old status feed never showed: hermes-inbox-exec, ai-citation-probe, pragma-daily and model-eval-weekly. They now appear under System core whenever any Construct service is down."
   },
   {
    "date": "2026-10-07",
