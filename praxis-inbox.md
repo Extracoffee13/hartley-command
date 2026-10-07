@@ -2882,3 +2882,15 @@ lesson: When search returns only titles and no verifiable fresh news, report the
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.7
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-07
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Thin day, nothing verifiably fresh; flagged MCP 2026-07-28 stateless spec (yes), Sonnet 5.5 (yes), Instinct $1B (maybe).
+lesson: When search returns no verifiable news inside 24h, say so and carry forward dated items instead of padding; and treat protocol shifts like MCP going stateless as scheduled migration work for every connector the Construct depends on.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.6
+~~~
