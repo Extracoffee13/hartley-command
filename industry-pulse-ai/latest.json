@@ -1,34 +1,34 @@
 {
-  "generated": "2026-10-08T09:51:11+00:00",
+  "generated": "2026-10-08T13:52:21+00:00",
   "latest_date": "2026-10-08",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "MCP 2026-07-28 specification — stateless servers, MCP Apps, improved auth",
-      "summary": "Official MCP blog describes the 2026-07-28 spec moving MCP to a stateless model with MCP Apps and better auth; migration of hosted servers is ongoing. Carried forward; not new in the last 24h.",
+      "title": "Claude Haiku 5.5 released (Oct 7) — fastest Claude, ~75% cheaper to run than Haiku 4.5",
+      "summary": "Anthropic's third Claude 5.5 release in about a month; built for high-volume, cost-sensitive work and as a subagent alongside Opus 5.5 and Sonnet 5.5. Claude Code 2.1.293 already makes it the default Haiku model on the Anthropic API with a 1M context window (per Releasebot's tracker).",
       "tag": "yes",
-      "how": "The Construct: audit Hermes/Claude MCP connectors for stateful-session assumptions. PRAGMA: migration checklist is a sellable deliverable. Brand 9 Signs: no direct use.",
-      "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28/"
+      "how": "The Construct: route classification, summaries, and subagent/swarm worker tasks to Haiku 5.5 to cut cost and latency. Brand 9 Signs: cheap bulk tasks like alt-text, lead triage, and quote classification. PRAGMA: sharpens the model-tiering cost story for client builds.",
+      "url": "https://9to5mac.com/2026/10/07/anthropic-upgrades-claude-with-new-haiku-5-5-model-details-here/"
     },
     {
       "n": 2,
-      "title": "Claude Sonnet 5.5 — 1.05M context, $2/$10 per 1M tokens, ~30% faster",
-      "summary": "Anthropic's lower-cost, faster complement to Opus 5.5. Carried forward; older than 24h.",
+      "title": "Claude Code 2.1.289–2.1.293 — Agent-tool effort param, plugin install --marketplace, MCP leak fix",
+      "summary": "Releasebot's tracker (first-seen dates Oct 4–7, not confirmed release dates) lists an effort parameter for the Agent tool, claude plugin install --marketplace, a memory-leak fix in HTTP MCP connections, a 529 retry-delay setting, and a fix for file reads from network paths bypassing the permission prompt.",
       "tag": "yes",
-      "how": "The Construct: default model for scheduled routines and doc/deck/sheet generation. Brand 9 Signs: cheaper proposal/quote drafting. PRAGMA: cost baseline for client builds.",
-      "url": "https://www.llmreference.com/model/claude-sonnet-5-5/anthropic-api"
+      "how": "The Construct: set per-subagent effort in swarm runs, and pick up the MCP-connection leak and permission-bypass fixes. PRAGMA: plugin marketplace install is a cleaner client-delivery path. Brand 9 Signs: no direct use.",
+      "url": "https://releasebot.io/updates/anthropic/claude-code"
     },
     {
       "n": 3,
-      "title": "6sense launches an MCP server for GTM intelligence (date unverified)",
-      "summary": "6sense exposes its go-to-market intelligence to AI agents via MCP; a feed listing surfaced in today's search but the publish date could not be confirmed as inside 24h.",
+      "title": "Mistral Large 4 public preview (Oct 6) — ~1T-param MoE, 1M context, open weights planned end of October",
+      "summary": "Per LLM Stats, a ~1.05T total / 52B active MoE with text+image input, 1M context, promo pricing of $0.68 in / $2.09 out per 1M tokens, aimed at coding and agentic tasks; benchmark figures are self-reported and unverified, and the weights license is TBD.",
       "tag": "maybe",
-      "how": "PRAGMA: example of B2B data vendors going agent-native, useful for client prospecting offers. The Construct / Brand 9 Signs: no direct use.",
-      "url": "https://briefglance.com/companies/6sense-insights-inc/pulses/59406"
+      "how": "The Construct: candidate low-cost fallback/second-opinion model once weights drop. PRAGMA: possible self-host option for privacy-sensitive clients. Brand 9 Signs: no direct use.",
+      "url": "https://llm-stats.com/blog/research/mistral-large-4-launch"
     }
   ],
-  "praxis_lesson": "Second thin day in a row: web search surfaces no verifiable 24h news, so label carried-forward and undated items explicitly rather than padding; the durable signal is vendors shipping MCP servers, which keeps raising the value of a stateless-spec-ready connector layer.",
+  "praxis_lesson": "Model tiers are now a routing problem, not a pick-one problem: with Haiku 5.5 landing a month after Opus/Sonnet 5.5, assign each agent step the cheapest model (and effort level) that passes its check instead of defaulting everything to the top tier.",
   "history": [
     "2026-10-08",
     "2026-10-07",

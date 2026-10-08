@@ -2906,3 +2906,15 @@ lesson: Second thin day in a row: web search surfaces no verifiable 24h news, so
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.6
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-08
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Claude Haiku 5.5 (yes), Claude Code 2.1.289-293 (yes), Mistral Large 4 preview (maybe).
+lesson: Model tiers are now a routing problem, not a pick-one problem: with Haiku 5.5 landing a month after Opus/Sonnet 5.5, assign each agent step the cheapest model (and effort level) that passes its check instead of defaulting everything to the top tier.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
