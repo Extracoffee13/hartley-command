@@ -1,35 +1,36 @@
 {
-  "generated": "2026-10-07T05:50:56-04:00",
-  "latest_date": "2026-10-07",
+  "generated": "2026-10-08T09:51:11+00:00",
+  "latest_date": "2026-10-08",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
       "title": "MCP 2026-07-28 specification — stateless servers, MCP Apps, improved auth",
-      "summary": "The official MCP blog and several vendors (Cloudflare, Composio) describe the 2026-07-28 spec as moving MCP to a stateless model with MCP Apps and better auth, which changes how hosted MCP servers are built and migrated. Not new in the last 24h; surfaced because it is the most consequential verifiable ecosystem item and migration is ongoing.",
+      "summary": "Official MCP blog describes the 2026-07-28 spec moving MCP to a stateless model with MCP Apps and better auth; migration of hosted servers is ongoing. Carried forward; not new in the last 24h.",
       "tag": "yes",
-      "how": "The Construct: audit Hermes/Claude MCP connectors for stateful-session assumptions before servers migrate. PRAGMA: migration checklist is a sellable client deliverable. Brand 9 Signs: no direct use.",
+      "how": "The Construct: audit Hermes/Claude MCP connectors for stateful-session assumptions. PRAGMA: migration checklist is a sellable deliverable. Brand 9 Signs: no direct use.",
       "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28/"
     },
     {
       "n": 2,
-      "title": "Claude Sonnet 5.5 (Sep 28) — 1.05M context, $2/$10 per 1M tokens, ~30% faster",
-      "summary": "Anthropic's lower-cost, faster complement to Opus 5.5 with cheap cache reads and batch discounts. Carried forward; older than 24h.",
+      "title": "Claude Sonnet 5.5 — 1.05M context, $2/$10 per 1M tokens, ~30% faster",
+      "summary": "Anthropic's lower-cost, faster complement to Opus 5.5. Carried forward; older than 24h.",
       "tag": "yes",
       "how": "The Construct: default model for scheduled routines and doc/deck/sheet generation. Brand 9 Signs: cheaper proposal/quote drafting. PRAGMA: cost baseline for client builds.",
       "url": "https://www.llmreference.com/model/claude-sonnet-5-5/anthropic-api"
     },
     {
       "n": 3,
-      "title": "Instinct raises $1B at $10B valuation for its personal AI agent (late Sep)",
-      "summary": "Personal-agent startup Instinct secured $1B at a $10B valuation; capital keeps flowing to agent products. Carried forward; older than 24h.",
+      "title": "6sense launches an MCP server for GTM intelligence (date unverified)",
+      "summary": "6sense exposes its go-to-market intelligence to AI agents via MCP; a feed listing surfaced in today's search but the publish date could not be confirmed as inside 24h.",
       "tag": "maybe",
-      "how": "PRAGMA: market-validation talking point and positioning watch. The Construct: no direct use. Brand 9 Signs: no.",
-      "url": "https://oodaloop.com/briefs/technology/ai-agent-startup-instinct-secures-1-billion-at-10-billion-valuation/"
+      "how": "PRAGMA: example of B2B data vendors going agent-native, useful for client prospecting offers. The Construct / Brand 9 Signs: no direct use.",
+      "url": "https://briefglance.com/companies/6sense-insights-inc/pulses/59406"
     }
   ],
-  "praxis_lesson": "When search returns no verifiable news inside 24h, say so and carry forward dated items instead of padding; and treat protocol shifts like MCP going stateless as scheduled migration work for every connector the Construct depends on.",
+  "praxis_lesson": "Second thin day in a row: web search surfaces no verifiable 24h news, so label carried-forward and undated items explicitly rather than padding; the durable signal is vendors shipping MCP servers, which keeps raising the value of a stateless-spec-ready connector layer.",
   "history": [
+    "2026-10-08",
     "2026-10-07",
     "2026-10-06",
     "2026-10-05",
@@ -42,7 +43,6 @@
     "2026-09-28",
     "2026-09-27",
     "2026-09-26",
-    "2026-09-25",
-    "2026-09-24"
+    "2026-09-25"
   ]
 }
