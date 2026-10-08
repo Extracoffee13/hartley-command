@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-07T10:10:00.096247+00:00",
+  "updated_at": "2026-10-08T10:10:01.489669+00:00",
   "skills": [
     {
       "slug": "aair-market-baseline-scanning",
@@ -287,13 +287,6 @@
       "has_skill_md": true,
       "has_description_md": false,
       "description_excerpt": "---\nname: daily-orchestration\ndescription: \"Atlas capability: run the daily coordination cycle across operators, consolidate heartbeat state, and produce the morning briefing.\"\ntags: [atlas, heartbeat"
-    },
-    {
-      "slug": "daily-rescore-management",
-      "path": "/Users/alfredpennyworth/.hermes/skills/daily-rescore-management",
-      "has_skill_md": true,
-      "has_description_md": false,
-      "description_excerpt": "---\nname: daily-rescore-management\ndescription: This skill oversees the execution of daily rescore tasks and includes guidelines for updating dashboard data files., focusing on the Brand 9 operational"
     },
     {
       "slug": "dashboard-synthesis",
@@ -737,13 +730,6 @@
       "description_excerpt": "---\nname: strategic-review\ndescription: \"Keystone capability: run a monthly strategic review of ongoing initiatives \u2014 re-score, surface drift, recommend moves. Use for 'strategic review', monthly port"
     },
     {
-      "slug": "task-reporting",
-      "path": "/Users/alfredpennyworth/.hermes/skills/task-reporting",
-      "has_skill_md": true,
-      "has_description_md": false,
-      "description_excerpt": "---\nname: task-reporting\ndescription: \"Skills for generating succinct and accurate reports on task execution outcomes, emphasizing clarity, accuracy, and directness as user preferences dictate.\"\ncateg"
-    },
-    {
       "slug": "telegram-dashboard-push",
       "path": "/Users/alfredpennyworth/.hermes/skills/telegram-dashboard-push",
       "has_skill_md": true,
@@ -906,14 +892,17 @@
     }
   ],
   "_counts": {
-    "hermes_skills": 122,
+    "hermes_skills": 120,
     "hermes_agent_skills": 0,
     "atlas_skills": 7,
-    "total": 129
+    "total": 127
   },
   "_new_since_last_build": [],
-  "_dropped_since_last_build": [],
+  "_dropped_since_last_build": [
+    "daily-rescore-management",
+    "task-reporting"
+  ],
   "_roots_missing": [],
-  "_mirrored_at": "2026-10-07T10:10:00.096247Z",
+  "_mirrored_at": "2026-10-08T10:10:01.489669Z",
   "_builder": "skills-registry-scan"
 }
