@@ -2918,3 +2918,15 @@ lesson: Model tiers are now a routing problem, not a pick-one problem: with Haik
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-09
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Anthropic usage policy update w/ hardware-control rules (yes), DeepSeek Harness/LMCache CVEs (maybe), Google persistent Gemini agents (maybe), StepFun Step 5 (maybe), Manus funding (no).
+lesson: Agent governance is turning into a deployment gate: Anthropic's new policy requires an operator stop and safe-state for agents driving hardware, and the Harness/LMCache CVEs show agent shells are an attack surface. Build the e-stop, safe-state and sandbox-audit checks into every agent that touches a machine, before the rules or the attackers force it.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

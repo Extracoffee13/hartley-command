@@ -1,35 +1,52 @@
 {
-  "generated": "2026-10-08T13:52:21+00:00",
-  "latest_date": "2026-10-08",
+  "generated": "2026-10-09T09:51:29+00:00",
+  "latest_date": "2026-10-09",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Claude Haiku 5.5 released (Oct 7) — fastest Claude, ~75% cheaper to run than Haiku 4.5",
-      "summary": "Anthropic's third Claude 5.5 release in about a month; built for high-volume, cost-sensitive work and as a subagent alongside Opus 5.5 and Sonnet 5.5. Claude Code 2.1.293 already makes it the default Haiku model on the Anthropic API with a 1M context window (per Releasebot's tracker).",
+      "title": "Anthropic Usage Policy update (published Oct 8, effective Nov 12) — new hardware-control, surveillance and deceptive-activity rules",
+      "summary": "Adds requirements when Claude controls hardware that takes autonomous physical actions (a qualified operator must be able to observe and stop the equipment, and it must hold a safe state if Claude disconnects), bans tracking people without consent and building influence-operation tooling, and restricts entities controlled from unsupported regions.",
       "tag": "yes",
-      "how": "The Construct: route classification, summaries, and subagent/swarm worker tasks to Haiku 5.5 to cut cost and latency. Brand 9 Signs: cheap bulk tasks like alt-text, lead triage, and quote classification. PRAGMA: sharpens the model-tiering cost story for client builds.",
-      "url": "https://9to5mac.com/2026/10/07/anthropic-upgrades-claude-with-new-haiku-5-5-model-details-here/"
+      "how": "Brand 9 Signs / The Construct: the CNC and vinyl-cut pipeline (ShopBot, Mimaki) driven by agents needs an operator e-stop and safe-state-on-disconnect before Nov 12. PRAGMA: add these clauses to client agent-deployment checklists, especially for high-risk (finance/legal/health) use cases.",
+      "url": "https://anthropic.com/news/2026-usage-policy-update"
     },
     {
       "n": 2,
-      "title": "Claude Code 2.1.289–2.1.293 — Agent-tool effort param, plugin install --marketplace, MCP leak fix",
-      "summary": "Releasebot's tracker (first-seen dates Oct 4–7, not confirmed release dates) lists an effort parameter for the Agent tool, claude plugin install --marketplace, a memory-leak fix in HTTP MCP connections, a 529 retry-delay setting, and a fix for file reads from network paths bypassing the permission prompt.",
-      "tag": "yes",
-      "how": "The Construct: set per-subagent effort in swarm runs, and pick up the MCP-connection leak and permission-bypass fixes. PRAGMA: plugin marketplace install is a cleaner client-delivery path. Brand 9 Signs: no direct use.",
-      "url": "https://releasebot.io/updates/anthropic/claude-code"
+      "title": "DeepSeek Harness agent shell sandbox escape (CVSS 9.4, fixed in 0.1.2-alpha.1) and unpatched LMCache RCE (CVSS 9.8)",
+      "summary": "OX Security disclosed a sandbox escape in DeepSeek's open-sourced Harness agent shell, fixed in 0.1.2-alpha.1; separately JFrog reported an unauthenticated RCE in LMCache (Oct 7) with, per the report, no fixed version yet.",
+      "tag": "maybe",
+      "how": "The Construct: audit whether any agent shell or inference cache in the stack (Hermes workers, local model serving) uses Harness or LMCache; if so, upgrade or isolate. PRAGMA: useful talking point for client security reviews. Brand 9 Signs: no direct use.",
+      "url": "https://www.ox.security/blog/cve-2026-82533-deepseek-harness-ai-agent-sandbox-escape/"
     },
     {
       "n": 3,
-      "title": "Mistral Large 4 public preview (Oct 6) — ~1T-param MoE, 1M context, open weights planned end of October",
-      "summary": "Per LLM Stats, a ~1.05T total / 52B active MoE with text+image input, 1M context, promo pricing of $0.68 in / $2.09 out per 1M tokens, aimed at coding and agentic tasks; benchmark figures are self-reported and unverified, and the weights license is TBD.",
+      "title": "Google Cloud unveils persistent Gemini agents with their own Gmail, Calendar and Drive (Gemini at Work 2026)",
+      "summary": "A long-running enterprise agent orchestrates sub-agents over hours or days, each sub-agent gets its own Workspace account, and it can route work to Claude and other models.",
       "tag": "maybe",
-      "how": "The Construct: candidate low-cost fallback/second-opinion model once weights drop. PRAGMA: possible self-host option for privacy-sensitive clients. Brand 9 Signs: no direct use.",
-      "url": "https://llm-stats.com/blog/research/mistral-large-4-launch"
+      "how": "The Construct: validates the persistent-agent-with-own-identity pattern we already run; study its identity/permission model. PRAGMA: competitive reference when pitching AI-operator engagements to Google Workspace shops. Brand 9 Signs: no direct use.",
+      "url": "https://venturebeat.com/orchestration/google-cloud-unveils-persistent-gemini-agents-for-long-running-tasks-and-they-get-their-own-gmail-calendar-and-drive-storage"
+    },
+    {
+      "n": 4,
+      "title": "StepFun Step 5 Preview — 600B sparse MoE (27B active), 1M context, on OpenRouter; open weights slated Oct 15",
+      "summary": "Priced at $1 per 1M input / $2.70 per 1M output tokens on OpenRouter, with open weights planned for October 15 (vendor claims; not independently benchmarked).",
+      "tag": "maybe",
+      "how": "The Construct: candidate cheap long-context worker or second-opinion model once weights land; test before trusting. PRAGMA: possible self-host option for privacy-sensitive clients. Brand 9 Signs: no direct use.",
+      "url": "https://openrouter.ai/stepfun/step-5-preview"
+    },
+    {
+      "n": 5,
+      "title": "Manus parent Butterfly Effect closes $500M+ round at ~$4B valuation (Oct 8)",
+      "summary": "Led by Boyu Capital and IDG Capital, per TechNode, signaling continued heavy investor appetite for general-purpose autonomous-agent products.",
+      "tag": "no",
+      "how": "Market signal only: confirms demand for agent products, but nothing actionable for The Construct, Brand 9 Signs or PRAGMA beyond competitive awareness.",
+      "url": "https://technode.com/2026/10/08/manus-parent-butterfly-effect-completes-more-than-500-million-funding-round/"
     }
   ],
-  "praxis_lesson": "Model tiers are now a routing problem, not a pick-one problem: with Haiku 5.5 landing a month after Opus/Sonnet 5.5, assign each agent step the cheapest model (and effort level) that passes its check instead of defaulting everything to the top tier.",
+  "praxis_lesson": "Agent governance is turning into a deployment gate: Anthropic's new policy requires an operator stop and safe-state for agents driving hardware, and the Harness/LMCache CVEs show agent shells are an attack surface. Build the e-stop, safe-state and sandbox-audit checks into every agent that touches a machine, before the rules or the attackers force it.",
   "history": [
+    "2026-10-09",
     "2026-10-08",
     "2026-10-07",
     "2026-10-06",
@@ -42,7 +59,6 @@
     "2026-09-29",
     "2026-09-28",
     "2026-09-27",
-    "2026-09-26",
-    "2026-09-25"
+    "2026-09-26"
   ]
 }
