@@ -1,10 +1,18 @@
 {
-  "generated": "2026-10-10T09:51:35+00:00",
+  "generated": "2026-10-10T17:52:02+00:00",
   "latest_date": "2026-10-10",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
+      "title": "Google launches a unified Gemini enterprise agent with its own Workspace identity, subagents and MCP support",
+      "summary": "Announced Oct 8 at a Google Cloud event: an agent that takes objectives, delegates to subagents, runs multi-day jobs, connects to Workspace, Microsoft 365, Slack, Jira and any MCP server, lets users pick models including Claude, and logs actions in an agent-attributed audit trail; business-first, no price given.",
+      "tag": "yes",
+      "how": "The Construct: closest public analogue to our agent-with-own-identity architecture and a validation of MCP as the connector layer; benchmark its tasks-inbox and audit trail against ours. PRAGMA: competitor/partner pattern for client AI-operator offers. Brand 9 Signs: no direct use yet.",
+      "url": "https://techcrunch.com/2026/10/08/google-brings-agentic-ai-to-gemini-starting-with-businesses"
+    },
+    {
+      "n": 2,
       "title": "Anthropic launches Claude Haiku 5.5 — ~75% cheaper, first Haiku with effort controls",
       "summary": "Launched Oct 7: $0.10/$0.50 per 1M tokens under 100k context (was $1/$5), 72.4% on OSWorld 2.1 computer-use subset (Haiku 4.5: 15.7%), beta computer/browser-use in the Python and TypeScript SDKs; model ID claude-haiku-5-5.",
       "tag": "yes",
@@ -12,7 +20,7 @@
       "url": "https://thenewstack.io/anthropic-claude-haiku-5-5/"
     },
     {
-      "n": 2,
+      "n": 3,
       "title": "Claude Cowork scheduled tasks and new sessions moved to the cloud for Pro/Max (Oct 6)",
       "summary": "The 'Only on this computer' option was removed; new Cowork tasks run in the cloud, scheduled tasks move to the cloud, and tasks touching local files need the desktop app open (per a third-party write-up; Anthropic's own notice not independently checked).",
       "tag": "yes",
@@ -20,20 +28,12 @@
       "url": "https://hackingdemand.com/blog/claude-cowork-cloud-october-6"
     },
     {
-      "n": 3,
+      "n": 4,
       "title": "Mistral unveils Large 4 — public release set for Oct 27",
       "summary": "Mistral's CEO says Large 4 beats several Chinese open-weight rivals in some areas (vendor claim, per Reuters); public release scheduled October 27.",
       "tag": "maybe",
       "how": "The Construct: add to the worker-model bake-off once weights/API land. PRAGMA: possible EU-hosted or self-host option for privacy-sensitive clients. Brand 9 Signs: no direct use.",
       "url": "https://www.reuters.com/world/china/mistral-ceo-says-new-ai-model-beats-chinese-ones-some-areas-2026-10-06/"
-    },
-    {
-      "n": 4,
-      "title": "Meta, Walmart, Stripe and others propose a 'personal agent protocol' for AI assistants transacting with business sites",
-      "summary": "Per CNBC (via MarketingProfs weekly roundup, Oct 6): companies are proposing a standard for how consumer AI agents interact with business websites and services.",
-      "tag": "maybe",
-      "how": "PRAGMA: early signal that client sites/storefronts will need an agent-facing interface; track the spec. Brand 9 Signs: could eventually matter for agent-driven quote requests; no action yet. The Construct: watch alongside MCP.",
-      "url": "https://www.cnbc.com/2026/10/06/meta-joins-companies-to-tame-chaos-of-doing-business-with-ai-bots.html"
     },
     {
       "n": 5,
@@ -44,7 +44,7 @@
       "url": "https://markets.businessinsider.com/news/stocks/agentr-launches-webcmd-open-source-browser-infrastructure-that-lets-ai-agents-learn-a-website-once-1036612154"
     }
   ],
-  "praxis_lesson": "Model price collapse (Haiku 5.5) and platform moves (Cowork to cloud) are changing where agent work should run: route high-volume steps to the cheapest capable model and re-audit every scheduled job's dependency on local machines, because the runtime underneath you shifts without notice.",
+  "praxis_lesson": "Every major platform is converging on the same agent shape — own identity, subagent delegation, MCP connectors, audit trail — while model prices collapse (Haiku 5.5) and runtimes move to the cloud (Cowork): differentiate on your operating discipline and data, not the plumbing, and route high-volume steps to the cheapest capable model.",
   "history": [
     "2026-10-10",
     "2026-10-09",
