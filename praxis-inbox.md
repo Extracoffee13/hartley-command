@@ -2930,3 +2930,15 @@ lesson: Agent governance is turning into a deployment gate: Anthropic's new poli
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-10
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Claude Haiku 5.5 launch (yes), Cowork scheduled tasks moved to cloud (yes), Mistral Large 4 (maybe), Meta/Walmart/Stripe personal agent protocol (maybe), AgentR Webcmd (maybe).
+lesson: Model price collapse (Haiku 5.5) and platform moves (Cowork to cloud) are changing where agent work should run: route high-volume steps to the cheapest capable model and re-audit every scheduled job's dependency on local machines, because the runtime underneath you shifts without notice.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
