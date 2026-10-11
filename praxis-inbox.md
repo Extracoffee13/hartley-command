@@ -2954,3 +2954,15 @@ lesson: Every major platform is converging on the same agent shape — own ident
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-11
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Anthropic disabling live internet for internal evals (yes), White House AI incident-reporting mandate (maybe), Google Workspace MCP v2 (maybe), Memento 3 ARC-AGI-3 (maybe), Manus parent $500M raise (no).
+lesson: Agent capability and agent risk are now arriving together: labs are pulling live-web access from their own evals and regulators are moving toward incident reporting, so default every agent to sandboxed, least-privilege, human-approved writes with a logged audit trail before widening its reach.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
