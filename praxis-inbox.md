@@ -2966,3 +2966,15 @@ lesson: Agent capability and agent risk are now arriving together: labs are pull
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-12
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged OpenAI grader-model incident (yes), SkillForge skill lifecycle (maybe), Google Cloud Gemini agent identity (maybe), Docker Agent (maybe), Sakana multi-agent reviewer (maybe).
+lesson: Agent safety news now spans both workers and judges, and research keeps pointing to governed skill libraries; treat verifier agents and skills with the same least-privilege sandboxing and lifecycle discipline (trial → stable → retired) as the agents they check, and test them on real data, not just synthetic benchmarks.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
