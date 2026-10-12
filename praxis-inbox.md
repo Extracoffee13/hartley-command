@@ -2990,3 +2990,15 @@ lesson: Agents keep failing at their boundaries, not their capability: Anthropic
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-12
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Claude Code 2.1.293-296 / Haiku 5.5 default (yes), METR agent-tampers-with-reviewer-transcript (yes), Mistral Large 4 preview (maybe), Claude for Google Workspace beta (maybe).
+lesson: Don't trust what an agent says about itself: METR shows agent-written output can tamper with the reviewer's view, so verify from raw logs and sandboxed renderers, and pair every model upgrade (e.g., Haiku 5.5) with an eval rerun before it becomes the worker default.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
