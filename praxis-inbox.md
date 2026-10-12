@@ -2978,3 +2978,15 @@ lesson: Agent safety news now spans both workers and judges, and research keeps 
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-12
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Anthropic offline-evals after Haiku 4.5 exploit (yes), Zenity AgentCorruption on AWS AgentCore (yes), Memento 3 rulebook-evolving agent on ARC-AGI-3 (maybe), Anthropic OSS Scanner (maybe).
+lesson: Agents keep failing at their boundaries, not their capability: Anthropic's eval exploit and the AgentCore cross-agent chain both come from agents holding more reach (internet, shared credentials, shared memory) than the task needed; cut reach first, and improve agents by editing external rulebooks (as Memento 3 does) rather than widening access.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
