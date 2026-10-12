@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-12T16:00:52+00:00",
+ "generated": "2026-10-12T17:00:52+00:00",
  "writer": "ecosystem-status-writer",
  "hermes": {
   "version": "0.21.4",
@@ -32,8 +32,8 @@
    {
     "name": "publisher",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 1495,
-    "cost_30d": 6.56,
+    "sessions_30d": 1490,
+    "cost_30d": 6.53,
     "retire": false
    },
    {
@@ -52,11 +52,11 @@
    }
   ],
   "usage_30d": {
-   "sessions": 1569,
-   "cost_usd": 11.65,
-   "input_tokens": 59589104,
-   "output_tokens": 4613685,
-   "cache_read_tokens": 335718890
+   "sessions": 1564,
+   "cost_usd": 11.62,
+   "input_tokens": 59415844,
+   "output_tokens": 4598299,
+   "cache_read_tokens": 334659818
   },
   "cron": {
    "total": 226,
@@ -142,7 +142,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-12T11:30",
+     "last_run": "2026-10-12T12:30",
      "schedule": "*/30 * * * *",
      "error": ""
     },
@@ -152,7 +152,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-12T11:45",
+     "last_run": "2026-10-12T12:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -162,7 +162,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-12T11:00",
+     "last_run": "2026-10-12T12:00",
      "schedule": "0 * * * *",
      "error": ""
     },
@@ -222,7 +222,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-12T11:45",
+     "last_run": "2026-10-12T12:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -252,7 +252,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-12T11:00",
+     "last_run": "2026-10-12T12:00",
      "schedule": "0 * * * *",
      "error": ""
     },
@@ -262,7 +262,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-12T08:10",
+     "last_run": "2026-10-12T12:10",
      "schedule": "10 */4 * * *",
      "error": ""
     },
@@ -272,7 +272,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-12T11:45",
+     "last_run": "2026-10-12T12:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -332,7 +332,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-12T11:30",
+     "last_run": "2026-10-12T12:30",
      "schedule": "*/5 * * * *",
      "error": ""
     },
@@ -362,7 +362,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-12T11:59",
+     "last_run": "2026-10-12T12:59",
      "schedule": "* * * * *",
      "error": ""
     },
@@ -392,7 +392,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-12T11:45",
+     "last_run": "2026-10-12T12:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -412,7 +412,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-12T08:00",
+     "last_run": "2026-10-12T12:00",
      "schedule": "0 */4 * * *",
      "error": ""
     },
@@ -432,7 +432,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-12T11:45",
+     "last_run": "2026-10-12T12:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -442,7 +442,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-12T11:30",
+     "last_run": "2026-10-12T12:30",
      "schedule": "*/30 * * * *",
      "error": ""
     },
@@ -462,7 +462,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-12T11:45",
+     "last_run": "2026-10-12T12:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -472,7 +472,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-12T11:55",
+     "last_run": "2026-10-12T12:55",
      "schedule": "*/5 * * * *",
      "error": ""
     }
@@ -490,17 +490,17 @@
    "jev_p50_ms": 307
   },
   "decisions": {
-   "total": 147,
-   "last_24h": 13,
+   "total": 148,
+   "last_24h": 14,
    "to_claude": 0,
    "by_mode": {
     "testing": 37,
-    "jev-primary": 109,
+    "jev-primary": 110,
     "jev-down->laya-vote": 1
    },
    "picks": {
     "publisher": 7,
-    "ops-worker": 22,
+    "ops-worker": 23,
     "orchestrator": 33,
     "research-analyst": 10,
     "vector-design": 9
