@@ -3014,3 +3014,15 @@ lesson: Agents that act (buy, self-grade, self-optimize) need an independent che
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-13
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Google Workspace MCP agentic-client enforcement from Nov 11 (yes), Anthropic 1,000-agent swarm bug-finding test (maybe), Nadella insider-risk framing (maybe), sequential-step reliability math (maybe). No new Anthropic model or Claude Code release found today.
+lesson: Connectors and permissions are controlled by the platform, not the agent: track vendor policy changes (like Google's agentic-client flag) and keep verification and approval gates outside the model.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

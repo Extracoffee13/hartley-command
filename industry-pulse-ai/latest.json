@@ -1,42 +1,42 @@
 {
-  "generated": "2026-10-13T09:51:54+00:00",
+  "generated": "2026-10-13T13:52:52+00:00",
   "latest_date": "2026-10-13",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Sakana AI + UC Berkeley publish MASS: a multi-agent system that acts as its own optimizer and evaluator, distilling collective agent work into self-supervision signals",
-      "summary": "Published Oct 11; the official page reports better output-token efficiency on research benchmarks, aimed at tasks that are hard to verify (via ToolNavs briefing).",
-      "tag": "maybe",
-      "how": "The Construct: relevant agent-architecture pattern for swarm self-evaluation, but self-graded signals conflict with the verify-from-raw-logs rule, so read the paper before borrowing anything. PRAGMA: talking point on self-improving agent loops and their verification limits. Brand 9 Signs: no direct impact.",
-      "url": "https://toolnavs.com/fr/article/2499-briefing-ia-du-12-octobre-alphaproof-nexus-r%C3%A9sout-9-probl%C3%A8mes-ouverts-le-context"
+      "title": "Google Workspace MCP servers will reject OAuth clients not flagged as agentic, starting Nov 11, 2026 (flag locks Nov 12)",
+      "summary": "Reported Oct 13 from a Google Workspace Team notice; via Brian Madden's AI-generated daily briefing, not independently confirmed.",
+      "tag": "yes",
+      "how": "The Construct: any agent using Gmail/Drive/Calendar MCP via an OAuth client must be re-registered as agentic before Nov 11 or those connectors may stop working; audit OAuth clients now. PRAGMA: client-readiness checklist item for Workspace automations. Brand 9 Signs: indirect, if B9 workflows use Google Workspace agents.",
+      "url": "https://www.brianmadden.ai/p/daily-briefing-october-13-2026"
     },
     {
       "n": 2,
-      "title": "OpenAI raises default context for GPT-6.1 Sol in Codex and ChatGPT Work from 272k to 500k tokens (max 1M), with no long-context fees on subscriptions",
-      "summary": "Announced Oct 11 by Thibault Sottiaux; context is user-adjustable (via ToolNavs briefing).",
+      "title": "Anthropic managed-agents test: a swarm of 1,000 agents found 66 of 70 seeded bugs in a 116k-line codebase vs about 27 for a single agent",
+      "summary": "Reported by AlphaSignal newsletter via Brian Madden's briefing (Oct 13); the original benchmark was not read.",
       "tag": "maybe",
-      "how": "The Construct: benchmark against Claude 1M-context workers for long-running tasks and cost; no action until a cross-model eval exists. PRAGMA: pricing/context comparison point for client model selection. Brand 9 Signs: no direct impact.",
-      "url": "https://toolnavs.com/fr/article/2499-briefing-ia-du-12-octobre-alphaproof-nexus-r%C3%A9sout-9-probl%C3%A8mes-ouverts-le-context"
+      "how": "The Construct: supports wide parallel swarms for audit/QA tasks, but cost and dedupe overhead are unknown; try on a small repo before adopting. PRAGMA: evidence for swarm-based review offers. Brand 9 Signs: no direct impact.",
+      "url": "https://www.brianmadden.ai/p/daily-briefing-october-13-2026"
     },
     {
       "n": 3,
-      "title": "ElevenLabs launches Brand Kit in ElevenCreative: save logo, fonts and brand colors once and generated content applies them automatically",
-      "summary": "Launched Oct 10 alongside a new Singapore office (via ToolNavs briefing).",
+      "title": "Microsoft's Nadella says frontier models should be treated as insider risks, with controls placed outside the model",
+      "summary": "Reported via The Deep View (Oct 13 briefing); framing, not a product release.",
       "tag": "maybe",
-      "how": "Brand 9 Signs: could keep logo/colors consistent in generated video and voice marketing assets, worth a trial against the B9 brand palette. The Construct: pattern of a persistent brand context for generation agents. PRAGMA: client brand-consistency offer.",
-      "url": "https://toolnavs.com/fr/article/2481-briefing-ia-du-11-octobre-grok-bot-fait-les-courses-qiyao-de-huawei-en-t%C3%AAte-des"
+      "how": "The Construct: matches the existing rule to enforce permissions and approval gates outside the agent, so no change but a useful citation. PRAGMA: governance talking point for client AI-risk conversations. Brand 9 Signs: no direct impact.",
+      "url": "https://archive.thedeepview.com/p/microsoft-reframes-ai-safety-debate-around-trust"
     },
     {
       "n": 4,
-      "title": "xAI's Grok Bot shopping: Musk says users can photograph a bank card and have Grok find the best price and place the order; OpenAI's Tibo Sottiaux answered with an AI-generated fake card to show the risk",
-      "summary": "Oct 10-11; xAI has published no formal description, and payment authorization, error liability and card-data handling are unexplained (via ToolNavs briefing).",
-      "tag": "yes",
-      "how": "The Construct: reinforces keeping payment and purchase actions behind a human approval gate and never passing card data through agents. PRAGMA: concrete governance example for agentic-commerce risk conversations. Brand 9 Signs: no direct impact.",
-      "url": "https://toolnavs.com/fr/article/2481-briefing-ia-du-11-octobre-grok-bot-fait-les-courses-qiyao-de-huawei-en-t%C3%AAte-des"
+      "title": "Reliability math: a 75% per-attempt success rate falls to about 42% across three sequential steps",
+      "summary": "Opinion AI post on eval-driven development, cited in the Oct 13 briefing.",
+      "tag": "maybe",
+      "how": "The Construct: reminder to verify each step of multi-step agent chains rather than only the final output. PRAGMA: simple explainer for clients on why long agent pipelines need checkpoints. Brand 9 Signs: no direct impact.",
+      "url": "https://opinionai.substack.com/p/eval-driven-development-with-jev"
     }
   ],
-  "praxis_lesson": "Agents that act (buy, self-grade, self-optimize) need an independent check outside the agent: payment steps behind a human gate and quality signals from raw logs, not the agent's own score.",
+  "praxis_lesson": "Connectors and permissions are controlled by the platform, not the agent: track vendor policy changes (like Google's agentic-client flag) and keep verification and approval gates outside the model.",
   "history": [
     "2026-10-13",
     "2026-10-12",
