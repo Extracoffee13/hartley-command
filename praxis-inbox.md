@@ -3026,3 +3026,15 @@ lesson: Connectors and permissions are controlled by the platform, not the agent
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-13
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Anthropic preserved-thinking distillation defenses (yes), Gemini 4 Argon (maybe), Meta Muse Wonder/Full (maybe), Scuba $34M MCP context engine (maybe). No new Claude Code release verified today.
+lesson: Platform vendors are tightening what agents can do with context and access (Anthropic's preserved-thinking limits, Google's agentic-client flag), so build agents that tolerate API-side restrictions and keep approval gates outside the model.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
