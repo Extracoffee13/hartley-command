@@ -1,43 +1,44 @@
 {
-  "generated": "2026-10-12T17:51:46+00:00",
-  "latest_date": "2026-10-12",
+  "generated": "2026-10-13T09:51:54+00:00",
+  "latest_date": "2026-10-13",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Claude Code 2.1.293–2.1.296: Claude Haiku 5.5 becomes the default Haiku on the Anthropic API (1M context), plus Read allow_large, subagent autoCompactWindow and a shared workflow-subagent model setting",
-      "summary": "Oct 7–10 releases (per Releasebot, which lists first-seen dates): new default cheap/fast model with 1M context, larger MCP tool description limit (4,096 chars), and `claude plugin install --marketplace`.",
-      "tag": "yes",
-      "how": "The Construct: re-point cheap/fast worker agents to claude-haiku-5-5 and test the 4,096-char MCP tool descriptions and subagent autoCompactWindow for long-running swarm workers. PRAGMA: cost/latency tier talking point for client agent builds. Brand 9 Signs: no direct impact.",
-      "url": "https://releasebot.io/updates/anthropic/claude-code"
+      "title": "Sakana AI + UC Berkeley publish MASS: a multi-agent system that acts as its own optimizer and evaluator, distilling collective agent work into self-supervision signals",
+      "summary": "Published Oct 11; the official page reports better output-token efficiency on research benchmarks, aimed at tasks that are hard to verify (via ToolNavs briefing).",
+      "tag": "maybe",
+      "how": "The Construct: relevant agent-architecture pattern for swarm self-evaluation, but self-graded signals conflict with the verify-from-raw-logs rule, so read the paper before borrowing anything. PRAGMA: talking point on self-improving agent loops and their verification limits. Brand 9 Signs: no direct impact.",
+      "url": "https://toolnavs.com/fr/article/2499-briefing-ia-du-12-octobre-alphaproof-nexus-r%C3%A9sout-9-probl%C3%A8mes-ouverts-le-context"
     },
     {
       "n": 2,
-      "title": "METR shows an agent inside an Inspect evaluation could alter the transcript a human reviewer sees (MathJax client-side injection, patched within a day)",
-      "summary": "Oct 6 proof of concept, no observed exploitation; METR argues safety monitoring wrongly assumes the evidence AI systems produce about themselves is trustworthy. Meridian Labs added an untrusted mode that disables rendering of agent output.",
-      "tag": "yes",
-      "how": "The Construct: the dashboard/inbox renders agent-written markdown, so treat agent output as untrusted (sanitize, no script-capable rendering) and have verifiers read raw logs, not agent-formatted summaries. PRAGMA: concrete audit-trail integrity check for governance offers. Brand 9 Signs: no direct impact.",
-      "url": "https://chandima.substack.com/p/weekly-bulletin-11-october-2026"
+      "title": "OpenAI raises default context for GPT-6.1 Sol in Codex and ChatGPT Work from 272k to 500k tokens (max 1M), with no long-context fees on subscriptions",
+      "summary": "Announced Oct 11 by Thibault Sottiaux; context is user-adjustable (via ToolNavs briefing).",
+      "tag": "maybe",
+      "how": "The Construct: benchmark against Claude 1M-context workers for long-running tasks and cost; no action until a cross-model eval exists. PRAGMA: pricing/context comparison point for client model selection. Brand 9 Signs: no direct impact.",
+      "url": "https://toolnavs.com/fr/article/2499-briefing-ia-du-12-octobre-alphaproof-nexus-r%C3%A9sout-9-probl%C3%A8mes-ouverts-le-context"
     },
     {
       "n": 3,
-      "title": "Mistral Large 4 ('Le Chonk') enters public preview: ~1T parameters, 49B active per token, multimodal, via Mistral API and OpenRouter; open weights planned for late October",
-      "summary": "Oct 6–7 (via ToolNavs briefing): ranked 45th on Arena Code WebDev with 1534 points at launch; open-weights release not yet shipped.",
+      "title": "ElevenLabs launches Brand Kit in ElevenCreative: save logo, fonts and brand colors once and generated content applies them automatically",
+      "summary": "Launched Oct 10 alongside a new Singapore office (via ToolNavs briefing).",
       "tag": "maybe",
-      "how": "The Construct: candidate open-weights fallback worker once weights ship; no action until then. PRAGMA: option for clients needing self-hosted models. Brand 9 Signs: no direct impact.",
-      "url": "https://toolnavs.com/fr/article/2378-oct-7-ai-briefing-deepseek-funding-tops-80b-as-mistrals-new-flagship-enters-prev"
+      "how": "Brand 9 Signs: could keep logo/colors consistent in generated video and voice marketing assets, worth a trial against the B9 brand palette. The Construct: pattern of a persistent brand context for generation agents. PRAGMA: client brand-consistency offer.",
+      "url": "https://toolnavs.com/fr/article/2481-briefing-ia-du-11-octobre-grok-bot-fait-les-courses-qiyao-de-huawei-en-t%C3%AAte-des"
     },
     {
       "n": 4,
-      "title": "Claude for Google Workspace enters public beta (sidebar in Docs, Sheets, Slides, confirms before each edit); Claude Code cloud-session guide published",
-      "summary": "Oct 6 (via ToolNavs briefing): each cloud task gets its own VM and branch and can run with the computer off.",
-      "tag": "maybe",
-      "how": "The Construct: confirm-before-edit is the same approval-gate pattern we use; cloud sessions suit unattended routines. PRAGMA: Workspace-based clients can adopt it with a human gate. Brand 9 Signs: maybe for estimate/proposal Docs and Sheets if the team uses Google Workspace.",
-      "url": "https://toolnavs.com/fr/article/2378-oct-7-ai-briefing-deepseek-funding-tops-80b-as-mistrals-new-flagship-enters-prev"
+      "title": "xAI's Grok Bot shopping: Musk says users can photograph a bank card and have Grok find the best price and place the order; OpenAI's Tibo Sottiaux answered with an AI-generated fake card to show the risk",
+      "summary": "Oct 10-11; xAI has published no formal description, and payment authorization, error liability and card-data handling are unexplained (via ToolNavs briefing).",
+      "tag": "yes",
+      "how": "The Construct: reinforces keeping payment and purchase actions behind a human approval gate and never passing card data through agents. PRAGMA: concrete governance example for agentic-commerce risk conversations. Brand 9 Signs: no direct impact.",
+      "url": "https://toolnavs.com/fr/article/2481-briefing-ia-du-11-octobre-grok-bot-fait-les-courses-qiyao-de-huawei-en-t%C3%AAte-des"
     }
   ],
-  "praxis_lesson": "Don't trust what an agent says about itself: METR shows agent-written output can tamper with the reviewer's view, so verify from raw logs and sandboxed renderers, and pair every model upgrade (e.g., Haiku 5.5) with an eval rerun before it becomes the worker default.",
+  "praxis_lesson": "Agents that act (buy, self-grade, self-optimize) need an independent check outside the agent: payment steps behind a human gate and quality signals from raw logs, not the agent's own score.",
   "history": [
+    "2026-10-13",
     "2026-10-12",
     "2026-10-11",
     "2026-10-10",
@@ -50,7 +51,6 @@
     "2026-10-03",
     "2026-10-02",
     "2026-10-01",
-    "2026-09-30",
-    "2026-09-29"
+    "2026-09-30"
   ]
 }

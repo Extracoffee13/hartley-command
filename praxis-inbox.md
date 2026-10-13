@@ -3002,3 +3002,15 @@ lesson: Don't trust what an agent says about itself: METR shows agent-written ou
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-13
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Grok Bot card-based shopping risk (yes), Sakana/Berkeley MASS self-optimizing multi-agent (maybe), GPT-6.1 Sol 500k default context (maybe), ElevenLabs Brand Kit (maybe). No new Anthropic release found after Claude Code 2.1.296.
+lesson: Agents that act (buy, self-grade, self-optimize) need an independent check outside the agent: payment steps behind a human gate and quality signals from raw logs, not the agent's own score.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
