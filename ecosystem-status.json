@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-13T13:00:50+00:00",
+ "generated": "2026-10-13T13:23:42+00:00",
  "writer": "ecosystem-status-writer",
  "hermes": {
   "version": "0.21.4",
@@ -24,7 +24,7 @@
    },
    {
     "name": "orchestrator",
-    "model": "deepseek/deepseek-v4-pro   # 2026-09-23 audit: frontier orchestrator, cheap workers",
+    "model": "deepseek/deepseek-v4-pro",
     "sessions_30d": 6,
     "cost_30d": 0.29,
     "retire": false
@@ -32,7 +32,7 @@
    {
     "name": "publisher",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 1390,
+    "sessions_30d": 1388,
     "cost_30d": 6.23,
     "retire": false
    },
@@ -52,47 +52,18 @@
    }
   ],
   "usage_30d": {
-   "sessions": 1465,
+   "sessions": 1463,
    "cost_usd": 11.32,
-   "input_tokens": 56756005,
-   "output_tokens": 4461578,
-   "cache_read_tokens": 324238314
+   "input_tokens": 56658907,
+   "output_tokens": 4457975,
+   "cache_read_tokens": 323913194
   },
   "cron": {
    "total": 226,
    "enabled": 41,
    "scripts_enabled": 41,
    "agent_jobs_enabled": 0,
-   "failing": [
-    {
-     "profile": "default",
-     "name": "ssl-cert-watcher",
-     "enabled": true,
-     "script": true,
-     "status": "error",
-     "last_run": "2026-10-13T07:01",
-     "schedule": "0 7 * * *",
-     "error": "Script exited with code 1 \u26a0\ufe0f SSL EXPIRING: prag-ma.ai \u2014 -1 days left",
-     "profiles": [
-      "default"
-     ],
-     "fixed": false
-    },
-    {
-     "profile": "default",
-     "name": "construct-digest",
-     "enabled": true,
-     "script": true,
-     "status": "error",
-     "last_run": "2026-10-13T07:05",
-     "schedule": "5 7 * * *",
-     "error": "Script exited with code 1 Run `hermes update` or `hermes gateway restart`.",
-     "profiles": [
-      "default"
-     ],
-     "fixed": false
-    }
-   ],
+   "failing": [],
    "duplicates": [],
    "roster": [
     {
@@ -171,7 +142,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-13T08:30",
+     "last_run": "2026-10-13T09:00",
      "schedule": "*/30 * * * *",
      "error": ""
     },
@@ -181,7 +152,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-13T08:45",
+     "last_run": "2026-10-13T09:15",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -191,7 +162,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-13T08:00",
+     "last_run": "2026-10-13T09:00",
      "schedule": "0 * * * *",
      "error": ""
     },
@@ -210,10 +181,10 @@
      "name": "construct-digest",
      "enabled": true,
      "script": true,
-     "status": "error",
-     "last_run": "2026-10-13T07:05",
+     "status": "ok",
+     "last_run": "2026-10-13T09:21",
      "schedule": "5 7 * * *",
-     "error": "Script exited with code 1 Run `hermes update` or `hermes gateway restart`."
+     "error": ""
     },
     {
      "profile": "default",
@@ -251,7 +222,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-13T08:45",
+     "last_run": "2026-10-13T09:15",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -281,7 +252,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-13T08:00",
+     "last_run": "2026-10-13T09:00",
      "schedule": "0 * * * *",
      "error": ""
     },
@@ -301,7 +272,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-13T08:45",
+     "last_run": "2026-10-13T09:15",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -361,7 +332,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-13T08:30",
+     "last_run": "2026-10-13T09:00",
      "schedule": "*/5 * * * *",
      "error": ""
     },
@@ -391,7 +362,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-13T09:00",
+     "last_run": "2026-10-13T09:22",
      "schedule": "* * * * *",
      "error": ""
     },
@@ -421,7 +392,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-13T08:45",
+     "last_run": "2026-10-13T09:15",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -450,10 +421,10 @@
      "name": "ssl-cert-watcher",
      "enabled": true,
      "script": true,
-     "status": "error",
-     "last_run": "2026-10-13T07:01",
+     "status": "ok",
+     "last_run": "2026-10-13T09:21",
      "schedule": "0 7 * * *",
-     "error": "Script exited with code 1 \u26a0\ufe0f SSL EXPIRING: prag-ma.ai \u2014 -1 days left"
+     "error": ""
     },
     {
      "profile": "default",
@@ -461,7 +432,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-13T08:45",
+     "last_run": "2026-10-13T09:15",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -471,7 +442,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-13T08:30",
+     "last_run": "2026-10-13T09:00",
      "schedule": "*/30 * * * *",
      "error": ""
     },
@@ -491,7 +462,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-13T08:45",
+     "last_run": "2026-10-13T09:15",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -501,7 +472,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-13T08:55",
+     "last_run": "2026-10-13T09:20",
      "schedule": "*/5 * * * *",
      "error": ""
     }
@@ -695,14 +666,14 @@
   "gk_checked_30d": 4
  },
  "digest": {
-  "ts": "2026-10-13T11:05:51+00:00",
-  "sent": false,
+  "ts": "2026-10-13T13:21:38+00:00",
+  "sent": true,
   "lens_items": 0,
   "kanban_done": 0,
   "kanban_blocked": 0,
   "spend_24h": 0.0,
   "harvard_searches_24h": 0,
-  "error": "\u26a0 A previous `hermes update` pulled new code but did not restart running gateways.\n  Gateways may still be serving pre-update modules (mixed sys.modules).\n  Run `hermes update` or `hermes gateway restart`.\n"
+  "error": null
  },
  "harvard": {
   "articles": 3502,
