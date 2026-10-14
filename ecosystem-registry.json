@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "updated": "2026-10-07",
+    "updated": "2026-10-14",
     "note": "Human-curated facts that no script can observe (who the agents are, which ventures are live, owner decisions). Live numbers come from ecosystem-status.json. Edit this file when something is added or dropped."
   },
   "claude": {
@@ -169,7 +169,8 @@
       {
         "name": "construct-console",
         "seat": "Mac Code tab",
-        "does": "Gatekeeper route on every prompt; /hermes, /route, /queue; health band"
+        "does": "Gatekeeper route on every prompt; /hermes, /route, /queue; health band",
+        "status": "removed 2026-10-14 (week-1 evaluation: unused)"
       },
       {
         "name": "construct-guards",
@@ -215,6 +216,18 @@
     }
   ],
   "decisions": [
+    {
+      "date": "2026-10-14",
+      "what": "Signs365 ordering: ONE partner order and ONE shipping charge per customer address (Bobby). Paid partner orders going to the same address by the same ship method are gathered for 30 minutes after the newest payment (3 h max), then built as one Signs365 cart with a line per order, paid together, PO = the lead order. The cart total is split across the orders by their estimated price so the margin guard still works per order. One tracking email and one review email per package. Example: Larry Banks' 3 orders on 10-13 (FBKN, AC8Q, XY4W) would have been one partner order with $10 shipping instead of three at $30."
+    },
+    {
+      "date": "2026-10-14",
+      "what": "Google review email on delivery: when the FedEx events in the partner portal show the package delivered (code DL), the customer gets one email asking for an honest Google review, with Bobby's B9Google QR code built in and a review button. The 10-day check-in no longer asks a second time."
+    },
+    {
+      "date": "2026-10-14",
+      "what": "Construct mods week 1 (Bobby: 'use your best recommendation'): construct-guards kept; construct-memory kept and fixed (it re-checks the Mac link instead of deciding once at session start; the dashboard now flags days with work but no ledger); construct-console removed from the Mac plugin list (unused all week)."
+    },
     {
       "date": "2026-10-12",
       "what": "Vector Studio catalog: Bobby chose fewer, high-end-only 'Signature' designs built per product (cards, distance signs, banners) with customer left/center/right alignment; mass-market looks kept in an 'Everyday' tab. Phase 0 audit + plan PDF delivered (15 signature candidates, 33 everyday, 6 merged); Phase 1 = alignment + layout engine + business cards, pending his review."
