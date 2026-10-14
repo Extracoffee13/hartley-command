@@ -3050,3 +3050,15 @@ lesson: Agent-capable systems are scaling faster than the infrastructure and tru
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-14
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Claude Haiku 5.5 price cut (yes), Anthropic self-replication warning (maybe), Anthropic IPO pitch (maybe), Mistral Large 4 open weights Oct 27 (maybe). No new MCP/Claude Code release verified today.
+lesson: Cheap, capable workers (Haiku 5.5 at 10x lower price) plus rising vendor and security uncertainty mean the winning fleet design is tiered and portable: route high-volume steps to the cheapest adequate model, keep providers swappable, and contain every agent with least-privilege sandboxes.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

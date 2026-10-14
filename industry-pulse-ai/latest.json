@@ -1,15 +1,15 @@
 {
-  "generated": "2026-10-14T09:51:42+00:00",
+  "generated": "2026-10-14T17:51:53+00:00",
   "latest_date": "2026-10-14",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Anthropic details Scion, its in-house Git replacement for a high-volume monorepo",
-      "summary": "Daily monorepo merges grew from ~2,500 (May) to 30,000+ (Sept); seven engineers built Scion plus a review tool, Antique, in five months, and Anthropic claims a 200x smaller VCS infrastructure footprint (vendor-reported).",
-      "tag": "maybe",
-      "how": "The Construct: a data point that agent-heavy workflows outgrow Git assumptions; relevant if swarm merges into shared repos (e.g., hartley-command) start colliding. PRAGMA: talking point on infra limits for agent-scale code generation. Brand 9 Signs: no direct impact.",
-      "url": "https://www.anthropic.com/engineering/redesigning-source-control"
+      "title": "Claude Haiku 5.5 launches (Oct 7) at $0.10/$0.50 per M tokens with configurable effort",
+      "summary": "Anthropic's small model is ~10x cheaper than Haiku 4.5 ($1/$5), adds an effort control, and scores 72.4% on the offline OSWorld 2.1 subset vs 15.7% for Haiku 4.5 (vendor-reported); Sonnet 5.5 cache reads also dropped to $0.10/M.",
+      "tag": "yes",
+      "how": "The Construct: re-route high-volume worker and scan tasks (including this Pulse job) to claude-haiku-5-5 with a low effort setting to cut cost. PRAGMA: cost-per-task talking point for client agent builds. Brand 9 Signs: cheap model for bulk alt-text/product-copy passes.",
+      "url": "https://letsdatascience.com/news/anthropic-releases-claude-haiku-55-with-lower-prices-and-eff-f698c663"
     },
     {
       "n": 2,
@@ -36,7 +36,7 @@
       "url": "https://techmeme.com/261006/p15"
     }
   ],
-  "praxis_lesson": "Agent-capable systems are scaling faster than the infrastructure and trust assumptions around them (source control, device security, vendor finances), so design the fleet for portability and containment: sandboxed least-privilege agents, swappable model providers, and coordination paths that don't assume human-speed commits.",
+  "praxis_lesson": "Cheap, capable workers (Haiku 5.5 at 10x lower price) plus rising vendor and security uncertainty mean the winning fleet design is tiered and portable: route high-volume steps to the cheapest adequate model, keep providers swappable, and contain every agent with least-privilege sandboxes.",
   "history": [
     "2026-10-14",
     "2026-10-13",
