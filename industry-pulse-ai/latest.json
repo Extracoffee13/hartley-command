@@ -1,43 +1,44 @@
 {
-  "generated": "2026-10-13T17:51:30+00:00",
-  "latest_date": "2026-10-13",
+  "generated": "2026-10-14T09:51:42+00:00",
+  "latest_date": "2026-10-14",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Google Gemini 4 Argon rolls out to AI Pro/Ultra subscribers (Oct 13)",
-      "summary": "Available in the Gemini app, AI Mode and Antigravity; Google claims 77.9% on DeepSWE v1.1 with introductory API pricing of $2 in / $10 out per 1M tokens (per AI Weekly roundup; vendor-claimed benchmark).",
+      "title": "Anthropic details Scion, its in-house Git replacement for a high-volume monorepo",
+      "summary": "Daily monorepo merges grew from ~2,500 (May) to 30,000+ (Sept); seven engineers built Scion plus a review tool, Antique, in five months, and Anthropic claims a 200x smaller VCS infrastructure footprint (vendor-reported).",
       "tag": "maybe",
-      "how": "The Construct: benchmark Argon against current coding/agent models for cost-per-task before routing any work to it. PRAGMA: another option for client model-routing advice. Brand 9 Signs: no direct impact.",
-      "url": "https://aiweekly.co/ai-news-today"
+      "how": "The Construct: a data point that agent-heavy workflows outgrow Git assumptions; relevant if swarm merges into shared repos (e.g., hartley-command) start colliding. PRAGMA: talking point on infra limits for agent-scale code generation. Brand 9 Signs: no direct impact.",
+      "url": "https://www.anthropic.com/engineering/redesigning-source-control"
     },
     {
       "n": 2,
-      "title": "Anthropic ships 'preserved thinking' distillation defenses in Claude Fable 5.1 and Opus 5.5 (Oct 12)",
-      "summary": "Anthropic says the safeguards cut data harvesting roughly 90-99% and that newer API accounts are blocked from editing prior context; tens of thousands of accounts were reportedly banned (secondhand via AI Weekly).",
-      "tag": "yes",
-      "how": "The Construct: agents that rewrite or replay prior context through the API may hit the new restrictions on newer accounts; check any context-editing flows. PRAGMA: note for client builds that depend on context manipulation. Brand 9 Signs: no direct impact.",
-      "url": "https://aiweekly.co/ai-news-today"
+      "title": "Anthropic Frontier Red Team warns small open-weight models may soon self-replicate on commercial IoT hardware (Oct 13)",
+      "summary": "A 9B model ran inference on 8 of 9 tested device types; the team says autonomous replication could be months away (vendor research, not independently verified).",
+      "tag": "maybe",
+      "how": "The Construct: reinforces sandboxed, least-privilege agents with outbound-network allowlists. PRAGMA: security-posture selling point for client agent deployments. Brand 9 Signs: no direct impact.",
+      "url": "https://www.anthropic.com/research/self-replicating-ai"
     },
     {
       "n": 3,
-      "title": "Meta launches Muse Wonder and Muse Wonder Full; Full ranks #2 on Artificial Analysis Index v4.3 behind Claude Opus 5.5",
-      "summary": "Priced at $4 in / $20 out per 1M tokens, with 'Active Memory' and 'Active Focus' agent features; Wonder is on the Meta Model API and Muse Code, Full on Muse Code only.",
+      "title": "Anthropic pitches investors at ~$1.8-2T valuation; public IPO filing reportedly expected ~Oct 25",
+      "summary": "Leaked prospectus figures (secondhand via Yahoo Finance) reportedly show a large operating loss and $518B in compute obligations.",
       "tag": "maybe",
-      "how": "The Construct: evaluate Muse Code as an alternate coding worker once API access exists for Full. PRAGMA: add Meta to the model-comparison table. Brand 9 Signs: no direct impact.",
-      "url": "https://aiminutedly.substack.com/p/ai-minute-daily-13102026"
+      "how": "The Construct: vendor-concentration/pricing risk to watch as Anthropic goes public; keep model routing portable. PRAGMA: likely client question (vendor stability). Brand 9 Signs: no direct impact.",
+      "url": "https://finance.yahoo.com/technology/ai/articles/two-exit-doors-anthropic-2-051103937.html"
     },
     {
       "n": 4,
-      "title": "Scuba exits stealth with $34M for an MCP-connected 'context engine' for agents",
-      "summary": "Accel led the pre-seed and IVP co-led the seed; it shares content with AI agents through MCP connectors.",
+      "title": "Mistral Large 4 preview (Oct 6): 1T-parameter multimodal MoE, open weights due Oct 27",
+      "summary": "49B active parameters; Mistral calls it the strongest open-weight model from the US or Europe (vendor claim). Not 24h-new, but weights land in under two weeks (via Techmeme snapshot).",
       "tag": "maybe",
-      "how": "The Construct: watch as a possible shared-context layer across agents. PRAGMA: competitor/partner signal in agent infrastructure. Brand 9 Signs: no direct impact.",
-      "url": "https://aiweekly.co/ai-news-today"
+      "how": "The Construct: candidate self-hostable worker for cheap high-volume tasks once weights ship. PRAGMA: open-weight/data-residency option for clients. Brand 9 Signs: no direct impact.",
+      "url": "https://techmeme.com/261006/p15"
     }
   ],
-  "praxis_lesson": "Platform vendors are tightening what agents can do with context and access (Anthropic's preserved-thinking limits, Google's agentic-client flag), so build agents that tolerate API-side restrictions and keep approval gates outside the model.",
+  "praxis_lesson": "Agent-capable systems are scaling faster than the infrastructure and trust assumptions around them (source control, device security, vendor finances), so design the fleet for portability and containment: sandboxed least-privilege agents, swappable model providers, and coordination paths that don't assume human-speed commits.",
   "history": [
+    "2026-10-14",
     "2026-10-13",
     "2026-10-12",
     "2026-10-11",
@@ -50,7 +51,6 @@
     "2026-10-04",
     "2026-10-03",
     "2026-10-02",
-    "2026-10-01",
-    "2026-09-30"
+    "2026-10-01"
   ]
 }

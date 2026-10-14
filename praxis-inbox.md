@@ -3038,3 +3038,15 @@ lesson: Platform vendors are tightening what agents can do with context and acce
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-14
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Anthropic Scion VCS (maybe), Anthropic self-replication warning (maybe), Anthropic IPO pitch (maybe), Mistral Large 4 open weights Oct 27 (maybe). No new MCP/Claude Code release verified today.
+lesson: Agent-capable systems are scaling faster than the infrastructure and trust assumptions around them (source control, device security, vendor finances), so design the fleet for portability and containment: sandboxed least-privilege agents, swappable model providers, and coordination paths that don't assume human-speed commits.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
