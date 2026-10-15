@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "updated": "2026-10-14",
+    "updated": "2026-10-15",
     "note": "Human-curated facts that no script can observe (who the agents are, which ventures are live, owner decisions). Live numbers come from ecosystem-status.json. Edit this file when something is added or dropped."
   },
   "claude": {
@@ -216,6 +216,26 @@
     }
   ],
   "decisions": [
+    {
+      "date": "2026-10-15",
+      "what": "Out-of-state shop orders traced: the Austin TX ACM purchase and the Angier NC ACM cart both landed first on /shop/acm-signs/ with no referrer; ChatGPT ranks Brand 9 first for custom ACM signs online and quotes the page's exact price ($103.68 for 24x48), linking with rel=noreferrer (shows as 'direct' in GA4). ChatGPT-User fetched the page 4x on 10-12/10-14."
+    },
+    {
+      "date": "2026-10-15",
+      "what": "Scaled the ACM pattern to all 23 shop product pages (_shop1029cu): a Quick facts block + 'Prices for popular sizes' table priced live by the shop engines (159 rows, each opens the price card at that exact price) + buyer-question FAQs ('How much does a 24 x 36 in X cost?', 'Where can I order X online?')."
+    },
+    {
+      "date": "2026-10-15",
+      "what": "Customer emails (_shop1029cu): B9 icon on every customer email; Google review ask now from 'Robert Louis Hartley, Brand 9 Signs' 48 h after FedEx delivery at 10:00 customer time, tracked button + QR, one reminder at +5 days only without a click, one ask per customer, no gating or incentives; small 'More from Brand 9 Signs' block (reorder, one related product, logo cleanup) on order emails; order source (first-touch landing/referrer/utm) + optional 'How did you find us?' saved on each order."
+    },
+    {
+      "date": "2026-10-15",
+      "what": "Daily Google indexing planner (~/AP-v2/_b9_temp/_flywheel/indexq/index_queue.py): ranks every sitemap URL for the ~10 daily Request Indexing slots — shop pages not indexed first, then commercial pages changed since Google's last crawl, then commercial pages at position 4-20 not crawled in 14 days; never re-requests within 7 days. Runs daily with the browser step."
+    },
+    {
+      "date": "2026-10-15",
+      "what": "Partner runner hardening: ship-to attention line cleaned of characters the partner refuses (curly apostrophe stopped B9-261014-QBNF, then placed as 017741001196); the portal tab is reloaded automatically when its ~12 h sign-in token is about to expire, so no sign-in is ever needed for a stale token."
+    },
     {
       "date": "2026-10-14",
       "what": "Mini letters live on /shop/flat-cut-letters/: 1/2 to 3 in flat cut aluminum, brass and bronze (1/8, 3/16, 1/4 in), anodized, oxidized and polished, indoors only, ships in about 10 business days. 0 price mismatches; old products unchanged."
