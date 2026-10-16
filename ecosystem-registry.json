@@ -242,6 +242,14 @@
  "decisions": [
   {
    "date": "2026-10-16",
+   "what": "Terms: online shop orders now stated separately — paid in full by card at checkout, fixed prices with shipping and Florida tax shown before paying, made as approved, all sales final; the 50% deposit terms apply only to sign projects (Bobby: 'paid in full up front')."
+  },
+  {
+   "date": "2026-10-16",
+   "what": "Skills: b9-growth-skills 1.2.0 — new b9-chatgpt-shopping and b9-logo-designer; b9-partner-order-automation (12 h portal sign-in, quiet waits, 3-strike notices, hourly feed self-heal) and b9-shop-search-flywheel updated; copies in ~/Foundry/skills and Hermes ops-worker + orchestrator (md5 match)."
+  },
+  {
+   "date": "2026-10-16",
    "what": "Partner order automation made quiet and self-healing: the supplier portal sign-in lasts 12 h with no refresh, so the runner now waits silently while signed out, resumes on the next sign-in, sends one heads-up before a sign-in ends and one sign-out notice (07:00-21:00 ET only); other stops email only after 3 runs in a row. Replaces the 'paused (tracking)/(delivered)' email storm of 10-16."
   },
   {
