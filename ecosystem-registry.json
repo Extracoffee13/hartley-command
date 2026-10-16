@@ -1,6 +1,6 @@
 {
  "_meta": {
-  "updated": "2026-10-15",
+  "updated": "2026-10-16",
   "note": "Human-curated facts that no script can observe (who the agents are, which ventures are live, owner decisions). Live numbers come from ecosystem-status.json. Edit this file when something is added or dropped."
  },
  "claude": {
@@ -145,24 +145,48 @@
   ],
   "upcoming": [
    {
-    "name": "Mods: does the Cowork plugin load in a fresh session?",
-    "when": "10-08 9:15 ET"
+    "name": "B9 daily Google indexing (planner top 10)",
+    "when": "daily 11:17 ET"
    },
    {
-    "name": "Bing Places: verify, set team@ email, fix listing",
-    "when": "10-12 9:05 ET"
+    "name": "GSC: request indexing for retuned shop pages",
+    "when": "10-17 10:05 ET"
    },
    {
-    "name": "Mods trial: week-1 evaluation (PDF)",
-    "when": "10-14 9:20 ET"
+    "name": "ChatGPT shop prompts: weekly re-measure (baseline 6/24)",
+    "when": "10-19 10:20 ET"
+   },
+   {
+    "name": "B9 design flywheel: weekly learn",
+    "when": "10-19 10:30 ET"
    },
    {
     "name": "Re-measure Fleming Island rankings",
     "when": "10-20 9:35 ET"
    },
    {
+    "name": "B9 shop search flywheel: weekly measure + improve",
+    "when": "10-20 9:45 ET"
+   },
+   {
+    "name": "Construct memory: week-2 measurement",
+    "when": "10-21 9:20 ET"
+   },
+   {
     "name": "B9 golden-ratio pivot checkpoint",
     "when": "10-26 9:00 ET"
+   },
+   {
+    "name": "B9 monthly AI visibility probe",
+    "when": "11-01 8:45 ET"
+   },
+   {
+    "name": "Read shop-search-1014 measurement",
+    "when": "11-11 10:10 ET"
+   },
+   {
+    "name": "Homepage two-lane day-30 check",
+    "when": "11-12 10:20 ET"
    }
   ],
   "mods": [
@@ -216,6 +240,22 @@
   }
  ],
  "decisions": [
+  {
+   "date": "2026-10-16",
+   "what": "Partner order automation made quiet and self-healing: the supplier portal sign-in lasts 12 h with no refresh, so the runner now waits silently while signed out, resumes on the next sign-in, sends one heads-up before a sign-in ends and one sign-out notice (07:00-21:00 ET only); other stops email only after 3 runs in a row. Replaces the 'paused (tracking)/(delivered)' email storm of 10-16."
+  },
+  {
+   "date": "2026-10-16",
+   "what": "3rd ChatGPT order traced: NC business cards (B9-261015-EHUK) landed on /shop/business-cards/?utm_source=chatgpt.com and paid 21 min later. Sign-in now carries the first visit through the emailed link, so future orders keep their real source."
+  },
+  {
+   "date": "2026-10-16",
+   "what": "ChatGPT baseline: Brand 9 named in 6 of 24 buyer prompts, #1 in 1. Shipped: buyer-question facts on all 24 shop pages, AI catalog (/shop/catalog/), ChatGPT product feed (307 rows) + Stripe agentic catalog, per-crawler robots.txt (no Bing delay), synced sitemaps, hourly feed self-rebuild. Owner step: apply at chatgpt.com/merchants."
+  },
+  {
+   "date": "2026-10-16",
+   "what": "Logo designer pivot phase 1 live: 'Builds as' fabrication check on every concept (10 sign/print methods, buildable-version button), review no longer overwrites customer edits, symbol endpoint closed to scripts, AI logo rescue page; house-sign/plaque/cart mobile blockers fixed."
+  },
   {
    "date": "2026-10-15",
    "what": "Mac queue fast lane: NAME.fast.sh jobs run on a separate launchd agent (com.ans.fastrunner, every 5 s, 120 s cap) so quick checks, sends and small edits never wait behind a slow main-lane job. Measured 8 s while the main lane was busy."
