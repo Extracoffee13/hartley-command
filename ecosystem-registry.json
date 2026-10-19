@@ -1,613 +1,625 @@
 {
-  "_meta": {
-    "updated": "2026-10-16",
-    "note": "Human-curated facts that no script can observe (who the agents are, which ventures are live, owner decisions). Live numbers come from ecosystem-status.json. Edit this file when something is added or dropped."
-  },
-  "claude": {
-    "a_team": [
-      {
-        "name": "Keystone",
-        "role": "Strategy",
-        "does": "Venture strategy, sequencing, go/no-go calls"
-      },
-      {
-        "name": "Ledger",
-        "role": "Unit economics",
-        "does": "Pricing, margins, model and token cost math"
-      },
-      {
-        "name": "Scout",
-        "role": "Market intel",
-        "does": "Competitors, market sizing, source-cited research"
-      },
-      {
-        "name": "Vector",
-        "role": "Design",
-        "does": "All graphics and renders, behind the vector-design gate"
-      },
-      {
-        "name": "Hermes",
-        "role": "Credentialed execution",
-        "does": "Runs work on the Mac: deploys, SSH, keys, cron"
-      }
-    ],
-    "operators": [
-      {
-        "name": "Atlas",
-        "role": "Lennar operations",
-        "does": "Lennar community dashboard, inventory and zones",
-        "link": "atlas.html"
-      },
-      {
-        "name": "Pulse",
-        "role": "Industry pulse",
-        "does": "Daily AI/agent and signage industry briefs"
-      },
-      {
-        "name": "Prism",
-        "role": "Trade-area analysis",
-        "does": "Trade-area and demographic views for client sites"
-      }
-    ],
-    "skills_count": 141,
-    "routines_snapshot_date": "2026-10-07",
-    "routines": [
-      {
-        "name": "Industry pulse daily",
-        "when": "5:50 / 9:50 / 13:50 ET",
-        "last": "succeeded 10-07"
-      },
-      {
-        "name": "Lens daily corpus scan",
-        "when": "5:34 / 9:34 / 13:34 ET",
-        "last": "succeeded 10-07"
-      },
-      {
-        "name": "B9 redirect guard",
-        "when": "Daily 6:30 ET",
-        "last": "succeeded 10-07"
-      },
-      {
-        "name": "Gbp autopilot",
-        "when": "Daily 8:20 ET",
-        "last": "succeeded 10-07"
-      },
-      {
-        "name": "B9 batch postpublish watch",
-        "when": "Daily 9:00 ET",
-        "last": "succeeded 10-07"
-      },
-      {
-        "name": "Gbp api approval watch",
-        "when": "Daily 9:00 ET",
-        "last": "succeeded 10-06"
-      },
-      {
-        "name": "Leads inbox scan",
-        "when": "9 / 13 / 17 ET",
-        "last": "succeeded 10-07"
-      },
-      {
-        "name": "Construct ops sweep",
-        "when": "10:45 / 14:45 ET",
-        "last": "succeeded 10-06"
-      },
-      {
-        "name": "Content engine",
-        "when": "Tue & Fri 10:00 ET",
-        "last": "not yet run (first 10-09)"
-      },
-      {
-        "name": "Industry Pulse — Signage",
-        "when": "Weekdays 12:00 UTC",
-        "last": "succeeded 10-07"
-      },
-      {
-        "name": "Industry Pulse — AI/Agent",
-        "when": "Daily 12:30 UTC",
-        "last": "succeeded 10-07"
-      },
-      {
-        "name": "Skill Discovery Sweep",
-        "when": "Daily 11:00 UTC",
-        "last": "succeeded 10-07"
-      },
-      {
-        "name": "First-Principles Spike",
-        "when": "Weekdays 18:00 UTC",
-        "last": "succeeded 10-06"
-      },
-      {
-        "name": "Hartley Capital Watch",
-        "when": "Weekdays 20:00 UTC",
-        "last": "succeeded 10-06"
-      },
-      {
-        "name": "Daily Construct Standup",
-        "when": "Weekdays 22:00 UTC",
-        "last": "succeeded 10-06"
-      },
-      {
-        "name": "Pragma threatd weekly",
-        "when": "Mondays 7:15 ET",
-        "last": "succeeded 10-05"
-      },
-      {
-        "name": "B9 Big Job Radar",
-        "when": "Mondays 11:00 UTC",
-        "last": "succeeded 10-05"
-      },
-      {
-        "name": "B9 monthly machine-traffic report",
-        "when": "1st of month",
-        "last": "succeeded 10-01"
-      }
-    ],
-    "upcoming": [
-      {
-        "name": "B9 daily Google indexing (planner top 10)",
-        "when": "daily 11:17 ET"
-      },
-      {
-        "name": "GSC: request indexing for retuned shop pages",
-        "when": "10-17 10:05 ET"
-      },
-      {
-        "name": "ChatGPT shop prompts: weekly re-measure (baseline 6/24)",
-        "when": "10-19 10:20 ET"
-      },
-      {
-        "name": "B9 design flywheel: weekly learn",
-        "when": "10-19 10:30 ET"
-      },
-      {
-        "name": "Re-measure Fleming Island rankings",
-        "when": "10-20 9:35 ET"
-      },
-      {
-        "name": "B9 shop search flywheel: weekly measure + improve",
-        "when": "10-20 9:45 ET"
-      },
-      {
-        "name": "Construct memory: week-2 measurement",
-        "when": "10-21 9:20 ET"
-      },
-      {
-        "name": "B9 golden-ratio pivot checkpoint",
-        "when": "10-26 9:00 ET"
-      },
-      {
-        "name": "B9 monthly AI visibility probe",
-        "when": "11-01 8:45 ET"
-      },
-      {
-        "name": "Read shop-search-1014 measurement",
-        "when": "11-11 10:10 ET"
-      },
-      {
-        "name": "Homepage two-lane day-30 check",
-        "when": "11-12 10:20 ET"
-      }
-    ],
-    "mods": [
-      {
-        "name": "construct-console",
-        "seat": "Mac Code tab",
-        "does": "Gatekeeper route on every prompt; /hermes, /route, /queue; health band",
-        "status": "removed 2026-10-14 (week-1 evaluation: unused)"
-      },
-      {
-        "name": "construct-guards",
-        "seat": "Mac + Cowork",
-        "does": "No .md or Drive deliverables; flags done-claims made without a check; asks for sources"
-      },
-      {
-        "name": "construct-memory",
-        "seat": "Mac + Cowork",
-        "does": "One shared ledger for every session and project; recall on each prompt; Hermes skill mirror"
-      }
-    ]
-  },
-  "ventures": [
-    {
-      "name": "Brand 9 Signs",
-      "status": "active",
-      "focus": "Website, Google & Bing local (Orange Park, Fleming Island, Jacksonville), leads; channel letters dropped 10-06",
-      "link": "https://brand9signs.com"
-    },
-    {
-      "name": "PRAGMA",
-      "status": "active",
-      "focus": "Agentic OS for small businesses; AI-visibility service",
-      "link": "https://prag-ma.ai"
-    },
-    {
-      "name": "Nana Buns",
-      "status": "active",
-      "focus": "Family food brand; site live, Etsy"
-    },
-    {
-      "name": "Lennar Atlas",
-      "status": "active",
-      "focus": "Lennar community operations dashboard",
-      "link": "atlas.html"
-    },
-    {
-      "name": "Hartley Capital",
-      "status": "active",
-      "focus": "Holding company",
-      "link": "hartley-equity.html"
-    }
+ "_meta": {
+  "updated": "2026-10-16",
+  "note": "Human-curated facts that no script can observe (who the agents are, which ventures are live, owner decisions). Live numbers come from ecosystem-status.json. Edit this file when something is added or dropped."
+ },
+ "claude": {
+  "a_team": [
+   {
+    "name": "Keystone",
+    "role": "Strategy",
+    "does": "Venture strategy, sequencing, go/no-go calls"
+   },
+   {
+    "name": "Ledger",
+    "role": "Unit economics",
+    "does": "Pricing, margins, model and token cost math"
+   },
+   {
+    "name": "Scout",
+    "role": "Market intel",
+    "does": "Competitors, market sizing, source-cited research"
+   },
+   {
+    "name": "Vector",
+    "role": "Design",
+    "does": "All graphics and renders, behind the vector-design gate"
+   },
+   {
+    "name": "Hermes",
+    "role": "Credentialed execution",
+    "does": "Runs work on the Mac: deploys, SSH, keys, cron"
+   }
   ],
-  "decisions": [
-    {
-      "date": "2026-10-19",
-      "what": "Shop search: every product page now opens with exact prices for the sizes buyers ask AI assistants about (e.g. 12x18 aluminum, 3x6 ft banner, flat-cut letters per letter), from the live price engine; weekly ChatGPT measure feeds lost prompts back into those lines the same week (Bobby: 'Make the pivots to recapture')."
-    },
-    {
-      "date": "2026-10-19",
-      "what": "Design flywheel: a pattern must come from 20 different visitors, not 20 clicks; week 1 installed nothing (card picks came from 4 visitors)."
-    },
-    {
-      "date": "2026-10-19",
-      "what": "Shop pricing: volume ladder extended to 35% off at 1,000 pieces; the margin floor now steps from 40% down to 25% as the full-price line value grows ($2,500 / $10k / $25k / $50k tiers). Applies to printed signs, displays and dimensional; no live price rose (Bobby: 'logical price drops on larger quantity and dollar amounts')."
-    },
-    {
-      "date": "2026-10-19",
-      "what": "Sales source: every non-Jacksonville online shop sale so far came from an AI assistant (ChatGPT x3 buyers incl. one repeat buyer, Copilot x1). Priority: Bing/IndexNow freshness and lift-ready product facts on every page."
-    },
-    {
-      "date": "2026-10-19",
-      "what": "Access: twice-daily sign-in watchdog over 13 vendor sites; it only clicks sign-in where Chrome or Google SSO already fills the account, never types credentials. Waiting on the owner's one-time Accessibility grant for the click helper (Bobby: 'This cannot be a daily ritual')."
-    },
-    {
-      "date": "2026-10-19",
-      "what": "Local listings: Bing Places listing claimed; verification postcard requested (due ~10-26). Merchant Center: Google Analytics linked as the purchase key-event source (Active)."
-    },
-    {
-      "date": "2026-10-19",
-      "what": "Skills: b9-growth-skills 1.4.0 (volume pricing rule, auto sign-in + access watchdog, AI sales trace, no-proof copy rule); copies in ~/Foundry/skills and Hermes ops-worker + orchestrator."
-    },
-    {
-      "date": "2026-10-16",
-      "what": "Terms: online shop orders now stated separately — paid in full by card at checkout, fixed prices with shipping and Florida tax shown before paying, made as approved, all sales final; the 50% deposit terms apply only to sign projects (Bobby: 'paid in full up front')."
-    },
-    {
-      "date": "2026-10-16",
-      "what": "Skills: b9-growth-skills 1.2.0 — new b9-chatgpt-shopping and b9-logo-designer; b9-partner-order-automation (12 h portal sign-in, quiet waits, 3-strike notices, hourly feed self-heal) and b9-shop-search-flywheel updated; copies in ~/Foundry/skills and Hermes ops-worker + orchestrator (md5 match)."
-    },
-    {
-      "date": "2026-10-16",
-      "what": "Partner order automation made quiet and self-healing: the supplier portal sign-in lasts 12 h with no refresh, so the runner now waits silently while signed out, resumes on the next sign-in, sends one heads-up before a sign-in ends and one sign-out notice (07:00-21:00 ET only); other stops email only after 3 runs in a row. Replaces the 'paused (tracking)/(delivered)' email storm of 10-16."
-    },
-    {
-      "date": "2026-10-16",
-      "what": "3rd ChatGPT order traced: NC business cards (B9-261015-EHUK) landed on /shop/business-cards/?utm_source=chatgpt.com and paid 21 min later. Sign-in now carries the first visit through the emailed link, so future orders keep their real source."
-    },
-    {
-      "date": "2026-10-16",
-      "what": "ChatGPT baseline: Brand 9 named in 6 of 24 buyer prompts, #1 in 1. Shipped: buyer-question facts on all 24 shop pages, AI catalog (/shop/catalog/), ChatGPT product feed (307 rows) + Stripe agentic catalog, per-crawler robots.txt (no Bing delay), synced sitemaps, hourly feed self-rebuild. Owner step: apply at chatgpt.com/merchants."
-    },
-    {
-      "date": "2026-10-16",
-      "what": "Logo designer pivot phase 1 live: 'Builds as' fabrication check on every concept (10 sign/print methods, buildable-version button), review no longer overwrites customer edits, symbol endpoint closed to scripts, AI logo rescue page; house-sign/plaque/cart mobile blockers fixed."
-    },
-    {
-      "date": "2026-10-15",
-      "what": "Mac queue fast lane: NAME.fast.sh jobs run on a separate launchd agent (com.ans.fastrunner, every 5 s, 120 s cap) so quick checks, sends and small edits never wait behind a slow main-lane job. Measured 8 s while the main lane was busy."
-    },
-    {
-      "date": "2026-10-15",
-      "what": "Restored 5 lost WordPress product pages (squadron name, title, name & title signs; modern acrylic and home name signs) with original prices and 25 photos; audit found 12 more house/address-sign products redirecting to /portfolio/."
-    },
-    {
-      "date": "2026-10-15",
-      "what": "Out-of-state shop orders traced: the Austin TX ACM purchase and the Angier NC ACM cart both landed first on /shop/acm-signs/ with no referrer; ChatGPT ranks Brand 9 first for custom ACM signs online and quotes the page's exact price ($103.68 for 24x48), linking with rel=noreferrer (shows as 'direct' in GA4). ChatGPT-User fetched the page 4x on 10-12/10-14."
-    },
-    {
-      "date": "2026-10-15",
-      "what": "Scaled the ACM pattern to all 23 shop product pages (_shop1029cu): a Quick facts block + 'Prices for popular sizes' table priced live by the shop engines (159 rows, each opens the price card at that exact price) + buyer-question FAQs ('How much does a 24 x 36 in X cost?', 'Where can I order X online?')."
-    },
-    {
-      "date": "2026-10-15",
-      "what": "Customer emails (_shop1029cu): B9 icon on every customer email; Google review ask now from 'Robert Louis Hartley, Brand 9 Signs' 48 h after FedEx delivery at 10:00 customer time, tracked button + QR, one reminder at +5 days only without a click, one ask per customer, no gating or incentives; small 'More from Brand 9 Signs' block (reorder, one related product, logo cleanup) on order emails; order source (first-touch landing/referrer/utm) + optional 'How did you find us?' saved on each order."
-    },
-    {
-      "date": "2026-10-15",
-      "what": "Daily Google indexing planner (~/AP-v2/_b9_temp/_flywheel/indexq/index_queue.py): ranks every sitemap URL for the ~10 daily Request Indexing slots — shop pages not indexed first, then commercial pages changed since Google's last crawl, then commercial pages at position 4-20 not crawled in 14 days; never re-requests within 7 days. Runs daily with the browser step."
-    },
-    {
-      "date": "2026-10-15",
-      "what": "Partner runner hardening: ship-to attention line cleaned of characters the partner refuses (curly apostrophe stopped B9-261014-QBNF, then placed as 017741001196); the portal tab is reloaded automatically when its ~12 h sign-in token is about to expire, so no sign-in is ever needed for a stale token."
-    },
-    {
-      "date": "2026-10-14",
-      "what": "Mini letters live on /shop/flat-cut-letters/: 1/2 to 3 in flat cut aluminum, brass and bronze (1/8, 3/16, 1/4 in), anodized, oxidized and polished, indoors only, ships in about 10 business days. 0 price mismatches; old products unchanged."
-    },
-    {
-      "date": "2026-10-14",
-      "what": "Chrome on AP-Agent: signs365.com added to Memory Saver 'Always keep these sites active' through the TabDiscardingExceptions policy, so the partner automation tab is never frozen again (verified in chrome://policy and Settings > Performance)."
-    },
-    {
-      "date": "2026-10-14",
-      "what": "Customer shipping: one charge per address too (Bobby). In one checkout, partner-made items going to the same address pay ONE shipping charge (the highest); the others ship free in the same package and the cart shows the saving. A-frames and other separately shipped items keep their own shipping. Live _shop1029ci."
-    },
-    {
-      "date": "2026-10-14",
-      "what": "Header: 'Order online' and 'Book a site walk' are now the exact same height on every page (44 px desktop, 36 px small laptop, 48 px phone; 202 pages + 31 shop pages, measured live)."
-    },
-    {
-      "date": "2026-10-14",
-      "what": "New free page /shop/logo-cleanup/: upload a logo, see how large it prints sharp, remove the background, get the automatic vector version, download PNG + SVG. Nothing to order."
-    },
-    {
-      "date": "2026-10-14",
-      "what": "Dimensional catalog gaps added: cast letters with round or prismatic faces, 8 more lit acrylic styles (incl. trimless halo), and 3/8 in ADA raised print. 0 price mismatches server vs browser; old products unchanged."
-    },
-    {
-      "date": "2026-10-14",
-      "what": "Signs365 ordering: ONE partner order and ONE shipping charge per customer address (Bobby). Paid partner orders going to the same address by the same ship method are gathered for 30 minutes after the newest payment (3 h max), then built as one Signs365 cart with a line per order, paid together, PO = the lead order. The cart total is split across the orders by their estimated price so the margin guard still works per order. One tracking email and one review email per package. Example: Larry Banks' 3 orders on 10-13 (FBKN, AC8Q, XY4W) would have been one partner order with $10 shipping instead of three at $30."
-    },
-    {
-      "date": "2026-10-14",
-      "what": "Google review email on delivery: when the FedEx events in the partner portal show the package delivered (code DL), the customer gets one email asking for an honest Google review, with Bobby's B9Google QR code built in and a review button. The 10-day check-in no longer asks a second time."
-    },
-    {
-      "date": "2026-10-14",
-      "what": "Construct mods week 1 (Bobby: 'use your best recommendation'): construct-guards kept; construct-memory kept and fixed (it re-checks the Mac link instead of deciding once at session start; the dashboard now flags days with work but no ledger); construct-console removed from the Mac plugin list (unused all week)."
-    },
-    {
-      "date": "2026-10-12",
-      "what": "Vector Studio catalog: Bobby chose fewer, high-end-only 'Signature' designs built per product (cards, distance signs, banners) with customer left/center/right alignment; mass-market looks kept in an 'Everyday' tab. Phase 0 audit + plan PDF delivered (15 signature candidates, 33 everyday, 6 merged); Phase 1 = alignment + layout engine + business cards, pending his review."
-    },
-    {
-      "date": "2026-10-12",
-      "what": "B9 shop: plastic-frame A-frame added beside the aluminum frame (Bobby; $199 draft, double-sided matte inserts), price-by-size tables on every product page, and a Merchant Center product feed (56 items) ready for Google and Microsoft free listings once Bobby opens the accounts (_shop1029j, verified live)."
-    },
-    {
-      "date": "2026-10-12",
-      "what": "B9 shop: lead time set to 1-3 business days sitewide (Bobby), homepage 'Two ways to work with Brand 9' band shipped (approved), shop accuracy fixes (_shop1029i, verified live). Organic outrank plan adopted: Merchant Center free listings + reviews + E-GEO page rewrites + video and third-party mentions; no ads, no doorway pages. Gatekeeper: ops-worker (deploy, risky) and orchestrator (plan, not risky)."
-    },
-    {
-      "date": "2026-10-12",
-      "what": "B9 shop options audited against Signs365 (Bobby's signed-in portal; product API + order-page code) and shipped in _shop1029f: corrected coro 10mm (HD stakes only; no stakes/grommets), banner hem choices (grommet layouts, pole pockets or rope; partner exclusions), acrylic drilled standoffs priced per hole from the partner layout plus 4 corner radii and contour, contour on PVC/foam/aluminum/ACM/films, gloss per sheet, laminate choice on wraps and decals, cling application sides; runner mapping fixed to the portal's encodings (quantity 1 on switches, point counts for grommets/standoffs, rope top+bottom). Studio draws holes and warns on art over them. Parity 10,500 quotes / 336 layouts, 0 mismatches. Watch: hidden options 38 and 36 on first orders."
-    },
-    {
-      "date": "2026-10-12",
-      "what": "B9 shop search levers (Gatekeeper: ops-worker / publisher / orchestrator, all owner-flagged; run under Bobby's standing go). Shipped _shop1029a: hasMerchantReturnPolicy on every shop Offer, mirroring the existing /shipping-and-returns/ page (custom goods, all sales final, carrier damage handled) - Rich Results Test shows merchant listings valid with the warning gone, GSC fix validation started; visible FAQ + FAQPage on /shop/ and the Logo Designer; ItemList on /shop/; Shipping & Returns link on 18 shop pages; llms.txt shop + design sections; both sitemaps resubmitted in GSC; IndexNow 200 (42 URLs). Held for the owner: Google/Bing Merchant Center account (account creation + terms). Not done: theme landing pages (scaled-content risk), review markup without real reviews."
-    },
-    {
-      "date": "2026-10-12",
-      "what": "ArtCraft adopted into the Construct (owner request). VectorCraft v0.9.0 (storytold Crafting Apps, MIT/Apache, Illustrator replacement) installed on the agent Mac: notarized Developer ID 'Learning Machines LLC', SHA-256 verified; registered as Claude Code MCP 'vectorcraft' (headless, read ~/Foundry/_vc, write ~/Foundry/_vc/out); CLI for Hermes; Linux build verified in the cloud container. New tool b9_signprep (outlined text, CMYK, PDF/X-4, CutContour spot + DXF, report.json) verified on a real Vector Studio yard-sign file. Rule: output goes beside existing production files until a RIP test confirms CutContour/PDF-X at the shop. PhotoCraft/FilmCraft etc. experimental (self-reported 25-45% ready); generative AI stays with Higgsfield. Skill: artcraft-vectorcraft."
-    },
-    {
-      "date": "2026-10-11",
-      "what": "B9 Logo Designer paid tier (decided by the Construct; owner delegated the call. Gatekeeper/JEV: orchestrator, risk=false, owner_gate=false). DECISION: 'Sign-Ready Brand Kit', $79 one-time, everything generated by Vector (no human-finish claims; the $149 'Sign-Shop Finish' is retired). Contents: the $29 file pack + brand guidelines PDF (palette HEX/RGB/CMYK, type pairing, clear space, minimum sizes) + business card, letterhead and email signature + social kit + sign spec sheet (letter height by viewing distance) + true-scale mockups on B9 products. Credit: $29 of it toward a $99+ B9 sign within 90 days (crediting all $79 needs ~3x more sign orders to pay back; Ledger). Inputs: Scout (one-time premium band $60-95: Fiverr $60/$90, Looka $65, Brandmark $95; VistaPrint gives files free; no competitor offers sign-ready files, true-scale sign mockups or a sign credit), Ledger (AI cost ~$2-5 per kit, ~90-96% margin; tie extra AI allowance to the paid order id; separate symbol budget). Status: build queued (needs kit SKU in logo-lib credit code, client-side PDF builder)."
-    },
-    {
-      "date": "2026-10-11",
-      "what": "B9 shop + design-tool audit #2 run through the Construct (Gatekeeper: orchestrator, owner-gated -> Bobby's standing go). Vector audits found 23 shop + 24 tool findings (P1: cart allowed partial yard-sign sheets; sticky price under header; Studio styles overlapping text; logo kerning lost by opentype.js). Two Vector fix agents in isolated copies; fixes merged, tested and deployed as _shop1027a (HarfBuzz kerning, text-vs-decoration review, 4-step Studio rail, Ember hero CTAs, print grid on the shop hub, review form folded, cart steps by sheet). Project doc: b9-shop-tools-audit2-LIVE-2026-10-11."
-    },
-    {
-      "date": "2026-10-07",
-      "what": "Signage store direction set by Bobby: BUILD OUR OWN designer + cart on brand9signs.com (no Etsy, no SaaS tool). Differentiator = a live architectural-film FINISH picker (3M DI-NOC via Grimco: brushed metal, wood, stone, carbon, color-shift) + export that speaks the shop's language (film SKU + face as a job ticket). Stack: Fabric.js editor (text/logo/2-sided), 2D finish compositing (WebGL only for the lit glow), vector PDF with outlined fonts + job ticket, pricing.json, static site + serverless + Stripe Checkout. Build-our-own beats SaaS because the finish library and the shop-language export are the whole point and a rented widget won't bend. Top risk: RGB canvas -> CMYK/ICC shop print + outlined fonts -> FIRST task is one design round-tripped to a correct printed proof, then the MVP editor. Reverses the earlier Zakeke/Etsy lean. Plan: project doc b9-signage-store-and-design-tool-plan-2026-10-07.md. Pending from Bobby: printed-vs-applied finishes, the shop RIP/ICC, a 6-10 Grimco film shortlist, the A-frame/lit spec + a Stripe account."
-    },
-    {
-      "date": "2026-10-07",
-      "what": "Signage e-commerce + high-end design tool scoped via the Construct (Gatekeeper: orchestrator T2, owner-decision; Scout + design-tool scan + Ledger in parallel). Anchor product: double-sided A-frame / lit sidewalk signs (seen on RVLightBender Etsy, ~$342). Verdict: product is right and VistaPrint is beatable (no lit option), but the risk is DEMAND not the tool — B9's own store did ~12 orders in 2022-24 and GA4 shows ~0 e-comm in 365 days. Plan is staged: Phase 0 prove demand 30-60 days (1-2 made A-frames on Etsy + a Stripe Buy-Now, $300-500 ads, measure CAC and real shipping) BEFORE any tool; Phase 1 license Zakeke (flat, no per-order fee) skinned to the B9 brand, 3-5 templates, print-ready to the shop — not a $15-60k custom build; Phase 2 scale. Cart scope stays small shippable items only (military->estimate, barricades->never, builders->quote). Owner go/no-go pending on Phase 0 + 4 shop numbers. Plan: project doc b9-signage-store-and-design-tool-plan-2026-10-07.md."
-    },
-    {
-      "date": "2026-10-07",
-      "what": "MIMIC tool audited (github littledivy/mimic: capture your own app traffic -> Claude writes a Python client that replays your login). Verdict: adopt the PATTERN now (export our own HAR from a credentialed web tool -> AI-written typed client for Hermes, replacing slow browser-automation), adopt the TOOL only where a tool WE own has no API. Not for competitors or any account/data we don't own (ToS/legal), and never a replacement for GSC/GA4/GBP/IndexNow. Governance: a captured session is a live credential -> Mac-only like the APS secret, Gatekeeper owner-gated, codegen runs in the Code tab (claude -p is 'not logged in' headless). No clean B9 pilot right now: the slow manual tools (Yelp, Bing Places, Apple Business Connect) are third-party (ToS line), and the tools we own (site/SSH, SiteGround CLI, WordPress, GSC/GA4/GBP/IndexNow/Bing Webmaster) already have real APIs. Parked as a ready pattern; first pilot likely a future company's internal tool or a genuine API-less vendor portal. Full audit: project doc mimic-tool-audit-2026-10-07.md."
-    },
-    {
-      "date": "2026-10-07",
-      "what": "The four 'failing' services resolved. Cause: launchd could not open their log files inside ~/Documents (macOS privacy), so each run died at start with exit 78 before the script ran. hermes-inbox-exec (runs dashboard/voice commands sent to Hermes) kept, logs moved to ~/Library/Logs/hartley, now exit 0. ai-citation-probe and pragma-daily (PRAGMA Mirror, paused 09-23) and model-eval-weekly (fed the model arena removed in v5) retired: unloaded, plists kept in ~/Library/LaunchAgents/_disabled_20261007."
-    },
-    {
-      "date": "2026-10-07",
-      "what": "Construct pivot: Claude Code mods become the fourth layer, beside Gatekeeper, Hermes and Claude agents. A mod runs inside Claude Code; its best seat is the Code tab on AP-Agent, where Gatekeeper, Hermes and the queue are local calls (Gatekeeper route ~1 s, against 30–50 s through a Cowork queue job). Three mods on a one-week trial, 10-07 to 10-14: construct-console, construct-guards and construct-memory. Evaluation 10-14."
-    },
-    {
-      "date": "2026-10-07",
-      "what": "Shared memory across sessions and projects: every turn from every Claude session (the Mac directly, Cowork through the linked Mac) goes to one ledger in ~/Foundry/_construct/ledger; each new request recalls related prior work; a Claude skill edited on the Mac is copied into the Hermes profiles that carry it."
-    },
-    {
-      "date": "2026-10-07",
-      "what": "Found four background services down with launchd exit 78 that the old status feed never showed: hermes-inbox-exec, ai-citation-probe, pragma-daily and model-eval-weekly. They now appear under System core whenever any Construct service is down."
-    },
-    {
-      "date": "2026-10-07",
-      "what": "Dashboard cleaned up: paused ventures (ANS · VironBox · Hypercube, STRUO) removed from view; routines rebuilt from the 18 live recurring tasks plus 5 dated checks; finished one-off decisions moved to history."
-    },
-    {
-      "date": "2026-10-06",
-      "what": "Brand 9: channel letters dropped from the offering; the Orange Park & Fleming Island page and the homepage rewritten for custom, commercial and outdoor signs to win the 'near me' local pack."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "Hermes + JEV audit applied. Web search moved off the exhausted Tavily plan (search: DuckDuckGo, extract: Exa keyless) — tested live. Fallback chain fixed: the old comma-string was ignored, so there was no fallback at all; now Gemini 2.5 Flash first, then two OpenRouter models — tested by forcing a failure. OpenRouter data_collection: deny. Orchestrator on DeepSeek v4-pro, workers stay on flash, cron pinned to flash. Holographic local memory on (default, orchestrator, research)."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "JEV: four questions per call (agent, risk, size, owner-approval), gates on JEV's calibrated confidence (act >= 0.50, click-guard 'go' >= 0.85), logs the answering model (Vercel only serves the 'jev' alias, so version pinning isn't possible there). New: gk ask (open question -> flash / pro / Claude), gk lead (Brand 9 lead score 0-100, wired into leads_writer), gk swarm (hard research -> parallel workers + pro verifier), JEV done-check in shadow mode (nightly, log only). Vercel credits not bought: $0 spend, no rate limits in 81 live calls; the digest flags 429s."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "JEV click-guard added for browser work (gk guard): before each browser step JEV answers go / stop / wrong page; money, cancel, delete, sign-in, send and publish words always stop. Tested: it stopped 'Pay now' and flagged a Google sign-in on a server-check task as the wrong page. Lens routine rewritten without WOLF or Slack; 'Pragma mirror llm browser weekly' routine disabled."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "Gatekeeper risk guard widened after a JEV test: 'Destroy the Vultr GPU server... stop billing' had routed to DeepSeek flash. Destroy, terminate, cancel, refund, billing, subscription, renewal and purchase now always go to Claude."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "Kanban is now the work path: gk run puts every Gatekeeper task on the Hermes Kanban board; unsure or risky work also gets a checker card that re-tests the result before it counts as done; the last card alerts Bobby on Telegram. Hermes gateway restarted onto the updated code. First checker caught brand9signs.com answering HTTP 202 (SiteGround captcha wall), not 200."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "Daily Telegram digest at 7:05 ET (Lens headlines, Kanban cards finished or stuck, jobs needing attention, spend, Harvard searches)."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "Harvard corpus made searchable (3,416 articles, rebuilt daily 4:45 ET). Keystone and Scout must search and cite it before every recommendation; every search is logged and counted on the dashboard."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "Gatekeeper live: JEV (TypeSafe via Vercel AI Gateway) routes Hermes work; LAYA is the automatic backup. JEV won the bakeoff 23/24 routing, 6/6 triage."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "Confident routing stays on DeepSeek flash; only unsure work goes to v4-pro, and only risky work (keys, deletes, payments, DNS) goes to Claude."
-    },
-    {
-      "date": "2026-10-12",
-      "what": "B9 shop: Signature Elements (150 original vector elements by Vector, Fine line/Solid/Engraved, min print size per element) live in Vector Studio; Vector can place one in free space, never under text."
-    },
-    {
-      "date": "2026-10-12",
-      "what": "B9 shop: Die Cut Graphics live (Oracal 751C, 14 colors, $12/sq ft, $15 min, extra colors as layered copies +$10, 5/10/25 qty breaks, up to 44 in); Studio vinyl mode exports layers.pdf, one page per color, for the in-house Mimaki."
-    },
-    {
-      "date": "2026-10-12",
-      "what": "B9 shop: Signature collection Phase 1 live: left/center/right text alignment on every product, card layout engine, 21 Signature business-card designs (10 layouts x 8 styles); Everyday keeps the old styles."
-    },
-    {
-      "date": "2026-10-12",
-      "what": "Shop: photo above every offering; no example/job labels"
-    },
-    {
-      "date": "2026-10-12",
-      "what": "Print quantity tiers 10% at 10+, 25% at 25+"
-    },
-    {
-      "date": "2026-10-12",
-      "what": "Printing search push: /shop/print/ owns printing terms"
-    },
-    {
-      "date": "2026-10-13",
-      "what": "Made-to-order dimensional catalog live"
-    },
-    {
-      "date": "2026-10-13",
-      "what": "Studio styles phases 2-4 + industry collections"
-    }
+  "operators": [
+   {
+    "name": "Atlas",
+    "role": "Lennar operations",
+    "does": "Lennar community dashboard, inventory and zones",
+    "link": "atlas.html"
+   },
+   {
+    "name": "Pulse",
+    "role": "Industry pulse",
+    "does": "Daily AI/agent and signage industry briefs"
+   },
+   {
+    "name": "Prism",
+    "role": "Trade-area analysis",
+    "does": "Trade-area and demographic views for client sites"
+   }
   ],
-  "history": {
-    "first_commit": "2026-04-05",
-    "total_commits": 37809,
-    "substantive_commits": 411,
-    "by_month": [
-      [
-        "Apr",
-        86,
-        38
-      ],
-      [
-        "May",
-        438,
-        66
-      ],
-      [
-        "Jun",
-        14694,
-        83
-      ],
-      [
-        "Jul",
-        11669,
-        103
-      ],
-      [
-        "Aug",
-        3588,
-        68
-      ],
-      [
-        "Sep",
-        7334,
-        53
-      ]
-    ],
-    "eras": [
-      [
-        "Apr 5–12",
-        "Command Center, Hartley Capital brand, WOLF strategies"
-      ],
-      [
-        "Late Apr – mid May",
-        "Atlas: Lennar operations (206 communities, work orders)"
-      ],
-      [
-        "May 18–31",
-        "Construct v2 → v4, PRAGMA operator registry"
-      ],
-      [
-        "Jun 1–10",
-        "Hermes flock, Harvard corpus, PRAGMA Mirror born"
-      ],
-      [
-        "Jun 24 – Jul 21",
-        "Mac recovery; AI-visibility engine (Mirror v2, AAIR v6)"
-      ],
-      [
-        "Jul 10 – Sep 16",
-        "WOLF on autopilot past its kill date (now stopped)"
-      ],
-      [
-        "Aug 3 – Sep 22",
-        "B9 flywheel: weekly AAIR, knowledge graph, answer pages"
-      ]
-    ]
-  },
-  "ventures_archived": [
-    {
-      "name": "ANS · VironBox · Hypercube",
-      "status": "paused",
-      "focus": "Architectural render engine — paused 09-23: Vagon, Vultr GPU, Arnold and render workers shut down"
-    },
-    {
-      "name": "STRUO",
-      "status": "paused",
-      "focus": "Visualization for UHNW / super-yacht channel — paused 10-05 by Bobby"
-    }
+  "skills_count": 141,
+  "routines_snapshot_date": "2026-10-07",
+  "routines": [
+   {
+    "name": "Industry pulse daily",
+    "when": "5:50 / 9:50 / 13:50 ET",
+    "last": "succeeded 10-07"
+   },
+   {
+    "name": "Lens daily corpus scan",
+    "when": "5:34 / 9:34 / 13:34 ET",
+    "last": "succeeded 10-07"
+   },
+   {
+    "name": "B9 redirect guard",
+    "when": "Daily 6:30 ET",
+    "last": "succeeded 10-07"
+   },
+   {
+    "name": "Gbp autopilot",
+    "when": "Daily 8:20 ET",
+    "last": "succeeded 10-07"
+   },
+   {
+    "name": "B9 batch postpublish watch",
+    "when": "Daily 9:00 ET",
+    "last": "succeeded 10-07"
+   },
+   {
+    "name": "Gbp api approval watch",
+    "when": "Daily 9:00 ET",
+    "last": "succeeded 10-06"
+   },
+   {
+    "name": "Leads inbox scan",
+    "when": "9 / 13 / 17 ET",
+    "last": "succeeded 10-07"
+   },
+   {
+    "name": "Construct ops sweep",
+    "when": "10:45 / 14:45 ET",
+    "last": "succeeded 10-06"
+   },
+   {
+    "name": "Content engine",
+    "when": "Tue & Fri 10:00 ET",
+    "last": "not yet run (first 10-09)"
+   },
+   {
+    "name": "Industry Pulse — Signage",
+    "when": "Weekdays 12:00 UTC",
+    "last": "succeeded 10-07"
+   },
+   {
+    "name": "Industry Pulse — AI/Agent",
+    "when": "Daily 12:30 UTC",
+    "last": "succeeded 10-07"
+   },
+   {
+    "name": "Skill Discovery Sweep",
+    "when": "Daily 11:00 UTC",
+    "last": "succeeded 10-07"
+   },
+   {
+    "name": "First-Principles Spike",
+    "when": "Weekdays 18:00 UTC",
+    "last": "succeeded 10-06"
+   },
+   {
+    "name": "Hartley Capital Watch",
+    "when": "Weekdays 20:00 UTC",
+    "last": "succeeded 10-06"
+   },
+   {
+    "name": "Daily Construct Standup",
+    "when": "Weekdays 22:00 UTC",
+    "last": "succeeded 10-06"
+   },
+   {
+    "name": "Pragma threatd weekly",
+    "when": "Mondays 7:15 ET",
+    "last": "succeeded 10-05"
+   },
+   {
+    "name": "B9 Big Job Radar",
+    "when": "Mondays 11:00 UTC",
+    "last": "succeeded 10-05"
+   },
+   {
+    "name": "B9 monthly machine-traffic report",
+    "when": "1st of month",
+    "last": "succeeded 10-01"
+   }
   ],
-  "history_decisions": [
-    {
-      "date": "2026-10-01",
-      "what": "Dashboard accuracy check: live feeds current (status hourly, Hermes heartbeat every 5 min). Scheduled-task list refreshed to the 17 live tasks (added Industry pulse daily and B9 batch postpublish watch; removed the finished one-off GSC quota retry). Hermes shows $0 / 0 sessions in 24 h because no Kanban, Telegram or voice work has been sent since 09-24 — all 41 Hermes scheduled jobs are scripts that use no model."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "Fixed: lens-auth-pull (38-day failure — heredoc bug; now pulls in its own background tab, never Bobby's active tab), b9-site-change-watcher (false 'changed' alarms from raw-HTML hashing; now visible text, alerts without failing). Telegram tool-call hook fails closed. Weekly cron doctor to Telegram (Mon 7:10). Voice page / Telegram build-out on hold until they can reach the whole ecosystem."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "3D-render spend dropped: Vagon subscription ended (runs to Oct 21, then the cloud PC is deleted), Autodesk Arnold cancelled at renewal (access to Oct 3), Autodesk approved the $150 refund for Flex order 1007041602 (case #26399764, 5-7 days). VironBox render worker and ANS runner stopped on the Mac. Vultr GPU server HyperCube-Max destroyed and its 170 GB snapshot deleted (no Vultr products left). AWS (created by Claude on Aug 13) is on the Free plan: it cannot charge unless someone upgrades it, and it closes itself on Feb 13, 2027 — left alone on purpose."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "AAIR scoring and PRAGMA Mirror scripts paused (b9-aair-v6-weekly, pragma-mirror-native-daily); may be pivoted to something else later."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "Hermes scheduled jobs cut from 82 to 38 enabled: 34 duplicate copies in the publisher profile paused (they ran every job twice), plus kanban-state-gen, competitor-watch and void-prospector (placeholder configs), memory-capture and memory-crossshare (PRAXIS inbox empty), model-tier-router (replaced by Gatekeeper), serp-tracker (retired SerpAPI key), model-eval-daily-refresh (Model Arena dropped) and b9-flywheel-daily-refresh (the job that force-pushed over the dashboard). All paused, none deleted."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "Construct v5 = the v4 dashboard edited in place. Removed: WOLF, weekly Claude budget meter, model arena, Reddit, PRAGMA Mirror, AAIR scoring, Founders Playbook, ops-health, TLC/PRAGMA Lite pipeline, Cherny card, migration map, C-suite labels, backlog, kanban."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "Construct rebuilt around the real ecosystem; WOLF, PRAXIS, Slack, Louis, Invitation Homes, Cornerstone, Architect, PRAGMA Lite, SMB bundle and Reddit panels removed."
-    },
-    {
-      "date": "2026-09-23",
-      "what": "WOLF dashboard writers, construct-v4-sync, praxis-distiller and 4 WOLF-era bots paused; serp-tracker, gbp-review-monitor and lens-auth-pull temp-file bug fixed; hermes-auto-update disabled in both profiles. lens-auth-pull now stops on a Safari setting (Allow JavaScript from Apple Events)."
-    },
-    {
-      "date": "2026-09-03",
-      "what": "WOLF killed (routines archived). Slack dropped. PRAXIS and Brand 9 Site Health routine paused."
-    }
+  "upcoming": [
+   {
+    "name": "B9 daily Google indexing (planner top 10)",
+    "when": "daily 11:17 ET"
+   },
+   {
+    "name": "GSC: request indexing for retuned shop pages",
+    "when": "10-17 10:05 ET"
+   },
+   {
+    "name": "ChatGPT shop prompts: weekly re-measure (baseline 6/24)",
+    "when": "10-19 10:20 ET"
+   },
+   {
+    "name": "B9 design flywheel: weekly learn",
+    "when": "10-19 10:30 ET"
+   },
+   {
+    "name": "Re-measure Fleming Island rankings",
+    "when": "10-20 9:35 ET"
+   },
+   {
+    "name": "B9 shop search flywheel: weekly measure + improve",
+    "when": "10-20 9:45 ET"
+   },
+   {
+    "name": "Construct memory: week-2 measurement",
+    "when": "10-21 9:20 ET"
+   },
+   {
+    "name": "B9 golden-ratio pivot checkpoint",
+    "when": "10-26 9:00 ET"
+   },
+   {
+    "name": "B9 monthly AI visibility probe",
+    "when": "11-01 8:45 ET"
+   },
+   {
+    "name": "Read shop-search-1014 measurement",
+    "when": "11-11 10:10 ET"
+   },
+   {
+    "name": "Homepage two-lane day-30 check",
+    "when": "11-12 10:20 ET"
+   }
+  ],
+  "mods": [
+   {
+    "name": "construct-console",
+    "seat": "Mac Code tab",
+    "does": "Gatekeeper route on every prompt; /hermes, /route, /queue; health band",
+    "status": "removed 2026-10-14 (week-1 evaluation: unused)"
+   },
+   {
+    "name": "construct-guards",
+    "seat": "Mac + Cowork",
+    "does": "No .md or Drive deliverables; flags done-claims made without a check; asks for sources"
+   },
+   {
+    "name": "construct-memory",
+    "seat": "Mac + Cowork",
+    "does": "One shared ledger for every session and project; recall on each prompt; Hermes skill mirror"
+   }
   ]
+ },
+ "ventures": [
+  {
+   "name": "Brand 9 Signs",
+   "status": "active",
+   "focus": "Website, Google & Bing local (Orange Park, Fleming Island, Jacksonville), leads; channel letters dropped 10-06",
+   "link": "https://brand9signs.com"
+  },
+  {
+   "name": "PRAGMA",
+   "status": "active",
+   "focus": "Agentic OS for small businesses; AI-visibility service",
+   "link": "https://prag-ma.ai"
+  },
+  {
+   "name": "Nana Buns",
+   "status": "active",
+   "focus": "Family food brand; site live, Etsy"
+  },
+  {
+   "name": "Lennar Atlas",
+   "status": "active",
+   "focus": "Lennar community operations dashboard",
+   "link": "atlas.html"
+  },
+  {
+   "name": "Hartley Capital",
+   "status": "active",
+   "focus": "Holding company",
+   "link": "hartley-equity.html"
+  }
+ ],
+ "decisions": [
+  {
+   "date": "2026-10-19",
+   "what": "Shop contour cutting: every contour piece fits a 24 x 24 in registration-mark sheet (owner's 6-mark template, free download on the product pages); print and cut files are the full sheet; priced by the sheet at 4 sq ft each, whether it holds one piece or several (Bobby). Double-sided DualView dropped from contour; one-way perforated has none at the partner."
+  },
+  {
+   "date": "2026-10-19",
+   "what": "Partner runner attaches the contour cut file to the print file exactly as the partner portal does and refuses a contour line without one; mock-tested, first real contour cart to be read before it checks out."
+  },
+  {
+   "date": "2026-10-19",
+   "what": "Shop assistant live: MCP endpoint /shop/mcp/ for outside AI agents plus on-site Ask Vector (prices only from the shop engine, output guard, 10% holdout). Wording fixed: banner hems and grommets stated as included; never talks about its own checks."
+  },
+  {
+   "date": "2026-10-19",
+   "what": "Shop search: every product page now opens with exact prices for the sizes buyers ask AI assistants about (e.g. 12x18 aluminum, 3x6 ft banner, flat-cut letters per letter), from the live price engine; weekly ChatGPT measure feeds lost prompts back into those lines the same week (Bobby: 'Make the pivots to recapture')."
+  },
+  {
+   "date": "2026-10-19",
+   "what": "Design flywheel: a pattern must come from 20 different visitors, not 20 clicks; week 1 installed nothing (card picks came from 4 visitors)."
+  },
+  {
+   "date": "2026-10-19",
+   "what": "Shop pricing: volume ladder extended to 35% off at 1,000 pieces; the margin floor now steps from 40% down to 25% as the full-price line value grows ($2,500 / $10k / $25k / $50k tiers). Applies to printed signs, displays and dimensional; no live price rose (Bobby: 'logical price drops on larger quantity and dollar amounts')."
+  },
+  {
+   "date": "2026-10-19",
+   "what": "Sales source: every non-Jacksonville online shop sale so far came from an AI assistant (ChatGPT x3 buyers incl. one repeat buyer, Copilot x1). Priority: Bing/IndexNow freshness and lift-ready product facts on every page."
+  },
+  {
+   "date": "2026-10-19",
+   "what": "Access: twice-daily sign-in watchdog over 13 vendor sites; it only clicks sign-in where Chrome or Google SSO already fills the account, never types credentials. Waiting on the owner's one-time Accessibility grant for the click helper (Bobby: 'This cannot be a daily ritual')."
+  },
+  {
+   "date": "2026-10-19",
+   "what": "Local listings: Bing Places listing claimed; verification postcard requested (due ~10-26). Merchant Center: Google Analytics linked as the purchase key-event source (Active)."
+  },
+  {
+   "date": "2026-10-19",
+   "what": "Skills: b9-growth-skills 1.4.0 (volume pricing rule, auto sign-in + access watchdog, AI sales trace, no-proof copy rule); copies in ~/Foundry/skills and Hermes ops-worker + orchestrator."
+  },
+  {
+   "date": "2026-10-16",
+   "what": "Terms: online shop orders now stated separately — paid in full by card at checkout, fixed prices with shipping and Florida tax shown before paying, made as approved, all sales final; the 50% deposit terms apply only to sign projects (Bobby: 'paid in full up front')."
+  },
+  {
+   "date": "2026-10-16",
+   "what": "Skills: b9-growth-skills 1.2.0 — new b9-chatgpt-shopping and b9-logo-designer; b9-partner-order-automation (12 h portal sign-in, quiet waits, 3-strike notices, hourly feed self-heal) and b9-shop-search-flywheel updated; copies in ~/Foundry/skills and Hermes ops-worker + orchestrator (md5 match)."
+  },
+  {
+   "date": "2026-10-16",
+   "what": "Partner order automation made quiet and self-healing: the supplier portal sign-in lasts 12 h with no refresh, so the runner now waits silently while signed out, resumes on the next sign-in, sends one heads-up before a sign-in ends and one sign-out notice (07:00-21:00 ET only); other stops email only after 3 runs in a row. Replaces the 'paused (tracking)/(delivered)' email storm of 10-16."
+  },
+  {
+   "date": "2026-10-16",
+   "what": "3rd ChatGPT order traced: NC business cards (B9-261015-EHUK) landed on /shop/business-cards/?utm_source=chatgpt.com and paid 21 min later. Sign-in now carries the first visit through the emailed link, so future orders keep their real source."
+  },
+  {
+   "date": "2026-10-16",
+   "what": "ChatGPT baseline: Brand 9 named in 6 of 24 buyer prompts, #1 in 1. Shipped: buyer-question facts on all 24 shop pages, AI catalog (/shop/catalog/), ChatGPT product feed (307 rows) + Stripe agentic catalog, per-crawler robots.txt (no Bing delay), synced sitemaps, hourly feed self-rebuild. Owner step: apply at chatgpt.com/merchants."
+  },
+  {
+   "date": "2026-10-16",
+   "what": "Logo designer pivot phase 1 live: 'Builds as' fabrication check on every concept (10 sign/print methods, buildable-version button), review no longer overwrites customer edits, symbol endpoint closed to scripts, AI logo rescue page; house-sign/plaque/cart mobile blockers fixed."
+  },
+  {
+   "date": "2026-10-15",
+   "what": "Mac queue fast lane: NAME.fast.sh jobs run on a separate launchd agent (com.ans.fastrunner, every 5 s, 120 s cap) so quick checks, sends and small edits never wait behind a slow main-lane job. Measured 8 s while the main lane was busy."
+  },
+  {
+   "date": "2026-10-15",
+   "what": "Restored 5 lost WordPress product pages (squadron name, title, name & title signs; modern acrylic and home name signs) with original prices and 25 photos; audit found 12 more house/address-sign products redirecting to /portfolio/."
+  },
+  {
+   "date": "2026-10-15",
+   "what": "Out-of-state shop orders traced: the Austin TX ACM purchase and the Angier NC ACM cart both landed first on /shop/acm-signs/ with no referrer; ChatGPT ranks Brand 9 first for custom ACM signs online and quotes the page's exact price ($103.68 for 24x48), linking with rel=noreferrer (shows as 'direct' in GA4). ChatGPT-User fetched the page 4x on 10-12/10-14."
+  },
+  {
+   "date": "2026-10-15",
+   "what": "Scaled the ACM pattern to all 23 shop product pages (_shop1029cu): a Quick facts block + 'Prices for popular sizes' table priced live by the shop engines (159 rows, each opens the price card at that exact price) + buyer-question FAQs ('How much does a 24 x 36 in X cost?', 'Where can I order X online?')."
+  },
+  {
+   "date": "2026-10-15",
+   "what": "Customer emails (_shop1029cu): B9 icon on every customer email; Google review ask now from 'Robert Louis Hartley, Brand 9 Signs' 48 h after FedEx delivery at 10:00 customer time, tracked button + QR, one reminder at +5 days only without a click, one ask per customer, no gating or incentives; small 'More from Brand 9 Signs' block (reorder, one related product, logo cleanup) on order emails; order source (first-touch landing/referrer/utm) + optional 'How did you find us?' saved on each order."
+  },
+  {
+   "date": "2026-10-15",
+   "what": "Daily Google indexing planner (~/AP-v2/_b9_temp/_flywheel/indexq/index_queue.py): ranks every sitemap URL for the ~10 daily Request Indexing slots — shop pages not indexed first, then commercial pages changed since Google's last crawl, then commercial pages at position 4-20 not crawled in 14 days; never re-requests within 7 days. Runs daily with the browser step."
+  },
+  {
+   "date": "2026-10-15",
+   "what": "Partner runner hardening: ship-to attention line cleaned of characters the partner refuses (curly apostrophe stopped B9-261014-QBNF, then placed as 017741001196); the portal tab is reloaded automatically when its ~12 h sign-in token is about to expire, so no sign-in is ever needed for a stale token."
+  },
+  {
+   "date": "2026-10-14",
+   "what": "Mini letters live on /shop/flat-cut-letters/: 1/2 to 3 in flat cut aluminum, brass and bronze (1/8, 3/16, 1/4 in), anodized, oxidized and polished, indoors only, ships in about 10 business days. 0 price mismatches; old products unchanged."
+  },
+  {
+   "date": "2026-10-14",
+   "what": "Chrome on AP-Agent: signs365.com added to Memory Saver 'Always keep these sites active' through the TabDiscardingExceptions policy, so the partner automation tab is never frozen again (verified in chrome://policy and Settings > Performance)."
+  },
+  {
+   "date": "2026-10-14",
+   "what": "Customer shipping: one charge per address too (Bobby). In one checkout, partner-made items going to the same address pay ONE shipping charge (the highest); the others ship free in the same package and the cart shows the saving. A-frames and other separately shipped items keep their own shipping. Live _shop1029ci."
+  },
+  {
+   "date": "2026-10-14",
+   "what": "Header: 'Order online' and 'Book a site walk' are now the exact same height on every page (44 px desktop, 36 px small laptop, 48 px phone; 202 pages + 31 shop pages, measured live)."
+  },
+  {
+   "date": "2026-10-14",
+   "what": "New free page /shop/logo-cleanup/: upload a logo, see how large it prints sharp, remove the background, get the automatic vector version, download PNG + SVG. Nothing to order."
+  },
+  {
+   "date": "2026-10-14",
+   "what": "Dimensional catalog gaps added: cast letters with round or prismatic faces, 8 more lit acrylic styles (incl. trimless halo), and 3/8 in ADA raised print. 0 price mismatches server vs browser; old products unchanged."
+  },
+  {
+   "date": "2026-10-14",
+   "what": "Signs365 ordering: ONE partner order and ONE shipping charge per customer address (Bobby). Paid partner orders going to the same address by the same ship method are gathered for 30 minutes after the newest payment (3 h max), then built as one Signs365 cart with a line per order, paid together, PO = the lead order. The cart total is split across the orders by their estimated price so the margin guard still works per order. One tracking email and one review email per package. Example: Larry Banks' 3 orders on 10-13 (FBKN, AC8Q, XY4W) would have been one partner order with $10 shipping instead of three at $30."
+  },
+  {
+   "date": "2026-10-14",
+   "what": "Google review email on delivery: when the FedEx events in the partner portal show the package delivered (code DL), the customer gets one email asking for an honest Google review, with Bobby's B9Google QR code built in and a review button. The 10-day check-in no longer asks a second time."
+  },
+  {
+   "date": "2026-10-14",
+   "what": "Construct mods week 1 (Bobby: 'use your best recommendation'): construct-guards kept; construct-memory kept and fixed (it re-checks the Mac link instead of deciding once at session start; the dashboard now flags days with work but no ledger); construct-console removed from the Mac plugin list (unused all week)."
+  },
+  {
+   "date": "2026-10-12",
+   "what": "Vector Studio catalog: Bobby chose fewer, high-end-only 'Signature' designs built per product (cards, distance signs, banners) with customer left/center/right alignment; mass-market looks kept in an 'Everyday' tab. Phase 0 audit + plan PDF delivered (15 signature candidates, 33 everyday, 6 merged); Phase 1 = alignment + layout engine + business cards, pending his review."
+  },
+  {
+   "date": "2026-10-12",
+   "what": "B9 shop: plastic-frame A-frame added beside the aluminum frame (Bobby; $199 draft, double-sided matte inserts), price-by-size tables on every product page, and a Merchant Center product feed (56 items) ready for Google and Microsoft free listings once Bobby opens the accounts (_shop1029j, verified live)."
+  },
+  {
+   "date": "2026-10-12",
+   "what": "B9 shop: lead time set to 1-3 business days sitewide (Bobby), homepage 'Two ways to work with Brand 9' band shipped (approved), shop accuracy fixes (_shop1029i, verified live). Organic outrank plan adopted: Merchant Center free listings + reviews + E-GEO page rewrites + video and third-party mentions; no ads, no doorway pages. Gatekeeper: ops-worker (deploy, risky) and orchestrator (plan, not risky)."
+  },
+  {
+   "date": "2026-10-12",
+   "what": "B9 shop options audited against Signs365 (Bobby's signed-in portal; product API + order-page code) and shipped in _shop1029f: corrected coro 10mm (HD stakes only; no stakes/grommets), banner hem choices (grommet layouts, pole pockets or rope; partner exclusions), acrylic drilled standoffs priced per hole from the partner layout plus 4 corner radii and contour, contour on PVC/foam/aluminum/ACM/films, gloss per sheet, laminate choice on wraps and decals, cling application sides; runner mapping fixed to the portal's encodings (quantity 1 on switches, point counts for grommets/standoffs, rope top+bottom). Studio draws holes and warns on art over them. Parity 10,500 quotes / 336 layouts, 0 mismatches. Watch: hidden options 38 and 36 on first orders."
+  },
+  {
+   "date": "2026-10-12",
+   "what": "B9 shop search levers (Gatekeeper: ops-worker / publisher / orchestrator, all owner-flagged; run under Bobby's standing go). Shipped _shop1029a: hasMerchantReturnPolicy on every shop Offer, mirroring the existing /shipping-and-returns/ page (custom goods, all sales final, carrier damage handled) - Rich Results Test shows merchant listings valid with the warning gone, GSC fix validation started; visible FAQ + FAQPage on /shop/ and the Logo Designer; ItemList on /shop/; Shipping & Returns link on 18 shop pages; llms.txt shop + design sections; both sitemaps resubmitted in GSC; IndexNow 200 (42 URLs). Held for the owner: Google/Bing Merchant Center account (account creation + terms). Not done: theme landing pages (scaled-content risk), review markup without real reviews."
+  },
+  {
+   "date": "2026-10-12",
+   "what": "ArtCraft adopted into the Construct (owner request). VectorCraft v0.9.0 (storytold Crafting Apps, MIT/Apache, Illustrator replacement) installed on the agent Mac: notarized Developer ID 'Learning Machines LLC', SHA-256 verified; registered as Claude Code MCP 'vectorcraft' (headless, read ~/Foundry/_vc, write ~/Foundry/_vc/out); CLI for Hermes; Linux build verified in the cloud container. New tool b9_signprep (outlined text, CMYK, PDF/X-4, CutContour spot + DXF, report.json) verified on a real Vector Studio yard-sign file. Rule: output goes beside existing production files until a RIP test confirms CutContour/PDF-X at the shop. PhotoCraft/FilmCraft etc. experimental (self-reported 25-45% ready); generative AI stays with Higgsfield. Skill: artcraft-vectorcraft."
+  },
+  {
+   "date": "2026-10-11",
+   "what": "B9 Logo Designer paid tier (decided by the Construct; owner delegated the call. Gatekeeper/JEV: orchestrator, risk=false, owner_gate=false). DECISION: 'Sign-Ready Brand Kit', $79 one-time, everything generated by Vector (no human-finish claims; the $149 'Sign-Shop Finish' is retired). Contents: the $29 file pack + brand guidelines PDF (palette HEX/RGB/CMYK, type pairing, clear space, minimum sizes) + business card, letterhead and email signature + social kit + sign spec sheet (letter height by viewing distance) + true-scale mockups on B9 products. Credit: $29 of it toward a $99+ B9 sign within 90 days (crediting all $79 needs ~3x more sign orders to pay back; Ledger). Inputs: Scout (one-time premium band $60-95: Fiverr $60/$90, Looka $65, Brandmark $95; VistaPrint gives files free; no competitor offers sign-ready files, true-scale sign mockups or a sign credit), Ledger (AI cost ~$2-5 per kit, ~90-96% margin; tie extra AI allowance to the paid order id; separate symbol budget). Status: build queued (needs kit SKU in logo-lib credit code, client-side PDF builder)."
+  },
+  {
+   "date": "2026-10-11",
+   "what": "B9 shop + design-tool audit #2 run through the Construct (Gatekeeper: orchestrator, owner-gated -> Bobby's standing go). Vector audits found 23 shop + 24 tool findings (P1: cart allowed partial yard-sign sheets; sticky price under header; Studio styles overlapping text; logo kerning lost by opentype.js). Two Vector fix agents in isolated copies; fixes merged, tested and deployed as _shop1027a (HarfBuzz kerning, text-vs-decoration review, 4-step Studio rail, Ember hero CTAs, print grid on the shop hub, review form folded, cart steps by sheet). Project doc: b9-shop-tools-audit2-LIVE-2026-10-11."
+  },
+  {
+   "date": "2026-10-07",
+   "what": "Signage store direction set by Bobby: BUILD OUR OWN designer + cart on brand9signs.com (no Etsy, no SaaS tool). Differentiator = a live architectural-film FINISH picker (3M DI-NOC via Grimco: brushed metal, wood, stone, carbon, color-shift) + export that speaks the shop's language (film SKU + face as a job ticket). Stack: Fabric.js editor (text/logo/2-sided), 2D finish compositing (WebGL only for the lit glow), vector PDF with outlined fonts + job ticket, pricing.json, static site + serverless + Stripe Checkout. Build-our-own beats SaaS because the finish library and the shop-language export are the whole point and a rented widget won't bend. Top risk: RGB canvas -> CMYK/ICC shop print + outlined fonts -> FIRST task is one design round-tripped to a correct printed proof, then the MVP editor. Reverses the earlier Zakeke/Etsy lean. Plan: project doc b9-signage-store-and-design-tool-plan-2026-10-07.md. Pending from Bobby: printed-vs-applied finishes, the shop RIP/ICC, a 6-10 Grimco film shortlist, the A-frame/lit spec + a Stripe account."
+  },
+  {
+   "date": "2026-10-07",
+   "what": "Signage e-commerce + high-end design tool scoped via the Construct (Gatekeeper: orchestrator T2, owner-decision; Scout + design-tool scan + Ledger in parallel). Anchor product: double-sided A-frame / lit sidewalk signs (seen on RVLightBender Etsy, ~$342). Verdict: product is right and VistaPrint is beatable (no lit option), but the risk is DEMAND not the tool — B9's own store did ~12 orders in 2022-24 and GA4 shows ~0 e-comm in 365 days. Plan is staged: Phase 0 prove demand 30-60 days (1-2 made A-frames on Etsy + a Stripe Buy-Now, $300-500 ads, measure CAC and real shipping) BEFORE any tool; Phase 1 license Zakeke (flat, no per-order fee) skinned to the B9 brand, 3-5 templates, print-ready to the shop — not a $15-60k custom build; Phase 2 scale. Cart scope stays small shippable items only (military->estimate, barricades->never, builders->quote). Owner go/no-go pending on Phase 0 + 4 shop numbers. Plan: project doc b9-signage-store-and-design-tool-plan-2026-10-07.md."
+  },
+  {
+   "date": "2026-10-07",
+   "what": "MIMIC tool audited (github littledivy/mimic: capture your own app traffic -> Claude writes a Python client that replays your login). Verdict: adopt the PATTERN now (export our own HAR from a credentialed web tool -> AI-written typed client for Hermes, replacing slow browser-automation), adopt the TOOL only where a tool WE own has no API. Not for competitors or any account/data we don't own (ToS/legal), and never a replacement for GSC/GA4/GBP/IndexNow. Governance: a captured session is a live credential -> Mac-only like the APS secret, Gatekeeper owner-gated, codegen runs in the Code tab (claude -p is 'not logged in' headless). No clean B9 pilot right now: the slow manual tools (Yelp, Bing Places, Apple Business Connect) are third-party (ToS line), and the tools we own (site/SSH, SiteGround CLI, WordPress, GSC/GA4/GBP/IndexNow/Bing Webmaster) already have real APIs. Parked as a ready pattern; first pilot likely a future company's internal tool or a genuine API-less vendor portal. Full audit: project doc mimic-tool-audit-2026-10-07.md."
+  },
+  {
+   "date": "2026-10-07",
+   "what": "The four 'failing' services resolved. Cause: launchd could not open their log files inside ~/Documents (macOS privacy), so each run died at start with exit 78 before the script ran. hermes-inbox-exec (runs dashboard/voice commands sent to Hermes) kept, logs moved to ~/Library/Logs/hartley, now exit 0. ai-citation-probe and pragma-daily (PRAGMA Mirror, paused 09-23) and model-eval-weekly (fed the model arena removed in v5) retired: unloaded, plists kept in ~/Library/LaunchAgents/_disabled_20261007."
+  },
+  {
+   "date": "2026-10-07",
+   "what": "Construct pivot: Claude Code mods become the fourth layer, beside Gatekeeper, Hermes and Claude agents. A mod runs inside Claude Code; its best seat is the Code tab on AP-Agent, where Gatekeeper, Hermes and the queue are local calls (Gatekeeper route ~1 s, against 30–50 s through a Cowork queue job). Three mods on a one-week trial, 10-07 to 10-14: construct-console, construct-guards and construct-memory. Evaluation 10-14."
+  },
+  {
+   "date": "2026-10-07",
+   "what": "Shared memory across sessions and projects: every turn from every Claude session (the Mac directly, Cowork through the linked Mac) goes to one ledger in ~/Foundry/_construct/ledger; each new request recalls related prior work; a Claude skill edited on the Mac is copied into the Hermes profiles that carry it."
+  },
+  {
+   "date": "2026-10-07",
+   "what": "Found four background services down with launchd exit 78 that the old status feed never showed: hermes-inbox-exec, ai-citation-probe, pragma-daily and model-eval-weekly. They now appear under System core whenever any Construct service is down."
+  },
+  {
+   "date": "2026-10-07",
+   "what": "Dashboard cleaned up: paused ventures (ANS · VironBox · Hypercube, STRUO) removed from view; routines rebuilt from the 18 live recurring tasks plus 5 dated checks; finished one-off decisions moved to history."
+  },
+  {
+   "date": "2026-10-06",
+   "what": "Brand 9: channel letters dropped from the offering; the Orange Park & Fleming Island page and the homepage rewritten for custom, commercial and outdoor signs to win the 'near me' local pack."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "Hermes + JEV audit applied. Web search moved off the exhausted Tavily plan (search: DuckDuckGo, extract: Exa keyless) — tested live. Fallback chain fixed: the old comma-string was ignored, so there was no fallback at all; now Gemini 2.5 Flash first, then two OpenRouter models — tested by forcing a failure. OpenRouter data_collection: deny. Orchestrator on DeepSeek v4-pro, workers stay on flash, cron pinned to flash. Holographic local memory on (default, orchestrator, research)."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "JEV: four questions per call (agent, risk, size, owner-approval), gates on JEV's calibrated confidence (act >= 0.50, click-guard 'go' >= 0.85), logs the answering model (Vercel only serves the 'jev' alias, so version pinning isn't possible there). New: gk ask (open question -> flash / pro / Claude), gk lead (Brand 9 lead score 0-100, wired into leads_writer), gk swarm (hard research -> parallel workers + pro verifier), JEV done-check in shadow mode (nightly, log only). Vercel credits not bought: $0 spend, no rate limits in 81 live calls; the digest flags 429s."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "JEV click-guard added for browser work (gk guard): before each browser step JEV answers go / stop / wrong page; money, cancel, delete, sign-in, send and publish words always stop. Tested: it stopped 'Pay now' and flagged a Google sign-in on a server-check task as the wrong page. Lens routine rewritten without WOLF or Slack; 'Pragma mirror llm browser weekly' routine disabled."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "Gatekeeper risk guard widened after a JEV test: 'Destroy the Vultr GPU server... stop billing' had routed to DeepSeek flash. Destroy, terminate, cancel, refund, billing, subscription, renewal and purchase now always go to Claude."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "Kanban is now the work path: gk run puts every Gatekeeper task on the Hermes Kanban board; unsure or risky work also gets a checker card that re-tests the result before it counts as done; the last card alerts Bobby on Telegram. Hermes gateway restarted onto the updated code. First checker caught brand9signs.com answering HTTP 202 (SiteGround captcha wall), not 200."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "Daily Telegram digest at 7:05 ET (Lens headlines, Kanban cards finished or stuck, jobs needing attention, spend, Harvard searches)."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "Harvard corpus made searchable (3,416 articles, rebuilt daily 4:45 ET). Keystone and Scout must search and cite it before every recommendation; every search is logged and counted on the dashboard."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "Gatekeeper live: JEV (TypeSafe via Vercel AI Gateway) routes Hermes work; LAYA is the automatic backup. JEV won the bakeoff 23/24 routing, 6/6 triage."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "Confident routing stays on DeepSeek flash; only unsure work goes to v4-pro, and only risky work (keys, deletes, payments, DNS) goes to Claude."
+  },
+  {
+   "date": "2026-10-12",
+   "what": "B9 shop: Signature Elements (150 original vector elements by Vector, Fine line/Solid/Engraved, min print size per element) live in Vector Studio; Vector can place one in free space, never under text."
+  },
+  {
+   "date": "2026-10-12",
+   "what": "B9 shop: Die Cut Graphics live (Oracal 751C, 14 colors, $12/sq ft, $15 min, extra colors as layered copies +$10, 5/10/25 qty breaks, up to 44 in); Studio vinyl mode exports layers.pdf, one page per color, for the in-house Mimaki."
+  },
+  {
+   "date": "2026-10-12",
+   "what": "B9 shop: Signature collection Phase 1 live: left/center/right text alignment on every product, card layout engine, 21 Signature business-card designs (10 layouts x 8 styles); Everyday keeps the old styles."
+  },
+  {
+   "date": "2026-10-12",
+   "what": "Shop: photo above every offering; no example/job labels"
+  },
+  {
+   "date": "2026-10-12",
+   "what": "Print quantity tiers 10% at 10+, 25% at 25+"
+  },
+  {
+   "date": "2026-10-12",
+   "what": "Printing search push: /shop/print/ owns printing terms"
+  },
+  {
+   "date": "2026-10-13",
+   "what": "Made-to-order dimensional catalog live"
+  },
+  {
+   "date": "2026-10-13",
+   "what": "Studio styles phases 2-4 + industry collections"
+  }
+ ],
+ "history": {
+  "first_commit": "2026-04-05",
+  "total_commits": 37809,
+  "substantive_commits": 411,
+  "by_month": [
+   [
+    "Apr",
+    86,
+    38
+   ],
+   [
+    "May",
+    438,
+    66
+   ],
+   [
+    "Jun",
+    14694,
+    83
+   ],
+   [
+    "Jul",
+    11669,
+    103
+   ],
+   [
+    "Aug",
+    3588,
+    68
+   ],
+   [
+    "Sep",
+    7334,
+    53
+   ]
+  ],
+  "eras": [
+   [
+    "Apr 5–12",
+    "Command Center, Hartley Capital brand, WOLF strategies"
+   ],
+   [
+    "Late Apr – mid May",
+    "Atlas: Lennar operations (206 communities, work orders)"
+   ],
+   [
+    "May 18–31",
+    "Construct v2 → v4, PRAGMA operator registry"
+   ],
+   [
+    "Jun 1–10",
+    "Hermes flock, Harvard corpus, PRAGMA Mirror born"
+   ],
+   [
+    "Jun 24 – Jul 21",
+    "Mac recovery; AI-visibility engine (Mirror v2, AAIR v6)"
+   ],
+   [
+    "Jul 10 – Sep 16",
+    "WOLF on autopilot past its kill date (now stopped)"
+   ],
+   [
+    "Aug 3 – Sep 22",
+    "B9 flywheel: weekly AAIR, knowledge graph, answer pages"
+   ]
+  ]
+ },
+ "ventures_archived": [
+  {
+   "name": "ANS · VironBox · Hypercube",
+   "status": "paused",
+   "focus": "Architectural render engine — paused 09-23: Vagon, Vultr GPU, Arnold and render workers shut down"
+  },
+  {
+   "name": "STRUO",
+   "status": "paused",
+   "focus": "Visualization for UHNW / super-yacht channel — paused 10-05 by Bobby"
+  }
+ ],
+ "history_decisions": [
+  {
+   "date": "2026-10-01",
+   "what": "Dashboard accuracy check: live feeds current (status hourly, Hermes heartbeat every 5 min). Scheduled-task list refreshed to the 17 live tasks (added Industry pulse daily and B9 batch postpublish watch; removed the finished one-off GSC quota retry). Hermes shows $0 / 0 sessions in 24 h because no Kanban, Telegram or voice work has been sent since 09-24 — all 41 Hermes scheduled jobs are scripts that use no model."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "Fixed: lens-auth-pull (38-day failure — heredoc bug; now pulls in its own background tab, never Bobby's active tab), b9-site-change-watcher (false 'changed' alarms from raw-HTML hashing; now visible text, alerts without failing). Telegram tool-call hook fails closed. Weekly cron doctor to Telegram (Mon 7:10). Voice page / Telegram build-out on hold until they can reach the whole ecosystem."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "3D-render spend dropped: Vagon subscription ended (runs to Oct 21, then the cloud PC is deleted), Autodesk Arnold cancelled at renewal (access to Oct 3), Autodesk approved the $150 refund for Flex order 1007041602 (case #26399764, 5-7 days). VironBox render worker and ANS runner stopped on the Mac. Vultr GPU server HyperCube-Max destroyed and its 170 GB snapshot deleted (no Vultr products left). AWS (created by Claude on Aug 13) is on the Free plan: it cannot charge unless someone upgrades it, and it closes itself on Feb 13, 2027 — left alone on purpose."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "AAIR scoring and PRAGMA Mirror scripts paused (b9-aair-v6-weekly, pragma-mirror-native-daily); may be pivoted to something else later."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "Hermes scheduled jobs cut from 82 to 38 enabled: 34 duplicate copies in the publisher profile paused (they ran every job twice), plus kanban-state-gen, competitor-watch and void-prospector (placeholder configs), memory-capture and memory-crossshare (PRAXIS inbox empty), model-tier-router (replaced by Gatekeeper), serp-tracker (retired SerpAPI key), model-eval-daily-refresh (Model Arena dropped) and b9-flywheel-daily-refresh (the job that force-pushed over the dashboard). All paused, none deleted."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "Construct v5 = the v4 dashboard edited in place. Removed: WOLF, weekly Claude budget meter, model arena, Reddit, PRAGMA Mirror, AAIR scoring, Founders Playbook, ops-health, TLC/PRAGMA Lite pipeline, Cherny card, migration map, C-suite labels, backlog, kanban."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "Construct rebuilt around the real ecosystem; WOLF, PRAXIS, Slack, Louis, Invitation Homes, Cornerstone, Architect, PRAGMA Lite, SMB bundle and Reddit panels removed."
+  },
+  {
+   "date": "2026-09-23",
+   "what": "WOLF dashboard writers, construct-v4-sync, praxis-distiller and 4 WOLF-era bots paused; serp-tracker, gbp-review-monitor and lens-auth-pull temp-file bug fixed; hermes-auto-update disabled in both profiles. lens-auth-pull now stops on a Safari setting (Allow JavaScript from Apple Events)."
+  },
+  {
+   "date": "2026-09-03",
+   "what": "WOLF killed (routines archived). Slack dropped. PRAXIS and Brand 9 Site Health routine paused."
+  }
+ ]
 }
