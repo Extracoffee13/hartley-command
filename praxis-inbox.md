@@ -3254,3 +3254,15 @@ lesson: Official-release confidence matters: this week's rumor (GPT-6.1 Terra) w
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.7
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-21
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (third run of the day, refreshed).
+outcome: Anthropic Claude Code 2.1.304-305 (yes); Notion 24h agent harness + Auto router (maybe); Mistral Voxtral 3 / ElevenLabs Eleven Realtime (maybe); agent governance: Microsoft controls, WorkOS agent SSO (maybe); OpenAI 12h prompt caching / Perplexity local Mac agent (maybe).
+lesson: Agent value is shifting from raw model capability to the harness around it (long-running tasks, cost routers, identity and audit controls), so invest in runner guardrails, retries and logging before chasing the next model.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

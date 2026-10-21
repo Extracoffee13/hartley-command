@@ -1,34 +1,50 @@
 {
-  "generated": "2026-10-21T13:52:54+00:00",
+  "generated": "2026-10-21T17:51:47+00:00",
   "latest_date": "2026-10-21",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Anthropic: inference hooks leave beta for Claude Enterprise; Code Review GA and Opus 5.5 Fast mode GA (Oct 15)",
-      "summary": "Releasebot's Anthropic feed shows inference hooks out of beta for Enterprise orgs (Oct 20), Code Review generally available and Opus 5.5 Fast mode GA (Oct 15), plus a steady run of Claude Code 2.1.29x-2.1.305 builds; this is an aggregator, not Anthropic's own notes.",
+      "title": "Claude Code v2.1.304–2.1.305: auto-mode setup, Managed Agents security check, fork subagents on by default",
+      "summary": "Claude Code shipped 2.1.304 (Oct 19) and 2.1.305 (Oct 20) adding /auto-mode-setup, /claude-api managed-agents-secure (audits a Managed Agents config against Anthropic's security guide), unattended-retry watchdog env vars, a fix for worktree exit losing commits on detached HEAD, and gateway-compat retries; fork subagents became default in 2.1.302. Source is a changelog mirror quoting the official release notes.",
       "tag": "yes",
-      "how": "The Construct: inference hooks and Fast mode are usable for runner guardrails and latency-sensitive agents; re-check Claude Code version on the Mac runners. PRAGMA: enterprise-hook story for client pitches. Brand 9 Signs: no.",
-      "url": "https://releasebot.io/updates/anthropic"
+      "how": "The Construct: upgrade Mac runners to 2.1.305 for the worktree-loss fix and retry watchdog on unattended runs; run managed-agents-secure on any Managed Agents setups. PRAGMA: concrete guardrail talking points for client agent deployments. Brand 9 Signs: no.",
+      "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.305"
     },
     {
       "n": 2,
-      "title": "OpenAI GPT-6.1 reportedly cancelled after internal safety tests (conflicts with yesterday's 'Terra in prep' rumor)",
-      "summary": "A third-party tracker cites the WSJ saying OpenAI's October GPT-6.1 (named Astra there) was cancelled with no new date; this contradicts yesterday's TestingCatalog Terra report and I could not verify the WSJ piece directly.",
+      "title": "Notion ships 6th-gen agent harness: 24h+ tasks, 'Auto' model router, BYOK",
+      "summary": "Notion's rebuilt Agents can run single tasks for more than 24 hours (up from five minutes), route work to cost-appropriate models via an Auto router, and offer a two-tier credit system plus enterprise bring-your-own-key.",
       "tag": "maybe",
-      "how": "The Construct: drop the queued GPT-6.1 benchmark until an official OpenAI release. PRAGMA: avoid telling clients a GPT-6.1 date. Brand 9 Signs: no.",
-      "url": "https://local-ai-zone.github.io/blog/October_2026_AI_Model_Updates.html"
+      "how": "The Construct: validates the long-running-agent plus cost-tiered router pattern; compare against our own runner routing. PRAGMA: reference case for client conversations on agent cost control. Brand 9 Signs: no.",
+      "url": "https://aiagentstore.ai/ai-agent-news/this-week"
     },
     {
       "n": 3,
-      "title": "Gemini 4 Argon opens to paying users (Oct 13) and DeepSeek V4.1-Flash-1017 ships (Oct 17)",
-      "summary": "The same tracker lists Google opening Gemini 4 Argon worldwide to paid users on Oct 13 and DeepSeek V4.1-Flash-1017 on Oct 17; older than 24h and only partly verified.",
+      "title": "Mistral Voxtral 3 voice family and ElevenLabs Eleven Realtime launch",
+      "summary": "Mistral released Voxtral 3 (speech recognition + TTS, 50+ languages, voice-agent SDK, API or on-prem) and ElevenLabs released Eleven Realtime speech-to-speech models (Mini/Max, ~0.5s start of speech, 90+ languages); both per The Neuron's digest linking vendor posts on X, not independently verified.",
       "tag": "maybe",
-      "how": "The Construct: candidate cheap/second-opinion models for low-stakes sub-agents after a quick eval. PRAGMA: cost-comparison material. Brand 9 Signs: no.",
-      "url": "https://local-ai-zone.github.io/blog/October_2026_AI_Model_Updates.html"
+      "how": "The Construct: candidate voice layer for agents after a latency/quality eval. PRAGMA: voice-agent options for client phone/intake use cases. Brand 9 Signs: maybe, for quote-intake call handling later.",
+      "url": "https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-wednesday-october-21-2026/"
+    },
+    {
+      "n": 4,
+      "title": "Agent governance is becoming a product category: Microsoft agent controls, WorkOS agent-to-agent SSO",
+      "summary": "Microsoft is building controls to monitor or restrict enterprise agents, and WorkOS published an explainer on agent-to-agent SSO gaps (identity, delegation chains, auditability), following Okta's Agent SSO push.",
+      "tag": "maybe",
+      "how": "The Construct: informs how runners authenticate and log delegation between agents. PRAGMA: strong consulting angle (agent identity and audit trails for operators). Brand 9 Signs: no.",
+      "url": "https://www.theneuron.ai/news/microsoft-wants-to-police-ai-agents-who-holds-microsoft-accountable/"
+    },
+    {
+      "n": 5,
+      "title": "OpenAI adds 12-hour prompt caching in the API; Perplexity Computer runs locally on Mac",
+      "summary": "OpenAI says shared context can stay cached up to 12 hours, and Perplexity says its agent runs on Apple-silicon Macs with local files and native apps (both vendor posts on X relayed by The Neuron).",
+      "tag": "maybe",
+      "how": "The Construct: long-lived caching could cut cost for repeated-context agent runs; Perplexity local agent is a competitor reference for our Mac-runner model. PRAGMA: cost and local-agent comparison material. Brand 9 Signs: no.",
+      "url": "https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-wednesday-october-21-2026/"
     }
   ],
-  "praxis_lesson": "Official-release confidence matters: this week's rumor (GPT-6.1 Terra) was contradicted by a cancellation report within a day, so gate every model change on a vendor-confirmed release plus a regression pass, and treat single-source trackers as leads, not facts.",
+  "praxis_lesson": "Agent value is shifting from raw model capability to the harness around it (long-running tasks, cost routers, identity and audit controls), so invest in runner guardrails, retries and logging before chasing the next model.",
   "history": [
     "2026-10-21",
     "2026-10-20",
