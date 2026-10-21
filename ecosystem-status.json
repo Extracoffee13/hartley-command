@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-14T18:00:51+00:00",
+ "generated": "2026-10-21T14:00:53+00:00",
  "writer": "ecosystem-status-writer",
  "hermes": {
   "version": "0.21.4",
@@ -11,36 +11,36 @@
    {
     "name": "default",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 39,
-    "cost_30d": 2.12,
+    "sessions_30d": 6,
+    "cost_30d": 0.3,
     "retire": false
    },
    {
     "name": "ops-worker",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 23,
-    "cost_30d": 0.69,
+    "sessions_30d": 29,
+    "cost_30d": 0.71,
     "retire": false
    },
    {
     "name": "orchestrator",
     "model": "deepseek/deepseek-v4-pro",
-    "sessions_30d": 6,
-    "cost_30d": 0.29,
+    "sessions_30d": 9,
+    "cost_30d": 0.46,
     "retire": false
    },
    {
     "name": "publisher",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 1294,
-    "cost_30d": 5.86,
+    "sessions_30d": 309,
+    "cost_30d": 1.87,
     "retire": false
    },
    {
     "name": "research-analyst",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 8,
-    "cost_30d": 1.58,
+    "sessions_30d": 9,
+    "cost_30d": 1.61,
     "retire": false
    },
    {
@@ -52,14 +52,14 @@
    }
   ],
   "usage_30d": {
-   "sessions": 1370,
-   "cost_usd": 10.54,
-   "input_tokens": 52011757,
-   "output_tokens": 4125381,
-   "cache_read_tokens": 297667825
+   "sessions": 362,
+   "cost_usd": 4.95,
+   "input_tokens": 17669249,
+   "output_tokens": 1266552,
+   "cache_read_tokens": 78876262
   },
   "cron": {
-   "total": 226,
+   "total": 230,
    "enabled": 41,
    "scripts_enabled": 41,
    "agent_jobs_enabled": 0,
@@ -72,7 +72,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-13T14:00",
+     "last_run": "2026-10-20T14:00",
      "schedule": "0 14 * * *",
      "error": ""
     },
@@ -82,7 +82,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-13T23:00",
+     "last_run": "2026-10-20T23:00",
      "schedule": "0 23 * * *",
      "error": ""
     },
@@ -92,7 +92,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-12T06:00",
+     "last_run": "2026-10-19T06:00",
      "schedule": "0 6 * * 1",
      "error": ""
     },
@@ -102,7 +102,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T09:50",
+     "last_run": "2026-10-21T09:50",
      "schedule": "daily 09:50 ET",
      "error": ""
     },
@@ -112,7 +112,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T10:00",
+     "last_run": "2026-10-20T10:00",
      "schedule": "0 10 * * *",
      "error": ""
     },
@@ -122,7 +122,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-12T09:07",
+     "last_run": "2026-10-19T09:07",
      "schedule": "0 9 * * 1 (Mondays, 6 runs)",
      "error": ""
     },
@@ -132,7 +132,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T08:30",
+     "last_run": "2026-10-21T08:30",
      "schedule": "30 8 * * *",
      "error": ""
     },
@@ -142,7 +142,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T13:30",
+     "last_run": "2026-10-21T09:30",
      "schedule": "*/30 * * * *",
      "error": ""
     },
@@ -152,7 +152,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T13:45",
+     "last_run": "2026-10-21T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -162,7 +162,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T13:00",
+     "last_run": "2026-10-21T09:00",
      "schedule": "0 * * * *",
      "error": ""
     },
@@ -172,7 +172,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T07:00",
+     "last_run": "2026-10-21T07:00",
      "schedule": "0 7 * * *",
      "error": ""
     },
@@ -182,7 +182,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T07:05",
+     "last_run": "2026-10-21T07:05",
      "schedule": "5 7 * * *",
      "error": ""
     },
@@ -192,7 +192,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T03:30",
+     "last_run": "2026-10-21T03:30",
      "schedule": "30 3 * * *",
      "error": ""
     },
@@ -202,7 +202,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T03:00",
+     "last_run": "2026-10-21T03:00",
      "schedule": "0 3 * * *",
      "error": ""
     },
@@ -212,7 +212,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-12T04:00",
+     "last_run": "2026-10-19T04:00",
      "schedule": "0 4 * * 1",
      "error": ""
     },
@@ -222,7 +222,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T13:45",
+     "last_run": "2026-10-21T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -232,7 +232,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-12T07:10",
+     "last_run": "2026-10-19T07:10",
      "schedule": "10 7 * * 1",
      "error": ""
     },
@@ -242,7 +242,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T06:15",
+     "last_run": "2026-10-21T06:15",
      "schedule": "15 6 * * *",
      "error": ""
     },
@@ -252,7 +252,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T13:00",
+     "last_run": "2026-10-21T09:00",
      "schedule": "0 * * * *",
      "error": ""
     },
@@ -262,7 +262,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T12:10",
+     "last_run": "2026-10-21T08:10",
      "schedule": "10 */4 * * *",
      "error": ""
     },
@@ -272,7 +272,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T13:45",
+     "last_run": "2026-10-21T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -282,7 +282,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-13T23:30",
+     "last_run": "2026-10-20T23:30",
      "schedule": "30 23 * * *",
      "error": ""
     },
@@ -292,7 +292,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T09:41",
+     "last_run": "2026-10-21T09:41",
      "schedule": "40 9 * * *",
      "error": ""
     },
@@ -302,7 +302,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T04:30",
+     "last_run": "2026-10-21T04:30",
      "schedule": "30 4 * * *",
      "error": ""
     },
@@ -312,7 +312,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T04:45",
+     "last_run": "2026-10-21T04:45",
      "schedule": "45 4 * * *",
      "error": ""
     },
@@ -322,7 +322,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-13T17:00",
+     "last_run": "2026-10-20T17:00",
      "schedule": "0 17 * * *",
      "error": ""
     },
@@ -332,7 +332,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T13:30",
+     "last_run": "2026-10-21T09:30",
      "schedule": "*/5 * * * *",
      "error": ""
     },
@@ -342,7 +342,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T07:00",
+     "last_run": "2026-10-21T07:00",
      "schedule": "0 7 * * *",
      "error": ""
     },
@@ -352,7 +352,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T09:26",
+     "last_run": "2026-10-21T09:26",
      "schedule": "25 9 * * *",
      "error": ""
     },
@@ -362,7 +362,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T14:00",
+     "last_run": "2026-10-21T09:59",
      "schedule": "* * * * *",
      "error": ""
     },
@@ -372,7 +372,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T06:00",
+     "last_run": "2026-10-21T06:00",
      "schedule": "0 6 * * *",
      "error": ""
     },
@@ -382,7 +382,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T06:00",
+     "last_run": "2026-10-21T06:00",
      "schedule": "0 6 * * *",
      "error": ""
     },
@@ -392,7 +392,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T13:45",
+     "last_run": "2026-10-21T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -402,7 +402,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T08:00",
+     "last_run": "2026-10-21T08:00",
      "schedule": "0 8 * * *",
      "error": ""
     },
@@ -412,7 +412,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T12:00",
+     "last_run": "2026-10-21T08:00",
      "schedule": "0 */4 * * *",
      "error": ""
     },
@@ -422,7 +422,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T07:00",
+     "last_run": "2026-10-21T07:00",
      "schedule": "0 7 * * *",
      "error": ""
     },
@@ -432,7 +432,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T13:45",
+     "last_run": "2026-10-21T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -442,7 +442,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T13:30",
+     "last_run": "2026-10-21T09:30",
      "schedule": "*/30 * * * *",
      "error": ""
     },
@@ -452,7 +452,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-12T09:00",
+     "last_run": "2026-10-19T09:00",
      "schedule": "0 9 * * 1",
      "error": ""
     },
@@ -462,7 +462,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T13:45",
+     "last_run": "2026-10-21T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -472,7 +472,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-14T13:55",
+     "last_run": "2026-10-21T09:55",
      "schedule": "*/5 * * * *",
      "error": ""
     }
@@ -490,20 +490,20 @@
    "jev_p50_ms": 307
   },
   "decisions": {
-   "total": 156,
-   "last_24h": 1,
+   "total": 170,
+   "last_24h": 3,
    "to_claude": 0,
    "by_mode": {
     "testing": 37,
-    "jev-primary": 118,
+    "jev-primary": 132,
     "jev-down->laya-vote": 1
    },
    "picks": {
-    "publisher": 7,
-    "ops-worker": 28,
-    "orchestrator": 35,
-    "research-analyst": 11,
-    "vector-design": 9
+    "publisher": 8,
+    "ops-worker": 32,
+    "orchestrator": 40,
+    "research-analyst": 14,
+    "vector-design": 10
    }
   },
   "bakeoff": {
@@ -666,9 +666,9 @@
   "gk_checked_30d": 4
  },
  "digest": {
-  "ts": "2026-10-14T11:05:50+00:00",
+  "ts": "2026-10-21T11:05:53+00:00",
   "sent": true,
-  "lens_items": 0,
+  "lens_items": 5,
   "kanban_done": 0,
   "kanban_blocked": 0,
   "spend_24h": 0.0,
@@ -676,15 +676,15 @@
   "error": null
  },
  "harvard": {
-  "articles": 3513,
-  "searches_30d": 19,
+  "articles": 3540,
+  "searches_30d": 22,
   "by": {
    "unknown": 1,
    "hermes-research-analyst": 3,
-   "scout": 9,
-   "keystone": 6
+   "scout": 10,
+   "keystone": 8
   },
-  "last_search": "2026-10-12T02:48:48Z",
-  "index_built": "2026-10-14T13:41:12+00:00"
+  "last_search": "2026-10-19T16:00:03Z",
+  "index_built": "2026-10-21T13:41:11+00:00"
  }
 }

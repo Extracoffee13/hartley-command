@@ -3062,3 +3062,195 @@ lesson: Cheap, capable workers (Haiku 5.5 at 10x lower price) plus rising vendor
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-15
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Anthropic Q3 revenue + Nov IPO (maybe), EU AI Act first enforcement case (maybe, unverified body), Anthropic Scion/30k merges per day (maybe), OpenAI GPT-4o/4.1 API retirement Jan 14 2027 (maybe). No new MCP/Claude Code release verified today.
+lesson: Agent output is now outgrowing human-scale infrastructure (Anthropic had to replace Git) and vendor terms are shifting under us (model retirements, IPO, EU enforcement), so build for machine-rate throughput and keep every model ID and provider a swappable, audited config rather than a hard-coded dependency.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-15
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Gemini 4 Argon GA (maybe), EU AI Act first enforcement info requests to OpenAI/Anthropic (maybe, verified), Anthropic IPO prospectus leak (maybe), XBOW AI-built Chrome exploit (maybe), Workday Agent Harness / DXC+LangChain (yes). No new Anthropic product or MCP release verified.
+lesson: Agent value is shifting from the model to the governed harness around it (memory, guardrails, audit traces), while regulators now probe agent sandbox escapes — so keep models swappable and invest in permission scoping and audit logging as the durable asset.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-16
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Claude Opus 5.5 fast mode GA (yes), Meta Muse Spark Open (maybe), Microsoft MAI-Base-2 (no), Navige agent cost manager (maybe), Anthropic self-replication research + White House task force (maybe). No new MCP server or verified arXiv paper found.
+lesson: The day's news clusters around cost/speed controls (Opus fast mode, Navige) and containment (self-replication research, breach-reporting rules) — so treat model choice, spend budgets and network/permission limits as configurable policy, not hard-coded decisions.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-16
+decision: Refreshed the 24h AI/agent ecosystem scan for The Construct with newly found items (supersedes earlier 2026-10-16 block).
+outcome: Flagged Vals multi-agent cost study (yes), Archon CVE-2026-111322 unauthenticated RCE (maybe), Meta Muse Spark Open (maybe), Gemini 4 Argon GA (maybe), Anthropic eval internet cutoff (maybe). No verified new MCP server or arXiv paper of note.
+lesson: Today's evidence says more agents and more freedom mostly add cost and risk — multi-agent teams cost 1.8–5.1x for little gain, and Anthropic and Archon show uncontrolled agents need containment — so default to one scoped, sandboxed agent and add more only on measured gain.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-17
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Claude Code 2.1.299 MCP protocol 2026-07-28 default (yes), Anthropic OpenTelemetry/Managed Agents scheduling (maybe), Meta Muse Wonder (maybe), Claude Code Review GA (maybe). No verified new MCP server, fundraise or arXiv paper of note.
+lesson: Protocol and permission defaults are shifting under agent stacks (MCP version negotiation, hook approval limits) while tracing becomes standard, so pin and test integrations against each release and instrument runs before adding autonomy.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-17
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (second pass, refreshed report).
+outcome: Flagged Claude Code MCP 2026-07-28 default (yes), Personal Agent Protocol (maybe), Google Gemini agent identity + Gemini 4 Argon (maybe), Claude Haiku 5.5 / Mistral Large 4 (maybe).
+lesson: Agent identity and auth (Personal Agent Protocol, Workspace agent identities) is becoming a standards layer alongside MCP, so design agents with scoped, auditable credentials now rather than retrofitting them.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-18
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Quiet day, nothing primary after Oct 13. Flagged Claude for Workspace + parallel Claude Code cloud sessions (yes), GLM-5.2 self-replication red-team (maybe), HCLTech-Anthropic partnership (maybe), DeepSeek raise / Mistral Large 4 (maybe).
+lesson: When the same secondary roundups keep surfacing and nothing primary is new, the signal is in the safety and sandboxing findings: assume any open-weight worker agent can act beyond its brief, and enforce isolation and egress limits in the harness rather than trusting the model.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-18
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (second pass, refreshed report).
+outcome: Flagged DeepSeek V4.1-Flash-1017 + Search/Fetch APIs (maybe), Claude Code Review GA (maybe), Claude Docs/Slides/Design GA + Dashboards/Motion beta (yes), goose v1.55 MCP trace context (maybe).
+lesson: Cheap open-weight models are getting built-in web tools and agent-grade benchmarks just as vendors add trace propagation and review gates, so the durable edge is the harness: route work by cost tier, trace every tool call, and gate output with review rather than trusting any one model.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-18
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (third pass, refreshed report).
+outcome: Flagged Meta Muse Spark Open 816B weights (maybe), Gemini 4 Argon API vs Opus 5.5 (maybe), NVIDIA NemoClaw sandbox/egress stack (maybe), ai-memory v3.1.1 shared agent memory (maybe).
+lesson: Four different releases today point at the same layer: models are commoditizing (open 816B weights, a half-price Gemini that fails a billing spec Opus passes), while sandboxes, egress approvals and shared memory are where the real control lives, so run your own evals and invest in the harness rather than the model of the week.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-19
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Claude Code Review GA (yes), DeepSeek V4.1-Flash-1017 (maybe), ImageKit DAM MCP (yes), Tencent Hy Memory 2.0 (maybe).
+lesson: Agent work is moving from generating to governing: Code Review goes GA, ImageKit leads with scoped permissions and destructive-op safeguards, and memory becomes its own open stack, so the durable edge is the review, permission and memory layer around the model, not the model itself.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-19
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (second pass, refreshed report).
+outcome: Flagged Google Harness² self-modifying harness (maybe), OpenAI rogue-agent incidents (yes), Axonius AI Workforce + MCP Server GA (maybe), HybridAgent preprint (maybe), DeepSeek Search & Fetch API (maybe).
+lesson: Governance beats raw capability this week: OpenAI's late-discovered rogue-agent incidents and Axonius's Off/Shadow/Live autonomy modes point to the same rule, so ship every agent in shadow mode with scoped credentials and audit logs before granting it live action.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-19
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged OpenAI rogue-agent incidents (yes), Microsoft agent containment post (yes), Claude Code 2.1.302 fork subagents + Design sunset (yes), DeepSeek V4.1 Flash 1017 + Search API (maybe), Google Harness² (maybe).
+lesson: Containment is the story of the day: OpenAI's late-found incidents and Microsoft's identity-container-policy model agree that every agent needs its own identity, scoped permissions and continuous monitoring, so give each Construct agent a named identity and least-privilege credentials before expanding its autonomy.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-20
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Claude Fable 5.5 rumor (maybe), EU/FTC agent-incident inquiries (yes), Opsin $21M agent governance (maybe), Meta Muse Wonder + Gemini 4 Argon (maybe).
+lesson: Regulators are moving from principles to subpoenas and information requests, so an agent fleet's logs, scoped credentials and kill-switches are now compliance assets, not hygiene: build them before they are asked for.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-20
+decision: Afternoon refresh scan of the AI/agent ecosystem for The Construct.
+outcome: Flagged Microsoft per-agent risk controls (yes), Sunra image/video MCP (yes), Anthropic OSS Scanner (maybe), Reuters AI-agent website breach campaign (maybe), Fable 5.5 still unconfirmed (maybe).
+lesson: Vendors are shipping per-agent approve/block/shutdown controls the same week agents are used offensively, so give every Construct runner a risk tier with a human-approval gate and a kill-switch before widening autonomy.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-21
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Flagged Fable 5.5 still unconfirmed (maybe), OpenAI GPT-6.1 Terra reportedly in prep (maybe), Runway MCP video/image gen (yes, May launch, not yet in stack).
+lesson: Model launches are being telegraphed days ahead by leaks, so pin and test models on a schedule of your own rather than reacting to rumors; promote a new model into Construct runners only after an official release plus a regression pass.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-21
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (second run of the day, refreshed).
+outcome: Flagged Anthropic inference hooks out of beta + Code Review/Opus 5.5 Fast GA (yes), GPT-6.1 reportedly cancelled contradicting Terra rumor (maybe), Gemini 4 Argon GA / DeepSeek V4.1-Flash (maybe).
+lesson: Official-release confidence matters: this week's rumor (GPT-6.1 Terra) was contradicted by a cancellation report within a day, so gate every model change on a vendor-confirmed release plus a regression pass, and treat single-source trackers as leads, not facts.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.7
+~~~

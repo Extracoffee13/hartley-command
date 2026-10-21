@@ -1,56 +1,48 @@
 {
-  "generated": "2026-10-14T17:51:53+00:00",
-  "latest_date": "2026-10-14",
+  "generated": "2026-10-21T13:52:54+00:00",
+  "latest_date": "2026-10-21",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Claude Haiku 5.5 launches (Oct 7) at $0.10/$0.50 per M tokens with configurable effort",
-      "summary": "Anthropic's small model is ~10x cheaper than Haiku 4.5 ($1/$5), adds an effort control, and scores 72.4% on the offline OSWorld 2.1 subset vs 15.7% for Haiku 4.5 (vendor-reported); Sonnet 5.5 cache reads also dropped to $0.10/M.",
+      "title": "Anthropic: inference hooks leave beta for Claude Enterprise; Code Review GA and Opus 5.5 Fast mode GA (Oct 15)",
+      "summary": "Releasebot's Anthropic feed shows inference hooks out of beta for Enterprise orgs (Oct 20), Code Review generally available and Opus 5.5 Fast mode GA (Oct 15), plus a steady run of Claude Code 2.1.29x-2.1.305 builds; this is an aggregator, not Anthropic's own notes.",
       "tag": "yes",
-      "how": "The Construct: re-route high-volume worker and scan tasks (including this Pulse job) to claude-haiku-5-5 with a low effort setting to cut cost. PRAGMA: cost-per-task talking point for client agent builds. Brand 9 Signs: cheap model for bulk alt-text/product-copy passes.",
-      "url": "https://letsdatascience.com/news/anthropic-releases-claude-haiku-55-with-lower-prices-and-eff-f698c663"
+      "how": "The Construct: inference hooks and Fast mode are usable for runner guardrails and latency-sensitive agents; re-check Claude Code version on the Mac runners. PRAGMA: enterprise-hook story for client pitches. Brand 9 Signs: no.",
+      "url": "https://releasebot.io/updates/anthropic"
     },
     {
       "n": 2,
-      "title": "Anthropic Frontier Red Team warns small open-weight models may soon self-replicate on commercial IoT hardware (Oct 13)",
-      "summary": "A 9B model ran inference on 8 of 9 tested device types; the team says autonomous replication could be months away (vendor research, not independently verified).",
+      "title": "OpenAI GPT-6.1 reportedly cancelled after internal safety tests (conflicts with yesterday's 'Terra in prep' rumor)",
+      "summary": "A third-party tracker cites the WSJ saying OpenAI's October GPT-6.1 (named Astra there) was cancelled with no new date; this contradicts yesterday's TestingCatalog Terra report and I could not verify the WSJ piece directly.",
       "tag": "maybe",
-      "how": "The Construct: reinforces sandboxed, least-privilege agents with outbound-network allowlists. PRAGMA: security-posture selling point for client agent deployments. Brand 9 Signs: no direct impact.",
-      "url": "https://www.anthropic.com/research/self-replicating-ai"
+      "how": "The Construct: drop the queued GPT-6.1 benchmark until an official OpenAI release. PRAGMA: avoid telling clients a GPT-6.1 date. Brand 9 Signs: no.",
+      "url": "https://local-ai-zone.github.io/blog/October_2026_AI_Model_Updates.html"
     },
     {
       "n": 3,
-      "title": "Anthropic pitches investors at ~$1.8-2T valuation; public IPO filing reportedly expected ~Oct 25",
-      "summary": "Leaked prospectus figures (secondhand via Yahoo Finance) reportedly show a large operating loss and $518B in compute obligations.",
+      "title": "Gemini 4 Argon opens to paying users (Oct 13) and DeepSeek V4.1-Flash-1017 ships (Oct 17)",
+      "summary": "The same tracker lists Google opening Gemini 4 Argon worldwide to paid users on Oct 13 and DeepSeek V4.1-Flash-1017 on Oct 17; older than 24h and only partly verified.",
       "tag": "maybe",
-      "how": "The Construct: vendor-concentration/pricing risk to watch as Anthropic goes public; keep model routing portable. PRAGMA: likely client question (vendor stability). Brand 9 Signs: no direct impact.",
-      "url": "https://finance.yahoo.com/technology/ai/articles/two-exit-doors-anthropic-2-051103937.html"
-    },
-    {
-      "n": 4,
-      "title": "Mistral Large 4 preview (Oct 6): 1T-parameter multimodal MoE, open weights due Oct 27",
-      "summary": "49B active parameters; Mistral calls it the strongest open-weight model from the US or Europe (vendor claim). Not 24h-new, but weights land in under two weeks (via Techmeme snapshot).",
-      "tag": "maybe",
-      "how": "The Construct: candidate self-hostable worker for cheap high-volume tasks once weights ship. PRAGMA: open-weight/data-residency option for clients. Brand 9 Signs: no direct impact.",
-      "url": "https://techmeme.com/261006/p15"
+      "how": "The Construct: candidate cheap/second-opinion models for low-stakes sub-agents after a quick eval. PRAGMA: cost-comparison material. Brand 9 Signs: no.",
+      "url": "https://local-ai-zone.github.io/blog/October_2026_AI_Model_Updates.html"
     }
   ],
-  "praxis_lesson": "Cheap, capable workers (Haiku 5.5 at 10x lower price) plus rising vendor and security uncertainty mean the winning fleet design is tiered and portable: route high-volume steps to the cheapest adequate model, keep providers swappable, and contain every agent with least-privilege sandboxes.",
+  "praxis_lesson": "Official-release confidence matters: this week's rumor (GPT-6.1 Terra) was contradicted by a cancellation report within a day, so gate every model change on a vendor-confirmed release plus a regression pass, and treat single-source trackers as leads, not facts.",
   "history": [
+    "2026-10-21",
+    "2026-10-20",
+    "2026-10-19",
+    "2026-10-18",
+    "2026-10-17",
+    "2026-10-16",
+    "2026-10-15",
     "2026-10-14",
     "2026-10-13",
     "2026-10-12",
     "2026-10-11",
     "2026-10-10",
     "2026-10-09",
-    "2026-10-08",
-    "2026-10-07",
-    "2026-10-06",
-    "2026-10-05",
-    "2026-10-04",
-    "2026-10-03",
-    "2026-10-02",
-    "2026-10-01"
+    "2026-10-08"
   ]
 }
