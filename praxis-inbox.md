@@ -3266,3 +3266,15 @@ lesson: Agent value is shifting from raw model capability to the harness around 
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-22
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: PHP critical RCE CVE-2026-109618/9 patch (yes, B9 WordPress); Claude Code 2.1.306-308 + API 2026-10-21 (yes); Claude Duet proactive agent (maybe); Claude Security public beta (maybe); UseIt Studio manufacturing-file design agent (maybe).
+lesson: Agent power is increasingly gated by the safety layer around it (approval gates, safety-event telemetry, patch discipline), so log every blocked or prompted action in our runners and treat patching the boring stack (PHP) as agent-era table stakes.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

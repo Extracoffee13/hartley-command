@@ -1,51 +1,52 @@
 {
-  "generated": "2026-10-21T17:51:47+00:00",
-  "latest_date": "2026-10-21",
+  "generated": "2026-10-22T09:52:44+00:00",
+  "latest_date": "2026-10-22",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Claude Code v2.1.304–2.1.305: auto-mode setup, Managed Agents security check, fork subagents on by default",
-      "summary": "Claude Code shipped 2.1.304 (Oct 19) and 2.1.305 (Oct 20) adding /auto-mode-setup, /claude-api managed-agents-secure (audits a Managed Agents config against Anthropic's security guide), unattended-retry watchdog env vars, a fix for worktree exit losing commits on detached HEAD, and gateway-compat retries; fork subagents became default in 2.1.302. Source is a changelog mirror quoting the official release notes.",
+      "title": "Two critical unauthenticated PHP RCE flaws (CVE-2026-109618/109619) patched; Finland, BBC, Edinburgh took services offline",
+      "summary": "PHP issued patched releases for two critical remote-code-execution bugs affecting any PHP install serving web requests; OpenAI says a researcher found one using GPT-5.6 Sol and Wiz independently found both (per The Neuron digest, primary PHP.net notice linked).",
       "tag": "yes",
-      "how": "The Construct: upgrade Mac runners to 2.1.305 for the worktree-loss fix and retry watchdog on unattended runs; run managed-agents-secure on any Managed Agents setups. PRAGMA: concrete guardrail talking points for client agent deployments. Brand 9 Signs: no.",
-      "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.305"
+      "how": "Brand 9 Signs: brand9signs.com runs WordPress on PHP — confirm host (SiteGround) has moved to the patched PHP release today. The Construct: check any PHP-based services on Mac/hosted infra. PRAGMA: timely client-advisory talking point on AI-assisted vuln discovery.",
+      "url": "https://www.php.net/archive/2026.php#2026-10-21-5"
     },
     {
       "n": 2,
-      "title": "Notion ships 6th-gen agent harness: 24h+ tasks, 'Auto' model router, BYOK",
-      "summary": "Notion's rebuilt Agents can run single tasks for more than 24 hours (up from five minutes), route work to cost-appropriate models via an Auto router, and offer a two-tier credit system plus enterprise bring-your-own-key.",
-      "tag": "maybe",
-      "how": "The Construct: validates the long-running-agent plus cost-tiered router pattern; compare against our own runner routing. PRAGMA: reference case for client conversations on agent cost control. Brand 9 Signs: no.",
-      "url": "https://aiagentstore.ai/ai-agent-news/this-week"
+      "title": "Claude Code 2.1.306–2.1.308 + Claude API version 2026-10-21 (new SDK majors, Apache 2.0)",
+      "summary": "2.1.307 adds /claude-api api-version migration, a claude_code.safety_event OpenTelemetry event per blocked/prompted tool call, and fixes duplicate HTTP MCP tool calls and locked-keychain MCP auth in claude -p; 2.1.306 fixes cloud-session 'Not logged in' for claude -p; 2.1.308 is a reliability release. New API version ships Python SDK 2.0.0, TS 1.0.0 etc. with breaking changes.",
+      "tag": "yes",
+      "how": "The Construct: upgrade Mac runners to 2.1.308 (scheduled claude -p runs benefit from the auth and double-call fixes); pipe safety_event into runner logging; pin SDK versions before accepting the breaking majors. PRAGMA: guardrail observability talking point. Brand 9 Signs: no.",
+      "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.307"
     },
     {
       "n": 3,
-      "title": "Mistral Voxtral 3 voice family and ElevenLabs Eleven Realtime launch",
-      "summary": "Mistral released Voxtral 3 (speech recognition + TTS, 50+ languages, voice-agent SDK, API or on-prem) and ElevenLabs released Eleven Realtime speech-to-speech models (Mini/Max, ~0.5s start of speech, 90+ languages); both per The Neuron's digest linking vendor posts on X, not independently verified.",
+      "title": "Claude Duet research preview: proactive agent on web, iOS and Android (US Pro/Max waitlist)",
+      "summary": "Anthropic opened a waitlist for Duet, a proactive agent that surfaces work needing attention and keeps tasks going after you step away, asking approval before sending messages, paying, signing or deleting; background checks count toward plan limits.",
       "tag": "maybe",
-      "how": "The Construct: candidate voice layer for agents after a latency/quality eval. PRAGMA: voice-agent options for client phone/intake use cases. Brand 9 Signs: maybe, for quote-intake call handling later.",
-      "url": "https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-wednesday-october-21-2026/"
+      "how": "The Construct: direct reference design for approval-gated proactive agents; join the waitlist and compare with our scheduled-routine model. PRAGMA: client-facing example of human-in-the-loop autonomy. Brand 9 Signs: maybe, for order/quote follow-up nudges later.",
+      "url": "https://claude.com/resources/articles/claude-duet"
     },
     {
       "n": 4,
-      "title": "Agent governance is becoming a product category: Microsoft agent controls, WorkOS agent-to-agent SSO",
-      "summary": "Microsoft is building controls to monitor or restrict enterprise agents, and WorkOS published an explainer on agent-to-agent SSO gaps (identity, delegation chains, auditability), following Okta's Agent SSO push.",
+      "title": "Claude Security public beta: continuous repo scanning, fix tracking, API and MCP connector",
+      "summary": "Claude Security now scans repositories continuously, tracks fixes, builds team-informed threat models, and exposes an API and MCP connector; Enterprise customers get $25k/month free usage credits for two months through Dec 31, 2026.",
       "tag": "maybe",
-      "how": "The Construct: informs how runners authenticate and log delegation between agents. PRAGMA: strong consulting angle (agent identity and audit trails for operators). Brand 9 Signs: no.",
-      "url": "https://www.theneuron.ai/news/microsoft-wants-to-police-ai-agents-who-holds-microsoft-accountable/"
+      "how": "The Construct: Enterprise-only, but the MCP connector pattern is useful for scanning our hartley-command and runner repos if we reach that tier. PRAGMA: security-review offering for client agent code. Brand 9 Signs: no.",
+      "url": "https://claude.com/resources/articles/claude-security-now-scans-continuously-and-tracks-fixes"
     },
     {
       "n": 5,
-      "title": "OpenAI adds 12-hour prompt caching in the API; Perplexity Computer runs locally on Mac",
-      "summary": "OpenAI says shared context can stay cached up to 12 hours, and Perplexity says its agent runs on Apple-silicon Macs with local files and native apps (both vendor posts on X relayed by The Neuron).",
+      "title": "UseIt Studio: design agent that outputs editable manufacturing files (dimensions, bleed, dielines)",
+      "summary": "A Product Hunt launch: a design agent that asks follow-up questions and produces editable production-ready files for packaging, stickers and cards (per The Neuron digest; not independently verified).",
       "tag": "maybe",
-      "how": "The Construct: long-lived caching could cut cost for repeated-context agent runs; Perplexity local agent is a competitor reference for our Mac-runner model. PRAGMA: cost and local-agent comparison material. Brand 9 Signs: no.",
-      "url": "https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-wednesday-october-21-2026/"
+      "how": "Brand 9 Signs: watch as a competitor/reference for print-ready file generation, relevant to our logo designer and fabrication-check flow. The Construct: pattern for agents that end in manufacturable output, not mockups. PRAGMA: no.",
+      "url": "https://www.producthunt.com/products/useit-studio-from-idea-to-delivery"
     }
   ],
-  "praxis_lesson": "Agent value is shifting from raw model capability to the harness around it (long-running tasks, cost routers, identity and audit controls), so invest in runner guardrails, retries and logging before chasing the next model.",
+  "praxis_lesson": "Agent power is increasingly gated by the safety layer around it (approval gates, safety-event telemetry, patch discipline), so log every blocked or prompted action in our runners and treat patching the boring stack (PHP) as agent-era table stakes.",
   "history": [
+    "2026-10-22",
     "2026-10-21",
     "2026-10-20",
     "2026-10-19",
@@ -58,7 +59,6 @@
     "2026-10-12",
     "2026-10-11",
     "2026-10-10",
-    "2026-10-09",
-    "2026-10-08"
+    "2026-10-09"
   ]
 }
