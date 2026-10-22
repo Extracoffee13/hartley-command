@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-22T13:00:53+00:00",
+ "generated": "2026-10-22T14:00:53+00:00",
  "writer": "ecosystem-status-writer",
  "hermes": {
   "version": "0.21.4",
@@ -32,8 +32,8 @@
    {
     "name": "publisher",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 174,
-    "cost_30d": 1.41,
+    "sessions_30d": 168,
+    "cost_30d": 1.38,
     "retire": false
    },
    {
@@ -52,16 +52,16 @@
    }
   ],
   "usage_30d": {
-   "sessions": 232,
-   "cost_usd": 5.76,
-   "input_tokens": 14395034,
-   "output_tokens": 1013479,
-   "cache_read_tokens": 73053367
+   "sessions": 226,
+   "cost_usd": 5.73,
+   "input_tokens": 14159555,
+   "output_tokens": 989759,
+   "cache_read_tokens": 71434935
   },
   "cron": {
-   "total": 242,
-   "enabled": 41,
-   "scripts_enabled": 41,
+   "total": 244,
+   "enabled": 42,
+   "scripts_enabled": 42,
    "agent_jobs_enabled": 0,
    "failing": [],
    "duplicates": [],
@@ -102,7 +102,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-21T09:50",
+     "last_run": "2026-10-22T09:50",
      "schedule": "daily 09:50 ET",
      "error": ""
     },
@@ -142,7 +142,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-22T08:30",
+     "last_run": "2026-10-22T09:30",
      "schedule": "*/30 * * * *",
      "error": ""
     },
@@ -152,7 +152,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-22T08:45",
+     "last_run": "2026-10-22T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -162,7 +162,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-22T08:00",
+     "last_run": "2026-10-22T09:00",
      "schedule": "0 * * * *",
      "error": ""
     },
@@ -222,7 +222,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-22T08:45",
+     "last_run": "2026-10-22T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -252,7 +252,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-22T08:00",
+     "last_run": "2026-10-22T09:00",
      "schedule": "0 * * * *",
      "error": ""
     },
@@ -272,7 +272,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-22T08:45",
+     "last_run": "2026-10-22T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -292,7 +292,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-21T09:41",
+     "last_run": "2026-10-22T09:41",
      "schedule": "40 9 * * *",
      "error": ""
     },
@@ -332,7 +332,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-22T08:30",
+     "last_run": "2026-10-22T09:30",
      "schedule": "*/5 * * * *",
      "error": ""
     },
@@ -352,7 +352,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-21T09:26",
+     "last_run": "2026-10-22T09:26",
      "schedule": "25 9 * * *",
      "error": ""
     },
@@ -362,7 +362,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-22T09:00",
+     "last_run": "2026-10-22T09:59",
      "schedule": "* * * * *",
      "error": ""
     },
@@ -388,11 +388,21 @@
     },
     {
      "profile": "default",
+     "name": "nb-ship-deploy",
+     "enabled": true,
+     "script": true,
+     "status": null,
+     "last_run": "",
+     "schedule": "every 1m",
+     "error": ""
+    },
+    {
+     "profile": "default",
      "name": "plugin-load-verifier",
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-22T08:45",
+     "last_run": "2026-10-22T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -432,7 +442,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-22T08:45",
+     "last_run": "2026-10-22T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -442,7 +452,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-22T08:30",
+     "last_run": "2026-10-22T09:30",
      "schedule": "*/30 * * * *",
      "error": ""
     },
@@ -462,7 +472,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-22T08:45",
+     "last_run": "2026-10-22T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -472,7 +482,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-22T08:55",
+     "last_run": "2026-10-22T09:55",
      "schedule": "*/5 * * * *",
      "error": ""
     }
@@ -490,17 +500,17 @@
    "jev_p50_ms": 307
   },
   "decisions": {
-   "total": 191,
-   "last_24h": 24,
+   "total": 193,
+   "last_24h": 23,
    "to_claude": 0,
    "by_mode": {
     "testing": 37,
-    "jev-primary": 153,
+    "jev-primary": 155,
     "jev-down->laya-vote": 1
    },
    "picks": {
-    "publisher": 11,
-    "ops-worker": 37,
+    "publisher": 12,
+    "ops-worker": 38,
     "orchestrator": 44,
     "research-analyst": 15,
     "vector-design": 11
@@ -678,7 +688,7 @@
   "error": null
  },
  "harvard": {
-  "articles": 3541,
+  "articles": 3547,
   "searches_30d": 22,
   "by": {
    "unknown": 1,
@@ -687,6 +697,6 @@
    "keystone": 8
   },
   "last_search": "2026-10-19T16:00:03Z",
-  "index_built": "2026-10-22T08:45:54+00:00"
+  "index_built": "2026-10-22T13:41:17+00:00"
  }
 }
