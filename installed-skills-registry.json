@@ -1,13 +1,6 @@
 {
-  "updated_at": "2026-10-21T10:10:02.538565+00:00",
+  "updated_at": "2026-10-22T10:10:04.862462+00:00",
   "skills": [
-    {
-      "slug": "aair-market-baseline-scanning",
-      "path": "/Users/alfredpennyworth/.hermes/skills/aair-market-baseline-scanning",
-      "has_skill_md": true,
-      "has_description_md": false,
-      "description_excerpt": "---\nname: aair-market-baseline-scanning\ndescription: Run a reproducible AAIR v6 market-baseline scan using a frozen client-blind corpus, aggregate chunked API responses, and produce a timestamped base"
-    },
     {
       "slug": "aair-snapshot",
       "path": "/Users/alfredpennyworth/.hermes/skills/aair-snapshot",
@@ -161,13 +154,6 @@
       "has_skill_md": true,
       "has_description_md": false,
       "description_excerpt": "---\nname: atlas\ndescription: \"Atlas is The Construct's Daily Orchestration operator: it runs the daily coordination cycle, cross-operator handoffs, Hermes inbox dispatch, dashboard synthesis, and AM b"
-    },
-    {
-      "slug": "b9-content-operations",
-      "path": "/Users/alfredpennyworth/.hermes/skills/b9-content-operations",
-      "has_skill_md": true,
-      "has_description_md": false,
-      "description_excerpt": "---\nname: b9-content-operations\ndescription: B9 site content maintenance patterns.\ncategory: b9-management\n---\n\n# B9 Content Operations\n\nCompanion umbrella for Brand 9 Signs content-maintenance tasks."
     },
     {
       "slug": "b9-gsc-end-to-end-ownership",
@@ -576,13 +562,6 @@
       "description_excerpt": "---\nname: opportunity-scoring\ndescription: \"Keystone capability: score an opportunity on the Coca-Cola Test (1\u201325) \u2014 durability \u00d7 defensibility \u00d7 leverage. \u226522 = MOONSHOT, 18\u201321 active, 15\u201317 lower-le"
     },
     {
-      "slug": "pagespeed-insights-audit",
-      "path": "/Users/alfredpennyworth/.hermes/skills/pagespeed-insights-audit",
-      "has_skill_md": true,
-      "has_description_md": false,
-      "description_excerpt": "---\nname: pagespeed-insights-audit\ndescription: \"Use when running PageSpeed Insights audits.\"\nversion: 1.0.0\nauthor: Hermes\nlicense: MIT\nplatforms: [macos]\nmetadata:\n  hermes:\n    tags: [psi, pagespee"
-    },
-    {
       "slug": "pattern-detection",
       "path": "/Users/alfredpennyworth/.hermes/skills/pattern-detection",
       "has_skill_md": true,
@@ -878,14 +857,18 @@
     }
   ],
   "_counts": {
-    "hermes_skills": 118,
+    "hermes_skills": 115,
     "hermes_agent_skills": 0,
     "atlas_skills": 7,
-    "total": 125
+    "total": 122
   },
   "_new_since_last_build": [],
-  "_dropped_since_last_build": [],
+  "_dropped_since_last_build": [
+    "aair-market-baseline-scanning",
+    "b9-content-operations",
+    "pagespeed-insights-audit"
+  ],
   "_roots_missing": [],
-  "_mirrored_at": "2026-10-21T10:10:02.538565Z",
+  "_mirrored_at": "2026-10-22T10:10:04.862462Z",
   "_builder": "skills-registry-scan"
 }
