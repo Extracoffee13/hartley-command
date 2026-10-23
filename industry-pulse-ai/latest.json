@@ -1,51 +1,52 @@
 {
-  "generated": "2026-10-22T09:52:44+00:00",
-  "latest_date": "2026-10-22",
+  "generated": "2026-10-23T09:52:12+00:00",
+  "latest_date": "2026-10-23",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Two critical unauthenticated PHP RCE flaws (CVE-2026-109618/109619) patched; Finland, BBC, Edinburgh took services offline",
-      "summary": "PHP issued patched releases for two critical remote-code-execution bugs affecting any PHP install serving web requests; OpenAI says a researcher found one using GPT-5.6 Sol and Wiz independently found both (per The Neuron digest, primary PHP.net notice linked).",
+      "title": "Claude Code 2.1.309: sandbox/permission hardening, MCP and hook fixes",
+      "summary": "Latest release (22 Oct) fixes sandboxed Bash running shell startup files outside the sandbox, sandboxed commands modifying the --mcp-config file, a disabled MCP server being reconnected by a later permission prompt in print/SDK sessions, and a deny-rule bypass via Bash redirects; also adds a /claude-api Managed Agents subagent-team path and denies dangerous rm/rmdir at once in bypass mode on Desktop.",
       "tag": "yes",
-      "how": "Brand 9 Signs: brand9signs.com runs WordPress on PHP — confirm host (SiteGround) has moved to the patched PHP release today. The Construct: check any PHP-based services on Mac/hosted infra. PRAGMA: timely client-advisory talking point on AI-assisted vuln discovery.",
-      "url": "https://www.php.net/archive/2026.php#2026-10-21-5"
+      "how": "The Construct: upgrade Mac runners from 2.1.308 to 2.1.309 - the MCP-reconnect and --mcp-config fixes touch our scheduled claude -p runs directly. PRAGMA: concrete example of permission-layer hardening for client talks. Brand 9 Signs: no.",
+      "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.309"
     },
     {
       "n": 2,
-      "title": "Claude Code 2.1.306–2.1.308 + Claude API version 2026-10-21 (new SDK majors, Apache 2.0)",
-      "summary": "2.1.307 adds /claude-api api-version migration, a claude_code.safety_event OpenTelemetry event per blocked/prompted tool call, and fixes duplicate HTTP MCP tool calls and locked-keychain MCP auth in claude -p; 2.1.306 fixes cloud-session 'Not logged in' for claude -p; 2.1.308 is a reliability release. New API version ships Python SDK 2.0.0, TS 1.0.0 etc. with breaking changes.",
-      "tag": "yes",
-      "how": "The Construct: upgrade Mac runners to 2.1.308 (scheduled claude -p runs benefit from the auth and double-call fixes); pipe safety_event into runner logging; pin SDK versions before accepting the breaking majors. PRAGMA: guardrail observability talking point. Brand 9 Signs: no.",
-      "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.307"
+      "title": "Claude auto mode becomes default for Pro/Max/Team sessions next week",
+      "summary": "Per The Neuron digest, starting next week web, desktop and mobile sessions default to auto mode, where automated checks block risky actions; users can return to manual approvals (primary post on X).",
+      "tag": "maybe",
+      "how": "The Construct: expect changed approval behaviour in interactive sessions; re-check our approval-gated routines and any prompts that assumed manual approvals. PRAGMA: talking point on classifier-gated autonomy. Brand 9 Signs: no.",
+      "url": "https://x.com/claudeai/status/2113360845409583307"
     },
     {
       "n": 3,
-      "title": "Claude Duet research preview: proactive agent on web, iOS and Android (US Pro/Max waitlist)",
-      "summary": "Anthropic opened a waitlist for Duet, a proactive agent that surfaces work needing attention and keeps tasks going after you step away, asking approval before sending messages, paying, signing or deleting; background checks count toward plan limits.",
-      "tag": "maybe",
-      "how": "The Construct: direct reference design for approval-gated proactive agents; join the waitlist and compare with our scheduled-routine model. PRAGMA: client-facing example of human-in-the-loop autonomy. Brand 9 Signs: maybe, for order/quote follow-up nudges later.",
-      "url": "https://claude.com/resources/articles/claude-duet"
+      "title": "Anthropic donates Agent Skills to the Agentic AI Foundation (70+ platforms already adopted)",
+      "summary": "Claude Developers say more than 70 agent platforms, including ChatGPT, Cursor, GitHub Copilot and VS Code, have integrated the Agent Skills standard since December 2025; MCP was previously donated to the same foundation (per The Neuron digest).",
+      "tag": "yes",
+      "how": "The Construct: our skills library is now a cross-vendor portable asset - keep SKILL.md files standards-clean so they work outside Claude. PRAGMA: sell skills as vendor-neutral client IP. Brand 9 Signs: no.",
+      "url": "https://x.com/ClaudeDevs/status/2113328526413996100"
     },
     {
       "n": 4,
-      "title": "Claude Security public beta: continuous repo scanning, fix tracking, API and MCP connector",
-      "summary": "Claude Security now scans repositories continuously, tracks fixes, builds team-informed threat models, and exposes an API and MCP connector; Enterprise customers get $25k/month free usage credits for two months through Dec 31, 2026.",
+      "title": "1Password for Agents: credential access for autonomous agents, built with Anthropic and OpenAI",
+      "summary": "1Password announced a platform that gives autonomous agents access to credentials and services through its security system (per The Neuron digest; announcement video on X).",
       "tag": "maybe",
-      "how": "The Construct: Enterprise-only, but the MCP connector pattern is useful for scanning our hartley-command and runner repos if we reach that tier. PRAGMA: security-review offering for client agent code. Brand 9 Signs: no.",
-      "url": "https://claude.com/resources/articles/claude-security-now-scans-continuously-and-tracks-fixes"
+      "how": "The Construct: candidate replacement for plaintext keys in runner configs and the .hermes folder. PRAGMA: client-facing answer to the agent-credentials question. Brand 9 Signs: maybe, for Signs365 and partner logins used by the order runner.",
+      "url": "https://x.com/1Password/status/2113276767582498943/video/1"
     },
     {
       "n": 5,
-      "title": "UseIt Studio: design agent that outputs editable manufacturing files (dimensions, bleed, dielines)",
-      "summary": "A Product Hunt launch: a design agent that asks follow-up questions and produces editable production-ready files for packaging, stickers and cards (per The Neuron digest; not independently verified).",
+      "title": "Ideogram vector model and Canva's first image model launch",
+      "summary": "Ideogram released its first vector model that generates SVGs from text and converts images to vectors; Canva released its first image-generation model to all users (per The Neuron digest).",
       "tag": "maybe",
-      "how": "Brand 9 Signs: watch as a competitor/reference for print-ready file generation, relevant to our logo designer and fabrication-check flow. The Construct: pattern for agents that end in manufacturable output, not mockups. PRAGMA: no.",
-      "url": "https://www.producthunt.com/products/useit-studio-from-idea-to-delivery"
+      "how": "Brand 9 Signs: SVG output is directly relevant to the logo designer and logo-cleanup/vector-for-fabrication flow - test against our fabrication-check. The Construct: possible tool for the graphic-designer skill. PRAGMA: no.",
+      "url": "https://x.com/ideogram_ai/status/2113300317584720259"
     }
   ],
-  "praxis_lesson": "Agent power is increasingly gated by the safety layer around it (approval gates, safety-event telemetry, patch discipline), so log every blocked or prompted action in our runners and treat patching the boring stack (PHP) as agent-era table stakes.",
+  "praxis_lesson": "Anthropic's cadence is now permission-layer fixes plus classifier-gated defaults, so pin and upgrade runners to the latest Claude Code each week and re-test approval-dependent routines before a default flips under you.",
   "history": [
+    "2026-10-23",
     "2026-10-22",
     "2026-10-21",
     "2026-10-20",
@@ -58,7 +59,6 @@
     "2026-10-13",
     "2026-10-12",
     "2026-10-11",
-    "2026-10-10",
-    "2026-10-09"
+    "2026-10-10"
   ]
 }

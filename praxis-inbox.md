@@ -3278,3 +3278,15 @@ lesson: Agent power is increasingly gated by the safety layer around it (approva
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-23
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Claude Code 2.1.309 sandbox/MCP fixes (yes); Agent Skills donated to Agentic AI Foundation (yes); Claude auto mode default next week (maybe); 1Password for Agents (maybe); Ideogram vector model / Canva image model (maybe).
+lesson: Anthropic's cadence is now permission-layer fixes plus classifier-gated defaults, so pin and upgrade runners to the latest Claude Code each week and re-test approval-dependent routines before a default flips under you.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
