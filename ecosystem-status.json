@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-23T12:00:53+00:00",
+ "generated": "2026-10-23T13:00:53+00:00",
  "writer": "ecosystem-status-writer",
  "hermes": {
   "version": "0.21.4",
@@ -18,8 +18,8 @@
    {
     "name": "ops-worker",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 31,
-    "cost_30d": 0.78,
+    "sessions_30d": 27,
+    "cost_30d": 0.19,
     "retire": false
    },
    {
@@ -32,8 +32,8 @@
    {
     "name": "publisher",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 13,
-    "cost_30d": 0.32,
+    "sessions_30d": 7,
+    "cost_30d": 0.28,
     "retire": false
    },
    {
@@ -52,11 +52,11 @@
    }
   ],
   "usage_30d": {
-   "sessions": 74,
-   "cost_usd": 5.71,
-   "input_tokens": 7645766,
-   "output_tokens": 427096,
-   "cache_read_tokens": 44418931
+   "sessions": 64,
+   "cost_usd": 5.08,
+   "input_tokens": 7210780,
+   "output_tokens": 389391,
+   "cache_read_tokens": 42229306
   },
   "cron": {
    "total": 247,
@@ -132,7 +132,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-22T08:30",
+     "last_run": "2026-10-23T08:30",
      "schedule": "30 8 * * *",
      "error": ""
     },
@@ -142,7 +142,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-23T07:30",
+     "last_run": "2026-10-23T08:30",
      "schedule": "*/30 * * * *",
      "error": ""
     },
@@ -152,7 +152,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-23T07:45",
+     "last_run": "2026-10-23T08:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -162,7 +162,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-23T07:00",
+     "last_run": "2026-10-23T08:00",
      "schedule": "0 * * * *",
      "error": ""
     },
@@ -222,7 +222,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-23T07:45",
+     "last_run": "2026-10-23T08:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -252,7 +252,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-23T07:00",
+     "last_run": "2026-10-23T08:00",
      "schedule": "0 * * * *",
      "error": ""
     },
@@ -262,7 +262,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-23T04:10",
+     "last_run": "2026-10-23T08:10",
      "schedule": "10 */4 * * *",
      "error": ""
     },
@@ -272,7 +272,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-23T07:45",
+     "last_run": "2026-10-23T08:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -332,7 +332,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-23T07:30",
+     "last_run": "2026-10-23T08:30",
      "schedule": "*/5 * * * *",
      "error": ""
     },
@@ -362,7 +362,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-23T07:59",
+     "last_run": "2026-10-23T08:59",
      "schedule": "* * * * *",
      "error": ""
     },
@@ -392,7 +392,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-23T07:45",
+     "last_run": "2026-10-23T08:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -402,7 +402,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-22T08:00",
+     "last_run": "2026-10-23T08:00",
      "schedule": "0 8 * * *",
      "error": ""
     },
@@ -412,7 +412,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-23T04:00",
+     "last_run": "2026-10-23T08:00",
      "schedule": "0 */4 * * *",
      "error": ""
     },
@@ -432,7 +432,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-23T07:45",
+     "last_run": "2026-10-23T08:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -442,7 +442,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-23T07:30",
+     "last_run": "2026-10-23T08:30",
      "schedule": "*/30 * * * *",
      "error": ""
     },
@@ -462,7 +462,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-23T07:45",
+     "last_run": "2026-10-23T08:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -472,7 +472,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-10-23T07:55",
+     "last_run": "2026-10-23T08:55",
      "schedule": "*/5 * * * *",
      "error": ""
     }
@@ -491,7 +491,7 @@
   },
   "decisions": {
    "total": 200,
-   "last_24h": 15,
+   "last_24h": 9,
    "to_claude": 0,
    "by_mode": {
     "testing": 37,
