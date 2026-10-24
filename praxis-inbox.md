@@ -3290,3 +3290,15 @@ lesson: Anthropic's cadence is now permission-layer fixes plus classifier-gated 
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-24
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Claude Code 2.1.310 (yes); Claude Haiku 5.5 pricing (yes); Meta Personal Agent Protocol (maybe); Google Gemini agent w/ Workspace identity (maybe); TrueFoundry $19M / Goodweek (maybe).
+lesson: Agent identity, audit and credentials are becoming first-class product surfaces (Meta's protocol, Google's agent identity, gateway funding), so give every Construct agent a distinct, logged identity and a central gateway now rather than retrofitting it.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

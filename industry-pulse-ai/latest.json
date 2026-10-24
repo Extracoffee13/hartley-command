@@ -1,51 +1,52 @@
 {
-  "generated": "2026-10-23T09:52:12+00:00",
-  "latest_date": "2026-10-23",
+  "generated": "2026-10-24T09:51:38+00:00",
+  "latest_date": "2026-10-24",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Claude Code 2.1.309: sandbox/permission hardening, MCP and hook fixes",
-      "summary": "Latest release (22 Oct) fixes sandboxed Bash running shell startup files outside the sandbox, sandboxed commands modifying the --mcp-config file, a disabled MCP server being reconnected by a later permission prompt in print/SDK sessions, and a deny-rule bypass via Bash redirects; also adds a /claude-api Managed Agents subagent-team path and denies dangerous rm/rmdir at once in bypass mode on Desktop.",
+      "title": "Claude Code 2.1.310: Monitor tool reaches Bedrock/Vertex/Foundry; gateway and compaction fixes",
+      "summary": "Released 23 Oct, one day after 2.1.309; brings the Monitor tool to third-party cloud providers and fixes gateway failures and stubborn compaction (page summary is partial).",
       "tag": "yes",
-      "how": "The Construct: upgrade Mac runners from 2.1.308 to 2.1.309 - the MCP-reconnect and --mcp-config fixes touch our scheduled claude -p runs directly. PRAGMA: concrete example of permission-layer hardening for client talks. Brand 9 Signs: no.",
-      "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.309"
+      "how": "The Construct: bump Mac runners from 2.1.309 to 2.1.310 and re-test long-running sessions that hit compaction. PRAGMA: Monitor on Bedrock/Vertex helps enterprise client deployments. Brand 9 Signs: no.",
+      "url": "https://www.havoptic.com/releases/claude-code/2026/10"
     },
     {
       "n": 2,
-      "title": "Claude auto mode becomes default for Pro/Max/Team sessions next week",
-      "summary": "Per The Neuron digest, starting next week web, desktop and mobile sessions default to auto mode, where automated checks block risky actions; users can return to manual approvals (primary post on X).",
-      "tag": "maybe",
-      "how": "The Construct: expect changed approval behaviour in interactive sessions; re-check our approval-gated routines and any prompts that assumed manual approvals. PRAGMA: talking point on classifier-gated autonomy. Brand 9 Signs: no.",
-      "url": "https://x.com/claudeai/status/2113360845409583307"
+      "title": "Claude Haiku 5.5 launched at $0.10/$0.50 per million tokens",
+      "summary": "Per a weekly LLM tracker, Haiku 5.5 (7 Oct) is roughly 75% cheaper than Haiku 4.5 on average.",
+      "tag": "yes",
+      "how": "The Construct: move high-volume cheap steps (triage, tagging, Pulse-style scans) to Haiku 5.5 to cut cost. Brand 9 Signs: maybe, for bulk product-copy and alt-text jobs. PRAGMA: cost story for client agent stacks.",
+      "url": "https://www.implicator.ai/llm-meter-week-of-oct-13-2026.md"
     },
     {
       "n": 3,
-      "title": "Anthropic donates Agent Skills to the Agentic AI Foundation (70+ platforms already adopted)",
-      "summary": "Claude Developers say more than 70 agent platforms, including ChatGPT, Cursor, GitHub Copilot and VS Code, have integrated the Agent Skills standard since December 2025; MCP was previously donated to the same foundation (per The Neuron digest).",
-      "tag": "yes",
-      "how": "The Construct: our skills library is now a cross-vendor portable asset - keep SKILL.md files standards-clean so they work outside Claude. PRAGMA: sell skills as vendor-neutral client IP. Brand 9 Signs: no.",
-      "url": "https://x.com/ClaudeDevs/status/2113328526413996100"
+      "title": "Meta, Sierra, Walmart and Stripe announce Personal Agent Protocol (OAuth for agents)",
+      "summary": "An OAuth-based standard (6 Oct) for how agents sign in to businesses on a user's behalf; same tracker also notes Gemini 4 Argon reached developers on 13 Oct at $2/$10 per million tokens.",
+      "tag": "maybe",
+      "how": "The Construct: watch as a possible answer to agent-credential handling alongside MCP auth. PRAGMA: client-facing talking point on agent identity. Brand 9 Signs: no.",
+      "url": "https://www.implicator.ai/llm-meter-week-of-oct-13-2026.md"
     },
     {
       "n": 4,
-      "title": "1Password for Agents: credential access for autonomous agents, built with Anthropic and OpenAI",
-      "summary": "1Password announced a platform that gives autonomous agents access to credentials and services through its security system (per The Neuron digest; announcement video on X).",
+      "title": "Google previews a Gemini agent with its own Workspace identity, audit logs and admin controls",
+      "summary": "Private preview announced 8 Oct; no GA date (per the same weekly tracker).",
       "tag": "maybe",
-      "how": "The Construct: candidate replacement for plaintext keys in runner configs and the .hermes folder. PRAGMA: client-facing answer to the agent-credentials question. Brand 9 Signs: maybe, for Signs365 and partner logins used by the order runner.",
-      "url": "https://x.com/1Password/status/2113276767582498943/video/1"
+      "how": "The Construct: model for giving our agents distinct identities and audit trails. PRAGMA: enterprise governance pitch. Brand 9 Signs: no.",
+      "url": "https://www.implicator.ai/llm-meter-week-of-oct-13-2026.md"
     },
     {
       "n": 5,
-      "title": "Ideogram vector model and Canva's first image model launch",
-      "summary": "Ideogram released its first vector model that generates SVGs from text and converts images to vectors; Canva released its first image-generation model to all users (per The Neuron digest).",
+      "title": "TrueFoundry raises $19M Series A for agent/LLMOps gateway; Goodweek launches an SMB 'AI Manager'",
+      "summary": "Week-ending 20 Oct startup roundup lists both; no exact dates or primary article links given.",
       "tag": "maybe",
-      "how": "Brand 9 Signs: SVG output is directly relevant to the logo designer and logo-cleanup/vector-for-fabrication flow - test against our fabrication-check. The Construct: possible tool for the graphic-designer skill. PRAGMA: no.",
-      "url": "https://x.com/ideogram_ai/status/2113300317584720259"
+      "how": "The Construct: gateway layer validates our need for a central routing/cost/access control point. PRAGMA: Goodweek is a small-business competitor to track. Brand 9 Signs: no.",
+      "url": "https://aiagentstore.ai/ai-agent-news/topic/startups/2026-10-13"
     }
   ],
-  "praxis_lesson": "Anthropic's cadence is now permission-layer fixes plus classifier-gated defaults, so pin and upgrade runners to the latest Claude Code each week and re-test approval-dependent routines before a default flips under you.",
+  "praxis_lesson": "Agent identity, audit and credentials are becoming first-class product surfaces (Meta's protocol, Google's agent identity, gateway funding), so give every Construct agent a distinct, logged identity and a central gateway now rather than retrofitting it.",
   "history": [
+    "2026-10-24",
     "2026-10-23",
     "2026-10-22",
     "2026-10-21",
@@ -58,7 +59,6 @@
     "2026-10-14",
     "2026-10-13",
     "2026-10-12",
-    "2026-10-11",
-    "2026-10-10"
+    "2026-10-11"
   ]
 }
