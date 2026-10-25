@@ -3314,3 +3314,15 @@ lesson: Agent trust and cost are now the competitive surfaces (credential vaulti
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-25
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: MCP Tasks/Elicitations in Claude Code CLI (yes); Walmart Agent Gateway MCP (yes); Kimi K3.1 Pro + DeepSeek V4.1-Flash (maybe); Gemini 4 Argon / GPT-6.1 Astra cancelled (maybe); arXiv 2610.11899 agent forms taxonomy (maybe).
+lesson: Agent autonomy is moving into the protocols (MCP Tasks/Elicitations, Walmart's scoped agent gateway), so design every Construct job as durable and resumable with an explicit human-input path and a scoped, spend-limited credential, rather than assuming a live operator.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
