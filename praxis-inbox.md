@@ -3302,3 +3302,15 @@ lesson: Agent identity, audit and credentials are becoming first-class product s
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-25
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Claude Code 2.1.307-310 (yes); Claude Duet proactive agent (maybe); 1Password for Agents / Walmart agent access (maybe); API price volatility + Kimi K3.1 Pro (maybe); AWS Smartsheet MCP guide (maybe).
+lesson: Agent trust and cost are now the competitive surfaces (credential vaulting, tool-call telemetry, volatile API pricing), so give each Construct agent an approved, logged credential path and a cost-aware model router instead of binding to one provider.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

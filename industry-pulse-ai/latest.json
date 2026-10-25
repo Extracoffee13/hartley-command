@@ -1,51 +1,52 @@
 {
-  "generated": "2026-10-24T09:51:38+00:00",
-  "latest_date": "2026-10-24",
+  "generated": "2026-10-25T09:51:25+00:00",
+  "latest_date": "2026-10-25",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Claude Code 2.1.310: Monitor tool reaches Bedrock/Vertex/Foundry; gateway and compaction fixes",
-      "summary": "Released 23 Oct, one day after 2.1.309; brings the Monitor tool to third-party cloud providers and fixes gateway failures and stubborn compaction (page summary is partial).",
+      "title": "Claude Code 2.1.307–2.1.310: MCP reconnect fixes, tool-call safety telemetry, /auto-mode-setup",
+      "summary": "Releases 21–23 Oct fix MCP reconnects after sleep/keychain lock, add a telemetry event per stopped or prompted tool call, add /auto-mode-setup that learns from your project, and bring Monitor to Bedrock/Vertex/Foundry.",
       "tag": "yes",
-      "how": "The Construct: bump Mac runners from 2.1.309 to 2.1.310 and re-test long-running sessions that hit compaction. PRAGMA: Monitor on Bedrock/Vertex helps enterprise client deployments. Brand 9 Signs: no.",
+      "how": "The Construct: update Mac runners to 2.1.310 — the MCP-reconnect fix directly helps long-lived scheduled sessions; try /auto-mode-setup. PRAGMA: Monitor on Bedrock/Vertex helps enterprise deployments. Brand 9 Signs: no.",
       "url": "https://www.havoptic.com/releases/claude-code/2026/10"
     },
     {
       "n": 2,
-      "title": "Claude Haiku 5.5 launched at $0.10/$0.50 per million tokens",
-      "summary": "Per a weekly LLM tracker, Haiku 5.5 (7 Oct) is roughly 75% cheaper than Haiku 4.5 on average.",
-      "tag": "yes",
-      "how": "The Construct: move high-volume cheap steps (triage, tagging, Pulse-style scans) to Haiku 5.5 to cut cost. Brand 9 Signs: maybe, for bulk product-copy and alt-text jobs. PRAGMA: cost story for client agent stacks.",
-      "url": "https://www.implicator.ai/llm-meter-week-of-oct-13-2026.md"
+      "title": "Anthropic launches Claude Duet research preview (proactive daily-brief agent on Opus 5.5)",
+      "summary": "Launched 21 Oct for US Claude Pro users on iOS, Android and web; builds a daily brief from connected apps (The Decoder, via aggregator; a newsletter cites 6,000 plugins).",
+      "tag": "maybe",
+      "how": "The Construct: benchmark against our Morning/Pulse briefs and note which connectors it prioritizes. PRAGMA: client talking point on proactive personal agents. Brand 9 Signs: maybe, as an owner daily brief.",
+      "url": "https://news.ainauten.com/en"
     },
     {
       "n": 3,
-      "title": "Meta, Sierra, Walmart and Stripe announce Personal Agent Protocol (OAuth for agents)",
-      "summary": "An OAuth-based standard (6 Oct) for how agents sign in to businesses on a user's behalf; same tracker also notes Gemini 4 Argon reached developers on 13 Oct at $2/$10 per million tokens.",
+      "title": "1Password for Agents and Walmart agent access: agent sign-in without exposing credentials",
+      "summary": "1Password (22 Oct) lets agents sign into accounts without seeing passwords, with user approval; Walmart will let shoppers connect their own AI agents next month with approval and spending limits.",
       "tag": "maybe",
-      "how": "The Construct: watch as a possible answer to agent-credential handling alongside MCP auth. PRAGMA: client-facing talking point on agent identity. Brand 9 Signs: no.",
-      "url": "https://www.implicator.ai/llm-meter-week-of-oct-13-2026.md"
+      "how": "The Construct: a candidate pattern for credential handling across agents, extends yesterday's agent-identity theme. PRAGMA: governance and agent-identity pitch. Brand 9 Signs: maybe — customers' agents may soon shop signage online, so keep product feeds clean.",
+      "url": "https://news.ainauten.com/en"
     },
     {
       "n": 4,
-      "title": "Google previews a Gemini agent with its own Workspace identity, audit logs and admin controls",
-      "summary": "Private preview announced 8 Oct; no GA date (per the same weekly tracker).",
+      "title": "Model pricing volatility: Mistral Large 4 price doubled, Inception Mercury 2.5 +400%, DeepSeek V4 Flash output tripled; Kimi K3.1 Pro launches",
+      "summary": "Aggregator newsletter (20–24 Oct) reports several API price hikes while Moonshot released Kimi K3.1 Pro (2.8T params, 1M context) on 24 Oct; also notes OpenAI 12-hour prompt caching for Codex.",
       "tag": "maybe",
-      "how": "The Construct: model for giving our agents distinct identities and audit trails. PRAGMA: enterprise governance pitch. Brand 9 Signs: no.",
-      "url": "https://www.implicator.ai/llm-meter-week-of-oct-13-2026.md"
+      "how": "The Construct: don't hard-wire one provider; route through a gateway with per-model cost tracking and lean on Claude Haiku/caching. PRAGMA: model-cost risk advice for clients. Brand 9 Signs: no.",
+      "url": "https://www.stork.ai/newsletter/2026-10"
     },
     {
       "n": 5,
-      "title": "TrueFoundry raises $19M Series A for agent/LLMOps gateway; Goodweek launches an SMB 'AI Manager'",
-      "summary": "Week-ending 20 Oct startup roundup lists both; no exact dates or primary article links given.",
+      "title": "AWS guide: Smartsheet MCP server so agents can read/update work-management data",
+      "summary": "AWS ML Blog (20 Oct) published a walkthrough for connecting agents to Smartsheet via MCP.",
       "tag": "maybe",
-      "how": "The Construct: gateway layer validates our need for a central routing/cost/access control point. PRAGMA: Goodweek is a small-business competitor to track. Brand 9 Signs: no.",
-      "url": "https://aiagentstore.ai/ai-agent-news/topic/startups/2026-10-13"
+      "how": "The Construct: reference for a project/scheduling MCP integration pattern. PRAGMA: reusable client-delivery pattern for work-management tools. Brand 9 Signs: maybe, if job tracking ever moves to Smartsheet.",
+      "url": "https://news.ainauten.com/en"
     }
   ],
-  "praxis_lesson": "Agent identity, audit and credentials are becoming first-class product surfaces (Meta's protocol, Google's agent identity, gateway funding), so give every Construct agent a distinct, logged identity and a central gateway now rather than retrofitting it.",
+  "praxis_lesson": "Agent trust and cost are now the competitive surfaces (credential vaulting, tool-call telemetry, volatile API pricing), so give each Construct agent an approved, logged credential path and a cost-aware model router instead of binding to one provider.",
   "history": [
+    "2026-10-25",
     "2026-10-24",
     "2026-10-23",
     "2026-10-22",
@@ -58,7 +59,6 @@
     "2026-10-15",
     "2026-10-14",
     "2026-10-13",
-    "2026-10-12",
-    "2026-10-11"
+    "2026-10-12"
   ]
 }
