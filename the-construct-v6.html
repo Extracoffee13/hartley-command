@@ -270,6 +270,7 @@ footer{position:relative;z-index:1;padding:0 var(--s3) var(--s4);max-width:1680p
 .opgate.blocked{color:var(--fail);border-color:rgba(255,90,102,.5);background:var(--fail-bg)}
 .opgate.decide,.opgate.in_progress{color:var(--warn);border-color:rgba(242,155,75,.5);background:var(--warn-bg)}
 .opgate small{font:500 11px var(--f-mono);color:var(--dim);margin-left:6px;letter-spacing:0;text-transform:none}
+#b-sl .opgate{white-space:normal;line-height:1.35;max-width:100%}
 .opwrap{overflow-x:auto}
 .optable{width:100%;border-collapse:collapse;font-size:13px}
 .optable th{font:600 11px/1.2 var(--f-disp);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
@@ -412,10 +413,13 @@ footer{position:relative;z-index:1;padding:0 var(--s3) var(--s4);max-width:1680p
     <section class="panel" id="p-md" data-key="m"><div class="ph"><span class="pt">Mods · shared memory</span><span class="ps">Claude Code layer · trial to 10-14</span><span class="pk">M</span><button class="px" aria-label="Expand panel">⤢</button></div><div class="pb" id="b-md"></div></section>
   </div>
   <div class="opsrow">
+    <section class="panel" id="p-sl" data-key="s"><div class="ph"><span class="pt">B9 Shop Sales</span><span class="ps">Sales flywheel · weekly · counts only</span><span class="pk">S</span><button class="px" aria-label="Expand panel">⤢</button></div><div class="pb" id="b-sl"></div></section>
+  </div>
+  <div class="opsrow">
     <section class="panel" id="p-op" data-key="b"><div class="ph"><span class="pt">B9 Opportunities</span><span class="ps">Bids &amp; big jobs · readiness gates</span><span class="pk">B</span><button class="px" aria-label="Expand panel">⤢</button></div><div class="pb" id="b-op"></div></section>
   </div>
 </main>
-<footer id="foot">V6 · reads ecosystem-status.json, ecosystem-registry.json, hermes-status.json, harvard-corpus-stats.json, b9-opportunities.json and construct-mods.json once on load, then every 60 s · voice relay: 127.0.0.1:8787 on Bobby's Mac</footer>
+<footer id="foot">V6 · reads ecosystem-status.json, ecosystem-registry.json, hermes-status.json, harvard-corpus-stats.json, b9-opportunities.json, construct-mods.json and b9-sales.json once on load, then every 60 s · voice relay: 127.0.0.1:8787 on Bobby's Mac</footer>
 
 <div class="backdrop" id="backdrop"></div>
 <div class="help" id="help" role="dialog" aria-modal="true" aria-label="Help">
@@ -781,6 +785,25 @@ function renderMD(){
   el.innerHTML = h;
 }
 
+/* B9 shop sales panel (2026-10-26) — reads b9-sales.json written by _b9_temp/_flywheel/sales/sales_flywheel.py (counts and rates only) */
+function renderSL(){
+  var o = S.sl, el = $('#b-sl'); if(!el) return;
+  if(!o){ el.innerHTML = '<div class="m dimt">' + (S.loaded ? 'b9-sales.json not published yet.' : 'Waiting for data…') + '</div>'; return; }
+  var s = o.summary || {}, fw = o.funnel_week || {}, th = fw.this || {}, la = fw.last || {}, up = o.upload_events_week || {}, lv = arr(o.levers);
+  var tiles = [['Paid · 7 days', s.paid_orders_7d, ''], ['Paid · 30 days', s.paid_orders_30d, ''], ['Open carts', s.open_carts_30d, s.open_carts_30d ? 'w' : ''],
+               ['Need address', s.carts_waiting_for_address, s.carts_waiting_for_address ? 'w' : ''], ['Paid from AI · 30d', s.paid_from_ai_30d, 'i']];
+  var h = '<div class="stats s5">' + tiles.map(function(t){ return '<div class="stat ' + t[2] + '"><div class="v">' + (t[1] == null ? '—' : t[1]) + '</div><div class="k">' + t[0] + '</div></div>'; }).join('') + '</div>';
+  function row(lbl, a, b){ a = a || {}; b = b || {}; return '<tr><td>' + esc(lbl) + '</td><td class="mono">' + (a.sessions || 0) + ' → ' + (a.add_to_carts || 0) + ' → ' + (a.purchases || 0) + '</td><td class="mono dimt hide-s">' + (b.sessions || 0) + ' → ' + (b.add_to_carts || 0) + ' → ' + (b.purchases || 0) + '</td></tr>'; }
+  h += '<div class="sec opwrap"><div class="lbl"><span class="m">ChatGPT visits → add to cart → paid (GA4)</span><span class="m mono dimt">' + esc(fmtET(o.generated)) + '</span></div><table class="optable"><thead><tr><th>Device</th><th>This week</th><th class="hide-s">Last week</th></tr></thead><tbody>' +
+       row('Phone', th.phone, la.phone) + row('Desktop', th.desktop, la.desktop) + '</tbody></table>' +
+       '<div class="m dimt">Uploads this week: ' + (up.upload_cta_click || 0) + ' price-card clicks · ' + (up.artwork_upload_open || 0) + ' opened · ' + (up.artwork_placed || 0) + ' placed</div></div>';
+  h += '<div class="sec"><div class="lbl"><span class="m">Levers</span></div><div class="opgates">';
+  lv.forEach(function(x){ var st = x.status === 'live' ? '' : (x.status === 'owner_action' ? 'blocked' : 'decide');
+    h += '<span class="opgate ' + esc(st) + '" title="' + esc(x.name + (x.measure ? ' — measured by ' + x.measure : '')) + '">' + esc(x.name) + '<small>' + esc(x.status === 'live' ? 'live since ' + (x.since || '').slice(5) : (x.status === 'owner_action' ? 'Bobby' : 'not now')) + '</small></span>'; });
+  h += '</div></div>';
+  el.innerHTML = h;
+}
+
 function renderOP(){
   var o = S.op, el = $('#b-op'); if(!el) return;
   if(!o){ el.innerHTML = '<div class="m dimt">' + (S.loaded ? 'b9-opportunities.json not published yet.' : 'Waiting for data…') + '</div>'; return; }
@@ -1113,12 +1136,12 @@ function renderRelayChip(){
 /* ───────── data load (once, then every 60 s) ───────── */
 function gj(u){ return fetch(u + '?cb=' + Date.now(), {cache:'no-store'}).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; }); }
 function loadData(){
-  return Promise.all([gj('./ecosystem-status.json'), gj('./ecosystem-registry.json'), gj('./hermes-status.json'), gj('./harvard-corpus-stats.json'), gj('./b9-opportunities.json'), gj('./construct-mods.json')])
-    .then(function(r){ if(r[0]) S.st = r[0]; if(r[1]) S.reg = r[1]; if(r[2]) S.hv = r[2]; if(r[3]) S.hc = r[3]; if(r[4]) S.op = r[4]; if(r[5]) S.md = r[5]; S.loaded = new Date(); renderAll(); });
+  return Promise.all([gj('./ecosystem-status.json'), gj('./ecosystem-registry.json'), gj('./hermes-status.json'), gj('./harvard-corpus-stats.json'), gj('./b9-opportunities.json'), gj('./construct-mods.json'), gj('./b9-sales.json')])
+    .then(function(r){ if(r[0]) S.st = r[0]; if(r[1]) S.reg = r[1]; if(r[2]) S.hv = r[2]; if(r[3]) S.hc = r[3]; if(r[4]) S.op = r[4]; if(r[5]) S.md = r[5]; if(r[6]) S.sl = r[6]; S.loaded = new Date(); renderAll(); });
 }
 function renderAll(){
   var d = D();
-  [renderSys, renderGK, renderKB, renderTG, renderHV, renderPF, renderRT, renderVN, renderDC, renderMD, renderOP].forEach(function(f){ try{ f(d); }catch(e){ console.warn('panel render', e); } });
+  [renderSys, renderGK, renderKB, renderTG, renderHV, renderPF, renderRT, renderVN, renderDC, renderMD, renderSL, renderOP].forEach(function(f){ try{ f(d); }catch(e){ console.warn('panel render', e); } });
   try{ buildMap(); }catch(e){ console.warn('map render', e); }
   renderDataChip();
   if(S.sel && S.nodes[S.sel]) $('#nodecard').innerHTML = nodeDetail(S.sel);

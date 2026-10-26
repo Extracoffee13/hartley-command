@@ -1,0 +1,112 @@
+{
+ "generated": "2026-10-26T23:50:07+00:00",
+ "source": "_b9_temp/_flywheel/sales/sales_flywheel.py (aggregates only)",
+ "summary": {
+  "paid_orders_7d": 7,
+  "paid_orders_30d": 17,
+  "open_carts_30d": 14,
+  "carts_waiting_for_address": 0,
+  "paid_from_ai_30d": 5
+ },
+ "funnel_week": {
+  "this": {
+   "phone": {
+    "sessions": 114,
+    "add_to_carts": 0,
+    "purchases": 0
+   },
+   "desktop": {
+    "sessions": 102,
+    "add_to_carts": 3,
+    "purchases": 1
+   }
+  },
+  "last": {
+   "phone": {
+    "sessions": 34,
+    "add_to_carts": 0,
+    "purchases": 0
+   },
+   "desktop": {
+    "sessions": 19,
+    "add_to_carts": 1,
+    "purchases": 1
+   }
+  }
+ },
+ "upload_events_week": {
+  "upload_cta_click": 0,
+  "artwork_upload_open": 0,
+  "artwork_selected": 0,
+  "artwork_placed": 0
+ },
+ "atc_rate_chatgpt_phone": {
+  "this": 0.0,
+  "last": 0.0
+ },
+ "levers": [
+  {
+   "id": "upload",
+   "name": "Finished-file upload on phones (studio + price card)",
+   "status": "live",
+   "since": "2026-10-26",
+   "measure": "artwork_placed, ChatGPT phone add-to-cart rate"
+  },
+  {
+   "id": "direct_print",
+   "name": "Direct-print facts on ACM, aluminum, PVC",
+   "status": "live",
+   "since": "2026-10-26",
+   "measure": "ChatGPT ACM prompt rank, ACM orders"
+  },
+  {
+   "id": "addr_later",
+   "name": "Street address asked in the cart, not the studio",
+   "status": "live",
+   "since": "2026-10-27",
+   "measure": "add-to-cart rate; carts waiting for address"
+  },
+  {
+   "id": "ship_combine",
+   "name": "One shipping charge per address (letters and print)",
+   "status": "live",
+   "since": "2026-10-20",
+   "measure": "multi-item carts paid"
+  },
+  {
+   "id": "cart_reminders",
+   "name": "Cart reminders 1 and 2 + personal notes",
+   "status": "live",
+   "since": "2026-10-20",
+   "measure": "carts paid after a reminder"
+  },
+  {
+   "id": "chatgpt_weekly",
+   "name": "24 ChatGPT buyer prompts weekly, drops re-asked 3x",
+   "status": "live",
+   "since": "2026-10-16",
+   "measure": "named / first"
+  },
+  {
+   "id": "past_clients",
+   "name": "Announce the online store to past clients and builders",
+   "status": "owner_no",
+   "since": "2026-10-26",
+   "measure": ""
+  },
+  {
+   "id": "paid_ads",
+   "name": "Google Shopping ads test",
+   "status": "owner_no",
+   "since": "2026-10-26",
+   "measure": ""
+  },
+  {
+   "id": "chatgpt_merchant",
+   "name": "ChatGPT merchant program application (APPLY.md ready)",
+   "status": "owner_action",
+   "since": "2026-10-16",
+   "measure": ""
+  }
+ ]
+}
