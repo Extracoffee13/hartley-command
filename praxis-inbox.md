@@ -3338,3 +3338,15 @@ lesson: Agents will route around access walls on their own (Claude pulling a tok
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-27
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: OpenAI releases GPT-6.1 Terra (yes); Anthropic publishes guidance on folding subagents back into one main agent loop (yes); Claude Duet safety post: approval controls and isolated credentials (maybe); Claude Enterprise unifies Chat and Cowork with admin controls (maybe).
+lesson: Cheaper computer-use models and leaner single-loop agent designs are converging, so measure each Construct job's cost per task and collapse subagent splits that don't earn their overhead.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
