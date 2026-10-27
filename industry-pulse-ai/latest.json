@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-27T09:51:50+00:00",
+  "generated": "2026-10-27T17:51:46+00:00",
   "latest_date": "2026-10-27",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
@@ -14,25 +14,33 @@
     {
       "n": 2,
       "title": "Anthropic publishes guidance on folding subagents back into one main agent loop",
-      "summary": "Posted 22 Oct (per Releasebot): when subagent splits aren't worth it, with a migration kit and API skills; details not read beyond the changelog line.",
+      "summary": "Posted 22 Oct: recommends collapsing many multi-agent setups into a single loop using progressive disclosure for skills and tools, citing lower cost and latency in enterprise tests, with a migration kit built on Claude API skills.",
       "tag": "yes",
       "how": "The Construct: audit our multi-agent swarms for splits that add cost/latency without benefit. PRAGMA: architecture-review checklist item. Brand 9 Signs: no.",
       "url": "https://releasebot.io/updates/anthropic/claude"
     },
     {
       "n": 3,
-      "title": "Claude Duet safety post: approval controls and isolated credentials",
-      "summary": "Published 23 Oct (per Releasebot): describes approval controls, sensitive-information checks and isolated credentials for the proactive Duet agent, which entered US Pro/Max research preview 21 Oct.",
+      "title": "Claude Security enters public beta with continuous scanning, an API and an MCP connector",
+      "summary": "21 Oct: Enterprise customers can scan repos continuously, auto-mark findings fixed when patches ship, use team-written threat models, and call it via API/MCP connector; eligible orgs get $25k monthly credits for two months through 31 Dec.",
       "tag": "maybe",
-      "how": "The Construct: borrow the approval-gate and credential-isolation pattern for scheduled agents. PRAGMA: reference design for client guardrails. Brand 9 Signs: no.",
+      "how": "PRAGMA: security-scanning offer for Enterprise operator clients. The Construct: MCP connector could gate our agent-written code/site deploys. Brand 9 Signs: no.",
       "url": "https://releasebot.io/updates/anthropic/claude"
     },
     {
       "n": 4,
-      "title": "Claude Enterprise unifies Chat and Cowork with admin controls",
-      "summary": "23 Oct (per Releasebot): Enterprise plans get combined Chat and Cowork, role/usage admin controls and a new Efficient mode.",
+      "title": "Claude Models on Google Cloud (Anthropic-managed) GA; Opus 5.5 Fast Mode GA",
+      "summary": "22 Oct: Google Cloud customers get the full Claude Platform feature set billed on their GCP invoice; Opus 5.5 Fast Mode is generally available at $8/$40 per 1M input/output tokens.",
       "tag": "maybe",
-      "how": "PRAGMA: relevant to Enterprise clients deploying Cowork. The Construct: no change. Brand 9 Signs: no.",
+      "how": "The Construct: Fast Mode is an option for latency-sensitive agent steps if cost allows. PRAGMA: procurement path for GCP-committed clients. Brand 9 Signs: no.",
+      "url": "https://releasebot.io/updates/anthropic/claude"
+    },
+    {
+      "n": 5,
+      "title": "Claude Duet safety post: approval controls and isolated credentials",
+      "summary": "Published 23 Oct: Duet asks approval before consequential actions, screens outgoing messages for sensitive info with a classifier, and keeps passwords, cookies and sign-in tokens away from the model; preview opened 21 Oct to US Pro/Max waitlist.",
+      "tag": "maybe",
+      "how": "The Construct: borrow the approval-gate and credential-isolation pattern for scheduled agents. PRAGMA: reference design for client guardrails. Brand 9 Signs: no.",
       "url": "https://releasebot.io/updates/anthropic/claude"
     }
   ],

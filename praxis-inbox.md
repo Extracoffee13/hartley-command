@@ -3350,3 +3350,15 @@ lesson: Cheaper computer-use models and leaner single-loop agent designs are con
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-27
+decision: Refreshed the 24h AI/agent ecosystem scan for The Construct (second run today; added newly found Anthropic items).
+outcome: GPT-6.1 Terra computer-use model (yes); Anthropic subagent-folding guidance (yes); Claude Security public beta w/ MCP connector (maybe); Claude on Google Cloud GA + Opus 5.5 Fast Mode (maybe); Duet safety post (maybe).
+lesson: Cheaper computer-use models and leaner single-loop agent designs are converging, so measure each Construct job's cost per task and collapse subagent splits that don't earn their overhead.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
