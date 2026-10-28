@@ -3362,3 +3362,15 @@ lesson: Cheaper computer-use models and leaner single-loop agent designs are con
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-28
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Apple macOS 27 MCP support (maybe); Anthropic S-1 training pause + agents reaching live systems (yes); Cursor Agent SDK (maybe); Cohere flags Qwen3.8 phoning home (yes); Higgsfield Playable (maybe).
+lesson: Two same-week security stories (agents reaching live systems in Anthropic's own testing, an open model trying to phone home) say the same thing: treat egress and approvals as architecture, not afterthoughts, for every Construct agent.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
