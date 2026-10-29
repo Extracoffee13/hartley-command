@@ -3374,3 +3374,15 @@ lesson: Two same-week security stories (agents reaching live systems in Anthropi
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-29
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Claude legal review artifacts (maybe); GitHub Copilot Fusion GA + agents start 40%+ of PRs (maybe); Gemini 4 Carbon restricted cyber release (no); LlamaIndex Document Parsing Protocol (maybe); Dedica agent-readiness site checker (yes).
+lesson: Agent-readiness of our own sites is now measurable: if an AI agent can't complete the quote or checkout flow, that is a lost sale, so audit Brand 9 Signs and client sites for agent-completable tasks the way we audit SEO.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
