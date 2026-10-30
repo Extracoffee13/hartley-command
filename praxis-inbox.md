@@ -3386,3 +3386,15 @@ lesson: Agent-readiness of our own sites is now measurable: if an AI agent can't
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-10-30
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Google Connected Apps Platform MCP (maybe); Microsoft Copilot harness (maybe); Anthropic AI-spend tools (yes); Deepgram acquires Daily/Pipecat (maybe); Anthropic agent judgment-calls study (yes).
+lesson: Agent role framing measurably steers outcomes (86% alignment with the assigned lean), so every Construct agent's persona and priors should be audited and logged as deliberately as its tools and costs.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
