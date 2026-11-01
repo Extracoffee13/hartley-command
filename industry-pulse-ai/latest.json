@@ -1,51 +1,52 @@
 {
-  "generated": "2026-10-31T09:52:22+00:00",
-  "latest_date": "2026-10-31",
+  "generated": "2026-11-01T10:51:26+00:00",
+  "latest_date": "2026-11-01",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Mistral releases Large 4 open weights: 1T-parameter multimodal model aimed at agentic coding",
-      "summary": "Announced Oct 29 with Mistral's own claims of 41% on Terminal-Bench 4.0 and top open-model scores on coding-agent indexes, priced from $0.70/$2.10 per 1M tokens, modified-MIT license (benchmarks unverified; Anthropic's Mythos 5.1 reportedly scores 60.9% on the same test).",
-      "tag": "maybe",
-      "how": "The Construct: a self-hostable fallback model if a closed provider is cut off again (Fortune cites a June export-control suspension of Anthropic models). PRAGMA: sellable vendor-independence option for clients. Brand 9 Signs: no.",
-      "url": "https://fortune.com/2026/10/29/mistral-releases-new-model-large-4-and-claims-top-open-model-for-agentic-coding-and-cyber-defense"
+      "title": "Trojanized Claude Code VS Code extension (v2.1.313) planted an SSH backdoor via Cursor's marketplace; clean 2.1.314 shipped Oct 30",
+      "summary": "A malicious build of the anthropic.claude-code extension, disclosed Oct 29, reportedly reached up to ~5,000 Cursor users before Anthropic published a clean fix on Oct 30.",
+      "tag": "yes",
+      "how": "The Construct: audit any Claude Code extension installed on the AP Mac/Cursor (must be 2.1.314+), check ~/.ssh/authorized_keys, and pin extension sources. PRAGMA: supply-chain hygiene talking point for client agent tooling. Brand 9 Signs: low, but same Mac runs the order automation.",
+      "url": "https://thehackernews.com/2026/10/official-claude-code-vs-code-extension.html"
     },
     {
       "n": 2,
-      "title": "OpenAI updates its Model Spec around five values with a new faithfulness section and revised chain of command",
-      "summary": "Oct 29 rewrite reorganizes the spec around faithfulness to intent, harm minimization, honesty, human agency and care, and clarifies how platform, developer and user instruction conflicts resolve.",
+      "title": "OpenAI Agents API adds Auto Review, async compaction, time awareness; Python SDK 3.42.0 adds context-compaction controls",
+      "summary": "Oct 30–31 updates give long-running and scheduled agents configurable background/blocking context compaction, session review, and mid-session tool updates.",
       "tag": "yes",
-      "how": "The Construct: borrow the faithfulness and chain-of-command framing for our agents' instruction hierarchy. PRAGMA: governance talking point for client agent deployments. Brand 9 Signs: low.",
-      "url": "https://openai.com/index/updated-model-spec/"
+      "how": "The Construct: compare against our own long-session context handling and scheduled-run patterns. PRAGMA: reference architecture for client long-running agents. Brand 9 Signs: no.",
+      "url": "https://github.com/openai/openai-python/releases/tag/v3.42.0"
     },
     {
       "n": 3,
-      "title": "Suno launches an MCP server to create music from inside chat",
-      "summary": "Reported Oct 29: Suno's MCP server lets AI assistants generate music directly, extending the MCP footprint into audio generation.",
+      "title": "Anthropic usage policy reportedly bans unauthorized distillation/model scraping, effective Nov 12",
+      "summary": "Reported Oct 31 via an X post (policy text not independently confirmed): outputs may not be used to train competing models without authorization.",
       "tag": "maybe",
-      "how": "The Construct: another audio-generation MCP to evaluate alongside Higgsfield. Brand 9 Signs: background music for sign-install and social videos (check licensing). PRAGMA: no.",
-      "url": "https://musically.com/2026/10/29/suno-launches-mcp-server-to-create-music-right-from-the-chat/"
+      "how": "The Construct: verify the policy text before Nov 12 and ensure no pipeline uses Claude outputs as training data for other models. PRAGMA: add to client contract/compliance checklist. Brand 9 Signs: no.",
+      "url": "https://twitter.com/jiahaoshao1/status/2116475922190922088"
     },
     {
       "n": 4,
-      "title": "arXiv: \"Building LLM Agent Systems the Deep Learning Way\" treats prompts as weights and searches agent architectures",
-      "summary": "Submitted Oct 4, it maps agent modules to neural-network components and reports at least 5% gain from automatic prompt optimization and an 11% gain from architecture search over random designs.",
+      "title": "Anthropic research: Claude used as automated red-teamer against Anthropic's production misalignment monitor",
+      "summary": "Claude-generated fine-tuning datasets evaded the monitor, showing automated search can find monitor blind spots (published ~Oct 31).",
       "tag": "maybe",
-      "how": "The Construct: a method for systematically tuning agent prompts and module configs instead of hand-editing. PRAGMA: methodology for client agent builds. Brand 9 Signs: no.",
-      "url": "https://arxiv.org/abs/2610.04961"
+      "how": "The Construct: adopt the pattern of using an agent to adversarially probe our own gates and verifiers. PRAGMA: sellable agent-QA/red-team service angle. Brand 9 Signs: no.",
+      "url": "https://alignment.anthropic.com/2026/automated-em-search/"
     },
     {
       "n": 5,
-      "title": "Google unveils Gemini 4 Carbon with Alphabet Q3 results; limited to trusted cyber defenders at first",
-      "summary": "Pichai calls it the strongest frontier model, leading vulnerability discovery and fixing benchmarks; Gemini passed 1B users and Google Cloud revenue doubled to $30.7B.",
-      "tag": "no",
-      "how": "The Construct: not accessible yet; track for general release. Brand 9 Signs and PRAGMA: no direct action.",
-      "url": "https://www.marketbeat.com/instant-alerts/transcript-alphabet-q3-earnings-call-highlights-2026-10-29"
+      "title": "&Truth emerges from stealth with $70M seed for formal verification of AI-generated code",
+      "summary": "Builds a 'universal verification machine' to prove correctness of code written by AI agents (about Oct 29–30).",
+      "tag": "maybe",
+      "how": "The Construct: signals that verification layers are where agent funding is going; track as a possible gate for generated code. PRAGMA: positioning for 'verified agent output' offerings. Brand 9 Signs: no.",
+      "url": "https://www.unite.ai/and-truth-raises-70m-seed-to-build-universal-verification-machine-for-code/"
     }
   ],
-  "praxis_lesson": "Provider concentration is a real operational risk: closed frontier models can be suspended by export controls, so the Construct should keep a tested open-weight fallback (e.g. Mistral Large 4) and an instruction-hierarchy spec for every agent, rather than depend on one vendor.",
+  "praxis_lesson": "Agent tooling is now an attack surface: a trojanized official extension shows the Construct must pin and verify every tool in the agent chain, and the strongest counter-trend (automated red-teaming, formal verification funding) is to treat verification of agent output as a first-class layer, not an afterthought.",
   "history": [
+    "2026-11-01",
     "2026-10-31",
     "2026-10-30",
     "2026-10-29",
@@ -58,7 +59,6 @@
     "2026-10-22",
     "2026-10-21",
     "2026-10-20",
-    "2026-10-19",
-    "2026-10-18"
+    "2026-10-19"
   ]
 }

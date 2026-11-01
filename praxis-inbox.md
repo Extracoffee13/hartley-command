@@ -3410,3 +3410,15 @@ lesson: Provider concentration is a real operational risk: closed frontier model
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-01
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Trojanized Claude Code VS Code extension (yes); OpenAI Agents API/SDK compaction controls (yes); Anthropic distillation policy Nov 12 (maybe, unverified); Anthropic automated red-teaming of monitors (maybe); &Truth $70M code-verification seed (maybe).
+lesson: Agent tooling is now an attack surface: a trojanized official extension shows the Construct must pin and verify every tool in the agent chain, and the strongest counter-trend (automated red-teaming, formal verification funding) is to treat verification of agent output as a first-class layer, not an afterthought.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
