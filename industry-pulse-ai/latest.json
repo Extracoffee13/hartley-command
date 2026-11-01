@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-01T10:51:26+00:00",
+  "generated": "2026-11-01T18:51:54+00:00",
   "latest_date": "2026-11-01",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
@@ -8,43 +8,43 @@
       "title": "Trojanized Claude Code VS Code extension (v2.1.313) planted an SSH backdoor via Cursor's marketplace; clean 2.1.314 shipped Oct 30",
       "summary": "A malicious build of the anthropic.claude-code extension, disclosed Oct 29, reportedly reached up to ~5,000 Cursor users before Anthropic published a clean fix on Oct 30.",
       "tag": "yes",
-      "how": "The Construct: audit any Claude Code extension installed on the AP Mac/Cursor (must be 2.1.314+), check ~/.ssh/authorized_keys, and pin extension sources. PRAGMA: supply-chain hygiene talking point for client agent tooling. Brand 9 Signs: low, but same Mac runs the order automation.",
+      "how": "The Construct: audit any Claude Code extension on the AP Mac/Cursor (must be 2.1.314+), check ~/.ssh/authorized_keys, and pin extension sources. PRAGMA: supply-chain hygiene talking point for client agent tooling. Brand 9 Signs: low, but same Mac runs the order automation.",
       "url": "https://thehackernews.com/2026/10/official-claude-code-vs-code-extension.html"
     },
     {
       "n": 2,
-      "title": "OpenAI Agents API adds Auto Review, async compaction, time awareness; Python SDK 3.42.0 adds context-compaction controls",
-      "summary": "Oct 30–31 updates give long-running and scheduled agents configurable background/blocking context compaction, session review, and mid-session tool updates.",
+      "title": "OpenAI Python SDK 3.42.0 adds agent context-compaction controls (Agents API Auto Review, async compaction)",
+      "summary": "Oct 30–31 updates give long-running and scheduled agents configurable background/blocking context compaction and session review.",
       "tag": "yes",
       "how": "The Construct: compare against our own long-session context handling and scheduled-run patterns. PRAGMA: reference architecture for client long-running agents. Brand 9 Signs: no.",
-      "url": "https://github.com/openai/openai-python/releases/tag/v3.42.0"
+      "url": "https://aiweekly.co/alerts/openai-python-sdk-3420-adds-agent-context-compaction-controls"
     },
     {
       "n": 3,
+      "title": "DeepSeek launches proactive coding 'Super-Agent' aimed at Claude Code and Codex (Nov 1)",
+      "summary": "Reported Nov 1: an agent that proactively spots and proposes fixes for coding problems rather than waiting for prompts, with an open-source prototype reported; no benchmarks yet (secondary coverage only).",
+      "tag": "maybe",
+      "how": "The Construct: once benchmarks/licence are published, test as a cheap alternative worker for coding agents; check data-residency before use. PRAGMA: watch as price pressure on coding-agent offerings. Brand 9 Signs: no.",
+      "url": "https://www.digitaltrends.com/computing/deepseek-wants-to-steal-claude-code-and-codexs-lunch-with-an-ai-agent-that-does-not-wait-around"
+    },
+    {
+      "n": 4,
+      "title": "OpenAI patches ChatGPT shared-link flaw that let attackers run code in logged-in sessions",
+      "summary": "A P1 vulnerability (reported to OpenAI Oct 18, now patched) allowed code execution in a victim's session via a shared ChatGPT link.",
+      "tag": "maybe",
+      "how": "The Construct: reinforces treating shared/untrusted links and agent-rendered content as hostile; review any flow where agents open or share links. PRAGMA: client security-checklist item. Brand 9 Signs: low.",
+      "url": "https://thehackernews.com/2026/10/a-shared-chatgpt-link-could-run.html"
+    },
+    {
+      "n": 5,
       "title": "Anthropic usage policy reportedly bans unauthorized distillation/model scraping, effective Nov 12",
       "summary": "Reported Oct 31 via an X post (policy text not independently confirmed): outputs may not be used to train competing models without authorization.",
       "tag": "maybe",
       "how": "The Construct: verify the policy text before Nov 12 and ensure no pipeline uses Claude outputs as training data for other models. PRAGMA: add to client contract/compliance checklist. Brand 9 Signs: no.",
       "url": "https://twitter.com/jiahaoshao1/status/2116475922190922088"
-    },
-    {
-      "n": 4,
-      "title": "Anthropic research: Claude used as automated red-teamer against Anthropic's production misalignment monitor",
-      "summary": "Claude-generated fine-tuning datasets evaded the monitor, showing automated search can find monitor blind spots (published ~Oct 31).",
-      "tag": "maybe",
-      "how": "The Construct: adopt the pattern of using an agent to adversarially probe our own gates and verifiers. PRAGMA: sellable agent-QA/red-team service angle. Brand 9 Signs: no.",
-      "url": "https://alignment.anthropic.com/2026/automated-em-search/"
-    },
-    {
-      "n": 5,
-      "title": "&Truth emerges from stealth with $70M seed for formal verification of AI-generated code",
-      "summary": "Builds a 'universal verification machine' to prove correctness of code written by AI agents (about Oct 29–30).",
-      "tag": "maybe",
-      "how": "The Construct: signals that verification layers are where agent funding is going; track as a possible gate for generated code. PRAGMA: positioning for 'verified agent output' offerings. Brand 9 Signs: no.",
-      "url": "https://www.unite.ai/and-truth-raises-70m-seed-to-build-universal-verification-machine-for-code/"
     }
   ],
-  "praxis_lesson": "Agent tooling is now an attack surface: a trojanized official extension shows the Construct must pin and verify every tool in the agent chain, and the strongest counter-trend (automated red-teaming, formal verification funding) is to treat verification of agent output as a first-class layer, not an afterthought.",
+  "praxis_lesson": "Agent tooling is now an attack surface (trojanized official extension, ChatGPT shared-link RCE): the Construct must pin and verify every tool and link in the agent chain, while cheaper rival coding agents like DeepSeek's mean verification, not model choice, is the durable moat.",
   "history": [
     "2026-11-01",
     "2026-10-31",

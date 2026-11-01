@@ -3422,3 +3422,15 @@ lesson: Agent tooling is now an attack surface: a trojanized official extension 
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-01
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (second pass, refreshed report).
+outcome: Trojanized Claude Code VS Code extension (yes); OpenAI SDK 3.42.0 compaction controls (yes); DeepSeek proactive coding Super-Agent (maybe); ChatGPT shared-link RCE patched (maybe); Anthropic distillation policy Nov 12 (maybe, unverified).
+lesson: Agent tooling is now an attack surface (trojanized official extension, ChatGPT shared-link RCE): the Construct must pin and verify every tool and link in the agent chain, while cheaper rival coding agents like DeepSeek's mean verification, not model choice, is the durable moat.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
