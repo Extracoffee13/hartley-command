@@ -1,15 +1,27 @@
 {
- "generated": "2026-10-26T23:50:07+00:00",
+ "generated": "2026-11-02T14:31:11+00:00",
  "source": "_b9_temp/_flywheel/sales/sales_flywheel.py (aggregates only)",
  "summary": {
-  "paid_orders_7d": 7,
-  "paid_orders_30d": 17,
-  "open_carts_30d": 14,
-  "carts_waiting_for_address": 0,
-  "paid_from_ai_30d": 5
+  "paid_orders_7d": 23,
+  "paid_orders_30d": 40,
+  "open_carts_30d": 20,
+  "carts_waiting_for_address": 3,
+  "paid_from_ai_30d": 11
  },
  "funnel_week": {
   "this": {
+   "phone": {
+    "sessions": 136,
+    "add_to_carts": 5,
+    "purchases": 2
+   },
+   "desktop": {
+    "sessions": 148,
+    "add_to_carts": 5,
+    "purchases": 5
+   }
+  },
+  "last": {
    "phone": {
     "sessions": 114,
     "add_to_carts": 0,
@@ -20,28 +32,16 @@
     "add_to_carts": 3,
     "purchases": 1
    }
-  },
-  "last": {
-   "phone": {
-    "sessions": 34,
-    "add_to_carts": 0,
-    "purchases": 0
-   },
-   "desktop": {
-    "sessions": 19,
-    "add_to_carts": 1,
-    "purchases": 1
-   }
   }
  },
  "upload_events_week": {
-  "upload_cta_click": 0,
-  "artwork_upload_open": 0,
+  "upload_cta_click": 43,
+  "artwork_upload_open": 158,
   "artwork_selected": 0,
-  "artwork_placed": 0
+  "artwork_placed": 96
  },
  "atc_rate_chatgpt_phone": {
-  "this": 0.0,
+  "this": 0.037,
   "last": 0.0
  },
  "levers": [
@@ -107,6 +107,13 @@
    "status": "owner_action",
    "since": "2026-10-16",
    "measure": ""
+  },
+  {
+   "id": "metal_ai_art",
+   "name": "Metal prints: file-size facts for AI art (pixels per size at 150 ppi, upscale advice) on /shop/metal-prints/ (_shop1029gs)",
+   "status": "live",
+   "since": "2026-10-27",
+   "measure": "metal-print carts and paid orders; uploads rated soft; first paid 10-27 B9-261027-YCDD $178.50 (ChatGPT)"
   }
  ]
 }
