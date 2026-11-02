@@ -3434,3 +3434,15 @@ lesson: Agent tooling is now an attack surface (trojanized official extension, C
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-02
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Anthropic Usage & Cost Analytics API beta (yes); Anthropic fold-subagents guide + Claude Duet preview (yes); Northstar Security $7M seed with MCP graph (maybe); Gemini 4 Carbon defenders-first rollout (maybe).
+lesson: Cost and architecture visibility is now first-party: Anthropic ships usage/cost APIs and guidance to collapse subagents, so the Construct should measure per-agent spend and prune topology before adding more workers. (Quiet day: few primary-source items in the last 24h; no new MCP servers in video/CRM/DAM/signage verified.)
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.6
+~~~

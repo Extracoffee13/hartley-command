@@ -1,51 +1,44 @@
 {
-  "generated": "2026-11-01T18:51:54+00:00",
-  "latest_date": "2026-11-01",
+  "generated": "2026-11-02T10:52:53+00:00",
+  "latest_date": "2026-11-02",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Trojanized Claude Code VS Code extension (v2.1.313) planted an SSH backdoor via Cursor's marketplace; clean 2.1.314 shipped Oct 30",
-      "summary": "A malicious build of the anthropic.claude-code extension, disclosed Oct 29, reportedly reached up to ~5,000 Cursor users before Anthropic published a clean fix on Oct 30.",
+      "title": "Anthropic ships beta Usage and Cost Analytics API for organization token usage and cost (Oct 29)",
+      "summary": "Claude Developer Platform release notes list a beta API exposing org-level token usage and cost; the same feed notes Messages/Token Counting request limits raised from 32 MB to 128 MB (Oct 28).",
       "tag": "yes",
-      "how": "The Construct: audit any Claude Code extension on the AP Mac/Cursor (must be 2.1.314+), check ~/.ssh/authorized_keys, and pin extension sources. PRAGMA: supply-chain hygiene talking point for client agent tooling. Brand 9 Signs: low, but same Mac runs the order automation.",
-      "url": "https://thehackernews.com/2026/10/official-claude-code-vs-code-extension.html"
+      "how": "The Construct: pull our own per-agent/per-routine token spend into the dashboard instead of eyeballing invoices; the 128 MB limit helps image/PDF-heavy runs. PRAGMA: cost-governance reporting for client deployments. Brand 9 Signs: indirect (cheaper art/QC agents).",
+      "url": "https://docs.claude.com/en/release-notes/overview.md"
     },
     {
       "n": 2,
-      "title": "OpenAI Python SDK 3.42.0 adds agent context-compaction controls (Agents API Auto Review, async compaction)",
-      "summary": "Oct 30–31 updates give long-running and scheduled agents configurable background/blocking context compaction and session review.",
+      "title": "Anthropic guide: when to fold subagents back into the main agent loop (Oct 22) + Claude Duet proactive-agent research preview (Oct 23)",
+      "summary": "Anthropic published architecture guidance on collapsing subagents into a single loop, and a safety/privacy write-up for Claude Duet, a research-preview proactive agent (secondary summary via Releasebot; slightly older than 24h).",
       "tag": "yes",
-      "how": "The Construct: compare against our own long-session context handling and scheduled-run patterns. PRAGMA: reference architecture for client long-running agents. Brand 9 Signs: no.",
-      "url": "https://aiweekly.co/alerts/openai-python-sdk-3420-adds-agent-context-compaction-controls"
+      "how": "The Construct: sanity-check our swarm/worker topology against Anthropic's own guidance — fewer subagents may be cheaper and more reliable. PRAGMA: reference architecture for client agent builds. Brand 9 Signs: no.",
+      "url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop"
     },
     {
       "n": 3,
-      "title": "DeepSeek launches proactive coding 'Super-Agent' aimed at Claude Code and Codex (Nov 1)",
-      "summary": "Reported Nov 1: an agent that proactively spots and proposes fixes for coding problems rather than waiting for prompts, with an open-source prototype reported; no benchmarks yet (secondary coverage only).",
+      "title": "Northstar Security launches with $7M seed and exposes its security context graph to AI agents via MCP (Nov 2)",
+      "summary": "FinTech Global reports Wing VC-led $7M seed; platform offers a 'Security Context Graph' with 70+ integrations (AWS, Okta, GitHub, Slack, etc.) that external agents such as Claude can query through MCP. Funding figure is single-source.",
       "tag": "maybe",
-      "how": "The Construct: once benchmarks/licence are published, test as a cheap alternative worker for coding agents; check data-residency before use. PRAGMA: watch as price pressure on coding-agent offerings. Brand 9 Signs: no.",
-      "url": "https://www.digitaltrends.com/computing/deepseek-wants-to-steal-claude-code-and-codexs-lunch-with-an-ai-agent-that-does-not-wait-around"
+      "how": "The Construct: example of 'MCP as the product surface' — worth modelling for our own internal servers. PRAGMA: possible security-posture tool for client engagements once verified. Brand 9 Signs: no.",
+      "url": "https://fintech.global/2026/11/02/northstar-security-raises-7m-to-put-ai-agents-on-risk-duty/"
     },
     {
       "n": 4,
-      "title": "OpenAI patches ChatGPT shared-link flaw that let attackers run code in logged-in sessions",
-      "summary": "A P1 vulnerability (reported to OpenAI Oct 18, now patched) allowed code execution in a victim's session via a shared ChatGPT link.",
+      "title": "Google Gemini 4 Carbon announced with cybersecurity focus and phased, defenders-first rollout (Oct 28)",
+      "summary": "Coverage describes Google's new flagship with strong benchmarks but access initially limited to cyber defenders (headline-level reading only; article body not retrieved).",
       "tag": "maybe",
-      "how": "The Construct: reinforces treating shared/untrusted links and agent-rendered content as hostile; review any flow where agents open or share links. PRAGMA: client security-checklist item. Brand 9 Signs: low.",
-      "url": "https://thehackernews.com/2026/10/a-shared-chatgpt-link-could-run.html"
-    },
-    {
-      "n": 5,
-      "title": "Anthropic usage policy reportedly bans unauthorized distillation/model scraping, effective Nov 12",
-      "summary": "Reported Oct 31 via an X post (policy text not independently confirmed): outputs may not be used to train competing models without authorization.",
-      "tag": "maybe",
-      "how": "The Construct: verify the policy text before Nov 12 and ensure no pipeline uses Claude outputs as training data for other models. PRAGMA: add to client contract/compliance checklist. Brand 9 Signs: no.",
-      "url": "https://twitter.com/jiahaoshao1/status/2116475922190922088"
+      "how": "The Construct: no access now; track general availability and API pricing before benchmarking against Claude workers. PRAGMA: another sign frontier models gate access by vetting. Brand 9 Signs: no.",
+      "url": "https://www.khaleejtimes.com/business/google-launches-gemini-4-carbon-ai-model-with-cybersecurity-focus-2"
     }
   ],
-  "praxis_lesson": "Agent tooling is now an attack surface (trojanized official extension, ChatGPT shared-link RCE): the Construct must pin and verify every tool and link in the agent chain, while cheaper rival coding agents like DeepSeek's mean verification, not model choice, is the durable moat.",
+  "praxis_lesson": "Cost and architecture visibility is now first-party: Anthropic ships usage/cost APIs and guidance to collapse subagents, so the Construct should measure per-agent spend and prune topology before adding more workers. (Quiet day: few primary-source items in the last 24h; no new MCP servers in video/CRM/DAM/signage verified.)",
   "history": [
+    "2026-11-02",
     "2026-11-01",
     "2026-10-31",
     "2026-10-30",
@@ -58,7 +51,6 @@
     "2026-10-23",
     "2026-10-22",
     "2026-10-21",
-    "2026-10-20",
-    "2026-10-19"
+    "2026-10-20"
   ]
 }
