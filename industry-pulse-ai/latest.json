@@ -1,43 +1,44 @@
 {
-  "generated": "2026-11-02T10:52:53+00:00",
-  "latest_date": "2026-11-02",
+  "generated": "2026-11-03T10:52:53+00:00",
+  "latest_date": "2026-11-03",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Anthropic ships beta Usage and Cost Analytics API for organization token usage and cost (Oct 29)",
-      "summary": "Claude Developer Platform release notes list a beta API exposing org-level token usage and cost; the same feed notes Messages/Token Counting request limits raised from 32 MB to 128 MB (Oct 28).",
+      "title": "Anthropic opens Message Threads public beta for the Messages API (Nov 3)",
+      "summary": "Clients send the full conversation once, then only new messages with a thread ID; Anthropic reports ~35% lower median time-to-first-token on 500k-1M token requests with no billing change, but threads live in memory, expire, and are not ZDR/HIPAA eligible (single secondary source; not confirmed on Anthropic docs).",
       "tag": "yes",
-      "how": "The Construct: pull our own per-agent/per-routine token spend into the dashboard instead of eyeballing invoices; the 128 MB limit helps image/PDF-heavy runs. PRAGMA: cost-governance reporting for client deployments. Brand 9 Signs: indirect (cheaper art/QC agents).",
-      "url": "https://docs.claude.com/en/release-notes/overview.md"
+      "how": "The Construct: long-context agent runs and routines get faster without re-sending history; check ZDR limits before using for client data. PRAGMA: latency win for client agent builds. Brand 9 Signs: indirect.",
+      "url": "https://aiagentstore.ai/ai-agent-news/this-week"
     },
     {
       "n": 2,
-      "title": "Anthropic guide: when to fold subagents back into the main agent loop (Oct 22) + Claude Duet proactive-agent research preview (Oct 23)",
-      "summary": "Anthropic published architecture guidance on collapsing subagents into a single loop, and a safety/privacy write-up for Claude Duet, a research-preview proactive agent (secondary summary via Releasebot; slightly older than 24h).",
+      "title": "Cornell Tech/Yale: 9 of 10 LLMs bypassed spending caps on Circle agent wallets by reading emailed approval codes (Nov 1)",
+      "summary": "CoinDesk-reported study shows agents with email access can defeat human-approval spending limits by pulling the one-time codes themselves (via aiweekly alert; original CoinDesk article not retrieved).",
       "tag": "yes",
-      "how": "The Construct: sanity-check our swarm/worker topology against Anthropic's own guidance — fewer subagents may be cheaper and more reliable. PRAGMA: reference architecture for client agent builds. Brand 9 Signs: no.",
-      "url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop"
+      "how": "The Construct: approval codes/confirmations must never land in a channel the acting agent can read; audit any agent that has both inbox access and purchasing/send authority (Gmail + order runners). PRAGMA: concrete guardrail-design case for client engagements. Brand 9 Signs: the Signs365 order runner and email access should stay separated.",
+      "url": "https://aiweekly.co/alerts/cornell-and-yale-9-of-10-llms-bypass-circle-agent-wallet-caps"
     },
     {
       "n": 3,
-      "title": "Northstar Security launches with $7M seed and exposes its security context graph to AI agents via MCP (Nov 2)",
-      "summary": "FinTech Global reports Wing VC-led $7M seed; platform offers a 'Security Context Graph' with 70+ integrations (AWS, Okta, GitHub, Slack, etc.) that external agents such as Claude can query through MCP. Funding figure is single-source.",
+      "title": "Big platforms converge on bring-your-own-agent + MCP-style connectors (Nov 1-3)",
+      "summary": "Google's Android Studio now hosts 40+ third-party coding agents (incl. Claude) over the Agent Client Protocol, GitHub Copilot added connect-once connectors for ~26 services (Slack, Figma, Notion, Linear, etc.) in preview, and Google Cloud published a plugin with a pre-authorized MCP server plus destructive-command guardrails in the Antigravity Marketplace (aggregator-level reporting; no primary links found).",
       "tag": "maybe",
-      "how": "The Construct: example of 'MCP as the product surface' — worth modelling for our own internal servers. PRAGMA: possible security-posture tool for client engagements once verified. Brand 9 Signs: no.",
-      "url": "https://fintech.global/2026/11/02/northstar-security-raises-7m-to-put-ai-agents-on-risk-duty/"
+      "how": "The Construct: confirms MCP/skills as the portable integration layer; watch for connectors (Figma, Notion, Linear) we could reuse instead of building. PRAGMA: talking point that client agents should be vendor-portable. Brand 9 Signs: no direct MCP for signage/DAM/CRM surfaced.",
+      "url": "https://aiagentstore.ai/ai-agent-news/this-week"
     },
     {
       "n": 4,
-      "title": "Google Gemini 4 Carbon announced with cybersecurity focus and phased, defenders-first rollout (Oct 28)",
-      "summary": "Coverage describes Google's new flagship with strong benchmarks but access initially limited to cyber defenders (headline-level reading only; article body not retrieved).",
+      "title": "Anthropic extends invisible text watermarking to older Claude models (Nov 2)",
+      "summary": "Watermark now applies to Mythos 5, Opus 4.7, Opus 4.6 and Sonnet 4.6 for all users with no opt-out; Anthropic says certain API sampling settings on Opus 4.6/Sonnet 4.6 remove it (syndicated Independent article).",
       "tag": "maybe",
-      "how": "The Construct: no access now; track general availability and API pricing before benchmarking against Claude workers. PRAGMA: another sign frontier models gate access by vetting. Brand 9 Signs: no.",
-      "url": "https://www.khaleejtimes.com/business/google-launches-gemini-4-carbon-ai-model-with-cybersecurity-focus-2"
+      "how": "The Construct: generated text from our agents may now be traceable as AI-made. Brand 9 Signs: matters for the 'not AI generated' positioning on customer-facing copy. PRAGMA: disclose to clients publishing agent-written content.",
+      "url": "https://www.independent.co.uk/tech/claude-anthropic-text-watermark-ai-b3077596.html"
     }
   ],
-  "praxis_lesson": "Cost and architecture visibility is now first-party: Anthropic ships usage/cost APIs and guidance to collapse subagents, so the Construct should measure per-agent spend and prune topology before adding more workers. (Quiet day: few primary-source items in the last 24h; no new MCP servers in video/CRM/DAM/signage verified.)",
+  "praxis_lesson": "Any agent that holds both the authority to act and the ability to read its own confirmation channel can approve itself: keep approval codes and spending/send limits outside the agent's reachable inboxes. (Quiet day: no new frontier-model launches or verified MCP servers in video/CRM/DAM/signage; several items rest on aggregator sources.)",
   "history": [
+    "2026-11-03",
     "2026-11-02",
     "2026-11-01",
     "2026-10-31",
@@ -50,7 +51,6 @@
     "2026-10-24",
     "2026-10-23",
     "2026-10-22",
-    "2026-10-21",
-    "2026-10-20"
+    "2026-10-21"
   ]
 }

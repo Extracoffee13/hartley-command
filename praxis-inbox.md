@@ -3446,3 +3446,15 @@ lesson: Cost and architecture visibility is now first-party: Anthropic ships usa
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.6
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-03
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Anthropic Message Threads beta (yes); Cornell/Yale agent-wallet cap bypass study (yes); BYO-agent/MCP connector convergence at Google & GitHub (maybe); Anthropic text watermark extended to older models (maybe).
+lesson: Any agent that holds both the authority to act and the ability to read its own confirmation channel can approve itself: keep approval codes and spending/send limits outside the agent's reachable inboxes. (Quiet day: no new frontier-model launches or verified MCP servers in video/CRM/DAM/signage; several items rest on aggregator sources.)
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
