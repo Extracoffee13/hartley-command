@@ -3482,3 +3482,15 @@ lesson: Capability and price tiers shift weekly (a $1/$5 computer-use model, a g
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.75
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-04
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Cowork EDR beta (yes); Claude plugins auto-connect for Team/Enterprise (yes); CrowdStrike AI Kill Switch (maybe); Revolut self-hosted GLM cuts coding cost ~90% (yes); Scalekit AgentKit gateway (maybe).
+lesson: Agent safety is moving outside the agent: Cowork EDR sensors and CrowdStrike's kill switch both control agents from a layer they cannot read or edit, so build stop, audit and network limits into the host environment rather than the prompt. (Quiet day for MCP servers: nothing verified in video/CRM/DAM/signage; items rest on a daily digest and trade press, with the plugin auto-connect detail unconfirmed.)
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.75
+~~~

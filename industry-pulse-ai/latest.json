@@ -1,50 +1,50 @@
 {
-  "generated": "2026-11-04T10:52:12+00:00",
+  "generated": "2026-11-04T18:52:08+00:00",
   "latest_date": "2026-11-04",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "OpenAI releases GPT-6.1 Terra, a $1/$5 per-million-token computer-use model (Oct 26)",
-      "summary": "Mid-tier model aimed at computer use, priced 50% below GPT-5.6 Terra and GPT-6.1 Sol, available in ChatGPT Work, Codex and the API as gpt-6.1-terra; Signal Drift reports it finishes tasks 3x faster than GPT-6 Astra (secondary write-up, OpenAI page not retrieved).",
+      "title": "Anthropic adds beta EDR monitoring inside Claude Cowork's local VM (Nov 3)",
+      "summary": "Businesses can run endpoint-detection sensors (CrowdStrike, SentinelOne, Palo Alto Networks, Tanium and others) inside the Cowork VM and send activity to their own security console; Team/Enterprise on macOS and Windows, local VM only, no Anthropic charge during beta.",
       "tag": "yes",
-      "how": "The Construct: a cheap benchmark candidate for high-volume browser/computer-use routines; test against current models before switching. PRAGMA: cost anchor for client agent budgets. Brand 9 Signs: maybe for supplier-portal automation like Signs365 order runs.",
-      "url": "https://www.thenerdslist.com/2026/11/ais-wild-week-cheaper-models-security.html"
+      "how": "The Construct: security-visibility layer for our Cowork-run agents, worth knowing for the Mac runner. PRAGMA: a concrete answer to client 'what can the agent touch?' questions. Brand 9 Signs: indirect.",
+      "url": "https://cybersecuritynews.com/anthropic-enables-edr-monitoring/"
     },
     {
       "n": 2,
-      "title": "Claude Mythos/Fable 5.5 still unconfirmed; a Mythos 5.5 mention surfaced on Anthropic's Mythos page (Nov 1)",
-      "summary": "TestingCatalog reports a 'Claude Mythos 5.5' label with no specs or announcement and anecdotal A/B tests of Fable 5.5 checkpoints; kingy.ai's tracker (updated Nov 3) says the latest confirmed Fable is 5.1 and the 5.5 LiteLLM entry is a catalog artifact. Launch timing is speculation.",
-      "tag": "maybe",
-      "how": "The Construct: no action until Anthropic announces; keep model IDs configurable so a new tier can be benchmarked on release day. PRAGMA: don't promise clients a specific new model.",
-      "url": "https://www.testingcatalog.com/anthropic-prepares-to-release-claude-mythos-5-5-model/"
+      "title": "Claude plugins now connect automatically for Team and Enterprise, with Claude as trusted identity provider (Nov 3-4)",
+      "summary": "Compatible plugins can authenticate through Claude as the identity provider, removing per-user connection steps. Source is Anthropic's ClaudeDevs post as relayed by The Neuron digest; details not independently confirmed.",
+      "tag": "yes",
+      "how": "The Construct: lowers friction for rolling plugins and skills across the agent fleet. PRAGMA: easier client onboarding for plugin-based deployments.",
+      "url": "https://x.com/ClaudeDevs/status/2117680635561312732"
     },
     {
       "n": 3,
-      "title": "Google announces Gemini 4 Carbon, gated to cyber defenders, tops Artificial Analysis index at 59 (Oct 28)",
-      "summary": "Frontier model for long-horizon engineering and cyber defense, access starting with a small defender group and no general-availability date; intro API price $2/$10 per million tokens rising to $4/$20; Signal Drift cites it ahead of Claude Opus 5.5 (58) and GPT-6 Astra (57).",
+      "title": "CrowdStrike ships an AI Kill Switch in Falcon Guardian (Nov 3)",
+      "summary": "Lets security teams stop an agent's execution, block relaunches and restrict its network access, aimed at rogue or compromised agents.",
       "tag": "maybe",
-      "how": "The Construct: not usable yet; watch for general availability as a benchmark rival. PRAGMA: shows frontier labs gating the strongest models, so client plans should assume tiered access.",
-      "url": "https://signaldrifts.substack.com/p/this-week-in-ai2"
+      "how": "The Construct: pattern to copy, an out-of-band stop control the agent cannot reach. PRAGMA: sellable guardrail concept for client agent deployments.",
+      "url": "https://www.cnbc.com/2026/11/03/crowdstrikes-new-kill-switch-can-stop-rogue-ai-agents-in-their-tracks-ceo-says.html"
     },
     {
       "n": 4,
-      "title": "Mistral publishes Mistral Large 4 open weights, ~1T parameters / 49B active (Oct 29)",
-      "summary": "Modified-MIT license (hosted-service use needs a commercial license), Mistral API at $0.70/$2.10 per million tokens; Mistral claims open-model leadership in coding and defensive security while Vals AI ranks it 17th of 30 overall.",
-      "tag": "maybe",
-      "how": "The Construct: an option for a self-hosted or low-cost worker tier, but too large for casual local runs; license matters for PRAGMA client hosting. Brand 9 Signs: no.",
-      "url": "https://www.thenerdslist.com/2026/11/ais-wild-week-cheaper-models-security.html"
+      "title": "Revolut reportedly cuts AI coding costs about 90% by self-hosting GLM models instead of Claude (Nov 3)",
+      "summary": "The British fintech moved coding workloads to self-hosted GLM models, claiming roughly a 10x cost reduction (The Register report).",
+      "tag": "yes",
+      "how": "The Construct: reinforces routing high-volume routines to the cheapest tier that passes its test. PRAGMA: a cost-comparison case study for client budgets; also a competitive signal against Claude-only stacks.",
+      "url": "https://www.theregister.com/ai-and-ml/2026/11/03/british-fintech-revolut-slashes-ai-coding-costs-10x-by-cutting-out-claude-and-going-self-hosted/5307345"
     },
     {
       "n": 5,
-      "title": "GitHub: AI agents wrote the first draft of 40%+ of pull requests in September, up from 17% in March (reported Oct 28)",
-      "summary": "GitHub's own figures as relayed by Signal Drift's weekly roundup; the same roundup notes Anthropic's SEC IPO filing (Nasdaq: ANT) on Oct 26.",
+      "title": "Scalekit AgentKit: one gateway to 30,000+ tools across 600 apps, free tier of 10,000 tool calls/month",
+      "summary": "Agent-tool gateway handling auth and tool access for many SaaS apps behind a single integration; listed on Product Hunt.",
       "tag": "maybe",
-      "how": "The Construct: validates agent-authored code as the norm, so invest in review gates and tests over authorship. PRAGMA: usable adoption stat in client pitches. Brand 9 Signs: indirect.",
-      "url": "https://signaldrifts.substack.com/p/this-week-in-ai2"
+      "how": "The Construct: evaluate as a CRM/scheduling connector shortcut instead of building servers one by one. PRAGMA: possible client integration layer. Brand 9 Signs: maybe for CRM/quote tooling.",
+      "url": "https://www.producthunt.com/products/scalekit"
     }
   ],
-  "praxis_lesson": "Capability and price tiers shift weekly (a $1/$5 computer-use model, a gated frontier model, a trillion-parameter open-weights release), so route each routine to the cheapest tier that passes its own test and keep model IDs in config, not code. (Quiet day: no verified new MCP servers in video/CRM/DAM/signage; the Pictory/WellSaid video-voice MCPs surfaced are older; several items are 2-9 days old and rest on aggregator write-ups.)",
+  "praxis_lesson": "Agent safety is moving outside the agent: Cowork EDR sensors and CrowdStrike's kill switch both control agents from a layer they cannot read or edit, so build stop, audit and network limits into the host environment rather than the prompt. (Quiet day for MCP servers: nothing verified in video/CRM/DAM/signage; items rest on a daily digest and trade press, with the plugin auto-connect detail unconfirmed.)",
   "history": [
     "2026-11-04",
     "2026-11-03",
