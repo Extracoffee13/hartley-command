@@ -3470,3 +3470,15 @@ lesson: Agents need guardrails that live outside their own reach: Cornell/Yale s
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.75
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-04
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: OpenAI GPT-6.1 Terra $1/$5 computer-use model (yes); Claude Mythos/Fable 5.5 still unconfirmed (maybe); Gemini 4 Carbon gated release (maybe); Mistral Large 4 open weights (maybe); GitHub 40% agent-drafted PRs (maybe).
+lesson: Capability and price tiers shift weekly (a $1/$5 computer-use model, a gated frontier model, a trillion-parameter open-weights release), so route each routine to the cheapest tier that passes its own test and keep model IDs in config, not code. (Quiet day: no verified new MCP servers in video/CRM/DAM/signage; the Pictory/WellSaid video-voice MCPs surfaced are older; several items are 2-9 days old and rest on aggregator write-ups.)
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.75
+~~~
