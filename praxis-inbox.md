@@ -3494,3 +3494,39 @@ lesson: Agent safety is moving outside the agent: Cowork EDR sensors and CrowdSt
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.75
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-05
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Adobe CX Coworker across Claude/ChatGPT/Gemini + MCP connectors (maybe); Loova image/video MCP (maybe); Cloudflare per-agent access controls (yes); Shackleton AI construction agents seed (maybe); Sentra $150M agentic data security (no).
+lesson: Distribution and control are both moving to the connector layer: Adobe ships one agent across many hosts via MCP while Cloudflare and Sysdig add per-agent access control, so design each agent as a scoped, separately identified connector that any host can call and an operator can limit. (Caveats: sourced from trade press and aggregator briefs; an unlinked claim of an Anthropic always-on agent, Claude Duet, could not be verified and is omitted; no verified signage, CRM or DAM MCP news today.)
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-05
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Claude Code 2.1.314-318 permission/subagent controls + Opus 4.8 fast-mode deprecation (yes); Postman/trojan-extension config tampering reports (yes); Anthropic Message Threads beta (maybe); Cyberhaven agentic data security (no).
+lesson: Agent risk now sits in the tooling around the agent: third-party apps and fake extensions are writing into Claude Code config while Anthropic adds permission and cost controls, so treat plugin/MCP config as a monitored, diffable surface and turn on the new scoping flags rather than trusting defaults. (Caveats: Releasebot dates are first-seen dates; Postman and trojan-extension items are aggregator reports; no verified signage, CRM or DAM MCP news and no frontier-model or arXiv items could be confirmed today, so those categories are omitted.)
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-06
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Claude Code background agents on Haiku 5.5 progress updates, ~99% cheaper per update (yes); OpenAI autonomous pipeline built 948 Linux kernel exploits (maybe); Meta acquires Conductor, cloud sunsets Nov 13-20 (maybe); Notion shared agent memory (maybe); Muse4AI/Scenario community image-video MCP tooling (maybe).
+lesson: Agent cost and lock-in are now design inputs: Anthropic is routing low-value work like progress updates to a cheaper model while orchestration vendors get acquired and shut down on a two-week clock, so route cheap work to cheap models and keep every workflow portable across orchestrators. (Caveats: all items come from aggregator roundups, not primary sources; no verified signage, CRM or DAM MCP news and no arXiv items confirmed today, so those categories are omitted.)
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

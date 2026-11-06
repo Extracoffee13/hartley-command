@@ -1,51 +1,53 @@
 {
-  "generated": "2026-11-04T18:52:08+00:00",
-  "latest_date": "2026-11-04",
+  "generated": "2026-11-06T10:52:15+00:00",
+  "latest_date": "2026-11-06",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Anthropic adds beta EDR monitoring inside Claude Cowork's local VM (Nov 3)",
-      "summary": "Businesses can run endpoint-detection sensors (CrowdStrike, SentinelOne, Palo Alto Networks, Tanium and others) inside the Cowork VM and send activity to their own security console; Team/Enterprise on macOS and Windows, local VM only, no Anthropic charge during beta.",
+      "title": "Claude Code background agents now use Haiku 5.5 for progress updates (Nov 5)",
+      "summary": "Background agents have Haiku 5.5 write progress updates from short notes, cutting per-update cost by about 99%, and Anthropic says sessions with background agents may use about 5% less of a user's allowance (per The Neuron roundup; not checked against Anthropic's own notes).",
       "tag": "yes",
-      "how": "The Construct: security-visibility layer for our Cowork-run agents, worth knowing for the Mac runner. PRAGMA: a concrete answer to client 'what can the agent touch?' questions. Brand 9 Signs: indirect.",
-      "url": "https://cybersecuritynews.com/anthropic-enables-edr-monitoring/"
+      "how": "The Construct: scheduled routines and background agents should burn less allowance with no config change; worth watching usage after the update. PRAGMA: concrete cost-control example for client agent deployments. Brand 9 Signs: indirect.",
+      "url": "https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-thursday-november-5-2026/"
     },
     {
       "n": 2,
-      "title": "Claude plugins now connect automatically for Team and Enterprise, with Claude as trusted identity provider (Nov 3-4)",
-      "summary": "Compatible plugins can authenticate through Claude as the identity provider, removing per-user connection steps. Source is Anthropic's ClaudeDevs post as relayed by The Neuron digest; details not independently confirmed.",
-      "tag": "yes",
-      "how": "The Construct: lowers friction for rolling plugins and skills across the agent fleet. PRAGMA: easier client onboarding for plugin-based deployments.",
-      "url": "https://x.com/ClaudeDevs/status/2117680635561312732"
+      "title": "OpenAI reports an autonomous pipeline that built working Linux kernel privilege-escalation exploits for 948 vulnerabilities (Nov 5)",
+      "summary": "OpenAI says its pipeline flagged 2,308 potential kernel flaws, reproduced 1,724 and built working local privilege-escalation exploits for 948 distinct vulnerabilities for about $1.21M in API credits; maintainers had already patched 61 upstream with 43 more in preparation (per The Neuron; I did not read OpenAI's post).",
+      "tag": "maybe",
+      "how": "PRAGMA: strong evidence that automated offensive security is cheap now, supporting an agent-tooling and endpoint hardening audit offer. The Construct: reinforces keeping the Mac runner patched and scoped. Brand 9 Signs: no.",
+      "url": "https://openai.com/index/a-thousand-fewer-paths-to-root/"
     },
     {
       "n": 3,
-      "title": "CrowdStrike ships an AI Kill Switch in Falcon Guardian (Nov 3)",
-      "summary": "Lets security teams stop an agent's execution, block relaunches and restrict its network access, aimed at rogue or compromised agents.",
+      "title": "Meta acquires multi-agent coding orchestrator Conductor; cloud service sunsets Nov 13-20 (Nov 4-5)",
+      "summary": "New sign-ups ended Nov 4, Conductor Cloud goes read-only Nov 13 with data deletion from Nov 20, and local Conductor gets updates until early 2027 (per Conductor's announcement as relayed by the aggregators).",
       "tag": "maybe",
-      "how": "The Construct: pattern to copy, an out-of-band stop control the agent cannot reach. PRAGMA: sellable guardrail concept for client agent deployments.",
-      "url": "https://www.cnbc.com/2026/11/03/crowdstrikes-new-kill-switch-can-stop-rogue-ai-agents-in-their-tracks-ceo-says.html"
+      "how": "The Construct: only matters if any agent workflow depends on Conductor Cloud; otherwise a reminder not to build on single-vendor orchestration layers. PRAGMA: vendor-lock-in risk talking point for clients.",
+      "url": "https://munderdiffl.in/blog/agent-tools-today-2026-11-05/"
     },
     {
       "n": 4,
-      "title": "Revolut reportedly cuts AI coding costs about 90% by self-hosting GLM models instead of Claude (Nov 3)",
-      "summary": "The British fintech moved coding workloads to self-hosted GLM models, claiming roughly a 10x cost reduction (The Register report).",
-      "tag": "yes",
-      "how": "The Construct: reinforces routing high-volume routines to the cheapest tier that passes its test. PRAGMA: a cost-comparison case study for client budgets; also a competitive signal against Claude-only stacks.",
-      "url": "https://www.theregister.com/ai-and-ml/2026/11/03/british-fintech-revolut-slashes-ai-coding-costs-10x-by-cutting-out-claude-and-going-self-hosted/5307345"
+      "title": "Notion ships shared memory so ChatGPT, Claude and other assistants use the same workspace context (Nov 5)",
+      "summary": "Notion's shared agent memory lets multiple assistants read the same workspace context (per The Neuron roundup; no Notion primary source read).",
+      "tag": "maybe",
+      "how": "The Construct: a possible neutral shared-memory layer across Claude and other agents if Notion is already in use. PRAGMA: a pattern for client multi-assistant setups. Brand 9 Signs: no.",
+      "url": "https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-thursday-november-5-2026/"
     },
     {
       "n": 5,
-      "title": "Scalekit AgentKit: one gateway to 30,000+ tools across 600 apps, free tier of 10,000 tool calls/month",
-      "summary": "Agent-tool gateway handling auth and tool access for many SaaS apps behind a single integration; listed on Product Hunt.",
+      "title": "New community image/video/3D MCP tooling: Muse4AI bridge and Scenario agent skills trending on GitHub (Nov 3-5)",
+      "summary": "Muse4AI (created Nov 3) is a local Windows bridge exposing image and video generation to agents via REST, MCP and OAuth, and Scenario's skills repo teaches coding agents to produce content through the Scenario MCP server; both are community repos reported by an aggregator, unaudited.",
       "tag": "maybe",
-      "how": "The Construct: evaluate as a CRM/scheduling connector shortcut instead of building servers one by one. PRAGMA: possible client integration layer. Brand 9 Signs: maybe for CRM/quote tooling.",
-      "url": "https://www.producthunt.com/products/scalekit"
+      "how": "Brand 9 Signs / The Construct: possible additions for signage mockup and marketing image/video generation, but vet code and permissions before installing given the recent plugin-tampering reports. PRAGMA: none yet.",
+      "url": "https://munderdiffl.in/blog/agent-tools-today-2026-11-05/"
     }
   ],
-  "praxis_lesson": "Agent safety is moving outside the agent: Cowork EDR sensors and CrowdStrike's kill switch both control agents from a layer they cannot read or edit, so build stop, audit and network limits into the host environment rather than the prompt. (Quiet day for MCP servers: nothing verified in video/CRM/DAM/signage; items rest on a daily digest and trade press, with the plugin auto-connect detail unconfirmed.)",
+  "praxis_lesson": "Agent cost and lock-in are now design inputs: Anthropic is routing low-value work like progress updates to a cheaper model while orchestration vendors get acquired and shut down on a two-week clock, so route cheap work to cheap models and keep every workflow portable across orchestrators. (Caveats: all items come from aggregator roundups, not primary sources; no verified signage, CRM or DAM MCP news and no arXiv items confirmed today, so those categories are omitted.)",
   "history": [
+    "2026-11-06",
+    "2026-11-05",
     "2026-11-04",
     "2026-11-03",
     "2026-11-02",
@@ -57,8 +59,6 @@
     "2026-10-27",
     "2026-10-26",
     "2026-10-25",
-    "2026-10-24",
-    "2026-10-23",
-    "2026-10-22"
+    "2026-10-24"
   ]
 }

@@ -1,11 +1,11 @@
 {
- "generated": "2026-11-05T12:00:57+00:00",
+ "generated": "2026-11-06T11:00:58+00:00",
  "writer": "ecosystem-status-writer",
  "hermes": {
   "version": "0.21.4",
   "gateway": "running",
   "platforms": {
-   "telegram": "retrying"
+   "telegram": "connected"
   },
   "profiles": [
    {
@@ -66,6 +66,20 @@
    "failing": [
     {
      "profile": "default",
+     "name": "ssl-cert-watcher",
+     "enabled": true,
+     "script": true,
+     "status": "error",
+     "last_run": "2026-11-05T07:01",
+     "schedule": "0 7 * * *",
+     "error": "Script exited with code 1 \u26a0\ufe0f SSL CHECK FAILED (not an expiry): prag-ma.ai \u2014 [Errno 8] nodename nor servname provided, or not known",
+     "profiles": [
+      "default"
+     ],
+     "fixed": false
+    },
+    {
+     "profile": "default",
      "name": "dh-dns-tracker",
      "enabled": true,
      "script": true,
@@ -73,6 +87,20 @@
      "last_run": "2026-11-05T06:15",
      "schedule": "15 6 * * *",
      "error": "Script exited with code 1 DNS FAIL: prag-ma.ai \u2014 [Errno 8] nodename nor servname provided, or not known",
+     "profiles": [
+      "default"
+     ],
+     "fixed": false
+    },
+    {
+     "profile": "default",
+     "name": "construct-digest",
+     "enabled": true,
+     "script": true,
+     "status": "error",
+     "last_run": "2026-11-05T07:08",
+     "schedule": "5 7 * * *",
+     "error": "Script exited with code 1 NOT sent: hermes send exited 1 with no message",
      "profiles": [
       "default"
      ],
@@ -87,7 +115,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-04T14:00",
+     "last_run": "2026-11-05T14:00",
      "schedule": "0 14 * * *",
      "error": ""
     },
@@ -97,7 +125,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-04T23:00",
+     "last_run": "2026-11-05T23:00",
      "schedule": "0 23 * * *",
      "error": ""
     },
@@ -117,7 +145,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-04T09:50",
+     "last_run": "2026-11-05T09:50",
      "schedule": "daily 09:50 ET",
      "error": ""
     },
@@ -127,7 +155,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-04T10:00",
+     "last_run": "2026-11-05T10:00",
      "schedule": "0 10 * * *",
      "error": ""
     },
@@ -137,7 +165,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-04T08:31",
+     "last_run": "2026-11-05T08:31",
      "schedule": "30 8 * * *",
      "error": ""
     },
@@ -147,7 +175,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-05T06:30",
+     "last_run": "2026-11-06T05:30",
      "schedule": "*/30 * * * *",
      "error": ""
     },
@@ -157,7 +185,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-05T06:45",
+     "last_run": "2026-11-06T05:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -167,7 +195,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-05T06:00",
+     "last_run": "2026-11-06T05:00",
      "schedule": "0 * * * *",
      "error": ""
     },
@@ -177,7 +205,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-04T07:00",
+     "last_run": "2026-11-05T07:00",
      "schedule": "0 7 * * *",
      "error": ""
     },
@@ -186,10 +214,10 @@
      "name": "construct-digest",
      "enabled": true,
      "script": true,
-     "status": "ok",
-     "last_run": "2026-11-04T07:05",
+     "status": "error",
+     "last_run": "2026-11-05T07:08",
      "schedule": "5 7 * * *",
-     "error": ""
+     "error": "Script exited with code 1 NOT sent: hermes send exited 1 with no message"
     },
     {
      "profile": "default",
@@ -197,7 +225,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-05T03:30",
+     "last_run": "2026-11-06T03:30",
      "schedule": "30 3 * * *",
      "error": ""
     },
@@ -207,7 +235,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-05T03:01",
+     "last_run": "2026-11-06T03:01",
      "schedule": "0 3 * * *",
      "error": ""
     },
@@ -227,7 +255,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-05T06:45",
+     "last_run": "2026-11-06T05:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -257,7 +285,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-05T06:00",
+     "last_run": "2026-11-06T05:00",
      "schedule": "0 * * * *",
      "error": ""
     },
@@ -267,7 +295,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-05T04:10",
+     "last_run": "2026-11-06T04:10",
      "schedule": "10 */4 * * *",
      "error": ""
     },
@@ -277,7 +305,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-05T06:45",
+     "last_run": "2026-11-06T05:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -287,7 +315,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-04T23:30",
+     "last_run": "2026-11-05T23:30",
      "schedule": "30 23 * * *",
      "error": ""
     },
@@ -297,7 +325,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-04T09:41",
+     "last_run": "2026-11-05T09:41",
      "schedule": "40 9 * * *",
      "error": ""
     },
@@ -307,7 +335,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-05T04:30",
+     "last_run": "2026-11-06T04:30",
      "schedule": "30 4 * * *",
      "error": ""
     },
@@ -317,7 +345,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-05T04:45",
+     "last_run": "2026-11-06T04:45",
      "schedule": "45 4 * * *",
      "error": ""
     },
@@ -327,7 +355,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-04T17:00",
+     "last_run": "2026-11-05T17:00",
      "schedule": "0 17 * * *",
      "error": ""
     },
@@ -337,7 +365,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-05T06:30",
+     "last_run": "2026-11-06T05:30",
      "schedule": "*/5 * * * *",
      "error": ""
     },
@@ -347,7 +375,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-04T07:00",
+     "last_run": "2026-11-05T07:00",
      "schedule": "0 7 * * *",
      "error": ""
     },
@@ -357,7 +385,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-04T09:26",
+     "last_run": "2026-11-05T09:26",
      "schedule": "25 9 * * *",
      "error": ""
     },
@@ -367,7 +395,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-05T06:59",
+     "last_run": "2026-11-06T05:59",
      "schedule": "* * * * *",
      "error": ""
     },
@@ -397,7 +425,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-05T06:45",
+     "last_run": "2026-11-06T05:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -407,7 +435,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-04T08:00",
+     "last_run": "2026-11-05T08:00",
      "schedule": "0 8 * * *",
      "error": ""
     },
@@ -417,7 +445,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-05T04:00",
+     "last_run": "2026-11-06T04:00",
      "schedule": "0 */4 * * *",
      "error": ""
     },
@@ -426,10 +454,10 @@
      "name": "ssl-cert-watcher",
      "enabled": true,
      "script": true,
-     "status": "ok",
-     "last_run": "2026-11-04T07:00",
+     "status": "error",
+     "last_run": "2026-11-05T07:01",
      "schedule": "0 7 * * *",
-     "error": ""
+     "error": "Script exited with code 1 \u26a0\ufe0f SSL CHECK FAILED (not an expiry): prag-ma.ai \u2014 [Errno 8] nodename nor servname provided, or not known"
     },
     {
      "profile": "default",
@@ -437,7 +465,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-05T06:45",
+     "last_run": "2026-11-06T05:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -447,7 +475,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-05T06:30",
+     "last_run": "2026-11-06T05:30",
      "schedule": "*/30 * * * *",
      "error": ""
     },
@@ -467,7 +495,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-05T06:45",
+     "last_run": "2026-11-06T05:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -477,7 +505,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-05T06:55",
+     "last_run": "2026-11-06T05:55",
      "schedule": "*/5 * * * *",
      "error": ""
     }
@@ -673,17 +701,17 @@
   "gk_checked_30d": 3
  },
  "digest": {
-  "ts": "2026-11-04T12:05:57+00:00",
-  "sent": true,
-  "lens_items": 4,
+  "ts": "2026-11-05T12:05:57+00:00",
+  "sent": false,
+  "lens_items": 5,
   "kanban_done": 0,
   "kanban_blocked": 3,
   "spend_24h": 0.0,
   "harvard_searches_24h": 0,
-  "error": null
+  "error": "hermes send exited 1 with no message"
  },
  "harvard": {
-  "articles": 3611,
+  "articles": 3615,
   "searches_30d": 30,
   "by": {
    "scout": 10,
@@ -691,6 +719,6 @@
    "unknown": 2
   },
   "last_search": "2026-10-25T23:10:31Z",
-  "index_built": "2026-11-05T09:45:58+00:00"
+  "index_built": "2026-11-06T09:45:59+00:00"
  }
 }
