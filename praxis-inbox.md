@@ -3530,3 +3530,15 @@ lesson: Agent cost and lock-in are now design inputs: Anthropic is routing low-v
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-06
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Message threads (yes); Gemini Omni 1.2 Flash GA video pricing (yes); EnvOpt arXiv 72.7% cost cut (yes); METR on Anthropic R&D acceleration (maybe); GPT-6 Cyber gated release (maybe).
+lesson: Cost and speed now come from the layer around the model: server-side conversation state, a reorganized environment (-72.7% cost in EnvOpt) and cheaper video pricing all beat swapping models, so tune context and environment first and keep workflows portable as model cadence accelerates. (Caveats: items come from a secondary daily brief, primary links not individually opened; no verified signage, CRM or DAM MCP news and no DeepSeek/Mistral/xAI/Meta launches found, so those categories are omitted.)
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

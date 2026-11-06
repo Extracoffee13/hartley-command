@@ -1,50 +1,50 @@
 {
-  "generated": "2026-11-06T10:52:15+00:00",
+  "generated": "2026-11-06T14:51:46+00:00",
   "latest_date": "2026-11-06",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Claude Code background agents now use Haiku 5.5 for progress updates (Nov 5)",
-      "summary": "Background agents have Haiku 5.5 write progress updates from short notes, cutting per-update cost by about 99%, and Anthropic says sessions with background agents may use about 5% less of a user's allowance (per The Neuron roundup; not checked against Anthropic's own notes).",
+      "title": "Anthropic Claude API 'message threads' (public beta) cut time-to-first-token ~35% on long Claude Code requests",
+      "summary": "Later requests send only new messages while the server keeps the conversation, giving about 35% lower median time to first token for Claude Code requests at 500K-1M tokens; threads expire after 5 idle minutes (release notes anchor is Nov 2, picked up in the Nov 6 brief).",
       "tag": "yes",
-      "how": "The Construct: scheduled routines and background agents should burn less allowance with no config change; worth watching usage after the update. PRAGMA: concrete cost-control example for client agent deployments. Brand 9 Signs: indirect.",
-      "url": "https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-thursday-november-5-2026/"
+      "how": "The Construct: long-running agent sessions get faster and cheaper to drive with no prompt changes; test on the Mac runner and scheduled routines. PRAGMA: concrete latency/cost talking point for client agent builds. Brand 9 Signs: indirect.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#november-2-2026"
     },
     {
       "n": 2,
-      "title": "OpenAI reports an autonomous pipeline that built working Linux kernel privilege-escalation exploits for 948 vulnerabilities (Nov 5)",
-      "summary": "OpenAI says its pipeline flagged 2,308 potential kernel flaws, reproduced 1,724 and built working local privilege-escalation exploits for 948 distinct vulnerabilities for about $1.21M in API credits; maintainers had already patched 61 upstream with 43 more in preparation (per The Neuron; I did not read OpenAI's post).",
-      "tag": "maybe",
-      "how": "PRAGMA: strong evidence that automated offensive security is cheap now, supporting an agent-tooling and endpoint hardening audit offer. The Construct: reinforces keeping the Mac runner patched and scoped. Brand 9 Signs: no.",
-      "url": "https://openai.com/index/a-thousand-fewer-paths-to-root/"
+      "title": "Gemini Omni 1.2 Flash goes GA: 15-second clips, 720p at $0.07/second (-30%)",
+      "summary": "Google's video model now generates clips up to 15s (vs 10s in Omni 1.1) with 720p output pricing down 30% to $0.07 per second.",
+      "tag": "yes",
+      "how": "Brand 9 Signs: cheap short video for signage install/before-after social clips and ad creative. The Construct: a low-cost video-gen option next to the Higgsfield MCP; benchmark quality and cost before routing work to it.",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/"
     },
     {
       "n": 3,
-      "title": "Meta acquires multi-agent coding orchestrator Conductor; cloud service sunsets Nov 13-20 (Nov 4-5)",
-      "summary": "New sign-ups ended Nov 4, Conductor Cloud goes read-only Nov 13 with data deletion from Nov 20, and local Conductor gets updates until early 2027 (per Conductor's announcement as relayed by the aggregators).",
-      "tag": "maybe",
-      "how": "The Construct: only matters if any agent workflow depends on Conductor Cloud; otherwise a reminder not to build on single-vendor orchestration layers. PRAGMA: vendor-lock-in risk talking point for clients.",
-      "url": "https://munderdiffl.in/blog/agent-tools-today-2026-11-05/"
+      "title": "arXiv 2611.07372 'EnvOpt': reorganizing the environment cut agent task cost 72.7% with a higher pass rate",
+      "summary": "With model and harness fixed, restructuring the environment cut Claude Haiku 4.5 cost on AutomationBench by 72.7% and raised the pass rate.",
+      "tag": "yes",
+      "how": "The Construct: points at tool/context layout (how files, skills and MCP outputs are presented) as a bigger cost lever than model choice; audit our routine environments. PRAGMA: a method to sell as an agent-efficiency tune-up.",
+      "url": "https://arxiv.org/abs/2611.07372"
     },
     {
       "n": 4,
-      "title": "Notion ships shared memory so ChatGPT, Claude and other assistants use the same workspace context (Nov 5)",
-      "summary": "Notion's shared agent memory lets multiple assistants read the same workspace context (per The Neuron roundup; no Notion primary source read).",
+      "title": "METR assesses Anthropic's AI R&D acceleration at roughly 2x the prior pace",
+      "summary": "METR says capability improvement on well-specified tasks is running about 2x its March 2024-October 2025 pace (1.3x-3x would not surprise it), though Anthropic redacted most of the most informative evidence.",
       "tag": "maybe",
-      "how": "The Construct: a possible neutral shared-memory layer across Claude and other agents if Notion is already in use. PRAGMA: a pattern for client multi-assistant setups. Brand 9 Signs: no.",
-      "url": "https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-thursday-november-5-2026/"
+      "how": "The Construct: expect faster model turnover, so keep skills and routines model-agnostic and re-test after each release. PRAGMA: useful framing for client roadmaps. Brand 9 Signs: no.",
+      "url": "https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/"
     },
     {
       "n": 5,
-      "title": "New community image/video/3D MCP tooling: Muse4AI bridge and Scenario agent skills trending on GitHub (Nov 3-5)",
-      "summary": "Muse4AI (created Nov 3) is a local Windows bridge exposing image and video generation to agents via REST, MCP and OAuth, and Scenario's skills repo teaches coding agents to produce content through the Scenario MCP server; both are community repos reported by an aggregator, unaudited.",
+      "title": "OpenAI GPT-6 Cyber: gated release, 48.5% on ExploitGym (vs 32.1% for GPT-5.6 Cyber)",
+      "summary": "Access is restricted through Daybreak Red with identity checks and organizational security requirements; system card published.",
       "tag": "maybe",
-      "how": "Brand 9 Signs / The Construct: possible additions for signage mockup and marketing image/video generation, but vet code and permissions before installing given the recent plugin-tampering reports. PRAGMA: none yet.",
-      "url": "https://munderdiffl.in/blog/agent-tools-today-2026-11-05/"
+      "how": "PRAGMA: supports an agent-endpoint hardening audit offer as offensive capability keeps rising. The Construct: keep the Mac runner patched and credentials scoped. Brand 9 Signs: no.",
+      "url": "https://openai.com/index/introducing-gpt-6-cyber"
     }
   ],
-  "praxis_lesson": "Agent cost and lock-in are now design inputs: Anthropic is routing low-value work like progress updates to a cheaper model while orchestration vendors get acquired and shut down on a two-week clock, so route cheap work to cheap models and keep every workflow portable across orchestrators. (Caveats: all items come from aggregator roundups, not primary sources; no verified signage, CRM or DAM MCP news and no arXiv items confirmed today, so those categories are omitted.)",
+  "praxis_lesson": "Cost and speed now come from the layer around the model: server-side conversation state, a reorganized environment (-72.7% cost in EnvOpt) and cheaper video pricing all beat swapping models, so tune context and environment first and keep workflows portable as model cadence accelerates. (Caveats: items come from a secondary daily brief, primary links not individually opened; no verified signage, CRM or DAM MCP news and no DeepSeek/Mistral/xAI/Meta launches found, so those categories are omitted.)",
   "history": [
     "2026-11-06",
     "2026-11-05",
