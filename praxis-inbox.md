@@ -3542,3 +3542,15 @@ lesson: Cost and speed now come from the layer around the model: server-side con
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-07
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Governance/security: inference hooks GA + Cowork EDR (yes); Claude Marketplace 25+ partners (maybe); Mistral Studio managed agents (maybe); Perplexity Teammates + Cursor cloud deploy (maybe); Qwen3.8-27B local agentic coding (maybe).
+lesson: Governance is becoming a product surface: GA inference hooks, EDR in Cowork and marketplace procurement mean agent deployments are judged on controls, so build hook-based guardrails into The Construct's routines now and sell them as part of PRAGMA engagements. (Caveats: sourced from daily aggregators plus Anthropic release pages; no verified signage/CRM/DAM/real-estate MCP news, and no xAI/DeepSeek/Cohere launches found, so those are omitted.)
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

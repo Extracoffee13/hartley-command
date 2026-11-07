@@ -1,51 +1,52 @@
 {
-  "generated": "2026-11-06T14:51:46+00:00",
-  "latest_date": "2026-11-06",
+  "generated": "2026-11-07T10:51:35+00:00",
+  "latest_date": "2026-11-07",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Anthropic Claude API 'message threads' (public beta) cut time-to-first-token ~35% on long Claude Code requests",
-      "summary": "Later requests send only new messages while the server keeps the conversation, giving about 35% lower median time to first token for Claude Code requests at 500K-1M tokens; threads expire after 5 idle minutes (release notes anchor is Nov 2, picked up in the Nov 6 brief).",
+      "title": "Claude Enterprise security update: inference hooks GA, EDR sensor support in Cowork (beta)",
+      "summary": "Anthropic made prompt and pre-tool-call inference hooks generally available, added a security center and centralized management at admin.claude.com (beta), and added EDR sensor support in Cowork on macOS/Windows (beta).",
       "tag": "yes",
-      "how": "The Construct: long-running agent sessions get faster and cheaper to drive with no prompt changes; test on the Mac runner and scheduled routines. PRAGMA: concrete latency/cost talking point for client agent builds. Brand 9 Signs: indirect.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#november-2-2026"
+      "how": "The Construct: GA pre-tool-call hooks are a native place to enforce guardrails on scheduled routines and the Mac runner. PRAGMA: concrete governance/security selling point for client agent deployments. Brand 9 Signs: indirect.",
+      "url": "https://claude.com/resources/articles/claude-enterprise-security-updates"
     },
     {
       "n": 2,
-      "title": "Gemini Omni 1.2 Flash goes GA: 15-second clips, 720p at $0.07/second (-30%)",
-      "summary": "Google's video model now generates clips up to 15s (vs 10s in Omni 1.1) with 720p output pricing down 30% to $0.07 per second.",
-      "tag": "yes",
-      "how": "Brand 9 Signs: cheap short video for signage install/before-after social clips and ad creative. The Construct: a low-cost video-gen option next to the Higgsfield MCP; benchmark quality and cost before routing work to it.",
-      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/"
+      "title": "Claude Marketplace adds 25+ partner agents/products (Glean, Runway, Datadog, Zoom, Checkmarx)",
+      "summary": "Anthropic's marketplace now lists 25+ partner products and lets committed Anthropic spend be applied to them.",
+      "tag": "maybe",
+      "how": "PRAGMA: a distribution and procurement channel for AI-operator offers. The Construct: Runway listing is worth checking for video gen next to Higgsfield. Brand 9 Signs: no.",
+      "url": "https://claude.com/resources/articles/new-agents-and-products-claude-marketplace"
     },
     {
       "n": 3,
-      "title": "arXiv 2611.07372 'EnvOpt': reorganizing the environment cut agent task cost 72.7% with a higher pass rate",
-      "summary": "With model and harness fixed, restructuring the environment cut Claude Haiku 4.5 cost on AutomationBench by 72.7% and raised the pass rate.",
-      "tag": "yes",
-      "how": "The Construct: points at tool/context layout (how files, skills and MCP outputs are presented) as a bigger cost lever than model choice; audit our routine environments. PRAGMA: a method to sell as an agent-efficiency tune-up.",
-      "url": "https://arxiv.org/abs/2611.07372"
+      "title": "Mistral Studio managed agents enter public preview",
+      "summary": "Agents SDK, visual workflow builder, apps CLI and evals are in public preview, with private cloud and on-prem deployment due late November.",
+      "tag": "maybe",
+      "how": "PRAGMA: on-prem/private-cloud option for clients who cannot use US-hosted agents. The Construct: comparison point for our own orchestration layer. Brand 9 Signs: no.",
+      "url": "https://x.com/MistralAI/status/2118370229466153299"
     },
     {
       "n": 4,
-      "title": "METR assesses Anthropic's AI R&D acceleration at roughly 2x the prior pace",
-      "summary": "METR says capability improvement on well-specified tasks is running about 2x its March 2024-October 2025 pace (1.3x-3x would not surprise it), though Anthropic redacted most of the most informative evidence.",
+      "title": "Perplexity Teammates and Cursor cloud agents: always-on agents that ship work",
+      "summary": "Perplexity launched Teammates (always-on work agents, Max subscribers on web) and Cursor's cloud agent can now build and deploy live web apps with database and auth provisioning.",
       "tag": "maybe",
-      "how": "The Construct: expect faster model turnover, so keep skills and routines model-agnostic and re-test after each release. PRAGMA: useful framing for client roadmaps. Brand 9 Signs: no.",
-      "url": "https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/"
+      "how": "The Construct: validates the always-on scheduled-agent pattern; benchmark against our routines. Brand 9 Signs: Cursor-style app deploy could speed quote/order micro-tools. PRAGMA: competitive landscape for operator offers.",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1028302/perplexity-teammates-ai-agents-work"
     },
     {
       "n": 5,
-      "title": "OpenAI GPT-6 Cyber: gated release, 48.5% on ExploitGym (vs 32.1% for GPT-5.6 Cyber)",
-      "summary": "Access is restricted through Daybreak Red with identity checks and organizational security requirements; system card published.",
+      "title": "Qwen3.8-27B runs locally in Microsoft Foundry Local as an agentic coding model",
+      "summary": "Reported 73.0 on Terminal Bench 2.1 and 61.7 on SWE-bench Pro, wired into GitHub Copilot via BYOK (single secondary source, unverified).",
       "tag": "maybe",
-      "how": "PRAGMA: supports an agent-endpoint hardening audit offer as offensive capability keeps rising. The Construct: keep the Mac runner patched and credentials scoped. Brand 9 Signs: no.",
-      "url": "https://openai.com/index/introducing-gpt-6-cyber"
+      "how": "The Construct: a small local model for cheap, private routine work; test on the Mac before trusting benchmarks. PRAGMA: on-device option for privacy-sensitive clients. Brand 9 Signs: no.",
+      "url": "https://aiweekly.co/alerts/microsoft-foundry-local-runs-qwen38-27b-on-device-for-copilot"
     }
   ],
-  "praxis_lesson": "Cost and speed now come from the layer around the model: server-side conversation state, a reorganized environment (-72.7% cost in EnvOpt) and cheaper video pricing all beat swapping models, so tune context and environment first and keep workflows portable as model cadence accelerates. (Caveats: items come from a secondary daily brief, primary links not individually opened; no verified signage, CRM or DAM MCP news and no DeepSeek/Mistral/xAI/Meta launches found, so those categories are omitted.)",
+  "praxis_lesson": "Governance is becoming a product surface: GA inference hooks, EDR in Cowork and marketplace procurement mean agent deployments are judged on controls, so build hook-based guardrails into The Construct's routines now and sell them as part of PRAGMA engagements. (Caveats: sourced from daily aggregators plus Anthropic release pages; no verified signage/CRM/DAM/real-estate MCP news, and no xAI/DeepSeek/Cohere launches found, so those are omitted.)",
   "history": [
+    "2026-11-07",
     "2026-11-06",
     "2026-11-05",
     "2026-11-04",
@@ -58,7 +59,6 @@
     "2026-10-28",
     "2026-10-27",
     "2026-10-26",
-    "2026-10-25",
-    "2026-10-24"
+    "2026-10-25"
   ]
 }
