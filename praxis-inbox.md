@@ -3554,3 +3554,15 @@ lesson: Governance is becoming a product surface: GA inference hooks, EDR in Cow
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-07
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Claude Enterprise security update (yes); Google Gemini Omni 1.2 Flash (maybe); Rerun (maybe); Claude Mythos 5.5 reference spotted (maybe); Mistral Studio managed agents enter public preview (maybe).
+lesson: Agent deployments are now judged on controls: GA inference hooks and approval gates (Anthropic, Rerun) are becoming table stakes, so wire hook-based guardrails and approval steps into The Construct's routines and package them as part of PRAGMA engagements.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

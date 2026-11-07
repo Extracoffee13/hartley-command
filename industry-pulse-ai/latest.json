@@ -1,50 +1,50 @@
 {
-  "generated": "2026-11-07T10:51:35+00:00",
+  "generated": "2026-11-07T14:52:04+00:00",
   "latest_date": "2026-11-07",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
       "title": "Claude Enterprise security update: inference hooks GA, EDR sensor support in Cowork (beta)",
-      "summary": "Anthropic made prompt and pre-tool-call inference hooks generally available, added a security center and centralized management at admin.claude.com (beta), and added EDR sensor support in Cowork on macOS/Windows (beta).",
+      "summary": "Anthropic made prompt and pre-tool-call inference hooks generally available, added a security center and centralized management (beta), and added EDR sensor support in Cowork (beta); the Developer Platform also gained a beta IP allowlist and an Admin API sign-out endpoint.",
       "tag": "yes",
       "how": "The Construct: GA pre-tool-call hooks are a native place to enforce guardrails on scheduled routines and the Mac runner. PRAGMA: concrete governance/security selling point for client agent deployments. Brand 9 Signs: indirect.",
       "url": "https://claude.com/resources/articles/claude-enterprise-security-updates"
     },
     {
       "n": 2,
-      "title": "Claude Marketplace adds 25+ partner agents/products (Glean, Runway, Datadog, Zoom, Checkmarx)",
-      "summary": "Anthropic's marketplace now lists 25+ partner products and lets committed Anthropic spend be applied to them.",
+      "title": "Google Gemini Omni 1.2 Flash: video generation/editing with 15-second clips, 30% price cut",
+      "summary": "Google released Gemini Omni 1.2 Flash for video generation and follow-up editing, 15-second clips at about $0.07/second at 720p (per Google's launch post, via a daily digest).",
       "tag": "maybe",
-      "how": "PRAGMA: a distribution and procurement channel for AI-operator offers. The Construct: Runway listing is worth checking for video gen next to Higgsfield. Brand 9 Signs: no.",
-      "url": "https://claude.com/resources/articles/new-agents-and-products-claude-marketplace"
+      "how": "The Construct: cheap video-gen option to compare against Higgsfield/Runway for ad and social clips. Brand 9 Signs: low-cost animated sign mockups and product social videos (still subject to the not-AI-generated claims gate). PRAGMA: cost benchmark for client content pipelines.",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/"
     },
     {
       "n": 3,
-      "title": "Mistral Studio managed agents enter public preview",
-      "summary": "Agents SDK, visual workflow builder, apps CLI and evals are in public preview, with private cloud and on-prem deployment due late November.",
+      "title": "Rerun: no-code always-on agents with approval gates, open-source self-hostable",
+      "summary": "Rerun launched always-on agents for inbox monitoring and recurring tasks with human approval gates and a self-hostable open-source option (Product Hunt listing; unverified beyond that).",
       "tag": "maybe",
-      "how": "PRAGMA: on-prem/private-cloud option for clients who cannot use US-hosted agents. The Construct: comparison point for our own orchestration layer. Brand 9 Signs: no.",
-      "url": "https://x.com/MistralAI/status/2118370229466153299"
+      "how": "The Construct: reference design for approval-gated scheduled agents like our routines. PRAGMA: self-hostable option suits privacy-sensitive clients. Brand 9 Signs: possible inbox triage for quote requests.",
+      "url": "https://www.producthunt.com/products/rerun-2"
     },
     {
       "n": 4,
-      "title": "Perplexity Teammates and Cursor cloud agents: always-on agents that ship work",
-      "summary": "Perplexity launched Teammates (always-on work agents, Max subscribers on web) and Cursor's cloud agent can now build and deploy live web apps with database and auth provisioning.",
+      "title": "Claude Mythos 5.5 reference spotted (unconfirmed release)",
+      "summary": "TestingCatalog reports a 'Claude Mythos 5.5' reference on Anthropic's Mythos page (cybersecurity/biology class) and unconfirmed A/B tests of updated Fable 5.5 checkpoints; no specs or announcement, and Mythos access has been limited to verified defenders.",
       "tag": "maybe",
-      "how": "The Construct: validates the always-on scheduled-agent pattern; benchmark against our routines. Brand 9 Signs: Cursor-style app deploy could speed quote/order micro-tools. PRAGMA: competitive landscape for operator offers.",
-      "url": "https://www.theverge.com/ai-artificial-intelligence/1028302/perplexity-teammates-ai-agents-work"
+      "how": "The Construct: watch for a Fable 5.5 default-model change that would affect routine behavior and cost. PRAGMA: nothing actionable until announced. Brand 9 Signs: no.",
+      "url": "https://www.testingcatalog.com/anthropic-prepares-to-release-claude-mythos-5-5-model/"
     },
     {
       "n": 5,
-      "title": "Qwen3.8-27B runs locally in Microsoft Foundry Local as an agentic coding model",
-      "summary": "Reported 73.0 on Terminal Bench 2.1 and 61.7 on SWE-bench Pro, wired into GitHub Copilot via BYOK (single secondary source, unverified).",
+      "title": "Mistral Studio managed agents enter public preview",
+      "summary": "Agents SDK, visual workflow builder and managed agents are in public preview, with private cloud and on-prem deployment planned for late November.",
       "tag": "maybe",
-      "how": "The Construct: a small local model for cheap, private routine work; test on the Mac before trusting benchmarks. PRAGMA: on-device option for privacy-sensitive clients. Brand 9 Signs: no.",
-      "url": "https://aiweekly.co/alerts/microsoft-foundry-local-runs-qwen38-27b-on-device-for-copilot"
+      "how": "PRAGMA: on-prem/private-cloud option for clients who cannot use US-hosted agents. The Construct: comparison point for our orchestration layer. Brand 9 Signs: no.",
+      "url": "https://x.com/MistralAI/status/2118370229466153299"
     }
   ],
-  "praxis_lesson": "Governance is becoming a product surface: GA inference hooks, EDR in Cowork and marketplace procurement mean agent deployments are judged on controls, so build hook-based guardrails into The Construct's routines now and sell them as part of PRAGMA engagements. (Caveats: sourced from daily aggregators plus Anthropic release pages; no verified signage/CRM/DAM/real-estate MCP news, and no xAI/DeepSeek/Cohere launches found, so those are omitted.)",
+  "praxis_lesson": "Agent deployments are now judged on controls: GA inference hooks and approval gates (Anthropic, Rerun) are becoming table stakes, so wire hook-based guardrails and approval steps into The Construct's routines and package them as part of PRAGMA engagements. (Caveats: from daily digests and release trackers; Mythos 5.5 is unconfirmed; no verified signage/CRM/DAM/real-estate MCP news and no Meta/xAI/DeepSeek/Cohere launches in the last 24h, so those are omitted.)",
   "history": [
     "2026-11-07",
     "2026-11-06",
