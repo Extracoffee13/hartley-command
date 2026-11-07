@@ -3566,3 +3566,15 @@ lesson: Agent deployments are now judged on controls: GA inference hooks and app
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-07
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Claude Code 2.1.319 (yes); Personal Finance in Claude (beta) (maybe); Moonshot releases Kimi K3.1 Pro open weights; Mistral Large 4 and Tencent Hy4 also land (maybe); OpenAI debuts GPT-6 Cyber with gated access (no).
+lesson: Unattended agents need fail-closed defaults: Claude Code's denyInsteadOfPrompting and read-only-by-default connectors (Personal Finance) show the pattern, so configure scheduled routines to deny rather than wait on a prompt, and sell that hardening as part of PRAGMA engagements. (Caveats: sourced from Releasebot and press summaries; no verified signage/CRM/DAM/real-estate MCP news and no fresh xAI/DeepSeek/Cohere/Meta launches or arXiv picks found, so those are omitted.)
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

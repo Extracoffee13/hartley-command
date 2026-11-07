@@ -1,50 +1,42 @@
 {
-  "generated": "2026-11-07T14:52:04+00:00",
+  "generated": "2026-11-07T18:51:29+00:00",
   "latest_date": "2026-11-07",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Claude Enterprise security update: inference hooks GA, EDR sensor support in Cowork (beta)",
-      "summary": "Anthropic made prompt and pre-tool-call inference hooks generally available, added a security center and centralized management (beta), and added EDR sensor support in Cowork (beta); the Developer Platform also gained a beta IP allowlist and an Admin API sign-out endpoint.",
+      "title": "Claude Code 2.1.319: background MCP tasks and a deny-instead-of-prompting permission setting",
+      "summary": "Claude Code 2.1.319 adds background MCP tasks, a permissions.denyInsteadOfPrompting setting, auto-mode and gateway controls, plus many fixes (per Releasebot's Claude Code feed, first seen Nov 7).",
       "tag": "yes",
-      "how": "The Construct: GA pre-tool-call hooks are a native place to enforce guardrails on scheduled routines and the Mac runner. PRAGMA: concrete governance/security selling point for client agent deployments. Brand 9 Signs: indirect.",
-      "url": "https://claude.com/resources/articles/claude-enterprise-security-updates"
+      "how": "The Construct: denyInsteadOfPrompting is the right mode for unattended scheduled routines (fail closed rather than hang on a prompt), and background MCP tasks suit long-running tool calls. PRAGMA: reusable unattended-agent hardening checklist. Brand 9 Signs: indirect.",
+      "url": "https://code.claude.com/docs/en/changelog"
     },
     {
       "n": 2,
-      "title": "Google Gemini Omni 1.2 Flash: video generation/editing with 15-second clips, 30% price cut",
-      "summary": "Google released Gemini Omni 1.2 Flash for video generation and follow-up editing, 15-second clips at about $0.07/second at 720p (per Google's launch post, via a daily digest).",
+      "title": "Personal Finance in Claude (beta): read-only bank and card connections",
+      "summary": "Anthropic launched a beta for US Pro, Max and Ultra users that connects bank and card accounts for read-only spending and balance answers (Nov 5, via Releasebot).",
       "tag": "maybe",
-      "how": "The Construct: cheap video-gen option to compare against Higgsfield/Runway for ad and social clips. Brand 9 Signs: low-cost animated sign mockups and product social videos (still subject to the not-AI-generated claims gate). PRAGMA: cost benchmark for client content pipelines.",
-      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/"
+      "how": "The Construct: shows Anthropic shipping consumer-grade connected-data agents with read-only scoping, a pattern worth copying for our own data connectors. PRAGMA: client-pitch example of read-only-by-default access. Brand 9 Signs: no.",
+      "url": "https://releasebot.io/updates/anthropic"
     },
     {
       "n": 3,
-      "title": "Rerun: no-code always-on agents with approval gates, open-source self-hostable",
-      "summary": "Rerun launched always-on agents for inbox monitoring and recurring tasks with human approval gates and a self-hostable open-source option (Product Hunt listing; unverified beyond that).",
+      "title": "Moonshot releases Kimi K3.1 Pro open weights; Mistral Large 4 and Tencent Hy4 also land",
+      "summary": "Kimi K3.1 Pro scored 58.6 on a finance-agent benchmark vs 45.0 for GPT-6 Astra per PYMNTS; Mistral Large 4 weights shipped Oct 29 under a modified MIT licence and Tencent launched Hy4 on Nov 4 (open weights promised later). Benchmark claims are as reported, not independently verified.",
       "tag": "maybe",
-      "how": "The Construct: reference design for approval-gated scheduled agents like our routines. PRAGMA: self-hostable option suits privacy-sensitive clients. Brand 9 Signs: possible inbox triage for quote requests.",
-      "url": "https://www.producthunt.com/products/rerun-2"
+      "how": "PRAGMA: credible open-weight options for clients needing self-hosting or lower cost. The Construct: candidate cheap workers for low-risk routine steps behind our own evals. Brand 9 Signs: no.",
+      "url": "https://www.pymnts.com/news/artificial-intelligence/2026/open-models-crowd-the-top-as-kimi-and-mistral-match-the-frontier/"
     },
     {
       "n": 4,
-      "title": "Claude Mythos 5.5 reference spotted (unconfirmed release)",
-      "summary": "TestingCatalog reports a 'Claude Mythos 5.5' reference on Anthropic's Mythos page (cybersecurity/biology class) and unconfirmed A/B tests of updated Fable 5.5 checkpoints; no specs or announcement, and Mythos access has been limited to verified defenders.",
-      "tag": "maybe",
-      "how": "The Construct: watch for a Fable 5.5 default-model change that would affect routine behavior and cost. PRAGMA: nothing actionable until announced. Brand 9 Signs: no.",
-      "url": "https://www.testingcatalog.com/anthropic-prepares-to-release-claude-mythos-5-5-model/"
-    },
-    {
-      "n": 5,
-      "title": "Mistral Studio managed agents enter public preview",
-      "summary": "Agents SDK, visual workflow builder and managed agents are in public preview, with private cloud and on-prem deployment planned for late November.",
-      "tag": "maybe",
-      "how": "PRAGMA: on-prem/private-cloud option for clients who cannot use US-hosted agents. The Construct: comparison point for our orchestration layer. Brand 9 Signs: no.",
-      "url": "https://x.com/MistralAI/status/2118370229466153299"
+      "title": "OpenAI debuts GPT-6 Cyber with gated access",
+      "summary": "OpenAI released GPT-6 Cyber, which it says beats GPT-6 Astra on most cyber tasks, limited initially to approved Daybreak Red customers with wider access expected over coming weeks; it is OpenAI's fourth cyber-focused model this year (Fortune, Nov 5).",
+      "tag": "no",
+      "how": "Not directly usable (gated). PRAGMA: signals demand for AI-assisted security review in client engagements. The Construct: no action. Brand 9 Signs: no.",
+      "url": "https://fortune.com/2026/11/05/openai-debuts-new-cybersecurity-focused-ai-model-amid-growing-alarm-about-ai-driven-cyber-attacks/"
     }
   ],
-  "praxis_lesson": "Agent deployments are now judged on controls: GA inference hooks and approval gates (Anthropic, Rerun) are becoming table stakes, so wire hook-based guardrails and approval steps into The Construct's routines and package them as part of PRAGMA engagements. (Caveats: from daily digests and release trackers; Mythos 5.5 is unconfirmed; no verified signage/CRM/DAM/real-estate MCP news and no Meta/xAI/DeepSeek/Cohere launches in the last 24h, so those are omitted.)",
+  "praxis_lesson": "Unattended agents need fail-closed defaults: Claude Code's denyInsteadOfPrompting and read-only-by-default connectors (Personal Finance) show the pattern, so configure scheduled routines to deny rather than wait on a prompt, and sell that hardening as part of PRAGMA engagements. (Caveats: sourced from Releasebot and press summaries; no verified signage/CRM/DAM/real-estate MCP news and no fresh xAI/DeepSeek/Cohere/Meta launches or arXiv picks found, so those are omitted.)",
   "history": [
     "2026-11-07",
     "2026-11-06",
