@@ -1,42 +1,42 @@
 {
-  "generated": "2026-11-08T10:51:20+00:00",
+  "generated": "2026-11-08T14:51:31+00:00",
   "latest_date": "2026-11-08",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "DeepSeek Harness 'Creator Mode' turns chat prompts into installable plugins",
-      "summary": "DeepSeek added Creator Mode to its open-source coding harness (Nov 5), letting users turn a chat prompt into an installable plugin (per ThursdAI's roundup; not independently verified).",
+      "title": "Vercel Labs agent-desktop: open-source CLI for desktop control via OS accessibility trees",
+      "summary": "Vercel Labs published agent-desktop, a CLI that lets agents drive desktop apps through OS accessibility trees instead of screenshots (GitHub Trending, Nov 6; secondhand via AIToolly, repo not independently reviewed).",
       "tag": "maybe",
-      "how": "The Construct: same prompt-to-skill pattern as our skills registry; worth studying how it packages and installs plugins. PRAGMA: example of low-code agent extension for client pitches. Brand 9 Signs: no.",
-      "url": "https://github.com/deepseek-ai/deepseek-harness"
+      "how": "The Construct: accessibility-tree control is more deterministic than screenshot clicking; worth evaluating against our computer-use/Hermes flows on the AP-Agent Mac. PRAGMA: reliable-desktop-automation pattern for client ops. Brand 9 Signs: maybe for supplier-portal order entry.",
+      "url": "https://github.com/vercel-labs/agent-desktop"
     },
     {
       "n": 2,
-      "title": "Cognition ships SWE-2 Flash, a fast, cheap coding model",
-      "summary": "Cognition released SWE-2 Flash (Nov 5), post-trained on Inkling-Small; it scores 24.0% on Cognition's own FrontierCode 2.0 and is not open weights (self-reported).",
+      "title": "Palo Alto Networks reportedly in talks to buy Clutch Security (~$500M) for AI-agent identity security",
+      "summary": "TechCrunch (Nov 5, relayed by AIdapted) reports Palo Alto Networks is in talks to acquire Clutch Security, which secures non-human identities and credentials used by AI agents; not finalized or confirmed by either company.",
       "tag": "maybe",
-      "how": "The Construct: candidate cheap worker for high-volume code-edit steps once we have our own evals. PRAGMA: cost/speed tier option for client coding agents. Brand 9 Signs: no.",
-      "url": "https://cognition.com/blog/swe-2-flash"
+      "how": "The Construct: signal that agent credential governance is becoming a product category; audit how our agents hold API keys/logins. PRAGMA: strong consulting angle (agent identity and secrets hygiene). Brand 9 Signs: no.",
+      "url": "https://techcrunch.com/2026/11/05/palo-alto-networks-in-talks-to-acquire-clutch-security-for-500m/"
     },
     {
       "n": 3,
-      "title": "OpenAI Images 2.6: Flare (fast) and Sunburst (quality) API models with SVG and GIF output",
-      "summary": "OpenAI launched Images 2.6 (Nov 5) with two API image models and native SVG/GIF output in ChatGPT; OpenAI claims 50% faster than 2.5.",
+      "title": "Baidu releases ERNIE 5.5 Flash Base open-weight MoE model",
+      "summary": "Baidu released ERNIE 5.5 Flash Base (Nov 5): 280B total / 14B active parameters, 1M-token context, base-stage weights before post-training (per AIdapted; specs not verified against the primary page).",
       "tag": "maybe",
-      "how": "Brand 9 Signs: native SVG output is worth testing for vector logo and sign concepts, but any output still needs our fabrication/vector gates before print. The Construct: another image backend for the logo designer pipeline. PRAGMA: no.",
-      "url": "https://openai.com/index/introducing-images-2-6/"
+      "how": "The Construct: low active-parameter open model is a candidate for cheap local workers, but base weights need post-training and evals first. PRAGMA: open-weight option for cost-sensitive clients. Brand 9 Signs: no.",
+      "url": "https://ernie.baidu.com/release/ernie-5-5-flash-base/"
     },
     {
       "n": 4,
-      "title": "Incept5 inferd: open-source Mac inference engine for many concurrent agents",
-      "summary": "Incept5 released inferd (Apache 2.0), a Mac inference engine for running many local agents concurrently; the page reports scaling from 64 to 128 concurrent agents (self-reported).",
-      "tag": "maybe",
-      "how": "The Construct: could host cheap local workers on the AP-Agent Mac instead of API calls for low-risk routine steps. PRAGMA: local-inference option for privacy-sensitive clients. Brand 9 Signs: no.",
-      "url": "https://github.com/Incept5-AI/inferd"
+      "title": "Anthropic study of 207,049 research sessions with Claude and Claude Code",
+      "summary": "Anthropic published research (Nov 5) analyzing how researchers use Claude and Claude Code, finding data analysis and writing dominate (per AIdapted; primary page not fetched).",
+      "tag": "no",
+      "how": "Informational only: useful framing for PRAGMA's pitch that AI-operator value concentrates in analysis and writing workflows; no action for The Construct or Brand 9 Signs.",
+      "url": "https://www.anthropic.com/research/how-researchers-use-claude"
     }
   ],
-  "praxis_lesson": "Agent extension is converging on prompt-to-plugin packaging (DeepSeek Creator Mode, Anthropic skills), so the durable asset is a governed registry with evals, not any one packaging format; build that gate once and let cheap models (SWE-2 Flash, local inferd) earn workloads through it. (Caveat: all items come from the ThursdAI aggregator roundup dated Nov 5, figures self-reported; no verified Nov 6-8 Anthropic, MCP, signage/CRM/DAM or funding news found, so those are omitted.)",
+  "praxis_lesson": "As agents get real desktop and credential access (accessibility-tree control, Clutch-style identity security), the durable edge is governance: scoped credentials, deterministic control surfaces, and an audit trail per agent action, not raw model capability. (Caveat: items are secondhand from AIdapted/AIToolly Nov 5-7 roundups; no verified new Anthropic release, MCP, signage/CRM/DAM or agent-platform funding news found, so those are omitted. This refreshes the earlier same-day run.)",
   "history": [
     "2026-11-08",
     "2026-11-07",

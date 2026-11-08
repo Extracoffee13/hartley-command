@@ -3590,3 +3590,15 @@ lesson: Agent extension is converging on prompt-to-plugin packaging (DeepSeek Cr
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-08
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Vercel Labs agent-desktop (maybe); Palo Alto Networks reportedly in talks to buy Clutch Security (~$500M) for AI-agent identity security (maybe); Baidu releases ERNIE 5.5 Flash Base open-weight MoE model (maybe); Anthropic study of 207,049 research sessions with Claude and Claude Code (no)
+lesson: As agents get real desktop and credential access (accessibility-tree control, Clutch-style identity security), the durable edge is governance: scoped credentials, deterministic control surfaces, and an audit trail per agent action, not raw model capability. (Caveat: items are secondhand from AIdapted/AIToolly Nov 5-7 roundups; no verified new Anthropic release, MCP, signage/CRM/DAM or agent-platform funding news found, so those are omitted. This refreshes the earlier same-day run.)
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
