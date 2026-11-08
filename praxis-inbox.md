@@ -3602,3 +3602,15 @@ lesson: As agents get real desktop and credential access (accessibility-tree con
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-08
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Microsoft open-sources APM (Agent Package Manager) for skill (yes); Claude Code 2.1.319 (yes); Google ADK 2.14.0 graduates A2A protocol, evals, execution e (maybe); Perplexity launches Teammates (maybe); Gemini Omni 1.2 Flash goes GA with 15-second native video cl (maybe)
+lesson: Tooling is converging on package-managed, unattended-safe agents (APM manifests, A2A going stable, deny-instead-of-prompt permissions): reproducibility and non-interactive safety defaults are now the practical moat for running agent fleets, so version the skill/MCP set and make every unattended run fail closed.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
