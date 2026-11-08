@@ -3578,3 +3578,15 @@ lesson: Unattended agents need fail-closed defaults: Claude Code's denyInsteadOf
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-08
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: DeepSeek Harness 'Creator Mode' turns chat prompts into installable plugins (maybe); Cognition ships SWE-2 Flash (maybe); OpenAI Images 2.6 (maybe); Incept5 inferd (maybe)
+lesson: Agent extension is converging on prompt-to-plugin packaging (DeepSeek Creator Mode, Anthropic skills), so the durable asset is a governed registry with evals, not any one packaging format; build that gate once and let cheap models (SWE-2 Flash, local inferd) earn workloads through it. (Caveat: all items come from the ThursdAI aggregator roundup dated Nov 5, figures self-reported; no verified Nov 6-8 Anthropic, MCP, signage/CRM/DAM or funding news found, so those are omitted.)
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

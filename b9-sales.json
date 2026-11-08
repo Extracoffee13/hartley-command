@@ -1,48 +1,56 @@
 {
- "generated": "2026-11-02T14:31:11+00:00",
+ "generated": "2026-11-07T22:02:34+00:00",
  "source": "_b9_temp/_flywheel/sales/sales_flywheel.py (aggregates only)",
  "summary": {
-  "paid_orders_7d": 23,
-  "paid_orders_30d": 40,
-  "open_carts_30d": 20,
-  "carts_waiting_for_address": 3,
-  "paid_from_ai_30d": 11
+  "paid_orders_7d": 15,
+  "paid_orders_30d": 53,
+  "open_carts_30d": 42,
+  "carts_waiting_for_address": 14,
+  "paid_from_ai_30d": 25,
+  "paid_first_touch_30d": {
+   "none": 5,
+   "internal": 2,
+   "ai": 20,
+   "search": 8,
+   "direct": 11,
+   "direct_deep": 7
+  }
  },
  "funnel_week": {
   "this": {
    "phone": {
-    "sessions": 136,
-    "add_to_carts": 5,
+    "sessions": 126,
+    "add_to_carts": 4,
     "purchases": 2
    },
    "desktop": {
-    "sessions": 148,
-    "add_to_carts": 5,
+    "sessions": 159,
+    "add_to_carts": 11,
     "purchases": 5
    }
   },
   "last": {
    "phone": {
-    "sessions": 114,
-    "add_to_carts": 0,
-    "purchases": 0
+    "sessions": 140,
+    "add_to_carts": 4,
+    "purchases": 1
    },
    "desktop": {
-    "sessions": 102,
-    "add_to_carts": 3,
-    "purchases": 1
+    "sessions": 146,
+    "add_to_carts": 2,
+    "purchases": 3
    }
   }
  },
  "upload_events_week": {
-  "upload_cta_click": 43,
-  "artwork_upload_open": 158,
+  "upload_cta_click": 37,
+  "artwork_upload_open": 153,
   "artwork_selected": 0,
-  "artwork_placed": 96
+  "artwork_placed": 109
  },
  "atc_rate_chatgpt_phone": {
-  "this": 0.037,
-  "last": 0.0
+  "this": 0.032,
+  "last": 0.029
  },
  "levers": [
   {
@@ -50,7 +58,8 @@
    "name": "Finished-file upload on phones (studio + price card)",
    "status": "live",
    "since": "2026-10-26",
-   "measure": "artwork_placed, ChatGPT phone add-to-cart rate"
+   "measure": "artwork_placed, ChatGPT phone add-to-cart rate",
+   "result_1102": "week 10-26..11-01: artwork_placed 96, upload_open 158; ChatGPT phone 136 sessions -> 5 add-to-carts, 2 paid (week before: 114 -> 0)"
   },
   {
    "id": "direct_print",
@@ -64,7 +73,8 @@
    "name": "Street address asked in the cart, not the studio",
    "status": "live",
    "since": "2026-10-27",
-   "measure": "add-to-cart rate; carts waiting for address"
+   "measure": "add-to-cart rate; carts waiting for address",
+   "result_1102": "3 open carts waiting for address (of 20); begin_checkout 19 vs 6 the week before"
   },
   {
    "id": "ship_combine",
@@ -110,10 +120,24 @@
   },
   {
    "id": "metal_ai_art",
-   "name": "Metal prints: file-size facts for AI art (pixels per size at 150 ppi, upscale advice) on /shop/metal-prints/ (_shop1029gs)",
+   "name": "Metal prints: file-size line (150 ppi per size sold) + \"Will my AI image print sharp\" FAQ + corrected soft rule (60-99 / <60 confirm) on /shop/metal-prints/ (_shop1102f)",
    "status": "live",
-   "since": "2026-10-27",
-   "measure": "metal-print carts and paid orders; uploads rated soft; first paid 10-27 B9-261027-YCDD $178.50 (ChatGPT)"
+   "since": "2026-11-02",
+   "measure": "metal-prints uploads \u2192 carts",
+   "history": [
+    {
+     "since": "2026-10-27",
+     "name": "Metal prints: file-size facts for AI art (pixels per size at 150 ppi, upscale advice) on /shop/metal-prints/ (_shop1029gs)",
+     "measure": "metal-print carts and paid orders; uploads rated soft; first paid 10-27 B9-261027-YCDD $178.50 (ChatGPT)"
+    }
+   ]
+  },
+  {
+   "id": "attrib_direct",
+   "name": "Our own site is never a first touch; no-referrer deep shop landings tagged hint direct-deep (_shop1102b: b9-attrib.js ?v=20261102at + cart-lib.php)",
+   "status": "live",
+   "since": "2026-11-02",
+   "measure": "paid_first_touch_30d: direct_deep count, internal stays 0 for new orders"
   }
  ]
 }

@@ -1,43 +1,44 @@
 {
-  "generated": "2026-11-07T18:51:29+00:00",
-  "latest_date": "2026-11-07",
+  "generated": "2026-11-08T10:51:20+00:00",
+  "latest_date": "2026-11-08",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Claude Code 2.1.319: background MCP tasks and a deny-instead-of-prompting permission setting",
-      "summary": "Claude Code 2.1.319 adds background MCP tasks, a permissions.denyInsteadOfPrompting setting, auto-mode and gateway controls, plus many fixes (per Releasebot's Claude Code feed, first seen Nov 7).",
-      "tag": "yes",
-      "how": "The Construct: denyInsteadOfPrompting is the right mode for unattended scheduled routines (fail closed rather than hang on a prompt), and background MCP tasks suit long-running tool calls. PRAGMA: reusable unattended-agent hardening checklist. Brand 9 Signs: indirect.",
-      "url": "https://code.claude.com/docs/en/changelog"
+      "title": "DeepSeek Harness 'Creator Mode' turns chat prompts into installable plugins",
+      "summary": "DeepSeek added Creator Mode to its open-source coding harness (Nov 5), letting users turn a chat prompt into an installable plugin (per ThursdAI's roundup; not independently verified).",
+      "tag": "maybe",
+      "how": "The Construct: same prompt-to-skill pattern as our skills registry; worth studying how it packages and installs plugins. PRAGMA: example of low-code agent extension for client pitches. Brand 9 Signs: no.",
+      "url": "https://github.com/deepseek-ai/deepseek-harness"
     },
     {
       "n": 2,
-      "title": "Personal Finance in Claude (beta): read-only bank and card connections",
-      "summary": "Anthropic launched a beta for US Pro, Max and Ultra users that connects bank and card accounts for read-only spending and balance answers (Nov 5, via Releasebot).",
+      "title": "Cognition ships SWE-2 Flash, a fast, cheap coding model",
+      "summary": "Cognition released SWE-2 Flash (Nov 5), post-trained on Inkling-Small; it scores 24.0% on Cognition's own FrontierCode 2.0 and is not open weights (self-reported).",
       "tag": "maybe",
-      "how": "The Construct: shows Anthropic shipping consumer-grade connected-data agents with read-only scoping, a pattern worth copying for our own data connectors. PRAGMA: client-pitch example of read-only-by-default access. Brand 9 Signs: no.",
-      "url": "https://releasebot.io/updates/anthropic"
+      "how": "The Construct: candidate cheap worker for high-volume code-edit steps once we have our own evals. PRAGMA: cost/speed tier option for client coding agents. Brand 9 Signs: no.",
+      "url": "https://cognition.com/blog/swe-2-flash"
     },
     {
       "n": 3,
-      "title": "Moonshot releases Kimi K3.1 Pro open weights; Mistral Large 4 and Tencent Hy4 also land",
-      "summary": "Kimi K3.1 Pro scored 58.6 on a finance-agent benchmark vs 45.0 for GPT-6 Astra per PYMNTS; Mistral Large 4 weights shipped Oct 29 under a modified MIT licence and Tencent launched Hy4 on Nov 4 (open weights promised later). Benchmark claims are as reported, not independently verified.",
+      "title": "OpenAI Images 2.6: Flare (fast) and Sunburst (quality) API models with SVG and GIF output",
+      "summary": "OpenAI launched Images 2.6 (Nov 5) with two API image models and native SVG/GIF output in ChatGPT; OpenAI claims 50% faster than 2.5.",
       "tag": "maybe",
-      "how": "PRAGMA: credible open-weight options for clients needing self-hosting or lower cost. The Construct: candidate cheap workers for low-risk routine steps behind our own evals. Brand 9 Signs: no.",
-      "url": "https://www.pymnts.com/news/artificial-intelligence/2026/open-models-crowd-the-top-as-kimi-and-mistral-match-the-frontier/"
+      "how": "Brand 9 Signs: native SVG output is worth testing for vector logo and sign concepts, but any output still needs our fabrication/vector gates before print. The Construct: another image backend for the logo designer pipeline. PRAGMA: no.",
+      "url": "https://openai.com/index/introducing-images-2-6/"
     },
     {
       "n": 4,
-      "title": "OpenAI debuts GPT-6 Cyber with gated access",
-      "summary": "OpenAI released GPT-6 Cyber, which it says beats GPT-6 Astra on most cyber tasks, limited initially to approved Daybreak Red customers with wider access expected over coming weeks; it is OpenAI's fourth cyber-focused model this year (Fortune, Nov 5).",
-      "tag": "no",
-      "how": "Not directly usable (gated). PRAGMA: signals demand for AI-assisted security review in client engagements. The Construct: no action. Brand 9 Signs: no.",
-      "url": "https://fortune.com/2026/11/05/openai-debuts-new-cybersecurity-focused-ai-model-amid-growing-alarm-about-ai-driven-cyber-attacks/"
+      "title": "Incept5 inferd: open-source Mac inference engine for many concurrent agents",
+      "summary": "Incept5 released inferd (Apache 2.0), a Mac inference engine for running many local agents concurrently; the page reports scaling from 64 to 128 concurrent agents (self-reported).",
+      "tag": "maybe",
+      "how": "The Construct: could host cheap local workers on the AP-Agent Mac instead of API calls for low-risk routine steps. PRAGMA: local-inference option for privacy-sensitive clients. Brand 9 Signs: no.",
+      "url": "https://github.com/Incept5-AI/inferd"
     }
   ],
-  "praxis_lesson": "Unattended agents need fail-closed defaults: Claude Code's denyInsteadOfPrompting and read-only-by-default connectors (Personal Finance) show the pattern, so configure scheduled routines to deny rather than wait on a prompt, and sell that hardening as part of PRAGMA engagements. (Caveats: sourced from Releasebot and press summaries; no verified signage/CRM/DAM/real-estate MCP news and no fresh xAI/DeepSeek/Cohere/Meta launches or arXiv picks found, so those are omitted.)",
+  "praxis_lesson": "Agent extension is converging on prompt-to-plugin packaging (DeepSeek Creator Mode, Anthropic skills), so the durable asset is a governed registry with evals, not any one packaging format; build that gate once and let cheap models (SWE-2 Flash, local inferd) earn workloads through it. (Caveat: all items come from the ThursdAI aggregator roundup dated Nov 5, figures self-reported; no verified Nov 6-8 Anthropic, MCP, signage/CRM/DAM or funding news found, so those are omitted.)",
   "history": [
+    "2026-11-08",
     "2026-11-07",
     "2026-11-06",
     "2026-11-05",
@@ -50,7 +51,6 @@
     "2026-10-29",
     "2026-10-28",
     "2026-10-27",
-    "2026-10-26",
-    "2026-10-25"
+    "2026-10-26"
   ]
 }
