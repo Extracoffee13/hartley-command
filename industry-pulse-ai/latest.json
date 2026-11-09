@@ -1,51 +1,36 @@
 {
-  "generated": "2026-11-08T18:52:27+00:00",
-  "latest_date": "2026-11-08",
+  "generated": "2026-11-09T10:51:37+00:00",
+  "latest_date": "2026-11-09",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Microsoft open-sources APM (Agent Package Manager) for skills, prompts, plugins and MCP servers",
-      "summary": "Microsoft released APM (MIT), a dependency manager that installs agent skills, prompts, instructions, plugins and MCP servers from one apm.yml manifest across nine harnesses incl. Claude Code and Cursor (Nov 7; via dev.to AI Daily Digest, repo not independently reviewed).",
+      "title": "ElevenLabs MCP now generates voice, music, SFX, images and video (50+ models), live in Claude, ChatGPT, Cursor and Hermes",
+      "summary": "ElevenLabs' MCP connector covers TTS, Scribe STT (99 languages), dubbing, music, sound effects, image generation/editing, image-to-video and lipsync, saving outputs to an ElevenCreative workspace; the blog page (published Sep 14, last updated Nov 3, 2026) lists Hermes among supported clients. Not a last-24h launch; surfaced because it was the freshest verifiable media-generation MCP item.",
       "tag": "yes",
-      "how": "The Construct: a single manifest to version and reproduce our skills/MCP fleet across Claude Code, Hermes and Cursor-style harnesses; evaluate against our installed-skills registry. PRAGMA: reproducible agent environments for client deployments. Brand 9 Signs: indirect.",
-      "url": "https://github.com/microsoft/apm"
+      "how": "The Construct: Hermes is a listed client, so voice/music/video generation can be wired in without custom glue; compare against Higgsfield. Brand 9 Signs: voiceover and music for social/product clips in the social-content flywheel. PRAGMA: a ready media-generation MCP to offer clients.",
+      "url": "https://elevenlabs.io/blog/introducing-voice-music-image-and-video-generation-in-the-elevenlabs-mcp"
     },
     {
       "n": 2,
-      "title": "Claude Code 2.1.319: background MCP tasks + permissions.denyInsteadOfPrompting",
-      "summary": "Claude Code 2.1.319 (Nov 6) lets MCP tasks move to the background and adds a permissions.denyInsteadOfPrompting setting so unattended runs deny rather than stall on approval prompts (via munderdiffl.in / Releasebot summary).",
+      "title": "Claude Code 2.1.317-2.1.318: login-expiry warnings for claude -p and onFailure:\"block\" for Agent SDK hooks",
+      "summary": "v2.1.318 (Nov 3) adds loginExpiresAt to `claude auth status` and makes `claude -p` warn 10 days before a claude.ai sign-in expires; v2.1.317 (Nov 2) adds onFailure:\"block\" for Agent SDK hook callbacks (blocks the action if the callback fails) and a gateway admin cost report endpoint (via havoptic.com aggregator, not the official changelog). Nothing newer than 2.1.319 (already covered Nov 8) found.",
       "tag": "yes",
-      "how": "The Construct: denyInsteadOfPrompting is directly useful for scheduled/unattended routines like this one; background MCP tasks help long-running tool calls. PRAGMA: safer unattended-agent defaults to recommend to clients. Brand 9 Signs: no.",
-      "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.319"
+      "how": "The Construct: the 10-day expiry warning protects unattended scheduled runs from silently losing auth; onFailure:\"block\" supports fail-closed hooks. PRAGMA: concrete hardening items for client unattended-agent setups. Brand 9 Signs: no.",
+      "url": "https://www.havoptic.com/releases/claude-code/2026/11"
     },
     {
       "n": 3,
-      "title": "Google ADK 2.14.0 graduates A2A protocol, evals, execution environments and core runtime to stable",
-      "summary": "Google's Agent Development Kit 2.14.0 (Nov 7) is a major release moving the A2A protocol, evaluation, execution environments and runtime to stable (via dev.to digest; release notes not independently reviewed).",
+      "title": "Context: Cognition (Devin) raised $2B Series E at $48B valuation (reported Sep 9, 2026)",
+      "summary": "A trade-press report says Cognition's run-rate revenue grew from $492M to nearly $900M since its May round, led by a16z and Accel, with enterprise customers named; figures are unverified and the item is two months old, included only as market context.",
       "tag": "maybe",
-      "how": "The Construct: stable A2A is a candidate interop layer between agents on different stacks; watch rather than adopt. PRAGMA: relevant for clients standardized on Google Cloud. Brand 9 Signs: no.",
-      "url": "https://github.com/google/adk-python"
-    },
-    {
-      "n": 4,
-      "title": "Perplexity launches Teammates: always-on work agents",
-      "summary": "Perplexity shipped Teammates, always-running AI agents that work alongside a team instead of waiting in a chat window (Nov 6; via dev.to digest citing The Verge).",
-      "tag": "maybe",
-      "how": "The Construct: competitor validation of the persistent-agent model; compare their scoping/permissions to our Pulse/Scout-style agents. PRAGMA: reference point when pitching AI-operator retainers. Brand 9 Signs: no.",
-      "url": "https://www.theverge.com/ai-artificial-intelligence/1028302/perplexity-teammates-ai-agents-work"
-    },
-    {
-      "n": 5,
-      "title": "Gemini Omni 1.2 Flash goes GA with 15-second native video clips and conversational editing",
-      "summary": "Google DeepMind made Gemini Omni 1.2 Flash generally available (Gemini API, Workspace Vids): native video up to 15s, conversational editing, pricing 30% below Omni 1.1 (via dev.to digest).",
-      "tag": "maybe",
-      "how": "Brand 9 Signs: cheap short-form video for social/product clips is a fit for the social-content flywheel; test quality on sign-install and product shots. The Construct: another video-gen backend option beside Higgsfield. PRAGMA: low-cost creative generation for clients.",
-      "url": "https://deepmind.google/blog/gemini-omni-12-flash-fast-and-cost-effective-with-longer-clips/"
+      "how": "PRAGMA: evidence of enterprise demand for autonomous agents, useful in AI-operator pitches. The Construct: benchmark only. Brand 9 Signs: no.",
+      "url": "https://www.cxodigitalpulse.com/cognition-ai-raises-2-billion-in-series-e-at-48-billion-valuation/"
     }
   ],
-  "praxis_lesson": "Tooling is converging on package-managed, unattended-safe agents (APM manifests, A2A going stable, deny-instead-of-prompt permissions): reproducibility and non-interactive safety defaults are now the practical moat for running agent fleets, so version the skill/MCP set and make every unattended run fail closed. (Caveat: Items are secondhand from dev.to / munderdiffl.in / Releasebot roundups (Nov 6-7); no verified new frontier-model, signage/CRM/DAM MCP, agent-platform funding or new arXiv paper news found, so those categories are omitted. This refreshes the earlier same-day run.)",
+  "praxis_lesson": "Auth expiry is a silent failure mode for unattended agents: surface credential lifetimes (like Claude Code's 10-day sign-in warning) and fail closed with onFailure-style hooks, so a scheduled routine alerts you before it goes dark rather than after. (Caveat: quiet day — no verified new Anthropic model/skill/plugin, signage/CRM/DAM MCP, frontier-model, funding or arXiv items from the last 24h; web search returned link lists only, so items 1-3 are the freshest verifiable but not all new.)",
   "history": [
+    "2026-11-09",
     "2026-11-08",
     "2026-11-07",
     "2026-11-06",
@@ -58,7 +43,6 @@
     "2026-10-30",
     "2026-10-29",
     "2026-10-28",
-    "2026-10-27",
-    "2026-10-26"
+    "2026-10-27"
   ]
 }

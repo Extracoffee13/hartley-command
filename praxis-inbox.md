@@ -3614,3 +3614,15 @@ lesson: Tooling is converging on package-managed, unattended-safe agents (APM ma
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-09
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: ElevenLabs MCP voice/music/video generation, live in Hermes (yes); Claude Code 2.1.317-318 login-expiry warning + onFailure block hooks (yes); Cognition $2B Series E context (maybe) - quiet day, little verified from last 24h
+lesson: Auth expiry is a silent failure mode for unattended agents: surface credential lifetimes (like Claude Code's 10-day sign-in warning) and fail closed with onFailure-style hooks, so a scheduled routine alerts you before it goes dark rather than after.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
