@@ -3626,3 +3626,15 @@ lesson: Auth expiry is a silent failure mode for unattended agents: surface cred
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-09
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: NeoCognition $40M seed (maybe); Claude Code Nov roundup v2.1.308-318 (yes); video-gen MCPs Pictory/VEED/invideo (maybe) - quiet day, update run, little verified from last 24h
+lesson: On quiet days the honest output is a short, caveated pulse: label items by verification level instead of padding with unverified 'news', so the daily scan stays trustworthy as a signal.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
