@@ -3662,3 +3662,16 @@ lesson: Version bumps in your agent runtime are operational news: read the break
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-10
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Claude Fable/Mythos 5.2 launch (yes); Claude Meetings beta + Data/Interactive Connectors GA (yes); Claude Code v2.1.319 (yes); Graphon Labs $35M agent memory (maybe)
+lesson: When the platform ships a capability you hand-built (meetings capture, dashboards, connectors), re-run build-vs-adopt before the next sprint: keep only the custom layer that encodes your own judgment, and let the vendor carry the plumbing.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
