@@ -3638,3 +3638,27 @@ lesson: On quiet days the honest output is a short, caveated pulse: label items 
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-09
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Claude Code v2.1.319 (yes); Opus 4.8 / Mythos-class prep (maybe); Nov model-release trackers (maybe) - thin day, headlines only, recency unverified
+lesson: When search returns only headlines, tag each item with how much was actually verified and keep the pulse short; a trusted small signal beats a padded one.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-10
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Claude Code v2.1.319 denyInsteadOfPrompting/MCP tasks/security fixes (yes); auto-mode, /loop and Chrome shortcuts_* breaking changes (yes); Nov 10 digests unread (maybe)
+lesson: Version bumps in your agent runtime are operational news: read the breaking-change lines (permissions, loop, tool removals) before the next unattended run, not after it fails.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
