@@ -1,43 +1,44 @@
 {
-  "generated": "2026-11-10T18:51:51+00:00",
-  "latest_date": "2026-11-10",
+  "generated": "2026-11-11T10:52:26+00:00",
+  "latest_date": "2026-11-11",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Anthropic ships Claude Fable 5.2 + Mythos 5.2 (Nov 9) — one model, two safeguard tiers, ~30% faster",
-      "summary": "Fable 5.2 (all users) and Mythos 5.2 (vetted security/life-sciences orgs, fewer cyber/bio blocks) are the same model at $8/$40 per 1M tokens, with an optional fast mode up to 2.5x quicker at $16/$80; output is up to 30% faster than 5.1 and it is available now incl. AWS, Azure and Google Cloud.",
+      "title": "Claude Code 2.1.321 makes Fable 5.2 the default Fable model + adds --settings <file> for remote-control",
+      "summary": "Claude Code 2.1.321 (first seen Nov 10) switches the default Fable model to the new Fable 5.2 ($8/$40 per 1M, 1M context, 128k output; optional fast mode up to 2.5x at $16/$80) and adds a --settings <file> flag for `claude remote-control`, alongside a long list of security and reliability fixes; it lands on top of 2.1.319's MCP tasks and denyInsteadOfPrompting.",
       "tag": "yes",
-      "how": "The Construct: re-benchmark default agent model + fast mode on latency-sensitive jobs (Hermes queue, scheduled runs) and re-check cost per run. PRAGMA: update client model-selection guidance. Brand 9 Signs: indirect (faster/cheaper logo-designer + ops agents).",
-      "url": "https://www.resultsense.com/news/2026-11-10-claude-fable-mythos-5-2-launch/"
+      "how": "The Construct: pin per-agent settings files for remote-control/unattended runs, confirm scheduled jobs pick up Fable 5.2 intentionally (cost/latency re-check), keep denyInsteadOfPrompting on. PRAGMA: model-default drift is a client-ops checklist item. Brand 9 Signs: indirect.",
+      "url": "https://releasebot.io/updates/anthropic"
     },
     {
       "n": 2,
-      "title": "Claude Meetings (beta) + Sheets/Whiteboards (beta); Claude Data and Interactive Connectors now GA",
-      "summary": "Claude can join video calls as a visible participant, take notes, outline whiteboards and save action items to claude.ai; Claude Data (formerly Dashboards) and Interactive Connectors for Adobe, Atlassian, HubSpot, Salesforce, NetSuite and Workday are generally available, respecting user permissions with admin usage controls.",
-      "tag": "yes",
-      "how": "Brand 9 Signs: Claude in client/Lennar calls to capture sign specs and action items straight into tasks. PRAGMA: Meetings + HubSpot/Salesforce connectors are a ready-made operator demo. The Construct: evaluate Claude Data vs the hand-built V4 dashboard panels.",
-      "url": "https://www.techradar.com/pro/claude-can-now-join-your-weekly-meeting-to-take-notes-and-even-start-work-for-you-and-thats-not-all-with-new-spreadsheet-whiteboard-tools-and-more-helping-conquer-the-world-of-frontier-work"
+      "title": "Meta ships Muse Ember (Nov 9) — a lightweight 'execution' model for agentic workflows",
+      "summary": "Meta positions Muse Ember as a small, fast execution model for the do-the-step side of agent workflows (paired with larger planner models), and it is already listed on OpenRouter and independent benchmark trackers.",
+      "tag": "maybe",
+      "how": "The Construct: candidate cheap executor for high-volume Hermes queue sub-steps (planner = Claude, executor = small model) — benchmark on our own tasks before routing anything. PRAGMA: planner/executor split is a client cost-reduction pattern. Brand 9 Signs: no.",
+      "url": "https://thenewstack.io/meta-muse-ember-launch/"
     },
     {
       "n": 3,
-      "title": "Claude Code v2.1.319: denyInsteadOfPrompting, background MCP tasks, security fixes + loop/auto-mode behavior changes",
-      "summary": "Per a DevelopersIO write-up (2026-11-08), v2.1.319 adds permissions.denyInsteadOfPrompting, runs task-based MCP calls in the background, fixes a Bash permission bypass and a worktree sandbox escape; self-paced /loop now ends if a turn doesn't reschedule and Chrome shortcuts_* tools were removed.",
+      "title": "Firmly raises $15M Series A (Squarepoint-led; JPMorgan, Mastercard) for agentic commerce + launches Ask Agent",
+      "summary": "Seattle's Firmly sells a no-code layer that lets merchants sell and check out inside AI shopping assistants while keeping merchant control over checkout, and launched an 'Ask Agent' product with the round.",
       "tag": "yes",
-      "how": "The Construct: enable denyInsteadOfPrompting for unattended agents; audit loops/Chrome skills relying on removed behavior. PRAGMA: client hardening checklist. Brand 9 Signs: no.",
-      "url": "https://dev.classmethod.jp/en/articles/20261108-cc-updates-v2-1-319"
+      "how": "Brand 9 Signs: direct fit for the brand9signs.com/shop ChatGPT-shopping work — track Firmly as a possible channel for agent checkout of shop products. PRAGMA: agentic commerce is a live client category. The Construct: watch for an MCP/API.",
+      "url": "https://retailtechinnovationhub.com/home/2026/11/6/agentic-commerce-startup-firmly-announces-15-million-series-a-led-by-squarepoint-capital"
     },
     {
       "n": 4,
-      "title": "Graphon Labs raises $35M Series A for persistent AI-agent memory",
-      "summary": "Graphon Labs (SF, RRE-led, $43.3M total) sells enterprise, developer and on-device memory layers for agents, reporting 93.9% on LoCoMo (company-reported), with customers incl. HP, Hitachi and the 49ers.",
-      "tag": "maybe",
-      "how": "The Construct: benchmark reference for our memory/PRAXIS inbox design — watch for an MCP/API before adopting. PRAGMA: 'agent memory' is a fundable category worth a client-briefing slot. Brand 9 Signs: no.",
-      "url": "https://thenextweb.com/news/graphon-labs-35m-series-a-ai-agent-memory"
+      "title": "arXiv 2611.06764: 'Rethinking Access Control for AI Agents: Recent Advances and Open Challenges'",
+      "summary": "Survey (Zhou & Zhang, Nov 4) of agent access control across policy specification, identity/delegation, action and resource enforcement, and information-flow control, arguing that the plan an agent picks shapes the permissions it needs, so authorization must be re-assessed as a workflow changes rather than granted once up front.",
+      "tag": "yes",
+      "how": "The Construct: move from static per-agent allowlists toward per-task permission scopes (settings files per job, deny-instead-of-prompt). PRAGMA: frames an 'agent permissions audit' consulting offer. Brand 9 Signs: no.",
+      "url": "https://arxiv.org/abs/2611.06764"
     }
   ],
-  "praxis_lesson": "When the platform ships a capability you hand-built (meetings capture, dashboards, connectors), re-run build-vs-adopt before the next sprint: keep only the custom layer that encodes your own judgment, and let the vendor carry the plumbing.",
+  "praxis_lesson": "Agent permissions should follow the task, not the agent: give each unattended job its own settings file and deny-by-default scope, and re-check that scope whenever the model or plan underneath it changes.",
   "history": [
+    "2026-11-11",
     "2026-11-10",
     "2026-11-09",
     "2026-11-08",
@@ -50,7 +51,6 @@
     "2026-11-01",
     "2026-10-31",
     "2026-10-30",
-    "2026-10-29",
-    "2026-10-28"
+    "2026-10-29"
   ]
 }

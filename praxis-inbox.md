@@ -3675,3 +3675,15 @@ lesson: When the platform ships a capability you hand-built (meetings capture, d
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-11
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Claude Code 2.1.321 Fable 5.2 default + remote-control --settings (yes); Meta Muse Ember execution model (maybe); Firmly $15M agentic commerce (yes); arXiv 2611.06764 agent access control (yes)
+lesson: Agent permissions should follow the task, not the agent: give each unattended job its own settings file and deny-by-default scope, and re-check that scope whenever the model or plan underneath it changes.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
