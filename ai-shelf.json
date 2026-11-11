@@ -1,0 +1,1325 @@
+{
+ "generated": "2026-11-11T14:50:33Z",
+ "window_days": 14,
+ "window_start": "2026-10-29",
+ "window_end": "2026-11-11",
+ "source": "harness",
+ "engines": {
+  "chatgpt": {
+   "prompts": 289,
+   "named": 88,
+   "share": 0.304,
+   "share_ci": [
+    0.254,
+    0.36
+   ],
+   "top1": 39,
+   "top1_rate": 0.135,
+   "top1_ci": [
+    0.1,
+    0.179
+   ],
+   "top1_known": 289,
+   "last_run": "2026-11-11"
+  },
+  "claude": {
+   "prompts": 24,
+   "named": 0,
+   "share": 0.0,
+   "share_ci": [
+    0.0,
+    0.138
+   ],
+   "top1": 0,
+   "top1_rate": 0.0,
+   "top1_ci": [
+    0.0,
+    0.138
+   ],
+   "top1_known": 24,
+   "last_run": "2026-11-10"
+  },
+  "grok": {
+   "prompts": 40,
+   "named": 5,
+   "share": 0.125,
+   "share_ci": [
+    0.055,
+    0.261
+   ],
+   "top1": 4,
+   "top1_rate": 0.1,
+   "top1_ci": [
+    0.04,
+    0.231
+   ],
+   "top1_known": 40,
+   "last_run": "2026-11-11"
+  }
+ },
+ "trend": [
+  {
+   "date": "2026-10-29",
+   "chatgpt": {
+    "n": 78,
+    "share": 0.372,
+    "top1": 18
+   }
+  },
+  {
+   "date": "2026-10-30",
+   "chatgpt": {
+    "n": 8,
+    "share": 0.0,
+    "top1": 0
+   }
+  },
+  {
+   "date": "2026-10-31",
+   "chatgpt": {
+    "n": 39,
+    "share": 0.385,
+    "top1": 4
+   }
+  },
+  {
+   "date": "2026-11-01",
+   "chatgpt": {
+    "n": 40,
+    "share": 0.225,
+    "top1": 2
+   }
+  },
+  {
+   "date": "2026-11-02",
+   "chatgpt": {
+    "n": 40,
+    "share": 0.45,
+    "top1": 10
+   }
+  },
+  {
+   "date": "2026-11-03",
+   "chatgpt": {
+    "n": 40,
+    "share": 0.325,
+    "top1": 4
+   }
+  },
+  {
+   "date": "2026-11-04",
+   "chatgpt": {
+    "n": 40,
+    "share": 0.275,
+    "top1": 8
+   }
+  },
+  {
+   "date": "2026-11-05",
+   "chatgpt": {
+    "n": 40,
+    "share": 0.325,
+    "top1": 3
+   }
+  },
+  {
+   "date": "2026-11-06",
+   "chatgpt": {
+    "n": 40,
+    "share": 0.2,
+    "top1": 2
+   }
+  },
+  {
+   "date": "2026-11-07",
+   "chatgpt": {
+    "n": 40,
+    "share": 0.45,
+    "top1": 8
+   }
+  },
+  {
+   "date": "2026-11-08",
+   "chatgpt": {
+    "n": 40,
+    "share": 0.3,
+    "top1": 8
+   }
+  },
+  {
+   "date": "2026-11-09",
+   "chatgpt": {
+    "n": 40,
+    "share": 0.425,
+    "top1": 7
+   }
+  },
+  {
+   "date": "2026-11-10",
+   "claude": {
+    "n": 24,
+    "share": 0.0,
+    "top1": 0
+   }
+  },
+  {
+   "date": "2026-11-11",
+   "chatgpt": {
+    "n": 54,
+    "share": 0.185,
+    "top1": 4
+   },
+   "grok": {
+    "n": 40,
+    "share": 0.125,
+    "top1": 4
+   }
+  }
+ ],
+ "families_total": {
+  "families": 64,
+  "measured": 64,
+  "named": 44,
+  "top1": 29,
+  "never_measured": 0,
+  "not_named": 20
+ },
+ "families": [
+  {
+   "family": "dimensional-letters",
+   "group": "dimensional",
+   "prompts_in_bank": 60,
+   "measured": 10,
+   "named_any": 3,
+   "top1_any": 1,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 10,
+     "named": 3
+    },
+    "claude": {
+     "measured": 1,
+     "named": 0
+    },
+    "grok": {
+     "measured": 3,
+     "named": 0
+    }
+   },
+   "not_named": 7
+  },
+  {
+   "family": "routed-signs",
+   "group": "routed",
+   "prompts_in_bank": 63,
+   "measured": 10,
+   "named_any": 4,
+   "top1_any": 2,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 10,
+     "named": 4
+    }
+   },
+   "not_named": 6
+  },
+  {
+   "family": "vinyl-banners",
+   "group": "printed",
+   "prompts_in_bank": 76,
+   "measured": 9,
+   "named_any": 0,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 9,
+     "named": 0
+    },
+    "claude": {
+     "measured": 1,
+     "named": 0
+    },
+    "grok": {
+     "measured": 4,
+     "named": 0
+    }
+   },
+   "not_named": 9
+  },
+  {
+   "family": "yard-signs",
+   "group": "printed",
+   "prompts_in_bank": 67,
+   "measured": 9,
+   "named_any": 0,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 9,
+     "named": 0
+    },
+    "claude": {
+     "measured": 1,
+     "named": 0
+    },
+    "grok": {
+     "measured": 4,
+     "named": 0
+    }
+   },
+   "not_named": 9
+  },
+  {
+   "family": "pvc-signs",
+   "group": "printed",
+   "prompts_in_bank": 51,
+   "measured": 7,
+   "named_any": 0,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 7,
+     "named": 0
+    },
+    "claude": {
+     "measured": 1,
+     "named": 0
+    }
+   },
+   "not_named": 7
+  },
+  {
+   "family": "die-cut-graphics",
+   "group": "printed",
+   "prompts_in_bank": 58,
+   "measured": 6,
+   "named_any": 1,
+   "top1_any": 1,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 6,
+     "named": 1
+    },
+    "claude": {
+     "measured": 2,
+     "named": 0
+    },
+    "grok": {
+     "measured": 4,
+     "named": 0
+    }
+   },
+   "not_named": 5
+  },
+  {
+   "family": "flat-cut-letters",
+   "group": "dimensional",
+   "prompts_in_bank": 55,
+   "measured": 6,
+   "named_any": 1,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 6,
+     "named": 1
+    },
+    "claude": {
+     "measured": 1,
+     "named": 0
+    },
+    "grok": {
+     "measured": 1,
+     "named": 0
+    }
+   },
+   "not_named": 5
+  },
+  {
+   "family": "ada-signs",
+   "group": "dimensional",
+   "prompts_in_bank": 47,
+   "measured": 5,
+   "named_any": 2,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 5,
+     "named": 2
+    },
+    "claude": {
+     "measured": 1,
+     "named": 0
+    }
+   },
+   "not_named": 3
+  },
+  {
+   "family": "foam-board-signs",
+   "group": "printed",
+   "prompts_in_bank": 43,
+   "measured": 5,
+   "named_any": 0,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 5,
+     "named": 0
+    },
+    "claude": {
+     "measured": 1,
+     "named": 0
+    }
+   },
+   "not_named": 5
+  },
+  {
+   "family": "house-signs",
+   "group": "shop",
+   "prompts_in_bank": 111,
+   "measured": 5,
+   "named_any": 2,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 5,
+     "named": 2
+    },
+    "claude": {
+     "measured": 1,
+     "named": 0
+    },
+    "grok": {
+     "measured": 2,
+     "named": 0
+    }
+   },
+   "not_named": 3
+  },
+  {
+   "family": "plaques",
+   "group": "dimensional",
+   "prompts_in_bank": 53,
+   "measured": 5,
+   "named_any": 5,
+   "top1_any": 2,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 5,
+     "named": 5
+    },
+    "claude": {
+     "measured": 1,
+     "named": 0
+    },
+    "grok": {
+     "measured": 2,
+     "named": 0
+    }
+   },
+   "not_named": 0
+  },
+  {
+   "family": "wall-decals",
+   "group": "printed",
+   "prompts_in_bank": 64,
+   "measured": 5,
+   "named_any": 3,
+   "top1_any": 2,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 5,
+     "named": 3
+    },
+    "claude": {
+     "measured": 1,
+     "named": 0
+    }
+   },
+   "not_named": 2
+  },
+  {
+   "family": "a-frame-signs",
+   "group": "printed",
+   "prompts_in_bank": 47,
+   "measured": 4,
+   "named_any": 2,
+   "top1_any": 1,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 2
+    },
+    "claude": {
+     "measured": 1,
+     "named": 0
+    },
+    "grok": {
+     "measured": 4,
+     "named": 0
+    }
+   },
+   "not_named": 2
+  },
+  {
+   "family": "acm-signs",
+   "group": "printed",
+   "prompts_in_bank": 70,
+   "measured": 4,
+   "named_any": 3,
+   "top1_any": 3,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 2
+    },
+    "claude": {
+     "measured": 1,
+     "named": 0
+    },
+    "grok": {
+     "measured": 4,
+     "named": 3
+    }
+   },
+   "not_named": 1
+  },
+  {
+   "family": "acrylic-signs",
+   "group": "printed",
+   "prompts_in_bank": 54,
+   "measured": 4,
+   "named_any": 4,
+   "top1_any": 2,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 4
+    }
+   },
+   "not_named": 0
+  },
+  {
+   "family": "address-plaques",
+   "group": "house",
+   "prompts_in_bank": 7,
+   "measured": 4,
+   "named_any": 2,
+   "top1_any": 2,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 2
+    }
+   },
+   "not_named": 2
+  },
+  {
+   "family": "aluminum-signs",
+   "group": "printed",
+   "prompts_in_bank": 54,
+   "measured": 4,
+   "named_any": 2,
+   "top1_any": 1,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 1
+    },
+    "claude": {
+     "measured": 1,
+     "named": 0
+    },
+    "grok": {
+     "measured": 4,
+     "named": 2
+    }
+   },
+   "not_named": 2
+  },
+  {
+   "family": "banner-stands",
+   "group": "display",
+   "prompts_in_bank": 32,
+   "measured": 4,
+   "named_any": 3,
+   "top1_any": 1,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 3
+    }
+   },
+   "not_named": 1
+  },
+  {
+   "family": "beach-house-signs",
+   "group": "house",
+   "prompts_in_bank": 7,
+   "measured": 4,
+   "named_any": 0,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 0
+    }
+   },
+   "not_named": 4
+  },
+  {
+   "family": "blade-signs",
+   "group": "dimensional",
+   "prompts_in_bank": 44,
+   "measured": 4,
+   "named_any": 3,
+   "top1_any": 2,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 3
+    },
+    "claude": {
+     "measured": 1,
+     "named": 0
+    }
+   },
+   "not_named": 1
+  },
+  {
+   "family": "boat-name-letters",
+   "group": "dimensional",
+   "prompts_in_bank": 38,
+   "measured": 4,
+   "named_any": 3,
+   "top1_any": 2,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 3
+    }
+   },
+   "not_named": 1
+  },
+  {
+   "family": "build-my-design",
+   "group": "tools",
+   "prompts_in_bank": 4,
+   "measured": 4,
+   "named_any": 0,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 0
+    }
+   },
+   "not_named": 4
+  },
+  {
+   "family": "builder-barricades",
+   "group": "service",
+   "prompts_in_bank": 7,
+   "measured": 4,
+   "named_any": 1,
+   "top1_any": 1,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 1
+    }
+   },
+   "not_named": 3
+  },
+  {
+   "family": "builders",
+   "group": "printed",
+   "prompts_in_bank": 4,
+   "measured": 4,
+   "named_any": 3,
+   "top1_any": 2,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 3
+    }
+   },
+   "not_named": 1
+  },
+  {
+   "family": "business-cards",
+   "group": "printed",
+   "prompts_in_bank": 62,
+   "measured": 4,
+   "named_any": 0,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 0
+    },
+    "claude": {
+     "measured": 1,
+     "named": 0
+    }
+   },
+   "not_named": 4
+  },
+  {
+   "family": "canopy-tents",
+   "group": "display",
+   "prompts_in_bank": 42,
+   "measured": 4,
+   "named_any": 1,
+   "top1_any": 1,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 1
+    }
+   },
+   "not_named": 3
+  },
+  {
+   "family": "custom-parking-signs",
+   "group": "printed",
+   "prompts_in_bank": 7,
+   "measured": 4,
+   "named_any": 1,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 1
+    }
+   },
+   "not_named": 3
+  },
+  {
+   "family": "custom-podiums",
+   "group": "service",
+   "prompts_in_bank": 7,
+   "measured": 4,
+   "named_any": 0,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 0
+    }
+   },
+   "not_named": 4
+  },
+  {
+   "family": "design",
+   "group": "tools",
+   "prompts_in_bank": 4,
+   "measured": 4,
+   "named_any": 3,
+   "top1_any": 1,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 3
+    }
+   },
+   "not_named": 1
+  },
+  {
+   "family": "dimensional-sign-letters",
+   "group": "service",
+   "prompts_in_bank": 7,
+   "measured": 4,
+   "named_any": 1,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 1
+    }
+   },
+   "not_named": 3
+  },
+  {
+   "family": "exterior-wayfinding",
+   "group": "service",
+   "prompts_in_bank": 7,
+   "measured": 4,
+   "named_any": 1,
+   "top1_any": 1,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 1
+    }
+   },
+   "not_named": 3
+  },
+  {
+   "family": "fabric-frames-lightboxes",
+   "group": "display",
+   "prompts_in_bank": 53,
+   "measured": 4,
+   "named_any": 2,
+   "top1_any": 2,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 2
+    }
+   },
+   "not_named": 2
+  },
+  {
+   "family": "flags",
+   "group": "display",
+   "prompts_in_bank": 65,
+   "measured": 4,
+   "named_any": 1,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 1
+    },
+    "grok": {
+     "measured": 4,
+     "named": 0
+    }
+   },
+   "not_named": 3
+  },
+  {
+   "family": "floor-graphics",
+   "group": "printed",
+   "prompts_in_bank": 46,
+   "measured": 4,
+   "named_any": 1,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 1
+    },
+    "claude": {
+     "measured": 1,
+     "named": 0
+    }
+   },
+   "not_named": 3
+  },
+  {
+   "family": "heavy-vinyl-banners",
+   "group": "printed",
+   "prompts_in_bank": 7,
+   "measured": 4,
+   "named_any": 0,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 0
+    }
+   },
+   "not_named": 4
+  },
+  {
+   "family": "historic-house-signs",
+   "group": "house",
+   "prompts_in_bank": 7,
+   "measured": 4,
+   "named_any": 2,
+   "top1_any": 2,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 2
+    },
+    "claude": {
+     "measured": 1,
+     "named": 0
+    }
+   },
+   "not_named": 2
+  },
+  {
+   "family": "house-plaques",
+   "group": "house",
+   "prompts_in_bank": 7,
+   "measured": 4,
+   "named_any": 1,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 1
+    }
+   },
+   "not_named": 3
+  },
+  {
+   "family": "interior-directory-signage",
+   "group": "service",
+   "prompts_in_bank": 7,
+   "measured": 4,
+   "named_any": 0,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 0
+    }
+   },
+   "not_named": 4
+  },
+  {
+   "family": "logo-cleanup",
+   "group": "tools",
+   "prompts_in_bank": 14,
+   "measured": 4,
+   "named_any": 0,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 0
+    }
+   },
+   "not_named": 4
+  },
+  {
+   "family": "logo-designer",
+   "group": "tools",
+   "prompts_in_bank": 14,
+   "measured": 4,
+   "named_any": 0,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 0
+    },
+    "claude": {
+     "measured": 1,
+     "named": 0
+    }
+   },
+   "not_named": 4
+  },
+  {
+   "family": "mesh-banners",
+   "group": "printed",
+   "prompts_in_bank": 7,
+   "measured": 4,
+   "named_any": 0,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 0
+    }
+   },
+   "not_named": 4
+  },
+  {
+   "family": "metal-prints",
+   "group": "display",
+   "prompts_in_bank": 41,
+   "measured": 4,
+   "named_any": 2,
+   "top1_any": 1,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 2
+    }
+   },
+   "not_named": 2
+  },
+  {
+   "family": "modern-acrylic-name-signs",
+   "group": "dimensional",
+   "prompts_in_bank": 7,
+   "measured": 4,
+   "named_any": 0,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 0
+    }
+   },
+   "not_named": 4
+  },
+  {
+   "family": "modern-home-name-signs",
+   "group": "house",
+   "prompts_in_bank": 7,
+   "measured": 4,
+   "named_any": 2,
+   "top1_any": 1,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 2
+    }
+   },
+   "not_named": 2
+  },
+  {
+   "family": "modern-house-signs",
+   "group": "house",
+   "prompts_in_bank": 7,
+   "measured": 4,
+   "named_any": 2,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 2
+    }
+   },
+   "not_named": 2
+  },
+  {
+   "family": "monument-signs",
+   "group": "service",
+   "prompts_in_bank": 7,
+   "measured": 4,
+   "named_any": 3,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 3
+    }
+   },
+   "not_named": 1
+  },
+  {
+   "family": "nameplates",
+   "group": "dimensional",
+   "prompts_in_bank": 46,
+   "measured": 4,
+   "named_any": 0,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 0
+    },
+    "claude": {
+     "measured": 1,
+     "named": 0
+    }
+   },
+   "not_named": 4
+  },
+  {
+   "family": "pole-banners",
+   "group": "display",
+   "prompts_in_bank": 37,
+   "measured": 4,
+   "named_any": 2,
+   "top1_any": 2,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 2
+    }
+   },
+   "not_named": 2
+  },
+  {
+   "family": "portrait-logo-maker",
+   "group": "tools",
+   "prompts_in_bank": 17,
+   "measured": 4,
+   "named_any": 0,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 0
+    }
+   },
+   "not_named": 4
+  },
+  {
+   "family": "post-and-panel-signs",
+   "group": "service",
+   "prompts_in_bank": 7,
+   "measured": 4,
+   "named_any": 1,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 1
+    }
+   },
+   "not_named": 3
+  },
+  {
+   "family": "posters-and-canvas",
+   "group": "printed",
+   "prompts_in_bank": 54,
+   "measured": 4,
+   "named_any": 1,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 1
+    }
+   },
+   "not_named": 3
+  },
+  {
+   "family": "print",
+   "group": "tools",
+   "prompts_in_bank": 4,
+   "measured": 4,
+   "named_any": 1,
+   "top1_any": 1,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 1
+    }
+   },
+   "not_named": 3
+  },
+  {
+   "family": "retractable-banner-stands",
+   "group": "display",
+   "prompts_in_bank": 52,
+   "measured": 4,
+   "named_any": 1,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 1
+    },
+    "claude": {
+     "measured": 1,
+     "named": 0
+    }
+   },
+   "not_named": 3
+  },
+  {
+   "family": "squadron-name-signs",
+   "group": "military",
+   "prompts_in_bank": 7,
+   "measured": 4,
+   "named_any": 3,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 3
+    }
+   },
+   "not_named": 1
+  },
+  {
+   "family": "squadron-name-title-signs",
+   "group": "military",
+   "prompts_in_bank": 7,
+   "measured": 4,
+   "named_any": 1,
+   "top1_any": 1,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 1
+    }
+   },
+   "not_named": 3
+  },
+  {
+   "family": "squadron-title-signs",
+   "group": "military",
+   "prompts_in_bank": 7,
+   "measured": 4,
+   "named_any": 3,
+   "top1_any": 1,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 3
+    }
+   },
+   "not_named": 1
+  },
+  {
+   "family": "stencils",
+   "group": "printed",
+   "prompts_in_bank": 34,
+   "measured": 4,
+   "named_any": 3,
+   "top1_any": 1,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 3
+    }
+   },
+   "not_named": 1
+  },
+  {
+   "family": "table-throws",
+   "group": "display",
+   "prompts_in_bank": 42,
+   "measured": 4,
+   "named_any": 1,
+   "top1_any": 1,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 1
+    }
+   },
+   "not_named": 3
+  },
+  {
+   "family": "team-logo-maker",
+   "group": "tools",
+   "prompts_in_bank": 22,
+   "measured": 4,
+   "named_any": 0,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 0
+    }
+   },
+   "not_named": 4
+  },
+  {
+   "family": "trade-show-displays",
+   "group": "display",
+   "prompts_in_bank": 38,
+   "measured": 4,
+   "named_any": 1,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 1
+    }
+   },
+   "not_named": 3
+  },
+  {
+   "family": "vector",
+   "group": "tools",
+   "prompts_in_bank": 4,
+   "measured": 4,
+   "named_any": 0,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 0
+    }
+   },
+   "not_named": 4
+  },
+  {
+   "family": "vehicle-graphics",
+   "group": "printed",
+   "prompts_in_bank": 58,
+   "measured": 4,
+   "named_any": 0,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 0
+    },
+    "claude": {
+     "measured": 1,
+     "named": 0
+    }
+   },
+   "not_named": 4
+  },
+  {
+   "family": "window-graphics",
+   "group": "shop",
+   "prompts_in_bank": 82,
+   "measured": 4,
+   "named_any": 2,
+   "top1_any": 1,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 4,
+     "named": 2
+    },
+    "claude": {
+     "measured": 1,
+     "named": 0
+    },
+    "grok": {
+     "measured": 4,
+     "named": 0
+    }
+   },
+   "not_named": 2
+  },
+  {
+   "family": "sign-maker",
+   "group": "shop",
+   "prompts_in_bank": 3,
+   "measured": 3,
+   "named_any": 0,
+   "top1_any": 0,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 3,
+     "named": 0
+    }
+   },
+   "not_named": 3
+  }
+ ],
+ "truth": {
+  "date": "2026-11-11",
+  "by_severity": {
+   "critical": 0,
+   "high": 0,
+   "medium": 10,
+   "low": 218
+  },
+  "total": 228,
+  "checks": null
+ },
+ "experiments": {
+  "open": 5,
+  "verdicts": {},
+  "total": 5
+ },
+ "top_fixes": [
+  {
+   "type": "title_h1",
+   "count": 36
+  },
+  {
+   "type": "factminimum",
+   "count": 4
+  },
+  {
+   "type": "size_row",
+   "count": 2
+  },
+  {
+   "type": "factthickness",
+   "count": 1
+  }
+ ],
+ "noise_floor": 0.15,
+ "note": "Share = prompts where Brand 9 is named / prompts measured (latest reply per prompt in the window). Top-1 = numbered first or sole vendor, where position is known. 95% Wilson intervals. Daily slices differ; about 15% of repeated prompts flip with no change."
+}

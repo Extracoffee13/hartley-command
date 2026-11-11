@@ -290,6 +290,25 @@ footer{position:relative;z-index:1;padding:0 var(--s3) var(--s4);max-width:1680p
 @media (max-width:900px){ .mdgrid{grid-template-columns:minmax(0,1fr)} }
 @media (max-width:720px){ .mdtb .hide-s{display:none} .mdtb td,.mdtb th{padding:6px 5px} }
 
+/* AI shelf panel (2026-11-11): reads ai-shelf.json written by _b9_temp/_flywheel/ai/shelf/dashboard/publish_shelf.py (aggregates only) */
+.aigrid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:var(--s3)}
+.aieng{width:100%;border-collapse:collapse;font-size:13px}
+.aieng th{font:600 11px/1.2 var(--f-disp);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+.aieng td{padding:8px;border-bottom:1px solid rgba(120,220,255,.08);vertical-align:middle;color:var(--text)}
+.aieng td.nr{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.aibar{position:relative;height:8px;min-width:90px;background:rgba(120,220,255,.08);border-radius:var(--r)}
+.aibar i{position:absolute;top:0;bottom:0;left:0;background:var(--ice);border-radius:var(--r)}
+.aibar b{position:absolute;top:-3px;bottom:-3px;border-left:1px solid var(--muted);border-right:1px solid var(--muted)}
+.aitrend{display:block;width:100%;height:auto}
+.aitrend text{font:500 10px var(--f-mono);fill:var(--dim)}
+.aileg{display:flex;flex-wrap:wrap;gap:4px 12px;font:500 12px var(--f-mono);color:var(--muted)}
+.aileg span::before{content:"";display:inline-block;width:10px;height:2px;margin-right:6px;vertical-align:3px;background:currentColor}
+.aileg .chatgpt{color:var(--ice)} .aileg .claude{color:var(--warn)} .aileg .grok{color:#B7A6FF}
+#b-ai .opgate{white-space:nowrap}
+.panel:not(.expanded) #b-ai .opgate.more{display:none}
+@media (max-width:900px){ .aigrid{grid-template-columns:minmax(0,1fr)} }
+@media (max-width:720px){ .panel:not(.expanded) #b-ai .opgate.m8{display:none} .aieng .hide-s{display:none} .aieng td,.aieng th{padding:6px 5px} .aibar{min-width:56px} }
+
 /* responsive */
 @media (max-width:1180px){
   main{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"core core" "left right" "lower lower"}
@@ -410,6 +429,9 @@ footer{position:relative;z-index:1;padding:0 var(--s3) var(--s4);max-width:1680p
     <section class="panel" id="p-dc" data-key="9"><div class="ph"><span class="pt">Decisions</span><span class="ps">Latest 6</span><span class="pk">9</span><button class="px" aria-label="Expand panel">⤢</button></div><div class="pb" id="b-dc"></div></section>
   </div>
   <div class="opsrow">
+    <section class="panel" id="p-ai" data-key="a"><div class="ph"><span class="pt">AI shelf</span><span class="ps">Named &amp; top pick · ChatGPT · Claude · Grok · aggregates only</span><span class="pk">A</span><button class="px" aria-label="Expand panel">⤢</button></div><div class="pb" id="b-ai"></div></section>
+  </div>
+  <div class="opsrow">
     <section class="panel" id="p-md" data-key="m"><div class="ph"><span class="pt">Mods · shared memory</span><span class="ps">Claude Code layer · trial to 10-14</span><span class="pk">M</span><button class="px" aria-label="Expand panel">⤢</button></div><div class="pb" id="b-md"></div></section>
   </div>
   <div class="opsrow">
@@ -419,7 +441,7 @@ footer{position:relative;z-index:1;padding:0 var(--s3) var(--s4);max-width:1680p
     <section class="panel" id="p-op" data-key="b"><div class="ph"><span class="pt">B9 Opportunities</span><span class="ps">Bids &amp; big jobs · readiness gates</span><span class="pk">B</span><button class="px" aria-label="Expand panel">⤢</button></div><div class="pb" id="b-op"></div></section>
   </div>
 </main>
-<footer id="foot">V6 · reads ecosystem-status.json, ecosystem-registry.json, hermes-status.json, harvard-corpus-stats.json, b9-opportunities.json, construct-mods.json and b9-sales.json once on load, then every 60 s · voice relay: 127.0.0.1:8787 on Bobby's Mac</footer>
+<footer id="foot">V6 · reads ecosystem-status.json, ecosystem-registry.json, hermes-status.json, harvard-corpus-stats.json, b9-opportunities.json, construct-mods.json, b9-sales.json and ai-shelf.json once on load, then every 60 s · voice relay: 127.0.0.1:8787 on Bobby's Mac</footer>
 
 <div class="backdrop" id="backdrop"></div>
 <div class="help" id="help" role="dialog" aria-modal="true" aria-label="Help">
@@ -804,6 +826,56 @@ function renderSL(){
   el.innerHTML = h;
 }
 
+/* AI shelf panel (2026-11-11) — reads ai-shelf.json (publish_shelf.py; counts, rates and family slugs only) */
+function renderAI(){
+  var o = S.ai, el = $('#b-ai'); if(!el) return;
+  if(!o){ el.innerHTML = '<div class="m dimt">' + (S.loaded ? 'ai-shelf.json not published yet.' : 'Waiting for data…') + '</div>'; return; }
+  var E = o.engines || {}, ft = o.families_total || {}, tr = o.truth || {}, ex = o.experiments || {}, sev = tr.by_severity || {};
+  var NAMES = {chatgpt:'ChatGPT', claude:'Claude', grok:'Grok'}, KEYS = ['chatgpt','claude','grok'];
+  function pc(v){ return v == null ? '—' : Math.round(v * 100) + '%'; }
+  function ci(c){ return c ? Math.round(c[0] * 100) + '–' + Math.round(c[1] * 100) + '%' : ''; }
+  var crit = (sev.critical || 0) + (sev.high || 0);
+  var tiles = KEYS.map(function(k){ var e = E[k] || {}; return ['Named · ' + NAMES[k], pc(e.share) + '<small> ' + (e.named == null ? '' : e.named + '/' + e.prompts) + '</small>', e.share ? 'i' : (e.prompts ? 'w' : '')]; });
+  tiles.push(['Families named', (ft.named == null ? '—' : ft.named) + '<small> / ' + (ft.measured || 0) + '</small>', ft.not_named ? 'w' : '']);
+  tiles.push(['Truth issues', tr.date ? String(tr.total || 0) : '—', crit ? 'f' : (tr.total ? 'w' : '')]);
+  var h = '<div class="stats s5">' + tiles.map(function(t){ return '<div class="stat ' + t[2] + '"><div class="v">' + t[1] + '</div><div class="k">' + t[0] + '</div></div>'; }).join('') + '</div>';
+  h += '<div class="aigrid"><div class="sec opwrap"><div class="lbl"><span>Per assistant</span><span class="mono dimt">' + esc(String(o.window_start || '').slice(5)) + ' → ' + esc(String(o.window_end || '').slice(5)) + '</span></div>'
+     + '<table class="aieng"><thead><tr><th>Assistant</th><th>Named</th><th></th><th>Top pick</th><th class="hide-s">95% range</th><th class="hide-s">Last run</th></tr></thead><tbody>';
+  KEYS.forEach(function(k){ var e = E[k] || {};
+    var bar = e.share == null ? '<span class="dimt">no runs</span>' : '<div class="aibar" role="img" aria-label="' + esc(NAMES[k] + ' named ' + pc(e.share)) + '"><i style="width:' + (e.share * 100) + '%"></i>' + (e.share_ci ? '<b style="left:' + (e.share_ci[0] * 100) + '%;width:' + ((e.share_ci[1] - e.share_ci[0]) * 100) + '%"></b>' : '') + '</div>';
+    h += '<tr><td>' + NAMES[k] + '</td><td class="nr">' + pc(e.share) + '</td><td style="width:34%">' + bar + '</td><td class="nr">' + pc(e.top1_rate) + (e.top1 != null ? '<span class="dimt"> ' + e.top1 + '</span>' : '') + '</td>'
+       + '<td class="nr hide-s dimt">' + ci(e.share_ci) + '</td><td class="nr hide-s dimt">' + esc(String(e.last_run || '—').slice(5)) + '</td></tr>'; });
+  h += '</tbody></table><div class="m dimt" style="font-size:12px;margin-top:6px">Bar = named share, bracket = 95% range. Top pick = listed first or the only vendor. About ' + Math.round((o.noise_floor || 0.15) * 100) + '% of repeated prompts flip with no change.</div></div>';
+  // 14-day trend, one line per assistant (daily slices differ)
+  var T = arr(o.trend), bw = el.clientWidth || 640, W = Math.round(Math.max(280, Math.min(720, bw > 900 ? bw * 0.44 : bw - 8))), H = 120, L = 26, R = 6, top = 8, bot = 18, n = Math.max(T.length, 2);
+  function X(i){ return L + (W - L - R) * i / (n - 1); } function Y(v){ return top + (H - top - bot) * (1 - v); }
+  var svg = '<svg class="aitrend" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Named share per day, last ' + T.length + ' days">';
+  [0, .5, 1].forEach(function(g){ svg += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + Y(g) + '" y2="' + Y(g) + '" stroke="rgba(120,220,255,.12)"/><text x="' + (L - 4) + '" y="' + (Y(g) + 3) + '" text-anchor="end">' + (g * 100) + '%</text>'; });
+  if(T.length){ svg += '<text x="' + L + '" y="' + (H - 4) + '">' + esc(String(T[0].date).slice(5)) + '</text><text x="' + (W - R) + '" y="' + (H - 4) + '" text-anchor="end">' + esc(String(T[T.length - 1].date).slice(5)) + '</text>'; }
+  var COL = {chatgpt:'var(--ice)', claude:'var(--warn)', grok:'#B7A6FF'};
+  KEYS.forEach(function(k){ var pts = []; T.forEach(function(t, i){ if(t[k]) pts.push([X(i), Y(t[k].share), t.date, t[k]]); });
+    if(pts.length > 1) svg += '<polyline fill="none" stroke="' + COL[k] + '" stroke-width="1.5" points="' + pts.map(function(p){ return p[0].toFixed(1) + ',' + p[1].toFixed(1); }).join(' ') + '"/>';
+    pts.forEach(function(p){ svg += '<circle cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="2.5" fill="' + COL[k] + '"><title>' + esc(NAMES[k] + ' ' + p[2] + ': ' + pc(p[3].share) + ' of ' + p[3].n + ', top pick ' + p[3].top1) + '</title></circle>'; }); });
+  svg += '</svg>';
+  h += '<div class="sec"><div class="lbl"><span>Named share · daily</span><span class="mono dimt">' + esc(o.source || '') + '</span></div>' + svg
+     + '<div class="aileg">' + KEYS.map(function(k){ return '<span class="' + k + '">' + NAMES[k] + '</span>'; }).join('') + '</div></div></div>';
+  // families: not named first
+  var fams = arr(o.families).filter(function(f){ return f.measured; }).sort(function(a, b){ return (b.not_named / b.measured) - (a.not_named / a.measured) || b.measured - a.measured; });
+  h += '<div class="sec"><div class="lbl"><span>Families · named / measured</span><span class="mono dimt">' + (ft.top1 || 0) + ' with a top pick · ' + (ft.never_measured || 0) + ' never measured</span></div><div class="opgates">';
+  fams.forEach(function(f, i){ var st = f.named_any ? (f.not_named ? 'decide' : '') : 'blocked';
+    h += '<span class="opgate ' + st + (i >= 18 ? ' more' : (i >= 8 ? ' m8' : '')) + '" title="' + esc(f.family + ': named ' + f.named_any + ' of ' + f.measured + ' measured prompts, top pick ' + f.top1_any) + '">' + esc(f.family.replace(/-/g, ' ')) + '<small>' + f.named_any + '/' + f.measured + '</small></span>'; });
+  h += '</div>' + (fams.length > 18 ? '<div class="m dimt" style="font-size:12px;margin-top:6px">Expand ⤢ for all ' + fams.length + '.</div>' : '') + '</div>';
+  // truth guard, experiments, fix types
+  var ev = ex.verdicts || {}, evs = Object.keys(ev).map(function(k){ return k + ' ' + ev[k]; }).join(' · ');
+  h += '<div class="sec"><div class="lbl"><span>Truth guard · experiments · next fixes</span><span class="mono dimt">' + esc(fmtET(o.generated)) + '</span></div><div class="opgates">';
+  ['critical','high','medium','low'].forEach(function(s){ var c = sev[s] || 0; h += '<span class="opgate ' + (c && (s === 'critical' || s === 'high') ? 'blocked' : (c ? 'decide' : '')) + '">' + s + '<small>' + (tr.date ? c : '—') + '</small></span>'; });
+  h += '<span class="opgate ' + (ex.open ? 'decide' : '') + '">experiments open<small>' + (ex.open || 0) + (evs ? ' · ' + esc(evs) : '') + '</small></span>';
+  arr(o.top_fixes).forEach(function(f){ h += '<span class="opgate">' + esc(String(f.type).replace(/_/g, ' ')) + '<small>' + f.count + '</small></span>'; });
+  if(!arr(o.top_fixes).length) h += '<span class="opgate"><span class="dimt">fix list</span><small>not built yet</small></span>';
+  h += '</div></div>';
+  el.innerHTML = h;
+}
+
 function renderOP(){
   var o = S.op, el = $('#b-op'); if(!el) return;
   if(!o){ el.innerHTML = '<div class="m dimt">' + (S.loaded ? 'b9-opportunities.json not published yet.' : 'Waiting for data…') + '</div>'; return; }
@@ -1136,12 +1208,12 @@ function renderRelayChip(){
 /* ───────── data load (once, then every 60 s) ───────── */
 function gj(u){ return fetch(u + '?cb=' + Date.now(), {cache:'no-store'}).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; }); }
 function loadData(){
-  return Promise.all([gj('./ecosystem-status.json'), gj('./ecosystem-registry.json'), gj('./hermes-status.json'), gj('./harvard-corpus-stats.json'), gj('./b9-opportunities.json'), gj('./construct-mods.json'), gj('./b9-sales.json')])
-    .then(function(r){ if(r[0]) S.st = r[0]; if(r[1]) S.reg = r[1]; if(r[2]) S.hv = r[2]; if(r[3]) S.hc = r[3]; if(r[4]) S.op = r[4]; if(r[5]) S.md = r[5]; if(r[6]) S.sl = r[6]; S.loaded = new Date(); renderAll(); });
+  return Promise.all([gj('./ecosystem-status.json'), gj('./ecosystem-registry.json'), gj('./hermes-status.json'), gj('./harvard-corpus-stats.json'), gj('./b9-opportunities.json'), gj('./construct-mods.json'), gj('./b9-sales.json'), gj('./ai-shelf.json')])
+    .then(function(r){ if(r[0]) S.st = r[0]; if(r[1]) S.reg = r[1]; if(r[2]) S.hv = r[2]; if(r[3]) S.hc = r[3]; if(r[4]) S.op = r[4]; if(r[5]) S.md = r[5]; if(r[6]) S.sl = r[6]; if(r[7]) S.ai = r[7]; S.loaded = new Date(); renderAll(); });
 }
 function renderAll(){
   var d = D();
-  [renderSys, renderGK, renderKB, renderTG, renderHV, renderPF, renderRT, renderVN, renderDC, renderMD, renderSL, renderOP].forEach(function(f){ try{ f(d); }catch(e){ console.warn('panel render', e); } });
+  [renderSys, renderGK, renderKB, renderTG, renderHV, renderPF, renderRT, renderVN, renderDC, renderMD, renderSL, renderOP, renderAI].forEach(function(f){ try{ f(d); }catch(e){ console.warn('panel render', e); } });
   try{ buildMap(); }catch(e){ console.warn('map render', e); }
   renderDataChip();
   if(S.sel && S.nodes[S.sel]) $('#nodecard').innerHTML = nodeDetail(S.sel);
@@ -1462,6 +1534,7 @@ function init(){
     if(e.key === '-' || e.key === '_'){ zoomAt(1/1.25); return; }
     if(e.key === '0'){ resetView(); return; }
     if(e.key === 'm' || e.key === 'M'){ flashPanel('p-md', true); var mb = $('#p-md .px'); if(mb) mb.focus({preventScroll:true}); return; }
+    if(e.key === 'a' || e.key === 'A'){ flashPanel('p-ai', true); var ab = $('#p-ai .px'); if(ab) ab.focus({preventScroll:true}); return; }
     if(e.key === 'b' || e.key === 'B'){ flashPanel('p-op', true); var bb = $('#p-op .px'); if(bb) bb.focus({preventScroll:true}); return; }
     if(/^[1-9]$/.test(e.key)){ var p = document.querySelector('.panel[data-key="' + e.key + '"]'); if(p){ flashPanel(p.id, true); var b = p.querySelector('.px'); if(b) b.focus({preventScroll:true}); } }
   });
