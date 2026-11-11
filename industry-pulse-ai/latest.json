@@ -1,10 +1,18 @@
 {
-  "generated": "2026-11-11T10:52:26+00:00",
+  "generated": "2026-11-11T18:56:27+00:00",
   "latest_date": "2026-11-11",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
+      "title": "Anthropic launches Claude Meetings, Sheets and Whiteboards (beta), Claude Data GA, and full-app Adobe/Atlassian/HubSpot connectors",
+      "summary": "On Nov 10 Anthropic put Claude into Google Meet calls as a visible participant that drafts the plan, maps timelines on a whiteboard and pulls from connected apps (beta, Team/Enterprise; won't join calls with external guests unless an admin allows it), alongside Claude Sheets and Whiteboards in beta on paid plans, Claude Data (formerly Dashboards) going GA, and interactive connectors that open full Adobe, Atlassian and HubSpot apps inside Claude.",
+      "tag": "yes",
+      "how": "The Construct: Sheets/Whiteboards/Data are native surfaces for trackers and dashboards the agents already hand-build — test moving one V4 panel onto Claude Data. Brand 9 Signs: Claude in Meet calls can capture sign-spec and quote action items on internal calls (external-guest calls need admin approval). PRAGMA: a 'Claude in your meetings' rollout is a ready-made client engagement.",
+      "url": "https://techcrunch.com/2026/11/10/anthropic-launches-claude-meetings-to-turn-workplace-discussions-into-plans-and-tasks/"
+    },
+    {
+      "n": 2,
       "title": "Claude Code 2.1.321 makes Fable 5.2 the default Fable model + adds --settings <file> for remote-control",
       "summary": "Claude Code 2.1.321 (first seen Nov 10) switches the default Fable model to the new Fable 5.2 ($8/$40 per 1M, 1M context, 128k output; optional fast mode up to 2.5x at $16/$80) and adds a --settings <file> flag for `claude remote-control`, alongside a long list of security and reliability fixes; it lands on top of 2.1.319's MCP tasks and denyInsteadOfPrompting.",
       "tag": "yes",
@@ -12,15 +20,15 @@
       "url": "https://releasebot.io/updates/anthropic"
     },
     {
-      "n": 2,
-      "title": "Meta ships Muse Ember (Nov 9) — a lightweight 'execution' model for agentic workflows",
-      "summary": "Meta positions Muse Ember as a small, fast execution model for the do-the-step side of agent workflows (paired with larger planner models), and it is already listed on OpenRouter and independent benchmark trackers.",
-      "tag": "maybe",
-      "how": "The Construct: candidate cheap executor for high-volume Hermes queue sub-steps (planner = Claude, executor = small model) — benchmark on our own tasks before routing anything. PRAGMA: planner/executor split is a client cost-reduction pattern. Brand 9 Signs: no.",
-      "url": "https://thenewstack.io/meta-muse-ember-launch/"
+      "n": 3,
+      "title": "Bay emerges from stealth with $50M (Battery-led Series A) for an enterprise AI-agent control plane",
+      "summary": "Tel Aviv's Bay (founded Feb 2026) inventories an organization's agents, coding assistants, MCP servers, skills and local models, maps how they connect, and enforces allow/ask/redirect/deny on each agent action, with policy drafted by an embedded AI system; it raised a $37M Series A led by Battery Ventures plus a $13M seed.",
+      "tag": "yes",
+      "how": "The Construct: our fleet of scheduled agents, MCP servers and skills is exactly the inventory Bay maps — keep our own agent/MCP/skill registry with per-action allow/deny. PRAGMA: agent inventory + control plane is now a funded category, validating an agent-governance audit offer. Brand 9 Signs: no.",
+      "url": "https://www.securityweek.com/bay-raises-50-million-to-control-what-enterprise-ai-agents-can-do/"
     },
     {
-      "n": 3,
+      "n": 4,
       "title": "Firmly raises $15M Series A (Squarepoint-led; JPMorgan, Mastercard) for agentic commerce + launches Ask Agent",
       "summary": "Seattle's Firmly sells a no-code layer that lets merchants sell and check out inside AI shopping assistants while keeping merchant control over checkout, and launched an 'Ask Agent' product with the round.",
       "tag": "yes",
@@ -28,7 +36,7 @@
       "url": "https://retailtechinnovationhub.com/home/2026/11/6/agentic-commerce-startup-firmly-announces-15-million-series-a-led-by-squarepoint-capital"
     },
     {
-      "n": 4,
+      "n": 5,
       "title": "arXiv 2611.06764: 'Rethinking Access Control for AI Agents: Recent Advances and Open Challenges'",
       "summary": "Survey (Zhou & Zhang, Nov 4) of agent access control across policy specification, identity/delegation, action and resource enforcement, and information-flow control, arguing that the plan an agent picks shapes the permissions it needs, so authorization must be re-assessed as a workflow changes rather than granted once up front.",
       "tag": "yes",
@@ -36,7 +44,7 @@
       "url": "https://arxiv.org/abs/2611.06764"
     }
   ],
-  "praxis_lesson": "Agent permissions should follow the task, not the agent: give each unattended job its own settings file and deny-by-default scope, and re-check that scope whenever the model or plan underneath it changes.",
+  "praxis_lesson": "Agent permissions should follow the task, not the agent — and now that agents sit in meetings and open full apps inside Claude, keep a live inventory of every agent, MCP server and skill with a per-action allow/deny, so each new surface gets a scope before it gets used.",
   "history": [
     "2026-11-11",
     "2026-11-10",

@@ -3687,3 +3687,15 @@ lesson: Agent permissions should follow the task, not the agent: give each unatt
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-11
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (afternoon refresh).
+outcome: Anthropic launches Claude Meetings, Sheets and Whiteboards (beta), Claude Data G (yes); Claude Code 2.1.321 makes Fable 5.2 the default Fable model + adds --settings <f (yes); Bay emerges from stealth with $50M (Battery-led Series A) for an enterprise AI-a (yes); Firmly raises $15M Series A (Squarepoint-led; JPMorgan, Mastercard) for agentic  (yes); arXiv 2611.06764: 'Rethinking Access Control for AI Agents: Recent Advances and  (yes)
+lesson: Agent permissions should follow the task, not the agent — and now that agents sit in meetings and open full apps inside Claude, keep a live inventory of every agent, MCP server and skill with a per-action allow/deny, so each new surface gets a scope before it gets used.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
