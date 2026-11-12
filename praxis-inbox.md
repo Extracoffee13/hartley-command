@@ -3711,3 +3711,15 @@ lesson: Adding agents or voters protects against the worst agent but doesn't mak
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-12
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (afternoon refresh).
+outcome: Anthropic's rewritten Usage Policy takes effect today (Nov 1 (yes); LangChain raises $300M led by CapitalG at a $3B valuation (maybe); WellSaid Producer brings studio voiceover into MCP clients ( (yes); arXiv 2611.12953: agent architecture cost-success trade-offs (yes)
+lesson: Multi-agent and skill-heavy designs cost 1.4 to 4.7 times more tokens and only sometimes win, so choose the architecture per workflow by cost per successful task. Wherever an unattended loop touches someone's money or livelihood, keep a human sign-off and disclose the AI, which Anthropic's policy now requires from today.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
