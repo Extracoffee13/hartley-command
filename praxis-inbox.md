@@ -3699,3 +3699,15 @@ lesson: Agent permissions should follow the task, not the agent — and now that
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-12
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: WellSaid launches WellSaid Producer — studio voiceover inside MCP-enab (yes); Rox raises $100M Series B at $1.3B to replace Salesforce-style CRM wit (maybe); Claude Code 2.1.322 adds fast mode on Vertex (global/US/EU) with autom (maybe); Google DeepMind ships Gemini Robotics 2.5 and AlphaGenome 2 (no); arXiv 2611.07140: 'More Agents, More Reliable?' — system-level reliabi (yes)
+lesson: Adding agents or voters protects against the worst agent but doesn't make the system better than the best one, so measure each agent on the real task mix before you build a swarm. Spend the effort on giving the best agent better tools, such as a licensed voice MCP, rather than on more agents.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

@@ -1,51 +1,52 @@
 {
-  "generated": "2026-11-11T18:56:27+00:00",
-  "latest_date": "2026-11-11",
+  "generated": "2026-11-12T10:57:11+00:00",
+  "latest_date": "2026-11-12",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Anthropic launches Claude Meetings, Sheets and Whiteboards (beta), Claude Data GA, and full-app Adobe/Atlassian/HubSpot connectors",
-      "summary": "On Nov 10 Anthropic put Claude into Google Meet calls as a visible participant that drafts the plan, maps timelines on a whiteboard and pulls from connected apps (beta, Team/Enterprise; won't join calls with external guests unless an admin allows it), alongside Claude Sheets and Whiteboards in beta on paid plans, Claude Data (formerly Dashboards) going GA, and interactive connectors that open full Adobe, Atlassian and HubSpot apps inside Claude.",
+      "title": "WellSaid launches WellSaid Producer — studio voiceover inside MCP-enabled tools (Claude, Copilot, ChatGPT)",
+      "summary": "On Nov 10 WellSaid Labs brought its voiceover production into MCP clients, with native 48kHz audio, licensed voices from consenting, compensated voice actors, and pronunciation style guides for brand and technical terms.",
       "tag": "yes",
-      "how": "The Construct: Sheets/Whiteboards/Data are native surfaces for trackers and dashboards the agents already hand-build — test moving one V4 panel onto Claude Data. Brand 9 Signs: Claude in Meet calls can capture sign-spec and quote action items on internal calls (external-guest calls need admin approval). PRAGMA: a 'Claude in your meetings' rollout is a ready-made client engagement.",
-      "url": "https://techcrunch.com/2026/11/10/anthropic-launches-claude-meetings-to-turn-workplace-discussions-into-plans-and-tasks/"
+      "how": "Brand 9 Signs: narrated product, shop and social videos generated straight from Claude, with a style guide that locks how 'Brand 9' and sign terms are pronounced. The Construct: a voice MCP for the video-making / social pipelines, and licensed voices lower rights risk. PRAGMA: a voice-asset workflow to offer clients.",
+      "url": "https://www.prnewswire.com/news-releases/wellsaid-brings-voiceover-production-into-mcp-enabled-tools-with-native-48khz-audio-and-licensed-ai-voices-302935119.html"
     },
     {
       "n": 2,
-      "title": "Claude Code 2.1.321 makes Fable 5.2 the default Fable model + adds --settings <file> for remote-control",
-      "summary": "Claude Code 2.1.321 (first seen Nov 10) switches the default Fable model to the new Fable 5.2 ($8/$40 per 1M, 1M context, 128k output; optional fast mode up to 2.5x at $16/$80) and adds a --settings <file> flag for `claude remote-control`, alongside a long list of security and reliability fixes; it lands on top of 2.1.319's MCP tasks and denyInsteadOfPrompting.",
-      "tag": "yes",
-      "how": "The Construct: pin per-agent settings files for remote-control/unattended runs, confirm scheduled jobs pick up Fable 5.2 intentionally (cost/latency re-check), keep denyInsteadOfPrompting on. PRAGMA: model-default drift is a client-ops checklist item. Brand 9 Signs: indirect.",
-      "url": "https://releasebot.io/updates/anthropic"
+      "title": "Rox raises $100M Series B at $1.3B to replace Salesforce-style CRM with AI sales agents",
+      "summary": "Rox (founded 2024) raised $100M co-led by General Catalyst and March Capital, with Sequoia, Databricks Ventures and others, and says ARR grew more than tenfold in its first year with enterprise net revenue retention above 700%.",
+      "tag": "maybe",
+      "how": "PRAGMA: agent-native CRM is a funded, fast-growing category, so pitch it as an operator wedge to clients. Brand 9 Signs: the bid engine and client-care loops already act as a lightweight agentic CRM; benchmark against Rox before buying any seat-based CRM. The Construct: indirect.",
+      "url": "https://americanbazaaronline.com/2026/11/11/rox-raises-100-million-at-1-3-billion-valuation-to-challenge-salesforce-with-ai-agents-492085/"
     },
     {
       "n": 3,
-      "title": "Bay emerges from stealth with $50M (Battery-led Series A) for an enterprise AI-agent control plane",
-      "summary": "Tel Aviv's Bay (founded Feb 2026) inventories an organization's agents, coding assistants, MCP servers, skills and local models, maps how they connect, and enforces allow/ask/redirect/deny on each agent action, with policy drafted by an embedded AI system; it raised a $37M Series A led by Battery Ventures plus a $13M seed.",
-      "tag": "yes",
-      "how": "The Construct: our fleet of scheduled agents, MCP servers and skills is exactly the inventory Bay maps — keep our own agent/MCP/skill registry with per-action allow/deny. PRAGMA: agent inventory + control plane is now a funded category, validating an agent-governance audit offer. Brand 9 Signs: no.",
-      "url": "https://www.securityweek.com/bay-raises-50-million-to-control-what-enterprise-ai-agents-can-do/"
+      "title": "Claude Code 2.1.322 adds fast mode on Vertex (global/US/EU) with automatic fallback",
+      "summary": "First seen Nov 11, 2.1.322 enables fast mode on Vertex in the global, US and EU regions and falls back to standard speed when Vertex refuses it; it follows 2.1.321, which made Fable 5.2 the default Fable model.",
+      "tag": "maybe",
+      "how": "The Construct: fast mode costs about twice as much, so check that no unattended job turns it on by accident, and log when the silent fallback happens. PRAGMA: an ops checklist item for clients on Vertex. Brand 9 Signs: no.",
+      "url": "https://releasebot.io/updates/anthropic/claude-code"
     },
     {
       "n": 4,
-      "title": "Firmly raises $15M Series A (Squarepoint-led; JPMorgan, Mastercard) for agentic commerce + launches Ask Agent",
-      "summary": "Seattle's Firmly sells a no-code layer that lets merchants sell and check out inside AI shopping assistants while keeping merchant control over checkout, and launched an 'Ask Agent' product with the round.",
-      "tag": "yes",
-      "how": "Brand 9 Signs: direct fit for the brand9signs.com/shop ChatGPT-shopping work — track Firmly as a possible channel for agent checkout of shop products. PRAGMA: agentic commerce is a live client category. The Construct: watch for an MCP/API.",
-      "url": "https://retailtechinnovationhub.com/home/2026/11/6/agentic-commerce-startup-firmly-announces-15-million-series-a-led-by-squarepoint-capital"
+      "title": "Google DeepMind ships Gemini Robotics 2.5 and AlphaGenome 2",
+      "summary": "On Nov 11 DeepMind released Gemini Robotics 2.5, a vision-language-action model rolling out through partners including Apptronik and Boston Dynamics (96% success packing auto parts in a Mercedes-Benz proof of concept), plus AlphaGenome 2 for DNA-variant effect prediction.",
+      "tag": "no",
+      "how": "Not applicable near term to The Construct, Brand 9 Signs or PRAGMA. Long-range watch for robotic sign assembly and install, but nothing to act on now.",
+      "url": "https://siliconangle.com/2026/11/11/google-deepmind-releases-new-advanced-robotics-ai-model-and-next-generation-gene-prediction-model"
     },
     {
       "n": 5,
-      "title": "arXiv 2611.06764: 'Rethinking Access Control for AI Agents: Recent Advances and Open Challenges'",
-      "summary": "Survey (Zhou & Zhang, Nov 4) of agent access control across policy specification, identity/delegation, action and resource enforcement, and information-flow control, arguing that the plan an agent picks shapes the permissions it needs, so authorization must be re-assessed as a workflow changes rather than granted once up front.",
+      "title": "arXiv 2611.07140: 'More Agents, More Reliable?' — system-level reliability of multi-agent LLMs",
+      "summary": "This paper models multi-agent reliability by combining HIP-LLM with a Bayesian network under operational-profile uncertainty; in a test pipeline, majority voting over three models guarded against the weakest model but did not clearly beat the best single model.",
       "tag": "yes",
-      "how": "The Construct: move from static per-agent allowlists toward per-task permission scopes (settings files per job, deny-instead-of-prompt). PRAGMA: frames an 'agent permissions audit' consulting offer. Brand 9 Signs: no.",
-      "url": "https://arxiv.org/abs/2611.06764"
+      "how": "The Construct: don't assume swarms or voting gates raise quality. Measure each agent on the real task mix, and route to the best single agent unless voting shows a measured gain. PRAGMA: evidence for a 'measure before you multiply agents' client principle. Brand 9 Signs: indirect.",
+      "url": "https://arxiv.org/abs/2611.07140"
     }
   ],
-  "praxis_lesson": "Agent permissions should follow the task, not the agent — and now that agents sit in meetings and open full apps inside Claude, keep a live inventory of every agent, MCP server and skill with a per-action allow/deny, so each new surface gets a scope before it gets used.",
+  "praxis_lesson": "Adding agents or voters protects against the worst agent but doesn't make the system better than the best one, so measure each agent on the real task mix before you build a swarm. Spend the effort on giving the best agent better tools, such as a licensed voice MCP, rather than on more agents.",
   "history": [
+    "2026-11-12",
     "2026-11-11",
     "2026-11-10",
     "2026-11-09",
@@ -58,7 +59,6 @@
     "2026-11-02",
     "2026-11-01",
     "2026-10-31",
-    "2026-10-30",
-    "2026-10-29"
+    "2026-10-30"
   ]
 }
