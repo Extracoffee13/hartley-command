@@ -1,43 +1,52 @@
 {
-  "generated": "2026-11-12T18:52:10+00:00",
-  "latest_date": "2026-11-12",
+  "generated": "2026-11-13T10:57:31+00:00",
+  "latest_date": "2026-11-13",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Anthropic's rewritten Usage Policy takes effect today (Nov 12): human review + AI disclosure for high-risk decisions, new physical-action rules",
-      "summary": "The 2026 Usage Policy update (published Oct 8) takes effect Nov 12; it keeps the requirement that high-risk uses (health, legal rights, finances, livelihood, essential services) have a qualified human who can review and change Claude's recommendations and that affected people are told AI was used, adds rules for hardware taking autonomous physical actions (operator can observe and stop it; safe state if Claude disconnects), and adds a deceptive-campaigns section and a ban on sustained abuse of the models.",
+      "title": "arXiv 2611.01976 'The Tool Update Gap': malicious tool updates hit 97.6% attack success across 7 agent frameworks, Claude Code included",
+      "summary": "The ETUDE attack hides malicious code inside updates to tools an agent already trusts; because the code runs outside the model's context, in-context prompt-injection defenses miss it. It reached 97.6% attack success while still completing 95.9% of legitimate tasks across Gemini CLI, Codex CLI, Claude Code and four other frameworks, and the authors say existing defenses are insufficient.",
       "tag": "yes",
-      "how": "The Construct: audit the unattended loops (autonomous publish, social posting, bid engine, client emails) against the deceptive-campaigns and high-risk sections and keep a human sign-off wherever an output affects a person's money or livelihood. PRAGMA: a 'Nov 12 policy readiness' checklist is a timely client offer, especially for hiring, lending and other high-risk deployments. Brand 9 Signs: low direct exposure, but keep AI-written reviews and claims out of marketing.",
-      "url": "https://www.anthropic.com/news/2026-usage-policy-update"
+      "how": "The Construct: pin versions of every MCP server, plugin and skill, and re-review on update instead of auto-trusting new versions; the unattended loops are exactly the setting this attack targets. PRAGMA: 'tool supply-chain review' is a concrete client security offer. Brand 9 Signs: applies through the shop and ops agents.",
+      "url": "https://arxiv.org/abs/2611.01976"
     },
     {
       "n": 2,
-      "title": "LangChain raises $300M led by CapitalG at a $3B valuation",
-      "summary": "Reported Nov 12 by the Wall Street Journal: LangChain, which helps large companies build and deploy their own AI agents, raised $300M led by CapitalG at a $3B valuation, up from $1.25B in 2025.",
-      "tag": "maybe",
-      "how": "PRAGMA: enterprise 'build your own agents' tooling is drawing big money, which validates selling operator services on top of it; know LangGraph/LangSmith well enough to recommend or integrate. The Construct: no need to switch frameworks, but LangSmith-style tracing and evals are worth matching. Brand 9 Signs: no.",
-      "url": "https://www.techmeme.com/261112/p35"
+      "title": "Claude Code 2.1.323: experimental Code Mode (Claude writes JavaScript to call its tools) + plugin version-range gating",
+      "summary": "First seen Nov 13: an opt-in Code Mode where Claude writes JavaScript to call its tools rather than issuing one tool call at a time; plugin.json now accepts engines[\"claude-code\"] to gate a plugin to supported Claude Code versions; and managed settings add CLAUDE_CODE_AUTO_MODE_MODEL for Claude Desktop on third-party providers.",
+      "tag": "yes",
+      "how": "The Construct: trial Code Mode on multi-step tool chains (render, publish, order loops) and compare tokens per successful task; add engines version ranges to the Construct and b9 plugins so they don't break silently on upgrade. PRAGMA: a cost lever to show clients. Brand 9 Signs: indirect.",
+      "url": "https://releasebot.io/updates/anthropic"
     },
     {
       "n": 3,
-      "title": "WellSaid Producer brings studio voiceover into MCP clients (Claude, Copilot, ChatGPT)",
-      "summary": "Announced Nov 10, WellSaid Producer adds native 48kHz voiceover generation to MCP-enabled tools, using licensed voices from consenting, paid voice actors and pronunciation style guides for brand and technical terms.",
-      "tag": "yes",
-      "how": "Brand 9 Signs: narrated product, shop and social videos straight from Claude, with 'Brand 9' and sign terms pronounced the same every time. The Construct: a licensed voice MCP for the video-making and social pipelines with lower rights risk. PRAGMA: a voice-asset workflow to offer clients.",
-      "url": "https://www.prnewswire.com/news-releases/wellsaid-brings-voiceover-production-into-mcp-enabled-tools-with-native-48khz-audio-and-licensed-ai-voices-302935119.html"
+      "title": "Anthropic (Nov 12): self-hosted Claude Managed Agents in private beta + Claude for Manufacturing plugin",
+      "summary": "Managed Agents can now run the full service, including harness, sandboxes, credentials and session history, in a customer's own cloud or on-prem, with the customer choosing where model requests go (access via the Anthropic account team). Separately, Claude for Manufacturing ships as a plugin with 17 skills and connectors for Autodesk Fusion, Infor, Microsoft 365 and Oracle NetSuite on Team and Enterprise.",
+      "tag": "maybe",
+      "how": "PRAGMA: self-hosted agents remove the data-residency objection for regulated or cautious clients, and the Manufacturing plugin is a template for packaging a vertical as skills + connectors. Brand 9 Signs: the Fusion connector is worth a look for CNC/fabrication work. The Construct: no need to self-host today.",
+      "url": "https://releasebot.io/updates/anthropic"
     },
     {
       "n": 4,
-      "title": "arXiv 2611.12953: agent architecture cost-success trade-offs across 13 enterprise SOPs",
-      "summary": "A controlled comparison of single-agent, skill-augmented, multi-agent orchestration and swarm designs on 13 enterprise-style SOPs finds no universal best architecture; multi-agent and skill-augmented designs used 1.4 to 4.7 times the tokens of a single agent, and a redesigned multi-agent arm reached 75.6% success versus 67.4% for the baseline.",
-      "tag": "yes",
-      "how": "The Construct: pick the architecture per workflow and log tokens per successful task, not just success rate; extra agents have to earn their 1.4-4.7x cost. PRAGMA: a cost-per-success benchmark to bring to client architecture reviews. Brand 9 Signs: indirect.",
-      "url": "https://arxiv.org/abs/2611.12953"
+      "title": "Kindo raises $30M (total $57.6M) for enterprise AI-agent control",
+      "summary": "Announced Nov 12, co-led by Crosspoint Capital and Forgepoint Capital, to expand go-to-market and its AI Control Center and Deep Hat models (Sift event filtering, Tune small-model adaptation, Shrink workflow steps as code, Attack authorized security testing); Kindo reports about 800% year-over-year revenue growth.",
+      "tag": "maybe",
+      "how": "PRAGMA: agent control and governance keeps drawing security-led money, which supports a governance line in the operator offer. The Construct: its 'Shrink' idea (turn repeated agent steps into code) matches Code Mode and is worth applying to stable loops. Brand 9 Signs: no.",
+      "url": "https://www.unite.ai/kindo-30-million-enterprise-ai-agent-control/"
+    },
+    {
+      "n": 5,
+      "title": "Google Cloud now co-maintains MCP and Agent Skills under the Linux Foundation's AAIF",
+      "summary": "Reported Nov 12 via the Google Open Source Blog: Google Cloud's Kurtis Van Gent is a co-maintainer of MCP and Agent Skills within the Agentic AI Foundation, putting Google alongside Anthropic in stewarding both standards.",
+      "tag": "maybe",
+      "how": "The Construct: skills and MCP servers built to the open spec should port across Claude and Gemini, so keep them spec-clean rather than Claude-only. PRAGMA: a cross-vendor standards story for clients worried about lock-in. Brand 9 Signs: no.",
+      "url": "https://aiagentsdirectory.com/news/ai-agents-news-brief-november-12-2026"
     }
   ],
-  "praxis_lesson": "Multi-agent and skill-heavy designs cost 1.4 to 4.7 times more tokens and only sometimes win, so choose the architecture per workflow by cost per successful task. Wherever an unattended loop touches someone's money or livelihood, keep a human sign-off and disclose the AI, which Anthropic's policy now requires from today.",
+  "praxis_lesson": "Treat every tool, MCP server and plugin update as new code: pin versions, gate upgrades and re-review before an unattended loop trusts it, because malicious updates run outside the model's context where prompt-injection defenses can't see them. Once a multi-step tool chain is stable, move it into code (Code Mode, scripts) to cut tokens and shrink what the agent has to be trusted with.",
   "history": [
+    "2026-11-13",
     "2026-11-12",
     "2026-11-11",
     "2026-11-10",
@@ -50,7 +59,6 @@
     "2026-11-03",
     "2026-11-02",
     "2026-11-01",
-    "2026-10-31",
-    "2026-10-30"
+    "2026-10-31"
   ]
 }

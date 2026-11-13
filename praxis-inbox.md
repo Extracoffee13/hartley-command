@@ -3723,3 +3723,15 @@ lesson: Multi-agent and skill-heavy designs cost 1.4 to 4.7 times more tokens an
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-13
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: arXiv 2611.01976 'The Tool Update Gap': malicious tool updates hit 97. (yes); Claude Code 2.1.323: experimental Code Mode (Claude writes JavaScript  (yes); Anthropic (Nov 12): self-hosted Claude Managed Agents in private beta  (maybe); Kindo raises $30M (total $57.6M) for enterprise AI-agent control (maybe); Google Cloud now co-maintains MCP and Agent Skills under the Linux Fou (maybe)
+lesson: Treat every tool, MCP server and plugin update as new code: pin versions, gate upgrades and re-review before an unattended loop trusts it, because malicious updates run outside the model's context where prompt-injection defenses can't see them. Once a multi-step tool chain is stable, move it into code (Code Mode, scripts) to cut tokens and shrink what the agent has to be trusted with.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
