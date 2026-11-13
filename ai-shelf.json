@@ -1,25 +1,25 @@
 {
- "generated": "2026-11-12T16:32:57Z",
+ "generated": "2026-11-13T17:56:33Z",
  "window_days": 14,
- "window_start": "2026-10-30",
- "window_end": "2026-11-12",
+ "window_start": "2026-10-31",
+ "window_end": "2026-11-13",
  "source": "harness",
  "engines": {
   "chatgpt": {
-   "prompts": 300,
+   "prompts": 293,
    "named": 84,
-   "share": 0.28,
+   "share": 0.287,
    "share_ci": [
-    0.232,
-    0.333
+    0.238,
+    0.341
    ],
    "top1": 43,
-   "top1_rate": 0.143,
+   "top1_rate": 0.147,
    "top1_ci": [
-    0.108,
-    0.188
+    0.111,
+    0.192
    ],
-   "top1_known": 300,
+   "top1_known": 293,
    "last_run": "2026-11-12"
   },
   "claude": {
@@ -58,14 +58,6 @@
   }
  },
  "trend": [
-  {
-   "date": "2026-10-30",
-   "chatgpt": {
-    "n": 8,
-    "share": 0.0,
-    "top1": 0
-   }
-  },
   {
    "date": "2026-10-31",
    "chatgpt": {
@@ -174,15 +166,18 @@
     "share": 0.25,
     "top1": 7
    }
+  },
+  {
+   "date": "2026-11-13"
   }
  ],
  "families_total": {
   "families": 64,
-  "measured": 64,
+  "measured": 63,
   "named": 44,
   "top1": 32,
-  "never_measured": 0,
-  "not_named": 20
+  "never_measured": 1,
+  "not_named": 19
  },
  "families": [
   {
@@ -207,21 +202,6 @@
     }
    },
    "not_named": 7
-  },
-  {
-   "family": "routed-signs",
-   "group": "routed",
-   "prompts_in_bank": 63,
-   "measured": 10,
-   "named_any": 4,
-   "top1_any": 2,
-   "by_engine": {
-    "chatgpt": {
-     "measured": 10,
-     "named": 4
-    }
-   },
-   "not_named": 6
   },
   {
    "family": "vehicle-graphics",
@@ -386,6 +366,21 @@
     }
    },
    "not_named": 5
+  },
+  {
+   "family": "routed-signs",
+   "group": "routed",
+   "prompts_in_bank": 63,
+   "measured": 6,
+   "named_any": 4,
+   "top1_any": 2,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 6,
+     "named": 4
+    }
+   },
+   "not_named": 2
   },
   {
    "family": "ada-signs",
@@ -1274,16 +1269,11 @@
    "family": "sign-maker",
    "group": "shop",
    "prompts_in_bank": 3,
-   "measured": 3,
+   "measured": 0,
    "named_any": 0,
    "top1_any": 0,
-   "by_engine": {
-    "chatgpt": {
-     "measured": 3,
-     "named": 0
-    }
-   },
-   "not_named": 3
+   "by_engine": {},
+   "not_named": 0
   }
  ],
  "truth": {
