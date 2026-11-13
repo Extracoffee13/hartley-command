@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-13T10:57:31+00:00",
+  "generated": "2026-11-13T18:51:52+00:00",
   "latest_date": "2026-11-13",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
@@ -29,11 +29,11 @@
     },
     {
       "n": 4,
-      "title": "Kindo raises $30M (total $57.6M) for enterprise AI-agent control",
-      "summary": "Announced Nov 12, co-led by Crosspoint Capital and Forgepoint Capital, to expand go-to-market and its AI Control Center and Deep Hat models (Sift event filtering, Tune small-model adaptation, Shrink workflow steps as code, Attack authorized security testing); Kindo reports about 800% year-over-year revenue growth.",
-      "tag": "maybe",
-      "how": "PRAGMA: agent control and governance keeps drawing security-led money, which supports a governance line in the operator offer. The Construct: its 'Shrink' idea (turn repeated agent steps into code) matches Code Mode and is worth applying to stable loops. Brand 9 Signs: no.",
-      "url": "https://www.unite.ai/kindo-30-million-enterprise-ai-agent-control/"
+      "title": "Plurai raises $13M seed (Nov 13) for pre-launch AI-agent testing via digital twins",
+      "summary": "Team8-led seed for a New York startup that builds a digital twin of an agent and its environment, runs simulated adversarial interactions to find failures, generates fixes, and trains small models to act as evaluators and guardrails; the platform is now open to all developers with a free tier.",
+      "tag": "yes",
+      "how": "The Construct: run the unattended loops (order, publish, email) against a simulated adversarial twin before trusting new tool or skill versions, which is the practical answer to today's Tool Update Gap paper; the free tier makes a trial cheap. PRAGMA: 'test the agent before customers do' is a sellable operator service. Brand 9 Signs: applies to the customer-facing shop and email agents.",
+      "url": "https://securitybrief.news/story/plurai-raises-usd-13-million-for-ai-agent-testing-platform"
     },
     {
       "n": 5,
@@ -44,7 +44,7 @@
       "url": "https://aiagentsdirectory.com/news/ai-agents-news-brief-november-12-2026"
     }
   ],
-  "praxis_lesson": "Treat every tool, MCP server and plugin update as new code: pin versions, gate upgrades and re-review before an unattended loop trusts it, because malicious updates run outside the model's context where prompt-injection defenses can't see them. Once a multi-step tool chain is stable, move it into code (Code Mode, scripts) to cut tokens and shrink what the agent has to be trusted with.",
+  "praxis_lesson": "Treat every tool, MCP server and plugin update as new code: pin versions, gate upgrades and re-test the agent against a simulated adversarial run before an unattended loop trusts it, because malicious updates run outside the model's context where prompt-injection defenses can't see them. Once a multi-step tool chain is stable, move it into code (Code Mode, scripts) to cut tokens and shrink what the agent has to be trusted with.",
   "history": [
     "2026-11-13",
     "2026-11-12",
