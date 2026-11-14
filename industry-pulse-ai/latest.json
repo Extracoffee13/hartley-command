@@ -1,51 +1,52 @@
 {
-  "generated": "2026-11-13T18:51:52+00:00",
-  "latest_date": "2026-11-13",
+  "generated": "2026-11-14T10:57:53+00:00",
+  "latest_date": "2026-11-14",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "arXiv 2611.01976 'The Tool Update Gap': malicious tool updates hit 97.6% attack success across 7 agent frameworks, Claude Code included",
-      "summary": "The ETUDE attack hides malicious code inside updates to tools an agent already trusts; because the code runs outside the model's context, in-context prompt-injection defenses miss it. It reached 97.6% attack success while still completing 95.9% of legitimate tasks across Gemini CLI, Codex CLI, Claude Code and four other frameworks, and the authors say existing defenses are insufficient.",
+      "title": "Claude Code 2.1.325 (first seen Nov 14): sandboxed Bash now goes through the normal permission flow by default",
+      "summary": "Behavior change: Bash commands inside the sandbox no longer auto-run without a prompt; setting sandbox.autoAllowBashIfSandboxed: true restores the old no-prompt behavior. The release also fixes zstd-compressed response decoding (security) and VS Code, Remote Control and MCP issues.",
       "tag": "yes",
-      "how": "The Construct: pin versions of every MCP server, plugin and skill, and re-review on update instead of auto-trusting new versions; the unattended loops are exactly the setting this attack targets. PRAGMA: 'tool supply-chain review' is a concrete client security offer. Brand 9 Signs: applies through the shop and ops agents.",
-      "url": "https://arxiv.org/abs/2611.01976"
+      "how": "The Construct: any unattended loop (order runner, publish, pulse) that relied on sandboxed Bash auto-running can now stall on a permission prompt; check loops after the upgrade and set autoAllowBashIfSandboxed only where the sandbox is the real boundary. PRAGMA: a live example of why client agents need upgrade smoke tests. Brand 9 Signs: indirect, via the ops loops.",
+      "url": "https://releasebot.io/updates/anthropic"
     },
     {
       "n": 2,
-      "title": "Claude Code 2.1.323: experimental Code Mode (Claude writes JavaScript to call its tools) + plugin version-range gating",
-      "summary": "First seen Nov 13: an opt-in Code Mode where Claude writes JavaScript to call its tools rather than issuing one tool call at a time; plugin.json now accepts engines[\"claude-code\"] to gate a plugin to supported Claude Code versions; and managed settings add CLAUDE_CODE_AUTO_MODE_MODEL for Claude Desktop on third-party providers.",
-      "tag": "yes",
-      "how": "The Construct: trial Code Mode on multi-step tool chains (render, publish, order loops) and compare tokens per successful task; add engines version ranges to the Construct and b9 plugins so they don't break silently on upgrade. PRAGMA: a cost lever to show clients. Brand 9 Signs: indirect.",
-      "url": "https://releasebot.io/updates/anthropic"
+      "title": "OpenAI ChatGPT Wallet (Nov 13): agents can buy for users after one-time card entry",
+      "summary": "ChatGPT agents can complete purchases with per-transaction approval, launching with American Express, Mastercard and Visa for US Pro subscribers 18+, with no transaction cut at launch.",
+      "tag": "maybe",
+      "how": "Brand 9 Signs: agent checkout raises the value of being the shop ChatGPT recommends, so keep the product feeds and page facts clean (b9-chatgpt-shopping). The Construct: no change today. PRAGMA: agentic-commerce readiness is a client talking point.",
+      "url": "https://aiweekly.co/ai-news-today"
     },
     {
       "n": 3,
-      "title": "Anthropic (Nov 12): self-hosted Claude Managed Agents in private beta + Claude for Manufacturing plugin",
-      "summary": "Managed Agents can now run the full service, including harness, sandboxes, credentials and session history, in a customer's own cloud or on-prem, with the customer choosing where model requests go (access via the Anthropic account team). Separately, Claude for Manufacturing ships as a plugin with 17 skills and connectors for Autodesk Fusion, Infor, Microsoft 365 and Oracle NetSuite on Team and Enterprise.",
+      "title": "Schwab rolls out its own MCP server (Nov 12): Claude-only pilot that can place trades with the client in the loop",
+      "summary": "Retail clients can pull market data and research, analyze positions, set alerts and, if thinkorswim-enabled, prepare, place and manage trades; the pilot connects only to Claude for now and RIAs are excluded.",
       "tag": "maybe",
-      "how": "PRAGMA: self-hosted agents remove the data-residency objection for regulated or cautious clients, and the Manufacturing plugin is a template for packaging a vertical as skills + connectors. Brand 9 Signs: the Fusion connector is worth a look for CNC/fabrication work. The Construct: no need to self-host today.",
-      "url": "https://releasebot.io/updates/anthropic"
+      "how": "PRAGMA: a large regulated firm moving from read-only to write actions over MCP, with a human approval step, is a reference pattern for client pitches. The Construct and Brand 9 Signs: no direct use.",
+      "url": "https://riabiz.com/a/2026/11/13/schwab-surprises-analysts-with-extra-rapid-launch-of-own-mcp-servers-also-leaping-from-read-only-to-agentic-get-stuff-done-ai-it-leaves-rias-out-for-now-and-makes-anthropics-days-numbered-as-schwabs-exclusive-llm"
     },
     {
       "n": 4,
-      "title": "Plurai raises $13M seed (Nov 13) for pre-launch AI-agent testing via digital twins",
-      "summary": "Team8-led seed for a New York startup that builds a digital twin of an agent and its environment, runs simulated adversarial interactions to find failures, generates fixes, and trains small models to act as evaluators and guardrails; the platform is now open to all developers with a free tier.",
-      "tag": "yes",
-      "how": "The Construct: run the unattended loops (order, publish, email) against a simulated adversarial twin before trusting new tool or skill versions, which is the practical answer to today's Tool Update Gap paper; the free tier makes a trial cheap. PRAGMA: 'test the agent before customers do' is a sellable operator service. Brand 9 Signs: applies to the customer-facing shop and email agents.",
-      "url": "https://securitybrief.news/story/plurai-raises-usd-13-million-for-ai-agent-testing-platform"
+      "title": "LangChain raises $300M Series C at a $3B valuation (Nov 13)",
+      "summary": "CapitalG-led round with GIC, DFJ Growth and returning investors; total raised about $460M, and LangSmith (agent tracing and evals) serves 7,000+ organizations. A launch event is set for Nov 20.",
+      "tag": "maybe",
+      "how": "PRAGMA: agent observability and evals are where the money is going, which supports selling monitoring alongside builds. The Construct: watch the Nov 20 launches for tracing we could point at our loops. Brand 9 Signs: no.",
+      "url": "https://casrai.org/news/langchain-3-billion-valuation-funding-ai-agents-2026"
     },
     {
       "n": 5,
-      "title": "Google Cloud now co-maintains MCP and Agent Skills under the Linux Foundation's AAIF",
-      "summary": "Reported Nov 12 via the Google Open Source Blog: Google Cloud's Kurtis Van Gent is a co-maintainer of MCP and Agent Skills within the Agentic AI Foundation, putting Google alongside Anthropic in stewarding both standards.",
+      "title": "IBM Granite 4.1 LLMON preview (3B/8B, Nov 12) claims indirect prompt-injection success drops to 0.02-5.6%",
+      "summary": "Small open models on Hugging Face aimed at resisting instructions hidden in tool outputs and documents; the figures are IBM's own.",
       "tag": "maybe",
-      "how": "The Construct: skills and MCP servers built to the open spec should port across Claude and Gemini, so keep them spec-clean rather than Claude-only. PRAGMA: a cross-vendor standards story for clients worried about lock-in. Brand 9 Signs: no.",
-      "url": "https://aiagentsdirectory.com/news/ai-agents-news-brief-november-12-2026"
+      "how": "The Construct: a candidate cheap screening model to check fetched web pages and emails before an unattended agent acts on them; test it before trusting the vendor numbers. PRAGMA: a defense layer to mention in security reviews. Brand 9 Signs: applies to inbound customer email handling.",
+      "url": "https://aiweekly.co/ai-news-today"
     }
   ],
-  "praxis_lesson": "Treat every tool, MCP server and plugin update as new code: pin versions, gate upgrades and re-test the agent against a simulated adversarial run before an unattended loop trusts it, because malicious updates run outside the model's context where prompt-injection defenses can't see them. Once a multi-step tool chain is stable, move it into code (Code Mode, scripts) to cut tokens and shrink what the agent has to be trusted with.",
+  "praxis_lesson": "Upgrades change behavior, not just features: after any harness or tool update, run each unattended loop once under watch before trusting it, because a default that flips from auto-allow to prompt will stall a loop silently. As agents gain write actions (trades, purchases), keep a human approval step on the irreversible ones.",
   "history": [
+    "2026-11-14",
     "2026-11-13",
     "2026-11-12",
     "2026-11-11",
@@ -58,7 +59,6 @@
     "2026-11-04",
     "2026-11-03",
     "2026-11-02",
-    "2026-11-01",
-    "2026-10-31"
+    "2026-11-01"
   ]
 }

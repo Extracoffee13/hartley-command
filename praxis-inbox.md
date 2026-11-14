@@ -3747,3 +3747,15 @@ lesson: Treat every tool, MCP server and plugin update as new code: pin versions
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-14
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Claude Code 2.1.325 (first seen Nov 14): sandboxed Bash now  (yes); OpenAI ChatGPT Wallet (Nov 13): agents can buy for users aft (maybe); Schwab rolls out its own MCP server (Nov 12): Claude-only pi (maybe); LangChain raises $300M Series C at a $3B valuation (Nov 13) (maybe); IBM Granite 4.1 LLMON preview (3B/8B, Nov 12) claims indirec (maybe)
+lesson: Upgrades change behavior, not just features: after any harness or tool update, run each unattended loop once under watch before trusting it, because a default that flips from auto-allow to prompt will stall a loop silently. As agents gain write actions (trades, purchases), keep a human approval step on the irreversible ones.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
