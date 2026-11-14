@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-14T14:00:19+00:00",
+ "generated": "2026-11-14T15:00:19+00:00",
  "writer": "ecosystem-status-writer",
  "hermes": {
   "version": "0.21.4",
@@ -18,7 +18,7 @@
    {
     "name": "ops-worker",
     "model": "deepseek/deepseek-v4-flash",
-    "sessions_30d": 3,
+    "sessions_30d": 2,
     "cost_30d": 0.07,
     "retire": false
    },
@@ -52,10 +52,10 @@
    }
   ],
   "usage_30d": {
-   "sessions": 28,
+   "sessions": 27,
    "cost_usd": 2.75,
-   "input_tokens": 2350185,
-   "output_tokens": 245739,
+   "input_tokens": 2321321,
+   "output_tokens": 245370,
    "cache_read_tokens": 27116769
   },
   "cron": {
@@ -102,7 +102,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-13T09:50",
+     "last_run": "2026-11-14T09:50",
      "schedule": "daily 09:50 ET",
      "error": ""
     },
@@ -132,7 +132,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-14T08:30",
+     "last_run": "2026-11-14T09:30",
      "schedule": "*/30 * * * *",
      "error": ""
     },
@@ -142,7 +142,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-14T08:45",
+     "last_run": "2026-11-14T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -152,7 +152,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-14T08:00",
+     "last_run": "2026-11-14T09:00",
      "schedule": "0 * * * *",
      "error": ""
     },
@@ -212,7 +212,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-14T08:45",
+     "last_run": "2026-11-14T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -242,7 +242,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-14T08:00",
+     "last_run": "2026-11-14T09:00",
      "schedule": "0 * * * *",
      "error": ""
     },
@@ -262,7 +262,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-14T08:45",
+     "last_run": "2026-11-14T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -282,7 +282,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-13T09:41",
+     "last_run": "2026-11-14T09:40",
      "schedule": "40 9 * * *",
      "error": ""
     },
@@ -322,7 +322,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-14T08:30",
+     "last_run": "2026-11-14T09:30",
      "schedule": "*/5 * * * *",
      "error": ""
     },
@@ -342,7 +342,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-13T09:26",
+     "last_run": "2026-11-14T09:26",
      "schedule": "25 9 * * *",
      "error": ""
     },
@@ -352,7 +352,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-14T08:59",
+     "last_run": "2026-11-14T09:59",
      "schedule": "* * * * *",
      "error": ""
     },
@@ -382,7 +382,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-14T08:45",
+     "last_run": "2026-11-14T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -422,7 +422,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-14T08:45",
+     "last_run": "2026-11-14T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -432,7 +432,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-14T08:30",
+     "last_run": "2026-11-14T09:30",
      "schedule": "*/30 * * * *",
      "error": ""
     },
@@ -452,7 +452,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-14T08:45",
+     "last_run": "2026-11-14T09:45",
      "schedule": "*/15 * * * *",
      "error": ""
     },
@@ -462,7 +462,7 @@
      "enabled": true,
      "script": true,
      "status": "ok",
-     "last_run": "2026-11-14T08:55",
+     "last_run": "2026-11-14T09:55",
      "schedule": "*/5 * * * *",
      "error": ""
     }
@@ -481,7 +481,7 @@
   },
   "decisions": {
    "total": 608,
-   "last_24h": 63,
+   "last_24h": 61,
    "to_claude": 0,
    "by_mode": {
     "testing": 37,
@@ -668,7 +668,7 @@
   "error": null
  },
  "harvard": {
-  "articles": 3662,
+  "articles": 3668,
   "searches_30d": 15,
   "by": {
    "keystone": 12,
@@ -676,6 +676,6 @@
    "unknown": 2
   },
   "last_search": "2026-10-25T23:10:31Z",
-  "index_built": "2026-11-14T09:45:20+00:00"
+  "index_built": "2026-11-14T14:40:23+00:00"
  }
 }
