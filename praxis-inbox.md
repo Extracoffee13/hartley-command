@@ -3759,3 +3759,15 @@ lesson: Upgrades change behavior, not just features: after any harness or tool u
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-15
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Google Gemini 4 Hydrogen (Nov 12-13): agentic tasks reported (maybe); HeyGen Decision 1 model (Nov 13) added to HeyGen's developer (maybe); ElevenLabs ElevenAI preview (Nov 14): meeting transcription  (maybe); United Airlines will restrict unauthorized third-party AI ag (yes); MCP ecosystem census (Nov 14): about 118,000 active MCP serv (maybe)
+lesson: When outside sites start blocking agents, the browser path is the fragile one: for every loop that drives someone else's website, know the official API or MCP route and keep a manual fallback ready. With 118k MCP servers out there, the edge is choosing and vetting, not finding.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

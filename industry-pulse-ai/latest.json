@@ -1,51 +1,52 @@
 {
-  "generated": "2026-11-14T10:57:53+00:00",
-  "latest_date": "2026-11-14",
+  "generated": "2026-11-15T10:51:53+00:00",
+  "latest_date": "2026-11-15",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Claude Code 2.1.325 (first seen Nov 14): sandboxed Bash now goes through the normal permission flow by default",
-      "summary": "Behavior change: Bash commands inside the sandbox no longer auto-run without a prompt; setting sandbox.autoAllowBashIfSandboxed: true restores the old no-prompt behavior. The release also fixes zstd-compressed response decoding (security) and VS Code, Remote Control and MCP issues.",
-      "tag": "yes",
-      "how": "The Construct: any unattended loop (order runner, publish, pulse) that relied on sandboxed Bash auto-running can now stall on a permission prompt; check loops after the upgrade and set autoAllowBashIfSandboxed only where the sandbox is the real boundary. PRAGMA: a live example of why client agents need upgrade smoke tests. Brand 9 Signs: indirect, via the ops loops.",
-      "url": "https://releasebot.io/updates/anthropic"
+      "title": "Google Gemini 4 Hydrogen (Nov 12-13): agentic tasks reported 2.5x faster than Gemini 3.8 Flash, four reasoning levels",
+      "summary": "Google's new Gemini 4 model is rolling out in Search and the Gemini API with four selectable reasoning levels; the 2.5x speed figure on agentic tasks is reported, not independently benchmarked.",
+      "tag": "maybe",
+      "how": "The Construct: test it as a cheap, fast tier for high-volume batch steps (page checks, feed cleanup) against current defaults before switching anything. PRAGMA: selectable reasoning levels are a cost lever to show clients. Brand 9 Signs: indirect, via whatever it powers in Google Search answers.",
+      "url": "https://aiagentstore.ai/ai-agent-news/this-week"
     },
     {
       "n": 2,
-      "title": "OpenAI ChatGPT Wallet (Nov 13): agents can buy for users after one-time card entry",
-      "summary": "ChatGPT agents can complete purchases with per-transaction approval, launching with American Express, Mastercard and Visa for US Pro subscribers 18+, with no transaction cut at launch.",
+      "title": "HeyGen Decision 1 model (Nov 13) added to HeyGen's developer platform",
+      "summary": "HeyGen published a new model, Decision 1, in its developer docs; no benchmark numbers have been released yet.",
       "tag": "maybe",
-      "how": "Brand 9 Signs: agent checkout raises the value of being the shop ChatGPT recommends, so keep the product feeds and page facts clean (b9-chatgpt-shopping). The Construct: no change today. PRAGMA: agentic-commerce readiness is a client talking point.",
-      "url": "https://aiweekly.co/ai-news-today"
+      "how": "Brand 9 Signs: a candidate for short product and install videos once we can see what it does; check whether it is reachable from the Higgsfield/HeyGen tooling we already use. The Construct: add to the video-generation watchlist. PRAGMA: no.",
+      "url": "https://developers.heygen.com/docs/models/heygen-decision"
     },
     {
       "n": 3,
-      "title": "Schwab rolls out its own MCP server (Nov 12): Claude-only pilot that can place trades with the client in the loop",
-      "summary": "Retail clients can pull market data and research, analyze positions, set alerts and, if thinkorswim-enabled, prepare, place and manage trades; the pilot connects only to Claude for now and RIAs are excluded.",
+      "title": "ElevenLabs ElevenAI preview (Nov 14): meeting transcription + dictation in 90+ languages + agent follow-up actions",
+      "summary": "ElevenLabs combined transcription, multilingual dictation and its ElevenAgent so a meeting can end with drafted follow-up actions; access is by early-access signup.",
       "tag": "maybe",
-      "how": "PRAGMA: a large regulated firm moving from read-only to write actions over MCP, with a human approval step, is a reference pattern for client pitches. The Construct and Brand 9 Signs: no direct use.",
-      "url": "https://riabiz.com/a/2026/11/13/schwab-surprises-analysts-with-extra-rapid-launch-of-own-mcp-servers-also-leaping-from-read-only-to-agentic-get-stuff-done-ai-it-leaves-rias-out-for-now-and-makes-anthropics-days-numbered-as-schwabs-exclusive-llm"
+      "how": "The Construct: overlaps with Claude Meetings (beta); compare the two before adding either to client-call workflows. Brand 9 Signs: voice notes from site visits could become quotes and tasks. PRAGMA: a voice-to-action pattern for operator clients.",
+      "url": "https://aiagentstore.ai/ai-agent-news/this-week"
     },
     {
       "n": 4,
-      "title": "LangChain raises $300M Series C at a $3B valuation (Nov 13)",
-      "summary": "CapitalG-led round with GIC, DFJ Growth and returning investors; total raised about $460M, and LangSmith (agent tracing and evals) serves 7,000+ organizations. A launch event is set for Nov 20.",
-      "tag": "maybe",
-      "how": "PRAGMA: agent observability and evals are where the money is going, which supports selling monitoring alongside builds. The Construct: watch the Nov 20 launches for tracing we could point at our loops. Brand 9 Signs: no.",
-      "url": "https://casrai.org/news/langchain-3-billion-valuation-funding-ai-agents-2026"
+      "title": "United Airlines will restrict unauthorized third-party AI agents from its booking systems (Nov 13)",
+      "summary": "A major consumer brand is moving to block outside agents from transacting on its site, the opposite direction from the open agent-checkout push (ChatGPT Wallet).",
+      "tag": "yes",
+      "how": "The Construct: our browser-driven loops (partner orders at Signs365, supplier sites) can be blocked the same way; prefer official APIs/MCP where they exist and keep a manual fallback. Brand 9 Signs: decide deliberately whether brand9signs.com welcomes shopping agents (we do, via feeds). PRAGMA: 'agent access policy' is a client advisory item.",
+      "url": "https://aiagentstore.ai/ai-agent-news/this-week"
     },
     {
       "n": 5,
-      "title": "IBM Granite 4.1 LLMON preview (3B/8B, Nov 12) claims indirect prompt-injection success drops to 0.02-5.6%",
-      "summary": "Small open models on Hugging Face aimed at resisting instructions hidden in tool outputs and documents; the figures are IBM's own.",
+      "title": "MCP ecosystem census (Nov 14): about 118,000 active MCP servers and 52,000 agent skills",
+      "summary": "HostedMCP's November report counts 118,434 active MCP servers and 52,147 agent skills as of Nov 14; new enterprise servers keep landing (e.g. digna's on-prem data MCP server, Nov 15).",
       "tag": "maybe",
-      "how": "The Construct: a candidate cheap screening model to check fetched web pages and emails before an unattended agent acts on them; test it before trusting the vendor numbers. PRAGMA: a defense layer to mention in security reviews. Brand 9 Signs: applies to inbound customer email handling.",
-      "url": "https://aiweekly.co/ai-news-today"
+      "how": "The Construct: at this volume, discovery is no longer the problem, vetting is; keep the installed-skills registry curated and security-reviewed. PRAGMA: curation and vetting of MCP servers is sellable. Brand 9 Signs: no signage-specific MCP server surfaced today.",
+      "url": "https://hostedmcp.org/learn/state-of-mcp-november-2026"
     }
   ],
-  "praxis_lesson": "Upgrades change behavior, not just features: after any harness or tool update, run each unattended loop once under watch before trusting it, because a default that flips from auto-allow to prompt will stall a loop silently. As agents gain write actions (trades, purchases), keep a human approval step on the irreversible ones.",
+  "praxis_lesson": "When outside sites start blocking agents, the browser path is the fragile one: for every loop that drives someone else's website, know the official API or MCP route and keep a manual fallback ready. With 118k MCP servers out there, the edge is choosing and vetting, not finding.",
   "history": [
+    "2026-11-15",
     "2026-11-14",
     "2026-11-13",
     "2026-11-12",
@@ -58,7 +59,6 @@
     "2026-11-05",
     "2026-11-04",
     "2026-11-03",
-    "2026-11-02",
-    "2026-11-01"
+    "2026-11-02"
   ]
 }
