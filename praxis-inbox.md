@@ -3771,3 +3771,15 @@ lesson: When outside sites start blocking agents, the browser path is the fragil
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-16
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Google Antigravity /teamwork (Nov 13): coordinated multi-age (maybe); OpenAI Codex 0.169.0: --sandbox workspace-write no longer lo (yes); browser-use 1.0.5 (Nov 14): built-in per-run judge returns a (yes); CrowdStrike reportedly buys two AI-agent security startups f (maybe); arXiv 2611.10411 'Tail-risk-aware Agent Safety' (TAS): budge (maybe)
+lesson: Check the result, not the run: a separate judge that confirms the task really finished catches the silent failures that harness upgrades (like Codex's new --trust rule) and blocked sites create. Budget risk across the whole loop, not step by step.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

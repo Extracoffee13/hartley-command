@@ -1,51 +1,52 @@
 {
-  "generated": "2026-11-15T10:51:53+00:00",
-  "latest_date": "2026-11-15",
+  "generated": "2026-11-16T10:53:14+00:00",
+  "latest_date": "2026-11-16",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Google Gemini 4 Hydrogen (Nov 12-13): agentic tasks reported 2.5x faster than Gemini 3.8 Flash, four reasoning levels",
-      "summary": "Google's new Gemini 4 model is rolling out in Search and the Gemini API with four selectable reasoning levels; the 2.5x speed figure on agentic tasks is reported, not independently benchmarked.",
+      "title": "Google Antigravity /teamwork (Nov 13): coordinated multi-agent teams report results in math, chemistry, systems software and ML engineering",
+      "summary": "Google Research published results from Antigravity's /teamwork multi-agent setup (including a ~1.8M-line Lean formalization and several open problems Google says were solved); Google says the features reach outside users in the coming weeks. Results are Google's own claims.",
       "tag": "maybe",
-      "how": "The Construct: test it as a cheap, fast tier for high-volume batch steps (page checks, feed cleanup) against current defaults before switching anything. PRAGMA: selectable reasoning levels are a cost lever to show clients. Brand 9 Signs: indirect, via whatever it powers in Google Search answers.",
-      "url": "https://aiagentstore.ai/ai-agent-news/this-week"
+      "how": "The Construct: the coordinator-plus-specialists pattern is the same shape as our Hermes swarm; when /teamwork opens, compare how it splits and checks work against ours. PRAGMA: a credible reference case for 'teams of agents' in client pitches. Brand 9 Signs: no.",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/antigravity-teamwork-multi-agent/"
     },
     {
       "n": 2,
-      "title": "HeyGen Decision 1 model (Nov 13) added to HeyGen's developer platform",
-      "summary": "HeyGen published a new model, Decision 1, in its developer docs; no benchmark numbers have been released yet.",
-      "tag": "maybe",
-      "how": "Brand 9 Signs: a candidate for short product and install videos once we can see what it does; check whether it is reachable from the Higgsfield/HeyGen tooling we already use. The Construct: add to the video-generation watchlist. PRAGMA: no.",
-      "url": "https://developers.heygen.com/docs/models/heygen-decision"
+      "title": "OpenAI Codex 0.169.0: --sandbox workspace-write no longer loads project config or MCP servers without --trust",
+      "summary": "This week's Codex CLI release tightens trust for 'codex exec': project config and MCP servers now need an explicit --trust flag; Gemini CLI v0.68.0 shipped sandbox and path fixes the same week.",
+      "tag": "yes",
+      "how": "The Construct: any unattended job calling 'codex exec' with project MCP servers will quietly lose those tools after upgrade; add --trust deliberately where needed and re-run each loop once under watch. PRAGMA: harness defaults are moving toward deny-by-default, a governance point for clients. Brand 9 Signs: only via the loops it runs on.",
+      "url": "https://dev.to/aicoding-guide/this-week-in-claude-code-codex-and-gemini-cli-week-of-november-15-2026-4pmm"
     },
     {
       "n": 3,
-      "title": "ElevenLabs ElevenAI preview (Nov 14): meeting transcription + dictation in 90+ languages + agent follow-up actions",
-      "summary": "ElevenLabs combined transcription, multilingual dictation and its ElevenAgent so a meeting can end with drafted follow-up actions; access is by early-access signup.",
-      "tag": "maybe",
-      "how": "The Construct: overlaps with Claude Meetings (beta); compare the two before adding either to client-call workflows. Brand 9 Signs: voice notes from site visits could become quotes and tasks. PRAGMA: a voice-to-action pattern for operator clients.",
-      "url": "https://aiagentstore.ai/ai-agent-news/this-week"
+      "title": "browser-use 1.0.5 (Nov 14): built-in per-run judge returns a verdict on whether the browser agent succeeded",
+      "summary": "The open-source browser-agent library now grades each run (result.judgement), on by default with judge=False to switch it off.",
+      "tag": "yes",
+      "how": "The Construct: our browser-driven loops (Signs365 partner orders, supplier sites) need exactly this, a separate check that the task actually finished before we report done; copy the pattern even if we don't adopt the library. Brand 9 Signs: fewer silent order failures. PRAGMA: 'every agent run gets a judge' is a sellable practice.",
+      "url": "https://munderdiffl.in/blog/agent-tools-today-2026-11-15"
     },
     {
       "n": 4,
-      "title": "United Airlines will restrict unauthorized third-party AI agents from its booking systems (Nov 13)",
-      "summary": "A major consumer brand is moving to block outside agents from transacting on its site, the opposite direction from the open agent-checkout push (ChatGPT Wallet).",
-      "tag": "yes",
-      "how": "The Construct: our browser-driven loops (partner orders at Signs365, supplier sites) can be blocked the same way; prefer official APIs/MCP where they exist and keep a manual fallback. Brand 9 Signs: decide deliberately whether brand9signs.com welcomes shopping agents (we do, via feeds). PRAGMA: 'agent access policy' is a client advisory item.",
-      "url": "https://aiagentstore.ai/ai-agent-news/this-week"
+      "title": "CrowdStrike reportedly buys two AI-agent security startups for about $495M total (Nov 14)",
+      "summary": "An aggregator brief cites reports that CrowdStrike acquired two startups that secure AI agents; deal details are reported, not confirmed in a primary filing.",
+      "tag": "maybe",
+      "how": "PRAGMA: agent security is consolidating into the big endpoint vendors, so client advice should assume agent controls will come from their existing security stack. The Construct: keep our own guardrails (approval on irreversible actions) regardless. Brand 9 Signs: no.",
+      "url": "https://aiagentsdirectory.com/news/ai-agents-news-brief-november-15-2026"
     },
     {
       "n": 5,
-      "title": "MCP ecosystem census (Nov 14): about 118,000 active MCP servers and 52,000 agent skills",
-      "summary": "HostedMCP's November report counts 118,434 active MCP servers and 52,147 agent skills as of Nov 14; new enterprise servers keep landing (e.g. digna's on-prem data MCP server, Nov 15).",
+      "title": "arXiv 2611.10411 'Tail-risk-aware Agent Safety' (TAS): budget rare, high-cost failures across multi-step agent workflows",
+      "summary": "Models a workflow's safety as linked states and caps rare, costly failures with one shared risk budget across steps; reports beating eleven baselines on three benchmarks (submitted Nov 7).",
       "tag": "maybe",
-      "how": "The Construct: at this volume, discovery is no longer the problem, vetting is; keep the installed-skills registry curated and security-reviewed. PRAGMA: curation and vetting of MCP servers is sellable. Brand 9 Signs: no signage-specific MCP server surfaced today.",
-      "url": "https://hostedmcp.org/learn/state-of-mcp-november-2026"
+      "how": "The Construct: give each long unattended loop a risk budget (e.g. at most N irreversible actions or $X spend per run) instead of judging each step alone. PRAGMA: a clean framework for client agent-risk reviews. Brand 9 Signs: no.",
+      "url": "https://arxiv.org/abs/2611.10411"
     }
   ],
-  "praxis_lesson": "When outside sites start blocking agents, the browser path is the fragile one: for every loop that drives someone else's website, know the official API or MCP route and keep a manual fallback ready. With 118k MCP servers out there, the edge is choosing and vetting, not finding.",
+  "praxis_lesson": "Check the result, not the run: a separate judge that confirms the task really finished catches the silent failures that harness upgrades (like Codex's new --trust rule) and blocked sites create. Budget risk across the whole loop, not step by step.",
   "history": [
+    "2026-11-16",
     "2026-11-15",
     "2026-11-14",
     "2026-11-13",
@@ -58,7 +59,6 @@
     "2026-11-06",
     "2026-11-05",
     "2026-11-04",
-    "2026-11-03",
-    "2026-11-02"
+    "2026-11-03"
   ]
 }
