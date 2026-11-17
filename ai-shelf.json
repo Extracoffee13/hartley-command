@@ -1,26 +1,26 @@
 {
- "generated": "2026-11-16T15:42:55Z",
+ "generated": "2026-11-17T15:41:11Z",
  "window_days": 14,
- "window_start": "2026-11-03",
- "window_end": "2026-11-16",
+ "window_start": "2026-11-04",
+ "window_end": "2026-11-17",
  "source": "harness",
  "engines": {
   "chatgpt": {
-   "prompts": 437,
-   "named": 128,
-   "share": 0.293,
+   "prompts": 477,
+   "named": 136,
+   "share": 0.285,
    "share_ci": [
-    0.252,
-    0.337
+    0.246,
+    0.327
    ],
-   "top1": 63,
-   "top1_rate": 0.144,
+   "top1": 65,
+   "top1_rate": 0.136,
    "top1_ci": [
-    0.114,
-    0.18
+    0.108,
+    0.17
    ],
-   "top1_known": 437,
-   "last_run": "2026-11-16"
+   "top1_known": 477,
+   "last_run": "2026-11-17"
   },
   "claude": {
    "prompts": 24,
@@ -58,14 +58,6 @@
   }
  },
  "trend": [
-  {
-   "date": "2026-11-03",
-   "chatgpt": {
-    "n": 40,
-    "share": 0.325,
-    "top1": 4
-   }
-  },
   {
    "date": "2026-11-04",
    "chatgpt": {
@@ -184,6 +176,14 @@
     "share": 0.425,
     "top1": 10
    }
+  },
+  {
+   "date": "2026-11-17",
+   "chatgpt": {
+    "n": 55,
+    "share": 0.255,
+    "top1": 6
+   }
   }
  ],
  "families_total": {
@@ -217,6 +217,29 @@
     }
    },
    "not_named": 32
+  },
+  {
+   "family": "acm-signs",
+   "group": "printed",
+   "prompts_in_bank": 70,
+   "measured": 43,
+   "named_any": 20,
+   "top1_any": 13,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 43,
+     "named": 19
+    },
+    "claude": {
+     "measured": 1,
+     "named": 1
+    },
+    "grok": {
+     "measured": 4,
+     "named": 3
+    }
+   },
+   "not_named": 23
   },
   {
    "family": "aluminum-signs",
@@ -265,27 +288,42 @@
    "not_named": 35
   },
   {
-   "family": "acm-signs",
+   "family": "pvc-signs",
    "group": "printed",
-   "prompts_in_bank": 70,
-   "measured": 39,
-   "named_any": 20,
-   "top1_any": 13,
+   "prompts_in_bank": 51,
+   "measured": 34,
+   "named_any": 6,
+   "top1_any": 2,
    "by_engine": {
     "chatgpt": {
-     "measured": 39,
-     "named": 19
+     "measured": 34,
+     "named": 5
     },
     "claude": {
      "measured": 1,
      "named": 1
-    },
-    "grok": {
-     "measured": 4,
-     "named": 3
     }
    },
-   "not_named": 19
+   "not_named": 28
+  },
+  {
+   "family": "foam-board-signs",
+   "group": "printed",
+   "prompts_in_bank": 43,
+   "measured": 16,
+   "named_any": 4,
+   "top1_any": 1,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 16,
+     "named": 3
+    },
+    "claude": {
+     "measured": 1,
+     "named": 1
+    }
+   },
+   "not_named": 12
   },
   {
    "family": "routed-signs",
@@ -345,25 +383,6 @@
    "not_named": 8
   },
   {
-   "family": "foam-board-signs",
-   "group": "printed",
-   "prompts_in_bank": 43,
-   "measured": 7,
-   "named_any": 1,
-   "top1_any": 1,
-   "by_engine": {
-    "chatgpt": {
-     "measured": 7,
-     "named": 0
-    },
-    "claude": {
-     "measured": 1,
-     "named": 1
-    }
-   },
-   "not_named": 6
-  },
-  {
    "family": "posters-and-canvas",
    "group": "printed",
    "prompts_in_bank": 54,
@@ -373,25 +392,6 @@
    "by_engine": {
     "chatgpt": {
      "measured": 7,
-     "named": 1
-    }
-   },
-   "not_named": 6
-  },
-  {
-   "family": "pvc-signs",
-   "group": "printed",
-   "prompts_in_bank": 51,
-   "measured": 7,
-   "named_any": 1,
-   "top1_any": 1,
-   "by_engine": {
-    "chatgpt": {
-     "measured": 7,
-     "named": 0
-    },
-    "claude": {
-     "measured": 1,
      "named": 1
     }
    },
@@ -938,13 +938,13 @@
    "named_any": 1,
    "top1_any": 1,
    "by_engine": {
-    "chatgpt": {
-     "measured": 4,
-     "named": 0
-    },
     "claude": {
      "measured": 1,
      "named": 1
+    },
+    "chatgpt": {
+     "measured": 4,
+     "named": 0
     }
    },
    "not_named": 3
@@ -1303,9 +1303,9 @@
   "checks": null
  },
  "experiments": {
-  "open": 6,
+  "open": 8,
   "verdicts": {},
-  "total": 6
+  "total": 8
  },
  "top_fixes": [
   {
