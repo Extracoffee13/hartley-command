@@ -1,51 +1,52 @@
 {
-  "generated": "2026-11-16T10:53:14+00:00",
-  "latest_date": "2026-11-16",
+  "generated": "2026-11-17T10:52:16+00:00",
+  "latest_date": "2026-11-17",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Google Antigravity /teamwork (Nov 13): coordinated multi-agent teams report results in math, chemistry, systems software and ML engineering",
-      "summary": "Google Research published results from Antigravity's /teamwork multi-agent setup (including a ~1.8M-line Lean formalization and several open problems Google says were solved); Google says the features reach outside users in the coming weeks. Results are Google's own claims.",
+      "title": "Paper ships a Remote MCP server (Nov 17): cloud agents can read and write Paper design files with no desktop install",
+      "summary": "Paper (paper.design) announced a remote version of its MCP server so cloud-hosted agents can open and edit design files without the local Paper Desktop app; a companion PR adds a ChatGPT/Codex plugin for it. Launch details come from Paper's docs and an announcement relayed on X.",
       "tag": "maybe",
-      "how": "The Construct: the coordinator-plus-specialists pattern is the same shape as our Hermes swarm; when /teamwork opens, compare how it splits and checks work against ours. PRAGMA: a credible reference case for 'teams of agents' in client pitches. Brand 9 Signs: no.",
-      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/antigravity-teamwork-multi-agent/"
+      "how": "Brand 9 Signs: a cloud agent could draft sign mockups and proof layouts in a shared design file overnight without a Mac in the loop; worth a trial against our current Canva/Higgsfield path. The Construct: remote (no-install) MCP is the right shape for scheduled cloud runs. PRAGMA: a clean example of design tools becoming agent-callable.",
+      "url": "https://paper.design/docs/mcp"
     },
     {
       "n": 2,
-      "title": "OpenAI Codex 0.169.0: --sandbox workspace-write no longer loads project config or MCP servers without --trust",
-      "summary": "This week's Codex CLI release tightens trust for 'codex exec': project config and MCP servers now need an explicit --trust flag; Gemini CLI v0.68.0 shipped sandbox and path fixes the same week.",
-      "tag": "yes",
-      "how": "The Construct: any unattended job calling 'codex exec' with project MCP servers will quietly lose those tools after upgrade; add --trust deliberately where needed and re-run each loop once under watch. PRAGMA: harness defaults are moving toward deny-by-default, a governance point for clients. Brand 9 Signs: only via the loops it runs on.",
-      "url": "https://dev.to/aicoding-guide/this-week-in-claude-code-codex-and-gemini-cli-week-of-november-15-2026-4pmm"
+      "title": "Alibaba previews Qwen4-Max (Nov 16): agent-first coding and a 1M-token context window",
+      "summary": "Alibaba opened a preview of Qwen4-Max, positioned for agentic coding with 1M-token context support, following the Qwen 4 lineup shown at Apsara. Benchmarks are vendor claims; no Anthropic, OpenAI, Google, Meta, Mistral, xAI or DeepSeek model launched in the window.",
+      "tag": "maybe",
+      "how": "The Construct: a possible low-cost second model for long-context batch jobs (log and document digestion), but test before trusting and mind data-residency questions. PRAGMA: another sign that 1M context is now standard, so clients should price on task cost, not context size. Brand 9 Signs: no.",
+      "url": "https://alphasignal.ai/news/alibaba-launches-qwen4-max-with-agent-first-coding-and-1m-token-support"
     },
     {
       "n": 3,
-      "title": "browser-use 1.0.5 (Nov 14): built-in per-run judge returns a verdict on whether the browser agent succeeded",
-      "summary": "The open-source browser-agent library now grades each run (result.judgement), on by default with judge=False to switch it off.",
-      "tag": "yes",
-      "how": "The Construct: our browser-driven loops (Signs365 partner orders, supplier sites) need exactly this, a separate check that the task actually finished before we report done; copy the pattern even if we don't adopt the library. Brand 9 Signs: fewer silent order failures. PRAGMA: 'every agent run gets a judge' is a sellable practice.",
-      "url": "https://munderdiffl.in/blog/agent-tools-today-2026-11-15"
+      "title": "Dreamteam launches an AI-native CRM with four agents and a 'Company Brain', backed by $53M (Nov 16)",
+      "summary": "Former Freshworks executives launched Dreamteam with $53M across a seed (Together Fund) and Series A (Accel); it says 100+ paying customers in 13 countries use its agent-run CRM.",
+      "tag": "maybe",
+      "how": "Brand 9 Signs: a watch item if our quote-to-reorder follow-up outgrows email and sheets. PRAGMA: proof that buyers will pay for 'CRM run by agents with a shared memory', the same pitch we make for operator setups. The Construct: the 'Company Brain' is our memory/knowledge-graph layer under another name.",
+      "url": "https://emergent.sh/news/dreamteam-raises-53m-ai-native-crm-challenge"
     },
     {
       "n": 4,
-      "title": "CrowdStrike reportedly buys two AI-agent security startups for about $495M total (Nov 14)",
-      "summary": "An aggregator brief cites reports that CrowdStrike acquired two startups that secure AI agents; deal details are reported, not confirmed in a primary filing.",
-      "tag": "maybe",
-      "how": "PRAGMA: agent security is consolidating into the big endpoint vendors, so client advice should assume agent controls will come from their existing security stack. The Construct: keep our own guardrails (approval on irreversible actions) regardless. Brand 9 Signs: no.",
-      "url": "https://aiagentsdirectory.com/news/ai-agents-news-brief-november-15-2026"
+      "title": "Corma raises $125M Series A at $1B to train cybersecurity-tuned foundation models (Nov 16)",
+      "summary": "Corma.ai, which builds AI models for security teams, raised $125M led by NEA with Khosla, Coatue and Sequoia returning.",
+      "tag": "no",
+      "how": "PRAGMA only: security-specialist models are attracting big money, so client agent-security advice should expect domain models inside their security stack. No direct use for The Construct or Brand 9 Signs.",
+      "url": "https://siliconangle.com/2026/11/16/corma-raises-125m-to-train-cybersecurity-optimized-foundation-models/"
     },
     {
       "n": 5,
-      "title": "arXiv 2611.10411 'Tail-risk-aware Agent Safety' (TAS): budget rare, high-cost failures across multi-step agent workflows",
-      "summary": "Models a workflow's safety as linked states and caps rare, costly failures with one shared risk budget across steps; reports beating eleven baselines on three benchmarks (submitted Nov 7).",
+      "title": "arXiv 2611.12545 'Teamknitt': configure, observe and step into teams of 1-16 LLM agents",
+      "summary": "An open reference framework with 14 routing topologies (or custom graphs), shared-context profiles and human-led interventions; it states testable hypotheses but reports no comparative results yet (submitted Nov 9).",
       "tag": "maybe",
-      "how": "The Construct: give each long unattended loop a risk budget (e.g. at most N irreversible actions or $X spend per run) instead of judging each step alone. PRAGMA: a clean framework for client agent-risk reviews. Brand 9 Signs: no.",
-      "url": "https://arxiv.org/abs/2611.10411"
+      "how": "The Construct: a vocabulary for describing how our Hermes swarm routes work and where a human can step in; useful for writing down our topology, not for adopting the code yet. PRAGMA: a framework for explaining agent-team design to clients. Brand 9 Signs: no.",
+      "url": "https://papers.cool/arxiv/2611.12545"
     }
   ],
-  "praxis_lesson": "Check the result, not the run: a separate judge that confirms the task really finished catches the silent failures that harness upgrades (like Codex's new --trust rule) and blocked sites create. Budget risk across the whole loop, not step by step.",
+  "praxis_lesson": "Prefer tools agents can reach from the cloud with no install: a remote MCP server keeps a scheduled loop working when the Mac is asleep, while a local-only tool quietly becomes a single point of failure.",
   "history": [
+    "2026-11-17",
     "2026-11-16",
     "2026-11-15",
     "2026-11-14",
@@ -58,7 +59,6 @@
     "2026-11-07",
     "2026-11-06",
     "2026-11-05",
-    "2026-11-04",
-    "2026-11-03"
+    "2026-11-04"
   ]
 }

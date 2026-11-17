@@ -3783,3 +3783,15 @@ lesson: Check the result, not the run: a separate judge that confirms the task r
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-17
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Paper ships a Remote MCP server (Nov 17): cloud agents can r (maybe); Alibaba previews Qwen4-Max (Nov 16): agent-first coding and  (maybe); Dreamteam launches an AI-native CRM with four agents and a ' (maybe); Corma raises $125M Series A at $1B to train cybersecurity-tu (no); arXiv 2611.12545 'Teamknitt': configure, observe and step in (maybe)
+lesson: Prefer tools agents can reach from the cloud with no install: a remote MCP server keeps a scheduled loop working when the Mac is asleep, while a local-only tool quietly becomes a single point of failure.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
