@@ -3795,3 +3795,15 @@ lesson: Prefer tools agents can reach from the cloud with no install: a remote M
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-18
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Mural ships an MCP server (Nov 17): Claude, ChatGPT, Cursor  (maybe); Cognition launches Devin Bots (Nov 17): persistent coding ag (yes); Claude Desktop adds release channels (Nov 17); Claude Code 2 (yes); Model ML raises $250M Series B at a $1.5B valuation for AI a (maybe); arXiv 2611.03618 'Strategist': a meta-agent that stores reas (maybe)
+lesson: Agents are shifting from single runs to standing workers (Devin Bots, Mural on shared boards), so reliability now depends on the platform staying still: pin the always-on machine to a stable release channel and test new builds elsewhere, or a daily update can quietly break the overnight loop.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

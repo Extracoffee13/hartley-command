@@ -1,51 +1,52 @@
 {
-  "generated": "2026-11-17T10:52:16+00:00",
-  "latest_date": "2026-11-17",
+  "generated": "2026-11-18T10:51:58+00:00",
+  "latest_date": "2026-11-18",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Paper ships a Remote MCP server (Nov 17): cloud agents can read and write Paper design files with no desktop install",
-      "summary": "Paper (paper.design) announced a remote version of its MCP server so cloud-hosted agents can open and edit design files without the local Paper Desktop app; a companion PR adds a ChatGPT/Codex plugin for it. Launch details come from Paper's docs and an announcement relayed on X.",
+      "title": "Mural ships an MCP server (Nov 17): Claude, ChatGPT, Cursor and Copilot agents can read and build on Mural canvases",
+      "summary": "Mural's new MCP server lets AI agents pull research, documents and tickets into a Mural board, build diagrams and summarize work, then push action items to Jira, Linear and GitHub; it is listed in the Claude, OpenAI, Microsoft and Cursor marketplaces and is on by default for paid non-enterprise plans.",
       "tag": "maybe",
-      "how": "Brand 9 Signs: a cloud agent could draft sign mockups and proof layouts in a shared design file overnight without a Mac in the loop; worth a trial against our current Canva/Higgsfield path. The Construct: remote (no-install) MCP is the right shape for scheduled cloud runs. PRAGMA: a clean example of design tools becoming agent-callable.",
-      "url": "https://paper.design/docs/mcp"
+      "how": "The Construct: a shared visual board agents can write to, useful for mapping the Hermes swarm or a weekly plan that a human then edits. PRAGMA: a clean client demo of 'agents draft, people decide' on a whiteboard. Brand 9 Signs: low; maybe for laying out a multi-sign community package with a client.",
+      "url": "https://www.prnewswire.com/news-releases/mural-launches-multiple-new-ai-capabilities-including-mcp-server-and-visual-meeting-summaries-driving-faster-outcomes-through-continuous-alignment-302941739.html"
     },
     {
       "n": 2,
-      "title": "Alibaba previews Qwen4-Max (Nov 16): agent-first coding and a 1M-token context window",
-      "summary": "Alibaba opened a preview of Qwen4-Max, positioned for agentic coding with 1M-token context support, following the Qwen 4 lineup shown at Apsara. Benchmarks are vendor claims; no Anthropic, OpenAI, Google, Meta, Mistral, xAI or DeepSeek model launched in the window.",
-      "tag": "maybe",
-      "how": "The Construct: a possible low-cost second model for long-context batch jobs (log and document digestion), but test before trusting and mind data-residency questions. PRAGMA: another sign that 1M context is now standard, so clients should price on task cost, not context size. Brand 9 Signs: no.",
-      "url": "https://alphasignal.ai/news/alibaba-launches-qwen4-max-with-agent-first-coding-and-1m-token-support"
+      "title": "Cognition launches Devin Bots (Nov 17): persistent coding agents that oversee projects for days or weeks",
+      "summary": "Cognition introduced Devin Bots, long-running software agents meant to own a project over days or weeks rather than finish a single task, per Fortune as relayed by AI Agents Directory's Nov 17 brief.",
+      "tag": "yes",
+      "how": "The Construct: the industry is moving from one-shot runs to standing agents, which is exactly what our scheduled loops (Pulse, Lens, Ledger) are; compare their hand-off and memory design to ours. PRAGMA: 'an agent that owns a workstream for weeks' is the buyer pitch to sharpen. Brand 9 Signs: indirect, via site-maintenance agents.",
+      "url": "https://aiagentsdirectory.com/news/ai-agents-news-brief-november-17-2026"
     },
     {
       "n": 3,
-      "title": "Dreamteam launches an AI-native CRM with four agents and a 'Company Brain', backed by $53M (Nov 16)",
-      "summary": "Former Freshworks executives launched Dreamteam with $53M across a seed (Together Fund) and Series A (Accel); it says 100+ paying customers in 13 countries use its agent-run CRM.",
-      "tag": "maybe",
-      "how": "Brand 9 Signs: a watch item if our quote-to-reorder follow-up outgrows email and sheets. PRAGMA: proof that buyers will pay for 'CRM run by agents with a shared memory', the same pitch we make for operator setups. The Construct: the 'Company Brain' is our memory/knowledge-graph layer under another name.",
-      "url": "https://emergent.sh/news/dreamteam-raises-53m-ai-native-crm-challenge"
+      "title": "Claude Desktop adds release channels (Nov 17); Claude Code 2.1.326 adds Code Mode for agent teams",
+      "summary": "Claude Desktop now lets users choose Stable (default, less frequent updates) or Latest (roughly daily builds); separately, Claude Code 2.1.326 (first tracked Nov 17) adds Code Mode support for agent teams and sandbox protection changes. Anthropic also began watermarking text from select Claude models on Nov 16.",
+      "tag": "yes",
+      "how": "The Construct: put the always-on Mac on Stable so the 06:20 launchd job and scheduled Cowork runs are not broken by a daily build; test new features on a second machine on Latest. PRAGMA: tell clients running agent fleets to pin a release channel. Brand 9 Signs: no direct effect.",
+      "url": "https://support.claude.com/en/articles/12138966-release-notes"
     },
     {
       "n": 4,
-      "title": "Corma raises $125M Series A at $1B to train cybersecurity-tuned foundation models (Nov 16)",
-      "summary": "Corma.ai, which builds AI models for security teams, raised $125M led by NEA with Khosla, Coatue and Sequoia returning.",
-      "tag": "no",
-      "how": "PRAGMA only: security-specialist models are attracting big money, so client agent-security advice should expect domain models inside their security stack. No direct use for The Construct or Brand 9 Signs.",
-      "url": "https://siliconangle.com/2026/11/16/corma-raises-125m-to-train-cybersecurity-optimized-foundation-models/"
+      "title": "Model ML raises $250M Series B at a $1.5B valuation for AI agents that automate bankers' work (Nov 17)",
+      "summary": "Model ML, which builds agents that produce banking deliverables such as pitch materials and analysis, raised a $250M Series B valuing it at $1.5B.",
+      "tag": "maybe",
+      "how": "PRAGMA: a vertical-agent company reaching unicorn value by automating one profession's deliverables supports our 'operator for one trade' wedge, signage included. The Construct and Brand 9 Signs: no direct use.",
+      "url": "https://www.bloomberg.com/news/articles/2026-11-17/ai-startup-for-bankers-raises-funds-at-1-5-billion-value"
     },
     {
       "n": 5,
-      "title": "arXiv 2611.12545 'Teamknitt': configure, observe and step into teams of 1-16 LLM agents",
-      "summary": "An open reference framework with 14 routing topologies (or custom graphs), shared-context profiles and human-led interventions; it states testable hypotheses but reports no comparative results yet (submitted Nov 9).",
+      "title": "arXiv 2611.03618 'Strategist': a meta-agent that stores reasoning strategies as reusable blueprints",
+      "summary": "Strategist evolves inference strategies across tasks and saves them in a library of executable blueprints; across 30 benchmarks it matches the strongest baseline (74.7% vs 74.0% average accuracy) at 39% lower inference cost. Submitted Nov 2, so earlier this month rather than this week.",
       "tag": "maybe",
-      "how": "The Construct: a vocabulary for describing how our Hermes swarm routes work and where a human can step in; useful for writing down our topology, not for adopting the code yet. PRAGMA: a framework for explaining agent-team design to clients. Brand 9 Signs: no.",
-      "url": "https://papers.cool/arxiv/2611.12545"
+      "how": "The Construct: the same idea as our skills registry, where a lesson that worked once becomes a reusable, cheaper playbook; supports turning PRAXIS lessons into skills instead of leaving them as notes. PRAGMA: evidence that reuse cuts agent cost. Brand 9 Signs: no.",
+      "url": "https://papers.cool/arxiv/2611.03618"
     }
   ],
-  "praxis_lesson": "Prefer tools agents can reach from the cloud with no install: a remote MCP server keeps a scheduled loop working when the Mac is asleep, while a local-only tool quietly becomes a single point of failure.",
+  "praxis_lesson": "Agents are shifting from single runs to standing workers (Devin Bots, Mural on shared boards), so reliability now depends on the platform staying still: pin the always-on machine to a stable release channel and test new builds elsewhere, or a daily update can quietly break the overnight loop.",
   "history": [
+    "2026-11-18",
     "2026-11-17",
     "2026-11-16",
     "2026-11-15",
@@ -58,7 +59,6 @@
     "2026-11-08",
     "2026-11-07",
     "2026-11-06",
-    "2026-11-05",
-    "2026-11-04"
+    "2026-11-05"
   ]
 }
