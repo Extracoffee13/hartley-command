@@ -3819,3 +3819,15 @@ lesson: Agents are getting their own identity, wallet and price ceiling (Entra i
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-19
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (midday refresh: added Anthropic IPO, Claude Code blocking hooks, bank agent-liability terms).
+outcome: Anthropic prices its IPO at $83/share (Nov 18) and starts tr (maybe); Claude Code v2.1.327-v2.1.328: 'claude mcp add-json' reads c (yes); Citi, PNC and Citizens change their terms (Nov 18): customer (yes); Anthropic linked billing beta (Nov 17): third-party apps bil (yes); Google ships Gemini 4 Neon (Nov 18): $3/$15 per 1M tokens, 1 (maybe)
+lesson: Liability for agent actions now sits with the operator (banks just made that explicit), so every Construct agent that can spend or send must pass a blocking gate, use a scoped credential and stay under a cap it cannot raise; Claude Code's new onFailure: block hooks make that gate cheap to build.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
