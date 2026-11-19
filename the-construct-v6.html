@@ -292,6 +292,10 @@ footer{position:relative;z-index:1;padding:0 var(--s3) var(--s4);max-width:1680p
 
 /* AI shelf panel (2026-11-11): reads ai-shelf.json written by _b9_temp/_flywheel/ai/shelf/dashboard/publish_shelf.py (aggregates only) */
 .aigrid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:var(--s3)}
+.fwtab .st{font:600 11px/1 var(--f-disp);letter-spacing:.08em;text-transform:uppercase;padding:4px 6px;border-radius:var(--r);border:1px solid var(--line2);color:var(--ice);white-space:nowrap}
+.fwtab .st.stale{color:var(--warn);border-color:rgba(242,155,75,.5);background:var(--warn-bg)}
+.fwtab .st.missing{color:var(--fail);border-color:rgba(255,90,102,.5);background:var(--fail-bg)}
+@media (max-width:720px){ .fwtab .hide-s{display:none} .fwtab td,.fwtab th{padding:6px 5px} }
 .aieng{width:100%;border-collapse:collapse;font-size:13px}
 .aieng th{font:600 11px/1.2 var(--f-disp);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
 .aieng td{padding:8px;border-bottom:1px solid rgba(120,220,255,.08);vertical-align:middle;color:var(--text)}
@@ -440,8 +444,11 @@ footer{position:relative;z-index:1;padding:0 var(--s3) var(--s4);max-width:1680p
   <div class="opsrow">
     <section class="panel" id="p-op" data-key="b"><div class="ph"><span class="pt">B9 Opportunities</span><span class="ps">Bids &amp; big jobs · readiness gates</span><span class="pk">B</span><button class="px" aria-label="Expand panel">⤢</button></div><div class="pb" id="b-op"></div></section>
   </div>
+  <div class="opsrow">
+    <section class="panel" id="p-fw" data-key="f"><div class="ph"><span class="pt">Skills &amp; flywheels</span><span class="ps">Every domain · lessons, freshness, Hermes sync · aggregates only</span><span class="pk">F</span><button class="px" aria-label="Expand panel">⤢</button></div><div class="pb" id="b-fw"></div></section>
+  </div>
 </main>
-<footer id="foot">V6 · reads ecosystem-status.json, ecosystem-registry.json, hermes-status.json, harvard-corpus-stats.json, b9-opportunities.json, construct-mods.json, b9-sales.json and ai-shelf.json once on load, then every 60 s · voice relay: 127.0.0.1:8787 on Bobby's Mac</footer>
+<footer id="foot">V6 · reads ecosystem-status.json, ecosystem-registry.json, hermes-status.json, harvard-corpus-stats.json, b9-opportunities.json, construct-mods.json, b9-sales.json, ai-shelf.json and flywheels.json once on load, then every 60 s · voice relay: 127.0.0.1:8787 on Bobby's Mac</footer>
 
 <div class="backdrop" id="backdrop"></div>
 <div class="help" id="help" role="dialog" aria-modal="true" aria-label="Help">
@@ -876,6 +883,25 @@ function renderAI(){
   el.innerHTML = h;
 }
 
+/* Skills & flywheels panel (2026-11-19) — reads flywheels.json (~/Foundry/_construct/tools/flywheel_index.py; labels, counts and dates only) */
+function renderFW(){
+  var o = S.fw, el = $('#b-fw'); if(!el) return;
+  if(!o){ el.innerHTML = '<div class="m dimt">' + (S.loaded ? 'flywheels.json not published yet.' : 'Waiting for data…') + '</div>'; return; }
+  var t = o.totals || {}, sy = o.skill_sync || {}, D = arr(o.domains).slice();
+  function ago(d){ if(!d) return '—'; var n = Math.round((Date.now() - new Date(d + 'T12:00:00').getTime()) / 864e5); return n <= 0 ? 'today' : (n === 1 ? '1 day' : n + ' days'); }
+  var tiles = [['Domains', String(t.domains || 0), ''], ['Stale', String(t.stale || 0), t.stale ? 'w' : 'i'], ['Missing', String(t.missing || 0), t.missing ? 'f' : ''],
+    ['Lessons logged', String(t.entries || 0), ''], ['Hermes skills', String(t.hermes_skills || 0) + (sy.ts ? '<small> synced ' + esc(String(sy.ts).slice(5, 16).replace('T', ' ')) + '</small>' : ''), sy.ts ? 'i' : 'w']];
+  var h = '<div class="stats s5">' + tiles.map(function(x){ return '<div class="stat ' + x[2] + '"><div class="v">' + x[1] + '</div><div class="k">' + x[0] + '</div></div>'; }).join('') + '</div>';
+  D.sort(function(a, b){ return (b.missing - a.missing) || (b.stale - a.stale) || (b.docs_7d - a.docs_7d); });
+  h += '<div class="sec opwrap"><div class="lbl"><span>Per domain · stale = worked on this week, lesson file not updated</span><span class="mono dimt">' + esc(fmtET(o.generated)) + '</span></div>'
+     + '<table class="aieng fwtab"><thead><tr><th>Domain</th><th>State</th><th>Lessons</th><th>Updated</th><th class="hide-s">Work 7d</th><th class="hide-s">Skills in Hermes</th></tr></thead><tbody>';
+  D.forEach(function(r){ var st = r.missing ? 'missing' : (r.stale ? 'stale' : 'ok');
+    h += '<tr><td>' + esc(r.label) + '</td><td><span class="st ' + st + '">' + st + '</span></td><td class="nr">' + (r.entries || 0) + '</td><td class="nr">' + ago(r.touched) + '</td>'
+       + '<td class="nr hide-s">' + (r.docs_7d || 0) + '</td><td class="nr hide-s">' + (r.skills_in_hermes || 0) + '/' + (r.skills || 0) + '</td></tr>'; });
+  h += '</tbody></table><div class="m dimt" style="font-size:12px;margin-top:6px">Last Hermes sync: ' + (sy.ts ? (sy.skills || 0) + ' skills · ' + (sy.added || 0) + ' added · ' + (sy.updated || 0) + ' updated · ' + (sy.profile_copies || 0) + ' profile copies' : 'not run yet') + '.</div></div>';
+  el.innerHTML = h;
+}
+
 function renderOP(){
   var o = S.op, el = $('#b-op'); if(!el) return;
   if(!o){ el.innerHTML = '<div class="m dimt">' + (S.loaded ? 'b9-opportunities.json not published yet.' : 'Waiting for data…') + '</div>'; return; }
@@ -1208,12 +1234,12 @@ function renderRelayChip(){
 /* ───────── data load (once, then every 60 s) ───────── */
 function gj(u){ return fetch(u + '?cb=' + Date.now(), {cache:'no-store'}).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; }); }
 function loadData(){
-  return Promise.all([gj('./ecosystem-status.json'), gj('./ecosystem-registry.json'), gj('./hermes-status.json'), gj('./harvard-corpus-stats.json'), gj('./b9-opportunities.json'), gj('./construct-mods.json'), gj('./b9-sales.json'), gj('./ai-shelf.json')])
-    .then(function(r){ if(r[0]) S.st = r[0]; if(r[1]) S.reg = r[1]; if(r[2]) S.hv = r[2]; if(r[3]) S.hc = r[3]; if(r[4]) S.op = r[4]; if(r[5]) S.md = r[5]; if(r[6]) S.sl = r[6]; if(r[7]) S.ai = r[7]; S.loaded = new Date(); renderAll(); });
+  return Promise.all([gj('./ecosystem-status.json'), gj('./ecosystem-registry.json'), gj('./hermes-status.json'), gj('./harvard-corpus-stats.json'), gj('./b9-opportunities.json'), gj('./construct-mods.json'), gj('./b9-sales.json'), gj('./ai-shelf.json'), gj('./flywheels.json')])
+    .then(function(r){ if(r[0]) S.st = r[0]; if(r[1]) S.reg = r[1]; if(r[2]) S.hv = r[2]; if(r[3]) S.hc = r[3]; if(r[4]) S.op = r[4]; if(r[5]) S.md = r[5]; if(r[6]) S.sl = r[6]; if(r[7]) S.ai = r[7]; if(r[8]) S.fw = r[8]; S.loaded = new Date(); renderAll(); });
 }
 function renderAll(){
   var d = D();
-  [renderSys, renderGK, renderKB, renderTG, renderHV, renderPF, renderRT, renderVN, renderDC, renderMD, renderSL, renderOP, renderAI].forEach(function(f){ try{ f(d); }catch(e){ console.warn('panel render', e); } });
+  [renderSys, renderGK, renderKB, renderTG, renderHV, renderPF, renderRT, renderVN, renderDC, renderMD, renderSL, renderOP, renderAI, renderFW].forEach(function(f){ try{ f(d); }catch(e){ console.warn('panel render', e); } });
   try{ buildMap(); }catch(e){ console.warn('map render', e); }
   renderDataChip();
   if(S.sel && S.nodes[S.sel]) $('#nodecard').innerHTML = nodeDetail(S.sel);
@@ -1535,6 +1561,7 @@ function init(){
     if(e.key === '0'){ resetView(); return; }
     if(e.key === 'm' || e.key === 'M'){ flashPanel('p-md', true); var mb = $('#p-md .px'); if(mb) mb.focus({preventScroll:true}); return; }
     if(e.key === 'a' || e.key === 'A'){ flashPanel('p-ai', true); var ab = $('#p-ai .px'); if(ab) ab.focus({preventScroll:true}); return; }
+    if(e.key === 'f' || e.key === 'F'){ flashPanel('p-fw', true); var fb = $('#p-fw .px'); if(fb) fb.focus({preventScroll:true}); return; }
     if(e.key === 'b' || e.key === 'B'){ flashPanel('p-op', true); var bb = $('#p-op .px'); if(bb) bb.focus({preventScroll:true}); return; }
     if(/^[1-9]$/.test(e.key)){ var p = document.querySelector('.panel[data-key="' + e.key + '"]'); if(p){ flashPanel(p.id, true); var b = p.querySelector('.px'); if(b) b.focus({preventScroll:true}); } }
   });
