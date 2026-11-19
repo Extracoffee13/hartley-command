@@ -3807,3 +3807,15 @@ lesson: Agents are shifting from single runs to standing workers (Devin Bots, Mu
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-19
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Anthropic launches linked billing in beta (Nov 17): third-pa (yes); Zinc ships a hosted MCP server (Nov 18) so AI agents can pla (maybe); OpenAI releases GPT-6.2 Astra and GPT-6.2 Sol (Nov 17); Goog (maybe); Microsoft Ignite (Nov 17-18): Copilot Autopilot agents get t (yes); arXiv 2611.12856 'WorkflowArena': workflows written by a str (yes)
+lesson: Agents are getting their own identity, wallet and price ceiling (Entra identities, linked billing spend caps, Zinc's required max_price), so before giving any Construct agent more autonomy, give it a scoped credential and a hard spend cap that it cannot raise itself.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

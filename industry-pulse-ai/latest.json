@@ -1,51 +1,52 @@
 {
-  "generated": "2026-11-18T10:51:58+00:00",
-  "latest_date": "2026-11-18",
+  "generated": "2026-11-19T10:52:08+00:00",
+  "latest_date": "2026-11-19",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Mural ships an MCP server (Nov 17): Claude, ChatGPT, Cursor and Copilot agents can read and build on Mural canvases",
-      "summary": "Mural's new MCP server lets AI agents pull research, documents and tickets into a Mural board, build diagrams and summarize work, then push action items to Jira, Linear and GitHub; it is listed in the Claude, OpenAI, Microsoft and Cursor marketplaces and is on by default for paid non-enterprise plans.",
-      "tag": "maybe",
-      "how": "The Construct: a shared visual board agents can write to, useful for mapping the Hermes swarm or a weekly plan that a human then edits. PRAGMA: a clean client demo of 'agents draft, people decide' on a whiteboard. Brand 9 Signs: low; maybe for laying out a multi-sign community package with a client.",
-      "url": "https://www.prnewswire.com/news-releases/mural-launches-multiple-new-ai-capabilities-including-mcp-server-and-visual-meeting-summaries-driving-faster-outcomes-through-continuous-alignment-302941739.html"
+      "title": "Anthropic launches linked billing in beta (Nov 17): third-party apps can bill Claude usage to the customer's own org, with spend caps",
+      "summary": "Customers link their Claude org so third-party platforms (19 at launch, including Linear, Ramp, Railway, Asana and ClickHouse) bill usage to it without an API key; a billing_policy field on /v1/messages picks who pays, and customers set monthly or per-app spend limits in Console and can unlink at any time.",
+      "tag": "yes",
+      "how": "The Construct: put each tool that calls Claude on its own capped line so one runaway loop cannot drain the account. PRAGMA: a cleaner way to ship client tools, where the client pays Anthropic directly and sets the cap, and PRAGMA never holds their API key. Brand 9 Signs: indirect.",
+      "url": "https://releasebot.io/updates/anthropic"
     },
     {
       "n": 2,
-      "title": "Cognition launches Devin Bots (Nov 17): persistent coding agents that oversee projects for days or weeks",
-      "summary": "Cognition introduced Devin Bots, long-running software agents meant to own a project over days or weeks rather than finish a single task, per Fortune as relayed by AI Agents Directory's Nov 17 brief.",
-      "tag": "yes",
-      "how": "The Construct: the industry is moving from one-shot runs to standing agents, which is exactly what our scheduled loops (Pulse, Lens, Ledger) are; compare their hand-off and memory design to ours. PRAGMA: 'an agent that owns a workstream for weeks' is the buyer pitch to sharpen. Brand 9 Signs: indirect, via site-maintenance agents.",
-      "url": "https://aiagentsdirectory.com/news/ai-agents-news-brief-november-17-2026"
+      "title": "Zinc ships a hosted MCP server (Nov 18) so AI agents can place real retail orders at Amazon, Lowe's, Home Depot, Walmart, Best Buy and Etsy",
+      "summary": "Zinc's hosted MCP server at mcp.zinc.com/mcp plus expanded order APIs let shopping agents buy from major retailers, and every order must carry a max_price cap; Zinc cites 21M+ completed orders and $700M shipped since 2014.",
+      "tag": "maybe",
+      "how": "Brand 9 Signs: an agent could reorder stakes, hardware and install supplies from Home Depot or Lowe's within a hard price cap. It also shows agentic buying is real, which supports the b9-chatgpt-shopping work so agents can buy from the B9 shop. The Construct: copy the required max_price pattern into any agent that spends money. PRAGMA: a demo of safe agent purchasing.",
+      "url": "https://www.prweb.com/releases/zinc-launches-hosted-mcp-server-and-retail-order-apis-for-ai-shopping-agents-in-2026-302942962.html"
     },
     {
       "n": 3,
-      "title": "Claude Desktop adds release channels (Nov 17); Claude Code 2.1.326 adds Code Mode for agent teams",
-      "summary": "Claude Desktop now lets users choose Stable (default, less frequent updates) or Latest (roughly daily builds); separately, Claude Code 2.1.326 (first tracked Nov 17) adds Code Mode support for agent teams and sandbox protection changes. Anthropic also began watermarking text from select Claude models on Nov 16.",
-      "tag": "yes",
-      "how": "The Construct: put the always-on Mac on Stable so the 06:20 launchd job and scheduled Cowork runs are not broken by a daily build; test new features on a second machine on Latest. PRAGMA: tell clients running agent fleets to pin a release channel. Brand 9 Signs: no direct effect.",
-      "url": "https://support.claude.com/en/articles/12138966-release-notes"
+      "title": "OpenAI releases GPT-6.2 Astra and GPT-6.2 Sol (Nov 17); Google's Gemini 4 Neon follows (Nov 18)",
+      "summary": "OpenAI launched GPT-6.2 Astra (frontier) and GPT-6.2 Sol in ChatGPT and the API, claiming better performance at lower cost per task; release trackers log Gemini 4 Neon from Google on Nov 18 and Microsoft's MAI Code 2 and MAI Code 2 Flash coding models on Nov 17.",
+      "tag": "maybe",
+      "how": "The Construct: run one standing task (a Pulse scan or a Vector render brief) on Astra or Sol against Claude to check cost and quality before switching any routes. PRAGMA: keep the client pitch model-neutral. Brand 9 Signs: no direct effect.",
+      "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol"
     },
     {
       "n": 4,
-      "title": "Model ML raises $250M Series B at a $1.5B valuation for AI agents that automate bankers' work (Nov 17)",
-      "summary": "Model ML, which builds agents that produce banking deliverables such as pitch materials and analysis, raised a $250M Series B valuing it at $1.5B.",
-      "tag": "maybe",
-      "how": "PRAGMA: a vertical-agent company reaching unicorn value by automating one profession's deliverables supports our 'operator for one trade' wedge, signage included. The Construct and Brand 9 Signs: no direct use.",
-      "url": "https://www.bloomberg.com/news/articles/2026-11-17/ai-startup-for-bankers-raises-funds-at-1-5-billion-value"
+      "title": "Microsoft Ignite (Nov 17-18): Copilot Autopilot agents get their own Entra identity; LangChain adds LangSmith Sandboxes with microVM isolation",
+      "summary": "Microsoft introduced Copilot Autopilot, an autonomous agent with its own Entra identity and a reasoning layer, as part of its Ignite Copilot announcements; the same day LangChain shipped LangSmith Sandboxes that run agent code in isolated microVMs (per AI Agents Directory's Nov 18 brief).",
+      "tag": "yes",
+      "how": "The Construct: give each Hermes worker and scheduled agent its own identity and scoped login, and run untrusted code in a sandbox rather than on the main Mac. PRAGMA: 'every agent has an identity, an owner and an audit trail' is now the enterprise default and belongs in the governance part of the pitch. Brand 9 Signs: low.",
+      "url": "https://microsoft.com/en-us/copilot/blog/2026/11/17/copilot-at-microsoft-ignite-expanding-whats-possible-with-intelligence-built-for-work"
     },
     {
       "n": 5,
-      "title": "arXiv 2611.03618 'Strategist': a meta-agent that stores reasoning strategies as reusable blueprints",
-      "summary": "Strategist evolves inference strategies across tasks and saves them in a library of executable blueprints; across 30 benchmarks it matches the strongest baseline (74.7% vs 74.0% average accuracy) at 39% lower inference cost. Submitted Nov 2, so earlier this month rather than this week.",
-      "tag": "maybe",
-      "how": "The Construct: the same idea as our skills registry, where a lesson that worked once becomes a reusable, cheaper playbook; supports turning PRAXIS lessons into skills instead of leaving them as notes. PRAGMA: evidence that reuse cuts agent cost. Brand 9 Signs: no.",
-      "url": "https://papers.cool/arxiv/2611.03618"
+      "title": "arXiv 2611.12856 'WorkflowArena': workflows written by a strong model make weaker executor agents much better",
+      "summary": "A 145-task, 8-domain benchmark of multi-agent workflow orchestration across nine models found that no single setup wins everywhere, that Claude in Claude Code delegates less often while GPT in Codex delegates more, and that workflows authored by Claude Opus 5.5 substantially improve weaker executors on a hard subset. Submitted Nov 9, so earlier this month rather than the last 24h.",
+      "tag": "yes",
+      "how": "The Construct: supports a planner/worker split in the Hermes swarm, where Opus writes the workflow once as a skill or recipe and cheaper models carry it out. PRAGMA: a cited cost argument for clients. Brand 9 Signs: applies to repeat ops recipes such as orders and site fixes.",
+      "url": "https://papers.cool/arxiv/2611.12856"
     }
   ],
-  "praxis_lesson": "Agents are shifting from single runs to standing workers (Devin Bots, Mural on shared boards), so reliability now depends on the platform staying still: pin the always-on machine to a stable release channel and test new builds elsewhere, or a daily update can quietly break the overnight loop.",
+  "praxis_lesson": "Agents are getting their own identity, wallet and price ceiling (Entra identities, linked billing spend caps, Zinc's required max_price), so before giving any Construct agent more autonomy, give it a scoped credential and a hard spend cap that it cannot raise itself.",
   "history": [
+    "2026-11-19",
     "2026-11-18",
     "2026-11-17",
     "2026-11-16",
@@ -58,7 +59,6 @@
     "2026-11-09",
     "2026-11-08",
     "2026-11-07",
-    "2026-11-06",
-    "2026-11-05"
+    "2026-11-06"
   ]
 }
