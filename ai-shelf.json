@@ -1,26 +1,26 @@
 {
- "generated": "2026-11-19T15:44:38Z",
+ "generated": "2026-11-20T15:57:10Z",
  "window_days": 14,
- "window_start": "2026-11-06",
- "window_end": "2026-11-19",
+ "window_start": "2026-11-07",
+ "window_end": "2026-11-20",
  "source": "harness",
  "engines": {
   "chatgpt": {
-   "prompts": 560,
-   "named": 164,
-   "share": 0.293,
+   "prompts": 591,
+   "named": 185,
+   "share": 0.313,
    "share_ci": [
-    0.257,
-    0.332
+    0.277,
+    0.352
    ],
-   "top1": 86,
-   "top1_rate": 0.154,
+   "top1": 96,
+   "top1_rate": 0.162,
    "top1_ci": [
-    0.126,
-    0.186
+    0.135,
+    0.194
    ],
-   "top1_known": 560,
-   "last_run": "2026-11-19"
+   "top1_known": 591,
+   "last_run": "2026-11-20"
   },
   "claude": {
    "prompts": 24,
@@ -58,14 +58,6 @@
   }
  },
  "trend": [
-  {
-   "date": "2026-11-06",
-   "chatgpt": {
-    "n": 40,
-    "share": 0.2,
-    "top1": 2
-   }
-  },
   {
    "date": "2026-11-07",
    "chatgpt": {
@@ -184,13 +176,21 @@
     "share": 0.275,
     "top1": 8
    }
+  },
+  {
+   "date": "2026-11-20",
+   "chatgpt": {
+    "n": 40,
+    "share": 0.55,
+    "top1": 10
+   }
   }
  ],
  "families_total": {
   "families": 64,
   "measured": 63,
   "named": 46,
-  "top1": 40,
+  "top1": 41,
   "never_measured": 1,
   "not_named": 17
  },
@@ -198,22 +198,22 @@
   {
    "family": "vinyl-banners",
    "group": "printed",
-   "prompts_in_bank": 80,
+   "prompts_in_bank": 81,
    "measured": 45,
    "named_any": 12,
    "top1_any": 5,
    "by_engine": {
-    "chatgpt": {
-     "measured": 45,
-     "named": 11
+    "claude": {
+     "measured": 1,
+     "named": 1
     },
     "grok": {
      "measured": 4,
      "named": 0
     },
-    "claude": {
-     "measured": 1,
-     "named": 1
+    "chatgpt": {
+     "measured": 42,
+     "named": 11
     }
    },
    "not_named": 33
@@ -221,7 +221,7 @@
   {
    "family": "acm-signs",
    "group": "printed",
-   "prompts_in_bank": 74,
+   "prompts_in_bank": 80,
    "measured": 43,
    "named_any": 20,
    "top1_any": 12,
@@ -244,22 +244,22 @@
   {
    "family": "aluminum-signs",
    "group": "printed",
-   "prompts_in_bank": 57,
+   "prompts_in_bank": 61,
    "measured": 41,
    "named_any": 9,
    "top1_any": 2,
    "by_engine": {
-    "chatgpt": {
-     "measured": 41,
-     "named": 8
+    "claude": {
+     "measured": 1,
+     "named": 0
     },
     "grok": {
      "measured": 4,
      "named": 2
     },
-    "claude": {
-     "measured": 1,
-     "named": 0
+    "chatgpt": {
+     "measured": 38,
+     "named": 7
     }
    },
    "not_named": 32
@@ -267,15 +267,11 @@
   {
    "family": "yard-signs",
    "group": "printed",
-   "prompts_in_bank": 68,
+   "prompts_in_bank": 70,
    "measured": 40,
    "named_any": 5,
    "top1_any": 1,
    "by_engine": {
-    "chatgpt": {
-     "measured": 40,
-     "named": 4
-    },
     "claude": {
      "measured": 1,
      "named": 1
@@ -283,6 +279,10 @@
     "grok": {
      "measured": 4,
      "named": 0
+    },
+    "chatgpt": {
+     "measured": 37,
+     "named": 4
     }
    },
    "not_named": 35
@@ -290,7 +290,7 @@
   {
    "family": "acrylic-signs",
    "group": "printed",
-   "prompts_in_bank": 57,
+   "prompts_in_bank": 59,
    "measured": 38,
    "named_any": 22,
    "top1_any": 16,
@@ -303,15 +303,34 @@
    "not_named": 16
   },
   {
+   "family": "wall-decals",
+   "group": "printed",
+   "prompts_in_bank": 70,
+   "measured": 37,
+   "named_any": 23,
+   "top1_any": 12,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 37,
+     "named": 22
+    },
+    "claude": {
+     "measured": 1,
+     "named": 1
+    }
+   },
+   "not_named": 14
+  },
+  {
    "family": "window-graphics",
    "group": "shop",
    "prompts_in_bank": 82,
-   "measured": 35,
+   "measured": 36,
    "named_any": 13,
    "top1_any": 9,
    "by_engine": {
     "chatgpt": {
-     "measured": 35,
+     "measured": 36,
      "named": 13
     },
     "claude": {
@@ -323,7 +342,7 @@
      "named": 0
     }
    },
-   "not_named": 22
+   "not_named": 23
   },
   {
    "family": "pvc-signs",
@@ -379,6 +398,25 @@
    "not_named": 4
   },
   {
+   "family": "floor-graphics",
+   "group": "printed",
+   "prompts_in_bank": 48,
+   "measured": 11,
+   "named_any": 4,
+   "top1_any": 1,
+   "by_engine": {
+    "chatgpt": {
+     "measured": 11,
+     "named": 4
+    },
+    "claude": {
+     "measured": 1,
+     "named": 0
+    }
+   },
+   "not_named": 7
+  },
+  {
    "family": "dimensional-letters",
    "group": "dimensional",
    "prompts_in_bank": 60,
@@ -404,7 +442,7 @@
   {
    "family": "vehicle-graphics",
    "group": "printed",
-   "prompts_in_bank": 59,
+   "prompts_in_bank": 60,
    "measured": 9,
    "named_any": 1,
    "top1_any": 1,
@@ -423,7 +461,7 @@
   {
    "family": "die-cut-graphics",
    "group": "printed",
-   "prompts_in_bank": 61,
+   "prompts_in_bank": 62,
    "measured": 7,
    "named_any": 3,
    "top1_any": 2,
@@ -585,25 +623,6 @@
    "not_named": 0
   },
   {
-   "family": "wall-decals",
-   "group": "printed",
-   "prompts_in_bank": 67,
-   "measured": 5,
-   "named_any": 4,
-   "top1_any": 3,
-   "by_engine": {
-    "chatgpt": {
-     "measured": 5,
-     "named": 3
-    },
-    "claude": {
-     "measured": 1,
-     "named": 1
-    }
-   },
-   "not_named": 1
-  },
-  {
    "family": "a-frame-signs",
    "group": "printed",
    "prompts_in_bank": 49,
@@ -734,7 +753,7 @@
   {
    "family": "canopy-tents",
    "group": "display",
-   "prompts_in_bank": 42,
+   "prompts_in_bank": 43,
    "measured": 4,
    "named_any": 0,
    "top1_any": 0,
@@ -839,7 +858,7 @@
   {
    "family": "flags",
    "group": "display",
-   "prompts_in_bank": 65,
+   "prompts_in_bank": 63,
    "measured": 4,
    "named_any": 0,
    "top1_any": 0,
@@ -854,25 +873,6 @@
     }
    },
    "not_named": 4
-  },
-  {
-   "family": "floor-graphics",
-   "group": "printed",
-   "prompts_in_bank": 48,
-   "measured": 4,
-   "named_any": 1,
-   "top1_any": 0,
-   "by_engine": {
-    "chatgpt": {
-     "measured": 4,
-     "named": 1
-    },
-    "claude": {
-     "measured": 1,
-     "named": 0
-    }
-   },
-   "not_named": 3
   },
   {
    "family": "heavy-vinyl-banners",
