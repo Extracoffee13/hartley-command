@@ -3831,3 +3831,15 @@ lesson: Liability for agent actions now sits with the operator (banks just made 
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-20
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Zinc launches a hosted MCP server for retail ordering (Nov 1 (yes); Proof ships its MCP server in ChatGPT's app directory (Nov 1 (maybe); Linq raises a $90M Series B led by a16z (Nov 18) for infrast (maybe); Anthropic's first day on Nasdaq (Nov 19): CNN reports a $1.7 (maybe)
+lesson: Zinc's order contract (a hard max_price the agent cannot raise plus an idempotency key on every order) is the cheapest safety pattern for any Construct agent that spends money; add both to the Signs365 runner before adding any new purchasing agent.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
