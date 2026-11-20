@@ -3843,3 +3843,15 @@ lesson: Zinc's order contract (a hard max_price the agent cannot raise plus an i
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-20
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (afternoon refresh; added Metano and Modern Industrials).
+outcome: Zinc launches a hosted MCP server for retail ordering (Nov 1 (yes); Metano emerges from stealth with a $12M seed (Nov 19) to fin (yes); Modern Industrials raises a $6M seed (Nov 19) for AI agents  (maybe); Proof ships its MCP server in ChatGPT's app directory (Nov 1 (maybe); Anthropic's first day on Nasdaq (Nov 19): CNN reports a $1.7 (maybe)
+lesson: Zinc's order contract (a hard max_price the agent cannot raise plus an idempotency key on every order) is the cheapest safety pattern for any Construct agent that spends money, and Metano's funding shows the next layer (an inventory and action log of every agent) is now table stakes; add both to the Signs365 runner before adding any new purchasing agent.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
