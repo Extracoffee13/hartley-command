@@ -1,51 +1,44 @@
 {
-  "generated": "2026-11-20T18:52:50+00:00",
-  "latest_date": "2026-11-20",
+  "generated": "2026-11-21T10:52:29+00:00",
+  "latest_date": "2026-11-21",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Zinc launches a hosted MCP server for retail ordering (Nov 18): every order needs a max_price ceiling and an idempotency key",
-      "summary": "Zinc's hosted MCP server (mcp.zinc.com/mcp) plus GET /search and POST /orders APIs let agents buy across Amazon, Lowe's, Walmart, Best Buy, The Home Depot and Etsy; each order must carry a hard price ceiling in cents and an idempotency key so retries never double-buy.",
+      "title": "Claude computer use (beta) opens to Team and Enterprise plans (Nov 20)",
+      "summary": "Anthropic's release notes say computer use is now in beta on Team and Enterprise plans, rolling out to organizations gradually, with an admin setup guide.",
       "tag": "yes",
-      "how": "The Construct: copy the pattern for every spending agent (a price ceiling the agent cannot raise plus an idempotency key per order). Brand 9 Signs: apply it to the Signs365 partner-order runner and to buying install supplies (Home Depot/Lowe's). PRAGMA: a clean, citable example of a safe agent-purchase contract.",
-      "url": "https://www.prweb.com/releases/zinc-launches-hosted-mcp-server-and-retail-order-apis-for-ai-shopping-agents-in-2026-302942962.html"
+      "how": "The Construct: a sanctioned, org-level path for the desktop tasks Hermes and the AP-Agent Mac now handle, so check whether our org has it and pilot one runner task (e.g. Signs365 cart steps) against it. Brand 9 Signs: vendor-portal work with no API. PRAGMA: a clean recommendation for clients already on Team or Enterprise.",
+      "url": "https://support.claude.com/en/articles/18483812-set-up-computer-use-for-team-and-enterprise-plans"
     },
     {
       "n": 2,
-      "title": "Metano emerges from stealth with a $12M seed (Nov 19) to find and police enterprise AI agents",
-      "summary": "Led by Sierra Ventures with Correlation Ventures, High Alpha and 360 ONE, Metano discovers AI agents running across company systems, inspects what they do, and applies controls that block harmful or unauthorized actions.",
-      "tag": "yes",
-      "how": "The Construct: the same three steps (inventory every agent, log its actions, enforce a block list) are what the Hermes worker fleet needs as it grows. PRAGMA: agent discovery and control is now a funded category, so make it a line item in operator-consulting audits. Brand 9 Signs: indirect.",
-      "url": "https://techstartups.com/2026/11/20/startup-funding-news-today-november-20-2026-archer-everful-metano-modern-industrials-satsure-more/"
+      "title": "LangChain puts LangSmith Tool Gateway into public beta (Nov 19): one place for agent credentials, approvals and audit",
+      "summary": "The gateway centralizes credentials, identity, access policies, approvals and audit traces for agent tool calls and works with MCP-compatible clients.",
+      "tag": "maybe",
+      "how": "The Construct: the same choke-point idea (no agent holds raw keys; every tool call is logged and policy-checked) fits our MCP fleet whether or not we adopt LangSmith. PRAGMA: a named product to cite when advising clients on agent governance. Brand 9 Signs: indirect.",
+      "url": "https://aiagentstore.ai/ai-agent-news/this-week"
     },
     {
       "n": 3,
-      "title": "Modern Industrials raises a $6M seed (Nov 19) for AI agents that quote, enter orders and buy for manufacturers and distributors",
-      "summary": "Led by Glasswing Ventures and co-led by TMV with a16z speedrun participating, the company builds agents for quoting, order entry, procurement, inventory and customer support at manufacturers and distributors.",
+      "title": "Microsoft Foundry gives agents their own Entra identity, mailbox, calendar and OneDrive, plus fleet governance and end-to-end tracing (Nov 19)",
+      "summary": "Microsoft detailed Foundry updates letting organizations provision agents with their own Entra agent identities and Microsoft 365 resources, built-in fleet governance (deployment policy, cost and safety controls), and a preview of unified agent observability in Azure Monitor Application Insights.",
       "tag": "maybe",
-      "how": "Brand 9 Signs: the same workflow as a sign shop (quote, order entry, supplier purchase), so a benchmark for the B9 bid engine and partner-order automation. PRAGMA: a comparable for selling operator agents to small industrial firms. The Construct: watch their product for ideas.",
-      "url": "https://techstartups.com/2026/11/20/startup-funding-news-today-november-20-2026-archer-everful-metano-modern-industrials-satsure-more/"
+      "how": "The Construct: confirms the pattern of giving each agent its own identity and inbox rather than borrowing Bobby's, which is cleaner for audit and revocation. PRAGMA: Microsoft-shop clients will get this by default, so map our operator playbook onto it. Brand 9 Signs: no direct effect.",
+      "url": "https://aiagentstore.ai/ai-agent-news/this-week"
     },
     {
       "n": 4,
-      "title": "Proof ships its MCP server in ChatGPT's app directory (Nov 18), starting with x401 biometric approval of agent actions",
-      "summary": "The first flow lets a person approve an agent's action with a biometric and lets the receiving business verify that signature, so the agent can prove who it acts for and what was approved; it builds on the x401 open protocol launched Oct 15.",
+      "title": "Databricks Genie ZeroOps in public beta (Nov 19): an agent that watches jobs, diagnoses failures and proposes fixes as PRs",
+      "summary": "Genie ZeroOps monitors data jobs and tables, diagnoses failures and opens pull requests with fixes, requiring human approval before any production change.",
       "tag": "maybe",
-      "how": "The Construct: watch for a Claude connector; a signed human approval is the missing piece for high-value sends and spends. PRAGMA: pairs with this week's bank agent-liability terms as a governance pitch. Brand 9 Signs: later, signed customer approval of proofs and quotes.",
-      "url": "https://www.globenewswire.com/news-release/2026/11/18/3405765/0/en/proof-launches-its-mcp-in-chatgpt-starting-with-x401-so-ai-agents-can-prove-who-they-act-for-and-what-that-person-approved.html"
-    },
-    {
-      "n": 5,
-      "title": "Anthropic's first day on Nasdaq (Nov 19): CNN reports a $1.76T valuation after the $83 IPO price",
-      "summary": "Trading as ANT after pricing above range at $83 (about $1.5T at pricing), Anthropic closed its debut valued at about $1.76T per CNN; first-day close price was not independently verified in this scan.",
-      "tag": "maybe",
-      "how": "The Construct: the core vendor now answers to public markets, so keep model-neutral fallbacks tested and watch for pricing or rate-limit changes. PRAGMA: credibility for Claude-based operator stacks. Brand 9 Signs: no direct effect.",
-      "url": "https://www.cnn.com/2026/11/19/business/live-news/anthropic-ipo"
+      "how": "The Construct: the 'diagnose, propose as a PR, human approves' loop is a good template for the site-health sentinel and the scheduled-task triage agents. PRAGMA: a citable example of safe self-healing ops. Brand 9 Signs: indirect, via brand9signs.com site repairs.",
+      "url": "https://aiagentstore.ai/ai-agent-news/this-week"
     }
   ],
-  "praxis_lesson": "Zinc's order contract (a hard max_price the agent cannot raise plus an idempotency key on every order) is the cheapest safety pattern for any Construct agent that spends money, and Metano's funding shows the next layer (an inventory and action log of every agent) is now table stakes; add both to the Signs365 runner before adding any new purchasing agent.",
+  "praxis_lesson": "Two of the biggest platforms shipped the same idea this week: give each agent its own identity and run every tool call through one gate that holds the keys, checks policy and logs the result. For The Construct, that means each worker gets its own account and every MCP call goes through one logged gateway before more workers are added.",
   "history": [
+    "2026-11-21",
     "2026-11-20",
     "2026-11-19",
     "2026-11-18",
@@ -58,7 +51,6 @@
     "2026-11-11",
     "2026-11-10",
     "2026-11-09",
-    "2026-11-08",
-    "2026-11-07"
+    "2026-11-08"
   ]
 }

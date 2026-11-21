@@ -3855,3 +3855,15 @@ lesson: Zinc's order contract (a hard max_price the agent cannot raise plus an i
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-21
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Claude computer use (beta) opens to Team and Enterprise plan (yes); LangChain puts LangSmith Tool Gateway into public beta (Nov  (maybe); Microsoft Foundry gives agents their own Entra identity, mai (maybe); Databricks Genie ZeroOps in public beta (Nov 19): an agent t (maybe)
+lesson: Two of the biggest platforms shipped the same idea this week: give each agent its own identity and run every tool call through one gate that holds the keys, checks policy and logs the result. For The Construct, that means each worker gets its own account and every MCP call goes through one logged gateway before more workers are added.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
