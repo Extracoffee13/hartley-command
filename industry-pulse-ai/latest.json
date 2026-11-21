@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-21T14:52:09+00:00",
+  "generated": "2026-11-21T18:53:17+00:00",
   "latest_date": "2026-11-21",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
@@ -20,20 +20,12 @@
       "n": 2
     },
     {
-      "n": 3,
-      "title": "LangChain puts LangSmith Tool Gateway into public beta (Nov 19): one place for agent credentials, approvals and audit",
-      "summary": "The gateway centralizes credentials, identity, access policies, approvals and audit traces for agent tool calls and works with MCP-compatible clients.",
-      "tag": "maybe",
-      "how": "The Construct: the same choke-point idea (no agent holds raw keys; every tool call is logged and policy-checked) fits our MCP fleet whether or not we adopt LangSmith. PRAGMA: a named product to cite when advising clients on agent governance. Brand 9 Signs: indirect.",
-      "url": "https://aiagentstore.ai/ai-agent-news/this-week"
-    },
-    {
-      "n": 4,
-      "title": "Microsoft Foundry gives agents their own Entra identity, mailbox, calendar and OneDrive, plus fleet governance and end-to-end tracing (Nov 19)",
-      "summary": "Microsoft detailed Foundry updates letting organizations provision agents with their own Entra agent identities and Microsoft 365 resources, built-in fleet governance (deployment policy, cost and safety controls), and a preview of unified agent observability in Azure Monitor Application Insights.",
-      "tag": "maybe",
-      "how": "The Construct: confirms the pattern of giving each agent its own identity and inbox rather than borrowing Bobby's, which is cleaner for audit and revocation. PRAGMA: Microsoft-shop clients will get this by default, so map our operator playbook onto it. Brand 9 Signs: no direct effect.",
-      "url": "https://aiagentstore.ai/ai-agent-news/this-week"
+      "title": "Siemens shows an agent that turns a text prompt into a print-ready robot gripper by driving its CAD software over MCP (Formnext, Nov 16-20)",
+      "summary": "Built with AGIBOT, the agent picks a gripper type, adapts geometry in Siemens Designcenter, simulates it, checks the robot interface and prepares the print file, calling the engineering software's functions through the Model Context Protocol.",
+      "tag": "yes",
+      "how": "Brand 9 Signs: the same prompt-to-fabrication chain (pick template, adapt geometry, check against machine limits, export cut/print file) is what our CNC and vinyl pipelines do by hand, so wrap our CAD/CAM steps as MCP tools with a geometry gate before export. The Construct: a big-vendor proof that MCP reaches into desktop CAD, not just SaaS. PRAGMA: a citable manufacturing case for operator clients.",
+      "url": "https://3dprinting.com/news/siemens-demonstrates-agentic-ai-workflow-for-prompt-based-engineering-of-3d-printed-robotic-grippers/",
+      "n": 3
     },
     {
       "title": "OpenAI details Performance Factory (Nov 19): Codex agents diagnose ChatGPT slowdowns and propose fixes for engineers to approve",
@@ -41,10 +33,18 @@
       "tag": "yes",
       "how": "The Construct: two vendors converged on 'agent diagnoses, proposes a fix as a PR, human approves', which is the right template for the site-health sentinel and scheduled-task triage agents (they should open a fix, not just report). PRAGMA: a citable, primary-source example of safe self-healing ops. Brand 9 Signs: brand9signs.com site repairs via the sentinel.",
       "url": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast/",
+      "n": 4
+    },
+    {
+      "title": "Tasks in Gemini goes free in six countries (Nov 17): the agent calls businesses, buys through AP2 and Google Wallet, and runs in isolated cloud VMs",
+      "summary": "Google made its Tasks agent free in the US, Japan, Korea, Canada, Australia and India on Gemini 4 Hydrogen, with business phone calls, purchases via the Agent Payments Protocol, links to 60+ apps, and Universal Commerce Protocol support listed as next.",
+      "tag": "maybe",
+      "how": "Brand 9 Signs: consumer agents will now phone the shop and buy on customers' behalf, so the phone line, quote answers and checkout must work for an agent caller, and AP2/UCP readiness joins the ChatGPT-shopping checklist. The Construct: hardware-isolated VMs per task is the sandbox pattern to copy for unattended runners. PRAGMA: talking point on agent-ready storefronts.",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/",
       "n": 5
     }
   ],
-  "praxis_lesson": "This week the big platforms converged on three patterns at once: desktop agents (Claude and Gemini both drive the Mac now), one gated, logged path for every tool call, and agents that propose fixes for a human to approve rather than acting alone. For The Construct, the drivers are becoming interchangeable, so invest in the gate (own identity per worker, one logged MCP gateway) and in fix-as-PR loops for the sentinel agents, not in any one vendor's agent.",
+  "praxis_lesson": "This week agents left the browser on both ends: Siemens drives desktop CAD through MCP to produce a print-ready part, while Gemini and Claude agents operate desktops and phone businesses for consumers. For The Construct and Brand 9 Signs, expose our own fabrication steps as gated MCP tools and make the shop answerable to agent callers and buyers, rather than waiting for a vendor to do either.",
   "history": [
     "2026-11-21",
     "2026-11-20",

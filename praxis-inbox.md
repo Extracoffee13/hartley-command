@@ -3879,3 +3879,15 @@ lesson: This week the big platforms converged on three patterns at once: desktop
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-21
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (afternoon refresh; added Siemens prompt-to-part over MCP and free Tasks in Gemini).
+outcome: Claude computer use (beta) opens to Team and Enterprise plan (yes); Google gives the Gemini Mac app computer use (Nov 19): it ca (maybe); Siemens shows an agent that turns a text prompt into a print (yes); OpenAI details Performance Factory (Nov 19): Codex agents di (yes); Tasks in Gemini goes free in six countries (Nov 17): the age (maybe)
+lesson: This week agents left the browser on both ends: Siemens drives desktop CAD through MCP to produce a print-ready part, while Gemini and Claude agents operate desktops and phone businesses for consumers. For The Construct and Brand 9 Signs, expose our own fabrication steps as gated MCP tools and make the shop answerable to agent callers and buyers, rather than waiting for a vendor to do either.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
