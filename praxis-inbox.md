@@ -3867,3 +3867,15 @@ lesson: Two of the biggest platforms shipped the same idea this week: give each 
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-21
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (morning refresh; added Gemini for Mac computer use and OpenAI Performance Factory).
+outcome: Claude computer use (beta) opens to Team and Enterprise plan (yes); Google gives the Gemini Mac app computer use (Nov 19): it ca (maybe); LangChain puts LangSmith Tool Gateway into public beta (Nov  (maybe); Microsoft Foundry gives agents their own Entra identity, mai (maybe); OpenAI details Performance Factory (Nov 19): Codex agents di (yes)
+lesson: This week the big platforms converged on three patterns at once: desktop agents (Claude and Gemini both drive the Mac now), one gated, logged path for every tool call, and agents that propose fixes for a human to approve rather than acting alone. For The Construct, the drivers are becoming interchangeable, so invest in the gate (own identity per worker, one logged MCP gateway) and in fix-as-PR loops for the sentinel agents, not in any one vendor's agent.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

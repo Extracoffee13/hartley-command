@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-21T10:52:29+00:00",
+  "generated": "2026-11-21T14:52:09+00:00",
   "latest_date": "2026-11-21",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
@@ -12,7 +12,15 @@
       "url": "https://support.claude.com/en/articles/18483812-set-up-computer-use-for-team-and-enterprise-plans"
     },
     {
-      "n": 2,
+      "title": "Google gives the Gemini Mac app computer use (Nov 19): it can operate Mac apps, fill forms and organize local files",
+      "summary": "Google's Gemini app for Mac can now carry out multi-step tasks across desktop apps and websites, starting in English for US Google AI Plus, Pro and Ultra subscribers.",
+      "tag": "maybe",
+      "how": "The Construct: with Claude computer use opening to Team/Enterprise the same week, desktop agents are now a two-vendor commodity, so the moat is our runbooks and gates (Signs365 cart steps, vendor portals), not the driver; keep runner tasks vendor-neutral. Brand 9 Signs: no-API vendor portals become automatable on either stack. PRAGMA: clients will ask which desktop agent to pick, so have a side-by-side ready.",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/computer-use-mac/",
+      "n": 2
+    },
+    {
+      "n": 3,
       "title": "LangChain puts LangSmith Tool Gateway into public beta (Nov 19): one place for agent credentials, approvals and audit",
       "summary": "The gateway centralizes credentials, identity, access policies, approvals and audit traces for agent tool calls and works with MCP-compatible clients.",
       "tag": "maybe",
@@ -20,7 +28,7 @@
       "url": "https://aiagentstore.ai/ai-agent-news/this-week"
     },
     {
-      "n": 3,
+      "n": 4,
       "title": "Microsoft Foundry gives agents their own Entra identity, mailbox, calendar and OneDrive, plus fleet governance and end-to-end tracing (Nov 19)",
       "summary": "Microsoft detailed Foundry updates letting organizations provision agents with their own Entra agent identities and Microsoft 365 resources, built-in fleet governance (deployment policy, cost and safety controls), and a preview of unified agent observability in Azure Monitor Application Insights.",
       "tag": "maybe",
@@ -28,15 +36,15 @@
       "url": "https://aiagentstore.ai/ai-agent-news/this-week"
     },
     {
-      "n": 4,
-      "title": "Databricks Genie ZeroOps in public beta (Nov 19): an agent that watches jobs, diagnoses failures and proposes fixes as PRs",
-      "summary": "Genie ZeroOps monitors data jobs and tables, diagnoses failures and opens pull requests with fixes, requiring human approval before any production change.",
-      "tag": "maybe",
-      "how": "The Construct: the 'diagnose, propose as a PR, human approves' loop is a good template for the site-health sentinel and the scheduled-task triage agents. PRAGMA: a citable example of safe self-healing ops. Brand 9 Signs: indirect, via brand9signs.com site repairs.",
-      "url": "https://aiagentstore.ai/ai-agent-news/this-week"
+      "title": "OpenAI details Performance Factory (Nov 19): Codex agents diagnose ChatGPT slowdowns and propose fixes for engineers to approve",
+      "summary": "OpenAI describes an internal system where Codex agents investigate latency regressions in ChatGPT, find the cause and propose fixes, with engineers reviewing before anything ships; Databricks shipped the same pattern for data jobs as Genie ZeroOps the same day.",
+      "tag": "yes",
+      "how": "The Construct: two vendors converged on 'agent diagnoses, proposes a fix as a PR, human approves', which is the right template for the site-health sentinel and scheduled-task triage agents (they should open a fix, not just report). PRAGMA: a citable, primary-source example of safe self-healing ops. Brand 9 Signs: brand9signs.com site repairs via the sentinel.",
+      "url": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast/",
+      "n": 5
     }
   ],
-  "praxis_lesson": "Two of the biggest platforms shipped the same idea this week: give each agent its own identity and run every tool call through one gate that holds the keys, checks policy and logs the result. For The Construct, that means each worker gets its own account and every MCP call goes through one logged gateway before more workers are added.",
+  "praxis_lesson": "This week the big platforms converged on three patterns at once: desktop agents (Claude and Gemini both drive the Mac now), one gated, logged path for every tool call, and agents that propose fixes for a human to approve rather than acting alone. For The Construct, the drivers are becoming interchangeable, so invest in the gate (own identity per worker, one logged MCP gateway) and in fix-as-PR loops for the sentinel agents, not in any one vendor's agent.",
   "history": [
     "2026-11-21",
     "2026-11-20",
