@@ -3891,3 +3891,27 @@ lesson: This week agents left the browser on both ends: Siemens drives desktop C
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-21
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (morning refresh; added Gemini for Mac computer use and OpenAI Performance Factory).
+outcome: Claude computer use (beta) opens to Team and Enterprise plan (yes); Google gives the Gemini Mac app computer use (Nov 19): it ca (maybe); Google gives the Gemini Mac app computer use (Nov 19): it ca (maybe); Siemens shows an agent that turns a text prompt into a print (yes); OpenAI details Performance Factory (Nov 19): Codex agents di (yes)
+lesson: This week the big platforms converged on three patterns at once: desktop agents (Claude and Gemini both drive the Mac now), one gated, logged path for every tool call, and agents that propose fixes for a human to approve rather than acting alone. For The Construct, the drivers are becoming interchangeable, so invest in the gate (own identity per worker, one logged MCP gateway) and in fix-as-PR loops for the sentinel agents, not in any one vendor's agent.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-22
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Gemini API adds Tool Retrieval (preview, Nov 20): agents loa (yes); Anthropic closes its IPO (Nov 20): 1.127B Class A shares at  (maybe); Vertical agent funding keeps flowing: Everful raises $48.5M  (maybe); Thinking Machines Lab releases Inkling 2 Mini (Nov 20) (maybe); Apple is reportedly building its own AI agent for app contro (maybe)
+lesson: As agents gain hundreds of tools, the cost is in loading them, not having them: Google now ships on-demand tool schemas. The Construct should route to the right MCP server and tool first, load full schemas only for that step, and track tokens per run to prove the saving.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

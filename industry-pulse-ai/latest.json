@@ -1,51 +1,52 @@
 {
-  "generated": "2026-11-21T18:53:17+00:00",
-  "latest_date": "2026-11-21",
+  "generated": "2026-11-22T10:54:12+00:00",
+  "latest_date": "2026-11-22",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Claude computer use (beta) opens to Team and Enterprise plans (Nov 20)",
-      "summary": "Anthropic's release notes say computer use is now in beta on Team and Enterprise plans, rolling out to organizations gradually, with an admin setup guide.",
+      "title": "Gemini API adds Tool Retrieval (preview, Nov 20): agents load a tool's full schema only when they need it",
+      "summary": "Google's new Tool Retrieval preview lets agents with hundreds of tools keep idle tools as short stubs and pull in the full parameter schema on demand, cutting context overhead for large tool sets.",
       "tag": "yes",
-      "how": "The Construct: a sanctioned, org-level path for the desktop tasks Hermes and the AP-Agent Mac now handle, so check whether our org has it and pilot one runner task (e.g. Signs365 cart steps) against it. Brand 9 Signs: vendor-portal work with no API. PRAGMA: a clean recommendation for clients already on Team or Enterprise.",
-      "url": "https://support.claude.com/en/articles/18483812-set-up-computer-use-for-team-and-enterprise-plans"
+      "how": "The Construct: we load dozens of MCP servers (Higgsfield alone exposes 150+ tools), so this is the pattern to copy: route to a tool first, then load its schema, and measure token cost per run before and after. PRAGMA: concrete, vendor-backed advice for clients whose agents slow down as they add connectors. Brand 9 Signs: indirect, cheaper and faster shop and ops agents.",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/"
     },
     {
-      "title": "Google gives the Gemini Mac app computer use (Nov 19): it can operate Mac apps, fill forms and organize local files",
-      "summary": "Google's Gemini app for Mac can now carry out multi-step tasks across desktop apps and websites, starting in English for US Google AI Plus, Pro and Ultra subscribers.",
+      "n": 2,
+      "title": "Anthropic closes its IPO (Nov 20): 1.127B Class A shares at $83.00, underwriters' option fully exercised",
+      "summary": "Anthropic announced the closing of its initial public offering two days after pricing, making it a public company.",
       "tag": "maybe",
-      "how": "The Construct: with Claude computer use opening to Team/Enterprise the same week, desktop agents are now a two-vendor commodity, so the moat is our runbooks and gates (Signs365 cart steps, vendor portals), not the driver; keep runner tasks vendor-neutral. Brand 9 Signs: no-API vendor portals become automatable on either stack. PRAGMA: clients will ask which desktop agent to pick, so have a side-by-side ready.",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/computer-use-mac/",
-      "n": 2
+      "how": "The Construct: our core vendor now reports in public, so pricing, plan changes and roadmap signals become easier to track; add Anthropic filings and earnings calls to the scan. PRAGMA: a credibility point when recommending a Claude-based operator stack to clients. Brand 9 Signs: no direct effect.",
+      "url": "https://www.anthropic.com/news/ipo-close"
     },
     {
-      "title": "Siemens shows an agent that turns a text prompt into a print-ready robot gripper by driving its CAD software over MCP (Formnext, Nov 16-20)",
-      "summary": "Built with AGIBOT, the agent picks a gripper type, adapts geometry in Siemens Designcenter, simulates it, checks the robot interface and prepares the print file, calling the engineering software's functions through the Model Context Protocol.",
-      "tag": "yes",
-      "how": "Brand 9 Signs: the same prompt-to-fabrication chain (pick template, adapt geometry, check against machine limits, export cut/print file) is what our CNC and vinyl pipelines do by hand, so wrap our CAD/CAM steps as MCP tools with a geometry gate before export. The Construct: a big-vendor proof that MCP reaches into desktop CAD, not just SaaS. PRAGMA: a citable manufacturing case for operator clients.",
-      "url": "https://3dprinting.com/news/siemens-demonstrates-agentic-ai-workflow-for-prompt-based-engineering-of-3d-printed-robotic-grippers/",
-      "n": 3
-    },
-    {
-      "title": "OpenAI details Performance Factory (Nov 19): Codex agents diagnose ChatGPT slowdowns and propose fixes for engineers to approve",
-      "summary": "OpenAI describes an internal system where Codex agents investigate latency regressions in ChatGPT, find the cause and propose fixes, with engineers reviewing before anything ships; Databricks shipped the same pattern for data jobs as Genie ZeroOps the same day.",
-      "tag": "yes",
-      "how": "The Construct: two vendors converged on 'agent diagnoses, proposes a fix as a PR, human approves', which is the right template for the site-health sentinel and scheduled-task triage agents (they should open a fix, not just report). PRAGMA: a citable, primary-source example of safe self-healing ops. Brand 9 Signs: brand9signs.com site repairs via the sentinel.",
-      "url": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast/",
-      "n": 4
-    },
-    {
-      "title": "Tasks in Gemini goes free in six countries (Nov 17): the agent calls businesses, buys through AP2 and Google Wallet, and runs in isolated cloud VMs",
-      "summary": "Google made its Tasks agent free in the US, Japan, Korea, Canada, Australia and India on Gemini 4 Hydrogen, with business phone calls, purchases via the Agent Payments Protocol, links to 60+ apps, and Universal Commerce Protocol support listed as next.",
+      "n": 3,
+      "title": "Vertical agent funding keeps flowing: Everful raises $48.5M for product-sourcing agents; LATO raises a $4.7M seed for due-diligence interview agents (Nov 20-21)",
+      "summary": "Everful builds agents that find products and vet factories for small retailers; LATO's agents run expert and customer interviews for private-equity diligence.",
       "tag": "maybe",
-      "how": "Brand 9 Signs: consumer agents will now phone the shop and buy on customers' behalf, so the phone line, quote answers and checkout must work for an agent caller, and AP2/UCP readiness joins the ChatGPT-shopping checklist. The Construct: hardware-isolated VMs per task is the sandbox pattern to copy for unattended runners. PRAGMA: talking point on agent-ready storefronts.",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/",
-      "n": 5
+      "how": "Brand 9 Signs: Everful's job (find and vet suppliers for small sellers) is close to our partner-sourcing work with Signs365 and others, so watch it as a tool or as a model for our own vendor agent. PRAGMA: both raises show investors paying for narrow, one-workflow agents, which supports selling single-workflow operator builds rather than general assistants.",
+      "url": "https://www.scommerce.com/everful-funding"
+    },
+    {
+      "n": 4,
+      "title": "Thinking Machines Lab releases Inkling 2 Mini (Nov 20)",
+      "summary": "Mira Murati's Thinking Machines Lab shipped Inkling 2 Mini, listed by BenchLM as the newest confirmed model release.",
+      "tag": "maybe",
+      "how": "The Construct: one more small-model option for cheap, high-volume steps (classification, tagging, alt text); only worth a test if it is reachable through an API we use and beats our current low-cost model on a real task. PRAGMA: keep the model-choice sheet current for clients.",
+      "url": "https://thinkingmachines.ai/news/inkling-2-mini/"
+    },
+    {
+      "n": 5,
+      "title": "Apple is reportedly building its own AI agent for app control, browsing and coding (reports, Nov 20)",
+      "summary": "Bloomberg-sourced reports and Apple job listings point to an Apple agent that operates apps and the web; Apple has not announced anything.",
+      "tag": "maybe",
+      "how": "The Construct: the AP-Agent Mac and Hermes desktop runners may get a native OS-level agent to work with or against, so keep runner steps written as vendor-neutral runbooks. PRAGMA: after Claude and Gemini computer use, Apple joining would make desktop agents a commodity; the value is in the workflows and gates. Unconfirmed, so no action yet.",
+      "url": "https://thenextweb.com/news/apple-ai-agent-job-listing-computer-use-bloomberg"
     }
   ],
-  "praxis_lesson": "This week agents left the browser on both ends: Siemens drives desktop CAD through MCP to produce a print-ready part, while Gemini and Claude agents operate desktops and phone businesses for consumers. For The Construct and Brand 9 Signs, expose our own fabrication steps as gated MCP tools and make the shop answerable to agent callers and buyers, rather than waiting for a vendor to do either.",
+  "praxis_lesson": "As agents gain hundreds of tools, the cost is in loading them, not having them: Google now ships on-demand tool schemas. The Construct should route to the right MCP server and tool first, load full schemas only for that step, and track tokens per run to prove the saving.",
   "history": [
+    "2026-11-22",
     "2026-11-21",
     "2026-11-20",
     "2026-11-19",
@@ -58,7 +59,6 @@
     "2026-11-12",
     "2026-11-11",
     "2026-11-10",
-    "2026-11-09",
-    "2026-11-08"
+    "2026-11-09"
   ]
 }
