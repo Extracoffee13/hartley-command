@@ -3915,3 +3915,27 @@ lesson: As agents gain hundreds of tools, the cost is in loading them, not havin
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-21
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (morning refresh; added Gemini for Mac computer use and OpenAI Performance Factory).
+outcome: Gemini API adds Tool Retrieval (preview, Nov 20): agents loa (yes); Google gives the Gemini Mac app computer use (Nov 19): it ca (maybe); Anthropic closes its IPO (Nov 20): 1.127B Class A shares at  (maybe); Vertical agent funding keeps flowing: Everful raises $48.5M  (maybe); OpenAI details Performance Factory (Nov 19): Codex agents di (yes)
+lesson: This week the big platforms converged on three patterns at once: desktop agents (Claude and Gemini both drive the Mac now), one gated, logged path for every tool call, and agents that propose fixes for a human to approve rather than acting alone. For The Construct, the drivers are becoming interchangeable, so invest in the gate (own identity per worker, one logged MCP gateway) and in fix-as-PR loops for the sentinel agents, not in any one vendor's agent.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-22
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (afternoon refresh; added OpenRouter provider off-boarding, Walmart Agent Gateway, Cairn autonomous exploit, Cognition talks).
+outcome: OpenRouter off-boards Novita, Phala and Together and pulls 1 (yes); Walmart opens an Agent Gateway for outside shopping agents,  (yes); Amazon: a suspected state actor used the open-source Cairn a (yes); Gemini API adds Tool Retrieval (preview, Nov 20): agents loa (yes); Cognition (Devin) reportedly in early talks to raise $2B+ at (maybe)
+lesson: Cheap model routing is now a data-handling decision: canary tests showed some inference hosts log prompts despite zero-retention flags. The Construct should pin providers for every worker, enforce ZDR, and keep secrets and client files out of prompts sent to low-cost routes, the same way a shop controls which vendors see a customer's artwork.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

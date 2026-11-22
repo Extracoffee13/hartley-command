@@ -1,50 +1,50 @@
 {
-  "generated": "2026-11-22T10:54:12+00:00",
+  "generated": "2026-11-22T14:53:48+00:00",
   "latest_date": "2026-11-22",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Gemini API adds Tool Retrieval (preview, Nov 20): agents load a tool's full schema only when they need it",
-      "summary": "Google's new Tool Retrieval preview lets agents with hundreds of tools keep idle tools as short stubs and pull in the full parameter schema on demand, cutting context overhead for large tool sets.",
+      "title": "OpenRouter off-boards Novita, Phala and Together and pulls 125 endpoints from zero-data-retention after canary tests caught prompt logging (Nov 22)",
+      "summary": "Following HD Moore's roughly 2 million canary-token prompts across inference services, OpenRouter reports data-processing incidents at several providers, removed three of them, and stripped ZDR eligibility from 125 endpoints.",
       "tag": "yes",
-      "how": "The Construct: we load dozens of MCP servers (Higgsfield alone exposes 150+ tools), so this is the pattern to copy: route to a tool first, then load its schema, and measure token cost per run before and after. PRAGMA: concrete, vendor-backed advice for clients whose agents slow down as they add connectors. Brand 9 Signs: indirect, cheaper and faster shop and ops agents.",
-      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/"
+      "how": "The Construct: Hermes delegation workers run deepseek/deepseek-v4-flash through OpenRouter with provider routing left on auto, and open-weight DeepSeek is commonly served by exactly these hosts. Pin an allow-list of providers with ZDR enforced, keep client files and credentials out of cheap-worker prompts, and check past delegation logs for which providers served them. PRAGMA: a concrete, dated reason clients need a provider policy, not just a model choice.",
+      "url": "https://openrouter.ai/blog/announcements/data-processing-incidents-on-inference-providers/"
     },
     {
       "n": 2,
-      "title": "Anthropic closes its IPO (Nov 20): 1.127B Class A shares at $83.00, underwriters' option fully exercised",
-      "summary": "Anthropic announced the closing of its initial public offering two days after pricing, making it a public company.",
-      "tag": "maybe",
-      "how": "The Construct: our core vendor now reports in public, so pricing, plan changes and roadmap signals become easier to track; add Anthropic filings and earnings calls to the scan. PRAGMA: a credibility point when recommending a Claude-based operator stack to clients. Brand 9 Signs: no direct effect.",
-      "url": "https://www.anthropic.com/news/ipo-close"
+      "title": "Walmart opens an Agent Gateway for outside shopping agents, with customer-set permissions and spending limits; Sparky usage up about 129% (Nov 21)",
+      "summary": "Walmart will let external agents (Meta's Muse among them) connect through a gateway that enforces what each agent may do and spend, as use of its own Sparky agent more than doubled year over year.",
+      "tag": "yes",
+      "how": "Brand 9 Signs: the largest US retailer is building a front door for buyer agents; the shop should expose clean product, pricing and order endpoints (feeds or MCP) so agents can quote and order signs. PRAGMA: the gateway pattern (per-agent scopes plus spend caps) is the template to sell clients exposing their own systems to agents.",
+      "url": "https://fourweekmba.com/ai-walmart-sparky-use-up-129-in-a-year-baskets-40-larger/"
     },
     {
       "n": 3,
-      "title": "Vertical agent funding keeps flowing: Everful raises $48.5M for product-sourcing agents; LATO raises a $4.7M seed for due-diligence interview agents (Nov 20-21)",
-      "summary": "Everful builds agents that find products and vet factories for small retailers; LATO's agents run expert and customer interviews for private-equity diligence.",
-      "tag": "maybe",
-      "how": "Brand 9 Signs: Everful's job (find and vet suppliers for small sellers) is close to our partner-sourcing work with Signs365 and others, so watch it as a tool or as a model for our own vendor agent. PRAGMA: both raises show investors paying for narrow, one-workflow agents, which supports selling single-workflow operator builds rather than general assistants.",
-      "url": "https://www.scommerce.com/everful-funding"
+      "title": "Amazon: a suspected state actor used the open-source Cairn agent framework to find and exploit a zero-day on its own, root shell in about 11 minutes (Nov 20)",
+      "summary": "Amazon Threat Intelligence says the attacker's agent autonomously found a path-traversal bug in MONAI Label and took over the server; MONAI has shipped a patch.",
+      "tag": "yes",
+      "how": "The Construct: anything we expose (dashboard endpoints, MCP servers, render nodes, the B9 site) now faces agent-speed probing and patch windows shrink to hours. Keep internal MCP servers off the public internet, have the site-health sentinel test path-traversal and file-read routes, and keep dependencies current. PRAGMA: lead client security conversations with this case.",
+      "url": "https://www.bleepingcomputer.com/news/security/hackers-use-autonomous-ai-tool-cairn-to-find-zero-day-take-over-server/"
     },
     {
       "n": 4,
-      "title": "Thinking Machines Lab releases Inkling 2 Mini (Nov 20)",
-      "summary": "Mira Murati's Thinking Machines Lab shipped Inkling 2 Mini, listed by BenchLM as the newest confirmed model release.",
-      "tag": "maybe",
-      "how": "The Construct: one more small-model option for cheap, high-volume steps (classification, tagging, alt text); only worth a test if it is reachable through an API we use and beats our current low-cost model on a real task. PRAGMA: keep the model-choice sheet current for clients.",
-      "url": "https://thinkingmachines.ai/news/inkling-2-mini/"
+      "title": "Gemini API adds Tool Retrieval (preview, Nov 20): agents load a tool's full schema only when they need it",
+      "summary": "Google's Tool Retrieval preview lets agents with hundreds of tools keep idle tools as short stubs and pull in the full parameter schema on demand, cutting context overhead for large tool sets.",
+      "tag": "yes",
+      "how": "The Construct: we load dozens of MCP servers (Higgsfield alone exposes 150+ tools); route to a tool first, then load its schema, and measure tokens per run before and after. PRAGMA: vendor-backed advice for clients whose agents slow down as they add connectors.",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/"
     },
     {
       "n": 5,
-      "title": "Apple is reportedly building its own AI agent for app control, browsing and coding (reports, Nov 20)",
-      "summary": "Bloomberg-sourced reports and Apple job listings point to an Apple agent that operates apps and the web; Apple has not announced anything.",
+      "title": "Cognition (Devin) reportedly in early talks to raise $2B+ at a $70-80B valuation, two months after a $48B round (Nov 20)",
+      "summary": "Dealroom reports fresh offers for the coding-agent maker; talks are early and nothing has closed.",
       "tag": "maybe",
-      "how": "The Construct: the AP-Agent Mac and Hermes desktop runners may get a native OS-level agent to work with or against, so keep runner steps written as vendor-neutral runbooks. PRAGMA: after Claude and Gemini computer use, Apple joining would make desktop agents a commodity; the value is in the workflows and gates. Unconfirmed, so no action yet.",
-      "url": "https://thenextweb.com/news/apple-ai-agent-job-listing-computer-use-bloomberg"
+      "how": "PRAGMA: investors keep pricing autonomous coding agents as a core category, which supports selling agent-run engineering and ops builds. The Construct: no action unless cost per merged change becomes the bottleneck, then compare Devin against Claude Code on real repo tasks.",
+      "url": "https://dealroom.co/news/167954-cognition-fields-75b-offers-weeks-after-48b-round/"
     }
   ],
-  "praxis_lesson": "As agents gain hundreds of tools, the cost is in loading them, not having them: Google now ships on-demand tool schemas. The Construct should route to the right MCP server and tool first, load full schemas only for that step, and track tokens per run to prove the saving.",
+  "praxis_lesson": "Cheap model routing is now a data-handling decision: canary tests showed some inference hosts log prompts despite zero-retention flags. The Construct should pin providers for every worker, enforce ZDR, and keep secrets and client files out of prompts sent to low-cost routes, the same way a shop controls which vendors see a customer's artwork.",
   "history": [
     "2026-11-22",
     "2026-11-21",
