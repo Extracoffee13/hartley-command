@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-22T14:53:48+00:00",
+  "generated": "2026-11-22T18:52:19+00:00",
   "latest_date": "2026-11-22",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
@@ -37,11 +37,11 @@
     },
     {
       "n": 5,
-      "title": "Cognition (Devin) reportedly in early talks to raise $2B+ at a $70-80B valuation, two months after a $48B round (Nov 20)",
-      "summary": "Dealroom reports fresh offers for the coding-agent maker; talks are early and nothing has closed.",
-      "tag": "maybe",
-      "how": "PRAGMA: investors keep pricing autonomous coding agents as a core category, which supports selling agent-run engineering and ops builds. The Construct: no action unless cost per merged change becomes the bottleneck, then compare Devin against Claude Code on real repo tasks.",
-      "url": "https://dealroom.co/news/167954-cognition-fields-75b-offers-weeks-after-48b-round/"
+      "title": "LangChain puts LangSmith Tool Gateway in public beta (Nov 19): one control point for agent tool calls across MCP clients, Claude Code and Cursor included",
+      "summary": "The gateway centralizes credentials, per-tool access policies, human approvals and audit traces for the tools agents call, and fronts MCP servers for any MCP-compatible client.",
+      "tag": "yes",
+      "how": "The Construct: our MCP fleet (Higgsfield, Gmail, Drive, Slack, Canva, render nodes) has credentials spread across clients with no single audit trail; a gateway layer, LangSmith or self-built, gives per-agent scopes, approvals for writes and one log, the same pattern as Walmart's Agent Gateway. PRAGMA: a ready reference architecture for clients worried about agents holding live credentials.",
+      "url": "https://langchain.com/blog/langsmith-tool-gateway"
     }
   ],
   "praxis_lesson": "Cheap model routing is now a data-handling decision: canary tests showed some inference hosts log prompts despite zero-retention flags. The Construct should pin providers for every worker, enforce ZDR, and keep secrets and client files out of prompts sent to low-cost routes, the same way a shop controls which vendors see a customer's artwork.",

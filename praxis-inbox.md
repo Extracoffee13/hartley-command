@@ -3939,3 +3939,15 @@ lesson: Cheap model routing is now a data-handling decision: canary tests showed
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-22
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (evening refresh; swapped Cognition funding talks for LangSmith Tool Gateway public beta).
+outcome: OpenRouter off-boards Novita, Phala and Together and pulls 1 (yes); Walmart opens an Agent Gateway for outside shopping agents,  (yes); Amazon: a suspected state actor used the open-source Cairn a (yes); Gemini API adds Tool Retrieval (preview, Nov 20): agents loa (yes); LangChain puts LangSmith Tool Gateway in public beta (Nov 19 (yes)
+lesson: Cheap model routing is now a data-handling decision: canary tests showed some inference hosts log prompts despite zero-retention flags. The Construct should pin providers for every worker, enforce ZDR, and keep secrets and client files out of prompts sent to low-cost routes, the same way a shop controls which vendors see a customer's artwork.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
