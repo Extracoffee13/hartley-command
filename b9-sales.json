@@ -1,23 +1,36 @@
 {
- "generated": "2026-11-16T14:39:35+00:00",
+ "generated": "2026-11-23T14:22:55+00:00",
  "source": "_b9_temp/_flywheel/sales/sales_flywheel.py (aggregates only)",
  "summary": {
-  "paid_orders_7d": 37,
-  "paid_orders_30d": 96,
-  "open_carts_30d": 56,
-  "carts_waiting_for_address": 24,
-  "paid_from_ai_30d": 51,
+  "paid_orders_7d": 39,
+  "paid_orders_30d": 135,
+  "open_carts_30d": 90,
+  "carts_waiting_for_address": 59,
+  "paid_from_ai_30d": 75,
   "paid_first_touch_30d": {
-   "ai": 32,
-   "search": 16,
-   "direct": 17,
-   "direct_deep": 25,
+   "ai": 46,
+   "direct": 20,
+   "search": 22,
+   "direct_deep": 40,
    "internal": 1,
-   "none": 5
+   "none": 5,
+   "other": 1
   }
  },
  "funnel_week": {
   "this": {
+   "phone": {
+    "sessions": 153,
+    "add_to_carts": 6,
+    "purchases": 3
+   },
+   "desktop": {
+    "sessions": 134,
+    "add_to_carts": 6,
+    "purchases": 3
+   }
+  },
+  "last": {
    "phone": {
     "sessions": 104,
     "add_to_carts": 2,
@@ -28,29 +41,17 @@
     "add_to_carts": 10,
     "purchases": 5
    }
-  },
-  "last": {
-   "phone": {
-    "sessions": 131,
-    "add_to_carts": 3,
-    "purchases": 1
-   },
-   "desktop": {
-    "sessions": 161,
-    "add_to_carts": 10,
-    "purchases": 4
-   }
   }
  },
  "upload_events_week": {
-  "upload_cta_click": 62,
-  "artwork_upload_open": 185,
-  "artwork_selected": 0,
-  "artwork_placed": 105
+  "upload_cta_click": 65,
+  "artwork_upload_open": 159,
+  "artwork_selected": 173,
+  "artwork_placed": 155
  },
  "atc_rate_chatgpt_phone": {
-  "this": 0.019,
-  "last": 0.023
+  "this": 0.039,
+  "last": 0.019
  },
  "levers": [
   {
@@ -117,7 +118,7 @@
    "status": "applied",
    "since": "2026-11-08",
    "measure": "",
-   "note": "ChatGPT merchant form submitted 11-08 with Bobby yes; waitlist, awaiting OpenAI"
+   "note": "ChatGPT merchant form submitted 11-08 with Bobby yes; waitlist, awaiting OpenAI; 2026-11-16: ChatGPT Business Hub hosted product feed submitted (shop/feed/openai.jsonl.gz, 3,051 rows)"
   },
   {
    "id": "metal_ai_art",
@@ -139,6 +140,27 @@
    "status": "live",
    "since": "2026-11-02",
    "measure": "paid_first_touch_30d: direct_deep count, internal stays 0 for new orders"
+  },
+  {
+   "id": "diecut_cut_choice",
+   "name": "Die-cut multi-color upload asks 'Cut in one color' vs 'Layered, N colors' with both engine prices before the price moves (_shop1117ux: diecut.js/printmode.js ?v=20261117ux)",
+   "status": "live",
+   "since": "2026-11-17",
+   "measure": "GA4 diecut_cut_ask -> diecut_cut_choice (mode) -> studio_add_to_cart for family die-cut-graphics; die-cut add_to_cart by device vs the 11-10..11-16 week"
+  },
+  {
+   "id": "cart_phone_bar",
+   "name": "Phone cart: one-line hero + fixed Total/Check out bar mirroring #ctGo (_shop1117ux: shop/cart/index.php)",
+   "status": "live",
+   "since": "2026-11-17",
+   "measure": "begin_checkout / cart page_view on mobile (chatgpt.com source split) vs the 11-10..11-16 week"
+  },
+  {
+   "id": "yard_lawn_card_template_chips",
+   "name": "Yard signs page: Lawn care & home services use card at the exact ordered setup (10 DS 24x18 + HD stakes, $171.48, opens Studio home-services collection) + 10 'templates by trade' chips to Studio collections (_shop1117yt: shop/yard-signs/index.php)",
+   "status": "live",
+   "since": "2026-11-17",
+   "measure": "Studio sessions from /shop/yard-signs/ with collection= in cfg; pick events src=coll; yard-sign carts and paid (fit: template OR 1.5, CI 0.5-4.3, n=79 customers - re-fit at n>=150)"
   }
  ]
 }
