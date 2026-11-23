@@ -3987,3 +3987,27 @@ lesson: Rules that live only in a prompt are suggestions: this week's research f
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-21
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (morning refresh; added Gemini for Mac computer use and OpenAI Performance Factory).
+outcome: 1Password for Agents: agents sign in to sites without ever s (yes); Google gives the Gemini Mac app computer use (Nov 19): it ca (maybe); Anthropic puts Claude computer use in beta for Team and Ente (yes); OpenAI starts a limited test of "Dots" (Nov 21): persistent, (maybe); OpenAI details Performance Factory (Nov 19): Codex agents di (yes)
+lesson: This week the big platforms converged on three patterns at once: desktop agents (Claude and Gemini both drive the Mac now), one gated, logged path for every tool call, and agents that propose fixes for a human to approve rather than acting alone. For The Construct, the drivers are becoming interchangeable, so invest in the gate (own identity per worker, one logged MCP gateway) and in fix-as-PR loops for the sentinel agents, not in any one vendor's agent.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-23
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (later refresh; kept 1Password, Formalize/Tether and Wells Fargo, added OpenAI multi-hour task data and the Meta Muse agent incident; reset latest_date to 2026-11-23 after a concurrent run wrote 2026-11-21).
+outcome: 1Password for Agents: agents sign in to sites without ever s (yes); OpenAI: its agents now finish 46% of research tasks sized at (maybe); "Formalize or Lose It" (Nov 23): nearly half of supervisory  (yes); Wells Fargo's new online access terms take effect Nov 24: cu (yes); Reports that Meta's Muse agent exposed private Signal messag (yes)
+lesson: Agents are now finishing half of multi-hour tasks, which means half still fail, and the failures that hurt come from broad access, not weak models. The Construct should give each agent a scoped, expiring login (no raw passwords) and a scripted gate that checks the run before anything leaves the building.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

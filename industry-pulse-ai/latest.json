@@ -1,50 +1,50 @@
 {
-  "generated": "2026-11-23T14:52:46+00:00",
+  "generated": "2026-11-23T18:53:18+00:00",
   "latest_date": "2026-11-23",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "1Password for Agents: agents sign in to sites without ever seeing the password, with a Claude integration and approvals that expire after 30 days (week of Nov 23)",
+      "title": "1Password for Agents: agents sign in to sites without ever seeing the password, with a Claude integration and grants that expire after 30 days (week of Nov 23)",
       "summary": "1Password now brokers logins for AI agents so the agent gets a session, not the secret; its Claude integration adds an Agentic Mode, and each grant lapses after 30 days unless renewed.",
       "tag": "yes",
-      "how": "The Construct: Hermes, Cowork and the B9 partner-order runner currently drive logged-in sessions (Signs365, WordPress, Google) with credentials held in browser profiles and files; moving those logins behind a broker gives per-agent grants, expiry and revocation without pasting passwords into prompts. PRAGMA: the cleanest answer to a client's first question, \"what happens to our passwords?\"",
+      "how": "The Construct: Hermes, Cowork and the B9 partner-order runner drive logged-in sessions (Signs365, WordPress, Google) with credentials in browser profiles and files; a broker gives per-agent grants, expiry and revocation. PRAGMA: the cleanest answer to a client's first question, \"what happens to our passwords?\"",
       "url": "https://1password.com/personal-ai-agent-integrations"
     },
     {
       "n": 2,
-      "title": "Anthropic puts Claude computer use in beta for Team and Enterprise plans across desktop, web and mobile (Nov 20, rolling out gradually); Claude Code 2.1.330 adds Enterprise Admin Console sign-in and a built-in chart tool",
-      "summary": "Org plans can now let Claude operate a computer from any Claude surface, not just a local desktop setup, while Claude Code picks up admin-console sign-in via claude auth login and self-hosted runner settings such as --start-dir.",
-      "tag": "yes",
-      "how": "The Construct: computer use available org-wide means the AP-Agent Mac tasks (Signs365 carts, WordPress fixes) could be triggered from phone or web; set per-app allowlists before turning it on, since a broader surface is a broader blast radius. PRAGMA: a supported, admin-governed path to pitch instead of home-built screen automation.",
-      "url": "https://releasebot.io/updates/anthropic"
-    },
-    {
-      "n": 3,
-      "title": "OpenAI starts a limited test of \"Dots\" (Nov 21): persistent, always-on agents for some ChatGPT Plus users and eligible Business workspaces",
-      "summary": "OpenAI is testing agents that keep running in the background instead of answering one chat at a time, the same always-on pattern Cognition's Devin Bots shipped last week.",
+      "title": "OpenAI: its agents now finish 46% of research tasks sized at 2-4 human hours (23% in March) and 35% of 4-8 hour tasks (13%); \"Dots\" always-on agents in limited test (Nov 21-22)",
+      "summary": "OpenAI's own numbers show multi-hour agent task completion roughly doubling in eight months, while it tests persistent background agents for some ChatGPT Plus and Business users.",
       "tag": "maybe",
-      "how": "The Construct: our edge has been standing agents (Pulse, Hermes workers, the partner-order runner); with the big labs now shipping always-on agents, the moat moves to the business-specific skills and gates we own, not the scheduling. PRAGMA: expect clients to ask why not just use Dots, so lead with integration and verification.",
+      "how": "The Construct: half-day jobs (shop SEO sweeps, bid prep, site audits) are now realistic to hand to one agent run, but still fail more often than not, so keep the verification gates. PRAGMA: a dated benchmark to set client expectations on what an agent can own end to end.",
       "url": "https://aiagentstore.ai/ai-agent-news/this-week"
     },
     {
-      "n": 4,
+      "n": 3,
       "title": "\"Formalize or Lose It\" (Nov 23): nearly half of supervisory rules in multi-agent runs lived only in prompts, and executable checks caught failures prompt-only supervision missed; Tether 0.4.0 (Nov 22) replays recorded agent runs as tests",
-      "summary": "New research plus a new open test harness point the same way: rules an agent must follow should be code that checks the run, and recorded runs can be replayed to assert tools called, final files and step/cost limits.",
+      "summary": "New research plus an open test harness point the same way: rules an agent must follow should be code that checks the run, and recorded runs can be replayed to assert tool calls, final files and step/cost limits.",
       "tag": "yes",
       "how": "The Construct: move written gates (done-means-done, claims-truth, print-file guide) from SKILL.md prose into scripts that fail the run, and replay a saved run of each standing agent after any skill edit. PRAGMA: a citable reason to sell verification harnesses, not just prompts.",
       "url": "https://aiagentstore.ai/ai-agent-news/this-week"
     },
     {
-      "n": 5,
-      "title": "Wells Fargo changes its online access agreement (effective Nov 24): customers use third-party AI agents at their own risk; JPMorgan, Schwab and Citi already block or limit credential-based agents",
+      "n": 4,
+      "title": "Wells Fargo's new online access terms take effect Nov 24: customers use third-party AI agents at their own risk; JPMorgan, Schwab and Citi already block or limit credential-based agents",
       "summary": "Big US banks are pushing liability for agent logins onto customers and shutting out agents that sign in with a customer's username and password.",
       "tag": "yes",
-      "how": "Brand 9 Signs: any agent task touching business banking (reconciliation, payments, pulling statements) should go through bank APIs, exports or a bookkeeping connector, not a scripted login; a credential-based bank session may now void protections. PRAGMA: a dated, concrete risk to put in every client's agent-permissions policy.",
+      "how": "Brand 9 Signs: any agent task touching business banking (reconciliation, payments, statements) should go through bank APIs, exports or a bookkeeping connector, not a scripted login. PRAGMA: a dated, concrete risk for every client's agent-permissions policy.",
       "url": "https://killtheai.com/news/top-10-ai-news-today-november-23-2026/"
+    },
+    {
+      "n": 5,
+      "title": "Reports that Meta's Muse agent exposed private Signal messages and fabricated purchase information (Nov 21)",
+      "summary": "Internal reports describe a consumer agent leaking message content across contexts and inventing purchase details, a live example of agents with broad account access going wrong.",
+      "tag": "yes",
+      "how": "The Construct: agents that read Gmail/Slack and also place orders should never mix those contexts unchecked; every order or customer claim must trace to a real record before it is sent. PRAGMA: a cautionary case for scoping agent access per task.",
+      "url": "https://aiagentstore.ai/ai-agent-news/this-week"
     }
   ],
-  "praxis_lesson": "Rules that live only in a prompt are suggestions: this week's research found executable checks catch the failures prompt-only supervision misses, just as labs start shipping always-on agents that run with nobody watching. The Construct should turn each written gate into a script that can fail the run, and replay saved runs as tests after every skill change.",
+  "praxis_lesson": "Agents are now finishing half of multi-hour tasks, which means half still fail, and the failures that hurt come from broad access, not weak models. The Construct should give each agent a scoped, expiring login (no raw passwords) and a scripted gate that checks the run before anything leaves the building.",
   "history": [
     "2026-11-23",
     "2026-11-22",
