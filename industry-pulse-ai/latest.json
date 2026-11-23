@@ -1,51 +1,52 @@
 {
-  "generated": "2026-11-22T18:52:19+00:00",
-  "latest_date": "2026-11-22",
+  "generated": "2026-11-23T10:52:03+00:00",
+  "latest_date": "2026-11-23",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "OpenRouter off-boards Novita, Phala and Together and pulls 125 endpoints from zero-data-retention after canary tests caught prompt logging (Nov 22)",
-      "summary": "Following HD Moore's roughly 2 million canary-token prompts across inference services, OpenRouter reports data-processing incidents at several providers, removed three of them, and stripped ZDR eligibility from 125 endpoints.",
+      "title": "1Password for Agents: agents sign in to sites without ever seeing the password, with a Claude integration and approvals that expire after 30 days (week of Nov 23)",
+      "summary": "1Password now brokers logins for AI agents so the agent gets a session, not the secret; its Claude integration adds an Agentic Mode, and each grant lapses after 30 days unless renewed.",
       "tag": "yes",
-      "how": "The Construct: Hermes delegation workers run deepseek/deepseek-v4-flash through OpenRouter with provider routing left on auto, and open-weight DeepSeek is commonly served by exactly these hosts. Pin an allow-list of providers with ZDR enforced, keep client files and credentials out of cheap-worker prompts, and check past delegation logs for which providers served them. PRAGMA: a concrete, dated reason clients need a provider policy, not just a model choice.",
-      "url": "https://openrouter.ai/blog/announcements/data-processing-incidents-on-inference-providers/"
+      "how": "The Construct: Hermes, Cowork and the B9 partner-order runner currently drive logged-in sessions (Signs365, WordPress, Google) with credentials held in browser profiles and files; moving those logins behind a broker gives per-agent grants, expiry and revocation without pasting passwords into prompts. PRAGMA: the cleanest answer to a client's first question, \"what happens to our passwords?\"",
+      "url": "https://1password.com/personal-ai-agent-integrations"
     },
     {
       "n": 2,
-      "title": "Walmart opens an Agent Gateway for outside shopping agents, with customer-set permissions and spending limits; Sparky usage up about 129% (Nov 21)",
-      "summary": "Walmart will let external agents (Meta's Muse among them) connect through a gateway that enforces what each agent may do and spend, as use of its own Sparky agent more than doubled year over year.",
+      "title": "Wells Fargo changes its online access agreement (effective Nov 24): customers use third-party AI agents at their own risk; JPMorgan, Schwab and Citi already block or limit credential-based agents",
+      "summary": "Big US banks are pushing liability for agent logins onto customers and shutting out agents that sign in with a customer's username and password.",
       "tag": "yes",
-      "how": "Brand 9 Signs: the largest US retailer is building a front door for buyer agents; the shop should expose clean product, pricing and order endpoints (feeds or MCP) so agents can quote and order signs. PRAGMA: the gateway pattern (per-agent scopes plus spend caps) is the template to sell clients exposing their own systems to agents.",
-      "url": "https://fourweekmba.com/ai-walmart-sparky-use-up-129-in-a-year-baskets-40-larger/"
+      "how": "Brand 9 Signs: any agent task touching business banking (reconciliation, payments, pulling statements) should go through bank APIs, exports or a bookkeeping connector, not a scripted login; a credential-based bank session may now void protections. PRAGMA: a dated, concrete risk to put in every client's agent-permissions policy.",
+      "url": "https://killtheai.com/news/top-10-ai-news-today-november-23-2026/"
     },
     {
       "n": 3,
-      "title": "Amazon: a suspected state actor used the open-source Cairn agent framework to find and exploit a zero-day on its own, root shell in about 11 minutes (Nov 20)",
-      "summary": "Amazon Threat Intelligence says the attacker's agent autonomously found a path-traversal bug in MONAI Label and took over the server; MONAI has shipped a patch.",
+      "title": "SWE-CoWork benchmark: frontier coding agents pass about 63% of tests inside a simulated company but fully finish under 8% of assignments",
+      "summary": "A new benchmark drops 11 models into a simulated workplace; Claude Opus 5.5 and GPT-6 Astra clear most individual checks yet rarely complete a whole assignment end to end.",
       "tag": "yes",
-      "how": "The Construct: anything we expose (dashboard endpoints, MCP servers, render nodes, the B9 site) now faces agent-speed probing and patch windows shrink to hours. Keep internal MCP servers off the public internet, have the site-health sentinel test path-traversal and file-read routes, and keep dependencies current. PRAGMA: lead client security conversations with this case.",
-      "url": "https://www.bleepingcomputer.com/news/security/hackers-use-autonomous-ai-tool-cairn-to-find-zero-day-take-over-server/"
+      "how": "The Construct: matches what our own runs show: partial progress is common, full completion is not. Grade agents on finished, verified deliverables (the done-means-done gate), not on steps passed, and keep a human checkpoint before anything ships. PRAGMA: a sober data point for setting client expectations on unattended agents.",
+      "url": "https://explainx.ai/blog/swe-cowork-coding-agents-digital-employees-benchmark-2026"
     },
     {
       "n": 4,
-      "title": "Gemini API adds Tool Retrieval (preview, Nov 20): agents load a tool's full schema only when they need it",
-      "summary": "Google's Tool Retrieval preview lets agents with hundreds of tools keep idle tools as short stubs and pull in the full parameter schema on demand, cutting context overhead for large tool sets.",
+      "title": "Claude Code v2.1.328: sessions with no permission mode now start in auto mode, auto mode reaches Bedrock, Google Cloud and Microsoft Foundry, and MCP tool hooks can block on failure",
+      "summary": "Interactive Claude Code sessions default to auto mode, the mode is available on the major cloud providers and the Claude apps gateway, and an mcp_tool hook option \"onFailure\": \"block\" stops a run when a guarded MCP call fails.",
       "tag": "yes",
-      "how": "The Construct: we load dozens of MCP servers (Higgsfield alone exposes 150+ tools); route to a tool first, then load its schema, and measure tokens per run before and after. PRAGMA: vendor-backed advice for clients whose agents slow down as they add connectors.",
-      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/"
+      "how": "The Construct: check that every Claude Code launch we script (render nodes, site deploy, Hermes workers) sets its permission mode explicitly, since the default just changed; use onFailure: block on write-capable MCP tools so a failed guard halts the run instead of letting it continue.",
+      "url": "https://dev.to/aicoding-guide/this-week-in-claude-code-codex-and-gemini-cli-week-of-november-22-2026-1ofi"
     },
     {
       "n": 5,
-      "title": "LangChain puts LangSmith Tool Gateway in public beta (Nov 19): one control point for agent tool calls across MCP clients, Claude Code and Cursor included",
-      "summary": "The gateway centralizes credentials, per-tool access policies, human approvals and audit traces for the tools agents call, and fronts MCP servers for any MCP-compatible client.",
-      "tag": "yes",
-      "how": "The Construct: our MCP fleet (Higgsfield, Gmail, Drive, Slack, Canva, render nodes) has credentials spread across clients with no single audit trail; a gateway layer, LangSmith or self-built, gives per-agent scopes, approvals for writes and one log, the same pattern as Walmart's Agent Gateway. PRAGMA: a ready reference architecture for clients worried about agents holding live credentials.",
-      "url": "https://langchain.com/blog/langsmith-tool-gateway"
+      "title": "Google Agent Compute Engine: managed VMs for agents with checkpointed sessions",
+      "summary": "Google is offering managed virtual machines built for agent workloads, where an agent's session can be checkpointed and resumed rather than rebuilt after a crash or timeout.",
+      "tag": "maybe",
+      "how": "The Construct: long jobs (Vironbox renders, multi-hour site sweeps) currently die with the shell or container; checkpointed agent sessions are the pattern to copy, whether on Google or by saving state to disk between steps. Worth a trial only if a render or research job keeps losing progress.",
+      "url": "https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-monday-november-23-2026/"
     }
   ],
-  "praxis_lesson": "Cheap model routing is now a data-handling decision: canary tests showed some inference hosts log prompts despite zero-retention flags. The Construct should pin providers for every worker, enforce ZDR, and keep secrets and client files out of prompts sent to low-cost routes, the same way a shop controls which vendors see a customer's artwork.",
+  "praxis_lesson": "Agents are being cut off from passwords from both sides: banks are blocking or disclaiming agents that log in with customer credentials, and credential brokers now give agents a scoped, expiring session instead. The Construct should move every logged-in agent task to an API, a connector or a brokered session with expiry, and stop handing agents raw passwords.",
   "history": [
+    "2026-11-23",
     "2026-11-22",
     "2026-11-21",
     "2026-11-20",
@@ -58,7 +59,6 @@
     "2026-11-13",
     "2026-11-12",
     "2026-11-11",
-    "2026-11-10",
-    "2026-11-09"
+    "2026-11-10"
   ]
 }

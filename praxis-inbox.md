@@ -3951,3 +3951,15 @@ lesson: Cheap model routing is now a data-handling decision: canary tests showed
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-23
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: 1Password for Agents: agents sign in to sites without ever s (yes); Wells Fargo changes its online access agreement (effective N (yes); SWE-CoWork benchmark: frontier coding agents pass about 63%  (yes); Claude Code v2.1.328: sessions with no permission mode now s (yes); Google Agent Compute Engine: managed VMs for agents with che (maybe)
+lesson: Agents are being cut off from passwords from both sides: banks are blocking or disclaiming agents that log in with customer credentials, and credential brokers now give agents a scoped, expiring session instead. The Construct should move every logged-in agent task to an API, a connector or a brokered session with expiry, and stop handing agents raw passwords.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
