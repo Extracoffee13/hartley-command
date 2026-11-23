@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-23T10:52:03+00:00",
+  "generated": "2026-11-23T14:52:46+00:00",
   "latest_date": "2026-11-23",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
@@ -13,38 +13,38 @@
     },
     {
       "n": 2,
+      "title": "Anthropic puts Claude computer use in beta for Team and Enterprise plans across desktop, web and mobile (Nov 20, rolling out gradually); Claude Code 2.1.330 adds Enterprise Admin Console sign-in and a built-in chart tool",
+      "summary": "Org plans can now let Claude operate a computer from any Claude surface, not just a local desktop setup, while Claude Code picks up admin-console sign-in via claude auth login and self-hosted runner settings such as --start-dir.",
+      "tag": "yes",
+      "how": "The Construct: computer use available org-wide means the AP-Agent Mac tasks (Signs365 carts, WordPress fixes) could be triggered from phone or web; set per-app allowlists before turning it on, since a broader surface is a broader blast radius. PRAGMA: a supported, admin-governed path to pitch instead of home-built screen automation.",
+      "url": "https://releasebot.io/updates/anthropic"
+    },
+    {
+      "n": 3,
+      "title": "OpenAI starts a limited test of \"Dots\" (Nov 21): persistent, always-on agents for some ChatGPT Plus users and eligible Business workspaces",
+      "summary": "OpenAI is testing agents that keep running in the background instead of answering one chat at a time, the same always-on pattern Cognition's Devin Bots shipped last week.",
+      "tag": "maybe",
+      "how": "The Construct: our edge has been standing agents (Pulse, Hermes workers, the partner-order runner); with the big labs now shipping always-on agents, the moat moves to the business-specific skills and gates we own, not the scheduling. PRAGMA: expect clients to ask why not just use Dots, so lead with integration and verification.",
+      "url": "https://aiagentstore.ai/ai-agent-news/this-week"
+    },
+    {
+      "n": 4,
+      "title": "\"Formalize or Lose It\" (Nov 23): nearly half of supervisory rules in multi-agent runs lived only in prompts, and executable checks caught failures prompt-only supervision missed; Tether 0.4.0 (Nov 22) replays recorded agent runs as tests",
+      "summary": "New research plus a new open test harness point the same way: rules an agent must follow should be code that checks the run, and recorded runs can be replayed to assert tools called, final files and step/cost limits.",
+      "tag": "yes",
+      "how": "The Construct: move written gates (done-means-done, claims-truth, print-file guide) from SKILL.md prose into scripts that fail the run, and replay a saved run of each standing agent after any skill edit. PRAGMA: a citable reason to sell verification harnesses, not just prompts.",
+      "url": "https://aiagentstore.ai/ai-agent-news/this-week"
+    },
+    {
+      "n": 5,
       "title": "Wells Fargo changes its online access agreement (effective Nov 24): customers use third-party AI agents at their own risk; JPMorgan, Schwab and Citi already block or limit credential-based agents",
       "summary": "Big US banks are pushing liability for agent logins onto customers and shutting out agents that sign in with a customer's username and password.",
       "tag": "yes",
       "how": "Brand 9 Signs: any agent task touching business banking (reconciliation, payments, pulling statements) should go through bank APIs, exports or a bookkeeping connector, not a scripted login; a credential-based bank session may now void protections. PRAGMA: a dated, concrete risk to put in every client's agent-permissions policy.",
       "url": "https://killtheai.com/news/top-10-ai-news-today-november-23-2026/"
-    },
-    {
-      "n": 3,
-      "title": "SWE-CoWork benchmark: frontier coding agents pass about 63% of tests inside a simulated company but fully finish under 8% of assignments",
-      "summary": "A new benchmark drops 11 models into a simulated workplace; Claude Opus 5.5 and GPT-6 Astra clear most individual checks yet rarely complete a whole assignment end to end.",
-      "tag": "yes",
-      "how": "The Construct: matches what our own runs show: partial progress is common, full completion is not. Grade agents on finished, verified deliverables (the done-means-done gate), not on steps passed, and keep a human checkpoint before anything ships. PRAGMA: a sober data point for setting client expectations on unattended agents.",
-      "url": "https://explainx.ai/blog/swe-cowork-coding-agents-digital-employees-benchmark-2026"
-    },
-    {
-      "n": 4,
-      "title": "Claude Code v2.1.328: sessions with no permission mode now start in auto mode, auto mode reaches Bedrock, Google Cloud and Microsoft Foundry, and MCP tool hooks can block on failure",
-      "summary": "Interactive Claude Code sessions default to auto mode, the mode is available on the major cloud providers and the Claude apps gateway, and an mcp_tool hook option \"onFailure\": \"block\" stops a run when a guarded MCP call fails.",
-      "tag": "yes",
-      "how": "The Construct: check that every Claude Code launch we script (render nodes, site deploy, Hermes workers) sets its permission mode explicitly, since the default just changed; use onFailure: block on write-capable MCP tools so a failed guard halts the run instead of letting it continue.",
-      "url": "https://dev.to/aicoding-guide/this-week-in-claude-code-codex-and-gemini-cli-week-of-november-22-2026-1ofi"
-    },
-    {
-      "n": 5,
-      "title": "Google Agent Compute Engine: managed VMs for agents with checkpointed sessions",
-      "summary": "Google is offering managed virtual machines built for agent workloads, where an agent's session can be checkpointed and resumed rather than rebuilt after a crash or timeout.",
-      "tag": "maybe",
-      "how": "The Construct: long jobs (Vironbox renders, multi-hour site sweeps) currently die with the shell or container; checkpointed agent sessions are the pattern to copy, whether on Google or by saving state to disk between steps. Worth a trial only if a render or research job keeps losing progress.",
-      "url": "https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-monday-november-23-2026/"
     }
   ],
-  "praxis_lesson": "Agents are being cut off from passwords from both sides: banks are blocking or disclaiming agents that log in with customer credentials, and credential brokers now give agents a scoped, expiring session instead. The Construct should move every logged-in agent task to an API, a connector or a brokered session with expiry, and stop handing agents raw passwords.",
+  "praxis_lesson": "Rules that live only in a prompt are suggestions: this week's research found executable checks catch the failures prompt-only supervision misses, just as labs start shipping always-on agents that run with nobody watching. The Construct should turn each written gate into a script that can fail the run, and replay saved runs as tests after every skill change.",
   "history": [
     "2026-11-23",
     "2026-11-22",

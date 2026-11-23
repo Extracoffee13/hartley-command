@@ -3963,3 +3963,27 @@ lesson: Agents are being cut off from passwords from both sides: banks are block
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-21
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (morning refresh; added Gemini for Mac computer use and OpenAI Performance Factory).
+outcome: 1Password for Agents: agents sign in to sites without ever s (yes); Google gives the Gemini Mac app computer use (Nov 19): it ca (maybe); Wells Fargo changes its online access agreement (effective N (yes); SWE-CoWork benchmark: frontier coding agents pass about 63%  (yes); OpenAI details Performance Factory (Nov 19): Codex agents di (yes)
+lesson: This week the big platforms converged on three patterns at once: desktop agents (Claude and Gemini both drive the Mac now), one gated, logged path for every tool call, and agents that propose fixes for a human to approve rather than acting alone. For The Construct, the drivers are becoming interchangeable, so invest in the gate (own identity per worker, one logged MCP gateway) and in fix-as-PR loops for the sentinel agents, not in any one vendor's agent.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-23
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (later refresh; kept 1Password for Agents and the Wells Fargo terms change, added Claude computer use beta, OpenAI Dots and the Formalize-or-Lose-It/Tether verification items; reset latest_date to 2026-11-23 after a concurrent run wrote 2026-11-21).
+outcome: 1Password for Agents: agents sign in to sites without ever s (yes); Anthropic puts Claude computer use in beta for Team and Ente (yes); OpenAI starts a limited test of "Dots" (Nov 21): persistent, (maybe); "Formalize or Lose It" (Nov 23): nearly half of supervisory  (yes); Wells Fargo changes its online access agreement (effective N (yes)
+lesson: Rules that live only in a prompt are suggestions: this week's research found executable checks catch the failures prompt-only supervision misses, just as labs start shipping always-on agents that run with nobody watching. The Construct should turn each written gate into a script that can fail the run, and replay saved runs as tests after every skill change.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
