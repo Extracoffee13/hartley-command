@@ -1,50 +1,50 @@
 {
-  "generated": "2026-11-24T14:52:38+00:00",
+  "generated": "2026-11-24T18:53:38+00:00",
   "latest_date": "2026-11-24",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Anthropic ships Claude Ship (Nov 23): three GitHub pull-request agents, with Code Review GA and PR Steward + Approvals in public beta, plus a /ship command in Claude Code",
-      "summary": "The agents review, fix and shepherd pull requests on GitHub; Anthropic says most reviews finish in 6-10 minutes.",
+      "title": "Google Workspace MCP servers and CLI go GA (Nov 24), and AI agents must use them instead of Workspace REST APIs from Feb 1, 2027",
+      "summary": "Agents need a person's sign-off before sending email, changing Drive sharing or making bulk edits; a new AI Tools Addendum bars training on Workspace data, and billing for agent accounts starts Apr 1, 2027.",
       "tag": "yes",
-      "how": "The Construct: put Code Review and PR Steward on the hartley-command and B9 site repos so the sentinel agents' fixes land as reviewed PRs, not direct pushes, which is the fix-as-PR loop we flagged last week. PRAGMA: a ready reference for 'agents propose, humans approve' in client engineering teams.",
-      "url": "https://www.marktechpost.com/2026/11/23/anthropic-claude-ship-pull-request-agents"
+      "how": "The Construct: every Hermes/Cowork job that reaches Gmail or Drive through raw REST calls or scripts has to move to the Workspace MCP path before Feb 1, 2027, and send/share steps must expect a human-approval prompt. Brand 9 Signs: customer-email and proof-sharing flows are in scope. PRAGMA: a hard deadline that Workspace clients will need help meeting.",
+      "url": "https://thenextweb.com/news/google-workspace-ai-agents-mcp-servers-rules"
     },
     {
       "n": 2,
-      "title": "Canva MCP is generally available, with new REST APIs and a command-line tool so AI agents can create and edit Canva designs",
-      "summary": "Canva moves its MCP server out of preview and adds developer APIs and a CLI aimed at agents and coding tools.",
+      "title": "Anthropic ships Claude Ship (Nov 23): Code Review GA, PR Steward + Approvals in public beta, plus a /ship command in Claude Code",
+      "summary": "Three GitHub agents review, fix and shepherd pull requests and can approve changes within team rules.",
       "tag": "yes",
-      "how": "Brand 9 Signs: Canva is already connected in Cowork, so a design agent can draft sign mockups, social posts and client proofs straight into Canva brand templates. The Construct: a GA, supported design MCP is safer to build standing jobs on than preview tools.",
-      "url": "https://www.canva.com/newsroom/news/canva-mcp-update/"
+      "how": "The Construct: put Code Review and PR Steward on hartley-command and the B9 site repos so sentinel fixes land as reviewed PRs, not direct pushes. PRAGMA: a ready 'agents propose, humans approve' reference for client engineering teams.",
+      "url": "https://www.marktechpost.com/2026/11/23/anthropic-claude-ship-pull-request-agents"
     },
     {
       "n": 3,
-      "title": "Google ships semantic governance policies in Preview (Nov 23): a judge LLM checks every tool call an agent proposes and blocks it before it runs if it breaks a plain-language company rule or doesn't match the user's request",
-      "summary": "The check sits outside the agent at an enforcement point such as Agent Gateway; the user-intent check is on by default, verdicts and rationale go to Cloud Logging, and Google recommends dry-run first because LLM verdicts can vary.",
+      "title": "Canva MCP is generally available, with new REST APIs and a CLI so AI agents can create and edit Canva designs",
+      "summary": "Canva moves its MCP server out of preview and adds developer APIs and a command-line tool aimed at agents.",
       "tag": "yes",
-      "how": "The Construct: the same pattern fits our MCP fleet, a pre-execution gate that reads each send/order/publish call against written rules and logs the verdict, sitting outside Hermes and Cowork rather than in their prompts. PRAGMA: a big-vendor reference design for the 'policy outside the agent' layer we sell.",
-      "url": "https://www.helpnetsecurity.com/2026/11/23/google-semantic-governance-policies/"
+      "how": "Brand 9 Signs: Canva is already connected in Cowork, so a design agent can draft sign mockups, social posts and client proofs into brand templates. The Construct: a GA design MCP is safer for standing jobs than preview tools.",
+      "url": "https://www.canva.com/newsroom/news/canva-mcp-update/"
     },
     {
       "n": 4,
-      "title": "OpenAI rolls out GPT-6.2 Sol to ChatGPT Plus, Pro, Business and Enterprise (Nov 23)",
-      "summary": "OpenAI says the update follows complex instructions better and reads small visual details more reliably.",
+      "title": "Agentic AI Foundation (OpenAI, Anthropic, Google, Microsoft, under the Linux Foundation) is drafting shared rules for agent identity, payments and spending limits (Nov 21)",
+      "summary": "Working groups are drafting guidance on spending limits, customer authorization and emergency controls, including agent use of bank cards and stablecoins; nothing is final yet.",
       "tag": "maybe",
-      "how": "The Construct: re-run our proof-reading and print-file checks (small text on sign artwork) against Sol next to Claude before choosing a model for that gate. Brand 9 Signs: better fine-detail reading matters for catching typos on proofs.",
-      "url": "https://www.macrumors.com/2026/11/23/openai-gpt-6-2-sol-chatgpt/"
+      "how": "Brand 9 Signs: the shop's AI-shopping work (agent-placed orders, ChatGPT checkout) should track these drafts so B9 is ready for agent buyers early. The Construct: copy the spending-limit and emergency-stop ideas into our own order-placing runners.",
+      "url": "https://www.coindesk.com/tech/2026/11/21/openai-anthropic-and-rivals-seek-ai-agent-rules-to-prevent-commerce-chaos"
     },
     {
       "n": 5,
-      "title": "Agent observability consolidates: Elastic to acquire agent tracing/eval startup HoneyHive, Workday closes C1.ai for employee-and-agent identity governance, and open-source Show-Context visualizes which files Claude Code touches (Nov 23)",
-      "summary": "Tracing, evaluation and per-agent identity are being folded into mainstream platforms, while a free tool shows exactly what a coding agent read during a session.",
-      "tag": "yes",
-      "how": "The Construct: try Show-Context on a Claude Code run against our repos and log each standing agent's runs as replayable traces. PRAGMA: tracing plus identity per agent is now a line item enterprise buyers expect.",
-      "url": "https://aiagentsdirectory.com/news/ai-agents-news-brief-november-23-2026"
+      "title": "AWS releases Strands Decider v2: five open decision models (2B-31B, built on Gemma 4) under Apache 2.0",
+      "summary": "Small open models meant to make routing and decision calls inside agent workflows.",
+      "tag": "maybe",
+      "how": "The Construct: a candidate for cheap local triage on the AP-Agent Mac (which queue, which agent, approve or escalate) instead of spending a frontier-model call on every routing step.",
+      "url": "https://riorundown.substack.com/p/ai-news-nov-24-2026-anthropic-agent"
     }
   ],
-  "praxis_lesson": "Anthropic and Google both shipped the same shape this week: the agent proposes, and a separate reviewer (a PR agent or a judge model) checks the change before it lands. The Construct should route every sentinel fix and every send/publish through one reviewed path, so speed comes from the agents and safety comes from the gate.",
+  "praxis_lesson": "Google just made the approval gate mandatory: from Feb 1, 2027 agents reach Gmail and Drive only through its MCP servers, with a person signing off on sends and sharing. The Construct should build that gate in now, routing every send, share and publish through one approved path, rather than retrofitting it when the old API route closes.",
   "history": [
     "2026-11-24",
     "2026-11-23",

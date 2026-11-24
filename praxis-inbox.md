@@ -4047,3 +4047,27 @@ lesson: Anthropic and Google both shipped the same shape this week: the agent pr
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-21
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (morning refresh; added Gemini for Mac computer use and OpenAI Performance Factory).
+outcome: Anthropic ships Claude Ship (Nov 23): three GitHub pull-requ (yes); Google gives the Gemini Mac app computer use (Nov 19): it ca (maybe); Canva MCP is generally available, with new REST APIs and a c (yes); Google ships semantic governance policies in Preview (Nov 23 (yes); OpenAI details Performance Factory (Nov 19): Codex agents di (yes)
+lesson: This week the big platforms converged on three patterns at once: desktop agents (Claude and Gemini both drive the Mac now), one gated, logged path for every tool call, and agents that propose fixes for a human to approve rather than acting alone. For The Construct, the drivers are becoming interchangeable, so invest in the gate (own identity per worker, one logged MCP gateway) and in fix-as-PR loops for the sentinel agents, not in any one vendor's agent.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-24
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (afternoon refresh; added Google Workspace MCP GA + Feb 1 agent mandate, AAIF agent-commerce rules, AWS Strands Decider v2). Note: the block above dated 2026-11-21 was re-appended by a stale shared /tmp/pulse.py and is a duplicate.
+outcome: Google Workspace MCP servers and CLI go GA (Nov 24), and AI  (yes); Anthropic ships Claude Ship (Nov 23): Code Review GA, PR Ste (yes); Canva MCP is generally available, with new REST APIs and a C (yes); Agentic AI Foundation (OpenAI, Anthropic, Google, Microsoft, (maybe); AWS releases Strands Decider v2: five open decision models ( (maybe)
+lesson: Google just made the approval gate mandatory: from Feb 1, 2027 agents reach Gmail and Drive only through its MCP servers, with a person signing off on sends and sharing. The Construct should build that gate in now, routing every send, share and publish through one approved path, rather than retrofitting it when the old API route closes.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
