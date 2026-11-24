@@ -4011,3 +4011,27 @@ lesson: Agents are now finishing half of multi-hour tasks, which means half stil
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-21
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (morning refresh; added Gemini for Mac computer use and OpenAI Performance Factory).
+outcome: 1Password for Agents: agents sign in to sites without ever s (yes); Google gives the Gemini Mac app computer use (Nov 19): it ca (maybe); OpenAI: its agents now finish 46% of research tasks sized at (maybe); "Formalize or Lose It" (Nov 23): nearly half of supervisory  (yes); OpenAI details Performance Factory (Nov 19): Codex agents di (yes)
+lesson: This week the big platforms converged on three patterns at once: desktop agents (Claude and Gemini both drive the Mac now), one gated, logged path for every tool call, and agents that propose fixes for a human to approve rather than acting alone. For The Construct, the drivers are becoming interchangeable, so invest in the gate (own identity per worker, one logged MCP gateway) and in fix-as-PR loops for the sentinel agents, not in any one vendor's agent.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-24
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Google ships semantic governance policies in Preview (Nov 23 (yes); Anthropic: Enterprise Frontier Safeguards in public beta (No (maybe); Sierra raises $1.75B at a $30B valuation with ARR above $400 (maybe); Agent observability consolidates: Elastic to acquire agent t (yes)
+lesson: The control that matters is moving out of the agent and into a gate around it: Google judges each tool call before it runs, and the acquirers are buying tracing and per-agent identity. The Construct should put its rules in one checkpoint every send, order and publish passes through, logged and replayable, instead of trusting each agent's prompt to remember them.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

@@ -1,51 +1,44 @@
 {
-  "generated": "2026-11-23T18:53:18+00:00",
-  "latest_date": "2026-11-23",
+  "generated": "2026-11-24T10:53:29+00:00",
+  "latest_date": "2026-11-24",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "1Password for Agents: agents sign in to sites without ever seeing the password, with a Claude integration and grants that expire after 30 days (week of Nov 23)",
-      "summary": "1Password now brokers logins for AI agents so the agent gets a session, not the secret; its Claude integration adds an Agentic Mode, and each grant lapses after 30 days unless renewed.",
+      "title": "Google ships semantic governance policies in Preview (Nov 23): a judge LLM checks every tool call an agent proposes and blocks it before it runs if it breaks a plain-language company rule or doesn't match the user's request",
+      "summary": "The check sits outside the agent at an enforcement point such as Agent Gateway; the user-intent check is on by default, verdicts and rationale go to Cloud Logging, and Google recommends dry-run first because LLM verdicts can vary.",
       "tag": "yes",
-      "how": "The Construct: Hermes, Cowork and the B9 partner-order runner drive logged-in sessions (Signs365, WordPress, Google) with credentials in browser profiles and files; a broker gives per-agent grants, expiry and revocation. PRAGMA: the cleanest answer to a client's first question, \"what happens to our passwords?\"",
-      "url": "https://1password.com/personal-ai-agent-integrations"
+      "how": "The Construct: the same pattern fits our MCP fleet, a pre-execution gate that reads each send/order/publish call against written rules (no outside emails of pricing, no orders over a ceiling) and logs the verdict, sitting outside Hermes and Cowork rather than in their prompts. PRAGMA: a big-vendor reference design for the 'policy outside the agent' layer we sell.",
+      "url": "https://www.helpnetsecurity.com/2026/11/23/google-semantic-governance-policies/"
     },
     {
       "n": 2,
-      "title": "OpenAI: its agents now finish 46% of research tasks sized at 2-4 human hours (23% in March) and 35% of 4-8 hour tasks (13%); \"Dots\" always-on agents in limited test (Nov 21-22)",
-      "summary": "OpenAI's own numbers show multi-hour agent task completion roughly doubling in eight months, while it tests persistent background agents for some ChatGPT Plus and Business users.",
+      "title": "Anthropic: Enterprise Frontier Safeguards in public beta (Nov 23) with zero data retention and sealed safety data kept in the customer's own cloud bucket; Claude Code 2.1.330 adds Enterprise Admin Console sign-in and a built-in chart tool",
+      "summary": "EFS runs on Claude Platform, Claude Platform on AWS, Bedrock and Google Cloud (Microsoft Foundry coming), was built with 100+ customers and evaluated by Bridgewater, Salesforce and Stripe; new org webhooks flag external storage failures.",
       "tag": "maybe",
-      "how": "The Construct: half-day jobs (shop SEO sweeps, bid prep, site audits) are now realistic to hand to one agent run, but still fail more often than not, so keep the verification gates. PRAGMA: a dated benchmark to set client expectations on what an agent can own end to end.",
-      "url": "https://aiagentstore.ai/ai-agent-news/this-week"
+      "how": "PRAGMA: a concrete answer for regulated or privacy-sensitive clients who ask where their data goes when an agent runs. The Construct: little change today, but the built-in chart tool in Claude Code could replace hand-rolled charting in dashboard jobs.",
+      "url": "https://releasebot.io/updates/anthropic"
     },
     {
       "n": 3,
-      "title": "\"Formalize or Lose It\" (Nov 23): nearly half of supervisory rules in multi-agent runs lived only in prompts, and executable checks caught failures prompt-only supervision missed; Tether 0.4.0 (Nov 22) replays recorded agent runs as tests",
-      "summary": "New research plus an open test harness point the same way: rules an agent must follow should be code that checks the run, and recorded runs can be replayed to assert tool calls, final files and step/cost limits.",
-      "tag": "yes",
-      "how": "The Construct: move written gates (done-means-done, claims-truth, print-file guide) from SKILL.md prose into scripts that fail the run, and replay a saved run of each standing agent after any skill edit. PRAGMA: a citable reason to sell verification harnesses, not just prompts.",
-      "url": "https://aiagentstore.ai/ai-agent-news/this-week"
+      "title": "Sierra raises $1.75B at a $30B valuation with ARR above $400M (Nov 23)",
+      "summary": "The customer-service agent company is now one of the largest pure agent businesses by revenue, showing buyers pay at scale for agents that own an outcome (resolved tickets) rather than for seats.",
+      "tag": "maybe",
+      "how": "PRAGMA: a market proof point for outcome-priced agent work; price the operator offer by jobs completed, not hours. Brand 9 Signs: customer intake and quote follow-up is the same category, and the bar for 'good enough to buy' keeps rising.",
+      "url": "https://aiagentsdirectory.com/news/ai-agents-news-brief-november-23-2026"
     },
     {
       "n": 4,
-      "title": "Wells Fargo's new online access terms take effect Nov 24: customers use third-party AI agents at their own risk; JPMorgan, Schwab and Citi already block or limit credential-based agents",
-      "summary": "Big US banks are pushing liability for agent logins onto customers and shutting out agents that sign in with a customer's username and password.",
+      "title": "Agent observability consolidates: Elastic to acquire agent tracing/eval startup HoneyHive, Workday closes C1.ai for employee-and-agent identity governance, and open-source Show-Context visualizes which files Claude Code touches (Nov 23)",
+      "summary": "Tracing, evaluation and per-agent identity are being folded into mainstream platforms, while a free tool shows exactly what a coding agent read during a session.",
       "tag": "yes",
-      "how": "Brand 9 Signs: any agent task touching business banking (reconciliation, payments, statements) should go through bank APIs, exports or a bookkeeping connector, not a scripted login. PRAGMA: a dated, concrete risk for every client's agent-permissions policy.",
-      "url": "https://killtheai.com/news/top-10-ai-news-today-november-23-2026/"
-    },
-    {
-      "n": 5,
-      "title": "Reports that Meta's Muse agent exposed private Signal messages and fabricated purchase information (Nov 21)",
-      "summary": "Internal reports describe a consumer agent leaking message content across contexts and inventing purchase details, a live example of agents with broad account access going wrong.",
-      "tag": "yes",
-      "how": "The Construct: agents that read Gmail/Slack and also place orders should never mix those contexts unchecked; every order or customer claim must trace to a real record before it is sent. PRAGMA: a cautionary case for scoping agent access per task.",
-      "url": "https://aiagentstore.ai/ai-agent-news/this-week"
+      "how": "The Construct: try Show-Context on a Claude Code run against the hartley-command and B9 site repos to see what agents actually read, and log each standing agent's runs as traces we can replay. PRAGMA: tracing plus identity per agent is now a line item enterprise buyers expect.",
+      "url": "https://aiagentsdirectory.com/news/ai-agents-news-brief-november-23-2026"
     }
   ],
-  "praxis_lesson": "Agents are now finishing half of multi-hour tasks, which means half still fail, and the failures that hurt come from broad access, not weak models. The Construct should give each agent a scoped, expiring login (no raw passwords) and a scripted gate that checks the run before anything leaves the building.",
+  "praxis_lesson": "The control that matters is moving out of the agent and into a gate around it: Google judges each tool call before it runs, and the acquirers are buying tracing and per-agent identity. The Construct should put its rules in one checkpoint every send, order and publish passes through, logged and replayable, instead of trusting each agent's prompt to remember them.",
   "history": [
+    "2026-11-24",
     "2026-11-23",
     "2026-11-22",
     "2026-11-21",
@@ -58,7 +51,6 @@
     "2026-11-14",
     "2026-11-13",
     "2026-11-12",
-    "2026-11-11",
-    "2026-11-10"
+    "2026-11-11"
   ]
 }
