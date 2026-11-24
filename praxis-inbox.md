@@ -4035,3 +4035,15 @@ lesson: The control that matters is moving out of the agent and into a gate arou
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-24
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct (midday refresh; added Claude Ship, Canva MCP GA and GPT-6.2 Sol).
+outcome: Anthropic ships Claude Ship (Nov 23): three GitHub pull-requ (yes); Canva MCP is generally available, with new REST APIs and a c (yes); Google ships semantic governance policies in Preview (Nov 23 (yes); OpenAI rolls out GPT-6.2 Sol to ChatGPT Plus, Pro, Business  (maybe); Agent observability consolidates: Elastic to acquire agent t (yes)
+lesson: Anthropic and Google both shipped the same shape this week: the agent proposes, and a separate reviewer (a PR agent or a judge model) checks the change before it lands. The Construct should route every sentinel fix and every send/publish through one reviewed path, so speed comes from the agents and safety comes from the gate.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
