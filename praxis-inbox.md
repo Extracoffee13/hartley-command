@@ -4071,3 +4071,15 @@ lesson: Google just made the approval gate mandatory: from Feb 1, 2027 agents re
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-25
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Anthropic MCP update (Nov 24): Skills over MCP in public bet (yes); Signal joins United Airlines and JPMorgan Chase in limiting  (yes); Mesh launches Mesh MCP (Nov 24): a hosted, read-only MCP ser (maybe); OpenAI rolls out a chat-tuned GPT-6.2 Sol in ChatGPT's Chat  (maybe); Agent accountability and security money keeps flowing: Dante (maybe)
+lesson: Two signals landed the same day: Anthropic made MCP able to carry skills and ask the user questions mid-task, while Signal, United and JPMorgan started limiting outside agents. The Construct should move its agents onto sanctioned MCP and API paths, with skills bundled and sign-off asked in-band, and treat scraping a site through a browser as a fallback that can stop working any day.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

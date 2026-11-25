@@ -1,51 +1,52 @@
 {
-  "generated": "2026-11-24T18:53:38+00:00",
-  "latest_date": "2026-11-24",
+  "generated": "2026-11-25T10:53:12+00:00",
+  "latest_date": "2026-11-25",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Google Workspace MCP servers and CLI go GA (Nov 24), and AI agents must use them instead of Workspace REST APIs from Feb 1, 2027",
-      "summary": "Agents need a person's sign-off before sending email, changing Drive sharing or making bulk edits; a new AI Tools Addendum bars training on Workspace data, and billing for agent accounts starts Apr 1, 2027.",
+      "title": "Anthropic MCP update (Nov 24): Skills over MCP in public beta; Tasks and Elicitation now generally available; File Uploads coming soon",
+      "summary": "MCP servers can now ship skills alongside their tools, long-running Tasks and mid-call Elicitation (the server asking the user a question) are GA, and file uploads over MCP are next.",
       "tag": "yes",
-      "how": "The Construct: every Hermes/Cowork job that reaches Gmail or Drive through raw REST calls or scripts has to move to the Workspace MCP path before Feb 1, 2027, and send/share steps must expect a human-approval prompt. Brand 9 Signs: customer-email and proof-sharing flows are in scope. PRAGMA: a hard deadline that Workspace clients will need help meeting.",
-      "url": "https://thenextweb.com/news/google-workspace-ai-agents-mcp-servers-rules"
+      "how": "The Construct: package our skills (b9-*, vironbox-*, hermes-*) with the MCP servers that use them, so any agent that connects gets both the tool and the instructions; use Tasks for long jobs (renders, partner orders) and Elicitation for owner sign-off. PRAGMA: a cleaner way to hand clients a tool and its playbook together.",
+      "url": "https://claude.com/resources/articles/skills-over-mcp-tasks-and-more"
     },
     {
       "n": 2,
-      "title": "Anthropic ships Claude Ship (Nov 23): Code Review GA, PR Steward + Approvals in public beta, plus a /ship command in Claude Code",
-      "summary": "Three GitHub agents review, fix and shepherd pull requests and can approve changes within team rules.",
+      "title": "Signal joins United Airlines and JPMorgan Chase in limiting AI agents on their services over customer risk (Nov 24)",
+      "summary": "Large consumer brands are starting to restrict or block AI agents acting for customers on their services.",
       "tag": "yes",
-      "how": "The Construct: put Code Review and PR Steward on hartley-command and the B9 site repos so sentinel fixes land as reviewed PRs, not direct pushes. PRAGMA: a ready 'agents propose, humans approve' reference for client engineering teams.",
-      "url": "https://www.marktechpost.com/2026/11/23/anthropic-claude-ship-pull-request-agents"
+      "how": "The Construct: Hermes/browser runners that sign in to third-party sites (partner portals, banks, airlines) should expect blocks and need a fallback to official APIs or a human step. Brand 9 Signs: decide on purpose whether the shop welcomes agent buyers. PRAGMA: an 'agent access policy' is now a real client question.",
+      "url": "https://www.cnbc.com/2026/11/24/signal-airlines-banks-ai-limit.html"
     },
     {
       "n": 3,
-      "title": "Canva MCP is generally available, with new REST APIs and a CLI so AI agents can create and edit Canva designs",
-      "summary": "Canva moves its MCP server out of preview and adds developer APIs and a command-line tool aimed at agents.",
-      "tag": "yes",
-      "how": "Brand 9 Signs: Canva is already connected in Cowork, so a design agent can draft sign mockups, social posts and client proofs into brand templates. The Construct: a GA design MCP is safer for standing jobs than preview tools.",
-      "url": "https://www.canva.com/newsroom/news/canva-mcp-update/"
+      "title": "Mesh launches Mesh MCP (Nov 24): a hosted, read-only MCP server that lets coding agents build a payments integration from one prompt",
+      "summary": "Works with Claude Code, Claude, Cursor and Codex; it reads docs and account setup but never moves funds.",
+      "tag": "maybe",
+      "how": "Brand 9 Signs / The Construct: a model for how payment tooling should be exposed to agents (read-only by default, money moves only through a gated path); worth copying for Stripe and shop-order agents rather than adopting Mesh itself.",
+      "url": "https://www.prnewswire.com/news-releases/mesh-launches-mesh-mcp-turning-one-prompt-into-a-payments-integration-302949189.html"
     },
     {
       "n": 4,
-      "title": "Agentic AI Foundation (OpenAI, Anthropic, Google, Microsoft, under the Linux Foundation) is drafting shared rules for agent identity, payments and spending limits (Nov 21)",
-      "summary": "Working groups are drafting guidance on spending limits, customer authorization and emergency controls, including agent use of bank cards and stablecoins; nothing is final yet.",
+      "title": "OpenAI rolls out a chat-tuned GPT-6.2 Sol in ChatGPT's Chat tab for paid tiers, including an offer to watch for price drops (Nov 24)",
+      "summary": "OpenAI brings a chat-tuned version of its newest model to paid ChatGPT users, with shopping-style watch tasks built in.",
       "tag": "maybe",
-      "how": "Brand 9 Signs: the shop's AI-shopping work (agent-placed orders, ChatGPT checkout) should track these drafts so B9 is ready for agent buyers early. The Construct: copy the spending-limit and emergency-stop ideas into our own order-placing runners.",
-      "url": "https://www.coindesk.com/tech/2026/11/21/openai-anthropic-and-rivals-seek-ai-agent-rules-to-prevent-commerce-chaos"
+      "how": "Brand 9 Signs: ChatGPT is pushing deeper into shopping, so the AI-shopping work (product feeds, page facts) matters more. The Construct: re-run the weekly ChatGPT shopping prompt measure against the new default model.",
+      "url": "https://www.digitaltrends.com/computing/chatgpt-is-getting-a-chat-tuned-gpt-6-2-sol-and-it-can-offer-to-watch-for-a-price-drop/"
     },
     {
       "n": 5,
-      "title": "AWS releases Strands Decider v2: five open decision models (2B-31B, built on Gemma 4) under Apache 2.0",
-      "summary": "Small open models meant to make routing and decision calls inside agent workflows.",
+      "title": "Agent accountability and security money keeps flowing: Dante Security exits stealth with a $10M seed (NFX) and Metano raises $12M (Nov 24)",
+      "summary": "Investors are funding tools that track and audit what AI agents do, as agents outpace existing security tools.",
       "tag": "maybe",
-      "how": "The Construct: a candidate for cheap local triage on the AP-Agent Mac (which queue, which agent, approve or escalate) instead of spending a frontier-model call on every routing step.",
-      "url": "https://riorundown.substack.com/p/ai-news-nov-24-2026-anthropic-agent"
+      "how": "PRAGMA: agent audit trails are becoming a bought category, so lead client pitches with logging and accountability. The Construct: keep a per-agent action log as a standing requirement for every runner.",
+      "url": "https://thenextweb.com/news/dante-security-10m-ai-agent-accountability"
     }
   ],
-  "praxis_lesson": "Google just made the approval gate mandatory: from Feb 1, 2027 agents reach Gmail and Drive only through its MCP servers, with a person signing off on sends and sharing. The Construct should build that gate in now, routing every send, share and publish through one approved path, rather than retrofitting it when the old API route closes.",
+  "praxis_lesson": "Two signals landed the same day: Anthropic made MCP able to carry skills and ask the user questions mid-task, while Signal, United and JPMorgan started limiting outside agents. The Construct should move its agents onto sanctioned MCP and API paths, with skills bundled and sign-off asked in-band, and treat scraping a site through a browser as a fallback that can stop working any day.",
   "history": [
+    "2026-11-25",
     "2026-11-24",
     "2026-11-23",
     "2026-11-22",
@@ -58,7 +59,6 @@
     "2026-11-15",
     "2026-11-14",
     "2026-11-13",
-    "2026-11-12",
-    "2026-11-11"
+    "2026-11-12"
   ]
 }
