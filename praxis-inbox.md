@@ -4083,3 +4083,15 @@ lesson: Two signals landed the same day: Anthropic made MCP able to carry skills
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-25
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Anthropic MCP update (Nov 24): Skills over MCP in public bet (yes); Anthropic launches Claude Ship (beta, Team/Enterprise on Git (maybe); Walmart opens Agent Gateway (Nov 23): Meta's Muse is the fir (yes); Signal joins United Airlines and JPMorgan Chase in limiting  (yes); AWS upgrades Amazon Bedrock AgentCore runtime (Nov 24): up t (maybe)
+lesson: The same week Walmart opened a sanctioned gateway for outside shopping agents, Signal, United and JPMorgan started limiting them, so the open door is the official API or gateway and the closed door is the scraped website. The Construct should build Brand 9 Signs' shop to be bought through by agents and move its own runners onto sanctioned MCP and API paths, with the browser only as a fallback.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
