@@ -1,34 +1,26 @@
 {
-  "generated": "2026-11-25T14:52:19+00:00",
+  "generated": "2026-11-25T18:52:55+00:00",
   "latest_date": "2026-11-25",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
       "title": "Anthropic MCP update (Nov 24): Skills over MCP in public beta; Tasks and Elicitation now generally available; File Uploads coming soon",
-      "summary": "MCP servers can now ship skills alongside their tools (Shopify, HubSpot and Atlassian are first), long-running Tasks and mid-call Elicitation are GA, and file uploads over MCP are next.",
+      "summary": "MCP servers can now ship skills alongside their tools (Shopify, HubSpot and Atlassian first), long-running Tasks and mid-call Elicitation are GA, and file uploads over MCP are next.",
       "tag": "yes",
       "how": "The Construct: bundle our b9-*, vironbox-* and hermes-* skills with the MCP servers that use them; use Tasks for long jobs (renders, partner orders) and Elicitation for owner sign-off. PRAGMA: hand clients a tool and its playbook together. The HubSpot skill-pack is a ready CRM path for Brand 9 Signs.",
       "url": "https://claude.com/resources/articles/skills-over-mcp-tasks-and-more"
     },
     {
       "n": 2,
-      "title": "Anthropic launches Claude Ship (beta, Team/Enterprise on GitHub): Code Review now GA, plus PR Steward and Claude Approvals, with approval policies kept as repo files and /ship in Claude Code",
-      "summary": "A gated ship-to-production path where agents open, review and steward PRs and humans approve by policy written into the repository.",
+      "title": "Cloudflare launches Search for Agents (Nov 25, beta, all plans incl. free): one switch indexes a site and gives visiting AI agents a search endpoint on the site's own domain",
+      "summary": "Agents search the site and get matching source text instead of crawling it; billing under AI Search pricing starts Dec 1 with some monthly usage included.",
       "tag": "maybe",
-      "how": "The Construct: the hartley-command and brand9signs repos could move from launchd auto-push to a policy-gated /ship flow, but it needs a Team or Enterprise plan. PRAGMA: 'approval policy as a file in the repo' is a clean pattern to sell to clients running coding agents.",
-      "url": "https://claude.com/resources/articles/introducing-claude-ship"
+      "how": "Brand 9 Signs: if brand9signs.com sits behind Cloudflare (or moves there), this is a cheap way to make /shop/ product facts findable by agent buyers, pairing with the ChatGPT-shopping and AI-shelf work. PRAGMA: an easy 'agent-readable site' quick win to offer clients.",
+      "url": "https://blog.cloudflare.com/search-for-agents/"
     },
     {
       "n": 3,
-      "title": "Walmart opens Agent Gateway (Nov 23): Meta's Muse is the first outside shopping agent, buying Black Friday deals through Walmart's Sparky within Agent Profiles that set spend limits and approvals",
-      "summary": "A top retailer now gives outside AI agents a sanctioned way in to buy, with buyer-set limits, instead of blocking them.",
-      "tag": "yes",
-      "how": "Brand 9 Signs: agent buyers are arriving through official gateways, so the shop needs clean machine-readable product data and a checkout an agent can complete; the ChatGPT-shopping and AI-shelf work moves up the list. PRAGMA: 'agent-ready storefront' is a concrete offer for retail clients.",
-      "url": "https://dev.to/hiroki-ii-ai/ai-daily-digest-november-25-2026-jensen-huang-returns-to-lead-nvidia-walmart-opens-its-aisles-jgn"
-    },
-    {
-      "n": 4,
       "title": "Signal joins United Airlines and JPMorgan Chase in limiting AI agents on their services over customer risk (Nov 24)",
       "summary": "Large consumer brands are starting to restrict or block AI agents acting for customers on their services.",
       "tag": "yes",
@@ -36,15 +28,23 @@
       "url": "https://www.cnbc.com/2026/11/24/signal-airlines-banks-ai-limit.html"
     },
     {
+      "n": 4,
+      "title": "Versine (YC F26) ships an MCP server that lets AI assistants send and request money from a self-custodial USDC wallet on Base (Nov 24)",
+      "summary": "A payments MCP lets agents move money directly, a sign that agent-initiated payments are arriving as plug-in tools.",
+      "tag": "no",
+      "how": "Not for The Construct now: stablecoin wallets add custody and compliance risk with no Brand 9 Signs customer demand; watch only, and keep agent spend behind Stripe and owner approval.",
+      "url": "https://news.ycombinator.com/item?id=50634426"
+    },
+    {
       "n": 5,
-      "title": "AWS upgrades Amazon Bedrock AgentCore runtime (Nov 24): up to 8 vCPU / 32 GB per session, 10 GB container images, scale-to-zero for idle agents, new baseline pricing, 19 regions",
-      "summary": "Hosted agent runtimes are getting big enough to run heavy jobs and cheap enough to leave idle agents parked at zero cost.",
+      "title": "PrismML releases Ternary Bonsai 2.5 27B (Nov 24): a ~1.76-bit, 5.93 GB agentic model for tool-calling and coding that runs locally",
+      "summary": "Small enough to run on a laptop while targeting tool use and agentic coding.",
       "tag": "maybe",
-      "how": "The Construct: a possible cloud home for always-on agents that today depend on the AP-Agent Mac staying awake; compare against Anthropic's self-hosted Managed Agents before moving anything.",
-      "url": "https://dev.to/hiroki-ii-ai/ai-daily-digest-november-25-2026-jensen-huang-returns-to-lead-nvidia-walmart-opens-its-aisles-jgn"
+      "how": "The Construct: test it on the AP-Agent Mac as an offline, zero-cost model for simple routing and tool-call steps in Hermes workers; keep Claude for anything customer-facing.",
+      "url": "https://prismml.com/news/bonsai-2-5-27b"
     }
   ],
-  "praxis_lesson": "The same week Walmart opened a sanctioned gateway for outside shopping agents, Signal, United and JPMorgan started limiting them, so the open door is the official API or gateway and the closed door is the scraped website. The Construct should build Brand 9 Signs' shop to be bought through by agents and move its own runners onto sanctioned MCP and API paths, with the browser only as a fallback.",
+  "praxis_lesson": "Agents are getting sanctioned front doors (Cloudflare search endpoints, skills shipped with MCP servers) at the same time big brands shut the side doors (Signal, United, JPMorgan). The Construct should make Brand 9 Signs readable and buyable through those front doors and move its own runners onto official MCP and API paths, with the browser only as a fallback.",
   "history": [
     "2026-11-25",
     "2026-11-24",

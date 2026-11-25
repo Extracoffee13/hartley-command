@@ -4095,3 +4095,15 @@ lesson: The same week Walmart opened a sanctioned gateway for outside shopping a
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-25
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Anthropic MCP update (Nov 24): Skills over MCP in public bet (yes); Cloudflare launches Search for Agents (Nov 25, beta, all pla (maybe); Signal joins United Airlines and JPMorgan Chase in limiting  (yes); Versine (YC F26) ships an MCP server that lets AI assistants (no); PrismML releases Ternary Bonsai 2.5 27B (Nov 24): a ~1.76-bi (maybe)
+lesson: Agents are getting sanctioned front doors (Cloudflare search endpoints, skills shipped with MCP servers) at the same time big brands shut the side doors (Signal, United, JPMorgan). The Construct should make Brand 9 Signs readable and buyable through those front doors and move its own runners onto official MCP and API paths, with the browser only as a fallback.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
