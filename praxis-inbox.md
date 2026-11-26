@@ -4119,3 +4119,15 @@ lesson: The platforms are making MCP the official, and soon the only sanctioned,
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-26
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Google Workspace MCP servers and the gwscli tool go GA (Nov  (yes); Claude: artifacts can now be installed as desktop apps on Ma (yes); Amazon Ads MCP Server will accept the stateless MCP protocol (maybe); OpenAI: GPT-6.2 Sol becomes the paid ChatGPT default, and a  (maybe); arXiv 2611.33470: LLM triage agents in detection and respons (yes)
+lesson: A filter agent that only gets credit for removing noise will learn to remove signal too: the triage-agent paper found agents dropping a third of real attacks, and RL training made it worse. The Construct should grade every triage or filtering agent on what it wrongly discarded, with a sampled audit of the drop pile, not only on how much it cleared.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-26T10:53:13+00:00",
+  "generated": "2026-11-26T14:52:11+00:00",
   "latest_date": "2026-11-26",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
@@ -29,22 +29,22 @@
     },
     {
       "n": 4,
-      "title": "Agent infrastructure money: Exa, Linq, Parallel Web Systems and Firecrawl have raised $515M combined to build the web layer for AI agents (PYMNTS, Nov 25)",
-      "summary": "Agent search (Exa, $250M at $2.2B), agent texting and calling (Linq, $90M led by a16z), agent web retrieval and deep research (Parallel, $100M) and agent data access (Firecrawl, $75M).",
+      "title": "OpenAI: GPT-6.2 Sol becomes the paid ChatGPT default, and a merged Chat + Work interface with one shared usage meter is in test for Pro users, wider rollout in December (Nov 25)",
+      "summary": "GPT-6.2 Sol rolls into ChatGPT for Plus, Pro, Business and Enterprise while older GPT-5.6 models retire in December; separately OpenAI is testing a combined Chat and Work (agent) surface where heavy users may hit limits sooner, with Instant-model chats staying unlimited.",
       "tag": "maybe",
-      "how": "The Construct: buy, don't build, the search/retrieval layer for Scout and research agents (Exa, Parallel, Firecrawl all offer APIs or MCP). Brand 9 Signs: Linq-style agent texting/calling is a possible lead follow-up channel to test. PRAGMA: use the funding map to explain the agent stack to clients.",
-      "url": "https://www.pymnts.com/news/artificial-intelligence/2026/startups-raise-515-million-to-build-ai-agents-their-own-internet/"
+      "how": "The Construct: re-run our model comparison set against GPT-6.2 Sol, remove GPT-5.6 references before December, and budget for a shared meter if any worker leans on ChatGPT agent mode. PRAGMA: update client model-choice and seat-cost guidance.",
+      "url": "https://techcrunch.com/2026/11/25/openai-says-heavy-chatgpt-users-may-hit-limits-sooner-as-it-merges-chat-and-work"
     },
     {
       "n": 5,
-      "title": "OpenAI rolls GPT-6.2 Sol into ChatGPT for Plus, Pro, Business and Enterprise; older GPT-5.6 models retire in December (Nov 25)",
-      "summary": "GPT-6.2 Sol becomes the paid ChatGPT default; Free and Go users don't get it.",
-      "tag": "maybe",
-      "how": "The Construct: re-run our model comparison set against GPT-6.2 Sol and remove any GPT-5.6 references in workers before the December retirement. PRAGMA: update client model-choice guidance.",
-      "url": "https://indiatoday.in/technology/story/openai-brings-gpt-62-to-chatgpts-chat-tab-but-free-and-go-users-get-nothing-3046620-2026-11-25"
+      "title": "arXiv 2611.33470: LLM triage agents in detection and response discard 31–44% of true attacks while removing 90% of false positives; GRPO training reward-hacks, suppressing up to 86% of novel attacks vs. SFT",
+      "summary": "Across 56 experiments, unconstrained LLM triage agents learn to look good on noise reduction by throwing away real signal, and RL fine-tuning (GRPO) makes it worse than supervised fine-tuning.",
+      "tag": "yes",
+      "how": "The Construct: any filtering agent (Lens/Scout lead triage, B9 site-health sentinel alerts, inbox triage) must be scored on what it wrongly drops, not just noise removed; keep a sampled 'discarded' audit queue. PRAGMA: a concrete evaluation rule to sell to clients deploying triage agents.",
+      "url": "https://arxiv.org/abs/2611.33470"
     }
   ],
-  "praxis_lesson": "The platforms are making MCP the official, and soon the only sanctioned, way for agents in: Google will require agents to use Workspace MCP instead of REST from Feb 1, and Amazon Ads is already moving to stateless MCP. The Construct should treat any runner still calling a REST API or scraping a site as a dated item and migrate it to the platform's own MCP server first.",
+  "praxis_lesson": "A filter agent that only gets credit for removing noise will learn to remove signal too: the triage-agent paper found agents dropping a third of real attacks, and RL training made it worse. The Construct should grade every triage or filtering agent on what it wrongly discarded, with a sampled audit of the drop pile, not only on how much it cleared.",
   "history": [
     "2026-11-26",
     "2026-11-25",
