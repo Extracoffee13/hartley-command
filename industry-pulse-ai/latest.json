@@ -1,51 +1,52 @@
 {
-  "generated": "2026-11-25T18:52:55+00:00",
-  "latest_date": "2026-11-25",
+  "generated": "2026-11-26T10:53:13+00:00",
+  "latest_date": "2026-11-26",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Anthropic MCP update (Nov 24): Skills over MCP in public beta; Tasks and Elicitation now generally available; File Uploads coming soon",
-      "summary": "MCP servers can now ship skills alongside their tools (Shopify, HubSpot and Atlassian first), long-running Tasks and mid-call Elicitation are GA, and file uploads over MCP are next.",
+      "title": "Google Workspace MCP servers and the gwscli tool go GA (Nov 24): Gmail, Drive, Docs, Sheets, Slides, Calendar, Chat and Tasks, free Standard tier",
+      "summary": "Google's official Workspace MCP servers are generally available with a free Standard tier (5,000 requests/day), built-in confirmation prompts for sends, external shares and deletes, and a notice that from Feb 1, 2027 AI agents must call Workspace through MCP instead of REST.",
       "tag": "yes",
-      "how": "The Construct: bundle our b9-*, vironbox-* and hermes-* skills with the MCP servers that use them; use Tasks for long jobs (renders, partner orders) and Elicitation for owner sign-off. PRAGMA: hand clients a tool and its playbook together. The HubSpot skill-pack is a ready CRM path for Brand 9 Signs.",
-      "url": "https://claude.com/resources/articles/skills-over-mcp-tasks-and-more"
+      "how": "The Construct: move Gmail/Drive/Calendar agent work onto Google's official MCP servers before the Feb 1, 2027 REST cutoff for agents, and audit any runner calling Workspace REST directly. Brand 9 Signs: quote/order email and Drive artwork flows get first-party, approval-gated access. PRAGMA: 'migrate your agents to Workspace MCP by Feb 1' is a concrete client offer.",
+      "url": "http://workspaceupdates.googleblog.com/2026/11/mcp-servers-cli-standardized-usage-tiers-now-available.html"
     },
     {
       "n": 2,
-      "title": "Cloudflare launches Search for Agents (Nov 25, beta, all plans incl. free): one switch indexes a site and gives visiting AI agents a search endpoint on the site's own domain",
-      "summary": "Agents search the site and get matching source text instead of crawling it; billing under AI Search pricing starts Dec 1 with some monthly usage included.",
-      "tag": "maybe",
-      "how": "Brand 9 Signs: if brand9signs.com sits behind Cloudflare (or moves there), this is a cheap way to make /shop/ product facts findable by agent buyers, pairing with the ChatGPT-shopping and AI-shelf work. PRAGMA: an easy 'agent-readable site' quick win to offer clients.",
-      "url": "https://blog.cloudflare.com/search-for-agents/"
+      "title": "Claude: artifacts can now be installed as desktop apps on Mac and Windows (Nov 24, beta)",
+      "summary": "An 'Install as app' option turns a published Claude artifact into a standalone desktop app window.",
+      "tag": "yes",
+      "how": "The Construct: install the V4 command dashboard and PRAGMA scoring tools as desktop apps on the AP-Agent Mac so they open like native tools. PRAGMA: ship client dashboards as installable artifacts instead of custom builds.",
+      "url": "https://claude.com/resources/articles/install-as-app"
     },
     {
       "n": 3,
-      "title": "Signal joins United Airlines and JPMorgan Chase in limiting AI agents on their services over customer risk (Nov 24)",
-      "summary": "Large consumer brands are starting to restrict or block AI agents acting for customers on their services.",
-      "tag": "yes",
-      "how": "The Construct: Hermes and browser runners that sign in to third-party sites (partner portals, banks, airlines) should expect blocks and need a fallback to official APIs or a human step. PRAGMA: an 'agent access policy' is now a real client question.",
-      "url": "https://www.cnbc.com/2026/11/24/signal-airlines-banks-ai-limit.html"
+      "title": "Amazon Ads MCP Server will accept the stateless MCP protocol version 2026-07-28 from Dec 8 (announced Nov 25)",
+      "summary": "Opt-in upgrade with no initialize handshake or session ID (clients send Mcp-Method/Mcp-Name headers and can call server/discover), while endpoints, tools and auth stay the same and older versions keep working.",
+      "tag": "maybe",
+      "how": "The Construct: a first large ad platform adopting stateless MCP; when we build our own servers or the cross-platform ad-ops agent, target 2026-07-28 so workers can call without session state. Brand 9 Signs: no change needed now.",
+      "url": "https://ppc.land/ai-agents-linked-to-amazon-ads-get-an-optional-upgrade-on-december-8/"
     },
     {
       "n": 4,
-      "title": "Versine (YC F26) ships an MCP server that lets AI assistants send and request money from a self-custodial USDC wallet on Base (Nov 24)",
-      "summary": "A payments MCP lets agents move money directly, a sign that agent-initiated payments are arriving as plug-in tools.",
-      "tag": "no",
-      "how": "Not for The Construct now: stablecoin wallets add custody and compliance risk with no Brand 9 Signs customer demand; watch only, and keep agent spend behind Stripe and owner approval.",
-      "url": "https://news.ycombinator.com/item?id=50634426"
+      "title": "Agent infrastructure money: Exa, Linq, Parallel Web Systems and Firecrawl have raised $515M combined to build the web layer for AI agents (PYMNTS, Nov 25)",
+      "summary": "Agent search (Exa, $250M at $2.2B), agent texting and calling (Linq, $90M led by a16z), agent web retrieval and deep research (Parallel, $100M) and agent data access (Firecrawl, $75M).",
+      "tag": "maybe",
+      "how": "The Construct: buy, don't build, the search/retrieval layer for Scout and research agents (Exa, Parallel, Firecrawl all offer APIs or MCP). Brand 9 Signs: Linq-style agent texting/calling is a possible lead follow-up channel to test. PRAGMA: use the funding map to explain the agent stack to clients.",
+      "url": "https://www.pymnts.com/news/artificial-intelligence/2026/startups-raise-515-million-to-build-ai-agents-their-own-internet/"
     },
     {
       "n": 5,
-      "title": "PrismML releases Ternary Bonsai 2.5 27B (Nov 24): a ~1.76-bit, 5.93 GB agentic model for tool-calling and coding that runs locally",
-      "summary": "Small enough to run on a laptop while targeting tool use and agentic coding.",
+      "title": "OpenAI rolls GPT-6.2 Sol into ChatGPT for Plus, Pro, Business and Enterprise; older GPT-5.6 models retire in December (Nov 25)",
+      "summary": "GPT-6.2 Sol becomes the paid ChatGPT default; Free and Go users don't get it.",
       "tag": "maybe",
-      "how": "The Construct: test it on the AP-Agent Mac as an offline, zero-cost model for simple routing and tool-call steps in Hermes workers; keep Claude for anything customer-facing.",
-      "url": "https://prismml.com/news/bonsai-2-5-27b"
+      "how": "The Construct: re-run our model comparison set against GPT-6.2 Sol and remove any GPT-5.6 references in workers before the December retirement. PRAGMA: update client model-choice guidance.",
+      "url": "https://indiatoday.in/technology/story/openai-brings-gpt-62-to-chatgpts-chat-tab-but-free-and-go-users-get-nothing-3046620-2026-11-25"
     }
   ],
-  "praxis_lesson": "Agents are getting sanctioned front doors (Cloudflare search endpoints, skills shipped with MCP servers) at the same time big brands shut the side doors (Signal, United, JPMorgan). The Construct should make Brand 9 Signs readable and buyable through those front doors and move its own runners onto official MCP and API paths, with the browser only as a fallback.",
+  "praxis_lesson": "The platforms are making MCP the official, and soon the only sanctioned, way for agents in: Google will require agents to use Workspace MCP instead of REST from Feb 1, and Amazon Ads is already moving to stateless MCP. The Construct should treat any runner still calling a REST API or scraping a site as a dated item and migrate it to the platform's own MCP server first.",
   "history": [
+    "2026-11-26",
     "2026-11-25",
     "2026-11-24",
     "2026-11-23",
@@ -58,7 +59,6 @@
     "2026-11-16",
     "2026-11-15",
     "2026-11-14",
-    "2026-11-13",
-    "2026-11-12"
+    "2026-11-13"
   ]
 }

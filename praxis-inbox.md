@@ -4107,3 +4107,15 @@ lesson: Agents are getting sanctioned front doors (Cloudflare search endpoints, 
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-26
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Google Workspace MCP servers and the gwscli tool go GA (Nov  (yes); Claude: artifacts can now be installed as desktop apps on Ma (yes); Amazon Ads MCP Server will accept the stateless MCP protocol (maybe); Agent infrastructure money: Exa, Linq, Parallel Web Systems  (maybe); OpenAI rolls GPT-6.2 Sol into ChatGPT for Plus, Pro, Busines (maybe)
+lesson: The platforms are making MCP the official, and soon the only sanctioned, way for agents in: Google will require agents to use Workspace MCP instead of REST from Feb 1, and Amazon Ads is already moving to stateless MCP. The Construct should treat any runner still calling a REST API or scraping a site as a dated item and migrate it to the platform's own MCP server first.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
