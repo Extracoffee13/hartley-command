@@ -4167,3 +4167,15 @@ lesson: Platforms are closing the side doors for agents: Google will require age
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-27
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: arXiv 2611.30932 (Nov 23): agent skills are a software suppl (yes); arXiv 2611.32194 (Nov 24): after context compaction, a model (yes); Google: from February 2027, AI agents must reach Gmail, Driv (yes); HUMAN Security study (Nov 26-27): AI-agent traffic to US ret (maybe); Anthropic moves its Messages API from Python to Rust, verifi (yes)
+lesson: Skills are code from a supply chain, not prompts: half of public skills with dependencies pull a known-vulnerable version, and live agents ran injected payloads in about half of flagged skills. The Construct should treat every skill install like a package install, with a scan, a pinned version and an owner, and keep permissions in files the agent re-reads rather than in its own summaries.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
