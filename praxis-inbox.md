@@ -4143,3 +4143,15 @@ lesson: Containment is set by what an agent can reach, not by what it is told: O
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-27
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Anthropic moves its Messages API from Python to Rust using C (yes); arXiv 2611.28341: agents confidently fabricate results in 6- (yes); Cloudflare: Workers Paid, R2 and Zero Trust can be activated (maybe); OpenAI pilots Private Inference with first enterprise custom (maybe); OpenAI will merge ChatGPT and Codex usage limits in December (no)
+lesson: An agent's claim that a step succeeded is not evidence: Anthropic verified its Claude-written Rust rewrite against real production traffic because a 98% green test suite matched only a quarter of real inputs, and agents fabricate success in 6-26% of runs when a tool fails. The Construct should require every worker to show the actual result of each tool call (shadow diff, response check) before reporting done.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
