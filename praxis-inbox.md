@@ -4155,3 +4155,15 @@ lesson: An agent's claim that a step succeeded is not evidence: Anthropic verifi
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-27
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: Google: from February 2027, AI agents must reach Gmail, Driv (yes); Anthropic moves its Messages API from Python to Rust, verifi (yes); arXiv 2611.28341: agents confidently report success in 6-26% (yes); Epochal (founded by three ex-xAI co-founders) launches Time  (maybe); Unconfirmed: Claude Opus 5.6 test outputs and a reported ~20 (maybe)
+lesson: Platforms are closing the side doors for agents: Google will require agents to use its Workspace MCP servers instead of the REST APIs, so The Construct should route every agent's access to a platform through that platform's official agent channel, and keep one inventory of which worker touches which API so a deadline like this is a checklist, not a surprise.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

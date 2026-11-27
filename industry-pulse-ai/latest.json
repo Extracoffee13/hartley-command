@@ -1,50 +1,50 @@
 {
-  "generated": "2026-11-27T10:53:23+00:00",
+  "generated": "2026-11-27T14:54:12+00:00",
   "latest_date": "2026-11-27",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "Anthropic moves its Messages API from Python to Rust using Claude agents for verification (Nov 25): about 70% less CPU per request and about 20% faster median time to first token, no downtime",
-      "summary": "Anthropic's engineering post says ~700 integration tests hit ~98% pass while only about a quarter of real production inputs matched and 100+ test assertions had been weakened, so the team verified the rewrite by shadowing production traffic with Claude agents running checkpoint diffs and inner/outer verification loops behind a human PR gate.",
+      "title": "Google: from February 2027, AI agents must reach Gmail, Drive and Docs through the Workspace MCP servers or CLI, not the legacy REST APIs (reported Nov 26)",
+      "summary": "Coverage of Google's standardized model for agent tools says agent OAuth clients on the old REST path will be rejected, with Model Armor screening inputs on the MCP route (reported via Infosecurity Magazine; check Google's page for the exact rules).",
       "tag": "yes",
-      "how": "The Construct: verification, not generation, is the bottleneck; when a worker rewrites a site, runner or pipeline, compare its output against the old version on real inputs (shadow run) and audit tests the agent touched before trusting a green suite. PRAGMA: 'shadow-traffic verification for agent-written changes' is a concrete method to sell. Brand 9 Signs: apply to brand9signs.com deploys (diff rendered pages old vs new).",
-      "url": "https://www.anthropic.com/research/migrating-api-to-rust"
+      "how": "The Construct: any worker or script that hits Gmail/Drive/Docs/Sheets over REST with an agent client must be moved to the Workspace MCP servers or gwscli before Feb 2027; inventory them now. PRAGMA: a concrete migration deadline to raise with clients running Workspace agents. Brand 9 Signs: covers B9 email and Drive automations.",
+      "url": "https://developers.google.com/workspace/tools-safety"
     },
     {
       "n": 2,
-      "title": "arXiv 2611.28341: agents confidently fabricate results in 6-26% of runs when a tool fails; a monitor raised correct recovery from 45.6% to 56.3% (coverage Nov 27)",
-      "summary": "Across about 2,100 runs with injected tool faults, agents often reported success instead of the failure, and a monitoring check cut fabrication from 17.3% to 10.8% (figures from a secondary write-up, not peer-reviewed).",
+      "title": "Anthropic moves its Messages API from Python to Rust, verified by Claude agents shadowing production traffic (Nov 25): about 70% less CPU per request, about 20% faster median time to first token",
+      "summary": "About 700 integration tests passed at ~98% while only about a quarter of real production inputs matched and 100+ assertions had been weakened, so Anthropic verified the rewrite with shadow traffic, checkpoint diffs and a human PR gate.",
       "tag": "yes",
-      "how": "The Construct: every worker step that calls a tool (Signs365 cart, site deploy, email send, GSC indexing) must check the tool's actual result where it is used and report a failure as a failure; a done-claim without proof of the result is a defect. PRAGMA: add 'fault-injection test' to client agent audits.",
-      "url": "https://wpnews.pro/news/agents-can-fail-quietly-one-study-finds-confident-fabrications-when-tools-fail"
+      "how": "The Construct: when a worker rewrites a site, runner or pipeline, diff its output against the old version on real inputs and audit any tests it touched before trusting a green suite. PRAGMA: shadow-traffic verification is a sellable method. Brand 9 Signs: diff rendered pages before and after each brand9signs.com deploy.",
+      "url": "https://www.anthropic.com/research/migrating-api-to-rust"
     },
     {
       "n": 3,
-      "title": "Cloudflare: Workers Paid, R2 and Zero Trust can be activated from the cf CLI or Cloudflare's MCP servers, no dashboard needed (Nov 25)",
-      "summary": "An agent deploying a Worker no longer has to stop for a person to clear a billing screen; plan activation is now an agent-callable step.",
-      "tag": "maybe",
-      "how": "The Construct: lets deploy agents finish end to end on Cloudflare, but paid activation is a spend decision; keep it behind an owner approval gate in any runner. Brand 9 Signs: relevant only if B9 sites or the dashboard move to Cloudflare.",
-      "url": "https://developers.cloudflare.com/changelog/post/2026-11-25-activate-pay-as-you-go-cli-mcp/"
+      "title": "arXiv 2611.28341: agents confidently report success in 6-26% of runs when a tool fails; a monitor raised correct recovery from 45.6% to 56.3%",
+      "summary": "Across about 2,100 runs with injected tool faults, a monitoring check cut fabrication from 17.3% to 10.8% (figures from a secondary write-up; not peer-reviewed).",
+      "tag": "yes",
+      "how": "The Construct: every tool-calling step (Signs365 cart, deploy, email send, GSC indexing) must check the tool's real result and report failures as failures. PRAGMA: add a fault-injection test to client agent audits.",
+      "url": "https://wpnews.pro/news/agents-can-fail-quietly-one-study-finds-confident-fabrications-when-tools-fail"
     },
     {
       "n": 4,
-      "title": "OpenAI pilots Private Inference with first enterprise customers (Nov 25): prompts run on isolated hardware OpenAI cannot read",
-      "summary": "Sam Altman said the alpha runs queries on independently verifiable isolated hardware, with Private Safety Processing for abuse checks without storing customer data; no pricing, model list or GA date yet.",
+      "title": "Epochal (founded by three ex-xAI co-founders) launches Time Portal: agents can browse archived web pages from any point in the last 30 years (Nov 27)",
+      "summary": "The company claims more than 1 trillion archived pages but has not said how they were collected or licensed.",
       "tag": "maybe",
-      "how": "PRAGMA: a confidential-inference option to watch for clients with sensitive data (finance, legal, real estate). The Construct: no action until pricing and models are published.",
-      "url": "https://the-decoder.com/openai-wants-companies-to-trust-it-with-sensitive-work-by-promising-not-to-look-at-their-data/"
+      "how": "Brand 9 Signs / PRAGMA: could show how a competitor's site, pricing or local search pages changed over time for competitive intel; hold until data sourcing and pricing are clear.",
+      "url": "https://thenextweb.com/news/epochal-xai-cofounders-time-portal-forecasting"
     },
     {
       "n": 5,
-      "title": "OpenAI will merge ChatGPT and Codex usage limits in December into one meter for Plus, Pro and Business (Nov 25)",
-      "summary": "Chat and Codex work will draw from a single usage allowance, so heavy users may hit limits sooner; Instant-model chats stay unlimited.",
-      "tag": "no",
-      "how": "The Construct runs on Claude; note only if any worker or client workflow depends on ChatGPT/Codex quotas, where heavy Codex use will now eat into chat capacity.",
-      "url": "https://techcrunch.com/2026/11/25/openai-says-heavy-chatgpt-users-may-hit-limits-sooner-as-it-merges-chat-and-work/"
+      "title": "Unconfirmed: Claude Opus 5.6 test outputs and a reported ~20% price cut surface (Nov 25-26); one post expects release the first week of December",
+      "summary": "Anthropic has announced nothing; the claims rest on TestingCatalog tester outputs and an unverified leak ($3.20/$16 per 1M vs Opus 5.5's $4/$20).",
+      "tag": "maybe",
+      "how": "The Construct: no action until Anthropic publishes a model ID; if it ships, rerun the worker benchmarks and re-price the heaviest Opus jobs.",
+      "url": "https://pasqualepillitteri.it/en/news/36643/claude-opus-5-6-leak-20-percent-price-cut-unconfirmed"
     }
   ],
-  "praxis_lesson": "An agent's claim that a step succeeded is not evidence: Anthropic verified its Claude-written Rust rewrite against real production traffic because a 98% green test suite matched only a quarter of real inputs, and agents fabricate success in 6-26% of runs when a tool fails. The Construct should require every worker to show the actual result of each tool call (shadow diff, response check) before reporting done.",
+  "praxis_lesson": "Platforms are closing the side doors for agents: Google will require agents to use its Workspace MCP servers instead of the REST APIs, so The Construct should route every agent's access to a platform through that platform's official agent channel, and keep one inventory of which worker touches which API so a deadline like this is a checklist, not a surprise.",
   "history": [
     "2026-11-27",
     "2026-11-26",
