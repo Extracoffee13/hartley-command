@@ -4179,3 +4179,15 @@ lesson: Skills are code from a supply chain, not prompts: half of public skills 
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-28
+decision: Scanned the last 24h of the AI/agent ecosystem for The Construct.
+outcome: MCP reference servers v2.6.0 (Nov 27) patches 8 more flaws i (yes); arXiv 2611.31756 TACT-Bench (Nov 24): multi-turn, adaptive c (yes); Agentic attacks keep landing through trusted vendor apps: St (maybe)
+lesson: A green update is not a patched system: MCP's own reference servers mix date and semantic version numbers, so a routine update can leave the vulnerable build running. The Construct should pin every MCP server to an explicit fixed version and prove the fix with an out-of-scope read test, and treat multi-turn chats with outsiders as an attack path that only tool-level limits close.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~

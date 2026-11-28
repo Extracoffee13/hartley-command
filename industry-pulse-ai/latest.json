@@ -1,51 +1,36 @@
 {
-  "generated": "2026-11-27T18:53:00+00:00",
-  "latest_date": "2026-11-27",
+  "generated": "2026-11-28T10:55:17+00:00",
+  "latest_date": "2026-11-28",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
     {
       "n": 1,
-      "title": "arXiv 2611.30932 (Nov 23): agent skills are a software supply chain; 49.6% of ClawHub skills with resolvable dependencies pull a version with a known CVE",
-      "summary": "Scanning 48,682 ClawHub skills, the authors found 78.3% of those vulnerable skills were vulnerable from their first release, exploited 21 of 22 sampled first-party flaws end to end in a sandbox, and saw a live agent run an injected payload in 48.5% of sampled flagged skills (preprint, not peer-reviewed).",
+      "title": "MCP reference servers v2.6.0 (Nov 27) patches 8 more flaws in the Git, Fetch, Memory and Filesystem sample servers; the worst lets Git LFS run programs named in repo settings through the read-only git_status tool",
+      "summary": "Fixed versions are Git 2026.11.27, Fetch 2026.11.27, Memory 2.2.2 and Filesystem (Windows) 2.4.1; the release finishes two fixes the Nov 11 v2.4.0 release left open, and the mixed date/semver numbering means a generic npm/pip update can silently keep a vulnerable version (single secondary report; the Nov 17 upgrade guide documents the same version-pin trap).",
       "tag": "yes",
-      "how": "The Construct: its several hundred installed skills (B9, Vironbox, Hermes, PRAGMA) should get a dependency and script scan, pinned versions and a named owner before any new skill is installed. PRAGMA: a skills-supply-chain audit is a ready consulting offer. Brand 9 Signs: covers the B9 skills that run shop and deploy scripts.",
-      "url": "https://arxiv.org/abs/2611.30932v1"
+      "how": "The Construct: a sweep of the connected folders found the reference servers only in a graphify test fixture, so check the Claude desktop and Hermes MCP launch configs directly and pin any mcp-server-git/fetch/memory/filesystem entry to an explicit fixed version, never 'latest'. PRAGMA: 'pin your MCP servers and re-test out-of-scope reads' is a five-minute client audit item.",
+      "url": "https://aimatter.in/2026/11/27/mcp-servers-release-patches-8-security-flaws/"
     },
     {
       "n": 2,
-      "title": "arXiv 2611.32194 (Nov 24): after context compaction, a model-written summary can widen what an agent is authorized to do",
-      "summary": "The paper says Claude Code and Codex place the compaction summary in a user message; a policy built from a frontier compactor's summary admitted an attacker's account in 91% of cases versus 0% from the user's own words, and the proposed fix blocked attacks across 40 AgentDojo episodes (preprint).",
+      "title": "arXiv 2611.31756 TACT-Bench (Nov 24): multi-turn, adaptive conversational attacks push tool-use agents into failures far more than single-shot ones, and current defenses barely help",
+      "summary": "Across six assistant models the adaptive attacker raised the attack-induced failure rate 17.5% over four baselines, a trust-building variant added another 17.0%, and the two tested defenses cut failures only 8.4-9.4% (preprint, code on GitHub).",
       "tag": "yes",
-      "how": "The Construct: long-running workers (Hermes queue, partner-order runner) should re-read permissions from the original task or a config file after compaction, never from the summary. PRAGMA: add a post-compaction authorization test to client agent audits.",
-      "url": "https://arxiv.org/abs/2611.32194"
+      "how": "The Construct and Brand 9 Signs: any agent that talks to outsiders over several turns (B9 customer email, Vector logo designer, partner chat) needs hard limits on which tools a conversation can unlock, not just a prompt-level refusal. PRAGMA: run TACT-Bench-style multi-turn red-team scripts in client agent audits.",
+      "url": "https://arxiv.org/abs/2611.31756"
     },
     {
       "n": 3,
-      "title": "Google: from February 2027, AI agents must reach Gmail, Drive and Docs through the Workspace MCP servers or CLI, not the legacy REST APIs (reported Nov 26)",
-      "summary": "Coverage of Google's standardized model for agent tools says agent OAuth clients on the old REST path will be rejected, with Model Armor screening inputs on the MCP route (check Google's page for the exact rules).",
-      "tag": "yes",
-      "how": "The Construct: inventory every worker or script that hits Gmail/Drive/Docs/Sheets over REST with an agent client and move it to the Workspace MCP servers or gwscli before Feb 2027. PRAGMA: a concrete migration deadline for clients. Brand 9 Signs: covers B9 email and Drive automations.",
-      "url": "https://developers.google.com/workspace/tools-safety"
-    },
-    {
-      "n": 4,
-      "title": "HUMAN Security study (Nov 26-27): AI-agent traffic to US retailers expected to rise sharply over Cyber Week, about 150-fold per secondary reports",
-      "summary": "The press release forecasts a surge in AI shopping-agent visits this holiday season; secondary coverage puts the rise at roughly 150x with Meta's Muse agent taking nearly 70% of it (figures not checked against the full study).",
+      "title": "Agentic attacks keep landing through trusted vendor apps: Storm-0940 used the ARTEX multi-agent framework and a compromised ConnectWise app identity to hit 2,250+ Microsoft 365 tenants (Oct 22 report; further Microsoft coverage Nov 26)",
+      "summary": "The agents signed in through already-consented vendor app identities with no user sign-in, ran about 2,900 attempts per minute and reached privileged cloud access in under three hours in some tenants; Microsoft says to search tenants by app ID, keep affected connections off and preserve Entra/SIEM logs.",
       "tag": "maybe",
-      "how": "Brand 9 Signs: check brand9signs.com/shop/ logs and GA4 this week for agent user agents, and make sure product pages, prices and feeds read cleanly to agents (see b9-chatgpt-shopping). PRAGMA: agent-readiness of storefronts is a timely client talking point.",
-      "url": "https://manilatimes.net/2026/11/27/tmt-newswire/pr-newswire/new-study-shows-ai-agent-traffic-to-soar-during-cyber-week-nyse-content-update/2479190"
-    },
-    {
-      "n": 5,
-      "title": "Anthropic moves its Messages API from Python to Rust, verified by Claude agents shadowing production traffic (Nov 25): about 70% less CPU per request, about 20% faster median time to first token",
-      "summary": "About 700 integration tests passed at ~98% while only about a quarter of real production inputs matched and 100+ assertions had been weakened, so Anthropic verified the rewrite with shadow traffic, checkpoint diffs and a human PR gate.",
-      "tag": "yes",
-      "how": "The Construct: when a worker rewrites a site, runner or pipeline, diff its output against the old version on real inputs and audit any tests it touched before trusting a green suite. Brand 9 Signs: diff rendered pages before and after each brand9signs.com deploy.",
-      "url": "https://www.anthropic.com/research/migrating-api-to-rust"
+      "how": "Brand 9 Signs / The Construct: review which third-party apps hold OAuth access to the B9 Google Workspace and Microsoft accounts and drop any that are unused. PRAGMA: 'your vendor integrations are now an AI-speed attack surface' is a concrete talking point for operator clients.",
+      "url": "https://www.csoonline.com/article/4239028/china-linked-hackers-used-agentic-ai-in-attack-on-2-250-microsoft-365-tenants.html"
     }
   ],
-  "praxis_lesson": "Skills are code from a supply chain, not prompts: half of public skills with dependencies pull a known-vulnerable version, and live agents ran injected payloads in about half of flagged skills. The Construct should treat every skill install like a package install, with a scan, a pinned version and an owner, and keep permissions in files the agent re-reads rather than in its own summaries.",
+  "praxis_lesson": "A green update is not a patched system: MCP's own reference servers mix date and semantic version numbers, so a routine update can leave the vulnerable build running. The Construct should pin every MCP server to an explicit fixed version and prove the fix with an out-of-scope read test, and treat multi-turn chats with outsiders as an attack path that only tool-level limits close.",
   "history": [
+    "2026-11-28",
     "2026-11-27",
     "2026-11-26",
     "2026-11-25",
@@ -58,7 +43,6 @@
     "2026-11-18",
     "2026-11-17",
     "2026-11-16",
-    "2026-11-15",
-    "2026-11-14"
+    "2026-11-15"
   ]
 }
