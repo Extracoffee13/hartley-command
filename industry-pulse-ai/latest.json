@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-28T10:55:17+00:00",
+  "generated": "2026-11-28T14:51:41+00:00",
   "latest_date": "2026-11-28",
   "title": "Industry Pulse — AI / Agent Ecosystem",
   "bullets": [
@@ -26,6 +26,14 @@
       "tag": "maybe",
       "how": "Brand 9 Signs / The Construct: review which third-party apps hold OAuth access to the B9 Google Workspace and Microsoft accounts and drop any that are unused. PRAGMA: 'your vendor integrations are now an AI-speed attack surface' is a concrete talking point for operator clients.",
       "url": "https://www.csoonline.com/article/4239028/china-linked-hackers-used-agentic-ai-in-attack-on-2-250-microsoft-365-tenants.html"
+    },
+    {
+      "n": 4,
+      "title": "Google Research's Cogentic, a Gemini 4 multi-agent system, posted six AI-written math papers on Nov 25, including a claimed proven L[1/3] integer-factoring bound with Lean 4 proofs",
+      "summary": "Google says Cogentic produced the proofs from a single prompt with no further human help and that each README reports a Lean 4 proof using only Mathlib; full formalizations come in a companion submission, and no outside mathematician has verified the results yet (no developer access mentioned).",
+      "tag": "maybe",
+      "how": "The Construct: the pattern worth copying is not the math but the machine-checked gate; pair every agent claim with an automatic checker (a test, a render diff, a schema validator) before it is reported done. PRAGMA: 'agents plus a verifier' is the credible story for clients; treat the headline claims as unreviewed until outside checks land.",
+      "url": "https://www.rdworldonline.com/google-cogentic-ai-integer-factoring-bounds-lean-proofs/"
     }
   ],
   "praxis_lesson": "A green update is not a patched system: MCP's own reference servers mix date and semantic version numbers, so a routine update can leave the vulnerable build running. The Construct should pin every MCP server to an explicit fixed version and prove the fix with an out-of-scope read test, and treat multi-turn chats with outsiders as an attack path that only tool-level limits close.",

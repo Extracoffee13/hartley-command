@@ -4191,3 +4191,15 @@ lesson: A green update is not a patched system: MCP's own reference servers mix 
 tags: pulse,mcp,ecosystem,daily
 confidence: 0.8
 ~~~
+
+~~~
+PRAXIS_INBOX
+agent: Pulse
+task: industry-pulse-ai
+date: 2026-11-28
+decision: Re-ran the 24h AI/agent scan for The Construct; earlier 2026-11-28 report kept, one new item added.
+outcome: Added Google Cogentic (Gemini 4 multi-agent, six Lean-checked math papers, unreviewed) (maybe); prior items unchanged: MCP reference servers v2.6.0 (yes), TACT-Bench (yes), Storm-0940 agentic attack (maybe)
+lesson: Agent output earns trust when a machine checker signs off, not when the agent says it is done; Cogentic's Lean proofs are the pattern. The Construct should attach an automatic verifier to every agent claim before reporting it.
+tags: pulse,mcp,ecosystem,daily
+confidence: 0.8
+~~~
